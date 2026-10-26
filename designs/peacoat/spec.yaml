@@ -1,8 +1,8 @@
 # Peacoat: a hip-length double-breasted reefer on Simons' double-breasted overcoats (Designing
 # Overcoat Patterns, 1916, pp. 10-11 and the D.B. ulster collar overcoat, pp. 28-29), on the
-# mackinaw's body (lib/coat.mjs, FreeSewing's Brian): a wide button stand, a deep convertible
-# collar that buttons to the throat, two rows of three buttons, hand-warmer welt pockets, no
-# belt. See BRIEF.md for where each default is read.
+# mackinaw's body (lib/coat.mjs, FreeSewing's Brian): a wide button stand, a
+# notched lapel and deep ulster collar, two rows of three buttons, hand-warmer welt pockets, a
+# back vent and a lining, no belt. See BRIEF.md for where each default is read.
 extends: ../mackinaw/spec.yaml
 
 about:
@@ -27,7 +27,11 @@ options:
   buttonTop: { pct: 150 } # x the half stand: 5 1/4" below the chest line (p. 29)
   buttonBottom: { pct: 90 } # x waistToSeat below the waist
   buttonRow: { pct: 74 } # x the half stand: rows 2 5/8" either side of CF (p. 29)
+  collarStyle: { dflt: ulster } # the D.B. ulster collar (p. 29): a notched lapel and a deep collar
   collarWidth: { pct: 29 } # x neck: the ulster collar's 4" plus its stand
+  lapelWidth: { pct: 30 } # x neck: about 4 1/2" from the crease (p. 29's lapel, 7-8 to the crease)
+  vent: { bool: true } # Simons' back has a centre seam (B-H); a short vent below it
+  lining: { bool: true }
   belt: { bool: false }
   breastPockets: { bool: false }
   lowerPockets: { bool: false }

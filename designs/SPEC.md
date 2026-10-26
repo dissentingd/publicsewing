@@ -32,6 +32,8 @@ A piece is either drafted by operations or made by a piece type.
 **Piece types** (`part: <type>`, with their own keys): `facing`, `backNeckFacing`, `sleeve`,
 `raglanSleeve`, `pocket`, `flap`, `belt`, `backPanel`, `sideBody`, `library`, `welt`,
 `weltBag`, `yokePiece`, `yokeSleeve`, `sleeveBand`, `placket`, `neckBand`, `legBand`,
+`frontLining` and `backLining` (a Brian coat's lining, `from` the front or the back; the back
+takes `width:`, its back-neck facing's, and `pleat:`; `sleeve` takes `lining:` too),
 `jacketPanel` (`material:` lining to cut it from lining; `lining:` an expression, true cuts it
 again in lining; `library` takes `lining:` too), `setInPocket` (a flap, jet or bag of a set-in
 flap pocket from `boxLayout`'s or `jacketLayout`'s `pockets`). `welt` and `weltBag` take
@@ -45,6 +47,8 @@ type's `if:` is an expression over options; when it is false the piece is left o
 | `coatBack` / `coatFront` | Coat body on Brian: hem, seat, side seam, waist shaping, stout figures; the front's button stand, front corner, dropped hem, V neck (`neckY`). | `lib/coat.mjs` |
 | `collar` | A turn-down or stand collar, cut on the fold. | `lib/coat.mjs` |
 | `shawl` | A shawl collar cut in one with the front. | `lib/coat.mjs` |
+| `lapel` | A notched lapel and gorge on a round-necked front (`breakY`, `rollOut`, `gorgeAt`, `width`); the facing then runs to the shoulder. | `lib/coat.mjs`, `lib/lapel.mjs` |
+| `backVent` | A back vent and CB seam (`length`, `width`); the back is then cut in pairs. | `lib/coat.mjs` |
 | `buttons` | Buttons in rows, evenly from `top` to `bottom`. | `lib/coat.mjs` |
 | `raglan` | Cut the back or front along a raglan line. | `lib/raglan.mjs` |
 | `backYokeCut` | Mark a coat back's yoke line, to cut it into `backPanel`s. | `lib/panels.mjs` |

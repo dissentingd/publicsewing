@@ -30,7 +30,11 @@ options:
   buttonRow: { pct: 62, min: 40, max: 90, menu: style } # x the stand: each row's distance from CF
   hemCurve: { pct: 0, min: 0, max: 100, menu: style }
   sleeveStyle: { dflt: setIn, list: [setIn, raglan], menu: style }
-  collarStyle: { dflt: convertible, list: [convertible, military, shawl], menu: style }
+  collarStyle: { dflt: convertible, list: [convertible, military, shawl, ulster], menu: style }
+  # The ulster collar (Simons 1916): a notched lapel turning at the top button, the collar sewn
+  # to the gorge
+  lapelWidth: { pct: 30, min: 18, max: 40, of: neck, menu: style } # from the crease
+  gorgeAt: { pct: 55, min: 30, max: 80, menu: style } # along the front neck from the neck point
   collarWidth: { pct: 27, min: 18, max: 40, of: neck, menu: style }
   belt: { bool: true, menu: style }
   beltWidth: { pct: 4.2, min: 2.5, max: 7, of: chest, menu: style }
@@ -47,12 +51,19 @@ options:
   handPocketWelt: { pct: 12, min: 8, max: 20, menu: style } # x the mouth: finished welt width
   # Construction
   facingWidth: { pct: 14, min: 10, max: 20, of: chest, menu: construction }
+  # Back vent (a CB seam) and lining, off for the mackinaw (the peacoat turns them on)
+  vent: { bool: false, menu: style }
+  ventLength: { pct: 70, min: 30, max: 120, menu: style } # x waistToSeat, up from the hem
+  ventWidth: { pct: 5, min: 3, max: 8, of: chest, menu: construction } # the vent's lap past CB
+  lining: { bool: false, menu: construction } # with the ulster or shawl collar (facings to the shoulder)
+  liningPleat: { pct: 2.5, min: 0, max: 5, of: chest, menu: construction } # extra at the back lining's CB
+  neckFacingWidth: { pct: 14, min: 8, max: 25, of: neck, menu: construction } # the back-neck facing's depth and shoulder width
 
 pieces:
   back:
     from: brian.back
     hide: tree
-    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, belt, beltWidth, sleeveStyle]
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, belt, beltWidth, sleeveStyle, vent, ventLength, ventWidth]
     let:
       # Belt band: width from the chest, set a little above the waist (Simons: D down ~1 5/8")
       beltW: chest * beltWidth
@@ -60,8 +71,10 @@ pieces:
     ops:
       - coatBack: {}
       # Raglan sleeves (Diagram XXIII) go with the convertible and military collars
-      - raglan: { which: back, if: "sleeveStyle == 'raglan' and collarStyle != 'shawl'" }
+      - raglan: { which: back, if: "sleeveStyle == 'raglan' and collarStyle != 'shawl' and collarStyle != 'ulster'" }
       # Belt placement (the belt is sewn on over the waist)
+      # A back vent: the back gets a CB seam
+      - backVent: { if: vent, length: waistToSeat * ventLength, width: chest * ventWidth }
       - store: { key: coat.belt, value: { w: beltW, y: beltY }, if: belt }
       - markLine: { id: beltTop, from: [0, beltY], to: [sideHem.x, beltY], class: mark dashed, if: belt }
       - markLine: { id: beltBottom, from: [0, beltY + beltW], to: [sideHem.x, beltY + beltW], class: mark dashed, if: belt }
@@ -70,7 +83,7 @@ pieces:
     from: brian.front
     hide: tree
     measurements: [seat, waist, waistToSeat]
-    options: [buttonExtension, buttons, buttonTop, buttonBottom, buttonRow, hemCurve, frontDrop, facingWidth, breastPockets, lowerPockets, pocketShape, pocketFlaps, handPockets, handPocketTop, handPocketAt, handPocketLength, handPocketLean, handPocketWelt]
+    options: [buttonExtension, buttons, buttonTop, buttonBottom, buttonRow, hemCurve, frontDrop, facingWidth, breastPockets, lowerPockets, pocketShape, pocketFlaps, handPockets, handPocketTop, handPocketAt, handPocketLength, handPocketLean, handPocketWelt, lapelWidth, gorgeAt, lining, liningPleat, neckFacingWidth]
     let:
       # Double-breasted: a wide stand, hem sweeping down toward the front edge
       ext: chest * buttonExtension
@@ -87,13 +100,22 @@ pieces:
           facing: chest * facingWidth
           # Shawl: a V neck down to the break, just above the top button (XVII: 16)
           neckY: if(shawl, topButton - ext * 0.5, null)
-      - raglan: { which: front, if: "sleeveStyle == 'raglan' and not shawl" }
+      - raglan: { which: front, if: "sleeveStyle == 'raglan' and not shawl and collarStyle != 'ulster'" }
       # XVIII: stand 3/4", collar 3 1/2" + 3/4" at CB; XVII: lapel about 3" at its widest
       - shawl:
           if: shawl
           stand: neck * 0.05
           width: neck * collarWidth
           lapel: ext * 1.15
+      # Ulster collar: the lapel turns back at the top button
+      - lapel:
+          if: collarStyle == 'ulster'
+          breakY: topButton
+          rollOut: neck * 0.05
+          gorgeAt: gorgeAt
+          width: neck * lapelWidth
+      # A lined coat's front facings run to the shoulder as wide as the back-neck facing
+      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: "lining and (collarStyle == 'ulster' or collarStyle == 'shawl')" }
       # Two rows of buttons, from just below the chest line to below the belt
       - buttons:
           count: buttons
@@ -165,33 +187,36 @@ pieces:
     options: [collarStyle, collarWidth]
     let:
       military: collarStyle == 'military'
+      ulster: collarStyle == 'ulster'
     ops:
       - hidePiece: { if: "collarStyle == 'shawl'" }
       - collar:
-          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext * 0.9
+          # The ulster collar sews to the gorge; the others run to just short of the front edge
+          target: if(ulster, coat.back.neck + coat.lapel.neck, coat.back.neck + coat.front.neck + coat.frontEdge.ext * 0.9)
           spring: target * if(military, 0.06, 0.13)
           width: neck * collarWidth * if(military, 1.1, 1)
-          point: if(military, 0, neck * 0.05)
+          point: if(military, 0, neck * if(ulster, 0.08, 0.05))
 
   sleeve:
     part: sleeve
     after: front
     options: [sleeveLengthBonus]
-    if: "not (sleeveStyle == 'raglan' and collarStyle != 'shawl')"
+    lining: lining
+    if: "not (sleeveStyle == 'raglan' and collarStyle != 'shawl' and collarStyle != 'ulster')"
   frontSleeve:
     part: raglanSleeve
     after: [back, front]
     which: front
     nr: 12
     options: [sleeveLengthBonus]
-    if: "sleeveStyle == 'raglan' and collarStyle != 'shawl'"
+    if: "sleeveStyle == 'raglan' and collarStyle != 'shawl' and collarStyle != 'ulster'"
   backSleeve:
     part: raglanSleeve
     after: [back, front]
     which: back
     nr: 13
     options: [sleeveLengthBonus]
-    if: "sleeveStyle == 'raglan' and collarStyle != 'shawl'"
+    if: "sleeveStyle == 'raglan' and collarStyle != 'shawl' and collarStyle != 'ulster'"
 
   breastPocket: { part: pocket, after: front, key: breast, nr: 6, label: breastPocket, cut: 2, if: breastPockets }
   breastFlap: { part: flap, after: front, key: breast, nr: 7, label: breastFlap, cut: 2, if: breastPockets }
@@ -199,5 +224,10 @@ pieces:
   lowerFlap: { part: flap, after: front, key: lower, nr: 9, label: lowerFlap, cut: 2, if: lowerPockets }
   handWelt: { part: welt, after: front, key: hand, store: coat.welts, nr: 14, if: handPockets }
   handBag: { part: weltBag, after: front, key: hand, store: coat.welts, nr: 15, if: handPockets }
+  # Lining (with the ulster or shawl collar): a back-neck facing meeting the front facings at the
+  # shoulder, then front and back lining; the sleeves are cut again in lining
+  backNeckFacing: { part: backNeckFacing, from: back, nr: 16, width: neck * neckFacingWidth, if: "lining and (collarStyle == 'ulster' or collarStyle == 'shawl')" }
+  frontLining: { part: frontLining, from: front, nr: 17, if: "lining and (collarStyle == 'ulster' or collarStyle == 'shawl')" }
+  backLining: { part: backLining, from: back, nr: 18, width: neck * neckFacingWidth, pleat: chest * liningPleat, if: "lining and (collarStyle == 'ulster' or collarStyle == 'shawl')" }
   backBelt: { part: belt, after: [back, front], piece: back, nr: 10, if: belt }
   frontBelt: { part: belt, after: [back, front], piece: front, nr: 11, if: belt }

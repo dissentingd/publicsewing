@@ -30,7 +30,9 @@ hip. Two of his drafts give its details:
 | Length | 40–50" (overcoats) | `lengthBelowWaist` 130% of waist-to-seat: about 31½" from the nape at FreeSewing's men's 38 |
 | Stand | 3½" each side of CF (ulster) | `buttonExtension` 9.2% of chest (3½/38) |
 | Buttons | Three to a row, 2⅝" from CF, the top 5¼" below the chest line | `buttons` 3; `buttonRow` 74% of the half stand (2⅝/3½); `buttonTop` 150% of it (5¼/3½); `buttonBottom` 90% of waist-to-seat below the waist |
-| Collar | Ulster collar, 4" at CB, buttons up | the mackinaw's convertible collar, `collarWidth` 29% of neck (4" plus its stand) |
+| Collar | Ulster collar: a notched lapel rolling to the top button, a deep collar sewn to the gorge (pp. 28–29) | `collarStyle` ulster: the lapel breaks at the top button, its crease through `neck` × 5% beyond the neck point; the gorge `gorgeAt` 55% along the front neck; `lapelWidth` 30% of neck from the crease (about 4½", the lapel point near the front edge line as drawn); the collar `collarWidth` 29% of neck (4" plus its stand), its point 8% of neck. Convertible, military and shawl collars stay available |
+| Back | A centre seam, B–H (p. 29) | `vent` on: a CB seam with a vent `ventLength` 70% of waist-to-seat up from the hem (about 7½"), lapping `ventWidth` 5% of chest (2"), its top cut at 45° |
+| Lining | (not drafted) | `lining` on: a back-neck facing (`neckFacingWidth` 14% of neck deep and along the shoulder, where the front facing meets it), a front lining from the facing to the side seam, a back lining on the fold below the facing with `liningPleat` 2.5% of chest extra at CB (cut in pairs with a vent); the sleeves cut again in lining |
 | Pockets | Slanted welt, waist to hip line | `handPockets` on: a welt pocket, its top `handPocketTop` 10% of waist-to-seat above the waist and `handPocketAt` 56% of the front's chest width behind CF, `handPocketLength` 58% of that width long, leaning `handPocketLean` 21% toward the side per unit down (12°), the welt `handPocketWelt` 12% of the mouth; kept off the side seam and the hem |
 | Belt, patch pockets | none | `belt`, `breastPockets`, `lowerPockets` off |
 | Front hem | (overcoat) | `frontDrop` 10% of waist-to-seat |
@@ -40,16 +42,26 @@ hip. Two of his drafts give its details:
    to the mouth line, a bag piece over it; stitch, cut the mouth, turn the bag through, press
    the welt over the mouth and sew its ends down; the second bag piece on, then the bags
    together.
-2. CB seam; shoulders; side seams.
-3. Facings to the fronts; collar to the neckline and facings.
+2. CB seam and vent (the vent's lap folded back on the left back as its facing); shoulders;
+   side seams.
+3. Facings to the fronts and lapels; collar to the neckline up to the gorge, its under side to
+   the facings' gorge.
 4. Sleeves: underarm seam, then set in, easing the cap.
-5. Hems; two rows of buttonholes and buttons (on the right front over the left).
+5. Lining: back-neck facing to the front facings at the shoulders; front linings to the back
+   lining (its CB pleat folded and tacked at the neck and waist; with a vent, the lining's CB
+   seam stops at the vent's top and its edges below are turned in and sewn to the vent), side
+   seams, shoulders; sleeve linings made up and set in; the lining sewn to the facings' inner
+   edges.
+6. Hems (the lining hemmed to the coat's hem allowance with an ease fold); two rows of
+   buttonholes and buttons (on the right front over the left).
 
 ## Changes and what isn't modelled
 - **Not one of Simons' garments.** The peacoat is his double-breasted overcoat at hip length,
   with the ulster's stand, buttons, collar and pocket; the length and the ease are ours.
-- **The collar** is the mackinaw's convertible collar (Simons 1918), not the ulster's own
-  draft, which has a deeper fall at the front.
-- **No lining or vents** drafted; a peacoat is often unlined in heavy melton.
+- **The ulster collar and lapel** are drafted our way (lib/lapel.mjs, shared with the women's
+  jackets): Simons shapes the lapel "as illustrated" and refers the collar to his shawl collar
+  draft; the depths and widths here are read off p. 29.
+- **The vent and the lining are ours.** Simons draws a CB seam but no vent, and no lining. A
+  naval peacoat often has neither (heavy melton, unlined); turn both off for that.
 - **Both rows of buttons** are marked on the front, which is cut in pairs; only the outer row
   of the overlapping front shows.

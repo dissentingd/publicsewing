@@ -16,9 +16,13 @@ import {
   draftCoatFront,
   draftCollar,
   draftShawl,
+  draftNotchLapel,
+  draftBackVent,
   placeButtons,
   facingPart,
   backNeckFacingPart,
+  frontLiningPart,
+  backLiningPart,
   sleevePart,
 } from './coat.mjs'
 import { markPocket, pocketPart, flapPart, beltPart, setInPocketPart } from './pockets.mjs'
@@ -62,6 +66,10 @@ export const operations = {
   raglan: { run: (sh, { which, ...rest }) => applyRaglan(sh, which, rest), literal: ['which'] },
   // A shawl collar cut in one with the front (after coatFront with a neckY)
   shawl: { run: draftShawl },
+  // A notched lapel and gorge on a round-necked front (after coatFront, no neckY)
+  lapel: { run: draftNotchLapel },
+  // A back vent and CB seam (after coatBack)
+  backVent: { run: draftBackVent },
   // A yoke garment's back or front (lib/yoke.mjs), drafted into the store on a hidden base
   yokeSide: {
     run: (sh, { side }) => draftYokeSide(sh, side),
@@ -116,7 +124,28 @@ const factories = {
       width: (sh) => evaluate(p.width, lookupIn(sh, ctx.block, {})),
       enabled: enabledBy(p.if),
     }),
-  sleeve: (p, ctx) => sleevePart({ name: p.name, after: ctx.after(p), options: ctx.options(p), enabled: enabledBy(p.if) }),
+  sleeve: (p, ctx) =>
+    sleevePart({
+      name: p.name,
+      after: ctx.after(p),
+      options: ctx.options(p),
+      enabled: enabledBy(p.if),
+      lining: p.lining === undefined ? false : enabledBy(p.lining),
+    }),
+  // A Brian coat's lining: the front (from the front) and the back (from the back, below a
+  // back-neck facing `width` deep, the same expression as that facing's), `pleat` extra at CB
+  frontLining: (p, ctx) =>
+    frontLiningPart({ name: p.name, from: ctx.parts[p.from], after: ctx.after(p), nr: p.nr, enabled: enabledBy(p.if) }),
+  backLining: (p, ctx) =>
+    backLiningPart({
+      name: p.name,
+      from: ctx.parts[p.from],
+      after: ctx.after(p),
+      nr: p.nr,
+      pleat: (sh) => evaluate(p.pleat, lookupIn(sh, ctx.block, {})),
+      width: (sh) => evaluate(p.width, lookupIn(sh, ctx.block, {})),
+      enabled: enabledBy(p.if),
+    }),
   flap: (p, ctx) =>
     flapPart({ name: p.name, after: ctx.after(p), key: p.key, nr: p.nr, label: p.label, cut: p.cut, enabled: enabledBy(p.if) }),
   belt: (p, ctx) => beltPart({ name: p.name, after: ctx.after(p), piece: p.piece, nr: p.nr, enabled: enabledBy(p.if) }),

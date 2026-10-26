@@ -3,6 +3,7 @@
 // need to agree on goes through the store under `coat.*`.
 import { hidePresets } from '@freesewing/core'
 import { sleeve as librarySleeve } from '@freesewing/library'
+import { lapelLines } from './lapel.mjs'
 
 export const BRAND = 'PublicSewing'
 
@@ -308,6 +309,72 @@ export function draftShawl(sh, { stand, width, lapel }) {
   store.set('coat.collar', { neck: points.shawlCbNeck.dist(hps), target: backNeck, shawl: true })
 }
 
+/**
+ * A notched (or peaked) lapel with a collar sewn to the gorge (Simons 1916, the D.B. ulster
+ * collar overcoat), on a front drafted with Brian's round neck (no `neckY`):
+ * - the front edge turns back at the break, `breakY` down;
+ * - the crease runs from the break through a point `rollOut` beyond the neck point;
+ * - the collar sews from CB to the gorge, `gorgeAt` (0-1) along the front neck from the neck
+ *   point; the lapel (lib/lapel.mjs) is `width` wide from the crease.
+ * Call after draftCoatFront; it replaces the front's seam. The facing (facingPart) then runs up
+ * to the shoulder, lapel included. Store: `coat.lapel` { neck: neck point to gorge }.
+ */
+export function draftNotchLapel(sh, { breakY, rollOut, gorgeAt, width, peak = false }) {
+  const { points, paths, Path, Point, store, sa, snippets, Snippet } = sh
+  const hps = points.s3CollarSplit
+  const B = paths.edge.intersectsY(Math.max(breakY, points.cfNeck.y + width))[0]
+  if (!B) throw new Error('lapel: the break is not on the front edge')
+  points.lapelBreak = B
+  paths.edge = paths.edge.split(B)[1].hide()
+  const neck = paths.frontCollar // neck point -> CF
+  points.gorge = neck.shiftAlong(neck.length() * gorgeAt)
+  const [toGorge] = neck.split(points.gorge)
+  points.rollPoint = hps.shiftTowards(points.s3ArmholeSplit, -rollOut)
+  const { N, P, lapelEdge } = lapelLines(Path, Point, { B, R: points.rollPoint, G: points.gorge }, { lapelWidth: width, peak })
+  points.lapelNotch = N
+  points.lapelPoint = P
+  // Neckline, from the front edge to the shoulder: up the lapel, across the notch, the gorge
+  paths.neckline = lapelEdge.reverse().line(N).line(points.gorge.clone()).join(toGorge.reverse()).hide()
+  paths.roll = new Path().move(B).line(points.rollPoint).addClass('help dotted')
+
+  paths.saBase = paths.bodyBase.clone().join(paths.neckline.reverse()).hide()
+  paths.seam = paths.edge.join(paths.hemBase).join(paths.saBase).close().unhide().addClass('fabric')
+  if (sa) {
+    const edge = paths.edge.offset(sa)
+    const rest = allowance(paths, Path, sa)
+    paths.sa = edge.line(rest.start()).join(rest).line(edge.start()).addClass('fabric sa')
+  }
+  delete snippets.cfNeck
+  snippets.gorge = new Snippet('notch', points.gorge)
+  store.set('coat.frontEdge', { ...store.get('coat.frontEdge'), vNeck: true })
+  store.set('coat.front', { ...store.get('coat.front'), neckline: paths.neckline.length(), edge: B.dist(points.cornerTop) })
+  store.set('coat.lapel', { neck: toGorge.length(), breakY: B.y })
+}
+
+/**
+ * A back vent, and so a CB seam: from the hem `length` up, `width` wide past CB, its top cut
+ * at 45 degrees. Call after draftCoatBack; the back is then cut in pairs. Store: `coat.vent`.
+ */
+export function draftBackVent(sh, { length, width }) {
+  const { points, paths, Path, Point, store, sa, macro } = sh
+  points.ventTop = new Point(0, points.cbHem.y - length)
+  points.ventCorner = new Point(-width, points.ventTop.y + width)
+  points.ventHem = new Point(-width, points.cbHem.y)
+  paths.cbEdge = new Path().move(points.cbNeck).line(points.ventTop).line(points.ventCorner).line(points.ventHem).hide()
+  paths.hemBase = new Path().move(points.ventHem).line(points.hem).hide()
+  paths.seam = paths.cbEdge.join(paths.hemBase).join(paths.saBase).close().addClass('fabric')
+  if (sa) {
+    const edge = paths.cbEdge.offset(sa)
+    const rest = allowance(paths, Path, sa)
+    paths.sa = edge.line(rest.start()).join(rest).line(edge.start()).addClass('fabric sa')
+  }
+  macro('rmcutonfold')
+  const gx = points.armhole.x * 0.3
+  macro('grainline', { from: new Point(gx, points.cbHem.y - 40), to: new Point(gx, points.cbNeck.y + 60) })
+  store.cutlist.setCut({ cut: 2, from: 'fabric' })
+  store.set('coat.vent', { length, width, top: points.ventTop.y })
+}
+
 /** Buttons in one or two rows (x offsets from CF), evenly spaced from `top` to `bottom` */
 export function placeButtons({ points, Point, snippets, Snippet, store }, { count, top, bottom, rows }) {
   for (let i = 0; i < count; i++) {
@@ -379,20 +446,30 @@ export function facingPart({ name, from, nr = 5 }) {
 }
 
 /**
+ * The inner edge of a facing that runs to the shoulder, from the hem up to the shoulder seam a
+ * little way out from the neck point (`facingWidth`'s x, parallel to a stout front's edge).
+ * Sets points.facingHem and points.facingShoulder. Out from the neck point by
+ * `coat.neckFacing`'s width if the design sets one (so it meets its back-neck facing), else
+ * 30% of the shoulder.
+ */
+function shoulderFacingInner(sh, x, f) {
+  const { points, paths, Path, Point, store } = sh
+  points.facingHem = paths.hemBase.intersectsX(x - f)[0] || new Point(x - f, points.cfHem.y)
+  const along = store.get('coat.neckFacing', null)?.width ?? points.s3CollarSplit.dist(points.s3ArmholeSplit) * 0.3
+  points.facingShoulder = points.s3CollarSplit.shiftTowards(points.s3ArmholeSplit, along)
+  let inner = new Path().move(points.facingHem)
+  if (f > 0.5) inner = inner.line(new Point(x - f, points.cfWaist.y))
+  return inner.line(new Point(x, points.armhole.y)).line(points.facingShoulder)
+}
+
+/**
  * A facing that runs up to the shoulder seam (open V necks, and shawl collars, where it is the
  * lapel and the collar's top side cut in one). `top` runs from the front edge to the neck point.
  */
 function shoulderFacing(sh, x, f, nr, top) {
   const { points, paths, Path, Point, store, sa, macro, part } = sh
-  points.facingHem = paths.hemBase.intersectsX(x - f)[0] || new Point(x - f, points.cfHem.y)
+  const inner = shoulderFacingInner(sh, x, f).line(points.s3CollarSplit)
   const hem = paths.hemBase.split(points.facingHem)[0]
-  // Inner edge up to the shoulder seam a little way out from the neck point
-  // Out from the neck point by the back neck facing's width if the design has one
-  const along = store.get('coat.neckFacing', null)?.width ?? points.s3CollarSplit.dist(points.s3ArmholeSplit) * 0.3
-  points.facingShoulder = points.s3CollarSplit.shiftTowards(points.s3ArmholeSplit, along)
-  let inner = new Path().move(points.facingHem)
-  if (f > 0.5) inner = inner.line(new Point(x - f, points.cfWaist.y))
-  inner = inner.line(new Point(x, points.armhole.y)).line(points.facingShoulder).line(points.s3CollarSplit)
   paths.seam = paths.edge.clone().join(hem).join(inner).join(top.reverse()).close().unhide().addClass('fabric')
   if (sa) paths.sa = paths.seam.offset(sa).addClass('fabric sa')
   for (const p of ['neckline', 'edge', 'hemBase', 'shawl']) paths[p]?.hide()
@@ -436,10 +513,97 @@ export function backNeckFacingPart({ name, from, nr, width, enabled = () => true
         const off = paths.saBase.offset(sa)
         paths.sa = new Path().move(points.nfCb).line(off.start()).join(off).line(points.cbNeck).addClass('fabric sa')
       }
-      store.set('coat.backNeckFacing', { shoulder: points.nfShoulder.dist(points.s3CollarSplit) })
+      store.set('coat.backNeckFacing', { shoulder: points.nfShoulder.dist(points.s3CollarSplit), width: w })
       macro('cutonfold', { from: points.cbNeck, to: points.nfCb, grainline: true })
       store.cutlist.setCut({ cut: 1, from: 'fabric', onFold: true })
       title(macro, { at: new Point(points.nfShoulder.x * 0.4, points.cbNeck.y + w * 0.4), nr, title: 'backNeckFacing', scale: 0.3 })
+      return part
+    },
+  }
+}
+
+/**
+ * The front lining (`from` the front): from the facing's inner edge (a facing that runs to the
+ * shoulder: lapels, V necks, shawls) back to the side seam, armhole and shoulder. Cut 2 from
+ * lining; it hems to the coat's hem allowance.
+ */
+export function frontLiningPart({ name, from, after, nr, enabled = () => true }) {
+  return {
+    name,
+    from,
+    after,
+    hide: { inherited: true },
+    draft: (sh) => {
+      const { points, paths, Path, Point, store, sa, macro, options, part } = sh
+      cleanup(sh, ['hemBase', 'bodyBase'])
+      if (!enabled(options)) return part.hide()
+      const { ext, facing, f = 0 } = store.get('coat.frontEdge')
+      const inner = shoulderFacingInner(sh, -ext + facing, f) // hem -> shoulder
+      const hem = paths.hemBase.split(points.facingHem)[1]
+      const body = paths.bodyBase.split(points.facingShoulder)[0] // hem, side seam, armhole, shoulder
+      paths.seam = hem.join(body).join(inner.reverse()).close().unhide().addClass('lining')
+      if (sa) paths.sa = paths.seam.offset(sa).addClass('lining sa')
+      for (const p of ['hemBase', 'bodyBase']) paths[p].hide()
+      store.set('coat.frontLining', { shoulder: points.facingShoulder.dist(points.s3ArmholeSplit) })
+      const gx = (points.facingHem.x + points.hem.x) / 2
+      macro('grainline', { from: new Point(gx, points.cfHem.y - 40), to: new Point(gx, points.armhole.y) })
+      store.cutlist.setCut({ cut: 2, from: 'lining' })
+      title(macro, { at: new Point(gx, points.cfWaist.y), nr, title: 'frontLining', scale: 0.5 })
+      return part
+    },
+  }
+}
+
+/**
+ * The back lining (`from` the back): below the lower edge of a back-neck facing `width` deep
+ * to the hem, with `pleat` extra at CB (an ease pleat). On the fold, or cut in pairs when the
+ * back has a vent (the lining's CB seam stops at the vent's top; below it the lining's edges are
+ * turned in and sewn to the vent).
+ */
+export function backLiningPart({ name, from, after, nr, pleat, width, enabled = () => true }) {
+  return {
+    name,
+    from,
+    after,
+    hide: { inherited: true },
+    draft: (sh) => {
+      const { points, paths, Path, Point, store, sa, macro, options, part } = sh
+      cleanup(sh, ['saBase'])
+      if (!enabled(options)) return part.hide()
+      const w = width(sh)
+      const p = pleat(sh)
+      points.nfShoulder = points.s3CollarSplit.shiftTowards(points.s3ArmholeSplit, w)
+      points.nfCb = new Point(0, points.cbNeck.y + w)
+      const k = Math.abs(points.nfShoulder.x) * 0.5
+      // The facing's lower edge, shoulder -> CB (as backNeckFacingPart draws it, reversed)
+      const edge = new Path().move(points.nfShoulder).curve(points.nfShoulder.shift(-90, w * 0.3), points.nfCb.shift(0, k), points.nfCb)
+      const body = paths.saBase.split(points.nfShoulder)[0] // hem, side seam, armhole, shoulder
+      points.liningCbTop = new Point(-p, points.nfCb.y)
+      points.liningCbHem = new Point(-p, points.cbHem.y)
+      paths.seam = new Path()
+        .move(points.liningCbTop)
+        .line(points.liningCbHem)
+        .line(points.hem)
+        .join(body)
+        .join(edge)
+        .line(points.liningCbTop)
+        .close()
+        .addClass('lining')
+      if (sa) paths.sa = paths.seam.offset(sa).addClass('lining sa')
+      paths.saBase.hide()
+      const vent = store.get('coat.vent', null)
+      if (vent) {
+        const gx = points.armhole.x * 0.3
+        macro('grainline', { from: new Point(gx, points.cbHem.y - 40), to: new Point(gx, points.nfCb.y + 40) })
+        store.cutlist.setCut({ cut: 2, from: 'lining' })
+        points.ventTopMark = new Point(-p, vent.top)
+      } else {
+        macro('cutonfold', { from: points.liningCbTop, to: points.liningCbHem, grainline: true })
+        store.cutlist.setCut({ cut: 1, from: 'lining', onFold: true })
+      }
+      paths.pleat = new Path().move(new Point(0, points.nfCb.y)).line(new Point(0, points.cbHem.y)).addClass('help dashed')
+      store.set('coat.backLining', { shoulder: points.nfShoulder.dist(points.s3ArmholeSplit), pleat: p })
+      title(macro, { at: new Point(points.armhole.x / 2, points.cbWaist.y), nr, title: 'backLining', scale: 0.5 })
       return part
     },
   }
@@ -493,7 +657,7 @@ export function draftCollar(sh, { target, spring, width, point, nr = 4 }) {
 }
 
 /** One-piece sleeve: FreeSewing's sleeve fitted to the armhole, straight to a hem */
-export function sleevePart({ name, after, options, enabled = () => true }) {
+export function sleevePart({ name, after, options, enabled = () => true, lining = false }) {
   return {
     name,
     from: librarySleeve,
@@ -516,6 +680,8 @@ export function sleevePart({ name, after, options, enabled = () => true }) {
         .hide()
       paths.seam = paths.hemBase.join(paths.saBase).close().addClass('fabric')
       if (sa) paths.sa = allowance(paths, Path, sa).line(paths.hemBase.offset(sa * 3).start()).addClass('fabric sa')
+      // Cut again from lining (a lined coat's sleeves)
+      if (lining && lining(o)) store.cutlist.addCut({ cut: 2, from: 'lining' })
       store.set('coat.sleeve', {
         cap: paths.sleevecap.length(),
         armhole:

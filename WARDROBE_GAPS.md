@@ -40,7 +40,7 @@ and marked as derived.
 | Work trousers / dungarees | 2 | Titan, Charlie | Variant | Simons 1916 |
 | Overalls | 2 | Opal | Have | — |
 | **Chore / work coat** | 2 | — | **Drafted 2026-10-23** (`designs/chore-coat`, not sewn) | Simons 1918 (work coat) |
-| **Peacoat / reefer** | 3 | — | **Drafted 2026-10-26** (`designs/peacoat`: the mackinaw at hip length with Simons' D.B. overcoat details, not sewn) | Simons 1916 D.B. overcoats (no reefer as such) |
+| **Peacoat / reefer** | 3 | — | **Drafted 2026-10-26** (`designs/peacoat`: the mackinaw at hip length with Simons' D.B. overcoat details: ulster collar and notched lapel, hand-warmer pockets, vent, lining; not sewn) | Simons 1916 D.B. overcoats (no reefer as such) |
 | Trench / ulster | 3 | Carlton | Variant | Simons 1916 |
 | **Field jacket / military blouse** | 3 | — (Jett is a bomber) | **Military blouse drafted 2026-10-23** (`designs/military-blouse`, not sewn) | Simons 1918 (military blouse) |
 | **Hunting / field coat** (belted, action back, bellows pockets) | 3 | — | **Drafted 2026-10-23** (`designs/hunting-coat`, not sewn) | Simons 1918 (hunting coat) |

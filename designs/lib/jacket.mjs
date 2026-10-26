@@ -15,6 +15,7 @@
 // the collar's neckline as `coat.jacketNeck` { back, front }; the sleeve's armhole for
 // FreeSewing's two-part sleeve under `library.*`.
 import { title } from './coat.mjs'
+import { lapelLines } from './lapel.mjs'
 
 const near = (a, b) => Math.abs(a.x - b.x) < 1e-6 && Math.abs(a.y - b.y) < 1e-6
 
@@ -232,7 +233,7 @@ export function draftJacketLayout(sh, a) {
     // Lapel, from the gorge point on the front neck (`gorgeAt` along it from the neck point)
     const G = r.neck.shiftAlong(r.neck.length() * a.gorgeAt)
     const [neckToG] = r.neck.split(G)
-    const { B, R, N, P, lapelEdge } = lapelLines(Path, Point, { hps: r.hps, bustY: r.bustY, edgeX, G }, a)
+    const { B, R, N, P, lapelEdge } = jacketLapel(Path, Point, { hps: r.hps, bustY: r.bustY, edgeX, G }, a)
     const top = new Path().move(r.hps.clone()).join(neckToG).line(N).line(P).join(lapelEdge)
     // The seam runs through the bust, half way between the two dart tips, along the line
     // from one tip to the other
@@ -467,7 +468,7 @@ export function draftBoxLayout(sh, a) {
   // ---- front ----
   const edgeX = cfx - a.lap
   const hemC = new Point(edgeX, fr.centerWaist.y + a.length)
-  const { B, R, N, P, lapelEdge } = lapelLines(Path, Point, { hps, bustY: fr.bustY, edgeX, G: Q }, a)
+  const { B, R, N, P, lapelEdge } = jacketLapel(Path, Point, { hps, bustY: fr.bustY, edgeX, G: Q }, a)
   panels.front = {
     outline: new Path()
       .move(hps.clone())
@@ -593,26 +594,14 @@ function layoutPockets(spec, { baseY, startAt, sideAt, hemY }) {
 }
 
 /**
- * A lapel on a front whose edge (the lap) runs down x = edgeX. The crease runs from the break
- * B, `breakBelow` under the bust line on the edge, through R, `rollOut` in front of the neck
- * point. From the gorge point G (where the collar ends) the notch N and the lapel point P lie
- * beyond the crease, and the lapel edge curves from P down to B. u runs up the crease, v
- * square to it, away from the body. Returns { B, R, N, P, lapelEdge (P -> B) }.
+ * The jacket's lapel (lib/lapel.mjs) on a front whose edge (the lap) runs down x = edgeX: the
+ * break B `breakBelow` under the bust line on the edge, the crease through R, `rollOut` in
+ * front of the neck point. Returns { B, R, N, P, lapelEdge (P -> B) }.
  */
-function lapelLines(Path, Point, { hps, bustY, edgeX, G }, a) {
+function jacketLapel(Path, Point, { hps, bustY, edgeX, G }, a) {
   const B = new Point(edgeX, bustY + a.breakBelow)
   const R = hps.shift(180, a.rollOut)
-  const L = B.dist(R)
-  const u = { x: (R.x - B.x) / L, y: (R.y - B.y) / L }
-  const v = u.y < 0 ? { x: u.y, y: -u.x } : { x: -u.y, y: u.x } // the side with x < 0
-  const at = (pu, pv) => new Point(B.x + u.x * pu + v.x * pv, B.y + u.y * pu + v.y * pv)
-  const uG = (G.x - B.x) * u.x + (G.y - B.y) * u.y
-  const vG = (G.x - B.x) * v.x + (G.y - B.y) * v.y
-  const w = a.lapelWidth
-  const N = at(uG - 0.12 * w, Math.max(vG, 0) + 0.35 * w)
-  const P = at(uG + (a.peak ? 0.45 : -0.15) * w, w * 1.05)
-  const lapelEdge = new Path().move(P).curve(at(uG * 0.75, w * 1.08), at(uG * 0.3, w * 0.75), B)
-  return { B, R, N, P, lapelEdge }
+  return { B, R, ...lapelLines(Path, Point, { B, R, G }, a) }
 }
 
 /** Close a side panel: after the side seam, up the armhole to the shoulder, along to `end` */
