@@ -5,7 +5,7 @@ measurements, children's sizes included.
 
 PublicSewing adds garments that [FreeSewing](https://freesewing.org) doesn't have. Each design
 takes its pieces, style lines, proportions and construction from a public-domain drafting book
-(so far four, published 1909 to 1921, three American and one British). The geometry comes from FreeSewing's
+(so far five, published 1909 to 1921, four American and one British). The geometry comes from FreeSewing's
 tested blocks, so every design drafts at any size. The old books are design references: designs
 are modernised and simplified freely, and historical accuracy is not a goal.
 
@@ -25,6 +25,7 @@ a check that the pieces sew together into the garment, not a fit result.
 |---|---|---|
 | `chore-coat` | Work coat | Simons 1918 |
 | `mackinaw` | Double-breasted belted mackinaw (convertible, military or shawl collar; raglan option) | Simons 1918 |
+| `peacoat` | Hip-length double-breasted coat, deep collar that buttons up, hand-warmer pockets | Simons 1916 |
 | `hunting-coat` | Belted field coat with an action-pleated back | Simons 1918 |
 | `military-blouse` | Fitted blouse, two-piece sleeve, standing collar | Simons 1918 |
 | `boys-work-coat` | The chore coat for children's sizes | Simons 1918 |
@@ -74,8 +75,9 @@ options.
 
 ## Sources and copyright
 
-The designs draw on four drafting books:
+The designs draw on five drafting books:
 - Simons, *Drafting Cotton Garments and Mackinaws* (New York, 1918), `draftingcottonga00simo`;
+- Simons, *Designing Overcoat Patterns for Men and Young Men* (New York, 1916), `designingovercoa00simo`;
 - Walker, *Manual of Needlework and Cutting Out* (London, 1909), `krl00366374`;
 - Woman's Institute, *Pattern Drafting* (Scranton, ©1915), `patterdraftingpicken`;
 - Mitchell, *The New "Standard" Work on Designing and Pattern-Making of Ladies' Tailor-Made
@@ -83,7 +85,7 @@ The designs draw on four drafting books:
 
 Children's sizes come from the USDA's O'Brien surveys (1939), a US government work.
 
-`corpus/` holds those books and 23 more kept for research: drafting books published from 1886
+`corpus/` holds those books and 22 more kept for research: drafting books published from 1886
 to 1924, mostly American, with three British and one German, and two more USDA
 reports. All were published before 1931, so they are in the public domain in the United
 States. Outside the US, a book's status depends on when its author died (70 years after, in

@@ -25,6 +25,9 @@ options:
   sleeveLengthBonus: { pct: 5, min: -10, max: 15, menu: style }
   buttonExtension: { pct: 7, min: 5, max: 10, of: chest, menu: style }
   buttons: { count: 3, min: 2, max: 5, menu: style }
+  buttonTop: { pct: 40, min: 0, max: 250, menu: style } # x the stand: top button below the chest line
+  buttonBottom: { pct: 55, min: 20, max: 150, menu: style } # x waistToSeat: bottom button below the waist
+  buttonRow: { pct: 62, min: 40, max: 90, menu: style } # x the stand: each row's distance from CF
   hemCurve: { pct: 0, min: 0, max: 100, menu: style }
   sleeveStyle: { dflt: setIn, list: [setIn, raglan], menu: style }
   collarStyle: { dflt: convertible, list: [convertible, military, shawl], menu: style }
@@ -35,6 +38,13 @@ options:
   lowerPockets: { bool: true, menu: style }
   pocketShape: { dflt: rounded, list: [rounded, pointed, square], menu: style }
   pocketFlaps: { bool: true, menu: style }
+  # Hand-warmer welt pockets, off for the mackinaw (the peacoat turns them on)
+  handPockets: { bool: false, menu: style }
+  handPocketTop: { pct: 10, min: -30, max: 60, menu: style } # x waistToSeat: top above the waist
+  handPocketAt: { pct: 56, min: 35, max: 75, menu: style } # x the front's chest width: top behind CF
+  handPocketLength: { pct: 58, min: 35, max: 80, menu: style } # x the front's chest width
+  handPocketLean: { pct: 21, min: 0, max: 50, menu: style } # toward the side, per unit down (12 degrees)
+  handPocketWelt: { pct: 12, min: 8, max: 20, menu: style } # x the mouth: finished welt width
   # Construction
   facingWidth: { pct: 14, min: 10, max: 20, of: chest, menu: construction }
 
@@ -60,13 +70,13 @@ pieces:
     from: brian.front
     hide: tree
     measurements: [seat, waist, waistToSeat]
-    options: [buttonExtension, buttons, hemCurve, frontDrop, facingWidth, breastPockets, lowerPockets, pocketShape, pocketFlaps]
+    options: [buttonExtension, buttons, buttonTop, buttonBottom, buttonRow, hemCurve, frontDrop, facingWidth, breastPockets, lowerPockets, pocketShape, pocketFlaps, handPockets, handPocketTop, handPocketAt, handPocketLength, handPocketLean, handPocketWelt]
     let:
       # Double-breasted: a wide stand, hem sweeping down toward the front edge
       ext: chest * buttonExtension
       q: underarm.x # the front's width at the chest, CF to side seam
       shawl: collarStyle == 'shawl'
-      topButton: underarm.y + ext * 0.4
+      topButton: underarm.y + ext * buttonTop
       beltW: chest * beltWidth
       beltY: cfWaist.y - beltW * 0.2
     ops:
@@ -88,8 +98,8 @@ pieces:
       - buttons:
           count: buttons
           top: topButton
-          bottom: cfWaist.y + waistToSeat * 0.55
-          rows: [-ext * 0.62, ext * 0.62]
+          bottom: cfWaist.y + waistToSeat * buttonBottom
+          rows: [-ext * buttonRow, ext * buttonRow]
       - store: { key: coat.belt, value: { w: beltW, y: beltY }, if: belt }
       - markLine: { id: beltTop, from: [-ext, beltY], to: [sideHem.x, beltY], class: mark dashed, if: belt }
       - markLine: { id: beltBottom, from: [-ext, beltY + beltW], to: [sideHem.x, beltY + beltW], class: mark dashed, if: belt }
@@ -119,6 +129,25 @@ pieces:
               y: _top + if(pocketFlaps, flap.gap, 0)
       - markPocket: { id: breastPocket, pocket: coat.pockets.breast, if: breastPockets }
       - markPocket: { id: lowerPocket, pocket: coat.pockets.lower, if: lowerPockets }
+      # Hand-warmer welt pockets: a mouth from just above the waist down toward the hip, its
+      # foot leaning toward the side; kept off the side seam
+      - store:
+          if: handPockets
+          key: coat.welts
+          value:
+            hand:
+              _x0: q * handPocketAt
+              _y0: cfWaist.y - waistToSeat * handPocketTop
+              _down: min(q * handPocketLength, cfHem.y - q * 0.1 - _y0)
+              _dx: min(_down * handPocketLean, sideHem.x - q * 0.1 - _x0)
+              x0: _x0
+              y0: _y0
+              x1: _x0 + _dx
+              y1: _y0 + _down
+              len: sqrt(_down * _down + _dx * _dx)
+              welt: len * handPocketWelt
+              bag: len * 0.85
+      - markLine: { id: handPocket, from: [coat.welts.hand.x0, coat.welts.hand.y0], to: [coat.welts.hand.x1, coat.welts.hand.y1], class: mark, if: handPockets }
 
   facing:
     part: facing
@@ -168,5 +197,7 @@ pieces:
   breastFlap: { part: flap, after: front, key: breast, nr: 7, label: breastFlap, cut: 2, if: breastPockets }
   lowerPocket: { part: pocket, after: front, key: lower, nr: 8, label: lowerPocket, cut: 2, if: lowerPockets }
   lowerFlap: { part: flap, after: front, key: lower, nr: 9, label: lowerFlap, cut: 2, if: lowerPockets }
+  handWelt: { part: welt, after: front, key: hand, store: coat.welts, nr: 14, if: handPockets }
+  handBag: { part: weltBag, after: front, key: hand, store: coat.welts, nr: 15, if: handPockets }
   backBelt: { part: belt, after: [back, front], piece: back, nr: 10, if: belt }
   frontBelt: { part: belt, after: [back, front], piece: front, nr: 11, if: belt }

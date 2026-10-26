@@ -1,9 +1,9 @@
 // Expressions in specs: numbers, 'strings', null, names, + - * / ( ), comparisons
-// (== != < <= > >=), and / or / not, and the functions min, max, abs and if(cond, a, b).
+// (== != < <= > >=), and / or / not, and the functions min, max, abs, sqrt and if(cond, a, b).
 // `chest * buttonExtension`, `min(cfWaist.y + waistToSeat * 0.8, cfHem.y - ext)`,
 // `if(neckStyle == 'open', underarm.y - chest * 0.04, null)`.
 // Names (with dots) are looked up by the caller's `lookup(name)`.
-const fns = { min: Math.min, max: Math.max, abs: Math.abs }
+const fns = { min: Math.min, max: Math.max, abs: Math.abs, sqrt: Math.sqrt }
 
 function tokens(src) {
   const re = /\s*(\d+(?:\.\d+)?|'[^']*'|[A-Za-z_][\w.]*|==|!=|<=|>=|[-+*/(),<>])/y

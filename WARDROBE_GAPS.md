@@ -40,7 +40,7 @@ and marked as derived.
 | Work trousers / dungarees | 2 | Titan, Charlie | Variant | Simons 1916 |
 | Overalls | 2 | Opal | Have | — |
 | **Chore / work coat** | 2 | — | **Drafted 2026-10-23** (`designs/chore-coat`, not sewn) | Simons 1918 (work coat) |
-| **Peacoat / reefer** | 3 | — | **Gap** | Simons 1916 overcoats |
+| **Peacoat / reefer** | 3 | — | **Drafted 2026-10-26** (`designs/peacoat`: the mackinaw at hip length with Simons' D.B. overcoat details, not sewn) | Simons 1916 D.B. overcoats (no reefer as such) |
 | Trench / ulster | 3 | Carlton | Variant | Simons 1916 |
 | **Field jacket / military blouse** | 3 | — (Jett is a bomber) | **Military blouse drafted 2026-10-23** (`designs/military-blouse`, not sewn) | Simons 1918 (military blouse) |
 | **Hunting / field coat** (belted, action back, bellows pockets) | 3 | — | **Drafted 2026-10-23** (`designs/hunting-coat`, not sewn) | Simons 1918 (hunting coat) |
@@ -94,10 +94,10 @@ and marked as derived.
 | **Girl's coat** | — | **Gap** | Rosenfeld 1911/1918 |
 
 **Count** (2026-10-26, by the tables above):
-- **17 rows drafted or done:** the children's measurement sets and 16 designs (the loose-coat
+- **18 rows drafted or done:** the children's measurement sets and 17 designs (the loose-coat
   row was added with the box coat; it wasn't one of the original gaps).
-- **7 gaps open** in 6 rows (the women's peacoat/field jacket row counts as two): peacoat,
-  pyjamas, shift dress, women's peacoat and field jacket, boy's suit jacket, girl's coat.
+- **6 gaps open** in 5 rows (the women's peacoat/field jacket row counts as two): pyjamas,
+  shift dress, women's peacoat and field jacket, boy's suit jacket, girl's coat.
 - **12 variants.** These are options on existing designs, the cheapest wins.
 - **15 rows already covered** (the apron row counted here).
 
@@ -163,8 +163,10 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
 ## After Mitchell: Simons' overcoats (1916), then later Woman's Institute volumes
 - Mitchell's remaining garments are listed above; the archived pipeline's readings of it are in
   `recipes/mitchell/FINDINGS.md` (style lines and proportions).
-- **Simons, *Designing Overcoat Patterns* (1916, `designingovercoa00simo`, tracked):** the
-  peacoat/reefer, on the coat library.
+- **Simons, *Designing Overcoat Patterns* (1916, `designingovercoa00simo`, tracked):** it has
+  no reefer; the peacoat (2026-10-26) takes its D.B. overcoat and ulster details onto the
+  mackinaw. Still to use: its regular, box and ulster overcoats (the overcoat row is a
+  Variant of Carlton).
 - **Later Woman's Institute volumes**, held but not tracked: `gb_wi1924_draftingpatterndesigning`
   and `gb_wi1928_patterndesigningdraping` (US 1924, 1928; public domain). Check what each scan
   actually holds before planning on it.

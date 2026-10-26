@@ -51,6 +51,7 @@ without declaring them, so they are listed in our package.json.
 | `pinafore/` | Sleeveless gathered pinafore, Walker 1909. [BRIEF.md](pinafore/BRIEF.md) | draft (not sewn) |
 | `shirtwaist-dress/` | Buttoned work dress: easy bodice, turn-down collar, full sleeves into cuffs, gathered skirt, Woman's Institute *Pattern Drafting* §2. [BRIEF.md](shirtwaist-dress/BRIEF.md) | draft (not sewn) |
 | `tailored-jacket/` | Women's semi-fitted jacket: princess seams flared below the waist, peak or notched lapel, collar, breast welt, set-in flap pockets, back-neck facing, lining, two-piece sleeves, on Breanna, Mitchell 1921. [BRIEF.md](tailored-jacket/BRIEF.md) | draft (not sewn) |
+| `peacoat/` | Hip-length double-breasted coat: the mackinaw with Simons' D.B. overcoat stand, three-button rows, deep convertible collar and slanted hand-warmer welt pockets, no belt, on Brian, Simons 1916. [BRIEF.md](peacoat/BRIEF.md) | draft (not sewn) |
 | `box-coat/` | Women's loose box coat: straight body flared from the arms, shaped CB seam, neck dart, notched lapel, collar, buttons near the lapped edge, set-in flap pockets (hip and ticket), two-piece sleeves, on Breanna, Mitchell 1921. [BRIEF.md](box-coat/BRIEF.md) | draft (not sewn) |
 | `knickerbockers/` | Full knickers gathered into knee bands, elastic waist, on Titan, Walker 1909. [BRIEF.md](knickerbockers/BRIEF.md) | draft (not sewn) |
 | `lib/yoke.mjs` | Shared yoke-garment drafting (Walker designs) | |

@@ -11,6 +11,7 @@
   "military-blouse": { "default": {}, "plain": { "breastPockets": false, "lowerPockets": false, "frontDrop": 0, "buttons": 7 } },
   "nightgown": { "default": {}, "variant": { "opening": "back", "sleeves": "long", "neckFinish": "band", "gathers": 1.3 } },
   "nightshirt": { "default": {}, "variant": { "frontYoke": true, "gathers": 1.2, "sideSlit": 0, "sleeves": "short", "opening": "back" } },
+  "peacoat": { "default": {}, "military": { "collarStyle": "military", "buttons": 4 }, "raglan": { "sleeveStyle": "raglan" }, "plain": { "handPockets": false, "lengthBelowWaist": 1.2 } },
   "pinafore": { "default": {}, "variant": { "opening": "back", "sleeves": "long", "neckFinish": "band", "gathers": 1.3 } },
   "shop-coat": { "default": {}, "plain": { "pencilPocket": false, "hemFlare": 0, "pocketShape": "rounded", "buttons": 6 } },
   "shirtwaist-dress": { "default": {}, "variant": { "neckFinish": "band", "sleeves": "short", "opening": "back", "gathers": 1.2, "skirtLength": 0.9 } },

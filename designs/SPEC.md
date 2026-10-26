@@ -61,7 +61,7 @@ type's `if:` is an expression over options; when it is false the piece is left o
 ## Expressions
 
 Argument values are expressions: numbers, `'strings'`, `null`, `+ - * / ( )`, comparisons
-(`== != < <= > >=`), `and`, `or`, `not`, and `min`, `max`, `abs`, `if(cond, a, b)`. Names are
+(`== != < <= > >=`), `and`, `or`, `not`, and `min`, `max`, `abs`, `sqrt`, `if(cond, a, b)`. Names are
 looked up in this order:
 
 1. the piece's `let` values, then the operation's own earlier arguments (and, in a map, its

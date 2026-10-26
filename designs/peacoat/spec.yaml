@@ -1,0 +1,34 @@
+# Peacoat: a hip-length double-breasted reefer on Simons' double-breasted overcoats (Designing
+# Overcoat Patterns, 1916, pp. 10-11 and the D.B. ulster collar overcoat, pp. 28-29), on the
+# mackinaw's body (lib/coat.mjs, FreeSewing's Brian): a wide button stand, a deep convertible
+# collar that buttons to the throat, two rows of three buttons, hand-warmer welt pockets, no
+# belt. See BRIEF.md for where each default is read.
+extends: ../mackinaw/spec.yaml
+
+about:
+  id: peacoat
+  name: Peacoat
+  description: "A hip-length, double-breasted wool coat: wide lapels, a deep collar that buttons up, hand-warmer pockets"
+  difficulty: 4
+  tags: [coats, jackets]
+  techniques: [welt-pocket, collar, facing, button]
+  version: 0.1.0
+  source: "Simons, Designing Overcoat Patterns (1916), pp. 10-11, 28-29 (designingovercoa00simo)"
+
+options:
+  # Fit: Simons' D.B. overcoat is "semi-form fitting" (p. 10)
+  chestEase: { pct: 22 } # between the mackinaw's 24% and a fitted coat: a peacoat is worn over a sweater
+  bicepsEase: { pct: 32 }
+  # Style
+  lengthBelowWaist: { pct: 130 } # x waistToSeat: hip length, about 31" from the nape (Simons' coats run 40-50")
+  frontDrop: { pct: 10 }
+  buttonExtension: { pct: 9.2 } # half the stand, of chest: 3 1/2" (the ulster's 7" stand) at breast 38
+  buttons: { count: 3 } # three to a row (p. 29)
+  buttonTop: { pct: 150 } # x the half stand: 5 1/4" below the chest line (p. 29)
+  buttonBottom: { pct: 90 } # x waistToSeat below the waist
+  buttonRow: { pct: 74 } # x the half stand: rows 2 5/8" either side of CF (p. 29)
+  collarWidth: { pct: 29 } # x neck: the ulster collar's 4" plus its stand
+  belt: { bool: false }
+  breastPockets: { bool: false }
+  lowerPockets: { bool: false }
+  handPockets: { bool: true } # the slanted welt on p. 29, waist to hip line

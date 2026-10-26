@@ -48,6 +48,9 @@ waist and flapped patch pockets.
 | Sleeve | regular coat sleeve, roomy | `bicepsEase` 30%, `cuffEase` 110%, `sleeveLengthBonus` 5% |
 
 ## Changes from the source (deliberate)
+- **Button placement and hand pockets are options** (2026-10-26), so the peacoat can extend
+  this spec: `buttonTop`, `buttonBottom` and `buttonRow` default to the values used here, and
+  `handPockets` (a slanted welt pocket) is off.
 - **Shawl collar cut in one with the front.** Simons sews a separate shawl collar to a gorge
   (XVIII). We cut it in one with the front and its facing, the common modern method, with a
   CB seam in the collar:
