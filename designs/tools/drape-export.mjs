@@ -1,7 +1,9 @@
 // Export a design's drafted pieces as outlines for a 3D drape (tools/drape_spec.py turns them
 // into a GarmentCode pattern specification).
 // Usage: node tools/drape-export.mjs <design> <set> <out.json> [--options '<json>'] [--pieces a,b]
-//          [--clip piece=x,...] [--split piece=x,...] [--m name=mm,...]
+//          [--clip piece=x,...] [--split piece=x,...] [--m name=mm,...] [--prefix id]
+//   prefix: the parts' name prefix, for a design that extends another (the peacoat's parts
+//   are mackinaw.*); the design's own id by default.
 //   pieces: part names without the design prefix (default: every piece with a seam path);
 //   clip: cut a piece at x >= value (mm, or a point name: its x), e.g. front=0 to cut the
 //   button stand off at CF so
@@ -100,7 +102,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const wanted = flag('--pieces', null)?.split(',')
   const out = { design, set, options, measurements, pieces: {}, points: {} }
   // Only the design's own parts (not the blocks' or FreeSewing's library parts of the same name)
-  const own = `${Design.designConfig.data.id}.`
+  const own = `${flag('--prefix', Design.designConfig.data.id)}.`
   for (const [full, part] of Object.entries(pattern.parts[0])) {
     if (!full.startsWith(own)) continue
     const name = full.slice(own.length)

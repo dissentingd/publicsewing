@@ -1,0 +1,58 @@
+# One drape per design, for tools/drape.mjs. Each design is drafted at `size` with
+# `measurements` (mm) changed to the drape body's, its `pieces` exported (`clip` cuts a piece at
+# x >= a value or a point's x; `split` cuts one in two), and stitched and placed by `config`
+# (its `body:` is the GarmentCode body). `back` names the back piece when the config calls it
+# `back` and the design doesn't; `prefix` is the parts' name prefix for a design that extends
+# another; `options` changes design options for the drape (e.g. a vent left closed).
+#
+# Bodies: m_smpl_average_A40 (chest 100, waist 80, hips 100 cm), f_smpl_average_A40 (bust 90,
+# waist 80, hips 107 cm).
+
+hunting-coat:
+  config: coat-shell.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [backBase, front, sleeve]
+  back: backBase
+  clip: { front: 0 }
+  split: { sleeve: 0 }
+
+chore-coat:
+  config: coat-shell.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, front, sleeve]
+  clip: { front: 0 }
+  split: { sleeve: 0 }
+
+mackinaw:
+  config: coat-shell.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, front, sleeve]
+  clip: { front: 0 }
+  split: { sleeve: 0 }
+
+peacoat:
+  config: coat-shell.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  prefix: mackinaw
+  options: { vent: false } # the shell drape sews the CB straight; the vent stays closed
+  pieces: [back, front, sleeve]
+  clip: { front: 0 }
+  split: { sleeve: 0 }
+
+tailored-jacket:
+  config: jacket.yaml
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, sideBack, sideFront, front, topsleeve, undersleeve]
+  clip: { front: cfLine }
+
+box-coat:
+  config: box.yaml
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, front, topsleeve, undersleeve]
+  clip: { front: cfLine }

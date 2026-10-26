@@ -3,7 +3,9 @@ body vertex's normal (within 3 cm). A proxy for GarmentCode's body-cloth interse
 not the same measure: use it to see where the contacts are and how deep.
 
 Run in the garmentcode container (numpy, scipy, trimesh):
-  python /data/drape_inside.py /data/Logs/<run>/<name>_sim.obj /opt/garmentcode/assets/bodies/<body>.obj
+  python /data/drape_inside.py /data/Logs/<run>/<name>_sim.obj /opt/garmentcode/assets/bodies/<body>.obj [--json]
+(--json: one JSON object, { inside, distinct, regions: { <region>: { count, deepest, median } } },
+for tools/drape.mjs)
 
 The body mesh is in metres, the cloth in cm. Positions: cm, y up, the body facing +z, arms
 out to the sides in the A-pose. (The run's _sim_segmentation.txt has fewer lines than the sim
@@ -40,10 +42,15 @@ def region(p):
     return 'thighs/legs'
 
 
-print(f'cloth vertices inside the body: {len(inside)} '
-      f'({len(np.unique(cloth.vertices[inside].round(3), axis=0))} distinct positions)')
+distinct = len(np.unique(cloth.vertices[inside].round(3), axis=0))
 by = {}
 for i in inside:
     by.setdefault(region(cloth.vertices[i]), []).append(-side[i])
+if '--json' in sys.argv:
+    import json
+    print(json.dumps({'inside': int(len(inside)), 'distinct': int(distinct), 'regions': {
+        r: {'count': len(d), 'deepest': round(float(max(d)), 2), 'median': round(float(np.median(d)), 2)} for r, d in by.items()}}))
+    sys.exit()
+print(f'cloth vertices inside the body: {len(inside)} ({distinct} distinct positions)')
 for r, depths in sorted(by.items(), key=lambda kv: -len(kv[1])):
     print(f'{len(depths):4d}  {r:22s} deepest {max(depths):.2f} cm, median {np.median(depths):.2f} cm')

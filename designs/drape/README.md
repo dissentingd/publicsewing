@@ -4,12 +4,38 @@ Drapes of the designs in GarmentCode's cloth simulator (run in a `garmentcode` c
 GPU machine), as a check that the pieces sew into the garment and of gross fit. Not a fit
 result: the simulator's body and fabric are approximations.
 
-## Running one
+## Running one (one command)
 ```bash
-node tools/drape-export.mjs hunting-coat cisMaleAdult38 out/drape/hc.json --pieces backBase,front,sleeve --clip front=0 --split sleeve=0 --waist 800 --seat 1000
+node tools/drape.mjs box-coat
+```
+[`tools/drape.mjs`](../tools/drape.mjs) drafts the design at the size in [runs.yaml](runs.yaml)
+with the drape body's measurements, exports the outlines, builds the GarmentCode
+specification, simulates it on the GPU host, fetches the front and back renders to
+`out/drape/<name>/`, and reports where the cloth goes inside the body
+([`tools/drape_inside.py`](../tools/drape_inside.py)), with `result.json` beside the renders.
+
+- **Verdict:** OK, or REVIEW if the cloth is more than 1 cm inside the body anywhere other than
+  the wrists and hands. Sleeve hems resting on the wrists are expected: the simulator's body
+  stands with its arms out and its hands flared. GarmentCode's own count of body-cloth
+  intersections (its limit 35) is printed too, but almost every coat passes 35 at the wrists, so
+  it isn't the verdict.
+- **The GPU host:** an NVIDIA GPU with Docker, the image built from [`docker/`](../../docker/)
+  (GarmentCode and its Warp fork), a host folder mounted at `/data`. Give the runner
+  `DRAPE_HOST` (ssh destination) and `DRAPE_DATA` (that folder), as environment variables or in a
+  gitignored `drape/local.json` (`{ "host": ..., "data": ..., "container": "garmentcode" }`).
+  It can't run in GitHub's CI, which has no GPU.
+- **Adding a design:** an entry in `runs.yaml` (which config, size, pieces, cuts). The three
+  configs cover a Brian coat's shell (`coat-shell.yaml`), a princess-seamed jacket
+  (`jacket.yaml`) and a box body (`box.yaml`); the yoke garments, dresses and trousers need
+  configs of their own.
+
+The steps it runs, by hand:
+```bash
+node tools/drape-export.mjs hunting-coat cisMaleAdult38 out/drape/hc.json --pieces backBase,front,sleeve --clip front=0 --split sleeve=0 --m chest=1000,waist=800,seat=1000
 python tools/drape_spec.py out/drape/hc.json drape/coat-shell.yaml out/drape/specs hc --back backBase
 # copy out/drape/specs/hc into the container's /data/ps/, then in the container:
 python /data/ccat_sim.py -p /data/ps/hc/hc_specification.json -b m_smpl_average_A40   # (in /opt/garmentcode)
+python /data/drape_inside.py /data/Logs/<run>/hc_sim.obj /opt/garmentcode/assets/bodies/m_smpl_average_A40.obj
 ```
 The export takes the drafted seam outlines (cm). `drape_spec.py` stitches them and places
 them on the body by a config ([coat-shell.yaml](coat-shell.yaml)), using `tools/gcspec`, the
@@ -153,3 +179,29 @@ Renders: [front](box-coat/cbseam-front.png), [back](box-coat/cbseam-back.png) (h
   The CB seam and squared hem changed nothing here. (The first box coat entry's "22: all at
   the wrists" was counted with a depth cut-off; this tool counts every vertex behind the
   surface.)
+
+## All coats with the runner, 2026-10-26
+`node tools/drape.mjs <design>` on each design in [runs.yaml](runs.yaml); the three first
+drapes of Brian coats, and the three earlier ones re-run.
+
+| Design | Body | Verdict | GarmentCode intersections (limit 35) | Deepest inside, outside the wrists | At the wrists |
+|---|---|---|---|---|---|
+| chore coat | male | OK | 7 | 0.16 cm (thighs) | 0.26 cm |
+| mackinaw | male | OK | 6 | 0.12 cm (thighs) | 0.16 cm |
+| peacoat (vent closed) | male | OK | 7 | 0.11 cm (thighs) | 0.13 cm |
+| hunting coat | male | OK | 11 | 0.11 cm (thighs) | 0.19 cm |
+| tailored jacket | female | OK | 49 | 0.12 cm (thighs) | 1.73 cm |
+| box coat | female | OK | 54 | 0.10 cm (thighs) | 1.91 cm |
+
+Renders: [chore coat](chore-coat/front.png) ([back](chore-coat/back.png)),
+[mackinaw](mackinaw/front.png) ([back](mackinaw/back.png)), [peacoat](peacoat/front.png)
+([back](peacoat/back.png)); the others as above.
+- Every one assembles (renders looked at for the three new ones; the others as recorded
+  above): seams join, no gaps or twisted panels.
+- The Brian coats' one-piece sleeves clear the wrists; the women's two-piece sleeves rest on
+  them (the female body's hands flare more in its pose), which is what puts those two over
+  GarmentCode's 35. Everywhere else the cloth only touches the body, by about a millimetre.
+- Not draped yet: the yoke garments (nightshirt, nightgown, smock, frock, pinafore, shirtwaist
+  dress), the barber's and shop coats, the bar vest, the boys' work coat, the military blouse
+  and the knickerbockers. The Brian coats among them can use `coat-shell.yaml` once their
+  pieces are listed in `runs.yaml`; the others need configs.

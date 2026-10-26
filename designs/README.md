@@ -33,37 +33,37 @@ FreeSewing's 4.10.2 packages import `@freesewing/config` and `@freesewing/plugin
 without declaring them, so they are listed in our package.json.
 
 ## Contents
-| Folder | What | Status |
-|---|---|---|
-| `sizes/` | 75 children's sets (USDA 1939: 39 boys', 36 girls'); `usdaBoyC5` etc. Measurement map and derived rules in `children.mjs` | transcribed + checked |
-| `chore-coat/` | Work coat from Simons 1918, on Brian. [BRIEF.md](chore-coat/BRIEF.md) | draft (not sewn) |
-| `mackinaw/` | Double-breasted belted mackinaw (convertible, military or shawl collar; raglan option), Simons 1918. [BRIEF.md](mackinaw/BRIEF.md) | draft (not sewn) |
-| `hunting-coat/` | Belted field coat, three-piece action-pleated back, box-pleated flap pockets, Simons 1918. [BRIEF.md](hunting-coat/BRIEF.md) | draft (not sewn) |
-| `military-blouse/` | Fitted three-piece body on Bent, two-piece sleeve, standing collar, welt pockets, Simons 1918. [BRIEF.md](military-blouse/BRIEF.md) | draft (not sewn) |
-| `boys-work-coat/` | The chore coat with Simons' boys' details (5 buttons, pointed collar), for children's sizes. [BRIEF.md](boys-work-coat/BRIEF.md) | draft (not sewn) |
-| `barbers-coat/` | White service coat, standing collar or open neck, Simons 1918. [BRIEF.md](barbers-coat/BRIEF.md) | draft (not sewn) |
-| `shop-coat/` | Long flared work overcoat (grocers' gown, lab coat, duster), pencil pocket, Simons 1918. [BRIEF.md](shop-coat/BRIEF.md) | draft (not sewn) |
-| `bar-vest/` | Short waisted white jacket, pointed fronts, standing collar, sleeves optional, Simons 1918. [BRIEF.md](bar-vest/BRIEF.md) | draft (not sewn) |
-| `nightshirt/` | Long nightshirt: back yoke, front placket, neck band, side slits, Walker 1909. [BRIEF.md](nightshirt/BRIEF.md) | draft (not sewn) |
-| `nightgown/` | Long yoked nightgown, gathered, front placket, Walker 1909. [BRIEF.md](nightgown/BRIEF.md) | draft (not sewn) |
-| `smock/` | Yoked smock / child's overall, back opening, Walker 1909. [BRIEF.md](smock/BRIEF.md) | draft (not sewn) |
-| `frock/` | Bodice and gathered skirt dress, Walker 1909. [BRIEF.md](frock/BRIEF.md) | draft (not sewn) |
-| `pinafore/` | Sleeveless gathered pinafore, Walker 1909. [BRIEF.md](pinafore/BRIEF.md) | draft (not sewn) |
-| `shirtwaist-dress/` | Buttoned work dress: easy bodice, turn-down collar, full sleeves into cuffs, gathered skirt, Woman's Institute *Pattern Drafting* §2. [BRIEF.md](shirtwaist-dress/BRIEF.md) | draft (not sewn) |
-| `tailored-jacket/` | Women's semi-fitted jacket: princess seams flared below the waist, peak or notched lapel, collar, breast welt, set-in flap pockets, back-neck facing, lining, two-piece sleeves, on Breanna, Mitchell 1921. [BRIEF.md](tailored-jacket/BRIEF.md) | draft (not sewn) |
+| Folder | What | Status | 3D drape ([how](drape/README.md)) |
+|---|---|---|---|
+| `sizes/` | 75 children's sets (USDA 1939: 39 boys', 36 girls'); `usdaBoyC5` etc. Measurement map and derived rules in `children.mjs` | transcribed + checked |  |
+| `chore-coat/` | Work coat from Simons 1918, on Brian. [BRIEF.md](chore-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
+| `mackinaw/` | Double-breasted belted mackinaw (convertible, military or shawl collar; raglan option), Simons 1918. [BRIEF.md](mackinaw/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
+| `hunting-coat/` | Belted field coat, three-piece action-pleated back, box-pleated flap pockets, Simons 1918. [BRIEF.md](hunting-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
+| `military-blouse/` | Fitted three-piece body on Bent, two-piece sleeve, standing collar, welt pockets, Simons 1918. [BRIEF.md](military-blouse/BRIEF.md) | draft (not sewn) | not yet |
+| `boys-work-coat/` | The chore coat with Simons' boys' details (5 buttons, pointed collar), for children's sizes. [BRIEF.md](boys-work-coat/BRIEF.md) | draft (not sewn) | not yet |
+| `barbers-coat/` | White service coat, standing collar or open neck, Simons 1918. [BRIEF.md](barbers-coat/BRIEF.md) | draft (not sewn) | not yet |
+| `shop-coat/` | Long flared work overcoat (grocers' gown, lab coat, duster), pencil pocket, Simons 1918. [BRIEF.md](shop-coat/BRIEF.md) | draft (not sewn) | not yet |
+| `bar-vest/` | Short waisted white jacket, pointed fronts, standing collar, sleeves optional, Simons 1918. [BRIEF.md](bar-vest/BRIEF.md) | draft (not sewn) | not yet |
+| `nightshirt/` | Long nightshirt: back yoke, front placket, neck band, side slits, Walker 1909. [BRIEF.md](nightshirt/BRIEF.md) | draft (not sewn) | not yet |
+| `nightgown/` | Long yoked nightgown, gathered, front placket, Walker 1909. [BRIEF.md](nightgown/BRIEF.md) | draft (not sewn) | not yet |
+| `smock/` | Yoked smock / child's overall, back opening, Walker 1909. [BRIEF.md](smock/BRIEF.md) | draft (not sewn) | not yet |
+| `frock/` | Bodice and gathered skirt dress, Walker 1909. [BRIEF.md](frock/BRIEF.md) | draft (not sewn) | not yet |
+| `pinafore/` | Sleeveless gathered pinafore, Walker 1909. [BRIEF.md](pinafore/BRIEF.md) | draft (not sewn) | not yet |
+| `shirtwaist-dress/` | Buttoned work dress: easy bodice, turn-down collar, full sleeves into cuffs, gathered skirt, Woman's Institute *Pattern Drafting* §2. [BRIEF.md](shirtwaist-dress/BRIEF.md) | draft (not sewn) | not yet |
+| `tailored-jacket/` | Women's semi-fitted jacket: princess seams flared below the waist, peak or notched lapel, collar, breast welt, set-in flap pockets, back-neck facing, lining, two-piece sleeves, on Breanna, Mitchell 1921. [BRIEF.md](tailored-jacket/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `peacoat/` | Hip-length double-breasted coat: the mackinaw with Simons' D.B. overcoat stand, three-button rows, notched lapel and deep ulster collar, slanted hand-warmer welt pockets, back vent and lining, no belt, on Brian, Simons 1916. [BRIEF.md](peacoat/BRIEF.md) | draft (not sewn) |
-| `box-coat/` | Women's loose box coat: straight body flared from the arms, shaped CB seam, neck dart, notched lapel, collar, buttons near the lapped edge, set-in flap pockets (hip and ticket), two-piece sleeves, on Breanna, Mitchell 1921. [BRIEF.md](box-coat/BRIEF.md) | draft (not sewn) |
-| `knickerbockers/` | Full knickers gathered into knee bands, elastic waist, on Titan, Walker 1909. [BRIEF.md](knickerbockers/BRIEF.md) | draft (not sewn) |
-| `lib/yoke.mjs` | Shared yoke-garment drafting (Walker designs) | |
+| `box-coat/` | Women's loose box coat: straight body flared from the arms, shaped CB seam, neck dart, notched lapel, collar, buttons near the lapped edge, set-in flap pockets (hip and ticket), two-piece sleeves, on Breanna, Mitchell 1921. [BRIEF.md](box-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
+| `knickerbockers/` | Full knickers gathered into knee bands, elastic waist, on Titan, Walker 1909. [BRIEF.md](knickerbockers/BRIEF.md) | draft (not sewn) | not yet |
+| `lib/yoke.mjs` | Shared yoke-garment drafting (Walker designs) | |  |
 | `lib/coat.mjs`, `raglan.mjs`, `panels.mjs` | Coats on Brian: body (stout, waisted, flared), fronts (V neck, shawl collar, notched lapel), facings, collars, sleeves, back vent, lining, raglan sleeves, back panels | |
-| `lib/lapel.mjs` | The notched or peaked lapel shared by the coats and the women's jackets | |
-| `lib/body3.mjs` | Three-piece body on Bent, welt pockets (military blouse) | |
-| `lib/jacket.mjs` | Women's jackets and coats on Breanna: princess panels, or a box body with a pivoted neck dart; lapels, CB seam, buttons near the edge | |
-| `lib/pockets.mjs` | Patch pockets, flaps, belts, set-in flap pockets (flap, jet, bag) | |
-| `lib/trousers.mjs` | Gathered legs on Titan (knickerbockers) | |
-| `lib/spec.mjs`, `expr.mjs` | Builds a `spec.yaml` into a FreeSewing design ([SPEC.md](SPEC.md)) | |
-| `drape/` | 3D drape configs, renders and results ([README](drape/README.md)) | tailored jacket, box coat, hunting coat |
-| `tools/` | `render.mjs`, `snap.mjs`, `snapshot.mjs` (+ `variants.json`), `drape-export.mjs`, `drape_spec.py`, `drape_inside.py` | |
+| `lib/lapel.mjs` | The notched or peaked lapel shared by the coats and the women's jackets | |  |
+| `lib/body3.mjs` | Three-piece body on Bent, welt pockets (military blouse) | |  |
+| `lib/jacket.mjs` | Women's jackets and coats on Breanna: princess panels, or a box body with a pivoted neck dart; lapels, CB seam, buttons near the edge | |  |
+| `lib/pockets.mjs` | Patch pockets, flaps, belts, set-in flap pockets (flap, jet, bag) | |  |
+| `lib/trousers.mjs` | Gathered legs on Titan (knickerbockers) | |  |
+| `lib/spec.mjs`, `expr.mjs` | Builds a `spec.yaml` into a FreeSewing design ([SPEC.md](SPEC.md)) | |  |
+| `drape/` | 3D drape configs (`runs.yaml`: one per draped design), renders and results ([README](drape/README.md)); `node tools/drape.mjs <design>` runs one | 6 coats and jackets draped |  |
+| `tools/` | `render.mjs`, `snap.mjs`, `snapshot.mjs` (+ `variants.json`), `drape.mjs` (a whole drape), `drape-export.mjs`, `drape_spec.py` (+ `gcspec/`), `drape_inside.py` | |  |
 
 ## Adding a design
 1. Write `<design>/BRIEF.md` from the source pages: the pieces, each style line as a

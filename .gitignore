@@ -62,3 +62,6 @@ CLOUDBOX.md
 HANDOFF.md
 HANDOFF.digest.md
 outreach/
+
+# the drape runner's GPU host settings (designs/tools/drape.mjs)
+designs/drape/local.json
