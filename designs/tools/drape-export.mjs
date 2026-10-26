@@ -114,7 +114,12 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     if (Math.hypot(first.x - last.x, first.y - last.y) < 1e-6) poly.pop()
     // A clip or split at a named point of the piece cuts at that point's x
     const xOf = (v) => (typeof v === 'number' ? v : part.points[v].x)
-    if (name in clip) poly = clipX(poly, xOf(clip[name]))
+    if (name in clip) {
+      const x0 = xOf(clip[name])
+      poly = clipX(poly, x0)
+      // A piece already ending at the line (on the fold there): its ends there are the cut's
+      if (poly.filter((p) => p.cut).length < 2) poly = poly.map((p) => (Math.abs(p.x - x0) < 1e-6 ? { x: p.x, y: p.y, cut: true } : p))
+    }
     const outlines = name in split ? { [`${name}Plus`]: clipX(poly, xOf(split[name])), [`${name}Minus`]: clipX(poly, xOf(split[name]), true) } : { [name]: poly }
     const cm = (p) => [p.x / 10, p.y / 10]
     for (const [piece, outline] of Object.entries(outlines)) {

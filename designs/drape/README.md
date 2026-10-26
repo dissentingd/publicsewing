@@ -24,10 +24,29 @@ specification, simulates it on the GPU host, fetches the front and back renders 
   `DRAPE_HOST` (ssh destination) and `DRAPE_DATA` (that folder), as environment variables or in a
   gitignored `drape/local.json` (`{ "host": ..., "data": ..., "container": "garmentcode" }`).
   It can't run in GitHub's CI, which has no GPU.
-- **Adding a design:** an entry in `runs.yaml` (which config, size, pieces, cuts). The three
-  configs cover a Brian coat's shell (`coat-shell.yaml`), a princess-seamed jacket
-  (`jacket.yaml`) and a box body (`box.yaml`); the yoke garments, dresses and trousers need
-  configs of their own.
+- **Adding a design:** an entry in `runs.yaml` (which config, size, pieces, cuts). The configs:
+
+  | Config | Body | For |
+  |---|---|---|
+  | `coat-shell.yaml` | male | a Brian coat's shell: back, fronts closed at CF, one-piece sleeve split in halves |
+  | `coat-vest.yaml` | male | the same, sleeveless (the bar vest) |
+  | `blouse.yaml` | male | a three-piece body on Bent (back, side body, front) with the two-part sleeve |
+  | `jacket.yaml` | female | a princess-seamed jacket on Breanna |
+  | `box.yaml` | female | a box body on Breanna |
+  | `yoke.yaml` | female | a yoke garment: yokes back and front, gathered bodies, set-in sleeves |
+  | `yoke-sleeveless.yaml` | female | the same, sleeveless |
+  | `yoke-shirt.yaml` | male | a back yoke and a one-piece front (the nightshirt) |
+  | `bodice.yaml` | female | a bodice to the waist over a gathered skirt |
+  | `trousers.yaml` | male | gathered trousers on Titan, the waist held up |
+
+  Gathers sew as they are: a body's long top edge is stitched to the yoke's shorter seam and
+  the simulator draws it in. Collars, facings, bands, plackets, pockets and linings are left
+  off every drape.
+- **A waist held up** (`trousers.yaml`): an elastic casing isn't simulated, so its top edge is
+  labelled `lower_interface` in the config (`labels:`), which GarmentCode's simulator pins at
+  the body's waist level, and `holdWaist: true` in `runs.yaml` keeps the pin on for the whole
+  run (GarmentCode releases it after 400 frames by default). A labelled run is written as one
+  edge: GarmentCode labels only the vertices it meshes inside an edge.
 
 The steps it runs, by hand:
 ```bash
@@ -205,3 +224,44 @@ Renders: [chore coat](chore-coat/front.png) ([back](chore-coat/back.png)),
   dress), the barber's and shop coats, the bar vest, the boys' work coat, the military blouse
   and the knickerbockers. The Brian coats among them can use `coat-shell.yaml` once their
   pieces are listed in `runs.yaml`; the others need configs.
+
+## The other 12 designs, 2026-10-26
+Every design now has a drape in `runs.yaml`. The new configs above came with small additions:
+named corners on the yoke pieces (`lib/yoke.mjs`) and the blouse's side body
+(`lib/body3.mjs`), a `--clip` that also names the ends of a piece already at the line (so an
+opening yoke and a yoke on the fold drape alike), and edge labels in `tools/gcspec`. No
+pattern changed.
+
+| Design | Body | Verdict | GarmentCode (limit 35) | Deepest inside, outside the wrists |
+|---|---|---|---|---|
+| barber's coat | male | OK | 4 | 0.12 cm (thighs) |
+| shop coat | male | OK | 4 | 0.15 cm (chest) |
+| bar vest (sleeveless) | male | OK | 0 | 0.10 cm (chest) |
+| boys' work coat | male* | OK | 7 | 0.11 cm (thighs) |
+| military blouse | male | OK | 0 | 0.15 cm (thighs) |
+| nightshirt | male | OK | 0 | 0.08 cm (thighs) |
+| nightgown | female | OK | 4 | 0.16 cm (thighs) |
+| smock | female | OK | 5 | 0.10 cm (thighs) |
+| frock | female | OK | 0 | 0.11 cm (thighs) |
+| shirtwaist dress | female | OK | 7 | 0.21 cm (thighs) |
+| knickerbockers | male | OK | 0 | 0.13 cm (thighs) |
+| pinafore | female | **REVIEW** | 65 | **2.8 cm (forearms)** |
+
+\* GarmentCode has no children's bodies, so the boys' work coat is draped at adult
+measurements: a check that its pieces assemble, not of its fit on a child.
+
+Renders: `<design>/front.png` and `back.png` in this folder. Looked at: the bar vest, shop coat,
+military blouse, nightgown, nightshirt (back), smock, frock, shirtwaist dress, pinafore and
+knickerbockers; all assemble as drafted, seams joined, gathers drawn in at the yokes and waists.
+- **Pinafore: REVIEW, from the pose.** It assembles (the yoke, the gathered body, the open
+  armholes), but the female body stands with its arms 40 degrees down, and the forearms end up
+  inside the full, sleeveless body below the armholes. On GarmentCode's T-pose body
+  (`mean_all_tpose`) the forearms clear the body but the raised arm presses into the shoulder
+  instead (109 intersections, 2.9 cm), so neither pose suits a full sleeveless garment. Not a
+  pattern fault as far as the drape can tell; a muslin will.
+- **Knickerbockers:** the legs hang full to the shin (the knee bands, which blouse them, are
+  left off), and the waist stands loose (the elastic isn't simulated). The first runs failed:
+  with the waist edge cut into 1 cm edges GarmentCode found no vertices to pin and the trousers
+  fell to the ankles; then, placed with each leg's crotch extension crossing the centre line,
+  the inseams started inside the other thigh (136 points, 2.9 cm deep). Starting each leg with
+  its crotch point on the centre line fixed it.

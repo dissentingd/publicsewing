@@ -101,6 +101,17 @@ def _run(pattern, loops, run, where):
     return piece, path
 
 
+def _near(p, pts, tol=0.05):
+    """Whether point p lies within tol (cm) of the polyline pts."""
+    for (ax, ay), (bx, by) in zip(pts, pts[1:]):
+        dx, dy = bx - ax, by - ay
+        L2 = dx * dx + dy * dy
+        t = 0.0 if L2 < 1e-12 else max(0.0, min(1.0, ((p[0] - ax) * dx + (p[1] - ay) * dy) / L2))
+        if math.hypot(p[0] - ax - t * dx, p[1] - ay - t * dy) <= tol:
+            return True
+    return False
+
+
 def _length(pts):
     return sum(G.dist(a, b) for a, b in zip(pts, pts[1:]))
 
@@ -246,15 +257,31 @@ def build_spec(pattern):
     missing = sorted(set(plan) - set(specs))
     if missing:
         raise RecipeError(f'drape: pieces in seams without a placement: {missing}')
-    panels, marks = {}, {}
+    # Edge labels (e.g. `lower_interface`, which GarmentCode's simulator pins at the body's waist
+    # level): {label: [runs]}, each edge along a run gets the label
+    label_sides = {str(lab): _Side(pattern, loops, runs, f'label {lab!r}') for lab, runs in (pattern.recipe.get('labels') or {}).items()}
+    panels, marks, labelled = {}, {}, {}
     for piece, spec in specs.items():
         where = f'drape {piece!r}'
         loop = loops.setdefault(piece, _outline(pattern, piece, where))
         verts, mk = _rebuild(loop, plan.get(piece, []), where)
+        on = {lab: {i for i, v in enumerate(verts) for part in side.parts if part[0] == piece and _near(v, side.pts(part))}
+              for lab, side in label_sides.items()}
+        # A labelled free run becomes one edge: GarmentCode labels only the vertices it meshes
+        # inside an edge, and a run already cut into ~1 cm edges has none
+        drop = {i for v in on.values() for i in v if (i - 1) % len(verts) in v and (i + 1) % len(verts) in v}
+        drop -= {i for idx in mk.values() for i in idx}
+        if drop:
+            keep = [i for i in range(len(verts)) if i not in drop]
+            new = {old: k for k, old in enumerate(keep)}
+            verts = [verts[i] for i in keep]
+            mk = {k: [new[i] for i in v] for k, v in mk.items()}
+            on = {lab: {new[i] for i in v if i in new} for lab, v in on.items()}
         local, flipped = _place(pattern, verts, spec, where)
         if flipped:                                       # winding reversed: vertex i -> (-i) mod n
             mk = {k: [(-i) % len(local) for i in v] for k, v in mk.items()}
-        panels[piece], marks[piece] = local, mk
+            on = {lab: {(-i) % len(local) for i in v} for lab, v in on.items()}
+        panels[piece], marks[piece], labelled[piece] = local, mk, on
     # 3. right and left copies, edges and stitches
     out_panels, stitches, order = {}, [], []
     for piece, spec in specs.items():
@@ -267,9 +294,18 @@ def build_spec(pattern):
             tr = list(map(float, spec['translation']))
             if side == 'l':
                 rot, tr = [rot[0], -rot[1], -rot[2]], [-tr[0], tr[1], tr[2]]
+            n = len(verts)
+            # a left copy's vertex i is the right copy's (-i) mod n
+            on = {lab: v if side == 'r' else {(-i) % n for i in v} for lab, v in labelled[piece].items()}
+            edges = []
+            for i in range(n):
+                e = {'endpoints': [i, (i + 1) % n]}
+                for lab, v in on.items():
+                    if i in v and (i + 1) % n in v:
+                        e['label'] = lab
+                edges.append(e)
             out_panels[name] = {'translation': tr, 'rotation': rot,
-                                'vertices': [[round(x, 4), round(y, 4)] for x, y in verts],
-                                'edges': [{'endpoints': [i, (i + 1) % len(verts)]} for i in range(len(verts))]}
+                                'vertices': [[round(x, 4), round(y, 4)] for x, y in verts], 'edges': edges}
             order.append(name)
     nv = {p: len(panels[p]) for p in panels}
     for key, n, mirror, pa, pb in links:

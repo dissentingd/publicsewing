@@ -1,0 +1,46 @@
+# Drape a bodice-and-skirt yoke garment (the frock, the shirtwaist dress: the bodice runs to the
+# waist, the skirt gathered into it) on GarmentCode's female average body, with set-in sleeves.
+# Placement as jacket.yaml / coat-shell.yaml (cm, y up, the body facing +z, its right side at
+# -x; right-hand copies). Each body sits in its yoke's frame: x from its own fold, y from the
+# yoke's neck point. Yokes are exported cut at CF/CB (--clip <yoke>=0), so an opening yoke and a
+# yoke on the fold both end at clipTop/clipBottom; the body's gathered top sews to the yoke's
+# shorter seam (the simulator draws it in). Bands, plackets, collars and pockets are left off.
+body: f_smpl_average_A40
+pieces:
+  backBodice: {origin: [backBodice.clipTop, backBodice.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -15]}
+  backSkirt: {origin: [backSkirt.topFold, backBodice.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -17]}
+  frontBodice: {origin: [frontBodice.clipTop, frontBodice.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 19]}
+  frontSkirt: {origin: [frontSkirt.topFold, frontBodice.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 21]}
+  sleevePlus: {origin: sleevePlus.clipTop, map: [[0, 1], [1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-21, 137, 10]}
+  sleeveMinus: {origin: sleeveMinus.clipTop, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-21, 137, -12]}
+seams:
+  centre_back_bodice: {a: [{piece: backBodice, along: [backBodice.clipTop, backBodice.clipBottom]}], mirror: true}
+  centre_back: {a: [{piece: backSkirt, along: [backSkirt.topFold, backSkirt.hemFold]}], mirror: true}
+  centre_front_bodice: {a: [{piece: frontBodice, along: [frontBodice.clipTop, frontBodice.clipBottom]}], mirror: true}
+  centre_front: {a: [{piece: frontSkirt, along: [frontSkirt.topFold, frontSkirt.hemFold]}], mirror: true}
+  shoulder:
+    a: [{piece: backBodice, along: [backBodice.hps, backBodice.shoulder]}]
+    b: [{piece: frontBodice, along: [frontBodice.hps, frontBodice.shoulder]}]
+  back_waist:
+    a: [{piece: backBodice, along: [backBodice.clipBottom, backBodice.seamArm]}]
+    b: [{piece: backSkirt, along: [backSkirt.topFold, backSkirt.yokeSide]}]
+  front_waist:
+    a: [{piece: frontBodice, along: [frontBodice.clipBottom, frontBodice.seamArm]}]
+    b: [{piece: frontSkirt, along: [frontSkirt.topFold, frontSkirt.yokeSide]}]
+  side_bodice:
+    a: [{piece: backBodice, along: [backBodice.underarm, backBodice.seamArm]}]
+    b: [{piece: frontBodice, along: [frontBodice.underarm, frontBodice.seamArm]}]
+  side:
+    a: [{piece: backSkirt, along: [backSkirt.sideTop, backSkirt.hemSide]}]
+    b: [{piece: frontSkirt, along: [frontSkirt.sideTop, frontSkirt.hemSide]}]
+  armhole:
+    a: [{piece: backBodice, along: [backBodice.underarm, backBodice.shoulder]}, {piece: frontBodice, along: [frontBodice.shoulder, frontBodice.underarm]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.capQ4, sleeveMinus.capQ3, sleeveMinus.clipTop]},
+        {piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.capQ2, sleevePlus.capQ1, sleevePlus.bicepsRight]}]
+    anchors: [[backBodice.shoulder, sleeveMinus.clipTop]]
+  overarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.clipBottom]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.clipTop, sleeveMinus.clipBottom]}]
+  underarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.bicepsRight, sleevePlus.wristRight]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.wristLeft]}]

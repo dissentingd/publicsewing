@@ -43,7 +43,7 @@ def main(outlines, config, out_dir, name, back='back'):
     cfg = yaml.safe_load(Path(config).read_text(encoding='utf-8'))
     if back != 'back':
         cfg = rename(cfg, 'back', back)
-    recipe = {'seams': cfg['seams'], 'drape': {'body': cfg['body'], 'pieces': cfg['pieces']}}
+    recipe = {'seams': cfg['seams'], 'drape': {'body': cfg['body'], 'pieces': cfg['pieces']}, 'labels': cfg.get('labels')}
     spec = GC.build_spec(Outlines(data, recipe))
     d = Path(out_dir) / name
     d.mkdir(parents=True, exist_ok=True)

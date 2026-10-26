@@ -1,0 +1,44 @@
+# Drape a three-piece body on Bent (lib/body3.mjs: the military blouse) on GarmentCode's male
+# average body: back (on the fold), side body, front (cut at CF, so the two sew closed edge to
+# edge), and the two-part sleeve. Collar, facings and welts are left off. Export:
+#   node tools/drape-export.mjs military-blouse cisMaleAdult38 out.json \
+#     --pieces back,sideBody,front,topsleeve,undersleeve --clip front=0 --m chest=1000,waist=800,seat=1000
+#
+# Placement as coat-shell.yaml (cm, y up, the body facing +z, its right side at -x; right-hand
+# copies). The side body is drafted with its back half to the left of the side line and its
+# front half mirrored to the right; it hangs at the body's side facing out (-x), its back half
+# toward the back, its underarm point under the arm.
+body: m_smpl_average_A40
+pieces:
+  back: {origin: [back.cbNeck, back.s3CollarSplit], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 153, -17]}
+  front: {origin: [front.clipTop, front.s3CollarSplit], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 153, 21]}
+  sideBody: {origin: sideBody.armBottom, map: [[1, 0], [0, -1]], ccw: true, rotation: [0, -90, 0], translation: [-21, 127, 0]}
+  topsleeve: {origin: topsleeve.top, map: [[0, 1], [-1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-21, 148, 9]}
+  undersleeve: {origin: topsleeve.top, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-21, 148, -11]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.cbNeck, back.cbHem]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.clipTop, front.clipBottom]}], mirror: true}
+  shoulder:
+    a: [{piece: back, along: [back.s3CollarSplit, back.s3ArmholeSplit]}]
+    b: [{piece: front, along: [front.s3CollarSplit, front.s3ArmholeSplit]}]
+  back_seam:
+    a: [{piece: back, along: [back.seamStart, back.seamHem]}]
+    b: [{piece: sideBody, along: [sideBody.backTop, sideBody.backHem]}]
+  front_seam:
+    a: [{piece: front, along: [front.seamStart, front.seamHem]}]
+    b: [{piece: sideBody, along: [sideBody.frontTop, sideBody.frontHem]}]
+  # Down the front armhole, under the arm on the side body, up the back armhole; the sleeve as
+  # on jacket.yaml
+  armhole:
+    a: [{piece: front, along: [front.s3ArmholeSplit, front.armholePitch, front.armholeHollow, front.seamStart]},
+        {piece: sideBody, along: [sideBody.frontTop, sideBody.armBottom, sideBody.backTop]},
+        {piece: back, along: [back.seamStart, back.armholePitch, back.s3ArmholeSplit]}]
+    b: [{piece: topsleeve, along: [topsleeve.top, topsleeve.frontPitchPoint, topsleeve.tsLeftEdge]},
+        {piece: undersleeve, along: [undersleeve.usLeftEdge, undersleeve.usTip]},
+        {piece: topsleeve, along: [topsleeve.backPitchPoint, topsleeve.top]}]
+  sleeve_front:
+    a: [{piece: topsleeve, along: [topsleeve.tsLeftEdge, topsleeve.tsElbowLeft, topsleeve.tsWristLeft]}]
+    b: [{piece: undersleeve, along: [undersleeve.usLeftEdge, undersleeve.usElbowLeft, undersleeve.usWristLeft]}]
+  sleeve_back:
+    a: [{piece: topsleeve, along: [topsleeve.backPitchPoint, topsleeve.elbowRight, topsleeve.tsWristRight]}]
+    b: [{piece: undersleeve, along: [undersleeve.usTip, undersleeve.elbowRight, undersleeve.usWristRight]}]

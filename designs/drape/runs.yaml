@@ -56,3 +56,100 @@ box-coat:
   measurements: { chest: 900, waist: 800, seat: 1070 }
   pieces: [back, front, topsleeve, undersleeve]
   clip: { front: cfLine }
+
+barbers-coat:
+  config: coat-shell.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, front, sleeve]
+  clip: { front: 0 }
+  split: { sleeve: 0 }
+
+shop-coat:
+  config: coat-shell.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, front, sleeve]
+  clip: { front: 0 }
+  split: { sleeve: 0 }
+
+bar-vest:
+  config: coat-vest.yaml # sleeveless, as drafted by default
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, front]
+  clip: { front: 0 }
+
+# GarmentCode has no children's bodies: drafted at adult measurements, this checks how the
+# boys' details assemble, not their fit on a child
+boys-work-coat:
+  config: coat-shell.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  prefix: chorecoat
+  pieces: [back, front, sleeve]
+  clip: { front: 0 }
+  split: { sleeve: 0 }
+
+military-blouse:
+  config: blouse.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, sideBody, front, topsleeve, undersleeve]
+  clip: { front: 0 }
+
+# Yoke garments: yokes cut at the centre line (clip) so an opening and a fold drape alike
+nightgown:
+  config: yoke.yaml
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [frontYoke, backYoke, frontBody, backBody, sleeve]
+  clip: { frontYoke: 0, backYoke: 0 }
+  split: { sleeve: 0 }
+
+smock:
+  config: yoke.yaml
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [frontYoke, backYoke, frontBody, backBody, sleeve]
+  clip: { frontYoke: 0, backYoke: 0 }
+  split: { sleeve: 0 }
+
+pinafore:
+  # REVIEW in either pose, from the pose not the pattern: see drape/README.md (2026-10-26)
+  config: yoke-sleeveless.yaml
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [frontYoke, backYoke, frontBody, backBody]
+  clip: { frontYoke: 0, backYoke: 0 }
+
+nightshirt:
+  config: yoke-shirt.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [backYoke, backBody, frontBody, sleeve]
+  clip: { backYoke: 0, frontBody: 0 }
+  split: { sleeve: 0 }
+
+frock:
+  config: bodice.yaml
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [frontBodice, backBodice, frontSkirt, backSkirt, sleeve]
+  clip: { frontBodice: 0, backBodice: 0 }
+  split: { sleeve: 0 }
+
+shirtwaist-dress:
+  config: bodice.yaml
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [frontBodice, backBodice, frontSkirt, backSkirt, sleeve]
+  clip: { frontBodice: 0, backBodice: 0 }
+  split: { sleeve: 0 }
+
+knickerbockers:
+  config: trousers.yaml
+  holdWaist: true # the elastic isn't simulated: the waist stays pinned for the whole run
+  size: cisMaleAdult38
+  measurements: { waist: 800, seat: 1000 }
+  pieces: [front, back]

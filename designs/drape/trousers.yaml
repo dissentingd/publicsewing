@@ -1,0 +1,27 @@
+# Drape gathered trousers on Titan (lib/trousers.mjs: the knickerbockers) on GarmentCode's male
+# average body: front and back legs, sewn at the outseam, inseam and crotch. The knee bands are
+# left off (the legs hang free below the knee); the elastic in the waist casing isn't simulated,
+# so the casing's top edge is labelled `lower_interface`, which the simulator pins at the body's
+# waist level (108 cm), as GarmentCode does for its own trousers. Export:
+#   node tools/drape-export.mjs knickerbockers cisMaleAdult38 out.json --pieces front,back --m waist=800,seat=1000
+#
+# Placement: cm, y up, the body facing +z, its right side at -x; the right leg's pieces (the
+# left are mirrored). Each leg's crotch point (fork) starts on the centre line, in front of and
+# behind the body, so its inseam starts between the legs, not inside the other thigh; the CF
+# and CB seams start apart (by the crotch extensions) and are drawn together by the stitches.
+# The back is flipped so its outseam is at -x too.
+body: m_smpl_average_A40
+pieces:
+  front: {origin: [front.fork, front.styleWaistIn], map: [[1, 0], [0, -1]], ccw: true, translation: [0, 108, 22]}
+  back: {origin: [back.fork, back.styleWaistIn], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 108, -22]}
+seams:
+  centre_front: {a: [{piece: front, along: [front.cIn, front.styleWaistIn, front.crotchSeamCurveStart, front.fork]}], mirror: true}
+  centre_back: {a: [{piece: back, along: [back.cIn, back.styleWaistIn, back.crossSeamCurveStart, back.fork]}], mirror: true}
+  outseam:
+    a: [{piece: front, along: [front.cOut, front.wOut, front.hemOut]}]
+    b: [{piece: back, along: [back.cOut, back.wOut, back.hemOut]}]
+  inseam:
+    a: [{piece: front, along: [front.fork, front.hemIn]}]
+    b: [{piece: back, along: [back.fork, back.hemIn]}]
+labels:
+  lower_interface: [{piece: front, along: [front.cIn, front.cOut]}, {piece: back, along: [back.cIn, back.cOut]}]

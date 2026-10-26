@@ -65,7 +65,14 @@ export function drape(design, { name, options: extra = {} } = {}) {
   run('scp', ['-q', join(REPO, 'docker', 'ccat_sim.py'), join(HERE, 'drape_inside.py'), `${remote}/`])
   run('ssh', [host, `mkdir -p ${data}/ps`])
   run('scp', ['-q', '-r', join(specs, name), `${remote}/ps/`])
-  const sim = run('ssh', [host, `docker exec -w /opt/garmentcode ${container} python /data/ccat_sim.py -p /data/ps/${name}/${name}_specification.json -b ${config.body}`]).replace(/\r/g, '\n')
+  // holdWaist: GarmentCode's default sim settings, with its waist pin (edges labelled
+  // lower_interface) kept for the whole run instead of released after 400 frames
+  let props = ''
+  if (r.holdWaist) {
+    run('ssh', [host, `docker exec ${container} sh -c "sed 's/attachment_frames: 400/attachment_frames: 100000/' /opt/garmentcode/assets/Sim_props/default_sim_props.yaml > /data/sim_props_hold.yaml"`])
+    props = ' -s /data/sim_props_hold.yaml'
+  }
+  const sim = run('ssh', [host, `docker exec -w /opt/garmentcode ${container} python /data/ccat_sim.py -p /data/ps/${name}/${name}_specification.json -b ${config.body}${props}`]).replace(/\r/g, '\n')
   const grab = (re) => sim.match(re)?.[1]
   const logDir = grab(/^OUT (\/data\/Logs\/\S+)/m)
   if (!logDir) throw new Error(`the simulation didn't finish:\n${sim.split('\n').filter((l) => l && !l.startsWith('Progress')).slice(-15).join('\n')}`)

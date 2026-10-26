@@ -1,0 +1,49 @@
+# Drape a yoke garment (lib/yoke.mjs) with yokes back and front and set-in sleeves (the
+# nightgown, the smock) on GarmentCode's female average body: yokes, gathered bodies, and the
+# one-piece sleeve split into front and back halves. Export, e.g.:
+#   node tools/drape-export.mjs nightgown cisFemaleAdult34 out.json --pieces frontYoke,backYoke,frontBody,backBody,sleeve \
+#     --clip frontYoke=0,backYoke=0 --split sleeve=0 --m chest=900,waist=800,seat=1070
+# Placement as jacket.yaml / coat-shell.yaml (cm, y up, the body facing +z, its right side at
+# -x; right-hand copies). Each body sits in its yoke's frame: x from its own fold, y from the
+# yoke's neck point. Yokes are exported cut at CF/CB (--clip <yoke>=0), so an opening yoke and a
+# yoke on the fold both end at clipTop/clipBottom; the body's gathered top sews to the yoke's
+# shorter seam (the simulator draws it in). Bands, plackets, collars and pockets are left off.
+body: f_smpl_average_A40
+pieces:
+  backYoke: {origin: [backYoke.clipTop, backYoke.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -15]}
+  backBody: {origin: [backBody.topFold, backYoke.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -17]}
+  frontYoke: {origin: [frontYoke.clipTop, frontYoke.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 19]}
+  frontBody: {origin: [frontBody.topFold, frontYoke.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 21]}
+  sleevePlus: {origin: sleevePlus.clipTop, map: [[0, 1], [1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-21, 137, 10]}
+  sleeveMinus: {origin: sleeveMinus.clipTop, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-21, 137, -12]}
+seams:
+  centre_back_yoke: {a: [{piece: backYoke, along: [backYoke.clipTop, backYoke.clipBottom]}], mirror: true}
+  centre_back: {a: [{piece: backBody, along: [backBody.topFold, backBody.hemFold]}], mirror: true}
+  centre_front_yoke: {a: [{piece: frontYoke, along: [frontYoke.clipTop, frontYoke.clipBottom]}], mirror: true}
+  centre_front: {a: [{piece: frontBody, along: [frontBody.topFold, frontBody.hemFold]}], mirror: true}
+  shoulder:
+    a: [{piece: backYoke, along: [backYoke.hps, backYoke.shoulder]}]
+    b: [{piece: frontYoke, along: [frontYoke.hps, frontYoke.shoulder]}]
+  back_yoke:
+    a: [{piece: backYoke, along: [backYoke.clipBottom, backYoke.seamArm]}]
+    b: [{piece: backBody, along: [backBody.topFold, backBody.yokeSide]}]
+  front_yoke:
+    a: [{piece: frontYoke, along: [frontYoke.clipBottom, frontYoke.seamArm]}]
+    b: [{piece: frontBody, along: [frontBody.topFold, frontBody.yokeSide]}]
+  side:
+    a: [{piece: backBody, along: [backBody.sideTop, backBody.hemSide]}]
+    b: [{piece: frontBody, along: [frontBody.sideTop, frontBody.hemSide]}]
+  # Up the back armhole (body, then yoke) to the shoulder, down the front's; the sleeve's back
+  # half from its underarm over the cap to the top, then the front half down
+  armhole:
+    a: [{piece: backBody, along: [backBody.sideTop, backBody.yokeSide]}, {piece: backYoke, along: [backYoke.seamArm, backYoke.shoulder]},
+        {piece: frontYoke, along: [frontYoke.shoulder, frontYoke.seamArm]}, {piece: frontBody, along: [frontBody.yokeSide, frontBody.sideTop]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.capQ4, sleeveMinus.capQ3, sleeveMinus.clipTop]},
+        {piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.capQ2, sleevePlus.capQ1, sleevePlus.bicepsRight]}]
+    anchors: [[backYoke.shoulder, sleeveMinus.clipTop]]
+  overarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.clipBottom]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.clipTop, sleeveMinus.clipBottom]}]
+  underarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.bicepsRight, sleevePlus.wristRight]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.wristLeft]}]

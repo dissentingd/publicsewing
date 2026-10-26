@@ -102,6 +102,27 @@ export function draftYokeSide(sh, side) {
   else body = body.line(sh2(armYoke)).line(new Point(0, yokeY))
   if (whole) yoke = null
 
+  // Named corners of each piece (for the 3D drape configs): the fold (or opening) ends, the
+  // yoke seam's ends, the underarm, shoulder, neck point and hem corners
+  const marks = {
+    yoke: yoke && {
+      seamFold: open ? new Point(-ext, yokeY) : fold,
+      seamArm: armYoke,
+      ...(lowerArm ? {} : { underarm: points.armhole }),
+      shoulder: points.s3ArmholeSplit,
+      hps: points.s3CollarSplit,
+      neckFold: neckAtFold,
+    },
+    body: {
+      hemFold: new Point(0, hemY),
+      hemSide: r > 1 ? hemOut.shiftTowards(sh2(armTop), r) : hemOut,
+      sideTop: whole ? points.armhole : sh2(armTop),
+      ...(whole
+        ? { shoulder: points.s3ArmholeSplit, hps: points.s3CollarSplit, neckFold: neckAtFold }
+        : { yokeSide: lowerArm ? lowerArm.end().translate(spread, 0) : sh2(armYoke), topFold: new Point(0, yokeY) }),
+    },
+  }
+
   // Placket slit below the yoke (or from the neck, with no yoke) on the opening side
   const slitEnd = neckAtFold.y + measurements.hpsToWaistBack * options.placketDepth
   const slitTop = whole ? neckAtFold.y : yokeY
@@ -110,6 +131,7 @@ export function draftYokeSide(sh, side) {
   store.set(`yoke.${side}`, {
     yoke,
     body,
+    marks,
     open,
     ext,
     slit,
@@ -143,6 +165,7 @@ export function yokePiecePart({ name, after, side, piece, nr, label, cut }) {
         return part.hide()
       }
       const outline = mapPath(y[piece], Path)
+      for (const [k, q] of Object.entries(y.marks?.[piece] ?? {})) points[k] = q.clone()
       const onFold = !(piece === 'yoke' && y.open)
       paths.seam = outline.clone().close().addClass('fabric')
       if (sa) {

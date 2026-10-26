@@ -1,0 +1,15 @@
+# Drape a sleeveless Brian coat's shell (the bar vest): coat-shell.yaml without the sleeve, the
+# armholes left open. Same body and placement as coat-shell.yaml.
+body: m_smpl_average_A40
+pieces:
+  back: {origin: [back.cbNeck, back.s3CollarSplit], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 153, -17]}
+  front: {origin: [front.clipTop, front.s3CollarSplit], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 153, 21]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.cbNeck, back.cbHem]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.clipTop, front.clipBottom]}], mirror: true}
+  shoulder:
+    a: [{piece: back, along: [back.s3CollarSplit, back.s3ArmholeSplit]}]
+    b: [{piece: front, along: [front.s3CollarSplit, front.s3ArmholeSplit]}]
+  side:
+    a: [{piece: back, along: [back.armhole, back.sideWaist, back.hem]}]
+    b: [{piece: front, along: [front.armhole, front.sideWaist, front.hem]}]

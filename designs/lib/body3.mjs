@@ -205,6 +205,10 @@ export function sideBodyPart({ name, after, nr = 3 }) {
       const frontArm = flipPathX(fr.lowerArm, S, Path) // armhole bottom -> front seam start, mirrored
       points.backHem = backSeam.end()
       points.frontHem = frontSeam.end()
+      // Corners for the 3D drape config: where each seam leaves the armhole, and its bottom
+      points.backTop = backSeam.start()
+      points.frontTop = frontSeam.start()
+      points.armBottom = backArm.start()
       // Counter-clockwise on the page: along the hem, up the front seam, over the armhole,
       // down the back seam
       const rest = frontSeam.reverse().join(frontArm.reverse()).join(backArm).join(backSeam)
