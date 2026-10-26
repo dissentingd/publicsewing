@@ -1,0 +1,35 @@
+# Mitchell 1921, Tight-Fitted Jacket Foundation (book pp. 42–43; the measures of p. 36) and
+# Tight-Fitted Jacket, Single Dart (pp. 44–45). Measures in inches, read from the page images.
+name: tight-fitted jacket, single dart
+source:
+  size: "bust 39, waist 26½ (the book's measures, pp. 36 and 84)"
+  book: "Mitchell, The New \"Standard\" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)"
+  corpus: newstandardworko00mitc
+  pages: [36, 42, 43, 44, 45, 60, 61]   # book pages = PDF pages − 4
+measures:
+  bust: 39
+  back_depth: 7
+  back_waist: 15
+  half_back: 7
+  blade: 10.5
+  front_depth: 12.5
+  top_dart: 14.5
+  front_waist: 22
+  # The draft uses the waist ("26 from 7 is 1-3 of ¼ waist less ¼ inch") but pp. 36 and 42 print
+  # none. The book's one standard figure: the skirt foundation's (p. 84: waist 26½, hips 40) with
+  # the coats' bust 39 and hips 40. p. 45's 7→26 is drawn 2.01 in, which is 26½'s 1.96 within the
+  # gate (checked).
+  waist: 26.5
+  elbow_len: 7.5                   # the sleeve's (p. 60)
+  inside_len: 19
+  elbow_width: 12
+  wrist_width: 9
+style:
+  shoulder_width: 6                # p. 36: "24 from 9 is the shoulder width, in this case 6 inches"
+  cb_waist: 2                      # p. 42: 7 from 4 is 2 inches
+  cb_hip: 1.5                      # p. 42: 6 from 5 is 1½ inches
+  full_length: 32                  # no length printed: p. 45 draws 31.9 in at the centre back (2 to the hem), as the semi-fitted jacket's 32
+drawings:
+  fdn: data/mitchell/trace/p-043.yaml   # the tight-fitted foundation (PDF p. 47)
+  p45: data/mitchell/trace/p-045.yaml   # the jacket (PDF p. 49)
+  p61: data/mitchell/trace/p-061.yaml   # the two-piece sleeve (PDF p. 65)

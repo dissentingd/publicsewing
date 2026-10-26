@@ -1,0 +1,83 @@
+# Design specs
+
+Every design is `<design>/spec.yaml`, built into a FreeSewing design by `lib/spec.mjs`
+(`<design>/src/index.mjs` only loads it). A spec is data: a block, options, and pieces made
+by named operations. [chore-coat/spec.yaml](chore-coat/spec.yaml) is the plainest example.
+
+## Top level
+
+| Key | What |
+|---|---|
+| `about` | The design's data: `id` (prefixes its piece names), `name`, `description`, `difficulty`, `tags`, `techniques`, `version`, `source` (book, figure, corpus folder id). |
+| `block` | The FreeSewing block it starts from: `brian`, `bent`, `titan`, `breanna` (`blocks/`). |
+| `options` | Every option, with the source's number as its default. `{ pct, min, max, of: chest, menu }` is a percentage (of a measurement with `of`); `{ count, min, max }`, `{ bool }` and `{ dflt, list }` as in FreeSewing. |
+| `pieces` | The pattern pieces, in order (below). |
+| `extends` | Start from another spec file: its pieces, block and options. This spec's `options` entries are merged into the parent's (`buttons: { count: 5 }` changes only the default); its `pieces` are added, or replace the parent's by key. A parent with no `about` is a template (`templates/`): its pieces take this design's name. |
+
+## Pieces
+
+A piece is either drafted by operations or made by a piece type.
+
+**Drafted:** `from: <block>.<part>` (e.g. `brian.front`) or nothing (a new piece, with
+`after: [pieces]` it needs drafted first), then:
+
+| Key | What |
+|---|---|
+| `hide` | `tree` hides the block's own parts; or FreeSewing's `{ self, from, inherited }`. |
+| `measurements` | Measurements it needs beyond what its operations declare. |
+| `options` | The spec options it uses (a list), or `all`. |
+| `let` | Named values for its operations, worked out in order (`ext: chest * buttonExtension`). |
+| `ops` | Operations, run in order: `- <operation>: { arguments }`. Any operation takes `if:`. |
+
+**Piece types** (`part: <type>`, with their own keys): `facing`, `backNeckFacing`, `sleeve`,
+`raglanSleeve`, `pocket`, `flap`, `belt`, `backPanel`, `sideBody`, `library`, `welt`,
+`weltBag`, `yokePiece`, `yokeSleeve`, `sleeveBand`, `placket`, `neckBand`, `legBand`,
+`jacketPanel` (`material:` lining to cut it from lining; `lining:` an expression, true cuts it
+again in lining; `library` takes `lining:` too), `setInPocket` (a flap, jet or bag of a set-in
+flap pocket from `boxLayout`'s or `jacketLayout`'s `pockets`). `welt` and `weltBag` take
+`store:` for a store key other than `blouse.welts` (`jacket.welts`). A piece
+type's `if:` is an expression over options; when it is false the piece is left out.
+
+## Operations
+
+| Operation | Does | Library |
+|---|---|---|
+| `coatBack` / `coatFront` | Coat body on Brian: hem, seat, side seam, waist shaping, stout figures; the front's button stand, front corner, dropped hem, V neck (`neckY`). | `lib/coat.mjs` |
+| `collar` | A turn-down or stand collar, cut on the fold. | `lib/coat.mjs` |
+| `shawl` | A shawl collar cut in one with the front. | `lib/coat.mjs` |
+| `buttons` | Buttons in rows, evenly from `top` to `bottom`. | `lib/coat.mjs` |
+| `raglan` | Cut the back or front along a raglan line. | `lib/raglan.mjs` |
+| `backYokeCut` | Mark a coat back's yoke line, to cut it into `backPanel`s. | `lib/panels.mjs` |
+| `body3Back` / `body3Front` | A three-piece body (back, side body, forepart) on Bent. | `lib/body3.mjs` |
+| `yokeSide` | A yoke garment's back or front, into the store. | `lib/yoke.mjs` |
+| `jacketBase` / `jacketLayout` | A princess-seamed jacket on Breanna: each side read in, then cut along its darts into panels, flared below the waist, with a lap, lapel and gorge. | `lib/jacket.mjs` |
+| `boxLayout` | A box body on the same bases (`jacketBase` with `style: box`): back and front, side seams flared from the armholes, the bust dart pivoted into the front neck, lap, lapel, gorge. | `lib/jacket.mjs` |
+| `gatheredLeg` | A full leg gathered into a band, elastic waist, on Titan. | `lib/trousers.mjs` |
+| `store` | Put a value in the store (`key: coat.pockets`), e.g. pocket sizes for later pieces. | |
+| `markPocket` | Draw a pocket's place on the piece. | `lib/pockets.mjs` |
+| `markLine` | Draw a marked line (a belt's place). | |
+| `hidePiece` | Leave the piece out (with `if:`); its later operations don't run. | |
+
+## Expressions
+
+Argument values are expressions: numbers, `'strings'`, `null`, `+ - * / ( )`, comparisons
+(`== != < <= > >=`), `and`, `or`, `not`, and `min`, `max`, `abs`, `if(cond, a, b)`. Names are
+looked up in this order:
+
+1. the piece's `let` values, then the operation's own earlier arguments (and, in a map, its
+   earlier entries: `lower.x`);
+2. measurements (`chest`, `waistToSeat`);
+3. options (`buttonExtension`, already a fraction);
+4. `coat.<key>` from the store (`coat.frontEdge.ext`);
+5. `<landmark>.x` / `.y`: points on the piece, by their standard name (`underarm`,
+   `neckPoint`, `shoulderTip`, `sideSeat`, `sideHem`; mapped to the block's own names in
+   `blocks/`) or the block's name (`cfNeck`, `cfWaist`, `armholeHollow`).
+
+A value that comes out `null` is left out (so an operation sees it as not given). A map with
+`if:` false is left out. A `_name` entry is a working value: later entries can use it, but it
+isn't stored.
+
+## Checking a change
+
+`tools/snapshot.mjs <design> save` before, `compare` after: every point, path, snippet and
+stored value at every test size and option variant (`tools/variants.json`) must match.

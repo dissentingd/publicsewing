@@ -1,0 +1,962 @@
+{
+ "id": "mitchell-tight-fitted-jacket",
+ "garment": "women's tight-fitted jacket, single dart",
+ "size": {
+  "label": "bust 39, waist 26½ (the book's measures, pp. 36 and 84)",
+  "order": "the book's measures, inches (bust, back depth, back waist length, …)"
+ },
+ "source": {
+  "book": "Mitchell, The New \"Standard\" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)",
+  "table": "Tight-Fitted Jacket Foundation, pp. 42–43 (measures p. 36); Tight-Fitted Jacket, Single Dart, pp. 44–45; Two-Piece Sleeve, pp. 60–61",
+  "corpus": "newstandardworko00mitc"
+ },
+ "rights": "Published 1921 (Mitchell Publications, New York), public domain in the US. Drafting methods are uncopyrightable (project policy). Points are constructed from the text's rules by ccat; curves the text leaves \"as per diagram\" and the lapel are traced from the book's diagrams and set onto the constructed points (tracing pattern geometry is fair use, project policy).",
+ "status": {
+  "construction": "numbered-point draft, curves traced from the diagram",
+  "sewable": false,
+  "note": "Single-breasted tight-fitted jacket with a shawl collar cut in one with the front (neck dart): back, side back, under-arm, side front and front (princess seam to 40), panels flared below the waist, and the two-piece sleeve. Waist 26½ (the book's standard figure; this draft prints none). Length, lap and collar as drawn (p. 45). Not test-sewn."
+ },
+ "notice": "Not for AI training.",
+ "construction": {
+  "recipe": "recipes/mitchell/tight_fitted_jacket.yaml",
+  "data": {
+   "garment": "data/mitchell/tight_fitted_jacket.yaml"
+  },
+  "units": "cm"
+ },
+ "export": {
+  "seam_allowance_cm": 1.5,
+  "seam_allowance_basis": "export default, uniform; not from the source",
+  "notch_depth_cm": 0.6,
+  "grain": "vertical in the drafting frame",
+  "darts": "cut edge runs straight across the dart mouth (caps not trued); drill hole 1 cm short of the apex",
+  "tiled_pdf": {
+   "letter": {
+    "page_cm": [
+     21.59,
+     27.94
+    ],
+    "pages_incl_cover": 56,
+    "margin_cm": 1.0,
+    "overlap_cm": 1.0
+   },
+   "a4": {
+    "page_cm": [
+     21.0,
+     29.7
+    ],
+    "pages_incl_cover": 45,
+    "margin_cm": 1.0,
+    "overlap_cm": 1.0
+   }
+  }
+ },
+ "pieces": [
+  {
+   "name": "back",
+   "cut": 2,
+   "notches": 2,
+   "darts": 0,
+   "stitch_perimeter_cm": 186.613,
+   "cut_perimeter_cm": 198.508,
+   "area_cm2": 694.69
+  },
+  {
+   "name": "side_back",
+   "cut": 2,
+   "notches": 4,
+   "darts": 0,
+   "stitch_perimeter_cm": 184.304,
+   "cut_perimeter_cm": 197.056,
+   "area_cm2": 798.43
+  },
+  {
+   "name": "under_arm",
+   "cut": 2,
+   "notches": 3,
+   "darts": 0,
+   "stitch_perimeter_cm": 160.47,
+   "cut_perimeter_cm": 172.935,
+   "area_cm2": 706.66
+  },
+  {
+   "name": "side_front",
+   "cut": 2,
+   "notches": 3,
+   "darts": 0,
+   "stitch_perimeter_cm": 203.762,
+   "cut_perimeter_cm": 214.042,
+   "area_cm2": 1123.88
+  },
+  {
+   "name": "front",
+   "cut": 2,
+   "notches": 4,
+   "darts": 1,
+   "stitch_perimeter_cm": 230.634,
+   "cut_perimeter_cm": 240.786,
+   "area_cm2": 1278.11
+  },
+  {
+   "name": "top_sleeve",
+   "cut": 2,
+   "notches": 3,
+   "darts": 0,
+   "stitch_perimeter_cm": 151.326,
+   "cut_perimeter_cm": 162.311,
+   "area_cm2": 1136.38
+  },
+  {
+   "name": "under_sleeve",
+   "cut": 2,
+   "notches": 2,
+   "darts": 0,
+   "stitch_perimeter_cm": 126.448,
+   "cut_perimeter_cm": 142.727,
+   "area_cm2": 500.15
+  }
+ ],
+ "gate": {
+  "recipe": "mitchell-tight-fitted-jacket",
+  "passed": true,
+  "gate_rel": 0.01,
+  "printed_step": 0.635,
+  "checks": [
+   {
+    "id": "back-depth",
+    "measured": 18.0464,
+    "expected": 17.78,
+    "error": 0.2664,
+    "rel": 0.014986,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 36: 3 from 2 is the back depth (7)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "back-waist",
+    "measured": 38.3989,
+    "expected": 38.1,
+    "error": 0.2989,
+    "rel": 0.007846,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 36: 4 from 2 is the back waist length (15)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "7",
+    "measured": 5.0986,
+    "expected": 5.08,
+    "error": 0.0186,
+    "rel": 0.003656,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 36: 7 from 4 is 1 inch (p. 42, tight-fitted: 2 inches)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "6",
+    "measured": 3.9154,
+    "expected": 3.81,
+    "error": 0.1054,
+    "rel": 0.027659,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 36: 6 from 5 is ½ inch (p. 42, tight-fitted: 1½ inches)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "half-back-11",
+    "measured": 17.8176,
+    "expected": 17.78,
+    "error": 0.0376,
+    "rel": 0.002112,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 36: 11 from A is the half back width (7)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "half-back-10",
+    "measured": 17.6869,
+    "expected": 17.78,
+    "error": -0.0931,
+    "rel": 0.005238,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 36: 10 from 8 is the half back width",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "blade",
+    "measured": 26.7202,
+    "expected": 26.67,
+    "error": 0.0502,
+    "rel": 0.00188,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 36: 12 from 8 is the blade (10½)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "half-bust",
+    "measured": 49.4791,
+    "expected": 49.53,
+    "error": -0.0509,
+    "rel": 0.001027,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 36: 18 from [8] is ½ bust (39)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "13",
+    "measured": 3.1102,
+    "expected": 3.175,
+    "error": -0.0648,
+    "rel": 0.020403,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 36: 13 from 12 is 1¼ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "15",
+    "measured": 3.2585,
+    "expected": 3.175,
+    "error": 0.0835,
+    "rel": 0.026306,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 36: 15 from 13 is 1¼ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "17",
+    "measured": 3.1683,
+    "expected": 3.175,
+    "error": -0.0067,
+    "rel": 0.002101,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 36: 17 from 16 is 1¼ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "sleeve-length",
+    "measured": 48.3168,
+    "expected": 48.26,
+    "error": 0.0568,
+    "rel": 0.001176,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 60: 7 from 1 is the full length, 19 inches",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "sleeve-8",
+    "measured": 3.8535,
+    "expected": 3.81,
+    "error": 0.0435,
+    "rel": 0.011421,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 60: 8 from 6 is 1½ inches",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "sleeve-9",
+    "measured": 15.4422,
+    "expected": 15.24,
+    "error": 0.2022,
+    "rel": 0.013268,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 60: 9 from 8 is half the elbow width (12)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "sleeve-12",
+    "measured": 11.5839,
+    "expected": 11.43,
+    "error": 0.1539,
+    "rel": 0.013465,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 60: 12 from 7 is 4½ inches (half the wrist, 9)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "sleeve-13-14",
+    "measured": 6.539,
+    "expected": 6.35,
+    "error": 0.189,
+    "rel": 0.029767,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 60: 13 and 14 from the line drawn up from 8 are 1¼ inches each",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "sleeve-15",
+    "measured": 2.6908,
+    "expected": 2.54,
+    "error": 0.1508,
+    "rel": 0.059366,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 60: 15 from 8 is 1 inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "sleeve-16",
+    "measured": 2.4876,
+    "expected": 2.54,
+    "error": -0.0524,
+    "rel": 0.020624,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 60: 16 from 8 is 1 inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "sleeve-17",
+    "measured": 1.8525,
+    "expected": 1.905,
+    "error": -0.0525,
+    "rel": 0.027545,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 60: 17 from 7 is ¾ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "sleeve-18",
+    "measured": 2.0991,
+    "expected": 1.905,
+    "error": 0.1941,
+    "rel": 0.101896,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 60: 18 from 7 is ¾ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "sleeve-3",
+    "measured": 18.7744,
+    "expected": 19.05,
+    "error": -0.2756,
+    "rel": 0.014465,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 60: 3 from 2 is 15 on the ½",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "sleeve-5",
+    "measured": 3.2766,
+    "expected": 3.175,
+    "error": 0.1016,
+    "rel": 0.031989,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 60: 5 from 4 is 15 on the 12ths",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "26",
+    "measured": 5.1004,
+    "expected": 4.9742,
+    "error": 0.1262,
+    "rel": 0.025373,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 26 from 7 is 1-3 of ¼ waist less ¼ inch (waist 26½: the book's standard figure)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "27",
+    "measured": 7.5952,
+    "expected": 7.6404,
+    "error": -0.0452,
+    "rel": 0.005917,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 27 from 6 is 1 inch more than 26 from 7",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "30",
+    "measured": 2.4943,
+    "expected": 2.54,
+    "error": -0.0457,
+    "rel": 0.017978,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 30 from 26 is 1 inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "31",
+    "measured": 1.3739,
+    "expected": 1.27,
+    "error": 0.1039,
+    "rel": 0.081828,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 31 from 27 is ½ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "32",
+    "measured": 1.4187,
+    "expected": 1.27,
+    "error": 0.1487,
+    "rel": 0.117077,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 32 from 12 is ½ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "35",
+    "measured": 1.6259,
+    "expected": 1.5875,
+    "error": 0.0384,
+    "rel": 0.024198,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 35 from 34 is ⅝ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "36",
+    "measured": 1.5693,
+    "expected": 1.5875,
+    "error": -0.0182,
+    "rel": 0.011438,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 36 from 34 is ⅝ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "42",
+    "measured": 6.3842,
+    "expected": 6.3704,
+    "error": 0.0138,
+    "rel": 0.002168,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 42 from 41 is ½ inch more than 26 from 7",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "45",
+    "measured": 3.4043,
+    "expected": 3.175,
+    "error": 0.2293,
+    "rel": 0.072232,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 45 from 44 is 1¼ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "49",
+    "measured": 1.4568,
+    "expected": 1.27,
+    "error": 0.1868,
+    "rel": 0.147111,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 49 from 37 is ½ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "50",
+    "measured": 1.4024,
+    "expected": 1.27,
+    "error": 0.1324,
+    "rel": 0.104288,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 50 from 37 is ½ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "51",
+    "measured": 1.5699,
+    "expected": 1.5875,
+    "error": -0.0176,
+    "rel": 0.011079,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 51 from 38 is ⅝ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "52",
+    "measured": 1.6202,
+    "expected": 1.5875,
+    "error": 0.0327,
+    "rel": 0.020628,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 44: 52 from 38 is ⅝ inch",
+    "missing": [],
+    "skipped": false
+   }
+  ],
+  "reports": [
+   {
+    "id": "back shoulder 9→24, drawn − printed",
+    "value": -0.3883,
+    "note": ""
+   },
+   {
+    "id": "front shoulder 20→25, drawn − printed",
+    "value": -0.5189,
+    "note": ""
+   },
+   {
+    "id": "2 (½(bust−2) on the 24ths)",
+    "value": 0.0631,
+    "note": ""
+   },
+   {
+    "id": "9 (½(bust−2) on the 8ths)",
+    "value": -0.0728,
+    "note": ""
+   },
+   {
+    "id": "16 (½ bust on the 6ths)",
+    "value": -0.0884,
+    "note": ""
+   },
+   {
+    "id": "20 (front depth less 9–2, from 14)",
+    "value": -0.2033,
+    "note": ""
+   },
+   {
+    "id": "21 (½ bust on the 6ths)",
+    "value": -0.0676,
+    "note": ""
+   },
+   {
+    "id": "22 (½ bust on the 8ths)",
+    "value": -0.1079,
+    "note": ""
+   },
+   {
+    "id": "23 (half way 2–3)",
+    "value": 0.2121,
+    "note": ""
+   },
+   {
+    "id": "sleeve: 1→6 (elbow 7½) drawn − printed",
+    "value": 0.4951,
+    "note": ""
+   },
+   {
+    "id": "sleeve: 9→10 (1 in) drawn − printed",
+    "value": -0.6573,
+    "note": ""
+   },
+   {
+    "id": "sleeve: 9→11 (1 in) drawn − printed",
+    "value": -0.6368,
+    "note": ""
+   },
+   {
+    "id": "sleeve: 1→2 (15 on the 4ths) drawn − printed",
+    "value": 0.4534,
+    "note": ""
+   },
+   {
+    "id": "sleeve: working number (armhole − 2½), in",
+    "value": 12.7063,
+    "note": ""
+   },
+   {
+    "id": "sleeve: 4 half way 2–3, drawn − rule",
+    "value": -0.1262,
+    "note": ""
+   },
+   {
+    "id": "sleeve: head (top + under) − armhole, cm",
+    "value": 2.2871,
+    "note": ""
+   },
+   {
+    "id": "28 (half way 9–24)",
+    "value": 1.0891,
+    "note": ""
+   },
+   {
+    "id": "33 (½ in from the blade line, at the waist)",
+    "value": 0.2272,
+    "note": ""
+   },
+   {
+    "id": "39 (¾ in from the blade line, at the waist)",
+    "value": 0.2207,
+    "note": ""
+   },
+   {
+    "id": "40 (top of dart)",
+    "value": 0.2655,
+    "note": ""
+   },
+   {
+    "id": "41 (front waist length)",
+    "value": 0.2888,
+    "note": ""
+   },
+   {
+    "id": "43 (¼ more than 42 from 41)",
+    "value": 0.5933,
+    "note": ""
+   },
+   {
+    "id": "46 (¾ below 20–23, 45→46 = 28→24)",
+    "value": 0.8728,
+    "note": ""
+   },
+   {
+    "id": "47 (¼ waist less 41–42 from 39, on the sweep about 40)",
+    "value": 0.2394,
+    "note": ""
+   },
+   {
+    "id": "48 (⅜ more than 47 from 42)",
+    "value": 0.4951,
+    "note": ""
+   },
+   {
+    "id": "jacket half waist across the panels, in",
+    "value": 13.3083,
+    "note": ""
+   },
+   {
+    "id": "seam back 28→h26 − side back 28′→h30, cm",
+    "value": -0.2276,
+    "note": ""
+   },
+   {
+    "id": "seam side back Q→h35 − under-arm Q→h36, cm",
+    "value": 0.1566,
+    "note": ""
+   },
+   {
+    "id": "seam under-arm 32→h33 − side front 32→h39, cm",
+    "value": 0.45,
+    "note": ""
+   },
+   {
+    "id": "seam side front 45→h47 − front 44→h42, cm",
+    "value": -0.9836,
+    "note": ""
+   },
+   {
+    "id": "collar neck edge CBt→Nb − back neck, cm",
+    "value": 0.8427,
+    "note": ""
+   },
+   {
+    "id": "lap: drawn front edge at the waist from the centre front line (in; none printed)",
+    "value": 6.4103,
+    "note": ""
+   }
+  ],
+  "interpretations": [
+   {
+    "point": "2",
+    "note": "\"½ the bust measure on the 24ths less 2\": ½(bust − 2) on the 24ths, as in foundation.yaml"
+   },
+   {
+    "point": "18",
+    "note": "printed \"18 from 19 is ½ bust\": read as 18 from 8 (the box coat's step; FINDINGS)"
+   },
+   {
+    "point": "drawing 'p45'",
+    "note": "fitted on 8 points: 0.11896 drawing units per cm, turned -0.43°, residual rms 0.141 cm, max 0.263 cm"
+   },
+   {
+    "point": "path 'sb_scye' segment 0",
+    "note": "trace gaps joined by straight lines: 3.76 cm"
+   },
+   {
+    "point": "Q",
+    "note": "the scye's bottom from 32 meets the back scye about 1⅓ in above 10 (p. 45); the seam runs on from 10 up to it (\"35 through 10 upward\")"
+   },
+   {
+    "point": "path 'sb_scye' segment 0",
+    "note": "traced curve set onto 24–Q: scale 0.9302, turned -5.94°"
+   },
+   {
+    "point": "path 'ua_scye' segment 0",
+    "note": "traced curve set onto 32–Q: scale 1.0265, turned +0.82°"
+   },
+   {
+    "point": "20",
+    "note": "\"the width of the back part of the neck 9 to 2\": the straight distance 9–2"
+   },
+   {
+    "point": "44",
+    "note": "44 from 20 is the same as 28 from 9: along the front shoulder"
+   },
+   {
+    "point": "path 'sf_scye' segment 0",
+    "note": "traced curve set onto 46–12: scale 0.9709, turned -1.85°"
+   },
+   {
+    "point": "drawing 'fdn'",
+    "note": "fitted on 8 points: 0.15756 drawing units per cm, turned +0.20°, residual rms 0.131 cm, max 0.194 cm"
+   },
+   {
+    "point": "slQ",
+    "note": "the line 2–7 leans ½ in forward in 12 in below 1, as drawn (forward = toward the front, left)"
+   },
+   {
+    "point": "sl9",
+    "note": "\"square backward from 8\": square to the line 7–8"
+   },
+   {
+    "point": "sl12",
+    "note": "12 from 7, 4½, is half the wrist width (9)"
+   },
+   {
+    "point": "drawing 'p61'",
+    "note": "fitted on 8 points: 0.15771 drawing units per cm, turned +1.05°, residual rms 0.232 cm, max 0.316 cm"
+   },
+   {
+    "point": "w19",
+    "note": "the under head's last inch into 19 merges with the drawn armhole copy and isn't traced: the traced part is set onto 19–14"
+   },
+   {
+    "point": "Nb",
+    "note": "the collar's neck edge ends ½ in behind 20 (p. 45; the box coat collar's 20b)"
+   },
+   {
+    "point": "Nd",
+    "note": "the shawl collar's neck dart: from 20′ and ½ in behind 20 to p. 45's point on the neck curve"
+   },
+   {
+    "point": "path 'top_head' segment 0",
+    "note": "traced curve set onto sl20–sl3: scale 0.8938, turned -25.14°"
+   },
+   {
+    "point": "path 'top_head' segment 1",
+    "note": "trace gaps joined by straight lines: 1.61 cm"
+   },
+   {
+    "point": "path 'top_head' segment 1",
+    "note": "traced curve set onto sl3–sl5: scale 0.8429, turned -0.73°"
+   },
+   {
+    "point": "path 'top_head' segment 2",
+    "note": "trace gaps joined by straight lines: 1.19, 1.33, 1.47 cm"
+   },
+   {
+    "point": "path 'top_head' segment 2",
+    "note": "traced curve set onto sl5–sl13: scale 0.8369, turned +3.49°"
+   },
+   {
+    "point": "path 'under_head' segment 0",
+    "note": "trace gaps joined by straight lines: 1.44 cm"
+   },
+   {
+    "point": "path 'under_head' segment 0",
+    "note": "traced curve set onto sl19–sl14: scale 1.0464, turned -15.81°"
+   },
+   {
+    "point": "path 'back_neck' segment 0",
+    "note": "traced curve set onto 2–9: scale 0.9983, turned -0.48°"
+   },
+   {
+    "point": "path 'fs44' segment 0",
+    "note": "trace gaps joined by straight lines: 2.52, 1.79 cm"
+   },
+   {
+    "point": "path 'fs44' segment 0",
+    "note": "traced curve set onto 44–40: scale 0.9895, turned +0.76°"
+   },
+   {
+    "point": "path 'fs45' segment 0",
+    "note": "trace gaps joined by straight lines: 2.52, 1.79 cm"
+   },
+   {
+    "point": "path 'fs45' segment 0",
+    "note": "traced curve set onto 45–40: scale 0.9818, turned +0.42°"
+   },
+   {
+    "point": "path 'front_edge' segment 0",
+    "note": "trace gaps joined by straight lines: 1.19, 0.54, 1.84, 3.00 cm"
+   },
+   {
+    "point": "path 'front_edge' segment 1",
+    "note": "trace gaps joined by straight lines: 5.16 cm"
+   },
+   {
+    "point": "path 'front_edge' segment 2",
+    "note": "trace gaps joined by straight lines: 0.81 cm"
+   },
+   {
+    "point": "path 'front_edge' segment 7",
+    "note": "trace gaps joined by straight lines: 0.77 cm"
+   }
+  ]
+ },
+ "files": {
+  "pattern.dxf": "3ace9e4fd8ba49b040e0d9c7de2feb69635d11a2572c36662c693dff3133d651",
+  "pattern.svg": "feff395f38df29362cb69a176f44bbba578e294cedd54300e5c476715c073613",
+  "pattern_a4.pdf": "f5652f22802ea92653ef9faadcf0d1946575b157436fdb4b9c9cee621a34a344",
+  "pattern_letter.pdf": "69674332c7930be0f7360227f565b801d4ffb68e0e976a898a47890f5a41443a"
+ },
+ "provenance": {
+  "ccat": "0.1.0",
+  "commit": "d95ab50"
+ }
+}

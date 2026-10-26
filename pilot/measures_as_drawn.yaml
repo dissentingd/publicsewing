@@ -1,0 +1,10 @@
+# Measures read off Browne's Diagram 4 at ~96 px/in (inches), so the draft
+# can be compared against the drawing. A plausible 1907 34in-bust figure.
+half_chest: 17.0          # FC at 18.49 from back plan line − true back 0.51 − 1
+half_waist: 12            # not used by this outline
+length_of_back: 13.77     # neck plan line → waist line
+half_width_of_back: 4.97  # back armhole plan 5.83 − true back 0.36 − 0.5
+under_arm: 6.79           # waist line → armhole line (text: "as a rule ½ length of back")
+half_neck: 6.84           # back neck: (2.03 + ¼) × 3
+length_of_front: 14.23    # true waist point → front neck, along the front line
+across_chest: 7.03        # front of chest → across-chest mark

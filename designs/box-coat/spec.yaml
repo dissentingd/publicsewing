@@ -1,0 +1,137 @@
+# Box coat: Mitchell's box coat (New "Standard" Work ... Ladies' Tailor-Made Garments, 1921,
+# pp. 16-19, sleeve pp. 60-61) on FreeSewing's Breanna block: a loose coat in two body pieces,
+# side seams flared from the armhole, the bust dart pivoted into the front neck, a 3" lap,
+# notched lapel and collar, set-in flap pockets, two-piece sleeves. See BRIEF.md for where each default is read.
+about:
+  id: boxcoat
+  name: Box coat
+  description: "A loose, hip-to-thigh-length coat: straight body flared from the arms, notched lapel, two-piece sleeves"
+  difficulty: 3
+  tags: [coats, jackets]
+  techniques: [dart, lapel, collar, facing, button, flap-pocket, two-piece-sleeve]
+  version: 0.1.0
+  source: "Mitchell, New \"Standard\" Work on ... Ladies' Tailor-Made Garments (1921), pp. 16-19, 60-61 (newstandardworko00mitc)"
+
+block: breanna
+
+options:
+  # Fit: "a loose hanging effect" (Breanna's own ease options, opened up)
+  chestEase: { pct: 18, min: 8, max: 30, of: chest, menu: fit }
+  seatEase: { pct: 12, min: 4, max: 30, of: seat, menu: fit }
+  bicepsEase: { pct: 25, min: 10, max: 50, of: biceps, menu: fit }
+  # Breanna's bust dart stays at the waist (it is pivoted into the neck below); no back darts
+  primaryBustDart: { dflt: '06:00', list: ['06:00'], menu: false }
+  secondaryBustDart: { dflt: none, list: [none], menu: false }
+  shoulderDart: { bool: false, menu: false }
+  waistDart: { bool: false, menu: false }
+  # The neck dart: "1 1/4 inches wide at 22 and about 6 inches long"
+  neckDartWidth: { pct: 3.2, min: 0, max: 8, of: chest, menu: fit } # 1 1/4" at bust 39
+  neckDartAt: { pct: 88, min: 50, max: 95, menu: style } # along the front neck from the neck point
+  neckDartLength: { pct: 60, min: 30, max: 90, menu: style } # of the way to the bust point
+  # Style
+  lengthBelowWaist: { pct: 70, min: 30, max: 95, menu: style } # x waistToFloor; 27 1/2" of ~40"
+  flare: { pct: 4.4, min: 0, max: 15, of: seat, menu: style } # 1 3/4" each side of the side seam
+  cbFlare: { pct: 1.25, min: 0, max: 4, of: seat, menu: style } # CB 1/2" out at the hip line; 0: on the fold
+  buttonExtension: { pct: 7.7, min: 2, max: 10, of: chest, menu: style } # the 3" lap
+  buttons: { count: 3, min: 1, max: 6, menu: style }
+  buttonInset: { pct: 25, min: 15, max: 100, menu: style } # x the lap, from the front edge (3/4" of 3"); 100%: on CF
+  # Pockets, as p. 19 draws them: a flap pocket on the hip line and a smaller one above it
+  pockets: { bool: true, menu: style }
+  pocketBelow: { pct: 55, min: 20, max: 90, menu: style } # x waistToSeat: mouth below the waist (5 3/4"; Mitchell's hip line is 7 3/8" down, FreeSewing's seat ~10 1/2")
+  pocketFromCF: { pct: 8, min: 4, max: 15, of: chest, menu: style } # mouth's front end behind CF (3 1/8")
+  pocketWidth: { pct: 16.7, min: 10, max: 22, of: chest, menu: style } # 6 1/2"
+  flapDepth: { pct: 40, min: 20, max: 70, menu: style } # x pocket width (2 5/8")
+  ticketPocket: { bool: true, menu: style }
+  ticketAbove: { pct: 32, min: 15, max: 50, menu: style } # x waistToSeat: above the hip pocket's mouth (3 3/8")
+  ticketWidth: { pct: 60, min: 40, max: 90, menu: style } # x pocket width (3 7/8")
+  ticketFlapDepth: { pct: 50, min: 20, max: 70, menu: style } # x ticket width (2")
+  bagDepth: { pct: 110, min: 60, max: 150, menu: construction } # x each pocket's width
+  breakBelowBust: { pct: 16, min: 0, max: 40, menu: style } # x hpsToWaistFront; 3 1/2" of 22"
+  rollOut: { pct: 3.7, min: 0, max: 10, of: neck, menu: style } # crease 1/2" in front of the neck point
+  lapelStyle: { dflt: notch, list: [notch, peak], menu: style }
+  lapelWidth: { pct: 24, min: 12, max: 35, of: neck, menu: style }
+  collarWidth: { pct: 22, min: 12, max: 30, of: neck, menu: style }
+  collarSpring: { pct: 14, min: 0, max: 25, menu: style }
+  collarPoint: { pct: 5, min: 0, max: 12, of: neck, menu: style }
+  # Construction
+  facingWidth: { pct: 10, min: 6, max: 16, of: chest, menu: construction }
+
+pieces:
+  backBase:
+    from: breanna.back
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    ops:
+      - jacketBase: { side: back, style: box }
+  frontBase:
+    from: breanna.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, seat, waistToSeat, waistToFloor, neck, hpsToWaistFront]
+    ops:
+      - jacketBase: { side: front, style: box }
+      - boxLayout:
+          seat: seat * (1 + seatEase)
+          hipDepth: waistToSeat
+          length: waistToFloor * lengthBelowWaist
+          flare: seat * flare
+          cbOut: seat * cbFlare
+          lap: chest * buttonExtension
+          buttonInset: buttonInset
+          pockets:
+            hip:
+              if: pockets
+              below: waistToSeat * pocketBelow
+              from: chest * pocketFromCF
+              w: chest * pocketWidth
+              flap: w * flapDepth
+              bag: w * bagDepth
+              clear: chest * 0.02
+            ticket:
+              if: pockets and ticketPocket
+              below: waistToSeat * (pocketBelow - ticketAbove)
+              from: chest * pocketFromCF
+              w: chest * pocketWidth * ticketWidth
+              flap: w * ticketFlapDepth
+              bag: w * bagDepth
+              clear: chest * 0.02
+          breakBelow: hpsToWaistFront * breakBelowBust
+          rollOut: neck * rollOut
+          lapelWidth: neck * lapelWidth
+          peak: lapelStyle == 'peak'
+          facing: chest * facingWidth
+          dartWidth: chest * neckDartWidth
+          dartAt: neckDartAt
+          dartLength: neckDartLength
+          sleeveStore: [library.twoPartSleeve, library.topsleeve, library.undersleeve, boxcoat.topsleeve, boxcoat.undersleeve]
+      - store: { key: library.topsleeve.title, value: { nr: 5, brand: "'PublicSewing'" } }
+      - store: { key: library.undersleeve.title, value: { nr: 6, brand: "'PublicSewing'" } }
+
+  front: { part: jacketPanel, after: [backBase, frontBase], panel: front, nr: 1, label: front, cut: 2, buttons: true }
+  back: { part: jacketPanel, after: [backBase, frontBase], panel: back, nr: 2, label: back, cut: 2 }
+  facing: { part: jacketPanel, after: [backBase, frontBase], panel: facing, nr: 3, label: facing, cut: 2 }
+
+  # Collar "to harmonize with the shape of the lapel", sewn from CB to the gorge
+  collar:
+    after: [backBase, frontBase]
+    measurements: [neck]
+    options: [collarWidth, collarSpring, collarPoint]
+    ops:
+      - collar:
+          target: coat.jacketNeck.back + coat.jacketNeck.front
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: neck * collarPoint
+          nr: 4
+
+  topsleeve: { part: library, from: topsleeve, after: [backBase, frontBase] }
+  undersleeve: { part: library, from: undersleeve, after: [backBase, frontBase] }
+
+  # Set-in flap pockets: flap, jet and bag each
+  hipFlap: { part: setInPocket, after: [backBase, frontBase], key: hip, piece: flap, nr: 7, label: hipFlap, if: pockets }
+  hipJet: { part: setInPocket, after: [backBase, frontBase], key: hip, piece: jet, nr: 8, label: hipJet, if: pockets }
+  hipBag: { part: setInPocket, after: [backBase, frontBase], key: hip, piece: bag, nr: 9, label: hipPocketBag, if: pockets }
+  ticketFlap: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: flap, nr: 10, label: ticketFlap, if: pockets and ticketPocket }
+  ticketJet: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: jet, nr: 11, label: ticketJet, if: pockets and ticketPocket }
+  ticketBag: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: bag, nr: 12, label: ticketPocketBag, if: pockets and ticketPocket }

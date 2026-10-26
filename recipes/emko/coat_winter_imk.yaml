@@ -1,0 +1,215 @@
+# ЕМКО СЭВ т.3 §3, men's winter coat, straight silhouette: model construction ИМК
+# (Table 3.3, Fig. 14 body, Fig. 15 two-piece sleeve) on top of the base construction
+# (jacket.yaml run on Table 3.2). Inputs: mN = Table 3.3 row N, nN = Table 3.3 sleeve
+# row N (data/emko/coat_winter_176-100-88.yaml sections imk, imk_sleeve).
+# The model (p. 41): front and back with cut-off yokes, back with a centre seam, slanted
+# welt pockets, two-piece sleeve with front and back seams, turn-down collar (по модели,
+# not tabulated). Unlike the jacket's ИМК there is no side panel: the side seam is the
+# vertical through 333. Both БК darts go into the yoke seams: the back shoulder dart's
+# angle opens the back yoke seam at the armhole (23–221–23'), the chest dart becomes the
+# front yoke seam's two edges (36–371 / 36–371'). The belly is taken by rotating the lower
+# front about 46 (rows 7–13.1), which leaves a side dart 432–451–432' in the pocket line.
+extends: jacket.yaml
+# The БК one-piece sleeve is a construction step here; the garment's sleeve is the
+# two-piece one, so its cap is checked instead (two-piece-cap-vs-DOR below).
+drop_checks: [sleeve-cap-vs-DOR]
+recipe: emko-coat-winter-imk
+source: {book: "ЕМКО СЭВ т.3", section: 3, tables: ["3.2", "3.3"], figures: [2, 3, 14, 15, 36]}
+inputs: [m1, m2, n3, n4, n5, n6, n11, n12, n13, n14, n15, n16]
+check_inputs: [m7]                          # printed for 176-100-88 only; the size's own value is the formula
+values:
+  d461: 0.335 * r11                        # rows 7, 9: 46–461 = 46–461' = 0,335|47–57|, this size
+  dart_b: angle("123", "221", "123'")      # row 3: back dart angle at the yoke seam
+  belly: angle("461", "46", "461'")        # rows 7–10: lower front rotated about 46
+  roll_e: dist("s432", "s433")             # sleeve row 6: elbow roll (перекат)
+points:
+  # ---- back yoke (Table 3.3 rows 2–5.2) ----
+  "211": {offset: {from: "111", dir: down, d: m2}, row: 2}
+  "23": {path_x: {path: back_arm, line: {from: "211", dir: right}, pick: first}, row: 2,
+         note: "⊥ from 211 to the centre back (vertical) meets the armhole"}
+  "221": {line_x: {a: {from: "211", dir: right}, b: ["123", "32"]}, row: 2}
+  "23'": {rotate: {point: "23", about: "221", deg: dart_b}, row: 3, note: "∠23–221–23' = ∠123–221–123', R 221–23' = 221–23 (row 4)"}
+  "342'''": {circle_circle: {c1: "141", r1: 'dist("14''", "342''''")', c2: "23'", r2: 'dist("14''", "342''''")', pick: right},
+             row: 5, note: "rows 5, 5.1: radius of the БК upper back armhole (14'–342'')"}
+  # ---- side seam (row 1) ----
+  "333": {offset: {from: "331", dir: right, d: m1}, row: 1}
+  "334": {path_x: {path: back_arm, line: {from: "333", dir: up}, pick: last}, row: 1}
+  "431": {project: {x_of: "333", y_of: "411"}, row: 1}
+  "431'": {project: {x_of: "333", y_of: "47"}, row: 1}
+  "531": {project: {x_of: "333", y_of: "511"}, row: 1}
+  "931": {project: {x_of: "333", y_of: "91"}, row: 1}
+  "931'": {project: {x_of: "333", y_of: "97"}, row: 1, interp: "931 on the back hem level (91), 931' on the front's (97)"}
+  # ---- front yoke (row 6) ----
+  "353": {path_x: {path: front_arm, line: {from: "36", dir: left}, pick: first}, row: 6}
+  # ---- belly: lower front rotated about 46 (rows 7–13.1) ----
+  "461": {offset: {from: "46", dir: down, d: d461}, row: 7}
+  "432": {line_x: {a: {from: "461", dir: left}, b: {from: "333", dir: down}}, row: 8}
+  "461'": {offset: {from: "46", dir: {toward: ["36", "46"]}, d: d461}, row: 9}
+  "432'": {rotate: {point: "432", about: "46", deg: belly}, row: 10,
+           note: "⊥ to 46–461' at 461', length 461–432: the rotation of 461–432 about 46"}
+  "451": {line_x: {a: ["432'", "461'"], b: {from: "351", dir: down}},
+          interp: "apex of the side dart; no row defines 451. Measured on Fig. 14: on the vertical through 351 (x ≈ 41.5) and on the lower pocket edge 432'–461' (≈ 0.8 below 432–461)"}
+  "971'": {offset: {from: "471'", dir: {toward: ["371", "471'"]}, d: 'dist("471", "971")'}, row: 11}
+  "96'": {circle_line: {center: "971'", r: 'dist("971", "96")', line: {from: "971'", dir: {perp: ["471'", "971'"]}}, pick: left},
+          row: 12}
+  "931''": {circle_circle: {c1: "96'", r1: 'dist("96", "931")', c2: "432'", r2: 'dist("432", "931''")', pick: {near: "931'"}},
+            row: 13, note: "rows 13, 13.1 as printed: R 96'–931'' = 96–931 (not 96–931'), R 432'–931'' = 432–931'"}
+  # ======== two-piece sleeve (Fig. 15, Table 3.3 sleeve rows) ========
+  s355: {project: {x_of: s352, y_of: s352}, note: "355 ≡ 352 (Fig. 36)"}
+  s933: {project: {x_of: s931, y_of: s931}, interp: "back fold 131–333–431–933 ends at the БК cuff point 931"}
+  s135: {along: {from: s131, to: s345, d: n3}, row: 3}
+  s135': {along: {from: s131, to: s134, d: -n4}, row: 4, note: "down along the continuation of 134–131"}
+  s334: {project: {x_of: s135, y_of: s333}, row: 4}
+  s334': {project: {x_of: s135', y_of: s333}, row: 4}
+  s934: {along: {from: s933, to: s94, d: n5}, row: 5}
+  s934': {along: {from: s933, to: s94, d: -n6}, row: 6}
+  s432: {line_x: {a: [s933, s333], b: {from: s431, dir: right}}, row: 6}
+  s433: {line_x: {a: [s934, s334], b: {from: s431, dir: right}}, row: 6}
+  s334'': {circle_line: {center: s333, r: 'dist("s333", "s334''")', line: {from: s334, dir: {perp: [s333, s431]}}, pick: left},
+           row: 7, note: "∠334'–333–334'' = ease shrunk on the underarm line"}
+  s434: {offset: {from: s431, dir: right, d: roll_e}, row: 8}
+  s434': {circle_circle: {c1: s431, r1: 'dist("s431", "s434")', c2: s334'', r2: 'dist("s334", "s434")', pick: left}, row: 9}
+  s434'': {circle_line: {center: s431, r: 'dist("s431", "s434")', line: {from: s434, dir: {perp: [s431, s933]}}, pick: left},
+           row: 10, note: "∠434–431–434'' = ease shrunk on the elbow line"}
+  s356: {offset: {from: s351, dir: left, d: n11}, row: 11}
+  s356': {offset: {from: s351, dir: right, d: n12}, row: 12}
+  s452: {offset: {from: s451, dir: left, d: n13}, row: 13}
+  s452': {circle_circle: {c1: s451, r1: n14, c2: s356', r2: 'dist("s356", "s452")', pick: right}, row: 14}
+  s952: {along: {from: s951, to: s94, d: n15}, row: 15, interp: "hem arc 94⌒951 drawn straight, as in sleeve.yaml"}
+  s952': {along: {from: s951, to: s94, d: -n16}, row: 16}
+  s452'': {circle_circle: {c1: s451, r1: n14, c2: s952', r2: 'dist("s952", "s452")', pick: right}, row: 17,
+           note: "∠452'–451–452'' = stretch (растяжение)"}
+  s357: {path_x: {path: under_front, line: [s452, s356], pick: first}, row: 17,
+         note: "line 452–356 meets the lower front cap"}
+  s354: {circle_circle: {c1: s343, r1: r21, c2: s353, r2: 'dist("s353", "s343")', pick: {near: s346}}, row: 77,
+         note: "Table 3.2 row 77: R 353–354 = 353–343"}
+  s354': {offset: {from: s355, dir: {toward: [s141, s355]}, d: 'dist("s355", "s354")'}, row: 18}
+  s343': {circle_circle: {c1: s355, r1: 'dist("s355", "s343")', c2: s351, r2: 'dist("s351", "s343")', pick: right}, row: 19}
+  s357': {circle_line: {center: s343', r: 'dist("s354''", "s343''")', line: [s452', s356'], pick: lower}, row: 19.2}
+paths:
+  yoke_arm: [{arc: {center: "342'''", from: "141", to: "23'"}}]
+  arm_below_yoke:          # 23 → 14"; the yoke's own run is yoke_arm (the yoke seam lies between)
+    - {subpath: {name: back_arm, from: "23", to: "341"}}
+    - {line: ["341", "346"]}
+    - {path: front_arm}
+  back_side: [{line: ["334", "931"]}]
+  front_side_upper: [{line: ["334", "432"]}]      # the side dart's mouth 432–432' lies between
+  front_side_lower: [{line: ["432'", "931''"]}]
+  back_yoke_seam: [{polyline: ["211", "221", "23'"]}]
+  back_top_seam: [{polyline: ["211", "221", "23"]}]
+  front_yoke_seam: [{polyline: ["353", "36", "371'"]}]
+  front_top_seam: [{polyline: ["353", "36", "371"]}]
+  under_front: [{arc: {center: s343, from: s346, to: s352}}]
+  top_front_seam_a: [{polyline: [s357', s356', s452']}]
+  top_front_seam_b: [{line: [s452'', s952']}]
+  under_front_seam: [{polyline: [s357, s356, s452, s952]}]
+  top_back_seam: [{polyline: [s135', s334', s334'', s434', s434'', s934']}]
+  under_back_seam: [{polyline: [s135, s334, s434, s934]}]
+  top_cap:
+    - {line: [s135', s132]}
+    - {path: cap}
+    - {line: [s355, s354']}
+    - {arc: {center: s343', from: s354', to: s357'}}
+  under_cap:
+    - {line: [s135, s345]}
+    - {arc: {center: s342, from: s345, to: s341}}
+    - {line: [s341, s346]}
+    - {subpath: {name: under_front, from: s346, to: s357}}
+pieces:
+  back_yoke:
+    outline:
+      - {line: ["111", "112"]}
+      - {path: back_neck}
+      - {line: ["121", "141"]}
+      - {path: yoke_arm}
+      - {polyline: ["23'", "221", "211", "111"]}
+  imk_back:
+    outline:
+      - {polyline: ["211", "221", "23"]}
+      - {subpath: {name: back_arm, from: "23", to: "334"}}
+      - {polyline: ["334", "431", "531", "931", "911", "511", "411", "31", "21", "211"]}
+  front_yoke:
+    outline:
+      - {subpath: {name: front_arm, from: "353", to: "14\""}}
+      - {line: ["14\"", "16"]}
+      - {path: {name: front_neck, reverse: true}}
+      - {polyline: ["17", "371'", "36", "353"]}
+  imk_front:
+    outline:
+      - {polyline: ["353", "36", "371", "471'", "971'", "96'", "931''", "432'", "451", "432", "431'", "334"]}
+      - {subpath: {name: back_arm, from: "334", to: "341"}}
+      - {line: ["341", "346"]}
+      - {subpath: {name: front_arm, from: "346", to: "353"}}
+  top_sleeve:
+    outline:
+      - {path: top_cap}
+      - {polyline: [s357', s356', s452', s452'', s952', s94, s934', s434'', s434', s334'', s334', s135']}
+  under_sleeve:
+    outline:
+      - {path: under_cap}
+      - {polyline: [s357, s356, s452, s952, s94, s934, s434, s334, s135]}
+checks:
+  - id: row7-printed-vs-formula
+    measure: {value: 0.335 * r11}
+    expect: m7
+    source: "Table 3.3 row 7: 46–461 = 0,335|47–57| (Table 3.2 row 11), printed 6,45"
+    base_only: true
+  - id: imk-armhole-vs-DP
+    measure: {value: 'length("yoke_arm") + length("arm_below_yoke")'}
+    expect: r63_1
+    source: "row 63.1 (ДП), on the model armhole (back yoke 141–23', back, front, front yoke)"
+  # Table 3.3 prints no cap target for the model sleeve, so the garment's cap is held to
+  # row 63.3 (ДОР); Table 3.2 has no row 81 (к81 = 0), so ДОР itself (footnote 6).
+  - id: two-piece-cap-vs-DOR
+    measure: {value: 'length("top_cap") + length("under_cap")'}
+    expect: 'r63_3 - 2 * dist("s131", "s132")'
+    source: "row 63.3 (ДОР) and footnote 6, on the two-piece sleeve (top + under cap)"
+reports:
+  - {id: back-dart-angle-deg, measure: {value: dart_b}, note: "∠123–221–123', opened at the armhole as 23–221–23'"}
+  - {id: belly-angle-deg, measure: {value: belly}}
+  - {id: shoulder-back-yoke, measure: {dist: ["121", "141"]}, note: "= |121–14| (row 36.1), the shoulder dart 123'–22–123 eased"}
+  - {id: shoulder-front, measure: {dist: ["16", "14\""]}, note: "= |121–14| (row 53)"}
+  - {id: back-yoke-seam, measure: {length: back_yoke_seam}, note: "vs back_top_seam: equal by row 4"}
+  - {id: back-top-seam, measure: {length: back_top_seam}}
+  - {id: front-yoke-seam, measure: {length: front_yoke_seam}, note: "vs front_top_seam: equal, |36–371'| = |36–371|"}
+  - {id: front-top-seam, measure: {length: front_top_seam}}
+  - {id: side-seam-back, measure: {length: back_side}, note: "to the back hem level (91)"}
+  - {id: side-seam-front, measure: {value: 'length("front_side_upper") + length("front_side_lower")'}, note: "to 931'', the front hem; longer by about |91–97| vertically"}
+  - {id: side-dart-mouth, measure: {dist: ["432", "432'"]}}
+  - {id: sleeve-elbow-roll, measure: {value: roll_e}}
+  - {id: sleeve-front-seam-top, measure: {value: 'length("top_front_seam_a") + length("top_front_seam_b")'},
+     note: "vs under: the elbow stretch ∠452'–451–452'' (no value printed)"}
+  - {id: sleeve-front-seam-under, measure: {length: under_front_seam}}
+  - {id: sleeve-back-seam-top, measure: {length: top_back_seam}, note: "vs under: ease at 334'' and 434'–434'' (no value printed)"}
+  - {id: sleeve-back-seam-under, measure: {length: under_back_seam}}
+export:
+  # The garment is the ИМК pieces; the inherited БК pieces are construction steps.
+  back: {omit: true}
+  front: {omit: true}
+  sleeve: {omit: true}
+  sleeve_under: {omit: true}
+  back_yoke:
+    cut: 2
+    grain: vertical
+    notches: [{point: "221"}]                          # yoke seam: meets the back at 221
+  imk_back:
+    cut: 2
+    grain: vertical
+    notches: [{point: "221"}, {point: "411"}, {point: "431"}]   # yoke seam; waist at centre back and side
+  front_yoke:
+    cut: 2
+    grain: vertical
+    notches: [{point: "36"}]                           # yoke seam: meets the front at 36
+  imk_front:
+    cut: 2
+    grain: vertical
+    notches: [{point: "36"}, {point: "431'"}]          # yoke seam; waist at the side
+    darts: [["432'", "451", "432"]]                    # side dart in the pocket line, apex 451
+  top_sleeve:
+    cut: 2
+    grain: vertical
+    notches: [{point: s14}, {point: "s452'"}, {point: "s434'"}]   # cap top; elbow on both seams
+  under_sleeve:
+    cut: 2
+    grain: vertical
+    notches: [{point: s452}, {point: s434}]

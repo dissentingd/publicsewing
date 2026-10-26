@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg
+ xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="en" xmlns:freesewing="http://freesewing.org/namespaces/freesewing" freesewing="4.10.2" class="freesewing" width="1403.21mm" height="1287.46mm" viewBox="0 0 1403.21 1287.46"
+>
+<style type="text/css"> <![CDATA[ 
+
+/* Sample classes */
+svg.freesewing path.sample {
+  stroke-width: 0.75
+}
+svg.freesewing path.sample-focus {
+  stroke-width: 1.5; fill: rgba(0,0,0,0.1)
+}
+/* Paperless grid */
+svg.freesewing path.grid {
+  stroke: #555;
+  stroke-width: 0.3;
+}
+svg.freesewing path.gridline {
+  stroke: #555;
+  stroke-width: 0.2;
+  fill: none;
+}
+svg.freesewing path.gridline-lg {
+  stroke: #777;
+  stroke-width: 0.2;
+  stroke-dasharray: 1.5,1.5;
+  fill: none;
+}
+svg.freesewing path.gridline-sm {
+  stroke: #999;
+  stroke-width: 0.1;
+  fill: none;
+}
+svg.freesewing path.gridline-xs {
+  stroke: #999;
+  stroke-width: 0.1;
+  stroke-dasharray: 0.5,0.5;
+  fill: none;
+}
+svg.freesewing path.gridbox {
+  fill: url(#grid);
+}
+  /* Reset */
+  svg.freesewing path,
+  svg.freesewing circle,
+  svg.freesewing rect {
+    fill: none;
+    stroke: none;
+  }
+
+  /* Defaults */
+  svg.freesewing path,
+  svg.freesewing circle {
+    stroke: #000;
+    stroke-opacity: 1;
+    stroke-width: 0.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Stroke classes */
+  svg.freesewing .fabric {
+    stroke-width: 0.6;
+    stroke: #212121;
+  }
+  svg.freesewing .lining {
+    stroke-width: 0.6;
+    stroke: #10b981;
+  }
+  svg.freesewing .interfacing {
+    stroke-width: 0.6;
+    stroke: #a3a3a3;
+  }
+  svg.freesewing .canvas {
+    stroke-width: 0.6;
+    stroke: #d97706;
+  }
+  svg.freesewing .various {
+    stroke-width: 0.6;
+    stroke: #ef4444;
+  }
+  svg.freesewing .note {
+    stroke-width: 0.4;
+    stroke: #8b5cf6;
+  }
+  svg.freesewing .mark {
+    stroke-width: 0.4;
+    stroke: #3b82f6;
+  }
+  svg.freesewing .contrast {
+    stroke-width: 0.8;
+    stroke: #ec4899;
+  }
+
+  svg.freesewing .stroke-xs {
+    stroke-width: 0.1;
+  }
+  svg.freesewing .stroke-sm {
+    stroke-width: 0.2;
+  }
+  svg.freesewing .stroke-lg {
+    stroke-width: 0.6;
+  }
+  svg.freesewing .stroke-xl {
+    stroke-width: 1;
+  }
+  svg.freesewing .stroke-xxl,
+  svg.freesewing .stroke-2xl {
+    stroke-width: 2;
+  }
+  svg.freesewing .stroke-3xl {
+    stroke-width: 3;
+  }
+  svg.freesewing .stroke-4xl {
+    stroke-width: 4;
+  }
+
+  svg.freesewing .sa {
+    stroke-dasharray: 0.4, 0.8;
+  }
+  svg.freesewing .help {
+    stroke-width: 0.2;
+    stroke-dasharray: 15, 1.5, 1, 1.5;
+  }
+  svg.freesewing .dotted {
+    stroke-dasharray: 0.4, 0.8;
+  }
+  svg.freesewing .dashed {
+    stroke-dasharray: 1, 1.5;
+  }
+  svg.freesewing .lashed {
+    stroke-dasharray: 6, 6;
+  }
+  svg.freesewing .hidden {
+    stroke: none;
+    fill: none;
+  }
+  svg.freesewing .no-stroke { stroke: none !important; }
+  svg.freesewing .no-fill { fill: none !important; }
+  svg.freesewing .muted {
+    stroke-opacity: 0.15;
+    fill-opacity: 0.15;
+  }
+
+  /* Fill classes */
+  svg.freesewing .fill-fabric {
+    fill: #212121;
+  }
+  svg.freesewing .fill-lining {
+    fill: #10b981;
+  }
+  svg.freesewing .fill-interfacing {
+    fill: #a3a3a3;
+  }
+  svg.freesewing .fill-canvas {
+    fill: #d97706;
+  }
+  svg.freesewing .fill-various {
+    fill: #ef4444;
+  }
+  svg.freesewing .fill-note {
+    fill: #8b5cf6;
+  }
+  svg.freesewing .fill-mark {
+    fill: #3b82f6;
+  }
+  svg.freesewing .fill-contrast {
+    fill: #ec4899;
+  }
+
+  /* Text */
+  svg.freesewing text {
+    font-size: 5px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+      Arial, sans-serif;
+    fill: #000;
+    text-anchor: start;
+    font-weight: 200;
+    dominant-baseline: ideographic;
+  }
+  svg.freesewing .text-xs {
+    font-size: 3px;
+  }
+  svg.freesewing .text-sm {
+    font-size: 4px;
+  }
+  svg.freesewing .text-lg {
+    font-size: 7px;
+  }
+  svg.freesewing .text-xl {
+    font-size: 9px;
+  }
+  svg.freesewing .text-xxl {
+    font-size: 12px;
+  }
+  svg.freesewing .text-4xl {
+    font-size: 36px;
+  }
+
+  svg.freesewing .center {
+    text-anchor: middle;
+  }
+  svg.freesewing .baseline-center {
+    alignment-baseline: central;
+    dominant-baseline: central;
+  }
+
+  svg.freesewing .right {
+    text-anchor: end;
+  }
+
+  /* Bartack */
+  svg.freesewing path.bartack {
+    stroke-width: 2;
+    stroke: #fd7e14;
+    stroke-linecap: butt;
+  }
+
+]]>
+</style>
+<defs>
+ button="
+<g id="button"
+transform="scale(1)">
+  <circle
+    cx="0" cy="0" r="3.4"
+    class="mark"
+  ></circle>
+  <circle cx="-1" cy="-1" r="0.5" class="no-stroke fill-mark"></circle>
+  <circle cx="1"  cy="-1" r="0.5" class="no-stroke fill-mark"></circle>
+  <circle cx="1"  cy="1"  r="0.5" class="no-stroke fill-mark"></circle>
+  <circle cx="-1" cy="1"  r="0.5" class="no-stroke fill-mark"></circle>
+</g>" buttonhole="
+<g id="buttonhole"
+transform="scale(1)">
+  <path
+    class="mark"
+    d="M -1,-5 L 1,-5 L 1,5 L -1,5 z"
+  ></path>
+</g>" buttonhole-start="
+<g id="buttonhole-start"
+transform="scale(1)">
+  <path
+    class="mark"
+    d="M -1,-10 L 1,-10 L 1,0 L -1,0 z"
+  ></path>
+</g>" buttonhole-end="
+<g id="buttonhole-end"
+transform="scale(1)">
+  <path
+    class="mark"
+    d="M -1,0 L 1,0 L 1,10 L -1,10 z"
+  ></path>
+</g>" snap-stud-grad="
+<radialGradient id="snap-stud-grad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"
+transform="scale(1)">
+  <stop offset="30%" style="stop-color:rgb(235,235,235); stop-opacity:1"></stop>
+  <stop offset="80%" style="stop-color:rgb(100,100,100);stop-opacity:1"></stop>
+</radialGradient>" snap-stud="
+<g id="snap-stud"
+transform="scale(1)">
+  <circle id="snap-stud-circle-edge" cx="0" cy="0" r="3.4"
+    style="stroke:#666;fill:#dddddd;stroke-width:0.3;"
+  ></circle>
+  <circle id="snap-stud-circle-middle" cx="0" cy="0" r="1.8"
+    style="stroke:none;fill:url(#snap-stud-grad);"
+  ></circle>
+  <path
+    id="snap-stud-lines" style="fill:none;stroke:#666; stroke-width:0.2;"
+    d="M -2,0 L -3,0 M 2,0 L 3,0 M 0,2 L 0,3 M 0,-2 L 0,-3 M 1.5,1.5 L 2.1,2.1 M -1.5,1.5 L -2.1,2.1 M -1.5,-1.5 L -2.1,-2.1 M 1.5,-1.5 L 2.1,-2.1"
+  ></path>
+</g>" snap-socket="
+<g id="snap-socket"
+transform="scale(1)">
+  <circle id="snap-socket-circle-edge" cx="0" cy="0" r="3.4"
+    style="stroke:#666;fill:#bbbbbb;stroke-width:0.3;"
+  ></circle>
+  <circle id="snap-socket-circle-middle" cx="0" cy="0" r="2"
+    style="stroke:#666;fill:#dddddd; stroke-width:0.4;"
+  ></circle>
+  <path
+    style="fill:none;stroke:#666; stroke-width:0.5;"
+    d="M -1.7,-1 L -1.7,1 M 1.7,-1 L 1.7,1" id="snap-socket-lines"
+  ></path>
+</g>" eyelet="
+<g id="eyelet">
+  <circle id="eyelet-circle" cx="0" cy="0" r="3.4" class="no-full stroke-mark mark" stroke-width="1" fill="none" stroke="currentColor">
+  </circle>
+</g>" cutonfoldFrom="
+<marker orient="auto" refY="0" refX="0" id="cutonfoldFrom" style="overflow:visible;" markerWidth="12" markerHeight="8" transform="scale(1)">
+	<path class="note fill-note" d="M 0,0 L 12,-4 C 10,-2 10,2 12,4 z" transform="scale(1)"/>
+</marker>" cutonfoldTo="
+<marker orient="auto" refY="0" refX="0" id="cutonfoldTo" style="overflow:visible;" markerWidth="12" markerHeight="8" transform="scale(1)">
+	<path class="note fill-note" d="M 0,0 L -12,-4 C -10,-2 -10,2 -12,4 z" transform="scale(1)"/>
+</marker>" dimensionFrom="
+<marker orient="auto" refY="0" refX="0" id="dimensionFrom" style="overflow:visible;" markerWidth="12" markerHeight="8">
+	<path class="mark fill-mark" d="M 0,0 L 12,-4 C 10,-2 10,2 12,4 z" transform="scale(1)"/>
+</marker>" dimensionTo="
+<marker orient="auto" refY="0" refX="0" id="dimensionTo" style="overflow:visible;" markerWidth="12" markerHeight="8">
+	<path class="mark fill-mark" d="M 0,0 L -12,-4 C -10,-2 -10,2  -12,4 z" transform="scale(1)"/>
+</marker>" grainlineFrom="
+<marker orient="auto" refY="0" refX="0" id="grainlineFrom" style="overflow:visible;" markerWidth="12" markerHeight="8">
+	<path class="note fill-note" d="M -10,0 L 2,-4 C 0,-2 0,2  2,4 z" transform="scale(1)"/>
+</marker>" grainlineTo="
+<marker orient="auto" refY="0" refX="0" id="grainlineTo" style="overflow:visible;" markerWidth="12" markerHeight="8">
+	<path class="note fill-note" d="M 10,0 L -2,-4 C 0,-2 -2,2  -2,4 z" transform="scale(1)"/>
+</marker>" logo="<g id="logo" transform="scale(2) translate(-12.55 -18)"><path class="logo" fill="currentColor" d="m18.56 0c-0.4945 0.3515-0.469 0.3065-0.8685 0.437-0.916 0.2995-1.7945 0.135-2.837 0.048-0.3135-0.035-0.6245-0.0555-0.928-0.0575-1.5325-0.0105-2.834 0.439-3.0805 1.694-0.4545 0.2755-0.8725 0.609-1.2865 0.943-0.884 0.6975-1.5495 1.55-2.0035 2.5775-0.62 1.5175-0.06 3.146 0.2175 4.684 0.066 0.36 0.135 0.703 0.172 0.8355 0.0525 0.1865 0.145 0.3645 0.2455 0.5245 0.0235 4e-3 0.1475-0.187 0.177-0.2715 0.043-0.123 0.0385-0.3205-0.0085-0.4905-0.104-0.3825-0.203-0.693-0.2115-0.849-0.015-0.293 0.042-0.5635 0.149-0.6975 0.038-0.0475 0.125 0.1975 0.1025 0.2885-0.0265 0.1095-0.0465 0.297-0.038 0.3835 0.0235 0.293 0.0665 0.6065 0.12 0.8805 0.0685 0.3535 0.098 0.5805 0.0855 0.6685-9e-3 0.064-0.039 0.1285-0.154 0.3265-0.1 0.1735-0.152 0.314-0.16 0.438-0.0085 0.121 0.028 0.4235 0.062 0.4975 0.0495 0.1155 0.1985 0.237 0.3285 0.267 0.1245 0.0475 0.187 0.146 0.251 0.2565 0.1555 0.2965 0.2755 0.6575 0.3945 1.2015 0.058 0.2605 0.1065 0.493 0.122 0.615-0.96 1e-3 -2.1895 0.0015-3.3095 0.0015-0.377 6e-3 -1.058-0.171-1.6825-0.212-0.0905-0.977-0.5195-2.112-1.2535-2.178-0.501-0.0455-0.9165 0.145-1.268 0.9365l0.01 0.0425c0.2075-0.1735 0.4265-0.704 1.2155-0.6675 0.606 0.0275 0.808 1.1745 0.868 1.8645-0.369 0.027-0.683 0.1405-0.847 0.424h-0.0035c0 5e-4 0 0.0015 0.0015 0.0025-0.0015 1e-3 -0.0015 2e-3 -0.0015 3e-3h0.0035c0.169 0.2905 0.4945 0.403 0.877 0.4255 0.2555 7.225 7.047 8.157 8.903 8.157 6.924 0 9.348-4.705 9.7125-6.5685 0.1705 0.794-0.3665 1.8055-0.495 2.552 1.4605-1.6885 1.1965-3.312 0.9295-4.945 0.222 0.264 0.5225 0.4275 0.93 0.337-0.2905-0.194-0.6845-0.058-0.9205-0.8765-0.103-0.3535-0.192-0.6185-0.2805-0.841-0.191-0.7165-0.462-1.401-0.795-2.068-0.281-0.7235-0.0955-1.1925-0.1235-1.8135 0.5055 1.667 0.8215 2.1105 1.4115 2.285-1.484-1.788-0.976-4.5565-1.8145-7.0275 0.3795 0.223 0.8125 0.29 1.2735 0.0175-0.446-0.127-0.891 0.2085-1.531-0.732-0.5405-1.0515-1.3235-1.828-2.2735-2.513-0.509-0.332-1.074-0.555-1.642-0.762 0.5785-0.145 1.2245-0.66 1.2545-1.0445zm-0.9705 5.5535c0.762 0.278 1.602 1.334 1.5925 2.37v0.058c-0.0205 1.407-0.66 2.1635-0.633 3.1005 0.0345 1.1035 0.5095 1.4885 0.604 1.6725-0.162-0.6805-0.257-1.5365-0.043-2.2145 0.275-0.872 0.5525-1.594 0.5325-2.277-0.01-0.16-0.078-0.7585-0.1235-1.0235 0.817 1.179-0.177 2.8935 0.109 4.0155 0.497 1.9545 2.7245 2.2015 2.0615 6.1395-0.5835 3.462-4.5815 6.0895-8.6795 6.0895-3.038 0-8.3025-1.6815-8.5625-7.646 0.6175-0.044 1.2815-0.216 1.654-0.21 1.126 0 2.412 5e-4 3.381 1e-3 0.182 0.821 0.3185 1.019 1.009 1.566 0.768 0.604 0.947 0.6775 2.083 0.6885 1.1365 0.0115 1.4735-0.232 2.576-1.275 0.238-0.279 0.341-0.6445 0.4565-0.988 1.134-0.0105 1.961-0.0305 2.7745-0.0685 0.8285-0.0375 0.9455 0 2.2805-0.1375-1.335-0.1375-1.452-0.1-2.2805-0.138-0.792-0.036-1.594-0.0565-2.6785-0.0665 0.091-0.4085 0.221-0.8075 0.3595-1.202 0.0855-0.2325 0.186-0.459 0.289-0.6845l0.1125-0.035c0.217-0.077 0.409-0.242 0.4855-0.465 0.0985-0.2955 0.0285-0.6275-0.162-0.869-0.0655-0.0905-0.147-0.206-0.1805-0.257-0.1005-0.159-0.103-0.2475-0.018-0.8385 0.0715-0.495 0.0795-0.754 0.03-1.005-0.01-0.1435-0.011-0.4385-0.0155-0.518 0.038 0.021 0.1205 0.209 0.204 0.4635 0.083 0.2555 0.0965 0.3085 0.1155 0.526 0.021 0.247-0.0715 0.43-0.1475 0.7985-0.038 0.19-0.0715 0.3665-0.0715 0.3905 0 0.0255 0.018 0.0795 0.037 0.1215 0.0445 0.094 0.128 0.226 0.1435 0.226 0.2725-0.3005 0.4325-0.6715 0.575-1.048 0.15-0.426 0.194-0.878 0.299-1.3165 0.085-0.382 0.183-0.7645 0.2135-1.1565 0.0615-0.765 0.0255-1.305-0.1435-2.102-0.0405-0.18-0.1575-0.5235-0.239-0.6855zm-2.68 3.7685c0.2925-0.0035 0.582 0.032 0.8575 0.1115 0.3745 0.1435 0.427 0.478 0.496 0.8535 0.0385 0.24 0.037 0.4125-0.0065 0.6945-0.0305 0.409-0.193 0.7255-0.548 0.948-0.5355 0.099-1.108 0.1945-1.562-0.16-0.381-0.525-0.6105-1.1885-0.523-1.8355 0.0555-0.2655 0.179-0.4035 0.433-0.486 0.2735-0.0785 0.563-0.1215 0.853-0.126zm-4.4415 0.0475c0.2735-0.0025 0.55 0.0265 0.702 0.1235 0.6525 0.4415 0.443 1.16 0.185 1.7905-0.3755 0.8255-1.1875 0.795-1.9745 0.7885-0.4355-0.1275-0.4755-0.4845-0.5385-0.866-0.054-0.3685-0.169-0.7635-0.073-1.134 0.2465-0.596 1.1475-0.6645 1.699-0.7025zm9.9515 0.103c0.0035 1.5865 0.2745 2.366 0.8185 3.4895-0.3205-0.6115-0.7785-0.9595-0.949-1.6905-0.326-1.4115 0.0255-1.3325 0.1305-1.799zm-7.9065 1.149c0.086 0.087 0.1275 0.207 0.202 0.3025 0.0575-0.0985 0.1165-0.1965 0.1905-0.284 0.0385 1e-3 0.0855 0.077 0.128 0.213 0.182 0.503 0.2175 1.0565 0.4535 1.54 0.2205 0.35-0.0805 0.554-0.411 0.57-0.241-5e-4 -0.343-0.165-0.4845-0.328-0.0365 0.1065-0.106 0.175-0.189 0.247-0.211 0.177-0.6245 0.1115-0.6885-0.1675 0.085-0.533 0.3565-1.0225 0.5345-1.5335 0.0885-0.1865 0.0895-0.3295 0.2645-0.5595zm-3.096 2.6925c0.1065 0 0.399 0.1985 0.4585 0.3105 0.041 0.0745 0.1345 0.3645 0.141 0.435 0.0105 0.084-0.015 0.283-0.041 0.337-0.019 0.0385-0.0335 0.044-0.0555 0.019-0.0185-0.021-0.2635-0.491-0.42-0.802-0.123-0.249-0.136-0.2995-0.083-0.2995zm6.111 0.1555c4e-3 5e-4 0.01 2e-3 0.0155 0.0035 0.033 0.0135 0.01 0.1305-0.114 0.5555-0.0235 0.128-0.0805 0.229-0.164 0.313-0.0275 0-0.04-0.032-0.083-0.2095-0.0365-0.1515-0.0405-0.2865-0.015-0.4075 0.044-0.1515 0.222-0.198 0.3605-0.255zm-0.7415 0.9265c0.0105-2e-3 0.0205 0.0035 0.0335 0.014 0.045 0.0315 0.0515 0.1145 0.0215 0.277-0.0365 0.209-0.0445 0.232-0.0985 0.2535-0.0235 0.0105-0.0655 0.018-0.0935 0.018-0.0505-9e-3 -0.0635-0.05-0.0515-0.112 0-0.13 0.038-0.243 0.124-0.3765 0.0325-0.05 0.049-0.0715 0.0645-0.074zm-4.3165 0.0095c0.0345 0 0.1385 0.075 0.177 0.127 0.043 0.055 0.092 0.3825 0.0645 0.439-0.0315 0.071-0.1855 0.0355-0.228-0.053-0.026-0.053-0.0875-0.339-0.0875-0.407 0-0.063 0.0305-0.106 0.074-0.106zm3.9455 0.0865c0.042 0.06 0.053 0.137 0.044 0.306l-0.0085 0.154-0.044 0.044c-0.0265 0.0245-0.0715 0.0545-0.0985 0.067-0.0595 0.028-0.105 0.0305-0.1135 8e-3 -0.01-0.03 7e-3 -0.221 0.0255-0.2855 0.0215-0.0665 0.118-0.265 0.15-0.307 0.0145-0.0385 0.0315 0.0095 0.045 0.0135zm-2.5105-9e-3c0.0905 0.023 0.1305 0.1045 0.18 0.1785l0.0335 0.066-0.047 0.1635c-0.025 0.09-0.0515 0.171-0.0595 0.18-9e-3 0.01-0.0425 0.015-0.092 0.0145-0.132-0.0035-0.147-9e-3 -0.1825-0.063l-0.033-0.049 0.028-0.1375c0.0405-0.198 0.06-0.2575 0.105-0.3085 0.0235-0.0275 0.047-0.0425 0.0675-0.0445zm-0.8355 0.1415 0.0745 0.0745 0.0125 0.1685c0.0065 0.092 0.0095 0.1775 0.0045 0.188-0.0045 0.0145-0.0315 0.0185-0.115 0.0185h-0.1085c-0.058-0.0635-0.076-0.141-0.1005-0.221-0.057-0.2405-0.057-0.35 2e-3 -0.3645 0.0965 6e-3 0.16 0.076 0.2305 0.136zm2.9-0.1155c0.118 0.0315 0.0945 0.219 0.094 0.353-9e-3 0.217-0.0175 0.262-0.0455 0.29-0.0485 0.0485-0.1835 0.0215-0.249-0.0505-0.0215-0.026-0.0235-0.034-0.0065-0.1395 0.0195-0.1285 0.0445-0.2085 0.1-0.3185 0.0405-0.079 0.0785-0.1285 0.107-0.1345zm-2.663 0.01c0.0065-5e-4 0.017 0 0.027 1e-3 0.075 6e-3 0.145 0.055 0.207 0.145l0.05 0.0735c0.0045 0.1205 0 0.2475-0.0215 0.3595-0.013 0.0065-0.067 0.0165-0.12 0.0215-0.092 0.0085-0.1005 0.0065-0.1325-0.0215-0.0445-0.038-0.057-0.1085-0.068-0.3425-0.0065-0.191-2e-3 -0.2335 0.058-0.2365zm1.1345 0.04c0.0805 0.017 0.1315 0.06 0.154 0.1305 0.018 0.0605 0.029 0.399 0.0115 0.4225-6e-3 0.01-0.044 0.0225-0.0875 0.028-0.162 0.0205-0.305 5e-3 -0.319-0.0335-0.018-0.044 0.1025-0.48 0.147-0.534 0.019-0.042 0.065-0.0095 0.094-0.0135zm1.049 3e-3c0.0355-0.0035 0.0735 0.0305 0.1105 0.103 0.03 0.0605 0.0345 0.0815 0.0345 0.217 0 0.108-0.0065 0.1545-0.018 0.1645-0.01 8e-3 -0.0505 0.0225-0.0935 0.0335-0.075 0.0195-0.0915 0.0215-0.115 0.0135l-0.1125-0.0205 0.0085-0.067c8e-3 -0.0875 0.0655-0.2815 0.106-0.3655 0.024-0.05 0.0515-0.075 0.0795-0.0785zm-0.489 0.0015c0.0235-1e-3 0.0345 0.0045 0.0495 0.021 0.0355 0.042 0.0805 0.166 0.109 0.2985 0.038 0.1865 0.038 0.186-0.0435 0.2105-0.0355 0.011-0.1105 0.0225-0.164 0.0255-0.1765 9e-3 -0.19-0.0015-0.1685-0.1575 0.017-0.139 0.0855-0.358 0.115-0.374 0.032-0.017 0.069-0.0165 0.1025-0.024zm-8.9965 0.7045c0.0015-5e-4 0.0035 0 0.0035 0 0.0045 0.0975 0.0045 0.196 0.0065 0.294-0.2475-0.019-0.4295-0.078-0.4295-0.1475 0-0.0685 0.1755-0.127 0.4195-0.1465zm0.4325 0.0085c0.2005 0.025 0.339 0.0775 0.3365 0.138 0 0.061-0.134 0.113-0.333 0.1375-2e-3 -0.0915-2e-3 -0.1835-0.0035-0.2755zm9.363 0.2665c0.017-0.0015 0.0245-3e-3 0.0505-5e-4 0.104 0.0105 0.119 0.017 0.119 0.052 0 0.046-0.079 0.1845-0.1325 0.2325-0.025 0.024-0.0595 0.044-0.0715 0.044-0.06 0-0.095-0.1265-0.067-0.243 0.017-0.063 0.048-0.0825 0.1015-0.085zm-0.3775 0.0415c0.0465-4e-3 0.0915 0.0085 0.1365 0.0145-0.013 0.1315-0.072 0.239-0.1815 0.3105-0.027 0-0.0405-0.0515-0.0405-0.164 0-0.134 7e-3 -0.1595 0.0855-0.161zm-0.414 0.0485c0.0965 0 0.1815 0.0045 0.1855 0.01 0.018 0.017-0.034 0.146-0.1105 0.277-0.0655 0.1165-0.075 0.125-0.1155 0.128-0.159-0.018-0.1545-0.2045-0.179-0.3325 0-0.076 0.017-0.0825 0.2195-0.0825zm-1.5045 0.0145c0.1105 2e-3 0.1535 0.0185 0.1535 0.061 0 0.054-0.041 0.1615-0.0645 0.175-0.0355 0.0195-0.0385 0.0185-0.1085-0.0545-0.1105-0.124-0.123-0.147 0.0195-0.1815zm0.532 0.0055c2e-3 3e-3 0.0235 0.042 0.045 0.086 0.047 0.0915 0.0505 0.1315 0.017 0.162-0.079 0.045-0.0955 0.0195-0.167-0.026-0.083-0.0785-0.1485-0.184-0.127-0.206 0.074-0.0265 0.1555-0.0165 0.232-0.016zm0.211 0.0025 0.1975 0.0035c0.077 0 0.1435 4e-3 0.147 0.01 0.0135 0.012-0.03 0.269-0.0535 0.327-0.027 0.065-0.1215 0.0655-0.1705-0.0115-0.07-0.1105-0.116-0.2035-0.1175-0.2675z"/></g>" notch="
+<g id="notch" transform="scale(1)">
+  <circle cy="0" cx="0" r="1.4" class="fill-note"></circle>
+  <circle cy="0" cx="0" r="2.8" class="note"></circle>
+</g>" bnotch="
+<g id="bnotch" transform="scale(1)">
+  <path d="M -1.1 -1.1 L 1.1 1.1 M 1.1 -1.1 L -1.1 1.1" class="note"></path>
+  <circle cy="0" cx="0" r="2.8" class="note"></circle>
+</g>" pleat="
+<marker id="pleatTo" markerWidth="10" markerHeight="6" orient="auto" refY="3" refX="10">
+	<path d="M 10,3 L 0,0 C 2,2 2,4 0,6 z" class="fill-note note" transform="scale(1)" />
+</marker>
+" sewTogetherStart="
+<marker id="sewTogetherStart" markerWidth="10" markerHeight="6" orient="auto" refX="1" refY="2">
+	<path d="M 0,2 L 6,0 C 5,1 5,3 6,4 z" class="fill-note note" transform="scale(1)" />
+</marker>" sewTogetherEnd="
+<marker id="sewTogetherEnd" markerWidth="10" markerHeight="6" orient="auto" refX="6" refY="2">
+	<path d="M 6,2 L 0,0 C 1,1 1,3 0,4 z" class="fill-note note" transform="scale(1)" />
+</marker>" sewTogetherCross="
+<marker id="sewTogetherCross" markerWidth="5" markerHeight="5" orient="auto" refX="2.5" refY="2.5">
+  <path d="M 0,0 L 5,5 M 5,0 L 0,5" class="note" transform="scale(1)" />
+</marker>"
+</defs>
+
+
+<!-- Start of group #fs-container -->
+<g id="fs-container">
+
+<!-- Start of group #fs-stack-huntingcoat.front -->
+<g id="fs-stack-huntingcoat.front"  transform="translate(137.125, 11.743700647852352)">
+
+<!-- Start of group #fs-stack-huntingcoat.front-part-huntingcoat.front -->
+<g id="fs-stack-huntingcoat.front-part-huntingcoat.front"  transform="translate(-83.125, 0)">
+<path  class="fabric" id="fs-1" d="M -42,61.24 L -42,1015.4 C 89.8,1015.4 155.7,983 287.5,983 L 287.5,740 L 287.5,279.95 C 270.75,279.95 249.9,265.91 242.22,258.23 C 226.86,242.86 218.5,207.29 218.5,156.35 C 218.5,94.55 219.44,56.84 225,32.75 L 83.13,0 C 73.94,39.81 37.94,61.24 0,61.24 L -42,61.24 z" />
+<path  class="fabric sa" id="fs-2" d="M -52,61.24 L -52,1015.4 L -42,1045.4 C 56.27,1045.4 118.46,1027.84 197.58,1018.42 C 224.67,1015.2 253.85,1013 287.5,1013 L 297.5,983 L 297.5,740 L 297.5,279.95 L 287.5,269.95 C 284.47,269.95 281.28,269.3 278.09,268.3 C 271.03,266.11 264,262.22 258.35,258.38 C 254.54,255.79 251.36,253.22 249.29,251.16 C 235,236.86 228.5,203.23 228.5,156.35 C 228.5,95.69 229.28,58.65 234.74,35 L 227.25,23.01 L 85.37,-9.74 L 73.38,-2.25 C 67.48,23.32 48.83,40.09 26.3,47.24 C 17.94,49.89 9.03,51.24 0,51.24 L -42,51.24 L -52,61.24" />
+<path  class="help dashed" id="fs-3" d="M 0,61.24 L 0,983" />
+<path  class="note" marker-start="url(#grainlineFrom)" marker-end="url(#grainlineTo)" data-text="plugin-annotations:grainline" data-text-class="center fill-note" id="fs-4" d="M 57.5,918.91 L 57.5,125.33" />
+<text><textPath xlink:href="#fs-4"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:grainline</tspan></textPath>
+</text>
+<path  class="mark dashed" id="fs-5" d="M -42,449 L 287.5,449" />
+<path  class="mark dashed" id="fs-6" d="M -42,491 L 287.5,491" />
+<path  class="mark dashed" id="fs-7" d="M 178.25,302.95 L 57.5,302.95 L 57.5,404.15 C 57.5,424.07 73.8,440.38 93.73,440.38 L 142.03,440.38 C 161.95,440.38 178.25,424.07 178.25,404.15 z" />
+<path  class="mark dotted" id="fs-8" d="M 181.25,294.5 L 54.5,294.5 L 54.5,321.55 C 54.5,327.92 59.72,333.14 66.09,333.14 L 169.66,333.14 C 176.03,333.14 181.25,327.92 181.25,321.55 z" />
+<path  class="mark dashed" id="fs-9" d="M 270.25,572 L 86.25,572 L 86.25,728.11 C 86.25,758.47 111.09,783.31 141.45,783.31 L 215.05,783.31 C 245.41,783.31 270.25,758.47 270.25,728.11 z" />
+<path  class="mark dotted" id="fs-10" d="M 273.25,559.12 L 83.25,559.12 L 83.25,600.34 C 83.25,610.05 91.2,618 100.91,618 L 255.59,618 C 265.3,618 273.25,610.05 273.25,600.34 z" />
+<text  class="text-4xl fill-note font-bold left" transform="matrix(1, 0, 0, 1, 0, 0) rotate(0 143.75 470)" x="143.75" y="470"><tspan>1 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(1, 0, 0, 1, 0, 0) rotate(0 143.75 470)" x="143.75" y="474"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(1, 0, 0, 1, 0, 0) rotate(0 143.75 470)" class="text-lg fill-current font-bold left" x="143.75" y="486"><tspan>front </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(1, 0, 0, 1, 0, 0) rotate(0 143.75 470)" x="143.75" y="494"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(1, 0, 0, 1, 0, 0) rotate(0 143.75 470)" x="143.75" y="502"><tspan>plugin-annotations:cut,2,plugin-annotations:mirrored,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="143.75" dy="8"> </tspan>
+</text>
+<use x="218.5" y="156.35" xlink:href="#notch"  transform="translate(218.5, 156.35) scale(1) translate(-218.5, -156.35)"></use>
+<use x="287.5" y="470" xlink:href="#notch"  transform="translate(287.5, 470) scale(1) translate(-287.5, -470)"></use>
+<use x="0" y="61.24" xlink:href="#notch"  transform="translate(0, 61.24) scale(1) translate(0, -61.24)"></use>
+<use x="0" y="983" xlink:href="#notch"  transform="translate(0, 983) scale(1) translate(0, -983)"></use>
+<use x="0" y="94.84" xlink:href="#button"  transform="translate(0, 94.84) scale(1) translate(0, -94.84)"></use>
+<use x="0" y="239.25" xlink:href="#button"  transform="translate(0, 239.25) scale(1) translate(0, -239.25)"></use>
+<use x="0" y="383.67" xlink:href="#button"  transform="translate(0, 383.67) scale(1) translate(0, -383.67)"></use>
+<use x="0" y="528.08" xlink:href="#button"  transform="translate(0, 528.08) scale(1) translate(0, -528.08)"></use>
+<use x="0" y="672.5" xlink:href="#button"  transform="translate(0, 672.5) scale(1) translate(0, -672.5)"></use>
+</g>
+<!-- end of group #fs-stack-huntingcoat.front-part-huntingcoat.front -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.front -->
+
+<!-- Start of group #fs-stack-huntingcoat.backYoke -->
+<g id="fs-stack-huntingcoat.backYoke"  transform="translate(923.5943569707987, 811.6562006478524)">
+
+<!-- Start of group #fs-stack-huntingcoat.backYoke-part-huntingcoat.backYoke -->
+<g id="fs-stack-huntingcoat.backYoke-part-huntingcoat.backYoke"  transform="translate(-83.125, 0)">
+<path  class="fabric" id="fs-11" d="M 0,162.52 L 220.53,162.52 C 220.51,160.49 220.5,158.43 220.5,156.35 C 220.5,94.55 219.44,56.84 225,32.75 L 83.13,0 C 78.74,19 0,19 0,19 z" />
+<path  class="fabric sa" id="fs-12" d="M 0,162.52 L 0,172.52 L 220.53,172.52 L 230.53,162.42 C 230.51,160.39 230.5,158.33 230.5,156.25 L 230.5,156.35 C 230.5,147.82 230.48,139.75 230.46,132.1 C 230.44,124.44 230.42,117.23 230.42,110.42 C 230.42,75.81 230.84,51.93 234.74,35 L 227.25,23.01 L 85.37,-9.74 L 73.38,-2.25 C 72.73,0.55 67.48,0.88 63.76,2.03 C 56.99,4.13 48.7,5.56 40.42,6.58 C 20.74,8.99 1.06,8.99 -0.06,9 L 0,19" />
+<path  class="note" marker-start="url(#cutonfoldFrom)" marker-end="url(#cutonfoldTo)" data-text="plugin-annotations:cutOnFoldAndGrainline" data-text-class="center fill-note" id="fs-13" d="M 0,155.35 L -15,155.35 L -15,26.18 L 0,26.18" />
+<text><textPath xlink:href="#fs-13"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:cutOnFoldAndGrainline</tspan></textPath>
+</text>
+<text  class="text-4xl fill-note font-bold left" transform="matrix(0.6, 0, 0, 0.6, 35.28513402640424, 36.304500000000004) rotate(0 88.2128350660106 90.76125)" x="88.21" y="90.76"><tspan>2 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(0.6, 0, 0, 0.6, 35.28513402640424, 36.304500000000004) rotate(0 88.2128350660106 90.76125)" x="88.21" y="94.76"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(0.6, 0, 0, 0.6, 35.28513402640424, 36.304500000000004) rotate(0 88.2128350660106 90.76125)" class="text-lg fill-current font-bold left" x="88.21" y="106.76"><tspan>backYoke </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(0.6, 0, 0, 0.6, 35.28513402640424, 36.304500000000004) rotate(0 88.2128350660106 90.76125)" x="88.21" y="114.76"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(0.6, 0, 0, 0.6, 35.28513402640424, 36.304500000000004) rotate(0 88.2128350660106 90.76125)" x="88.21" y="122.76"><tspan>plugin-annotations:cut,1,plugin-annotations:onFold,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="88.21" dy="8"> </tspan>
+</text>
+</g>
+<!-- end of group #fs-stack-huntingcoat.backYoke-part-huntingcoat.backYoke -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.backYoke -->
+
+<!-- Start of group #fs-stack-huntingcoat.backMiddle -->
+<g id="fs-stack-huntingcoat.backMiddle"  transform="translate(453.625, 548.6775)">
+
+<!-- Start of group #fs-stack-huntingcoat.backMiddle-part-huntingcoat.backMiddle -->
+<g id="fs-stack-huntingcoat.backMiddle-part-huntingcoat.backMiddle"  transform="translate(-83.125, 0)">
+<path  class="mark dashed" id="fs-14" d="M 176.43,162.52 L 176.43,470" />
+<path  class="help dotted" id="fs-15" d="M 204.43,162.52 L 204.43,470" />
+<path  class="mark dashed" id="fs-16" d="M 232.43,162.52 L 232.43,470" />
+<path  class="fabric" id="fs-17" d="M 0,470 L 343.5,470 L 343.5,279.95 C 326.75,279.95 305.9,265.91 298.22,258.23 C 283.49,243.49 277.04,210.16 276.53,162.52 L 176.43,162.52 L 0,162.52 z" />
+<path  class="fabric sa" id="fs-18" d="M 0,470 L 0,480 L 343.5,480 L 353.5,470 L 353.5,279.95 L 343.5,269.95 C 340.47,269.95 337.28,269.3 334.09,268.3 C 327.03,266.11 320,262.22 314.35,258.38 C 310.54,255.79 307.36,253.22 305.29,251.16 C 291.64,237.5 286.99,206.04 286.53,162.42 L 276.53,152.52 L 176.43,152.52 L 0,152.52 L 0,162.52" />
+<path  class="note" marker-start="url(#cutonfoldFrom)" marker-end="url(#cutonfoldTo)" data-text="plugin-annotations:cutOnFoldAndGrainline" data-text-class="center fill-note" id="fs-19" d="M 0,454.63 L -15,454.63 L -15,177.9 L 0,177.9" />
+<text><textPath xlink:href="#fs-19"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:cutOnFoldAndGrainline</tspan></textPath>
+</text>
+<text  class="text-4xl fill-note font-bold left" transform="matrix(0.6, 0, 0, 0.6, 31.756620623763816, 126.50450000000001) rotate(0 79.39155155940954 316.26125)" x="79.39" y="316.26"><tspan>4 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(0.6, 0, 0, 0.6, 31.756620623763816, 126.50450000000001) rotate(0 79.39155155940954 316.26125)" x="79.39" y="320.26"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(0.6, 0, 0, 0.6, 31.756620623763816, 126.50450000000001) rotate(0 79.39155155940954 316.26125)" class="text-lg fill-current font-bold left" x="79.39" y="332.26"><tspan>backMiddle </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(0.6, 0, 0, 0.6, 31.756620623763816, 126.50450000000001) rotate(0 79.39155155940954 316.26125)" x="79.39" y="340.26"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(0.6, 0, 0, 0.6, 31.756620623763816, 126.50450000000001) rotate(0 79.39155155940954 316.26125)" x="79.39" y="348.26"><tspan>plugin-annotations:cut,1,plugin-annotations:onFold,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="79.39" dy="8"> </tspan>
+</text>
+</g>
+<!-- end of group #fs-stack-huntingcoat.backMiddle-part-huntingcoat.backMiddle -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.backMiddle -->
+
+<!-- Start of group #fs-stack-huntingcoat.backLower -->
+<g id="fs-stack-huntingcoat.backLower"  transform="translate(923.5943569707987, -458)">
+
+<!-- Start of group #fs-stack-huntingcoat.backLower-part-huntingcoat.backLower -->
+<g id="fs-stack-huntingcoat.backLower-part-huntingcoat.backLower"  transform="translate(-83.125, 0)">
+<path  class="fabric" id="fs-20" d="M 0,983 L 287.5,983 L 287.5,740 L 287.5,470 L 0,470 z" />
+<path  class="fabric sa" id="fs-21" d="M 0,983 L 0,993 L 287.5,993 L 297.5,983 L 297.5,740 L 297.5,470 L 287.5,460 L 0,460 L 0,470" />
+<path  class="note" marker-start="url(#cutonfoldFrom)" marker-end="url(#cutonfoldTo)" data-text="plugin-annotations:cutOnFoldAndGrainline" data-text-class="center fill-note" id="fs-22" d="M 0,957.35 L -15,957.35 L -15,495.65 L 0,495.65" />
+<text><textPath xlink:href="#fs-22"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:cutOnFoldAndGrainline</tspan></textPath>
+</text>
+<text  class="text-4xl fill-note font-bold left" transform="matrix(0.6, 0, 0, 0.6, 46, 290.6) rotate(0 115 726.5)" x="115" y="726.5"><tspan>5 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(0.6, 0, 0, 0.6, 46, 290.6) rotate(0 115 726.5)" x="115" y="730.5"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(0.6, 0, 0, 0.6, 46, 290.6) rotate(0 115 726.5)" class="text-lg fill-current font-bold left" x="115" y="742.5"><tspan>backLower </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(0.6, 0, 0, 0.6, 46, 290.6) rotate(0 115 726.5)" x="115" y="750.5"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(0.6, 0, 0, 0.6, 46, 290.6) rotate(0 115 726.5)" x="115" y="758.5"><tspan>plugin-annotations:cut,1,plugin-annotations:onFold,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="115" dy="8"> </tspan>
+</text>
+</g>
+<!-- end of group #fs-stack-huntingcoat.backLower-part-huntingcoat.backLower -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.backLower -->
+
+<!-- Start of group #fs-stack-huntingcoat.facing -->
+<g id="fs-stack-huntingcoat.facing"  transform="translate(1277.0943569707988, -42.34998066862441)">
+
+<!-- Start of group #fs-stack-huntingcoat.facing-part-huntingcoat.facing -->
+<g id="fs-stack-huntingcoat.facing-part-huntingcoat.facing"  transform="translate(-83.125, 0)">
+<path  class="fabric" id="fs-23" d="M -42,61.24 L -42,1015.4 C -12.53,1015.4 13.65,1013.78 38,1011.26 L 38,53.52 C 26.28,58.62 13.26,61.24 0,61.24 L -42,61.24 z" />
+<path  class="fabric sa" id="fs-24" d="M -52,61.24 L -52,1015.4 L -42,1025.4 C -12.15,1025.4 14.36,1023.76 39.03,1021.21 L 48,1011.26 L 48,53.52 L 34.01,44.35 C 23.52,48.92 11.86,51.24 0,51.24 L -42,51.24 z" />
+<path  class="note" marker-start="url(#grainlineFrom)" marker-end="url(#grainlineTo)" data-text="plugin-annotations:grainline" data-text-class="center fill-note" id="fs-25" d="M -2,927.38 L -2,137.41" />
+<text><textPath xlink:href="#fs-25"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:grainline</tspan></textPath>
+</text>
+<text  class="text-4xl fill-note font-bold left" transform="matrix(0.4, 0, 0, 0.4, -1.2, 282) rotate(90 -2 470)" x="-2" y="470"><tspan>7 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(0.4, 0, 0, 0.4, -1.2, 282) rotate(90 -2 470)" x="-2" y="474"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(0.4, 0, 0, 0.4, -1.2, 282) rotate(90 -2 470)" class="text-lg fill-current font-bold left" x="-2" y="486"><tspan>facing </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(0.4, 0, 0, 0.4, -1.2, 282) rotate(90 -2 470)" x="-2" y="494"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(0.4, 0, 0, 0.4, -1.2, 282) rotate(90 -2 470)" x="-2" y="502"><tspan>plugin-annotations:cut,2,plugin-annotations:mirrored,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="-2" dy="8"> </tspan>
+</text>
+</g>
+<!-- end of group #fs-stack-huntingcoat.facing-part-huntingcoat.facing -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.facing -->
+
+<!-- Start of group #fs-stack-huntingcoat.collar -->
+<g id="fs-stack-huntingcoat.collar"  transform="translate(17, 1071.0711819681658)">
+
+<!-- Start of group #fs-stack-huntingcoat.collar-part-huntingcoat.collar -->
+<g id="fs-stack-huntingcoat.collar-part-huntingcoat.collar"  transform="translate(0, 0)">
+<path  class="fabric" id="fs-26" d="M 0,121.51 C 109.47,121.51 159.6,104.28 245.54,95 L 218.94,0 C 142.31,9.28 109.47,26.51 0,26.51 z" />
+<path  class="fabric sa" id="fs-27" d="M 0,121.51 L 0,131.51 C 68.96,131.51 114.6,124.75 160.25,117.39 C 164.29,116.73 168.34,116.07 172.4,115.42 C 172.75,115.36 173.1,115.3 173.44,115.25 C 196.43,111.53 220,107.8 247.14,104.87 L 255.17,92.3 L 228.57,-2.7 L 217.74,-9.93 C 179.19,-5.26 151.66,1.4 119.98,6.9 C 88.97,12.28 53.91,16.51 0,16.51 L 0,26.51" />
+<path  class="note" marker-start="url(#cutonfoldFrom)" marker-end="url(#cutonfoldTo)" data-text="plugin-annotations:cutOnFoldAndGrainline" data-text-class="center fill-note" id="fs-28" d="M 0,116.76 L -15,116.76 L -15,31.26 L 0,31.26" />
+<text><textPath xlink:href="#fs-28"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:cutOnFoldAndGrainline</tspan></textPath>
+</text>
+<text  class="text-4xl fill-note font-bold left" transform="matrix(0.5, 0, 0, 0.5, 49.26154538858709, 34.630850250474545) rotate(0 98.52309077717418 69.26170050094909)" x="98.52" y="69.26"><tspan>6 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(0.5, 0, 0, 0.5, 49.26154538858709, 34.630850250474545) rotate(0 98.52309077717418 69.26170050094909)" x="98.52" y="73.26"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(0.5, 0, 0, 0.5, 49.26154538858709, 34.630850250474545) rotate(0 98.52309077717418 69.26170050094909)" class="text-lg fill-current font-bold left" x="98.52" y="85.26"><tspan>collar </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(0.5, 0, 0, 0.5, 49.26154538858709, 34.630850250474545) rotate(0 98.52309077717418 69.26170050094909)" x="98.52" y="93.26"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(0.5, 0, 0, 0.5, 49.26154538858709, 34.630850250474545) rotate(0 98.52309077717418 69.26170050094909)" x="98.52" y="101.26"><tspan>plugin-annotations:cut,2,plugin-annotations:mirrored,plugin-annotations:onFold,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="98.52" dy="8">,plugin-annotations:cut,1,plugin-annotations:onFold,plugin-annotations:from,plugin-annotations:interfacing,</tspan><tspan x="98.52" dy="8"> </tspan>
+</text>
+</g>
+<!-- end of group #fs-stack-huntingcoat.collar-part-huntingcoat.collar -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.collar -->
+
+<!-- Start of group #fs-stack-huntingcoat.sleeve -->
+<g id="fs-stack-huntingcoat.sleeve"  transform="translate(588.4846784853994, 166.36676968107446)">
+
+<!-- Start of group #fs-stack-huntingcoat.sleeve-part-huntingcoat.sleeve -->
+<g id="fs-stack-huntingcoat.sleeve-part-huntingcoat.sleeve"  transform="translate(0, 0)">
+<path  class="fabric" id="fs-29" d="M -105,500.83 L 105,500.83 L 223.25,0 C 223.25,0 203.71,-3.99 169.43,-25.09 C 118.02,-56.73 113.68,-91.28 71.47,-134.44 C 43.32,-163.22 -44.49,-159.46 -73.86,-131.94 C -97.35,-109.92 -153.15,-43.64 -176.31,-27.61 C -197.16,-13.17 -223.25,0 -223.25,0 L -105,500.83 z" />
+<path  class="fabric sa" id="fs-30" d="M -105,530.83 L 105,530.83 L 114.73,503.13 L 232.98,2.3 L 225.67,-9.7 C 223.8,-10.17 207.17,-13.6 174.68,-33.6 C 147.64,-50.24 134.4,-67.79 121.1,-87.03 C 109.52,-103.77 97.91,-121.71 78.61,-141.44 C 63.91,-156.47 34.77,-164.37 4.11,-164.37 C 2.19,-164.37 0.27,-164.34 -1.64,-164.27 C -33.6,-163.26 -64.85,-154.09 -80.69,-139.23 C -91.7,-128.92 -109.79,-108.9 -128.29,-88.88 L -128.8,-88.37 C -129.95,-87.13 -131.1,-85.88 -132.25,-84.64 C -151.51,-63.86 -170.71,-43.64 -182,-35.83 C -184.78,-33.9 -187.62,-32.02 -190.45,-30.2 C -208.23,-18.78 -226.3,-9.67 -227.82,-8.9 L -232.98,2.3 L -114.73,503.13 L -105,530.83" />
+<text  class="text-4xl fill-note font-bold left" transform="matrix(1, 0, 0, 1, 0, 0) rotate(0 0 0)" x="0" y="0"><tspan>3 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(1, 0, 0, 1, 0, 0) rotate(0 0 0)" x="0" y="4"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(1, 0, 0, 1, 0, 0) rotate(0 0 0)" class="text-lg fill-current font-bold left" x="0" y="16"><tspan>sleeve </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(1, 0, 0, 1, 0, 0) rotate(0 0 0)" x="0" y="24"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(1, 0, 0, 1, 0, 0) rotate(0 0 0)" x="0" y="32"><tspan>plugin-annotations:cut,2,plugin-annotations:mirrored,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="0" dy="8"> </tspan>
+</text>
+<use x="102.69" y="-96.11" xlink:href="#notch"  transform="translate(102.69, -96.11) scale(1) translate(-102.69, 96.11)"></use>
+<use x="-103.84" y="-100.69" xlink:href="#bnotch"  transform="translate(-103.84, -100.69) scale(1) translate(103.84, 100.69)"></use>
+</g>
+<!-- end of group #fs-stack-huntingcoat.sleeve-part-huntingcoat.sleeve -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.sleeve -->
+
+<!-- Start of group #fs-stack-huntingcoat.breastPocket -->
+<g id="fs-stack-huntingcoat.breastPocket"  transform="translate(1255.9693569708052, 30.1125)">
+
+<!-- Start of group #fs-stack-huntingcoat.breastPocket-part-huntingcoat.breastPocket -->
+<g id="fs-stack-huntingcoat.breastPocket-part-huntingcoat.breastPocket"  transform="translate(0, 0)">
+<path  class="fabric" id="fs-31" d="M 135.24,-18.11 L 0,-18.11 L 0,101.2 C 0,121.12 16.3,137.43 36.23,137.43 L 99.02,137.43 C 118.94,137.43 135.24,121.12 135.24,101.2 z" />
+<path  class="help dashed" id="fs-32" d="M 0,0 L 135.24,0" />
+<path  class="mark dashed" id="fs-33" d="M 60.38,-18.11 L 60.38,137.43" />
+<path  class="help dotted" id="fs-34" d="M 67.62,-18.11 L 67.62,137.43" />
+<path  class="mark dashed" id="fs-35" d="M 74.86,-18.11 L 74.86,137.43" />
+<path  class="fabric sa" id="fs-36" d="M 135.24,-28.11 L 0,-28.11 L -10,-18.11 L -10,101.2 C -10,117.88 -1.06,132.59 12.3,140.71 C 19.29,144.97 27.48,147.42 36.23,147.43 L 99.02,147.43 C 115.7,147.43 130.4,138.48 138.53,125.13 C 142.78,118.14 145.24,109.94 145.24,101.2 L 145.24,-18.11 z" />
+<path  class="note" marker-start="url(#grainlineFrom)" marker-end="url(#grainlineTo)" data-text="plugin-annotations:grainline" data-text-class="center fill-note" id="fs-37" d="M 24.15,105.13 L 24.15,18.55" />
+<text><textPath xlink:href="#fs-37"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:grainline</tspan></textPath>
+</text>
+<text  class="text-4xl fill-note font-bold left" transform="matrix(0.4, 0, 0, 0.4, 40.572, 37.10475) rotate(0 67.62 61.84125000000001)" x="67.62" y="61.84"><tspan>8 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(0.4, 0, 0, 0.4, 40.572, 37.10475) rotate(0 67.62 61.84125000000001)" x="67.62" y="65.84"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(0.4, 0, 0, 0.4, 40.572, 37.10475) rotate(0 67.62 61.84125000000001)" class="text-lg fill-current font-bold left" x="67.62" y="77.84"><tspan>breastPocket </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(0.4, 0, 0, 0.4, 40.572, 37.10475) rotate(0 67.62 61.84125000000001)" x="67.62" y="85.84"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(0.4, 0, 0, 0.4, 40.572, 37.10475) rotate(0 67.62 61.84125000000001)" x="67.62" y="93.84"><tspan>plugin-annotations:cut,2,plugin-annotations:mirrored,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="67.62" dy="8"> </tspan>
+</text>
+</g>
+<!-- end of group #fs-stack-huntingcoat.breastPocket-part-huntingcoat.breastPocket -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.breastPocket -->
+
+<!-- Start of group #fs-stack-huntingcoat.breastFlap -->
+<g id="fs-stack-huntingcoat.breastFlap"  transform="translate(1255.9693569708052, 191.53750000000005)">
+
+<!-- Start of group #fs-stack-huntingcoat.breastFlap-part-huntingcoat.breastFlap -->
+<g id="fs-stack-huntingcoat.breastFlap-part-huntingcoat.breastFlap"  transform="translate(0, 0)">
+<path  class="fabric" id="fs-38" d="M 126.75,0 L 0,0 L 0,27.05 C 0,33.42 5.22,38.64 11.59,38.64 L 115.16,38.64 C 121.53,38.64 126.75,33.42 126.75,27.05 z" />
+<path  class="fabric sa" id="fs-39" d="M 126.75,-10 L 0,-10 L -10,0 L -10,27.05 C -10,34.83 -5.84,41.71 0.4,45.5 C 3.67,47.49 7.5,48.64 11.59,48.64 L 115.16,48.64 C 122.94,48.64 129.82,44.48 133.61,38.24 C 135.6,34.97 136.75,31.14 136.75,27.05 L 136.75,0 z" />
+<path  class="note" marker-start="url(#grainlineFrom)" marker-end="url(#grainlineTo)" data-text="plugin-annotations:grainline" data-text-class="center fill-note" id="fs-40" d="M 19.01,29.66 L 19.01,7.05" />
+<text><textPath xlink:href="#fs-40"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:grainline</tspan></textPath>
+</text>
+<text  class="text-4xl fill-note font-bold left" transform="matrix(0.3, 0, 0, 0.3, 26.6175, 8.1144) rotate(0 38.025 11.592)" x="38.03" y="11.59"><tspan>9 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(0.3, 0, 0, 0.3, 26.6175, 8.1144) rotate(0 38.025 11.592)" x="38.03" y="15.59"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(0.3, 0, 0, 0.3, 26.6175, 8.1144) rotate(0 38.025 11.592)" class="text-lg fill-current font-bold left" x="38.03" y="27.59"><tspan>breastFlap </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(0.3, 0, 0, 0.3, 26.6175, 8.1144) rotate(0 38.025 11.592)" x="38.03" y="35.59"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(0.3, 0, 0, 0.3, 26.6175, 8.1144) rotate(0 38.025 11.592)" x="38.03" y="43.59"><tspan>plugin-annotations:cut,2,plugin-annotations:mirrored,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="38.03" dy="8">,plugin-annotations:cut,2,plugin-annotations:mirrored,plugin-annotations:from,plugin-annotations:lining,</tspan><tspan x="38.03" dy="8"> </tspan>
+</text>
+<use x="63.38" y="23.18" xlink:href="#buttonhole"  transform="translate(63.38, 23.18) scale(1) translate(-63.38, -23.18)"></use>
+</g>
+<!-- end of group #fs-stack-huntingcoat.breastFlap-part-huntingcoat.breastFlap -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.breastFlap -->
+
+<!-- Start of group #fs-stack-huntingcoat.lowerPocket -->
+<g id="fs-stack-huntingcoat.lowerPocket"  transform="translate(835.4693569707987, 576.6)">
+
+<!-- Start of group #fs-stack-huntingcoat.lowerPocket-part-huntingcoat.lowerPocket -->
+<g id="fs-stack-huntingcoat.lowerPocket-part-huntingcoat.lowerPocket"  transform="translate(0, 0)">
+<path  class="fabric" id="fs-41" d="M 206.08,-27.6 L 0,-27.6 L 0,156.11 C 0,186.47 24.84,211.31 55.2,211.31 L 150.88,211.31 C 181.24,211.31 206.08,186.47 206.08,156.11 z" />
+<path  class="help dashed" id="fs-42" d="M 0,0 L 206.08,0" />
+<path  class="mark dashed" id="fs-43" d="M 92,-27.6 L 92,211.31" />
+<path  class="help dotted" id="fs-44" d="M 103.04,-27.6 L 103.04,211.31" />
+<path  class="mark dashed" id="fs-45" d="M 114.08,-27.6 L 114.08,211.31" />
+<path  class="fabric sa" id="fs-46" d="M 206.08,-37.6 L 0,-37.6 L -10,-27.6 L -10,156.11 C -10,179.65 2.62,200.39 21.46,211.85 C 31.32,217.85 42.88,221.31 55.2,221.31 L 150.88,221.31 C 174.41,221.31 195.15,208.69 206.62,189.85 C 212.62,179.99 216.08,168.44 216.08,156.11 L 216.08,-27.6 z" />
+<path  class="note" marker-start="url(#grainlineFrom)" marker-end="url(#grainlineTo)" data-text="plugin-annotations:grainline" data-text-class="center fill-note" id="fs-47" d="M 36.8,161.65 L 36.8,28.53" />
+<text><textPath xlink:href="#fs-47"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:grainline</tspan></textPath>
+</text>
+<text  class="text-4xl fill-note font-bold left" transform="matrix(0.4, 0, 0, 0.4, 61.82399999999999, 57.054375) rotate(0 103.03999999999999 95.090625)" x="103.04" y="95.09"><tspan>10 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(0.4, 0, 0, 0.4, 61.82399999999999, 57.054375) rotate(0 103.03999999999999 95.090625)" x="103.04" y="99.09"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(0.4, 0, 0, 0.4, 61.82399999999999, 57.054375) rotate(0 103.03999999999999 95.090625)" class="text-lg fill-current font-bold left" x="103.04" y="111.09"><tspan>lowerPocket </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(0.4, 0, 0, 0.4, 61.82399999999999, 57.054375) rotate(0 103.03999999999999 95.090625)" x="103.04" y="119.09"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(0.4, 0, 0, 0.4, 61.82399999999999, 57.054375) rotate(0 103.03999999999999 95.090625)" x="103.04" y="127.09"><tspan>plugin-annotations:cut,2,plugin-annotations:mirrored,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="103.04" dy="8"> </tspan>
+</text>
+</g>
+<!-- end of group #fs-stack-huntingcoat.lowerPocket-part-huntingcoat.lowerPocket -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.lowerPocket -->
+
+<!-- Start of group #fs-stack-huntingcoat.lowerFlap -->
+<g id="fs-stack-huntingcoat.lowerFlap"  transform="translate(12, 1216.582882469115)">
+
+<!-- Start of group #fs-stack-huntingcoat.lowerFlap-part-huntingcoat.lowerFlap -->
+<g id="fs-stack-huntingcoat.lowerFlap-part-huntingcoat.lowerFlap"  transform="translate(0, 0)">
+<path  class="fabric" id="fs-48" d="M 190,0 L 0,0 L 0,41.22 C 0,50.93 7.95,58.88 17.66,58.88 L 172.34,58.88 C 182.05,58.88 190,50.93 190,41.22 z" />
+<path  class="fabric sa" id="fs-49" d="M 190,-10 L 0,-10 L -10,0 L -10,41.22 C -10,51.19 -4.66,60 3.33,64.86 C 7.52,67.41 12.43,68.88 17.66,68.88 L 172.34,68.88 C 182.31,68.88 191.12,63.54 195.98,55.55 C 198.53,51.36 200,46.45 200,41.22 L 200,0 z" />
+<path  class="note" marker-start="url(#grainlineFrom)" marker-end="url(#grainlineTo)" data-text="plugin-annotations:grainline" data-text-class="center fill-note" id="fs-50" d="M 28.5,45.19 L 28.5,10.75" />
+<text><textPath xlink:href="#fs-50"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:grainline</tspan></textPath>
+</text>
+<text  class="text-4xl fill-note font-bold left" transform="matrix(0.3, 0, 0, 0.3, 39.900000000000006, 12.364800000000002) rotate(0 57 17.664)" x="57" y="17.66"><tspan>11 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(0.3, 0, 0, 0.3, 39.900000000000006, 12.364800000000002) rotate(0 57 17.664)" x="57" y="21.66"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(0.3, 0, 0, 0.3, 39.900000000000006, 12.364800000000002) rotate(0 57 17.664)" class="text-lg fill-current font-bold left" x="57" y="33.66"><tspan>lowerFlap </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(0.3, 0, 0, 0.3, 39.900000000000006, 12.364800000000002) rotate(0 57 17.664)" x="57" y="41.66"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(0.3, 0, 0, 0.3, 39.900000000000006, 12.364800000000002) rotate(0 57 17.664)" x="57" y="49.66"><tspan>plugin-annotations:cut,2,plugin-annotations:mirrored,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="57" dy="8">,plugin-annotations:cut,2,plugin-annotations:mirrored,plugin-annotations:from,plugin-annotations:lining,</tspan><tspan x="57" dy="8"> </tspan>
+</text>
+<use x="95" y="35.33" xlink:href="#buttonhole"  transform="translate(95, 35.33) scale(1) translate(-95, -35.33)"></use>
+</g>
+<!-- end of group #fs-stack-huntingcoat.lowerFlap-part-huntingcoat.lowerFlap -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.lowerFlap -->
+
+<!-- Start of group #fs-stack-huntingcoat.backBelt -->
+<g id="fs-stack-huntingcoat.backBelt"  transform="translate(835.4693569707987, 998.1787006478526)">
+
+<!-- Start of group #fs-stack-huntingcoat.backBelt-part-huntingcoat.backBelt -->
+<g id="fs-stack-huntingcoat.backBelt-part-huntingcoat.backBelt"  transform="translate(0, 0)">
+<path  class="fabric" id="fs-51" d="M 287.5,0 L 0,0 L 0,42 L 287.5,42 z" />
+<path  class="fabric sa" id="fs-52" d="M 287.5,-10 L 0,-10 L -10,0 L -10,42 L 0,52 L 287.5,52 L 297.5,42 L 297.5,0 z" />
+<path  class="note" marker-start="url(#cutonfoldFrom)" marker-end="url(#cutonfoldTo)" data-text="plugin-annotations:cutOnFold" data-text-class="center fill-note" id="fs-53" d="M 0,2.1 L 15,2.1 L 15,39.9 L 0,39.9" />
+<text><textPath xlink:href="#fs-53"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:cutOnFold</tspan></textPath>
+</text>
+<path  class="note" marker-start="url(#grainlineFrom)" marker-end="url(#grainlineTo)" data-text="plugin-annotations:grainline" data-text-class="center fill-note" id="fs-54" d="M 40.25,21 L 247.25,21" />
+<text><textPath xlink:href="#fs-54"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:grainline</tspan></textPath>
+</text>
+<text  class="text-4xl fill-note font-bold left" transform="matrix(0.25, 0, 0, 0.25, 75.46875, 9.45) rotate(0 100.625 12.6)" x="100.63" y="12.6"><tspan>12 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(0.25, 0, 0, 0.25, 75.46875, 9.45) rotate(0 100.625 12.6)" x="100.63" y="16.6"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(0.25, 0, 0, 0.25, 75.46875, 9.45) rotate(0 100.625 12.6)" class="text-lg fill-current font-bold left" x="100.63" y="28.6"><tspan>backBelt </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(0.25, 0, 0, 0.25, 75.46875, 9.45) rotate(0 100.625 12.6)" x="100.63" y="36.6"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(0.25, 0, 0, 0.25, 75.46875, 9.45) rotate(0 100.625 12.6)" x="100.63" y="44.6"><tspan>plugin-annotations:cut,2,plugin-annotations:mirrored,plugin-annotations:onFold,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="100.63" dy="8"> </tspan>
+</text>
+</g>
+<!-- end of group #fs-stack-huntingcoat.backBelt-part-huntingcoat.backBelt -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.backBelt -->
+
+<!-- Start of group #fs-stack-huntingcoat.frontBelt -->
+<g id="fs-stack-huntingcoat.frontBelt"  transform="translate(286.16984192419557, 1071.1437006478525)">
+
+<!-- Start of group #fs-stack-huntingcoat.frontBelt-part-huntingcoat.frontBelt -->
+<g id="fs-stack-huntingcoat.frontBelt-part-huntingcoat.frontBelt"  transform="translate(0, 0)">
+<path  class="fabric" id="fs-55" d="M 329.5,0 L 0,0 L 0,42 L 329.5,42 z" />
+<path  class="fabric sa" id="fs-56" d="M 329.5,-10 L 0,-10 L -10,0 L -10,42 L 0,52 L 329.5,52 L 339.5,42 L 339.5,0 z" />
+<path  class="note" marker-start="url(#grainlineFrom)" marker-end="url(#grainlineTo)" data-text="plugin-annotations:grainline" data-text-class="center fill-note" id="fs-57" d="M 46.13,21 L 283.37,21" />
+<text><textPath xlink:href="#fs-57"  startOffset="50%" ><tspan  class="center fill-note">plugin-annotations:grainline</tspan></textPath>
+</text>
+<text  class="text-4xl fill-note font-bold left" transform="matrix(0.25, 0, 0, 0.25, 86.49374999999999, 9.45) rotate(0 115.32499999999999 12.6)" x="115.32" y="12.6"><tspan>13 </tspan>
+</text>
+<text  class="text-sm fill-current left" transform="matrix(0.25, 0, 0, 0.25, 86.49374999999999, 9.45) rotate(0 115.32499999999999 12.6)" x="115.32" y="16.6"><tspan>Friday, Oct 23, 2026 </tspan>
+</text>
+<text  transform="matrix(0.25, 0, 0, 0.25, 86.49374999999999, 9.45) rotate(0 115.32499999999999 12.6)" class="text-lg fill-current font-bold left" x="115.32" y="28.6"><tspan>frontBelt </tspan>
+</text>
+<text  class="fill-note left" transform="matrix(0.25, 0, 0, 0.25, 86.49374999999999, 9.45) rotate(0 115.32499999999999 12.6)" x="115.32" y="36.6"><tspan>PublicSewing Hunting coat v0.1.0 ( ephemeral ) </tspan>
+</text>
+<text  class="text-md fill-current left" transform="matrix(0.25, 0, 0, 0.25, 86.49374999999999, 9.45) rotate(0 115.32499999999999 12.6)" x="115.32" y="44.6"><tspan>plugin-annotations:cut,4,plugin-annotations:mirrored,plugin-annotations:from,plugin-annotations:fabric,</tspan><tspan x="115.32" dy="8"> </tspan>
+</text>
+</g>
+<!-- end of group #fs-stack-huntingcoat.frontBelt-part-huntingcoat.frontBelt -->
+</g>
+<!-- end of group #fs-stack-huntingcoat.frontBelt -->
+</g>
+<!-- end of group #fs-container -->
+</svg>

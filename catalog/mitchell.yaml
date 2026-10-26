@@ -1,0 +1,126 @@
+# Catalog entries from Mitchell, The New "Standard" Work on Designing and Pattern-Making of Ladies'
+# Tailor-Made Garments (1921): numbered-point drafts, each with a to-scale diagram (scale not
+# printed). scripts/catalog_build.py builds each entry only if its pattern passes the gate.
+# `status.sewable` means what it does in catalog/emko.yaml: true only after a recorded muslin test.
+source:
+  adapter: mitchell                  # ccat.sources.mitchell
+  book: "Mitchell, The New \"Standard\" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)"
+  corpus: newstandardworko00mitc     # corpus/MANIFEST.yaml entry
+  rights: >-
+    Published 1921 (Mitchell Publications, New York), public domain in the US. Drafting methods
+    are uncopyrightable (project policy). Points are constructed from the text's rules by ccat;
+    curves the text leaves "as per diagram" and the lapel are traced from the book's diagrams and
+    set onto the constructed points (tracing pattern geometry is fair use, project policy).
+  size_label: "the book's measures, inches (bust, back depth, back waist length, …)"
+seam_allowance: 1.5                  # cm, uniform; an export default (the drafts are net, the book gives none)
+checked_against: "the book's diagrams: printed measures laid off, measured on the fitted drawing"
+status:
+  construction: numbered-point draft, curves traced from the diagram
+  sewable: false
+entries:
+  - id: mitchell-box-coat
+    recipe: recipes/mitchell/box_coat.yaml
+    data: {garment: data/mitchell/box_coat.yaml}
+    garment: women's box coat
+    tables: "Box Coat Foundation, pp. 16–17; Box Coat, pp. 18–19; Two-Piece Sleeve, pp. 60–61"
+    status:
+      note: >-
+        The box coat: back and front (centre back seam, side seams flared from 28, lapped and
+        lapelled front with the neck dart), the two-piece sleeve drafted on the coat's armhole,
+        and the collar. Not test-sewn. Shoulder width 6 in as printed; the
+        book's diagrams draw it 5¾ (the text governs, ruled 2026-10-24).
+  - id: mitchell-semi-fitted-jacket
+    recipe: recipes/mitchell/semi_fitted_jacket.yaml
+    data: {garment: data/mitchell/semi_fitted_jacket.yaml}
+    garment: women's semi-fitted jacket
+    tables: "Semi-Fitted Jacket Foundation, pp. 36–37; Semi-Fitted Jacket, pp. 38–39; Two-Piece Sleeve, pp. 60–61"
+    status:
+      note: >-
+        Single-breasted semi-fitted jacket, 32 in long: back, side back, side front and front
+        (princess seam to the top of dart at 39, panels flared below the waist), peak lapel on a
+        1¼ in lap, mannish collar, and the two-piece sleeve drafted on its armhole. Not test-sewn.
+        Shoulder width 6 in as printed (the diagrams draw 5¾; the text governs).
+  - id: mitchell-five-gored-skirt
+    recipe: recipes/mitchell/five_gored_skirt.yaml
+    data: {garment: data/mitchell/five_gored_skirt.yaml}
+    garment: women's five-gored skirt
+    tables: "Skirt Foundation, pp. 84–85; Five Gored Skirt, pp. 90–91"
+    status:
+      note: >-
+        Five-gored skirt: front panel (centre front on the fold), side gores and back gores (centre
+        back seam), darts at the panel and side lines and the centre back, floor length (front 38,
+        back 39½). Not test-sewn. The side dart takes the draft's own surplus (2.35 in; the book's
+        "2½ in this case" is a report).
+  - id: mitchell-tight-fitted-jacket
+    recipe: recipes/mitchell/tight_fitted_jacket.yaml
+    data: {garment: data/mitchell/tight_fitted_jacket.yaml}
+    garment: women's tight-fitted jacket, single dart
+    tables: "Tight-Fitted Jacket Foundation, pp. 42–43 (measures p. 36); Tight-Fitted Jacket, Single Dart, pp. 44–45; Two-Piece Sleeve, pp. 60–61"
+    status:
+      note: >-
+        Single-breasted tight-fitted jacket with a shawl collar cut in one with the front (neck
+        dart): back, side back, under-arm, side front and front (princess seam to 40), panels flared
+        below the waist, and the two-piece sleeve. Waist 26½ (the book's standard figure; this draft
+        prints none). Length, lap and collar as drawn (p. 45). Not test-sewn.
+  - id: mitchell-seven-gored-skirt
+    recipe: recipes/mitchell/seven_gored_skirt.yaml
+    data: {garment: data/mitchell/seven_gored_skirt.yaml}
+    garment: women's seven-gored skirt
+    tables: "Skirt Foundation, pp. 84–85; Seven-Gored Skirt, pp. 92–93"
+    status:
+      note: >-
+        Seven-gored skirt: front panel (centre front on the fold) and three gores cut in pairs
+        (centre back seam), darts at the panel line, the two side seams and the centre back, floor
+        length (front 38, back 39½). Not test-sewn.
+  - id: mitchell-nine-gored-skirt
+    recipe: recipes/mitchell/nine_gored_skirt.yaml
+    data: {garment: data/mitchell/nine_gored_skirt.yaml}
+    garment: women's nine-gored skirt
+    tables: "Skirt Foundation, pp. 84–85; Nine-Gored Skirt, pp. 94–95"
+    status:
+      note: >-
+        Nine-gored skirt: front panel (centre front on the fold) and four gores cut in pairs
+        (centre back seam), a dart at the panel line and the centre back, darts of three sizes at the gore seams (largest at 14), floor length
+        (front 38, back 39½). Not test-sewn.
+  - id: mitchell-eleven-gored-skirt
+    recipe: recipes/mitchell/eleven_gored_skirt.yaml
+    data: {garment: data/mitchell/eleven_gored_skirt.yaml}
+    garment: women's eleven-gored skirt
+    tables: "Skirt Foundation, pp. 84–85; Eleven-Gored Skirt, pp. 96–97"
+    status:
+      note: >-
+        Eleven-gored skirt: front panel (centre front on the fold) and five gores cut in pairs
+        (centre back seam), a dart at the panel line and the centre back, darts of three sizes at the gore seams (largest at 14 and 15), floor length
+        (front 38, back 39½). Not test-sewn.
+  - id: mitchell-thirteen-gored-skirt
+    recipe: recipes/mitchell/thirteen_gored_skirt.yaml
+    data: {garment: data/mitchell/thirteen_gored_skirt.yaml}
+    garment: women's thirteen-gored skirt
+    tables: "Skirt Foundation, pp. 84–85; Thirteen-Gored Skirt, pp. 98–99"
+    status:
+      note: >-
+        Thirteen-gored skirt: front panel (centre front on the fold) and six gores cut in pairs
+        (centre back seam), a dart at the panel line and the centre back, darts at every gore seam, graded by ⅛ in (largest at 15), floor length
+        (front 38, back 39½). Not test-sewn.
+  - id: mitchell-fifteen-gored-skirt
+    recipe: recipes/mitchell/fifteen_gored_skirt.yaml
+    data: {garment: data/mitchell/fifteen_gored_skirt.yaml}
+    garment: women's fifteen-gored skirt
+    tables: "Skirt Foundation, pp. 84–85; Fifteen-Gored Skirt, pp. 100–101"
+    status:
+      note: >-
+        Fifteen-gored skirt: front panel (centre front on the fold) and seven gores cut in pairs
+        (centre back seam), a dart at the panel line and the centre back, darts at every gore seam, graded by 3/32 in (largest at 15 and 16), floor length
+        (front 38, back 39½). Not test-sewn.
+  - id: mitchell-double-dart-jacket
+    recipe: recipes/mitchell/double_dart_jacket.yaml
+    data: {garment: data/mitchell/double_dart_jacket.yaml}
+    garment: women's tight-fitted jacket, double dart
+    tables: "Semi-Fitted Jacket Foundation, p. 36; Tight-Fitted Jacket Foundation, p. 42; Tight-Fitted Jacket, Double Dart, pp. 46–47; Two-Piece Sleeve, pp. 60–61"
+    status:
+      note: >-
+        Single-breasted tight-fitted jacket with two seams over each shoulder opening into two front
+        darts: back, side back, side body, under-arm, side front, middle front and front, and the
+        two-piece sleeve. Shoulder width 5½ (as printed for this garment), waist 26½ (the book's
+        standard figure; this draft prints none). Lap 1¼ and hem as drawn (p. 47); no collar. Not
+        test-sewn.

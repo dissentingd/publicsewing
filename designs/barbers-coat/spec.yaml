@@ -1,0 +1,141 @@
+# Barber's coat: Simons' Barbers' Coat (Diagram X) and No Collar Barber's Coat (Diagram XI),
+# Drafting Cotton Garments and Mackinaws (1918), on FreeSewing's Brian block. See BRIEF.md for
+# where each default is read.
+about:
+  id: barberscoat
+  name: Barber's coat
+  description: "A white service coat: standing collar buttoned to the neck, or an open neck; patch pockets"
+  difficulty: 3
+  tags: [jackets, workwear]
+  techniques: [patch-pocket, collar, facing, button]
+  version: 0.1.0
+  source: Simons, Drafting Cotton Garments and Mackinaws (1918), Diagrams X and XI (draftingcottonga00simo)
+
+block: brian
+
+options:
+  # Fit
+  chestEase: { pct: 18, min: 8, max: 35, of: chest, menu: fit }
+  bicepsEase: { pct: 25, min: 10, max: 50, of: biceps, menu: fit }
+  cuffEase: { pct: 90, min: 40, max: 160, of: wrist, menu: fit }
+  seatEase: { pct: 12, min: 4, max: 30, of: seat, menu: fit }
+  # Style
+  neckStyle: { dflt: stand, list: [stand, open], menu: style }
+  lengthBelowWaist: { pct: 180, min: 80, max: 300, menu: style } # x waistToSeat
+  frontDrop: { pct: 12, min: 0, max: 40, menu: style } # x waistToSeat
+  sleeveLengthBonus: { pct: 3, min: -20, max: 15, menu: style }
+  buttonExtension: { pct: 3.4, min: 2.5, max: 6, of: chest, menu: style }
+  buttons: { count: 4, min: 3, max: 7, menu: style }
+  hemCurve: { pct: 0, min: 0, max: 100, menu: style }
+  collarHeight: { pct: 11.5, min: 8, max: 16, of: neck, menu: style }
+  breastPocket: { bool: true, menu: style }
+  lowerPockets: { bool: true, menu: style }
+  pocketShape: { dflt: rounded, list: [rounded, square, pointed, chamfered], menu: style }
+  # Construction
+  facingWidth: { pct: 8, min: 5, max: 12, of: chest, menu: construction }
+
+pieces:
+  back:
+    from: brian.back
+    hide: tree
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, neckStyle]
+    ops:
+      - coatBack: {}
+
+  front:
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [frontDrop, buttonExtension, buttons, hemCurve, facingWidth, breastPocket, lowerPockets, pocketShape]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+      open: neckStyle == 'open'
+      # XI: "does not button to the neck and has no lapel"; the neck runs down to the top
+      # button, 1 1/2" above the breast line (4 to 11)
+      neckY: if(open, underarm.y - chest * 0.04, null)
+    ops:
+      # Back neck facing width ("about two inches" on a 15" neck), for the front facings to meet
+      - store: { key: coat.neckFacing, value: { width: neck * 0.14 }, if: open }
+      - coatFront:
+          ext: ext
+          r: ext * 2 * hemCurve
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          neckY: neckY
+      # X: four buttons from the neck to below the waist; XI: from the top of the opening
+      - buttons:
+          count: buttons
+          top: if(open, neckY + ext * 0.6, cfNeck.y + ext * 0.9)
+          bottom: cfWaist.y + waistToSeat * 0.6
+          rows: [0]
+      # Pockets (Diagram X): "The top patch should be made 5 1/2 inches wide and 6 1/2 inches
+      # deep. The lower patch should be made 6 1/2 inches wide and 8 1/2 inches deep" (breast
+      # 38). As shares of the front's chest width q (11 1/4" at 38 with our ease).
+      - store:
+          key: coat.pockets
+          value:
+            breast:
+              h: q * 0.58
+              x: q * 0.17
+              y: underarm.y
+              w: min(q * 0.49, armholeHollow.x - q * 0.04 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+            lower:
+              x: q * 0.3
+              y: cfWaist.y + waistToSeat * 0.45
+              h: min(q * 0.76, cfHem.y - q * 0.06 - y)
+              w: min(q * 0.58, sideHem.x - q * 0.06 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+      - markPocket: { id: breastPocket, pocket: coat.pockets.breast, if: breastPocket }
+      - markPocket: { id: lowerPocket, pocket: coat.pockets.lower, if: lowerPockets }
+
+  facing:
+    part: facing
+    from: front
+    nr: 5
+
+  backNeckFacing:
+    part: backNeckFacing
+    from: back
+    nr: 6
+    width: neck * 0.14
+    if: neckStyle == 'open'
+
+  # "A military standing collar which buttons to the neck" (X, 20-25): 1 3/4" high, its front
+  # end 1/2" higher than its CB over 8 3/4", square ends meeting at the front edge
+  collar:
+    after: [back, front]
+    measurements: [neck]
+    options: [collarHeight]
+    ops:
+      - hidePiece: { if: neckStyle == 'open' }
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext
+          spring: target * 0.057
+          width: neck * collarHeight
+          point: 0
+
+  sleeve:
+    part: sleeve
+    after: front
+    options: [sleeveLengthBonus]
+
+  breastPocket:
+    part: pocket
+    after: front
+    key: breast
+    nr: 7
+    label: breastPocket
+    cut: 1
+    if: breastPocket
+  lowerPocket:
+    part: pocket
+    after: front
+    key: lower
+    nr: 8
+    label: lowerPocket
+    cut: 2
+    if: lowerPockets

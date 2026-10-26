@@ -1,0 +1,123 @@
+# ЕМКО СЭВ т.3 §6, men's waistcoat, semi-fitted: model construction МК (Table 6.3 МК block,
+# rows 1–13, Fig. 32) on top of the ИМК (waistcoat_imk.yaml, rows 1–27.2). Inputs: kN = МК row N
+# (data section mk); mk_arm_* = Fig. 32's armhole, traced (data section traces).
+# The МК makes the finished waistcoat: a 2.5 button stand, the back 9.6 below the waist, the
+# side hem halfway down the hip, a cutaway front point (971'–972–973), the hem drawn with the
+# front dart closed (942''), a V-neck 16 deep tangent to the neckline at 162, shoulders cut to
+# 10.0 (front) and 11.0 (back, with the 1.0 ease), and a new armhole.
+# Row 13 leaves the armhole "по модели (см. рис. 32)": the book gives it only as a drawing.
+# It is traced from Fig. 32 (project stance: tracing pattern geometry is fair use) and stored
+# in each half's chord frame, p = A + u (B − A) + v perp(B − A), with A, B the constructed
+# ends (143 → 341', 341' → 143'), so the curve keeps the figure's shape between the table's
+# points. Fig. 32 maps to cm with rms 0.07 cm over six ИМК points (pilot/emko/FINDINGS.md).
+extends: waistcoat_imk.yaml
+recipe: emko-waistcoat-mk
+source: {book: "ЕМКО СЭВ т.3", section: 6, tables: ["6.2", "6.3"], figures: [30, 31, 32]}
+check_inputs: [k2]                          # printed for 176-100-88 only
+inputs: [k1, k5, k6, k9, k12, k13, mk_arm_back_u1, mk_arm_back_v1, mk_arm_back_u2, mk_arm_back_v2, mk_arm_back_u3, mk_arm_back_v3, mk_arm_back_u4, mk_arm_back_v4, mk_arm_back_u5, mk_arm_back_v5, mk_arm_back_u6, mk_arm_back_v6, mk_arm_back_u7, mk_arm_back_v7, mk_arm_back_u8, mk_arm_back_v8, mk_arm_back_u9, mk_arm_back_v9, mk_arm_back_u10, mk_arm_back_v10, mk_arm_back_u11, mk_arm_back_v11, mk_arm_back_u12, mk_arm_back_v12, mk_arm_back_u13, mk_arm_back_v13, mk_arm_back_u14, mk_arm_back_v14, mk_arm_front_u1, mk_arm_front_v1, mk_arm_front_u2, mk_arm_front_v2, mk_arm_front_u3, mk_arm_front_v3, mk_arm_front_u4, mk_arm_front_v4, mk_arm_front_u5, mk_arm_front_v5, mk_arm_front_u6, mk_arm_front_v6, mk_arm_front_u7, mk_arm_front_v7, mk_arm_front_u8, mk_arm_front_v8, mk_arm_front_u9, mk_arm_front_v9, mk_arm_front_u10, mk_arm_front_v10, mk_arm_front_u11, mk_arm_front_v11, mk_arm_front_u12, mk_arm_front_v12, mk_arm_front_u13, mk_arm_front_v13, mk_arm_front_u14, mk_arm_front_v14]
+points:
+  # ---- front edge, hem and cutaway (МК rows 1–8) ----
+  "572": {circle_line: {center: "571'", r: k1, line: {from: "571'", dir: {perp: ["571'", "17'"]}}, pick: right}, row: 1,
+          note: "МК row 1: button stand; from 572 a line parallel to the front edge 571'–17'"}
+  "912": {along: {from: "411", to: "511", d: '0.5 * dist("411", "511")'}, row: 2, note: "МК row 2: 0,5|411–511|"}
+  "421h": {at_y: {line: ["421", "52"], y_of: "912"}, note: "back dart leg at the new hem"}
+  "421'h": {at_y: {line: ["421'", "52"], y_of: "912"}}
+  "942": {at_y: {line: ["443", "542"], y_of: "912"}, interp: "Fig. 32: the back hem runs level from 912 to the side seam"}
+  "942'": {at_y: {line: ["443'", "542'"], y: 'y("441''") + 0.5 * (y("541''") - y("441''"))'}, row: 3,
+           interp: "МК row 3: 441'–942' = 0,5|441'–541'|, taken on the ИМК side seam 443'–542' (Fig. 32)"}
+  "971'": {along: {from: "471'", to: "571'", d: '0.5 * dist("471''", "571''")'}, row: 4, note: "МК row 4"}
+  "972": {along: {from: "971'", to: "571'", d: k5}, row: 5, note: "МК row 5"}
+  "973": {circle_line: {center: "972", r: k6, line: {from: "972", dir: {perp: ["571'", "971'"]}}, pick: left}, row: 6,
+          note: "МК row 6"}
+  "942''": {circle_circle: {c1: "461'", r1: 'dist("461", "942''")', c2: "56", r2: 'dist("56", "942''")', pick: {near: "942'"}},
+            row: 7, note: "МК rows 7–7.1: 942' with the front dart closed (pivot 56)"}
+  "961'": {line_x: {a: ["973", "942''"], b: ["461'", "56'"]}, row: 7, note: "МК row 7"}
+  "961": {along: {from: "461", to: "56", d: 'dist("461''", "961''")'}, row: 8, note: "МК row 8"}
+  "971''": {line_x: {a: ["973", "971'"], b: {from: "572", dir: {toward: ["571'", "17'"]}}}, row: 7,
+            note: "МК row 7: 973–971' on to the button-stand edge"}
+  # ---- V-neck (МК rows 9–11) ----
+  "373": {along: {from: "17'", to: "571'", d: k9}, row: 9, note: "МК row 9"}
+  "173": {ratio: {from: "172'", to: "373", t: 0.5}, row: 10, note: "МК row 10"}
+  "162": {circle_circle: {c1: "173", r1: 'dist("173", "172''")', c2: "172'", r2: 'dist("172''", "16''")', pick: {near: "16'"}},
+          row: 11, note: "МК row 11: on the circle with diameter 172'–373, so 373–162 is tangent to the neckline at 162"}
+  "374": {line_x: {a: ["162", "373"], b: {from: "572", dir: {toward: ["571'", "17'"]}}}, row: 11,
+          note: "МК row 11: 162–373 on to the button-stand edge"}
+  # ---- shoulders and armhole (МК rows 12–13) ----
+  "143'": {along: {from: "16'", to: "142'", d: k12}, row: 12, note: "МК row 12"}
+  "143": {along: {from: "121", to: "142", d: k13}, row: 13, note: "МК row 13"}
+  ab1: {at: ['x("143") + mk_arm_back_u1 * (x("341''") - x("143")) - mk_arm_back_v1 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u1 * (y("341''") - y("143")) + mk_arm_back_v1 * (x("341''") - x("143"))']}
+  ab2: {at: ['x("143") + mk_arm_back_u2 * (x("341''") - x("143")) - mk_arm_back_v2 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u2 * (y("341''") - y("143")) + mk_arm_back_v2 * (x("341''") - x("143"))']}
+  ab3: {at: ['x("143") + mk_arm_back_u3 * (x("341''") - x("143")) - mk_arm_back_v3 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u3 * (y("341''") - y("143")) + mk_arm_back_v3 * (x("341''") - x("143"))']}
+  ab4: {at: ['x("143") + mk_arm_back_u4 * (x("341''") - x("143")) - mk_arm_back_v4 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u4 * (y("341''") - y("143")) + mk_arm_back_v4 * (x("341''") - x("143"))']}
+  ab5: {at: ['x("143") + mk_arm_back_u5 * (x("341''") - x("143")) - mk_arm_back_v5 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u5 * (y("341''") - y("143")) + mk_arm_back_v5 * (x("341''") - x("143"))']}
+  ab6: {at: ['x("143") + mk_arm_back_u6 * (x("341''") - x("143")) - mk_arm_back_v6 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u6 * (y("341''") - y("143")) + mk_arm_back_v6 * (x("341''") - x("143"))']}
+  ab7: {at: ['x("143") + mk_arm_back_u7 * (x("341''") - x("143")) - mk_arm_back_v7 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u7 * (y("341''") - y("143")) + mk_arm_back_v7 * (x("341''") - x("143"))']}
+  ab8: {at: ['x("143") + mk_arm_back_u8 * (x("341''") - x("143")) - mk_arm_back_v8 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u8 * (y("341''") - y("143")) + mk_arm_back_v8 * (x("341''") - x("143"))']}
+  ab9: {at: ['x("143") + mk_arm_back_u9 * (x("341''") - x("143")) - mk_arm_back_v9 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u9 * (y("341''") - y("143")) + mk_arm_back_v9 * (x("341''") - x("143"))']}
+  ab10: {at: ['x("143") + mk_arm_back_u10 * (x("341''") - x("143")) - mk_arm_back_v10 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u10 * (y("341''") - y("143")) + mk_arm_back_v10 * (x("341''") - x("143"))']}
+  ab11: {at: ['x("143") + mk_arm_back_u11 * (x("341''") - x("143")) - mk_arm_back_v11 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u11 * (y("341''") - y("143")) + mk_arm_back_v11 * (x("341''") - x("143"))']}
+  ab12: {at: ['x("143") + mk_arm_back_u12 * (x("341''") - x("143")) - mk_arm_back_v12 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u12 * (y("341''") - y("143")) + mk_arm_back_v12 * (x("341''") - x("143"))']}
+  ab13: {at: ['x("143") + mk_arm_back_u13 * (x("341''") - x("143")) - mk_arm_back_v13 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u13 * (y("341''") - y("143")) + mk_arm_back_v13 * (x("341''") - x("143"))']}
+  ab14: {at: ['x("143") + mk_arm_back_u14 * (x("341''") - x("143")) - mk_arm_back_v14 * (y("341''") - y("143"))', 'y("143") + mk_arm_back_u14 * (y("341''") - y("143")) + mk_arm_back_v14 * (x("341''") - x("143"))']}
+  af1: {at: ['x("341''") + mk_arm_front_u1 * (x("143''") - x("341''")) - mk_arm_front_v1 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u1 * (y("143''") - y("341''")) + mk_arm_front_v1 * (x("143''") - x("341''"))']}
+  af2: {at: ['x("341''") + mk_arm_front_u2 * (x("143''") - x("341''")) - mk_arm_front_v2 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u2 * (y("143''") - y("341''")) + mk_arm_front_v2 * (x("143''") - x("341''"))']}
+  af3: {at: ['x("341''") + mk_arm_front_u3 * (x("143''") - x("341''")) - mk_arm_front_v3 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u3 * (y("143''") - y("341''")) + mk_arm_front_v3 * (x("143''") - x("341''"))']}
+  af4: {at: ['x("341''") + mk_arm_front_u4 * (x("143''") - x("341''")) - mk_arm_front_v4 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u4 * (y("143''") - y("341''")) + mk_arm_front_v4 * (x("143''") - x("341''"))']}
+  af5: {at: ['x("341''") + mk_arm_front_u5 * (x("143''") - x("341''")) - mk_arm_front_v5 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u5 * (y("143''") - y("341''")) + mk_arm_front_v5 * (x("143''") - x("341''"))']}
+  af6: {at: ['x("341''") + mk_arm_front_u6 * (x("143''") - x("341''")) - mk_arm_front_v6 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u6 * (y("143''") - y("341''")) + mk_arm_front_v6 * (x("143''") - x("341''"))']}
+  af7: {at: ['x("341''") + mk_arm_front_u7 * (x("143''") - x("341''")) - mk_arm_front_v7 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u7 * (y("143''") - y("341''")) + mk_arm_front_v7 * (x("143''") - x("341''"))']}
+  af8: {at: ['x("341''") + mk_arm_front_u8 * (x("143''") - x("341''")) - mk_arm_front_v8 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u8 * (y("143''") - y("341''")) + mk_arm_front_v8 * (x("143''") - x("341''"))']}
+  af9: {at: ['x("341''") + mk_arm_front_u9 * (x("143''") - x("341''")) - mk_arm_front_v9 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u9 * (y("143''") - y("341''")) + mk_arm_front_v9 * (x("143''") - x("341''"))']}
+  af10: {at: ['x("341''") + mk_arm_front_u10 * (x("143''") - x("341''")) - mk_arm_front_v10 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u10 * (y("143''") - y("341''")) + mk_arm_front_v10 * (x("143''") - x("341''"))']}
+  af11: {at: ['x("341''") + mk_arm_front_u11 * (x("143''") - x("341''")) - mk_arm_front_v11 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u11 * (y("143''") - y("341''")) + mk_arm_front_v11 * (x("143''") - x("341''"))']}
+  af12: {at: ['x("341''") + mk_arm_front_u12 * (x("143''") - x("341''")) - mk_arm_front_v12 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u12 * (y("143''") - y("341''")) + mk_arm_front_v12 * (x("143''") - x("341''"))']}
+  af13: {at: ['x("341''") + mk_arm_front_u13 * (x("143''") - x("341''")) - mk_arm_front_v13 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u13 * (y("143''") - y("341''")) + mk_arm_front_v13 * (x("143''") - x("341''"))']}
+  af14: {at: ['x("341''") + mk_arm_front_u14 * (x("143''") - x("341''")) - mk_arm_front_v14 * (y("143''") - y("341''"))', 'y("341''") + mk_arm_front_u14 * (y("143''") - y("341''")) + mk_arm_front_v14 * (x("143''") - x("341''"))']}
+paths:
+  mk_arm_back: [{polyline: ["143", ab1, ab2, ab3, ab4, ab5, ab6, ab7, ab8, ab9, ab10, ab11, ab12, ab13, ab14, "341'"]}]
+  mk_arm_front: [{polyline: ["341'", af1, af2, af3, af4, af5, af6, af7, af8, af9, af10, af11, af12, af13, af14, "143'"]}]
+  mk_neck: [{arc: {center: "172'", from: "16'", to: "162"}}]
+  mk_side_back: [{polyline: ["341'", "443", "942"]}]
+  mk_side_front: [{polyline: ["341'", "443'", "942'"]}]
+pieces:
+  mk_back:
+    outline:
+      - {line: ["111", "112"]}
+      - {path: back_neck}
+      - {line: ["121", "143"]}
+      - {path: mk_arm_back}
+      - {polyline: ["341'", "443", "942", "421'h", "421'", "321", "421", "421h", "912", "412", "31", "21", "111"]}
+  mk_front:
+    outline:
+      - {path: mk_neck}
+      - {polyline: ["162", "374", "971''", "973", "961'", "461'", "36", "461", "961", "942'", "443'", "341'"]}
+      - {path: mk_arm_front}
+      - {line: ["143'", "16'"]}
+checks:
+  - id: mk-row2-formula
+    measure: {value: '0.5 * dist("411", "511")'}
+    expect: k2
+    source: "Table 6.3 МК row 2: 411–912 = 0,5|411–511|, printed 9,6"
+    base_only: true
+  - id: mk-side-back-vs-front
+    equal: [mk_side_back, mk_side_front]
+    source: "the МК side seam sews back to front (hem at 942 / 942')"
+reports:
+  - {id: mk-shoulder-ease, measure: {value: 'dist("121", "143") - dist("16''", "143''")'}, note: "= ПТ_пос 1,0 by МК rows 12–13"}
+  - {id: mk-armhole, measure: {value: 'length("mk_arm_back") + length("mk_arm_front")'}, note: "traced from Fig. 32; no printed target"}
+  - {id: mk-v-tangent-deg, measure: {value: 'angle("172''", "162", "373")'}, note: "±90° when 373–162 is tangent at 162"}
+  - {id: mk-front-dart-at-hem, measure: {dist: ["961", "961'"]}}
+  - {id: mk-back-dart-at-hem, measure: {dist: ["421h", "421'h"]}}
+export:
+  imk_back: {omit: true}
+  imk_front: {omit: true}
+  mk_back:
+    cut: 2
+    grain: vertical
+    notches: [{point: "412"}, {point: "443"}]
+    darts: [["421'h", "421'", "321", "421", "421h"]]          # back dart, mouth at the МК hem
+  mk_front:
+    cut: 2
+    grain: vertical
+    notches: [{along: ["374", "971''"], at_y_of: "471'"}, {point: "443'"}, {point: "373"}]   # waist on the stand edge; V-neck break point
+    darts: [["961'", "461'", "36", "461", "961"]]             # front dart, mouth at the МК hem

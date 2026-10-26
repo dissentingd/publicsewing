@@ -1,0 +1,16 @@
+# Mitchell 1921, Skirt Foundation (book pp. 84–85) and Nine-Gored Skirt (pp. 94–95). The measures as
+# printed on p. 84, in inches, read from the page image.
+name: nine-gored skirt
+source:
+  size: "waist 26½, hips 40 (the book's measures, p. 84)"
+  book: "Mitchell, The New \"Standard\" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)"
+  corpus: newstandardworko00mitc
+  pages: [84, 85, 94, 95]          # book pages = PDF pages − 4
+measures:
+  waist: 26.5
+  hips: 40
+  front_len: 38
+  back_len: 39.5
+drawings:
+  p85: data/mitchell/trace/p-085.yaml   # the skirt foundation (PDF p. 89)
+  p95: data/mitchell/trace/p-095.yaml   # the nine-gored skirt (PDF p. 99)

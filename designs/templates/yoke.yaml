@@ -1,0 +1,30 @@
+# Template for yoke garments (lib/yoke.mjs, Walker 1909): a yoke (or a bodice to the waist) at
+# the top; a body (or skirt) gathered into it; an opening at the back or front with a placket;
+# sleeves long or short gathered into a band, or none; a neck binding or band.
+# A design extends it with its own `about` and the option defaults it changes (yokeOptions in
+# lib/yoke.mjs lists them all; a design's entry replaces the whole option). A bodice-and-skirt
+# design replaces the four body/yoke pieces to name them so.
+block: brian
+
+pieces:
+  # Brian's back and front, drafted into the store (`yoke.*`) and hidden
+  backBase:
+    from: brian.back
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    ops:
+      - yokeSide: { side: back }
+  frontBase:
+    from: brian.front
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    ops:
+      - yokeSide: { side: front }
+  frontBody: { part: yokePiece, after: [backBase, frontBase], side: front, piece: body, nr: 1, label: frontBody, cut: 1 }
+  backBody: { part: yokePiece, after: [backBase, frontBase], side: back, piece: body, nr: 2, label: backBody, cut: 1 }
+  frontYoke: { part: yokePiece, after: [backBase, frontBase], side: front, piece: yoke, nr: 3, label: frontYoke, cut: 2 }
+  backYoke: { part: yokePiece, after: [backBase, frontBase], side: back, piece: yoke, nr: 4, label: backYoke, cut: 2 }
+  sleeve: { part: yokeSleeve, after: [backBase, frontBase], nr: 5 }
+  sleeveBand: { part: sleeveBand, after: sleeve, nr: 6 }
+  placket: { part: placket, after: [backBase, frontBase], nr: 7 }
+  neckBand: { part: neckBand, after: [backBase, frontBase], nr: 8 }

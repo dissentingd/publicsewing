@@ -1,0 +1,154 @@
+# Extraction pilot: M. Prince Browne, "Up to Date Dress Cutting and Drafting",
+# Part 1 (1907), Chapter II: plan lines + bodice outline (Diagrams 3–4).
+# Source: archive.org/details/uptodatedresscuttingpartone (public domain).
+# Hand-extracted from the OCR text + scan, as the reference for what an
+# automated extractor should produce.
+#
+# Frame (Browne drafts the bodice lying sideways):
+#   x = along the "back plan line" (centre back), from the "neck plan line"
+#       toward the waist, inches
+#   y = squared off the back plan line, toward the front, inches
+#   "to the right" in the text = toward the neck = −x
+# Every step carries `src` (the instruction it encodes) and, where the text
+# doesn't fully determine it, `gap` (what we had to assume).
+
+system: browne-1907-bodice-ch2
+units: in
+
+measures:            # Browne's eight bodice measures (p.1–5)
+  half_chest: {no: 1}
+  half_waist: {no: 2}   # used in Diagram 6 (not in this outline)
+  length_of_back: {no: 3}
+  half_width_of_back: {no: 4}
+  under_arm: {no: 5}
+  half_neck: {no: 6}
+  length_of_front: {no: 7}
+  across_chest: {no: 8}
+
+params:              # figure-dependent constants the text calls variable
+  shoulder_drop: {default: 2, src: "from the neck plan line measure about 2in … *not a fixed measure"}
+  front_line_offset:
+    default: 3.5
+    src: "measure 3£in. less than on the armhole line (Ch. II OCR) / l£in. less (Ch. III OCR)"
+    gap: "UNRESOLVED: text leaves are 370x550px scans, unreadable; OCR gives 3½ (Ch.II) vs 1½/1¼ (Ch.III); Diagram 4 implies ~1.3" 
+
+steps:
+  # ---- plan lines (Diagram 3) ----
+  - let: waist_x
+    expr: length_of_back
+    src: "On the back plan line, mark the length of back (No. 3)"
+  - let: basque_x
+    expr: waist_x + 3
+    src: "and 3in. below it, mark the short basque line"
+  - let: arm_x
+    expr: waist_x - under_arm
+    src: "from the waist line, measure to the right, the under arm measure (No. 5) … draw a long line for the armhole line"
+  - let: shoulder_x
+    expr: shoulder_drop
+    src: "from the neck plan line measure about 2in."
+  - let: backarm_x
+    expr: shoulder_x + 3
+    src: "and 3in. below it make another mark … back shoulder line and back armhole line"
+  - point: O
+    at: [0, 0]
+    src: "back plan line × neck plan line"
+
+  # ---- back (Diagram 4) ----
+  - point: TW
+    at: [waist_x, 1]
+    src: "On the waist-line, from the back plan line, measure 1in. inwards"
+  - point: TBQ
+    at: [basque_x, 0.5]
+    src: "a straight line from it to the short basque line (to within ½in. of the back plan line)"
+  - line: true_back
+    through: [TBQ, TW, O]
+    src: "draw … a straight line from it, to the neck plan line … This gives the true back line"
+  - point: BN0
+    at: [0, half_neck / 3 - 0.25]
+    src: "On the neck plan line, from the back, measure ⅓ of the half neck (No. 6), less ¼in."
+    gap: "OCR garbles the fractions (‘^’, ‘*|’); ⅓ and ¼ read from the N.B. and the scan"
+  - point: HNB
+    at: [-0.75, y(BN0)]
+    src: "from it, draw, to the right, a straight line ¾in. long"
+  - curve: back_neck
+    through: [HNB, O]
+    tangents: {HNB: [0.35, -1], O: [0.05, -1]}
+    src: "draw a curved line backwards, on to the neck plan line, as per Diagram 4"
+    gap: "curve shape freehand; tangents chosen to match the diagram"
+  - point: BA
+    at: [backarm_x, true_back_y(backarm_x) + half_width_of_back + 0.5]
+    src: "On the back armhole line, from the true back line, measure the half width of back (No. 4), plus ½in."
+  - point: BS0
+    at: [shoulder_x, y(BA)]
+    src: "draw a line from it (to the right), to the next plan line"
+  - line: back_shoulder
+    through: [BS0, HNB]
+    src: "Draw a line from the shoulder line, to highest point of neck; slightly curve this line inwards"
+    gap: "drawn straight; ‘slightly curve inwards’ not modelled"
+
+  # ---- front (Diagram 4) ----
+  - point: FC
+    at: [arm_x, true_back_y(arm_x) + half_chest + 1]
+    src: "On the armhole line, from the true back line, measure the half chest (No. 1), plus 1in. … front of chest"
+  - point: FL0
+    at: [0, true_back_y(0) + half_chest + 1 - front_line_offset]
+    src: "On the neck plan line … measure 3½in. less than on the armhole line"
+  - point: FBQ0
+    on_line: [FL0, FC]
+    x: basque_x
+    src: "a long straight line through front of chest down the front, to basque line … front line of bodice"
+  - point: FW0
+    on_line: [FL0, FC]
+    x: waist_x
+  - point: AC
+    at: [arm_x, y(FC) - across_chest]
+    src: "From the front of chest, measure back on the armhole line, the across chest (No. 8)"
+  - point: FB
+    along: {from: FBQ0, toward: FL0, dist: 1.5}
+    src: "On the front line, from the short basque line, measure to the right 1½in."
+  - point: TBQF
+    meet_x: {from: FB, x: basque_x, length: 5}
+    src: "draw a sloping line towards the back (about 5in. long), to the short basque line … true basque line"
+  - point: FW
+    along: {from: FW0, toward: FL0, dist: 1.5}
+    src: "On the front line, from the waist line, measure to the right 1½in."
+  - point: TWF
+    meet_x: {from: FW, x: waist_x, length: 5}
+    src: "draw a sloping line towards the back (about 5in. long), to the waist line … true waist line"
+  - point: FNK
+    along: {from: FW, toward: FL0, dist: length_of_front}
+    src: "On the front line, from the true waist line, measure to the right, the length of front (No. 7) … front neck"
+  - point: FNH
+    meet_x: {from: FNK, x: x(FNK) - half_neck / 3, length: 2 * half_neck / 3 - 0.25, side: back}
+    src: "measure ⅓ of the half neck, draw a short line parallel with the armhole line — measure ⅔ of the half neck, deduct ¼in., and draw a slanting line from front neck across to the short line"
+  - curve: front_neck
+    through: [FNH, FNK]
+    tangents: {FNH: [1, 0.4], FNK: [0.5, 1]}
+    src: "and curve it for the front neck, as per Diagram 4"
+    gap: "curve shape freehand; tangents chosen to match the diagram"
+  - let: neck_to_shoulder
+    expr: shoulder_x - x(HNB)
+    src: "Measure the length between the highest point of the back neck and the shoulder line"
+  - point: FSP
+    meet_x: {from: FNH, x: x(FNH) + neck_to_shoulder, length: "dist(BS0, HNB)", side: back}
+    src: "mark the same length on the front (to the left from front neck) … plan line parallel with the armhole line … Measure the length of the back shoulder, and draw a line from front neck backwards on to the short plan line"
+
+  # ---- armhole ----
+  - point: BSX
+    along: {from: BS0, away_from: HNB, dist: 0.5}
+    src: "on to about ½in. beyond the back shoulder … making the back shoulder ½in. longer than the front"
+  - point: BAC
+    at: [(x(BA) + x(BS0)) / 2, y(BA)]
+    src: "curving up to touch the centre of the back armhole plan line"
+  - point: ABOT
+    at: [arm_x, (y(BA) + y(AC)) / 2]
+    src: "curving down to the armhole line"
+    gap: "WHERE it touches the armhole line is unspecified; assumed midway between back-armhole and across-chest marks"
+  - curve: armhole
+    through: [FSP, ABOT, BAC, BSX]
+    tangents: {FSP: [0.6, 1.2, 2.2], ABOT: [0, -1, 1.8], BAC: [-1, 0]}
+    gap: "curve SHAPE is freehand ('drawn with one stroke'); tangent directions/strengths fitted by eye to Diagram 4"
+    src: "Draw a curved line from the shoulder point of front shoulder, curving down to the armhole line, and then curving up to touch the centre of the back armhole plan line, and on to about ½in. beyond the back shoulder"
+
+outline: [TBQ, TW, O, ~back_neck_rev, HNB, BSX, ~armhole_rev, FSP, FNH, ~front_neck, FNK, FB, TBQF, TBQ]
+construction: [true_back, back_shoulder]

@@ -1,0 +1,242 @@
+# ЕМКО СЭВ т.3 §2, men's demi-season coat, semi-fitted: model construction ИМК
+# (Table 2.3, Fig. 9 body, Fig. 10 two-piece sleeve) on top of the base construction
+# (jacket.yaml run on Table 2.2, Fig. 7). Inputs: mN = Table 2.3 row N, nN = its sleeve
+# row N (data/emko/coat_demi_176-100-88.yaml sections imk, imk_sleeve).
+# The model (p. 23): back with a centre seam and open vent, side panel ("отрезной
+# бочок"), front with a chest dart from the side pocket and a belly dart from seam B along
+# the pocket cut, two-piece sleeve (the jacket's construction, imk_sleeve.yaml), turn-down
+# collar (по модели, not tabulated). Unprimed points = back/front, primed = side panel,
+# as in jacket_imk.yaml. Rows 32–37.3 shape the back shoulder: 1.0 of the shoulder dart is
+# eased into the shoulder, the rest is shrunk out at the armhole, and the upper back
+# armhole is redrawn about O.
+extends: imk_sleeve.yaml
+recipe: emko-coat-demi-imk
+source: {book: "ЕМКО СЭВ т.3", section: 2, tables: ["2.2", "2.3"], figures: [7, 8, 9, 10, 36]}
+inputs: [m2, m4, m5, m7, m10, m15, m16, m18, m25, m32]
+# printed for 176-100-88 only; on every size the recipe uses the rows' formulas (values below)
+check_inputs: [m1, m9, m11, m13, m17, m19, m22]
+values:
+  r1_333: 0.05 * r7                         # row 1: 33–333 = 0,05|33–35|
+  s11: 0.4 * dT - 1.0                       # rows 11–12
+  s13: 0.1 * dT                             # rows 13–14
+  s19: 0.5 * dB - 0.2                       # rows 19–20
+  s22: 0.335 * r11                          # rows 22, 24: 46–462 = 0,335|47–57|
+  dT: dist("31", "37") + dist("47", "471") - dist("41", "411") - dist("411", "470")   # row 9 formula
+  dB: dist("31", "37") + dist("57", "571") - dist("51", "511") - dist("511", "570")   # row 17 formula
+  theta: angle("462", "46", "462'")         # belly dart, = ∠471–46–471' (row 24)
+  ease_b: angle("123", "22", "123''")       # row 33: shoulder dart left after the 1.0 ease
+points:
+  # ---- seam A (rows 1–4) ----
+  "333": {offset: {from: "33", dir: right, d: r1_333}, row: 1}
+  "334": {path_x: {path: back_arm, line: {from: "333", dir: up}, pick: last}, row: 1}
+  "531": {offset: {from: "51", dir: right, d: r6}, row: 3}
+  "531'": {offset: {from: "531", dir: right, d: m4}, row: 4}
+  "431": {at_y: {line: ["333", "531"], y_of: "411"}, row: 4}
+  "431'": {at_y: {line: ["333", "531'"], y_of: "411"}, row: 4}
+  # ---- seam B (rows 2, 5–8) ----
+  "353": {offset: {from: "351", dir: left, d: m2}, row: 2}
+  "354": {path_x: {path: front_arm, line: {from: "353", dir: up}, pick: first}, row: 2}
+  "55": {project: {x_of: "35", y_of: "57"},
+         interp: "Fig. 9 detail I: 55 on the front's hip level (57), 55' on the back's (51)"}
+  "55'": {project: {x_of: "35", y_of: "51"}}
+  "551": {offset: {from: "55", dir: left, d: m5}, row: 5}
+  "551'": {offset: {from: "55'", dir: left, d: m7}, row: 7}
+  "451": {at_y: {line: ["353", "551"], y_of: "411"}, row: 8}
+  "451'": {at_y: {line: ["353", "551'"], y_of: "411"}, row: 8}
+  # БК hem (Fig. 7, not tabulated; torso.yaml): the side corner 941 = 941' on the back hem
+  # level, and the front hem from it down to 96, then level to 971.
+  "952": {line_x: {a: {from: "551", dir: down}, b: ["941", "96"]}, row: 8,
+          note: "/96–941'/ meets the continuation of 551–951 (951 straight below 551: 95 below 55)"}
+  "952'": {line_x: {a: {from: "551'", dir: down}, b: ["941", "96"]}, row: 8,
+           note: "/941–952'/ ∥ /941'–96/: the same line, as 941 = 941'"}
+  # ---- waist and hip suppression (rows 9–21) ----
+  "412": {offset: {from: "411", dir: right, d: m10}, row: 10}
+  "432": {offset: {from: "431", dir: left, d: s11}, row: 11}
+  "432'": {offset: {from: "431'", dir: right, d: s11}, row: 12}
+  "452": {offset: {from: "451", dir: right, d: s13}, row: 13}
+  "452'": {offset: {from: "451'", dir: left, d: s13}, row: 14}
+  "461": {along: {from: "46", to: "471'", d: -m15}, row: 15, note: "chest dart at the waist, along the waist line 46–471'"}
+  "461'": {along: {from: "46", to: "471'", d: m16}, row: 16}
+  "571": {project: {x_of: "471", y_of: "57"}, interp: "Fig. 7: 571 on the front edge at the hip level; row 17's printed d_б checks it"}
+  "512": {offset: {from: "511", dir: right, d: m18}, row: 18}
+  "912": {offset: {from: "911", dir: right, d: m18}, interp: "Fig. 9: the centre back seam 412–512 runs on to the hem"}
+  "532": {offset: {from: "531", dir: left, d: s19}, row: 19}
+  "532'": {offset: {from: "531'", dir: right, d: s19}, row: 20}
+  "932": {at_y: {line: ["432", "532"], y_of: "91"}, row: 21, interp: "по модели: on to the back hem level (Fig. 9)"}
+  "932'": {at_y: {line: ["432'", "532'"], y_of: "91"}, row: 21}
+  # ---- belly dart into the pocket cut (rows 22–26) ----
+  "462": {offset: {from: "46", dir: down, d: s22}, row: 22}
+  "453": {line_x: {a: {from: "462", dir: {deg: 180 + (90 - m25)}}, b: ["452", "551"]}, row: 23,
+          note: "pocket cut at 87° to the vertical, toward the side, meets seam B"}
+  "462'": {offset: {from: "46", dir: {toward: ["36", "46"]}, d: s22}, row: 24}
+  "453'": {rotate: {point: "453", about: "46", deg: theta}, row: 25, note: "rows 25–26: triangle 46–462–453 turned to 462'"}
+  # ---- lower front (rows 27–31) ----
+  "971'": {offset: {from: "471'", dir: {toward: ["371", "471'"]}, d: 'dist("471", "971")'}, row: 27}
+  "96'": {circle_line: {center: "971'", r: 'dist("971", "96")', line: {from: "971'", dir: {perp: ["371", "971'"]}}, pick: left},
+          row: 28}
+  "571'": {along: {from: "971'", to: "471'", d: 'dist("971", "571")'}, row: 29}
+  "551''": {circle_line: {center: "571'", r: 'dist("571", "551")', line: {from: "571'", dir: {perp: ["371", "971'"]}}, pick: left},
+            row: 30}
+  "952''": {circle_line: {center: "551''", r: 'dist("551", "952")', line: {from: "551''", dir: {perp: ["551''", "571'"]}}, pick: lower},
+            row: 31}
+  # ---- back shoulder and armhole (rows 32–37.3) ----
+  "123''": {along: {from: "123'", to: "123", d: m32}, row: 32, note: "ПТ_пос: shoulder ease"}
+  "23": {circle_line: {center: "342''", r: 'dist("342''''", "14''")', line: ["342''", "22"], pick: {near: "22"}}, row: 33,
+         note: "22–23 ⊥ to the armhole: on the radius through 22"}
+  "23'": {rotate: {point: "23", about: "22", deg: ease_b}, row: 33, note: "∠23–22–23' = ∠123–22–123'', shrunk out (сутюжка)"}
+  "142": {circle_circle: {c1: "23'", r1: 'dist("23", "14''")', c2: "22", r2: 'dist("22", "14''")', pick: {near: "141"}}, row: 35,
+          note: "R 23'–142 = 23–14' up to the arc 14'⌒141 (centre 22, rows 36 of the БК)"}
+  "n": {line_x: {a: ["332", "342"], b: ["121", "142"]}, row: 36.1}
+  "O": {circle_circle: {c1: "142", r1: 'dist("142", "n")', c2: "332", r2: 'dist("142", "n")', pick: right}, row: 37.1}
+paths:
+  new_back_arm:                             # 142 → 332 → 334
+    - {arc: {center: "O", from: "142", to: "332"}}
+    - {subpath: {name: back_arm, from: "332", to: "334"}}
+  imk_armhole:
+    - {path: new_back_arm}
+    - {subpath: {name: back_arm, from: "334", to: "341"}}
+    - {line: ["341", "346"]}
+    - {path: front_arm}
+  seamA_back: [{polyline: ["334", "333", "432", "532", "932"]}]
+  seamA_side: [{polyline: ["334", "333", "432'", "532'", "932'"]}]
+  seamB_side: [{polyline: ["354", "353", "452'", "551'", "952'"]}]
+  seamB_front_upper: [{polyline: ["354", "353", "452", "453"]}]
+  seamB_front_lower: [{polyline: ["453'", "551''", "952''"]}]
+  waist_back: [{line: ["412", "432"]}]
+  waist_side: [{line: ["432'", "452'"]}]
+  waist_front_a: [{line: ["452", "461"]}]
+  waist_front_b: [{line: ["461'", "471'"]}]
+  hip_back: [{line: ["512", "532"]}]
+  hip_side: [{line: ["532'", "551'"]}]
+  hip_front: [{line: ["551", "571"]}]
+pieces:
+  imk_back:
+    outline:
+      - {line: ["111", "112"]}
+      - {path: back_neck}
+      - {line: ["121", "142"]}
+      - {path: new_back_arm}
+      - {polyline: ["334", "333", "432", "532", "932", "912", "512", "412", "31", "21", "111"]}
+  imk_side:
+    outline:
+      - {subpath: {name: back_arm, from: "334", to: "341"}}
+      - {line: ["341", "346"]}
+      - {subpath: {name: front_arm, from: "346", to: "354"}}
+      - {polyline: ["354", "353", "452'", "551'", "952'", "932'", "532'", "432'", "333", "334"]}
+  imk_front:
+    outline:
+      - {subpath: {name: front_arm, from: "354", to: "14\""}}
+      - {line: ["14\"", "16"]}
+      - {path: {name: front_neck, reverse: true}}
+      # r50.1 = 0 for this garment, so the БК chest dart is closed: 371' ≡ 371
+      - {polyline: ["17", "371", "471'", "971'", "96'", "952''", "551''", "453'", "462'", "461'", "36",
+                    "461", "462", "453", "452", "353", "354"]}
+  top_sleeve:
+    outline:
+      - {path: top_cap}
+      - {polyline: [s357', s356', s452', s452'', s952', s933, s934, s434', s336', s135']}
+  under_sleeve:
+    outline:
+      - {path: under_cap}
+      - {polyline: [s357, s356, s452, s952, s933, s934, s434, s336, s135]}
+checks:
+  - id: d_t-row9
+    measure: {value: dT}
+    expect: m9
+    source: "Table 2.3 row 9: d_т by its formula vs printed 7,4"
+    base_only: true
+  - id: d_b-row17
+    measure: {value: dB}
+    expect: m17
+    source: "Table 2.3 row 17: d_б by its formula vs printed 1,9 (checks 571)"
+    base_only: true
+  - id: row1-formula
+    measure: {value: 0.05 * r7}
+    expect: m1
+    source: "Table 2.3 row 1: 33–333 = 0,05|33–35|, printed 0,9"
+    base_only: true
+  - id: row11-formula
+    measure: {value: 0.4 * m9 - 1.0}
+    expect: m11
+    source: "Table 2.3 rows 11–12: 0,4 d_т − 1,0, printed 1,95"
+    base_only: true
+  - id: row13-formula
+    measure: {value: 0.1 * m9}
+    expect: m13
+    source: "Table 2.3 rows 13–14: 0,1 d_т, printed 0,75"
+    base_only: true
+  - id: row19-formula
+    measure: {value: 0.5 * m17 - 0.2}
+    expect: m19
+    source: "Table 2.3 rows 19–20: 0,5 d_б − 0,2, printed 0,75"
+    base_only: true
+  - id: row22-formula
+    measure: {value: 0.335 * r11}
+    expect: m22
+    source: "Table 2.3 row 22: 0,335|47–57|, printed 6,45"
+    base_only: true
+  - id: half-waist-of-panels
+    measure: {value: 'length("waist_back") + length("waist_side") + length("waist_front_a") + length("waist_front_b")'}
+    expect: r61
+    source: "Table 2.2 row 61 (|411–470|)"
+  - id: half-hip-of-panels
+    measure: {value: 'length("hip_back") + length("hip_side") + length("hip_front")'}
+    expect: r62
+    source: "Table 2.2 row 62 (|511–570|)"
+  - id: seam-A-back-vs-side
+    equal: [seamA_back, seamA_side]
+    source: "seam A sews back to side panel"
+  - id: seam-B-front-vs-side
+    measure: {value: 'length("seamB_front_upper") + length("seamB_front_lower")'}
+    expect: 'length("seamB_side")'
+    source: "seam B sews side panel to front (across the pocket cut)"
+  - id: imk-armhole-vs-DP
+    measure: {length: imk_armhole}
+    expect: r63_1
+    source: "row 63.1 (ДП), on the model armhole (back redrawn about O, rows 32–37.3)"
+  - id: two-piece-cap-vs-DOR
+    measure: {value: 'length("top_cap") + length("under_cap")'}
+    expect: 'r63_3 - 2 * dist("s131", "s132")'
+    source: "row 63.3 (ДОР) and footnote 6, on the two-piece sleeve (top + under cap)"
+reports:
+  - {id: belly-angle-deg, measure: {value: theta}}
+  - {id: shoulder-dart-shrunk-deg, measure: {value: ease_b}, note: "∠123–22–123'', moved to the armhole as 23–22–23'"}
+  - {id: shoulder-back, measure: {dist: ["121", "142"]}, note: "vs front: the 1.0 shoulder ease (row 32)"}
+  - {id: shoulder-front, measure: {dist: ["16", "14\""]}}
+  - {id: pocket-line-gap, measure: {dist: ["453", "453'"]}, note: "belly dart mouth at seam B"}
+  - {id: chest-dart-at-pocket, measure: {dist: ["462", "462'"]}}
+  - {id: sleeve-elbow-roll, measure: {value: roll_e}}
+  - {id: sleeve-underarm-roll, measure: {value: roll_u}}
+  - {id: sleeve-front-seam-top, measure: {value: 'length("top_front_seam_a") + length("top_front_seam_b")'},
+     note: "vs under: the elbow stretch ∠452'–451–452'' (no value printed)"}
+  - {id: sleeve-front-seam-under, measure: {length: under_front_seam}}
+  - {id: sleeve-back-seam-top, measure: {length: top_back_seam}, note: "vs under: the посадка (135'⌒934) − (135⌒934), no value printed"}
+  - {id: sleeve-back-seam-under, measure: {length: under_back_seam}}
+export:
+  # The garment is the ИМК pieces; the inherited БК pieces are construction steps.
+  back: {omit: true}
+  front: {omit: true}
+  sleeve: {omit: true}
+  sleeve_under: {omit: true}
+  imk_back:
+    cut: 2
+    grain: vertical
+    notches: [{point: "412"}, {point: "432"}]            # waist: centre back, seam A
+  imk_side:
+    cut: 2
+    grain: vertical
+    notches: [{point: "432'"}, {point: "452'"}]          # waist on seams A and B
+  imk_front:
+    cut: 2
+    grain: vertical
+    notches: [{point: "471'"}, {point: "452"}]           # waist: centre front, seam B
+    # chest dart (apex 36) and belly dart (mouth 453'–453 at seam B) meet in the pocket cut
+    darts: [["453'", "462'", "461'", "36", "461", "462", "453"]]
+  top_sleeve:
+    cut: 2
+    grain: vertical
+    notches: [{point: s14}, {point: "s452'"}, {point: "s434'"}]   # cap top; elbow on both seams
+  under_sleeve:
+    cut: 2
+    grain: vertical
+    notches: [{point: s452}, {point: s434}]

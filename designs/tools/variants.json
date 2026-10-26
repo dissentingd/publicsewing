@@ -1,0 +1,19 @@
+{
+  "bar-vest": { "default": {}, "sleeved": { "sleeves": true }, "plain": { "sleeves": true, "pockets": false, "collarHeight": 0, "buttons": 4 } },
+  "box-coat": { "default": {}, "variant": { "lapelStyle": "peak", "neckDartWidth": 0, "buttons": 4, "lengthBelowWaist": 0.45, "flare": 0.08 }, "plain": { "pockets": false, "cbFlare": 0, "buttonInset": 1 } },
+  "barbers-coat": { "default": {}, "open": { "neckStyle": "open", "hemCurve": 0.5, "pocketShape": "chamfered" } },
+  "boys-work-coat": { "default": {}, "square": { "pocketShape": "square", "buttons": 6, "hemCurve": 1 }, "plain": { "breastPocket": false, "lowerPockets": false, "frontDrop": 0.2, "waistShaping": true } },
+  "chore-coat": { "default": {}, "square": { "pocketShape": "square", "buttons": 6, "hemCurve": 1 }, "plain": { "breastPocket": false, "lowerPockets": false, "frontDrop": 0.2, "waistShaping": true } },
+  "frock": { "default": {}, "variant": { "opening": "back", "sleeves": "long", "neckFinish": "band", "gathers": 1.3 } },
+  "hunting-coat": { "default": {}, "plain": { "belt": false, "pocketFlaps": false, "pocketPleat": 0, "actionPleat": 0, "pocketShape": "pointed" } },
+  "knickerbockers": { "default": {}, "variant": { "bandBelowKnee": -0.1, "blouse": 0.2, "legFlare": 0 } },
+  "mackinaw": { "default": {}, "shawl": { "collarStyle": "shawl" }, "raglan": { "sleeveStyle": "raglan", "collarStyle": "military" }, "military": { "collarStyle": "military", "pocketShape": "pointed", "hemCurve": 0.6 }, "plain": { "belt": false, "pocketFlaps": false, "breastPockets": false, "pocketShape": "square", "frontDrop": 0 } },
+  "military-blouse": { "default": {}, "plain": { "breastPockets": false, "lowerPockets": false, "frontDrop": 0, "buttons": 7 } },
+  "nightgown": { "default": {}, "variant": { "opening": "back", "sleeves": "long", "neckFinish": "band", "gathers": 1.3 } },
+  "nightshirt": { "default": {}, "variant": { "frontYoke": true, "gathers": 1.2, "sideSlit": 0, "sleeves": "short", "opening": "back" } },
+  "pinafore": { "default": {}, "variant": { "opening": "back", "sleeves": "long", "neckFinish": "band", "gathers": 1.3 } },
+  "shop-coat": { "default": {}, "plain": { "pencilPocket": false, "hemFlare": 0, "pocketShape": "rounded", "buttons": 6 } },
+  "shirtwaist-dress": { "default": {}, "variant": { "neckFinish": "band", "sleeves": "short", "opening": "back", "gathers": 1.2, "skirtLength": 0.9 } },
+  "tailored-jacket": { "default": {}, "notch": { "lapelStyle": "notch", "buttons": 4, "lengthBelowWaist": 0.3, "backSeamAt": 0.6 }, "plain": { "pockets": false, "breastPocket": false, "lining": false } },
+  "smock": { "default": {}, "variant": { "opening": "front", "sleeves": "short", "neckFinish": "band", "yokeDepth": 0.3, "gathers": 2 } }
+}

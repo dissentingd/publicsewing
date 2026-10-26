@@ -1,0 +1,10 @@
+# ЕМКО СЭВ т.3 §1, men's jacket, semi-fitted: base construction (БК), Table 1.2.
+# = torso (Fig. 2) + one-piece sleeve (Fig. 3, Fig. 36) + front to the full hem.
+# The same recipe serves the other sleeved torso garments (coats §2–3,
+# summer/insulated jackets §4–5): see BLIND_RUN.md. Data: data/emko/*.yaml.
+extends: sleeve.yaml
+recipe: emko-jacket
+source: {book: "ЕМКО СЭВ т.3", section: 1, tables: ["1.2"], figures: [2, 3, 36]}
+inputs: [r12]
+points:
+  "97": {offset: {from: "47", dir: down, d: r12}, row: 12}

@@ -1,0 +1,33 @@
+# ЕМКО СЭВ т.3, back yoke ИМК shared by the summer jacket (Table 4.3, Fig. 21) and the
+# insulated jacket (Table 5.3, Fig. 27): rows 1–11.2 are the same in both. A straight yoke
+# seam from 211 (≡ 21) across to the armhole; the shoulder dart's angle opens that seam at
+# the armhole (23–221–23'), and the yoke's neck rises by |211–211'| along the slanted centre
+# back 21–111 (rows 3–4). Construction only (values, points, paths), as imk_sleeve.yaml:
+# pieces, checks and export stay in each garment recipe. Not a garment on its own.
+extends: jacket.yaml
+recipe: emko-imk-back-yoke
+source: {book: "ЕМКО СЭВ т.3", tables: ["4.3", "5.3"], figures: [21, 27]}
+values:
+  dart_b: angle("123", "221", "123'")      # row 9: back dart angle at the yoke seam
+  lift: dist("211", "211'")                # rows 3–4: the yoke's neck rises by this along 21–111
+points:
+  # ---- back yoke (rows 1–11.2) ----
+  "211": {project: {x_of: "21", y_of: "21"}, row: 1,
+          interp: "Figs. 21, 27 label 21 ≡ 211; each garment checks row 1's printed value against |111–21|"}
+  "23": {path_x: {path: back_arm, line: {from: "211", dir: right}, pick: first}, row: 2}
+  "221": {line_x: {a: {from: "211", dir: right}, b: ["123", "32"]}, row: 2}
+  "211'": {perp_foot: {from: "221", line: ["21", "111"]}, row: 3}
+  "111'": {along: {from: "111", to: "21", d: -lift}, row: 4, note: "up along the continuation of 21–111"}
+  "112'": {offset: {from: "112", dir: {toward: ["111", "111'"]}, d: lift}, row: 6,
+           note: "rows 5–7 keep 111–12, 111–112, 12–121: the neck moves with 111"}
+  "12'": {offset: {from: "12", dir: {toward: ["111", "111'"]}, d: lift}, row: 5}
+  "121'": {offset: {from: "121", dir: {toward: ["111", "111'"]}, d: lift}, row: 7}
+  "nb'": {offset: {from: "nb", dir: {toward: ["111", "111'"]}, d: lift}, row: 8, note: "neck arc centre moved with the neck"}
+  "23'": {rotate: {point: "23", about: "221", deg: dart_b}, row: 9, note: "∠23–221–23' = ∠123–221–123', R 221–23' = 221–23 (row 10)"}
+  "342'''": {circle_circle: {c1: "141", r1: 'dist("14''", "342''''")', c2: "23'", r2: 'dist("14''", "342''''")', pick: right},
+             row: 11, note: "rows 11, 11.1: radius of the БК upper back armhole (14'–342'')"}
+paths:
+  yoke_arm: [{arc: {center: "342'''", from: "141", to: "23'"}}]
+  yoke_neck: [{arc: {center: "nb'", from: "112'", to: "121'"}}]
+  back_yoke_seam: [{polyline: ["211'", "221", "23'"]}]
+  back_top_seam: [{polyline: ["211", "221", "23"]}]

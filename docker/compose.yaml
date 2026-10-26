@@ -1,0 +1,18 @@
+services:
+  garmentcode:
+    build: .
+    image: custom-clothing/garmentcode:2026-10-16
+    container_name: garmentcode
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"   # localhost only; reach via SSH tunnel
+    volumes:
+      - ./data:/data                          # pattern output (/data/Logs)
+      - ./cache/warp:/home/app/.cache/warp    # Warp kernel cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

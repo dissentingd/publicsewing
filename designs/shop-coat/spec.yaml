@@ -1,0 +1,147 @@
+# Shop coat: Simons' Grocers' Gown (Drafting Cotton Garments and Mackinaws, 1918, Diagram
+# XIII) on FreeSewing's Brian block. "With a few common sense changes this draft can be used
+# for auto dusters, doctor's gowns and the like." See BRIEF.md for where each default is read.
+about:
+  id: shopcoat
+  name: Shop coat
+  description: "A long button-front overcoat for work: grocer's gown, lab coat, duster"
+  difficulty: 3
+  tags: [coats, workwear]
+  techniques: [patch-pocket, collar, facing, button]
+  version: 0.1.0
+  source: Simons, Drafting Cotton Garments and Mackinaws (1918), Diagram XIII (draftingcottonga00simo)
+
+block: brian
+
+options:
+  # Fit: "drafted two sizes larger than the regular sack coat", to go over clothes
+  chestEase: { pct: 24, min: 12, max: 40, of: chest, menu: fit }
+  bicepsEase: { pct: 28, min: 10, max: 50, of: biceps, menu: fit }
+  cuffEase: { pct: 100, min: 40, max: 160, of: wrist, menu: fit }
+  seatEase: { pct: 14, min: 4, max: 30, of: seat, menu: fit }
+  hemFlare: { pct: 6, min: 0, max: 15, menu: style } # x seat, at each side seam
+  # Style
+  lengthBelowWaist: { pct: 380, min: 200, max: 520, menu: style } # x waistToSeat
+  frontDrop: { pct: 12, min: 0, max: 40, menu: style }
+  sleeveLengthBonus: { pct: 4, min: -10, max: 15, menu: style }
+  buttonExtension: { pct: 4.2, min: 2.5, max: 6, of: chest, menu: style }
+  buttons: { count: 4, min: 3, max: 8, menu: style }
+  collarWidth: { pct: 27, min: 15, max: 35, of: neck, menu: style }
+  collarSpring: { pct: 20, min: 0, max: 30, menu: style }
+  collarPoint: { pct: 10, min: 0, max: 15, of: neck, menu: style }
+  breastPocket: { bool: true, menu: style }
+  lowerPockets: { bool: true, menu: style }
+  pencilPocket: { bool: true, menu: style }
+  pocketShape: { dflt: chamfered, list: [chamfered, square, rounded, pointed], menu: style }
+  # Construction
+  facingWidth: { pct: 8, min: 5, max: 12, of: chest, menu: construction }
+
+pieces:
+  back:
+    from: brian.back
+    hide: tree
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, hemFlare]
+    ops:
+      - coatBack: {}
+
+  front:
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [frontDrop, buttonExtension, buttons, facingWidth, breastPocket, lowerPockets, pencilPocket, pocketShape]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+    ops:
+      - coatFront:
+          ext: ext
+          r: 0
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+      # Four buttons, neck to the seat line (XIII)
+      - buttons:
+          count: buttons
+          top: cfNeck.y + ext * 0.8
+          bottom: cfWaist.y + waistToSeat * 1.2
+          rows: [0]
+      # Pockets (Diagram XIII): a breast patch at the breast line (W-V), a lower patch round
+      # the seat line F, both with cut-off bottom corners, and a narrow pencil pocket standing
+      # up out of the lower pocket's inner side. As shares of the front's chest width q.
+      - store:
+          key: coat.pockets
+          value:
+            breast:
+              h: q * 0.5
+              x: q * 0.2
+              y: underarm.y
+              w: min(q * 0.44, armholeHollow.x - q * 0.04 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+            lower:
+              h: q * 0.72
+              x: q * 0.38
+              y: cfWaist.y + waistToSeat * 0.75
+              w: min(q * 0.62, sideHem.x - q * 0.06 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+            # Pencil pocket: 1 1/4" x 6 1/2" at breast 38, its bottom half inside the lower pocket
+            pencil:
+              if: pencilPocket
+              w: q * 0.11
+              h: q * 0.58
+              shape: "'square'"
+              x: lower.x + q * 0.06
+              y: lower.y - h * 0.55
+              topHem: w * 0.5
+      - markPocket: { id: breastPocket, pocket: coat.pockets.breast, if: breastPocket }
+      - markPocket: { id: lowerPocket, pocket: coat.pockets.lower, if: lowerPockets }
+      - markPocket: { id: pencilPocket, pocket: coat.pockets.pencil, if: lowerPockets and pencilPocket }
+
+  facing:
+    part: facing
+    from: front
+    nr: 5
+
+  # "A swinging collar similar to the work coat" (20-26): 4" wide, 1 3/4" spring over 8 1/2",
+  # a 1 1/2" point
+  collar:
+    after: [back, front]
+    measurements: [neck]
+    options: [collarWidth, collarSpring, collarPoint]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext / 2
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: neck * collarPoint
+
+  # "Use the same sleeves as the work coat"
+  sleeve:
+    part: sleeve
+    after: front
+    options: [sleeveLengthBonus]
+
+  breastPocket:
+    part: pocket
+    after: front
+    key: breast
+    nr: 6
+    label: breastPocket
+    cut: 1
+    if: breastPocket
+  lowerPocket:
+    part: pocket
+    after: front
+    key: lower
+    nr: 7
+    label: lowerPocket
+    cut: 2
+    if: lowerPockets
+  pencilPocket:
+    part: pocket
+    after: front
+    key: pencil
+    nr: 8
+    label: pencilPocket
+    cut: 1
+    if: lowerPockets and pencilPocket

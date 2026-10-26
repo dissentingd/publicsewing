@@ -1,0 +1,20 @@
+# Landmarks hand-read from the full-res scan of Browne Part 1, leaf 21
+# (Diagram 4), using grid_crop.py. Pixel coords are PAGE-ABSOLUTE in the
+# 2968x4370 image (grid labels, not crop-relative positions — mixing the two
+# caused a false "diagram is schematic" reading on the first pass).
+image: /work/browne_leaf21.png
+origin_px: [2190, 970]     # back plan line x neck plan line (point O)
+px_per_in: 96              # from the labeled 3in/2in/3in constants
+landmarks:
+  O: [2190, 970]
+  TW: [868, 1060]
+  HNB: [2257, 1165]
+  BS0: [2005, 1510]
+  BA: [1713, 1530]
+  ABOT: [1520, 1800]
+  FC: [1522, 2745]
+  FW: [985, 3038]
+  FB: [680, 3200]
+  FNK: [2185, 2385]
+  FNH: [2375, 2075]
+  FSP: [2145, 1738]

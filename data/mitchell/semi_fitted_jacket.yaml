@@ -1,0 +1,32 @@
+# Mitchell 1921, Semi-Fitted Jacket Foundation (book pp. 36–37) and Semi-Fitted Jacket (pp. 38–39).
+# The measures as printed on p. 36, in inches, read from the page image. The sleeve's are p. 60's
+# (the jacket's pages give none).
+name: semi-fitted jacket
+source:
+  size: "bust 39 (the book's measures, p. 36)"
+  book: "Mitchell, The New \"Standard\" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)"
+  corpus: newstandardworko00mitc
+  pages: [36, 37, 38, 39, 60, 61]  # book pages = PDF pages − 4
+measures:
+  bust: 39
+  back_depth: 7
+  back_waist: 15
+  half_back: 7
+  blade: 10.5
+  front_depth: 12.5
+  top_dart: 14.5
+  front_waist: 22
+  elbow_len: 7.5                   # the sleeve's (p. 60)
+  inside_len: 19
+  elbow_width: 12
+  wrist_width: 9
+style:                             # given "in this case" or "allowed": choices, not body measures
+  shoulder_width: 6                # p. 36: "24 from 9 is the shoulder width, in this case 6 inches"
+  full_length: 32                  # p. 38: "The length of this jacket is 32 inches"
+  lap: 1.25                        # p. 38: "A lap of 1¼ inches is allowed on the front"
+  cb_waist: 1                      # p. 36: 7 from 4 is 1 inch (the centre back's suppression)
+  cb_hip: 0.5                      # p. 36: 6 from 5 is ½ inch
+drawings:
+  fdn: data/mitchell/trace/p-037.yaml   # the foundation (PDF p. 41)
+  p39: data/mitchell/trace/p-039.yaml   # the jacket (PDF p. 43)
+  p61: data/mitchell/trace/p-061.yaml   # the two-piece sleeve (PDF p. 65)

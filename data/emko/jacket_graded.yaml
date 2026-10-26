@@ -1,0 +1,9 @@
+# Graded men's jacket, Table 1.4. Rows the table does not print come from the same
+# garment's Table 1.2, read by scripts/emko_fill_gaps.py from its OCR text:
+#   row 91 = 0.5·|95–931| (Table 1.2 formula) -> r91 = 0.5 * r90
+#   к81 = 0.4 (row 81 note, Table 1.2)
+table: pilot/emko/jacket_table14.yaml
+derived:
+  r91: 0.5 * r90
+coefficients:
+  k81: 0.4

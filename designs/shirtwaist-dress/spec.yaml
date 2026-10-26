@@ -1,0 +1,38 @@
+# Shirtwaist dress: the Woman's Institute's shirtwaist (Pattern Drafting, §2: foundation waist,
+# shirtwaist sleeve, collar and cuff) on FreeSewing's Brian block, joined at the waist to a
+# gathered skirt as a work dress. See BRIEF.md for where each default is read.
+extends: ../templates/yoke.yaml
+
+about:
+  id: shirtwaistdress
+  name: Shirtwaist dress
+  description: "A buttoned work dress: easy bodice, turn-down collar, full sleeves into cuffs, gathered skirt"
+  difficulty: 3
+  tags: [dresses]
+  techniques: [gathering, collar, cuff, button]
+  version: 0.1.0
+  source: "Woman's Institute, Pattern Drafting, §2 (foundation waist, shirtwaist sleeve, collar and cuff) (patterdraftingpicken)"
+
+options:
+  yokeAt: { dflt: waist, list: [chest, waist], menu: style } # a bodice to the waist
+  chestEase: { pct: 11, min: 4, max: 30, menu: fit } # 4" over a 36" bust
+  opening: { dflt: front, list: [back, front], menu: style }
+  buttons: { count: 6, min: 3, max: 10, menu: style }
+  skirtLength: { pct: 70, min: 40, max: 98, menu: style } # below the knee
+  gathers: { pct: 150, min: 100, max: 250, menu: style }
+  hemFlare: { pct: 6, min: 0, max: 25, menu: style }
+  sleeves: { dflt: long, list: [long, short, none], menu: style }
+  sleeveBand: { pct: 40, min: 15, max: 50, menu: style } # cuff depth 2 1/2" x wrist
+  sleeveBandEase: { pct: 45, min: 5, max: 70, menu: style } # cuff passes the hand
+  neckFinish: { dflt: collar, list: [binding, band, collar], menu: style }
+  collarWidth: { pct: 27, min: 15, max: 35, of: neck, menu: style } # 3 1/2" at CB on a 13" neck
+  collarSpring: { pct: 15, min: 0, max: 25, menu: style } # 1" over half the neck
+
+# A bodice to the waist and a skirt; the neck band is a collar, the sleeve band a cuff
+pieces:
+  frontBody: { name: frontSkirt, part: yokePiece, after: [backBase, frontBase], side: front, piece: body, nr: 1, label: frontSkirt, cut: 1 }
+  backBody: { name: backSkirt, part: yokePiece, after: [backBase, frontBase], side: back, piece: body, nr: 2, label: backSkirt, cut: 1 }
+  frontYoke: { name: frontBodice, part: yokePiece, after: [backBase, frontBase], side: front, piece: yoke, nr: 3, label: frontBodice, cut: 1 }
+  backYoke: { name: backBodice, part: yokePiece, after: [backBase, frontBase], side: back, piece: yoke, nr: 4, label: backBodice, cut: 1 }
+  sleeveBand: { name: cuff, part: sleeveBand, after: sleeve, nr: 6 }
+  neckBand: { name: collar, part: neckBand, after: [backBase, frontBase], nr: 8 }

@@ -1,0 +1,107 @@
+# Mitchell 1921, Semi-Fitted Jacket Foundation (book p. 36, diagram p. 37): "the foundation for any
+# style semi-fitted jacket or coat". It's the box coat foundation (foundation.yaml, p. 16) with
+# these differences, so it's its own recipe (the numbers after 22 differ):
+#   - 7 from 4 is 1 inch (box coat ½): the centre back 2–7–6 is cut in more at the waist;
+#   - no cross or 23/24 at the front: the centre front line runs from 21 through 19 downward;
+#   - 23 is half way 2–3, 24 the back shoulder from 9, 25 the front shoulder from 20 (on 20–23);
+#   - the front shoulder runs from ⅜ in above 20 to ¼ in below 25;
+#   - two more measures, top of dart and front waist length (used by the jackets on it).
+# The text prints "18 from 19 is ½ bust. Connect 18 and 19. 19 from 18 is ½ inch": a misprint for
+# 18 from 8 (the box coat's step, and the drawing's 8→18). Logged in FINDINGS.
+# The Tight-Fitted Jacket Foundation (p. 42, diagram p. 43) is this one with "the suppression of the
+# center back line … greater": 6 from 5 is 1½ inches, 7 from 4 is 2 inches. Those two are data
+# (cb_hip, cb_waist), so one recipe serves both.
+# Frame, checks and reports as in foundation.yaml (see its header).
+recipe: mitchell-semi-fitted-foundation
+source: {book: "Mitchell, New \"Standard\" Work … Ladies' Tailor-Made Garments (1921)", page: 36, diagram: 37}
+units: cm
+inputs: [bust, back_depth, back_waist, half_back, blade, front_depth, top_dart, front_waist, shoulder_width,
+         cb_waist, cb_hip]
+values:
+  IN: 2.54
+  R: 1.0                                     # cm: a drawn marker is looked for this close to its point
+drawing:
+  fdn:                                       # the foundation diagram (p. 37; p. 43 for the tight-fitted)
+    fit: ['4', '5', '6', '7', '10', '12', '18', '19']   # placed by printed measures only
+    r: 0.6
+points:
+  A: {at: [0, 0]}
+  "2": {offset: {from: A, dir: down, d: '(bust - 2 * IN) / 48'},
+        interp: "\"½ the bust measure on the 24ths less 2\": ½(bust − 2) on the 24ths, as in foundation.yaml"}
+  "3": {offset: {from: "2", dir: down, d: back_depth}}
+  "4": {offset: {from: "2", dir: down, d: back_waist}}
+  "5": {offset: {from: "4", dir: down, d: 7 * IN}}
+  "6": {offset: {from: "5", dir: left, d: cb_hip}}            # ½ in (semi-fitted), 1½ (tight-fitted)
+  "7": {offset: {from: "4", dir: left, d: cb_waist}}          # 1 in (semi-fitted), 2 (tight-fitted)
+  "8": {at_y: {line: ["7", "2"], y_of: "3"}}
+  "9": {offset: {from: A, dir: left, d: '(bust - 2 * IN) / 16'}}
+  "10": {offset: {from: "8", dir: left, d: half_back}}
+  "11": {offset: {from: A, dir: left, d: half_back}}
+  "12": {offset: {from: "8", dir: left, d: blade}}
+  "13": {offset: {from: "12", dir: left, d: 1.25 * IN}}
+  "14": {ratio: {from: "12", to: "13", t: 0.5}}
+  "15": {offset: {from: "13", dir: up, d: 1.25 * IN}}
+  "16": {offset: {from: "12", dir: left, d: bust / 12}}
+  "17": {offset: {from: "16", dir: left, d: 1.25 * IN}}
+  "18": {offset: {from: "8", dir: left, d: bust / 2},
+         interp: "printed \"18 from 19 is ½ bust\": read as 18 from 8 (the box coat's step; FINDINGS)"}
+  "19": {offset: {from: "18", dir: left, d: 0.5 * IN}}
+  "20": {circle_line: {center: "14", r: 'front_depth - dist("9", "2")', line: {from: "17", dir: up}, pick: upper},
+         interp: "\"the width of the back part of the neck 9 to 2\": the straight distance 9–2"}
+  "21": {offset: {from: "20", dir: left, d: bust / 12}}
+  "22": {along: {from: "21", to: "19", d: bust / 16}}
+  "23": {ratio: {from: "2", to: "3", t: 0.5}}
+  "24": {along: {from: "9", to: "19", d: shoulder_width}}
+  "25": {along: {from: "20", to: "23", d: shoulder_width}}
+  "20u": {offset: {from: "20", dir: up, d: 0.375 * IN}}   # the front shoulder runs from ⅜ in above 20
+  "25d": {offset: {from: "25", dir: down, d: 0.25 * IN}}  # to ¼ in below 25
+  # ---- the drawing's markers ----
+  mA: {marker_near: {at: A, r: R, drawing: fdn}}
+  m2: {marker_near: {at: "2", r: R, drawing: fdn}}
+  m3: {marker_near: {at: "3", r: 0.5, drawing: fdn}}
+  m4: {marker_near: {at: "4", r: R, drawing: fdn}}
+  m5: {marker_near: {at: "5", r: R, drawing: fdn}}
+  m6: {marker_near: {at: "6", r: R, drawing: fdn}}
+  m7: {marker_near: {at: "7", r: R, drawing: fdn}}
+  m8: {marker_near: {at: "8", r: 0.5, drawing: fdn}}
+  m9: {marker_near: {at: "9", r: R, drawing: fdn}}
+  m10: {marker_near: {at: "10", r: R, drawing: fdn}}
+  m11: {marker_near: {at: "11", r: R, drawing: fdn}}
+  m12: {marker_near: {at: "12", r: R, drawing: fdn}}
+  m13: {marker_near: {at: "13", r: R, drawing: fdn}}
+  m14: {marker_near: {at: "14", r: R, drawing: fdn}}
+  m15: {marker_near: {at: "15", r: R, drawing: fdn}}
+  m16: {marker_near: {at: "16", r: R, drawing: fdn}}
+  m17: {marker_near: {at: "17", r: R, drawing: fdn}}
+  m18: {marker_near: {at: "18", r: R, drawing: fdn}}
+  m19: {marker_near: {at: "19", r: R, drawing: fdn}}
+  m20: {marker_near: {at: "20", r: 1.5 * R, drawing: fdn}}
+  m21: {marker_near: {at: "21", r: 1.5 * R, drawing: fdn}}
+  m22: {marker_near: {at: "22", r: 1.5 * R, drawing: fdn}}
+  m23: {marker_near: {at: "23", r: R, drawing: fdn}}
+  m24: {marker_near: {at: "24", r: 1.5 * R, drawing: fdn}}
+  m25: {marker_near: {at: "25", r: 0.8, drawing: fdn}}    # p. 47 draws 58 0.4 in from 25
+checks:
+  - {id: back-depth, measure: {value: 'y("m3") - y("m2")'}, expect: back_depth, source: "p. 36: 3 from 2 is the back depth (7)"}
+  - {id: back-waist, measure: {value: 'y("m4") - y("m2")'}, expect: back_waist, source: "p. 36: 4 from 2 is the back waist length (15)"}
+  - {id: "7", measure: {dist: [m4, m7]}, expect: cb_waist, source: "p. 36: 7 from 4 is 1 inch (p. 42, tight-fitted: 2 inches)"}
+  - {id: "6", measure: {dist: [m5, m6]}, expect: cb_hip, source: "p. 36: 6 from 5 is ½ inch (p. 42, tight-fitted: 1½ inches)"}
+  - {id: half-back-11, measure: {dist: [mA, m11]}, expect: half_back, source: "p. 36: 11 from A is the half back width (7)"}
+  - {id: half-back-10, measure: {dist: [m8, m10]}, expect: half_back, source: "p. 36: 10 from 8 is the half back width"}
+  - {id: blade, measure: {dist: [m8, m12]}, expect: blade, source: "p. 36: 12 from 8 is the blade (10½)"}
+  - {id: half-bust, measure: {dist: [m8, m18]}, expect: bust / 2, source: "p. 36: 18 from [8] is ½ bust (39)"}
+  - {id: "13", measure: {dist: [m12, m13]}, expect: 1.25 * IN, source: "p. 36: 13 from 12 is 1¼ inch"}
+  - {id: "15", measure: {dist: [m13, m15]}, expect: 1.25 * IN, source: "p. 36: 15 from 13 is 1¼ inch"}
+  - {id: "17", measure: {dist: [m16, m17]}, expect: 1.25 * IN, source: "p. 36: 17 from 16 is 1¼ inch"}
+reports:
+  # the shoulder width: printed "6 inches in this case", drawn 5¾ (the text governs, 2026-10-24)
+  - {id: "back shoulder 9→24, drawn − printed", measure: {value: 'dist("m9", "m24") - shoulder_width'}}
+  - {id: "front shoulder 20→25, drawn − printed", measure: {value: 'dist("m20", "m25") - shoulder_width'}}
+  # points placed by a rule: the drawing's against the construction's (cm)
+  - {id: "2 (½(bust−2) on the 24ths)", measure: {value: 'dist("mA", "m2") - dist("A", "2")'}}
+  - {id: "9 (½(bust−2) on the 8ths)", measure: {value: 'dist("mA", "m9") - dist("A", "9")'}}
+  - {id: "16 (½ bust on the 6ths)", measure: {value: 'dist("m12", "m16") - dist("12", "16")'}}
+  - {id: "20 (front depth less 9–2, from 14)", measure: {value: 'dist("m14", "m20") - dist("14", "20")'}}
+  - {id: "21 (½ bust on the 6ths)", measure: {value: 'dist("m20", "m21") - dist("20", "21")'}}
+  - {id: "22 (½ bust on the 8ths)", measure: {value: 'dist("m21", "m22") - dist("21", "22")'}}
+  - {id: "23 (half way 2–3)", measure: {value: 'dist("m2", "m23") - dist("2", "23")'}}

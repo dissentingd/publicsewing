@@ -1,0 +1,25 @@
+# Nightgown: Walker's night-dresses (Manual of Needlework and Cutting Out, 1909: "Night-dress
+# with Yoke for Girl of 15 Years (or Woman's Small Size)", "Upper Part of Woman's Night-dress
+# with Yoke on Back") on FreeSewing's Brian block: a long gathered body on a yoke, long
+# sleeves into wristbands, a front placket and a neck band. See BRIEF.md.
+extends: ../templates/yoke.yaml
+
+about:
+  id: nightgown
+  name: Nightgown
+  description: "A long yoked nightgown: gathered body, front placket, neck band, sleeves into wristbands"
+  difficulty: 2
+  tags: [sleepwear, dresses]
+  techniques: [gathering, yoke, placket, button]
+  version: 0.1.0
+  source: Walker, Manual of Needlework and Cutting Out (1909), night-dresses (krl00366374)
+
+options:
+  skirtLength: { pct: 90, min: 40, max: 98, menu: style } # to the ankle
+  gathers: { pct: 140, min: 100, max: 250, menu: style }
+  hemFlare: { pct: 10, min: 0, max: 25, menu: style } # the 40" body widens to the foot
+  opening: { dflt: front, list: [back, front], menu: style } # front placket 17" x 2 1/2"
+  placketDepth: { pct: 55, min: 10, max: 80, menu: style }
+  buttons: { count: 3, min: 1, max: 8, menu: style }
+  neckFinish: { dflt: band, list: [binding, band], menu: style } # "collar" 13" band
+  yokeDepth: { pct: 40, min: 20, max: 90, menu: style }

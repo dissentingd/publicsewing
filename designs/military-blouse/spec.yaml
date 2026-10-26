@@ -1,0 +1,108 @@
+# Military blouse: Simons' Military Blouse (Drafting Cotton Garments and Mackinaws, 1918,
+# Diagram XIV) on FreeSewing's Bent block (Brian with a two-piece sleeve). See BRIEF.md for
+# where each default is read.
+about:
+  id: militaryblouse
+  name: Military blouse
+  description: "A fitted cotton field jacket: three-piece body, two-piece sleeves, standing collar, welt pockets"
+  difficulty: 4
+  tags: [jackets]
+  techniques: [welt-pocket, collar, facing, button, two-piece-sleeve]
+  version: 0.1.0
+  source: Simons, Drafting Cotton Garments and Mackinaws (1918), Diagram XIV (draftingcottonga00simo)
+
+block: bent
+
+options:
+  # Fit: chest as a sack coat; the waist taken in at the two body seams
+  chestEase: { pct: 16, min: 6, max: 30, of: chest, menu: fit }
+  waistEase: { pct: 16, min: 4, max: 40, of: waist, menu: fit }
+  seatEase: { pct: 10, min: 2, max: 25, of: seat, menu: fit }
+  bicepsEase: { pct: 22, min: 10, max: 40, of: biceps, menu: fit }
+  cuffEase: { pct: 70, min: 20, max: 120, of: wrist, menu: fit }
+  backShare: { pct: 55, min: 30, max: 70, menu: advanced } # of the waist suppression
+  # Style
+  lengthBelowWaist: { pct: 190, min: 100, max: 260, menu: style } # x waistToSeat
+  frontDrop: { pct: 8, min: 0, max: 30, menu: style } # x waistToSeat
+  sleeveLengthBonus: { pct: 3, min: -10, max: 15, menu: style }
+  buttonExtension: { pct: 2.8, min: 2, max: 5, of: chest, menu: style }
+  buttons: { count: 5, min: 4, max: 7, menu: style }
+  collarHeight: { pct: 11.5, min: 8, max: 16, of: neck, menu: style }
+  breastPockets: { bool: true, menu: style }
+  lowerPockets: { bool: true, menu: style }
+  # Construction
+  facingWidth: { pct: 8, min: 5, max: 12, of: chest, menu: construction }
+
+pieces:
+  # The back seam leaves the armhole about a third of the way up (Q in the diagram)
+  back:
+    from: bent.back
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [chestEase, waistEase, seatEase, bicepsEase, cuffEase, backShare, lengthBelowWaist]
+    ops:
+      - body3Back: { seamAt: 0.3 }
+
+  front:
+    from: bent.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [frontDrop, buttonExtension, buttons, breastPockets, lowerPockets, facingWidth]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to the old side seam
+    ops:
+      # The front seam leaves the armhole near its bottom (7-8 in the diagram); a straight
+      # stand and a hem dropping a little to the front
+      - body3Front:
+          seamAt: 0.12
+          ext: ext
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          buttons:
+            count: buttons
+            top: cfNeck.y + ext * 1.2
+            bottom: cfWaist.y + waistToSeat * 0.6
+          # Slanted welt pocket openings (Diagram XIV, the lines at 18 and below), clear of
+          # the seam. "The pocket is made 11 inches from the breast line": ~ chest-to-waist
+          # + 4/7 of waist-to-seat.
+          clear: q * 0.08
+          welt: 0.2 # finished welt width x opening
+          welts:
+            breast: { x: q * 0.22, y: underarm.y + q * 0.08, len: q * 0.36, rise: q * 0.06, bag: 1.15, mark: breastPockets }
+            lower: { x: q * 0.2, y: cfWaist.y + waistToSeat * 0.55, len: q * 0.5, rise: q * 0.06, bag: 1.3, mark: lowerPockets }
+
+  sideBody:
+    part: sideBody
+    after: [back, front]
+    nr: 3
+
+  facing:
+    part: facing
+    from: front
+    nr: 7
+
+  # Military standing collar (as the barber's coat, Diagram X): 1 3/4" high, its ends 1/2"
+  # higher than the CB, square, meeting at the front edge so it buttons to the neck.
+  collar:
+    after: [back, front]
+    measurements: [neck]
+    options: [collarHeight]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext
+          spring: target * 0.057
+          width: neck * collarHeight
+          point: 0
+          nr: 6
+
+  # Two-piece coat sleeve ("similar to the sack coat sleeve"): FreeSewing's two-part sleeve,
+  # fitted to the armhole
+  topsleeve: { part: library, from: topsleeve, after: [back, front], options: [sleeveLengthBonus] }
+  undersleeve: { part: library, from: undersleeve, after: [back, front], options: [sleeveLengthBonus] }
+
+  # Welt pockets: a welt (cut on the fold) and two bag pieces per opening
+  breastWelt: { part: welt, after: front, key: breast, nr: 8, if: breastPockets }
+  breastBag: { part: weltBag, after: front, key: breast, nr: 9, if: breastPockets }
+  lowerWelt: { part: welt, after: front, key: lower, nr: 10, if: lowerPockets }
+  lowerBag: { part: weltBag, after: front, key: lower, nr: 11, if: lowerPockets }

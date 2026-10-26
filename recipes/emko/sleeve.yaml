@@ -1,0 +1,99 @@
+# ЕМКО СЭВ т.3, one-piece set-in sleeve for the torso (Fig. 3, rows 64–91; cap by
+# the appendix unified arc method, Fig. 36). Builds on torso.yaml: the sleeve
+# frame has its own origin (points prefixed s, s333 on the armhole-bottom line)
+# and takes ШП = |33–35| from the torso. Not a garment on its own.
+extends: torso.yaml
+recipe: emko-torso-sleeve
+source: {book: "ЕМКО СЭВ т.3", tables: ["x.2"], figures: [2, 3, 36]}
+inputs: [r71, r72, r88, r89, r90, r91,
+         k81]                                # row 81 coefficient, varies by garment (0.4 / 0.25 / 0)
+check_inputs: [r63_3]                       # ДОР
+values:
+  SH: dist("33", "35")                        # row 64: ШП, armhole width
+  ye: r89 - r72                               # elbow level in the sleeve frame
+  yh: r88 - r72                               # hem level in the sleeve frame
+  b87: 2.5                                    # row 87: seam tilt β, degrees
+points:
+  s333: {at: [0, 0]}
+  s351: {at: [r71, 0], row: 71}
+  s331: {at: [r71 - SH, 0], row: 64}
+  s341: {offset: {from: s331, dir: right, d: r17}, row: 65}
+  s346: {offset: {from: s351, dir: left, d: r18}, row: 66}
+  s332: {offset: {from: s331, dir: up, d: r19}, row: 67}
+  s352: {offset: {from: s351, dir: up, d: r21}, row: 69}
+  s342: {circle_circle: {c1: s332, r1: r19, c2: s341, r2: r19, pick: {toward: {deg: -45}}}}
+  s343: {circle_circle: {c1: s352, r1: r21, c2: s346, r2: r21, pick: {toward: {deg: -135}}}}
+  s13: {at: [0, -r72], row: 72}
+  s15: {at: [r71, -r72]}
+  s14: {at: [0.45 * r71, -r72], row: 73}
+  s141: {at: [0.73 * r71, -r72], row: 74}
+  s141': {ratio: {from: s141, to: s15, t: 2}, row: 75}
+  s143: {ratio: {from: s14, to: s141, t: 0.5}, row: 79}
+  s131: {at: [0, -0.75 * r72], row: 80}
+  s132: {offset: {from: s131, dir: right, d: k81 * (r71 - SH - 4.0)}, row: 81}
+  s13': {project: {x_of: s132, y_of: s13}}
+  s344: {ratio: {from: s132, to: s342, t: 0.5}, row: 82}
+  s345: {circle_circle: {c1: s342, r1: r19, c2: s344, r2: 'dist("s344", "s342")', pick: {toward: {deg: 135}}},
+         row: 83}
+  s133': {line_x: {a: {from: s132, dir: {toward: [s345, s132]}}, b: {from: s13, dir: right}}, row: 84,
+          note: "top line ∩ extension of 345→132 (Fig. 3)"}
+  s133: {ratio: {from: s133', to: s13', t: 2}, row: 84, note: "|13'–133| = |13'–133'|"}
+  s144: {ratio: {from: s133, to: s14, t: 0.5}, row: 86}
+  s134: {ratio: {from: s133, to: s132, t: 0.5}, row: 85}
+  s353: {ratio: {from: s141', to: s343, t: 0.5}, row: 76}
+  s142: {along: {from: s141, to: s352, d: 'dist("s15", "s141")'}, row: 78, interp: "142 on 141→352"}
+  st0: {ratio: {from: s132, to: s134, t: 0.5}}
+  st1: {ratio: {from: s134, to: s144, t: 0.5}}
+  st3: {ratio: {from: s143, to: s142, t: 0.5}}
+  st4: {ratio: {from: s142, to: s352, t: 0.5}}
+  s431: {at: [ye * tan(b87), ye], row: 89}
+  s451: {at: [r71 - ye * tan(b87), ye], row: 89}
+  s951: {at: [r71 - yh * tan(b87), yh], row: 88}
+  s931: {at: [r71 - r90, yh], row: 90}
+  s94: {at: [r71 - r91, yh], row: 91}
+paths:
+  # sleeve: cap by the unified arc method (appendix pp.126–127, Fig. 36), 355 ≡ 352
+  cap: [{arc_chain: {polygon: [s132, s134, s144, s143, s142, s352], touch: [st0, st1, s14, st3, st4]}}]
+  under:
+    - {line: [s132, s345]}
+    - {arc: {center: s342, from: s345, to: s341}}
+    - {line: [s341, s346]}
+    - {arc: {center: s343, from: s346, to: s352}}
+  cap_total: [{path: cap}, {path: {name: under, reverse: true}}]
+pieces:
+  # Fig. 3 draws the sleeve as a flattened tube: the upper half (upper cap) and the under
+  # half (lower cap, rows 65–70, from the bodice's armhole-bottom radii) overlaid between
+  # the front line 333–931 and the elbow line 351–951. Both halves share those lines and
+  # the hem. ИМК (jacket_imk.yaml) turns them into a top and an under sleeve.
+  sleeve:
+    outline:
+      - {path: cap}
+      - {polyline: [s352, s351, s451, s951, s94, s931, s431, s333, s131, s132]}
+  sleeve_under:
+    outline:
+      - {path: under}
+      - {polyline: [s352, s351, s451, s951, s94, s931, s431, s333, s131, s132]}
+export:
+  # Grain along the sleeve's vertical axis; notches at the cap top (14, meets the shoulder)
+  # and the elbow level on both seam edges (431, 451).
+  sleeve:
+    cut: 2
+    grain: vertical
+    notches: [{point: s14}, {point: s431}, {point: s451}]
+  sleeve_under:
+    cut: 2
+    grain: vertical
+    notches: [{point: s431}, {point: s451}]
+checks:
+  # The built cap is the actual one (it starts at 132), so it's checked against the
+  # actual ДОР: footnote 6 to row 63.3 (Tables 1.2 and 2.2) prints
+  # ДОР_расч − ДОР_ф = 2|131–132| (≅ 0.9 jacket, ≅ 0.8 demi coat). Where the table
+  # has no row 81 (Tables 3.2, 4.2, 5.2) 132 ≡ 131 and the target is ДОР itself.
+  - id: sleeve-cap-vs-DOR
+    measure: {length: cap_total}
+    expect: 'r63_3 - 2 * dist("s131", "s132")'
+    source: "row 63.3 (ДОР) and footnote 6: actual cap = ДОР − 2|131–132|"
+  - id: VOR-row72-formula
+    measure: {value: '0.885 * r63_3 * sqrt(0.25 - (r71 / r63_3) ** 2)'}
+    expect: r72
+    source: "row 72 formula vs printed ВОР"

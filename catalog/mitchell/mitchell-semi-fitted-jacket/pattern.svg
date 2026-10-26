@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="193.65cm" height="103.39cm" viewBox="-0.5 -0.5 193.650 103.392">
+<title>mitchell-semi-fitted-jacket (women's semi-fitted jacket) (reference only, not a sewing pattern)</title>
+<rect x="-0.5" y="-0.5" width="193.650" height="103.392" fill="white"/>
+<g id="back">
+<polygon points="16.1159,2.3358 13.8110,2.0981 11.6045,1.6888 10.8698,1.4108 10.2695,1.0659 8.8592,0.0000 0.1049,3.7473 0.7997,21.5180 1.5920,41.7820 0.9590,59.5059 0.0000,86.3569 16.6637,86.2556 14.7492,59.4526 13.4866,41.7759 16.1159,2.3358" fill="none" stroke="black" stroke-width="0.05"/>
+<polygon points="14.5230,3.6794 13.5969,3.5839 11.1990,3.1392 10.2266,2.7712 9.4404,2.3195 8.6493,1.7215 1.6440,4.7201 2.2985,21.4594 3.0930,41.7794 2.4580,59.5594 1.5549,84.8474 15.0534,84.7653 13.2530,59.5594 11.9830,41.7794 14.5230,3.6794" fill="none" stroke="black" stroke-width="0.03" stroke-dasharray="0.4 0.25"/>
+<polyline points="0.7997,21.5180 1.3992,21.4946" stroke="black" stroke-width="0.05"/>
+<polyline points="1.5900,41.8379 2.1895,41.8146" stroke="black" stroke-width="0.05"/>
+<polyline points="7.6968,18.6654 7.6968,68.2739" stroke="black" stroke-width="0.04"/>
+<polyline points="7.2968,19.4654 7.6968,18.6654 8.0968,19.4654" fill="none" stroke="black" stroke-width="0.04"/>
+<polyline points="7.2968,67.4739 7.6968,68.2739 8.0968,67.4739" fill="none" stroke="black" stroke-width="0.04"/>
+<text x="8.497" y="41.470" font-size="1.0" font-family="sans-serif">women's semi-fitted jacket</text>
+<text x="8.497" y="42.870" font-size="1.0" font-family="sans-serif">Mitchell, The New "Standard" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)</text>
+<text x="8.497" y="44.270" font-size="1.0" font-family="sans-serif">back</text>
+<text x="8.497" y="45.670" font-size="1.0" font-family="sans-serif">cut 2</text>
+<text x="8.497" y="47.070" font-size="1.0" font-family="sans-serif">seam allowance 1.5 cm included</text>
+</g>
+<g id="side_back">
+<polygon points="42.7249,0.0000 33.2730,4.0458 32.2931,6.0845 32.7637,6.8915 33.3967,9.3070 33.5611,10.7993 33.5743,12.7631 33.0979,14.7064 32.5039,15.7868 31.8478,16.4062 30.7012,16.9764 29.5985,17.1730 29.2315,17.1113 26.7636,17.3101 26.7636,38.8944 23.9251,56.5561 19.6637,83.0717 50.2448,82.9302 45.5306,56.5304 42.3904,38.9453 44.1293,18.7022 42.7249,0.0000" fill="none" stroke="black" stroke-width="0.05"/>
+<polygon points="41.3862,2.2047 34.3810,5.2032 33.9900,6.0167 34.1627,6.3130 34.8757,9.0333 35.0605,10.7119 35.0755,12.9393 34.5076,15.2557 33.7049,16.7158 32.7154,17.6500 31.1763,18.4153 29.6061,18.6953 29.1664,18.6214 28.2636,18.6941 28.2636,39.0141 25.4061,56.7941 21.4253,81.5636 48.4547,81.4385 44.0540,56.7941 40.8790,39.0141 42.6245,18.6941 41.3862,2.2047" fill="none" stroke="black" stroke-width="0.03" stroke-dasharray="0.4 0.25"/>
+<polyline points="44.1190,18.8225 43.5212,18.7712" stroke="black" stroke-width="0.05"/>
+<polyline points="42.4068,38.7548 41.8152,38.8552" stroke="black" stroke-width="0.05"/>
+<polyline points="26.7449,39.0111 27.3449,39.0123" stroke="black" stroke-width="0.05"/>
+<polyline points="34.6507,28.0383 34.6507,68.1363" stroke="black" stroke-width="0.04"/>
+<polyline points="34.2507,28.8383 34.6507,28.0383 35.0507,28.8383" fill="none" stroke="black" stroke-width="0.04"/>
+<polyline points="34.2507,67.3363 34.6507,68.1363 35.0507,67.3363" fill="none" stroke="black" stroke-width="0.04"/>
+<text x="35.451" y="46.087" font-size="1.0" font-family="sans-serif">women's semi-fitted jacket</text>
+<text x="35.451" y="47.487" font-size="1.0" font-family="sans-serif">Mitchell, The New "Standard" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)</text>
+<text x="35.451" y="48.887" font-size="1.0" font-family="sans-serif">side_back</text>
+<text x="35.451" y="50.287" font-size="1.0" font-family="sans-serif">cut 2</text>
+<text x="35.451" y="51.687" font-size="1.0" font-family="sans-serif">seam allowance 1.5 cm included</text>
+</g>
+<g id="side_front">
+<polygon points="55.9516,23.9907 55.7631,24.1717 54.8574,26.9388 54.1852,28.2903 55.6498,44.5543 54.8064,59.7622 53.2448,87.9182 78.1036,85.9839 73.8645,59.6072 71.0410,42.0387 73.7442,20.4131 71.5591,20.1838 70.6921,19.1205 70.4054,18.2538 70.4653,16.8090 70.8895,15.3983 72.4439,12.3262 74.0898,10.1894 76.3248,7.8047 78.3142,5.5988 68.8277,0.0000 67.5055,2.2489 65.0001,6.7983 64.1622,8.2304 60.2703,15.1001 60.2688,15.1433 57.9680,19.3944 57.6894,20.4039 57.7674,21.3479 55.9516,23.9907" fill="none" stroke="black" stroke-width="0.05"/>
+<polygon points="69.3593,2.0555 75.9708,5.9575 75.2205,6.7894 72.9458,9.2166 71.1693,11.5228 69.4912,14.8393 68.9744,16.5581 68.8954,18.4652 69.3548,19.8541 70.1426,20.8202 69.2872,21.4537 72.0660,21.7453 69.5260,42.0653 72.3835,59.8453 76.3643,84.6147 54.8375,86.2897 56.3041,59.8453 57.1535,44.5285 55.7172,28.5784 56.2490,27.5091 57.0722,24.9941 57.1012,24.9663 59.3063,21.7570 59.2063,20.5460 59.3685,19.9581 61.7556,15.5477 61.7566,15.5198 65.4622,8.9789 66.3046,7.5389 68.8093,2.9910 69.3593,2.0555" fill="none" stroke="black" stroke-width="0.03" stroke-dasharray="0.4 0.25"/>
+<polyline points="71.0737,42.2418 70.4775,42.1738" stroke="black" stroke-width="0.05"/>
+<polyline points="55.6401,44.4468 56.2392,44.4791" stroke="black" stroke-width="0.05"/>
+<polyline points="54.2232,28.7129 54.8208,28.6591" stroke="black" stroke-width="0.05"/>
+<polyline points="63.3833,27.2436 63.3833,71.0295" stroke="black" stroke-width="0.04"/>
+<polyline points="62.9833,28.0436 63.3833,27.2436 63.7833,28.0436" fill="none" stroke="black" stroke-width="0.04"/>
+<polyline points="62.9833,70.2295 63.3833,71.0295 63.7833,70.2295" fill="none" stroke="black" stroke-width="0.04"/>
+<text x="64.183" y="47.137" font-size="1.0" font-family="sans-serif">women's semi-fitted jacket</text>
+<text x="64.183" y="48.537" font-size="1.0" font-family="sans-serif">Mitchell, The New "Standard" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)</text>
+<text x="64.183" y="49.937" font-size="1.0" font-family="sans-serif">side_front</text>
+<text x="64.183" y="51.337" font-size="1.0" font-family="sans-serif">cut 2</text>
+<text x="64.183" y="52.737" font-size="1.0" font-family="sans-serif">seam allowance 1.5 cm included</text>
+</g>
+<g id="front">
+<polygon points="112.2584,3.6438 112.2584,0.2125 110.1689,0.0000 109.1028,5.1878 108.8522,6.0013 108.4265,6.8406 108.0076,7.4093 107.0496,8.2778 105.9998,8.9039 104.9030,9.3685 103.7138,9.6956 102.0578,9.9234 101.9568,9.9462 99.1304,6.3035 97.2822,7.6665 96.2357,10.9617 95.2888,14.5115 94.4192,18.6520 93.3303,25.1842 92.5007,33.3700 91.9175,36.4652 81.3142,92.7313 98.2480,94.3919 101.8900,67.4238 104.0236,51.6244 108.5304,36.4407 119.7920,7.3002 112.2584,3.6438" fill="none" stroke="black" stroke-width="0.05"/>
+<polygon points="110.7584,4.5832 117.8953,8.0469 107.1095,35.9561 102.5527,51.3088 100.4035,67.2230 96.9551,92.7579 83.0918,91.3984 93.3915,36.7430 93.9866,33.5849 94.8178,25.3833 95.8936,18.9296 96.7485,14.8592 97.6760,11.3822 98.5644,8.5847 98.8426,8.3795 101.3568,11.6198 102.3259,11.4006 104.0162,11.1682 105.3966,10.7884 106.6797,10.2450 107.9464,9.4895 109.1263,8.4198 109.7079,7.6300 110.2480,6.5655 110.5575,5.5604 110.7584,4.5832" fill="none" stroke="black" stroke-width="0.03" stroke-dasharray="0.4 0.25"/>
+<polyline points="108.5133,36.4982 107.9536,36.2821" stroke="black" stroke-width="0.05"/>
+<polyline points="104.0083,51.7380 103.4328,51.5683" stroke="black" stroke-width="0.05"/>
+<polyline points="91.9175,36.4652 92.5071,36.5763" stroke="black" stroke-width="0.05"/>
+<polyline points="98.3667,23.8268 98.3667,67.6856" stroke="black" stroke-width="0.04"/>
+<polyline points="97.9667,24.6268 98.3667,23.8268 98.7667,24.6268" fill="none" stroke="black" stroke-width="0.04"/>
+<polyline points="97.9667,66.8856 98.3667,67.6856 98.7667,66.8856" fill="none" stroke="black" stroke-width="0.04"/>
+<text x="99.167" y="43.756" font-size="1.0" font-family="sans-serif">women's semi-fitted jacket</text>
+<text x="99.167" y="45.156" font-size="1.0" font-family="sans-serif">Mitchell, The New "Standard" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)</text>
+<text x="99.167" y="46.556" font-size="1.0" font-family="sans-serif">front</text>
+<text x="99.167" y="47.956" font-size="1.0" font-family="sans-serif">cut 2</text>
+<text x="99.167" y="49.356" font-size="1.0" font-family="sans-serif">seam allowance 1.5 cm included</text>
+</g>
+<g id="top_sleeve">
+<polygon points="127.5898,7.8472 127.4128,8.0101 126.9103,9.2104 126.1688,10.2613 125.7929,10.6916 124.1296,11.8442 127.3920,31.3066 122.7920,61.8604 138.4578,65.0385 150.4314,35.0517 150.6180,5.5360 149.2275,4.7414 147.9472,3.8775 146.6094,3.1575 146.2779,3.0427 145.6863,2.0447 145.0026,2.1127 144.2697,1.6159 143.8610,1.4270 143.6668,1.2445 142.2842,0.6786 141.2711,0.4107 139.8066,0.1374 138.4554,0.0160 137.0166,0.0262 135.7989,0.0000 135.3672,0.2421 134.1886,0.5553 133.0976,1.0477 131.7215,1.9156 130.7298,2.7894 129.9487,3.6958 128.7211,5.4619 127.5898,7.8472" fill="none" stroke="black" stroke-width="0.05"/>
+<polygon points="149.1125,6.4033 148.4348,6.0160 147.1704,5.1628 146.0047,4.5355 145.2677,4.2802 144.8834,3.6319 144.6105,3.6590 143.5293,2.9262 143.0110,2.6866 142.8418,2.5276 141.8064,2.1038 140.9413,1.8751 139.6014,1.6250 138.3935,1.5164 137.0058,1.5263 136.1757,1.5084 135.9356,1.6431 134.6931,1.9733 133.8096,2.3720 132.6231,3.1203 131.7987,3.8468 131.1358,4.6159 130.0234,6.2164 128.8200,8.7536 128.6698,8.8919 128.2305,9.9411 127.3496,11.1896 126.8002,11.8185 125.7663,12.5350 128.9108,31.2940 124.4875,60.6738 137.5290,63.3195 148.9332,34.7587 149.1125,6.4033" fill="none" stroke="black" stroke-width="0.03" stroke-dasharray="0.4 0.25"/>
+<polyline points="127.3582,31.5309 127.9514,31.4404" stroke="black" stroke-width="0.05"/>
+<polyline points="150.3263,35.3149 149.7691,35.0924" stroke="black" stroke-width="0.05"/>
+<polyline points="146.0640,2.6818 145.7964,3.2189" stroke="black" stroke-width="0.05"/>
+<polyline points="138.7971,13.2709 138.7971,48.4256" stroke="black" stroke-width="0.04"/>
+<polyline points="138.3971,14.0709 138.7971,13.2709 139.1971,14.0709" fill="none" stroke="black" stroke-width="0.04"/>
+<polyline points="138.3971,47.6256 138.7971,48.4256 139.1971,47.6256" fill="none" stroke="black" stroke-width="0.04"/>
+<text x="139.597" y="28.848" font-size="1.0" font-family="sans-serif">women's semi-fitted jacket</text>
+<text x="139.597" y="30.248" font-size="1.0" font-family="sans-serif">Mitchell, The New "Standard" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)</text>
+<text x="139.597" y="31.648" font-size="1.0" font-family="sans-serif">top_sleeve</text>
+<text x="139.597" y="33.048" font-size="1.0" font-family="sans-serif">cut 2</text>
+<text x="139.597" y="34.448" font-size="1.0" font-family="sans-serif">seam allowance 1.5 cm included</text>
+</g>
+<g id="under_sleeve">
+<polygon points="169.7871,0.0648 169.4986,0.0000 166.4248,5.2715 165.7172,6.1756 164.7770,7.0618 163.6273,7.8665 162.2572,8.3241 161.6592,8.5160 160.4040,8.6571 157.5492,8.8912 159.4680,29.8102 153.6180,59.6444 165.7251,62.9050 172.5065,31.7173 169.7871,0.0648" fill="none" stroke="black" stroke-width="0.05"/>
+<polygon points="168.6560,4.4229 167.6691,6.1154 166.8286,7.1894 165.7265,8.2282 164.3090,9.2203 162.7239,9.7496 161.9752,9.9899 160.5491,10.1502 159.1813,10.2624 160.9814,29.8876 155.3592,58.5599 164.5941,61.0469 170.9926,31.6200 168.6560,4.4229" fill="none" stroke="black" stroke-width="0.03" stroke-dasharray="0.4 0.25"/>
+<polyline points="159.4283,30.0130 160.0263,29.9647" stroke="black" stroke-width="0.05"/>
+<polyline points="172.4584,31.9387 171.8721,31.8112" stroke="black" stroke-width="0.05"/>
+<polyline points="163.0321,19.8426 163.0321,50.4304" stroke="black" stroke-width="0.04"/>
+<polyline points="162.6321,20.6426 163.0321,19.8426 163.4321,20.6426" fill="none" stroke="black" stroke-width="0.04"/>
+<polyline points="162.6321,49.6304 163.0321,50.4304 163.4321,49.6304" fill="none" stroke="black" stroke-width="0.04"/>
+<text x="163.832" y="33.137" font-size="1.0" font-family="sans-serif">women's semi-fitted jacket</text>
+<text x="163.832" y="34.537" font-size="1.0" font-family="sans-serif">Mitchell, The New "Standard" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)</text>
+<text x="163.832" y="35.937" font-size="1.0" font-family="sans-serif">under_sleeve</text>
+<text x="163.832" y="37.337" font-size="1.0" font-family="sans-serif">cut 2</text>
+<text x="163.832" y="38.737" font-size="1.0" font-family="sans-serif">seam allowance 1.5 cm included</text>
+</g>
+<g id="collar">
+<polygon points="189.7445,2.8744 184.9219,0.1139 183.3532,0.0000 177.6439,10.1820 175.5065,13.3867 187.3201,13.3867 192.6503,6.1988 189.7445,2.8744" fill="none" stroke="black" stroke-width="0.05"/>
+<polygon points="188.7809,4.0512 184.4729,1.5853 184.1953,1.5651 178.9239,10.9662 178.3100,11.8867 186.5650,11.8867 190.7256,6.2760 188.7809,4.0512" fill="none" stroke="black" stroke-width="0.03" stroke-dasharray="0.4 0.25"/>
+<polyline points="184.6127,3.7096 184.6127,9.8424" stroke="black" stroke-width="0.04"/>
+<polyline points="184.2127,4.5096 184.6127,3.7096 185.0127,4.5096" fill="none" stroke="black" stroke-width="0.04"/>
+<polyline points="184.2127,9.0424 184.6127,9.8424 185.0127,9.0424" fill="none" stroke="black" stroke-width="0.04"/>
+<text x="185.413" y="4.776" font-size="1.0" font-family="sans-serif">women's semi-fitted jacket</text>
+<text x="185.413" y="6.176" font-size="1.0" font-family="sans-serif">Mitchell, The New "Standard" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)</text>
+<text x="185.413" y="7.576" font-size="1.0" font-family="sans-serif">collar</text>
+<text x="185.413" y="8.976" font-size="1.0" font-family="sans-serif">cut 2</text>
+<text x="185.413" y="10.376" font-size="1.0" font-family="sans-serif">seam allowance 1.5 cm included</text>
+</g>
+<rect x="0" y="95.392" width="5.0" height="5.0" fill="none" stroke="black" stroke-width="0.05"/>
+<text x="5.600" y="97.392" font-size="1.0" font-family="sans-serif">test square 5 × 5 cm</text>
+</svg>

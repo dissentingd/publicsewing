@@ -1,0 +1,82 @@
+# Mitchell 1921, Skirt Foundation (book p. 84, diagram p. 85): "only one foundation from which any
+# kind of a skirt is either drafted or manipulated". Half a skirt, centre front (right, the line
+# 1–2) to centre back (left), drafted on sweeps.
+#
+# "Measure from 1 straight upward … one and one-half the waist measure … pin the tape measure to
+# that point and sweep from 1 and 4 forward": the pivot P is 1½ waist above 1. Sweep 1 guides the
+# waist line, sweep 4 is the hip line, and the bottom is sweep 1 moved down by the back length
+# ("measure the back length on about 2 or 3 places from sweep line 1 downward"). Distances laid
+# off on a sweep are measured along it (the tape follows the sweep): such points are rotations
+# about P by the arc's angle, except 7 (½ hip, measured straight across: see its interp).
+#
+# Frame: 1 at the origin, x right, y down (cm); the skirt extends left (forward on the sweeps is
+# to the left). Checks and reports as in foundation.yaml: printed measures laid off on the drawing
+# are checks, rule-placed points reports. Misprint, as printed: "10 from 2 is ⅜ inch" is 10 from 3
+# (10 is drawn ⅜ in above 3; 2 is at the bottom). Logged in FINDINGS.
+recipe: mitchell-skirt-foundation
+source: {book: "Mitchell, New \"Standard\" Work … Ladies' Tailor-Made Garments (1921)", page: 84, diagram: 85}
+units: cm
+inputs: [waist, hips, front_len, back_len]
+values:
+  IN: 2.54
+  PI: 3.141592653589793
+  R: 1.0
+  R1: 1.5 * waist                         # sweep 1: the waist guide
+  R4: 1.5 * waist + 7 * IN                # sweep 4: the hip line
+  Rh: 1.5 * waist + back_len              # the bottom: sweep 1 down by the back length
+drawing:
+  p85:
+    fit: ['1', '2', '3', '4', '5', '6', '10']   # the straight-line measures; 7–9 hang on the sweeps,
+    r: 0.6                                      # which the diagrams draw differently (below)
+points:
+  "1": {at: [0, 0]}
+  P: {at: [0, '-1.5 * waist']}
+  "2": {offset: {from: "1", dir: down, d: back_len}}
+  "3": {offset: {from: "2", dir: up, d: front_len}}
+  "4": {offset: {from: "1", dir: down, d: 7 * IN}}
+  "5": {offset: {from: "4", dir: down, d: 5 * IN}}
+  "6": {rotate: {point: "2", about: P, deg: '1.5 * IN / Rh * 180 / PI'},
+        interp: "6, 1½ in from 2: along the bottom sweep (it's the bottom's front end)"}
+  "7": {circle_circle: {c1: P, r1: R4, c2: "4", r2: hips / 2, pick: left},
+        interp: "7 from 4 is ½ hip on sweep 4, measured straight (the tape across, a chord): the reading nearest the five-gored skirt's printed surplus (FINDINGS)"}
+  # "square upward from 7 and 5": the centre back line is square to the line 5–7 at 7
+  "8": {circle_line: {center: P, r: R1, line: {from: "7", dir: {perp: ["5", "7"]}}, pick: {near: "7"}},
+        interp: "8, on the line squared up from 7, is where it meets sweep 1 (the waist guide)"}
+  "9": {along: {from: "8", to: "7", d: back_len}}
+  "9h": {circle_line: {center: P, r: Rh, line: ["8", "7"], pick: {near: "9"}},
+         interp: "the bottom meets the centre back on the bottom sweep (9 is the back length below 8; reported)"}
+  "10": {offset: {from: "3", dir: up, d: 0.375 * IN}, interp: "printed \"10 from 2 is ⅜ inch\": read as 10 from 3 (FINDINGS)"}
+  # ---- the drawing's markers ----
+  m1: {marker_near: {at: "1", r: R, drawing: p85}}
+  m2: {marker_near: {at: "2", r: R, drawing: p85}}
+  m3: {marker_near: {at: "3", r: 0.4, drawing: p85}}
+  m4: {marker_near: {at: "4", r: R, drawing: p85}}
+  m5: {marker_near: {at: "5", r: R, drawing: p85}}
+  m6: {marker_near: {at: "6", r: R, drawing: p85}}
+  m7: {marker_near: {at: "7", r: 3 * R, drawing: p85}}
+  m8: {marker_near: {at: "8", r: 3 * R, drawing: p85}}
+  m9: {marker_near: {at: "9", r: 3 * R, drawing: p85}}
+  m10: {marker_near: {at: "10", r: 0.4, drawing: p85}}
+checks:
+  - {id: back-length, measure: {dist: [m1, m2]}, expect: back_len, source: "p. 84: 2 from 1 is the back length (39½)"}
+  - {id: front-length, measure: {dist: [m2, m3]}, expect: front_len, source: "p. 84: 3 from 2 is the front length (38)"}
+  - {id: "5", measure: {dist: [m4, m5]}, expect: 5 * IN, source: "p. 84: 5 from 4 is 5 inches"}
+  - {id: "6", measure: {dist: [m2, m6]}, expect: 1.5 * IN, source: "p. 84: 6 from 2 is 1½ inches"}
+  - {id: "10", measure: {dist: [m3, m10]}, expect: 0.375 * IN, source: "p. 84: 10 from [3] is ⅜ inch"}
+reports:
+  # Both skirt diagrams (pp. 85 and 91) draw 7 squared 20 in from 4 and 4.15 in above it, which
+  # puts the sweeps' pivot about 43½ in above 1 where the text prints 1½ waist (26½ + 13¼ = 39¾).
+  # A systematic difference, so the text governs and these are reports (FINDINGS; the project's rule of
+  # 2026-10-24). 8 and 9 hang on 7 and sweep 1, so 8→9 inherits it.
+  - {id: "½ hip 4→7 straight, drawn − printed", measure: {value: 'dist("m4", "m7") - hips / 2'}}
+  - {id: "7: squared from the line 1–2, drawn (in)", measure: {value: '(x("m4") - x("m7")) / IN'}}
+  - {id: "pivot above 1 implied by the drawn 4 and 7 on one sweep (in; text 39¾)", measure: {value: '(((x("m7") - x("m4")) ** 2 + (y("m7") - y("m4")) ** 2) / (2 * (y("m4") - y("m7"))) - 7 * IN) / IN'}}
+  - {id: "8→9 drawn − back length (p. 84: 9 from 8 is the back length)", measure: {value: 'dist("m8", "m9") - back_len'}}
+  # p. 85 draws 1→4 0.15 in long; p. 91 draws it as printed (checked in five_gored_skirt.yaml): a
+  # one-page slip, so a report (the project's rule, 2026-10-24)
+  - {id: "1→4 drawn − printed (p. 84: 4 from 1 is 7 inches)", measure: {value: 'dist("m1", "m4") - 7 * IN'}}
+  - {id: "7 drawn − constructed", measure: {dist: ["7", m7]}}
+  - {id: "8 drawn − constructed (on sweep 1, square to 5–7 at 7)", measure: {dist: ["8", m8]}}
+  - {id: "9 drawn − constructed", measure: {dist: ["9", m9]}}
+  - {id: "9 off the bottom sweep (9 − 9h)", measure: {dist: ["9", "9h"]}}
+  - {id: "angle 5–7–8 drawn (deg; square = 90)", measure: {value: 'angle("m5", "m7", "m8")'}}

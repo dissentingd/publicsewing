@@ -1,0 +1,66 @@
+# ЕМКО СЭВ т.3, two-piece sleeve with front and back seams, ИМК (Table 1.3 Fig. 5,
+# Table 2.3 Fig. 10): the same rows in both tables, only the values differ. Built on
+# the БК one-piece sleeve (sleeve.yaml via jacket.yaml). Not a garment on its own: a
+# garment's ИМК recipe extends it and adds the body. Inputs nN = the table's sleeve
+# row N (data section imk_sleeve): n3 vent 933–934, n4 132–135, n10/n11 351–356/356',
+# n12/n13 451–452/452', n14/n15 951–952/952'. The winter coat's sleeve (Table 3.3) is
+# a different construction (coat_winter_imk.yaml).
+# Only the construction lives here (points, paths). Pieces, checks, reports, export and
+# seams stay in each garment recipe: extends merges a base's maps first, so moving them
+# here would reorder a garment's pieces and gate list, and its catalog files with them.
+extends: jacket.yaml
+# The БК one-piece sleeve is a construction step here; the garment's sleeve is the
+# two-piece one, whose cap the garment recipe checks (two-piece-cap-vs-DOR).
+drop_checks: [sleeve-cap-vs-DOR]
+recipe: emko-imk-sleeve
+source: {book: "ЕМКО СЭВ т.3", tables: ["1.3", "2.3"], figures: [5, 10, 36]}
+inputs: [n3, n4, n10, n11, n12, n13, n14, n15]
+values:
+  roll_e: abs(x("s433") - x("s432"))        # sleeve rows 6–7: elbow roll
+  roll_u: abs(x("s335") - x("s334"))        # sleeve rows 8–9: underarm roll
+points:
+  s355: {project: {x_of: s352, y_of: s352}, note: "355 ≡ 352 (Fig. 36)"}
+  s933: {project: {x_of: s931, y_of: s931}, interp: "hem point of the back fold = 931"}
+  s934: {along: {from: s933, to: s431, d: n3}, row: 3}
+  s135: {along: {from: s132, to: s345, d: n4}, row: 4}
+  s136: {perp_foot: {from: s135, line: [s132, s333]}, row: 5}
+  s135': {ratio: {from: s135, to: s136, t: 2}, row: 5, note: "mirror of 135 in the ⊥ (R 132–135' = 132–135)"}
+  s432: {at_y: {line: [s136, s934], y_of: s431}}
+  s433: {at_y: {line: [s135, s934], y_of: s431}}
+  s334: {at_y: {line: [s136, s934], y: 0}}
+  s335: {at_y: {line: [s135, s934], y: 0}}
+  s434: {offset: {from: s431, dir: right, d: roll_e}, row: 6}
+  s434': {offset: {from: s431, dir: left, d: roll_e}, row: 7}
+  s336: {offset: {from: s333, dir: right, d: roll_u}, row: 8}
+  s336': {offset: {from: s333, dir: left, d: roll_u}, row: 9}
+  s356: {offset: {from: s351, dir: left, d: n10}, row: 10}
+  s356': {offset: {from: s351, dir: right, d: n11}, row: 11}
+  s452: {offset: {from: s451, dir: left, d: n12}, row: 12}
+  s452': {circle_circle: {c1: s451, r1: n13, c2: s356', r2: 'dist("s452", "s356")', pick: right}, row: 13}
+  s952: {along: {from: s951, to: s931, d: n14}, row: 14}
+  s952': {along: {from: s951, to: s931, d: -n15}, row: 15}
+  s452'': {circle_circle: {c1: s451, r1: n13, c2: s952', r2: 'dist("s952", "s452")', pick: right}, row: 16}
+  s357: {path_x: {path: under_front, line: [s452, s356], pick: first},
+         note: "line 452→356 extended meets the lower front cap arc"}
+  s354: {circle_circle: {c1: s343, r1: r21, c2: s353, r2: 'dist("s353", "s343")', pick: {near: s346}}, row: 77,
+         note: "on the lower front arc at |353–343| from 353"}
+  s354': {offset: {from: s355, dir: {toward: [s141, s355]}, d: 'dist("s355", "s354")'}, row: 17}
+  s343': {mirror: {point: s343, line: {from: s351, dir: down}}, row: 18, note: "mirror of 343 about the front fold"}
+  s357': {circle_line: {center: s343', r: 'dist("s354''", "s343''")', line: [s452', s356'], pick: lower}, row: 18.1}
+paths:
+  under_front: [{arc: {center: s343, from: s346, to: s352}}]
+  top_front_seam_a: [{polyline: [s357', s356', s452']}]
+  top_front_seam_b: [{line: [s452'', s952']}]
+  under_front_seam: [{polyline: [s357, s356, s452, s952]}]
+  top_back_seam: [{polyline: [s135', s336', s434', s934]}]
+  under_back_seam: [{polyline: [s135, s336, s434, s934]}]
+  top_cap:
+    - {line: [s135', s132]}
+    - {path: cap}
+    - {line: [s355, s354']}
+    - {arc: {center: s343', from: s354', to: s357'}}
+  under_cap:
+    - {line: [s135, s345]}
+    - {arc: {center: s342, from: s345, to: s341}}
+    - {line: [s341, s346]}
+    - {subpath: {name: under_front, from: s346, to: s357}}

@@ -1,0 +1,34 @@
+# ЕМКО СЭВ т.3 §1, men's jacket: back/front framework, Table 1.2 rows 1–12, Fig. 2.
+# First fixture for the recipe interpreter (PIPELINE.md build step 1). The full
+# jacket port (rows 13+, curves, ИМК) is build step 2.
+# Point names: first digit = level (1 neck, 2 blade, 3 chest, 4 waist, 5 hip,
+# 9 hem), second = vertical line (1 back centre, 3 back width, 5 armhole,
+# 7 front centre). Inputs rN = draft value of table row N.
+recipe: emko-jacket-framework
+source: {book: "ЕМКО СЭВ т.3", section: 1, table: "1.2", figure: 2}
+units: cm
+inputs: [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12]
+points:
+  "11": {at: [0, 0]}
+  "21": {offset: {from: "11", dir: down, d: r2}, row: 2}
+  "31": {offset: {from: "11", dir: down, d: r3}, row: 3}
+  "41": {offset: {from: "11", dir: down, d: r4}, row: 4}
+  "51": {offset: {from: "41", dir: down, d: r5}, row: 5}
+  "91": {offset: {from: "11", dir: down, d: r1}, row: 1}
+  "33": {offset: {from: "31", dir: right, d: r6}, row: 6}
+  "35": {offset: {from: "33", dir: right, d: r7}, row: 7}
+  "37": {offset: {from: "35", dir: right, d: r8}, row: 8}
+  "47": {offset: {from: "37", dir: down, d: r10}, row: 10}
+  "57": {offset: {from: "47", dir: down, d: r11}, row: 11}
+  "97": {offset: {from: "47", dir: down, d: r12}, row: 12}
+paths:
+  back_centre: [{line: ["11", "91"]}]
+  chest_line: [{polyline: ["31", "33", "35", "37"]}]
+  front_edge: [{line: ["37", "97"]}]
+checks:
+  # Row 9 is printed separately as the sum |31-33|+|33-35|+|35-37|, so it is
+  # an independent check on rows 6–8 as transcribed.
+  - id: chest-width-row9
+    measure: {length: chest_line}
+    expect: r9
+    source: "Table 1.2 row 9 (31-37)"

@@ -1,0 +1,42 @@
+# Drape a Brian coat's shell (back on the fold, two fronts closed at CF, one-piece sleeve split
+# into front and back halves) on GarmentCode's male average body. Collar, facings, pockets and
+# belt are left off. Export the outlines with:
+#   node tools/drape-export.mjs <design> <set> out.json --pieces <back>,front,sleeve \
+#     --clip front=0 --split sleeve=0
+# `back` below is replaced by the design's back piece name (tools/drape_spec.py --back).
+#
+# Placement: GarmentCode units are cm, y up, the body facing +z; its right side is -x. Each
+# piece here is the right-hand copy (the left is mirrored). Body m_smpl_average_A40: height
+# 178, chest 100, waist 80, hips 100; neck point ~153 up; torso z -12 to +17; arms 40 deg down.
+body: m_smpl_average_A40
+pieces:
+  back: {origin: [back.cbNeck, back.s3CollarSplit], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 153, -17]}
+  front: {origin: [front.clipTop, front.s3CollarSplit], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 153, 21]}
+  # The sleeve's long axis (drafting y) along the arm: 221 deg about z points it out and 41 deg
+  # down; its top at the shoulder point, its underarm below. Front half before the arm, back
+  # half behind (its x flipped, so its underarm is below too).
+  sleevePlus: {origin: sleevePlus.clipTop, map: [[0, 1], [1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-21, 148, 10]}
+  sleeveMinus: {origin: sleeveMinus.clipTop, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-21, 148, -12]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.cbNeck, back.cbHem]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.clipTop, front.clipBottom]}], mirror: true}
+  shoulder:
+    a: [{piece: back, along: [back.s3CollarSplit, back.s3ArmholeSplit]}]
+    b: [{piece: front, along: [front.s3CollarSplit, front.s3ArmholeSplit]}]
+  side:
+    a: [{piece: back, along: [back.armhole, back.sideWaist, back.hem]}]
+    b: [{piece: front, along: [front.armhole, front.sideWaist, front.hem]}]
+  # Back armhole up to the shoulder, then the front's down: the sleeve's back half from its
+  # underarm over the cap to the top, then the front half down to its underarm
+  armhole:
+    a: [{piece: back, along: [back.armhole, back.armholePitch, back.s3ArmholeSplit]},
+        {piece: front, along: [front.s3ArmholeSplit, front.armholePitch, front.armhole]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.capQ4, sleeveMinus.capQ3, sleeveMinus.clipTop]},
+        {piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.capQ2, sleevePlus.capQ1, sleevePlus.bicepsRight]}]
+    anchors: [[back.s3ArmholeSplit, sleeveMinus.clipTop]]
+  overarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.clipBottom]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.clipTop, sleeveMinus.clipBottom]}]
+  underarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.bicepsRight, sleevePlus.wristRight]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.wristLeft]}]

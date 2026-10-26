@@ -1,0 +1,251 @@
+# Catalog entries built from ЕМКО СЭВ т.3 (men's base constructions, 1988).
+# scripts/catalog_build.py builds each entry only if its pattern passes the gate.
+#
+# What `status.sewable` means. Passing the gate shows the pattern matches the values the book
+# prints; it says nothing about fit or whether the pieces sew together well. So:
+#   sewable: false  reference construction, or a complete pattern that has not been test-sewn.
+#   sewable: true   only after a muslin test: the pattern was printed at 100%, cut in muslin
+#                   (or scrap cloth), sewn, and tried on, and the result is recorded in the
+#                   entry as `muslin: {date, sewn_by, result}`. The result should cover whether
+#                   the pieces go together, whether it closes, how the armholes and neck sit,
+#                   and what was changed. catalog_build.py refuses sewable: true without it.
+# A decision to move the project forward is not a muslin test, and neither is the gate.
+source:
+  book: "ЕМКО СЭВ т.3: Базовые конструкции мужской одежды (1988)"
+  corpus: emko                       # corpus/MANIFEST.yaml entry
+  rights: >-
+    Drafting method; methods are uncopyrightable (project policy). Pattern pieces are
+    constructed from the book's tables by ccat. Where the book leaves a curve "по модели"
+    and only draws it (the waistcoat МК armhole), that curve is traced from the figure
+    (fair use, project policy). Source is a personal copy, processed offline; the book itself
+    is not redistributed.
+  size_label: "height–chest girth–waist girth, cm (ЕМКО typical figure)"
+seam_allowance: 1.5                  # cm, uniform; an export default (the base tables give none)
+status:                              # applies to every entry below unless an entry overrides it
+  construction: БК (base construction)
+  sewable: false
+  note: >-
+    Reference only, not a sewing pattern. ЕМКО's base construction is the basis for the
+    model construction (ИМК): it has no model seams (yokes, side panels), and the sleeve
+    is drawn as an upper and an under half (ИМК's top and under sleeve). Sewable entries
+    will be built from ИМК.
+entries:
+  - id: emko-winter-coat-176-100-88
+    recipe: recipes/emko/jacket.yaml
+    data: {garment: data/emko/coat_winter_176-100-88.yaml}
+  - id: emko-insulated-jacket-176-100-88
+    recipe: recipes/emko/jacket.yaml
+    data: {garment: data/emko/jacket_insulated_176-100-88.yaml}
+  - id: emko-summer-jacket-176-100-88
+    recipe: recipes/emko/jacket.yaml
+    data: {garment: data/emko/summer_jacket_176-100-88.yaml}
+  - id: emko-jacket-176-92-74
+    recipe: recipes/emko/jacket.yaml
+    data: {graded: data/emko/jacket_graded.yaml, figure: 176-92-74}
+  - id: emko-jacket-imk-176-100-88
+    recipe: recipes/emko/jacket_imk.yaml
+    data: {garment: data/emko/jacket_176-100-88.yaml}
+    garment: jacket 176-100-88 (ИМК)
+    tables: Tables 1.2 (БК) and 1.3 (ИМК)
+    status:
+      construction: ИМК (model construction), Table 1.3
+      sewable: false
+      note: >-
+        Model construction: back, side panel, front (chest/belly dart moved into the pocket
+        cut) and two-piece sleeve, all in gate. Not yet complete: the back's rows 37–42.3
+        (Table 1.3 p. 15, shoulder/armhole shaping) aren't built, and the collar and lapel
+        are "по модели" in the book (not tabulated), so a collar draft is still needed.
+  - id: emko-winter-coat-imk-176-100-88
+    recipe: recipes/emko/coat_winter_imk.yaml
+    data: {garment: data/emko/coat_winter_176-100-88.yaml}
+    garment: winter coat 176-100-88 (ИМК)
+    tables: Tables 3.2 (БК) and 3.3 (ИМК)
+    status:
+      construction: ИМК (model construction), Table 3.3
+      sewable: false
+      note: >-
+        Model construction: back yoke, back, front yoke, front (belly taken by turning the
+        lower front, side dart in the pocket line) and two-piece sleeve, all in gate. Not
+        yet complete: the turn-down collar is "по модели" in the book (not tabulated), so a
+        collar draft is still needed; the welt pockets and belt aren't drafted.
+  - id: emko-demi-coat-imk-176-100-88
+    recipe: recipes/emko/coat_demi_imk.yaml
+    data: {garment: data/emko/coat_demi_176-100-88.yaml}
+    garment: demi-season coat 176-100-88 (ИМК)
+    tables: Tables 2.2 (БК) and 2.3 (ИМК)
+    status:
+      construction: ИМК (model construction), Table 2.3
+      sewable: false
+      note: >-
+        Model construction: back (shoulder dart eased and shrunk, armhole redrawn), side
+        panel, front (chest and belly darts into the pocket cut) and two-piece sleeve, all
+        in gate. Not yet complete: the turn-down collar is "по модели" in the book (not
+        tabulated), so a collar draft is still needed; the back and sleeve vents, pocket
+        flaps and the hem's curve at 94 aren't drafted.
+  - id: emko-summer-jacket-imk-176-100-88
+    recipe: recipes/emko/summer_jacket_imk.yaml
+    data: {garment: data/emko/summer_jacket_176-100-88.yaml}
+    garment: summer jacket 176-100-88 (ИМК)
+    tables: Tables 4.2 (БК) and 4.3 (ИМК)
+    status:
+      construction: ИМК (model construction), Table 4.3
+      sewable: false
+      note: >-
+        Model construction: back yoke, back (one piece, centre back on the fold), front
+        yoke, front (belly dart to the hem) and one-piece sleeve with an inner seam and an
+        elbow dart, all in gate. Not yet complete: the hood (Table 4.2, Figs. 19–20) isn't
+        built, and the welt pockets, zip facing, hem and cuff elastic aren't drafted. The
+        sleeve hem is straight: the book's arc about O degenerates on the level БК sleeve hem.
+  - id: emko-insulated-jacket-imk-176-100-88
+    recipe: recipes/emko/jacket_insulated_imk.yaml
+    data: {garment: data/emko/jacket_insulated_176-100-88.yaml}
+    garment: insulated jacket 176-100-88 (ИМК)
+    tables: Tables 5.2 (БК) and 5.3 (ИМК)
+    status:
+      construction: ИМК (model construction), Table 5.3
+      sewable: false
+      note: >-
+        Model construction: back yoke, back (one piece, centre back on the fold), front
+        yoke (sloped seam taking the chest dart), front (cut back for the placket, belly
+        dart to the hem) and two-piece sleeve, all in gate. Not yet complete: the hood
+        (Table 5.2) isn't built, and the placket strips, welt pockets and hem elastic
+        aren't drafted.
+  - id: emko-waistcoat-imk-176-100-88
+    recipe: recipes/emko/waistcoat_imk.yaml
+    data: {garment: data/emko/waistcoat_176-100-88.yaml}
+    garment: waistcoat 176-100-88 (ИМК)
+    tables: Tables 6.2 (БК) and 6.3 (ИМК, rows 1–27.2)
+    status:
+      construction: ИМК (model construction), Table 6.3 rows 1–27.2
+      sewable: false
+      note: >-
+        Model construction: back (centre seam, fish dart, shoulder dart eased and shrunk)
+        and front (chest dart turned into the armhole and shrunk, waist dart to the hem), in
+        gate to the hip. Not yet complete: Table 6.3's МК block (Fig. 32: V-neck, front
+        points, back length, a deeper armhole drawn "по модели") isn't built, nor the welt
+        pockets. Table 6.2 prints no ДП, so the armhole is reported, not checked.
+  - id: emko-waistcoat-mk-176-100-88
+    recipe: recipes/emko/waistcoat_mk.yaml
+    data: {garment: data/emko/waistcoat_176-100-88.yaml}
+    garment: waistcoat 176-100-88 (МК)
+    tables: Tables 6.2 (БК) and 6.3 (ИМК and МК)
+    status:
+      construction: МК (model construction, the finished garment), Table 6.3
+      sewable: false
+      note: >-
+        Not yet test-sewn. These are the drafted pieces of the finished waistcoat (back and
+        front with darts, V-neck, button stand, cutaway front, shortened back), and they match
+        the book's printed values; whether they fit and sew up well is untested. The armhole is
+        "по модели" in the book (drawn, not tabulated) and is traced from Fig. 32. Still to
+        add: welt pockets, facings and button positions. Next step: a muslin test (see the
+        top of catalog/emko.yaml).
+  - id: emko-jacket-imk
+    recipe: recipes/emko/jacket_imk.yaml
+    # every Table 1.4 figure but 176-100-88, which has its own entry above (from Table 1.2)
+    data: {graded: data/emko/jacket_graded.yaml, model: data/emko/jacket_176-100-88.yaml,
+           figures: [176-92-74, 176-100-82, 176-100-94, 176-100-100, 176-112-100, 176-112-106, 176-112-112]}
+    tables: Tables 1.4 (БК, graded), 1.2 and 1.3 (ИМК)
+    status:
+      construction: ИМК (model construction), Table 1.3, graded over Table 1.4's typical figures
+      sewable: false
+      note: >-
+        The jacket's model construction for one of Table 1.4's typical figures: the ИМК recipe
+        run on that figure's base-construction rows (no garment-specific work). d_т is
+        computed from its formula; Table 1.3 prints it for 176-100-88 only, so that check is
+        skipped on the other sizes. Not yet complete: the back's rows 37–42.3 and the collar.
+  # ---- ИМК/МК graded over Table x.4's typical figures (2026-10-22) ----
+  # Data: data/emko/<garment>_graded.yaml (scripts/emko_grade_ocr.py, from OCR) plus the
+  # garment's ИМК/МК rows from its 176-100-88 file. Only figures that pass the gate are listed;
+  # the others are named with why (a held cell = the reader left it null: misread or misprint,
+  # see pilot/emko/FINDINGS.md). 176-100-88 has its own entry above (from Table x.2).
+  - id: emko-winter-coat-imk
+    recipe: recipes/emko/coat_winter_imk.yaml
+    # not listed: 176-92-74, 176-112-100, 176-112-112 (row 24 held: the reads can't tell 1.5 from 1.45)
+    data: {graded: data/emko/coat_winter_graded.yaml, model: data/emko/coat_winter_176-100-88.yaml,
+           figures: [176-100-82, 176-100-94, 176-100-100, 176-112-106]}
+    tables: Tables 3.4 (БК, graded), 3.2 and 3.3 (ИМК)
+    status:
+      construction: ИМК (model construction), Table 3.3, graded over Table 3.4's typical figures
+      sewable: false
+      note: >-
+        The winter coat's model construction for one of Table 3.4's typical figures: back
+        yoke, back, front yoke, front and two-piece sleeve, with every size-dependent row
+        computed from its formula (values Table 3.3 prints for 176-100-88 only are checked
+        there, skipped here). Not yet complete: the turn-down collar is "по модели" in the
+        book (not tabulated), so a collar draft is still needed; the welt pockets and belt
+        aren't drafted.
+  - id: emko-demi-coat-imk
+    recipe: recipes/emko/coat_demi_imk.yaml
+    # not listed: 176-100-100, 176-112-100 (row 72 held: smudged print); 176-100-94, 176-112-106,
+    # 176-112-112 fail imk-armhole-vs-DP (+1.07 to +2.10%, growing with size)
+    data: {graded: data/emko/coat_demi_graded.yaml, model: data/emko/coat_demi_176-100-88.yaml,
+           figures: [176-92-74, 176-100-82]}
+    tables: Tables 2.4 (БК, graded), 2.2 and 2.3 (ИМК)
+    status:
+      construction: ИМК (model construction), Table 2.3, graded over Table 2.4's typical figures
+      sewable: false
+      note: >-
+        The demi-season coat's model construction for one of Table 2.4's typical figures: back,
+        side panel, front and two-piece sleeve, size-dependent rows from their formulas. Row
+        50.1 (chest dart) is taken from Table 2.4 as printed (0.05 at 176-92-74, 0.3 at
+        176-100-82), though Table 2.2 prints 0 for 176-100-88: an open question. Not yet
+        complete: the collar is "по модели" (not tabulated); vents, pocket flaps and the hem's
+        curve at 94 aren't drafted.
+  - id: emko-summer-jacket-imk
+    recipe: recipes/emko/summer_jacket_imk.yaml
+    # not listed: 176-112-106 (row 50.1 held: 1.1 or 1.0); 176-112-112 fails imk-cap-vs-DOR (+1.01%)
+    data: {graded: data/emko/summer_jacket_graded.yaml, model: data/emko/summer_jacket_176-100-88.yaml,
+           figures: [176-92-74, 176-100-82, 176-100-94, 176-100-100, 176-112-100]}
+    tables: Tables 4.4 (БК, graded), 4.2 and 4.3 (ИМК)
+    status:
+      construction: ИМК (model construction), Table 4.3, graded over Table 4.4's typical figures
+      sewable: false
+      note: >-
+        The summer jacket's model construction for one of Table 4.4's typical figures: back
+        yoke, back, front yoke, front and one-piece sleeve, size-dependent rows from their
+        formulas. Row 61 is printed "К" (straight silhouette) and taken as row 62, as for
+        176-100-88. Not yet complete: the hood isn't built; welt pockets, zip facing, hem and
+        cuff elastic aren't drafted.
+  - id: emko-insulated-jacket-imk
+    recipe: recipes/emko/jacket_insulated_imk.yaml
+    # not listed: 176-112-112 (rows 63.3, 72, 80 held: off the row's trend; row 72 looks misprinted)
+    data: {graded: data/emko/jacket_insulated_graded.yaml, model: data/emko/jacket_insulated_176-100-88.yaml,
+           figures: [176-92-74, 176-100-82, 176-100-94, 176-100-100, 176-112-100, 176-112-106]}
+    tables: Tables 5.4 (БК, graded), 5.2 and 5.3 (ИМК)
+    status:
+      construction: ИМК (model construction), Table 5.3, graded over Table 5.4's typical figures
+      sewable: false
+      note: >-
+        The insulated jacket's model construction for one of Table 5.4's typical figures: back
+        yoke, back, front yoke, front and two-piece sleeve, size-dependent rows from their
+        formulas. Not yet complete: the hood isn't built; placket strips, welt pockets and hem
+        elastic aren't drafted.
+  - id: emko-waistcoat-imk
+    recipe: recipes/emko/waistcoat_imk.yaml
+    # not listed: 176-92-74, 176-112-112 (row 44 held)
+    data: {graded: data/emko/waistcoat_graded.yaml, model: data/emko/waistcoat_176-100-88.yaml,
+           figures: [176-100-82, 176-100-94, 176-100-100, 176-112-100, 176-112-106]}
+    tables: Tables 6.4 (БК, graded), 6.2 and 6.3 (ИМК, rows 1–27.2)
+    status:
+      construction: ИМК (model construction), Table 6.3 rows 1–27.2, graded over Table 6.4's typical figures
+      sewable: false
+      note: >-
+        The waistcoat's model construction for one of Table 6.4's typical figures: back and
+        front, to the hip, size-dependent rows from their formulas; Т25 − Т26 (rows 3–4) isn't
+        graded by the tables and stays the printed 0.5. Table 6.2 prints no ДП, so the armhole
+        is reported, not checked.
+  - id: emko-waistcoat-mk
+    recipe: recipes/emko/waistcoat_mk.yaml
+    # not listed: 176-92-74, 176-112-112 (row 44 held)
+    data: {graded: data/emko/waistcoat_graded.yaml, model: data/emko/waistcoat_176-100-88.yaml,
+           figures: [176-100-82, 176-100-94, 176-100-100, 176-112-100, 176-112-106]}
+    tables: Tables 6.4 (БК, graded), 6.2 and 6.3 (ИМК and МК)
+    status:
+      construction: МК (model construction, the finished garment), Table 6.3, graded over Table 6.4's typical figures
+      sewable: false
+      note: >-
+        Not test-sewn, at any size. The finished waistcoat's drafted pieces for one of Table
+        6.4's typical figures (V-neck, button stand, cutaway front, shortened back), matching
+        the book's printed values. The armhole is traced from Fig. 32 for 176-100-88 and
+        carried to this size between its constructed ends. Still to add: welt pockets, facings
+        and button positions.

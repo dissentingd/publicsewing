@@ -1,0 +1,134 @@
+# Chore coat: Simons' Work Coat (Drafting Cotton Garments and Mackinaws, 1918, Diagram VIII)
+# on FreeSewing's Brian block. See BRIEF.md for where each default is read.
+about:
+  id: chorecoat
+  name: Chore coat
+  description: A boxy, unlined work jacket with patch pockets and a turn-down collar
+  difficulty: 3
+  tags: [jackets]
+  techniques: [flat-felled-seam, patch-pocket, collar, facing, button]
+  version: 0.1.0
+  source: Simons, Drafting Cotton Garments and Mackinaws (1918), Diagram VIII (draftingcottonga00simo)
+
+block: brian
+
+options:
+  # Fit (these override Brian's defaults)
+  chestEase: { pct: 20, min: 8, max: 35, of: chest, menu: fit }
+  bicepsEase: { pct: 25, min: 10, max: 50, of: biceps, menu: fit }
+  cuffEase: { pct: 100, min: 40, max: 160, of: wrist, menu: fit }
+  seatEase: { pct: 12, min: 4, max: 30, of: seat, menu: fit }
+  # Style
+  lengthBelowWaist: { pct: 180, min: 80, max: 300, menu: style } # x waistToSeat
+  frontDrop: { pct: 0, min: 0, max: 40, menu: style } # x waistToSeat
+  sleeveLengthBonus: { pct: 4, min: -10, max: 15, menu: style }
+  buttonExtension: { pct: 4.2, min: 2.5, max: 6, of: chest, menu: style }
+  buttons: { count: 4, min: 3, max: 7, menu: style }
+  hemCurve: { pct: 50, min: 0, max: 100, menu: style }
+  collarWidth: { pct: 25, min: 15, max: 35, of: neck, menu: style }
+  collarSpring: { pct: 12, min: 0, max: 25, menu: style }
+  collarPoint: { pct: 7, min: 0, max: 15, of: neck, menu: style }
+  breastPocket: { bool: true, menu: style }
+  lowerPockets: { bool: true, menu: style }
+  pocketShape: { dflt: pointed, list: [pointed, square], menu: style }
+  # Construction
+  facingWidth: { pct: 8, min: 5, max: 12, of: chest, menu: construction }
+
+pieces:
+  # Brian's back, boxy, on the fold, hem lengthBelowWaist below the waist
+  back:
+    from: brian.back
+    hide: tree
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist]
+    ops:
+      - coatBack: {}
+
+  front:
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [buttonExtension, buttons, hemCurve, frontDrop, facingWidth, breastPocket, lowerPockets, pocketShape]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+    ops:
+      # Button stand and the rounded front corner (radius = stand width at hemCurve 50%)
+      - coatFront:
+          ext: ext
+          r: ext * 2 * hemCurve
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+      # Buttons on CF, from just below the neck to below the waist
+      - buttons:
+          count: buttons
+          top: cfNeck.y + ext * 0.8
+          bottom: min(cfWaist.y + waistToSeat * 0.8, cfHem.y - coat.frontEdge.r - ext)
+          rows: [0]
+      # Pockets, from the work coat's proportions (Diagram VIII at breast 36): breast pocket
+      # 5" x 6", inner edge 1.3" from CF, top at the breast line; lower pockets 7.7" x 8",
+      # inner edge 3.7" from CF, top 4.6" below the waist. Each stays clear of the armhole,
+      # the side seam and the hem's turn-up (the depth is set from the unclamped width).
+      - store:
+          key: coat.pockets
+          value:
+            breast:
+              x: q * 0.12
+              y: underarm.y
+              h: q * 0.47 * 1.2
+              w: min(q * 0.47, armholeHollow.x - q * 0.04 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+            lower:
+              x: q * 0.34
+              y: cfWaist.y + waistToSeat * 0.6
+              h: min(q * 0.72 * 1.05, cfHem.y - q * 0.06 - y)
+              w: min(q * 0.72, sideHem.x - q * 0.06 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+      - markPocket: { id: breastPocket, pocket: coat.pockets.breast, if: breastPocket }
+      - markPocket: { id: lowerPocket, pocket: coat.pockets.lower, if: lowerPockets }
+
+  # Front facing: cut separately because of the rounded corner
+  facing:
+    part: facing
+    from: front
+
+  # One-piece turn-down collar (Diagram VIII, "The Collar"), from CB to halfway across the
+  # button stand
+  collar:
+    after: [back, front]
+    measurements: [neck]
+    options: [collarWidth, collarSpring, collarPoint]
+    let:
+      target: coat.back.neck + coat.front.neck + coat.frontEdge.ext / 2
+    ops:
+      - collar:
+          target: target
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: neck * collarPoint
+
+  # One-piece sleeve (Diagram VIII, "The Sleeve"), straight to a plain hem about a third of
+  # the chest around (12 3/4" at breast 36)
+  sleeve:
+    part: sleeve
+    after: front
+    options: [sleeveLengthBonus]
+
+  # Patch pockets with a fold-over top hem (the fold is the top edge marked on the front)
+  breastPocket:
+    part: pocket
+    after: front
+    key: breast
+    nr: 6
+    label: breastPocket
+    cut: 1
+    if: breastPocket
+  lowerPocket:
+    part: pocket
+    after: front
+    key: lower
+    nr: 7
+    label: lowerPocket
+    cut: 2
+    if: lowerPockets

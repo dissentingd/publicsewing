@@ -1,0 +1,31 @@
+# Mitchell 1921, Box Coat Foundation (book pp. 16–17) and Box Coat (pp. 18–19). The measures as
+# printed on p. 16 ("The measures are as follows"), in inches; read from the page image
+# (the PDF's text layer garbles the fractions: "I0y Blade", "\2l/2 Front depth").
+name: box coat
+source:
+  size: "bust 39 (the book's measures, p. 16)"
+  book: "Mitchell, The New \"Standard\" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)"
+  corpus: newstandardworko00mitc
+  pages: [16, 17, 18, 19, 60, 61]  # book pages = PDF pages − 4
+measures:
+  bust: 39
+  hips: 40
+  back_depth: 7
+  back_waist: 15
+  half_back: 7
+  blade: 10.5
+  front_depth: 12.5
+  # the sleeve's (p. 60, "The Measurements are as follows"); the box coat's own list has none
+  elbow_len: 7.5                   # from armpit to elbow
+  inside_len: 19                   # inside sleeve length
+  elbow_width: 12
+  wrist_width: 9
+style:                             # given "in this case" or "allowed": choices, not body measures
+  shoulder_width: 6                # p. 16: "26 from 9 is the shoulder width, which is 6 inches in this case"
+  lap: 3                           # p. 18: "A lap of 3 inches is allowed to the front"
+  length: 42.5                     # p. 18: "measure the length of the coat as desired"; the diagram's
+                                   # (p. 19): 42.65 in from 2 down the centre back, taken to the ½ in
+drawings:
+  p17: data/mitchell/trace/p-017.yaml   # the foundation (PDF p. 21)
+  p19: data/mitchell/trace/p-019.yaml   # the box coat (PDF p. 23)
+  p61: data/mitchell/trace/p-061.yaml   # the two-piece sleeve (PDF p. 65)

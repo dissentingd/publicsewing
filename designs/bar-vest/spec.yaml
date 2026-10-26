@@ -1,0 +1,130 @@
+# Bar vest: Simons' Bar Vest (Drafting Cotton Garments and Mackinaws, 1918, Diagram XVI) on
+# FreeSewing's Brian block: a short, waisted white jacket with pointed fronts and a standing
+# collar, sleeveless or sleeved. See BRIEF.md for where each default is read.
+about:
+  id: barvest
+  name: Bar vest
+  description: "A bartender's short, waisted jacket: pointed fronts, standing collar, with or without sleeves"
+  difficulty: 3
+  tags: [jackets, vests, workwear]
+  techniques: [patch-pocket, collar, facing, button]
+  version: 0.1.0
+  source: Simons, Drafting Cotton Garments and Mackinaws (1918), Diagram XVI (draftingcottonga00simo)
+
+block: brian
+
+options:
+  # Fit: shaped to the waist at the side seams (breast 36, waist 32)
+  chestEase: { pct: 14, min: 6, max: 30, of: chest, menu: fit }
+  waistShaping: { bool: true, menu: fit }
+  waistEase: { pct: 10, min: 2, max: 30, of: waist, menu: fit }
+  seatEase: { pct: 8, min: 2, max: 25, of: seat, menu: fit }
+  bicepsEase: { pct: 22, min: 10, max: 40, of: biceps, menu: fit }
+  cuffEase: { pct: 80, min: 30, max: 140, of: wrist, menu: fit }
+  # Style
+  sleeves: { bool: false, menu: style } # "sack coat or work coat sleeves can be used"
+  lengthBelowWaist: { pct: 45, min: 20, max: 120, menu: style } # x waistToSeat
+  frontDrop: { pct: 55, min: 0, max: 100, menu: style } # the points, x waistToSeat
+  sleeveLengthBonus: { pct: 2, min: -10, max: 15, menu: style }
+  buttonExtension: { pct: 3.2, min: 2, max: 5, of: chest, menu: style }
+  buttons: { count: 6, min: 4, max: 8, menu: style }
+  collarHeight: { pct: 11.5, min: 0, max: 16, of: neck, menu: style }
+  pockets: { bool: true, menu: style }
+  pocketShape: { dflt: rounded, list: [rounded, square, pointed, chamfered], menu: style }
+  # Construction
+  facingWidth: { pct: 7, min: 5, max: 12, of: chest, menu: construction }
+
+pieces:
+  back:
+    from: brian.back
+    hide: tree
+    options: [chestEase, waistShaping, waistEase, seatEase, bicepsEase, cuffEase, lengthBelowWaist, sleeves]
+    ops:
+      - coatBack: {}
+
+  front:
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [frontDrop, buttonExtension, buttons, facingWidth, pockets, pocketShape]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+    ops:
+      # Square front edge; the hem runs straight from the point up to the side seam
+      - coatFront:
+          ext: ext
+          r: 0
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          straightHem: true
+      # Six buttons, from the neck to just below the waist
+      - buttons:
+          count: buttons
+          top: cfNeck.y + ext * 1.1
+          bottom: cfWaist.y + waistToSeat * 0.3
+          rows: [0]
+      # Two patch pockets on each front (Diagram XVI): one at the breast line (27), one at the
+      # waist (36), rounded; clear of the armhole, the side seam (taken in at the waist) and
+      # the hem
+      - store:
+          key: coat.pockets
+          value:
+            breast:
+              h: q * 0.42
+              x: q * 0.18
+              y: underarm.y
+              w: min(q * 0.42, armholeHollow.x - q * 0.04 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+            lower:
+              x: q * 0.18
+              y: cfWaist.y - q * 0.08
+              h: min(q * 0.4, cfHem.y - q * 0.04 - y)
+              w: min(q * 0.5, sideWaist.x - q * 0.08 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+      - markPocket: { id: upperPocket, pocket: coat.pockets.breast, if: pockets }
+      - markPocket: { id: lowerPocket, pocket: coat.pockets.lower, if: pockets }
+
+  facing:
+    part: facing
+    from: front
+    nr: 5
+
+  # "The collar of this draft should be made similar to the military collar of the barber's
+  # coat" (Diagram X): a standing collar buttoned to the neck. collarHeight 0 leaves it off.
+  collar:
+    after: [back, front]
+    measurements: [neck]
+    options: [collarHeight]
+    ops:
+      - hidePiece: { if: collarHeight <= 0 }
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext
+          spring: target * 0.057
+          width: neck * collarHeight
+          point: 0
+
+  sleeve:
+    part: sleeve
+    after: front
+    options: [sleeveLengthBonus]
+    if: sleeves
+
+  upperPocket:
+    part: pocket
+    after: front
+    key: breast
+    nr: 6
+    label: upperPocket
+    cut: 2
+    if: pockets
+  lowerPocket:
+    part: pocket
+    after: front
+    key: lower
+    nr: 7
+    label: lowerPocket
+    cut: 2
+    if: pockets

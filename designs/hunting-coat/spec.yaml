@@ -1,0 +1,153 @@
+# Hunting coat: Simons' Hunting Coat (Drafting Cotton Garments and Mackinaws, 1918, Diagram
+# XII), which is "similar to the work coat", on FreeSewing's Brian block. See BRIEF.md for
+# where each default is read.
+about:
+  id: huntingcoat
+  name: Hunting coat
+  description: A belted cotton field jacket with an action-pleated back and bellows patch pockets
+  difficulty: 4
+  tags: [jackets]
+  techniques: [patch-pocket, box-pleat, flap, yoke, collar, facing, button, belt]
+  version: 0.1.0
+  source: Simons, Drafting Cotton Garments and Mackinaws (1918), Diagram XII (draftingcottonga00simo)
+
+block: brian
+
+options:
+  # Fit (cotton khaki, like the work coat). Until 2026-10-25 the coded design drafted with
+  # Brian's 15/15/20% here instead (its parts were listed front first, so Brian's options won),
+  # which left a 21 cm sleeve hem; see drape/README.md.
+  chestEase: { pct: 20, min: 8, max: 35, of: chest, menu: fit }
+  bicepsEase: { pct: 25, min: 10, max: 50, of: biceps, menu: fit }
+  cuffEase: { pct: 100, min: 40, max: 160, of: wrist, menu: fit }
+  seatEase: { pct: 12, min: 4, max: 30, of: seat, menu: fit }
+  # Style
+  lengthBelowWaist: { pct: 190, min: 100, max: 300, menu: style } # x waistToSeat
+  frontDrop: { pct: 12, min: 0, max: 40, menu: style } # x waistToSeat
+  sleeveLengthBonus: { pct: 4, min: -10, max: 15, menu: style }
+  buttonExtension: { pct: 4.2, min: 2.5, max: 6, of: chest, menu: style }
+  buttons: { count: 5, min: 3, max: 8, menu: style }
+  hemCurve: { pct: 0, min: 0, max: 100, menu: style }
+  collarWidth: { pct: 25, min: 15, max: 35, of: neck, menu: style }
+  collarSpring: { pct: 12, min: 0, max: 25, menu: style }
+  collarPoint: { pct: 7, min: 0, max: 15, of: neck, menu: style }
+  yokeDepth: { pct: 55, min: 35, max: 80, menu: style } # x neck-to-chest-line
+  actionPleat: { pct: 2.8, min: 0, max: 5, of: chest, menu: style }
+  pleatAt: { pct: 80, min: 50, max: 90, menu: style } # x yoke width from CB
+  belt: { bool: true, menu: style }
+  beltWidth: { pct: 4.2, min: 2.5, max: 7, of: chest, menu: style }
+  breastPockets: { bool: true, menu: style }
+  lowerPockets: { bool: true, menu: style }
+  pocketShape: { dflt: rounded, list: [rounded, pointed, square], menu: style }
+  pocketPleat: { pct: 6, min: 0, max: 12, menu: style } # box pleat depth x pocket width
+  pocketFlaps: { bool: true, menu: style }
+  # Construction
+  facingWidth: { pct: 8, min: 5, max: 12, of: chest, menu: construction }
+
+pieces:
+  front:
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [buttonExtension, buttons, hemCurve, frontDrop, facingWidth, breastPockets, lowerPockets, pocketShape, pocketPleat, pocketFlaps]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+      # Belt band at the waist, covering the back's waist seam (Diagram XII)
+      beltW: chest * beltWidth
+      beltY: cfWaist.y - beltW / 2
+    ops:
+      - coatFront:
+          ext: ext
+          r: ext * 2 * hemCurve
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+      # Five buttons on CF, from just below the neck to below the belt
+      - buttons:
+          count: buttons
+          top: cfNeck.y + ext * 0.8
+          bottom: cfWaist.y + waistToSeat * 0.75
+          rows: [0]
+      - markLine: { id: beltTop, from: [-ext, beltY], to: [sideHem.x, beltY], class: mark dashed, if: belt }
+      - markLine: { id: beltBottom, from: [-ext, beltY + beltW], to: [sideHem.x, beltY + beltW], class: mark dashed, if: belt }
+      # Box-pleated, flapped patch pockets with rounded bottoms (Diagram XII): breast pockets
+      # at the chest line, kept above the belt; lower pockets below the belt. Shares of q.
+      - store:
+          key: coat.pockets
+          value:
+            breast:
+              x: q * 0.2
+              y: underarm.y + q * 0.08
+              h: min(q * 0.42 * 1.15, if(belt, beltY, cfWaist.y) - q * 0.03 - y)
+              w: min(q * 0.42, armholeHollow.x - q * 0.05 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+              pleat: w * pocketPleat
+              flap: { if: pocketFlaps, h: w * 0.32, gap: w * 0.07 }
+            lower:
+              x: q * 0.3
+              y: if(belt, beltY + beltW, cfWaist.y) + waistToSeat * 0.3
+              h: min(q * 0.7 * 1.05, cfHem.y - q * 0.08 - y)
+              w: min(q * 0.7, sideHem.x - q * 0.06 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+              pleat: w * pocketPleat
+              flap: { if: pocketFlaps, h: w * 0.32, gap: w * 0.07 }
+      - markPocket: { id: breastPocket, pocket: coat.pockets.breast, if: breastPockets }
+      - markPocket: { id: lowerPocket, pocket: coat.pockets.lower, if: lowerPockets }
+
+  # Diagram XII: "The back is split from Q to D, and at the waist from W to I ... a 1-inch
+  # inverted plait should be made ... from point 30 to 31. The belt is made to go all around
+  # and to sew down on the back covering the center waist seam." So: a yoke, a middle panel
+  # with an action pleat, and a lower back, all on the fold at CB, cut from the whole back.
+  backBase:
+    from: brian.back
+    hide: { self: true, from: true, inherited: true }
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, yokeDepth, actionPleat, pleatAt, belt, beltWidth]
+    let:
+      beltW: chest * beltWidth
+    ops:
+      - coatBack: {}
+      - backYokeCut: { depth: yokeDepth }
+      - store: { key: coat.belt, value: { w: beltW, y: cbWaist.y - beltW / 2 } }
+  backYoke: { part: backPanel, from: backBase, panel: yoke, nr: 2, label: backYoke }
+  backMiddle:
+    part: backPanel
+    from: backBase
+    panel: middle
+    nr: 4
+    label: backMiddle
+    pleat: chest * actionPleat
+    pleatAt: pleatAt
+  backLower: { part: backPanel, from: backBase, panel: lower, nr: 5, label: backLower }
+
+  facing:
+    part: facing
+    from: front
+    nr: 7
+
+  # "The collar is made similar to the work coat collar"
+  collar:
+    after: [backBase, front]
+    measurements: [neck]
+    options: [collarWidth, collarSpring, collarPoint]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext / 2
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: neck * collarPoint
+          nr: 6
+
+  sleeve:
+    part: sleeve
+    after: front
+    options: [sleeveLengthBonus]
+
+  # "The pockets are made with box plaits"
+  breastPocket: { part: pocket, after: front, key: breast, nr: 8, label: breastPocket, cut: 2, if: breastPockets }
+  breastFlap: { part: flap, after: front, key: breast, nr: 9, label: breastFlap, cut: 2, if: breastPockets }
+  lowerPocket: { part: pocket, after: front, key: lower, nr: 10, label: lowerPocket, cut: 2, if: lowerPockets }
+  lowerFlap: { part: flap, after: front, key: lower, nr: 11, label: lowerFlap, cut: 2, if: lowerPockets }
+  backBelt: { part: belt, after: [backBase, front], piece: back, nr: 12, if: belt }
+  frontBelt: { part: belt, after: [backBase, front], piece: front, nr: 13, if: belt }

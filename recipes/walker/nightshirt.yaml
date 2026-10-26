@@ -1,0 +1,142 @@
+# Walker 1909, Cutting-out Diagrams No. 8: man's night-shirt, front and back (p. 235). One field
+# holds both: same shoulders, armholes and side seams; the front has the dipped neck, the front
+# opening and the shorter hem ("Front 47 × 34"), the back the straight neck on the field's top
+# edge and the longer hem ("Back 49 × 36"). Cut lines as drawn (turnings included).
+#
+# The figures govern, the drawing gives the shapes (the book's key: the figures are the inches
+# from the corner letters; the drawing illustrates them). Every point the book gives a figure
+# for is placed by it, in the printed field (A at the origin, 34 × 49 in). Each curve is the
+# traced line between the matching features of the drawing (a corner, a line end, the lowest
+# point), set onto the figure points by a similarity (its scale and turn are recorded). Runs
+# drawn along the field's edge (side seams, back neck, bottom) merge with the field line and
+# aren't traced; they are straight, as drawn. Points with no figure (where the hem curves
+# leave the sides, the opening's distance from E) come from the trace, rescaled from the
+# measured field to the printed one.
+#
+# The gate checks what the scan can be read against: the field measured from its lines (scale
+# from the grid) and the traced front hem, vs the printed field sizes. How far the drawing's
+# features sit from their figures is reported (FINDINGS), not gated: the figures are inputs.
+recipe: walker-mans-nightshirt
+source: {book: "Walker, Manual of Needlework and Cutting Out (1909)", diagram: 8, pages: [235]}
+units: cm
+inputs: [body_x0, body_y0, body_w, body_h, body_shoulder_x, body_shoulder_y, body_neck_x, body_neck_depth,
+         body_armhole, body_vent, body_hem_x, body_opening, body_front_length, body_front_width,
+         body_back_length]
+values:
+  R: 2.54                                   # search radius for a feature of the drawing: an inch
+  L: body_x0                                # the field: corner A, printed size 34 × 49
+  T: body_y0
+  W: body_front_width
+  H: body_back_length
+  sx: body_front_width / body_w             # measured field → printed field
+  sy: body_back_length / body_h
+  # the hem curves leave the side about 2½ in above the front hem; there's no figure for it, so
+  # this is only where to look (the point is the trace's own end)
+  side_end: body_y0 + body_h * (body_front_length - 6.35) / body_back_length
+points:
+  # ---- figure points ----
+  NL: {at: ['L + body_neck_x', T]}                        # "12" from A, "12" from B
+  NR: {at: ['L + W - body_neck_x', T]}
+  SL: {at: ['L + body_shoulder_x', 'T + body_shoulder_y']}   # "A → 3", "1½"
+  SR: {at: ['L + W - body_shoulder_x', 'T + body_shoulder_y']}
+  UL: {at: [L, 'T + body_armhole']}                       # "10"
+  UR: {at: ['L + W', 'T + body_armhole']}
+  FM: {at: ['L + W / 2', 'T + body_front_length']}        # "Front 47"
+  BL: {at: ['L + body_hem_x', 'T + H']}                   # "5" from C, from D
+  BR: {at: ['L + W - body_hem_x', 'T + H']}
+  VL: {at: [L, 'T + body_vent'], interp: "side vent: the seam ends at 36 in, open below"}
+  VR: {at: ['L + W', 'T + body_vent']}
+  # ---- the drawing's features (traced) ----
+  tNL: {trace_near: {at: ['body_x0 + body_neck_x', body_y0], r: R, pick: end}}
+  tNR: {trace_near: {at: ['body_x0 + body_w - body_neck_x', body_y0], r: R, pick: end}}
+  tSL: {trace_near: {at: ['body_x0 + body_shoulder_x', 'body_y0 + body_shoulder_y'], r: R, pick: corner}}
+  tSR: {trace_near: {at: ['body_x0 + body_w - body_shoulder_x', 'body_y0 + body_shoulder_y'], r: R, pick: corner}}
+  tUL: {trace_near: {at: [body_x0, 'body_y0 + body_armhole'], r: 1.5 * R, pick: corner}}
+  tUR: {trace_near: {at: ['body_x0 + body_w', 'body_y0 + body_armhole'], r: 1.5 * R, pick: corner}}
+  tND: {trace_near: {at: ['body_x0 + body_w / 2', 'body_y0 + body_neck_depth'], r: 1.5 * R, pick: lowest}}
+  tOE: {trace_near: {at: ['body_x0 + body_w / 2', 'body_y0 + body_opening'], r: 1.5 * R, pick: end}}
+  tFM: {trace_near: {at: ['body_x0 + body_w / 2', 'body_y0 + body_front_length'], r: R}}
+  tBL: {trace_near: {at: ['body_x0 + body_hem_x', 'body_y0 + body_h'], r: R}}
+  tBR: {trace_near: {at: ['body_x0 + body_w - body_hem_x', 'body_y0 + body_h'], r: R}}
+  tHL: {trace_near: {at: [body_x0, side_end], r: R}}
+  tHR: {trace_near: {at: ['body_x0 + body_w', side_end], r: R}}
+  # ---- no figure: from the trace, rescaled to the printed field ----
+  HL: {at: [L, 'T + (y("tHL") - body_y0) * sy'], interp: "where the hem curves leave the side: the drawing's"}
+  HR: {at: ['L + W', 'T + (y("tHR") - body_y0) * sy']}
+  OE: {at: ['L + (x("tOE") - body_x0) * sx', 'T + body_opening'], interp: "the opening is cut about 1 in left of E, as drawn (hems: 1 in right, 2 in left)"}
+  OEtop: {at: ['x("OE")', T]}
+  OS: {path_x: {path: front_neck, line: [OEtop, OE]}}     # the opening starts on the neck line
+paths:
+  front_neck:                               # one curve, corner to corner (its flat foot has no
+    - {trace: {from: tNL, to: tNR, via: [tND], onto: [NL, NR], bridge: 1.0}}   # vertex at E)
+  right_shoulder: [{trace: {from: tNR, to: tSR, onto: [NR, SR], bridge: 3.0}}]
+  right_armhole: [{trace: {from: tSR, to: tUR, onto: [SR, UR]}}]
+  left_armhole: [{trace: {from: tUL, to: tSL, onto: [UL, SL]}}]
+  left_shoulder: [{trace: {from: tSL, to: tNL, onto: [SL, NL], bridge: 3.0}}]
+  front_hem:
+    - {trace: {from: tHR, to: tFM, onto: [HR, FM], bridge: 1.3}}
+    - {trace: {from: tFM, to: tHL, onto: [FM, HL], bridge: 1.3}}
+  back_hem:
+    - {trace: {from: tHR, to: tBR, onto: [HR, BR], bridge: 1.3}}
+    - {line: [BR, BL]}                      # along the field's bottom edge
+    - {trace: {from: tBL, to: tHL, onto: [BL, HL], bridge: 1.3}}
+pieces:
+  front:
+    outline:
+      - {path: front_neck}
+      - {path: right_shoulder}
+      - {path: right_armhole}
+      - {polyline: [UR, VR, HR]}            # side seam, on the field's edge
+      - {path: front_hem}
+      - {polyline: [HL, VL, UL]}
+      - {path: left_armhole}
+      - {path: left_shoulder}
+  back:
+    outline:
+      - {line: [NL, NR]}                    # back neck: straight, on the field's top edge
+      - {path: right_shoulder}
+      - {path: right_armhole}
+      - {polyline: [UR, VR, HR]}
+      - {path: back_hem}
+      - {polyline: [HL, VL, UL]}
+      - {path: left_armhole}
+      - {path: left_shoulder}
+checks:
+  - id: field-width
+    measure: {value: body_w}
+    expect: body_front_width
+    source: "the field's breadth, measured from its lines (scale from the grid), vs \"Front 47 × 34\""
+  - id: field-length
+    measure: {value: body_h}
+    expect: body_back_length
+    source: "the field's length vs \"Back 49 × 36\" (the back fills the field)"
+  - id: front-length
+    measure: {value: 'y("tFM") - body_y0'}
+    expect: body_front_length
+    source: "the drawn front hem at E vs \"Front 47 × 34\""
+reports:
+  # the drawing's features vs their figures, in cm (drawing − figure, in the printed field)
+  - {id: drawn-neck-left-x, measure: {value: '(x("tNL") - body_x0) * sx - body_neck_x'}, note: "12 from A"}
+  - {id: drawn-neck-right-x, measure: {value: '(body_x0 + body_w - x("tNR")) * sx - body_neck_x'}, note: "12 from B"}
+  - {id: drawn-shoulder-left-x, measure: {value: '(x("tSL") - body_x0) * sx - body_shoulder_x'}, note: "A → 3"}
+  - {id: drawn-shoulder-right-x, measure: {value: '(body_x0 + body_w - x("tSR")) * sx - body_shoulder_x'}, note: "3 ← B"}
+  - {id: drawn-shoulder-left-y, measure: {value: '(y("tSL") - body_y0) * sy - body_shoulder_y'}, note: "1½"}
+  - {id: drawn-shoulder-right-y, measure: {value: '(y("tSR") - body_y0) * sy - body_shoulder_y'}, note: "1½"}
+  - {id: drawn-armhole-left-y, measure: {value: '(y("tUL") - body_y0) * sy - body_armhole'}, note: "10"}
+  - {id: drawn-armhole-right-y, measure: {value: '(y("tUR") - body_y0) * sy - body_armhole'}, note: "10"}
+  - {id: drawn-neck-depth, measure: {value: '(y("tND") - body_y0) * sy - body_neck_depth'}, note: "3 below E"}
+  - {id: drawn-opening, measure: {value: '(y("tOE") - body_y0) * sy - body_opening'}, note: "17"}
+  - {id: drawn-back-hem-left-x, measure: {value: '(x("tBL") - body_x0) * sx - body_hem_x'}, note: "5 from C"}
+  - {id: drawn-back-hem-right-x, measure: {value: '(body_x0 + body_w - x("tBR")) * sx - body_hem_x'}, note: "5 from D"}
+  - {id: side-end-y, measure: {value: 'y("HL") - T'}, note: "where the hem curves leave the sides (no figure)"}
+  - {id: opening-left-of-E, measure: {value: 'L + W / 2 - x("OE")'}, note: "no figure"}
+export:
+  front:
+    cut: 1
+    grain: vertical                         # the field's arrow: selvedge way, lengthwise
+    notches: [{point: VL}, {point: VR}]
+    slits: [[OS, OE]]
+  back:
+    cut: 1
+    grain: vertical
+    notches: [{point: VL}, {point: VR}]

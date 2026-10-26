@@ -1,0 +1,117 @@
+# Mitchell 1921, Two-Piece Sleeve (book p. 60, diagram p. 61), as a shared component: construction
+# and the diagram's checks. A garment lists it after its body's recipe (`extends: [body, this]`) and
+# supplies (besides IN and R, the foundations' values):
+#   armhole: the armhole's circumference (cm), traced out of the jacket;
+#   FN: the armhole's front notch, 1¼ in above the bust line (front part);
+#   BN: its back notch, 1¾ in above the bust line (back part).
+# "The armhole is then laid with the bust line on the line squared out from 1 with the front notch
+# crossing the line 2-7": the sleeve is drafted in the body's own frame, with sl1 placed so that FN
+# lies on the line 2–7, 1¼ in above sl1's bust line. The armhole's back notch then is BN as it is.
+#
+# The working number W = armhole − 2½ in ("15 in this case" for the book's example jacket).
+# The gate checks only what the drawing can show independently of the garment: each printed
+# measure laid off (elbow, length, 1½, ½ elbow width, 1, ¾, ½ wrist), and the book's own working
+# number read off its drawing ("15 on the 4ths", "15 on the ½", "15 on the 12ths"). The drawing is
+# fitted on the points that don't depend on W or the armhole's shape. Four of p. 61's steps are
+# drawn off their printed values where the large-size sleeve's diagram (p. 67) draws them as printed:
+# one-page slips, so the text governs and those four are reports (2026-10-24).
+recipe: mitchell-sleeve-two-piece
+inputs: [elbow_len, inside_len, elbow_width, wrist_width]
+values:
+  W: armhole - 2.5 * IN                         # "deducting from same 2½ inches, thus giving the working number"
+  W_book: 15 * IN                               # "which in this case is 15" (the book's example)
+drawing:
+  p61:
+    fit: [sl7, sl1, sl6, sl8, sl16, sl17, sl18, sl12]
+    r: 0.6
+points:
+  # "1 is a point from which to square out both ways, holding the square at point 1 on the line
+  # 2-7 and ½ inch away from that line at a point 12 inches below 1"
+  sl1: {at: ['x("FN") - 1.25 * IN / 24', 'y("FN") + 1.25 * IN']}
+  slQ: {at: ['x("sl1") - 0.5 * IN', 'y("sl1") + 12 * IN'],
+        interp: "the line 2–7 leans ½ in forward in 12 in below 1, as drawn (forward = toward the front, left)"}
+  sl2: {along: {from: sl1, to: slQ, d: -W / 4}}             # "15 on the 4ths", up the line 7–1
+  sl3: {offset: {from: sl2, dir: right, d: W / 2}}          # "15 on the ½", parallel to the bust line
+  sl4: {ratio: {from: sl2, to: sl3, t: 0.5}}
+  sl5: {offset: {from: sl4, dir: up, d: W / 12}}            # "15 on the 12ths"
+  sl6: {along: {from: sl1, to: slQ, d: elbow_len}}          # the elbow, 7½; square backward
+  sl7: {along: {from: sl1, to: slQ, d: inside_len}}         # the full length, 19
+  sl8: {offset: {from: sl6, dir: {perp: [slQ, sl1]}, d: 1.5 * IN}}
+  sl9: {offset: {from: sl8, dir: {perp: [sl7, sl8]}, d: elbow_width / 2},
+        interp: "\"square backward from 8\": square to the line 7–8"}
+  sl10: {offset: {from: sl9, dir: {perp: [sl8, sl7]}, d: 1 * IN}}
+  sl11: {offset: {from: sl9, dir: {perp: [sl7, sl8]}, d: 1 * IN}}
+  sl12: {circle_circle: {c1: sl3, r1: 'dist("sl3", "sl7")', c2: sl7, r2: wrist_width / 2, pick: right},
+         interp: "12 from 7, 4½, is half the wrist width (9)"}
+  slX: {at_y: {line: [sl8, FN], y_of: sl1}}                 # the line from 8 to the front notch, at the bust line
+  sl13: {offset: {from: slX, dir: left, d: 1.25 * IN}}
+  sl14: {offset: {from: slX, dir: right, d: 1.25 * IN}}
+  sl15: {offset: {from: sl8, dir: {perp: [sl8, sl7]}, d: 1 * IN}}
+  sl16: {offset: {from: sl8, dir: {perp: [sl7, sl8]}, d: 1 * IN}}
+  sl17: {offset: {from: sl7, dir: {perp: [sl1, slQ]}, d: 0.75 * IN}}
+  sl18: {offset: {from: sl7, dir: {perp: [slQ, sl1]}, d: 0.75 * IN}}
+  sl19: {along: {from: BN, to: sl3, d: 1 * IN}}             # 1 in from the back notch toward 3
+  # "20 from the line 11-3 is the same as 19 from the line 10-3; on a sweep cast at 19 pivoted at 9"
+  slF19: {perp_foot: {from: sl19, line: [sl10, sl3]}}
+  slP3: {offset: {from: sl3, dir: {perp: [sl11, sl3]}, d: 'dist("sl19", "slF19")'}}
+  slP11: {offset: {from: sl11, dir: {perp: [sl11, sl3]}, d: 'dist("sl19", "slF19")'}}
+  sl20: {circle_line: {center: sl9, r: 'dist("sl9", "sl19")', line: [slP3, slP11], pick: upper}}
+  # ---- the drawing (p. 61) ----
+  q1: {marker_near: {at: sl1, r: R, drawing: p61}}
+  q2: {marker_near: {at: ['x("q1") + (x("sl2") - x("sl1")) * W_book / W', 'y("q1") + (y("sl2") - y("sl1")) * W_book / W'], r: 1.5 * R, drawing: p61}}
+  q3: {marker_near: {at: ['x("q2") + W_book / 2', 'y("q2")'], r: 2 * R, drawing: p61}}
+  q4: {marker_near: {at: ['x("q2") + W_book / 4', 'y("q2")'], r: 1.5 * R, drawing: p61}}
+  q5: {marker_near: {at: ['x("q4")', 'y("q4") - W_book / 12'], r: 1.5 * R, drawing: p61}}
+  q6: {marker_near: {at: sl6, r: R, drawing: p61}}
+  q7: {marker_near: {at: sl7, r: R, drawing: p61}}
+  q8: {marker_near: {at: sl8, r: R, drawing: p61}}
+  q9: {marker_near: {at: sl9, r: R, drawing: p61}}
+  q10: {marker_near: {at: sl10, r: R, drawing: p61}}
+  q11: {marker_near: {at: sl11, r: R, drawing: p61}}
+  q12: {marker_near: {at: sl12, r: 2 * R, drawing: p61}}
+  q13: {marker_near: {at: sl13, r: R, drawing: p61}}
+  q14: {marker_near: {at: sl14, r: R, drawing: p61}}
+  q15: {marker_near: {at: sl15, r: R, drawing: p61}}
+  q16: {marker_near: {at: sl16, r: R, drawing: p61}}
+  q17: {marker_near: {at: sl17, r: R, drawing: p61}}
+  q18: {marker_near: {at: sl18, r: R, drawing: p61}}
+  q19: {marker_near: {at: ['x("q3") - 1.7 * IN', 'y("q3") + 1.45 * IN'], r: 2 * R, drawing: p61}}   # where p. 61 has
+  q20: {marker_near: {at: ['x("q3") + 1.5 * IN', 'y("q3") + 1.75 * IN'], r: 2 * R, drawing: p61}}   # them (book's armhole)
+  # traced head ends (p. 61)
+  w3: {trace_near: {at: ['x("q3")', 'y("q3")'], r: 0.5, drawing: p61}}
+  w5: {trace_near: {at: ['x("q5")', 'y("q5")'], r: 0.5, drawing: p61}}
+  w13: {trace_near: {at: ['x("q13")', 'y("q13")'], r: 0.5, drawing: p61}}
+  w14: {trace_near: {at: ['x("q14")', 'y("q14")'], r: 0.5, drawing: p61}}
+  w19: {trace_near: {at: ['x("q19") - 0.9 * IN', 'y("q19") + 1.1 * IN'], r: 1.5, pick: end, drawing: p61},
+        interp: "the under head's last inch into 19 merges with the drawn armhole copy and isn't traced: the traced part is set onto 19–14"}
+  w20: {trace_near: {at: ['x("q20")', 'y("q20")'], r: 0.5, drawing: p61}}
+paths:
+  # "Shape the head of the top sleeve from 20 through 3-5 to 13 and the under sleeve from 19 to 14
+  # as per diagram"
+  top_head:
+    - {trace: {from: w20, to: w3, onto: [sl20, sl3], bridge: 1.7, drawing: p61}}
+    - {trace: {from: w3, to: w5, onto: [sl3, sl5], bridge: 1.7, drawing: p61}}
+    - {trace: {from: w5, to: w13, onto: [sl5, sl13], bridge: 1.7, drawing: p61}}
+  under_head: [{trace: {from: w19, to: w14, onto: [sl19, sl14], bridge: 1.7, drawing: p61}}]
+checks:
+  - {id: sleeve-length, measure: {dist: [q1, q7]}, expect: inside_len, source: "p. 60: 7 from 1 is the full length, 19 inches"}
+  - {id: sleeve-8, measure: {dist: [q6, q8]}, expect: 1.5 * IN, source: "p. 60: 8 from 6 is 1½ inches"}
+  - {id: sleeve-9, measure: {dist: [q8, q9]}, expect: elbow_width / 2, source: "p. 60: 9 from 8 is half the elbow width (12)"}
+  - {id: sleeve-12, measure: {dist: [q7, q12]}, expect: wrist_width / 2, source: "p. 60: 12 from 7 is 4½ inches (half the wrist, 9)"}
+  - {id: sleeve-13-14, measure: {dist: [q13, q14]}, expect: 2.5 * IN, source: "p. 60: 13 and 14 from the line drawn up from 8 are 1¼ inches each"}
+  - {id: sleeve-15, measure: {dist: [q8, q15]}, expect: 1 * IN, source: "p. 60: 15 from 8 is 1 inch"}
+  - {id: sleeve-16, measure: {dist: [q8, q16]}, expect: 1 * IN, source: "p. 60: 16 from 8 is 1 inch"}
+  - {id: sleeve-17, measure: {dist: [q7, q17]}, expect: 0.75 * IN, source: "p. 60: 17 from 7 is ¾ inch"}
+  - {id: sleeve-18, measure: {dist: [q7, q18]}, expect: 0.75 * IN, source: "p. 60: 18 from 7 is ¾ inch"}
+  - {id: sleeve-3, measure: {dist: [q2, q3]}, expect: W_book / 2, source: "p. 60: 3 from 2 is 15 on the ½"}
+  - {id: sleeve-5, measure: {dist: [q4, q5]}, expect: W_book / 12, source: "p. 60: 5 from 4 is 15 on the 12ths"}
+reports:
+  # p. 61's slips (drawn − printed, cm): the book's large-size sleeve diagram (p. 67) draws the same
+  # steps as printed, so the text governs (2026-10-24; FINDINGS item 4)
+  - {id: "sleeve: 1→6 (elbow 7½) drawn − printed", measure: {value: 'dist("q1", "q6") - elbow_len'}}
+  - {id: "sleeve: 9→10 (1 in) drawn − printed", measure: {value: 'dist("q9", "q10") - 1 * IN'}}
+  - {id: "sleeve: 9→11 (1 in) drawn − printed", measure: {value: 'dist("q9", "q11") - 1 * IN'}}
+  - {id: "sleeve: 1→2 (15 on the 4ths) drawn − printed", measure: {value: 'dist("q1", "q2") - W_book / 4'}}
+  - {id: "sleeve: working number (armhole − 2½), in", measure: {value: W / IN}}
+  - {id: "sleeve: 4 half way 2–3, drawn − rule", measure: {value: 'dist("q2", "q4") - dist("q2", "q3") / 2'}}
+  - {id: "sleeve: head (top + under) − armhole, cm", measure: {value: 'length("top_head") + length("under_head") - armhole'}}

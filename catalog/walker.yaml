@@ -1,0 +1,33 @@
+# Catalog entries traced from Walker, Manual of Needlework and Cutting Out (1909): grid-drafted
+# cutting-out diagrams (1 square = 1 inch). scripts/catalog_build.py builds each entry only if
+# its pattern passes the gate. `status.sewable` means what it does in catalog/emko.yaml: true
+# only after a recorded muslin test.
+source:
+  adapter: walker                    # ccat.sources.walker
+  book: "Walker, Manual of Needlework and Cutting Out (1909)"
+  corpus: krl00366374                # corpus/MANIFEST.yaml entry
+  rights: >-
+    Published 1909, public domain in the US. Drafting methods are uncopyrightable (project
+    policy). The outlines are traced from the book's cutting-out diagrams and set onto its
+    printed figures by ccat (tracing pattern geometry is fair use, project policy).
+  size_label: "as drafted in the book (one size)"
+seam_allowance: 0                    # the book's outlines are cut lines, turnings included (its key, p. 227)
+seam_allowance_basis: "the source's cut line: the book's diagrams give the cloth to cut, turnings included"
+checked_against: "the printed field sizes"
+status:
+  construction: traced cutting-out diagram, set onto the printed figures
+  sewable: false
+entries:
+  - id: walker-mans-nightshirt-body
+    recipe: recipes/walker/nightshirt.yaml
+    data: {garment: data/walker/nightshirt.yaml}
+    garment: man's night-shirt, front and back
+    tables: "Cutting-out Diagrams No. 8, p. 235"
+    status:
+      note: >-
+        Front and back of the man's night-shirt, cut on the lines (turnings included), with the
+        front opening as a slit and notches where the side seams end (vents below). Not yet
+        complete: the sleeves, wrist bands, yoke and lining, collars and gussets are on p. 236
+        and aren't built. Not test-sewn. The book's figures were transcribed by hand for this
+        first Walker garment (no figure reader yet); the shapes are traced from the drawing and
+        set onto those figures.

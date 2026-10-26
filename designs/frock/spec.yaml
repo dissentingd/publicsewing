@@ -1,0 +1,30 @@
+# Frock: Walker's frocks (Manual of Needlework and Cutting Out, 1909: "Frock Bodice for Child
+# of 2 Years", "Low-necked Bodice ... Skirt") on FreeSewing's Brian block, for any size: a
+# bodice to the waist with a gathered skirt, short sleeves, buttoned at the back. See BRIEF.md.
+extends: ../templates/yoke.yaml
+
+about:
+  id: frock
+  name: Frock
+  description: "A simple dress: bodice to the waist, gathered skirt, short or long sleeves, back buttons"
+  difficulty: 2
+  tags: [dresses, children]
+  techniques: [gathering, placket, button]
+  version: 0.1.0
+  source: Walker, Manual of Needlework and Cutting Out (1909), frock bodices and skirt (krl00366374)
+
+options:
+  yokeAt: { dflt: waist, list: [chest, waist], menu: style }
+  chestEase: { pct: 12, min: 4, max: 30, menu: fit }
+  skirtLength: { pct: 45, min: 15, max: 98, menu: style } # about the knee
+  gathers: { pct: 180, min: 100, max: 250, menu: style } # skirt 27" x 36" on the bodice
+  hemFlare: { pct: 4, min: 0, max: 25, menu: style }
+  sleeves: { dflt: short, list: [long, short, none], menu: style }
+  buttons: { count: 4, min: 1, max: 8, menu: style }
+
+# A bodice to the waist and a skirt, so the pieces are named so (and the bodice cut once)
+pieces:
+  frontBody: { name: frontSkirt, part: yokePiece, after: [backBase, frontBase], side: front, piece: body, nr: 1, label: frontSkirt, cut: 1 }
+  backBody: { name: backSkirt, part: yokePiece, after: [backBase, frontBase], side: back, piece: body, nr: 2, label: backSkirt, cut: 1 }
+  frontYoke: { name: frontBodice, part: yokePiece, after: [backBase, frontBase], side: front, piece: yoke, nr: 3, label: frontBodice, cut: 1 }
+  backYoke: { name: backBodice, part: yokePiece, after: [backBase, frontBase], side: back, piece: yoke, nr: 4, label: backBodice, cut: 1 }

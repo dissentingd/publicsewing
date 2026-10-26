@@ -1,0 +1,162 @@
+# ЕМКО СЭВ т.3, men's torso base construction (БК): back and front, Table x.2,
+# Fig. 2 point system. Shared by every garment that uses it (jacket §1,
+# coats §2–3, summer/insulated jackets §4–5, waistcoat §6). Not a garment on
+# its own: the garment recipe that extends it defines the front hem point "97".
+# Inputs rN = draft value of row N (decimal rows: 50.1 -> r50_1).
+# Coordinates: cm, x from the back centre toward the front edge, y down from 11.
+recipe: emko-torso
+source: {book: "ЕМКО СЭВ т.3", tables: ["x.2"], figures: [2]}
+units: cm
+inputs: [r1, r2, r3, r4, r5, r6, r7, r8, r10, r11, r13, r14, r15, r16, r17, r18, r19,
+         r21, r23, r24, r25, r26, r27, r28, r29, r30, r32, r34, r44, r45, r47, r49, r50_1, r51,
+         r52, r54, r61, r62]
+check_inputs: [r9, r63_1]                   # printed check values: row 9 (31–37), ДП
+values:
+  dart: 2 * asin(r50_1 / 2 / r49)            # chest dart: chord r50_1 on radius r49 (rows 49–50.1)
+points:
+  # ---- framework (rows 1–12) ----
+  "11": {at: [0, 0]}
+  "21": {offset: {from: "11", dir: down, d: r2}, row: 2}
+  "31": {offset: {from: "11", dir: down, d: r3}, row: 3}
+  "41": {offset: {from: "11", dir: down, d: r4}, row: 4}
+  "51": {offset: {from: "41", dir: down, d: r5}, row: 5}
+  "91": {offset: {from: "11", dir: down, d: r1}, row: 1}
+  "33": {offset: {from: "31", dir: right, d: r6}, row: 6}
+  "35": {offset: {from: "33", dir: right, d: r7}, row: 7}
+  "37": {offset: {from: "35", dir: right, d: r8}, row: 8}
+  "47": {offset: {from: "37", dir: down, d: r10}, row: 10}
+  "57": {offset: {from: "47", dir: down, d: r11}, row: 11}
+  # ---- back seam (rows 23–26) ----
+  "111": {offset: {from: "11", dir: right, d: r23}, row: 23,
+          note: "O11: centre-back deviation at the neck, horizontal like O41/O51/O91 (Figs. 2, 7: 111 right of 11, level with it)"}
+  "411": {offset: {from: "41", dir: right, d: r24}, row: 24}
+  "511": {offset: {from: "51", dir: right, d: r25}, row: 25}
+  "911": {offset: {from: "91", dir: right, d: r26}, row: 26}
+  # ---- back neck (rows 27–29) ----
+  "12": {offset: {from: "111", dir: right, d: r27}, row: 27}
+  "112": {offset: {from: "111", dir: right, d: r28}, row: 28}
+  "121": {offset: {from: "12", dir: up, d: r29}, row: 29}
+  # ---- shoulder heights (rows 13, 14, 30) ----
+  "13": {offset: {from: "33", dir: up, d: r13}, row: 13}
+  "14": {offset: {from: "13", dir: right, d: r30}, row: 30}
+  "15": {offset: {from: "35", dir: up, d: r14}, row: 14}
+  # ---- back shoulder dart (rows 31–37) ----
+  "32": {offset: {from: "31", dir: right, d: r32}, row: 32}
+  "122": {ratio: {from: "121", to: "14", t: 0.45}, row: 31}
+  "22": {ratio: {from: "122", to: "32", t: 0.45}, row: 33}
+  "122'": {rotate: {point: "122", about: "22", deg: -r34}, row: 34, note: "dart opens toward the neck"}
+  "14'": {circle_line: {center: "122", r: 'dist("122''", "14")', line: {from: "14", dir: right}, pick: right},
+          row: 35, note: "|122–14'| = |122'–14|, 14' level with 14 (Fig. 2)"}
+  # shoulder after the dart (rows 36–37); the БК outline below keeps 122–14', the ИМК uses these
+  "141": {circle_circle: {c1: "22", r1: 'dist("22", "14''")', c2: "121", r2: 'dist("121", "14")', pick: {near: "14'"}},
+          row: 36, note: "rows 36, 36.1: R 22–141 = 22–14', R 121–141 = 121–14"}
+  "123'": {line_x: {a: ["22", "122'"], b: ["121", "141"]},
+           interp: "no row defines 123'; Figs. 7 and 14 put it where the dart leg 22–122' meets the shoulder line 121–141"}
+  "123": {along: {from: "22", to: "122", d: 'dist("22", "123''")'}, row: 37, note: "R 22–123 = 22–123' on the other leg"}
+  # ---- back armhole (rows 15–20.3) ----
+  "331": {offset: {from: "33", dir: down, d: r15}, row: 15}
+  "351": {offset: {from: "35", dir: down, d: r16}, row: 16}
+  "341": {offset: {from: "331", dir: right, d: r17}, row: 17}
+  "332": {offset: {from: "331", dir: up, d: r19}, row: 19}
+  "342": {circle_circle: {c1: "332", r1: r19, c2: "341", r2: r19, pick: {toward: {deg: -45}}}, row: 20}
+  # ---- front armhole (rows 21–22.3) ----
+  "346": {offset: {from: "351", dir: left, d: r18}, row: 18}
+  "352": {offset: {from: "351", dir: up, d: r21}, row: 21}
+  "343": {circle_circle: {c1: "352", r1: r21, c2: "346", r2: r21, pick: {toward: {deg: -135}}}, row: 22}
+  # ---- front (rows 44–57) ----
+  "471": {offset: {from: "47", dir: right, d: r44}, row: 44}
+  "46": {offset: {from: "471", dir: left, d: r45}, row: 45}
+  "471'": {perp_foot: {from: "46", line: ["37", "471"]}, row: 46, note: "right-angle mark at 471' (Fig. 2)"}
+  "36": {offset: {from: "46", dir: {perp: ["46", "471'"]}, d: -r47}, row: 47, note: "|46–36| ⊥ to 46–471', upward"}
+  "371": {line_x: {a: {from: "36", dir: {toward: ["46", "471'"]}}, b: ["37", "471"]}, row: 48,
+          note: "36–371 parallel to the waist line (Fig. 2)"}
+  "372": {along: {from: "36", to: "371", d: r49}, row: 49}
+  "372'": {rotate: {point: "372", about: "36", deg: -dart}, row: 50.1}
+  "371'": {rotate: {point: "371", about: "36", deg: -dart}, row: 50.2}
+  "361": {along: {from: "371'", to: "36", d: r51}, row: 51}
+  "16": {circle_line: {center: "36", r: r52, line: {from: "361", dir: {perp: ["371'", "36"]}}, pick: upper},
+         row: 52, note: "arc R|36–16| meets the perpendicular at 361"}
+  "161": {along: {from: "16", to: "361", d: r54}, row: 54}
+  "17": {line_x: {a: {from: "161", dir: {toward: ["36", "371'"]}}, b: {from: "371'", dir: {perp: ["371'", "36"]}}},
+         row: 55, interp: "perpendicular at 161 meets the front edge"}
+  "14\"": {circle_circle: {c1: "352", r1: 'dist("352", "15")', c2: "16", r2: 'dist("121", "14")', pick: upper},
+           row: 53, note: "front shoulder = |121–14| (row 53), from 352 at |352–15| (row 22.3)"}
+  "470": {offset: {from: "411", dir: right, d: r61}, row: 61}
+  "570": {offset: {from: "511", dir: right, d: r62}, row: 62}
+  # ---- curve centres ----
+  "m332": {ratio: {from: "332", to: "14'", t: 0.5}}
+  "342''": {line_x: {a: ["332", "342"], b: {from: "m332", dir: {perp: ["332", "14'"]}}}, row: 41,
+            interp: "upper back armhole tangent to the lower arc at 332 (centre on 332–342)"}
+  "m352": {ratio: {from: "352", to: "14\"", t: 0.5}}
+  "343''": {line_x: {a: ["352", "343"], b: {from: "m352", dir: {perp: ["352", "14\""]}}}, row: 58,
+            interp: "upper front armhole tangent to the lower arc at 352 (centre on 352–343)"}
+  "m112": {ratio: {from: "112", to: "121", t: 0.5}}
+  "nb": {line_x: {a: {from: "112", dir: up}, b: {from: "m112", dir: {perp: ["112", "121"]}}}, row: 38,
+         interp: "back neck horizontal at 112"}
+  "172": {circle_circle: {c1: "16", r1: 'dist("16", "17")', c2: "17", r2: 'dist("16", "17")', pick: upper},
+          row: 55, interp: "front neck: equilateral construction, radius |16–17|"}
+  # ---- hem corners ----
+  # One side line for back and front (Figs. 2, 7, 21: labels 341/341', 441/441', 541/541',
+  # 941/941'): it drops from the middle of the armhole bottom 341–346, a 2 cm flat by rows
+  # 17–18 (a17 = −a18). The back and front share the side corner 941 = 941' at the back hem
+  # level; the front hem falls from it to 96 (below 46) and runs level to 971.
+  "341'": {ratio: {from: "341", to: "346", t: 0.5},
+           interp: "Figs. 2, 7, 21: the side line drops from the middle of the armhole bottom 341–346"}
+  "941": {project: {x_of: "341'", y_of: "91"}, interp: "Figs. 2, 7: one side corner 941 = 941', at the back hem level"}
+  "96": {project: {x_of: "46", y_of: "97"}, interp: "Figs. 2, 7: 96 on the hem below 46, where the front hem turns level"}
+  "971": {project: {x_of: "471", y_of: "97"}}
+paths:
+  chest_line: [{polyline: ["31", "33", "35", "37"]}]
+  back_arm:            # 14' → 332 → 341
+    - {arc: {center: "342''", from: "14'", to: "332"}}
+    - {arc: {center: "342", from: "332", to: "341"}}
+  front_arm:           # 346 → 352 → 14"
+    - {arc: {center: "343", from: "346", to: "352"}}
+    - {arc: {center: "343''", from: "352", to: "14\""}}
+  armhole: [{path: back_arm}, {line: ["341", "346"]}, {path: front_arm}]
+  back_neck: [{arc: {center: nb, from: "112", to: "121"}}]
+  front_neck: [{arc: {center: "172", from: "17", to: "16"}}]
+pieces:
+  back:
+    outline:
+      - {line: ["111", "112"]}
+      - {path: back_neck}
+      - {polyline: ["121", "122'", "22", "122", "14'"]}
+      - {path: back_arm}
+      - {polyline: ["341", "341'", "941", "911", "511", "411", "31", "21", "111"]}
+  front:
+    outline:
+      - {path: {name: front_arm, reverse: true}}
+      - {polyline: ["346", "341'", "941", "96", "971", "471", "371", "36", "371'", "17"]}
+      - {path: front_neck}
+      - {line: ["16", "14\""]}
+export:
+  # Base construction (БК): grain along the centre back / centre front verticals. Notches
+  # only at points the construction defines: the waist level (row 41/47) on the side seams,
+  # and the waist points 411 (centre back) and 471 (centre front). Darts are the outline's
+  # leg–apex–leg runs: closed off for cutting and drawn as markings.
+  back:
+    cut: 2
+    grain: vertical
+    notches: [{point: "411"}, {along: ["341'", "941"], at_y_of: "41"}]
+    darts: [["122'", "22", "122"]]          # shoulder dart
+  front:
+    cut: 2
+    grain: vertical
+    notches: [{point: "471"}, {along: ["341'", "941"], at_y_of: "47"}]
+    darts: [["371", "36", "371'"]]          # chest dart from the centre front
+checks:
+  - id: chest-width-row9
+    measure: {length: chest_line}
+    expect: r9
+    source: "row 9 (31–37), Table x.2"
+  - id: armhole-vs-DP
+    measure: {length: armhole}
+    expect: r63_1
+    source: "row 63.1 (ДП), Table x.2"
+reports:
+  - {id: back-shoulder, measure: {value: 'dist("121", "122''") + dist("122", "14''")'}, note: "|121–122'| + |122–14'|"}
+  - {id: front-shoulder, measure: {dist: ["16", "14\""]}, note: "= |121–14| by construction (row 53)"}
+  - {id: back-neck-width, measure: {dist: ["111", "121"]}}
+  - {id: front-neck, measure: {dist: ["16", "17"]}}
+  - {id: chest-dart-deg, measure: {value: dart}}

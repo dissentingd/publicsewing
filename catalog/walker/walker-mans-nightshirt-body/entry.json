@@ -1,0 +1,271 @@
+{
+ "id": "walker-mans-nightshirt-body",
+ "garment": "man's night-shirt, front and back",
+ "size": {
+  "label": "man's, one size as drafted",
+  "order": "as drafted in the book (one size)"
+ },
+ "source": {
+  "book": "Walker, Manual of Needlework and Cutting Out (1909)",
+  "table": "Cutting-out Diagrams No. 8, p. 235",
+  "corpus": "krl00366374"
+ },
+ "rights": "Published 1909, public domain in the US. Drafting methods are uncopyrightable (project policy). The outlines are traced from the book's cutting-out diagrams and set onto its printed figures by ccat (tracing pattern geometry is fair use, project policy).",
+ "status": {
+  "construction": "traced cutting-out diagram, set onto the printed figures",
+  "sewable": false,
+  "note": "Front and back of the man's night-shirt, cut on the lines (turnings included), with the front opening as a slit and notches where the side seams end (vents below). Not yet complete: the sleeves, wrist bands, yoke and lining, collars and gussets are on p. 236 and aren't built. Not test-sewn. The book's figures were transcribed by hand for this first Walker garment (no figure reader yet); the shapes are traced from the drawing and set onto those figures."
+ },
+ "notice": "Not for AI training.",
+ "construction": {
+  "recipe": "recipes/walker/nightshirt.yaml",
+  "data": {
+   "garment": "data/walker/nightshirt.yaml"
+  },
+  "units": "cm"
+ },
+ "export": {
+  "seam_allowance_cm": 0,
+  "seam_allowance_basis": "the source's cut line: the book's diagrams give the cloth to cut, turnings included",
+  "notch_depth_cm": 0.6,
+  "grain": "vertical in the drafting frame",
+  "darts": "cut edge runs straight across the dart mouth (caps not trued); drill hole 1 cm short of the apex",
+  "tiled_pdf": {
+   "letter": {
+    "page_cm": [
+     21.59,
+     27.94
+    ],
+    "pages_incl_cover": 51,
+    "margin_cm": 1.0,
+    "overlap_cm": 1.0
+   },
+   "a4": {
+    "page_cm": [
+     21.0,
+     29.7
+    ],
+    "pages_incl_cover": 51,
+    "margin_cm": 1.0,
+    "overlap_cm": 1.0
+   }
+  }
+ },
+ "pieces": [
+  {
+   "name": "front",
+   "cut": 1,
+   "notches": 2,
+   "darts": 0,
+   "stitch_perimeter_cm": 397.019,
+   "cut_perimeter_cm": 397.019,
+   "area_cm2": 9726.65
+  },
+  {
+   "name": "back",
+   "cut": 1,
+   "notches": 2,
+   "darts": 0,
+   "stitch_perimeter_cm": 392.308,
+   "cut_perimeter_cm": 392.308,
+   "area_cm2": 10293.28
+  }
+ ],
+ "gate": {
+  "recipe": "walker-mans-nightshirt",
+  "passed": true,
+  "gate_rel": 0.01,
+  "printed_step": 0.635,
+  "checks": [
+   {
+    "id": "field-width",
+    "measured": 86.3676,
+    "expected": 86.36,
+    "error": 0.0076,
+    "rel": 8.8e-05,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "the field's breadth, measured from its lines (scale from the grid), vs \"Front 47 × 34\"",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "field-length",
+    "measured": 123.9698,
+    "expected": 124.46,
+    "error": -0.4902,
+    "rel": 0.003939,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "the field's length vs \"Back 49 × 36\" (the back fills the field)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "front-length",
+    "measured": 118.4148,
+    "expected": 119.38,
+    "error": -0.9652,
+    "rel": 0.008085,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "the drawn front hem at E vs \"Front 47 × 34\"",
+    "missing": [],
+    "skipped": false
+   }
+  ],
+  "reports": [
+   {
+    "id": "drawn-neck-left-x",
+    "value": 0.6246,
+    "note": "12 from A"
+   },
+   {
+    "id": "drawn-neck-right-x",
+    "value": -0.1068,
+    "note": "12 from B"
+   },
+   {
+    "id": "drawn-shoulder-left-x",
+    "value": 0.7308,
+    "note": "A → 3"
+   },
+   {
+    "id": "drawn-shoulder-right-x",
+    "value": 0.1314,
+    "note": "3 ← B"
+   },
+   {
+    "id": "drawn-shoulder-left-y",
+    "value": -0.0155,
+    "note": "1½"
+   },
+   {
+    "id": "drawn-shoulder-right-y",
+    "value": 0.1834,
+    "note": "1½"
+   },
+   {
+    "id": "drawn-armhole-left-y",
+    "value": -0.7513,
+    "note": "10"
+   },
+   {
+    "id": "drawn-armhole-right-y",
+    "value": -0.4886,
+    "note": "10"
+   },
+   {
+    "id": "drawn-neck-depth",
+    "value": -0.1968,
+    "note": "3 below E"
+   },
+   {
+    "id": "drawn-opening",
+    "value": -0.5178,
+    "note": "17"
+   },
+   {
+    "id": "drawn-back-hem-left-x",
+    "value": 0.0421,
+    "note": "5 from C"
+   },
+   {
+    "id": "drawn-back-hem-right-x",
+    "value": -1.8882,
+    "note": "5 from D"
+   },
+   {
+    "id": "side-end-y",
+    "value": 113.9997,
+    "note": "where the hem curves leave the sides (no figure)"
+   },
+   {
+    "id": "opening-left-of-E",
+    "value": 2.3633,
+    "note": "no figure"
+   }
+  ],
+  "interpretations": [
+   {
+    "point": "VL",
+    "note": "side vent: the seam ends at 36 in, open below"
+   },
+   {
+    "point": "HL",
+    "note": "where the hem curves leave the side: the drawing's"
+   },
+   {
+    "point": "OE",
+    "note": "the opening is cut about 1 in left of E, as drawn (hems: 1 in right, 2 in left)"
+   },
+   {
+    "point": "path 'front_neck' segment 0",
+    "note": "traced curve set onto NL–NR: scale 1.0207, turned +0.30°"
+   },
+   {
+    "point": "path 'right_shoulder' segment 0",
+    "note": "trace gaps joined by straight lines: 2.60 cm"
+   },
+   {
+    "point": "path 'right_shoulder' segment 0",
+    "note": "traced curve set onto NR–SR: scale 1.0129, turned +0.87°"
+   },
+   {
+    "point": "path 'right_armhole' segment 0",
+    "note": "traced curve set onto SR–UR: scale 1.0398, turned -0.57°"
+   },
+   {
+    "point": "path 'left_armhole' segment 0",
+    "note": "traced curve set onto UL–SL: scale 1.0342, turned -0.79°"
+   },
+   {
+    "point": "path 'left_shoulder' segment 0",
+    "note": "traced curve set onto SL–NL: scale 1.0092, turned -1.73°"
+   },
+   {
+    "point": "path 'front_hem' segment 0",
+    "note": "traced curve set onto HR–FM: scale 1.0312, turned -0.48°"
+   },
+   {
+    "point": "path 'front_hem' segment 1",
+    "note": "trace gaps joined by straight lines: 0.57, 0.73, 0.74 cm"
+   },
+   {
+    "point": "path 'front_hem' segment 1",
+    "note": "traced curve set onto FM–HL: scale 1.0263, turned +0.52°"
+   },
+   {
+    "point": "path 'back_hem' segment 0",
+    "note": "traced curve set onto HR–BR: scale 1.2009, turned +5.76°"
+   },
+   {
+    "point": "path 'back_hem' segment 2",
+    "note": "trace gaps joined by straight lines: 0.80, 0.68 cm"
+   },
+   {
+    "point": "path 'back_hem' segment 2",
+    "note": "traced curve set onto BL–HL: scale 1.0910, turned -0.37°"
+   }
+  ]
+ },
+ "files": {
+  "pattern.dxf": "4f0cfe235a95c50975b09db16225fec7fc74e493409914aff2aaa6fdd3a3a9b9",
+  "pattern.svg": "7eaf3bbf9584aab692c651fa71ff9f3ce8dbe1ea668de718856edb8760e38885",
+  "pattern_a4.pdf": "1f790b86392f6d010f8f1191780d420c4a4df4f6dae079dddc2a814a09661248",
+  "pattern_letter.pdf": "52694d53ab896b149e2a0efde7b178ebd18d12e07b6e8735c649f4e088d7650e"
+ },
+ "provenance": {
+  "ccat": "0.1.0",
+  "commit": "6b124af"
+ }
+}

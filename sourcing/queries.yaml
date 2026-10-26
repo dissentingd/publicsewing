@@ -1,0 +1,133 @@
+# Google Books full-view sweep (SOURCING round 7). One query per line, grouped.
+# Run: python scripts/gbooks_sweep.py  (key from $GOOGLE_BOOKS_API_KEY or gitignored SECRETS.md)
+systems:   # authors / systems: those in SOURCING.md plus period systems not yet looked at
+  - inauthor:devere cutting
+  - inauthor:compaing
+  - inauthor:vincent cutters practical guide
+  - inauthor:croonborg
+  - regal american garment cutter
+  - inauthor:simons drafting
+  - clothing designer company drafting
+  - inauthor:schorr
+  - inauthor:mitchell garment drafting
+  - inauthor:wampen
+  - inauthor:giles history of the art of cutting
+  - inauthor:minister practical cutting
+  - inauthor:thornton cutting system
+  - international system of garment cutting
+  - sectional system of gentlemen's garment cutting
+  - inauthor:hulse instructor
+  - inauthor:holding cutting
+  - inauthor:hecklinger
+  - inauthor:stinemetz
+  - inauthor:moschcowitz
+  - inauthor:rosenberg garment
+  - inauthor:williamson cutting
+  - inauthor:poole cutting
+  - inauthor:hearn cutting
+  - tailors' science stone
+  - kellogg french tailor system
+  - mcdowell garment drafting machine
+  - diamond garment cutter
+  - national garment cutter
+  - magic scale dressmaking
+  - s. t. taylor system dress cutting
+  - buddington dress cutting
+  - tailor's square system instructions
+  - centre point system cutting
+  - proportionate system of cutting
+schools:   # what trade/design/correspondence schools taught from
+  - international correspondence schools tailoring
+  - international correspondence schools dressmaking
+  - international correspondence schools garment drafting
+  - mitchell schools of designing
+  - american gentleman school of designing
+  - woman's institute domestic arts sciences dressmaking
+  - woman's institute pattern drafting
+  - pratt institute dressmaking
+  - drexel institute dressmaking
+  - teachers college household arts clothing
+  - manhattan trade school for girls dressmaking
+  - boston trade school girls dressmaking
+  - federal board for vocational education dressmaking
+  - federal board for vocational education tailoring
+  - trade dressmaking course
+  - tailoring course trade school
+  - tailor and cutter academy
+  - cutting academy lessons
+  - school of garment cutting
+  - correspondence course tailoring cutting
+  - mechanics institute rochester dressmaking
+  - dunwoody institute tailoring
+textbooks: # course textbooks, handbooks, manuals
+  - garment drafting textbook
+  - pattern drafting textbook
+  - drafting and cutting textbook
+  - inauthor:baldt clothing for women
+  - inauthor:fales dressmaking
+  - inauthor:woolman sewing course
+  - inauthor:picken
+  - inauthor:kinne cooley clothing
+  - inauthor:hapgood school needlework
+  - school needlework drafting patterns
+  - elementary garment making
+  - household arts clothing textbook drafting
+  - home economics clothing construction textbook
+  - drafting patterns for schools
+  - the cutter's handbook
+  - tailor's handbook
+  - dressmaker's handbook drafting
+  - complete guide to practical cutting
+  - art of garment cutting
+  - science of garment cutting
+government: # US government works are PD regardless of date
+  - farmers bulletin clothing patterns
+  - bureau of home economics patterns
+  - bureau of home economics children's clothing
+  - department of agriculture work clothes women
+  - extension bulletin clothing construction patterns
+  - 4-h clothing club patterns
+  - war department technical manual tailoring
+  - quartermaster corps tailor
+  - army tailor manual
+  - navy tailor manual
+  - uniform specifications cutting patterns
+  - manual for army tailors
+journals:  # trade journals with monthly diagram plates
+  - sartorial art journal
+  - american fashion report tailor
+  - tailor and cutter journal
+  - gentleman's magazine of fashion
+  - mirror of fashion tailor
+  - west end gazette tailoring
+  - master tailor and cutter's gazette
+  - sartorial gazette
+  - american tailor and cutter
+  - the clothing designer journal
+  - cutter's monthly journal
+  - dressmakers magazine drafting
+gaps:      # workwear, military, children, shirts, grading
+  - overalls drafting cutting
+  - work shirt cutting system
+  - mackinaw drafting
+  - military tailoring cutting
+  - uniform cutting system
+  - military garments cutting
+  - children's garments drafting
+  - boys' clothing cutting system
+  - infants' garments patterns drafting
+  - shirt cutting system
+  - shirtmaking drafting
+  - underwear cutting drafting
+  - ladies' tailoring cutting system
+  - grading patterns sizes tailor
+  - proportionate patterns grading
+foreign:   # pre-1931 non-English (PD in US)
+  - zuschneidekunst
+  - schnittzeichnen lehrbuch
+  - deutsche bekleidungs-akademie
+  - inauthor:klemm zuschneide
+  - méthode de coupe tailleur
+  - traité de coupe
+  - sistema di taglio sarto
+  - sistema de corte sastrería

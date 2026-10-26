@@ -1,0 +1,23 @@
+# Boys' work coat: Simons' Boys' Work Coat (Drafting Cotton Garments and Mackinaws, 1918,
+# Diagram XV), "made similar to the men's work coat ... except that it is drafted by boys'
+# proportions". It is the chore coat with the boys' draft's details as defaults; the boys'
+# proportions come from the children's measurement sets. See BRIEF.md.
+extends: ../chore-coat/spec.yaml
+
+about:
+  id: boysworkcoat
+  name: Boys' work coat
+  description: "A boy's (or girl's) chore coat: five buttons, lower patch pockets, pointed collar"
+  difficulty: 3
+  tags: [jackets, children]
+  techniques: [flat-felled-seam, patch-pocket, collar, facing, button]
+  version: 0.1.0
+  source: Simons, Drafting Cotton Garments and Mackinaws (1918), Diagram XV (draftingcottonga00simo)
+
+options:
+  buttons: { count: 5 } # five buttons, neck to below the waist
+  breastPocket: { bool: false } # none drawn
+  frontDrop: { pct: 10 } # 35-39: the front hem drops about 3/4"
+  collarSpring: { pct: 15 } # 42-43 is 1" over 7"
+  collarPoint: { pct: 11.5 } # 46-47 is 1 1/2" on a 13" neck
+  collarWidth: { pct: 23 } # 43-44 is 3"

@@ -1,0 +1,252 @@
+# Mitchell 1921, Tight-Fitted Jacket, Single Dart (book p. 44, diagram p. 45): "a tight-fitted,
+# single-breasted jacket, with a shawl collar", on the tight-fitted foundation (semi_fitted_
+# foundation.yaml with 7 from 4 2 in, 6 from 5 1½; diagram p. 43), with the two-piece sleeve.
+# Five body panels:
+#   back        centre back 2–7–6, shoulder 9–28, seam 28–29–26–27;
+#   side back   seam 28′–29–30–31, shoulder 28′–24, the back scye 24 → 10, seam 10–35–50;
+#   under-arm   seam 10–36–49, the scye's bottom 10 → 32, seam 32–33–52;
+#   side front  seam 32–39–51, the front scye 46 → 12 → 32, shoulder 45–46, seam 45 → 40–47–48;
+#   front       seam 44–40–42–43, shoulder 20′–44, the front edge and the shawl collar cut in one.
+# Seams cross below the waist as on the semi-fitted jacket. The text gives no length, lap or
+# collar beyond "finish as represented": the front edge with the shawl collar is p. 45's, and each
+# seam ends at the hem where p. 45 draws it.
+recipe: mitchell-tight-fitted-jacket
+extends: [semi_fitted_foundation.yaml, sleeve_two_piece.yaml]
+source: {book: "Mitchell, New \"Standard\" Work … Ladies' Tailor-Made Garments (1921)", page: 44, diagram: 45}
+inputs: [waist, full_length]
+drawing:
+  p45:
+    fit: ['4', '5', '10', '12', '18', '19', '6', '7']
+    r: 0.6
+values:
+  armhole: 'length("sb_scye") + length("ua_scye") + length("sf_scye")'
+  d26: waist / 12 - 0.25 * IN                               # "1-3 of ¼ waist less ¼ inch"
+  L: 'full_length - dist("2", "7")'                         # below the waist, down each seam
+points:
+  "26": {offset: {from: "7", dir: left, d: d26}}
+  "27": {offset: {from: "6", dir: left, d: 'd26 + 1 * IN'}}
+  "28": {ratio: {from: "9", to: "24", t: 0.5}}
+  "29": {at_y: {line: ["28", "26"], y_of: "8"}}
+  "30": {offset: {from: "26", dir: left, d: 1 * IN}}
+  "28f": {along: {from: "28", to: "24", d: 0.25 * IN}}
+  "31": {offset: {from: "27", dir: right, d: 0.5 * IN}}
+  "32": {offset: {from: "12", dir: right, d: 0.5 * IN}}
+  "33": {at_y: {line: {from: "12b", dir: down}, y_of: "4"}}
+  "12b": {offset: {from: "12", dir: right, d: 0.5 * IN}}   # "33 from the line squared down from 12 is ½ inch"
+  "34": {ratio: {from: "30", to: "33", t: 0.5}}
+  "35": {offset: {from: "34", dir: right, d: 0.625 * IN}}
+  "36": {offset: {from: "34", dir: left, d: 0.625 * IN}}
+  "37": {at_y: {line: {from: "34", dir: down}, y_of: "5"}}
+  "38": {at_y: {line: {from: "12", dir: down}, y_of: "5"}}
+  "39": {at_y: {line: {from: "12f", dir: down}, y_of: "4"}}
+  "12f": {offset: {from: "12", dir: left, d: 0.75 * IN}}   # "39 from the blade line is ¾ inch"
+  CFa: {offset: {from: "21", dir: {perp: ["19", "21"]}, d: 4 * IN}}
+  CFb: {offset: {from: "19", dir: {perp: ["19", "21"]}, d: 4 * IN}}
+  "40": {circle_line: {center: "20", r: 'top_dart - dist("9", "2")', line: [CFa, CFb], pick: lower}}
+  "41": {circle_line: {center: "20", r: 'front_waist - dist("9", "2")', line: ["21", "19"], pick: lower}}
+  "42": {along: {from: "41", to: "39", d: 'd26 + 0.5 * IN'}}
+  CF5: {at_y: {line: ["21", "19"], y_of: "5"}}
+  "43": {offset: {from: CF5, dir: right, d: 'dist("41", "42") + 0.25 * IN'}}
+  "44": {along: {from: "20u", to: "25d", d: 'dist("9", "28")'}, interp: "44 from 20 is the same as 28 from 9: along the front shoulder"}
+  "45": {along: {from: "44", to: "25d", d: 1.25 * IN}}
+  "20dn": {offset: {from: "20", dir: down, d: 0.75 * IN}}
+  "23dn": {offset: {from: "23", dir: down, d: 0.75 * IN}}
+  "46": {circle_line: {center: "45", r: 'dist("28", "24")', line: ["20dn", "23dn"], pick: right}}
+  "47": {circle_circle: {c1: "40", r1: 'dist("40", "42")', c2: "39", r2: 'waist / 4 - dist("41", "42")', pick: {near: "42"}}}
+  "48": {offset: {from: "43", dir: right, d: 'dist("42", "47") + 0.375 * IN'}}
+  "49": {offset: {from: "37", dir: right, d: 0.5 * IN}}
+  "50": {offset: {from: "37", dir: left, d: 0.5 * IN}}
+  "51": {offset: {from: "38", dir: right, d: 0.625 * IN}}
+  "52": {offset: {from: "38", dir: left, d: 0.625 * IN}}
+  # ---- the hem: "finish as represented": each seam ends where p. 45 draws its end (the semi-fitted
+  # jacket's rule, the same length below the waist down each seam, only says where to look) ----
+  gCB: {along: {from: "7", to: "6", d: L}}
+  tCBh: {trace_near: {at: ['x("gCB")', 'y("gCB")'], r: 1.2 * IN, pick: lowest, drawing: p45}}
+  hCB: {at_y: {line: ["7", "6"], y_of: tCBh}}
+  g26: {along: {from: "26", to: "27", d: L}}
+  t26h: {trace_near: {at: ['x("g26")', 'y("g26")'], r: 1.2 * IN, pick: lowest, drawing: p45}}
+  h26: {at_y: {line: ["26", "27"], y_of: t26h}}
+  g30: {along: {from: "30", to: "31", d: L}}
+  t30h: {trace_near: {at: ['x("g30")', 'y("g30")'], r: 1.2 * IN, pick: lowest, drawing: p45}}
+  h30: {at_y: {line: ["30", "31"], y_of: t30h}}
+  g35: {along: {from: "35", to: "50", d: L}}
+  t35h: {trace_near: {at: ['x("g35")', 'y("g35")'], r: 1.2 * IN, pick: lowest, drawing: p45}}
+  h35: {at_y: {line: ["35", "50"], y_of: t35h}}
+  g36: {along: {from: "36", to: "49", d: L}}
+  t36h: {trace_near: {at: ['x("g36")', 'y("g36")'], r: 1.2 * IN, pick: lowest, drawing: p45}}
+  h36: {at_y: {line: ["36", "49"], y_of: t36h}}
+  g33: {along: {from: "33", to: "52", d: L}}
+  t33h: {trace_near: {at: ['x("g33")', 'y("g33")'], r: 1.2 * IN, pick: lowest, drawing: p45}}
+  h33: {at_y: {line: ["33", "52"], y_of: t33h}}
+  g39: {along: {from: "39", to: "51", d: L}}
+  t39h: {trace_near: {at: ['x("g39")', 'y("g39")'], r: 1.2 * IN, pick: lowest, drawing: p45}}
+  h39: {at_y: {line: ["39", "51"], y_of: t39h}}
+  g47: {along: {from: "47", to: "48", d: 'L - 0.5 * IN'}}
+  t47h: {trace_near: {at: ['x("g47")', 'y("g47")'], r: 1.2 * IN, pick: lowest, drawing: p45}}
+  h47: {at_y: {line: ["47", "48"], y_of: t47h}}
+  g42: {along: {from: "42", to: "43", d: 'L - 0.5 * IN'}}
+  t42h: {trace_near: {at: ['x("g42")', 'y("g42")'], r: 1.2 * IN, pick: lowest, drawing: p45}}
+  h42: {at_y: {line: ["42", "43"], y_of: t42h}}
+  # ---- traced points (p. 45; the back neck p. 43) ----
+  t2: {trace_near: {at: ['x("m2")', 'y("m2")'], r: 0.5, pick: end, drawing: fdn}}
+  t9: {trace_near: {at: ['x("m9")', 'y("m9")'], r: 0.5, pick: end, drawing: fdn}}
+  u24: {trace_near: {at: ['x("n24")', 'y("n24")'], r: 0.5, drawing: p45}}
+  u10: {trace_near: {at: ['x("n10")', 'y("n10")'], r: 0.5, drawing: p45}}
+  uQ: {trace_near: {at: ['x("n10")', 'y("n10") - 1.35 * IN'], r: 0.4 * IN, drawing: p45}}
+  Q: {at: ['x("uQ")', 'y("uQ")'],
+      interp: "the scye's bottom from 32 meets the back scye about 1⅓ in above 10 (p. 45); the seam runs on from 10 up to it (\"35 through 10 upward\")"}
+  u32: {trace_near: {at: ['x("n32")', 'y("n32")'], r: 0.5, drawing: p45}}
+  u46: {trace_near: {at: ['x("n46")', 'y("n46")'], r: 0.5, drawing: p45}}
+  u12: {trace_near: {at: ['x("n12") - 0.6 * IN', 'y("n12")'], r: 0.4 * IN, pick: end, drawing: p45}}
+  u44: {trace_near: {at: ['x("n44")', 'y("n44")'], r: 0.5, drawing: p45}}
+  u45: {trace_near: {at: ['x("n45")', 'y("n45")'], r: 0.5, drawing: p45}}
+  u40: {trace_near: {at: ['x("n40")', 'y("n40")'], r: 0.5, drawing: p45}}
+  # the front edge and the shawl collar, p. 45's, as a chain of its drawn vertices (where other lines
+  # cross it the trace breaks: each link is bridged straight)
+  FH: {trace_near: {at: ['x("h42") - 3.0 * IN', 'y("h42")'], r: 1.5 * IN, pick: lowest, drawing: p45}}
+  fBk: {trace_near: {at: ['x("19") - 2.6 * IN', 'y("19") + 2.7 * IN'], r: 0.6 * IN, drawing: p45}}
+  fL1: {trace_near: {at: ['x("21") - 2.2 * IN', 'y("21") + 2.5 * IN'], r: 0.5 * IN, pick: end, drawing: p45}}
+  fL2: {trace_near: {at: ['x("21") - 0.1 * IN', 'y("21") - 0.2 * IN'], r: 0.5 * IN, pick: end, drawing: p45}}
+  fC1: {trace_near: {at: ['x("21") + 1.0 * IN', 'y("21") - 2.6 * IN'], r: 0.5 * IN, pick: end, drawing: p45}}
+  fC2: {trace_near: {at: ['x("21") + 2.1 * IN', 'y("21") - 4.4 * IN'], r: 0.5 * IN, pick: end, drawing: p45}}
+  fC3: {trace_near: {at: ['x("21") + 2.6 * IN', 'y("21") - 4.15 * IN'], r: 0.5 * IN, pick: end, drawing: p45}}
+  CBt: {trace_near: {at: ['x("20") + 1.75 * IN', 'y("20") - 2.75 * IN'], r: 0.5 * IN, pick: corner, drawing: p45}}
+  fC4: {trace_near: {at: ['x("20") + 1.3 * IN', 'y("20") - 1.7 * IN'], r: 0.4 * IN, pick: end, drawing: p45}}
+  Nb: {trace_near: {at: ['x("20") + 0.55 * IN', 'y("20") - 0.25 * IN'], r: 0.35 * IN, pick: end, drawing: p45},
+       interp: "the collar's neck edge ends ½ in behind 20 (p. 45; the box coat collar's 20b)"}
+  Nd: {trace_near: {at: ['x("20") - 1.2 * IN', 'y("20") + 1.45 * IN'], r: 0.4 * IN, pick: end, drawing: p45},
+       interp: "the shawl collar's neck dart: from 20′ and ½ in behind 20 to p. 45's point on the neck curve"}
+  # the armhole's notches for the sleeve
+  FNl: {offset: {from: "18", dir: up, d: 1.25 * IN}}
+  FN: {path_x: {path: sf_scye, line: {from: FNl, dir: right}}}
+  BNl: {offset: {from: "18", dir: up, d: 1.75 * IN}}
+  BN: {path_x: {path: sb_scye, line: {from: BNl, dir: right}}}
+  # ---- the drawing (p. 45) ----
+  n7: {marker_near: {at: "7", r: R, drawing: p45}}
+  n6: {marker_near: {at: "6", r: R, drawing: p45}}
+  n26: {marker_near: {at: "26", r: R, drawing: p45}}
+  n27: {marker_near: {at: "27", r: R, drawing: p45}}
+  n30: {marker_near: {at: "30", r: R, drawing: p45}}
+  n31: {marker_near: {at: "31", r: 0.6, drawing: p45}}
+  n12: {marker_near: {at: "12", r: 0.6, drawing: p45}}
+  n32: {marker_near: {at: "32", r: 0.6, drawing: p45}}
+  n33: {marker_near: {at: "33", r: 0.8, drawing: p45}}
+  n34: {marker_near: {at: "34", r: 0.8, drawing: p45}}
+  n35: {marker_near: {at: "35", r: 0.8, drawing: p45}}
+  n36: {marker_near: {at: "36", r: 0.8, drawing: p45}}
+  n37: {marker_near: {at: "37", r: 0.8, drawing: p45}}
+  n38: {marker_near: {at: "38", r: 0.8, drawing: p45}}
+  n39: {marker_near: {at: "39", r: 1.0, drawing: p45}}
+  n41: {marker_near: {at: "41", r: 1.5 * R, drawing: p45}}
+  n42: {marker_near: {at: "42", r: 1.5 * R, drawing: p45}}
+  n43: {marker_near: {at: "43", r: 1.5 * R, drawing: p45}}
+  n44: {marker_near: {at: "44", r: 1.5 * R, drawing: p45}}
+  n45: {marker_near: {at: "45", r: 1.5 * R, drawing: p45}}
+  n46: {marker_near: {at: "46", r: 2.5 * R, drawing: p45}}
+  n47: {marker_near: {at: "47", r: 1.5 * R, drawing: p45}}
+  n48: {marker_near: {at: "48", r: 1.5 * R, drawing: p45}}
+  n49: {marker_near: {at: "49", r: 0.8, drawing: p45}}
+  n50: {marker_near: {at: "50", r: 0.8, drawing: p45}}
+  n51: {marker_near: {at: "51", r: 0.8, drawing: p45}}
+  n52: {marker_near: {at: "52", r: 0.8, drawing: p45}}
+  n40: {marker_near: {at: "40", r: 1.5 * R, drawing: p45}}
+  n28: {marker_near: {at: "28", r: 1.5 * R, drawing: p45}}
+  n24: {marker_near: {at: "24", r: 1.5 * R, drawing: p45}}
+  n10: {marker_near: {at: "10", r: R, drawing: p45}}
+paths:
+  back_neck: [{trace: {from: t2, to: t9, onto: ["2", "9"], drawing: fdn}}]
+  sb_scye: [{trace: {from: u24, to: uQ, onto: ["24", Q], bridge: 4.0, drawing: p45}}]
+  ua_scye: [{trace: {from: u32, to: uQ, onto: ["32", Q], bridge: 1.0, drawing: p45}}]
+  sf_scye:
+    - {trace: {from: u46, to: u12, onto: ["46", "12"], bridge: 1.0, drawing: p45}}
+    - {line: ["12", "32"]}
+  fs44: [{trace: {from: u44, to: u40, onto: ["44", "40"], bridge: 3.0, drawing: p45}}]
+  fs45: [{trace: {from: u45, to: u40, onto: ["45", "40"], bridge: 3.0, drawing: p45}}]
+  front_edge:
+    - {trace: {from: FH, to: fBk, bridge: 3.5, drawing: p45}}
+    - {trace: {from: fBk, to: fL1, bridge: 5.5, drawing: p45}}
+    - {trace: {from: fL1, to: fL2, bridge: 1.0, drawing: p45}}
+    - {line: [fL2, fC1]}
+    - {trace: {from: fC1, to: fC2, bridge: 1.0, drawing: p45}}
+    - {line: [fC2, fC3]}
+    - {trace: {from: fC3, to: fC4, bridge: 1.0, drawing: p45}}
+    - {trace: {from: fC4, to: Nb, bridge: 1.0, drawing: p45}}
+checks:
+  - {id: "26", measure: {dist: [n7, n26]}, expect: d26, source: "p. 44: 26 from 7 is 1-3 of ¼ waist less ¼ inch (waist 26½: the book's standard figure)"}
+  - {id: "27", measure: {dist: [n6, n27]}, expect: 'dist("n7", "n26") + 1 * IN', source: "p. 44: 27 from 6 is 1 inch more than 26 from 7"}
+  - {id: "30", measure: {dist: [n26, n30]}, expect: 1 * IN, source: "p. 44: 30 from 26 is 1 inch"}
+  - {id: "31", measure: {dist: [n27, n31]}, expect: 0.5 * IN, source: "p. 44: 31 from 27 is ½ inch"}
+  - {id: "32", measure: {dist: [n12, n32]}, expect: 0.5 * IN, source: "p. 44: 32 from 12 is ½ inch"}
+  - {id: "35", measure: {dist: [n34, n35]}, expect: 0.625 * IN, source: "p. 44: 35 from 34 is ⅝ inch"}
+  - {id: "36", measure: {dist: [n34, n36]}, expect: 0.625 * IN, source: "p. 44: 36 from 34 is ⅝ inch"}
+  - {id: "42", measure: {dist: [n41, n42]}, expect: 'dist("n7", "n26") + 0.5 * IN', source: "p. 44: 42 from 41 is ½ inch more than 26 from 7"}
+  - {id: "45", measure: {dist: [n44, n45]}, expect: 1.25 * IN, source: "p. 44: 45 from 44 is 1¼ inch"}
+  - {id: "49", measure: {dist: [n37, n49]}, expect: 0.5 * IN, source: "p. 44: 49 from 37 is ½ inch"}
+  - {id: "50", measure: {dist: [n37, n50]}, expect: 0.5 * IN, source: "p. 44: 50 from 37 is ½ inch"}
+  - {id: "51", measure: {dist: [n38, n51]}, expect: 0.625 * IN, source: "p. 44: 51 from 38 is ⅝ inch"}
+  - {id: "52", measure: {dist: [n38, n52]}, expect: 0.625 * IN, source: "p. 44: 52 from 38 is ⅝ inch"}
+reports:
+  - {id: "28 (half way 9–24)", measure: {dist: ["28", n28]}}
+  - {id: "33 (½ in from the blade line, at the waist)", measure: {dist: ["33", n33]}}
+  - {id: "39 (¾ in from the blade line, at the waist)", measure: {dist: ["39", n39]}}
+  - {id: "40 (top of dart)", measure: {dist: ["40", n40]}}
+  - {id: "41 (front waist length)", measure: {dist: ["41", n41]}}
+  - {id: "43 (¼ more than 42 from 41)", measure: {dist: ["43", n43]}}
+  - {id: "46 (¾ below 20–23, 45→46 = 28→24)", measure: {dist: ["46", n46]}}
+  - {id: "47 (¼ waist less 41–42 from 39, on the sweep about 40)", measure: {dist: ["47", n47]}}
+  - {id: "48 (⅜ more than 47 from 42)", measure: {dist: ["48", n48]}}
+  - {id: "jacket half waist across the panels, in", measure: {value: '(dist("41", "42") + dist("47", "39") + dist("33", "36") + dist("35", "30") + dist("26", "7")) / IN'}}
+  - {id: "seam back 28→h26 − side back 28′→h30, cm", measure: {value: 'dist("28", "29") + dist("29", "26") + dist("26", "h26") - dist("28f", "29") - dist("29", "30") - dist("30", "h30")'}}
+  - {id: "seam side back Q→h35 − under-arm Q→h36, cm", measure: {value: 'dist("Q", "10") + dist("10", "35") + dist("35", "h35") - dist("Q", "10") - dist("10", "36") - dist("36", "h36")'}}
+  - {id: "seam under-arm 32→h33 − side front 32→h39, cm", measure: {value: 'dist("32", "33") + dist("33", "h33") - dist("32", "39") - dist("39", "h39")'}}
+  - {id: "seam side front 45→h47 − front 44→h42, cm", measure: {value: 'length("fs45") + dist("40", "47") + dist("47", "h47") - length("fs44") - dist("40", "42") - dist("42", "h42")'}}
+  - {id: "collar neck edge CBt→Nb − back neck, cm", measure: {value: 'dist("CBt", "fC4") + dist("fC4", "Nb") - length("back_neck")'}}
+  - {id: "lap: drawn front edge at the waist from the centre front line (in; none printed)", measure: {value: 'dist("41", "fBk") / IN'}}
+pieces:
+  back:
+    outline:
+      - {path: back_neck}
+      - {polyline: ["9", "28", "29", "26", "27", h26, hCB, "6", "7", "2"]}
+  side_back:
+    outline:
+      - {line: ["28f", "24"]}
+      - {path: sb_scye}
+      - {polyline: [Q, "10", "35", "50", h35, h30, "31", "30", "29", "28f"]}
+  under_arm:
+    outline:
+      - {path: ua_scye}
+      - {polyline: [Q, "10", "36", "49", h36, h33, "52", "33", "32"]}
+  side_front:
+    outline:
+      - {line: ["45", "46"]}
+      - {path: sf_scye}
+      - {polyline: ["32", "39", "51", h39, h47, "48", "47", "40"]}
+      - {path: {name: fs45, reverse: true}}
+  front:
+    outline:
+      - {line: ["20u", "44"]}
+      - {path: fs44}
+      - {polyline: ["40", "42", "43", h42, FH]}
+      - {path: front_edge}
+      - {polyline: [Nb, Nd, "20u"]}
+  top_sleeve:
+    outline:
+      - {path: top_head}
+      - {polyline: [sl13, sl15, sl17, sl12, sl11, sl20]}
+  under_sleeve:
+    outline:
+      - {path: under_head}
+      - {polyline: [sl14, sl16, sl18, sl12, sl10, sl19]}
+export:
+  back: {cut: 2, grain: vertical, notches: [{point: "29"}, {point: "26"}]}
+  side_back: {cut: 2, grain: vertical, notches: [{point: "29"}, {point: "30"}, {point: "10"}, {point: "35"}]}
+  under_arm: {cut: 2, grain: vertical, notches: [{point: "10"}, {point: "36"}, {point: "33"}]}
+  side_front: {cut: 2, grain: vertical, notches: [{point: "39"}, {point: "47"}, {point: "40"}]}
+  front:
+    cut: 2
+    grain: vertical
+    notches: [{point: "40"}, {point: "42"}]
+    darts: [[Nb, Nd, "20u"]]          # the shawl collar's neck dart
+    note: "shawl collar cut in one; CBt–fC4 is the collar's centre back seam"
+  top_sleeve: {cut: 2, grain: vertical, notches: [{point: sl15}, {point: sl11}, {point: sl3}]}
+  under_sleeve: {cut: 2, grain: vertical, notches: [{point: sl16}, {point: sl10}]}

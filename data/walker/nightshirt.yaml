@@ -1,0 +1,31 @@
+# Man's night-shirt: Walker, Manual of Needlework and Cutting Out (1909), Cutting-out
+# Diagrams No. 8, pp. 235–236 (PDF pages 253–254, corpus krl00366374).
+# Traces: scripts/walker_trace.py (no reading by hand). Figures: transcribed, see below.
+name: man's night-shirt
+source: {book: "Walker, Manual of Needlework and Cutting Out (1909)", diagram: "Cutting-out Diagrams No. 8",
+         pages: [235, 236], corpus: krl00366374, size: "man's, one size as drafted"}
+fields:
+  body: {trace: data/walker/trace/p-235.yaml, field: 0}
+figures:                      # inches, as printed; from a corner letter (arrows) unless noted
+  body:
+    shoulder_x: 3             # "A → 3" and "3 ← B": the shoulder point, across from A / from B
+    shoulder_y: 1.5           # "1½" beside each shoulder point, down from the top
+    neck_x: 12                # "12" either side of E: the neck's corners, from A / from B
+    neck_depth: 3             # "3" below E: the front neck's depth
+    armhole: 10               # "10" on both sides: the armhole meets the side, down from A / B
+    vent: 36                  # "36" on both sides: the side seam ends (side vent below), down from A / B
+    hem_x: 5                  # "5" by C and by D: the back hem curve meets the bottom, from C / D
+    opening: 17               # "17" at the foot of the front opening, down from the top (E)
+    front_length: 47          # "Front 47 × 34": the front's field, length × breadth
+    front_width: 34
+    back_length: 49           # "Back 49 × 36": the back's field, length × breadth
+    back_width: 36            # not drawn: the page shows one field, 34 wide (see the recipe)
+    opening_hem_right: 1      # "Hem for right side = 1 inch" (front opening)
+    opening_hem_left: 2       # "Hem for left side = 2 inches"
+transcribed:
+  by: Claude (claude-opus-5-5), from the PDF's page 253 at its native 600 ppi
+  date: 2026-10-22
+  why: >-
+    tesseract reads Walker's engraved italic figures unreliably (12 as "2", 36 as "35", no
+    1½), so they are transcribed for this first garment. A figure reader is a later task; until
+    then every check against these figures compares the trace with a hand reading.

@@ -1,0 +1,34 @@
+# Mitchell 1921, Tight-Fitted Jacket, Double Dart (book pp. 46–47), on the foundation of p. 36 with
+# the tight-fitted centre back of p. 42 (as p. 47 draws it). Measures in inches, read from the page
+# images.
+name: tight-fitted jacket, double dart
+source:
+  size: "bust 39, waist 26½ (the book's measures, pp. 36 and 84)"
+  book: "Mitchell, The New \"Standard\" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)"
+  corpus: newstandardworko00mitc
+  pages: [36, 42, 46, 47, 60, 61]   # book pages = PDF pages − 4
+measures:
+  bust: 39
+  back_depth: 7
+  back_waist: 15
+  half_back: 7
+  blade: 10.5
+  front_depth: 12.5
+  top_dart: 14.5
+  front_waist: 22
+  # "26 from 7 is ¼ of ¼ waist less ⅛ inch", but pp. 36 and 46 print no waist: the book's one
+  # standard figure, as for the single-dart jacket (p. 84: waist 26½, hips 40). p. 47 draws 7→26
+  # 1.49 in, against 1.53 for 26½ (checked).
+  waist: 26.5
+  elbow_len: 7.5                   # the sleeve's (p. 60)
+  inside_len: 19
+  elbow_width: 12
+  wrist_width: 9
+style:
+  shoulder_width: 5.5              # p. 46: "¼ of the shoulder width which is in this case 5½ inches" (p. 47 draws 9→24 5.55)
+  cb_waist: 2                      # p. 42's tight-fitted centre back, as p. 47 draws it (2.00; p. 36's is 1)
+  cb_hip: 1.5                      # p. 42: 6 from 5 is 1½ inches (p. 47 draws 1.51; p. 36's is ½)
+  lap: 1.25                        # none printed: p. 47 draws the front edge ~1¼ in before the centre front line (reported), as the semi-fitted jacket's printed lap
+drawings:
+  fdn: data/mitchell/trace/p-047.yaml   # the jacket's diagram (PDF p. 51); it marks the foundation's points too
+  p61: data/mitchell/trace/p-061.yaml   # the two-piece sleeve (PDF p. 65)

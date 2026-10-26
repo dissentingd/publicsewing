@@ -1,0 +1,168 @@
+# ЕМКО СЭВ т.3 §5, men's insulated jacket, straight silhouette: model construction ИМК
+# (Table 5.3, Fig. 27 body, Fig. 28 two-piece sleeve) on top of the base construction
+# (jacket.yaml run on Table 5.2). Inputs: mN = Table 5.3 row N, nN = its sleeve row N
+# (data/emko/jacket_insulated_176-100-88.yaml sections imk, imk_sleeve).
+# The model (p. 81): hood (centre seam, drawstring front), buttoned to the top with
+# attached plackets, quilted yokes front and back, two-piece sleeves with front and back
+# seams, slanted welt pockets, elastic at the hem. The back yoke is the summer jacket's
+# (imk_back_yoke.yaml). The front yoke seam slopes from 373' on the front edge up to 353 on
+# the 35 vertical, and takes the chest dart (rows 14–17). The front edge is cut back by half
+# the placket (row 20) along one line, from the hem up through the yoke. The hood and the
+# placket strip are not built here.
+extends: imk_back_yoke.yaml
+drop_checks: [sleeve-cap-vs-DOR]            # the БК one-piece sleeve is a construction step here
+recipe: emko-jacket-insulated-imk
+source: {book: "ЕМКО СЭВ т.3", section: 5, tables: ["5.2", "5.3"], figures: [2, 3, 27, 28, 36]}
+inputs: [m12, m13, m20, n7]
+check_inputs: [m1]
+values:
+  chest: angle("371", "36", "371'")        # row 15: chest dart moved into the yoke seam
+  belly: angle("96", "46", "96'")          # row 18: belly dart
+points:
+  # rows 21–22 (side lines) keep the БК side line 341'–941 (torso.yaml)
+  # ---- front yoke (rows 12–17) ----
+  "373'": {along: {from: "17", to: "371'", d: m12}, row: 12}
+  "353": {offset: {from: "351", dir: up, d: m13}, row: 13, interp: "Fig. 27: 353 up the 35 vertical from 351"}
+  "354": {path_x: {path: front_arm, line: ["373'", "353"], pick: first}, row: 13, note: "373'–353 meets the armhole"}
+  "362": {perp_foot: {from: "36", line: ["373'", "353"]}, row: 14}
+  "362'": {rotate: {point: "362", about: "36", deg: -chest}, row: 15,
+           note: "∠362–36–362' = ∠371–36–371', to the right of 36–362 (Fig. 27); R 36–362' = 36–362 (row 16)"}
+  "373": {along: {from: "371", to: "471'", d: '-dist("371''", "373''")'}, row: 17,
+          note: "up along the continuation of 471'–371; 362'–373 straight, 362–362' the ease (посадка)"}
+  # ---- belly dart and lower front (rows 18–19) ----
+  "96'": {offset: {from: "46", dir: {toward: ["36", "46"]}, d: 'dist("46", "96")'}, row: 18}
+  "971'": {offset: {from: "471'", dir: {toward: ["371", "471'"]}, d: 'dist("471", "971")'}, row: 19}
+  # ---- placket cut-back (row 20) ----
+  "972": {along: {from: "971'", to: "96'", d: m20}, row: 20, interp: "half placket width measured along the hem 971'–96'"}
+  "pk_top": {line_x: {a: {from: "972", dir: {toward: ["971'", "373"]}}, b: ["362'", "373"]},
+             note: "the cut-back edge (∥ the front edge, through 972) meets the lower front's top"}
+  "pk_yoke": {line_x: {a: {from: "972", dir: {toward: ["971'", "373"]}}, b: ["373'", "354"]},
+              note: "... and the yoke seam"}
+  "pk_neck": {path_x: {path: front_neck, line: {from: "972", dir: {toward: ["971'", "373"]}}, pick: first},
+              interp: "Fig. 27 runs the cut-back edge up to the neckline"}
+  # ======== two-piece sleeve with front and back seams (Fig. 28) ========
+  s355: {project: {x_of: s352, y_of: s352}, note: "355 ≡ 352 (Fig. 36)"}
+  s933: {project: {x_of: s931, y_of: s931}, interp: "back line 131–333–431–933 ends at the БК cuff point 931"}
+  s356: {line_x: {a: [s355, s951], b: {from: s333, dir: right}}, row: 2, note: "front fold 355–951 meets the underarm line"}
+  s354: {circle_circle: {c1: s343, r1: r21, c2: s353, r2: 'dist("s353", "s343")', pick: {near: s346}}, row: 77,
+         note: "Table 5.2 row 77: R 353–354 = 353–343"}
+  # the БК under-cap's front part mirrored about the front fold (rows 3–6.2)
+  s341': {circle_circle: {c1: s356, r1: 'dist("s356", "s341")', c2: s355, r2: 'dist("s355", "s341")', pick: right}, row: 3}
+  s346': {along: {from: s341', to: s356, d: 'dist("s341", "s346")'}, row: 4}
+  s354': {circle_circle: {c1: s355, r1: 'dist("s355", "s354")', c2: s356, r2: 'dist("s356", "s354")', pick: right}, row: 5}
+  s343': {circle_circle: {c1: s354', r1: 'dist("s354", "s343")', c2: s346', r2: 'dist("s346", "s343")', pick: right}, row: 6}
+  # hem: 941 and 941' at |356–341| − n7 from 951 on the hem (rows 7–8); sleeve.yaml's БК hem
+  # 94–951 is straight, so "the arc 94⌒951 and its continuation" is that line
+  s941: {circle_line: {center: s951, r: 'dist("s356", "s341") - n7', line: [s94, s951], pick: left}, row: 7}
+  s941': {circle_line: {center: s951, r: 'dist("s951", "s941")', line: [s94, s951], pick: right}, row: 8}
+paths:
+  front_seam_under: [{line: [s341, s941]}]
+  front_seam_top: [{line: [s341', s941']}]
+  back_seam: [{polyline: [s132, s333, s431, s933]}]
+  top_cap_imk:
+    - {path: cap}
+    - {line: [s355, s354']}
+    - {arc: {center: s343', from: s354', to: s346'}}
+    - {line: [s346', s341']}
+  under_cap_imk:
+    - {line: [s132, s345]}
+    - {arc: {center: s342, from: s345, to: s341}}
+  arm_below_yoke:          # 23 → 14"; the yoke's own run is yoke_arm (the yoke seam lies between)
+    - {subpath: {name: back_arm, from: "23", to: "341"}}
+    - {line: ["341", "346"]}
+    - {path: front_arm}
+  front_yoke_seam: [{line: ["354", "373'"]}]
+  front_top_seam: [{polyline: ["354", "362'", "373"]}]
+pieces:
+  back_yoke:
+    outline:
+      - {line: ["111'", "112'"]}
+      - {path: yoke_neck}
+      - {line: ["121'", "141"]}
+      - {path: yoke_arm}
+      - {polyline: ["23'", "221", "211'", "111'"]}
+  imk_back:
+    outline:
+      - {polyline: ["211", "221", "23"]}
+      - {subpath: {name: back_arm, from: "23", to: "341"}}
+      - {polyline: ["341", "341'", "941", "91", "211"]}
+  front_yoke:
+    outline:
+      - {subpath: {name: front_arm, from: "354", to: "14\""}}
+      - {line: ["14\"", "16"]}
+      - {subpath: {name: front_neck, from: "16", to: pk_neck}}
+      - {polyline: [pk_neck, pk_yoke, "354"]}
+  imk_front:
+    outline:
+      - {polyline: ["354", "362'", pk_top, "972", "96'", "46", "96", "941", "341'", "346"]}
+      - {subpath: {name: front_arm, from: "346", to: "354"}}
+  top_sleeve:
+    outline:
+      - {path: top_cap_imk}
+      - {polyline: [s341', s941', s951, s94, s933, s431, s333, s132]}
+  under_sleeve:
+    outline:
+      - {path: under_cap_imk}
+      - {polyline: [s341, s941, s94, s933, s431, s333, s132]}
+checks:
+  - id: row1-printed-vs-built
+    measure: {dist: ["111", "211"]}
+    expect: m1
+    source: "Table 5.3 row 1: 111–211 printed 16,75, with 211 ≡ 21 (Fig. 27)"
+    base_only: true
+  - id: imk-armhole-vs-DP
+    measure: {value: 'length("yoke_arm") + length("arm_below_yoke")'}
+    expect: r63_1
+    source: "row 63.1 (ДП), on the model armhole (back yoke 141–23', back, front)"
+  # Table 5.3 prints no cap target for the model sleeve; Table 5.2 has no row 81 (к81 = 0),
+  # so the cap is held to ДОР itself (footnote 6).
+  - id: two-piece-cap-vs-DOR
+    measure: {value: 'length("top_cap_imk") + length("under_cap_imk")'}
+    expect: 'r63_3 - 2 * dist("s131", "s132")'
+    source: "row 63.3 (ДОР) and footnote 6, on the two-piece sleeve (top + under cap)"
+  # Rows 7–8 state |341–941| = |341'–941'|. sleeve.yaml's БК hem is level while the front fold
+  # 355–951 tilts (β), so the two sides differ slightly; the book's hem arc would close it.
+  - id: sleeve-front-seam-top-vs-under
+    equal: [front_seam_top, front_seam_under]
+    source: "Table 5.3 sleeve rows 7–8: |341–941| = |341'–941'| (front seam)"
+reports:
+  - {id: back-dart-angle-deg, measure: {value: dart_b}}
+  - {id: yoke-lift, measure: {value: lift}}
+  - {id: chest-dart-into-yoke-deg, measure: {value: chest}}
+  - {id: belly-dart-deg, measure: {value: belly}}
+  - {id: shoulder-back-yoke, measure: {dist: ["121'", "141"]}}
+  - {id: shoulder-front, measure: {dist: ["16", "14\""]}}
+  - {id: back-yoke-seam, measure: {length: back_yoke_seam}, note: "vs back_top_seam"}
+  - {id: back-top-seam, measure: {length: back_top_seam}}
+  - {id: front-yoke-seam, measure: {length: front_yoke_seam}, note: "vs front_top_seam (before the placket cut): the 362–362' ease"}
+  - {id: front-top-seam, measure: {length: front_top_seam}}
+export:
+  # The garment is the ИМК pieces; the inherited БК pieces are construction steps.
+  back: {omit: true}
+  front: {omit: true}
+  sleeve: {omit: true}
+  sleeve_under: {omit: true}
+  back_yoke:
+    cut: 2
+    grain: vertical
+    notches: [{point: "221"}]
+  imk_back:
+    cut: 2
+    grain: vertical
+    notches: [{point: "221"}]
+  front_yoke:
+    cut: 2
+    grain: vertical
+  imk_front:
+    cut: 2
+    grain: vertical
+    notches: [{point: "362'"}]
+    darts: [["96'", "46", "96"]]                    # belly dart, mouth at the hem
+  top_sleeve:
+    cut: 2
+    grain: vertical
+    notches: [{point: s14}, {point: s431}]          # cap top; elbow on the back seam
+  under_sleeve:
+    cut: 2
+    grain: vertical
+    notches: [{point: s431}]

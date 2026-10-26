@@ -1,0 +1,111 @@
+# Mitchell 1921, Seven-Gored Skirt (book p. 92, diagram p. 93), on the skirt foundation (pp. 84–85):
+# "one front panel and six gores". Pieces: the front panel (centre front on the fold) and three
+# gores, cut in pairs (the back gore seamed at the centre back).
+#   11 from the centre front line is 1/7 of ½ hip less ½ inch (along the hip sweep from 4);
+#   12 from 6 is 1 inch more (along the bottom); the panel line 12–11 upward;
+#   13 and 14 divide the hip sweep 11–7 in three, 15 and 16 the bottom 12–9; the seams 15–13
+#   and 16–14 upward.
+# The waist (p. 85's, 10 to 8) takes ¼ in at the front panel, ⅜ in from the next gore behind the
+# panel line, ¾ in at the centre back; the waist less ½ waist and those is the surplus, "taken out
+# equally divided in two darts at the side seams" (each centred on its seam line). The dart legs
+# run straight to the hip points.
+recipe: mitchell-seven-gored-skirt
+extends: skirt_foundation.yaml
+source: {book: "Mitchell, New \"Standard\" Work … Ladies' Tailor-Made Garments (1921)", page: 92, diagram: 93}
+drawing:
+  p93:
+    fit: ['1', '2', '3', '4', '5', '6', '10']
+    r: 0.6
+values:
+  d11: hips / 14 - 0.5 * IN                                # 11 from the centre front line
+  a7: 'angle("4", "P", "7")'                               # degrees along the hip sweep from 4
+  a11: 'd11 / R4 * 180 / PI'
+  a12: 'angle("2", "P", "12")'
+  a9: 'angle("2", "P", "9h")'
+  surplus: 'length("waist") - waist / 2 - 0.25 * IN - 0.375 * IN - 0.75 * IN'
+points:
+  "11": {rotate: {point: "4", about: P, deg: a11}}
+  "12": {rotate: {point: "6", about: P, deg: '(d11 + 1 * IN) / Rh * 180 / PI'}}
+  "13": {rotate: {point: "4", about: P, deg: 'a11 + (a7 - a11) / 3'}}
+  "14": {rotate: {point: "4", about: P, deg: 'a11 + 2 * (a7 - a11) / 3'}}
+  "15": {rotate: {point: "2", about: P, deg: 'a12 + (a9 - a12) / 3'}}
+  "16": {rotate: {point: "2", about: P, deg: 'a12 + 2 * (a9 - a12) / 3'}}
+  # ---- the waist and its darts ----
+  t10: {trace_near: {at: ['x("m10")', 'y("m10")'], r: 0.8, pick: end, drawing: p85}}
+  t8: {trace_near: {at: ['x("m8")', 'y("m8")'], r: 2.0, pick: end, drawing: p85}}
+  W1: {path_x: {path: waist, line: ["12", "11"]}}
+  W2: {path_x: {path: waist, line: ["15", "13"]}}
+  W3: {path_x: {path: waist, line: ["16", "14"]}}
+  Pf: {path_at: {path: waist, from: W1, d: -0.25 * IN}, interp: "the front panel's ¼ in and the next gore's ⅜ in are taken each side of the panel line"}
+  Pb: {path_at: {path: waist, from: W1, d: 0.375 * IN}}
+  S1f: {path_at: {path: waist, from: W2, d: '-surplus / 4'}}
+  S1b: {path_at: {path: waist, from: W2, d: 'surplus / 4'}}
+  S2f: {path_at: {path: waist, from: W3, d: '-surplus / 4'}}
+  S2b: {path_at: {path: waist, from: W3, d: 'surplus / 4'}}
+  CBd: {path_at: {path: waist, from: "8", d: -0.75 * IN}}
+  # ---- the drawing (p. 93) ----
+  k1: {marker_near: {at: "1", r: R, drawing: p93}}
+  k2: {marker_near: {at: "2", r: R, drawing: p93}}
+  k3: {marker_near: {at: "3", r: 0.4, drawing: p93}}
+  k4: {marker_near: {at: "4", r: R, drawing: p93}}
+  k5: {marker_near: {at: "5", r: R, drawing: p93}}
+  k6: {marker_near: {at: "6", r: R, drawing: p93}}
+  k11: {marker_near: {at: "11", r: 1.5 * R, drawing: p93}}
+  k12: {marker_near: {at: "12", r: 1.5 * R, drawing: p93}}
+  k13: {marker_near: {at: "13", r: 3 * R, drawing: p93}}
+  k14: {marker_near: {at: "14", r: 3 * R, drawing: p93}}
+  k15: {marker_near: {at: "15", r: 3 * R, drawing: p93}}
+  k16: {marker_near: {at: "16", r: 3 * R, drawing: p93}}
+paths:
+  waist: [{trace: {from: t10, to: t8, onto: ["10", "8"], bridge: 1.5, drawing: p85}}]
+  hem_1: [{arc: {center: P, from: "12", to: "6"}}]
+  hem_2: [{arc: {center: P, from: "15", to: "12"}}]
+  hem_3: [{arc: {center: P, from: "16", to: "15"}}]
+  hem_4: [{arc: {center: P, from: "9h", to: "16"}}]
+checks:
+  - {id: "p93 back-length", measure: {dist: [k1, k2]}, expect: back_len, source: "p. 84 on p. 93: 2 from 1 is the back length"}
+  - {id: "p93 front-length", measure: {dist: [k2, k3]}, expect: front_len, source: "p. 84 on p. 93: 3 from 2 is the front length"}
+  - {id: "p93 5", measure: {dist: [k4, k5]}, expect: 5 * IN, source: "p. 84 on p. 93: 5 from 4 is 5 inches"}
+  - {id: "p93 6", measure: {dist: [k2, k6]}, expect: 1.5 * IN, source: "p. 84 on p. 93: 6 from 2 is 1½ inches"}
+  - {id: "12", measure: {value: 'Rh * angle("k6", "P", "k12") * PI / 180'}, expect: 'd11 + 1 * IN',
+     source: "p. 92: 12 from 6 is 1 inch more than 11 from the center front line, along the bottom"}
+reports:
+  # p. 93 draws 1→4 long (7.13; p. 85 7.15, p. 91 7.00) and 11 0.26 in past its rule (the five-gored
+  # p. 91 0.27): the text governs (the project's rules, 2026-10-24; FINDINGS item 5)
+  - {id: "1→4 drawn − printed (p. 84: 4 from 1 is 7 inches)", measure: {value: 'dist("k1", "k4") - 7 * IN'}}
+  - {id: "11 along the hip sweep, drawn − printed (cm)", measure: {value: 'R4 * angle("k4", "P", "k11") * PI / 180 - d11'}}
+  - {id: "13 drawn − constructed (a third of 11–7)", measure: {dist: ["13", k13]}}
+  - {id: "14 drawn − constructed (two thirds of 11–7)", measure: {dist: ["14", k14]}}
+  - {id: "15 drawn − constructed (a third of 12–9)", measure: {dist: ["15", k15]}}
+  - {id: "16 drawn − constructed (two thirds of 12–9)", measure: {dist: ["16", k16]}}
+  - {id: "surplus for the two side darts, in", measure: {value: surplus / IN}}
+pieces:
+  front_panel:
+    outline:
+      - {subpath: {name: waist, from: "10", to: Pf}}
+      - {polyline: [Pf, "11", "12"]}
+      - {path: hem_1}
+      - {polyline: ["6", "3", "10"]}
+  gore_1:
+    outline:
+      - {subpath: {name: waist, from: Pb, to: S1f}}
+      - {polyline: [S1f, "13", "15"]}
+      - {path: hem_2}
+      - {polyline: ["12", "11", Pb]}
+  gore_2:
+    outline:
+      - {subpath: {name: waist, from: S1b, to: S2f}}
+      - {polyline: [S2f, "14", "16"]}
+      - {path: hem_3}
+      - {polyline: ["15", "13", S1b]}
+  back_gore:
+    outline:
+      - {subpath: {name: waist, from: S2b, to: CBd}}
+      - {polyline: [CBd, "7", "9h"]}
+      - {path: hem_4}
+      - {polyline: ["16", "14", S2b]}
+export:
+  front_panel: {cut: 1, grain: vertical, notches: [{point: "11"}], note: "centre front 10–3–6 on the fold"}
+  gore_1: {cut: 2, grain: vertical, notches: [{point: "11"}, {point: "13"}]}
+  gore_2: {cut: 2, grain: vertical, notches: [{point: "13"}, {point: "14"}]}
+  back_gore: {cut: 2, grain: vertical, notches: [{point: "14"}, {point: "7"}]}

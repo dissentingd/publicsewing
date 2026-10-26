@@ -1,0 +1,21 @@
+# Smock: Walker's "Overall for Child of 6 Years" (Manual of Needlework and Cutting Out, 1909)
+# on FreeSewing's Brian block, for any size: a straight body gathered into a yoke, sleeves
+# gathered into wristbands, a placket opening at the back. See BRIEF.md.
+extends: ../templates/yoke.yaml
+
+about:
+  id: smock
+  name: Smock
+  description: "A loose yoked smock or overall: gathered body, sleeves gathered into bands, back opening"
+  difficulty: 2
+  tags: [tops, dresses, children]
+  techniques: [gathering, yoke, placket, button]
+  version: 0.1.0
+  source: Walker, Manual of Needlework and Cutting Out (1909), Overall for Child of 6 Years (krl00366374)
+
+# Walker's overall: hem above the knee; the yoke "single or double"; "back-opening ... from
+# 6 to 9 inches long"; "two button-holes"
+options:
+  skirtLength: { pct: 40, min: 15, max: 98, menu: style }
+  gathers: { pct: 150, min: 100, max: 250, menu: style }
+  buttons: { count: 2, min: 1, max: 8, menu: style }

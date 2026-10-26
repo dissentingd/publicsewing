@@ -1,0 +1,129 @@
+# Mitchell 1921, Box Coat Foundation (book p. 16, diagram p. 17): "the principal points in the
+# making of any size or style pattern". The jackets' foundations (semi-fitted, tight-fitted) repeat
+# it with small changes, so their recipes extend this one.
+#
+# Frame: A at the origin, x right, y down (cm); the back is at the right (A, the foundation line
+# 2–5), the front to the left (x < 0), as drawn. "Square forward" is to the left, "in back of"
+# to the right. Measures come from the data file in cm; inches printed in the text are written
+# `n * IN`.
+#
+# The text governs the points. The diagram is drawn to scale, its scale unstated: the recipe fits
+# it (`drawing: p17`) on the points the text places by printed measures alone, and every other
+# point's marker is then compared with the construction:
+#   - checks (the gate): each "N from M is <a printed measure or printed inches>", the drawing's
+#     M→N against the printed value. That's the scan and our reading of the printed numbers.
+#   - reports: points the text places by a rule (the divisional square's fractions, "less 2",
+#     half way, the front depth applied as a sweep), the drawing's against the rule's. Where they
+#     differ the text is followed and the difference logged (FINDINGS).
+#   - a printed value the drawing contradicts *systematically* (the same way on more than one
+#     diagram, so not our misreading) is followed as printed and its drawing check is a report,
+#     with the discrepancy in FINDINGS (2026-10-24: the shoulder width, drawn 5¾, printed 6).
+#     So is a slip on one diagram that another diagram of the same construction draws as printed
+#     (2026-10-24: the sleeve's p. 61 against p. 67).
+# Curves the text leaves "as per diagram" (necks, scyes) are traced from the diagram and set onto
+# the constructed points (ccat.recipe `trace … onto`).
+recipe: mitchell-foundation
+source: {book: "Mitchell, New \"Standard\" Work … Ladies' Tailor-Made Garments (1921)", page: 16, diagram: 17}
+units: cm
+inputs: [bust, back_depth, back_waist, half_back, blade, front_depth, shoulder_width]
+values:
+  IN: 2.54
+  R: 1.0                                     # cm: a drawn marker is looked for this close to its point
+drawing:
+  p17:
+    fit: ['4', '5', '6', '7', '10', '12', '18', '19']   # placed by printed measures only (7 in, ½ in,
+    r: 0.6                                            # half back width, blade, ½ bust, ½ in)
+points:
+  A: {at: [0, 0]}
+  "2": {offset: {from: A, dir: down, d: '(bust - 2 * IN) / 48'},
+        interp: "\"½ the bust measure on the 24ths less 2\": ½(bust − 2) on the 24ths (the diagrams don't separate it from ½ bust − 2, at most 0.12 in apart; FINDINGS)"}
+  "3": {offset: {from: "2", dir: down, d: back_depth}}
+  "4": {offset: {from: "2", dir: down, d: back_waist}}
+  "5": {offset: {from: "4", dir: down, d: 7 * IN}}
+  "6": {offset: {from: "5", dir: left, d: 0.5 * IN}}
+  "7": {offset: {from: "4", dir: left, d: 0.5 * IN}}
+  "8": {at_y: {line: ["7", "2"], y_of: "3"}}          # "8 is a point on the line 7-2" (squared forward from 3)
+  "9": {offset: {from: A, dir: left, d: '(bust - 2 * IN) / 16'}}   # "½ bust on the 8ths less 2"
+  "10": {offset: {from: "8", dir: left, d: half_back}}
+  "11": {offset: {from: A, dir: left, d: half_back}}
+  "12": {offset: {from: "8", dir: left, d: blade}}
+  "13": {offset: {from: "12", dir: left, d: 1.25 * IN}}
+  "14": {ratio: {from: "12", to: "13", t: 0.5}}
+  "15": {offset: {from: "13", dir: up, d: 1.25 * IN}}
+  "16": {offset: {from: "12", dir: left, d: bust / 12}}
+  "17": {offset: {from: "16", dir: left, d: 1.25 * IN}}
+  "18": {offset: {from: "8", dir: left, d: bust / 2}}
+  "19": {offset: {from: "18", dir: left, d: 0.5 * IN}}
+  # "20 from 14 is the front depth, gained by applying it, less the width of the back part of the
+  # neck, 9-2 at 14, as to where it falls on the line squared up from 17"
+  "20": {circle_line: {center: "14", r: 'front_depth - dist("9", "2")', line: {from: "17", dir: up}, pick: upper},
+         interp: "\"the width of the back part of the neck, 9-2\": the straight distance 9–2"}
+  "21": {offset: {from: "20", dir: left, d: bust / 12}}
+  "22": {along: {from: "21", to: "19", d: bust / 16}}
+  X: {along: {from: "19", to: "21", d: -3 * IN},
+      interp: "the cross \"about 3 inches below 19\": 3 in down the front line 21–19 extended"}
+  "23": {at_y: {line: {from: X, dir: down}, y_of: "5"}}   # squared from the bust line through the cross
+  "24": {offset: {from: "23", dir: left, d: 0.75 * IN}}
+  "25": {ratio: {from: "2", to: "3", t: 0.5}}
+  "26": {along: {from: "9", to: "19", d: shoulder_width}}
+  "27": {along: {from: "20", to: "25", d: shoulder_width}}
+  "20u": {offset: {from: "20", dir: up, d: 0.25 * IN}}    # the front shoulder runs from ¼ in above 20
+  "27d": {offset: {from: "27", dir: down, d: 0.5 * IN}}   # to ½ in below 27
+  # ---- the drawing's markers ----
+  m2: {marker_near: {at: "2", r: R, drawing: p17}}
+  m4: {marker_near: {at: "4", r: R, drawing: p17}}
+  m5: {marker_near: {at: "5", r: R, drawing: p17}}
+  m6: {marker_near: {at: "6", r: R, drawing: p17}}
+  m7: {marker_near: {at: "7", r: R, drawing: p17}}
+  m8: {marker_near: {at: "8", r: R, drawing: p17}}
+  m9: {marker_near: {at: "9", r: R, drawing: p17}}
+  m10: {marker_near: {at: "10", r: R, drawing: p17}}
+  m11: {marker_near: {at: "11", r: R, drawing: p17}}
+  m12: {marker_near: {at: "12", r: R, drawing: p17}}
+  m13: {marker_near: {at: "13", r: R, drawing: p17}}
+  m14: {marker_near: {at: "14", r: R, drawing: p17}}
+  m15: {marker_near: {at: "15", r: R, drawing: p17}}
+  m16: {marker_near: {at: "16", r: R, drawing: p17}}
+  m17: {marker_near: {at: "17", r: R, drawing: p17}}
+  m18: {marker_near: {at: "18", r: R, drawing: p17}}
+  m19: {marker_near: {at: "19", r: R, drawing: p17}}
+  m20: {marker_near: {at: "20", r: 1.5 * R, drawing: p17}}
+  m21: {marker_near: {at: "21", r: 1.5 * R, drawing: p17}}
+  m22: {marker_near: {at: "22", r: 1.5 * R, drawing: p17}}
+  m23: {marker_near: {at: "23", r: R, drawing: p17}}
+  m24: {marker_near: {at: "24", r: R, drawing: p17}}
+  m25: {marker_near: {at: "25", r: R, drawing: p17}}
+  m26: {marker_near: {at: "26", r: R, drawing: p17}}
+  m27: {marker_near: {at: "27", r: 1.5 * R, drawing: p17}}
+  mA: {marker_near: {at: A, r: R, drawing: p17}}
+checks:
+  # each "N from M is <printed measure or printed inches>": the drawing's M→N vs the printed value
+  # (at least one end not among the fit points, so the fit doesn't place both)
+  - {id: back-depth, measure: {value: 'y("m8") - y("m2")'}, expect: back_depth,
+     source: "p. 16: 3 from 2 is the back depth (7); drawn 2 → the bust line at 8 (3's marker lies under 8's)"}
+  - {id: back-waist, measure: {value: 'y("m4") - y("m2")'}, expect: back_waist,
+     source: "p. 16: 4 from 2 is the back waist length (15)"}
+  - {id: half-back-11, measure: {dist: [mA, m11]}, expect: half_back, source: "p. 16: 11 from A is the half back width (7)"}
+  - {id: half-back-10, measure: {dist: [m8, m10]}, expect: half_back, source: "p. 16: 10 from 8 is the half back width"}
+  - {id: blade, measure: {dist: [m8, m12]}, expect: blade, source: "p. 16: 12 from 8 is the blade (10½)"}
+  - {id: half-bust, measure: {dist: [m8, m18]}, expect: bust / 2, source: "p. 16: 18 from 8 is ½ bust (39)"}
+  - {id: "13", measure: {dist: [m12, m13]}, expect: 1.25 * IN, source: "p. 16: 13 from 12 is 1¼ inch"}
+  - {id: "15", measure: {dist: [m13, m15]}, expect: 1.25 * IN, source: "p. 16: 15 from 13 is 1¼ inch"}
+  - {id: "17", measure: {dist: [m16, m17]}, expect: 1.25 * IN, source: "p. 16: 17 from 16 is 1¼ inch"}
+  - {id: "24", measure: {dist: [m23, m24]}, expect: 0.75 * IN, source: "p. 16: 24 from 23 is ¾ inch"}
+reports:
+  # the shoulder width: printed "6 inches in this case" (p. 16), drawn 5¾ on pp. 17 and 37 alike.
+  # The text governs (2026-10-24); drawn − printed, cm (FINDINGS, discrepancy 1)
+  - {id: "back shoulder 9→26, drawn − printed", measure: {value: 'dist("m9", "m26") - shoulder_width'}}
+  - {id: "front shoulder 20→27, drawn − printed", measure: {value: 'dist("m20", "m27") - shoulder_width'}}
+  # points placed by a rule: the drawing's against the construction's (cm; the text is followed)
+  - {id: "2 (½(bust−2) on the 24ths)", measure: {value: 'dist("mA", "m2") - dist("A", "2")'}}
+  - {id: "9 (½(bust−2) on the 8ths)", measure: {value: 'dist("mA", "m9") - dist("A", "9")'}}
+  - {id: "14 (half way 12–13)", measure: {value: 'dist("m12", "m14") - dist("12", "14")'}}
+  - {id: "16 (½ bust on the 6ths)", measure: {value: 'dist("m12", "m16") - dist("12", "16")'}}
+  - {id: "20 (front depth less 9–2, from 14)", measure: {value: 'dist("m14", "m20") - dist("14", "20")'}}
+  - {id: "21 (½ bust on the 6ths)", measure: {value: 'dist("m20", "m21") - dist("20", "21")'}}
+  - {id: "22 (½ bust on the 8ths)", measure: {value: 'dist("m21", "m22") - dist("21", "22")'}}
+  - {id: "25 (half way 2–3)", measure: {value: 'dist("m2", "m25") - dist("2", "25")'}}
+  - {id: "20 drawn − constructed, x", measure: {value: 'x("m20") - x("20")'}}
+  - {id: "26 drawn − constructed", measure: {dist: ["26", m26]}}

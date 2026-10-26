@@ -1,0 +1,405 @@
+{
+ "id": "mitchell-nine-gored-skirt",
+ "garment": "women's nine-gored skirt",
+ "size": {
+  "label": "waist 26½, hips 40 (the book's measures, p. 84)",
+  "order": "the book's measures, inches (bust, back depth, back waist length, …)"
+ },
+ "source": {
+  "book": "Mitchell, The New \"Standard\" Work on Designing and Pattern-Making of Ladies' Tailor-Made Garments (1921)",
+  "table": "Skirt Foundation, pp. 84–85; Nine-Gored Skirt, pp. 94–95",
+  "corpus": "newstandardworko00mitc"
+ },
+ "rights": "Published 1921 (Mitchell Publications, New York), public domain in the US. Drafting methods are uncopyrightable (project policy). Points are constructed from the text's rules by ccat; curves the text leaves \"as per diagram\" and the lapel are traced from the book's diagrams and set onto the constructed points (tracing pattern geometry is fair use, project policy).",
+ "status": {
+  "construction": "numbered-point draft, curves traced from the diagram",
+  "sewable": false,
+  "note": "Nine-gored skirt: front panel (centre front on the fold) and four gores cut in pairs (centre back seam), a dart at the panel line and the centre back, darts of three sizes at the gore seams (largest at 14), floor length (front 38, back 39½). Not test-sewn."
+ },
+ "notice": "Not for AI training.",
+ "construction": {
+  "recipe": "recipes/mitchell/nine_gored_skirt.yaml",
+  "data": {
+   "garment": "data/mitchell/nine_gored_skirt.yaml"
+  },
+  "units": "cm"
+ },
+ "export": {
+  "seam_allowance_cm": 1.5,
+  "seam_allowance_basis": "export default, uniform; not from the source",
+  "notch_depth_cm": 0.6,
+  "grain": "vertical in the drafting frame",
+  "darts": "cut edge runs straight across the dart mouth (caps not trued); drill hole 1 cm short of the apex",
+  "tiled_pdf": {
+   "letter": {
+    "page_cm": [
+     21.59,
+     27.94
+    ],
+    "pages_incl_cover": 56,
+    "margin_cm": 1.0,
+    "overlap_cm": 1.0
+   },
+   "a4": {
+    "page_cm": [
+     21.0,
+     29.7
+    ],
+    "pages_incl_cover": 45,
+    "margin_cm": 1.0,
+    "overlap_cm": 1.0
+   }
+  }
+ },
+ "pieces": [
+  {
+   "name": "front_panel",
+   "cut": 1,
+   "notches": 1,
+   "darts": 0,
+   "stitch_perimeter_cm": 205.238,
+   "cut_perimeter_cm": 217.08,
+   "area_cm2": 497.92
+  },
+  {
+   "name": "gore_1",
+   "cut": 2,
+   "notches": 2,
+   "darts": 0,
+   "stitch_perimeter_cm": 225.884,
+   "cut_perimeter_cm": 237.816,
+   "area_cm2": 1443.45
+  },
+  {
+   "name": "gore_2",
+   "cut": 2,
+   "notches": 2,
+   "darts": 0,
+   "stitch_perimeter_cm": 227.86,
+   "cut_perimeter_cm": 239.569,
+   "area_cm2": 1450.0
+  },
+  {
+   "name": "gore_3",
+   "cut": 2,
+   "notches": 2,
+   "darts": 0,
+   "stitch_perimeter_cm": 228.886,
+   "cut_perimeter_cm": 240.564,
+   "area_cm2": 1453.18
+  },
+  {
+   "name": "back_gore",
+   "cut": 2,
+   "notches": 2,
+   "darts": 0,
+   "stitch_perimeter_cm": 228.228,
+   "cut_perimeter_cm": 239.938,
+   "area_cm2": 1449.72
+  }
+ ],
+ "gate": {
+  "recipe": "mitchell-nine-gored-skirt",
+  "passed": true,
+  "gate_rel": 0.01,
+  "printed_step": 0.635,
+  "checks": [
+   {
+    "id": "back-length",
+    "measured": 100.4668,
+    "expected": 100.33,
+    "error": 0.1368,
+    "rel": 0.001364,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 84: 2 from 1 is the back length (39½)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "front-length",
+    "measured": 96.5321,
+    "expected": 96.52,
+    "error": 0.0121,
+    "rel": 0.000125,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 84: 3 from 2 is the front length (38)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "5",
+    "measured": 12.7469,
+    "expected": 12.7,
+    "error": 0.0469,
+    "rel": 0.003693,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 84: 5 from 4 is 5 inches",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "6",
+    "measured": 3.8313,
+    "expected": 3.81,
+    "error": 0.0213,
+    "rel": 0.005589,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 84: 6 from 2 is 1½ inches",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "10",
+    "measured": 1.0848,
+    "expected": 0.9525,
+    "error": 0.1323,
+    "rel": 0.138941,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 84: 10 from [3] is ⅜ inch",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "p95 back-length",
+    "measured": 100.3907,
+    "expected": 100.33,
+    "error": 0.0607,
+    "rel": 0.000605,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 84 on p. 95: 2 from 1 is the back length",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "p95 front-length",
+    "measured": 96.4547,
+    "expected": 96.52,
+    "error": -0.0653,
+    "rel": 0.000677,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 84 on p. 95: 3 from 2 is the front length",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "p95 5",
+    "measured": 12.8402,
+    "expected": 12.7,
+    "error": 0.1402,
+    "rel": 0.011036,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 84 on p. 95: 5 from 4 is 5 inches",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "p95 6",
+    "measured": 3.7644,
+    "expected": 3.81,
+    "error": -0.0456,
+    "rel": 0.01197,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 84 on p. 95: 6 from 2 is 1½ inches",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "12",
+    "measured": 6.7086,
+    "expected": 6.5969,
+    "error": 0.1117,
+    "rel": 0.016926,
+    "tol": 0.01,
+    "floor": 0.3175,
+    "by_floor": true,
+    "absolute": false,
+    "passed": true,
+    "source": "p. 94: 12 from 6 is ¾ inch more than 11 from the center front line, along the bottom",
+    "missing": [],
+    "skipped": false
+   }
+  ],
+  "reports": [
+   {
+    "id": "½ hip 4→7 straight, drawn − printed",
+    "value": 1.313,
+    "note": ""
+   },
+   {
+    "id": "7: squared from the line 1–2, drawn (in)",
+    "value": 20.0914,
+    "note": ""
+   },
+   {
+    "id": "pivot above 1 implied by the drawn 4 and 7 on one sweep (in; text 39¾)",
+    "value": 43.6307,
+    "note": ""
+   },
+   {
+    "id": "8→9 drawn − back length (p. 84: 9 from 8 is the back length)",
+    "value": 1.3683,
+    "note": ""
+   },
+   {
+    "id": "1→4 drawn − printed (p. 84: 4 from 1 is 7 inches)",
+    "value": 0.3712,
+    "note": ""
+   },
+   {
+    "id": "7 drawn − constructed",
+    "value": 1.5062,
+    "note": ""
+   },
+   {
+    "id": "8 drawn − constructed (on sweep 1, square to 5–7 at 7)",
+    "value": 1.7127,
+    "note": ""
+   },
+   {
+    "id": "9 drawn − constructed",
+    "value": 1.9375,
+    "note": ""
+   },
+   {
+    "id": "9 off the bottom sweep (9 − 9h)",
+    "value": 0.0052,
+    "note": ""
+   },
+   {
+    "id": "angle 5–7–8 drawn (deg; square = 90)",
+    "value": -90.8901,
+    "note": ""
+   },
+   {
+    "id": "1→4 drawn − printed (p. 84: 4 from 1 is 7 inches)",
+    "value": 0.3718,
+    "note": ""
+   },
+   {
+    "id": "11 along the hip sweep, drawn − printed (cm)",
+    "value": 0.6384,
+    "note": ""
+   },
+   {
+    "id": "13 drawn − constructed (a quarter of 11–7)",
+    "value": 0.8659,
+    "note": ""
+   },
+   {
+    "id": "14 drawn − constructed (half of 11–7)",
+    "value": 1.1544,
+    "note": ""
+   },
+   {
+    "id": "15 drawn − constructed (three quarters of 11–7)",
+    "value": 1.2118,
+    "note": ""
+   },
+   {
+    "id": "16 drawn − constructed (a quarter of 12–9)",
+    "value": 0.2267,
+    "note": ""
+   },
+   {
+    "id": "17 drawn − constructed (half of 12–9)",
+    "value": 0.7036,
+    "note": ""
+   },
+   {
+    "id": "18 drawn − constructed (three quarters of 12–9)",
+    "value": 1.2667,
+    "note": ""
+   },
+   {
+    "id": "surplus for the three darts, in",
+    "value": 2.8532,
+    "note": ""
+   },
+   {
+    "id": "dart at 13, in",
+    "value": 0.7011,
+    "note": ""
+   }
+  ],
+  "interpretations": [
+   {
+    "point": "7",
+    "note": "7 from 4 is ½ hip on sweep 4, measured straight (the tape across, a chord): the reading nearest the five-gored skirt's printed surplus (FINDINGS)"
+   },
+   {
+    "point": "6",
+    "note": "6, 1½ in from 2: along the bottom sweep (it's the bottom's front end)"
+   },
+   {
+    "point": "9h",
+    "note": "the bottom meets the centre back on the bottom sweep (9 is the back length below 8; reported)"
+   },
+   {
+    "point": "8",
+    "note": "8, on the line squared up from 7, is where it meets sweep 1 (the waist guide)"
+   },
+   {
+    "point": "10",
+    "note": "printed \"10 from 2 is ⅜ inch\": read as 10 from 3 (FINDINGS)"
+   },
+   {
+    "point": "drawing 'p85'",
+    "note": "fitted on 7 points: 0.11112 drawing units per cm, turned -0.13°, residual rms 0.160 cm, max 0.259 cm"
+   },
+   {
+    "point": "path 'waist' segment 0",
+    "note": "traced curve set onto 10–8: scale 0.9630, turned +0.60°"
+   },
+   {
+    "point": "drawing 'p95'",
+    "note": "fitted on 7 points: 0.11293 drawing units per cm, turned -0.05°, residual rms 0.224 cm, max 0.389 cm"
+   }
+  ]
+ },
+ "files": {
+  "pattern.dxf": "7b921a2b355e8683b81d5560d2dd17ec27f66900eccde06122ae8f591ad36c35",
+  "pattern.svg": "536fd2ec0675ac45204aed8182518d3ff4e9dae9839f40d0f2705c2c203b5bc9",
+  "pattern_a4.pdf": "0d1cabb7c1e6248cad7518f2cdf9bb6e807353a1bcb31e40964b872955af8798",
+  "pattern_letter.pdf": "8571c3dbc92cab9308940ac7f78d2892f2cef1ed910ca324521247afdcbc2c3c"
+ },
+ "provenance": {
+  "ccat": "0.1.0",
+  "commit": "b1e9b7f"
+ }
+}

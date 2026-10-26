@@ -1,0 +1,170 @@
+# Mitchell 1921, Box Coat (book p. 18, diagram p. 19), on the Box Coat Foundation (foundation.yaml,
+# pp. 16–17). Two pieces: the back (centre back to the side seam 28–31) and the front (side seam
+# 28–30 to the lapped front edge), with the front's neck dart and lapel, and the two-piece sleeve
+# (sleeve_two_piece.yaml, pp. 60–61) drafted on this coat's armhole, and the collar (32): its
+# neck line constructed, its outer edges ("to harmonize with the shape of the lapel") p. 19's.
+#
+# What the text fixes, the recipe constructs: 28–31, the centre back through ½ in behind 5, the
+# 3 in lap, the dart (1¼ in wide at 22, about 6 in long), the crease line. What it leaves to the
+# drawing ("as illustrated", "as represented", the lapel "to any size or style", the length "as
+# desired") is taken from the diagram: the scyes (p. 19) and the necks (p. 17) traced and set onto
+# the constructed points; the lapel's point and notch and the dart's direction from p. 19's lines;
+# the length as drawn (a style value in the data file). Each such choice is an interp.
+recipe: mitchell-box-coat
+extends: [foundation.yaml, sleeve_two_piece.yaml]
+source: {book: "Mitchell, New \"Standard\" Work … Ladies' Tailor-Made Garments (1921)", page: 18, diagram: 19}
+inputs: [length, lap]
+drawing:
+  p19:
+    fit: ['4', '5', '7', '10', '12', '18', '19']
+    r: 0.6
+values:
+  armhole: 'length("back_scye") + length("front_scye")'   # for the sleeve's working number
+points:
+  # the armhole's notches for the sleeve (p. 60): front 1¼ in above the bust line (that's 15),
+  # back 1¾ in above it on the back scye
+  FN: {at: ['x("15")', 'y("15")']}
+  BN: {path_x: {path: back_scye, line: {from: BNl, dir: right}}}
+  BNl: {offset: {from: "28", dir: up, d: 1.75 * IN}}
+  "28": {ratio: {from: "13", to: "10", t: 0.5}}                  # half way between 13 and 10, squared down
+  "29": {at_y: {line: {from: "28", dir: down}, y_of: "5"}}       # on the line squared down from 28 (at the hip line)
+  "30": {offset: {from: "29", dir: left, d: 1.25 * IN}}
+  "31": {offset: {from: "29", dir: right, d: 1.25 * IN}}
+  "5b": {offset: {from: "5", dir: right, d: 0.5 * IN}}           # "a point ½ inch in back of 5"
+  # ---- the length (as desired; the data file's value is the drawn one) and the hem ----
+  CBh: {circle_line: {center: "2", r: length, line: ["2", "5b"], pick: lower},
+        interp: "the length \"as desired\": the data file's, read from the diagram (p. 19) at the centre back"}
+  Bh: {at_y: {line: ["28", "31"], y_of: CBh}}                    # side seams run to the hem level
+  Fh: {at_y: {line: ["28", "30"], y_of: CBh},
+       interp: "hem squared across the coat at the centre back's length, as drawn"}
+  # ---- the front edge: the front line X–24 extended, and the lap in front of it ----
+  Xl: {offset: {from: X, dir: {perp: [X, "24"]}, d: lap}}
+  "24l": {offset: {from: "24", dir: {perp: [X, "24"]}, d: lap}}
+  Lh: {at_y: {line: [Xl, "24l"], y_of: CBh}}
+  # crease line: "from a point about 3½ inches below the bust line through a point ¾ inch in front
+  # of 20 upward" (on the lapped edge)
+  Bk: {at_y: {line: [Xl, "24l"], y: 'y("18") + 3.5 * IN'}, interp: "the crease starts on the lapped front edge"}
+  "20f": {offset: {from: "20", dir: left, d: 0.75 * IN}}
+  # ---- the lapel (any style; p. 19's), its point on the lapped edge ----
+  tLp: {trace_near: {at: ['x("Xl") + (y("22") - y("Xl")) * (x("24l") - x("Xl")) / (y("24l") - y("Xl"))', 'y("22") - 0.75 * IN'],
+                     r: 1.5 * IN, pick: corner, drawing: p19}}
+  Lp: {perp_foot: {from: tLp, line: [Xl, "24l"]}, interp: "lapel point: p. 19's corner, on the lapped edge"}
+  tN: {trace_near: {at: ['x("22") - 2.5 * IN', 'y("22") + 0.3 * IN'], r: 1.5 * IN, pick: end, drawing: p19}}
+  N: {at: ['x("tN")', 'y("tN")'], interp: "the notch: where p. 19's lapel edge meets the gorge line"}
+  # ---- the neck dart: 1¼ in wide at 22, about 6 in long, p. 19's direction ----
+  tDa: {trace_near: {at: ['x("22") + 1 * IN', 'y("22") + 6 * IN'], r: 1.5 * IN, pick: lowest, drawing: p19}}
+  Da: {along: {from: "22", to: tDa, d: 6 * IN}, interp: "dart apex: 6 in from 22 toward p. 19's apex"}
+  Dl: {along: {from: "22", to: N, d: 0.625 * IN}}
+  Drg: {along: {from: "22", to: "20", d: 0.625 * IN}}
+  Dr: {path_x: {path: front_neck_full, line: [Da, Drg]}}
+  # ---- p. 17 / p. 19 traced ends ----
+  t2: {trace_near: {at: ['x("m2")', 'y("m2")'], r: 0.5, pick: end, drawing: p17}}
+  t9: {trace_near: {at: ['x("m9")', 'y("m9")'], r: 0.5, pick: end, drawing: p17}}
+  t20: {trace_near: {at: ['x("m20")', 'y("m20")'], r: 0.5, pick: end, drawing: p17}}
+  t22: {trace_near: {at: ['x("m22")', 'y("m22")'], r: 0.5, pick: end, drawing: p17}}
+  s26: {marker_near: {at: "26", r: R, drawing: p19}}
+  s28: {marker_near: {at: "28", r: R, drawing: p19}}
+  s15: {marker_near: {at: "15", r: R, drawing: p19}}
+  u26: {trace_near: {at: ['x("s26")', 'y("s26")'], r: 0.5, pick: end, drawing: p19}}
+  u28: {trace_near: {at: ['x("s28")', 'y("s28")'], r: 0.5, pick: end, drawing: p19}}
+  u15: {trace_near: {at: ['x("s15")', 'y("s15")'], r: 0.5, pick: end, drawing: p19}}
+  u27: {trace_near: {at: ['x("27d")', 'y("27d")'], r: 1.5, pick: corner, drawing: p19}}
+  # the scye's bottom 15 → 12 is printed grey on pp. 17 and 19 and isn't traced: a quarter curve,
+  # leaving 15 straight down and meeting the bust line at 12 level, then along it to 28
+  c15: {offset: {from: "15", dir: down, d: 0.69 * IN},
+        interp: "front scye 15 → 12 (grey in the scan, not traced): a quarter curve, tangent down at 15 and along the bust line at 12"}
+  c12: {offset: {from: "12", dir: left, d: 0.69 * IN}}
+  # ---- the drawing's markers on p. 19, for checks ----
+  n28: {marker_near: {at: "28", r: R, drawing: p19}}
+  n29: {marker_near: {at: "29", r: R, drawing: p19}}
+  n30: {marker_near: {at: "30", r: R, drawing: p19}}
+  n31: {marker_near: {at: "31", r: R, drawing: p19}}
+  n13: {marker_near: {at: "13", r: R, drawing: p19}}
+  n10: {marker_near: {at: "10", r: R, drawing: p19}}
+  vBk: {trace_near: {at: ['x("Bk")', 'y("Bk")'], r: 1.0 * IN, drawing: p19}}   # the drawn front edge at the crease's foot
+  fBk: {perp_foot: {from: vBk, line: [X, "24"]}}
+  vDl: {trace_near: {at: ['x("Dl")', 'y("Dl")'], r: 0.5 * IN, drawing: p19}}
+  vDr: {trace_near: {at: ['x("Dr")', 'y("Dr")'], r: 0.5 * IN, drawing: p19}}
+  vCB: {trace_near: {at: ['x("CBh")', 'y("CBh")'], r: 1.5 * IN, pick: corner, drawing: p19}}   # the drawn hem's corner at the centre back
+  # ---- the collar (p. 18): "The neck line of the collar is drawn from a point half way between
+  # 20-22 through a point ½ inch in back of 20 upward. 32 from 20 is ¼ inch more than 9 from 2."
+  CM: {ratio: {from: "20", to: "22", t: 0.5}}
+  "20b": {offset: {from: "20", dir: right, d: 0.5 * IN}}
+  n32: {marker_near: {at: ['x("20b") + 1.6 * IN', 'y("20b") - 2.3 * IN'], r: 1.5 * R, drawing: p19}}
+  "32": {along: {from: "20b", to: n32, d: 'length("back_neck") + 0.25 * IN'},
+         interp: "32 is measured from 20b up the collar's neck line (its turn upward at 20b is p. 19's); \"9 from 2\" for the collar is the back neck along its curve (the collar sews to it)"}
+  t32: {trace_near: {at: ['x("n32")', 'y("n32")'], r: 0.5, pick: end, drawing: p19}}
+  tCE: {trace_near: {at: ['x("N") + 1.0 * IN', 'y("N") - 0.55 * IN'], r: 1.0 * IN, pick: end, drawing: p19}}
+  CE: {perp_foot: {from: tCE, line: [CM, "20b"]}, interp: "the collar's front end: p. 19's, on the collar's neck line"}
+paths:
+  collar_edge: [{trace: {from: t32, to: tCE, onto: ["32", CE], drawing: p19}}]
+  back_neck: [{trace: {from: t2, to: t9, onto: ["2", "9"], drawing: p17}}]
+  front_neck_full: [{trace: {from: t22, to: t20, onto: ["22", "20u"], drawing: p17}}]
+  back_scye: [{trace: {from: u26, to: u28, onto: ["26", "28"], drawing: p19}}]
+  front_scye:
+    - {trace: {from: u27, to: u15, onto: ["27d", "15"], drawing: p19}}
+    - {bezier: ["15", c15, c12, "12"]}
+    - {line: ["12", "28"]}
+pieces:
+  back:
+    outline:
+      - {path: back_neck}
+      - {line: ["9", "26"]}
+      - {path: back_scye}
+      - {polyline: ["28", "31", Bh]}
+      - {polyline: [Bh, CBh, "5b", "2"]}
+  front:
+    outline:
+      - {line: ["20u", "27d"]}
+      - {path: front_scye}
+      - {polyline: ["28", "30", Fh, Lh, Bk, Lp, N, Dl, Da, Dr]}
+      - {subpath: {name: front_neck_full, from: Dr, to: "20u"}}
+  top_sleeve:
+    outline:
+      - {path: top_head}
+      - {polyline: [sl13, sl15, sl17, sl12, sl11, sl20]}
+  under_sleeve:
+    outline:
+      - {path: under_head}
+      - {polyline: [sl14, sl16, sl18, sl12, sl10, sl19]}
+  collar:
+    outline:
+      - {path: collar_edge}
+      - {polyline: [CE, "20b", "32"]}
+checks:
+  - {id: "30", measure: {dist: [n29, n30]}, expect: 1.25 * IN, source: "p. 18: 30 from 29 is 1¼ inches"}
+  - {id: "31", measure: {dist: [n29, n31]}, expect: 1.25 * IN, source: "p. 18: 31 from 29 is the same"}
+  - {id: lap, measure: {dist: [vBk, fBk]}, expect: lap,
+     source: "p. 18: \"A lap of 3 inches is allowed to the front\": p. 19's front edge at the crease, from the front line X–24"}
+  - {id: dart-width, measure: {dist: [vDl, vDr]}, expect: 1.25 * IN,
+     source: "p. 18: \"The dart … is 1¼ inches wide at 22\": p. 19's dart legs at the neck"}
+reports:
+  - {id: "28 drawn − constructed (half way 13–10)", measure: {dist: ["28", n28]}}
+  - {id: "29 drawn − constructed (on the hip line)", measure: {dist: ["29", n29]}}
+  - {id: "dart length drawn (\"about 6 inches\")", measure: {dist: ["22", tDa]}}
+  - {id: "length drawn − data (2 down the centre back)", measure: {value: 'dist("2", "vCB") - length'}}
+  - {id: "centre back at the hem, drawn − constructed, x", measure: {value: 'x("vCB") - x("CBh")'}}
+  - {id: "32 drawn − constructed (¼ in more than the back neck, from 20b)", measure: {dist: ["32", n32]}}
+  - {id: "20→32 drawn − (back neck chord 9–2 + ¼ in)", measure: {value: 'dist("m20", "n32") - dist("2", "9") - 0.25 * IN'}}
+  - {id: "collar: 20b→32 − back neck", measure: {value: 'dist("20b", "32") - length("back_neck")'}}
+export:
+  back:
+    cut: 2
+    grain: vertical
+    notches: [{along: ["28", "31"], at_y_of: "4"}]       # waist level on the side seam
+  front:
+    cut: 2
+    grain: vertical
+    notches: [{along: ["28", "30"], at_y_of: "4"}, {point: Bk}]   # waist level; the crease's foot
+    darts: [[Dl, Da, Dr]]
+  top_sleeve:
+    cut: 2
+    grain: vertical                                   # the square's long arm (p. 60)
+    notches: [{point: sl15}, {point: sl11}, {point: sl3}]   # elbow on both seams; the head's top at 3
+  under_sleeve:
+    cut: 2
+    grain: vertical
+    notches: [{point: sl16}, {point: sl10}]
+  collar:
+    cut: 2                                            # upper and under collar; 32–top is the centre
+    grain: vertical                                   # back (cut on the fold, or seamed)

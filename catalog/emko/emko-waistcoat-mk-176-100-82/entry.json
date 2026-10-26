@@ -1,0 +1,446 @@
+{
+ "id": "emko-waistcoat-mk-176-100-82",
+ "garment": "waistcoat 176-100-82",
+ "size": {
+  "label": "176-100-82",
+  "order": "height–chest girth–waist girth, cm (ЕМКО typical figure)"
+ },
+ "source": {
+  "book": "ЕМКО СЭВ т.3: Базовые конструкции мужской одежды (1988)",
+  "table": "Tables 6.4 (БК, graded), 6.2 and 6.3 (ИМК and МК)",
+  "corpus": "emko"
+ },
+ "rights": "Drafting method; methods are uncopyrightable (project policy). Pattern pieces are constructed from the book's tables by ccat. Where the book leaves a curve \"по модели\" and only draws it (the waistcoat МК armhole), that curve is traced from the figure (fair use, project policy). Source is a personal copy, processed offline; the book itself is not redistributed.",
+ "status": {
+  "construction": "МК (model construction, the finished garment), Table 6.3, graded over Table 6.4's typical figures",
+  "sewable": false,
+  "note": "Not test-sewn, at any size. The finished waistcoat's drafted pieces for one of Table 6.4's typical figures (V-neck, button stand, cutaway front, shortened back), matching the book's printed values. The armhole is traced from Fig. 32 for 176-100-88 and carried to this size between its constructed ends. Still to add: welt pockets, facings and button positions."
+ },
+ "notice": "Not for AI training.",
+ "construction": {
+  "recipe": "recipes/emko/waistcoat_mk.yaml",
+  "data": {
+   "graded": "data/emko/waistcoat_graded.yaml",
+   "model": "data/emko/waistcoat_176-100-88.yaml",
+   "figure": "176-100-82"
+  },
+  "units": "cm"
+ },
+ "export": {
+  "seam_allowance_cm": 1.5,
+  "seam_allowance_basis": "export default, uniform; not from the source",
+  "notch_depth_cm": 0.6,
+  "grain": "vertical in the drafting frame",
+  "darts": "cut edge runs straight across the dart mouth (caps not trued); drill hole 1 cm short of the apex",
+  "tiled_pdf": {
+   "letter": {
+    "page_cm": [
+     21.59,
+     27.94
+    ],
+    "pages_incl_cover": 13,
+    "margin_cm": 1.0,
+    "overlap_cm": 1.0
+   },
+   "a4": {
+    "page_cm": [
+     21.0,
+     29.7
+    ],
+    "pages_incl_cover": 13,
+    "margin_cm": 1.0,
+    "overlap_cm": 1.0
+   }
+  }
+ },
+ "pieces": [
+  {
+   "name": "mk_back",
+   "cut": 2,
+   "notches": 4,
+   "darts": 1,
+   "stitch_perimeter_cm": 168.306,
+   "cut_perimeter_cm": 180.915,
+   "area_cm2": 1363.57
+  },
+  {
+   "name": "mk_front",
+   "cut": 2,
+   "notches": 5,
+   "darts": 1,
+   "stitch_perimeter_cm": 160.844,
+   "cut_perimeter_cm": 173.072,
+   "area_cm2": 1265.46
+  }
+ ],
+ "gate": {
+  "recipe": "emko-waistcoat-mk",
+  "passed": true,
+  "gate_rel": 0.01,
+  "printed_step": 0.05,
+  "checks": [
+   {
+    "id": "chest-width-row9",
+    "measured": 55.5,
+    "expected": 55.5,
+    "error": 0.0,
+    "rel": 0.0,
+    "tol": 0.01,
+    "floor": 0.025,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "row 9 (31–37), Table x.2",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "d_t-row1",
+    "measured": NaN,
+    "expected": NaN,
+    "error": null,
+    "rel": null,
+    "tol": 0.01,
+    "floor": 0.0,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "Table 6.3 row 1: d_т by its formula vs printed 6,5",
+    "missing": [
+     "m1"
+    ],
+    "skipped": true
+   },
+   {
+    "id": "d_b-row12",
+    "measured": NaN,
+    "expected": NaN,
+    "error": null,
+    "rel": null,
+    "tol": 0.01,
+    "floor": 0.0,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "Table 6.3 row 12: d_б by its formula vs printed −0,85 (checks 571)",
+    "missing": [
+     "m12"
+    ],
+    "skipped": true
+   },
+   {
+    "id": "row2-formula",
+    "measured": NaN,
+    "expected": NaN,
+    "error": null,
+    "rel": null,
+    "tol": 0.01,
+    "floor": 0.0,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "Table 6.3 row 2: 41–42 = 0,7|31–33|, printed 15,0",
+    "missing": [
+     "m2"
+    ],
+    "skipped": true
+   },
+   {
+    "id": "row6-formula",
+    "measured": NaN,
+    "expected": NaN,
+    "error": null,
+    "rel": null,
+    "tol": 0.01,
+    "floor": 0.0,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "Table 6.3 rows 6–7: 0,4 d_т − 1,0, printed 1,6",
+    "missing": [
+     "m1",
+     "m6"
+    ],
+    "skipped": true
+   },
+   {
+    "id": "row8-formula",
+    "measured": NaN,
+    "expected": NaN,
+    "error": null,
+    "rel": null,
+    "tol": 0.01,
+    "floor": 0.0,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "Table 6.3 rows 8–9: 0,1 d_т, printed 0,65",
+    "missing": [
+     "m1",
+     "m8"
+    ],
+    "skipped": true
+   },
+   {
+    "id": "half-waist",
+    "measured": 46.718,
+    "expected": 46.7,
+    "error": 0.018,
+    "rel": 0.000386,
+    "tol": 0.01,
+    "floor": 0.025,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "Table 6.2 row 61 (|411–470|)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "half-hip",
+    "measured": 55.5795,
+    "expected": 55.55,
+    "error": 0.0295,
+    "rel": 0.000531,
+    "tol": 0.01,
+    "floor": 0.025,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "Table 6.2 row 62 (|511–570|)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "side-back-vs-front",
+    "measured": 38.7095,
+    "expected": 38.7097,
+    "error": -0.0002,
+    "rel": 6e-06,
+    "tol": 0.01,
+    "floor": 0.025,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "side seam sews back to front",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "neck-row26-vs-26_1",
+    "measured": 11.3923,
+    "expected": 11.3923,
+    "error": 0.0,
+    "rel": 0.0,
+    "tol": 0.01,
+    "floor": 0.025,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "Table 6.3 rows 26 and 26.1 both fix 17' (|371–17'| = |371'–17| and R 16'–17' = 16–17)",
+    "missing": [],
+    "skipped": false
+   },
+   {
+    "id": "mk-row2-formula",
+    "measured": NaN,
+    "expected": NaN,
+    "error": null,
+    "rel": null,
+    "tol": 0.01,
+    "floor": 0.0,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "Table 6.3 МК row 2: 411–912 = 0,5|411–511|, printed 9,6",
+    "missing": [
+     "k2"
+    ],
+    "skipped": true
+   },
+   {
+    "id": "mk-side-back-vs-front",
+    "measured": 29.1882,
+    "expected": 29.2633,
+    "error": -0.0751,
+    "rel": 0.002565,
+    "tol": 0.01,
+    "floor": 0.025,
+    "by_floor": false,
+    "absolute": false,
+    "passed": true,
+    "source": "the МК side seam sews back to front (hem at 942 / 942')",
+    "missing": [],
+    "skipped": false
+   }
+  ],
+  "reports": [
+   {
+    "id": "back-shoulder",
+    "value": 15.2593,
+    "note": "|121–122'| + |122–14'|"
+   },
+   {
+    "id": "front-shoulder",
+    "value": 15.2155,
+    "note": "= |121–14| by construction (row 53)"
+   },
+   {
+    "id": "back-neck-width",
+    "value": 7.8907,
+    "note": ""
+   },
+   {
+    "id": "front-neck",
+    "value": 11.3923,
+    "note": ""
+   },
+   {
+    "id": "chest-dart-deg",
+    "value": 4.3343,
+    "note": ""
+   },
+   {
+    "id": "armhole",
+    "value": 54.1742,
+    "note": "Table 6.2 prints no ДП (no sleeve); the shrunk mouths 23'–23 and 352–352' left out"
+   },
+   {
+    "id": "back-dart-shrunk-deg",
+    "value": -7.0003,
+    "note": ""
+   },
+   {
+    "id": "chest-dart-turn-deg",
+    "value": 4.3343,
+    "note": ""
+   },
+   {
+    "id": "belly-dart-deg",
+    "value": -1.1322,
+    "note": ""
+   },
+   {
+    "id": "shoulder-back",
+    "value": 15.9597,
+    "note": "vs front: the 1.0 shoulder ease (row 17)"
+   },
+   {
+    "id": "shoulder-front",
+    "value": 15.2155,
+    "note": ""
+   },
+   {
+    "id": "armhole-mouth-back",
+    "value": 1.3305,
+    "note": "shrunk out (сутюжка)"
+   },
+   {
+    "id": "armhole-mouth-front",
+    "value": 0.6778,
+    "note": "the chest dart, shrunk out"
+   },
+   {
+    "id": "mk-shoulder-ease",
+    "value": 1.0,
+    "note": "= ПТ_пос 1,0 by МК rows 12–13"
+   },
+   {
+    "id": "mk-armhole",
+    "value": 64.7337,
+    "note": "traced from Fig. 32; no printed target"
+   },
+   {
+    "id": "mk-v-tangent-deg",
+    "value": 90.0,
+    "note": "±90° when 373–162 is tangent at 162"
+   },
+   {
+    "id": "mk-front-dart-at-hem",
+    "value": 0.8477,
+    "note": ""
+   },
+   {
+    "id": "mk-back-dart-at-hem",
+    "value": 2.12,
+    "note": ""
+   }
+  ],
+  "interpretations": [
+   {
+    "point": "571",
+    "note": "Figs. 7, 31: 571 on the front edge at the hip; row 12's d_б checks it"
+   },
+   {
+    "point": "123'",
+    "note": "no row defines 123'; Figs. 7 and 14 put it where the dart leg 22–122' meets the shoulder line 121–141"
+   },
+   {
+    "point": "56",
+    "note": "Fig. 31: 56 on the hip (hem) line below 46"
+   },
+   {
+    "point": "17",
+    "note": "perpendicular at 161 meets the front edge"
+   },
+   {
+    "point": "342''",
+    "note": "upper back armhole tangent to the lower arc at 332 (centre on 332–342)"
+   },
+   {
+    "point": "343''",
+    "note": "upper front armhole tangent to the lower arc at 352 (centre on 352–343)"
+   },
+   {
+    "point": "nb",
+    "note": "back neck horizontal at 112"
+   },
+   {
+    "point": "172",
+    "note": "front neck: equilateral construction, radius |16–17|"
+   },
+   {
+    "point": "341'",
+    "note": "Figs. 2, 7, 21: the side line drops from the middle of the armhole bottom 341–346"
+   },
+   {
+    "point": "941",
+    "note": "Figs. 2, 7: one side corner 941 = 941', at the back hem level"
+   },
+   {
+    "point": "96",
+    "note": "Figs. 2, 7: 96 on the hem below 46, where the front hem turns level"
+   },
+   {
+    "point": "321",
+    "note": "Fig. 31: the back dart's top on the chest line above 42"
+   },
+   {
+    "point": "52",
+    "note": "Fig. 31: the back dart's foot on the hip line below 42"
+   },
+   {
+    "point": "541'",
+    "note": "the hip is the hem here (51 ≡ 91): back and front share the БК side corner at the back level (torso.yaml 941); the front hem falls from 542' to 56 (row 14)"
+   },
+   {
+    "point": "942",
+    "note": "Fig. 32: the back hem runs level from 912 to the side seam"
+   },
+   {
+    "point": "942'",
+    "note": "МК row 3: 441'–942' = 0,5|441'–541'|, taken on the ИМК side seam 443'–542' (Fig. 32)"
+   }
+  ]
+ },
+ "files": {
+  "pattern.dxf": "7f9cc77c37fb8bd33351de8e2d800e7fa2999dd86c363f05df702b977776d4c2",
+  "pattern.svg": "a2a3d5b782da505400578e9503f94ff5973deedc57c1b88ea2cdfd888cf14ffa",
+  "pattern_a4.pdf": "964c4b4d54082f2be68aad1e724669ce8fbd4a03ebc8c8d66929f34d8e387ae3",
+  "pattern_letter.pdf": "8d3a9edaa80b6153bfdc61f19b1388dcf37418849c2ec09f562df9c309f91f9b"
+ },
+ "provenance": {
+  "ccat": "0.1.0",
+  "commit": "18bace8"
+ }
+}

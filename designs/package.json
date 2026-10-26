@@ -1,0 +1,24 @@
+{
+  "name": "publicsewing-designs",
+  "private": true,
+  "description": "PublicSewing: made-to-measure designs built on FreeSewing's MIT-licensed core. Not for AI training.",
+  "type": "module",
+  "license": "SEE LICENSE IN ../LICENSE",
+  "scripts": {
+    "test": "node --test",
+    "sizes": "node sizes/usda1939/parse.mjs && node sizes/usda1939/check.mjs",
+    "render": "node tools/render.mjs"
+  },
+  "dependencies": {
+    "@freesewing/bent": "4.10.2",
+    "@freesewing/breanna": "4.10.2",
+    "@freesewing/brian": "4.10.2",
+    "@freesewing/config": "^4.10.2",
+    "@freesewing/core": "4.10.2",
+    "@freesewing/models": "4.10.2",
+    "@freesewing/plugin-theme": "^4.10.2",
+    "@freesewing/plugin-transform": "^4.10.2",
+    "@freesewing/titan": "^4.10.2",
+    "yaml": "2.8.1"
+  }
+}

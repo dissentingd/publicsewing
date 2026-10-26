@@ -1,0 +1,172 @@
+# Mackinaw: Simons' double-breasted belted mackinaw (Drafting Cotton Garments and Mackinaws,
+# 1918, Diagrams XVII, XX, XXI) on FreeSewing's Brian block. See BRIEF.md for where each
+# default is read.
+about:
+  id: mackinaw
+  name: Mackinaw
+  description: A double-breasted, belted wool work jacket with flapped patch pockets
+  difficulty: 4
+  tags: [jackets, coats]
+  techniques: [patch-pocket, flap, collar, facing, button, belt]
+  version: 0.1.0
+  source: Simons, Drafting Cotton Garments and Mackinaws (1918), Diagrams XVII, XX, XXI (draftingcottonga00simo)
+
+block: brian
+
+options:
+  # Fit: drafted "two sizes larger" than the sack coat, for heavy wool over other layers
+  chestEase: { pct: 24, min: 12, max: 40, of: chest, menu: fit }
+  bicepsEase: { pct: 30, min: 15, max: 60, of: biceps, menu: fit }
+  cuffEase: { pct: 110, min: 50, max: 170, of: wrist, menu: fit }
+  seatEase: { pct: 14, min: 4, max: 30, of: seat, menu: fit }
+  # Style
+  lengthBelowWaist: { pct: 210, min: 120, max: 300, menu: style } # x waistToSeat
+  frontDrop: { pct: 17, min: 0, max: 40, menu: style } # x waistToSeat
+  sleeveLengthBonus: { pct: 5, min: -10, max: 15, menu: style }
+  buttonExtension: { pct: 7, min: 5, max: 10, of: chest, menu: style }
+  buttons: { count: 3, min: 2, max: 5, menu: style }
+  hemCurve: { pct: 0, min: 0, max: 100, menu: style }
+  sleeveStyle: { dflt: setIn, list: [setIn, raglan], menu: style }
+  collarStyle: { dflt: convertible, list: [convertible, military, shawl], menu: style }
+  collarWidth: { pct: 27, min: 18, max: 40, of: neck, menu: style }
+  belt: { bool: true, menu: style }
+  beltWidth: { pct: 4.2, min: 2.5, max: 7, of: chest, menu: style }
+  breastPockets: { bool: true, menu: style }
+  lowerPockets: { bool: true, menu: style }
+  pocketShape: { dflt: rounded, list: [rounded, pointed, square], menu: style }
+  pocketFlaps: { bool: true, menu: style }
+  # Construction
+  facingWidth: { pct: 14, min: 10, max: 20, of: chest, menu: construction }
+
+pieces:
+  back:
+    from: brian.back
+    hide: tree
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, belt, beltWidth, sleeveStyle]
+    let:
+      # Belt band: width from the chest, set a little above the waist (Simons: D down ~1 5/8")
+      beltW: chest * beltWidth
+      beltY: cbWaist.y - beltW * 0.2
+    ops:
+      - coatBack: {}
+      # Raglan sleeves (Diagram XXIII) go with the convertible and military collars
+      - raglan: { which: back, if: "sleeveStyle == 'raglan' and collarStyle != 'shawl'" }
+      # Belt placement (the belt is sewn on over the waist)
+      - store: { key: coat.belt, value: { w: beltW, y: beltY }, if: belt }
+      - markLine: { id: beltTop, from: [0, beltY], to: [sideHem.x, beltY], class: mark dashed, if: belt }
+      - markLine: { id: beltBottom, from: [0, beltY + beltW], to: [sideHem.x, beltY + beltW], class: mark dashed, if: belt }
+
+  front:
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [buttonExtension, buttons, hemCurve, frontDrop, facingWidth, breastPockets, lowerPockets, pocketShape, pocketFlaps]
+    let:
+      # Double-breasted: a wide stand, hem sweeping down toward the front edge
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+      shawl: collarStyle == 'shawl'
+      topButton: underarm.y + ext * 0.4
+      beltW: chest * beltWidth
+      beltY: cfWaist.y - beltW * 0.2
+    ops:
+      - coatFront:
+          ext: ext
+          r: ext * hemCurve
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          # Shawl: a V neck down to the break, just above the top button (XVII: 16)
+          neckY: if(shawl, topButton - ext * 0.5, null)
+      - raglan: { which: front, if: "sleeveStyle == 'raglan' and not shawl" }
+      # XVIII: stand 3/4", collar 3 1/2" + 3/4" at CB; XVII: lapel about 3" at its widest
+      - shawl:
+          if: shawl
+          stand: neck * 0.05
+          width: neck * collarWidth
+          lapel: ext * 1.15
+      # Two rows of buttons, from just below the chest line to below the belt
+      - buttons:
+          count: buttons
+          top: topButton
+          bottom: cfWaist.y + waistToSeat * 0.55
+          rows: [-ext * 0.62, ext * 0.62]
+      - store: { key: coat.belt, value: { w: beltW, y: beltY }, if: belt }
+      - markLine: { id: beltTop, from: [-ext, beltY], to: [sideHem.x, beltY], class: mark dashed, if: belt }
+      - markLine: { id: beltBottom, from: [-ext, beltY + beltW], to: [sideHem.x, beltY + beltW], class: mark dashed, if: belt }
+      # Pockets, as shares of q. Lower pockets sit below the belt (Diagram XVII: flapped
+      # patch pockets, rounded bottom, ~7 1/2" x 8 1/2" at breast 38); breast pockets at the
+      # chest line (Diagram XXI). Flaps cover the mouths; a lower pocket moves down by its
+      # flap's gap to make room for the flap under the belt.
+      - store:
+          key: coat.pockets
+          value:
+            breast:
+              x: q * 0.2
+              y: underarm.y + q * 0.06
+              h: q * 0.42 * 1.15
+              w: min(q * 0.42, armholeHollow.x - q * 0.05 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+              flap: { if: pocketFlaps, h: w * 0.32, gap: w * 0.07 }
+            lower:
+              x: q * 0.3
+              _top: if(belt, beltY + beltW, cfWaist.y) + waistToSeat * 0.3
+              h: min(q * 0.7 * 1.1, cfHem.y - q * 0.08 - _top)
+              w: min(q * 0.7, sideHem.x - q * 0.06 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+              flap: { if: pocketFlaps, h: w * 0.32, gap: w * 0.07 }
+              y: _top + if(pocketFlaps, flap.gap, 0)
+      - markPocket: { id: breastPocket, pocket: coat.pockets.breast, if: breastPockets }
+      - markPocket: { id: lowerPocket, pocket: coat.pockets.lower, if: lowerPockets }
+
+  facing:
+    part: facing
+    from: front
+
+  # Two of Simons' mackinaw collars. Both run the whole neckline to just short of the front
+  # edge (Diagram XX: 28 to 30 is 3/8"), so the coat can button to the throat.
+  # - convertible (XX): stand and fall, worn turned down with the lapels open or up and
+  #   closed; pointed ends.
+  # - military (XXI): a deeper collar with square ends, cut straighter so it stands higher.
+  # The shawl collar is cut in one with the front (and its facing).
+  collar:
+    after: [back, front]
+    measurements: [neck]
+    options: [collarStyle, collarWidth]
+    let:
+      military: collarStyle == 'military'
+    ops:
+      - hidePiece: { if: "collarStyle == 'shawl'" }
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext * 0.9
+          spring: target * if(military, 0.06, 0.13)
+          width: neck * collarWidth * if(military, 1.1, 1)
+          point: if(military, 0, neck * 0.05)
+
+  sleeve:
+    part: sleeve
+    after: front
+    options: [sleeveLengthBonus]
+    if: "not (sleeveStyle == 'raglan' and collarStyle != 'shawl')"
+  frontSleeve:
+    part: raglanSleeve
+    after: [back, front]
+    which: front
+    nr: 12
+    options: [sleeveLengthBonus]
+    if: "sleeveStyle == 'raglan' and collarStyle != 'shawl'"
+  backSleeve:
+    part: raglanSleeve
+    after: [back, front]
+    which: back
+    nr: 13
+    options: [sleeveLengthBonus]
+    if: "sleeveStyle == 'raglan' and collarStyle != 'shawl'"
+
+  breastPocket: { part: pocket, after: front, key: breast, nr: 6, label: breastPocket, cut: 2, if: breastPockets }
+  breastFlap: { part: flap, after: front, key: breast, nr: 7, label: breastFlap, cut: 2, if: breastPockets }
+  lowerPocket: { part: pocket, after: front, key: lower, nr: 8, label: lowerPocket, cut: 2, if: lowerPockets }
+  lowerFlap: { part: flap, after: front, key: lower, nr: 9, label: lowerFlap, cut: 2, if: lowerPockets }
+  backBelt: { part: belt, after: [back, front], piece: back, nr: 10, if: belt }
+  frontBelt: { part: belt, after: [back, front], piece: front, nr: 11, if: belt }

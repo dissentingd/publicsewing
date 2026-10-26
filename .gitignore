@@ -1,0 +1,64 @@
+docker/data/
+docker/cache/
+docker/build.log
+__pycache__/
+.pytest_cache/
+*.egg-info/
+
+# local secrets (API keys) and API response cache
+SECRETS.md
+sourcing/cache/
+
+# source corpus: second copy of Cloudbox ~/custom-clothing/corpus. Tracked: the manifest, and the
+# PDFs of the most-used public-domain sources (archive.org scans, US pre-1931 or US-government
+# works, each file under GitHub's 100 MB limit). Google Books saves (gb_*), anything not cleared,
+# and the page-image archives stay out. Hashes: corpus/MANIFEST.yaml.
+corpus/*
+!corpus/MANIFEST.yaml
+!corpus/krl00366374/
+!corpus/scienceofgrading00simo_0/
+!corpus/scienceofgrading00simo/
+!corpus/draftingpantsove00simo/
+!corpus/draftingcottonga00simo/
+!corpus/designingovercoa00simo/
+!corpus/designingsackcoa00simo/
+!corpus/designingboysjuv00simo/
+!corpus/americangarmentc01rega/
+!corpus/americangarmentc02rega/
+!corpus/americanpatterng00rega/
+!corpus/grandeditionofsu00croo/
+!corpus/newsupremesystem00croo/
+!corpus/gordonsworkoncut00gord/
+!corpus/textbookofgreatm00rude/
+!corpus/practicaldesigne01rose/
+!corpus/practicaldesigne02rose/
+!corpus/newstandardworko00mitc/
+!corpus/standardworkoncu00mitc/
+!corpus/nationalgarment00gold/
+!corpus/bodymeasurements366obri/
+!corpus/childrensbodymea365obri/
+!corpus/womensmeasuremen454obri/
+!corpus/vincentmakingshirts18xx/
+!corpus/cutterspracticalguide-part-1-youngmens/
+!corpus/uptodatedresscuttingpartone/
+!corpus/anfertigungvonw00behr/
+corpus/**/*.zip
+# its PDF is over 100 MB, so the page images stand in for it
+!corpus/patterdraftingpicken/
+!corpus/patterdraftingpicken/patterdraftingpicken_jp2.zip
+
+# catalog: only entry.json and pattern.svg are tracked; PDFs/DXF are reproducible from the entry's commit
+catalog/*/*/*.pdf
+catalog/*/*/*.dxf
+catalog/**/.*.building/
+
+# ЕМКО СЭВ page OCR: verbatim text of an in-copyright book, kept out of the repo
+# (regenerate with scripts/emko_ocr_pages.py in the tools image)
+data/emko/ocr/p-*.txt
+
+# internal working notes: kept locally, not published
+CLAUDE.md
+CLOUDBOX.md
+HANDOFF.md
+HANDOFF.digest.md
+outreach/

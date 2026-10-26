@@ -1,0 +1,40 @@
+# ЕМКО СЭВ т.3 (1988), Table 1.2 (p.6): base construction, men's jacket,
+# semi-fitted silhouette, size 176-100-88. Back & front framework (Fig. 2),
+# rows 1–12. Transcribed from the scan (vision); values in cm.
+#
+# Columns: seg = segment between numbered points; f = formula (T## = body
+# measurement no. per Soviet/CMEA typology, П = total allowance);
+# base = |A–B| (body value), ps = ease for movement (ПС), pp = interlining (ПП),
+# pk = ПК = ПС+ПП, fin = finished garment |A–B|+ПК, pt = technological
+# allowance (ПТ), p = total allowance П = ПК+ПТ, draft = |A–B|+П (on the draft).
+source: {book: "ЕМКО СЭВ т.3", page: 6, table: "1.2", size: "176-100-88", figure: 2}
+rows:
+  - {n: 1,  seg: "11-91", f: "T40+(T7-T12)+П",         base: 74.6,  ps: 1.2, pp: 0.4,  pk: 1.6,  fin: 76.2,  pt: 1.14, p: 2.74, draft: 77.35}
+  - {n: 2,  seg: "11-21", f: "0.3*T40+П",              base: 13.65, ps: 1.2, pp: 0.4,  pk: 1.6,  fin: 15.25, pt: 0.23, p: 1.83, draft: 15.5}
+  - {n: 3,  seg: "11-31", f: "T39+П",                  base: 21.4,  ps: 1.2, pp: 0.4,  pk: 1.6,  fin: 23.0,  pt: 0.35, p: 1.95, draft: 23.35}
+  - {n: 4,  seg: "11-41", f: "T40+П",                  base: 45.5,  ps: 1.2, pp: 0.4,  pk: 1.6,  fin: 47.1,  pt: 0.71, p: 2.31, draft: 47.8}
+  - {n: 5,  seg: "41-51", f: "0.65*(T7-T12)+П",        base: 18.9,  ps: 0,   pp: 0,    pk: 0,    fin: 18.9,  pt: 0.28, p: 0.28, draft: 19.2}
+  - {n: 6,  seg: "31-33", f: "0.5*T47+П",              base: 20.35, ps: 1.5, pp: 0.4,  pk: 1.9,  fin: 22.25, pt: 0.22, p: 2.1,  draft: 22.45}
+  - {n: 7,  seg: "33-35", f: "T57+П",                  base: 12.4,  ps: 2.6, pp: 0.85, pk: 3.45, fin: 15.85, pt: 0.16, p: 3.6,  draft: 16.0}
+  - {n: 8,  seg: "35-37", f: "0.5*(45+T15-0.8-T14)+П", base: 19.6,  ps: 0.9, pp: 1.0,  pk: 1.9,  fin: 21.5,  pt: 0.21, p: 2.1,  draft: 21.7}
+  - {n: 9,  seg: "31-37", f: "|31-33|+|33-35|+|35-37|", base: 52.35, ps: 5.0, pp: 2.25, pk: 7.25, fin: 59.60, pt: 0.59, p: 7.8,  draft: 60.15}
+  - {n: 10, seg: "37-47", f: "T40-T39+П",              base: 24.1,  ps: 0,   pp: 0,    pk: 0,    fin: 24.1,  pt: 0.48, p: 0.48, draft: 24.6}
+  - {n: 11, seg: "47-57", f: "0.65*(T7-T12)+П",        base: 18.9,  ps: 0,   pp: 0,    pk: 0,    fin: 18.9,  pt: 0.38, p: 0.38, draft: 19.3}
+  - {n: 12, seg: "47-97", f: "T7-T12+П",               base: 29.1,  ps: 1.0, pp: 0,    pk: 1.0,  fin: 30.1,  pt: 0.6,  p: 1.6,  draft: 30.7, note: "ПС=1.0 (visual)"}
+  # ---- rows with full allowance columns, pp.6–12 (transcribed by vision) ----
+  - {n: 13, seg: "33-13",   f: "0.5*T38+П",  base: 18.05, ps: 0.2, pp: 1.35, pk: 1.55, fin: 19.6,  pt: 0.2,  p: 1.75, draft: 19.8,  note: "ПП=(0.55+0.8)"}
+  - {n: 14, seg: "35-15",   f: "0.44*T38+П", base: 15.9,  ps: 0.2, pp: 1.6,  pk: 1.8,  fin: 17.7,  pt: 0.36, p: 2.16, draft: 18.05, note: "ПП=(0.8+0.8)"}
+  - {n: 15, seg: "33-331",  f: "П",          base: 0,     ps: 2.5, pp: 1.5,  pk: 4.0,  fin: 4.0,   pt: 0,    p: 4.0,  draft: 4.0}
+  - {n: 16, seg: "35-351",  f: "П",          base: 0,     ps: 2.5, pp: 1.5,  pk: 4.0,  fin: 4.0,   pt: 0,    p: 4.0,  draft: 4.0}
+  - {n: 27, seg: "111-12",  f: "0.18*T13+П", base: 7.4,   ps: 0.3, pp: 0.45, pk: 0.75, fin: 8.15,  pt: -0.25, p: 0.5, draft: 7.9}
+  - {n: 29, seg: "12-121",  f: "0.08*T13+П", base: 3.3,   ps: -0.9, pp: 0.25, pk: -0.65, fin: 2.65, pt: 0,   p: -0.65, draft: 2.65, note: "ПС=(0.3-1.2), ПП=(0.65-0.4)"}
+  - {n: 47, seg: "47-36",   f: "T36-T35+П",  base: 20.3,  ps: 0.4, pp: 0,    pk: 0.4,  fin: 20.7,  pt: 0.42, p: 0.82, draft: 21.1}
+  - {n: 51, seg: "371'-361", f: "0.18*T13+П", base: 7.4,  ps: 0.3, pp: 0.45, pk: 0.75, fin: 8.15,  pt: 0.12, p: 0.87, draft: 8.25}
+  - {n: 52, seg: "36-16",   f: "T44-(T40+0.08*T13-0.7)-(T36-T35)+П", base: 26.8, ps: 0.3, pp: 1.05, pk: 1.35, fin: 28.15, pt: 0.56, p: 1.91, draft: 28.7}
+  - {n: 54, seg: "16-161",  f: "0.195*T13+П", base: 8.0,  ps: 0.4, pp: 0.45, pk: 0.85, fin: 8.85,  pt: 0,    p: 0.85, draft: 8.85}
+  - {n: 61, seg: "411-470", f: "0.5*T18+П",  base: 44.0,  ps: 2.75, pp: 4.25, pk: 7.0, fin: 51.0,  pt: 0.51, p: 7.51, draft: 51.5}
+  - {n: 62, seg: "511-570", f: "0.5*T19+П",  base: 51.9,  ps: 2.0, pp: 2.3,  pk: 4.3,  fin: 56.2,  pt: 0.56, p: 4.86, draft: 56.75}
+  - {n: 71, seg: "351-333", f: "T57+4.0+П",  base: 16.4,  ps: 3.85, pp: 0.65, pk: 4.5, fin: 20.9,  pt: 0.21, p: 4.71, draft: 21.1}
+  - {n: 88, seg: "13-333-93", f: "T33-|121-14|+П", base: 59.3, ps: 4.2, pp: 1.5, pk: 5.7, fin: 65.0, pt: 0.98, p: 6.68, draft: 66.0, note: "base=(74.9-15.6)"}
+  - {n: 89, seg: "13-333-43", f: "T32-|121-14|+П", base: 33.7, ps: 2.1, pp: 1.5, pk: 3.6, fin: 37.3, pt: 0.56, p: 4.16, draft: 37.85, note: "base=(49.3-15.6)"}
+  - {n: 90, seg: "95-931",  f: "0.5*T29+П",  base: 9.25,  ps: 4.5, pp: 1.55, pk: 6.05, fin: 15.3,  pt: 0.15, p: 6.2,  draft: 15.45}

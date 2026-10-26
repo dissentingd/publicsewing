@@ -1,0 +1,54 @@
+# Knickerbockers: Walker's girl's and woman's knickerbockers and child's drawers (Manual of
+# Needlework and Cutting Out, 1909, Cutting-out Diagrams No. 19-21) on FreeSewing's Titan
+# trouser block: full legs gathered into bands below the knee, an elastic waist. For any size:
+# bloomers, knickers, plus-fours. See BRIEF.md.
+about:
+  id: knickerbockers
+  name: Knickerbockers
+  description: Full knee-length knickers or bloomers gathered into leg bands, with an elastic waist
+  difficulty: 2
+  tags: [bottoms, children, sleepwear]
+  techniques: [gathering, elastic, band, button]
+  version: 0.1.0
+  source: Walker, Manual of Needlework and Cutting Out (1909), knickerbockers and drawers (krl00366374)
+
+block: titan
+
+options:
+  seatEase: { pct: 18, min: 5, max: 40, of: seat, menu: fit } # full, gathered
+  bandBelowKnee: { pct: 12, min: -20, max: 40, menu: style } # x waistToKnee
+  blouse: { pct: 10, min: 0, max: 30, menu: style } # extra length that hangs over the band
+  legFlare: { pct: 8, min: 0, max: 30, of: seat, menu: style } # at the outseam
+  kneeBandEase: { pct: 15, min: 5, max: 40, of: knee, menu: fit }
+  bandWidth: { pct: 6, min: 3, max: 12, of: knee, menu: style } # finished, x knee
+  casing: { pct: 3.5, min: 2, max: 6, of: waist, menu: style } # elastic width, x waist
+
+pieces:
+  front:
+    from: titan.front
+    hide: tree
+    options: all
+    ops:
+      - gatheredLeg:
+          which: front
+          bandY: waistToKnee * (1 + bandBelowKnee)
+          hemY: bandY + waistToKnee * blouse
+          flare: seat * legFlare
+          casing: 2 * waist * casing + 6 # a fold-over casing, elastic width x 2 plus turn-under
+  back:
+    from: titan.back
+    hide: tree
+    options: all
+    ops:
+      - gatheredLeg:
+          which: back
+          bandY: waistToKnee * (1 + bandBelowKnee)
+          hemY: bandY + waistToKnee * blouse
+          flare: seat * legFlare
+          casing: 2 * waist * casing + 6
+  # Leg band: round the leg below the knee, with an overlap to button; folded in half
+  band:
+    part: legBand
+    after: [back, front]
+    length: knee * (1 + kneeBandEase)
+    width: 2 * knee * bandWidth

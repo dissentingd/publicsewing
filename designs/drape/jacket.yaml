@@ -1,0 +1,52 @@
+# Drape a princess-seamed jacket (lib/jacket.mjs) on GarmentCode's female average body: back
+# (on the fold) and side back, front and side front (the fronts cut at CF, so the two sew
+# closed edge to edge), and the two-piece sleeve. Collar and facings are left off. Export:
+#   node tools/drape-export.mjs tailored-jacket cisFemaleAdult34 out.json \
+#     --pieces back,sideBack,sideFront,front,topsleeve,undersleeve --clip front=cfLine \
+#     --m chest=900,waist=800,seat=1070
+#
+# Placement: cm, y up, the body facing +z, its right side at -x; each piece is the right-hand
+# copy. Body f_smpl_average_A40: height 165, bust 90, waist 80, hips 107; neck point ~141 up,
+# shoulders x +-22 at 135, torso z -11 to +15. Side panels sit 2 cm outside their neighbours
+# (they overlap them where the seams cross).
+body: f_smpl_average_A40
+pieces:
+  back: {origin: [back.cbNeck, back.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -15]}
+  sideBack: {origin: [back.cbNeck, back.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -17]}
+  front: {origin: [front.clipBottom, front.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 19]}
+  sideFront: {origin: [front.clipBottom, front.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 21]}
+  # The sleeve's length (drafting y) along the arm, 221 deg about z: out and 41 deg down; its
+  # top at the shoulder. Top sleeve before the arm, under sleeve behind. The two-part sleeve
+  # has its front at -x (the one-piece sleeve at +x), hence the flipped x.
+  topsleeve: {origin: topsleeve.top, map: [[0, 1], [-1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-21, 137, 7]}
+  undersleeve: {origin: topsleeve.top, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-21, 137, -9]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.cbNeck, back.cbHem]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.clipTop, front.clipBottom]}], mirror: true}
+  back_princess:
+    a: [{piece: back, along: [back.seamTop, back.seamBust, back.seamWaist, back.hemSeam]}]
+    b: [{piece: sideBack, along: [sideBack.seamTop, sideBack.seamBust, sideBack.seamWaist, sideBack.hemSeam]}]
+  front_princess:
+    a: [{piece: front, along: [front.seamTop, front.seamBust, front.seamWaist, front.hemSeam]}]
+    b: [{piece: sideFront, along: [sideFront.seamTop, sideFront.seamBust, sideFront.seamWaist, sideFront.hemSeam]}]
+  side:
+    a: [{piece: sideBack, along: [sideBack.armhole, sideBack.waist, sideBack.hemSide]}]
+    b: [{piece: sideFront, along: [sideFront.armhole, sideFront.waist, sideFront.hemSide]}]
+  shoulder:
+    a: [{piece: back, along: [back.hps, back.seamTop]}, {piece: sideBack, along: [sideBack.seamTop, sideBack.shoulder]}]
+    b: [{piece: front, along: [front.hps, front.seamTop]}, {piece: sideFront, along: [sideFront.seamTop, sideFront.shoulder]}]
+    anchors: [[back.seamTop, front.seamTop]]
+  # From the shoulder down the front armhole and up the back one; the sleeve from its top down
+  # the top sleeve's front edge, round the under sleeve, and back up the top sleeve
+  armhole:
+    a: [{piece: sideFront, along: [sideFront.shoulder, sideFront.armhole]},
+        {piece: sideBack, along: [sideBack.armhole, sideBack.shoulder]}]
+    b: [{piece: topsleeve, along: [topsleeve.top, topsleeve.frontPitchPoint, topsleeve.tsLeftEdge]},
+        {piece: undersleeve, along: [undersleeve.usLeftEdge, undersleeve.usTip]},
+        {piece: topsleeve, along: [topsleeve.backPitchPoint, topsleeve.top]}]
+  sleeve_front:
+    a: [{piece: topsleeve, along: [topsleeve.tsLeftEdge, topsleeve.tsElbowLeft, topsleeve.tsWristLeft]}]
+    b: [{piece: undersleeve, along: [undersleeve.usLeftEdge, undersleeve.usElbowLeft, undersleeve.usWristLeft]}]
+  sleeve_back:
+    a: [{piece: topsleeve, along: [topsleeve.backPitchPoint, topsleeve.elbowRight, topsleeve.tsWristRight]}]
+    b: [{piece: undersleeve, along: [undersleeve.usTip, undersleeve.elbowRight, undersleeve.usWristRight]}]

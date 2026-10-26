@@ -1,0 +1,9 @@
+# ЕМКО СЭВ т.3 §6, men's waistcoat, semi-fitted: base construction (БК), Table 6.2
+# (Fig. 30). The torso without a sleeve; the front ends at the hip level 57
+# (the table has no row 12). V-neck, pockets and lining are model
+# construction (Table 6.3), not yet built.
+extends: torso.yaml
+recipe: emko-waistcoat
+source: {book: "ЕМКО СЭВ т.3", section: 6, tables: ["6.2"], figures: [30]}
+points:
+  "97": {project: {x_of: "47", y_of: "57"}, note: "front ends at 57 (no row 12)"}
