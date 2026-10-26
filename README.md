@@ -69,9 +69,11 @@ options.
   with [MANIFEST.yaml](corpus/MANIFEST.yaml) recording each one's origin and rights basis.
   Sources are cited by folder id, e.g. `draftingcottonga00simo`.
 - `SOURCING.md` and `RESEARCH.md`: how the sources were found and vetted, and what else exists.
-- **Archived:** `ccat/`, `recipes/`, `data/`, `catalog/`, `pilot/` and `drape/` hold an earlier
-  approach: a Python pipeline that reproduced drafting systems point by point and checked them
-  against the values the books print. It's kept for reference and isn't maintained.
+- `scripts/`: the corpus manifest and fetch scripts. `docker/`: the GarmentCode image the 3D
+  drapes run in.
+- **`archive/`:** an earlier approach, not maintained and not used by the designs: a Python
+  pipeline that reproduced drafting systems point by point and checked them against the values
+  the books print. Kept for its readings of the books; see [archive/README.md](archive/README.md).
 
 ## Sources and copyright
 
@@ -99,7 +101,7 @@ expression of a book (its text, layout and illustrations) is. Each design takes 
 proportions and construction from a book, gets its geometry from FreeSewing's blocks, and is
 written in our own words. No source text or illustration is reproduced outside `corpus/`.
 
-The archived pipeline (`ccat/` and the folders with it) also read the formulas and sizing
+The archived pipeline (`archive/`) also read the formulas and sizing
 tables of ЕМКО СЭВ (1988), which is still in copyright. Only its numbers and methods are in
 the repository, recomputed by our code; its text and scans are not.
 

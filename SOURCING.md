@@ -3,7 +3,7 @@
 Goal: source **complete timeless wardrobes in 4–6 styles** (men, women,
 unisex, children) from content our tools can interpret and vectorize
 cheaply. This takes priority over infrastructure, per the extraction pilot
-([pilot/FINDINGS.md](pilot/FINDINGS.md)): a prose system with freehand
+([archive/pilot/FINDINGS.md](archive/pilot/FINDINGS.md)): a prose system with freehand
 diagrams costs too much per garment.
 
 ## Styles (confirmed 2026-10-16)
@@ -303,15 +303,15 @@ and Google Books has never been swept systematically for this project.
 | ***Sartorial Gazette*** (London: R. Taylor; trade monthly, incorporates *Master Tailor & Cutters' Gazette*) | Cutting articles + diagrams by working cutters; e.g. A. H. Scriven's three skirt systems (Conical, Ashbourne, Dovedale), Aug 1915 | vol. 25 (1918): Google Books full view [`xd2D_O5qhjwC`](https://books.google.com/books?id=xd2D_O5qhjwC) (Illinois copy); vol. 26 (1919): archive.org [`sartorialgazette2619unse`](https://archive.org/details/sartorialgazette2619unse) (400 ppi, open). **1915 (vol. ~22) not found yet**; Illinois likely holds the run → HathiTrust (Cloudflare: needs the maintainer's browser) | UK, pre-1931 → PD in US | **Candidate, secondary.** Many authors and systems, like Bridgland 1919: one adapter per article system, so use only for specific garments (women's skirts, styles 1/4) |
 
 ## Round 7 (2026-10-19): Google Books full-view sweep + patents
-**Method.** `scripts/gbooks_sweep.py` ran the 124 queries in
-[sourcing/queries.yaml](sourcing/queries.yaml) through the Books API with
+**Method.** `archive/scripts/gbooks_sweep.py` ran the 124 queries in
+[archive/sourcing/queries.yaml](archive/sourcing/queries.yaml) through the Books API with
 `filter=full` (key in gitignored SECRETS.md). The groups were systems/authors,
 what trade, design and correspondence schools taught from, textbooks, US
 government, trade journals, the workwear/military/children gaps, and foreign
 terms. Results are kept if published before 1931 or flagged PD:
-**1,631 volumes** in [sourcing/gbooks_hits.tsv](sourcing/gbooks_hits.tsv),
+**1,631 volumes** in [archive/sourcing/gbooks_hits.tsv](archive/sourcing/gbooks_hits.tsv),
 **252 shortlisted** by title in
-[sourcing/gbooks_relevant.tsv](sourcing/gbooks_relevant.tsv) (rerun from the
+[archive/sourcing/gbooks_relevant.tsv](archive/sourcing/gbooks_relevant.tsv) (rerun from the
 gitignored cache costs no quota). The full-view filter caps each query at
 ~20 results, so the sweep is broad, not exhaustive.
 **Caveats.**
@@ -772,12 +772,12 @@ fails the gate.
   printed measures alone puts the rest within about 0.1 in (rms 0.08 cm), so the drawn points
   can serve as checks.
 - **Source type:** a fifth kind beside table, grid, lettered-point text and dimensioned diagram:
-  **point text with a to-scale marked diagram**. New plumbing: `ccat/diagram.py` (markers,
+  **point text with a to-scale marked diagram**. New plumbing: `archive/ccat/diagram.py` (markers,
   heavy strokes) and a recipe `drawing:` fit (ccat.recipe). `PRINTED_STEP` = ¼ in.
 - **First garment built:** the box coat (pp. 16–19), back and front, in gate 14/14. The
   diagrams (pp. 17 and 37) draw the shoulder 5¾ in where the text prints 6. ruled
   2026-10-24 that the text governs, so the drawn shoulder is a report. Findings, discrepancies and readings are in
-  `recipes/mitchell/FINDINGS.md`.
+  `archive/recipes/mitchell/FINDINGS.md`.
 
 **Status: source #3 (women's tailored), in progress.** Table I could be a size-preset input later. Women's tailored goes to Mitchell
 1921 (`newstandardworko00mitc`).
@@ -799,11 +799,11 @@ fails the gate.
 ## ЕМКО pilot (2026-10-17)
 Jacket base construction rows 1–12 transcribed, **12/12 self-consistent, formulas
 cross-check to ≤0.01 cm**; OCR ~90% with all error types detectable.
-See [pilot/emko/FINDINGS.md](pilot/emko/FINDINGS.md).
+See [archive/pilot/emko/FINDINGS.md](archive/pilot/emko/FINDINGS.md).
 
 ## Next steps (proposed)
 1. ~~Grid-vectorization pilot on Walker~~ **done 2026-10-17: ~1% accuracy,
-   near-mechanical** ([pilot/GRID_FINDINGS.md](pilot/GRID_FINDINGS.md)).
+   near-mechanical** ([archive/pilot/GRID_FINDINGS.md](archive/pilot/GRID_FINDINGS.md)).
 2. ~~Government-sources round~~ done 2026-10-17 (above). Follow-ups: DLA FOIA, ЕМКО СЭВ copy.
 3. Image-survey the menswear trade manuals (Croonborg 1907/1917, Regal
    grader 1917, Vincent jacket/military) and pick the men's block source.

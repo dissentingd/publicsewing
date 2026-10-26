@@ -11,7 +11,7 @@ Night-shirt", Cutting-out Diagrams No. 8–9, PDF pp. 253–254 (book pp. 235–
 - neck band and collar, and an underarm gusset;
 - side seams open at the foot, with rounded corners.
 
-The old pipeline traced these pages (`data/walker/trace/p-235.yaml`, `p-236.yaml`); this
+The old pipeline traced these pages (`archive/data/walker/trace/p-235.yaml`, `p-236.yaml`); this
 design uses them only as the reference.
 
 ## Defaults (on lib/yoke.mjs)

@@ -5,8 +5,8 @@
 within each), from sources that are cheap to vectorize.
 
 **Proven pipelines:** grid-drafted sources vectorize almost mechanically at ~1%
-accuracy (Walker pilot, `pilot/GRID_FINDINGS.md`); prose+freehand sources are
-costly (Browne pilot, `pilot/FINDINGS.md`).
+accuracy (Walker pilot, `archive/pilot/GRID_FINDINGS.md`); prose+freehand sources are
+costly (Browne pilot, `archive/pilot/FINDINGS.md`).
 
 **Top sources (all PD-checked):**
 - Walker *Needlework and Cutting Out* (1909): grid drafts; style 4 + children.
@@ -18,7 +18,7 @@ costly (Browne pilot, `pilot/FINDINGS.md`).
 - **Mitchell 1921 ladies' (vetted 2026-10-23, source #3 for women's tailored):** numbered-point
   text plus a to-scale diagram with every point marked. The text prints almost no results; the
   diagrams are the checks (fitted, rms 0.08 cm). Box coat built and in gate. Its drawn shoulder
-  (5¾ in against a printed 6) is a report: the text governs (2026-10-24). See `recipes/mitchell/FINDINGS.md`.
+  (5¾ in against a printed 6) is a report: the text governs (2026-10-24). See `archive/recipes/mitchell/FINDINGS.md`.
 - Vincent *Systems of Cutting* (1903) + Croonborg (1907/17), Regal *Garment
   Cutter*/*Pattern Grader* (1904–17), Gordon (1910): menswear; styles 1 & 3.
 - Pivnick *How to Design Beautiful Clothes* (1949, HathiTrust-cleared): modern
@@ -46,7 +46,7 @@ jacket drafts, validate vs MIL spec finished measurements); HathiTrust needs
 browser (Cloudflare); the maintainer's *Dressmaking Made Easy* edition unknown.
 
 **ЕМКО pilot done:** tables self-validate (12/12 rows, ≤0.01 cm cross-check);
-OCR+validation+vision-fallback pipeline viable (pilot/emko/FINDINGS.md).
+OCR+validation+vision-fallback pipeline viable (archive/pilot/emko/FINDINGS.md).
 **Next:** full ЕМКО jacket (rows 13+, curves, other sizes via GOST); get Vols 2,4,5,6; DLA request
 decision; per-style garment→source build list.
 
@@ -74,9 +74,9 @@ candidate. *Sartorial Gazette* (London trade monthly): vol 25 1918 (Google
 Books) + vol 26 1919 (archive.org); the 1915 Scriven skirt article isn't
 located yet (HathiTrust, the maintainer's browser); secondary, multi-author.
 
-**Round 7 (2026-10-19): Google Books full-view sweep** (`scripts/gbooks_sweep.py`,
-124 queries in `sourcing/queries.yaml`; 1,631 PD volumes → 252 shortlisted in
-`sourcing/gbooks_relevant.tsv`). All vetted picks have a PDF download; browser-saved
+**Round 7 (2026-10-19): Google Books full-view sweep** (`archive/scripts/gbooks_sweep.py`,
+124 queries in `archive/sourcing/queries.yaml`; 1,631 PD volumes → 252 shortlisted in
+`archive/sourcing/gbooks_relevant.tsv`). All vetted picks have a PDF download; browser-saved
 Google PDFs are 600 ppi (an earlier "downsampled" note was wrong). **Top:**
 Simons *Sack Coats* 1917 `qjUyAQAAMAAJ` (replaces the failed LoC download, source
 #2) + *Pants and Overalls* 1915 + Simons' journal *Clothing Designer and

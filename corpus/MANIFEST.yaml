@@ -213,22 +213,19 @@ sources:
     origin: https://archive.org/download/<identifier>/<identifier>_djvu.txt
     rights: derived text of the listed archive.org items
     cited_by:
-    - CLAUDE.md
-    - HANDOFF.md
-    - PIPELINE.md
+    - archive/PIPELINE.md
     - RESEARCH.digest.md
     - RESEARCH.md
     - SOURCING.md
-    - outreach/franken_textiles_permission.md
     - scripts/corpus_fetch.py
     - scripts/corpus_manifest.py
-    - scripts/emko_blind_run.py
-    - scripts/emko_fill_gaps.py
-    - scripts/emko_ocr_bench.py
-    - scripts/emko_ocr_pages.py
-    - scripts/gbooks_sweep.py
-    - tests/test_emko.py
-    - tests/test_emko_jacket.py
+    - archive/scripts/emko_blind_run.py
+    - archive/scripts/emko_fill_gaps.py
+    - archive/scripts/emko_ocr_bench.py
+    - archive/scripts/emko_ocr_pages.py
+    - archive/scripts/gbooks_sweep.py
+    - archive/tests/test_emko.py
+    - archive/tests/test_emko_jacket.py
     files:
       CAT31314740.txt:
         bytes: 121320
@@ -1326,56 +1323,54 @@ sources:
     origin: a private copy
     rights: methods uncopyrightable (project policy); personal copy, processed offline; not for redistribution
     cited_by:
-    - CLAUDE.md
-    - HANDOFF.md
-    - PIPELINE.md
+    - archive/PIPELINE.md
     - SOURCING.digest.md
     - SOURCING.md
-    - ccat/__main__.py
-    - ccat/recipe.py
-    - ccat/sources/emko.py
-    - ccat/sources/emko_formula.py
-    - ccat/sources/emko_ocr.py
-    - ccat/sources/emko_tsolve.py
-    - data/emko/coat_demi_176-100-88.yaml
-    - data/emko/coat_winter_176-100-88.yaml
-    - data/emko/jacket_176-100-88.yaml
-    - data/emko/jacket_graded.yaml
-    - data/emko/jacket_insulated_176-100-88.yaml
-    - data/emko/summer_jacket_176-100-88.yaml
-    - data/emko/waistcoat_176-100-88.yaml
-    - pilot/emko/FINDINGS.md
-    - pilot/emko/emko_check.py
-    - pilot/emko/emko_grade_check.py
-    - pilot/emko/emko_grade_jacket.py
-    - pilot/emko/emko_hood.py
-    - pilot/emko/emko_jacket.py
-    - pilot/emko/emko_trousers.py
-    - pilot/emko/jacket_table14.yaml
-    - pilot/emko/trousers_table74.yaml
-    - recipes/emko/BLIND_RUN.md
-    - recipes/emko/OCR_STEP4.md
-    - recipes/emko/blind_run_A.md
-    - recipes/emko/blind_run_B.md
-    - recipes/emko/blind_run_C.md
-    - recipes/emko/jacket.yaml
-    - recipes/emko/jacket_framework.yaml
-    - recipes/emko/jacket_imk.yaml
-    - recipes/emko/sleeve.yaml
-    - recipes/emko/torso.yaml
-    - recipes/emko/waistcoat.yaml
+    - archive/ccat/__main__.py
+    - archive/ccat/recipe.py
+    - archive/ccat/sources/emko.py
+    - archive/ccat/sources/emko_formula.py
+    - archive/ccat/sources/emko_ocr.py
+    - archive/ccat/sources/emko_tsolve.py
+    - archive/data/emko/coat_demi_176-100-88.yaml
+    - archive/data/emko/coat_winter_176-100-88.yaml
+    - archive/data/emko/jacket_176-100-88.yaml
+    - archive/data/emko/jacket_graded.yaml
+    - archive/data/emko/jacket_insulated_176-100-88.yaml
+    - archive/data/emko/summer_jacket_176-100-88.yaml
+    - archive/data/emko/waistcoat_176-100-88.yaml
+    - archive/pilot/emko/FINDINGS.md
+    - archive/pilot/emko/emko_check.py
+    - archive/pilot/emko/emko_grade_check.py
+    - archive/pilot/emko/emko_grade_jacket.py
+    - archive/pilot/emko/emko_hood.py
+    - archive/pilot/emko/emko_jacket.py
+    - archive/pilot/emko/emko_trousers.py
+    - archive/pilot/emko/jacket_table14.yaml
+    - archive/pilot/emko/trousers_table74.yaml
+    - archive/recipes/emko/BLIND_RUN.md
+    - archive/recipes/emko/OCR_STEP4.md
+    - archive/recipes/emko/blind_run_A.md
+    - archive/recipes/emko/blind_run_B.md
+    - archive/recipes/emko/blind_run_C.md
+    - archive/recipes/emko/jacket.yaml
+    - archive/recipes/emko/jacket_framework.yaml
+    - archive/recipes/emko/jacket_imk.yaml
+    - archive/recipes/emko/sleeve.yaml
+    - archive/recipes/emko/torso.yaml
+    - archive/recipes/emko/waistcoat.yaml
     - scripts/corpus_manifest.py
-    - scripts/emko_blind_run.py
-    - scripts/emko_fill_gaps.py
-    - scripts/emko_ocr_bench.py
-    - scripts/emko_ocr_pages.py
-    - tests/fixtures/make_pilot_garments_ref.py
-    - tests/fixtures/make_pilot_ref.py
-    - tests/fixtures/pilot_garments_ref.json
-    - tests/test_checks.py
-    - tests/test_emko.py
-    - tests/test_emko_jacket.py
-    - tests/test_emko_ocr.py
+    - archive/scripts/emko_blind_run.py
+    - archive/scripts/emko_fill_gaps.py
+    - archive/scripts/emko_ocr_bench.py
+    - archive/scripts/emko_ocr_pages.py
+    - archive/tests/fixtures/make_pilot_garments_ref.py
+    - archive/tests/fixtures/make_pilot_ref.py
+    - archive/tests/fixtures/pilot_garments_ref.json
+    - archive/tests/test_checks.py
+    - archive/tests/test_emko.py
+    - archive/tests/test_emko_jacket.py
+    - archive/tests/test_emko_ocr.py
     files:
       emko-sev3-1988.pdf:
         bytes: 51144001
@@ -1907,15 +1902,13 @@ sources:
       ua_tu_k_sh.pdf: https://mod.gov.ua/assets/tu_k_sh_88419e9b3f.pdf
     rights: US government work (public domain); Ukrainian official documents are excluded from copyright
     cited_by:
-    - CLAUDE.md
     - RESEARCH.digest.md
     - SOURCING.digest.md
     - SOURCING.md
-    - outreach/franken_textiles_permission.md
     - scripts/corpus_manifest.py
-    - sourcing/gbooks_hits.tsv
-    - sourcing/gbooks_relevant.tsv
-    - sourcing/queries.yaml
+    - archive/sourcing/gbooks_hits.tsv
+    - archive/sourcing/gbooks_relevant.tsv
+    - archive/sourcing/queries.yaml
     files:
       ua_tu_k_sh.pdf:
         bytes: 9316937
@@ -2147,7 +2140,7 @@ sources:
     rights: 'published 1909: public domain in the US (before 1931); Agnes Walker died 1908: public domain wherever the term is life + 70 or shorter'
     cited_by:
     - SOURCING.md
-    - pilot/GRID_FINDINGS.md
+    - archive/pilot/GRID_FINDINGS.md
     files:
       krl00366374.pdf:
         bytes: 16525798
@@ -2303,7 +2296,6 @@ sources:
     rights: 'published 1888: public domain in the US (before 1931); archive.org: The Library of Congress is unaware
       of any copyright restrictions for this item.'
     cited_by:
-    - CLAUDE.md
     - SOURCING.digest.md
     - SOURCING.md
     files:
@@ -3107,8 +3099,8 @@ sources:
     rights: 'published 1907: public domain in the US (before 1931); M. Prince Browne died 1921: public domain wherever the term is life + 70 or shorter'
     cited_by:
     - RESEARCH.md
-    - pilot/FINDINGS.md
-    - pilot/browne1907_bodice.yaml
+    - archive/pilot/FINDINGS.md
+    - archive/pilot/browne1907_bodice.yaml
     files:
       uptodatedresscuttingpartone.pdf:
         bytes: 16312386

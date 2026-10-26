@@ -162,7 +162,7 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
 
 ## After Mitchell: Simons' overcoats (1916), then later Woman's Institute volumes
 - Mitchell's remaining garments are listed above; the archived pipeline's readings of it are in
-  `recipes/mitchell/FINDINGS.md` (style lines and proportions).
+  `archive/recipes/mitchell/FINDINGS.md` (style lines and proportions).
 - **Simons, *Designing Overcoat Patterns* (1916, `designingovercoa00simo`, tracked):** it has
   no reefer; the peacoat (2026-10-26) takes its D.B. overcoat and ulster details onto the
   mackinaw. Still to use: its regular, box and ulster overcoats (the overcoat row is a
@@ -173,7 +173,7 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
 
 ## How this differs from what was built before
 
-| | Before (`ccat/`, 2026-10-16 to 22) | Now |
+| | Before (`archive/ccat/`, 2026-10-16 to 22) | Now |
 |---|---|---|
 | Role of the old book | Data to reproduce: every point, at the book's own sizes | A design reference: which pieces, where the style lines fall, proportions, ease, construction |
 | Where the geometry comes from | The book's drafting arithmetic, re-implemented in Python | FreeSewing's existing blocks (Brian, Bent, Bella, Breanna, Titan, Sarah), driven by the wearer's measurements |
@@ -199,7 +199,7 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
 4. **One visual comparison.** The source figure next to our draft at the book's worked size. It's a sanity look, not a gate.
 5. **Tester muslin.** The design is "draft-only" until someone sews it.
 
-From `ccat/` we keep the corpus, the rights research and the trace of the night-shirt as a
+From `archive/ccat/` we keep the corpus, the rights research and the trace of the night-shirt as a
 reference. The gate, OCR, glyph reader and adapters stop.
 
 ## Test source: Simons, *Drafting Cotton Garments and Mackinaws* (1918)

@@ -7,7 +7,7 @@ __pycache__/
 
 # local secrets (API keys) and API response cache
 SECRETS.md
-sourcing/cache/
+archive/sourcing/cache/
 
 # source corpus: second copy of Cloudbox ~/custom-clothing/corpus. Tracked: the manifest, and the
 # PDFs of the most-used public-domain sources (archive.org scans, US pre-1931 or US-government
@@ -48,13 +48,13 @@ corpus/**/*.zip
 !corpus/patterdraftingpicken/patterdraftingpicken_jp2.zip
 
 # catalog: only entry.json and pattern.svg are tracked; PDFs/DXF are reproducible from the entry's commit
-catalog/*/*/*.pdf
-catalog/*/*/*.dxf
-catalog/**/.*.building/
+archive/catalog/*/*/*.pdf
+archive/catalog/*/*/*.dxf
+archive/catalog/**/.*.building/
 
 # ЕМКО СЭВ page OCR: verbatim text of an in-copyright book, kept out of the repo
-# (regenerate with scripts/emko_ocr_pages.py in the tools image)
-data/emko/ocr/p-*.txt
+# (regenerate with archive/scripts/emko_ocr_pages.py in the tools image)
+archive/data/emko/ocr/p-*.txt
 
 # internal working notes: kept locally, not published
 CLAUDE.md

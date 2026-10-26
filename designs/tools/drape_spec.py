@@ -4,23 +4,22 @@ usage: python tools/drape_spec.py <outlines.json> <drape config.yaml> <out dir> 
 
 <outlines.json> comes from tools/drape-export.mjs; the config (drape/*.yaml) says what sews to
 what and where each piece sits on the body. Writes <out dir>/<name>/<name>_specification.json,
-then drape it with docker/ccat_sim.py in the garmentcode container (designs/drape/README.md).
-The seam stitching and placement are the archived pipeline's tested ccat.garmentcode, used
-as is: points are named "<piece>.<point>".
+then drape it with docker/ccat_sim.py in the garmentcode container (designs/drape/README.md,
+or tools/drape.mjs for the whole run). The seam stitching and placement are tools/gcspec, the
+archived pipeline's tested builder: points are named "<piece>.<point>".
 """
 import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 import yaml                                    # noqa: E402
 
-from ccat import garmentcode as GC             # noqa: E402
+from gcspec import garmentcode as GC           # noqa: E402
 
 
 class Outlines:
-    """What ccat.garmentcode.build_spec reads from a pattern."""
+    """What gcspec.garmentcode.build_spec reads from a pattern."""
 
     def __init__(self, data, recipe):
         self.pieces = {k: [tuple(p) for p in v] for k, v in data['pieces'].items()}

@@ -12,8 +12,8 @@ python tools/drape_spec.py out/drape/hc.json drape/coat-shell.yaml out/drape/spe
 python /data/ccat_sim.py -p /data/ps/hc/hc_specification.json -b m_smpl_average_A40   # (in /opt/garmentcode)
 ```
 The export takes the drafted seam outlines (cm). `drape_spec.py` stitches them and places
-them on the body by a config ([coat-shell.yaml](coat-shell.yaml)), using the archived
-pipeline's `ccat/garmentcode.py` as is. Its check that sewn edges run opposite ways caught a
+them on the body by a config ([coat-shell.yaml](coat-shell.yaml)), using `tools/gcspec`, the
+archived pipeline's tested builder (copied out of `archive/ccat/`). Its check that sewn edges run opposite ways caught a
 sleeve placed upside down on the first run.
 
 `coat-shell.yaml` drapes a Brian coat's shell: back (on the fold), two fronts closed at CF
