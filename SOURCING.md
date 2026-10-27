@@ -1,4 +1,4 @@
-# SOURCING: base-pattern sources (rounds 1–9, 2026-10-16 to 2026-10-27)
+# SOURCING: base-pattern sources (rounds 1–10, 2026-10-16 to 2026-10-27)
 
 Goal: source **complete timeless wardrobes in 4–6 styles** (men, women,
 unisex, children) from content our tools can interpret and vectorize
@@ -890,3 +890,69 @@ messy (G especially); read tables from the page images.
   Support; (3) a surplus garment, measured flat or taken apart and scanned.
   The design only needs proportions (pocket sizes and positions, collar
   shape) to lay on a FreeSewing block, so (3) is the quickest.
+
+## Round 10 (2026-10-27): everyspec beyond the garment specs, and older copies
+
+**DTIC is off limits** (the maintainer, 2026-10-27): its reports are treated as
+military/contractor-only. Natick technical reports on pattern development
+aren't pursued.
+
+### everyspec, searched by document type
+Its search box is a Google custom search over titles, so garment names find
+only garment specs. Crawling the library listings (about 9,400 titles, 86
+folders) found other kinds of document:
+
+| Title phrase | Documents | Use |
+|---|---|---|
+| ANTHROPOMETRY | **DOD-HDBK-743A**, *Anthropometry of U.S. Military Personnel* (1991) | Body-measurement statistics, men and women: size sets, proportion checks |
+| SIZE LABELING | **MIL-STD-984A**, size labeling for women's uniform clothing (1994) | The women's size system with body measurements per size |
+| PROVISIONS FOR EVALUATING QUALITY | **MIL-STD-1488G** trousers; 1492C men's shirts; 1609C women's skirts; 656 women's slacks; 1668B cloth coveralls; 1608C women's dress coats | How each garment is measured and inspected |
+| MILITARY UNIFORMS, CLOTHING FABRICATION | **MIL-HDBK-150C** *Military Uniforms* (1995); **MIL-HDBK-156A** *Glossary of Military Clothing Fabrication Items* (1995); MIL-HDBK-151B components and materials | Uniform descriptions; standard construction terms |
+| FABRIC REPAIR | TM 4-21 / FM 10-16 *General Fabric Repair* (2013 / 2000) | Sewing and repair methods (instructions) |
+
+More garment CIDs the FSC listings missed: A-A-55291 utility jacket (unisex),
+A-A-55178 cotton sateen coveralls (replaces MIL-C-2202), A-A-55095A utility
+coveralls, A-A-55229 raincoat, A-A-55110A and A-A-55260 all-weather coats,
+A-A-55265 A-2 leather flight jacket, A-A-52112B men's shirt, A-A-55085 and
+A-A-1784 trousers, A-A-55285 women's slacks. Searched with nothing useful:
+FSC 8450 (children's: empty), the Fed Spec clothing series (DDD-, JJ-), the
+ARMY-General, USAF and USMC sections. Download links are
+`<folder>/download.php?spec=<file>` on each document page.
+
+### Older copies
+- **Quartermaster *Specifications for the uniform of the United States Army***
+  (1912, 1913, 1915, 1917; archive.org, public domain). The pre-1931
+  equivalent of a MIL spec, for officers' uniforms, **with dimensioned style
+  details** the modern specs leave to the pattern. Example, the 1917 officer's
+  ulster (§47): double-breasted, 5 buttons a side, 8–10 in below the knee,
+  collar fall 4–5 in, a 25 in back slit, welted vertical pockets centred
+  opposite the lowest button and in line with the sleeve's front seam, turn-
+  back front corners. The 1914 Alaska clothing spec (no. 1171) is not
+  downloadable.
+- **USDA Bureau of Home Economics leaflets by Clarice L. Scott** (1929–1952;
+  US government works, public domain): illustrated garment designs with the
+  reasoning for each feature; no patterns ("patterns of these designs" were
+  sold commercially). *Rompers* (Leaflet 79, 1931), *Dresses for Little
+  Girls* (80, 1931), *Suits for the Small Boy* (52, 1929), *Ensembles for
+  Sunny Days* (63, 1930), *Child's Self-Help Overall* (251, 1948), *Dresses
+  Designed for Little Girls* (255, 1949), *Shopper's Coat* (271, 1950),
+  *Dresses and Aprons for Work in the Home* (Farmers' Bulletin 1963, 1944/52),
+  *Standard Sizes for Children's Clothes* (1941). Good design references for
+  the children's and women's gaps. Several other items with clothing titles
+  (*Sun Suits for Children* 1930, *Winter Play Suits* 1938, *Work Clothes for
+  Women* 1942, *Pattern Alteration* 1945) are radio-talk transcripts: text only.
+- **Older MIL specs:** MIL-C-44048F (1991, the combat coat's G predecessor,
+  56 pp), MIL-T-838L (1975, OG-107 utility trousers, 31 pp, pattern parts
+  listed), MIL-C-2202H (1990, sateen coveralls; image scan, no text layer),
+  **MIL-DTL-43455K** (2007, the M-65 field coat, 39 pp: pattern parts, an
+  operation-by-operation construction table and finished measurements; pocket
+  and flap positions still "as indicated on pattern").
+
+### Where they are
+Downloaded 2026-10-27 to the laptop corpus (`corpus/<id>/`, gitignored), not
+yet in MANIFEST.yaml or on Cloudbox: `dod-hdbk-743a`, `mil-std-984a`,
+`mil-hdbk-150c`, `mil-hdbk-156a`, `mil-std-1488g`, `mil-dtl-44048` (F, G, H),
+`mil-t-838l`, `mil-c-2202h`, `mil-dtl-43455k`, the four QM editions
+(`specificationsfo00unitiala` 1917, `specificationsfo00unitrich` 1913,
+`s00pecificationsfounitrich` 1912, `specificationsfo01unit` 1915) and the
+USDA items under their archive.org ids. The first five are to be assessed.

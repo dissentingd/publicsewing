@@ -1,4 +1,4 @@
-# SOURCING.md: digest (as of 2026-10-27, rounds 1–9)
+# SOURCING.md: digest (as of 2026-10-27, rounds 1–10)
 
 **Goal:** base patterns for complete timeless wardrobes in 5 styles (1 tailored,
 2 workwear, 3 military outerwear, 4 simple everyday, 5 mid-century; children
@@ -42,6 +42,12 @@ Round 9 (2026-10-27): detail specs (MIL-DTL) beat CIDs (A-A-); MIL-DTL-44048H
 PDFs only); SAM.gov notices and open DIBBS solicitations (PDF/DOCX/XLSX)
 carry no pattern files; no public DXF-AAMA
 collections found. Quickest geometry: measure a surplus garment.
+Round 10: DTIC off limits. everyspec also has DOD-HDBK-743A (anthropometry),
+MIL-STD-984A (women's sizes), quality-evaluation MIL-STDs, MIL-HDBK-150C/156A.
+Older copies: QM uniform specifications 1912–17 (archive.org, PD) give
+dimensioned style details; USDA Bureau of Home Economics leaflets (Clarice
+L. Scott, 1929–52, PD) are children's/women's design references; MIL-DTL-43455K
+(M-65 field coat) has a full construction table.
 
 **Renewed (trace-only):** Pepin 1942, Hillhouse 1948, Erwin, Picken *Modern
 Dressmaking Made Easy*, Poulin, Mauck, Lewis 1960 ed.
