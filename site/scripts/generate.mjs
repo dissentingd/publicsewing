@@ -7,6 +7,8 @@
 //   stout figures, the 75 USDA children's sets), grouped for the size picker
 // - docs/designs/<id>.mdx: a page per design from its BRIEF.md, with its drape renders and the
 //   editor; static/img/drape/<id>/: those renders
+// - static/img/illustrations/<id>.jpg: the finished-garment illustration from illustrations/,
+//   where there is one, at the top of the design's page and in the Designs table
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, copyFileSync, rmSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { join } from 'node:path'
@@ -20,8 +22,9 @@ const site = fileURLToPath(new URL('..', import.meta.url))
 const designsDir = join(site, '..', 'designs')
 const out = (...p) => join(site, ...p)
 
-// The designs: every folder with a spec.yaml, in the README's order where it gives one
-const ids = readdirSync(designsDir).filter((d) => existsSync(join(designsDir, d, 'spec.yaml')))
+// The designs: every folder with a spec.yaml and a BRIEF.md, in the README's order where it gives one
+// A design in progress (a spec but no brief yet) isn't listed until its brief is written
+const ids = readdirSync(designsDir).filter((d) => existsSync(join(designsDir, d, 'spec.yaml')) && existsSync(join(designsDir, d, 'BRIEF.md')))
 const readme = readFileSync(join(site, '..', 'README.md'), 'utf8')
 const order = [...readme.matchAll(/^\| `([a-z-]+)` \| (.+?) \| (.+?) \|$/gm)].map((m) => ({ id: m[1], garment: m[2], source: m[3] }))
 const rank = (id) => (order.findIndex((o) => o.id === id) + 1 || 999)
@@ -71,6 +74,8 @@ writeFileSync(out('src', 'generated', 'sizes.json'), JSON.stringify(sizes))
 // Design pages
 rmSync(out('docs', 'designs'), { recursive: true, force: true })
 rmSync(out('static', 'img', 'drape'), { recursive: true, force: true })
+rmSync(out('static', 'img', 'illustrations'), { recursive: true, force: true })
+mkdirSync(out('static', 'img', 'illustrations'), { recursive: true })
 mkdirSync(out('docs', 'designs'), { recursive: true })
 writeFileSync(
   out('docs', 'designs', '_category_.json'),
@@ -112,7 +117,17 @@ ids.forEach((id, i) => {
         '',
       ].join('\n')
     : ''
-  rows.push(`| [${about.name}](/designs/${id}) | ${info.garment} | ${info.source} |`)
+  const illustrated = existsSync(join(site, 'illustrations', `${id}.jpg`))
+  if (illustrated) copyFileSync(join(site, 'illustrations', `${id}.jpg`), out('static', 'img', 'illustrations', `${id}.jpg`))
+  const img = (cls, lazy) => `<img className="${cls}" src={useBaseUrl('/img/illustrations/${id}.jpg')} alt="${about.name}: illustration of the finished garment"${lazy ? ' loading="lazy"' : ''} />`
+  const illustration = illustrated
+    ? `<figure className="illustration">
+  ${img('illustration-img')}
+  <figcaption>An AI-generated illustration of the design at its default options, not drawn from the pattern.</figcaption>
+</figure>
+`
+    : ''
+  rows.push(`| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | [${about.name}](/designs/${id}) | ${info.garment} | ${info.source} |`)
   writeFileSync(
     out('docs', 'designs', `${id}.mdx`),
     `---
@@ -124,6 +139,7 @@ hide_table_of_contents: true
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import PatternEditor from '@site/src/components/PatternEditor'
 
+${illustration}
 :::warning[Draft, untested]
 No one has sewn this design yet. It drafts cleanly at every size in the test suite and its seams
 match, but that doesn't prove it fits. Sew a muslin before good fabric, and please
@@ -157,12 +173,13 @@ writeFileSync(
 title: Designs
 sidebar_position: 0
 ---
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
 Every design is a **draft**: none has been sewn yet. Each page has the pattern tool for that
 design, its 3D drape, and its brief.
 
-| Design | Garment | Source |
-|---|---|---|
+| | Design | Garment | Source |
+|---|---|---|---|
 ${rows.join('\n')}
 `
 )

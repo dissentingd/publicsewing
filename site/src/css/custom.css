@@ -68,3 +68,28 @@
   font-size: 0.875rem;
   color: var(--ifm-color-emphasis-700);
 }
+
+/* Finished-garment illustration at the top of a design page, and its thumbnail in the table */
+.illustration {
+  margin: 0 0 1.5rem;
+  max-width: 420px;
+}
+.illustration-img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+.illustration figcaption {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-top: 0.4rem;
+}
+.thumb {
+  width: 72px;
+  min-width: 72px;
+  max-width: none;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
