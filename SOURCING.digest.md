@@ -1,4 +1,4 @@
-# SOURCING.md: digest (as of 2026-10-27, rounds 1–10)
+# SOURCING.md: digest (as of 2026-10-27, rounds 1–11)
 
 **Goal:** base patterns for complete timeless wardrobes in 5 styles (1 tailored,
 2 workwear, 3 military outerwear, 4 simple everyday, 5 mid-century; children
@@ -50,6 +50,11 @@ dimensioned style details (rated B); USDA Bureau of Home Economics leaflets
 MIL-DTL-43455K (M-65 field coat) has sizes and a construction table (B).
 Rating A geometry / B dimensions / C numeric support / D description only:
 fetch A and B only.
+Round 11 (grade A, archive.org subject-heading search; Google Books blocked):
+Sheifer 1908 (girls'/women's coats, grading), d'Alessio 1906 (boys' jackets,
+grading), Vincent *Jacket Cutting* (reefers, pyjamas) and *Military Uniforms*
+(pea jacket), Merz 1911 (ladies' jackets/cloaks), Schorr 1917, Ratner 1908,
+Weiler 1915. Downloaded to corpus/, not in MANIFEST.
 
 **Renewed (trace-only):** Pepin 1942, Hillhouse 1948, Erwin, Picken *Modern
 Dressmaking Made Easy*, Poulin, Mauck, Lewis 1960 ed.

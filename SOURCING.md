@@ -1,4 +1,4 @@
-# SOURCING: base-pattern sources (rounds 1–10, 2026-10-16 to 2026-10-27)
+# SOURCING: base-pattern sources (rounds 1–11, 2026-10-16 to 2026-10-27)
 
 Goal: source **complete timeless wardrobes in 4–6 styles** (men, women,
 unisex, children) from content our tools can interpret and vectorize
@@ -974,3 +974,45 @@ yet in MANIFEST.yaml or on Cloudbox: `dod-hdbk-743a`, `mil-std-984a`,
 (`specificationsfo00unitiala` 1917, `specificationsfo00unitrich` 1913,
 `s00pecificationsfounitrich` 1912, `specificationsfo01unit` 1915) and the
 USDA items under their archive.org ids. The first five are to be assessed.
+
+## Round 11 (2026-10-27): grade-A search, new terms
+
+**Google Books was blocked this round:** the anonymous API quota was used up
+(HTTP 429), and the search page showed an "unusual traffic" CAPTCHA, which we
+don't get past. Re-run Google Books searches from a normal browser.
+
+**archive.org by subject heading** (`subject:"garment cutting"`, `"tailoring"`,
+`"dressmaking"`, `"children's clothing"`, `"coats"`, … , 1850–1930, texts)
+instead of title words: about 120 cutting and drafting systems not yet in
+this file. Drafting systems are grade A by nature (lettered or numbered
+points with measurements). The ones aimed at open gaps were checked for
+measurement density in their OCR text and downloaded to `corpus/<id>/`
+(gitignored, not yet in MANIFEST.yaml or on Cloudbox):
+
+| id | Book | Inch measures in OCR | For |
+|---|---|---|---|
+| `nssheiferssystem00shei` | Sheifer, *System of Designing and Grading Ladies', Misses' & Children's Garments* (New York 1908, 110 pp) | 163 | **Girl's coat**, women's coats: lettered drafts for tight-fitting (one and two dart), semi-fitting and box coats, with grading |
+| `artofdesigningcu00ales` | d'Alessio, *The Art of Designing, Cutting and Grading Gentlemen and Boys Clothes* (New York 1906, 134 pp) | 301 | **Boy's suit jacket**: boy's jacket and sailor coat at 8 years, grading |
+| `cutters-prac-guide-jacket-cutting` | Vincent, *Cutter's Practical Guide to Jacket Cutting*: lounges, reefers, patrol jackets, pyjamas (1897) | 106 | **Pyjamas**, reefer (peacoat), Norfolk, boys' jackets |
+| `cutters-guide-brit.-mil.-uniforms.-1`, `militaryuniformsbritish-images` | Vincent, *Cutting and Making British Military Uniforms* (1902; 1914) | 369; 148 | Pea jacket ("British warm"), field and service tunics, overcoats |
+| `merzspracticalcu00merz` | Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911, 80 pp) | 110 | **Women's peacoat / field jacket** |
+| `expertdesignerpr00scho` | Schorr, *The Expert Designer* (American Pattern Co., 1917, 110 pp) | 279 | Women's garments, pattern making |
+| `ratnersuptodatem00ratn` | Ratner, *Up-to-date Method of Designing … Grading* (Chicago 1908, 265 pp) | 146 | Ladies' and children's, grading |
+| `weilerladiestail00weil` | Weiler, *Ladies Tailor-Dressmaker, Designer, Cutter and Fitter* (1915, 154 pp) | 138 | Women's tailored |
+
+All US pre-1931 (public domain) except Vincent (UK; PD in the US, as rounds
+1–2). Rating A on content; each still needs its drafts checked against the
+gate (printed checks) before building.
+
+Also checked, lower:
+- Peek, *Practical Instruction in Cutting Out and Making Up Hospital Garments*
+  (London 1914, `krl00394014`): cutting instructions in inches (pyjamas,
+  bed shirts, dressing gowns), but the "sheets of diagrams drawn to scale"
+  aren't in the scan. B. Not downloaded.
+- American Red Cross, *Surgical Dressings, Hospital Garments and Supplies*
+  (1917): patterns were sold separately. D.
+- No OCR text, not yet assessed: Glickstein 1909 (ladies', misses' and
+  children's), Blackburn 1917, Livingston 1922.
+
+The rest of the subject-heading list (in this session's scratchpad, not kept)
+is mostly men's tailoring systems overlapping Vincent, Croonborg and Gordon.
