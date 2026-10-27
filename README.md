@@ -82,7 +82,7 @@ options.
 - `corpus/`: scans (PDF) of the books the designs draw on and of others kept for research,
   with [MANIFEST.yaml](corpus/MANIFEST.yaml) recording each one's origin and rights basis.
   Sources are cited by folder id, e.g. `draftingcottonga00simo`.
-- `SOURCING.md` and `RESEARCH.md`: how the sources were found and vetted, and what else exists.
+- `SOURCING.md`: where the designs' sources come from, what makes one worth using, and what's held but not built; `SOURCING-ARCHIVE.md` and `RESEARCH.md`: the full research logs.
 - `scripts/`: the corpus manifest and fetch scripts. `docker/`: the GarmentCode image the 3D
   drapes run in.
 - **`archive/`:** an earlier approach, not maintained and not used by the designs: a Python

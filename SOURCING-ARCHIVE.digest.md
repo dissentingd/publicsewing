@@ -1,4 +1,4 @@
-# SOURCING.md: digest (as of 2026-10-27, rounds 1–11)
+# SOURCING-ARCHIVE.md: digest (rounds 1–11, archived 2026-10-27; current summary: SOURCING.md)
 
 **Goal:** base patterns for complete timeless wardrobes in 5 styles (1 tailored,
 2 workwear, 3 military outerwear, 4 simple everyday, 5 mid-century; children
