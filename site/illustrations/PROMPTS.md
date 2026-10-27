@@ -3,7 +3,8 @@
 One finished-garment illustration per design, for the top of its page and the Designs table.
 Each prompt describes the design **at its default options**, which is what the pattern drafts
 before anyone changes anything. Written from each design's `spec.yaml` and `BRIEF.md`
-(2026-10-27). When a design's defaults change, update its entry here.
+(2026-10-27; the ЕМКО designs added the same day). When a design's defaults change, update its
+entry here.
 
 Save each image as `site/illustrations/<design>.jpg` (square, at least 1024 px).
 
@@ -111,6 +112,58 @@ viewer's right.
 > slightly shaped at the elbow.
 >
 > Leave out: insignia, badges, epaulettes, belt, patch or bellows pockets, flaps, lapels.
+
+## Men's jackets and coats (ЕМКО 1988)
+
+### windbreaker: Windbreaker
+> A light, hip-length **zip-front jacket** in plain tightly woven cotton or poplin (olive, navy
+> or stone). Straight, roomy body, hem level all round, drawn in a little at the sides by
+> **elastic in the hem**. A **front zip from hem to neck**, its teeth showing between the two
+> fronts (shown zipped up). A **front yoke seam** straight across each side of the chest and a
+> **back yoke**, both topstitched. A **two-piece hood** joined over the crown, attached all
+> round the neckline, with a **drawstring in the face edge** (shown down on the shoulders, or
+> up and empty). **Two slanted welt pockets** in the lower front, leaning toward the side
+> seams. Plain set-in sleeves, **gathered by elastic at the wrists**.
+>
+> Leave out: buttons, snaps, storm flap over the zip, patch or chest pockets, quilting,
+> drawcord toggles at the hem, logos, contrast panels, a hood brim.
+
+### quilted-jacket: Quilted jacket
+> A hip-length **insulated work jacket** in plain sturdy cotton twill (navy, khaki or dark
+> green), padded with a quilted lining, so it looks **smooth and a little puffy**, not
+> stitched in diamonds or channels on the outside. Single-breasted, **seven buttons** on a
+> **wide button stand**, **buttoned right up to the throat**; no collar. A **front yoke seam
+> that slopes up from the front edge toward the shoulder**, and a **back yoke**, both
+> topstitched. A **hood** attached all round the neckline, with a **drawstring in the face
+> edge** (shown down on the shoulders). **Two slanted welt pockets** in the lower front.
+> Hem level all round, **elastic at the sides of the hem**; plain set-in sleeves.
+>
+> Leave out: visible quilting stitches on the outside, a zip, a turn-down collar, patch or
+> chest pockets, fur trim, snaps, logos.
+
+### winter-coat: Winter coat
+> A **knee-length** men's winter overcoat in heavy plain wool (charcoal, navy or brown).
+> **Straight, unfitted** body, flaring very slightly to the hem. Single-breasted, **four
+> buttons** from just below the collar to the hips, buttoned **to the collar** (no lapels).
+> A **turn-down collar** with short points. A **deep front yoke**: its seam runs across each
+> side of the chest just above the armpit; and a **shallow back yoke** across the shoulders,
+> both seams topstitched. **One near-level welt pocket on each hip**, running back from the
+> front toward the side seam and rising slightly. Plain set-in sleeves, hemmed. Lined.
+>
+> Leave out: lapels, belt, double-breasted fronts, patch or flap pockets, a hood, fur collar,
+> epaulettes, cuff tabs, a waist seam.
+
+### topcoat: Topcoat
+> A **knee-length**, **semi-fitted** men's spring-and-autumn overcoat in medium-weight wool
+> gabardine or covert cloth (fawn, stone or mid grey), cut like a long suit jacket: gently
+> shaped at the waist by a **side-panel seam** at each side, falling straight below.
+> Single-breasted, **four buttons** from just below the collar to below the waist, buttoned
+> **to the collar** (no lapels). A **turn-down collar** with short points. **Two slanted welt
+> pockets** on the hips, sloping down toward the front; no breast pocket. **Two-piece
+> sleeves**, plain at the wrist. (A back vent from the hem, not shown.)
+>
+> Leave out: lapels, belt, epaulettes, storm flap, double-breasted fronts, patch or flap
+> pockets, a ticket pocket, raglan sleeves, cuff straps.
 
 ## Women's coats and jackets (Mitchell 1921)
 
