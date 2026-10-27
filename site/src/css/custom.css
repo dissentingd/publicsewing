@@ -1,0 +1,70 @@
+/* Docusaurus (Infima) theme, plus Tailwind 4 and daisyUI 5 for the pattern editor, whose
+ * components use `tw:` utilities and `daisy-` components. No Tailwind preflight: it would reset
+ * Docusaurus' own styles. */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme) prefix(tw);
+@import 'tailwindcss/utilities.css' layer(utilities) prefix(tw);
+@source '../../node_modules/@freesewing/react';
+@source '../components';
+/* daisyUI's light and dark themes key off [data-theme], which Docusaurus sets on <html> */
+@plugin 'daisyui' {
+  prefix: 'daisy-';
+  themes: light --default, dark --prefersdark;
+}
+
+:root {
+  --ifm-color-primary: #5b4a8a;
+  --ifm-color-primary-dark: #52437c;
+  --ifm-color-primary-darker: #4d3f75;
+  --ifm-color-primary-darkest: #403460;
+  --ifm-color-primary-light: #665398;
+  --ifm-color-primary-lighter: #6c589f;
+  --ifm-color-primary-lightest: #7d6bad;
+}
+[data-theme='dark'] {
+  --ifm-color-primary: #a898d6;
+  --ifm-color-primary-dark: #9883cd;
+  --ifm-color-primary-darker: #8f79c9;
+  --ifm-color-primary-darkest: #745abb;
+  --ifm-color-primary-light: #b8addf;
+  --ifm-color-primary-lighter: #c0b7e3;
+  --ifm-color-primary-lightest: #d9d3ee;
+}
+
+/* The editor wants the page's width */
+.pattern-editor {
+  margin: 1rem 0 2rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-height: 60vh;
+}
+
+.drape {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.drape img {
+  max-width: min(100%, 320px);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.size-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+.size-picker select {
+  font: inherit;
+  padding: 0.25rem;
+}
+.size-picker-note {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+}

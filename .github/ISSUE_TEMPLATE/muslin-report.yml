@@ -1,0 +1,86 @@
+name: Muslin report
+description: You sewed a muslin (test garment) from a PublicSewing design. Tell us how it went.
+title: "Muslin: <design>, <size set or own measurements>"
+labels: [muslin-report]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing. **Everything in this issue is public**: leave out anything you'd
+        rather not share, and crop faces from photos.
+  - type: dropdown
+    id: design
+    attributes:
+      label: Design
+      options:
+        - Chore coat (chore-coat)
+        - Mackinaw (mackinaw)
+        - Peacoat (peacoat)
+        - Hunting coat (hunting-coat)
+        - Military blouse (military-blouse)
+        - Boys' work coat (boys-work-coat)
+        - Barber's coat (barbers-coat)
+        - Shop coat (shop-coat)
+        - Bar vest (bar-vest)
+        - Nightshirt (nightshirt)
+        - Nightgown (nightgown)
+        - Smock (smock)
+        - Frock (frock)
+        - Pinafore (pinafore)
+        - Knickerbockers (knickerbockers)
+        - Shirtwaist dress (shirtwaist-dress)
+        - Tailored jacket (tailored-jacket)
+        - Box coat (box-coat)
+    validations:
+      required: true
+  - type: input
+    id: size
+    attributes:
+      label: Size set or own measurements
+      description: The size set you picked (e.g. "Men 40", "Girls 7C"), or "own measurements".
+    validations:
+      required: true
+  - type: textarea
+    id: measurements
+    attributes:
+      label: Measurements (optional)
+      description: >
+        If you used your own, paste them here, or the settings from the PDF's cover page. Optional,
+        and public if you do.
+      render: yaml
+  - type: textarea
+    id: options
+    attributes:
+      label: Options you changed
+      description: Any design options or core settings (seam allowance, units) you changed from the defaults.
+  - type: input
+    id: fabric
+    attributes:
+      label: Fabric
+      description: What the muslin was made of (e.g. medium calico, old bedsheet).
+  - type: textarea
+    id: fit
+    attributes:
+      label: What fit
+      description: Balance, ease, neck and shoulders, armhole and sleeve, length.
+    validations:
+      required: true
+  - type: textarea
+    id: misfit
+    attributes:
+      label: What didn't fit
+      description: >
+        Where it pulled, gaped or was too long or short, and by how much. Seams that didn't match
+        their partner (which, and by how much). What you changed on the muslin.
+    validations:
+      required: true
+  - type: textarea
+    id: photos
+    attributes:
+      label: Photos
+      description: Front, side and back, worn. Drag images in here.
+  - type: textarea
+    id: other
+    attributes:
+      label: Anything else
+      description: Problems with the pattern tool, the PDF, the instructions.

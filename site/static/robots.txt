@@ -1,0 +1,33 @@
+# publicsewing.org. Search engines are welcome. We ask that this site not be used to train
+# machine-learning models (a request, not a licence term), so AI-training crawlers are asked
+# to stay out. See also /ai.txt.
+
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+User-agent: CCBot
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: PerplexityBot
+User-agent: Bytespider
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: FacebookBot
+User-agent: Amazonbot
+User-agent: cohere-ai
+User-agent: cohere-training-data-crawler
+User-agent: Diffbot
+User-agent: Omgilibot
+User-agent: ImagesiftBot
+User-agent: Timpibot
+User-agent: YouBot
+User-agent: AI2Bot
+User-agent: Ai2Bot-Dolma
+User-agent: DeepSeekBot
+User-agent: MistralAI-User
+Disallow: /
+
+User-agent: *
+Allow: /

@@ -4,9 +4,6 @@
 // Expressions (lib/expr.mjs) in a spec read names in this order: the piece's `let` values and
 // the operation's own earlier arguments; measurements; options; `coat.<key>` from the store;
 // `<landmark>.x` / `.y` (standard names, mapped through the block's `landmarks`).
-import { readFileSync } from 'node:fs'
-import { pathToFileURL } from 'node:url'
-import { parse } from 'yaml'
 import { Design, hidePresets, pctBasedOn } from '@freesewing/core'
 import { evaluate } from './expr.mjs'
 import {
@@ -323,27 +320,21 @@ export function designFromSpec(spec) {
     parts[key] = part
   }
 
+  // A test square on its own piece, in every design: printed at 100%, the box is its stated size
+  parts.testSquare = {
+    name: `${spec.about.id}.testSquare`,
+    draft: ({ points, Point, macro, part }) => {
+      points.scalebox = new Point(0, 0)
+      macro('scalebox', {
+        at: points.scalebox,
+        lead: 'PublicSewing',
+        title: spec.about.name,
+        text: 'Draft pattern, untested. Print at 100% and measure this box.',
+        link: 'publicsewing.org',
+      })
+      return part
+    },
+  }
+
   return { Design: new Design({ data: spec.about, parts: Object.values(parts) }), parts, about: spec.about }
 }
-
-/**
- * Read a spec file (path or file URL). `extends: <file>` starts from another spec: its pieces
- * (keeping their names, unless the parent is a template with no `about`), block and options,
- * with this spec's about, option changes (merged into the parent's, e.g.
- * `buttons: { count: 5 }`), and pieces added or replaced by key.
- */
-export function readSpec(file) {
-  const url = file instanceof URL ? file : pathToFileURL(file)
-  const spec = parse(readFileSync(url, 'utf8'))
-  if (!spec.extends) return spec
-  const parent = readSpec(new URL(spec.extends, url))
-  const options = { ...parent.options }
-  for (const [k, o] of Object.entries(spec.options ?? {})) options[k] = { ...options[k], ...o }
-  const pieces = {}
-  // A parent with no `about` is a template: its pieces take this spec's name
-  for (const [k, p] of Object.entries(parent.pieces)) pieces[k] = parent.about ? { prefix: parent.about.id, ...p } : p
-  return { ...parent, about: spec.about ?? parent.about, options, pieces: { ...pieces, ...spec.pieces } }
-}
-
-/** Read a spec file and build its design */
-export const loadSpec = (file) => designFromSpec(readSpec(file))

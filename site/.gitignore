@@ -1,0 +1,7 @@
+node_modules/
+build/
+.docusaurus/
+# Written by scripts/generate.mjs from ../designs
+src/generated/
+docs/designs/
+static/img/drape/

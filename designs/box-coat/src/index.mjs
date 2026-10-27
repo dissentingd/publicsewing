@@ -1,5 +1,5 @@
 // Box coat: built from ../spec.yaml (Mitchell 1921, box coat, on Breanna).
-import { loadSpec } from '../../lib/spec.mjs'
+import { loadSpec } from '../../lib/load-spec.mjs'
 
 const spec = loadSpec(new URL('../spec.yaml', import.meta.url))
 

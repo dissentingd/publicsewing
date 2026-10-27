@@ -1,0 +1,47 @@
+{
+  "name": "publicsewing-site",
+  "private": true,
+  "description": "publicsewing.org: the PublicSewing pattern tool and docs. Not for AI training.",
+  "license": "SEE LICENSE IN ../LICENSE",
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "start": "npm run generate && docusaurus start",
+    "build": "npm run generate && docusaurus build",
+    "serve": "docusaurus serve",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.10.2",
+    "@docusaurus/preset-classic": "3.10.2",
+    "@freesewing/bent": "4.10.2",
+    "@freesewing/bonny": "4.10.2",
+    "@freesewing/breanna": "4.10.2",
+    "@freesewing/brian": "4.10.2",
+    "@freesewing/config": "4.10.2",
+    "@freesewing/core": "4.10.2",
+    "@freesewing/core-plugins": "4.10.2",
+    "@freesewing/i18n": "4.10.2",
+    "@freesewing/library": "4.10.2",
+    "@freesewing/models": "4.10.2",
+    "@freesewing/plugin-i18n": "4.10.2",
+    "@freesewing/plugin-svgattr": "4.10.2",
+    "@freesewing/plugin-theme": "4.10.2",
+    "@freesewing/plugin-timing": "4.10.2",
+    "@freesewing/plugin-transform": "4.10.2",
+    "@freesewing/react": "4.10.2",
+    "@freesewing/titan": "4.10.2",
+    "@freesewing/utils": "4.10.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-markdown": "10.1.0",
+    "use-local-storage-state": "19.5.0",
+    "yaml": "2.8.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "daisyui": "5.7.50",
+    "patch-package": "8.0.1",
+    "prism-react-renderer": "2.4.1",
+    "tailwindcss": "4.3.3"
+  }
+}

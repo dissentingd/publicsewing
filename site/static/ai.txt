@@ -1,0 +1,6 @@
+# publicsewing.org: not for AI training.
+# We ask that the text, patterns and images on this site not be used to train
+# machine-learning models. This is a request, not a licence term.
+User-Agent: *
+Disallow: /
+Disallow: *

@@ -1,0 +1,192 @@
+diff --git a/node_modules/@freesewing/react/components/Editor/components/views/ExportView.mjs b/node_modules/@freesewing/react/components/Editor/components/views/ExportView.mjs
+index 0d6649a..5f30722 100644
+--- a/node_modules/@freesewing/react/components/Editor/components/views/ExportView.mjs
++++ b/node_modules/@freesewing/react/components/Editor/components/views/ExportView.mjs
+@@ -55,62 +55,7 @@ export const ExportView = (props) => {
+       <HeaderMenu state={state} {...{ config, update }} />
+       <div className="tw:m-auto tw:mt-8 tw:max-w-2xl tw:px-4 tw:mb-8">
+         <H1>Export Pattern</H1>
+-        <H2>Share your pattern</H2>
+-        <p>If you merely want to share your pattern with others, you can copy these URLs:</p>
+-        <div className="tw:grid tw:grid-cols-1 tw:lg:grid-cols-2 tw:gap-2 tw:mt-2 ">
+-          <CopyToClipboardButton
+-            content={urls.a}
+-            btnClasses="tw:daisy-btn tw-daisy-btn-neutral tw:daisy-btn-outline"
+-            label="Pattern and Measurements URL"
+-            onCopy={() => {
+-              console.log('handler called')
+-              update.notifySuccess('Pattern and Measurements URL copied to clipboard')
+-            }}
+-          >
+-            Pattern and Measurements
+-          </CopyToClipboardButton>
+-          <CopyToClipboardButton
+-            content={urls.b}
+-            btnClasses="tw:daisy-btn tw-daisy-btn-neutral tw:daisy-btn-outline"
+-            label="Pattern URL"
+-            onCopy={() => {
+-              console.log('handler called')
+-              update.notifySuccess('Pattern URL copied to clipboard')
+-            }}
+-          >
+-            Pattern only
+-          </CopyToClipboardButton>
+-        </div>
+-        <details className="tw:pt-2">
+-          <summary>
+-            <span className={linkClasses}>Explain these buttons</span>
+-          </summary>
+-          <div className="tw:ml-4 tw:border-l-2 tw:pl-4">
+-            <H5>Pattern and Measurements</H5>
+-            <p>
+-              Use the <b>Pattern and Measurements</b> URL to share this pattern exactly as-is,
+-              including the measurements used to generate it:
+-            </p>
+-            <Highlight noCopy title="URL" language="URL">
+-              {urls.a}
+-            </Highlight>
+-            <div className="tw:text-sm tw:-mt-3 tw:flex tw:flex-row tw:gap-2 tw:items-center tw:pl-4 tw:mb-4">
+-              <TipIcon className="tw:w-5 tw:h-5 tw:text-success" />
+-              Use this to allow others to troubleshoot your pattern.
+-            </div>
+-            <H5>Pattern only</H5>
+-            <p>
+-              Use the <b>Pattern only</b> to share this pattern as-is, but without measurements:
+-            </p>
+-            <Highlight noCopy title="URL" language="URL">
+-              {urls.b}
+-            </Highlight>
+-            <div className="tw:text-sm tw:-mt-3 tw:flex tw:flex-row tw:gap-2 tw:items-center tw:pl-4">
+-              <TipIcon className="tw:w-5 tw:h-5 tw:text-success" />
+-              Use this to allow others to recreate this pattern for themselves.
+-            </div>
+-          </div>
+-        </details>
++        {/* PublicSewing patch: no share links, which carry the measurements in the URL */}
+         <H2>Export for printing</H2>
+         <p>You can export your pattern in a variety of page formats for printing:</p>
+         <div className="tw:grid tw:grid-cols-1 tw:lg:grid-cols-2 tw:gap-2">
+@@ -158,7 +103,7 @@ export const ExportView = (props) => {
+           ))}
+         </div>
+         <H2>Export as code</H2>
+-        <p>This is all you need to reconstruct this pattern using FreeSewing&apos; software:</p>
++        {/* PublicSewing patch */}<p>The settings and measurements this pattern was drafted from:</p>
+         <div className="tw:grid tw:grid-cols-1 tw:lg:grid-cols-2 tw:gap-2 tw:mt-2">
+           {['json', 'yaml'].map((format) => (
+             <button
+diff --git a/node_modules/@freesewing/react/components/Editor/hooks/useEditorState.mjs b/node_modules/@freesewing/react/components/Editor/hooks/useEditorState.mjs
+index 505e296..150aac6 100644
+--- a/node_modules/@freesewing/react/components/Editor/hooks/useEditorState.mjs
++++ b/node_modules/@freesewing/react/components/Editor/hooks/useEditorState.mjs
+@@ -1,14 +1,10 @@
+ // Dependenicies
+-import { atomWithHash } from 'jotai-location'
++// PublicSewing patch: state in localStorage (config.stateKey), not the URL hash, so that a
++// shared link never carries the visitor's measurements. 4.10.2 ignores config.stateBackend.
++import useLocalStorageState from 'use-local-storage-state'
+ import { stateUpdateFactory } from '../lib/index.mjs'
+ // Hooks
+-import { useAtom } from 'jotai'
+-import { useMemo, useEffect } from 'react'
+-
+-/*
+- * Set up the atom
+- */
+-const urlAtom = atomWithHash('s', { setHash: 'replaceState' })
++import { useMemo } from 'react'
+ 
+ /**
+  * Url state backend
+@@ -22,41 +18,9 @@ const urlAtom = atomWithHash('s', { setHash: 'replaceState' })
+  * @return {array} return - And array with get, set, and update methods
+  */
+ export const useEditorState = (init = {}, setEphemeralState, config) => {
+-  const [state, setState] = useAtom(urlAtom)
++  const [state, setState] = useLocalStorageState(config.stateKey || 'fs-editor', { defaultValue: init })
+ 
+   const update = useMemo(() => stateUpdateFactory(setState, setEphemeralState, config), [setState])
+ 
+-  /*
+-   * Set the initial state
+-   */
+-  useEffect(() => {
+-    // Handle state on a hard reload or cold start
+-    if (typeof URLSearchParams !== 'undefined') {
+-      try {
+-        const data = getHashData()
+-        if (typeof data.s === 'object') setState(data.s)
+-        else setState(init)
+-      } catch (err) {
+-        console.log(err)
+-        setState(init)
+-      }
+-    }
+-  }, [])
+-
+   return [state, setState, update]
+ }
+-
+-function getHashData() {
+-  if (!window) return false
+-
+-  const hash = window.location.hash
+-    .slice(1)
+-    .split('&')
+-    .map((chunk) => chunk.split('='))
+-  const data = {}
+-  for (const [key, val] of hash) {
+-    data[key] = JSON.parse(decodeURIComponent(decodeURI(val)))
+-  }
+-
+-  return data
+-}
+diff --git a/node_modules/@freesewing/react/components/Editor/lib/export/index.mjs b/node_modules/@freesewing/react/components/Editor/lib/export/index.mjs
+index 530601e..b2393fc 100644
+--- a/node_modules/@freesewing/react/components/Editor/lib/export/index.mjs
++++ b/node_modules/@freesewing/react/components/Editor/lib/export/index.mjs
+@@ -93,7 +93,7 @@ export const handleExport = async ({
+       // save it out
+       if (e.data.blob) {
+         const fileType = exportTypes.exportForPrinting.indexOf(format) === -1 ? format : 'pdf'
+-        fileSaver.saveAs(e.data.blob, `freesewing-${design || 'pattern'}.${fileType}`)
++        fileSaver.saveAs(e.data.blob, `publicsewing-${design || 'pattern'}.${fileType}` /* PublicSewing patch */)
+       }
+       // do additional business
+       onComplete && onComplete(e)
+@@ -145,7 +145,7 @@ export const handleExport = async ({
+       // add the strings that are used on the cover page
+       workerArgs.strings = {
+         design: capitalize(design),
+-        tagline: 'Come for the sewing pattern. Stay for the community.',
++        tagline: 'publicsewing.org: a draft pattern, untested. Sew a muslin first.', // PublicSewing patch
+         url: window.location.href,
+         cuttingLayout: 'Cutting layout',
+       }
+diff --git a/node_modules/@freesewing/react/components/Editor/lib/export/pdf-maker.mjs b/node_modules/@freesewing/react/components/Editor/lib/export/pdf-maker.mjs
+index 8658453..24de2ff 100644
+--- a/node_modules/@freesewing/react/components/Editor/lib/export/pdf-maker.mjs
++++ b/node_modules/@freesewing/react/components/Editor/lib/export/pdf-maker.mjs
+@@ -118,8 +118,8 @@ export class PdfMaker {
+ 
+   /** generate the title for the cover page */
+   async generateCoverPageTitle() {
+-    // FreeSewing tag
+-    this.addText('FreeSewing', 20).addText(this.strings.tagline, 10, 4)
++    // PublicSewing patch: our name, no FreeSewing logo
++    this.addText('PublicSewing', 20).addText(this.strings.tagline, 10, 4)
+ 
+     // Design name, version, and Measurement Set
+     this.addText(this.strings.design, 32)
+@@ -164,11 +164,6 @@ export class PdfMaker {
+       }
+     }
+ 
+-    await SVGtoPDF(this.pdf, logoSvg, this.pdf.page.width - lineStart - 50, lineStart, {
+-      width: 50,
+-      height: this.lineLevel - lineStart,
+-      preserveAspectRatio: 'xMaxYMin meet',
+-    })
+ 
+     this.pdf.lineWidth(1)
+     this.pdf

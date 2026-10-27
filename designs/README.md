@@ -61,7 +61,8 @@ without declaring them, so they are listed in our package.json.
 | `lib/jacket.mjs` | Women's jackets and coats on Breanna: princess panels, or a box body with a pivoted neck dart; lapels, CB seam, buttons near the edge | |  |
 | `lib/pockets.mjs` | Patch pockets, flaps, belts, set-in flap pockets (flap, jet, bag) | |  |
 | `lib/trousers.mjs` | Gathered legs on Titan (knickerbockers) | |  |
-| `lib/spec.mjs`, `expr.mjs` | Builds a `spec.yaml` into a FreeSewing design ([SPEC.md](SPEC.md)) | |  |
+| `lib/load-spec.mjs` | Reads a `spec.yaml` (resolving `extends`) and builds it (Node only) | |  |
+| `lib/spec.mjs`, `expr.mjs` | Builds a spec into a FreeSewing design ([SPEC.md](SPEC.md)); no file access, so the site runs it in the browser. Adds a `testSquare` piece (a scale box) to every design | |  |
 | `drape/` | 3D drape configs (`runs.yaml`: one per draped design), renders and results ([README](drape/README.md)); `node tools/drape.mjs <design>` runs one | all 18 designs draped |  |
 | `tools/` | `render.mjs`, `snap.mjs`, `snapshot.mjs` (+ `variants.json`), `drape.mjs` (a whole drape), `drape-export.mjs`, `drape_spec.py` (+ `gcspec/`), `drape_inside.py` | |  |
 

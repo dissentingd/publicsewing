@@ -47,6 +47,11 @@ has and lists what's next.
 
 ## Using it
 
+**On the web: [publicsewing.org](https://publicsewing.org).** Each design has a page with the
+pattern tool (your measurements or a size set, options, a tiled PDF to print), its 3D drape and
+its brief, plus a measuring guide, a muslin checklist and a report form. The site is in
+[`site/`](site/README.md).
+
 The designs are in [`designs/`](designs/), an npm workspace (Node 22).
 
 ```bash
