@@ -29,6 +29,7 @@
     "@freesewing/plugin-timing": "4.10.2",
     "@freesewing/plugin-transform": "4.10.2",
     "@freesewing/react": "4.10.2",
+    "@freesewing/sarah": "4.10.2",
     "@freesewing/titan": "4.10.2",
     "@freesewing/utils": "4.10.2",
     "react": "19.3.1",

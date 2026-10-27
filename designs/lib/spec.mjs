@@ -43,10 +43,12 @@ import { brian } from '../blocks/brian.mjs'
 import { bent } from '../blocks/bent.mjs'
 import { titan } from '../blocks/titan.mjs'
 import { breanna } from '../blocks/breanna.mjs'
+import { sarah } from '../blocks/sarah.mjs'
+import { draftSkirtLayout, gorePart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart } from './jacket.mjs'
 
-const blocks = { brian, bent, titan, breanna }
+const blocks = { brian, bent, titan, breanna, sarah }
 /** FreeSewing library parts a piece can use as is (`part: library`) */
 const libraryParts = { topsleeve, undersleeve }
 
@@ -100,6 +102,8 @@ export const operations = {
     },
     literal: ['id', 'class'],
   },
+  // Gored skirt (lib/skirt.mjs): the gores laid out on Sarah's base, into `skirt.*`
+  skirtLayout: { run: draftSkirtLayout },
   // Change the piece's cutting (e.g. a waistcoat back cut twice from lining)
   cutlist: {
     run: ({ store }, { cut, from, onFold = false }) => store.cutlist.setCut({ cut, from, onFold }),
@@ -222,6 +226,16 @@ const factories = {
       enabled: enabledBy(p.if),
       size: (sh) => evalMap({ length: p.length, width: p.width }, lookupIn(sh, ctx.block, {}), {}),
     }),
+  // A gored skirt's gore (`index` 0: the front panel), from skirtLayout; `zip` marks the CB zip's end
+  gore: (p, ctx) =>
+    gorePart({
+      name: p.name,
+      after: ctx.after(p),
+      index: p.index,
+      nr: p.nr,
+      label: p.label ?? p.name.split('.').pop(),
+      zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
+    }),
   // `material` (default fabric); `lining:` an expression over options, when true it's cut in lining too
   jacketPanel: (p, ctx) =>
     jacketPanelPart({
@@ -266,7 +280,7 @@ function lookupIn(sh, block, local) {
       // `in` first: reading a missing name logs a FreeSewing warning
       if (head in measurements && measurements[head] !== undefined) return measurements[head]
       if (head in options && options[head] !== undefined) return options[head]
-    } else if (head === 'coat' || head === 'trousers') return store.get(name)
+    } else if (head === 'coat' || head === 'trousers' || head === 'skirt') return store.get(name)
     else {
       const p = points[landmarks[head] ?? head]
       if (p && rest.length === 1 && (rest[0] === 'x' || rest[0] === 'y')) return p[rest[0]]

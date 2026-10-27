@@ -9,9 +9,10 @@ import { i18n as brian } from '@freesewing/brian'
 import { i18n as bent } from '@freesewing/bent'
 import { i18n as breanna } from '@freesewing/breanna'
 import { i18n as titan } from '@freesewing/titan'
+import { i18n as sarah } from '@freesewing/sarah'
 
 const labels = parse(readFileSync(new URL('../labels.yaml', import.meta.url), 'utf8'))
-const blockLabels = { ...titan.en.o, ...breanna.en.o, ...bent.en.o, ...brian.en.o }
+const blockLabels = { ...sarah.en.o, ...titan.en.o, ...breanna.en.o, ...bent.en.o, ...brian.en.o }
 const root = new URL('..', import.meta.url)
 const designs = readdirSync(root).filter((d) => existsSync(new URL(`${d}/spec.yaml`, root)))
 

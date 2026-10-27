@@ -69,7 +69,7 @@ and marked as derived.
 |---|---|---|---|---|
 | **Tailored jacket** | 1 | — (Jaeger is menswear) | **Semi-fitted drafted 2026-10-25** (`designs/tailored-jacket`, on Breanna, not sewn) | Mitchell 1921 `newstandardworko00mitc` |
 | Skirt: pencil, circle, block | 1, 4 | Penelope, Sandy, Sarah | Have | — |
-| A-line / gored skirt | 5 | Sarah | Variant | Mitchell 1921 (gored skirts) |
+| A-line / gored skirt | 5 | Sarah | **Drafted 2026-10-27** (`designs/gored-skirt`, 5–15 gores on Sarah, not sewn) | Mitchell 1921 (gored skirts) |
 | Gathered skirt | 4 | Sarah, Sandy | Variant (trivial) | — |
 | Button-down blouse | 1 | Simone | Have | — |
 | Soft blouse (bust darts, other collars) | 1, 5 | Simone, Bella block | Variant | Rosenfeld 1911/1918, WI *Pattern Drafting* 1920 |
@@ -162,9 +162,13 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
   re-draped after these changes (pockets left off the drape): it assembles and hangs level,
   and the only real body contact is the sleeve hems at the wrists, as on the tailored jacket
   (`designs/drape/README.md`); not sewn.
+- **Gored skirts** (pp. 84–101): `designs/gored-skirt`, one design with a `gores` option (5, 7,
+  9, 11, 13 or 15), on FreeSewing's Sarah and a new library, `designs/lib/skirt.mjs`: a front
+  panel on the fold and gores in pairs laid on Sarah's seat line, the waist shaping in darts on
+  the seams, an equal flare at every seam edge, a CB zip and a waistband (2026-10-27). Tested at
+  every size; not draped, not sewn.
 - **Next from Mitchell:** the tight-fitted single- and double-dart jackets (an under-arm panel,
-  more front seams, a shawl collar, on the same library), then the gored skirts (5–15 gores;
-  a skirt library on FreeSewing's Sarah or our own).
+  more front seams, a shawl collar, on the jacket library).
 
 ## ЕМКО СЭВ vol. 3 (1988): done (2026-10-27)
 Corpus `emko`, a private copy, untracked: still in copyright, used only for its methods,

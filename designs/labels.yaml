@@ -113,6 +113,28 @@ options:
   frontDartLength:
     title: Front dart length
     description: Length of the front waist dart, as a share of waist to seat.
+  gores:
+    title: Gores
+    description: How many pieces go round the skirt, the front panel included.
+    choices: { 5: Five, 7: Seven, 9: Nine, 11: Eleven, 13: Thirteen, 15: Fifteen }
+  panelNarrowing:
+    title: Front panel narrowing
+    description: How much narrower the front panel is at the seat than an equal share, as a share of the seat (for five gores; less with more).
+  goreFlare:
+    title: Flare
+    description: Extra width at the hem of a floor-length skirt, as a share of the half seat, shared equally by the seams; a shorter skirt flares in proportion.
+  cbShaping:
+    title: Centre back shaping
+    description: The centre back seam's share of the waist shaping (for five gores; less with more).
+  panelShaping:
+    title: Front panel shaping
+    description: The front panel seams' share of the waist shaping (for five gores; less with more). The other seams share the rest.
+  frontWaistDrop:
+    title: Front waist drop
+    description: How much lower the waist sits at centre front than at centre back, as a share of waist to seat.
+  zipLength:
+    title: Zip length
+    description: Length of the zip in the centre back seam, as a share of waist to seat.
   waistbandHeight:
     title: Waistband height
     description: Finished height of the waistband, as a share of waist to floor.
@@ -435,6 +457,14 @@ options:
 
 parts:
   back: Back
+  frontPanel: Front panel
+  gore1: Gore 1
+  gore2: Gore 2
+  gore3: Gore 3
+  gore4: Gore 4
+  gore5: Gore 5
+  gore6: Gore 6
+  gore7: Gore 7
   waistband: Waistband
   flyShield: Fly shield
   flyFacing: Fly facing
