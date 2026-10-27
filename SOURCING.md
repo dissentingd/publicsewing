@@ -1,4 +1,4 @@
-# SOURCING: base-pattern sources (rounds 1–8, 2026-10-16 to 2026-10-20)
+# SOURCING: base-pattern sources (rounds 1–9, 2026-10-16 to 2026-10-27)
 
 Goal: source **complete timeless wardrobes in 4–6 styles** (men, women,
 unisex, children) from content our tools can interpret and vectorize
@@ -811,3 +811,82 @@ See [archive/pilot/emko/FINDINGS.md](archive/pilot/emko/FINDINGS.md).
    pattern inquiry.
 5. Define the per-style garment list → source mapping (which book/page
    supplies each garment), as the build list for vectorization.
+
+## Round 9 (2026-10-27): US government specs and patterns, revisited
+
+Sources reviewed for the field coat, and a search for pattern geometry
+(DXF-AAMA, AccuMark, solicitation packages). Round 3's split still holds:
+specs give construction and finished sizes, never piece shapes.
+
+### Spec quality, by document type
+| Type | Examples reviewed | What it gives | Verdict |
+|---|---|---|---|
+| **Commercial Item Description** (A-A-…) | A-A-59549 fleece bib overalls (2000), A-A-55068 flight-deck jersey (1991), A-A-50358B disposable coveralls (1990, image scan, no text layer), A-A-50383A waffle undershirt (1998) | A paragraph of design, materials, sometimes seam types, finished measurements by body-size range, a rough sketch | Thin. Ease checks at most; three of the four are knits |
+| **Detail spec** (MIL-C-… / MIL-DTL-…) | MIL-C-44048G (1995, 54 pp) and MIL-DTL-44048H (2000, 25 pp, current), combat coat | Full pattern-parts list with cut counts; G: a 19-page operation-by-operation construction table; H: a finished-measurement grid over 34 sizes (6 chests × up to 8 heights) with body ranges, a per-seam ASTM D6193 seam/stitch table, 7 dimensioned figures (fronts, pocket and flap construction, two cuff versions, bartacks) | Good. Use H for style, sizes and details, G for the construction order. Pocket sizes and positions are "as marked on patterns": not given |
+
+All are US federal works (17 USC §105), most marked Distribution Statement A,
+so they can be tracked in `corpus/` and quoted. Their OCR text layers are
+messy (G especially); read tables from the page images.
+
+### Finding specs
+- **ASSIST QuickSearch** (<https://quicksearch.dla.mil/>) is the authoritative
+  index: current revisions (into 2026), active/cancelled status, page counts,
+  revision history. Each record holds the spec PDF only: no patterns,
+  drawings or CAD. Search tip: Document ID `MIL-DTL` plus "any term" in the
+  title (`COAT,JACKET,SHIRT,TROUSERS,…`); the FSC drop-down alone didn't filter.
+- **everyspec** keeps older revisions and CIDs. Its FSC listings
+  (`/FSC-CODE/8405/`, `8410`, `8415`: 108, 40 and 233 documents) are the way
+  in; its search page returns 404 and web `site:` searches don't index it.
+- **Shortlist** for dimensioned figures (recent detail specs carry figures
+  like 44048H's), not yet downloaded:
+
+| Spec | Garment | Note |
+|---|---|---|
+| MIL-DTL-32686(1) (2024, 39 pp) / MIL-DTL-32688(1) (2025) | Marine Corps tropical blouse / trousers | A current field coat and trousers |
+| MIL-DTL-32768A / 32767A (2026) | All-weather coat, men's / women's | Trench/raincoat, both cuts |
+| MIL-DTL-3649(1) (2026) | Men's khaki shirt, long sleeves | |
+| MIL-DTL-32082B (2026) | Mechanic's coveralls, cold weather | The coverall gap |
+| MIL-DTL-29424B (2024), 29427C (2025), 29429C (2022), 29432C (2024), 32747 (2025) | Men's service coat with belt; women's service coat, skirts, slacks; men's dress trousers | Tailored |
+| MIL-C-2202H, MIL-T-87062B, MIL-S-87063B, MIL-S-87046A (everyspec, 1986–90) | Sateen coveralls, denim utility trousers and women's slacks, utility shirt | Legacy workwear |
+
+### Pattern geometry: where it is and isn't
+- **SAM.gov** (Contract Opportunities): DLA Troop Support C&T notices are
+  presolicitations; the solicitations themselves go to DIBBS. The notices
+  carry **no pattern attachments**. They say patterns come as **Gerber
+  AccuMark zip (storage area v9+), no conversion**, and **paper patterns on
+  request during the solicitation phase** via the Spec Request form (round 4).
+  Example: SPE1C1-24-R-0007, CWU-27/P flyer's coveralls (Dec 2024).
+  Keyword "AccuMark": 60 notices, mostly DLA presolicitations and the Navy
+  Clothing and Textile Research Facility's own AccuMark licences. Keyword
+  "DXF pattern": no clothing at all. The claim that SAM packages include
+  DXF or marker (`.HPGL`) files wasn't borne out.
+- **DIBBS** (<https://www.dibbs.bsm.dla.mil/>): opens with a DoD warning and
+  consent banner (accepted with the maintainer's OK, 2026-10-27). Browsing
+  and viewing solicitation records needs no login; quoting needs registration.
+  - Solicitations are listed **only while open**: SPE1C1-24-R-0007 (27P
+    coveralls) returns "No Open Solicitation is on file".
+  - The one garment solicitation open on 2026-10-27, **SPE1C1-26-R-0089**
+    (men's trousers, closes 2026-11-12), lists a package zip, the solicitation
+    PDF, two amendments and attachments as PDF, DOCX and XLSX (procurement item
+    descriptions, forms). **No DXF, HPGL or CAD files**, and "Tech Data: None"
+    on all four items. Nothing was downloaded.
+  - Its "Tech Data" section points to TDMT (DLA's engineering-data system,
+    login required, mostly hardware bidsets) and to ASSIST for specs. Pattern
+    files still come only through the Spec Request form (above).
+  - So the claim that DIBBS packages include pattern CAD files wasn't borne out
+    either. A future open solicitation for a garment we want is the moment to
+    ask for a **paper pattern** through the Spec Request form, if that's ever
+    pursued (it asks for a company and the solicitation number).
+- **Public DXF-AAMA collections of military garments:** none found (web,
+  everyspec, ASSIST). Hits were CNC insignia clip art and commercial pattern
+  sellers (off-limits).
+- **If DXF-AAMA files do turn up:** they're plain text. A small reader in
+  `designs/tools/` can pull out each piece's outline, notches, drill holes,
+  grainline and internal lines, which give pocket placements and collar
+  shapes directly; Seamly2D isn't needed.
+- **Routes to geometry, best first:** (1) a paper pattern through the Spec
+  Request form while a solicitation for the item is open (it asks for a
+  solicitation number and a company); (2) a FOIA request to DLA Troop
+  Support; (3) a surplus garment, measured flat or taken apart and scanned.
+  The design only needs proportions (pocket sizes and positions, collar
+  shape) to lay on a FreeSewing block, so (3) is the quickest.

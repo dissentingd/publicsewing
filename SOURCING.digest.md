@@ -1,4 +1,4 @@
-# SOURCING.md: digest (as of 2026-10-20, rounds 1–8)
+# SOURCING.md: digest (as of 2026-10-27, rounds 1–9)
 
 **Goal:** base patterns for complete timeless wardrobes in 5 styles (1 tailored,
 2 workwear, 3 military outerwear, 4 simple everyday, 5 mid-century; children
@@ -37,6 +37,11 @@ MIL specs (construction op tables).
 construction + graded finished measurements but never pattern shapes.
 DLA patterns (AccuMark/paper) via public request form tied to a solicitation,
 or FOIA. NARA WPA patterns and UK Utility patterns are not digitized.
+Round 9 (2026-10-27): detail specs (MIL-DTL) beat CIDs (A-A-); MIL-DTL-44048H
++ G (combat coat) are a usable pair. ASSIST QuickSearch is the index (spec
+PDFs only); SAM.gov notices and open DIBBS solicitations (PDF/DOCX/XLSX)
+carry no pattern files; no public DXF-AAMA
+collections found. Quickest geometry: measure a surplus garment.
 
 **Renewed (trace-only):** Pepin 1942, Hillhouse 1948, Erwin, Picken *Modern
 Dressmaking Made Easy*, Poulin, Mauck, Lewis 1960 ed.
