@@ -1,0 +1,412 @@
+# Labels for the pattern tool (publicsewing.org): a title and description for every option the
+# specs and lib/ define, choice titles for list options, and part names. Shared by all designs:
+# an option name means the same thing everywhere. A spec option can override its label with
+# `title:` and `description:` (lib/spec.mjs strips them before FreeSewing sees the option).
+# Options a block defines (Brian's armhole factors, Titan's crotch curve...) keep the block's
+# own labels. "x waist to seat" etc.: the option is a fraction of that measurement.
+
+options:
+  # Fit
+  chestEase:
+    title: Chest ease
+    description: Room added to the chest measurement, as a share of the chest.
+  waistEase:
+    title: Waist ease
+    description: Room added at the waist when the side seams are shaped in, as a share of the waist.
+  seatEase:
+    title: Seat ease
+    description: Room added over the seat; the side seams are let out to it where needed.
+  bicepsEase:
+    title: Biceps ease
+    description: Room added round the upper arm, as a share of the biceps.
+  cuffEase:
+    title: Cuff ease
+    description: Width of the sleeve at the hem, as a share of the wrist.
+  kneeBandEase:
+    title: Knee band ease
+    description: Room in the knee band, as a share of the knee.
+  waistShaping:
+    title: Shape the waist
+    description: Take the side seams in at the waist instead of hanging straight.
+  stoutDrop:
+    title: Regular waist drop
+    description: >
+      How much smaller than the chest a regular waist is. A waist larger than that is drafted as
+      a stout figure, with extra room at the front.
+  neckDartWidth:
+    title: Neck dart width
+    description: Width of the dart from the front neck towards the bust, as a share of the chest.
+  backShare:
+    title: Back's share of the shaping
+    description: How much of the waist shaping is taken from the back pieces rather than the front.
+  waistDart:
+    title: Waist dart
+    description: A waist dart in the block.
+  shoulderDart:
+    title: Shoulder dart
+    description: A shoulder dart in the block.
+  primaryBustDart:
+    title: Bust dart position
+    description: Where the block's bust dart points.
+  secondaryBustDart:
+    title: Second bust dart
+    description: A second bust dart in the block.
+
+  # Length and shape
+  lengthBelowWaist:
+    title: Length below the waist
+    description: Hem length below the waist, as a share of waist to seat.
+  skirtLength:
+    title: Skirt length
+    description: Waist to hem, as a share of waist to floor. About 45% reaches the knee.
+  frontDrop:
+    title: Front drop
+    description: How much lower the front hem hangs than the back, as a share of waist to seat.
+  hemCurve:
+    title: Rounded front corners
+    description: How much the front hem corners are rounded. 0% is square.
+  hemCorner:
+    title: Rounded side corners
+    description: How much the hem corners at the side slits are rounded.
+  hemFlare:
+    title: Hem flare
+    description: Extra width at each side seam at the hem, as a share of the seat.
+  flare:
+    title: Side flare
+    description: Extra width at the hem on each side of the side seam, as a share of the seat.
+  cbFlare:
+    title: Centre-back flare
+    description: How far the centre back steps out towards the hem. 0% cuts the back on the fold.
+  sideSlit:
+    title: Side slits
+    description: Slits up the side seams from the hem, as a share of waist to hem. 0% is none.
+  gathers:
+    title: Gathers
+    description: Width of the gathered edge before gathering, against the edge it's sewn to.
+  blouse:
+    title: Blouse over the band
+    description: Extra leg length that hangs over the knee band.
+  legFlare:
+    title: Leg fullness
+    description: Extra width at the outside leg seam, as a share of the seat.
+  bandBelowKnee:
+    title: Band below the knee
+    description: Where the knee band sits, below the knee, as a share of waist to knee.
+  bandWidth:
+    title: Knee band width
+    description: Finished width of the knee band, as a share of the knee.
+  casing:
+    title: Waist casing
+    description: Width of the elastic in the waist casing, as a share of the waist.
+  backSeamAt:
+    title: Back seam position
+    description: Where the back princess seam meets the shoulder, along it from the neck.
+
+  # Sleeves
+  sleeves:
+    title: Sleeves
+    description: Whether the garment has sleeves, and which.
+    choices: { long: Long, short: Short, none: None }
+  sleeveStyle:
+    title: Sleeve style
+    description: Set-in sleeves, or raglan sleeves running up to the neck.
+    choices: { setIn: Set-in, raglan: Raglan }
+  sleeveLengthBonus:
+    title: Sleeve length
+    description: Lengthen (or shorten, below 0%) the sleeve, as a share of its length.
+  shortSleeve:
+    title: Short sleeve length
+    description: Length of a short sleeve, as a share of shoulder to wrist.
+  sleeveBand:
+    title: Sleeve band width
+    description: Finished width of the band or cuff at the sleeve hem.
+  sleeveBandEase:
+    title: Sleeve band ease
+    description: Room in the sleeve band round the wrist.
+
+  # Neck, collar and lapel
+  neckStyle:
+    title: Neck style
+    description: A standing collar, or an open neck.
+    choices: { stand: Stand collar, open: Open }
+  neckFinish:
+    title: Neck finish
+    description: Finish the neck with a binding, a band collar, or a turn-down collar.
+    choices: { binding: Binding, band: Band, collar: Turn-down collar }
+  bandHeight:
+    title: Neck band height
+    description: Height of the band collar, as a share of the neck.
+  collarStyle:
+    title: Collar style
+    description: >
+      Convertible (wears open or buttoned to the neck), military (standing), shawl (cut in one
+      with the front) or ulster (a deep turn-down collar with a lapel).
+    choices: { convertible: Convertible, military: Military, shawl: Shawl, ulster: Ulster }
+  collarHeight:
+    title: Collar height
+    description: Height of the standing collar, as a share of the neck.
+  collarWidth:
+    title: Collar width
+    description: Width of the collar at the centre back, as a share of the neck.
+  collarSpring:
+    title: Collar spring
+    description: >
+      How much the collar's neck edge curves. More spring makes the collar stand away from the
+      neck; less makes it hug it.
+  collarPoint:
+    title: Collar point
+    description: How far the collar point reaches past the end of the neck edge.
+  lapelStyle:
+    title: Lapel style
+    description: A notched lapel, or a peaked one pointing up.
+    choices: { notch: Notched, peak: Peaked }
+  lapelWidth:
+    title: Lapel width
+    description: Width of the lapel, as a share of the neck.
+  breakBelowBust:
+    title: Lapel break
+    description: Where the lapel turns back, below the bust line.
+  rollOut:
+    title: Lapel roll line
+    description: How far in front of the neck point the lapel's fold line starts.
+  gorgeAt:
+    title: Gorge position
+    description: Where the collar meets the lapel, along the front neck from the neck point.
+  neckDartAt:
+    title: Neck dart position
+    description: Where the neck dart starts, along the front neck from the neck point.
+  neckDartLength:
+    title: Neck dart length
+    description: How far the neck dart reaches towards the bust point.
+
+  # Closures
+  buttons:
+    title: Buttons
+    description: Number of buttons (in each row, on a double-breasted front).
+  buttonExtension:
+    title: Button stand
+    description: How far the front extends past the centre front for the buttons.
+  buttonInset:
+    title: Button position
+    description: Buttons' distance from the front edge, as a share of the lap. 100% puts them on the centre front.
+  buttonTop:
+    title: Top button
+    description: How far below the chest line the top button sits.
+  buttonBottom:
+    title: Bottom button
+    description: How far below the waist the bottom button sits, as a share of waist to seat.
+  buttonRow:
+    title: Button rows
+    description: Distance of each row of buttons from the centre front, as a share of the stand.
+  opening:
+    title: Opening
+    description: Where the garment opens.
+    choices: { front: Front, back: Back }
+  openingExt:
+    title: Opening lap
+    description: Width of the lap at the opening, as a share of the chest.
+  placketDepth:
+    title: Placket length
+    description: Length of the placket opening from the neck, as a share of the back neck to waist.
+  belt:
+    title: Belt
+    description: A belt at the waist.
+  beltWidth:
+    title: Belt width
+    description: Finished width of the belt, as a share of the chest.
+
+  # Pockets
+  pockets:
+    title: Pockets
+    description: Pockets on the front.
+  pocketShape:
+    title: Pocket shape
+    description: The shape of the patch pockets' bottom corners.
+    choices: { rounded: Rounded, square: Square, pointed: Pointed, chamfered: Chamfered }
+  breastPocket:
+    title: Breast pocket
+    description: A breast pocket.
+  breastPockets:
+    title: Breast pockets
+    description: Breast pockets.
+  lowerPockets:
+    title: Lower pockets
+    description: Pockets below the waist.
+  pencilPocket:
+    title: Pencil pocket
+    description: A narrow pocket for a pencil beside the breast pocket.
+  pocketFlaps:
+    title: Pocket flaps
+    description: Flaps over the pockets.
+  pocketPleat:
+    title: Pocket pleat
+    description: Depth of the box pleat down the middle of each pocket, as a share of its width.
+  pocketBelow:
+    title: Pocket position
+    description: How far below the waist the pocket mouth sits, as a share of waist to seat.
+  pocketFromCF:
+    title: Pocket from the front
+    description: How far behind the centre front the pocket mouth starts.
+  pocketFromSeam:
+    title: Pocket from the seam
+    description: How far behind the princess seam the pocket mouth starts.
+  pocketWidth:
+    title: Pocket width
+    description: Width of the pocket mouth, as a share of the chest.
+  pocketAngle:
+    title: Pocket angle
+    description: How much the pocket mouth drops towards the side, in degrees.
+  flapDepth:
+    title: Flap depth
+    description: Depth of the pocket flap, as a share of the pocket's width.
+  bagDepth:
+    title: Pocket bag depth
+    description: Depth of the pocket bag, as a share of the pocket's width.
+  ticketPocket:
+    title: Ticket pocket
+    description: A small flap pocket above the right hip pocket.
+  ticketAbove:
+    title: Ticket pocket position
+    description: How far above the hip pocket the ticket pocket sits, as a share of waist to seat.
+  ticketWidth:
+    title: Ticket pocket width
+    description: Width of the ticket pocket, as a share of the hip pocket's.
+  ticketFlapDepth:
+    title: Ticket flap depth
+    description: Depth of the ticket pocket's flap, as a share of its width.
+  handPockets:
+    title: Hand-warmer pockets
+    description: Slanted welt pockets at hand height, opening towards the front.
+  handPocketTop:
+    title: Hand pocket height
+    description: How far above the waist the top of the hand pocket sits, as a share of waist to seat.
+  handPocketAt:
+    title: Hand pocket position
+    description: How far behind the centre front the top of the hand pocket sits.
+  handPocketLength:
+    title: Hand pocket length
+    description: Length of the hand pocket's mouth.
+  handPocketLean:
+    title: Hand pocket slant
+    description: How much the hand pocket leans towards the side as it goes down.
+  handPocketWelt:
+    title: Hand pocket welt
+    description: Finished width of the hand pocket's welt.
+  weltBelow:
+    title: Breast welt position
+    description: How far below the bust line the front end of the breast welt sits.
+  weltFromCF:
+    title: Breast welt from the front
+    description: How far behind the centre front the breast welt starts.
+  weltLength:
+    title: Breast welt length
+    description: Length of the breast welt pocket's mouth, as a share of the chest.
+  weltRise:
+    title: Breast welt angle
+    description: How much the breast welt rises towards the side, in degrees.
+  weltDepth:
+    title: Breast welt depth
+    description: Finished depth of the breast welt, as a share of its length.
+
+  # Yokes and backs
+  yokeAt:
+    title: Yoke
+    description: A yoke to the chest line, or a bodice to the waist.
+    choices: { chest: Yoke to the chest, waist: Bodice to the waist }
+  yokeDepth:
+    title: Yoke depth
+    description: Depth of the yoke from the neck point, as a share of the way to the chest line.
+  frontYoke:
+    title: Front yoke
+    description: A yoke on the front too. No makes the front one piece, neck to hem.
+  actionPleat:
+    title: Action pleat
+    description: Depth of the pleat in the back below the yoke, for reaching forward.
+  pleatAt:
+    title: Pleat position
+    description: Where the action pleat sits, along the yoke from the centre back.
+  vent:
+    title: Back vent
+    description: A vent up the centre-back seam from the hem.
+  ventLength:
+    title: Vent length
+    description: Length of the vent up from the hem, as a share of waist to seat.
+  ventWidth:
+    title: Vent lap
+    description: How far the vent's lap extends past the centre back.
+
+  # Construction
+  facingWidth:
+    title: Facing width
+    description: Width of the front facing, as a share of the chest.
+  neckFacingWidth:
+    title: Back-neck facing
+    description: Depth of the back-neck facing and its width along the shoulder.
+  backFacingDepth:
+    title: Back-neck facing depth
+    description: Depth of the back-neck facing down the centre back.
+  lining:
+    title: Lining
+    description: Line the body. The facings then run to the shoulder, with a back-neck facing.
+  liningPleat:
+    title: Lining pleat
+    description: Extra width at the back lining's centre back, folded into a pleat for movement.
+
+parts:
+  back: Back
+  front: Front
+  facing: Facing
+  collar: Collar
+  sleeve: Sleeve
+  topsleeve: Top sleeve
+  undersleeve: Under sleeve
+  frontSleeve: Front sleeve
+  backSleeve: Back sleeve
+  testSquare: Test square
+  backNeckFacing: Back-neck facing
+  frontLining: Front lining
+  backLining: Back lining
+  backBelt: Back belt
+  frontBelt: Front belt
+  backBodice: Back bodice
+  frontBodice: Front bodice
+  backBody: Back body
+  frontBody: Front body
+  backSkirt: Back skirt
+  frontSkirt: Front skirt
+  backYoke: Back yoke
+  frontYoke: Front yoke
+  backMiddle: Back middle
+  backLower: Back lower
+  sideBody: Side body
+  sideBack: Side back
+  sideFront: Side front
+  placket: Placket
+  neckBand: Neck band
+  sleeveBand: Sleeve band
+  cuff: Cuff
+  legBand: Knee band
+  band: Band
+  breastPocket: Breast pocket
+  upperPocket: Upper pocket
+  lowerPocket: Lower pocket
+  pencilPocket: Pencil pocket
+  breastFlap: Breast pocket flap
+  lowerFlap: Lower pocket flap
+  breastWelt: Breast welt
+  breastBag: Breast pocket bag
+  breastPocketBag: Breast pocket bag
+  lowerWelt: Lower welt
+  lowerBag: Lower pocket bag
+  lowerPocketBag: Lower pocket bag
+  handWelt: Hand pocket welt
+  handBag: Hand pocket bag
+  handPocketBag: Hand pocket bag
+  hipFlap: Hip pocket flap
+  hipJet: Hip pocket jet
+  hipBag: Hip pocket bag
+  hipPocketBag: Hip pocket bag
+  ticketFlap: Ticket pocket flap
+  ticketJet: Ticket pocket jet
+  ticketBag: Ticket pocket bag
+  ticketPocketBag: Ticket pocket bag

@@ -10,7 +10,7 @@ by named operations. [chore-coat/spec.yaml](chore-coat/spec.yaml) is the plaines
 |---|---|
 | `about` | The design's data: `id` (prefixes its piece names), `name`, `description`, `difficulty`, `tags`, `techniques`, `version`, `source` (book, figure, corpus folder id). |
 | `block` | The FreeSewing block it starts from: `brian`, `bent`, `titan`, `breanna` (`blocks/`). |
-| `options` | Every option, with the source's number as its default. `{ pct, min, max, of: chest, menu }` is a percentage (of a measurement with `of`); `{ count, min, max }`, `{ bool }` and `{ dflt, list }` as in FreeSewing. |
+| `options` | Every option, with the source's number as its default. `{ pct, min, max, of: chest, menu }` is a percentage (of a measurement with `of`); `{ count, min, max }`, `{ bool }` and `{ dflt, list }` as in FreeSewing. The pattern tool labels options from [labels.yaml](labels.yaml) by name (`npm test` checks every shown option has one); `title:` and `description:` on an option override that label for this design. |
 | `pieces` | The pattern pieces, in order (below). |
 | `extends` | Start from another spec file: its pieces, block and options. This spec's `options` entries are merged into the parent's (`buttons: { count: 5 }` changes only the default); its `pieces` are added, or replace the parent's by key. A parent with no `about` is a template (`templates/`): its pieces take this design's name. |
 

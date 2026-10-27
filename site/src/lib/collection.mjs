@@ -2,6 +2,7 @@
 // editor (@freesewing/react) uses for its list of designs and for option and part labels. It
 // exports the same names, for PublicSewing's designs instead of FreeSewing's 73.
 import specs from '../generated/specs.json'
+import labels from '../generated/labels.json'
 import { designFromSpec } from '../../../designs/lib/spec.mjs'
 import { i18n as brian } from '@freesewing/brian'
 import { i18n as bent } from '@freesewing/bent'
@@ -29,5 +30,18 @@ export const developers = []
 export const designers = []
 export const examples = { id: [], href: {} }
 
-// Labels: the blocks' own (their strings are shared, e.g. 'brian:waistLine'); ours come in phase 2
-export const i18n = { brian, bent, breanna, titan }
+// Labels: the blocks' own (their strings are shared, e.g. 'brian:waistLine'), and for each of our
+// designs the FreeSewing shape { en: { o, p } }: its block's option labels, then labels.yaml's,
+// then the spec's own `title` / `description`; list choices as `<option>.<choice>`
+const blockI18n = { brian, bent, breanna, titan }
+export const i18n = { ...blockI18n }
+for (const spec of Object.values(specs)) {
+  const o = { ...blockI18n[spec.block]?.en?.o }
+  for (const [name, l] of Object.entries(labels.options)) {
+    o[name] = { t: l.title, d: l.description }
+    for (const [c, t] of Object.entries(l.choices ?? {})) o[`${name}.${c}`] = { t, d: '' }
+  }
+  for (const [name, so] of Object.entries(spec.options ?? {}))
+    if (so.title || so.description) o[name] = { t: so.title ?? o[name]?.t, d: so.description ?? o[name]?.d }
+  i18n[spec.about.id] = { en: { o, p: { ...labels.parts } } }
+}

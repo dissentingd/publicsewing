@@ -253,8 +253,9 @@ function evalValue(v, lookup, local) {
   return evaluate(v, find)
 }
 
-/** A spec option ({ pct, min, max, of: chest, menu }) as a FreeSewing option */
-function option({ of, ...o }) {
+/** A spec option ({ pct, min, max, of: chest, menu }) as a FreeSewing option; its label
+ * (`title`, `description`, see labels.yaml) is for the site, not FreeSewing */
+function option({ of, title, description, ...o }) {
   return of ? { ...o, ...pctBasedOn(of) } : o
 }
 

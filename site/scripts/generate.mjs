@@ -2,6 +2,7 @@
 // - src/generated/specs.json: every design's spec, `extends` resolved (lib/load-spec.mjs reads
 //   files, which the browser can't; lib/spec.mjs builds the designs from these in the browser)
 // - src/generated/measurements.json: each design's required and optional measurements
+// - src/generated/labels.json: ../designs/labels.yaml (option and part labels)
 // - src/generated/sizes.json: the measurement sets the tests use (FreeSewing's adult sets, the
 //   stout figures, the 75 USDA children's sets), grouped for the size picker
 // - docs/designs/<id>.mdx: a page per design from its BRIEF.md, with its drape renders and the
@@ -9,6 +10,7 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, copyFileSync, rmSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { join } from 'node:path'
+import { parse } from 'yaml'
 import { readSpec } from '../../designs/lib/load-spec.mjs'
 import { designFromSpec } from '../../designs/lib/spec.mjs'
 import { sets, stoutSets } from '../../designs/test/coat-checks.mjs'
@@ -62,6 +64,7 @@ for (const id of ids) {
 
 mkdirSync(out('src', 'generated'), { recursive: true })
 writeFileSync(out('src', 'generated', 'measurements.json'), JSON.stringify(measurements))
+writeFileSync(out('src', 'generated', 'labels.json'), JSON.stringify(parse(readFileSync(join(designsDir, 'labels.yaml'), 'utf8'))))
 writeFileSync(out('src', 'generated', 'specs.json'), JSON.stringify(specs))
 writeFileSync(out('src', 'generated', 'sizes.json'), JSON.stringify(sizes))
 

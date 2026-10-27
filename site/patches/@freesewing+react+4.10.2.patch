@@ -142,7 +142,7 @@ index 505e296..150aac6 100644
 -  return data
 -}
 diff --git a/node_modules/@freesewing/react/components/Editor/lib/export/index.mjs b/node_modules/@freesewing/react/components/Editor/lib/export/index.mjs
-index 530601e..b2393fc 100644
+index 530601e..7b3c820 100644
 --- a/node_modules/@freesewing/react/components/Editor/lib/export/index.mjs
 +++ b/node_modules/@freesewing/react/components/Editor/lib/export/index.mjs
 @@ -93,7 +93,7 @@ export const handleExport = async ({
@@ -154,11 +154,13 @@ index 530601e..b2393fc 100644
        }
        // do additional business
        onComplete && onComplete(e)
-@@ -145,7 +145,7 @@ export const handleExport = async ({
+@@ -144,8 +144,8 @@ export const handleExport = async ({
+ 
        // add the strings that are used on the cover page
        workerArgs.strings = {
-         design: capitalize(design),
+-        design: capitalize(design),
 -        tagline: 'Come for the sewing pattern. Stay for the community.',
++        design: Design.designConfig?.data?.name || capitalize(design), // PublicSewing patch: the design's name
 +        tagline: 'publicsewing.org: a draft pattern, untested. Sew a muslin first.', // PublicSewing patch
          url: window.location.href,
          cuttingLayout: 'Cutting layout',
