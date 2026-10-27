@@ -69,6 +69,20 @@ Library (2026-10-27), by gap:
 
 Most are single-size: use them for proportions on our blocks, not as graded pieces.
 
+**Held** (2026-10-27, `corpus/openpattern/<id>/`: DXF, PDF, PNG; the CLO and GLB files
+stay in the maintainer's Downloads). Read with `node designs/tools/dxf-aama.mjs <file.dxf>
+[--svg out.svg]`: per piece, net size and perimeter, notches, drill holes, internal lines,
+grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 14.
+- `tuta-jumpsuit`: Thayaht's TuTa (1920), size M, 13 pieces: one body piece with a crotch
+  slit, rectangular sleeves (40 × 60 cm), triangle and square gussets, patch pockets.
+  All straight lines: the quickest build here.
+- `cs95-trouser`: British CS95 field trouser, size M, 39 pieces: three-piece back,
+  front, fly, waistband, belt loops, cargo and patch pockets with flaps.
+- `us-tactical-smock`: hooded smock, **graded XS–XXL** (six sizes): back, front, sleeves,
+  three-piece hood, front placket, pocket bags and flaps.
+- `standard-tshirt`: **graded XS–XL** (Grade Rule Table "Normal_Tee"): front, back,
+  sleeve, collar, back-neck tape.
+
 ## Sources in use
 | Source (folder id) | Grade | Designs |
 |---|---|---|

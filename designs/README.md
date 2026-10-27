@@ -74,7 +74,7 @@ without declaring them, so they are listed in our package.json.
 | `lib/load-spec.mjs` | Reads a `spec.yaml` (resolving `extends`) and builds it (Node only) | |  |
 | `lib/spec.mjs`, `expr.mjs` | Builds a spec into a FreeSewing design ([SPEC.md](SPEC.md)); no file access, so the site runs it in the browser. Adds a `testSquare` piece (a scale box) to every design | |  |
 | `drape/` | 3D drape configs (`runs.yaml`: one per draped design), renders and results ([README](drape/README.md)); `node tools/drape.mjs <design>` runs one | all 18 designs draped |  |
-| `tools/` | `render.mjs`, `snap.mjs`, `snapshot.mjs` (+ `variants.json`), `drape.mjs` (a whole drape), `drape-export.mjs`, `drape_spec.py` (+ `gcspec/`), `drape_inside.py` | |  |
+| `tools/` | `dxf-aama.mjs` (reads AAMA DXF pattern files: pieces, sizes, notches; `--svg`), `render.mjs`, `snap.mjs`, `snapshot.mjs` (+ `variants.json`), `drape.mjs` (a whole drape), `drape-export.mjs`, `drape_spec.py` (+ `gcspec/`), `drape_inside.py` | |  |
 
 ## Adding a design
 1. Write `<design>/BRIEF.md` from the source pages: the pieces, each style line as a
