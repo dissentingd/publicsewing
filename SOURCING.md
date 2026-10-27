@@ -929,24 +929,42 @@ ARMY-General, USAF and USMC sections. Download links are
   opposite the lowest button and in line with the sleeve's front seam, turn-
   back front corners. The 1914 Alaska clothing spec (no. 1171) is not
   downloadable.
-- **USDA Bureau of Home Economics leaflets by Clarice L. Scott** (1929–1952;
-  US government works, public domain): illustrated garment designs with the
-  reasoning for each feature; no patterns ("patterns of these designs" were
-  sold commercially). *Rompers* (Leaflet 79, 1931), *Dresses for Little
-  Girls* (80, 1931), *Suits for the Small Boy* (52, 1929), *Ensembles for
-  Sunny Days* (63, 1930), *Child's Self-Help Overall* (251, 1948), *Dresses
-  Designed for Little Girls* (255, 1949), *Shopper's Coat* (271, 1950),
-  *Dresses and Aprons for Work in the Home* (Farmers' Bulletin 1963, 1944/52),
-  *Standard Sizes for Children's Clothes* (1941). Good design references for
-  the children's and women's gaps. Several other items with clothing titles
-  (*Sun Suits for Children* 1930, *Winter Play Suits* 1938, *Work Clothes for
-  Women* 1942, *Pattern Alteration* 1945) are radio-talk transcripts: text only.
+- **USDA Bureau of Home Economics leaflets by Clarice L. Scott** (1929–1952,
+  public domain): sketches and prose only. **No patterns, no dimensions, no
+  proportions: not importable, rated D below.** *Rompers* (Leaflet 79, 1931),
+  *Dresses for Little Girls* (80, 1931), *Suits for the Small Boy* (52, 1929),
+  *Ensembles for Sunny Days* (63, 1930), *Child's Self-Help Overall* (251,
+  1948), *Dresses Designed for Little Girls* (255, 1949), *Shopper's Coat*
+  (271, 1950), *Dresses and Aprons for Work in the Home* (Farmers' Bulletin
+  1963). Others with clothing titles (*Sun Suits for Children* 1930, *Winter
+  Play Suits* 1938, *Work Clothes for Women* 1942, *Pattern Alteration* 1945)
+  are radio-talk transcripts. *Standard Sizes for Children's Clothes* (1941)
+  is a sizing primer for consumers, also without tables we lack (the O'Brien
+  surveys it summarises are already held).
 - **Older MIL specs:** MIL-C-44048F (1991, the combat coat's G predecessor,
   56 pp), MIL-T-838L (1975, OG-107 utility trousers, 31 pp, pattern parts
   listed), MIL-C-2202H (1990, sateen coveralls; image scan, no text layer),
   **MIL-DTL-43455K** (2007, the M-65 field coat, 39 pp: pattern parts, an
   operation-by-operation construction table and finished measurements; pocket
   and flap positions still "as indicated on pattern").
+
+### Rated by what can be imported
+The catalog is built efficiently only from sources that carry numbers a design
+can be built from. Rating, best first:
+- **A, geometry:** drafts or pieces with numbers (point-by-point drafts,
+  dimensioned pieces, grid diagrams, proportion tables). Nothing found in
+  rounds 9–10 reaches A.
+- **B, dimensions:** finished measurements by size plus dimensioned placements
+  (pockets, collar, vents) that can become option defaults on a block.
+  QM uniform specifications 1912–17 (placements, no sizes); MIL-DTL-44048H
+  (sizes, cuff and button dimensions, no pocket placements);
+  MIL-DTL-43455K (sizes, construction; pocket placements by pattern only).
+- **C, numeric support:** data for size sets or checks, no garment.
+  DOD-HDBK-743A, MIL-STD-984A.
+- **D, description only:** sketches, prose, piece lists or construction steps
+  without dimensions. CIDs, the Scott leaflets, MIL-HDBK-150C/156A,
+  MIL-STD-1488G-type inspection standards, TM 4-21. Not worth fetching for
+  the catalog; construction order can come from a B source.
 
 ### Where they are
 Downloaded 2026-10-27 to the laptop corpus (`corpus/<id>/`, gitignored), not

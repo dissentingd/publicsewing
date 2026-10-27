@@ -45,9 +45,11 @@ collections found. Quickest geometry: measure a surplus garment.
 Round 10: DTIC off limits. everyspec also has DOD-HDBK-743A (anthropometry),
 MIL-STD-984A (women's sizes), quality-evaluation MIL-STDs, MIL-HDBK-150C/156A.
 Older copies: QM uniform specifications 1912–17 (archive.org, PD) give
-dimensioned style details; USDA Bureau of Home Economics leaflets (Clarice
-L. Scott, 1929–52, PD) are children's/women's design references; MIL-DTL-43455K
-(M-65 field coat) has a full construction table.
+dimensioned style details (rated B); USDA Bureau of Home Economics leaflets
+(Clarice L. Scott, 1929–52) are sketches and prose, not importable (D);
+MIL-DTL-43455K (M-65 field coat) has sizes and a construction table (B).
+Rating A geometry / B dimensions / C numeric support / D description only:
+fetch A and B only.
 
 **Renewed (trace-only):** Pepin 1942, Hillhouse 1948, Erwin, Picken *Modern
 Dressmaking Made Easy*, Poulin, Mauck, Lewis 1960 ed.
