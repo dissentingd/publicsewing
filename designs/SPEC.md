@@ -34,7 +34,11 @@ A piece is either drafted by operations or made by a piece type.
 `weltBag`, `yokePiece`, `yokeSleeve`, `sleeveBand`, `placket`, `neckBand`, `legBand`,
 `frontLining` and `backLining` (a Brian coat's lining, `from` the front or the back; the back
 takes `width:`, its back-neck facing's, and `pleat:`; `sleeve` takes `lining:` too),
-`jacketPanel` (`material:` lining to cut it from lining; `lining:` an expression, true cuts it
+`frontPanel` (a front cut by `frontYokeCut`: `panel: yoke` or `lower`, `from` the hidden
+whole front; `keep:` marks the lower panel keeps, e.g. `[handPocket]`; `lining:` an expression,
+true cuts it again in lining, as `backPanel` takes too), `hood` (`lib/hood.mjs`: a two-piece hood
+sewn to the neckline; `target`, `spring`, `height`, `lean`, `depth`, `corner`, `casing` are
+expressions, `lining:` an expression), `jacketPanel` (`material:` lining to cut it from lining; `lining:` an expression, true cuts it
 again in lining; `library` takes `lining:` too), `setInPocket` (a flap, jet or bag of a set-in
 flap pocket from `boxLayout`'s or `jacketLayout`'s `pockets`). `welt` and `weltBag` take
 `store:` for a store key other than `blouse.welts` (`jacket.welts`). A piece
@@ -50,9 +54,11 @@ type's `if:` is an expression over options; when it is false the piece is left o
 | `lapel` | A notched lapel and gorge on a round-necked front (`breakY`, `rollOut`, `gorgeAt`, `width`); the facing then runs to the shoulder. | `lib/coat.mjs`, `lib/lapel.mjs` |
 | `backVent` | A back vent and CB seam (`length`, `width`); the back is then cut in pairs. | `lib/coat.mjs` |
 | `buttons` | Buttons in rows, evenly from `top` to `bottom`. | `lib/coat.mjs` |
+| `zip` | A zip up the front edge, from `top` (the neckline) to `bottom` (the hem); coat checks take it in place of buttons. | `lib/coat.mjs` |
 | `raglan` | Cut the back or front along a raglan line. | `lib/raglan.mjs` |
-| `backYokeCut` | Mark a coat back's yoke line, to cut it into `backPanel`s. | `lib/panels.mjs` |
-| `body3Back` / `body3Front` | A three-piece body (back, side body, forepart) on Bent. | `lib/body3.mjs` |
+| `backYokeCut` | Mark a coat back's yoke line, to cut it into `backPanel`s (`yoke`, `middle`, `lower`, or `body`: yoke line to hem in one). | `lib/panels.mjs` |
+| `frontYokeCut` | Mark a coat front's yoke seam, from the front edge `depth` down to the armhole at `armDepth` (shares of CF neck to the chest line), to cut it into `frontPanel`s. | `lib/panels.mjs` |
+| `body3Back` / `body3Front` | A three-piece body (back, side body, forepart) on Bent; the back takes `vent: { length, width }`. | `lib/body3.mjs` |
 | `yokeSide` | A yoke garment's back or front, into the store. | `lib/yoke.mjs` |
 | `jacketBase` / `jacketLayout` | A princess-seamed jacket on Breanna: each side read in, then cut along its darts into panels, flared below the waist, with a lap, lapel and gorge. | `lib/jacket.mjs` |
 | `boxLayout` | A box body on the same bases (`jacketBase` with `style: box`): back and front, side seams flared from the armholes, the bust dart pivoted into the front neck, lap, lapel, gorge. | `lib/jacket.mjs` |

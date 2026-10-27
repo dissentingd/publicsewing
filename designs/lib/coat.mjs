@@ -388,6 +388,23 @@ export function placeButtons({ points, Point, snippets, Snippet, store }, { coun
   store.set('coat.buttons', { top, bottom, count, rows })
 }
 
+/**
+ * A zip up the front edge, from `top` (default the neckline) to `bottom` (default the hem):
+ * marked on the front, its length stored as `coat.zip` for the cut list.
+ */
+export function placeZip({ points, paths, Path, Point, snippets, Snippet, store }, { top, bottom, inset = 0 }) {
+  const { ext } = store.get('coat.frontEdge')
+  const x = -ext + inset
+  top ??= points.edgeNeck.y
+  bottom ??= points.cfHem.y
+  points.zipTop = new Point(x, top)
+  points.zipBottom = new Point(x, bottom)
+  paths.zip = new Path().move(points.zipTop).line(points.zipBottom).addClass('mark dashed')
+  snippets.zipTop = new Snippet('notch', points.zipTop)
+  snippets.zipBottom = new Snippet('notch', points.zipBottom)
+  store.set('coat.zip', { top, bottom, length: bottom - top })
+}
+
 /** A part drawing the front facing: the front's edge strip, neckline to hem */
 export function facingPart({ name, from, nr = 5 }) {
   return {

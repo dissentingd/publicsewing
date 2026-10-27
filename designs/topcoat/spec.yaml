@@ -1,0 +1,83 @@
+# Topcoat: ЕМКО СЭВ т.3's men's demi-season coat (§2, Table 2.3, Figs. 9–10), on the military
+# blouse's three-piece body (lib/body3.mjs, FreeSewing's Bent): a semi-fitted, knee-length
+# spring and autumn coat with side panels, a back vent, slanted welt pockets, a turn-down collar
+# and two-piece sleeves. See BRIEF.md for where each default is read.
+extends: ../military-blouse/spec.yaml
+
+about:
+  id: topcoat
+  name: Topcoat
+  description: A semi-fitted, knee-length spring and autumn coat with side panels, a back vent and slanted welt pockets
+  difficulty: 4
+  tags: [coats]
+  techniques: [button, welt-pocket, collar, facing, vent]
+  version: 0.1.0
+  source: ЕМКО СЭВ т.3 (1988), §2 demi-season coat, Table 2.3, Figs. 9–10 (emko)
+
+options:
+  # Fit: about 27% over the chest, taken in a little at the waist
+  chestEase: { pct: 25 }
+  waistEase: { pct: 22 }
+  seatEase: { pct: 14 }
+  bicepsEase: { pct: 28 }
+  cuffEase: { pct: 85 }
+  # Style
+  lengthBelowWaist: { pct: 230, max: 300 } # x waistToSeat: 61.45 below the waist, about the knee
+  frontDrop: { pct: 5 }
+  buttonExtension: { pct: 3.2 }
+  buttons: { count: 4, min: 3, max: 6 }
+  collarWidth: { pct: 27, min: 18, max: 40, of: neck, menu: style }
+  breastPockets: { bool: false }
+  vent: { bool: true, menu: style }
+  ventLength: { pct: 140, min: 60, max: 200, menu: style } # x waistToSeat, up from the hem
+  ventWidth: { pct: 4.5, min: 3, max: 8, of: chest, menu: construction } # the vent's lap past CB
+  facingWidth: { pct: 9 }
+
+pieces:
+  back:
+    from: bent.back
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [chestEase, waistEase, seatEase, bicepsEase, cuffEase, backShare, lengthBelowWaist, vent, ventLength, ventWidth]
+    ops:
+      - body3Back:
+          seamAt: 0.3
+          vent: { if: vent, length: waistToSeat * ventLength, width: chest * ventWidth }
+
+  front:
+    from: bent.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [frontDrop, buttonExtension, buttons, breastPockets, lowerPockets, facingWidth]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to the old side seam
+    ops:
+      # Single-breasted to the collar; the lower welts slant down toward the front, below the waist
+      - body3Front:
+          seamAt: 0.12
+          ext: ext
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          buttons:
+            count: buttons
+            top: cfNeck.y + ext * 1.4
+            bottom: cfWaist.y + waistToSeat * 0.55
+          clear: q * 0.08
+          welt: 0.18
+          welts:
+            breast: { x: q * 0.22, y: underarm.y + q * 0.08, len: q * 0.36, rise: q * 0.06, bag: 1.15, mark: breastPockets }
+            lower: { x: q * 0.24, y: cfWaist.y + waistToSeat * 0.3, len: q * 0.5, rise: q * 0.12, bag: 1.4, mark: lowerPockets }
+
+  # Fig. 9: a turn-down collar, front edge to front edge
+  collar:
+    after: [back, front]
+    measurements: [neck]
+    options: [collarWidth]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext * 0.9
+          spring: target * 0.13
+          width: neck * collarWidth
+          point: neck * 0.06
+          nr: 6

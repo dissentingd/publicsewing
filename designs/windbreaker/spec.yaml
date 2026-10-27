@@ -1,0 +1,135 @@
+# Windbreaker: ЕМКО СЭВ т.3's men's summer jacket (§4, Table 4.3, Fig. 21; hood Table 4.2,
+# Figs. 19–20) on FreeSewing's Brian block. A hooded, zip-front jacket with front and back
+# yokes, slanted welt pockets and elastic at the hem and cuffs. See BRIEF.md for where each
+# default is read.
+about:
+  id: windbreaker
+  name: Windbreaker
+  description: A hooded, zip-front light jacket with front and back yokes and slanted welt pockets
+  difficulty: 3
+  tags: [jackets, coats]
+  techniques: [zip, hood, welt-pocket, yoke, facing, elastic]
+  version: 0.1.0
+  source: ЕМКО СЭВ т.3 (1988), §4 summer jacket, Table 4.3, Figs. 19–22 (emko)
+
+block: brian
+
+options:
+  # Fit: ЕМКО's straight silhouette, about 23% over the chest
+  chestEase: { pct: 22, min: 12, max: 40, of: chest, menu: fit }
+  bicepsEase: { pct: 30, min: 15, max: 60, of: biceps, menu: fit }
+  cuffEase: { pct: 110, min: 50, max: 170, of: wrist, menu: fit } # gathered by elastic
+  seatEase: { pct: 10, min: 0, max: 30, of: seat, menu: fit }
+  # Style
+  lengthBelowWaist: { pct: 110, min: 40, max: 200, menu: style } # x waistToSeat
+  sleeveLengthBonus: { pct: 5, min: -10, max: 15, menu: style }
+  yokeDepth: { pct: 58, min: 30, max: 85, menu: style } # x CB neck to the chest line
+  frontYokeDepth: { pct: 78, min: 40, max: 95, menu: style } # x CF neck to the chest line, at the front edge
+  frontYokeArm: { pct: 85, min: 30, max: 95, menu: style } # the same, where the seam meets the armhole
+  zipExtension: { pct: 0.6, min: 0.2, max: 3, of: chest, menu: construction } # each front past CF, over the teeth
+  hood: { bool: true, menu: style }
+  hoodHeight: { pct: 75, min: 60, max: 90, of: head, menu: style } # the face edge
+  hoodDepth: { pct: 44.5, min: 35, max: 55, of: head, menu: style } # the crown, front to back
+  hoodCorner: { pct: 50, min: 10, max: 80, menu: style } # x hoodDepth: the crown's rounding at the back
+  hoodLean: { deg: 10, min: 0, max: 20, menu: style }
+  hoodNeckDrop: { pct: 35, min: 0, max: 50, menu: style } # x the neck edge: the face end below CB
+  hoodDrawstring: { bool: true, menu: style }
+  collarWidth: { pct: 18, min: 10, max: 30, of: neck, menu: style } # the stand collar, without the hood
+  handPockets: { bool: true, menu: style }
+  handPocketTop: { pct: 10, min: -30, max: 60, menu: style } # x waistToSeat: top above the waist
+  handPocketAt: { pct: 50, min: 35, max: 75, menu: style } # x the front's chest width: top behind CF
+  handPocketLength: { pct: 55, min: 35, max: 80, menu: style } # x the front's chest width
+  handPocketLean: { pct: 30, min: 0, max: 60, menu: style } # toward the side, per unit down
+  handPocketWelt: { pct: 12, min: 8, max: 20, menu: style } # x the mouth: finished welt width
+  # Construction
+  facingWidth: { pct: 5, min: 3, max: 12, of: chest, menu: construction }
+
+pieces:
+  backBase:
+    from: brian.back
+    hide: { self: true, from: true, inherited: true }
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, yokeDepth]
+    ops:
+      - coatBack: {}
+      - backYokeCut: { depth: yokeDepth }
+  # Table 4.3: a back yoke, and the lower back in one piece on the fold
+  backYoke: { part: backPanel, from: backBase, panel: yoke, nr: 4, label: backYoke }
+  back: { part: backPanel, from: backBase, panel: body, nr: 5, label: back }
+
+  frontBase:
+    from: brian.front
+    hide: { self: true, from: true, inherited: true }
+    measurements: [seat, waist, waistToSeat]
+    options: [zipExtension, facingWidth, frontYokeDepth, frontYokeArm, handPockets, handPocketTop, handPocketAt, handPocketLength, handPocketLean, handPocketWelt]
+    let:
+      q: underarm.x # the front's width at the chest, CF to side seam
+    ops:
+      # A zip front: each front reaches just past CF and covers half the teeth; level hem
+      - coatFront:
+          ext: chest * zipExtension
+          r: 0
+          facing: chest * facingWidth
+      - frontYokeCut: { depth: frontYokeDepth, armDepth: frontYokeArm }
+      - zip: {}
+      # Slanted welt pockets below the yoke, leaning toward the side seam
+      - store:
+          if: handPockets
+          key: coat.welts
+          value:
+            hand:
+              _x0: q * handPocketAt
+              _y0: max(cfWaist.y - waistToSeat * handPocketTop, underarm.y + q * 0.1)
+              _down: min(q * handPocketLength, cfHem.y - q * 0.12 - _y0)
+              _dx: min(_down * handPocketLean, sideHem.x - q * 0.1 - _x0)
+              x0: _x0
+              y0: _y0
+              x1: _x0 + _dx
+              y1: _y0 + _down
+              len: sqrt(_down * _down + _dx * _dx)
+              welt: len * handPocketWelt
+              bag: len * 0.85
+      - markLine: { id: handPocket, from: [coat.welts.hand.x0, coat.welts.hand.y0], to: [coat.welts.hand.x1, coat.welts.hand.y1], class: mark, if: handPockets }
+  frontYoke: { part: frontPanel, from: frontBase, panel: yoke, nr: 2, label: frontYoke }
+  front: { part: frontPanel, from: frontBase, panel: lower, nr: 1, label: front, keep: [handPocket, zip] }
+
+  facing:
+    part: facing
+    from: frontBase
+    nr: 6
+
+  # Fig. 19: a two-piece hood, its neck edge sewn to the whole neckline to the front edges
+  hood:
+    part: hood
+    after: [backBase, frontBase]
+    nr: 7
+    options: [hood, hoodHeight, hoodDepth, hoodCorner, hoodLean, hoodNeckDrop, hoodDrawstring]
+    target: coat.back.neck + coat.front.neck + coat.frontEdge.ext
+    spring: -target * hoodNeckDrop
+    height: head * hoodHeight
+    lean: hoodLean
+    depth: head * hoodDepth
+    corner: head * hoodDepth * hoodCorner
+    casing: if(hoodDrawstring, head * 0.04, 0)
+    if: hood
+
+  # Without the hood: a stand collar, front edge to front edge
+  collar:
+    after: [backBase, frontBase]
+    measurements: [neck]
+    options: [hood, collarWidth]
+    ops:
+      - hidePiece: { if: hood }
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext
+          spring: target * 0.04
+          width: neck * collarWidth
+          point: 0
+          nr: 8
+
+  sleeve:
+    part: sleeve
+    after: frontBase
+    options: [sleeveLengthBonus]
+
+  handWelt: { part: welt, after: frontBase, key: hand, store: coat.welts, nr: 9, if: handPockets }
+  handBag: { part: weltBag, after: frontBase, key: hand, store: coat.welts, nr: 10, if: handPockets }

@@ -1,8 +1,10 @@
-# Wardrobe gaps vs FreeSewing (2026-10-23; status updated 2026-10-26)
+# Wardrobe gaps vs FreeSewing (2026-10-23; status updated 2026-10-27)
 
 Direction (2026-10-23): build on FreeSewing's MIT code as a separate catalog (a fork,
 not upstream contributions) and backfill it with practical garments drawn from public-domain
-sources, with Claude writing the design code.
+sources, with Claude writing the design code. From 2026-10-27, sources still in copyright are
+also used, as far as copyright law permits: their methods and proportions as design references,
+never their text or figures (ЕМКО СЭВ 1988, below).
 
 The wardrobe list is the style table in [SOURCING.md](SOURCING.md) (styles 1–5 plus knits).
 The FreeSewing list is `@freesewing/collection` 4.10.2 (npm, 2026-09-13, MIT): 73 designs.
@@ -42,6 +44,10 @@ and marked as derived.
 | **Chore / work coat** | 2 | — | **Drafted 2026-10-23** (`designs/chore-coat`, not sewn) | Simons 1918 (work coat) |
 | **Peacoat / reefer** | 3 | — | **Drafted 2026-10-26** (`designs/peacoat`: the mackinaw at hip length with Simons' D.B. overcoat details: ulster collar and notched lapel, hand-warmer pockets, vent, lining; not sewn) | Simons 1916 D.B. overcoats (no reefer as such) |
 | Trench / ulster | 3 | Carlton | Variant | Simons 1916 |
+| **Overcoat, straight, yoked** | 1, 3 | Carlton is a belted long coat | **Drafted 2026-10-27** (`designs/winter-coat`: deep front and back yokes, hip welts, turn-down collar, lining; not sewn) | ЕМКО 1988 §3 |
+| **Topcoat, semi-fitted** | 1 | Carlton | **Drafted 2026-10-27** (`designs/topcoat`: side panels, back vent, slanted welts, two-piece sleeves; not sewn) | ЕМКО 1988 §2 |
+| **Hooded windbreaker** | 3, 5 | — (Jett is a bomber) | **Drafted 2026-10-27** (`designs/windbreaker`: zip, yokes, hood or stand collar, slanted welts; not sewn) | ЕМКО 1988 §4 |
+| **Quilted / insulated jacket** | 3 | — | **Drafted 2026-10-27** (`designs/quilted-jacket`: the windbreaker buttoned to the throat, sloped front yoke, quilted lining; not sewn) | ЕМКО 1988 §5 |
 | **Field jacket / military blouse** | 3 | — (Jett is a bomber) | **Military blouse drafted 2026-10-23** (`designs/military-blouse`, not sewn) | Simons 1918 (military blouse) |
 | **Hunting / field coat** (belted, action back, bellows pockets) | 3 | — | **Drafted 2026-10-23** (`designs/hunting-coat`, not sewn) | Simons 1918 (hunting coat) |
 | **Mackinaw** | 3 | — | **Drafted 2026-10-23** (`designs/mackinaw`, not sewn; convertible, military or shawl collar; set-in or raglan sleeves) | Simons 1918 |
@@ -159,6 +165,27 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
 - **Next from Mitchell:** the tight-fitted single- and double-dart jackets (an under-arm panel,
   more front seams, a shawl collar, on the same library), then the gored skirts (5–15 gores;
   a skirt library on FreeSewing's Sarah or our own).
+
+## ЕМКО СЭВ vol. 3 (1988): done (2026-10-27)
+Corpus `emko`, a private copy, untracked: still in copyright, used only for its methods,
+proportions and construction (CLAUDE.md, Copyright). The archived pipeline had read all six of
+its men's garments (`archive/recipes/emko/`), so the briefs take their numbers from there, and
+the archived pipeline still computes any point of them (`python -m ccat run --source
+emko-garment ...`). Four designs, each tested at 20 adult, 3 stout and 75 children's sizes;
+none sewn, none draped yet:
+- `windbreaker` (§4 summer jacket): new shared pieces, `lib/hood.mjs` (a two-piece hood),
+  `frontYokeCut` / `frontPanel` and the back `body` panel (`lib/panels.mjs`), `zip`
+  (`lib/coat.mjs`);
+- `quilted-jacket` (§5 insulated jacket), on the windbreaker: buttons to the throat, a sloping
+  front yoke, quilted lining cuts;
+- `winter-coat` (§3), on the windbreaker's yoked body: knee length, turn-down collar, lining;
+- `topcoat` (§2 demi-season coat), on the military blouse's three-piece body, with a new back vent
+  (`lib/body3.mjs`).
+
+Not drafted: the §1 jacket (FreeSewing's Jaeger) and the §6 waistcoat (Wahid; our bar vest).
+Left out of all four (each brief says so): ЕМКО's belly and chest darts, the summer jacket's
+yoke ease, the two-piece and inner-seam sleeves on the Brian designs, the winter coat's side-seam
+shift. Vols. 2, 5 and 6 (women's, girls', boys') were located but never obtained.
 
 ## After Mitchell: Simons' overcoats (1916), then later Woman's Institute volumes
 - Mitchell's remaining garments are listed above; the archived pipeline's readings of it are in

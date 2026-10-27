@@ -31,6 +31,10 @@ body:
         - Shirtwaist dress (shirtwaist-dress)
         - Tailored jacket (tailored-jacket)
         - Box coat (box-coat)
+        - Windbreaker (windbreaker)
+        - Quilted jacket (quilted-jacket)
+        - Winter coat (winter-coat)
+        - Topcoat (topcoat)
     validations:
       required: true
   - type: input

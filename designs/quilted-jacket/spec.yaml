@@ -1,0 +1,93 @@
+# Quilted jacket: ЕМКО СЭВ т.3's men's insulated jacket (§5, Table 5.3, Figs. 27–28), on the
+# windbreaker's body (FreeSewing's Brian): a hooded jacket buttoned to the throat, a front yoke
+# seam sloping up to the armhole, slanted welt pockets, cut again in quilted lining. See
+# BRIEF.md for where each default is read.
+extends: ../windbreaker/spec.yaml
+
+about:
+  id: quiltedjacket
+  name: Quilted jacket
+  description: A hooded, quilt-lined jacket that buttons to the throat, with sloped front yokes and slanted welt pockets
+  difficulty: 3
+  tags: [jackets, coats]
+  techniques: [hood, button, welt-pocket, yoke, facing, lining]
+  version: 0.1.0
+  source: ЕМКО СЭВ т.3 (1988), §5 insulated jacket, Table 5.3, Figs. 27–28 (emko)
+
+options:
+  # Fit: about 29% over the chest, room for the quilting
+  chestEase: { pct: 27 }
+  bicepsEase: { pct: 34 }
+  # Style
+  yokeDepth: { pct: 55 }
+  frontYokeDepth: { pct: 72 } # at the front edge
+  frontYokeArm: { pct: 36 } # at the armhole: the seam slopes up toward the shoulder
+  buttonExtension: { pct: 2.6, min: 1.5, max: 5, of: chest, menu: style } # half the 5.0 placket
+  buttons: { count: 7, min: 4, max: 10, menu: style }
+  quilted: { bool: true, menu: construction }
+  facingWidth: { pct: 8 }
+
+pieces:
+  backYoke: { part: backPanel, from: backBase, panel: yoke, nr: 4, label: backYoke, lining: quilted }
+  back: { part: backPanel, from: backBase, panel: body, nr: 5, label: back, lining: quilted }
+
+  frontBase:
+    from: brian.front
+    hide: { self: true, from: true, inherited: true }
+    measurements: [seat, waist, waistToSeat]
+    options: [buttonExtension, buttons, facingWidth, frontYokeDepth, frontYokeArm, handPockets, handPocketTop, handPocketAt, handPocketLength, handPocketLean, handPocketWelt]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+    ops:
+      # A button stand to the throat; level hem
+      - coatFront:
+          ext: ext
+          r: 0
+          facing: chest * facingWidth
+      - frontYokeCut: { depth: frontYokeDepth, armDepth: frontYokeArm }
+      - buttons:
+          count: buttons
+          top: cfNeck.y + ext * 0.7
+          bottom: cfHem.y - ext * 2.5
+          rows: [0]
+      - store:
+          if: handPockets
+          key: coat.welts
+          value:
+            hand:
+              _x0: q * handPocketAt
+              _y0: max(cfWaist.y - waistToSeat * handPocketTop, underarm.y + q * 0.1)
+              _down: min(q * handPocketLength, cfHem.y - q * 0.12 - _y0)
+              _dx: min(_down * handPocketLean, sideHem.x - q * 0.1 - _x0)
+              x0: _x0
+              y0: _y0
+              x1: _x0 + _dx
+              y1: _y0 + _down
+              len: sqrt(_down * _down + _dx * _dx)
+              welt: len * handPocketWelt
+              bag: len * 0.85
+      - markLine: { id: handPocket, from: [coat.welts.hand.x0, coat.welts.hand.y0], to: [coat.welts.hand.x1, coat.welts.hand.y1], class: mark, if: handPockets }
+  frontYoke: { part: frontPanel, from: frontBase, panel: yoke, nr: 2, label: frontYoke, lining: quilted }
+  front: { part: frontPanel, from: frontBase, panel: lower, nr: 1, label: front, keep: [handPocket], lining: quilted }
+
+  hood:
+    part: hood
+    after: [backBase, frontBase]
+    nr: 7
+    options: [hood, hoodHeight, hoodDepth, hoodCorner, hoodLean, hoodNeckDrop, hoodDrawstring, quilted]
+    target: coat.back.neck + coat.front.neck + coat.frontEdge.ext
+    spring: -target * hoodNeckDrop
+    height: head * hoodHeight
+    lean: hoodLean
+    depth: head * hoodDepth
+    corner: head * hoodDepth * hoodCorner
+    casing: if(hoodDrawstring, head * 0.04, 0)
+    lining: quilted
+    if: hood
+
+  sleeve:
+    part: sleeve
+    after: frontBase
+    options: [sleeveLengthBonus, quilted]
+    lining: quilted

@@ -1,0 +1,111 @@
+# Winter coat: ЕМКО СЭВ т.3's men's winter coat (§3, Table 3.3, Figs. 14–15), on the
+# windbreaker's yoked body (FreeSewing's Brian): a straight, knee-length coat with deep front
+# and back yokes, welt pockets at the hip, a turn-down collar and a lining. See BRIEF.md for
+# where each default is read.
+extends: ../windbreaker/spec.yaml
+
+about:
+  id: wintercoat
+  name: Winter coat
+  description: A straight, knee-length coat with deep front and back yokes, hip welt pockets and a turn-down collar
+  difficulty: 4
+  tags: [coats]
+  techniques: [button, welt-pocket, yoke, collar, facing, lining]
+  version: 0.1.0
+  source: ЕМКО СЭВ т.3 (1988), §3 winter coat, Table 3.3, Figs. 14–15 (emko)
+
+options:
+  # Fit: about 29% over the chest, worn over a jacket
+  chestEase: { pct: 27 }
+  bicepsEase: { pct: 34 }
+  cuffEase: { pct: 95 }
+  seatEase: { pct: 16 }
+  hemFlare: { pct: 3 } # x seat, at each side seam: room to walk
+  # Style
+  lengthBelowWaist: { pct: 230 } # x waistToSeat: 61.5 below the waist, about the knee
+  yokeDepth: { pct: 40 } # 12.0 of the 30.0 from the nape to the underarm
+  frontYokeDepth: { pct: 86 } # at the front edge
+  frontYokeArm: { pct: 92 } # at the armhole, 1.8 above the underarm
+  buttonExtension: { pct: 3.2, min: 2, max: 6, of: chest, menu: style }
+  buttons: { count: 4, min: 3, max: 7, menu: style }
+  hood: { bool: false }
+  collarWidth: { pct: 27 }
+  # The welt pocket runs from the front of the hip back toward the side seam, rising a little
+  handPocketTop: { pct: -35, min: -70, max: 30, title: "Pocket height", description: "How far above the waist the pocket's front end sits (below it when negative), as a share of waist to seat." } # x waistToSeat: its front end below the waist
+  handPocketAt: { pct: 50, title: "Pocket position", description: "How far behind the centre front the pocket's front end sits, as a share of the front's width." } # x the front's chest width: its front end behind CF
+  handPocketLength: { pct: 43, title: "Pocket length", description: "How far the pocket runs back toward the side seam, as a share of the front's width." } # x the front's chest width
+  handPocketLean: { pct: 5, title: "Pocket slant", description: "How much the pocket rises as it runs back toward the side seam." } # rise toward the side, per unit across
+  lining: { bool: true, menu: construction }
+  facingWidth: { pct: 9 }
+
+pieces:
+  backBase:
+    from: brian.back
+    hide: { self: true, from: true, inherited: true }
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, yokeDepth, hemFlare]
+    ops:
+      - coatBack: {}
+      - backYokeCut: { depth: yokeDepth }
+  backYoke: { part: backPanel, from: backBase, panel: yoke, nr: 4, label: backYoke, lining: lining }
+  back: { part: backPanel, from: backBase, panel: body, nr: 5, label: back, lining: lining }
+
+  frontBase:
+    from: brian.front
+    hide: { self: true, from: true, inherited: true }
+    measurements: [seat, waist, waistToSeat]
+    options: [buttonExtension, buttons, facingWidth, frontYokeDepth, frontYokeArm, handPockets, handPocketTop, handPocketAt, handPocketLength, handPocketLean, handPocketWelt]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+    ops:
+      - coatFront:
+          ext: ext
+          r: 0
+          facing: chest * facingWidth
+      - frontYokeCut: { depth: frontYokeDepth, armDepth: frontYokeArm }
+      # Single-breasted, from below the collar to the pockets
+      - buttons:
+          count: buttons
+          top: cfNeck.y + ext * 1.2
+          bottom: cfWaist.y + waistToSeat * 0.9
+          rows: [0]
+      # A near-level welt: front end below the waist, running back toward the side seam
+      - store:
+          if: handPockets
+          key: coat.welts
+          value:
+            hand:
+              _x0: q * handPocketAt
+              _y0: cfWaist.y - waistToSeat * handPocketTop
+              _dx: min(q * handPocketLength, sideHem.x - q * 0.08 - _x0)
+              _up: _dx * handPocketLean
+              x0: _x0
+              y0: _y0
+              x1: _x0 + _dx
+              y1: _y0 - _up
+              len: sqrt(_dx * _dx + _up * _up)
+              welt: len * handPocketWelt
+              bag: len * 1.1
+      - markLine: { id: handPocket, from: [coat.welts.hand.x0, coat.welts.hand.y0], to: [coat.welts.hand.x1, coat.welts.hand.y1], class: mark, if: handPockets }
+  frontYoke: { part: frontPanel, from: frontBase, panel: yoke, nr: 2, label: frontYoke, lining: lining }
+  front: { part: frontPanel, from: frontBase, panel: lower, nr: 1, label: front, keep: [handPocket], lining: lining }
+
+  # Fig. 14: a turn-down collar, front edge to front edge
+  collar:
+    after: [backBase, frontBase]
+    measurements: [neck]
+    options: [hood, collarWidth]
+    ops:
+      - hidePiece: { if: hood }
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext * 0.9
+          spring: target * 0.13
+          width: neck * collarWidth
+          point: neck * 0.06
+          nr: 8
+
+  sleeve:
+    part: sleeve
+    after: frontBase
+    options: [sleeveLengthBonus, lining]
+    lining: lining

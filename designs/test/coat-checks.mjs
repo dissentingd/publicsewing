@@ -73,12 +73,13 @@ export function checkCoat(pattern, frontName) {
   assert.ok(get('facing').edge >= fr.edge, 'facing runs the full front edge')
   // Pockets stay on the front, clear of the armhole, side seam and hem
   const front = pattern.parts[0][frontName].points
-  for (const [k, p] of Object.entries(get('pockets'))) {
+  const pockets = store.get('coat.pockets', null) ?? {}
+  for (const [k, p] of Object.entries(pockets)) {
     assert.ok(p.w > 0 && p.h > 0, `${k} pocket has a size`)
     assert.ok(p.x + p.w < front.hem.x, `${k} pocket clears the side seam`)
     assert.ok(p.y + p.h < front.cfHem.y, `${k} pocket clears the hem`)
   }
-  const { breast } = get('pockets')
+  const { breast } = pockets
   if (breast) assert.ok(breast.x + breast.w < front.armholeHollow.x, 'breast pocket clears the armhole')
   // Round the waist the coat clears the body (stout figures most of all)
   const back = pattern.parts[0][frontName.replace('front', 'back')]?.points ?? pattern.parts[0][frontName.replace('front', 'backBase')]?.points
@@ -87,8 +88,12 @@ export function checkCoat(pattern, frontName) {
     const waist = 2 * (back.sideWaist.x + front.sideWaist.x + f)
     assert.ok(waist > pattern.settings[0].measurements.waist * 1.02, `coat waist ${waist.toFixed(0)} vs body ${pattern.settings[0].measurements.waist}`)
   }
-  const b = get('buttons')
+  // Buttons, or a zip
+  const b = store.get('coat.buttons', null) ?? get('zip')
   assert.ok(b.top < b.bottom, 'buttons run down the front')
+  // A hood sews to the whole neckline
+  const hood = store.get('coat.hood', null)
+  if (hood) near(hood.neck, hood.target, 1, 'hood neck edge vs neckline')
   return store
 }
 

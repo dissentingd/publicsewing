@@ -16,5 +16,9 @@
   "shop-coat": { "default": {}, "plain": { "pencilPocket": false, "hemFlare": 0, "pocketShape": "rounded", "buttons": 6 } },
   "shirtwaist-dress": { "default": {}, "variant": { "neckFinish": "band", "sleeves": "short", "opening": "back", "gathers": 1.2, "skirtLength": 0.9 } },
   "tailored-jacket": { "default": {}, "notch": { "lapelStyle": "notch", "buttons": 4, "lengthBelowWaist": 0.3, "backSeamAt": 0.6 }, "plain": { "pockets": false, "breastPocket": false, "lining": false } },
-  "smock": { "default": {}, "variant": { "opening": "front", "sleeves": "short", "neckFinish": "band", "yokeDepth": 0.3, "gathers": 2 } }
+  "smock": { "default": {}, "variant": { "opening": "front", "sleeves": "short", "neckFinish": "band", "yokeDepth": 0.3, "gathers": 2 } },
+  "windbreaker": {"default": {}, "collar": {"hood": false, "handPockets": false}, "sloped": {"frontYokeDepth": 0.72, "frontYokeArm": 0.36, "hoodDrawstring": false, "lengthBelowWaist": 1.6}},
+  "quilted-jacket": {"default": {}, "plain": {"hood": false, "quilted": false, "handPockets": false, "buttons": 5}},
+  "winter-coat": {"default": {}, "hooded": {"hood": true, "lining": false, "handPockets": false, "buttons": 6, "lengthBelowWaist": 1.6}},
+  "topcoat": {"default": {}, "plain": {"vent": false, "lowerPockets": false, "breastPockets": true, "buttons": 3, "lengthBelowWaist": 1.6}}
 }

@@ -61,8 +61,12 @@ function levels({ points, Point, measurements, options }, c) {
   return { waistY, seatY: points[`${c}Seat`].y, hemY: points[`${c}Hem`].y }
 }
 
-/** The back panel, on the fold. Its seam leaves the armhole `seamAt` of the way up. */
-export function draftBody3Back(sh, { seamAt = 0.3, nr = 2 } = {}) {
+/**
+ * The back panel, on the fold. Its seam leaves the armhole `seamAt` of the way up. `vent`:
+ * { length, width }, a back vent from the hem `length` up, lapping `width` past CB, its top cut
+ * at 45 degrees; the back is then cut in pairs with a CB seam.
+ */
+export function draftBody3Back(sh, { seamAt = 0.3, vent, nr = 2 } = {}) {
   const { points, paths, Path, Point, options, store, sa, macro, snippets, Snippet, part } = sh
   cleanup(sh, ['backArmhole', 'backCollar'])
   const { waistY, seatY, hemY } = levels(sh, 'cb')
@@ -74,26 +78,43 @@ export function draftBody3Back(sh, { seamAt = 0.3, nr = 2 } = {}) {
   const { left, right } = seamEdges(sh, points.seamStart, points.seamStart.x, Dw * k, Ds * k, waistY, seatY, hemY)
   store.set('blouse.back', { right, lowerArm, S, hemY, seam: left.length() })
   points.seamHem = left.end()
-  // Back panel: CB is the fold
-  const outline = new Path()
-    .move(points.cbHem)
-    .line(points.seamHem)
-    .join(left.reverse())
-    .join(upperArm)
-    .line(points.s3CollarSplit)
-    .join(paths.backCollar)
+  // CB: the fold, or a seam with a vent at the hem
+  let cb = null
+  let hemStart = points.cbHem
+  if (vent) {
+    points.ventTop = new Point(0, points.cbHem.y - vent.length)
+    points.ventCorner = new Point(-vent.width, points.ventTop.y + vent.width)
+    points.ventHem = new Point(-vent.width, points.cbHem.y)
+    hemStart = points.ventHem
+    cb = new Path().move(points.cbNeck).line(points.ventTop).line(points.ventCorner).line(points.ventHem)
+    store.set('coat.vent', { length: vent.length, width: vent.width, top: points.ventTop.y })
+  }
+  const hem = new Path().move(hemStart).line(points.seamHem)
+  const rest = new Path().move(points.seamHem).join(left.reverse()).join(upperArm).line(points.s3CollarSplit).join(paths.backCollar)
+  const outline = cb ? hem.join(rest).join(cb) : hem.join(rest)
   paths.seam = outline.clone().close().addClass('fabric')
   if (sa) {
-    const hem = new Path().move(points.cbHem).line(points.seamHem).offset(sa * 3)
-    const rest = outline.split(points.seamHem)[1].offset(sa)
-    paths.sa = new Path().move(points.cbHem).line(hem.start()).join(hem).line(rest.start()).join(rest).line(points.cbNeck).addClass('fabric sa')
+    const h = hem.offset(sa * 3)
+    const r = rest.offset(sa)
+    if (cb) {
+      const c = cb.offset(sa)
+      paths.sa = h.line(r.start()).join(r).line(c.start()).join(c).close().addClass('fabric sa')
+    } else {
+      paths.sa = new Path().move(points.cbHem).line(h.start()).join(h).line(r.start()).join(r).line(points.cbNeck).addClass('fabric sa')
+    }
   }
   store.set('coat.back', {
     shoulder: points.s3CollarSplit.dist(points.s3ArmholeSplit),
     neck: paths.backCollar.length(),
   })
-  macro('cutonfold', { from: points.cbNeck, to: points.cbHem, grainline: true })
-  store.cutlist.setCut({ cut: 1, from: 'fabric', onFold: true })
+  if (vent) {
+    const gx = points.seamStart.x * 0.3
+    macro('grainline', { from: new Point(gx, points.cbHem.y - 40), to: new Point(gx, points.cbNeck.y + 60) })
+    store.cutlist.setCut({ cut: 2, from: 'fabric' })
+  } else {
+    macro('cutonfold', { from: points.cbNeck, to: points.cbHem, grainline: true })
+    store.cutlist.setCut({ cut: 1, from: 'fabric', onFold: true })
+  }
   title(macro, { at: new Point(points.seamStart.x * 0.45, points.armhole.y), nr, title: 'back' })
   snippets.seamStart = new Snippet('bnotch', points.seamStart)
   snippets.waist = new Snippet('notch', left.intersectsY(waistY)[0] || points.seamStart)

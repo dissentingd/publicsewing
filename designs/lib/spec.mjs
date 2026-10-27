@@ -16,6 +16,7 @@ import {
   draftNotchLapel,
   draftBackVent,
   placeButtons,
+  placeZip,
   facingPart,
   backNeckFacingPart,
   frontLiningPart,
@@ -24,7 +25,8 @@ import {
 } from './coat.mjs'
 import { markPocket, pocketPart, flapPart, beltPart, setInPocketPart } from './pockets.mjs'
 import { applyRaglan, raglanSleevePart } from './raglan.mjs'
-import { backYokeCut, backPanelPart } from './panels.mjs'
+import { backYokeCut, backPanelPart, frontYokeCut, frontPanelPart } from './panels.mjs'
+import { hoodPart } from './hood.mjs'
 import { draftBody3Back, draftBody3Front, sideBodyPart, libraryPart, weltPart, weltBagPart } from './body3.mjs'
 import { topsleeve, undersleeve } from '@freesewing/library'
 import {
@@ -56,6 +58,8 @@ export const operations = {
   coatBack: { run: draftCoatBack, options: bodyOptions, measurements: bodyMeasurements },
   coatFront: { run: draftCoatFront },
   buttons: { run: placeButtons },
+  // A zip up the front edge (after coatFront)
+  zip: { run: placeZip },
   collar: { run: draftCollar },
   markPocket: { run: (sh, { id, pocket }) => markPocket(sh, id, pocket), literal: ['id'] },
   store: { run: ({ store }, { key, value }) => store.set(key, value), literal: ['key'] },
@@ -85,6 +89,8 @@ export const operations = {
   body3Front: { run: draftBody3Front },
   // Mark a coat back's yoke line, before cutting it into panels (lib/panels.mjs)
   backYokeCut: { run: backYokeCut },
+  // Mark a coat front's yoke seam, before cutting it into front panels
+  frontYokeCut: { run: frontYokeCut },
   // A marked line (placement for a belt, a pocket mouth...) from [x, y] to [x, y]
   markLine: {
     run: ({ paths, Path, Point }, { id, from, to, class: cls }) => {
@@ -157,6 +163,35 @@ const factories = {
       nr: p.nr,
       label: p.label,
       args: (sh) => evalMap({ pleat: p.pleat, pleatAt: p.pleatAt }, lookupIn(sh, ctx.block, {}), {}),
+      lining: p.lining === undefined ? () => false : enabledBy(p.lining),
+    }),
+  // One panel of a front cut by frontYokeCut; `from` is the hidden whole front, `keep` names
+  // marks drawn on it (a pocket mouth) that the lower panel keeps
+  frontPanel: (p, ctx) =>
+    frontPanelPart({
+      name: p.name,
+      from: ctx.parts[p.from],
+      panel: p.panel,
+      nr: p.nr,
+      label: p.label,
+      keep: p.keep,
+      lining: p.lining === undefined ? () => false : enabledBy(p.lining),
+    }),
+  // A two-piece hood (lib/hood.mjs) sewn to the neckline; its sizes are expressions
+  hood: (p, ctx) =>
+    hoodPart({
+      name: p.name,
+      after: ctx.after(p),
+      nr: p.nr,
+      options: ctx.options(p),
+      size: (sh) =>
+        evalMap(
+          { target: p.target, spring: p.spring, height: p.height, lean: p.lean, depth: p.depth, corner: p.corner, casing: p.casing },
+          lookupIn(sh, ctx.block, {}),
+          {},
+        ),
+      enabled: enabledBy(p.if),
+      lining: p.lining === undefined ? () => false : enabledBy(p.lining),
     }),
   // Yoke garments (lib/yoke.mjs): a body or yoke piece cut from a base, sleeve, band, placket
   yokePiece: (p, ctx) =>

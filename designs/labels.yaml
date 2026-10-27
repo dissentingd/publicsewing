@@ -148,6 +148,27 @@ options:
   collarWidth:
     title: Collar width
     description: Width of the collar at the centre back, as a share of the neck.
+  hood:
+    title: Hood
+    description: A hood sewn to the neckline in place of the collar.
+  hoodHeight:
+    title: Hood height
+    description: Length of the hood's face edge, from the neckline to the crown, as a share of the head.
+  hoodDepth:
+    title: Hood depth
+    description: Depth of the hood across the crown, front to back, as a share of the head.
+  hoodCorner:
+    title: Hood rounding
+    description: How round the back of the hood is at the crown, as a share of the hood's depth.
+  hoodLean:
+    title: Hood tilt
+    description: How far the hood's face edge leans forward, in degrees.
+  hoodNeckDrop:
+    title: Hood neck curve
+    description: How far the hood's neck edge drops toward the face, as a share of its length.
+  hoodDrawstring:
+    title: Hood drawstring
+    description: A casing for a drawstring along the hood's face edge.
   collarSpring:
     title: Collar spring
     description: >
@@ -186,6 +207,9 @@ options:
   buttonExtension:
     title: Button stand
     description: How far the front extends past the centre front for the buttons.
+  zipExtension:
+    title: Zip cover
+    description: How far each front reaches past the centre front, covering half the zip's teeth.
   buttonInset:
     title: Button position
     description: Buttons' distance from the front edge, as a share of the lap. 100% puts them on the centre front.
@@ -316,6 +340,12 @@ options:
   yokeDepth:
     title: Yoke depth
     description: Depth of the yoke from the neck point, as a share of the way to the chest line.
+  frontYokeDepth:
+    title: Front yoke depth
+    description: Depth of the front yoke at the front edge, as a share of the way from the front neck to the chest line.
+  frontYokeArm:
+    title: Front yoke at the armhole
+    description: Where the front yoke seam meets the armhole, as a share of the way from the front neck to the chest line. Less than the front yoke depth slopes the seam up toward the shoulder.
   frontYoke:
     title: Front yoke
     description: A yoke on the front too. No makes the front one piece, neck to hem.
@@ -348,6 +378,9 @@ options:
   lining:
     title: Lining
     description: Line the body. The facings then run to the shoulder, with a back-neck facing.
+  quilted:
+    title: Quilted lining
+    description: Cut the body, yokes, sleeves and hood again in quilted lining.
   liningPleat:
     title: Lining pleat
     description: Extra width at the back lining's centre back, folded into a pleat for movement.
@@ -375,6 +408,7 @@ parts:
   backSkirt: Back skirt
   frontSkirt: Front skirt
   backYoke: Back yoke
+  hood: Hood
   frontYoke: Front yoke
   backMiddle: Back middle
   backLower: Back lower

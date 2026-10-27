@@ -54,10 +54,15 @@ without declaring them, so they are listed in our package.json.
 | `peacoat/` | Hip-length double-breasted coat: the mackinaw with Simons' D.B. overcoat stand, three-button rows, notched lapel and deep ulster collar, slanted hand-warmer welt pockets, back vent and lining, no belt, on Brian, Simons 1916. [BRIEF.md](peacoat/BRIEF.md) | draft (not sewn) |
 | `box-coat/` | Women's loose box coat: straight body flared from the arms, shaped CB seam, neck dart, notched lapel, collar, buttons near the lapped edge, set-in flap pockets (hip and ticket), two-piece sleeves, on Breanna, Mitchell 1921. [BRIEF.md](box-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `knickerbockers/` | Full knickers gathered into knee bands, elastic waist, on Titan, Walker 1909. [BRIEF.md](knickerbockers/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
+| `windbreaker/` | Hooded zip-front jacket: back and front yokes, two-piece hood with a drawstring (or a stand collar), slanted welt pockets, on Brian, ЕМКО 1988 §4. [BRIEF.md](windbreaker/BRIEF.md) | draft (not sewn) | not draped |
+| `quilted-jacket/` | The windbreaker buttoned to the throat, front yoke seam sloping up to the armhole, cut again in quilted lining, ЕМКО 1988 §5. [BRIEF.md](quilted-jacket/BRIEF.md) | draft (not sewn) | not draped |
+| `winter-coat/` | Straight knee-length coat on the windbreaker's body: shallow back yoke, deep front yoke, near-level hip welts, turn-down collar, lining (hood optional), ЕМКО 1988 §3. [BRIEF.md](winter-coat/BRIEF.md) | draft (not sewn) | not draped |
+| `topcoat/` | Semi-fitted knee-length coat on the military blouse's three-piece body: back vent, slanted welts, turn-down collar, two-piece sleeves, ЕМКО 1988 §2. [BRIEF.md](topcoat/BRIEF.md) | draft (not sewn) | not draped |
 | `lib/yoke.mjs` | Shared yoke-garment drafting (Walker designs) | |  |
-| `lib/coat.mjs`, `raglan.mjs`, `panels.mjs` | Coats on Brian: body (stout, waisted, flared), fronts (V neck, shawl collar, notched lapel), facings, collars, sleeves, back vent, lining, raglan sleeves, back panels | |
+| `lib/coat.mjs`, `raglan.mjs`, `panels.mjs` | Coats on Brian: body (stout, waisted, flared), fronts (V neck, shawl collar, notched lapel), facings, collars, sleeves, back vent, lining, zip, raglan sleeves, back panels, front yokes | |
+| `lib/hood.mjs` | A two-piece hood sewn to the neckline, drawstring casing optional (ЕМКО designs) | |  |
 | `lib/lapel.mjs` | The notched or peaked lapel shared by the coats and the women's jackets | |  |
-| `lib/body3.mjs` | Three-piece body on Bent, welt pockets (military blouse) | |  |
+| `lib/body3.mjs` | Three-piece body on Bent, back vent, welt pockets (military blouse, topcoat) | |  |
 | `lib/jacket.mjs` | Women's jackets and coats on Breanna: princess panels, or a box body with a pivoted neck dart; lapels, CB seam, buttons near the edge | |  |
 | `lib/pockets.mjs` | Patch pockets, flaps, belts, set-in flap pockets (flap, jet, bag) | |  |
 | `lib/trousers.mjs` | Gathered legs on Titan (knickerbockers) | |  |

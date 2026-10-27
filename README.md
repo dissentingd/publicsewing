@@ -4,8 +4,9 @@ Made-to-measure sewing patterns for practical, timeless garments, drafted from y
 measurements, children's sizes included.
 
 PublicSewing adds garments that [FreeSewing](https://freesewing.org) doesn't have. Each design
-takes its pieces, style lines, proportions and construction from a public-domain drafting book
-(so far five, published 1909 to 1921, four American and one British). The geometry comes from FreeSewing's
+takes its pieces, style lines, proportions and construction from a drafting book: five in the
+public domain (published 1909 to 1921, four American and one British) and one later reference
+used only for its methods (ЕМКО, 1988). The geometry comes from FreeSewing's
 tested blocks, so every design drafts at any size. The old books are design references: designs
 are modernised and simplified freely, and historical accuracy is not a goal.
 
@@ -41,6 +42,10 @@ a check that the pieces sew together into the garment, not a fit result.
 | `shirtwaist-dress` | Buttoned work dress with a turn-down collar and cuffs | Woman's Institute, *Pattern Drafting* (1915) |
 | `tailored-jacket` | Women's semi-fitted jacket, princess seams, peak lapel | Mitchell 1921 |
 | `box-coat` | Women's loose box coat with a notched lapel and set-in flap pockets | Mitchell 1921 |
+| `windbreaker` | Hooded zip-front light jacket with yokes and slanted welt pockets | ЕМКО 1988 |
+| `quilted-jacket` | Hooded quilt-lined jacket buttoned to the throat, sloped front yokes | ЕМКО 1988 |
+| `winter-coat` | Straight knee-length coat with deep yokes, hip welts, turn-down collar | ЕМКО 1988 |
+| `topcoat` | Semi-fitted knee-length coat with side panels and a back vent | ЕМКО 1988 |
 
 [WARDROBE_GAPS.md](WARDROBE_GAPS.md) compares a full wardrobe against what FreeSewing already
 has and lists what's next.
@@ -82,13 +87,15 @@ options.
 
 ## Sources and copyright
 
-The designs draw on five drafting books:
+The designs draw on six drafting books:
 - Simons, *Drafting Cotton Garments and Mackinaws* (New York, 1918), `draftingcottonga00simo`;
 - Simons, *Designing Overcoat Patterns for Men and Young Men* (New York, 1916), `designingovercoa00simo`;
 - Walker, *Manual of Needlework and Cutting Out* (London, 1909), `krl00366374`;
 - Woman's Institute, *Pattern Drafting* (Scranton, ©1915), `patterdraftingpicken`;
 - Mitchell, *The New "Standard" Work on Designing and Pattern-Making of Ladies' Tailor-Made
-  Garments* (New York, 1921), `newstandardworko00mitc`.
+  Garments* (New York, 1921), `newstandardworko00mitc`;
+- ЕМКО СЭВ, vol. 3, *Base constructions of men's clothing* (Moscow, 1988), `emko`: still in
+  copyright, so it isn't in `corpus/`, and it's used only as copyright law allows (below).
 
 Children's sizes come from the USDA's O'Brien surveys (1939), a US government work.
 
@@ -106,9 +113,11 @@ expression of a book (its text, layout and illustrations) is. Each design takes 
 proportions and construction from a book, gets its geometry from FreeSewing's blocks, and is
 written in our own words. No source text or illustration is reproduced outside `corpus/`.
 
-The archived pipeline (`archive/`) also read the formulas and sizing
-tables of ЕМКО СЭВ (1988), which is still in copyright. Only its numbers and methods are in
-the repository, recomputed by our code; its text and scans are not.
+ЕМКО СЭВ (1988) is still in copyright. Its designs (windbreaker, quilted jacket, winter coat,
+topcoat) take only its methods, proportions and construction, which copyright doesn't cover;
+their geometry is FreeSewing's and their briefs are our own words. The archived pipeline
+(`archive/`) also read its formulas and sizing tables: only its numbers and methods are in the
+repository, recomputed by our code. Its text, figures and scans are not.
 
 ## License
 
