@@ -1,0 +1,117 @@
+# Waistcoat: ЕМКО СЭВ т.3's men's semi-fitted waistcoat (§6, Tables 6.2-6.3, Figs. 30-32) on
+# FreeSewing's Brian block: a V neck, a single-breasted button stand, cutaway points, a back
+# fish dart and a front dart, welt pockets at the chest and the waist, cut-in armholes, lined.
+# See BRIEF.md for where each default is read.
+about:
+  id: waistcoat
+  name: Waistcoat
+  description: A lined, single-breasted V-neck waistcoat with cutaway points, darts front and back and welt pockets
+  difficulty: 3
+  tags: [vests]
+  techniques: [dart, welt-pocket, button, facing, lining]
+  version: 0.1.0
+  source: ЕМКО СЭВ т.3 (1988), §6 waistcoat, Tables 6.2-6.3, Figs. 30-32 (emko)
+
+block: brian
+
+options:
+  # Fit: 7.5% over the chest, 13% over the waist
+  chestEase: { pct: 8, min: 4, max: 20, of: chest, menu: fit }
+  waistShaping: { bool: true, menu: fit }
+  waistEase: { pct: 13, min: 4, max: 30, of: waist, menu: fit }
+  seatEase: { pct: 6, min: 2, max: 20, of: seat, menu: fit }
+  # Style
+  lengthBelowWaist: { pct: 50, min: 25, max: 100, menu: style } # x waistToSeat: 9.6 of 19.2
+  frontDrop: { pct: 26, min: 0, max: 60, menu: style } # x waistToSeat: the point 5.0 below the side hem
+  cutaway: { pct: 4, min: 0, max: 7, of: chest, menu: style } # the point's corner cut off: 4.0
+  neckDepth: { pct: 16, min: 8, max: 30, of: chest, menu: style } # the V, below the CF neck: 16
+  buttonExtension: { pct: 2.5, min: 1.5, max: 4, of: chest, menu: style }
+  buttons: { count: 5, min: 3, max: 8, menu: style }
+  armholeDrop: { pct: 3, min: 0, max: 8, of: chest, menu: style } # this design's: a sleeveless armhole
+  shoulderLength: { pct: 63, min: 40, max: 100, menu: style } # x the block's shoulder: 10.0 of 15.85
+  backDart: { pct: 3.2, min: 0, max: 5, of: chest, menu: style, title: "Back dart", description: "Width at the waist of the fish dart in each back, as a share of the chest." } # 3.2 at the waist
+  frontDart: { pct: 1.6, min: 0, max: 3, of: chest, menu: style, title: "Front dart", description: "Width at the waist of the dart in each front, as a share of the chest. 0 is none." } # 1.6 at the waist
+  breastPocket: { bool: true, menu: style }
+  lowerPockets: { bool: true, menu: style }
+  # Construction
+  facingWidth: { pct: 6, min: 4, max: 10, of: chest, menu: construction }
+  liningBack: { bool: true, menu: construction } # the back cut from lining
+
+pieces:
+  back:
+    from: brian.back
+    hide: tree
+    options: [chestEase, waistShaping, waistEase, seatEase, lengthBelowWaist, armholeDrop, shoulderLength, backDart, frontDart, liningBack]
+    ops:
+      - coatBack:
+          armholeCut: { drop: chest * armholeDrop, shoulder: 1 - shoulderLength }
+          dart:
+            x: armholePitch.x * 0.7
+            top: underarm.y
+            bottom: cbWaist.y + waistToSeat
+            width: chest * backDart
+            letOut: chest * (backDart + frontDart) / 2
+      - cutlist: { cut: 2, from: lining, onFold: true, if: liningBack }
+
+  front:
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [frontDrop, cutaway, neckDepth, buttonExtension, buttons, facingWidth, armholeDrop, shoulderLength, backDart, frontDart, breastPocket, lowerPockets]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+    ops:
+      - coatFront:
+          ext: ext
+          r: chest * cutaway
+          chamfer: true
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          straightHem: true
+          neckY: cfNeck.y + chest * neckDepth
+          armholeCut: { drop: chest * armholeDrop, shoulder: 1 - shoulderLength }
+          dart:
+            x: q * 0.45
+            top: underarm.y + q * 0.12
+            bottom: cfWaist.y + waistToSeat
+            width: chest * frontDart
+            letOut: chest * (backDart + frontDart) / 2
+      # From the bottom of the V to above the point
+      - buttons:
+          count: buttons
+          top: cfNeck.y + chest * neckDepth + ext * 0.6
+          bottom: cfWaist.y + waistToSeat * lengthBelowWaist
+          rows: [0]
+      # Welt pockets (Fig. 32): one just below the chest line, one at the waist across the dart
+      - store:
+          key: coat.welts
+          value:
+            breast:
+              x0: q * 0.27
+              y0: underarm.y + q * 0.11
+              x1: q * 0.58
+              y1: underarm.y + q * 0.08
+              len: q * 0.31
+              welt: q * 0.07
+              bag: q * 0.5
+            lower:
+              x0: q * 0.25
+              y0: cfWaist.y + q * 0.05
+              x1: q * 0.7
+              y1: cfWaist.y - q * 0.02
+              len: q * 0.45
+              welt: q * 0.08
+              bag: q * 0.55
+      - markLine: { id: breastPocket, from: [coat.welts.breast.x0, coat.welts.breast.y0], to: [coat.welts.breast.x1, coat.welts.breast.y1], class: mark, if: breastPocket }
+      - markLine: { id: lowerPocket, from: [coat.welts.lower.x0, coat.welts.lower.y0], to: [coat.welts.lower.x1, coat.welts.lower.y1], class: mark, if: lowerPockets }
+
+  facing:
+    part: facing
+    from: front
+    nr: 3
+  frontLining: { part: frontLining, from: front, nr: 4 }
+  breastWelt: { part: welt, after: front, key: breast, store: coat.welts, nr: 5, if: breastPocket }
+  breastBag: { part: weltBag, after: front, key: breast, store: coat.welts, nr: 6, if: breastPocket }
+  lowerWelt: { part: welt, after: front, key: lower, store: coat.welts, nr: 7, if: lowerPockets }
+  lowerBag: { part: weltBag, after: front, key: lower, store: coat.welts, nr: 8, if: lowerPockets }

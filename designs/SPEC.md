@@ -32,6 +32,8 @@ A piece is either drafted by operations or made by a piece type.
 **Piece types** (`part: <type>`, with their own keys): `facing`, `backNeckFacing`, `sleeve`,
 `raglanSleeve`, `pocket`, `flap`, `belt`, `backPanel`, `sideBody`, `library`, `welt`,
 `weltBag`, `yokePiece`, `yokeSleeve`, `sleeveBand`, `placket`, `neckBand`, `legBand`,
+`strip` (a rectangle: `length`, `width` expressions, `fold`, `cut`, `material`, `label`; e.g. a
+waistband or fly shield; its size goes to `trousers.strips.<piece>`),
 `frontLining` and `backLining` (a Brian coat's lining, `from` the front or the back; the back
 takes `width:`, its back-neck facing's, and `pleat:`; `sleeve` takes `lining:` too),
 `frontPanel` (a front cut by `frontYokeCut`: `panel: yoke` or `lower`, `from` the hidden
@@ -48,7 +50,7 @@ type's `if:` is an expression over options; when it is false the piece is left o
 
 | Operation | Does | Library |
 |---|---|---|
-| `coatBack` / `coatFront` | Coat body on Brian: hem, seat, side seam, waist shaping, stout figures; the front's button stand, front corner, dropped hem, V neck (`neckY`). | `lib/coat.mjs` |
+| `coatBack` / `coatFront` | Coat body on Brian: hem, seat, side seam, waist shaping, stout figures; the front's button stand, front corner, dropped hem, V neck (`neckY`). Both take `armholeCut: { drop, shoulder }` (a sleeveless armhole: lowered, the shoulder shortened by that share) and `dart: { x, top, bottom, width, letOut }` (a waist dart, open at the hem if `bottom` is below it; the side seam let out by `letOut` at most to straight); the front takes `chamfer: true` (the corner `r` cut off straight). | `lib/coat.mjs` |
 | `collar` | A turn-down or stand collar, cut on the fold. | `lib/coat.mjs` |
 | `shawl` | A shawl collar cut in one with the front. | `lib/coat.mjs` |
 | `lapel` | A notched lapel and gorge on a round-necked front (`breakY`, `rollOut`, `gorgeAt`, `width`); the facing then runs to the shoulder. | `lib/coat.mjs`, `lib/lapel.mjs` |
@@ -58,14 +60,16 @@ type's `if:` is an expression over options; when it is false the piece is left o
 | `raglan` | Cut the back or front along a raglan line. | `lib/raglan.mjs` |
 | `backYokeCut` | Mark a coat back's yoke line, to cut it into `backPanel`s (`yoke`, `middle`, `lower`, or `body`: yoke line to hem in one). | `lib/panels.mjs` |
 | `frontYokeCut` | Mark a coat front's yoke seam, from the front edge `depth` down to the armhole at `armDepth` (shares of CF neck to the chest line), to cut it into `frontPanel`s. | `lib/panels.mjs` |
-| `body3Back` / `body3Front` | A three-piece body (back, side body, forepart) on Bent; the back takes `vent: { length, width }`. | `lib/body3.mjs` |
+| `body3Back` / `body3Front` | A three-piece body (back, side body, forepart) on Bent; the back takes `vent: { length, width }`; the front takes `r` (a rounded front corner), `lapel: { breakY, rollOut, gorgeAt, width }` (a notched lapel) and, per welt, `flap` (a flap this share of the mouth deep, into `coat.pockets` for a `flap` piece). | `lib/body3.mjs` |
 | `yokeSide` | A yoke garment's back or front, into the store. | `lib/yoke.mjs` |
 | `jacketBase` / `jacketLayout` | A princess-seamed jacket on Breanna: each side read in, then cut along its darts into panels, flared below the waist, with a lap, lapel and gorge. | `lib/jacket.mjs` |
 | `boxLayout` | A box body on the same bases (`jacketBase` with `style: box`): back and front, side seams flared from the armholes, the bust dart pivoted into the front neck, lap, lapel, gorge. | `lib/jacket.mjs` |
 | `gatheredLeg` | A full leg gathered into a band, elastic waist, on Titan. | `lib/trousers.mjs` |
+| `trouserLeg` | A tailored leg on Titan (`which: back` or `front`, `fitKnee` on): a waist dart (`dart`, `dartAt`, `dartLength`, `dartFrom: centre` to take it from Titan's CB shaping), the hem narrowed (`hemWidth`) and curved (`hemSag`), a fly (`fly`, `flyLength`), a side pocket (`pocketTop`, `pocketLength`, `pocketWidth`, `pocketDepth`), a jetted back pocket (`backPocket`, `backPocketBelow`, `backPocketWelt`); `matchOutseam` trues its outseam to the other leg's. Store: `trousers.back` / `trousers.front`, `trousers.pockets`. | `lib/trousers.mjs` |
 | `store` | Put a value in the store (`key: coat.pockets`), e.g. pocket sizes for later pieces. | |
 | `markPocket` | Draw a pocket's place on the piece. | `lib/pockets.mjs` |
 | `markLine` | Draw a marked line (a belt's place). | |
+| `cutlist` | Change the piece's cutting: `cut`, `from` (e.g. `lining`), `onFold`. | |
 | `hidePiece` | Leave the piece out (with `if:`); its later operations don't run. | |
 
 ## Expressions
@@ -78,7 +82,7 @@ looked up in this order:
    earlier entries: `lower.x`);
 2. measurements (`chest`, `waistToSeat`);
 3. options (`buttonExtension`, already a fraction);
-4. `coat.<key>` from the store (`coat.frontEdge.ext`);
+4. `coat.<key>` or `trousers.<key>` from the store (`coat.frontEdge.ext`, `trousers.front.fly`);
 5. `<landmark>.x` / `.y`: points on the piece, by their standard name (`underarm`,
    `neckPoint`, `shoulderTip`, `sideSeat`, `sideHem`; mapped to the block's own names in
    `blocks/`) or the block's name (`cfNeck`, `cfWaist`, `armholeHollow`).

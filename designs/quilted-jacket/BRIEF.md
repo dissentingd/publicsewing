@@ -30,7 +30,7 @@ The summer jacket's winter sibling:
 | Feature | ЕМКО (176-100-88) | Here (option default) |
 |---|---|---|
 | Ease | 29% over the chest | `chestEase` 27%, `bicepsEase` 34% |
-| Back yoke | 16.75 of the 30.5 from the nape to the underarm | `backYokeDepth` 55% |
+| Back yoke | 16.75 of the 30.5 from the nape to the underarm | `yokeDepth` 55% |
 | Front yoke | Front edge 17.0 below the front neck; armhole end 15.0 above the underarm, so the seam rises toward the armhole | `frontYokeDepth` 72% and `frontYokeArm` 36% of CF neck to the chest line |
 | Closure | Buttoned to the top on a 5.0 placket | `buttonExtension` 2.6% of chest each side of CF (half the placket); `buttons` 7 on CF, from just below the neck to above the hem |
 | Hood | CB seam, drawstring | As the windbreaker, `hoodDrawstring` on |

@@ -108,15 +108,81 @@ function allowance(paths, Path, sa, ends) {
   return ends ? p.line(ends[1]) : p
 }
 
+/**
+ * A waist dart (`dart`: `x` from CB/CF, `top` and `bottom` heights, `width` at the waist,
+ * `letOut`): the side seam is let out `letOut` at the waist (no more than its own waist
+ * shaping, so it never bows out), and at the hem by as much as the dart is still open there.
+ * The dart's width scales down with the let-out when that is limited. Runs after coatBody;
+ * `drawDart` marks it once the hem is drawn. Store: `coat.<piece>.dart`.
+ */
+function letOutForDart(sh, dart) {
+  const { points, Point } = sh
+  const waistY = points.sideWaist.y
+  const straight = points.armhole.x + ((points.seat.x - points.armhole.x) * (waistY - points.armhole.y)) / (points.seat.y - points.armhole.y)
+  const room = Math.max(0, straight - points.sideWaist.x)
+  const letOut = Math.min(dart.letOut ?? dart.width / 2, room)
+  const k = dart.letOut > 0 ? letOut / dart.letOut : 1
+  const atHem = (y) => Math.max(0, (dart.bottom - y) / (dart.bottom - waistY))
+  points.sideWaist = points.sideWaist.shift(0, letOut)
+  const short = points.seat.y <= points.hem.y + 0.01 && points.seat.y >= points.hem.y - 0.01
+  points.hem = points.hem.shift(0, letOut * atHem(points.hem.y))
+  if (short) points.seat = points.hem.clone()
+  return { ...dart, width: dart.width * k, letOut }
+}
+
+function drawDart(sh, dart, key) {
+  const { points, paths, Path, Point, store } = sh
+  const waistY = points.sideWaist.y
+  const hits = paths.hemBase.intersectsX(dart.x)
+  const hemY = hits.length ? hits[0].y : points.hem.y
+  const bottom = Math.min(dart.bottom, hemY)
+  const w = dart.width
+  points.dartTop = new Point(dart.x, dart.top)
+  points.dartIn = new Point(dart.x - w / 2, waistY)
+  points.dartOut = new Point(dart.x + w / 2, waistY)
+  const open = Math.max(0, (w * (dart.bottom - bottom)) / (dart.bottom - waistY))
+  points.dartBottomIn = new Point(dart.x - open / 2, bottom)
+  points.dartBottomOut = new Point(dart.x + open / 2, bottom)
+  if (w > 0.5) {
+    paths.dart = new Path()
+      .move(points.dartBottomIn)
+      .line(points.dartIn)
+      .line(points.dartTop)
+      .line(points.dartOut)
+      .line(points.dartBottomOut)
+      .addClass('mark')
+    if (open < 0.5) paths.dart = paths.dart.close()
+  }
+  store.set(`coat.${key}.dart`, { width: w, letOut: dart.letOut, open })
+}
+
+/**
+ * A sleeveless armhole (`cut`: `drop` below Brian's, the shoulder shortened by `shoulder`, a
+ * share of it): the side seam runs on down to the new armhole point; the armhole curves from
+ * there to the shortened shoulder. Returns the armhole path, side to shoulder.
+ */
+function cutArmhole(sh, cut) {
+  const { points, Path, Point } = sh
+  points.armhole = sideAt(points, Point, points.armhole.y + cut.drop)
+  points.s3ArmholeSplit = points.s3ArmholeSplit.shiftFractionTowards(points.s3CollarSplit, cut.shoulder)
+  const s = points.s3ArmholeSplit
+  const h = points.armhole.y - s.y
+  points.armholeCp2 = new Point(points.armhole.x - (points.armhole.x - s.x) * 0.75, points.armhole.y)
+  points.armholeShoulderCp = new Point(s.x - h * 0.08, s.y + h * 0.45)
+  return new Path().move(points.armhole).curve(points.armholeCp2, points.armholeShoulderCp, s)
+}
+
 /** The back: Brian's back, boxy, on the fold, hem `lengthBelowWaist` below the waist */
-export function draftCoatBack(sh, { nr = 2 } = {}) {
+export function draftCoatBack(sh, { nr = 2, armholeCut, dart } = {}) {
   const { points, paths, Path, Point, store, sa, macro, snippets, Snippet, part } = sh
   cleanup(sh, ['backArmhole', 'backCollar'])
   coatBody(sh, 'cb')
+  if (dart) dart = letOutForDart(sh, dart)
+  const backArm = armholeCut ? cutArmhole(sh, armholeCut) : armhole(points, Path, paths.backArmhole)
 
   paths.hemBase = new Path().move(points.cbHem).line(points.hem).hide()
   paths.saBase = sidePath(points, Path)
-    .join(armhole(points, Path, paths.backArmhole))
+    .join(backArm)
     .line(points.s3CollarSplit)
     .join(paths.backCollar)
     .hide()
@@ -140,7 +206,8 @@ export function draftCoatBack(sh, { nr = 2 } = {}) {
   store.cutlist.setCut({ cut: 1, from: 'fabric', onFold: true })
   points.title = new Point(points.armhole.x / 2, points.armhole.y)
   title(macro, { at: points.title, nr, title: 'back' })
-  snippets.armholePitch = new Snippet('bnotch', points.armholePitch)
+  if (!armholeCut) snippets.armholePitch = new Snippet('bnotch', points.armholePitch)
+  if (dart) drawDart(sh, dart, 'back')
   snippets.waist = new Snippet('notch', sideAt(points, Point, points.cbWaist.y))
   // The sleeve's title (FreeSewing's sleeve part reads it from here)
   store.set('library.sleeve.title', { nr: 3, brand: BRAND })
@@ -154,13 +221,18 @@ export function draftCoatBack(sh, { nr = 2 } = {}) {
  *   and buttons forward from the chest line to the waist and below, and lengthens the front
  *   (his under-arm "vee" opened).
  * - `straightHem`: a dropped front hem runs straight to the side seam (a waistcoat point).
+ * - `chamfer`: the front corner (`r`) cut off straight instead of rounded.
+ * - `armholeCut`, `dart`: a sleeveless armhole and a waist dart (as on the back; see
+ *   `cutArmhole`, `letOutForDart`).
  * - `neckY`: a V neck. The neckline runs straight-ish from the shoulder to the front edge at
  *   that height (no collar, or a shawl collar built on it), instead of Brian's round neck.
  */
-export function draftCoatFront(sh, { ext, r, drop = 0, facing, nr = 1, neckY, straightHem = false }) {
+export function draftCoatFront(sh, { ext, r, drop = 0, facing, nr = 1, neckY, straightHem = false, chamfer = false, armholeCut, dart }) {
   const { points, paths, Path, Point, store, sa, macro, snippets, Snippet, part } = sh
   cleanup(sh, ['frontArmhole', 'frontCollar'])
   coatBody(sh, 'cf')
+  if (dart) dart = letOutForDart(sh, dart)
+  const frontArm = armholeCut ? cutArmhole(sh, armholeCut) : armhole(points, Path, paths.frontArmhole)
 
   const fat = stoutFat(sh)
   const f = fat / 3 // half the fat, two thirds of it at the front
@@ -175,8 +247,9 @@ export function draftCoatFront(sh, { ext, r, drop = 0, facing, nr = 1, neckY, st
   points.edgeHem = new Point(-ext - f, points.cfHem.y + drop)
   points.cornerTop = points.edgeHem.shift(90, r)
   points.cornerEnd = points.edgeHem.shift(0, r)
-  points.cornerTopCp = points.cornerTop.shiftFractionTowards(points.edgeHem, 0.55)
-  points.cornerEndCp = points.cornerEnd.shiftFractionTowards(points.edgeHem, 0.55)
+  // `chamfer`: the corner cut off straight (a waistcoat's cutaway point) instead of rounded
+  points.cornerTopCp = points.cornerTop.shiftFractionTowards(points.edgeHem, chamfer ? 0 : 0.55)
+  points.cornerEndCp = points.cornerEnd.shiftFractionTowards(points.edgeHem, chamfer ? 0 : 0.55)
 
   paths.edge = new Path().move(points.edgeNeck)
   if (f > 0.5) {
@@ -213,7 +286,7 @@ export function draftCoatFront(sh, { ext, r, drop = 0, facing, nr = 1, neckY, st
     paths.neckline = new Path().move(points.edgeNeck).line(points.cfNeck).join(paths.frontCollar.reverse()).hide()
   }
   paths.bodyBase = sidePath(points, Path)
-    .join(armhole(points, Path, paths.frontArmhole))
+    .join(frontArm)
     .line(points.s3CollarSplit)
     .hide()
   paths.saBase = paths.bodyBase.clone().join(paths.neckline.reverse()).hide()
@@ -243,7 +316,8 @@ export function draftCoatFront(sh, { ext, r, drop = 0, facing, nr = 1, neckY, st
   store.cutlist.setCut({ cut: 2, from: 'fabric' })
   points.title = new Point(points.armhole.x / 2, points.cfWaist.y)
   title(macro, { at: points.title, nr, title: 'front' })
-  snippets.armholePitch = new Snippet('notch', points.armholePitch)
+  if (!armholeCut) snippets.armholePitch = new Snippet('notch', points.armholePitch)
+  if (dart) drawDart(sh, dart, 'front')
   snippets.waist = new Snippet('notch', sideAt(points, Point, points.cfWaist.y))
   if (neckY === undefined) snippets.cfNeck = new Snippet('notch', points.cfNeck)
   snippets.cfHem = new Snippet('notch', new Point(-f, points.cfHem.y))

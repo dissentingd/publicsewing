@@ -43,7 +43,7 @@ import { brian } from '../blocks/brian.mjs'
 import { bent } from '../blocks/bent.mjs'
 import { titan } from '../blocks/titan.mjs'
 import { breanna } from '../blocks/breanna.mjs'
-import { draftGatheredLeg, legBandPart } from './trousers.mjs'
+import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart } from './jacket.mjs'
 
 const blocks = { brian, bent, titan, breanna }
@@ -80,6 +80,8 @@ export const operations = {
   },
   // A full leg gathered into a band, on Titan's back or front (lib/trousers.mjs)
   gatheredLeg: { run: draftGatheredLeg, literal: ['which'] },
+  // A tailored leg on Titan's back or front: waist dart, tapered and curved hem, fly, pockets
+  trouserLeg: { run: draftTrouserLeg, literal: ['which', 'dartFrom'] },
   // Princess-seamed jackets on Breanna (lib/jacket.mjs): each base read in, then cut into panels
   jacketBase: { run: draftJacketBase, literal: ['side', 'style'] },
   boxLayout: { run: draftBoxLayout, literal: ['sleeveStore'] },
@@ -97,6 +99,11 @@ export const operations = {
       paths[id] = new Path().move(new Point(...from)).line(new Point(...to)).addClass(cls)
     },
     literal: ['id', 'class'],
+  },
+  // Change the piece's cutting (e.g. a waistcoat back cut twice from lining)
+  cutlist: {
+    run: ({ store }, { cut, from, onFold = false }) => store.cutlist.setCut({ cut, from, onFold }),
+    literal: ['from'],
   },
   // Leave the piece out (with `if:`); the piece's later operations don't run
   hidePiece: {
@@ -202,6 +209,19 @@ const factories = {
   neckBand: (p, ctx) => neckBandPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   legBand: (p, ctx) =>
     legBandPart({ name: p.name, after: ctx.after(p), nr: p.nr, size: (sh) => evalMap({ length: p.length, width: p.width }, lookupIn(sh, ctx.block, {}), {}) }),
+  // A plain rectangle (waistband, fly shield, belt loops): `length`, `width`, `fold`, `cut`
+  strip: (p, ctx) =>
+    stripPart({
+      name: p.name,
+      after: ctx.after(p),
+      nr: p.nr,
+      label: p.label ?? p.name.split('.').pop(),
+      cut: p.cut ?? 1,
+      fold: p.fold ?? false,
+      material: p.material ?? 'fabric',
+      enabled: enabledBy(p.if),
+      size: (sh) => evalMap({ length: p.length, width: p.width }, lookupIn(sh, ctx.block, {}), {}),
+    }),
   // `material` (default fabric); `lining:` an expression over options, when true it's cut in lining too
   jacketPanel: (p, ctx) =>
     jacketPanelPart({
@@ -246,7 +266,7 @@ function lookupIn(sh, block, local) {
       // `in` first: reading a missing name logs a FreeSewing warning
       if (head in measurements && measurements[head] !== undefined) return measurements[head]
       if (head in options && options[head] !== undefined) return options[head]
-    } else if (head === 'coat') return store.get(name)
+    } else if (head === 'coat' || head === 'trousers') return store.get(name)
     else {
       const p = points[landmarks[head] ?? head]
       if (p && rest.length === 1 && (rest[0] === 'x' || rest[0] === 'y')) return p[rest[0]]

@@ -91,13 +91,14 @@ export function flapPart({ name, after, key, nr, label, cut, enabled = () => tru
     name,
     after,
     draft: ({ points, paths, Path, Point, store, sa, macro, options, part, Snippet, snippets }) => {
-      const p = store.get('coat.pockets')[key]
-      if (!enabled(options) || !p.flap) return part.hide()
+      const p = store.get('coat.pockets', null)?.[key]
+      if (!enabled(options) || !p?.flap) return part.hide()
       const f = flapSpec(p)
       paths.seam = pocketPath(Path, Point, 0, 0, f).addClass('fabric')
       if (sa) paths.sa = paths.seam.offset(sa).addClass('fabric sa')
       points.button = new Point(f.w / 2, f.h * 0.6)
-      snippets.buttonhole = new Snippet('buttonhole', points.button)
+      // A tailored jacket's flap has no buttonhole (`flap.button: false`)
+      if (p.flap.button !== false) snippets.buttonhole = new Snippet('buttonhole', points.button)
       macro('grainline', { from: new Point(f.w * 0.15, f.h * 0.8), to: new Point(f.w * 0.15, f.h * 0.15) })
       store.cutlist.setCut([
         { cut, from: 'fabric' },

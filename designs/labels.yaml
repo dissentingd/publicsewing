@@ -95,6 +95,54 @@ options:
   bandWidth:
     title: Knee band width
     description: Finished width of the knee band, as a share of the knee.
+  hemWidth:
+    title: Hem width
+    description: Width of the leg at the hem, as a share of its width at the knee.
+  hemShaping:
+    title: Hem shaping
+    description: How far the hem curves down at the back crease and up at the front, so it sits level over the shoe, as a share of waist to floor.
+  backDart:
+    title: Back dart
+    description: Width of the back waist dart, as a share of the difference between seat and waist (with ease) on each half.
+  backDartLength:
+    title: Back dart length
+    description: Length of the back waist dart, as a share of waist to seat.
+  frontDart:
+    title: Front dart
+    description: Width of the front waist dart at the crease, as a share of the difference between seat and waist (with ease) on each half. 0% is none.
+  frontDartLength:
+    title: Front dart length
+    description: Length of the front waist dart, as a share of waist to seat.
+  waistbandHeight:
+    title: Waistband height
+    description: Finished height of the waistband, as a share of waist to floor.
+  flyWidth:
+    title: Fly width
+    description: How far the fly's stitching line sits from the centre front, as a share of the waist.
+  sidePockets:
+    title: Side pockets
+    description: Pockets in the side seams.
+  backPocket:
+    title: Back pocket
+    description: A jetted pocket in each back, below the dart.
+  beltLoops:
+    title: Belt loops
+    description: Number of belt loops on the waistband. 0 is none.
+  armholeDrop:
+    title: Armhole depth
+    description: How much lower than a sleeved garment's the sleeveless armhole is cut, as a share of the chest.
+  shoulderLength:
+    title: Shoulder length
+    description: Length of the shoulder seam, as a share of the block's (a waistcoat's armhole is cut in at the shoulder).
+  cutaway:
+    title: Cutaway point
+    description: How much of the front point is cut off at an angle, as a share of the chest. 0 leaves it square.
+  neckDepth:
+    title: Neck depth
+    description: How far the V neck runs below the front neck, as a share of the chest.
+  liningBack:
+    title: Lining-fabric back
+    description: Cut the back from lining fabric, as is usual for a waistcoat.
   casing:
     title: Waist casing
     description: Width of the elastic in the waist casing, as a share of the waist.
@@ -387,6 +435,13 @@ options:
 
 parts:
   back: Back
+  waistband: Waistband
+  flyShield: Fly shield
+  flyFacing: Fly facing
+  beltLoop: Belt loops
+  sidePocketBag: Side pocket bag
+  backWelt: Back pocket jet
+  backPocketBag: Back pocket bag
   front: Front
   facing: Facing
   collar: Collar

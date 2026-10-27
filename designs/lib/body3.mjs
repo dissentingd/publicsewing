@@ -6,7 +6,7 @@
 // backShare (the back seam's share of the waist suppression) and lengthBelowWaist.
 // Store: `blouse.back`, `blouse.front`, `blouse.sideBody`, `blouse.welts`.
 import { hidePresets } from '@freesewing/core'
-import { cleanup, armhole, title, placeButtons, BRAND } from './coat.mjs'
+import { cleanup, armhole, title, placeButtons, draftNotchLapel, BRAND } from './coat.mjs'
 
 /** Hem and the body's half widths (mm) at chest, waist and seat */
 function bodyTargets({ points, measurements, options }) {
@@ -130,8 +130,10 @@ export function draftBody3Back(sh, { seamAt = 0.3, vent, nr = 2 } = {}) {
  * `buttons`: { count, top, bottom } on CF. `welts`: slanted welt pocket openings,
  * { <id>: { x, y, len, rise, bag, mark } }, each kept `clear` of the seam (shortened if
  * need be); the welt is `welt` x len wide, the bag `bag` x len deep; drawn when `mark`.
+ * `r`: the front corner rounded to this radius (0: square). `lapel`: a notched lapel
+ * ({ breakY, rollOut, gorgeAt, width }, as `draftNotchLapel` takes) instead of the round neck.
  */
-export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons, welts = {}, clear = 0, welt = 0.2, nr = 1 }) {
+export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons, welts = {}, clear = 0, welt = 0.2, nr = 1, r = 0, lapel }) {
   const { points, paths, Path, Point, options, store, sa, macro, snippets, Snippet, part } = sh
   cleanup(sh, ['frontArmhole', 'frontCollar'])
   const { waistY, seatY, hemY } = levels(sh, 'cf')
@@ -143,15 +145,26 @@ export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons,
   const { left, right } = seamEdges(sh, points.seamStart, points.seamStart.x, Dw * k, Ds * k, waistY, seatY, hemY)
   store.set('blouse.front', { right, lowerArm, seam: left.length() })
   points.seamHem = left.end()
-  store.set('coat.frontEdge', { ext, facing, r: 0, drop })
+  store.set('coat.frontEdge', { ext, facing, r, drop })
   points.edgeNeck = new Point(-ext, points.cfNeck.y)
   points.edgeHem = new Point(-ext, hemY + drop)
   points.cornerTop = points.edgeHem
   paths.edge = new Path().move(points.edgeNeck).line(points.edgeHem).hide()
-  const d = points.edgeHem.dx(points.seamHem)
+  let hemStart = points.edgeHem
+  if (r > 0) {
+    points.cornerTop = points.edgeHem.shift(90, r)
+    points.cornerEnd = points.edgeHem.shift(0, r)
+    paths.edge = new Path()
+      .move(points.edgeNeck)
+      .line(points.cornerTop)
+      .curve(points.cornerTop.shiftFractionTowards(points.edgeHem, 0.55), points.cornerEnd.shiftFractionTowards(points.edgeHem, 0.55), points.cornerEnd)
+      .hide()
+    hemStart = points.cornerEnd
+  }
+  const d = hemStart.dx(points.seamHem)
   paths.hemBase = new Path()
-    .move(points.edgeHem)
-    .curve(points.edgeHem.shift(0, d * 0.4), points.seamHem.shift(180, d * 0.4), points.seamHem)
+    .move(hemStart)
+    .curve(hemStart.shift(0, d * 0.4), points.seamHem.shift(180, d * 0.4), points.seamHem)
     .hide()
   const outline = paths.edge
     .join(paths.hemBase)
@@ -204,6 +217,32 @@ export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons,
   title(macro, { at: new Point(points.seamStart.x * 0.4, waistY), nr, title: 'front' })
   snippets.seamStart = new Snippet('notch', points.seamStart)
   snippets.waist = new Snippet('notch', left.intersectsY(waistY)[0] || points.seamStart)
+
+  // Flaps over welt openings that have `flap` (its depth x len): `coat.pockets.<id>` for flapPart
+  const flaps = Object.entries(welts).filter(([, w]) => w.flap)
+  if (flaps.length) {
+    const pockets = store.get('coat.pockets', null) ?? {}
+    for (const [id, w] of flaps) {
+      const g = geometry[id]
+      pockets[id] = { x: g.x, y: g.y, w: g.len, shape: 'rounded', flap: { h: g.len * w.flap, gap: 0, button: false } }
+      if (w.mark) {
+        const f = g.len * w.flap
+        paths[`${id}Flap`] = new Path()
+          .move(points[`${id}WeltA`])
+          .line(points[`${id}WeltA`].shift(-90, f))
+          .line(points[`${id}WeltB`].shift(-90, f))
+          .line(points[`${id}WeltB`])
+          .addClass('mark dotted')
+      }
+    }
+    store.set('coat.pockets', pockets)
+  }
+
+  // A notched lapel: the edge, hem and body (hem end to shoulder) as draftNotchLapel takes them
+  if (lapel) {
+    paths.bodyBase = left.reverse().join(upperArm).line(points.s3CollarSplit).hide()
+    draftNotchLapel(sh, lapel)
+  }
   return part
 }
 

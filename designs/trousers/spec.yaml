@@ -1,0 +1,114 @@
+# Trousers: ЕМКО СЭВ т.3's men's semi-fitted trousers (§7, Tables 7.2-7.3, Figs. 34-35) on
+# FreeSewing's Titan trouser block: a waist dart in each back and front, legs narrowing a little
+# from the knee to a hem curved at the crease, a zip fly, on-seam side pockets, a jetted back
+# pocket and a waistband. See BRIEF.md for where each default is read.
+about:
+  id: trousers
+  name: Trousers
+  description: Semi-fitted straight trousers with waist darts, a zip fly, side pockets, a jetted back pocket and a waistband
+  difficulty: 3
+  tags: [bottoms]
+  techniques: [dart, zip, welt-pocket, waistband, hem]
+  version: 0.1.0
+  source: ЕМКО СЭВ т.3 (1988), §7 trousers, Tables 7.2-7.3, Figs. 34-35 (emko)
+
+block: titan
+
+options:
+  # Fit (Table 7.2): seat 5% over the hip girth, waist 7%, knee 25%; the back takes 55% of the knee
+  seatEase: { pct: 5, min: 0, max: 10, of: seat, menu: fit }
+  waistEase: { pct: 7, min: 0, max: 10, of: waist, menu: fit }
+  kneeEase: { pct: 25, min: 5, max: 25, of: knee, menu: fit }
+  legBalance: { pct: 55, min: 52.5, max: 62.5, menu: advanced }
+  fitKnee: { bool: true, menu: style }
+  # Style
+  lengthBonus: { pct: -4, min: -20, max: 5, menu: style } # x waistToFloor: the hem 4 cm above the floor
+  hemWidth: { pct: 93, min: 70, max: 110, menu: style } # x the knee's width: 44.9 at the hem, 48.4 at the knee
+  hemShaping: { pct: 1, min: 0, max: 3, of: waistToFloor, menu: style } # 1.0 down at the back crease, up at the front
+  backDart: { pct: 40, min: 0, max: 60, menu: style } # x the half waist shaping (seat - waist, with ease)
+  backDartLength: { pct: 56, min: 30, max: 80, menu: style } # x waistToSeat: 0.5 |41-51| + 1.0
+  frontDart: { pct: 20, min: 0, max: 40, menu: style } # x the half waist shaping, at the crease
+  frontDartLength: { pct: 68, min: 30, max: 80, menu: style } # x waistToSeat: 0.6 |46-56|
+  waistbandHeight: { pct: 3.75, min: 2.5, max: 6, of: waistToFloor, menu: style } # finished
+  flyWidth: { pct: 3.5, min: 2.5, max: 5, of: waist, menu: style }
+  sidePockets: { bool: true, menu: style }
+  backPocket: { bool: true, menu: style }
+  beltLoops: { count: 7, min: 0, max: 9, menu: style }
+
+pieces:
+  front:
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+    ops:
+      - trouserLeg:
+          which: front
+          dart: d * frontDart
+          dartAt: 0.55
+          dartLength: waistToSeat * frontDartLength
+          hemWidth: hemWidth
+          hemSag: waistToFloor * hemShaping
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45
+  back:
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: d * backDart
+          dartAt: 0.4
+          dartFrom: centre
+          dartLength: waistToSeat * backDartLength
+          hemWidth: hemWidth
+          hemSag: waistToFloor * hemShaping
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          backPocket: if(backPocket, seat * 0.13, 0)
+          backPocketBelow: waistToSeat * 0.4
+          backPocketWelt: seat * 0.006
+  # Waistband, cut in two halves joined at CB; the left half runs past CF over the fly shield
+  waistband:
+    part: strip
+    after: [back, front]
+    nr: 3
+    cut: 2
+    fold: true
+    length: trousers.back.waist + trousers.front.waist + trousers.front.flyWidth * 1.2
+    width: waistToFloor * waistbandHeight
+  flyShield:
+    part: strip
+    after: front
+    nr: 4
+    fold: true
+    length: trousers.front.fly + 20
+    width: trousers.front.flyWidth * 1.3
+  flyFacing:
+    part: strip
+    after: front
+    nr: 5
+    length: trousers.front.fly + 20
+    width: trousers.front.flyWidth * 1.3
+  beltLoop:
+    part: strip
+    after: front
+    nr: 6
+    length: beltLoops * (waistToFloor * waistbandHeight + 30)
+    width: 30
+    if: beltLoops > 0
+  sidePocketBag: { part: weltBag, after: front, key: side, store: trousers.pockets, nr: 7, if: sidePockets }
+  backWelt: { part: welt, after: back, key: back, store: trousers.pockets, nr: 8, if: backPocket }
+  backPocketBag: { part: weltBag, after: back, key: back, store: trousers.pockets, nr: 9, if: backPocket }

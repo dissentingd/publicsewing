@@ -1,0 +1,87 @@
+# Jacket: ЕМКО СЭВ т.3's men's semi-fitted jacket (§1, Tables 1.2-1.3, Figs. 1-5), on the
+# topcoat's three-piece body (lib/body3.mjs, FreeSewing's Bent): a single-breasted two-button
+# jacket with side panels, a notched lapel and collar, rounded front corners, flap pockets, a
+# breast welt, a CB seam with a vent and two-piece sleeves. See BRIEF.md for where each default
+# is read.
+extends: ../topcoat/spec.yaml
+
+about:
+  id: jacket
+  name: Jacket
+  description: A single-breasted two-button jacket with side panels, a notched lapel, flap pockets and a back vent
+  difficulty: 5
+  tags: [jackets]
+  techniques: [button, welt-pocket, collar, lapel, facing, vent, two-piece-sleeve]
+  version: 0.1.0
+  source: ЕМКО СЭВ т.3 (1988), §1 jacket, Tables 1.2-1.3, Figs. 1-5 (emko)
+
+options:
+  # Fit: 15% over the chest, 17% over the waist
+  chestEase: { pct: 15 }
+  waistEase: { pct: 17 }
+  seatEase: { pct: 10 }
+  bicepsEase: { pct: 22 }
+  cuffEase: { pct: 75 }
+  # Style
+  lengthBelowWaist: { pct: 154 } # x waistToSeat: 29.55 below the waist
+  frontDrop: { pct: 3 }
+  hemCurve: { pct: 70, min: 0, max: 100, menu: style } # the front corner's radius, x 10% of chest
+  buttonExtension: { pct: 2 }
+  buttons: { count: 2, min: 1, max: 4 }
+  lapelWidth: { pct: 22, min: 14, max: 32, of: neck, menu: style } # from the crease
+  gorgeAt: { pct: 55, min: 30, max: 80, menu: style } # along the front neck from the neck point
+  collarWidth: { pct: 19 }
+  breastPockets: { bool: true }
+  pocketFlaps: { bool: true, menu: style }
+  ventLength: { pct: 110 } # x waistToSeat, up from the hem
+  ventWidth: { pct: 4 }
+  facingWidth: { pct: 9 }
+
+pieces:
+  front:
+    from: bent.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat, neck]
+    options: [frontDrop, hemCurve, buttonExtension, buttons, breastPockets, lowerPockets, pocketFlaps, facingWidth, lapelWidth, gorgeAt]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to the old side seam
+      topButton: cfWaist.y
+    ops:
+      # Two buttons from the waist down; the lapel turns at the top one. Straight flap pockets
+      # below the waist, a breast welt at the chest
+      - body3Front:
+          seamAt: 0.12
+          ext: ext
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          r: chest * 0.1 * hemCurve
+          buttons:
+            count: buttons
+            top: topButton
+            bottom: topButton + waistToSeat * 0.45
+          clear: q * 0.08
+          welt: 0.18
+          welts:
+            breast: { x: q * 0.24, y: underarm.y + q * 0.06, len: q * 0.36, rise: q * 0.05, bag: 1.15, mark: breastPockets }
+            lower: { x: q * 0.22, y: cfWaist.y + waistToSeat * 0.45, len: q * 0.58, rise: 0, bag: 1.3, mark: lowerPockets, flap: "if(pocketFlaps, 0.32, 0)" }
+          lapel:
+            breakY: topButton
+            rollOut: neck * 0.05
+            gorgeAt: gorgeAt
+            width: neck * lapelWidth
+
+  # Fig. 1: a turn-down collar sewn to the gorges
+  collar:
+    after: [back, front]
+    measurements: [neck]
+    options: [collarWidth]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.lapel.neck
+          spring: target * 0.13
+          width: neck * collarWidth
+          point: neck * 0.08
+          nr: 6
+
+  lowerFlap: { part: flap, after: front, key: lower, nr: 12, label: lowerFlap, cut: 2, if: lowerPockets and pocketFlaps }

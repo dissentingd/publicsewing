@@ -58,14 +58,17 @@ without declaring them, so they are listed in our package.json.
 | `quilted-jacket/` | The windbreaker buttoned to the throat, front yoke seam sloping up to the armhole, cut again in quilted lining, ЕМКО 1988 §5. [BRIEF.md](quilted-jacket/BRIEF.md) | draft (not sewn) | not draped |
 | `winter-coat/` | Straight knee-length coat on the windbreaker's body: shallow back yoke, deep front yoke, near-level hip welts, turn-down collar, lining (hood optional), ЕМКО 1988 §3. [BRIEF.md](winter-coat/BRIEF.md) | draft (not sewn) | not draped |
 | `topcoat/` | Semi-fitted knee-length coat on the military blouse's three-piece body: back vent, slanted welts, turn-down collar, two-piece sleeves, ЕМКО 1988 §2. [BRIEF.md](topcoat/BRIEF.md) | draft (not sewn) | not draped |
+| `jacket/` | Single-breasted two-button jacket on the topcoat's three-piece body: notched lapel and collar, rounded front corners, flap pockets, breast welt, back vent, two-piece sleeves, ЕМКО 1988 §1. [BRIEF.md](jacket/BRIEF.md) | draft (not sewn) | not draped |
+| `waistcoat/` | Lined V-neck waistcoat on Brian: cutaway points, back fish dart and front dart, cut-in armholes, chest and waist welts, ЕМКО 1988 §6. [BRIEF.md](waistcoat/BRIEF.md) | draft (not sewn) | not draped |
+| `trousers/` | Semi-fitted straight trousers on Titan: back and front waist darts, legs narrowing to a curved hem, zip fly, side pockets, jetted back pocket, waistband, ЕМКО 1988 §7. [BRIEF.md](trousers/BRIEF.md) | draft (not sewn) | not draped |
 | `lib/yoke.mjs` | Shared yoke-garment drafting (Walker designs) | |  |
-| `lib/coat.mjs`, `raglan.mjs`, `panels.mjs` | Coats on Brian: body (stout, waisted, flared), fronts (V neck, shawl collar, notched lapel), facings, collars, sleeves, back vent, lining, zip, raglan sleeves, back panels, front yokes | |
+| `lib/coat.mjs`, `raglan.mjs`, `panels.mjs` | Coats on Brian: body (stout, waisted, flared), fronts (V neck, shawl collar, notched lapel), facings, collars, sleeves, back vent, lining, zip, raglan sleeves, back panels, front yokes; sleeveless armholes, waist darts, cutaway points (waistcoat) | |
 | `lib/hood.mjs` | A two-piece hood sewn to the neckline, drawstring casing optional (ЕМКО designs) | |  |
 | `lib/lapel.mjs` | The notched or peaked lapel shared by the coats and the women's jackets | |  |
-| `lib/body3.mjs` | Three-piece body on Bent, back vent, welt pockets (military blouse, topcoat) | |  |
+| `lib/body3.mjs` | Three-piece body on Bent, back vent, welt pockets and flaps, rounded front corners, notched lapel (military blouse, topcoat, jacket) | |  |
 | `lib/jacket.mjs` | Women's jackets and coats on Breanna: princess panels, or a box body with a pivoted neck dart; lapels, CB seam, buttons near the edge | |  |
 | `lib/pockets.mjs` | Patch pockets, flaps, belts, set-in flap pockets (flap, jet, bag) | |  |
-| `lib/trousers.mjs` | Gathered legs on Titan (knickerbockers) | |  |
+| `lib/trousers.mjs` | Legs on Titan: gathered into bands (knickerbockers), or tailored with darts, fly and pockets (trousers); strips (waistband, fly, belt loops) | |  |
 | `lib/load-spec.mjs` | Reads a `spec.yaml` (resolving `extends`) and builds it (Node only) | |  |
 | `lib/spec.mjs`, `expr.mjs` | Builds a spec into a FreeSewing design ([SPEC.md](SPEC.md)); no file access, so the site runs it in the browser. Adds a `testSquare` piece (a scale box) to every design | |  |
 | `drape/` | 3D drape configs (`runs.yaml`: one per draped design), renders and results ([README](drape/README.md)); `node tools/drape.mjs <design>` runs one | all 18 designs draped |  |

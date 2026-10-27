@@ -35,6 +35,9 @@ body:
         - Quilted jacket (quilted-jacket)
         - Winter coat (winter-coat)
         - Topcoat (topcoat)
+        - Jacket (jacket)
+        - Waistcoat (waistcoat)
+        - Trousers (trousers)
     validations:
       required: true
   - type: input

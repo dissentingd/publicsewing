@@ -34,9 +34,9 @@ and marked as derived.
 | Garment | Style | FreeSewing | Status | PD source for the style |
 |---|---|---|---|---|
 | Dress shirt | 1 | Simon | Have | — |
-| Sack/suit jacket | 1 | Jaeger (on Bent) | Have | — |
-| Waistcoat | 1 | Wahid | Have | — |
-| Dress trousers (pleats, cuffs) | 1 | Titan, Charlie (Theo dropped in v4) | Variant | Simons *Pants and Overalls* 1916 `draftingpantsove00simo` |
+| Sack/suit jacket | 1 | Jaeger (on Bent) | Have; **drafted 2026-10-27** (`designs/jacket`: two-button, notched lapel, side panels, flap pockets, vent; not sewn) | ЕМКО 1988 §1 |
+| Waistcoat | 1 | Wahid | Have; **drafted 2026-10-27** (`designs/waistcoat`: V neck, cutaway points, darts, welts, lined; not sewn) | ЕМКО 1988 §6 |
+| Dress trousers (pleats, cuffs) | 1 | Titan, Charlie (Theo dropped in v4) | Variant; **darted trousers drafted 2026-10-27** (`designs/trousers`, on Titan: fly, pockets, waistband; no pleats or cuffs yet; not sewn); ЕМКО 1988 §7 | Simons *Pants and Overalls* 1916 `draftingpantsove00simo` |
 | Overcoat (Chesterfield) | 1 | Carlton is a belted long coat | Variant | Simons *Overcoat Patterns* 1916 `designingovercoa00simo` |
 | Work shirt | 2 | Simon | Variant (patch pockets, plain yoke) | Simons *Cotton Garments* 1918 `draftingcottonga00simo` |
 | Work trousers / dungarees | 2 | Titan, Charlie | Variant | Simons 1916 |
@@ -168,11 +168,12 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
 
 ## ЕМКО СЭВ vol. 3 (1988): done (2026-10-27)
 Corpus `emko`, a private copy, untracked: still in copyright, used only for its methods,
-proportions and construction (CLAUDE.md, Copyright). The archived pipeline had read all six of
-its men's garments (`archive/recipes/emko/`), so the briefs take their numbers from there, and
-the archived pipeline still computes any point of them (`python -m ccat run --source
-emko-garment ...`). Four designs, each tested at 20 adult, 3 stout and 75 children's sizes;
-none sewn, none draped yet:
+proportions and construction (CLAUDE.md, Copyright). All seven of its men's garments are
+drafted. The archived pipeline had read six of them (`archive/recipes/emko/`), so most briefs
+take their numbers from there, and it still computes any point of them (`python -m ccat run
+--source emko-garment ...`); the trousers' model construction (Table 7.3) was read from the scan
+for the brief. Seven designs, each tested at 20 adult, 3 stout and 75 children's sizes; none
+sewn, none draped yet:
 - `windbreaker` (§4 summer jacket): new shared pieces, `lib/hood.mjs` (a two-piece hood),
   `frontYokeCut` / `frontPanel` and the back `body` panel (`lib/panels.mjs`), `zip`
   (`lib/coat.mjs`);
@@ -180,12 +181,19 @@ none sewn, none draped yet:
   front yoke, quilted lining cuts;
 - `winter-coat` (§3), on the windbreaker's yoked body: knee length, turn-down collar, lining;
 - `topcoat` (§2 demi-season coat), on the military blouse's three-piece body, with a new back vent
-  (`lib/body3.mjs`).
+  (`lib/body3.mjs`);
+- `jacket` (§1), on the topcoat: two buttons, a notched lapel on the three-piece body, rounded
+  front corners, flap pockets (`lib/body3.mjs`: `r`, `lapel`, welt `flap`);
+- `waistcoat` (§6), on Brian: V neck, cutaway points, back fish dart and front dart, cut-in
+  armholes, welts (`lib/coat.mjs`: `armholeCut`, `dart`, `chamfer`);
+- `trousers` (§7), on Titan: back and front waist darts, legs narrowing to a curved hem, zip fly,
+  side and back pockets, waistband (`lib/trousers.mjs`: `trouserLeg`, `strip`).
 
-Not drafted: the §1 jacket (FreeSewing's Jaeger) and the §6 waistcoat (Wahid; our bar vest).
-Left out of all four (each brief says so): ЕМКО's belly and chest darts, the summer jacket's
+FreeSewing has a jacket (Jaeger), a waistcoat (Wahid) and the Titan block; ЕМКО's versions are
+added anyway, as our own designs at every size.
+Left out (each brief says so): ЕМКО's belly and chest darts, the summer jacket's
 yoke ease, the two-piece and inner-seam sleeves on the Brian designs, the winter coat's side-seam
-shift. Vols. 2, 5 and 6 (women's, girls', boys') were located but never obtained.
+shift, the jacket's darts, lining and collar stand, the waistcoat's CB shaping. Vols. 2, 5 and 6 (women's, girls', boys') were located but never obtained.
 
 ## After Mitchell: Simons' overcoats (1916), then later Woman's Institute volumes
 - Mitchell's remaining garments are listed above; the archived pipeline's readings of it are in

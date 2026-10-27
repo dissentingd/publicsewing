@@ -38,7 +38,7 @@ A straight, hip-length jacket for summer:
 |---|---|---|
 | Ease | 23% over the chest; straight to the hem | `chestEase` 22%, `seatEase` 10%; side seams straight |
 | Length | 29.1 below the waist | `lengthBelowWaist` 110% of waist-to-seat |
-| Back yoke | 16.0 of the 27.75 from the nape to the underarm | `backYokeDepth` 58% of CB neck to the chest line |
+| Back yoke | 16.0 of the 27.75 from the nape to the underarm | `yokeDepth` 58% of CB neck to the chest line |
 | Front yoke | At the front edge 17.0 below the front neck; at the armhole 3.2 above the underarm | `frontYokeDepth` 78% and `frontYokeArm` 85% of CF neck to the chest line; kept inside the armhole |
 | Zip | Neck to hem | Each front `zipExtension` 0.6% of chest past CF, covering half the teeth; the zip marked from the neckline to the hem |
 | Hood | Face edge from the neck up past the crown, 10° forward; crown 25.6 deep, 12.8 corner; neck edge dropping 9.5 to the face | `hoodHeight` 75% of the head, `hoodLean` 10°, `hoodDepth` 44.5% of the head, `hoodCorner` 50% of the depth, `hoodNeckDrop` 35% of the neck edge; the neck edge fitted to the neckline, CB to the front edge |

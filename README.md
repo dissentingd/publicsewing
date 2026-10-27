@@ -46,6 +46,9 @@ a check that the pieces sew together into the garment, not a fit result.
 | `quilted-jacket` | Hooded quilt-lined jacket buttoned to the throat, sloped front yokes | ЕМКО 1988 |
 | `winter-coat` | Straight knee-length coat with deep yokes, hip welts, turn-down collar | ЕМКО 1988 |
 | `topcoat` | Semi-fitted knee-length coat with side panels and a back vent | ЕМКО 1988 |
+| `jacket` | Single-breasted two-button jacket: side panels, notched lapel, flap pockets, back vent | ЕМКО 1988 |
+| `waistcoat` | Lined V-neck waistcoat with cutaway points, darts and welt pockets | ЕМКО 1988 |
+| `trousers` | Semi-fitted straight trousers: waist darts, zip fly, side and back pockets, waistband | ЕМКО 1988 |
 
 [WARDROBE_GAPS.md](WARDROBE_GAPS.md) compares a full wardrobe against what FreeSewing already
 has and lists what's next.
@@ -114,7 +117,7 @@ proportions and construction from a book, gets its geometry from FreeSewing's bl
 written in our own words. No source text or illustration is reproduced outside `corpus/`.
 
 ЕМКО СЭВ (1988) is still in copyright. Its designs (windbreaker, quilted jacket, winter coat,
-topcoat) take only its methods, proportions and construction, which copyright doesn't cover;
+topcoat, jacket, waistcoat, trousers) take only its methods, proportions and construction, which copyright doesn't cover;
 their geometry is FreeSewing's and their briefs are our own words. The archived pipeline
 (`archive/`) also read its formulas and sizing tables: only its numbers and methods are in the
 repository, recomputed by our code. Its text, figures and scans are not.

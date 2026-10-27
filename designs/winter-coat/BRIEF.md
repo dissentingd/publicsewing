@@ -33,7 +33,7 @@ A straight-silhouette winter overcoat:
 |---|---|---|
 | Ease | 29% over the chest; straight | `chestEase` 27%, `seatEase` 16%; `hemFlare` 3% of seat at each side seam, room to walk |
 | Length | 61.45 below the waist | `lengthBelowWaist` 230% of waist-to-seat |
-| Back yoke | 12.0 of the 30.0 from the nape to the underarm | `backYokeDepth` 40% |
+| Back yoke | 12.0 of the 30.0 from the nape to the underarm | `yokeDepth` 40% |
 | Front yoke | About 20 below the front neck at the edge; 1.8 above the underarm at the armhole | `frontYokeDepth` 86% and `frontYokeArm` 92% of CF neck to the chest line |
 | Closure | (single-breasted) | `buttonExtension` 3.2% of chest; `buttons` 4 on CF, from below the collar to just below the pockets |
 | Pockets | A near-level welt at the hip, its front end about 21 behind the front edge, running back to the side seam | `handPockets` on: front end `handPocketTop` 35% of waist-to-seat below the waist and `handPocketAt` 50% of the front's chest width behind CF, running back `handPocketLength` 43% of that width (kept off the side seam), rising `handPocketLean` 5% |
