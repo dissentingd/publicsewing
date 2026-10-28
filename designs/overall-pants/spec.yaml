@@ -1,0 +1,63 @@
+# Overall pants: Simons' "One-piece Overall" (Drafting Pants and Overalls, 1916, Diagram XIII,
+# pp. 24-25), on the work pants' Titan legs: "a cheap grade of overalls... made without any side
+# seam", drafted two sizes larger at the seat and waist. Back and front are drafted on one
+# straight outseam line, and each leg is cut in one piece. Fly, waistband and belt loops as the
+# trousers. See BRIEF.md.
+extends: ../work-pants/spec.yaml
+
+about:
+  id: overall-pants
+  name: Overall pants
+  description: Full work overall trousers with no side seam, each leg cut in one piece, fly and waistband
+  difficulty: 2
+  tags: [bottoms, workwear]
+  techniques: [zip, waistband, hem]
+  version: 0.1.0
+  source: Simons, Drafting Pants and Overalls (1916), One-piece Overall, Diagram XIII (draftingpantsove00simo)
+
+options:
+  # 34 waist, 40 seat, drafted two sizes larger (36, 42); knee 20, bottom 18 1/2, rise 10 1/2
+  seatEase: { pct: 15, max: 20 } # the work pants' 10%, plus 2 in
+  waistEase: { pct: 15, max: 20 } # the work pants' 9%, plus 2 in
+  kneeEase: { pct: 25 } # x knee: 20 in, an inch less than the work pants
+  hemWidth: { pct: 92 } # bottom 18 1/2 / knee 20
+  # Not on this overall: no side seam for side pockets; plain back
+  sidePockets: { bool: false, menu: false }
+  backPocket: { bool: false, menu: false }
+
+pieces:
+  front:
+    prefix: trousers # named like the inherited pieces
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    ops:
+      - trouserLeg:
+          which: front
+          dart: 0
+          hemWidth: hemWidth
+          hemSag: 0
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          straightOutseam: 1
+      # Drafted only to be joined to the back (the leg piece)
+      - hidePiece: {}
+  back:
+    prefix: trousers # named like the inherited pieces
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: 0
+          hemWidth: hemWidth
+          hemSag: 0
+          straightOutseam: 1
+      - hidePiece: {}
+  # Each leg in one piece: back and front joined along the outseam line (A-D)
+  leg: { part: legInOne, after: [back, front], nr: 1 }

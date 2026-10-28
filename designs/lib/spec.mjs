@@ -45,7 +45,7 @@ import { titan } from '../blocks/titan.mjs'
 import { breanna } from '../blocks/breanna.mjs'
 import { sarah } from '../blocks/sarah.mjs'
 import { draftSkirtLayout, gorePart } from './skirt.mjs'
-import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart } from './trousers.mjs'
+import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
 
@@ -219,6 +219,9 @@ const factories = {
   neckBand: (p, ctx) => neckBandPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   legBand: (p, ctx) =>
     legBandPart({ name: p.name, after: ctx.after(p), nr: p.nr, size: (sh) => evalMap({ length: p.length, width: p.width }, lookupIn(sh, ctx.block, {}), {}), enabled: enabledBy(p.if) }),
+  // A trouser leg cut in one, back and front joined on their straight outseam (trouserLeg's
+  // straightOutseam on both)
+  legInOne: (p, ctx) => legInOnePart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   // A plain rectangle (waistband, fly shield, belt loops): `length`, `width`, `fold`, `cut`
   strip: (p, ctx) =>
     stripPart({

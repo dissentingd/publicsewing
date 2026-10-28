@@ -105,6 +105,9 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  *   `calfBelow` under the knee and `cuffW` round at the hem, `cuffBelow` under it (each width
  *   split back/front by `share`, this piece's part). The outseam opens from the hem up to
  *   `openingBelow` under the knee, with `buttons` buttonholes `buttonInset` in on the front.
+ * - `straightOutseam`: the outseam a straight line from the hem corner out past the seat to the
+ *   waist (Simons' one-piece overall), so back and front can be cut in one (`legInOnePart`); the
+ *   pieces' paths go to `trousers.paths.<which>`.
  */
 export function draftTrouserLeg(sh, args) {
   const { which, dart = 0, dartAt = 0.4, dartLength = 0, dartFrom = 'side', hemWidth = 1, hemSag = 0, hemSa = 4 } = args
@@ -153,8 +156,8 @@ export function draftTrouserLeg(sh, args) {
     points.hemCp1 = points.hemIn.shiftFractionTowards(points.hemOut, 1 / 3)
     points.hemCp2 = points.hemIn.shiftFractionTowards(points.hemOut, 2 / 3)
     const ty = points.fork.y + (points.knee.y - points.fork.y) * thighAt
-    const straight = new Path().move(points.seatOut).curve(back ? points.seatOutCp1 : points.seatOutCp2, back ? points.kneeOutCp2 : points.kneeOutCp1, points.kneeOut).intersectsY(ty)[0] ?? points.kneeOut
-    points.thighOut = new Point(straight.x + out * thighFlare, ty)
+    const onLeg = new Path().move(points.seatOut).curve(back ? points.seatOutCp1 : points.seatOutCp2, back ? points.kneeOutCp2 : points.kneeOutCp1, points.kneeOut).intersectsY(ty)[0] ?? points.kneeOut
+    points.thighOut = new Point(onLeg.x + out * thighFlare, ty)
     points.thighOutCp1 = points.thighOut.shift(90, (ty - points.seatOut.y) / 2)
     points.thighOutCp2 = points.thighOut.shift(-90, (points.knee.y - ty) / 2)
     points.seatOutCpD = points.seatOut.shift(-90, (ty - points.seatOut.y) / 3)
@@ -164,8 +167,20 @@ export function draftTrouserLeg(sh, args) {
 
   // Seams: outseam from the waist down (always through the seat line), inseam from the fork
   // down, crotch from the waist
+  const straight = Boolean(args.straightOutseam) && !br
+  let su
+  if (straight) {
+    // Lean the line out enough to clear both the seat and the waist corner
+    const lean = (q) => (out * (q.x - points.hemOut.x)) / (points.hemOut.y - q.y)
+    const k = Math.max(lean(points.seatOut), lean(points.wOut))
+    const dy = points.hemOut.y - points.wOut.y
+    points.wOut = new Point(points.hemOut.x + out * k * dy, points.wOut.y)
+    su = points.hemOut.angle(points.wOut)
+  }
   const drawOutseam = () =>
-    br
+    straight
+      ? new Path().move(points.wOut).line(points.hemOut)
+      : br
       ? new Path()
           .move(points.wOut)
           ._curve(back ? points.seatOutCp2 : points.seatOutCp1, points.seatOut)
@@ -179,7 +194,7 @@ export function draftTrouserLeg(sh, args) {
   let outseam = drawOutseam()
   // True this outseam to the other piece's at the waist corner (`matchOutseam`)
   for (let i = 0; args.matchOutseam && i < 3; i++) {
-    points.wOut = points.wOut.shift(-90, outseam.length() - args.matchOutseam)
+    points.wOut = straight ? points.hemOut.shift(su, args.matchOutseam) : points.wOut.shift(-90, outseam.length() - args.matchOutseam)
     outseam = drawOutseam()
   }
   let inseam, crotch
@@ -212,14 +227,14 @@ export function draftTrouserLeg(sh, args) {
     paths.sa = o.close().addClass('fabric sa')
   }
   paths.crease = new Path().move(points.floor).line(new Point(points.floor.x, points.fork.y)).addClass('help dashed')
-  snippets.knee = new Snippet('notch', points.kneeOut)
+  if (!straight) snippets.knee = new Snippet('notch', points.kneeOut)
   snippets.kneeIn = new Snippet('notch', points.kneeIn)
 
   const info = {
     outseam: outseam.length(),
     inseam: inseam.length(),
     crotch: crotch.length(),
-    waist: W,
+    waist: straight ? wIn.dist(points.wOut) - d : W,
     dart: d,
     dartAtSide: d - dCentre,
     hem: points.hemIn.dist(points.hemOut),
@@ -286,12 +301,90 @@ export function draftTrouserLeg(sh, args) {
     store.set('trousers.pockets', { ...pockets, back: { len, welt: backPocketWelt, bag: len * 1.3 } })
   }
 
+  if (straight) store.set(`trousers.paths.${which}`, { waist, crotch, inseam, hem, outseam, fly: paths.fly, hemSa })
   store.set(`trousers.${which}`, info)
   macro('grainline', { from: points.floor.shift(90, 30), to: new Point(points.floor.x, points.fork.y) })
   store.cutlist.setCut({ cut: 2, from: 'fabric' })
   title(macro, { at: new Point(points.knee.x, (points.fork.y + points.knee.y) / 2), nr: back ? 2 : 1, title: which })
   return part
 }
+
+/**
+ * A leg cut in one: the back as drafted, and the front laid against it along their shared
+ * straight outseam (from `trousers.paths.*`, drafted with `straightOutseam`), so there's no side
+ * seam. The outseam's line is marked; the fly comes with the front.
+ */
+export const legInOnePart = ({ name, after, nr = 1 }) => ({
+  name,
+  after,
+  draft: (sh) => {
+    const { paths, Path, Point, store, sa, macro, part } = sh
+    const B = store.get('trousers.paths.back')
+    const F = store.get('trousers.paths.front')
+    // Map the front so its outseam lies on the back's, its body on the other side of the line
+    const [fh, fw] = [F.outseam.end(), F.outseam.start()]
+    const [bh, bw] = [B.outseam.end(), B.outseam.start()]
+    const unit = (a, b) => {
+      const l = a.dist(b)
+      return [(b.x - a.x) / l, (b.y - a.y) / l]
+    }
+    const uf = unit(fh, fw)
+    const ub = unit(bh, bw)
+    const side = (q, h, u) => Math.sign(u[0] * (q.y - h.y) - u[1] * (q.x - h.x)) || 1
+    const sf = side(F.crotch.end(), fh, uf)
+    const sb = side(B.crotch.end(), bh, ub)
+    const nf = [-uf[1] * sf, uf[0] * sf] // into the front
+    const nb = [-ub[1] * sb, ub[0] * sb] // into the back
+    const T = (q) => {
+      const t = (q.x - fh.x) * uf[0] + (q.y - fh.y) * uf[1]
+      const d = (q.x - fh.x) * nf[0] + (q.y - fh.y) * nf[1]
+      return new Point(bh.x + ub[0] * t - nb[0] * d, bh.y + ub[1] * t - nb[1] * d)
+    }
+    const map = (path) => {
+      const out = new Path()
+      for (const op of path.ops) {
+        if (op.type === 'move') out.move(T(op.to))
+        else if (op.type === 'line') out.line(T(op.to))
+        else if (op.type === 'curve') out.curve(T(op.cp1), T(op.cp2), T(op.to))
+      }
+      return out
+    }
+    const [fw2, fc, fi, fhm] = [map(F.waist), map(F.crotch), map(F.inseam), map(F.hem)]
+    // Back waist > crotch > inseam > hem, then the front's hem > inseam > crotch > waist back
+    const segs = [
+      [B.waist, 1],
+      [B.crotch, 1],
+      [B.inseam, 1],
+      [B.hem, B.hemSa],
+      [fhm.reverse(), F.hemSa],
+      [fi.reverse(), 1],
+      [fc.reverse(), 1],
+      [fw2.reverse(), 1],
+    ]
+    let seam
+    for (const [p] of segs) seam = seam ? seam.join(p) : p.clone()
+    paths.seam = seam.close().addClass('fabric')
+    if (sa) {
+      // The darted waists' allowance runs straight across
+      const flat = (p) => new Path().move(p.start()).line(p.end())
+      let o
+      for (const [p, k] of segs) {
+        const off = (p === segs[0][0] || p === segs[7][0] ? flat(p) : p).offset(sa * k)
+        o = o ? o.line(off.start()).join(off) : off
+      }
+      paths.sa = o.close().addClass('fabric sa')
+    }
+    paths.outseamLine = new Path().move(bw).line(bh).addClass('help dashed').addText('no side seam', 'center text-sm')
+    if (F.fly) paths.fly = map(F.fly).addClass('mark dashed')
+    store.set('trousers.leg', { waist: B.waist.length() + F.waist.length(), outseam: bw.dist(bh) })
+    // On the back's grain, square to its hem
+    const gx = (B.hem.start().x + B.hem.end().x) / 2
+    macro('grainline', { from: new Point(gx, B.hem.start().y - 30), to: new Point(gx, B.crotch.end().y) })
+    store.cutlist.setCut({ cut: 2, from: 'fabric' })
+    title(macro, { at: bh.shiftFractionTowards(bw, 0.5), nr, title: 'leg' })
+    return part
+  },
+})
 
 /** A rectangle `length` by `width` (`fold`: cut twice as wide, folded lengthwise). */
 export const stripPart = ({ name, after, nr, label, cut = 1, fold = false, material = 'fabric', enabled = () => true, size }) => ({
