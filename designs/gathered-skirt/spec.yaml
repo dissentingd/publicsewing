@@ -1,0 +1,70 @@
+# Gathered skirt: Walker's frock skirt (Manual of Needlework and Cutting Out, 1909, "Low-necked
+# Bodice ... Skirt 27 x 36", No. 25), as a skirt on its own: straight breadths, front and back on
+# the fold, gathered into a waistband, a placket at the left side seam. FreeSewing's Sarah only
+# supplies the measurements. See BRIEF.md.
+block: sarah
+
+about:
+  id: gathered-skirt
+  name: Gathered skirt
+  description: A full skirt of straight breadths gathered into a waistband, with a side placket
+  difficulty: 1
+  tags: [bottoms]
+  techniques: [gathering, placket, waistband, hem]
+  version: 0.1.0
+  source: Walker, Manual of Needlework and Cutting Out (1909), frock skirt, No. 25 (krl00366374)
+  preview: cisFemaleAdult36
+
+options:
+  gathers: { pct: 180, min: 120, max: 300, menu: style } # the breadths 36 in round a 20 in waist
+  skirtLength: { pct: 65, min: 30, max: 95, of: waistToFloor, menu: style } # below the knee
+  placketLength: { pct: 90, min: 50, max: 120, menu: style } # x waist to seat, down the left side seam
+  waistbandHeight: { pct: 3, min: 2, max: 6, of: waistToFloor, menu: style } # finished
+
+pieces:
+  # Sarah's base, only for the measurements
+  base:
+    from: sarah.base
+    hide: tree
+    options: all
+    ops:
+      - hidePiece: {}
+  # Front and back: each a quarter of the gathered width, on the fold; the hem turned up deep
+  front:
+    part: polygon
+    after: base
+    nr: 1
+    fold: 3
+    let:
+      a: max(waist * gathers, seat * 1.1) / 4 # never narrower than the hips
+      l: waistToFloor * skirtLength
+    points: [[0, 0], [a, 0], [a, l], [0, l]]
+    allowance: [1, 1, 4, 0]
+    notches: [[a, waistToSeat * placketLength]]
+    lines: [[[a * 0.05, 8], [a * 0.95, 8]]]
+  back:
+    part: polygon
+    after: base
+    nr: 2
+    fold: 3
+    let:
+      a: max(waist * gathers, seat * 1.1) / 4 # never narrower than the hips
+      l: waistToFloor * skirtLength
+    points: [[0, 0], [a, 0], [a, l], [0, l]]
+    allowance: [1, 1, 4, 0]
+    notches: [[a, waistToSeat * placketLength]]
+    lines: [[[a * 0.05, 8], [a * 0.95, 8]]]
+  # The waist plus an underlap at the placket, folded
+  waistband:
+    part: strip
+    after: base
+    nr: 3
+    fold: true
+    length: waist + waistToFloor * waistbandHeight
+    width: waistToFloor * waistbandHeight
+  placketStrip:
+    part: strip
+    after: base
+    nr: 4
+    length: 2 * waistToSeat * placketLength + 20
+    width: 50

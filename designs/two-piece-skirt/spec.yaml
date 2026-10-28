@@ -1,0 +1,38 @@
+# Two-piece skirt: Mitchell 1921's "Two-Piece Skirt" (p. 86, Diagram p. 87) on FreeSewing's Sarah
+# through the gored skirt: "a plain two-piece skirt, drafted to fit tight at the hips and waist
+# line", a front on the fold and a back with a CB seam and zip, the waist shaped at the side
+# seams and CB, the side seams running straight from the hem through the hip. See BRIEF.md.
+extends: ../gored-skirt/spec.yaml
+
+about:
+  id: two-piece-skirt
+  name: Two-piece skirt
+  description: A plain skirt fitted at the hips and waist, shaped in its side seams, with a CB zip and a waistband
+  difficulty: 2
+  tags: [bottoms]
+  techniques: [zip, waistband, hem]
+  version: 0.1.0
+  source: Mitchell, Ladies' Tailor-Made Garments (1921), Two-Piece Skirt, pp. 86-87 (mitchell)
+  preview: cisFemaleAdult36
+
+options:
+  gores: { dflt: 3, list: [3], menu: false } # the front and the back (with its CB seam)
+  panelShare: { pct: 55, min: 45, max: 60, menu: style } # x the half hip: the side seam 1 in behind the middle (11 from 4)
+  goreFlare: { pct: 20, min: 0, max: 80, menu: style } # the side seam straight from the hem (12) through the hip (11)
+  cbShaping: { pct: 21, min: 0, max: 50, menu: advanced } # the foundation's CB shaping
+  panelShaping: { pct: 79, min: 50, max: 100, menu: advanced } # the rest at the side seam (13, 14)
+
+pieces:
+  layout:
+    from: sarah.base
+    hide: tree
+    options: all
+    ops:
+      - skirtLayout:
+          gores: gores
+          panelNarrowing: 0
+          panelShare: panelShare
+          cbShaping: cbShaping
+          panelShaping: panelShaping
+          flare: goreFlare
+          frontDrop: waistToSeat * frontWaistDrop

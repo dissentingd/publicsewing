@@ -16,9 +16,11 @@ const ease = (t) => 3 * t * t - 2 * t * t * t
  * Sarah's ease on both) goes `cbShaping` to the CB seam, `panelShaping` to the panel seam and
  * the rest equally to the other seams. Those three are for five gores, less with more. The hem is `flare` x the half seat wider than the seat
  * line at floor length, less for a shorter skirt, shared equally by every seam edge (the CF fold
- * stays straight). The waist drops `frontDrop` (mm) toward CF.
+ * stays straight). The waist drops `frontDrop` (mm) toward CF. With three gores (Mitchell's
+ * two-piece skirt: a front on the fold and a back with a CB seam) `panelShare` sets the front's
+ * share of the half seat, and the shaping isn't scaled.
  */
-export function draftSkirtLayout(sh, { gores, panelNarrowing, cbShaping, panelShaping, flare, frontDrop }) {
+export function draftSkirtLayout(sh, { gores, panelNarrowing, cbShaping, panelShaping, flare, frontDrop, panelShare }) {
   gores = Number(gores)
   const { points, measurements, store, part } = sh
   cleanup(sh)
@@ -29,12 +31,12 @@ export function draftSkirtLayout(sh, { gores, panelNarrowing, cbShaping, panelSh
   const m = (gores - 1) / 2
   // The panel's narrowing and the CB and panel darts are the five-gored skirt's; with more
   // gores Mitchell takes ⅛ in or so less of each per two gores, to about a quarter at fifteen
-  const fewer = Math.max(0.1, 1 - (gores - 5) / 13)
+  const fewer = Math.min(1, Math.max(0.1, 1 - (gores - 5) / 13))
   panelNarrowing *= fewer
   cbShaping *= fewer
   panelShaping *= fewer
 
-  const P = Math.max(S / gores - panelNarrowing, S / gores / 2) // half the front panel
+  const P = panelShare ? S * panelShare : Math.max(S / gores - panelNarrowing, S / gores / 2) // half the front panel
   const G = (S - P) / m
   const xs = Array.from({ length: m + 1 }, (_, j) => j * G) // xs[0] CB, xs[m] the panel seam
 

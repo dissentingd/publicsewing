@@ -137,6 +137,12 @@ options:
   seatPockets:
     title: Seat pockets
     description: A patch pocket on each back.
+  panelShare:
+    title: Front width
+    description: The front's share of the half hip; the rest is the back's.
+  placketLength:
+    title: Placket length
+    description: Length of the opening at the left side seam, as a share of waist to seat.
   chestPocket:
     title: Chest pocket
     description: A flapped pocket sewn into the front yoke seam.

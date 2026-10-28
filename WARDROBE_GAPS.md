@@ -72,8 +72,8 @@ and marked as derived.
 |---|---|---|---|---|
 | **Tailored jacket** | 1 | — (Jaeger is menswear) | **Semi-fitted drafted 2026-10-25** (`designs/tailored-jacket`, on Breanna, not sewn); **tight-fitted with a shawl collar 2026-10-27** (`designs/fitted-jacket`, not sewn) | Mitchell 1921 `newstandardworko00mitc` |
 | Skirt: pencil, circle, block | 1, 4 | Penelope, Sandy, Sarah | Have | — |
-| A-line / gored skirt | 5 | Sarah | **Drafted 2026-10-27** (`designs/gored-skirt`, 5–15 gores on Sarah, not sewn) | Mitchell 1921 (gored skirts) |
-| Gathered skirt | 4 | Sarah, Sandy | Variant (trivial) | — |
+| A-line / gored skirt | 5 | Sarah | **Drafted 2026-10-27** (`designs/gored-skirt`, 5–15 gores on Sarah, not sewn); **two-piece skirt 2026-10-28** (`designs/two-piece-skirt`) | Mitchell 1921 (gored and two-piece skirts) |
+| Gathered skirt | 4 | Sarah, Sandy | Variant; **drafted 2026-10-28** (`designs/gathered-skirt`: straight breadths on a waistband; not sewn) | Walker 1909 frock skirt |
 | Button-down blouse | 1 | Simone | Have | — |
 | Soft blouse (bust darts, other collars) | 1, 5 | Simone, Bella block | Variant | Rosenfeld 1911/1918, WI *Pattern Drafting* 1920 |
 | Coat | 1 | Carlita | Have | — |
@@ -103,11 +103,11 @@ and marked as derived.
 | **Girl's coat** | — | **Drafted 2026-10-28** (`designs/girls-coat`: Sheifer's box coat on Mitchell's, to below the knee; not sewn) | Sheifer 1908 `nssheiferssystem00shei` |
 
 **Count** (2026-10-28, by the tables above, 56 rows):
-- **38 rows drafted or done**, the children's measurement sets among them (rows marked
+- **39 rows drafted or done**, the children's measurement sets among them (rows marked
   "Variant; drafted" count here).
 - **1 gap open:** the shift dress (no A source assessed yet). Pyjamas, the women's peacoat and
   field jacket, the boy's suit jacket and the girl's coat closed 2026-10-28.
-- **5 variants.** These are options on existing designs, the cheapest wins. Breeches, the work shirt and the service shirt drafted
+- **4 variants.** These are options on existing designs, the cheapest wins. Breeches, the work shirt, the service shirt and the gathered skirt drafted
   2026-10-28; the bib overall too (a row FreeSewing already covers).
 - **12 rows already covered** by FreeSewing (the apron row counted here).
 
@@ -176,7 +176,8 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
   (its back seam taken in at the waist), a shaped CB seam, and a shawl collar cut in one with
   the front (2026-10-27). Tested at every size; not draped, not sewn.
 - **Next from Mitchell:** the double-dart tight-fitted jacket (pp. 46–47: two front seams over
-  the shoulder, no collar), the kimono jackets, the "Prince Albert", the two-piece skirts.
+  the shoulder, no collar), the kimono jackets, the "Prince Albert". The two-piece skirt is built
+  (2026-10-28, `designs/two-piece-skirt`).
 
 ## ЕМКО СЭВ vol. 3 (1988): done (2026-10-27)
 Corpus `emko`, a private copy, untracked: still in copyright, used only for its methods,
