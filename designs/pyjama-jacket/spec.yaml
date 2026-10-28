@@ -1,0 +1,29 @@
+# Pyjama jacket: Vincent's "Pyjama Jackets" (The Cutter's Practical Guide to Cutting and Making
+# Shirts, Undergarments..., 1890, p. 25, Diagram 1), on the barber's coat (FreeSewing's Brian): a
+# loose, straight, unlined jacket buttoned to the throat under a stand collar, a patch pocket on
+# the left breast. Worn with the pyjama trousers. See BRIEF.md.
+extends: ../barbers-coat/spec.yaml
+
+about:
+  id: pyjama-jacket
+  name: Pyjama jacket
+  description: "A loose, unlined sleeping jacket buttoned to the throat under a stand collar, with a breast pocket"
+  difficulty: 2
+  tags: [tops, sleepwear]
+  techniques: [patch-pocket, collar, facing, button]
+  version: 0.1.0
+  source: "Vincent, The Cutter's Practical Guide to Cutting and Making Shirts, Undergarments (1890), Pyjama Jackets, p. 25 (vincentmakingshirts18xx)"
+
+options:
+  # "9 to 20 half chest plus 2 inches": 4" over the chest
+  chestEase: { pct: 11 }
+  # Cuff "one-sixth breast less 1/2 in." each half: about 11 3/4" round at breast 38
+  cuffEase: { pct: 70 }
+  # "Full length": to below the seat; "make front 3/4 in. longer than back"
+  lengthBelowWaist: { pct: 105 } # x waistToSeat: about 11" below the waist at FreeSewing's 38
+  frontDrop: { pct: 7 } # x waistToSeat: 3/4"
+  buttonExtension: { pct: 3.9 } # x chest: "add on 1 1/2 in. for button-stand"
+  buttons: { count: 5 } # Diagram 1: five, the neck to the waist
+  collarHeight: { pct: 10 } # x neck: "width of collar about 1 1/2 in."
+  lowerPockets: { bool: false } # "a patch-pocket is generally put on the left breast"
+  pocketShape: { dflt: square }

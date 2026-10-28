@@ -1,0 +1,63 @@
+# Pyjama trousers: Vincent's "Pyjama Trousers" (The Cutter's Practical Guide to Cutting and
+# Making Shirts, Undergarments..., 1890, p. 26), on the knickerbockers (FreeSewing's Titan): full,
+# straight legs to the ankle with a plain hem, the waist gathered on a drawstring or elastic.
+# Worn with the pyjama jacket. See BRIEF.md.
+extends: ../knickerbockers/spec.yaml
+
+about:
+  id: pyjama-trousers
+  name: Pyjama trousers
+  description: "Full, straight sleeping trousers to the ankle, gathered at the waist on a drawstring or elastic"
+  difficulty: 1
+  tags: [bottoms, sleepwear]
+  techniques: [gathering, elastic]
+  version: 0.1.0
+  source: "Vincent, The Cutter's Practical Guide to Cutting and Making Shirts, Undergarments (1890), Pyjama Trousers, p. 26 (vincentmakingshirts18xx)"
+
+options:
+  bandBelowKnee: { menu: false }
+  blouse: { menu: false }
+  kneeBandEase: { menu: false }
+  bandWidth: { menu: false }
+  # The waist "half the waist plus 5 inches": 4" each side gathered in; the knickerbockers' seat
+  # ease gives that
+  legLength: { pct: 95, min: 80, max: 102, menu: style } # x waistToFloor: "length of leg, usually made 1 inch shorter than the trousers"
+  legFlare: { pct: -20, min: -30 } # x seat, at the outseam: the leg tapers from the seat to about 23" round at the hem at FreeSewing's 38 (Vincent: about 20")
+  hemDepth: { pct: 5, min: 2, max: 10, menu: style } # x waistToFloor: about 2" turned up
+
+pieces:
+  front:
+    from: titan.front
+    hide: tree
+    options: all
+    ops:
+      - gatheredLeg:
+          which: front
+          bandY: waistToFloor * legLength
+          hemY: bandY + waistToFloor * hemDepth
+          # The same taper on both pieces (so the outseams match), never so much that the leg is
+          # under the knee round (the two pieces' untapered hems are 0.8 to 0.95 x the seat)
+          flare: max(seat * legFlare, (knee * 1.05 - seat * 0.8) / 2)
+          casing: 2 * waist * casing + 6
+          hem: waistToFloor * hemDepth
+  back:
+    from: titan.back
+    hide: tree
+    options: all
+    ops:
+      - gatheredLeg:
+          which: back
+          bandY: waistToFloor * legLength
+          hemY: bandY + waistToFloor * hemDepth
+          # The same taper on both pieces (so the outseams match), never so much that the leg is
+          # under the knee round (the two pieces' untapered hems are 0.8 to 0.95 x the seat)
+          flare: max(seat * legFlare, (knee * 1.05 - seat * 0.8) / 2)
+          casing: 2 * waist * casing + 6
+          hem: waistToFloor * hemDepth
+  # No leg bands
+  band:
+    part: legBand
+    after: [back, front]
+    length: knee
+    width: knee * 0.1
+    if: "false"

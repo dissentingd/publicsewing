@@ -1,0 +1,65 @@
+# Boy's jacket: Simons' boys' single-breasted sack coat (Designing Boys' and Juveniles'
+# Clothing, 1922, Diagrams 1-2, pp. 18-23), on the jacket (FreeSewing's Bent, three-piece body):
+# a three-button suit jacket for boys and youths, notched lapel turning above the waist, flap
+# pockets, rounded front corners, no vent, two-piece sleeves. For any size. See BRIEF.md.
+extends: ../jacket/spec.yaml
+
+about:
+  id: boysjacket
+  name: Boy's jacket
+  description: "A three-button suit jacket for boys: notched lapel, flap pockets, rounded front corners"
+  difficulty: 5
+  tags: [jackets, children]
+  techniques: [button, welt-pocket, collar, lapel, facing, two-piece-sleeve]
+  version: 0.1.0
+  source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Diagrams 1-2, pp. 18-23 (designingboysjuv00simo)"
+
+options:
+  # Fit: a little roomier than the men's jacket, for growing
+  chestEase: { pct: 17 }
+  # Style: Simons' size 6 is 20" long on a 10 1/2" waist length: 9 1/2" below the waist
+  lengthBelowWaist: { pct: 150 } # x waistToSeat: 9 1/2" on the USDA boy C6's 6 1/4"
+  # 13: "1 1/4 inch for button stand"
+  buttonExtension: { pct: 2.4 } # x chest: about 5/8" past CF, the stand's half (1 1/4" stand on a 26" chest)
+  buttons: { count: 3 }
+  breakAt: { pct: 33, min: 0, max: 100, menu: style } # chest line to waist: 11, 1 1/2" below the chest line (of 4 1/2")
+  buttonBottom: { pct: 25, min: 0, max: 60, menu: style } # x waistToSeat: the last button below the waist
+  breastPockets: { bool: false } # Diagram 2 draws only the lower pocket
+  vent: { bool: false } # no vent drawn
+
+pieces:
+  front:
+    prefix: jacket # named like the inherited pieces
+    from: bent.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat, neck]
+    options: [frontDrop, hemCurve, buttonExtension, buttons, breastPockets, lowerPockets, pocketFlaps, facingWidth, lapelWidth, gorgeAt, breakAt, buttonBottom]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to the old side seam
+      # The lapel turns `breakAt` of the way from the chest line to the waist (Simons: 1 1/2" of 4 1/2")
+      topButton: underarm.y + (cfWaist.y - underarm.y) * breakAt
+    ops:
+      # Three buttons from the break to just below the waist; the lapel turns at the top one.
+      # Straight flap pockets below the waist, a breast welt at the chest (off)
+      - body3Front:
+          seamAt: 0.12
+          ext: ext
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          r: chest * 0.1 * hemCurve
+          buttons:
+            count: buttons
+            top: topButton
+            bottom: cfWaist.y + waistToSeat * buttonBottom
+          clear: q * 0.08
+          welt: 0.18
+          welts:
+            breast: { x: q * 0.24, y: underarm.y + q * 0.06, len: q * 0.36, rise: q * 0.05, bag: 1.15, mark: breastPockets }
+            lower: { x: q * 0.22, y: cfWaist.y + waistToSeat * 0.45, len: q * 0.58, rise: 0, bag: 1.3, mark: lowerPockets, flap: "if(pocketFlaps, 0.32, 0)" }
+          lapel:
+            breakY: topButton
+            rollOut: neck * 0.05
+            gorgeAt: gorgeAt
+            width: neck * lapelWidth
+

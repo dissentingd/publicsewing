@@ -1,0 +1,95 @@
+# Women's peacoat: Merz's double-breasted jacket with a storm collar (Merz's Practical Cutting
+# System for Ladies' Jackets and Cloaks, 1911, Diagram XXI, pp. 52-53), on the tailored jacket
+# (FreeSewing's Breanna): princess seams, semi-fitted, a 4" lap with two rows of three buttons,
+# a wide notched lapel and deep collar, hip flap pockets, a lining, two-piece sleeves. See BRIEF.md.
+extends: ../tailored-jacket/spec.yaml
+
+about:
+  id: womenspeacoat
+  name: Women's peacoat
+  description: "A hip-length, double-breasted wool coat cut for women: princess seams, wide lapels, a deep collar, flap pockets"
+  difficulty: 4
+  tags: [coats, jackets]
+  techniques: [princess-seam, lapel, collar, facing, button, flap-pocket, lining, two-piece-sleeve]
+  version: 0.1.0
+  source: "Merz, Practical Cutting System for Ladies' Jackets and Cloaks (1911), Diagram XXI, pp. 52-53 (merzspracticalcu00merz)"
+
+options:
+  # Fit: semi-fitted, worn over a sweater
+  chestEase: { pct: 18 }
+  waistEase: { pct: 20 }
+  seatEase: { pct: 12 }
+  # Style: hip length
+  lengthBelowWaist: { pct: 28 } # x waistToFloor: about 11" below the waist
+  # "From 9 to 49 is an overlap of 4 3/4 inches", 3 3/4 at the waist, 4 below: about 4" on a 36 bust
+  buttonExtension: { pct: 11, max: 14 }
+  doubleBreasted: { bool: true, menu: style }
+  buttonRow: { pct: 62, min: 40, max: 85, menu: style } # x the lap: each row's distance from CF
+  buttons: { count: 3 } # to a row
+  breakBelowBust: { pct: 0 } # the lapel turns at the bust line; the top buttons sit high
+  lapelStyle: { dflt: notch }
+  lapelWidth: { pct: 32 } # x neck: wide, for the deep overlap
+  collarWidth: { pct: 28 } # x neck: Merz's storm collar 3 3/4" at the back, here a deep turn-down collar
+  breastPocket: { bool: false }
+  ticketPocket: { bool: false }
+  facingWidth: { pct: 17, min: 12, max: 22 } # wider than the lap
+
+pieces:
+  frontBase:
+    prefix: tailoredjacket # named like the inherited pieces
+    from: breanna.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, seat, waistToSeat, waistToFloor, neck, hpsToWaistFront]
+    ops:
+      - jacketBase: { side: front }
+      - jacketLayout:
+          seat: seat * (1 + seatEase)
+          hipDepth: waistToSeat
+          length: waistToFloor * lengthBelowWaist
+          lap: chest * buttonExtension
+          breakBelow: hpsToWaistFront * breakBelowBust
+          rollOut: neck * rollOut
+          lapelWidth: neck * lapelWidth
+          gorgeAt: gorgeAt
+          peak: lapelStyle == 'peak'
+          # Double-breasted: a button either side of CF, `buttonRow` of the lap out
+          rows: if(doubleBreasted, chest * buttonExtension * buttonRow, null)
+          facing: chest * facingWidth
+          backFacing: chest * backFacingDepth
+          lining: lining
+          liningPleat: chest * liningPleat
+          welts:
+            breast:
+              if: breastPocket
+              below: hpsToWaistFront * weltBelow
+              from: chest * weltFromCF
+              len: chest * weltLength
+              rise: weltRise
+              welt: len * weltDepth
+              bag: len * bagDepth
+              clear: chest * 0.02
+          pockets:
+            hip:
+              if: pockets
+              below: waistToSeat * pocketBelow
+              from: chest * pocketFromSeam
+              share: pocketWidth
+              angle: pocketAngle
+              flapRatio: flapDepth
+              bagRatio: bagDepth
+              clear: chest * 0.015
+            ticket:
+              if: pockets and ticketPocket
+              below: waistToSeat * (pocketBelow - ticketAbove)
+              from: chest * pocketFromSeam
+              share: pocketWidth * ticketWidth # of the side front's width at its own mouth
+              angle: pocketAngle
+              flapRatio: ticketFlapDepth
+              bagRatio: bagDepth
+              clear: chest * 0.015
+          sleeveStore: [library.twoPartSleeve, library.topsleeve, library.undersleeve, tailoredjacket.topsleeve, tailoredjacket.undersleeve]
+      - store: { key: library.topsleeve.title, value: { nr: 7, brand: "'PublicSewing'" } }
+      - store: { key: library.undersleeve.title, value: { nr: 8, brand: "'PublicSewing'" } }
+

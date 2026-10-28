@@ -1,0 +1,26 @@
+# Girl's coat: Sheifer's box coat drafted for children ("Drafting a Box Coat" and "Drafting
+# Children's Garments", N. S. Sheifer's System of Designing and Grading Ladies', Misses' &
+# Children's Garments, 1908), on the box coat (FreeSewing's Breanna): a loose, straight coat to
+# below the knee, side seams flared from the armhole, a small neck dart, a 2 1/2" lap, flap
+# pockets below the waist, notched lapel and collar, two-piece sleeves. For any size. See BRIEF.md.
+extends: ../box-coat/spec.yaml
+
+about:
+  id: girls-coat
+  name: Girl's coat
+  description: "A loose, single-breasted coat to below the knee, with a notched collar and flap pockets: for girls, or any size"
+  difficulty: 3
+  tags: [coats, children]
+  techniques: [dart, lapel, collar, facing, button, flap-pocket, two-piece-sleeve]
+  version: 0.1.0
+  source: "Sheifer, System of Designing and Grading Ladies', Misses' & Children's Garments (1908), box coat and children's garments (nssheiferssystem00shei)"
+
+options:
+  # Length "according to style"; a child's coat to just below the knee
+  lengthBelowWaist: { pct: 58 } # x waistToFloor
+  # N: "2 1/2 inches for single breasted", on a 36 bust
+  buttonExtension: { pct: 6.9 }
+  buttons: { count: 4 }
+  # P: "Pocket 3 inches below waist line", one each side, no ticket pocket
+  pocketBelow: { pct: 30 } # x waistToSeat: 3" of FreeSewing's 10"
+  ticketPocket: { bool: false }

@@ -87,13 +87,17 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Source (folder id) | Grade | Designs |
 |---|---|---|
 | Simons, *Drafting Cotton Garments and Mackinaws* (1918) `draftingcottonga00simo` | A | chore coat, boys' work coat, shop coat, barber's coat, hunting coat, mackinaw, military blouse, bar vest |
-| Simons, *Designing Overcoat Patterns* (1916) `designingovercoa00simo` | A | peacoat, overcoat, box overcoat, ulster, balmacaan |
+| Simons, *Designing Overcoat Patterns* (1916) `designingovercoa00simo` | A | peacoat, overcoat, box overcoat, ulster, balmacaan, mantle |
 | Walker, *Manual of Needlework and Cutting Out* (1909) `krl00366374` | A (grid) | nightshirt, nightgown, smock, frock, pinafore, knickerbockers |
 | Woman's Institute, *Pattern Drafting* (1915/1920) `patterdraftingpicken` | A (blocks) | shirtwaist dress |
 | Mitchell, *Ladies' Tailor-Made Garments* (1921) `newstandardworko00mitc` | A | tailored jacket, fitted jacket, box coat, gored skirt |
 | ЕМКО СЭВ т.3 (1988) `emko` | A (tables) | windbreaker, quilted jacket, winter coat, topcoat, jacket, waistcoat, trousers |
 | Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants |
 | Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |
+| Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | A | pyjama jacket, pyjama trousers |
+| Sheifer, *Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | A | girl's coat |
+| Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911) `merzspracticalcu00merz` | A | women's peacoat, field jacket |
+| Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo` | A | boy's jacket |
 | USDA O'Brien body-measurement surveys (1939–41) `childrensbodymea365obri`, `bodymeasurements366obri`, `womensmeasuremen454obri` | C | the 75 children's size sets (`designs/sizes/`) |
 
 Left to build from these: Mitchell's double-dart tight-fitted jacket; Simons 1916's
@@ -110,7 +114,7 @@ skirts and dresses are under-represented.
 - Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo`: work pants built
   (2026-10-27); left: bib (apron) overall, one-piece overall, peg-top pants, breeches.
 - Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx`:
-  shirts (work, dress), pyjamas, aprons. Builds on the nightshirt's yoke template.
+  pyjamas built (2026-10-28); left: shirts (work, dress), drawers, dressing gown, aprons.
 - Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo`: boys'
   pants, blouses, knickers.
 - Mitchell 1921 (built system): two-piece skirts; ЕМКО trousers library: shorts and variants.
@@ -123,7 +127,7 @@ skirts and dresses are under-represented.
 | Boy's suit jacket, children's | Greenstein, *Method of Cutting for Men's and Boy's Clothing* (New York 1895, bilingual; archive.org `erstefranzsischa00gree`, not yet downloaded) | Inch and reduction systems; children's clothing |
 | Boy's suit jacket | d'Alessio, *Designing, Cutting and Grading Gentlemen and Boys Clothes* (1906) `artofdesigningcu00ales` | Boy's jacket and sailor coat (8 years); grading |
 | Boy's suit jacket, boys' wear | Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo`; Vincent, *Cutter's Practical Guide*, boys (1902) `cutterspracticalguide-part1boys1902` | Same system as the built Simons designs |
-| Pyjamas, reefer | Vincent, *Cutter's Practical Guide to Jacket Cutting* (1897) `cutters-prac-guide-jacket-cutting` | Reefers, Norfolk and patrol jackets, pyjamas |
+| Reefer | Vincent, *Cutter's Practical Guide to Jacket Cutting* (1897) `cutters-prac-guide-jacket-cutting` | Reefers, Norfolk and patrol jackets (the laptop's copy lacks book pp. 57–60, plates 26–27: the dressing gown and pyjama jackets) |
 | Women's peacoat / field jacket | Merz, *Ladies' Jackets and Cloaks* (1911) `merzspracticalcu00merz`; Sheifer (above) | Women's jacket and cloak drafts |
 | Field jacket, pea jacket | Vincent, *British Military Uniforms* (1902, 1914) `cutters-guide-brit.-mil.-uniforms.-1`, `militaryuniformsbritish-images` | Pea jacket ("British warm"), tunics, overcoats |
 | Children's (graded) | Rosenfeld, *Practical Designer* (1911, 1918) `practicaldesigne01rose`, `practicaldesigne02rose` | Children's size tables, grading nests |

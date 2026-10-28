@@ -16,6 +16,7 @@
 // FreeSewing's two-part sleeve under `library.*`.
 import { title } from './coat.mjs'
 import { lapelLines } from './lapel.mjs'
+import { pocketPath, flapSpec } from './pockets.mjs'
 
 const near = (a, b) => Math.abs(a.x - b.x) < 1e-6 && Math.abs(a.y - b.y) < 1e-6
 
@@ -116,7 +117,8 @@ export function draftJacketBase(sh, { side, backSeamAt = 0.5, style = 'princess'
  * Cut both sides into panels (on the front base, after both bases). Lengths in mm:
  * { seat: seat girth with ease, hipDepth: waist to seat line, length: waist to hem,
  *   lap, breakBelow (bust line to the break), rollOut, lapelWidth, gorgeAt (0-1 along the
- *   front neck from the neck point), peak (bool), facing }
+ *   front neck from the neck point), peak (bool), facing, rows (double-breasted: the two rows
+ *   of buttons this far either side of CF) }
  */
 export function draftJacketLayout(sh, a) {
   const { Path, Point, store } = sh
@@ -259,7 +261,7 @@ export function draftJacketLayout(sh, a) {
   }
 
   // ---- front ----
-  const lap = { lap: a.lap }
+  const lap = { lap: a.lap, ...(a.rows ? { rows: a.rows } : {}) }
   {
     const r = fr
     const cfx = r.centerWaist.x
@@ -491,9 +493,13 @@ export function draftJacketLayout(sh, a) {
  * { seat: seat girth with ease, hipDepth, length: waist to hem, flare: the side seam's lean at
  *   the seat line (at least), cbOut: the CB's lean at the seat line (0: cut on the fold), lap,
  *   breakBelow, rollOut, lapelWidth, peak, facing, dartWidth, dartAt, dartLength,
- *   buttonInset (0-1 of the lap in from the front edge; 1, on CF, if not given),
+ *   buttonInset (0-1 of the lap in from the front edge; 1, on CF, if not given), rows (as the
+ *   princess layout's),
  *   pockets: { <id>: { below (mouth below the waist), from (behind CF), w, flap, bag, clear } },
- *   sleeveStore }. Set-in flap pockets go to the store as `jacket.pockets`.
+ *   patch: { <id>: { x (behind CF), y (below the waist; negative above), w, h, shape, topHem,
+ *   flap: { h, gap } } }, sleeveStore }. Set-in flap pockets go to the store as
+ *   `jacket.pockets`; patch pockets as `coat.pockets` (for pocketPart and flapPart), each
+ *   narrowed to keep clear of the armhole and side seam, and shortened to keep above the hem.
  */
 export function draftBoxLayout(sh, a) {
   const { Path, Point, store } = sh
@@ -617,6 +623,24 @@ export function draftBoxLayout(sh, a) {
   const pockets = layoutPockets(a.pockets, { baseY: fr.centerWaist.y, startAt: () => cfx, sideAt, hemY: hemC.y })
   panels.front.pockets = pockets
 
+  // ---- patch pockets, from CF and the waist ----
+  if (a.patch) {
+    const patch = {}
+    for (const [id, q] of Object.entries(a.patch)) {
+      const x = cfx + q.x
+      const y = fr.centerWaist.y + q.y
+      const clear = q.clear ?? 10
+      const h = Math.min(q.h, hemC.y - clear - y)
+      // The side seam below the armhole, the armhole above it
+      const edgeAt = (yy) => (yy >= armF.y ? sideAt(yy) : Math.min(...scyeF.intersectsY(yy).map((pt) => pt.x), armF.x))
+      const side = Math.min(edgeAt(y), edgeAt(y + h))
+      const w = Math.min(q.w, side - clear - x)
+      patch[id] = { ...q, x, y, w, h }
+    }
+    panels.front.patch = patch
+    store.set('coat.pockets', patch)
+  }
+
   // Buttons: holes `buttonInset` of the lap in from the front edge; each button under its hole
   // when the fronts lap (as far behind CF as the hole is in front of it)
   const inset = a.buttonInset ?? 1
@@ -644,6 +668,7 @@ export function draftBoxLayout(sh, a) {
     hemY: hemC.y,
     waistY: fr.centerWaist.y,
     ...(inset < 1 ? { holeX, buttonX: 2 * cfx - holeX } : {}),
+    ...(a.rows ? { rows: a.rows } : {}),
     facingX: fx,
   })
   store.set('jacket.flare', e)
@@ -744,12 +769,19 @@ export function jacketPanelPart({ name, after, panel, nr, label, cut = 2, button
       title(macro, { at: points.titleAt, nr, title: label, scale: 0.5 })
       if (buttons) {
         // Buttons from the break to below the waist: on CF, or (with holeX) a buttonhole near
-        // the front edge and its button behind CF; the crease marked
+        // the front edge and its button behind CF; double-breasted (rows), a button either side
+        // of CF and a buttonhole on the outer one; the crease marked
         const f = store.get('jacket.front')
         const n = options.buttons
         const bottom = f.waistY + (f.hemY - f.waistY) * 0.3
         for (let i = 0; i < n; i++) {
           const y = n > 1 ? f.B.y + ((bottom - f.B.y) * i) / (n - 1) : f.B.y
+          if (f.rows) {
+            snippets[`button${i}_0`] = new Snippet('button', new Point(f.cfx - f.rows, y))
+            snippets[`button${i}_1`] = new Snippet('button', new Point(f.cfx + f.rows, y))
+            snippets[`buttonhole${i}`] = new Snippet('buttonhole', new Point(f.cfx - f.rows, y)).attr('data-rotate', 90)
+            continue
+          }
           snippets[`button${i}`] = new Snippet('button', new Point(f.buttonX ?? f.cfx, y))
           if (f.holeX !== undefined) {
             snippets[`buttonhole${i}`] = new Snippet('buttonhole', new Point(f.holeX, y)).attr('data-rotate', 90)
@@ -764,6 +796,14 @@ export function jacketPanelPart({ name, after, panel, nr, label, cut = 2, button
         const down = (pt) => pt.shift(-(q.angle ?? 0) - 90, q.flap) // FreeSewing angles run anticlockwise, y up
         paths[`${id}Mouth`] = new Path().move(a).line(b).addClass('mark')
         paths[`${id}Flap`] = new Path().move(a).line(down(a)).line(down(b)).line(b).addClass('mark dotted')
+      }
+      // Patch pockets (and their flaps), marked where they're sewn
+      for (const [id, q] of Object.entries(p.patch ?? {})) {
+        paths[`${id}Pocket`] = pocketPath(Path, Point, q.x, q.y, q).addClass('mark dashed')
+        if (q.flap) {
+          const f = flapSpec(q)
+          paths[`${id}PocketFlap`] = pocketPath(Path, Point, q.x - (f.w - q.w) / 2, q.y - q.flap.gap, f).addClass('mark dotted')
+        }
       }
       // Welt pocket mouths (a mouth crossing a seam is marked on each panel it crosses)
       for (const [id, [a, b]] of Object.entries(p.lines ?? {})) {

@@ -103,7 +103,10 @@ options:
     description: Extra leg length that hangs over the knee band.
   legFlare:
     title: Leg fullness
-    description: Extra width at the outside leg seam, as a share of the seat.
+    description: Extra width at the outside leg seam, as a share of the seat. Below 0% the leg tapers.
+  legLength:
+    title: Leg length
+    description: Where the leg ends, as a share of waist to floor.
   bandBelowKnee:
     title: Band below the knee
     description: Where the knee band sits, below the knee, as a share of waist to knee.
@@ -327,9 +330,15 @@ options:
   buttonTop:
     title: Top button
     description: How far below the chest line the top button sits.
+  breakAt:
+    title: Lapel break
+    description: Where the lapel turns and the top button sits, as a share of the way from the chest line to the waist.
   buttonBottom:
     title: Bottom button
     description: How far below the waist the bottom button sits, as a share of waist to seat.
+  doubleBreasted:
+    title: Double-breasted
+    description: Two rows of buttons either side of the centre front. Off, one row.
   buttonRow:
     title: Button rows
     description: Distance of each row of buttons from the centre front, as a share of the stand.
@@ -367,6 +376,27 @@ options:
   lowerPockets:
     title: Lower pockets
     description: Pockets below the waist.
+  patchFromCF:
+    title: Pockets from the centre front
+    description: How far behind the centre front each patch pocket starts, as a share of the chest.
+  breastPocketAbove:
+    title: Breast pocket height
+    description: How far above the waist the breast pockets' tops sit, as a share of shoulder to waist.
+  breastPocketWidth:
+    title: Breast pocket width
+    description: Width of each breast pocket, as a share of the chest.
+  lowerPocketBelow:
+    title: Lower pocket position
+    description: How far below the waist the lower pockets' tops sit, as a share of waist to seat.
+  lowerPocketWidth:
+    title: Lower pocket width
+    description: Width of each lower pocket, as a share of the chest.
+  patchDepth:
+    title: Pocket depth
+    description: Depth of each patch pocket, as a share of its width.
+  flapRatio:
+    title: Flap depth
+    description: Depth of each pocket flap, as a share of the pocket's width.
   pencilPocket:
     title: Pencil pocket
     description: A narrow pocket for a pencil beside the breast pocket.

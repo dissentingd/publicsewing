@@ -6,9 +6,10 @@ import { cleanup, title } from './coat.mjs'
 /**
  * One leg piece on Titan's back or front ('back' | 'front'): full, with the waist edge wide
  * enough to pull on over the seat and a `casing` for elastic; the leg falls straight (plus
- * `flare` at the outseam) to `hemY`, where it gathers into a band at `bandY`.
+ * `flare` at the outseam) to `hemY`, where it gathers into a band at `bandY`. With `hem` (a
+ * depth) the leg has no band: it ends in a plain hem turned up at `hemY - hem`.
  */
-export function draftGatheredLeg(sh, { which, bandY, hemY, flare, casing }) {
+export function draftGatheredLeg(sh, { which, bandY, hemY, flare, casing, hem }) {
   const { points, paths, Path, Point, measurements, store, sa, macro, part } = sh
   cleanup(sh)
   macro('rmscalebox')
@@ -40,9 +41,13 @@ export function draftGatheredLeg(sh, { which, bandY, hemY, flare, casing }) {
   paths.seam.addClass('fabric')
   if (sa) paths.sa = paths.seam.offset(sa).addClass('fabric sa')
   paths.casingFold = new Path().move(wIn.shift(90, casing / 2)).line(points.wOut.shift(90, casing / 2)).addClass('help dashed')
-  paths.gathers = new Path().move(points.hemIn.shift(90, 8)).line(points.hemOut.shift(90, 8)).addClass('mark dotted')
-  points.vent = points.hemOut.shiftTowards(points.wOut, measurements.waistToKnee * 0.12)
-  sh.snippets.vent = new sh.Snippet('notch', points.vent)
+  if (hem) {
+    paths.hemFold = new Path().move(points.hemIn.shift(90, hem)).line(points.hemOut.shift(90, hem)).addClass('help dashed')
+  } else {
+    paths.gathers = new Path().move(points.hemIn.shift(90, 8)).line(points.hemOut.shift(90, 8)).addClass('mark dotted')
+    points.vent = points.hemOut.shiftTowards(points.wOut, measurements.waistToKnee * 0.12)
+    sh.snippets.vent = new sh.Snippet('notch', points.vent)
+  }
 
   store.set(`knickers.${which}`, {
     outseam: points.wOut.dist(points.hemOut) + casing,
@@ -60,13 +65,14 @@ export function draftGatheredLeg(sh, { which, bandY, hemY, flare, casing }) {
 
 /**
  * Leg band: `length` round the leg (plus a 30 mm overlap to button), cut `width` wide and
- * folded in half. `size(sh)` gives { length, width }.
+ * folded in half. `size(sh)` gives { length, width }; `enabled(options)` whether it's cut.
  */
-export const legBandPart = ({ name, after, nr = 3, size }) => ({
+export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true }) => ({
   name,
   after,
   draft: (sh) => {
-    const { paths, Path, Point, store, sa, macro, part } = sh
+    const { paths, Path, Point, store, sa, macro, part, options } = sh
+    if (!enabled(options)) return part.hide()
     const { length, width } = size(sh)
     const L = length + 30
     const W = width

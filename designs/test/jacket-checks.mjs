@@ -45,11 +45,14 @@ export function checkJacket(pattern) {
   return store
 }
 
-export function testJacket(label, Design, variants = { default: {} }) {
+/** `extra(pattern)`: a design's own checks, after the shared ones */
+export function testJacket(label, Design, variants = { default: {} }, extra) {
   for (const [v, options] of Object.entries(variants)) {
     for (const [name, measurements] of Object.entries(sets)) {
       test(`${label} (${v}): ${name}`, () => {
-        checkJacket(new Design({ measurements, sa: 10, options }).draft())
+        const pattern = new Design({ measurements, sa: 10, options }).draft()
+        checkJacket(pattern)
+        if (extra) extra(pattern)
       })
     }
   }

@@ -218,7 +218,7 @@ const factories = {
   placket: (p, ctx) => placketPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   neckBand: (p, ctx) => neckBandPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   legBand: (p, ctx) =>
-    legBandPart({ name: p.name, after: ctx.after(p), nr: p.nr, size: (sh) => evalMap({ length: p.length, width: p.width }, lookupIn(sh, ctx.block, {}), {}) }),
+    legBandPart({ name: p.name, after: ctx.after(p), nr: p.nr, size: (sh) => evalMap({ length: p.length, width: p.width }, lookupIn(sh, ctx.block, {}), {}), enabled: enabledBy(p.if) }),
   // A plain rectangle (waistband, fly shield, belt loops): `length`, `width`, `fold`, `cut`
   strip: (p, ctx) =>
     stripPart({

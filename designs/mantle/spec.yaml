@@ -1,0 +1,59 @@
+# Mantle: Simons' "Mantel Overcoat" (Designing Overcoat Patterns, 1916, pp. 36-37), a loose
+# overcoat to below the knee with wide raglan sleeves set deep under the arm, on the balmacaan
+# (Brian, through the overcoat, peacoat and mackinaw): drafted two sizes up, a convertible
+# collar that opens into lapels, three buttons, large flapped patch pockets, no vent. See BRIEF.md.
+extends: ../balmacaan/spec.yaml
+
+about:
+  id: mantle
+  name: Mantle
+  description: "A loose overcoat to below the knee with wide raglan sleeves cut deep under the arm, flapped patch pockets"
+  difficulty: 4
+  tags: [coats]
+  techniques: [patch-pocket, collar, facing, button]
+  version: 0.1.0
+  source: "Simons, Designing Overcoat Patterns (1916), Mantel Overcoat, pp. 36-37 (designingovercoa00simo)"
+
+options:
+  # Breast 36 drafted on 20: two sizes up
+  chestEase: { pct: 24 }
+  # Brian's armhole, lowered: the underarm (3) at P, 3" below the chest line (C to P)
+  armholeDepth: { pct: 40 } # x waistToArmpit, Brian's own option (its 2% plus 3" at FreeSewing's 38)
+  # 42" from the nape, the waist 17 1/2" down (B to F): 24 1/2" below the waist
+  lengthBelowWaist: { pct: 230 } # x waistToSeat
+  hemFlare: { pct: 6 } # x seat, at each side seam: M out from the underarm line
+  collarStyle: { dflt: convertible, description: "A convertible collar that buttons up or opens into lapels, or the mackinaw's other collars." }
+  # Front: a lap of about 2 1/4", three buttons from 5" below the chest line to 8" below the waist
+  buttonExtension: { pct: 6 }
+  buttons: { count: 3 }
+  buttonTop: { pct: 214 } # x the lap, below the chest line
+  buttonBottom: { pct: 75 } # x waistToSeat, below the waist
+  # One large flapped patch pocket each side, below the waist
+  lowerPockets: { bool: true }
+  pocketFlaps: { bool: true }
+  pocketShape: { dflt: rounded }
+  handPockets: { bool: false }
+  vent: { bool: false } # the back's CB is straight, no vent drawn
+
+pieces:
+  # The overcoat's back, also taking Brian's armholeDepth (the front is drafted from the same base)
+  back:
+    prefix: mackinaw # named like the inherited pieces
+    from: brian.back
+    hide: tree
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, belt, beltWidth, sleeveStyle, vent, ventLength, ventWidth, hemFlare, armholeDepth] # hemFlare: the side seams let out to the hem; armholeDepth: Brian's, lowered
+    let:
+      # Belt band: width from the chest, set a little above the waist (Simons: D down ~1 5/8")
+      beltW: chest * beltWidth
+      beltY: cbWaist.y - beltW * 0.2
+    ops:
+      - coatBack: {}
+      # Raglan sleeves (Diagram XXIII) go with the convertible and military collars
+      - raglan: { which: back, if: "sleeveStyle == 'raglan' and collarStyle != 'shawl' and collarStyle != 'ulster'" }
+      # Belt placement (the belt is sewn on over the waist)
+      # A back vent: the back gets a CB seam
+      - backVent: { if: vent, length: waistToSeat * ventLength, width: chest * ventWidth }
+      - store: { key: coat.belt, value: { w: beltW, y: beltY }, if: belt }
+      - markLine: { id: beltTop, from: [0, beltY], to: [sideHem.x, beltY], class: mark dashed, if: belt }
+      - markLine: { id: beltBottom, from: [0, beltY + beltW], to: [sideHem.x, beltY + beltW], class: mark dashed, if: belt }
+

@@ -31,6 +31,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `box-overcoat` | Loose, straight overcoat with a full sweep | Simons 1916 |
 | `ulster` | Long double-breasted overcoat with a deep collar that buttons up | Simons 1916 |
 | `balmacaan` | Loose raglan-sleeved overcoat, buttoned to the throat under a stand collar | Simons 1916 |
+| `mantle` | Loose overcoat with wide raglan sleeves cut deep under the arm, flapped patch pockets | Simons 1916 |
 | `hunting-coat` | Belted field coat with an action-pleated back | Simons 1918 |
 | `military-blouse` | Fitted blouse, two-piece sleeve, standing collar | Simons 1918 |
 | `boys-work-coat` | The chore coat for children's sizes | Simons 1918 |
@@ -43,10 +44,15 @@ a check that the pieces sew together into the garment, not a fit result.
 | `frock` | Bodice-and-skirt dress | Walker 1909 |
 | `pinafore` | Sleeveless gathered pinafore | Walker 1909 |
 | `knickerbockers` | Knickers gathered into knee bands | Walker 1909 |
+| `pyjama-jacket` | Loose sleeping jacket buttoned to the throat under a stand collar | Vincent 1890 |
+| `pyjama-trousers` | Full sleeping trousers to the ankle, gathered at the waist | Vincent 1890 |
 | `shirtwaist-dress` | Buttoned work dress with a turn-down collar and cuffs | Woman's Institute, *Pattern Drafting* (1915) |
 | `tailored-jacket` | Women's semi-fitted jacket, princess seams, peak lapel | Mitchell 1921 |
 | `fitted-jacket` | Women's tight-fitted jacket with an under-arm panel and a shawl collar | Mitchell 1921 |
+| `womens-peacoat` | Women's hip-length double-breasted coat, princess seams, wide lapels | Merz 1911 |
+| `field-jacket` | Women's straight hip-length jacket with four flapped patch pockets | Merz 1911 |
 | `box-coat` | Women's loose box coat with a notched lapel and set-in flap pockets | Mitchell 1921 |
+| `girls-coat` | Girl's loose coat to below the knee, notched collar, flap pockets | Sheifer 1908 |
 | `gored-skirt` | Flared skirt of five to fifteen gores, shaped in its seams, with a CB zip and waistband | Mitchell 1921 |
 | `work-pants` | Full straight work trousers for cotton and khaki, deep rise, no darts | Simons 1916 |
 | `jumpsuit` | One-piece suit cut almost entirely from rectangles: buttoned front, gussets, patch pockets | Thayaht 1920, via Open+Pattern |
@@ -55,6 +61,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `winter-coat` | Straight knee-length coat with deep yokes, hip welts, turn-down collar | ЕМКО 1988 |
 | `topcoat` | Semi-fitted knee-length coat with side panels and a back vent | ЕМКО 1988 |
 | `jacket` | Single-breasted two-button jacket: side panels, notched lapel, flap pockets, back vent | ЕМКО 1988 |
+| `boys-jacket` | Boy's three-button suit jacket, notched lapel, flap pockets | Simons 1922 |
 | `waistcoat` | Lined V-neck waistcoat with cutaway points, darts and welt pockets | ЕМКО 1988 |
 | `trousers` | Semi-fitted straight trousers: waist darts, zip fly, side and back pockets, waistband | ЕМКО 1988 |
 

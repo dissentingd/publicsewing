@@ -59,7 +59,7 @@ and marked as derived.
 | Service / camp-collar shirt | 3, 5 | Simon | Variant (camp collar, epaulettes) | Simons 1918 |
 | Slacks | 5 | Charlie | Have | — |
 | **Nightshirt** | 4 | — | **Drafted 2026-10-23** (`designs/nightshirt`, not sewn) | Walker 1909 `krl00366374` |
-| **Pyjamas** | 4 | — (Paco is summer pants) | **Gap** | Walker 1909 / WI underwear 1928 |
+| **Pyjamas** | 4 | — (Paco is summer pants) | **Drafted 2026-10-28** (`designs/pyjama-jacket` on the barber's coat, `designs/pyjama-trousers` on the knickerbockers; not sewn) | Vincent, *Shirts, Undergarments* 1890 `vincentmakingshirts18xx` |
 | Drawstring trousers | 4 | Paco, Waralee | Have | — |
 | Tee, sweatshirt, hoodie | 6 | Teagan, Sven, Hugo, Hannah, Huey | Have | — |
 | Underwear, swim | — | Bruce, Shin | Have | — |
@@ -81,7 +81,7 @@ and marked as derived.
 | **Smock** (any size) | 4 | — | **Drafted 2026-10-23** (`designs/smock`, not sewn) | Walker 1909 (child's overall) |
 | Apron / pinafore apron | 2 | Albert | Have / Variant | Goldsberry 1888 (aprons) |
 | Slacks / overalls | 2, 5 | Titan, Opal | Variant | — |
-| **Peacoat, field jacket (women's cut)** | 3 | — | **Gap** | on the men's gaps + Bella |
+| **Peacoat, field jacket (women's cut)** | 3 | — | **Drafted 2026-10-28** (`designs/womens-peacoat` on the tailored jacket, double-breasted; `designs/field-jacket` on the box coat, patch pockets; not sewn) | Merz 1911 `merzspracticalcu00merz`, Diagrams XX–XXI |
 | **Nightgown** | 4 | Jane (1790s shift) | **Drafted 2026-10-23** (`designs/nightgown`, not sewn) | Walker 1909 (night-dresses) |
 | Knits | 6 | Teagan, Bibi, leggings ×3 | Have | — |
 
@@ -96,17 +96,17 @@ and marked as derived.
 | **Pinafore** | — | **Drafted 2026-10-23** (`designs/pinafore`, not sewn) | Walker 1909 |
 | **Knickers / bloomers** (any size) | — | **Drafted 2026-10-23** (`designs/knickerbockers`, on Titan, not sewn) | Walker 1909 |
 | **Boy's work coat** | — | **Drafted 2026-10-23** (`designs/boys-work-coat`; the chore coat with Simons' boys' details, all children's sizes) | Simons 1918 (boys' work coat) |
-| **Boy's suit jacket** | — | **Gap** | Simons 1922 |
+| **Boy's suit jacket** | — | **Drafted 2026-10-28** (`designs/boys-jacket`: the jacket at Simons' boys' proportions; not sewn) | Simons 1922 `designingboysjuv00simo` |
 | **Girl's dress** (any size) | — | **Drafted 2026-10-23** (`designs/frock`, not sewn) | Walker 1909 (frocks) |
-| **Girl's coat** | — | **Gap** | Rosenfeld 1911/1918 |
+| **Girl's coat** | — | **Drafted 2026-10-28** (`designs/girls-coat`: Sheifer's box coat on Mitchell's, to below the knee; not sewn) | Sheifer 1908 `nssheiferssystem00shei` |
 
-**Count** (2026-10-26, by the tables above):
-- **18 rows drafted or done:** the children's measurement sets and 17 designs (the loose-coat
-  row was added with the box coat; it wasn't one of the original gaps).
-- **6 gaps open** in 5 rows (the women's peacoat/field jacket row counts as two): pyjamas,
-  shift dress, women's peacoat and field jacket, boy's suit jacket, girl's coat.
-- **12 variants.** These are options on existing designs, the cheapest wins.
-- **15 rows already covered** (the apron row counted here).
+**Count** (2026-10-28, by the tables above, 56 rows):
+- **35 rows drafted or done**, the children's measurement sets among them (rows marked
+  "Variant; drafted" count here).
+- **1 gap open:** the shift dress (no A source assessed yet). Pyjamas, the women's peacoat and
+  field jacket, the boy's suit jacket and the girl's coat closed 2026-10-28.
+- **8 variants.** These are options on existing designs, the cheapest wins.
+- **12 rows already covered** by FreeSewing (the apron row counted here).
 
 ## Progress
 - 2026-10-23: children's measurement sets (USDA 1939 Tables 8–9, heights 40–69 in, roughly
@@ -211,8 +211,9 @@ shift, the jacket's darts, lining and collar stand, the waistcoat's CB shaping. 
   no reefer; the peacoat (2026-10-26) takes its D.B. overcoat and ulster details onto the
   mackinaw. Its regular, medium box and D.B. ulster collar overcoats are built (2026-10-27:
   `designs/overcoat`, `box-overcoat`, `ulster`, on the peacoat), and the balmacaan (2026-10-28:
-  `designs/balmacaan`, the split-sleeve version; the one-piece raglan sleeve isn't built). Still to use:
-  the mantle, surtout and French overcoats, the shoulder cape.
+  `designs/balmacaan`, the split-sleeve version; the one-piece raglan sleeve isn't built) and the mantle
+  (2026-10-28: `designs/mantle`, on the balmacaan; its back-and-sleeve-in-one cut isn't built). Still to
+  use: the surtout and French overcoats, the shoulder cape.
 - **Later Woman's Institute volumes**, held but not tracked: `gb_wi1924_draftingpatterndesigning`
   and `gb_wi1928_patterndesigningdraping` (US 1924, 1928; public domain). Check what each scan
   actually holds before planning on it.
