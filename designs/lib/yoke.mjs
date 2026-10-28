@@ -200,6 +200,13 @@ export function yokePiecePart({ name, after, side, piece, nr, label, cut }) {
           paths.slit = new Path().move(new Point(0, y.slitTop)).line(new Point(0, y.slitTop + y.slit)).addClass('mark')
           snippets.slitEnd = new Snippet('notch', new Point(0, y.slitTop + y.slit))
         }
+        // A patch pocket's place (`yoke.<side>Pocket`: x from the fold, y from the neck point,
+        // w, h), on one side only
+        const pk = store.get(`yoke.${side}Pocket`, null)
+        if (pk) {
+          const [x0, y0, x1, y1] = [pk.x, pk.y, pk.x + pk.w, pk.y + pk.h]
+          paths.pocket = new Path().move(new Point(x0, y0)).line(new Point(x0, y1)).line(new Point(x1, y1)).line(new Point(x1, y0)).addClass('mark dashed').addText('pocket (left side)', 'center text-sm')
+        }
         if (y.sideSlit > 1) {
           // Notch the top of the side slit on the side seam
           const hit = outline.intersectsY(y.hemY - y.sideSlit).filter((p) => p.x > 1)[0]

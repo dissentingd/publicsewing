@@ -94,7 +94,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | ЕМКО СЭВ т.3 (1988) `emko` | A (tables) | windbreaker, quilted jacket, winter coat, topcoat, jacket, waistcoat, trousers |
 | Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants, breeches, bib overall |
 | Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |
-| Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | A | pyjama jacket, pyjama trousers |
+| Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | A | pyjama jacket, pyjama trousers, work shirt |
 | Sheifer, *Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | A | girl's coat |
 | Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911) `merzspracticalcu00merz` | A | women's peacoat, field jacket |
 | Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo` | A | boy's jacket |
@@ -114,7 +114,7 @@ skirts and dresses are under-represented.
 - Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo`: work pants built
   (2026-10-27), breeches and bib overall (2026-10-28); left: one-piece overall, peg-top pants.
 - Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx`:
-  pyjamas built (2026-10-28); left: shirts (work, dress), drawers, dressing gown, aprons.
+  pyjamas and the work shirt built (2026-10-28); left: shirts (dress, fronted), drawers, dressing gown, aprons.
 - Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo`: boys'
   pants, blouses, knickers.
 - Mitchell 1921 (built system): two-piece skirts; ЕМКО trousers library: shorts and variants.

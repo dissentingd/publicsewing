@@ -1,0 +1,57 @@
+# Work shirt: Vincent's working-man's shirt (The Cutter's Practical Guide to Cutting and Making
+# Shirts, Undergarments..., 1890, "The working-man's shirt", Diagrams 1-3, p. 17), on FreeSewing's
+# Brian block through the yoke template: a back yoke with the back's fullness pleated into it at
+# CB, a plain front with a buttoned fly to below the chest, a neck band (or a turn-down collar),
+# plain sleeves into wristbands, a left breast patch pocket, shirt tails with side slits.
+# See BRIEF.md.
+extends: ../templates/yoke.yaml
+
+about:
+  id: work-shirt
+  name: Work shirt
+  description: "A roomy pullover work shirt: back yoke, buttoned front fly, neck band or collar, wristbands, breast pocket"
+  difficulty: 2
+  tags: [tops, workwear]
+  techniques: [yoke, placket, button, band, patch-pocket]
+  version: 0.1.0
+  source: Vincent, Cutter's Practical Guide... Shirts, Undergarments (1890), The working-man's shirt, p. 17 (vincentmakingshirts18xx)
+
+options:
+  chestEase: { pct: 26, min: 10, max: 45, menu: fit } # side seam a quarter chest plus 2 1/2 in from CB and CF
+  frontYoke: { bool: false, menu: style } # the forepart runs to the shoulder
+  yokeDepth: { pct: 35, min: 20, max: 60, menu: style } # O to 3, "the depth of yoke"
+  gathers: { pct: 118, min: 100, max: 160, menu: style } # 2 in added at CB "for fulling into yoke"
+  hemFlare: { pct: 0, min: 0, max: 15, menu: style }
+  skirtLength: { pct: 38, min: 20, max: 60, menu: style } # back 34 in from the collar seam
+  opening: { dflt: front, list: [back, front], menu: style }
+  placketDepth: { pct: 80, min: 40, max: 100, menu: style } # the fly 14 1/2 in long
+  buttons: { count: 4, min: 2, max: 7, menu: style }
+  neckFinish: { dflt: band, list: [band, collar], menu: style } # the workman's shirt: a stand (band)
+  bandHeight: { pct: 9.5, min: 6, max: 15, of: neck, menu: style } # band cut 3 in, doubled: 1 1/2 on a 16 neck
+  collarWidth: { pct: 18, min: 12, max: 28, of: neck, menu: style } # a turn-down collar's width at CB, when chosen
+  collarSpring: { pct: 10, min: 0, max: 20, menu: style }
+  sleeveBand: { pct: 17, min: 10, max: 30, of: wrist, menu: style } # wristband 2 1/2 in, doubled
+  sleeveBandEase: { pct: 21, min: 10, max: 40, menu: style } # 1 1/2 in over the wrist
+  sideSlit: { pct: 20, min: 0, max: 50, menu: style }
+  hemCorner: { pct: 50, min: 0, max: 100, menu: style }
+  breastPocket: { bool: true, menu: style }
+
+pieces:
+  # Brian's front, as the template's, plus the breast pocket's place (left front)
+  frontBase:
+    from: brian.front
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    ops:
+      - yokeSide: { side: front }
+      - store: { key: yoke.frontPocket, value: { x: chest * 0.05, y: armhole.y * 0.55, w: chest * 0.13, h: chest * 0.15 }, if: breastPocket }
+  pocket:
+    part: polygon
+    after: frontBase
+    nr: 9
+    if: breastPocket
+    let:
+      w: chest * 0.13
+      h: chest * 0.15
+    points: [[0, 0], [w, 0], [w, h], [0, h]]
+    allowance: [3, 1, 1, 1]

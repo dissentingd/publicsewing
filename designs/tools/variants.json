@@ -32,6 +32,7 @@
   "jacket": {"default": {}, "plain": {"vent": false, "pocketFlaps": false, "hemCurve": 0, "buttons": 1}},
   "bib-overall": {"default": {}, "plain": {"bibPocket": false, "hipPockets": false, "seatPockets": false, "bibHeight": 0.2}},
   "breeches": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "thighFlare": 0, "breechesLength": 0.6}},
+  "work-shirt": {"default": {}, "variant": {"neckFinish": "collar", "breastPocket": false, "sideSlit": 0, "opening": "back"}},
   "work-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "backDart": 0.3, "hemWidth": 0.9}},
   "fitted-jacket": {"default": {}, "loose": {"cbSuppression": 0, "underarmSuppression": 0, "buttons": 4, "lengthBelowWaist": 0.3}, "plain": {"pockets": false, "breastPocket": false, "lining": false}},
   "overcoat": {"default": {}, "convertible": {"collarStyle": "convertible", "buttons": 5, "hemFlare": 0}, "raglan": {"sleeveStyle": "raglan", "collarStyle": "military"}, "plain": {"handPockets": false, "lengthBelowWaist": 1.8, "vent": false, "lining": false}},

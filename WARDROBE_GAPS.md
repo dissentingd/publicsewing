@@ -38,7 +38,7 @@ and marked as derived.
 | Waistcoat | 1 | Wahid | Have; **drafted 2026-10-27** (`designs/waistcoat`: V neck, cutaway points, darts, welts, lined; not sewn) | ЕМКО 1988 §6 |
 | Dress trousers (pleats, cuffs) | 1 | Titan, Charlie (Theo dropped in v4) | Variant; **darted trousers drafted 2026-10-27** (`designs/trousers`, on Titan: fly, pockets, waistband; no pleats or cuffs yet; not sewn); ЕМКО 1988 §7 | Simons *Pants and Overalls* 1916 `draftingpantsove00simo` |
 | Overcoat (Chesterfield) | 1 | Carlton is a belted long coat | Variant; **drafted 2026-10-27** (`designs/overcoat`, `designs/box-overcoat`: Simons' regular and medium box overcoats; `designs/balmacaan` 2026-10-28: raglan sleeves, military collar; not sewn) | Simons *Overcoat Patterns* 1916 `designingovercoa00simo` |
-| Work shirt | 2 | Simon | Variant (patch pockets, plain yoke) | Simons *Cotton Garments* 1918 `draftingcottonga00simo` |
+| Work shirt | 2 | Simon | Variant; **drafted 2026-10-28** (`designs/work-shirt`: Vincent's working-man's shirt on the yoke template, fly front, breast pocket; not sewn) | Vincent 1890 `vincentmakingshirts18xx` (Simons 1918 has no shirt) |
 | Work trousers / dungarees | 2 | Titan, Charlie | Variant; **work pants drafted 2026-10-27** (`designs/work-pants`: the trousers with Simons' work-pants proportions; not sewn) | Simons 1916 `draftingpantsove00simo` |
 | Overalls | 2 | Opal | Have; **bib overall drafted 2026-10-28** (`designs/bib-overall`: Simons' apron overall on the work pants; not sewn) | Simons 1916 `draftingpantsove00simo` |
 | **Coverall / boiler suit** | 2, 3 | — | **Drafted 2026-10-27** (`designs/jumpsuit`: flat-cut, one body piece, gussets, buttoned front, patch pockets; not sewn) | Thayaht's TuTa 1920, Open+Pattern (CC BY 4.0); Simons 1916 has a one-piece overall too |
@@ -101,11 +101,11 @@ and marked as derived.
 | **Girl's coat** | — | **Drafted 2026-10-28** (`designs/girls-coat`: Sheifer's box coat on Mitchell's, to below the knee; not sewn) | Sheifer 1908 `nssheiferssystem00shei` |
 
 **Count** (2026-10-28, by the tables above, 56 rows):
-- **36 rows drafted or done**, the children's measurement sets among them (rows marked
+- **37 rows drafted or done**, the children's measurement sets among them (rows marked
   "Variant; drafted" count here).
 - **1 gap open:** the shift dress (no A source assessed yet). Pyjamas, the women's peacoat and
   field jacket, the boy's suit jacket and the girl's coat closed 2026-10-28.
-- **7 variants.** These are options on existing designs, the cheapest wins. Breeches drafted
+- **6 variants.** These are options on existing designs, the cheapest wins. Breeches and the work shirt drafted
   2026-10-28; the bib overall too (a row FreeSewing already covers).
 - **12 rows already covered** by FreeSewing (the apron row counted here).
 
