@@ -137,6 +137,21 @@ options:
   seatPockets:
     title: Seat pockets
     description: A patch pocket on each back.
+  cargoPockets:
+    title: Cargo pockets
+    description: A flapped bellows pocket on each thigh.
+  cargoWidth:
+    title: Cargo pocket width
+    description: Across the cargo pocket's face, as a share of the seat.
+  cargoDepth:
+    title: Cargo pocket depth
+    description: Depth of the cargo pocket, as a share of the seat.
+  bellows:
+    title: Bellows
+    description: Depth of the fold each side of the cargo pocket that lets it expand, as a share of the seat.
+  seatPocket:
+    title: Seat pocket
+    description: A flapped patch pocket on the right back.
   pleats:
     title: Pleats
     description: Number of pleats at each front waist.

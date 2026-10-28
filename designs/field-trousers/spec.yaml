@@ -1,0 +1,139 @@
+# Field trousers: the British Army CS95 field combat trouser as digitised by Open+Pattern (CC BY
+# 4.0), on the trousers' Titan legs: two pleats each front, straight loose legs, a cargo pocket
+# with a flap on each thigh, a flapped seat pocket, a fly, side pockets, waistband and belt loops.
+# Pocket and flap sizes are the source's size M (seat 102) as shares of the seat. See BRIEF.md.
+extends: ../trousers/spec.yaml
+
+about:
+  id: field-trousers
+  name: Field trousers
+  description: Loose pleated combat trousers with flapped cargo pockets on the thighs and a flapped seat pocket
+  difficulty: 3
+  tags: [bottoms, workwear]
+  techniques: [pleat, patch-pocket, flap, zip, waistband, hem]
+  version: 0.1.0
+  source: British Army CS95 Field Trouser, digitised by Open+Pattern (openpattern/cs95-trouser)
+
+options:
+  seatEase: { pct: 12, max: 20 } # loose through the seat and thigh
+  kneeEase: { pct: 40, max: 50 } # straight legs, no taper to speak of
+  hemWidth: { pct: 95 }
+  hemShaping: { pct: 0 }
+  backDart: { pct: 30 }
+  frontDart:
+    pct: 45
+    min: 0
+    max: 120
+    menu: style
+    title: Pleat depth
+    description: Width taken up by the front pleats, as a share of half the seat less half the waist (with ease).
+  pleats: { count: 2, min: 1, max: 3, menu: style }
+  pleatSpacing: { pct: 3, min: 1.5, max: 6, of: seat, menu: style }
+  backPocket: { bool: false, menu: false } # a patch seat pocket instead of the jetted one
+  cargoPockets: { bool: true, menu: style }
+  cargoWidth: { pct: 19, min: 12, max: 25, of: seat, menu: style } # flap 19 cm on seat 102
+  cargoDepth: { pct: 24, min: 15, max: 30, of: seat, menu: style }
+  bellows: { pct: 4, min: 0, max: 6, of: seat, menu: style } # the bag 27 cm across for a 19 cm face
+  seatPocket: { bool: true, menu: style }
+
+pieces:
+  front:
+    prefix: trousers # named like the inherited pieces
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      cw: seat * cargoWidth
+      top: fork.y + (knee.y - fork.y) * 0.12
+    ops:
+      - trouserLeg:
+          which: front
+          dart: d * frontDart
+          dartAt: 0.4
+          dartLength: 0
+          pleats: pleats
+          pleatSpacing: seat * pleatSpacing
+          hemWidth: hemWidth
+          hemSag: 0
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45
+      # The cargo pocket's place on the thigh, centred on the crease
+      - markLine: { id: cargoTop, from: [knee.x - cw / 2, top], to: [knee.x + cw / 2, top], class: mark dashed, if: cargoPockets }
+      - markLine: { id: cargoOut, from: [knee.x - cw / 2, top], to: [knee.x - cw / 2, top + seat * cargoDepth], class: mark dashed, if: cargoPockets }
+      - markLine: { id: cargoIn, from: [knee.x + cw / 2, top], to: [knee.x + cw / 2, top + seat * cargoDepth], class: mark dashed, if: cargoPockets }
+      - markLine: { id: cargoFlap, from: [knee.x - cw / 2, top - seat * 0.015], to: [knee.x + cw / 2, top - seat * 0.015], class: mark dashed, if: cargoPockets }
+  back:
+    prefix: trousers # named like the inherited pieces
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: d * backDart
+          dartAt: 0.4
+          dartFrom: centre
+          dartLength: waistToSeat * backDartLength
+          hemWidth: hemWidth
+          hemSag: 0
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+      # The seat pocket's mouth (15 cm on seat 102), 3 in below the waist, a fifth in from CB
+      - markLine: { id: seatPocket, from: [wIn.x * 0.8 + wOut.x * 0.2, (wIn.y + wOut.y) / 2 + waistToSeat * 0.3], to: [wIn.x * 0.8 + wOut.x * 0.2 + seat * 0.15, (wIn.y + wOut.y) / 2 + waistToSeat * 0.3], class: mark dashed, if: seatPocket }
+  # Cargo pocket: the face plus a bellows fold each side; flap and its facing
+  cargoPocket:
+    part: polygon
+    after: front
+    nr: 10
+    cut: 2
+    if: cargoPockets
+    let:
+      w: seat * cargoWidth
+      b: seat * bellows
+      h: seat * cargoDepth
+    points: [[0, 0], [w + 2 * b, 0], [w + 2 * b, h], [0, h]]
+    allowance: [3, 1, 1, 1]
+    lines: [[[b, 0], [b, h]], [[w + b, 0], [w + b, h]]]
+  cargoFlap:
+    part: polygon
+    after: front
+    nr: 11
+    cut: 4
+    if: cargoPockets
+    let:
+      w: seat * cargoWidth
+      h: seat * 0.08
+    points: [[0, 0], [w, 0], [w, h], [0, h]]
+    buttonholes: [[w / 2, h - 15]]
+  seatPocketPiece:
+    part: polygon
+    after: back
+    nr: 12
+    if: seatPocket
+    let:
+      w: seat * 0.15
+      h: seat * 0.19
+    points: [[0, 0], [w, 0], [w, h], [0, h]]
+    allowance: [3, 1, 1, 1]
+  seatFlap:
+    part: polygon
+    after: back
+    nr: 13
+    cut: 2
+    if: seatPocket
+    let:
+      w: seat * 0.15
+      h: seat * 0.06
+    points: [[0, 0], [w, 0], [w, h], [0, h]]
+    buttonholes: [[w / 2, h - 12]]

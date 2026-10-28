@@ -55,6 +55,7 @@ and marked as derived.
 | **Shop coat / lab coat / duster** (unisex) | 2 | — | **Drafted 2026-10-23** (`designs/shop-coat`, not sewn) | Simons 1918 (grocers' gown) |
 | **Service coat** (barber's, white jacket; stand collar or open neck) (unisex) | 2 | — | **Drafted 2026-10-23** (`designs/barbers-coat`, not sewn) | Simons 1918 (barber's coats) |
 | **Bar jacket / short white vest** (unisex) | 2 | Wahid is a dress waistcoat | **Drafted 2026-10-23** (`designs/bar-vest`, not sewn) | Simons 1918 (bar vest) |
+| Combat / cargo trousers | 3 | Titan | **Drafted 2026-10-28** (`designs/field-trousers`: pleats, flapped cargo and seat pockets; not sewn) | Open+Pattern CS95 field trouser (CC BY 4.0) |
 | Breeches | 3 | Cornelius (cycling) | Variant; **drafted 2026-10-28** (`designs/breeches`: Simons' riding breeches on the trousers, thigh flare, buttoned lower leg; not sewn) | Simons 1916 `draftingpantsove00simo` |
 | Service / camp-collar shirt | 3, 5 | Simon | Variant; **drafted 2026-10-28** (`designs/service-shirt`: Vincent's coat shirt on the pyjama jacket, back yoke, convertible collar, flapped breast pockets, shoulder straps; not sewn) | Vincent 1890 coat shirt, Simons 1918 collar |
 | Slacks | 5 | Charlie | Have | — |
