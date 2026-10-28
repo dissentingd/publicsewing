@@ -366,3 +366,94 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: pleats, turn-ups, cargo or patch pockets, slanted front pockets, rivets, a bib,
 > braces, a belt, a person, shoes.
+
+---
+
+## Added 2026-10-28, second batch
+
+Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the entries above.
+
+### balmacaan: Balmacaan
+> A **loose, full men's overcoat** in heavy tweed or plain wool (brown, olive or grey
+> herringbone), **to just below the knee**, hanging straight from the shoulders and **flaring
+> to a wide, full hem**. **Raglan sleeves**: the seam runs from the neck down to the armhole, no
+> shoulder seam. A **standing (military) collar**, and the coat **buttons right up to the
+> throat** with **four buttons** in one row from just below the collar to below the hips, on a
+> wide lap. **Two slanted welt hand-warmer pockets**. Unlined. (A back vent, not shown.)
+>
+> Leave out: lapels, a turn-down collar, belt, double-breasted fronts, patch or flap pockets,
+> set-in sleeves, epaulettes, cuff straps.
+
+### mantle: Mantle
+> A **loose men's overcoat** in soft heavy wool (camel, grey or brown), **to just below the
+> knee**, flaring gently from the arms to the hem. **Wide raglan sleeves**, cut **deep under
+> the arm** so the armhole reaches well below the chest, roomy all the way down. A
+> **convertible collar** worn open, turned back into small lapels. Single-breasted, **three
+> buttons** on a wide lap, from a little below the chest to below the waist. **Two large patch
+> pockets with rounded bottoms and flaps** below the waist. No back vent.
+>
+> Leave out: belt, set-in sleeves, double-breasted fronts, welt pockets, a breast pocket,
+> epaulettes, fur collar, cape.
+
+### boys-jacket: Boys' jacket
+> A **boy's single-breasted suit jacket** (about 6 years old) in plain wool or tweed (grey,
+> navy or brown). Semi-fitted, shaped a little at the waist by a side-panel seam; length to
+> cover the seat. **Notched lapels** with a turn-down collar, the lapels rolling to the **top
+> button just below the chest**; **three buttons** to just below the waist. **Rounded front
+> corners**. **Two flap pockets** below the waist; **no breast pocket**. **Two-piece sleeves**.
+> Child's proportions: short body, narrow shoulders.
+>
+> Leave out: breast pocket, double-breasted fronts, belt, Norfolk pleats, Eton cut, a vent,
+> patch pockets, a shirt or tie.
+
+### girls-coat: Girls' coat
+> A **girl's loose coat** (about 8 years old) in plain wool cloth (red, navy or camel), **to just
+> below the knee**. **Straight, unfitted body** that **flares a little from the arms to the
+> hem**. Single-breasted, **four buttons** on a wide lap, buttoning right over left, under a
+> **notched lapel** and turn-down collar. **One flap pocket set into each hip** (no patch
+> pockets). **Two-piece sleeves**. Child's proportions: short body, narrow shoulders.
+>
+> Leave out: belt, waist seam, gathers, double-breasted fronts, patch pockets, a ticket pocket,
+> fur or velvet collar, a hood, frills.
+
+### field-jacket: Field jacket
+> A women's **straight, hip-length field jacket** in sturdy khaki cotton twill or drill,
+> unfitted, flaring very slightly to the hem. Single-breasted, **five buttons** down the centre
+> front, buttoning right over left, from the bust line to the hips. **Small notched lapels**
+> with a turn-down collar, rolling at the bust line. **Four patch pockets with square bottoms
+> and buttonless flaps**: two at the bust, two below the waist. **Two-piece sleeves**, plain at
+> the wrist.
+>
+> Leave out: belt, waist shaping, epaulettes, bellows pleats, zips, cuff tabs, insignia,
+> slanted pockets, wide lapels.
+
+### womens-peacoat: Women's peacoat
+> A women's **hip-length, double-breasted** coat in heavy navy wool, **shaped to the waist by
+> princess seams** and flaring a little over the hips. **Two rows of three buttons**, the top
+> pair high on the chest, buttoning right over left. **Wide notched lapels** turning at the
+> bust, under a **deep turn-down collar**. **A flap pocket set into each hip**; no breast or
+> patch pockets. **Two-piece sleeves**. Lined.
+>
+> Leave out: belt, single-breasted fronts, patch pockets, slanted hand-warmer pockets,
+> epaulettes, gold or anchor buttons, long length, a hood.
+
+### pyjama-jacket: Pyjama jacket
+> A loose men's **pyjama (sleeping) jacket** in soft striped or plain cotton (white with blue
+> or grey stripes, or pale blue). Straight and unfitted, length to **below the seat**, the
+> front hem a little lower than the back. Single-breasted, **five buttons** from the throat to
+> just below the waist, under a **narrow standing (band) collar**; no lapels. **One square
+> patch pocket on the wearer's left breast**. Plain set-in sleeves, roomy, simply hemmed.
+> Unlined, softly draped.
+>
+> Leave out: a turn-down or notched collar, lapels, piping, frog fastenings, lower pockets,
+> cuffs, a belt or sash, matching trousers, a person.
+
+### pyjama-trousers: Pyjama trousers
+> A pair of **pyjama (sleeping) trousers** in soft striped or plain cotton (white with blue or
+> grey stripes, or pale blue). A **gathered waist on a drawstring** (tie shown at the centre
+> front), no fly, no waistband buttons. **Full, nearly straight legs**, roomy through the
+> seat, narrowing only slightly to a **plain turned-up hem at the ankle**. Shown flat, front
+> view, as trousers alone.
+>
+> Leave out: pockets, a fly, belt loops, cuffs or bands at the ankle, feet, piping, a matching
+> jacket, a person, slippers.
