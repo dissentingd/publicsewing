@@ -43,6 +43,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `tailored-jacket` | Women's semi-fitted jacket, princess seams, peak lapel | Mitchell 1921 |
 | `box-coat` | Women's loose box coat with a notched lapel and set-in flap pockets | Mitchell 1921 |
 | `gored-skirt` | Flared skirt of five to fifteen gores, shaped in its seams, with a CB zip and waistband | Mitchell 1921 |
+| `work-pants` | Full straight work trousers for cotton and khaki, deep rise, no darts | Simons 1916 |
 | `jumpsuit` | One-piece suit cut almost entirely from rectangles: buttoned front, gussets, patch pockets | Thayaht 1920, via Open+Pattern |
 | `windbreaker` | Hooded zip-front light jacket with yokes and slanted welt pockets | ЕМКО 1988 |
 | `quilted-jacket` | Hooded quilt-lined jacket buttoned to the throat, sloped front yokes | ЕМКО 1988 |
@@ -92,9 +93,10 @@ options.
 
 ## Sources and copyright
 
-The designs draw on six drafting books:
+The designs draw on seven drafting books:
 - Simons, *Drafting Cotton Garments and Mackinaws* (New York, 1918), `draftingcottonga00simo`;
 - Simons, *Designing Overcoat Patterns for Men and Young Men* (New York, 1916), `designingovercoa00simo`;
+- Simons, *Drafting Pants and Overalls* (New York, 1916), `draftingpantsove00simo`;
 - Walker, *Manual of Needlework and Cutting Out* (London, 1909), `krl00366374`;
 - Woman's Institute, *Pattern Drafting* (Scranton, ©1915), `patterdraftingpicken`;
 - Mitchell, *The New "Standard" Work on Designing and Pattern-Making of Ladies' Tailor-Made

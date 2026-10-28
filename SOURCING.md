@@ -92,6 +92,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Woman's Institute, *Pattern Drafting* (1915/1920) `patterdraftingpicken` | A (blocks) | shirtwaist dress |
 | Mitchell, *Ladies' Tailor-Made Garments* (1921) `newstandardworko00mitc` | A | tailored jacket, box coat, gored skirt |
 | ЕМКО СЭВ т.3 (1988) `emko` | A (tables) | windbreaker, quilted jacket, winter coat, topcoat, jacket, waistcoat, trousers |
+| Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants |
 | Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |
 | USDA O'Brien body-measurement surveys (1939–41) `childrensbodymea365obri`, `bodymeasurements366obri`, `womensmeasuremen454obri` | C | the 75 children's size sets (`designs/sizes/`) |
 
@@ -106,9 +107,8 @@ here or in FreeSewing. So far 15 of 27 designs are coats or jackets (plus two wa
 skirts and dresses are under-represented.
 
 **Quickest next (same systems and libraries as built designs):**
-- Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo`: work pants
-  (regular, stout, young men's), bib overall, one-piece overall (coverall). Same system as
-  the nine Simons designs; the trousers library is built.
+- Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo`: work pants built
+  (2026-10-27); left: bib (apron) overall, one-piece overall, peg-top pants, breeches.
 - Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx`:
   shirts (work, dress), pyjamas, aprons. Builds on the nightshirt's yoke template.
 - Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo`: boys'

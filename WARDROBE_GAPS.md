@@ -39,7 +39,7 @@ and marked as derived.
 | Dress trousers (pleats, cuffs) | 1 | Titan, Charlie (Theo dropped in v4) | Variant; **darted trousers drafted 2026-10-27** (`designs/trousers`, on Titan: fly, pockets, waistband; no pleats or cuffs yet; not sewn); ЕМКО 1988 §7 | Simons *Pants and Overalls* 1916 `draftingpantsove00simo` |
 | Overcoat (Chesterfield) | 1 | Carlton is a belted long coat | Variant | Simons *Overcoat Patterns* 1916 `designingovercoa00simo` |
 | Work shirt | 2 | Simon | Variant (patch pockets, plain yoke) | Simons *Cotton Garments* 1918 `draftingcottonga00simo` |
-| Work trousers / dungarees | 2 | Titan, Charlie | Variant | Simons 1916 |
+| Work trousers / dungarees | 2 | Titan, Charlie | Variant; **work pants drafted 2026-10-27** (`designs/work-pants`: the trousers with Simons' work-pants proportions; not sewn) | Simons 1916 `draftingpantsove00simo` |
 | Overalls | 2 | Opal | Have | — |
 | **Coverall / boiler suit** | 2, 3 | — | **Drafted 2026-10-27** (`designs/jumpsuit`: flat-cut, one body piece, gussets, buttoned front, patch pockets; not sewn) | Thayaht's TuTa 1920, Open+Pattern (CC BY 4.0); Simons 1916 has a one-piece overall too |
 | **Chore / work coat** | 2 | — | **Drafted 2026-10-23** (`designs/chore-coat`, not sewn) | Simons 1918 (work coat) |

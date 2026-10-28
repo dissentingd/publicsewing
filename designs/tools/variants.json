@@ -24,6 +24,7 @@
   "trousers": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "frontDart": 0}},
   "waistcoat": {"default": {}, "plain": {"breastPocket": false, "lowerPockets": false, "backDart": 0, "frontDart": 0, "liningBack": false, "cutaway": 0}},
   "jacket": {"default": {}, "plain": {"vent": false, "pocketFlaps": false, "hemCurve": 0, "buttons": 1}},
+  "work-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "backDart": 0.3, "hemWidth": 0.9}},
   "jumpsuit": {"default": {}, "plain": {"breastPockets": false, "lowerPockets": false, "legTaper": 0, "neckWidth": 0.22, "frontNeckDepth": 0.18, "buttons": 4}},
   "gored-skirt": {"default": {}, "seven": {"gores": 7, "goreFlare": 0.3}, "fifteen": {"gores": 15, "frontWaistDrop": 0, "zipLength": 0.6}}
 }

@@ -1,0 +1,75 @@
+# Work pants: Simons' "Work Pants" (Drafting Pants and Overalls, 1916, Diagram IX, pp. 18-19),
+# "especially adapted for khaki and all cotton materials", on the trousers' Titan legs: fuller
+# than Simons' regular pants through the seat, knee and bottom, the rise an inch deeper, no
+# darts, a straight hem. Fly, pockets, waistband and loops as the trousers. See BRIEF.md.
+extends: ../trousers/spec.yaml
+
+about:
+  id: work-pants
+  name: Work pants
+  description: Full straight work trousers for cotton and khaki, deep rise, no darts, side and back pockets, waistband
+  difficulty: 3
+  tags: [bottoms, workwear]
+  techniques: [zip, welt-pocket, waistband, hem]
+  version: 0.1.0
+  source: Simons, Drafting Pants and Overalls (1916), Work Pants, Diagram IX (draftingpantsove00simo)
+
+options:
+  # Regular pants (Diag. V) against work pants (IX), 34 waist, 40 seat: forepart 1/2 in wider
+  # (2 in round, 5% of the seat), knee 21 for 20, bottom 17 for 15 1/2, rise 10 1/2 for 9 1/2,
+  # waist 1/2 waist + 1 1/2 a side (9%)
+  seatEase: { pct: 10, max: 15 } # the trousers' 5% plus Simons' extra 5%
+  waistEase: { pct: 9, max: 12 } # 3 in on a 34 waist
+  kneeEase: { pct: 31, max: 40 } # the trousers' 25%, times 21/20
+  crotchDrop: { pct: 5 } # x inseam: Titan's 2%, plus 1 in on a 32 in inseam
+  hemWidth: { pct: 81 } # bottom 17 / knee 21
+  hemShaping: { pct: 0 } # straight across
+  backDart: { pct: 0 } # none in the draft: the waist is shaped in the seams
+  frontDart: { pct: 0, menu: false } # no front dart (and none drawn)
+
+# The trousers' legs with Simons' pocket placings ("Drafting Pants Pockets and Pocket Lays",
+# p. 28): front pockets sewn in 1 in below the waistband, 6 1/2 in opening; back pockets 3 1/2 in
+# below the top of the waistband (a 1 1/2 in band: 2 in below the seam), 5 1/2 in opening
+pieces:
+  front:
+    prefix: trousers # named like the inherited pieces
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    ops:
+      - trouserLeg:
+          which: front
+          dart: 0
+          hemWidth: hemWidth
+          hemSag: waistToFloor * hemShaping
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          pocketTop: if(sidePockets, waistToSeat * 0.09, 0) # 1 in of a 11 in waist to seat
+          pocketLength: if(sidePockets, waistToSeat * 0.59, 0) # 6 1/2 in
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45
+  back:
+    prefix: trousers # named like the inherited pieces
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: d * backDart
+          dartAt: 0.4
+          dartFrom: centre
+          dartLength: waistToSeat * backDartLength
+          hemWidth: hemWidth
+          hemSag: waistToFloor * hemShaping
+          pocketTop: if(sidePockets, waistToSeat * 0.09, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.59, 0)
+          backPocket: if(backPocket, seat * 0.14, 0) # 5 1/2 in of a 40 in seat
+          backPocketBelow: waistToSeat * 0.18 # 2 in
+          backPocketWelt: seat * 0.006
