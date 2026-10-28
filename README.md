@@ -43,6 +43,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `tailored-jacket` | Women's semi-fitted jacket, princess seams, peak lapel | Mitchell 1921 |
 | `box-coat` | Women's loose box coat with a notched lapel and set-in flap pockets | Mitchell 1921 |
 | `gored-skirt` | Flared skirt of five to fifteen gores, shaped in its seams, with a CB zip and waistband | Mitchell 1921 |
+| `jumpsuit` | One-piece suit cut almost entirely from rectangles: buttoned front, gussets, patch pockets | Thayaht 1920, via Open+Pattern |
 | `windbreaker` | Hooded zip-front light jacket with yokes and slanted welt pockets | ЕМКО 1988 |
 | `quilted-jacket` | Hooded quilt-lined jacket buttoned to the throat, sloped front yokes | ЕМКО 1988 |
 | `winter-coat` | Straight knee-length coat with deep yokes, hip welts, turn-down collar | ЕМКО 1988 |
@@ -100,6 +101,11 @@ The designs draw on six drafting books:
   Garments* (New York, 1921), `newstandardworko00mitc`;
 - ЕМКО СЭВ, vol. 3, *Base constructions of men's clothing* (Moscow, 1988), `emko`: still in
   copyright, so it isn't in `corpus/`, and it's used only as copyright law allows (below).
+
+The jumpsuit follows Thayaht's TuTa (Florence, 1920) as digitised by
+[Open+Pattern](https://openpattern.io), "TuTa Boiler Suit", licensed
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): its pieces and proportions, redrafted
+from measurements (`designs/jumpsuit/BRIEF.md` lists what changed). Credit: Open+Pattern.
 
 Children's sizes come from the USDA's O'Brien surveys (1939), a US government work.
 

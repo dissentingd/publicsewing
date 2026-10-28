@@ -1,0 +1,80 @@
+# Jumpsuit: Thayaht's TuTa (Florence, 1920) as digitised by Open+Pattern (CC BY 4.0), cut flat:
+# one body piece wrapped round the figure, slashed for the armholes and slit up the back for the
+# legs, rectangular sleeves, square underarm gussets, a diamond crotch gusset, patch pockets, a
+# buttoned front opening and a collar band. No block: every piece is a straight-edged shape sized
+# from the measurements (lib/flat.mjs). Defaults reproduce the source's size M on cisMaleAdult38.
+# See BRIEF.md.
+block: brian
+
+about:
+  id: jumpsuit
+  name: Jumpsuit
+  description: "A one-piece suit cut almost entirely from rectangles: buttoned front, patch pockets, gussets"
+  difficulty: 2
+  tags: [coveralls, workwear]
+  techniques: [gusset, button, band, pocket]
+  version: 0.1.0
+  source: Thayaht, TuTa (1920), digitised by Open+Pattern, TuTa Boiler Suit (openpattern/tuta-jumpsuit)
+
+options:
+  # Fit
+  bodyEase: { pct: 15, min: 5, max: 40, menu: fit } # 117.7 cm round, CF to CF, on seat 102
+  crotchDrop: { pct: 10, min: 0, max: 25, menu: fit } # x (HPS to waist + waist to upper leg): slit top 89.4 cm below the shoulder
+  bicepsEase: { pct: 14, min: 0, max: 50, menu: fit } # sleeve 40 cm round, on biceps 35
+  # Style
+  totalLength: { pct: 94, min: 70, max: 100, menu: style } # x (HPS to waist + waist to floor): 153.5 cm finished
+  legTaper: { pct: 27, min: 0, max: 40, menu: style } # x half the body: the slit 15.7 cm wide each side at the hem
+  crotchGusset: { pct: 12, min: 6, max: 25, menu: style } # x seat: the diamond's side
+  armGusset: { pct: 34, min: 20, max: 50, menu: style } # x biceps: gusset 12 cm square
+  sleeveLengthBonus: { pct: 0, min: -40, max: 20, menu: style } # sleeve 55 cm to the hem fold
+  neckWidth: { pct: 20, min: 14, max: 30, menu: style } # x neck, each side of CF and CB: back neck 15.6 cm
+  frontNeckDepth: { pct: 22, min: 0, max: 40, menu: style } # x neck (the source's neck is straight)
+  placketDepth: { pct: 120, min: 60, max: 160, menu: style } # x HPS to waist: opening 56.4 cm
+  buttons: { count: 6, min: 3, max: 10, menu: style }
+  buttonExtension: { pct: 2, min: 1, max: 5, menu: style } # x chest: 2 cm
+  bandHeight: { pct: 13, min: 8, max: 20, menu: style } # x neck: 5 cm
+  breastPockets: { bool: true, menu: style } # 14 x 16 cm
+  lowerPockets: { bool: true, menu: style } # 20 x 27.2 cm, top sloping 8 cm to the side
+  # Construction
+  facingWidth: { pct: 4, min: 3, max: 8, menu: construction } # x chest: 4 cm
+  hemDepth: { pct: 4.3, min: 2, max: 8, menu: construction } # x waist to floor: 5 cm, legs and sleeves
+
+pieces:
+  body:
+    options: all
+    let:
+      W: max(chest, seat) * (1 + bodyEase)
+      sleeveWidth: biceps * (1 + bicepsEase)
+      armG: biceps * armGusset
+    ops:
+      - suitBody:
+          width: W
+          length: (hpsToWaistBack + waistToFloor) * totalLength
+          crotch: (hpsToWaistBack + waistToUpperLeg) * (1 + crotchDrop)
+          taper: W / 2 * legTaper
+          # The armhole takes the sleeve's top and two sides of the underarm gusset
+          slit: (sleeveWidth + 2 * armG) / 2
+          neckWidth: neck * neckWidth
+          neckDrop: neck * frontNeckDepth
+          ext: chest * buttonExtension
+          opening: hpsToWaistBack * placketDepth
+          buttons: buttons
+          hem: waistToFloor * hemDepth
+          # From the shoulder line, which drops off the shoulder by the back's extra half width
+          sleeve:
+            width: sleeveWidth
+            length: (shoulderToWrist - max(0, W / 4 - shoulderToShoulder / 2)) * (1 + sleeveLengthBonus)
+            gusset: armG
+          crotchGusset: { side: seat * crotchGusset, width: seat * crotchGusset * 0.87 }
+          facing: chest * facingWidth
+          band: neck * bandHeight
+          # From CF and the shoulder line (source: 2 cm from CF, 15.5 cm down; 9 cm, 43.6 cm)
+          breastPocket: { if: breastPockets, x: chest * 0.02, y: hpsToWaistBack * 0.33, w: chest * 0.14, h: chest * 0.16 }
+          lowerPocket: { if: lowerPockets, x: seat * 0.08, y: hpsToWaistBack * 0.93, w: seat * 0.19, h: seat * 0.26, slant: seat * 0.08 }
+  sleeve: { part: suitPiece, piece: sleeve, after: body, nr: 2 }
+  armGusset: { part: suitPiece, piece: armGusset, after: body, nr: 3 }
+  crotchGusset: { part: suitPiece, piece: crotchGusset, after: body, nr: 4 }
+  facing: { part: suitPiece, piece: facing, after: body, nr: 5 }
+  band: { part: suitPiece, piece: band, after: body, nr: 6, label: collarBand }
+  breastPocket: { part: suitPiece, piece: breastPocket, after: body, nr: 7, if: breastPockets }
+  lowerPocket: { part: suitPiece, piece: lowerPocket, after: body, nr: 8, if: lowerPockets }

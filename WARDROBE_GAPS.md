@@ -41,6 +41,7 @@ and marked as derived.
 | Work shirt | 2 | Simon | Variant (patch pockets, plain yoke) | Simons *Cotton Garments* 1918 `draftingcottonga00simo` |
 | Work trousers / dungarees | 2 | Titan, Charlie | Variant | Simons 1916 |
 | Overalls | 2 | Opal | Have | — |
+| **Coverall / boiler suit** | 2, 3 | — | **Drafted 2026-10-27** (`designs/jumpsuit`: flat-cut, one body piece, gussets, buttoned front, patch pockets; not sewn) | Thayaht's TuTa 1920, Open+Pattern (CC BY 4.0); Simons 1916 has a one-piece overall too |
 | **Chore / work coat** | 2 | — | **Drafted 2026-10-23** (`designs/chore-coat`, not sewn) | Simons 1918 (work coat) |
 | **Peacoat / reefer** | 3 | — | **Drafted 2026-10-26** (`designs/peacoat`: the mackinaw at hip length with Simons' D.B. overcoat details: ulster collar and notched lapel, hand-warmer pockets, vent, lining; not sewn) | Simons 1916 D.B. overcoats (no reefer as such) |
 | Trench / ulster | 3 | Carlton | Variant | Simons 1916 |

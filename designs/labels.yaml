@@ -16,6 +16,12 @@ options:
   seatEase:
     title: Seat ease
     description: Room added over the seat; the side seams are let out to it where needed.
+  bodyEase:
+    title: Body ease
+    description: Room added round the body, as a share of the chest or the seat, whichever is larger.
+  crotchDrop:
+    title: Crotch drop
+    description: How far below the body's crotch the legs divide, as a share of the neck to waist and waist to upper leg together.
   bicepsEase:
     title: Biceps ease
     description: Room added round the upper arm, as a share of the biceps.
@@ -270,6 +276,25 @@ options:
     title: Neck dart length
     description: How far the neck dart reaches towards the bust point.
 
+  totalLength:
+    title: Length
+    description: Shoulder to hem, as a share of the wearer's height from the neck to the floor.
+  legTaper:
+    title: Leg taper
+    description: How much narrower the leg is at the hem than at the top, as a share of half the body's width.
+  crotchGusset:
+    title: Crotch gusset
+    description: Side of the diamond gusset set into the crotch, as a share of the seat.
+  armGusset:
+    title: Underarm gusset
+    description: Side of the square gusset set under each arm, as a share of the biceps.
+  neckWidth:
+    title: Neck width
+    description: Width of the neck opening each side of the centre front and centre back, as a share of the neck.
+  frontNeckDepth:
+    title: Front neck depth
+    description: How far the front neck curves down at the centre front, as a share of the neck.
+
   # Closures
   buttons:
     title: Buttons
@@ -448,6 +473,9 @@ options:
   lining:
     title: Lining
     description: Line the body. The facings then run to the shoulder, with a back-neck facing.
+  hemDepth:
+    title: Hem allowance
+    description: Depth of the turned-up hem on the legs and sleeves, as a share of waist to floor.
   quilted:
     title: Quilted lining
     description: Cut the body, yokes, sleeves and hood again in quilted lining.
@@ -456,6 +484,9 @@ options:
     description: Extra width at the back lining's centre back, folded into a pleat for movement.
 
 parts:
+  body: Body
+  armGusset: Underarm gusset
+  crotchGusset: Crotch gusset
   back: Back
   frontPanel: Front panel
   gore1: Gore 1

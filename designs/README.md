@@ -54,6 +54,7 @@ without declaring them, so they are listed in our package.json.
 | `peacoat/` | Hip-length double-breasted coat: the mackinaw with Simons' D.B. overcoat stand, three-button rows, notched lapel and deep ulster collar, slanted hand-warmer welt pockets, back vent and lining, no belt, on Brian, Simons 1916. [BRIEF.md](peacoat/BRIEF.md) | draft (not sewn) |
 | `box-coat/` | Women's loose box coat: straight body flared from the arms, shaped CB seam, neck dart, notched lapel, collar, buttons near the lapped edge, set-in flap pockets (hip and ticket), two-piece sleeves, on Breanna, Mitchell 1921. [BRIEF.md](box-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `gored-skirt/` | Flared skirt of 5 to 15 gores: a front panel on the fold, gores in pairs, the waist shaping in darts on the seams, flared below the seat, CB zip, waistband, on Sarah, Mitchell 1921 pp. 84–101. [BRIEF.md](gored-skirt/BRIEF.md) | draft (not sewn) | not draped |
+| `jumpsuit/` | One-piece suit cut flat, no block: one body piece round the figure with armhole slashes and a leg slit up the back, rectangular sleeves, square underarm and diamond crotch gussets, buttoned front, collar band, patch pockets; Thayaht's TuTa (1920) via Open+Pattern (CC BY 4.0). [BRIEF.md](jumpsuit/BRIEF.md) | draft (not sewn) | not draped |
 | `knickerbockers/` | Full knickers gathered into knee bands, elastic waist, on Titan, Walker 1909. [BRIEF.md](knickerbockers/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `windbreaker/` | Hooded zip-front jacket: back and front yokes, two-piece hood with a drawstring (or a stand collar), slanted welt pockets, on Brian, ЕМКО 1988 §4. [BRIEF.md](windbreaker/BRIEF.md) | draft (not sewn) | not draped |
 | `quilted-jacket/` | The windbreaker buttoned to the throat, front yoke seam sloping up to the armhole, cut again in quilted lining, ЕМКО 1988 §5. [BRIEF.md](quilted-jacket/BRIEF.md) | draft (not sewn) | not draped |
@@ -71,6 +72,7 @@ without declaring them, so they are listed in our package.json.
 | `lib/pockets.mjs` | Patch pockets, flaps, belts, set-in flap pockets (flap, jet, bag) | |  |
 | `lib/trousers.mjs` | Legs on Titan: gathered into bands (knickerbockers), or tailored with darts, fly and pockets (trousers); strips (waistband, fly, belt loops) | |  |
 | `lib/skirt.mjs` | Gored skirts on Sarah: gores laid on the seat line, waist darts on the seams, equal flare at every seam edge (gored skirt) | |  |
+| `lib/flat.mjs` | Flat-cut garments, no block: pieces as straight-edged shapes from measurements, a mitred allowance offset (jumpsuit) | |  |
 | `lib/load-spec.mjs` | Reads a `spec.yaml` (resolving `extends`) and builds it (Node only) | |  |
 | `lib/spec.mjs`, `expr.mjs` | Builds a spec into a FreeSewing design ([SPEC.md](SPEC.md)); no file access, so the site runs it in the browser. Adds a `testSquare` piece (a scale box) to every design | |  |
 | `drape/` | 3D drape configs (`runs.yaml`: one per draped design), renders and results ([README](drape/README.md)); `node tools/drape.mjs <design>` runs one | all 18 designs draped |  |

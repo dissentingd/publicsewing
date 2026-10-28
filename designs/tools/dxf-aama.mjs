@@ -115,7 +115,7 @@ export function toSvg({ blocks }) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 ${x0 + 40} ${H + 80}" width="${Math.round((x0 + 40) / 4)}" height="${Math.round((H + 80) / 4)}" style="background:#fff;stroke-width:2">${groups.join('')}</svg>`
 }
 
-if (import.meta.url === `file:///${process.argv[1].replace(/\\/g, '/')}`) {
+if (process.argv[1] && import.meta.url === `file:///${process.argv[1].replace(/\\/g, '/')}`) {
   const [file, ...args] = process.argv.slice(2)
   const dxf = parseDxf(readFileSync(file, 'latin1'))
   const pieces = summarise(dxf)

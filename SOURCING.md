@@ -92,6 +92,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Woman's Institute, *Pattern Drafting* (1915/1920) `patterdraftingpicken` | A (blocks) | shirtwaist dress |
 | Mitchell, *Ladies' Tailor-Made Garments* (1921) `newstandardworko00mitc` | A | tailored jacket, box coat, gored skirt |
 | ЕМКО СЭВ т.3 (1988) `emko` | A (tables) | windbreaker, quilted jacket, winter coat, topcoat, jacket, waistcoat, trousers |
+| Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |
 | USDA O'Brien body-measurement surveys (1939–41) `childrensbodymea365obri`, `bodymeasurements366obri`, `womensmeasuremen454obri` | C | the 75 children's size sets (`designs/sizes/`) |
 
 Left to build from these: Mitchell's tight-fitted single- and double-dart jackets;

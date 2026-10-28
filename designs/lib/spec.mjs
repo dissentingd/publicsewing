@@ -47,6 +47,7 @@ import { sarah } from '../blocks/sarah.mjs'
 import { draftSkirtLayout, gorePart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart } from './jacket.mjs'
+import { draftSuitBody, suitPiecePart } from './flat.mjs'
 
 const blocks = { brian, bent, titan, breanna, sarah }
 /** FreeSewing library parts a piece can use as is (`part: library`) */
@@ -101,6 +102,11 @@ export const operations = {
       paths[id] = new Path().move(new Point(...from)).line(new Point(...to)).addClass(cls)
     },
     literal: ['id', 'class'],
+  },
+  // A flat-cut one-piece suit's body (lib/flat.mjs): no block, sizes from measurements, into `suit.*`
+  suitBody: {
+    run: draftSuitBody,
+    measurements: ['chest', 'seat', 'biceps', 'neck', 'hpsToWaistBack', 'waistToFloor', 'waistToUpperLeg', 'shoulderToWrist', 'shoulderToShoulder'],
   },
   // Gored skirt (lib/skirt.mjs): the gores laid out on Sarah's base, into `skirt.*`
   skirtLayout: { run: draftSkirtLayout },
@@ -264,6 +270,9 @@ const factories = {
   weltBag: (p, ctx) => weltBagPart({ name: p.name, after: ctx.after(p), key: p.key, nr: p.nr, store: p.store, enabled: enabledBy(p.if) }),
   pocket: (p, ctx) =>
     pocketPart({ name: p.name, after: ctx.after(p), key: p.key, nr: p.nr, label: p.label, cut: p.cut, enabled: enabledBy(p.if) }),
+  // A flat-cut suit's sleeve, gussets, pockets, facing or collar band (`piece`), from suitBody
+  suitPiece: (p, ctx) =>
+    suitPiecePart({ name: p.name, after: ctx.after(p), piece: p.piece, nr: p.nr, label: p.label, enabled: enabledBy(p.if) }),
   // A set-in flap pocket's flap, jet or bag (`jacket.pockets`, from boxLayout)
   setInPocket: (p, ctx) =>
     setInPocketPart({ name: p.name, after: ctx.after(p), key: p.key, piece: p.piece, nr: p.nr, label: p.label, enabled: enabledBy(p.if) }),
@@ -280,7 +289,7 @@ function lookupIn(sh, block, local) {
       // `in` first: reading a missing name logs a FreeSewing warning
       if (head in measurements && measurements[head] !== undefined) return measurements[head]
       if (head in options && options[head] !== undefined) return options[head]
-    } else if (head === 'coat' || head === 'trousers' || head === 'skirt') return store.get(name)
+    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'suit') return store.get(name)
     else {
       const p = points[landmarks[head] ?? head]
       if (p && rest.length === 1 && (rest[0] === 'x' || rest[0] === 'y')) return p[rest[0]]

@@ -9,7 +9,7 @@ by named operations. [chore-coat/spec.yaml](chore-coat/spec.yaml) is the plaines
 | Key | What |
 |---|---|
 | `about` | The design's data: `id` (prefixes its piece names), `name`, `description`, `difficulty`, `tags`, `techniques`, `version`, `source` (book, figure, corpus folder id). |
-| `block` | The FreeSewing block it starts from: `brian`, `bent`, `titan`, `breanna`, `sarah` (`blocks/`). |
+| `block` | The FreeSewing block it starts from: `brian`, `bent`, `titan`, `breanna`, `sarah` (`blocks/`). A flat-cut design (the jumpsuit) names one but drafts no piece from it. |
 | `options` | Every option, with the source's number as its default. An option with a block option's name replaces it (the gored skirt sets Sarah's `length`, and hides Sarah's unused options by leaving out `menu`). `{ pct, min, max, of: chest, menu }` is a percentage (of a measurement with `of`); `{ count, min, max }`, `{ bool }` and `{ dflt, list }` as in FreeSewing. The pattern tool labels options from [labels.yaml](labels.yaml) by name (`npm test` checks every shown option has one); `title:` and `description:` on an option override that label for this design. |
 | `pieces` | The pattern pieces, in order (below). |
 | `extends` | Start from another spec file: its pieces, block and options. This spec's `options` entries are merged into the parent's (`buttons: { count: 5 }` changes only the default); its `pieces` are added, or replace the parent's by key. A parent with no `about` is a template (`templates/`): its pieces take this design's name. |
@@ -34,6 +34,7 @@ A piece is either drafted by operations or made by a piece type.
 `weltBag`, `yokePiece`, `yokeSleeve`, `sleeveBand`, `placket`, `neckBand`, `legBand`,
 `strip` (a rectangle: `length`, `width` expressions, `fold`, `cut`, `material`, `label`; e.g. a
 waistband or fly shield; its size goes to `trousers.strips.<piece>`),
+`suitPiece` (a flat-cut suit's `piece`: `sleeve`, `armGusset`, `crotchGusset`, `facing`, `band`, `breastPocket`, `lowerPocket`, sized by `suitBody`),
 `gore` (a gored skirt's gore from `skirtLayout`: `index` 0 is the front panel, on the fold; a gore past the design's count is left out; `zip` an expression, the CB zip's length, notched on the last gore),
 `frontLining` and `backLining` (a Brian coat's lining, `from` the front or the back; the back
 takes `width:`, its back-neck facing's, and `pleat:`; `sleeve` takes `lining:` too),
@@ -68,6 +69,7 @@ type's `if:` is an expression over options; when it is false the piece is left o
 | `gatheredLeg` | A full leg gathered into a band, elastic waist, on Titan. | `lib/trousers.mjs` |
 | `trouserLeg` | A tailored leg on Titan (`which: back` or `front`, `fitKnee` on): a waist dart (`dart`, `dartAt`, `dartLength`, `dartFrom: centre` to take it from Titan's CB shaping), the hem narrowed (`hemWidth`) and curved (`hemSag`), a fly (`fly`, `flyLength`), a side pocket (`pocketTop`, `pocketLength`, `pocketWidth`, `pocketDepth`), a jetted back pocket (`backPocket`, `backPocketBelow`, `backPocketWelt`); `matchOutseam` trues its outseam to the other leg's. Store: `trousers.back` / `trousers.front`, `trousers.pockets`. | `lib/trousers.mjs` |
 | `skirtLayout` | A gored skirt on Sarah's base (`gores`, odd; `panelNarrowing`, `cbShaping`, `panelShaping` for five gores, less with more; `flare`; `frontDrop`): the gores laid on the seat line, the waist shaping as darts on the seams, the same flare at every seam edge. Store: `skirt.gores`, `skirt.count`, `skirt.waist`; the `gore` pieces add `skirt.seams`. | `lib/skirt.mjs` |
+| `suitBody` | A flat-cut one-piece suit's body, no block: one piece round the figure, armhole slashes, a V leg slit up the back, neck, button stand, buttons, pocket marks (`width`, `length`, `crotch`, `taper`, `slit`, `neckWidth`, `neckDrop`, `ext`, `opening`, `buttons`, `hem`; maps `sleeve`, `crotchGusset`, `breastPocket`, `lowerPocket`; `facing`, `band`). Store: `suit.body`, `suit.pieces`; the `suitPiece` pieces add `suit.<piece>`. | `lib/flat.mjs` |
 | `store` | Put a value in the store (`key: coat.pockets`), e.g. pocket sizes for later pieces. | |
 | `markPocket` | Draw a pocket's place on the piece. | `lib/pockets.mjs` |
 | `markLine` | Draw a marked line (a belt's place). | |
@@ -84,7 +86,7 @@ looked up in this order:
    earlier entries: `lower.x`);
 2. measurements (`chest`, `waistToSeat`);
 3. options (`buttonExtension`, already a fraction);
-4. `coat.<key>`, `trousers.<key>` or `skirt.<key>` from the store (`coat.frontEdge.ext`, `trousers.front.fly`, `skirt.waist`);
+4. `coat.<key>`, `trousers.<key>`, `skirt.<key>` or `suit.<key>` from the store (`coat.frontEdge.ext`, `trousers.front.fly`, `skirt.waist`);
 5. `<landmark>.x` / `.y`: points on the piece, by their standard name (`underarm`,
    `neckPoint`, `shoulderTip`, `sideSeat`, `sideHem`; mapped to the block's own names in
    `blocks/`) or the block's name (`cfNeck`, `cfWaist`, `armholeHollow`).
