@@ -10,6 +10,7 @@ npm test                                   # sizes + every design at every size
 npm run sizes                              # re-parse and check the USDA transcription
 NODE_PATH=$(npm root -g) node tools/render.mjs chore-coat cisMaleAdult38 usdaBoyC5 stoutMale48 --png
 NODE_PATH=$(npm root -g) node tools/snap.mjs out/some.svg     # PNG preview of any SVG
+NODE_PATH=$(npm root -g) node tools/preview.mjs chore-coat     # the site page's pattern-pieces preview (no args: all)
 ```
 
 Converting a design to a spec (`<design>/spec.yaml`, built by `lib/spec.mjs`; the chore coat is
@@ -67,6 +68,7 @@ without declaring them, so they are listed in our package.json.
 | `knickerbockers/` | Full knickers gathered into knee bands, elastic waist, on Titan, Walker 1909. [BRIEF.md](knickerbockers/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `pyjama-jacket/` | Loose, unlined pyjama jacket: the barber's coat with Vincent's ease, a 1½" stand, five buttons to the throat under a stand collar, a left breast pocket, Vincent 1890 p. 25. [BRIEF.md](pyjama-jacket/BRIEF.md) | draft (not sewn) | not draped |
 | `pyjama-trousers/` | Full pyjama trousers: the knickerbockers' gathered legs run to the ankle, tapered, with a plain hem and a drawstring or elastic waist, Vincent 1890 p. 26. [BRIEF.md](pyjama-trousers/BRIEF.md) | draft (not sewn) | not draped |
+| `service-shirt/` | Button-through camp-collar shirt: the pyjama jacket opened all down the front with a back yoke, Simons' convertible collar, two flapped breast pockets and shoulder straps; Vincent 1890 coat shirt. [BRIEF.md](service-shirt/BRIEF.md) | draft (not sewn) | not draped |
 | `work-shirt/` | Roomy pullover work shirt: Vincent's working-man's shirt on the yoke template, a back yoke with the back's fullness gathered in, a buttoned fly, neck band or turn-down collar, wristbands, a left breast pocket, Vincent 1890 p. 17. [BRIEF.md](work-shirt/BRIEF.md) | draft (not sewn) | not draped |
 | `bib-overall/` | Bib-and-brace work overall: the work pants two sizes up, no waistband or fly, a bib and a raised back on the waist, crossed straps, buttoned side openings, bib, hip and seat patch pockets, Simons 1916 Diagram XII. [BRIEF.md](bib-overall/BRIEF.md) | draft (not sewn) | not draped |
 | `breeches/` | Riding breeches: the trousers flared out at the side of the thigh, fitted from the knee to a narrow cuff, the lower side seam buttoned, Simons 1916 Diagram XV. [BRIEF.md](breeches/BRIEF.md) | draft (not sewn) | not draped |

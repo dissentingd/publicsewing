@@ -104,6 +104,9 @@ options:
   legFlare:
     title: Leg fullness
     description: Extra width at the outside leg seam, as a share of the seat. Below 0% the leg tapers.
+  shoulderStraps:
+    title: Shoulder straps
+    description: Epaulettes on the shoulders, buttoned at the neck end.
   bibHeight:
     title: Bib height
     description: How far the bib rises above the waist, as a share of waist to floor.

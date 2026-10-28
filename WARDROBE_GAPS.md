@@ -56,7 +56,7 @@ and marked as derived.
 | **Service coat** (barber's, white jacket; stand collar or open neck) (unisex) | 2 | — | **Drafted 2026-10-23** (`designs/barbers-coat`, not sewn) | Simons 1918 (barber's coats) |
 | **Bar jacket / short white vest** (unisex) | 2 | Wahid is a dress waistcoat | **Drafted 2026-10-23** (`designs/bar-vest`, not sewn) | Simons 1918 (bar vest) |
 | Breeches | 3 | Cornelius (cycling) | Variant; **drafted 2026-10-28** (`designs/breeches`: Simons' riding breeches on the trousers, thigh flare, buttoned lower leg; not sewn) | Simons 1916 `draftingpantsove00simo` |
-| Service / camp-collar shirt | 3, 5 | Simon | Variant (camp collar, epaulettes) | Simons 1918 |
+| Service / camp-collar shirt | 3, 5 | Simon | Variant; **drafted 2026-10-28** (`designs/service-shirt`: Vincent's coat shirt on the pyjama jacket, back yoke, convertible collar, flapped breast pockets, shoulder straps; not sewn) | Vincent 1890 coat shirt, Simons 1918 collar |
 | Slacks | 5 | Charlie | Have | — |
 | **Nightshirt** | 4 | — | **Drafted 2026-10-23** (`designs/nightshirt`, not sewn) | Walker 1909 `krl00366374` |
 | **Pyjamas** | 4 | — (Paco is summer pants) | **Drafted 2026-10-28** (`designs/pyjama-jacket` on the barber's coat, `designs/pyjama-trousers` on the knickerbockers; not sewn) | Vincent, *Shirts, Undergarments* 1890 `vincentmakingshirts18xx` |
@@ -101,11 +101,11 @@ and marked as derived.
 | **Girl's coat** | — | **Drafted 2026-10-28** (`designs/girls-coat`: Sheifer's box coat on Mitchell's, to below the knee; not sewn) | Sheifer 1908 `nssheiferssystem00shei` |
 
 **Count** (2026-10-28, by the tables above, 56 rows):
-- **37 rows drafted or done**, the children's measurement sets among them (rows marked
+- **38 rows drafted or done**, the children's measurement sets among them (rows marked
   "Variant; drafted" count here).
 - **1 gap open:** the shift dress (no A source assessed yet). Pyjamas, the women's peacoat and
   field jacket, the boy's suit jacket and the girl's coat closed 2026-10-28.
-- **6 variants.** These are options on existing designs, the cheapest wins. Breeches and the work shirt drafted
+- **5 variants.** These are options on existing designs, the cheapest wins. Breeches, the work shirt and the service shirt drafted
   2026-10-28; the bib overall too (a row FreeSewing already covers).
 - **12 rows already covered** by FreeSewing (the apron row counted here).
 

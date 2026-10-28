@@ -55,6 +55,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `girls-coat` | Girl's loose coat to below the knee, notched collar, flap pockets | Sheifer 1908 |
 | `gored-skirt` | Flared skirt of five to fifteen gores, shaped in its seams, with a CB zip and waistband | Mitchell 1921 |
 | `work-pants` | Full straight work trousers for cotton and khaki, deep rise, no darts | Simons 1916 |
+| `service-shirt` | Button-through camp-collar shirt: back yoke, two flapped breast pockets, shoulder straps | Vincent 1890, Simons 1918 |
 | `work-shirt` | Roomy pullover work shirt: back yoke, buttoned front fly, neck band or collar, breast pocket | Vincent 1890 |
 | `bib-overall` | Bib-and-brace work overall, side seams buttoned at the hip, patch pockets | Simons 1916 |
 | `breeches` | Riding breeches, full and flared at the thigh, fitted from the knee to a buttoned cuff | Simons 1916 |

@@ -1,0 +1,111 @@
+# Service shirt: a camp-collar shirt that opens all down the front, from Vincent's coat shirt
+# (The Cutter's Practical Guide to Cutting and Making Shirts, Undergarments..., 1890, "Coat Shirts",
+# S.B. front, pp. 12-13) with Simons' convertible collar (Drafting Cotton Garments and Mackinaws,
+# 1918, Diagram XX), on the pyjama jacket (FreeSewing's Brian): a back yoke, two flapped breast
+# pockets, shoulder straps (epaulettes), plain sleeves. See BRIEF.md.
+extends: ../pyjama-jacket/spec.yaml
+
+about:
+  id: service-shirt
+  name: Service shirt
+  description: "A button-through camp-collar shirt: back yoke, two flapped breast pockets, shoulder straps"
+  difficulty: 3
+  tags: [tops, workwear]
+  techniques: [patch-pocket, flap, collar, facing, button, yoke]
+  version: 0.1.0
+  source: "Vincent, Cutter's Practical Guide... Shirts, Undergarments (1890), Coat Shirts, pp. 12-13 (vincentmakingshirts18xx); Simons, Drafting Cotton Garments and Mackinaws (1918), Diagram XX collar (draftingcottonga00simo)"
+
+options:
+  # Vincent: the back's side seam a quarter breast plus 1 1/4 to 2 1/2 in from CB, the front's a
+  # quarter breast less 1 in from the breast line: about 4 in over the chest, as the pyjama jacket
+  chestEase: { pct: 11 }
+  # Back 4 in shorter than "full length", rounded at the bottom; the front 2 in shorter than the back
+  lengthBelowWaist: { pct: 110 } # x waistToSeat
+  frontDrop: { pct: 0 }
+  hemCurve: { pct: 40 } # the front corner rounded
+  buttonExtension: { pct: 3.5 } # 1 1/4 in stand
+  buttons: { count: 6 }
+  cuffEase: { pct: 75 }
+  yokeDepth: { pct: 35, min: 20, max: 60, menu: style } # x CB neck to the chest line
+  collarWidth: { pct: 20, min: 14, max: 30, of: neck, menu: style } # Simons' convertible collar, a shirt's depth
+  pocketFlaps: { bool: true, menu: style }
+  shoulderStraps: { bool: true, menu: style }
+  pocketShape: { dflt: pointed }
+
+pieces:
+  # The back cut at a yoke (as the windbreaker's)
+  back:
+    prefix: barberscoat
+    from: brian.back
+    hide: { self: true, from: true, inherited: true }
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, neckStyle, yokeDepth]
+    ops:
+      - coatBack: {}
+      - backYokeCut: { depth: yokeDepth }
+  backYoke: { part: backPanel, from: back, panel: yoke, nr: 2, label: backYoke }
+  backBody: { part: backPanel, from: back, panel: body, nr: 11, label: back }
+
+  front:
+    prefix: barberscoat
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [frontDrop, buttonExtension, buttons, hemCurve, facingWidth, breastPocket, pocketShape, pocketFlaps, shoulderStraps]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+    ops:
+      - coatFront:
+          ext: ext
+          r: ext * 2 * hemCurve
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+      # From the neck to just above the hem
+      - buttons:
+          count: buttons
+          top: cfNeck.y + ext * 0.9
+          bottom: cfWaist.y + waistToSeat * 0.6
+          rows: [0]
+      # A breast pocket each side, its flap over the mouth (the mackinaw's shapes)
+      - store:
+          key: coat.pockets
+          value:
+            breast:
+              x: q * 0.17
+              w: min(q * 0.45, armholeHollow.x - q * 0.05 - x)
+              h: q * 0.52
+              flap: { if: pocketFlaps, h: w * 0.34, gap: w * 0.06 }
+              y: underarm.y - q * 0.12 + if(pocketFlaps, flap.gap, 0)
+              shape: pocketShape
+              topHem: w * 0.15
+      - markPocket: { id: breastPocket, pocket: coat.pockets.breast, if: breastPocket }
+
+  # Simons' convertible collar (Diagram XX): it runs the whole neckline to just short of the front
+  # edge, so the shirt buttons to the throat or is worn open
+  collar:
+    prefix: barberscoat
+    after: [back, front]
+    measurements: [neck]
+    options: [collarWidth]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext * 0.9
+          spring: target * 0.13
+          width: neck * collarWidth
+          point: neck * 0.05
+
+  breastPocket: { part: pocket, after: front, key: breast, nr: 7, label: breastPocket, cut: 2, if: breastPocket }
+  breastFlap: { part: flap, after: front, key: breast, nr: 8, label: breastFlap, cut: 2, if: "breastPocket and pocketFlaps" }
+  lowerPocket: { part: pocket, after: front, key: lower, nr: 9, label: lowerPocket, cut: 2, if: "false" }
+  # Shoulder straps: shoulder length, pointed at the neck end, buttoned there; cut 4 (2 pairs)
+  shoulderStrap:
+    part: polygon
+    after: front
+    nr: 10
+    cut: 4
+    if: shoulderStraps
+    let:
+      l: coat.front.shoulder * 0.85
+      w: neck * 0.1
+    points: [[0, 0], [l, 0], [l, w], [0, w], [-w * 0.5, w / 2]]
+    buttonholes: [[w * 0.05, w / 2]]
