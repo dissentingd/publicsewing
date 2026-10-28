@@ -304,3 +304,45 @@ export const suitPiecePart = ({ name, after, piece, nr, label, enabled = () => t
     throw new Error(`unknown suit piece "${piece}"`)
   },
 })
+
+/**
+ * A straight-edged piece from its corners: `shape(sh)` gives
+ * - `points`: [[x, y], ...] the seam line, in order;
+ * - `allowance`: per edge (from points[i] to points[i + 1]), in seam allowances (default 1);
+ * - `fold`: the index of the edge cut on the fold (no allowance, a fold line);
+ * - `notches`, `buttons`, `buttonholes`: [[x, y], ...]; `lines`: [[[x, y], [x, y]], ...] marks
+ *   (a pocket's place, a fold).
+ * Its edges' lengths go to `polygon.<piece>` (`edges`, `width`, `height`).
+ */
+export const polygonPart = ({ name, after, nr, label, cut = 1, material = 'fabric', enabled = () => true, shape }) => ({
+  name,
+  after,
+  draft: (sh) => {
+    const { paths, Path, Point, snippets, Snippet, store, sa, macro, options, part } = sh
+    if (!enabled(options)) return part.hide()
+    const { points: pts, allowance = [], fold = -1, notches = [], buttons = [], buttonholes = [], lines = [] } = shape(sh)
+    const n = pts.length
+    const dist = pts.map((_, i) => (i === fold ? 0 : (allowance[i] ?? 1) * sa))
+    drawPolygon(sh, pts, sa ? dist : undefined)
+    if (fold >= 0) {
+      const [a, b] = [pts[fold], pts[(fold + 1) % n]]
+      paths.fold = new Path().move(new Point(...a)).line(new Point(...b)).addClass('help dashed')
+    }
+    notches.forEach((p, i) => (snippets[`notch${i}`] = new Snippet('notch', new Point(...p))))
+    buttons.forEach((p, i) => (snippets[`button${i}`] = new Snippet('button', new Point(...p))))
+    buttonholes.forEach((p, i) => (snippets[`buttonhole${i}`] = new Snippet('buttonhole', new Point(...p))))
+    lines.forEach(([a, b], i) => (paths[`mark${i}`] = new Path().move(new Point(...a)).line(new Point(...b)).addClass('mark dashed')))
+    const xs = pts.map((p) => p[0])
+    const ys = pts.map((p) => p[1])
+    const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)]
+    store.set(`polygon.${name.split('.').pop()}`, {
+      edges: pts.map((p, i) => Math.hypot(pts[(i + 1) % n][0] - p[0], pts[(i + 1) % n][1] - p[1])),
+      width: x1 - x0,
+      height: y1 - y0,
+    })
+    macro('grainline', { from: new Point((x0 + x1) / 2, y1 - 15), to: new Point((x0 + x1) / 2, y0 + 15) })
+    store.cutlist.setCut({ cut, from: material, onFold: fold >= 0 })
+    title(macro, { at: new Point(x0 + (x1 - x0) * 0.15, y0 + (y1 - y0) * 0.3), nr, title: label ?? name.split('.').pop(), scale: Math.min(0.4, (x1 - x0) / 300) })
+    return part
+  },
+})

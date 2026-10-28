@@ -40,7 +40,7 @@ and marked as derived.
 | Overcoat (Chesterfield) | 1 | Carlton is a belted long coat | Variant; **drafted 2026-10-27** (`designs/overcoat`, `designs/box-overcoat`: Simons' regular and medium box overcoats; `designs/balmacaan` 2026-10-28: raglan sleeves, military collar; not sewn) | Simons *Overcoat Patterns* 1916 `designingovercoa00simo` |
 | Work shirt | 2 | Simon | Variant (patch pockets, plain yoke) | Simons *Cotton Garments* 1918 `draftingcottonga00simo` |
 | Work trousers / dungarees | 2 | Titan, Charlie | Variant; **work pants drafted 2026-10-27** (`designs/work-pants`: the trousers with Simons' work-pants proportions; not sewn) | Simons 1916 `draftingpantsove00simo` |
-| Overalls | 2 | Opal | Have | — |
+| Overalls | 2 | Opal | Have; **bib overall drafted 2026-10-28** (`designs/bib-overall`: Simons' apron overall on the work pants; not sewn) | Simons 1916 `draftingpantsove00simo` |
 | **Coverall / boiler suit** | 2, 3 | — | **Drafted 2026-10-27** (`designs/jumpsuit`: flat-cut, one body piece, gussets, buttoned front, patch pockets; not sewn) | Thayaht's TuTa 1920, Open+Pattern (CC BY 4.0); Simons 1916 has a one-piece overall too |
 | **Chore / work coat** | 2 | — | **Drafted 2026-10-23** (`designs/chore-coat`, not sewn) | Simons 1918 (work coat) |
 | **Peacoat / reefer** | 3 | — | **Drafted 2026-10-26** (`designs/peacoat`: the mackinaw at hip length with Simons' D.B. overcoat details: ulster collar and notched lapel, hand-warmer pockets, vent, lining; not sewn) | Simons 1916 D.B. overcoats (no reefer as such) |
@@ -106,7 +106,7 @@ and marked as derived.
 - **1 gap open:** the shift dress (no A source assessed yet). Pyjamas, the women's peacoat and
   field jacket, the boy's suit jacket and the girl's coat closed 2026-10-28.
 - **7 variants.** These are options on existing designs, the cheapest wins. Breeches drafted
-  2026-10-28.
+  2026-10-28; the bib overall too (a row FreeSewing already covers).
 - **12 rows already covered** by FreeSewing (the apron row counted here).
 
 ## Progress

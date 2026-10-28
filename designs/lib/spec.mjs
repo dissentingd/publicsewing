@@ -47,7 +47,7 @@ import { sarah } from '../blocks/sarah.mjs'
 import { draftSkirtLayout, gorePart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart } from './jacket.mjs'
-import { draftSuitBody, suitPiecePart } from './flat.mjs'
+import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
 
 const blocks = { brian, bent, titan, breanna, sarah }
 /** FreeSewing library parts a piece can use as is (`part: library`) */
@@ -273,6 +273,23 @@ const factories = {
   // A flat-cut suit's sleeve, gussets, pockets, facing or collar band (`piece`), from suitBody
   suitPiece: (p, ctx) =>
     suitPiecePart({ name: p.name, after: ctx.after(p), piece: p.piece, nr: p.nr, label: p.label, enabled: enabledBy(p.if) }),
+  // A straight-edged piece from its corners (`points`, `allowance`, `fold`, marks), after `let`
+  polygon: (p, ctx) =>
+    polygonPart({
+      name: p.name,
+      after: ctx.after(p),
+      nr: p.nr,
+      label: p.label,
+      cut: p.cut ?? 1,
+      material: p.material ?? 'fabric',
+      enabled: enabledBy(p.if),
+      shape: (sh) =>
+        evalMap(
+          { ...p.let, points: p.points, allowance: p.allowance, fold: p.fold, notches: p.notches, buttons: p.buttons, buttonholes: p.buttonholes, lines: p.lines },
+          lookupIn(sh, ctx.block, {}),
+          {},
+        ),
+    }),
   // A set-in flap pocket's flap, jet or bag (`jacket.pockets`, from boxLayout)
   setInPocket: (p, ctx) =>
     setInPocketPart({ name: p.name, after: ctx.after(p), key: p.key, piece: p.piece, nr: p.nr, label: p.label, enabled: enabledBy(p.if) }),
@@ -289,7 +306,7 @@ function lookupIn(sh, block, local) {
       // `in` first: reading a missing name logs a FreeSewing warning
       if (head in measurements && measurements[head] !== undefined) return measurements[head]
       if (head in options && options[head] !== undefined) return options[head]
-    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'suit') return store.get(name)
+    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'suit' || head === 'polygon') return store.get(name)
     else {
       const p = points[landmarks[head] ?? head]
       if (p && rest.length === 1 && (rest[0] === 'x' || rest[0] === 'y')) return p[rest[0]]

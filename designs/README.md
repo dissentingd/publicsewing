@@ -67,6 +67,7 @@ without declaring them, so they are listed in our package.json.
 | `knickerbockers/` | Full knickers gathered into knee bands, elastic waist, on Titan, Walker 1909. [BRIEF.md](knickerbockers/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `pyjama-jacket/` | Loose, unlined pyjama jacket: the barber's coat with Vincent's ease, a 1½" stand, five buttons to the throat under a stand collar, a left breast pocket, Vincent 1890 p. 25. [BRIEF.md](pyjama-jacket/BRIEF.md) | draft (not sewn) | not draped |
 | `pyjama-trousers/` | Full pyjama trousers: the knickerbockers' gathered legs run to the ankle, tapered, with a plain hem and a drawstring or elastic waist, Vincent 1890 p. 26. [BRIEF.md](pyjama-trousers/BRIEF.md) | draft (not sewn) | not draped |
+| `bib-overall/` | Bib-and-brace work overall: the work pants two sizes up, no waistband or fly, a bib and a raised back on the waist, crossed straps, buttoned side openings, bib, hip and seat patch pockets, Simons 1916 Diagram XII. [BRIEF.md](bib-overall/BRIEF.md) | draft (not sewn) | not draped |
 | `breeches/` | Riding breeches: the trousers flared out at the side of the thigh, fitted from the knee to a narrow cuff, the lower side seam buttoned, Simons 1916 Diagram XV. [BRIEF.md](breeches/BRIEF.md) | draft (not sewn) | not draped |
 | `work-pants/` | Full straight work trousers for cotton and khaki: the trousers with Simons' work-pants proportions (fuller seat, knee and bottom, rise 1 in deeper, no darts, straight hem, his pocket placings), Simons 1916 Diagram IX. [BRIEF.md](work-pants/BRIEF.md) | draft (not sewn) | not draped |
 | `windbreaker/` | Hooded zip-front jacket: back and front yokes, two-piece hood with a drawstring (or a stand collar), slanted welt pockets, on Brian, ЕМКО 1988 §4. [BRIEF.md](windbreaker/BRIEF.md) | draft (not sewn) | not draped |
@@ -86,7 +87,7 @@ without declaring them, so they are listed in our package.json.
 | `lib/pockets.mjs` | Patch pockets, flaps, belts, set-in flap pockets (flap, jet, bag) | |  |
 | `lib/trousers.mjs` | Legs on Titan: gathered into bands (knickerbockers) or to a plain hem (pyjama trousers), or tailored with darts, fly and pockets (trousers); strips (waistband, fly, belt loops) | |  |
 | `lib/skirt.mjs` | Gored skirts on Sarah: gores laid on the seat line, waist darts on the seams, equal flare at every seam edge (gored skirt) | |  |
-| `lib/flat.mjs` | Flat-cut garments, no block: pieces as straight-edged shapes from measurements, a mitred allowance offset (jumpsuit) | |  |
+| `lib/flat.mjs` | Flat-cut garments, no block: pieces as straight-edged shapes from measurements, a mitred allowance offset (jumpsuit); the `polygon` piece type (bib overall) | |  |
 | `lib/load-spec.mjs` | Reads a `spec.yaml` (resolving `extends`) and builds it (Node only) | |  |
 | `lib/spec.mjs`, `expr.mjs` | Builds a spec into a FreeSewing design ([SPEC.md](SPEC.md)); no file access, so the site runs it in the browser. Adds a `testSquare` piece (a scale box) to every design | |  |
 | `drape/` | 3D drape configs (`runs.yaml`: one per draped design), renders and results ([README](drape/README.md)); `node tools/drape.mjs <design>` runs one | all 18 designs draped |  |

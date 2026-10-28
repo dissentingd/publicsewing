@@ -34,6 +34,7 @@ A piece is either drafted by operations or made by a piece type.
 `weltBag`, `yokePiece`, `yokeSleeve`, `sleeveBand`, `placket`, `neckBand`, `legBand`,
 `strip` (a rectangle: `length`, `width` expressions, `fold`, `cut`, `material`, `label`; e.g. a
 waistband or fly shield; its size goes to `trousers.strips.<piece>`),
+`polygon` (a straight-edged piece from its corners: `points` a list of [x, y] expressions, `allowance` per edge in seam allowances, `fold` the index of the edge on the fold, `notches`, `buttons`, `buttonholes`, `lines` (marks), `let` values first, `cut`, `material`, `label`; its edges' lengths go to `polygon.<piece>`),
 `suitPiece` (a flat-cut suit's `piece`: `sleeve`, `armGusset`, `crotchGusset`, `facing`, `band`, `breastPocket`, `lowerPocket`, sized by `suitBody`),
 `gore` (a gored skirt's gore from `skirtLayout`: `index` 0 is the front panel, on the fold; a gore past the design's count is left out; `zip` an expression, the CB zip's length, notched on the last gore),
 `frontLining` and `backLining` (a Brian coat's lining, `from` the front or the back; the back

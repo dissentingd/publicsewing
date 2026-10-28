@@ -104,6 +104,36 @@ options:
   legFlare:
     title: Leg fullness
     description: Extra width at the outside leg seam, as a share of the seat. Below 0% the leg tapers.
+  bibHeight:
+    title: Bib height
+    description: How far the bib rises above the waist, as a share of waist to floor.
+  bibWidth:
+    title: Bib width
+    description: Across the top of the bib, as a share of the waist.
+  bibInset:
+    title: Bib foot
+    description: How far in from the side seam the bib meets the waist, as a share of the waist.
+  backRise:
+    title: Back height
+    description: How far the back rises above the waist at centre back, as a share of waist to floor.
+  backRiseTop:
+    title: Back top width
+    description: Across the top of the raised back, each side of centre back, as a share of the waist.
+  sideOpening:
+    title: Side opening
+    description: Length of the buttoned opening at the top of each side seam, as a share of waist to floor.
+  strapWidth:
+    title: Strap width
+    description: Finished width of the straps, as a share of the waist.
+  bibPocket:
+    title: Bib pocket
+    description: A patch pocket on the bib.
+  hipPockets:
+    title: Hip pockets
+    description: A patch pocket on each front, below the waist.
+  seatPockets:
+    title: Seat pockets
+    description: A patch pocket on each back.
   thighFlare:
     title: Thigh flare
     description: How far the outside leg seam flares out at the thigh, as a share of the seat (the back a little more).
