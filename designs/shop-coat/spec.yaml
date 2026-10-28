@@ -10,6 +10,7 @@ about:
   techniques: [patch-pocket, collar, facing, button]
   version: 0.1.0
   source: Simons, Drafting Cotton Garments and Mackinaws (1918), Diagram XIII (draftingcottonga00simo)
+  preview: cisFemaleAdult36 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 block: brian
 

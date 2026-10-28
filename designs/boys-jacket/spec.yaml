@@ -13,6 +13,7 @@ about:
   techniques: [button, welt-pocket, collar, lapel, facing, two-piece-sleeve]
   version: 0.1.0
   source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Diagrams 1-2, pp. 18-23 (designingboysjuv00simo)"
+  preview: usdaBoyC6 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
   # Fit: a little roomier than the men's jacket, for growing

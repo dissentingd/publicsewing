@@ -13,6 +13,7 @@ about:
   techniques: [gathering, yoke, placket, button]
   version: 0.1.0
   source: Walker, Manual of Needlework and Cutting Out (1909), night-dresses (krl00366374)
+  preview: cisFemaleAdult40 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
   skirtLength: { pct: 90, min: 40, max: 98, menu: style } # to the ankle

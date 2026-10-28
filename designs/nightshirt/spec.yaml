@@ -13,6 +13,7 @@ about:
   techniques: [yoke, placket, button, band]
   version: 0.1.0
   source: Walker, Manual of Needlework and Cutting Out (1909), Man's Night-shirt (krl00366374)
+  preview: cisMaleAdult40 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
   chestEase: { pct: 26, min: 10, max: 45, menu: fit } # half width 17" on a 34" body

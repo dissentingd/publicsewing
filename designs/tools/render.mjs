@@ -33,7 +33,7 @@ export function render(Design, set, settings = {}) {
   return { svg, store: pattern.setStores[0] }
 }
 
-async function png(files) {
+export async function png(files) {
   // Playwright is pre-installed globally in the cloud container; it isn't a dependency.
   // Run with NODE_PATH=$(npm root -g).
   const { createRequire } = await import('node:module')

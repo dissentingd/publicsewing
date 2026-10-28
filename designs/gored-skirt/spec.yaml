@@ -11,6 +11,7 @@ about:
   techniques: [zip, waistband, hem]
   version: 0.1.0
   source: Mitchell, Ladies' Tailor-Made Garments (1921), skirt foundation and gored skirts, pp. 84-101 (mitchell)
+  preview: cisFemaleAdult36 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 block: sarah
 

@@ -12,6 +12,7 @@ about:
   techniques: [gathering, placket, button]
   version: 0.1.0
   source: Walker, Manual of Needlework and Cutting Out (1909), frock bodices and skirt (krl00366374)
+  preview: usdaGirlC5 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
   yokeAt: { dflt: waist, list: [chest, waist], menu: style }

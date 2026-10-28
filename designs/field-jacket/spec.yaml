@@ -14,6 +14,7 @@ about:
   techniques: [dart, lapel, collar, facing, button, patch-pocket, two-piece-sleeve]
   version: 0.1.0
   source: "Merz, Practical Cutting System for Ladies' Jackets and Cloaks (1911), Diagram XX, pp. 50-51 (merzspracticalcu00merz)"
+  preview: cisFemaleAdult36 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
   # Style: hip length, a little flare

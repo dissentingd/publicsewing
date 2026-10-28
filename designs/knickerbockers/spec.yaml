@@ -11,6 +11,7 @@ about:
   techniques: [gathering, elastic, band, button]
   version: 0.1.0
   source: Walker, Manual of Needlework and Cutting Out (1909), knickerbockers and drawers (krl00366374)
+  preview: cisFemaleAdult36 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 block: titan
 

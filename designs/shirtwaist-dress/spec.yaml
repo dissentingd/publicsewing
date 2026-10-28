@@ -12,6 +12,7 @@ about:
   techniques: [gathering, collar, cuff, button]
   version: 0.1.0
   source: "Woman's Institute, Pattern Drafting, §2 (foundation waist, shirtwaist sleeve, collar and cuff) (patterdraftingpicken)"
+  preview: cisFemaleAdult36 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
   yokeAt: { dflt: waist, list: [chest, waist], menu: style } # a bodice to the waist

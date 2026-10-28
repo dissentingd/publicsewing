@@ -13,6 +13,7 @@ about:
   techniques: [princess-seam, lapel, collar, facing, button, flap-pocket, lining, two-piece-sleeve]
   version: 0.1.0
   source: "Merz, Practical Cutting System for Ladies' Jackets and Cloaks (1911), Diagram XXI, pp. 52-53 (merzspracticalcu00merz)"
+  preview: cisFemaleAdult36 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
   # Fit: semi-fitted, worn over a sweater

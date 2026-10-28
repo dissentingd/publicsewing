@@ -13,6 +13,7 @@ about:
   techniques: [gathering, yoke, button]
   version: 0.1.0
   source: Walker, Manual of Needlework and Cutting Out (1909), pinafores (krl00366374)
+  preview: usdaGirlC3 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
   chestEase: { pct: 22, min: 8, max: 40, menu: fit } # worn over clothes

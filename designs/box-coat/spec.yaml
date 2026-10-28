@@ -11,6 +11,7 @@ about:
   techniques: [dart, lapel, collar, facing, button, flap-pocket, two-piece-sleeve]
   version: 0.1.0
   source: "Mitchell, New \"Standard\" Work on ... Ladies' Tailor-Made Garments (1921), pp. 16-19, 60-61 (newstandardworko00mitc)"
+  preview: cisFemaleAdult36 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 block: breanna
 

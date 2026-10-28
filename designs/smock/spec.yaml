@@ -12,6 +12,7 @@ about:
   techniques: [gathering, yoke, placket, button]
   version: 0.1.0
   source: Walker, Manual of Needlework and Cutting Out (1909), Overall for Child of 6 Years (krl00366374)
+  preview: usdaGirlC4 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 # Walker's overall: hem above the knee; the yoke "single or double"; "back-opening ... from
 # 6 to 9 inches long"; "two button-holes"
