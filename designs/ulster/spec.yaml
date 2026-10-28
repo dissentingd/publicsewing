@@ -1,0 +1,20 @@
+# Ulster: Simons' "D. B. Ulster Collar Overcoat" (Designing Overcoat Patterns, 1916, pp. 28-30),
+# the peacoat's double-breasted front, ulster collar, slanted pockets, vent and lining at full
+# overcoat length, drafted four sizes up. See BRIEF.md.
+extends: ../peacoat/spec.yaml
+
+about:
+  id: ulster
+  name: Ulster
+  description: "A long double-breasted overcoat: deep ulster collar that buttons up, wide lapels, slanted pockets, back vent"
+  difficulty: 4
+  tags: [coats]
+  techniques: [welt-pocket, collar, facing, button, vent, lining]
+  version: 0.1.0
+  source: "Simons, Designing Overcoat Patterns (1916), D.B. Ulster Collar Overcoat, pp. 28-30 (designingovercoa00simo)"
+
+options:
+  # "Drafted 4 sizes larger than the breast measurement of sack" (p. 28)
+  chestEase: { pct: 29 } # the overcoat's 24% (two sizes up), and two more sizes
+  # 50" from the nape (B-G), 32 1/2" below the waist (B-E 17 1/2")
+  lengthBelowWaist: { pct: 306, max: 320 } # x waistToSeat: 32 1/2" at FreeSewing's 38 (10 5/8")

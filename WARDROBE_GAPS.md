@@ -37,14 +37,14 @@ and marked as derived.
 | Sack/suit jacket | 1 | Jaeger (on Bent) | Have; **drafted 2026-10-27** (`designs/jacket`: two-button, notched lapel, side panels, flap pockets, vent; not sewn) | ЕМКО 1988 §1 |
 | Waistcoat | 1 | Wahid | Have; **drafted 2026-10-27** (`designs/waistcoat`: V neck, cutaway points, darts, welts, lined; not sewn) | ЕМКО 1988 §6 |
 | Dress trousers (pleats, cuffs) | 1 | Titan, Charlie (Theo dropped in v4) | Variant; **darted trousers drafted 2026-10-27** (`designs/trousers`, on Titan: fly, pockets, waistband; no pleats or cuffs yet; not sewn); ЕМКО 1988 §7 | Simons *Pants and Overalls* 1916 `draftingpantsove00simo` |
-| Overcoat (Chesterfield) | 1 | Carlton is a belted long coat | Variant | Simons *Overcoat Patterns* 1916 `designingovercoa00simo` |
+| Overcoat (Chesterfield) | 1 | Carlton is a belted long coat | Variant; **drafted 2026-10-27** (`designs/overcoat`, `designs/box-overcoat`: Simons' regular and medium box overcoats; not sewn) | Simons *Overcoat Patterns* 1916 `designingovercoa00simo` |
 | Work shirt | 2 | Simon | Variant (patch pockets, plain yoke) | Simons *Cotton Garments* 1918 `draftingcottonga00simo` |
 | Work trousers / dungarees | 2 | Titan, Charlie | Variant; **work pants drafted 2026-10-27** (`designs/work-pants`: the trousers with Simons' work-pants proportions; not sewn) | Simons 1916 `draftingpantsove00simo` |
 | Overalls | 2 | Opal | Have | — |
 | **Coverall / boiler suit** | 2, 3 | — | **Drafted 2026-10-27** (`designs/jumpsuit`: flat-cut, one body piece, gussets, buttoned front, patch pockets; not sewn) | Thayaht's TuTa 1920, Open+Pattern (CC BY 4.0); Simons 1916 has a one-piece overall too |
 | **Chore / work coat** | 2 | — | **Drafted 2026-10-23** (`designs/chore-coat`, not sewn) | Simons 1918 (work coat) |
 | **Peacoat / reefer** | 3 | — | **Drafted 2026-10-26** (`designs/peacoat`: the mackinaw at hip length with Simons' D.B. overcoat details: ulster collar and notched lapel, hand-warmer pockets, vent, lining; not sewn) | Simons 1916 D.B. overcoats (no reefer as such) |
-| Trench / ulster | 3 | Carlton | Variant | Simons 1916 |
+| Trench / ulster | 3 | Carlton | Variant; **ulster drafted 2026-10-27** (`designs/ulster`: the peacoat at 50", four sizes up; not sewn) | Simons 1916 |
 | **Overcoat, straight, yoked** | 1, 3 | Carlton is a belted long coat | **Drafted 2026-10-27** (`designs/winter-coat`: deep front and back yokes, hip welts, turn-down collar, lining; not sewn) | ЕМКО 1988 §3 |
 | **Topcoat, semi-fitted** | 1 | Carlton | **Drafted 2026-10-27** (`designs/topcoat`: side panels, back vent, slanted welts, two-piece sleeves; not sewn) | ЕМКО 1988 §2 |
 | **Hooded windbreaker** | 3, 5 | — (Jett is a bomber) | **Drafted 2026-10-27** (`designs/windbreaker`: zip, yokes, hood or stand collar, slanted welts; not sewn) | ЕМКО 1988 §4 |
@@ -209,8 +209,9 @@ shift, the jacket's darts, lining and collar stand, the waistcoat's CB shaping. 
   `archive/recipes/mitchell/FINDINGS.md` (style lines and proportions).
 - **Simons, *Designing Overcoat Patterns* (1916, `designingovercoa00simo`, tracked):** it has
   no reefer; the peacoat (2026-10-26) takes its D.B. overcoat and ulster details onto the
-  mackinaw. Still to use: its regular, box and ulster overcoats (the overcoat row is a
-  Variant of Carlton).
+  mackinaw. Its regular, medium box and D.B. ulster collar overcoats are built (2026-10-27:
+  `designs/overcoat`, `box-overcoat`, `ulster`, on the peacoat). Still to use: balmacaans,
+  the mantle, surtout and French overcoats, the shoulder cape.
 - **Later Woman's Institute volumes**, held but not tracked: `gb_wi1924_draftingpatterndesigning`
   and `gb_wi1928_patterndesigningdraping` (US 1924, 1928; public domain). Check what each scan
   actually holds before planning on it.

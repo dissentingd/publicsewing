@@ -87,7 +87,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Source (folder id) | Grade | Designs |
 |---|---|---|
 | Simons, *Drafting Cotton Garments and Mackinaws* (1918) `draftingcottonga00simo` | A | chore coat, boys' work coat, shop coat, barber's coat, hunting coat, mackinaw, military blouse, bar vest |
-| Simons, *Designing Overcoat Patterns* (1916) `designingovercoa00simo` | A | peacoat |
+| Simons, *Designing Overcoat Patterns* (1916) `designingovercoa00simo` | A | peacoat, overcoat, box overcoat, ulster |
 | Walker, *Manual of Needlework and Cutting Out* (1909) `krl00366374` | A (grid) | nightshirt, nightgown, smock, frock, pinafore, knickerbockers |
 | Woman's Institute, *Pattern Drafting* (1915/1920) `patterdraftingpicken` | A (blocks) | shirtwaist dress |
 | Mitchell, *Ladies' Tailor-Made Garments* (1921) `newstandardworko00mitc` | A | tailored jacket, fitted jacket, box coat, gored skirt |
@@ -96,8 +96,8 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |
 | USDA O'Brien body-measurement surveys (1939–41) `childrensbodymea365obri`, `bodymeasurements366obri`, `womensmeasuremen454obri` | C | the 75 children's size sets (`designs/sizes/`) |
 
-Left to build from these: Mitchell's double-dart tight-fitted jacket;
-Simons' regular, box and ulster overcoats (1916).
+Left to build from these: Mitchell's double-dart tight-fitted jacket; Simons 1916's
+balmacaans, mantle, surtout and French overcoats, cape.
 
 ## Held, grade A, not built yet
 In the corpus; all public domain in the US. Grouped by the gap they'd fill. **Variants are

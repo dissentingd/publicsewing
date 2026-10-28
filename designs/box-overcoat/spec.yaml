@@ -1,0 +1,22 @@
+# Box overcoat: Simons' "Medium Box Overcoat" (Designing Overcoat Patterns, 1916, pp. 14-15), a
+# loose, straight single-breasted overcoat flared to a full sweep, on the overcoat (Brian,
+# through the peacoat and mackinaw): drafted three sizes up, no waist shaping, the side seams
+# and CB let out to a 66" sweep at the hem. See BRIEF.md.
+extends: ../overcoat/spec.yaml
+
+about:
+  id: box-overcoat
+  name: Box overcoat
+  description: "A loose, straight single-breasted overcoat with a full sweep at the hem"
+  difficulty: 4
+  tags: [coats]
+  techniques: [welt-pocket, collar, facing, button, vent, lining]
+  version: 0.1.0
+  source: "Simons, Designing Overcoat Patterns (1916), Medium Box Overcoat, pp. 14-15 (designingovercoa00simo)"
+
+options:
+  # "On the box overcoat, I make the breast 3 sizes larger" (p. 14)
+  chestEase: { pct: 27 }
+  # 44" from the nape, "finishing up about 66 inches sweep"
+  lengthBelowWaist: { pct: 250 }
+  hemFlare: { pct: 10 } # x seat, at each side seam: a 66" sweep at FreeSewing's 38

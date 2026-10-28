@@ -1,0 +1,147 @@
+# Overcoat: Simons' "Men's Regular Overcoat" (Designing Overcoat Patterns, 1916, pp. 6-7), a
+# conservative single-breasted overcoat to below the knee, on the peacoat (Brian, through the
+# mackinaw): drafted two sizes up, a notched lapel and collar, a fly of buttons on CF, a CB seam
+# with a vent, the side seams let out at the hem, slanted hand pockets, a lining. See BRIEF.md.
+extends: ../peacoat/spec.yaml
+
+about:
+  id: overcoat
+  name: Overcoat
+  description: "A single-breasted overcoat to below the knee: notched lapel, back vent, slanted pockets, lined"
+  difficulty: 4
+  tags: [coats]
+  techniques: [welt-pocket, collar, facing, button, vent, lining]
+  version: 0.1.0
+  source: "Simons, Designing Overcoat Patterns (1916), Men's Regular Overcoat, pp. 6-7 (designingovercoa00simo)"
+
+options:
+  # "A size 38 breast is drafted on a basis of 40" (p. 5): two sizes up
+  chestEase: { pct: 24 }
+  # Style: 44" from the nape (B-G), 26 1/2" below the waist (B-E 17 1/2")
+  lengthBelowWaist: { pct: 250 } # x waistToSeat: 26 1/2" at FreeSewing's 38 (10 5/8")
+  hemFlare: { pct: 1.3 } # x seat: the side seam 1/2" out at the hem (L-20)
+  buttonExtension: { pct: 3.3 } # x chest: a 1 1/4" lap
+  buttons: { count: 4 }
+  buttonTop: { pct: 160 } # x the lap: the break and top button 2" below the chest line
+  buttonBottom: { pct: 57 } # x waistToSeat: the last button 6" below the waist
+  buttonRow: { menu: false } # one row, on CF
+  collarStyle: { dflt: ulster, title: Collar, description: "Notched lapel and collar (\"ulster\"), or the mackinaw's collars." }
+  collarWidth: { pct: 24 } # x neck: about 2 1/2" and its stand
+  lapelWidth: { pct: 22 } # x neck: about 3 1/4" from the crease
+
+pieces:
+  # The mackinaw's back and front, taking this spec's hemFlare
+  back:
+    prefix: mackinaw # named like the inherited pieces
+    from: brian.back
+    hide: tree
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, belt, beltWidth, sleeveStyle, vent, ventLength, ventWidth, hemFlare] # hemFlare: the side seams let out to the hem
+    let:
+      # Belt band: width from the chest, set a little above the waist (Simons: D down ~1 5/8")
+      beltW: chest * beltWidth
+      beltY: cbWaist.y - beltW * 0.2
+    ops:
+      - coatBack: {}
+      # Raglan sleeves (Diagram XXIII) go with the convertible and military collars
+      - raglan: { which: back, if: "sleeveStyle == 'raglan' and collarStyle != 'shawl' and collarStyle != 'ulster'" }
+      # Belt placement (the belt is sewn on over the waist)
+      # A back vent: the back gets a CB seam
+      - backVent: { if: vent, length: waistToSeat * ventLength, width: chest * ventWidth }
+      - store: { key: coat.belt, value: { w: beltW, y: beltY }, if: belt }
+      - markLine: { id: beltTop, from: [0, beltY], to: [sideHem.x, beltY], class: mark dashed, if: belt }
+      - markLine: { id: beltBottom, from: [0, beltY + beltW], to: [sideHem.x, beltY + beltW], class: mark dashed, if: belt }
+
+  # Single-breasted: one row of buttons on CF
+  front:
+    prefix: mackinaw # named like the inherited pieces
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [buttonExtension, buttons, buttonTop, buttonBottom, hemCurve, hemFlare, frontDrop, facingWidth, breastPockets, lowerPockets, pocketShape, pocketFlaps, handPockets, handPocketTop, handPocketAt, handPocketLength, handPocketLean, handPocketWelt, lapelWidth, gorgeAt, lining, liningPleat, neckFacingWidth]
+    let:
+      # Single-breasted: a lap past CF, hem sweeping down toward the front edge
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+      shawl: collarStyle == 'shawl'
+      topButton: underarm.y + ext * buttonTop
+      beltW: chest * beltWidth
+      beltY: cfWaist.y - beltW * 0.2
+    ops:
+      - coatFront:
+          ext: ext
+          r: ext * hemCurve
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          # Shawl: a V neck down to the break, just above the top button (XVII: 16)
+          neckY: if(shawl, topButton - ext * 0.5, null)
+      - raglan: { which: front, if: "sleeveStyle == 'raglan' and not shawl and collarStyle != 'ulster'" }
+      # XVIII: stand 3/4", collar 3 1/2" + 3/4" at CB; XVII: lapel about 3" at its widest
+      - shawl:
+          if: shawl
+          stand: neck * 0.05
+          width: neck * collarWidth
+          lapel: ext * 1.15
+      # Ulster collar: the lapel turns back at the top button
+      - lapel:
+          if: collarStyle == 'ulster'
+          breakY: topButton
+          rollOut: neck * 0.05
+          gorgeAt: gorgeAt
+          width: neck * lapelWidth
+      # A lined coat's front facings run to the shoulder as wide as the back-neck facing
+      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: "lining and (collarStyle == 'ulster' or collarStyle == 'shawl')" }
+      # One row of buttons on CF, from the break down
+      - buttons:
+          count: buttons
+          top: topButton
+          bottom: cfWaist.y + waistToSeat * buttonBottom
+          rows: [0]
+      - store: { key: coat.belt, value: { w: beltW, y: beltY }, if: belt }
+      - markLine: { id: beltTop, from: [-ext, beltY], to: [sideHem.x, beltY], class: mark dashed, if: belt }
+      - markLine: { id: beltBottom, from: [-ext, beltY + beltW], to: [sideHem.x, beltY + beltW], class: mark dashed, if: belt }
+      # Pockets, as shares of q. Lower pockets sit below the belt (Diagram XVII: flapped
+      # patch pockets, rounded bottom, ~7 1/2" x 8 1/2" at breast 38); breast pockets at the
+      # chest line (Diagram XXI). Flaps cover the mouths; a lower pocket moves down by its
+      # flap's gap to make room for the flap under the belt.
+      - store:
+          key: coat.pockets
+          value:
+            breast:
+              x: q * 0.2
+              y: underarm.y + q * 0.06
+              h: q * 0.42 * 1.15
+              w: min(q * 0.42, armholeHollow.x - q * 0.05 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+              flap: { if: pocketFlaps, h: w * 0.32, gap: w * 0.07 }
+            lower:
+              x: q * 0.3
+              _top: if(belt, beltY + beltW, cfWaist.y) + waistToSeat * 0.3
+              h: min(q * 0.7 * 1.1, cfHem.y - q * 0.08 - _top)
+              w: min(q * 0.7, sideHem.x - q * 0.06 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+              flap: { if: pocketFlaps, h: w * 0.32, gap: w * 0.07 }
+              y: _top + if(pocketFlaps, flap.gap, 0)
+      - markPocket: { id: breastPocket, pocket: coat.pockets.breast, if: breastPockets }
+      - markPocket: { id: lowerPocket, pocket: coat.pockets.lower, if: lowerPockets }
+      # Hand-warmer welt pockets: a mouth from just above the waist down toward the hip, its
+      # foot leaning toward the side; kept off the side seam
+      - store:
+          if: handPockets
+          key: coat.welts
+          value:
+            hand:
+              _x0: q * handPocketAt
+              _y0: cfWaist.y - waistToSeat * handPocketTop
+              _down: min(q * handPocketLength, cfHem.y - q * 0.1 - _y0)
+              _dx: min(_down * handPocketLean, sideHem.x - q * 0.1 - _x0)
+              x0: _x0
+              y0: _y0
+              x1: _x0 + _dx
+              y1: _y0 + _down
+              len: sqrt(_down * _down + _dx * _dx)
+              welt: len * handPocketWelt
+              bag: len * 0.85
+      - markLine: { id: handPocket, from: [coat.welts.hand.x0, coat.welts.hand.y0], to: [coat.welts.hand.x1, coat.welts.hand.y1], class: mark, if: handPockets }
+

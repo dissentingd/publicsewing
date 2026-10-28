@@ -27,6 +27,9 @@ a check that the pieces sew together into the garment, not a fit result.
 | `chore-coat` | Work coat | Simons 1918 |
 | `mackinaw` | Double-breasted belted mackinaw (convertible, military or shawl collar; raglan option) | Simons 1918 |
 | `peacoat` | Hip-length double-breasted coat: notched lapel and deep ulster collar, hand-warmer pockets, back vent, lining | Simons 1916 |
+| `overcoat` | Single-breasted overcoat to below the knee, notched lapel, back vent, lined | Simons 1916 |
+| `box-overcoat` | Loose, straight overcoat with a full sweep | Simons 1916 |
+| `ulster` | Long double-breasted overcoat with a deep collar that buttons up | Simons 1916 |
 | `hunting-coat` | Belted field coat with an action-pleated back | Simons 1918 |
 | `military-blouse` | Fitted blouse, two-piece sleeve, standing collar | Simons 1918 |
 | `boys-work-coat` | The chore coat for children's sizes | Simons 1918 |
