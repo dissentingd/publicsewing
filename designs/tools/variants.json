@@ -28,6 +28,7 @@
   "fitted-jacket": {"default": {}, "loose": {"cbSuppression": 0, "underarmSuppression": 0, "buttons": 4, "lengthBelowWaist": 0.3}, "plain": {"pockets": false, "breastPocket": false, "lining": false}},
   "overcoat": {"default": {}, "convertible": {"collarStyle": "convertible", "buttons": 5, "hemFlare": 0}, "raglan": {"sleeveStyle": "raglan", "collarStyle": "military"}, "plain": {"handPockets": false, "lengthBelowWaist": 1.8, "vent": false, "lining": false}},
   "box-overcoat": {"default": {}, "convertible": {"collarStyle": "convertible", "buttons": 5, "hemFlare": 0}, "raglan": {"sleeveStyle": "raglan", "collarStyle": "military"}, "plain": {"handPockets": false, "lengthBelowWaist": 1.8, "vent": false, "lining": false}},
+  "balmacaan": {"default": {}, "setIn": {"sleeveStyle": "setIn", "buttons": 5}, "ulster": {"collarStyle": "ulster", "buttonTop": 1.6, "lining": true, "hemFlare": 0}, "plain": {"handPockets": false, "lengthBelowWaist": 1.8, "vent": false}},
   "ulster": {"default": {}, "military": {"collarStyle": "military", "buttons": 4}, "raglan": {"sleeveStyle": "raglan", "collarStyle": "convertible"}, "plain": {"handPockets": false, "lengthBelowWaist": 2.4, "vent": false, "lining": false}, "shawl": {"collarStyle": "shawl", "vent": false}},
   "jumpsuit": {"default": {}, "plain": {"breastPockets": false, "lowerPockets": false, "legTaper": 0, "neckWidth": 0.22, "frontNeckDepth": 0.18, "buttons": 4}},
   "gored-skirt": {"default": {}, "seven": {"gores": 7, "goreFlare": 0.3}, "fifteen": {"gores": 15, "frontWaistDrop": 0, "zipLength": 0.6}}

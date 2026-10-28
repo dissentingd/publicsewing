@@ -30,6 +30,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `overcoat` | Single-breasted overcoat to below the knee, notched lapel, back vent, lined | Simons 1916 |
 | `box-overcoat` | Loose, straight overcoat with a full sweep | Simons 1916 |
 | `ulster` | Long double-breasted overcoat with a deep collar that buttons up | Simons 1916 |
+| `balmacaan` | Loose raglan-sleeved overcoat, buttoned to the throat under a stand collar | Simons 1916 |
 | `hunting-coat` | Belted field coat with an action-pleated back | Simons 1918 |
 | `military-blouse` | Fitted blouse, two-piece sleeve, standing collar | Simons 1918 |
 | `boys-work-coat` | The chore coat for children's sizes | Simons 1918 |

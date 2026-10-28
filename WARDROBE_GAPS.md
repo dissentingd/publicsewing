@@ -37,7 +37,7 @@ and marked as derived.
 | Sack/suit jacket | 1 | Jaeger (on Bent) | Have; **drafted 2026-10-27** (`designs/jacket`: two-button, notched lapel, side panels, flap pockets, vent; not sewn) | ЕМКО 1988 §1 |
 | Waistcoat | 1 | Wahid | Have; **drafted 2026-10-27** (`designs/waistcoat`: V neck, cutaway points, darts, welts, lined; not sewn) | ЕМКО 1988 §6 |
 | Dress trousers (pleats, cuffs) | 1 | Titan, Charlie (Theo dropped in v4) | Variant; **darted trousers drafted 2026-10-27** (`designs/trousers`, on Titan: fly, pockets, waistband; no pleats or cuffs yet; not sewn); ЕМКО 1988 §7 | Simons *Pants and Overalls* 1916 `draftingpantsove00simo` |
-| Overcoat (Chesterfield) | 1 | Carlton is a belted long coat | Variant; **drafted 2026-10-27** (`designs/overcoat`, `designs/box-overcoat`: Simons' regular and medium box overcoats; not sewn) | Simons *Overcoat Patterns* 1916 `designingovercoa00simo` |
+| Overcoat (Chesterfield) | 1 | Carlton is a belted long coat | Variant; **drafted 2026-10-27** (`designs/overcoat`, `designs/box-overcoat`: Simons' regular and medium box overcoats; `designs/balmacaan` 2026-10-28: raglan sleeves, military collar; not sewn) | Simons *Overcoat Patterns* 1916 `designingovercoa00simo` |
 | Work shirt | 2 | Simon | Variant (patch pockets, plain yoke) | Simons *Cotton Garments* 1918 `draftingcottonga00simo` |
 | Work trousers / dungarees | 2 | Titan, Charlie | Variant; **work pants drafted 2026-10-27** (`designs/work-pants`: the trousers with Simons' work-pants proportions; not sewn) | Simons 1916 `draftingpantsove00simo` |
 | Overalls | 2 | Opal | Have | — |
@@ -210,7 +210,8 @@ shift, the jacket's darts, lining and collar stand, the waistcoat's CB shaping. 
 - **Simons, *Designing Overcoat Patterns* (1916, `designingovercoa00simo`, tracked):** it has
   no reefer; the peacoat (2026-10-26) takes its D.B. overcoat and ulster details onto the
   mackinaw. Its regular, medium box and D.B. ulster collar overcoats are built (2026-10-27:
-  `designs/overcoat`, `box-overcoat`, `ulster`, on the peacoat). Still to use: balmacaans,
+  `designs/overcoat`, `box-overcoat`, `ulster`, on the peacoat), and the balmacaan (2026-10-28:
+  `designs/balmacaan`, the split-sleeve version; the one-piece raglan sleeve isn't built). Still to use:
   the mantle, surtout and French overcoats, the shoulder cape.
 - **Later Woman's Institute volumes**, held but not tracked: `gb_wi1924_draftingpatterndesigning`
   and `gb_wi1928_patterndesigningdraping` (US 1924, 1928; public domain). Check what each scan

@@ -63,7 +63,7 @@ pieces:
       ext: chest * buttonExtension
       q: underarm.x # the front's width at the chest, CF to side seam
       shawl: collarStyle == 'shawl'
-      topButton: underarm.y + ext * buttonTop
+      topButton: max(cfNeck.y + neck * 0.15, underarm.y + ext * buttonTop) # never closer to the neck than 15% of it
       beltW: chest * beltWidth
       beltY: cfWaist.y - beltW * 0.2
     ops:

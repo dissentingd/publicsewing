@@ -1,0 +1,32 @@
+# Balmacaan: Simons' "One Piece Sleeve Balmacaan" and "Split Sleeve Balmacaan with Hinge"
+# (Designing Overcoat Patterns, 1916, pp. 32-35), a loose raglan-sleeved overcoat to below the
+# knee, on the overcoat (Brian, through the peacoat and mackinaw): drafted four sizes up,
+# raglan sleeves in two pieces (the split sleeve), a military collar that buttons to the
+# throat, slanted pockets, the side seams let out to a full sweep. See BRIEF.md.
+extends: ../overcoat/spec.yaml
+
+about:
+  id: balmacaan
+  name: Balmacaan
+  description: "A loose raglan-sleeved overcoat to below the knee, buttoned to the throat under a stand collar"
+  difficulty: 4
+  tags: [coats]
+  techniques: [welt-pocket, collar, facing, button, vent]
+  version: 0.1.0
+  source: "Simons, Designing Overcoat Patterns (1916), Balmacaans, pp. 32-35 (designingovercoa00simo)"
+
+options:
+  # "This draft is made 4 sizes larger than the sack breast measurement, so that the garment
+  # will be full" (p. 33)
+  chestEase: { pct: 29 }
+  # 44" long (p. 32; the split-sleeve one 42"), as the overcoat
+  lengthBelowWaist: { pct: 250 }
+  hemFlare: { pct: 10 } # x seat, at each side seam: a 66" sweep at FreeSewing's 38, as the diagram
+  sleeveStyle: { dflt: raglan }
+  collarStyle: { dflt: military, description: "A military (stand) collar buttoned to the throat, or the mackinaw's other collars." }
+  collarWidth: { pct: 27 } # x neck: "drafted the same as ... Military Collar Mackinaw" (p. 33), the mackinaw's default
+  buttonExtension: { pct: 5.3 } # x chest: a 2" lap (Y-Z, p. 32)
+  buttons: { count: 4 }
+  buttonTop: { pct: -320, min: -400 } # x the lap: the top button at the throat, about 2" below the neck (6 1/2" above the chest line)
+  buttonBottom: { pct: 78 } # x waistToSeat: the last button about 2" below the hip line (8 1/4" below the waist)
+  lining: { bool: false } # Simons' balmacaans are unlined; the lining goes with the ulster and shawl collars
