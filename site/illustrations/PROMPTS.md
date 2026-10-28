@@ -457,3 +457,143 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: pockets, a fly, belt loops, cuffs or bands at the ankle, feet, piping, a matching
 > jacket, a person, slippers.
+
+---
+
+## Added 2026-10-29
+
+Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the entries above.
+
+### work-shirt: Work shirt
+> A roomy men's **pullover work shirt** in sturdy cotton drill or chambray (blue, grey or
+> natural). A **yoke across the back shoulders**, the back **gathered softly** into it (from the
+> front, only the yoke seam over the shoulders shows). **No front yoke.** A **front fly
+> opening** from a **narrow band (stand) collar** down to mid-chest, with **four buttons**; it
+> doesn't open to the hem. **One patch pocket on the wearer's left breast.** Long, loose sleeves
+> gathered into **narrow buttoned wristbands**. **Long shirttails** well below the seat, with
+> **short slits at the side seams** and rounded corners. Shown untucked.
+>
+> Leave out: a turn-down collar, collar points, a button-through front, a front yoke, epaulettes,
+> a second pocket, a pocket flap, a person, trousers.
+
+### service-shirt: Service shirt
+> A men's **button-through camp-collar shirt** in plain khaki or olive cotton twill. **Six
+> buttons** from the neck to below the waist, under a **convertible (camp) collar** worn open and
+> lying flat. **Two breast patch pockets with pointed bottoms and buttoned flaps.** **Shoulder
+> straps** (epaulettes) on both shoulders, pointed and buttoned near the collar. A **back yoke**
+> across the shoulders. Length to **below the seat**, the front corners **rounded**. Long, plain
+> set-in sleeves with simple cuffs. Shown untucked.
+>
+> Leave out: a band or stand collar, a tie, insignia, badges, pleated or bellows pockets, a
+> pullover front, short sleeves, a person, trousers.
+
+### hooded-smock: Hooded smock
+> A **boxy pullover anorak** (smock) in windproof cotton (olive, khaki or tan), hip length,
+> straight and roomy. A **deep front yoke** across the chest, with a short **buttoned neck
+> placket** (two buttons) in the middle; no front opening below it. A **hood** attached all
+> round the neckline, with a **drawstring in its face edge** (shown down on the back of the
+> shoulders, or up and empty). A **flapped chest pocket** set at the yoke seam. A **large
+> kangaroo pocket** low on the front, its two hand openings **slanting at the sides**. **Wide
+> sleeves gathered into narrow wristbands**. Plain straight hem.
+>
+> Leave out: a full-length zip or buttons, camouflage, a drawcord at the hem, fur trim, shoulder
+> patches, insignia, side pockets, a person.
+
+### t-shirt: T-shirt
+> A **plain crew-neck T-shirt** in cotton jersey (white, heather grey or navy), close but not
+> tight. A **narrow ribbed band at the round neck**. **Short set-in sleeves** ending above the
+> elbow, plain hemmed. Straight body to **the top of the hips**, with a plain hem. Shown flat,
+> front view, as the garment alone.
+>
+> Leave out: a pocket, print or logo, a V neck, buttons, cuffs, a curved shirttail hem, long
+> sleeves, a person.
+
+### two-piece-skirt: Two-piece skirt
+> A women's **long plain skirt** in wool or linen (navy, grey, brown or cream), **nearly to the
+> floor**. **Fitted smoothly over the hips and waist**, with no darts or pleats, then falling in
+> a **gentle A-line**, only a little wider at the hem. **Seams only at the sides** (and a
+> centre-back seam, not seen from the front), so the front is one smooth panel. A plain **narrow
+> waistband**. Closes with a zip at the centre back (not visible). Shown flat, front view, as the
+> skirt alone.
+>
+> Leave out: gores or panel seams on the front, pleats, gathers, a flared or circular hem,
+> pockets, a slit, buttons, a belt, a person, a blouse.
+
+### gathered-skirt: Gathered skirt
+> A women's **full gathered skirt** in cotton (printed, checked or plain), **to below the
+> knee**. Straight breadths of cloth **gathered softly all round into a narrow waistband**, so
+> the fullness falls in **soft vertical folds** from the waist to a wide, level hem. A **placket
+> at the left side seam** (barely visible). Shown flat, front view, as the skirt alone.
+>
+> Leave out: pleats, gores, a yoke, a flounce or tiers, a ruffle, petticoats, pockets, a belt or
+> sash, buttons down the front, a person, a blouse.
+
+### peg-pants: Peg-top pants
+> A pair of men's **peg-top trousers** in plain wool or flannel (grey, brown or navy). **Two deep
+> pleats** each side of the front at the waist, giving **fullness over the hips**, then
+> **tapering steadily** from a wide knee to a **narrow bottom** at the ankle; plain hem. A
+> **waistband with belt loops**, a fly front, **side-seam pockets**. A pressed crease down each
+> leg. Shown flat, front view, as trousers alone.
+>
+> Leave out: turn-ups, cargo or patch pockets, slanted front pockets, elastic or cuffs at the
+> ankle, a belt, braces, a person, shoes.
+
+### overall-pants: Overall pants
+> A pair of **full, straight work overall trousers** in heavy denim or cotton drill (indigo, blue
+> or brown), roomy through the seat and leg. **No side seam:** each leg is cut in one piece, with
+> just a **pressed fold down the outside of the leg**. A **waistband with belt loops** and a
+> **fly front**. **No pockets.** Wide, straight legs to a plain hem. Topstitched seams. Shown
+> flat, front view, as trousers alone.
+>
+> Leave out: pockets of any kind, rivets, a bib, braces, side seams, turn-ups, a belt, a person,
+> shoes.
+
+### bib-overall: Bib overall
+> A pair of **bib-and-brace work overalls** in sturdy denim or striped hickory cloth (blue or
+> indigo). A **square bib** up the chest with a **patch pocket**, held up by **two straps** over
+> the shoulders, **buttoned to the bib's top corners**. **Buttoned openings at the top of each
+> side seam**. **No waistband, no fly.** A **patch pocket on each hip** at the front. **Full,
+> straight legs** to a plain hem. The back rises a little above the waist. Topstitched seams.
+> Shown flat, front view, as the garment alone.
+>
+> Leave out: metal clasp buckles, a hammer loop, a rule pocket, a zip, a waistband, belt loops,
+> a shirt, a person.
+
+### breeches: Breeches
+> A pair of men's **riding breeches** in khaki cord, whipcord or tan twill. **Full over the seat
+> and flaring out wide at the sides of the thigh**, then **fitted closely from the knee to the
+> calf**, ending in a **narrow cuff at mid-calf**. **A row of seven small buttons up the outside
+> of each lower leg**, from the cuff to just below the knee. A **waistband with belt loops**, a
+> fly front, side pockets. Shown flat, front view, as breeches alone.
+>
+> Leave out: boots, leather knee patches, laces, a stripe down the leg, straight legs, a belt, a
+> person.
+
+### field-trousers: Field trousers
+> A pair of **loose combat field trousers** in olive or khaki cotton ripstop or drill. **Two
+> pleats** each side of the front at the waist. **Large bellows cargo pockets on the outer
+> thighs**, each with a **buttoned flap**. **Side-seam pockets** at the hips. A **waistband with
+> belt loops** and a fly front. **Straight, roomy legs** to a plain hem. Shown flat, front view,
+> as trousers alone.
+>
+> Leave out: camouflage print, knee pads or patches, drawcords or elastic at the ankle, zips on
+> the pockets, a belt, boots, a person.
+
+### knee-pants: Knee pants
+> A **boy's pair of short trousers** (about 6 years old) in sturdy wool or cotton (grey, navy or
+> brown), **to just below the knee**. **Straight legs** falling from the seat to a plain, fairly
+> wide hem. A **waistband with belt loops**, a fly front, side-seam pockets. Child's proportions.
+> Shown flat, front view, as trousers alone.
+>
+> Leave out: gathers or bands at the knee, turn-ups, cargo pockets, braces, a belt, long socks or
+> shoes, a person.
+
+### knickers: Knickers
+> A **boy's pair of knickers (knickerbockers)** (about 6 years old) in tweed or wool (grey or
+> brown). **Full legs** reaching a little below the knee, **gathered into a narrow strap** there
+> and **fastened with a small buckle**, the fullness **blousing over the strap**. A **waistband
+> with belt loops**, a fly front, side-seam pockets. Child's proportions. Shown flat, front view,
+> as trousers alone.
+>
+> Leave out: elastic at the knee, straight or long legs, long socks, shoes, a belt, braces, a
+> person.

@@ -13,6 +13,7 @@ about:
   techniques: [dart, zip, welt-pocket, waistband, hem]
   version: 0.1.0
   source: Simons, Designing Boys' and Juveniles' Clothing (1922), Boys' Knee Pants, Diagram 40 (designingboysjuv00simo)
+  preview: usdaBoyC6 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
   # Size 6: waist 24, seat 26, rise 6, inseam 8, knee 12; S and T a quarter knee each side of the

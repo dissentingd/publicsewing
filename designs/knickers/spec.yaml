@@ -14,6 +14,7 @@ about:
   techniques: [gathering, dart, zip, welt-pocket, waistband, buttonhole]
   version: 0.1.0
   source: Simons, Designing Boys' and Juveniles' Clothing (1922), Boys' Knickerbockers, Diagram 41 (designingboysjuv00simo)
+  preview: usdaBoyC6 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
   # Size 6: waist 24, seat 26, rise 6, knee 11 1/2, below knee 10; the drop 4 in (D to E), the
