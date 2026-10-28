@@ -1,0 +1,96 @@
+# Knickers: Simons' "Boys' Knickerbockers" (Designing Boys' and Juveniles' Clothing, 1922,
+# Diagram 41, pp. 117-119), on the trousers' Titan legs: the knee pants "made fuller and longer",
+# 4 in below the knee, the fullness gathered into a strap buckled or buttoned below the knee
+# through a short slit at the side seam; fly, pockets and waistband as the trousers. Drafted from
+# the wearer's own measurements, so they fit men too (plus-fours). See BRIEF.md.
+extends: ../trousers/spec.yaml
+
+about:
+  id: knickers
+  name: Knickers
+  description: Full trousers to below the knee, gathered into a buckled strap, with a fly, pockets and waistband
+  difficulty: 3
+  tags: [bottoms]
+  techniques: [gathering, dart, zip, welt-pocket, waistband, buttonhole]
+  version: 0.1.0
+  source: Simons, Designing Boys' and Juveniles' Clothing (1922), Boys' Knickerbockers, Diagram 41 (designingboysjuv00simo)
+
+options:
+  # Size 6: waist 24, seat 26, rise 6, knee 11 1/2, below knee 10; the drop 4 in (D to E), the
+  # bottom 14 round gathered into a 10 in strap (4 in of fullness)
+  kneeEase: { pct: 30 } # x knee: fuller than the knee pants
+  knickerFullness: { pct: 122, min: 100, max: 180, of: knee, menu: style } # round the bottom, 14 on 11 1/2
+  knickerDrop: { pct: 33, min: 15, max: 60, menu: style } # x knee to floor: 4 in below the knee
+  hemShaping: { pct: 0, menu: false }
+  hemWidth: { pct: 100, menu: false }
+
+pieces:
+  front:
+    prefix: trousers # named like the inherited pieces
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      below: waistToFloor - waistToKnee
+      bottom: below * knickerDrop
+    ops:
+      - trouserLeg:
+          which: front
+          dart: d * frontDart
+          dartAt: 0.55
+          dartLength: waistToSeat * frontDartLength
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45
+          share: 1 - legBalance
+          calfBelow: bottom * 0.6
+          calfW: knee * knickerFullness
+          cuffBelow: bottom
+          cuffW: knee * knickerFullness
+          openingBelow: bottom - knee * 0.25
+      - markLine: { id: gathers, from: [hemIn.x, hemIn.y - 12], to: [hemOut.x, hemOut.y - 12], class: mark dotted }
+  back:
+    prefix: trousers # named like the inherited pieces
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      below: waistToFloor - waistToKnee
+      bottom: below * knickerDrop
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: d * backDart
+          dartAt: 0.4
+          dartFrom: centre
+          dartLength: waistToSeat * backDartLength
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          backPocket: if(backPocket, seat * 0.13, 0)
+          backPocketBelow: waistToSeat * 0.4
+          backPocketWelt: seat * 0.006
+          share: legBalance
+          calfBelow: bottom * 0.6
+          calfW: knee * knickerFullness
+          cuffBelow: bottom
+          cuffW: knee * knickerFullness
+          openingBelow: bottom - knee * 0.25
+      - markLine: { id: gathers, from: [hemIn.x, hemIn.y - 12], to: [hemOut.x, hemOut.y - 12], class: mark dotted }
+  # The strap: 10 in round below the knee (87% of the knee), 3/4 in wide, a 3 in tongue
+  strap:
+    part: strip
+    after: back
+    nr: 10
+    cut: 2
+    fold: true
+    length: knee * 0.87 + knee * 0.26
+    width: knee * 0.065

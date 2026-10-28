@@ -103,8 +103,9 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  * - Breeches (with `cuffBelow`): the leg flares out at the outseam by `thighFlare` at `thighAt`
  *   (a fraction of the way from the fork to the knee), fits Titan's knee, narrows to `calfW` round
  *   `calfBelow` under the knee and `cuffW` round at the hem, `cuffBelow` under it (each width
- *   split back/front by `share`, this piece's part). The outseam opens from the hem up to
- *   `openingBelow` under the knee, with `buttons` buttonholes `buttonInset` in on the front.
+ *   split back/front by `share`, this piece's part). With `openingBelow`, the outseam opens from
+ *   the hem up to that far under the knee, with `buttons` buttonholes `buttonInset` in on the
+ *   front.
  * - `pleats` (front): the dart's width laid as this many pleats at the waist instead (give
  *   `dartLength: 0`), `pleatSpacing` apart, the first at the dart's place; notched, with fold lines.
  * - `straightOutseam`: the outseam a straight line from the hem corner out past the seat to the
@@ -274,8 +275,8 @@ export function draftTrouserLeg(sh, args) {
 
   // Breeches opening: the outseam left open from the hem up to `openingBelow` under the knee;
   // buttonholes along the front's edge (the back's edge takes a button stand)
-  const { openingBelow = 0, buttons = 0, buttonInset = 0 } = args
-  if (br) {
+  const { openingBelow, buttons = 0, buttonInset = 0 } = args
+  if (br && openingBelow !== undefined) {
     const top = outseam.intersectsY(points.knee.y + openingBelow)[0]
     if (top) {
       points.openingTop = top

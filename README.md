@@ -64,6 +64,8 @@ a check that the pieces sew together into the garment, not a fit result.
 | `overall-pants` | Full work overall trousers with no side seam, each leg cut in one piece | Simons 1916 |
 | `two-piece-skirt` | Plain skirt fitted at hips and waist, shaped in its side seams | Mitchell 1921 |
 | `gathered-skirt` | Full skirt of straight breadths gathered into a waistband | Walker 1909 |
+| `knee-pants` | Short trousers to the knee, fly, pockets, waistband | Simons 1922 |
+| `knickers` | Full trousers to below the knee, gathered into a buckled strap | Simons 1922 |
 | `breeches` | Riding breeches, full and flared at the thigh, fitted from the knee to a buttoned cuff | Simons 1916 |
 | `jumpsuit` | One-piece suit cut almost entirely from rectangles: buttoned front, gussets, patch pockets | Thayaht 1920, via Open+Pattern |
 | `windbreaker` | Hooded zip-front light jacket with yokes and slanted welt pockets | ЕМКО 1988 |

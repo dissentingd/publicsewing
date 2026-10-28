@@ -1,0 +1,82 @@
+# Knee pants: Simons' "Boys' Knee Pants" (Designing Boys' and Juveniles' Clothing, 1922, Diagram
+# 40, pp. 115-116), on the trousers' Titan legs: short trousers ending at the knee, straight from
+# the seat, with a turn-up at the bottom; fly, pockets and waistband as the trousers. Drafted from
+# the wearer's own measurements, so they fit men too (shorts). See BRIEF.md.
+extends: ../trousers/spec.yaml
+
+about:
+  id: knee-pants
+  name: Knee pants
+  description: Short trousers to the knee, straight from the seat, with a fly, pockets and waistband
+  difficulty: 3
+  tags: [bottoms]
+  techniques: [dart, zip, welt-pocket, waistband, hem]
+  version: 0.1.0
+  source: Simons, Designing Boys' and Juveniles' Clothing (1922), Boys' Knee Pants, Diagram 40 (designingboysjuv00simo)
+
+options:
+  # Size 6: waist 24, seat 26, rise 6, inseam 8, knee 12; S and T a quarter knee each side of the
+  # forepart's crease, the back 5/8 in wider each side: 14 1/2 round the bottom
+  kneeEase: { pct: 20 } # x knee: Titan's knee, to run straight into the bottom
+  legBottom: { pct: 120, min: 110, max: 130, of: knee, menu: style } # round the bottom
+  kneePantsLength: { pct: 4, min: -15, max: 20, menu: style } # x knee to floor, below the knee: the hem
+  hemShaping: { pct: 0, menu: false }
+  hemWidth: { pct: 100, menu: false }
+
+pieces:
+  front:
+    prefix: trousers # named like the inherited pieces
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      below: waistToFloor - waistToKnee
+      bottom: max(below * kneePantsLength, below * 0.02)
+    ops:
+      - trouserLeg:
+          which: front
+          dart: d * frontDart
+          dartAt: 0.55
+          dartLength: waistToSeat * frontDartLength
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45
+          share: 1 - legBalance
+          calfBelow: bottom / 2
+          calfW: knee * legBottom
+          cuffBelow: bottom
+          cuffW: knee * legBottom
+  back:
+    prefix: trousers # named like the inherited pieces
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      below: waistToFloor - waistToKnee
+      bottom: max(below * kneePantsLength, below * 0.02)
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: d * backDart
+          dartAt: 0.4
+          dartFrom: centre
+          dartLength: waistToSeat * backDartLength
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          backPocket: if(backPocket, seat * 0.13, 0)
+          backPocketBelow: waistToSeat * 0.4
+          backPocketWelt: seat * 0.006
+          share: legBalance
+          calfBelow: bottom / 2
+          calfW: knee * legBottom
+          cuffBelow: bottom
+          cuffW: knee * legBottom

@@ -137,6 +137,18 @@ options:
   seatPockets:
     title: Seat pockets
     description: A patch pocket on each back.
+  legBottom:
+    title: Leg bottom
+    description: Round the bottom of the leg, as a share of the knee measurement.
+  kneePantsLength:
+    title: Length
+    description: Where the leg ends below the knee (above it if negative), as a share of knee to floor.
+  knickerFullness:
+    title: Fullness
+    description: Round the leg at the bottom before it is gathered into the strap, as a share of the knee.
+  knickerDrop:
+    title: Drop
+    description: How far below the knee the leg ends, as a share of knee to floor.
   panelShare:
     title: Front width
     description: The front's share of the half hip; the rest is the back's.
