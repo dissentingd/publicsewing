@@ -248,3 +248,121 @@ viewer's right.
 > trousers alone.
 >
 > Leave out: belt loops, fly, pockets, socks or shoes, straps, a person.
+
+---
+
+## Added 2026-10-28
+
+Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the entries above.
+
+### overcoat: Overcoat
+> A conservative men's **single-breasted overcoat** in heavy plain wool (charcoal, navy or
+> camel), **to just below the knee**. Straight body with a little ease at the waist, the side
+> seams flaring very slightly to the hem; square front corners. **Notched lapels** of moderate
+> width with a turn-down collar; the lapels roll to the **top button, a little below the
+> chest**. **Four buttons** in one row from there to below the waist. **Two slanted welt
+> hand-warmer pockets** at hand height; no breast or patch pockets. Plain set-in sleeves,
+> hemmed. Lined. (A back vent, not shown.)
+>
+> Leave out: belt, double-breasted fronts, flap or patch pockets, a ticket pocket, epaulettes,
+> fur or velvet collar, cuff straps, raglan sleeves.
+
+### box-overcoat: Box overcoat
+> A **loose, boxy men's single-breasted overcoat** in heavy plain wool (grey, brown or navy),
+> **to just below the knee**. No waist shaping at all: the body hangs straight from the
+> shoulders and **flares out to a wide, full hem** (a generous swing). **Notched lapels** with a
+> turn-down collar, rolling to the top button a little below the chest; **four buttons** in one
+> row to below the waist. **Two slanted welt hand-warmer pockets**; no breast or patch pockets.
+> Plain set-in sleeves, hemmed. Lined.
+>
+> Leave out: belt or half-belt, a fitted waist, double-breasted fronts, flap or patch pockets,
+> epaulettes, raglan sleeves.
+
+### ulster: Ulster
+> A **long, double-breasted** men's overcoat in heavy wool (dark grey, brown or a muted
+> herringbone), **to mid-calf**, roomy. **Two rows of three buttons**, widely spaced, the top
+> pair high on the chest. **Wide notched lapels** under a **deep ulster collar** that can be
+> turned up and buttoned at the throat (shown turned down). **Two slanted welt hand-warmer
+> pockets** from about the waist toward the hip; no breast or patch pockets. Plain set-in
+> sleeves. Square front corners. Lined. (A back vent, not shown.)
+>
+> Leave out: belt, cape, single-breasted fronts, patch or flap pockets, epaulettes, fur
+> collar, short length.
+
+### jacket: Jacket
+> A men's **single-breasted two-button suit jacket** in plain wool suiting (mid grey, navy or
+> brown), semi-fitted: shaped gently at the waist by a **side-panel seam** on each side, no
+> side seam under the arm. Length **to cover the seat**. **Notched lapels** rolling to the
+> **top button at the waist**, a turn-down collar. **Rounded front corners** below the lower
+> button. A **breast welt pocket** on the wearer's left and **two straight flap pockets** just
+> below the waist. **Two-piece sleeves**. Lined. (A centre-back vent, not shown.)
+>
+> Leave out: double-breasted fronts, peaked lapels, patch pockets, a ticket pocket, a pocket
+> square, a belt, square front corners, sleeve buttons that look oversized.
+
+### waistcoat: Waistcoat
+> A men's **single-breasted waistcoat** (vest) in plain wool suiting (grey, navy or brown),
+> close-fitting and **sleeveless**, ending just below the waist. A **V neck** from the
+> shoulders down to the chest, no lapels or collar; **five buttons** from the bottom of the V
+> to the waist. The front edges end in **two points below the waist with their tips cut off**
+> (a small cutaway). Darts shape the front at the waist. **Four welt pockets**: two small
+> ones at the chest, two at the waist. Narrow shoulders, armholes neatly finished. (The back,
+> not shown, is cut from lining.)
+>
+> Leave out: sleeves, lapels, a shawl collar, double-breasted fronts, a watch chain, a back
+> buckle or strap, patch pockets, a shirt or tie.
+
+### fitted-jacket: Fitted jacket
+> A women's **tight-fitted tailored jacket** in fine wool suiting (navy, grey or dark green),
+> closely shaped to the waist by **princess seams** front and back and an under-arm panel, then
+> flaring a little over the hips; length to the **hip**. Single-breasted, **three buttons**,
+> buttoning right over left. A **shawl collar** cut in one with the fronts: a smooth rolled
+> collar and lapel with **no notch**. A small **breast welt pocket**, sloping up toward the
+> side, on the wearer's left; on each hip a **flap pocket set into the princess seam**, with a
+> **smaller flap pocket above it**, both sloping down toward the side. **Two-piece sleeves**.
+> Lined.
+>
+> Leave out: notched or peaked lapels, a belt or peplum, patch pockets, double-breasted
+> fronts, exaggerated shoulder pads, fur trim, a blouse collar showing.
+
+### gored-skirt: Gored skirt
+> A women's **long five-gore skirt** in plain wool or linen (navy, grey, brown or cream),
+> **nearly to the floor**. Smooth and close over the hips, then **flaring evenly to a wide
+> hem** in a soft cone, the **seams running down from the waist to the hem**: a **front panel**
+> in the middle, two gores either side. A plain **narrow waistband**. Closes with a zip at the
+> centre back (not visible from the front). Shown flat, front view, as the skirt alone.
+>
+> Leave out: pleats, gathers, a yoke, pockets, a slit, a train, a ruffle, buttons, a belt, a
+> person, a blouse.
+
+### jumpsuit: Jumpsuit
+> A **one-piece boiler suit** (a 1920s artist's coverall, the "TuTa") in sturdy plain cotton
+> canvas (khaki, blue or natural), cut from straight-edged pieces so it looks **boxy and
+> loose**, with no waist shaping and the **crotch hanging low**. **No side seams.** It
+> **buttons down the centre front with six buttons** from a **narrow band collar** to about the
+> waist. **Wide, straight legs** to the ankle, hemmed. Long, straight, loose sleeves, hemmed.
+> **Two breast patch pockets** near the centre front, and **two large lower patch pockets** on
+> the thighs whose **tops slope down toward the sides**. Shown front view, as the garment alone.
+>
+> Leave out: a belt, a zip, a turn-down collar, cuffs, elastic, tapered legs, a waist seam,
+> logos, a person.
+
+### trousers: Trousers
+> A pair of men's **semi-fitted straight trousers** in plain wool suiting (grey, navy or
+> brown). A **waistband with seven belt loops**, a **zip fly** (a neat fly placket, zip hidden),
+> **one dart** at each side of the front waist, **side-seam pockets** (no slanted front
+> pockets). **Straight legs**, narrowing very slightly below the knee, to a **plain hem** just
+> above the floor; a pressed crease down each leg. Shown flat, front view, as trousers alone.
+>
+> Leave out: pleats, turn-ups, cargo or patch pockets, slanted front pockets, a belt, rivets,
+> a person, shoes.
+
+### work-pants: Work pants
+> A pair of men's **full, straight work trousers** in sturdy **khaki cotton drill** (or tan
+> twill), roomy through the seat and with a deep rise. A **waistband with seven belt loops**, a
+> **fly front** (covered placket), **no darts or pleats**. **Side-seam pockets** at the front.
+> **Wide straight legs** to a **plain, straight hem**. Topstitched seams. Shown flat, front
+> view, as trousers alone.
+>
+> Leave out: pleats, turn-ups, cargo or patch pockets, slanted front pockets, rivets, a bib,
+> braces, a belt, a person, shoes.
