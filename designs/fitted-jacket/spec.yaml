@@ -1,0 +1,180 @@
+# Fitted jacket: Mitchell's tight-fitted single-breasted jacket with a shawl collar (New
+# "Standard" Work ... Ladies' Tailor-Made Garments, 1921, pp. 42-45, sleeve pp. 60-61) on
+# FreeSewing's Breanna block, through the tailored jacket's library: princess seams, an under-arm
+# panel in place of the side seam, a shaped CB seam, flared below the waist, a shawl collar cut in
+# one with the front, two-piece sleeves. See BRIEF.md for where each default is read.
+about:
+  id: fitted-jacket
+  name: Fitted jacket
+  description: "A tight-fitted, single-breasted jacket: princess seams, an under-arm panel, shaped back seam, shawl collar"
+  difficulty: 4
+  tags: [jackets]
+  techniques: [princess-seam, shawl-collar, facing, button, welt-pocket, flap-pocket, lining, two-piece-sleeve]
+  version: 0.1.0
+  source: "Mitchell, New \"Standard\" Work on ... Ladies' Tailor-Made Garments (1921), pp. 42-45, 60-61 (newstandardworko00mitc)"
+
+block: breanna
+
+options:
+  # Fit (Breanna's own options, with a jacket's ease)
+  chestEase: { pct: 14, min: 5, max: 25, of: chest, menu: fit }
+  # Breanna's waist is drafted looser than the tailored jacket's: the CB and under-arm seams take
+  # in more of it below (with Mitchell's figure, about 7% over the waist when sewn)
+  waistEase: { pct: 20, min: 5, max: 35, of: waist, menu: fit }
+  seatEase: { pct: 10, min: 4, max: 25, of: seat, menu: fit }
+  # Room for a blouse sleeve (Breanna's 15% is a bodice's; it also sets the armhole depth).
+  # The drape at 15% left the sleeves too tight to close round the arm (drape/README.md).
+  bicepsEase: { pct: 25, min: 10, max: 50, of: biceps, menu: fit }
+  # Breanna's bust dart, split between the shoulder and the waist: the front seam follows it.
+  # Only these positions put the darts there (12:30 lands on the shoulder tip, 11:xx on the
+  # neckline, 13:00 in the armhole), so they aren't choices.
+  primaryBustDart: { dflt: '06:00', list: ['06:00'], menu: false }
+  secondaryBustDart: { dflt: '12:00', list: ['12:00'], menu: false }
+  shoulderDart: { bool: false, menu: fit }
+  waistDart: { bool: true, menu: fit }
+  backSeamAt: { pct: 50, min: 30, max: 70, menu: style } # along the back shoulder from the neck
+  # Tight-fitted (p. 42): the CB in 2 in at the waist and 1 1/2 at the hip line, 7 in below it;
+  # the under-arm panel's back seam in 1 1/4 at the waist (p. 44). Shares of the half seat less
+  # the half waist (6 3/4 in on Mitchell's 40 hips, 26 1/2 waist)
+  cbSuppression: { pct: 30, min: 0, max: 45, menu: fit } # 2 in
+  cbSeat: { pct: 62, min: 0, max: 100, menu: fit } # x the CB suppression, left at the seat line: 1 1/4 in at 10 1/2 in down
+  underarmSuppression: { pct: 18, min: 0, max: 30, menu: fit } # 1 1/4 in
+  # The under-arm panel across the bottom of the armhole (p. 44): from the back width line (10,
+  # the back armhole's innermost point) to 1/2 in in front of the blade (32, about 1/2 in in
+  # front of the side). Shares of each armhole's depth in from the side seam
+  underarmBack: { pct: 90, min: 40, max: 95, menu: style }
+  underarmFront: { pct: 25, min: 10, max: 90, menu: style }
+  # Style
+  lengthBelowWaist: { pct: 42, min: 20, max: 70, menu: style } # x waistToFloor; 17" of ~40"
+  buttonExtension: { pct: 3.2, min: 2, max: 6, of: chest, menu: style } # the 1 1/4" lap
+  buttons: { count: 3, min: 1, max: 6, menu: style }
+  breakBelowBust: { pct: 14, min: 0, max: 40, menu: style } # x hpsToWaistFront; 3" of 22"
+  rollOut: { pct: 3.7, min: 0, max: 10, of: neck, menu: style } # crease 1/2" in front of the neck point
+  # Shawl collar cut in one with the front (p. 45): about 3 in wide at CB, the lapel 3 1/2 in
+  collarWidth: { pct: 22, min: 12, max: 35, of: neck, menu: style } # 3 in at CB
+  lapelWidth: { pct: 26, min: 12, max: 35, of: neck, menu: style } # 3 1/2 in
+  # Pockets, as p. 39 draws them (read at bust 39): a breast welt across the front seam, and
+  # on the side front a flap pocket with a smaller one above it, both sloping to the side
+  breastPocket: { bool: true, menu: style }
+  weltBelow: { pct: 4, min: 0, max: 15, menu: style } # x hpsToWaistFront: front end below the bust line (7/8")
+  weltFromCF: { pct: 6.2, min: 3, max: 12, of: chest, menu: style } # front end behind CF (2 3/8")
+  weltLength: { pct: 9.2, min: 6, max: 13, of: chest, menu: style } # 3 5/8"
+  weltRise: { deg: 16, min: 0, max: 30, menu: style } # rising toward the side
+  weltDepth: { pct: 22, min: 12, max: 35, menu: style } # x welt length (3/4")
+  pockets: { bool: true, menu: style }
+  pocketBelow: { pct: 37, min: 15, max: 80, menu: style } # x waistToSeat: mouth below the waist (3 7/8"; Mitchell's hip line is 7" down, FreeSewing's seat ~10 1/2")
+  pocketFromSeam: { pct: 1, min: 0, max: 5, of: chest, menu: style } # behind the princess seam (drawn on it)
+  pocketWidth: { pct: 81, min: 50, max: 95, menu: style } # x the side front's width at the mouth (3 15/16" of 4 7/8")
+  pocketAngle: { deg: 11, min: 0, max: 20, menu: style } # dropping toward the side
+  flapDepth: { pct: 38, min: 20, max: 60, menu: style } # x pocket width (1 1/2")
+  ticketPocket: { bool: true, menu: style }
+  ticketAbove: { pct: 16, min: 8, max: 40, menu: style } # x waistToSeat: above the hip pocket's mouth (1 11/16")
+  ticketWidth: { pct: 58, min: 40, max: 90, menu: style } # x pocketWidth (2 5/16")
+  ticketFlapDepth: { pct: 46, min: 20, max: 70, menu: style } # x ticket width (1 1/16")
+  bagDepth: { pct: 120, min: 70, max: 160, menu: construction } # x each pocket's width
+  # Construction
+  facingWidth: { pct: 8, min: 5, max: 14, of: chest, menu: construction }
+  backFacingDepth: { pct: 9, min: 5, max: 15, of: chest, menu: construction } # back-neck facing, down the CB
+  lining: { bool: true, menu: construction }
+  liningPleat: { pct: 1.4, min: 0, max: 3, of: chest, menu: construction } # extra at the back lining's CB fold (1/2")
+
+pieces:
+  backBase:
+    from: breanna.back
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    ops:
+      - jacketBase: { side: back, backSeamAt: backSeamAt }
+  frontBase:
+    from: breanna.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, seat, waistToSeat, waistToFloor, neck, hpsToWaistFront]
+    let:
+      # Half the seat less half the waist, with ease; the CB and under-arm seams take their
+      # shares of it, scaled down where that would leave less than about 6% ease round the waist (Breanna's waist comes out a few % under its waistEase)
+      d: max(0, seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      k: min(1, max(0, waist * (waistEase - 0.09) / 2) / max(1, d * (cbSuppression + underarmSuppression)))
+    ops:
+      - jacketBase: { side: front }
+      - jacketLayout:
+          seat: seat * (1 + seatEase)
+          hipDepth: waistToSeat
+          length: waistToFloor * lengthBelowWaist
+          lap: chest * buttonExtension
+          breakBelow: hpsToWaistFront * breakBelowBust
+          rollOut: neck * rollOut
+          lapelWidth: neck * lapelWidth
+          gorgeAt: 0.55
+          shawl: { width: neck * collarWidth, lapel: lapelWidth } # lapelWidth: the argument above, in mm
+          underarm:
+            back: underarmBack
+            front: underarmFront
+            backSuppression: d * underarmSuppression * k
+            frontSuppression: 0
+          cb:
+            waist: d * cbSuppression * k
+            hip: waist * cbSeat # (`waist` here is the entry above: the CB suppression)
+          facing: chest * facingWidth
+          backFacing: chest * backFacingDepth
+          lining: lining
+          liningPleat: chest * liningPleat
+          welts:
+            breast:
+              if: breastPocket
+              below: hpsToWaistFront * weltBelow
+              from: chest * weltFromCF
+              len: chest * weltLength
+              rise: weltRise
+              welt: len * weltDepth
+              bag: len * bagDepth
+              clear: chest * 0.02
+          pockets:
+            hip:
+              if: pockets
+              below: waistToSeat * pocketBelow
+              from: chest * pocketFromSeam
+              share: pocketWidth
+              angle: pocketAngle
+              flapRatio: flapDepth
+              bagRatio: bagDepth
+              clear: chest * 0.015
+            ticket:
+              if: pockets and ticketPocket
+              below: waistToSeat * (pocketBelow - ticketAbove)
+              from: chest * pocketFromSeam
+              share: pocketWidth * ticketWidth # of the side front's width at its own mouth
+              angle: pocketAngle
+              flapRatio: ticketFlapDepth
+              bagRatio: bagDepth
+              clear: chest * 0.015
+          sleeveStore: [library.twoPartSleeve, library.topsleeve, library.undersleeve, fitted-jacket.topsleeve, fitted-jacket.undersleeve]
+      - store: { key: library.topsleeve.title, value: { nr: 7, brand: "'PublicSewing'" } }
+      - store: { key: library.undersleeve.title, value: { nr: 8, brand: "'PublicSewing'" } }
+
+  front: { part: jacketPanel, after: [backBase, frontBase], panel: front, nr: 1, label: front, cut: 2, buttons: true }
+  back: { part: jacketPanel, after: [backBase, frontBase], panel: back, nr: 2, label: back, cut: 2 }
+  sideBack: { part: jacketPanel, after: [backBase, frontBase], panel: sideBack, nr: 3, label: sideBack, cut: 2, lining: lining }
+  sideFront: { part: jacketPanel, after: [backBase, frontBase], panel: sideFront, nr: 4, label: sideFront, cut: 2, lining: lining }
+  underArm: { part: jacketPanel, after: [backBase, frontBase], panel: underArm, nr: 20, label: underArm, cut: 2, lining: lining }
+  facing: { part: jacketPanel, after: [backBase, frontBase], panel: facing, nr: 5, label: facing, cut: 2 }
+
+  # Two-piece sleeve: FreeSewing's two-part sleeve, fitted to the jacket's armhole
+  topsleeve: { part: library, from: topsleeve, after: [backBase, frontBase], lining: lining }
+  undersleeve: { part: library, from: undersleeve, after: [backBase, frontBase], lining: lining }
+
+  # Back-neck facing and lining (the side panels and sleeves are cut in lining too, above)
+  backNeckFacing: { part: jacketPanel, after: [backBase, frontBase], panel: backNeckFacing, nr: 9, label: backNeckFacing }
+  frontLining: { part: jacketPanel, after: [backBase, frontBase], panel: frontLining, nr: 10, label: frontLining, cut: 2, material: lining, if: lining }
+  backLining: { part: jacketPanel, after: [backBase, frontBase], panel: backLining, nr: 11, label: backLining, material: lining, if: lining }
+
+  # Pockets: the breast welt (welt and bag), then each set-in flap pocket's flap, jet and bag
+  breastWelt: { part: welt, after: [backBase, frontBase], key: breast, store: jacket.welts, nr: 12, if: breastPocket }
+  breastBag: { part: weltBag, after: [backBase, frontBase], key: breast, store: jacket.welts, nr: 13, if: breastPocket }
+  hipFlap: { part: setInPocket, after: [backBase, frontBase], key: hip, piece: flap, nr: 14, label: hipFlap, if: pockets }
+  hipJet: { part: setInPocket, after: [backBase, frontBase], key: hip, piece: jet, nr: 15, label: hipJet, if: pockets }
+  hipBag: { part: setInPocket, after: [backBase, frontBase], key: hip, piece: bag, nr: 16, label: hipPocketBag, if: pockets }
+  ticketFlap: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: flap, nr: 17, label: ticketFlap, if: pockets and ticketPocket }
+  ticketJet: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: jet, nr: 18, label: ticketJet, if: pockets and ticketPocket }
+  ticketBag: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: bag, nr: 19, label: ticketPocketBag, if: pockets and ticketPocket }

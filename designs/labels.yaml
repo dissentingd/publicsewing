@@ -22,6 +22,15 @@ options:
   crotchDrop:
     title: Crotch drop
     description: How far below the body's crotch the legs divide, as a share of the neck to waist and waist to upper leg together.
+  cbSuppression:
+    title: Back seam shaping
+    description: How far the centre back seam comes in at the waist, as a share of half the seat less half the waist.
+  cbSeat:
+    title: Back seam at the seat
+    description: How much of the centre back seam's waist shaping is still taken in at the seat line.
+  underarmSuppression:
+    title: Under-arm seam shaping
+    description: How much the under-arm panel's back seam takes in at the waist, as a share of half the seat less half the waist.
   bicepsEase:
     title: Biceps ease
     description: Room added round the upper arm, as a share of the biceps.
@@ -295,6 +304,13 @@ options:
     title: Front neck depth
     description: How far the front neck curves down at the centre front, as a share of the neck.
 
+  underarmBack:
+    title: Under-arm panel, back
+    description: Where the under-arm panel's back seam leaves the armhole, as a share of the way from the side to the back armhole's innermost point.
+  underarmFront:
+    title: Under-arm panel, front
+    description: Where the under-arm panel's front seam leaves the armhole, as a share of the way from the side to the front armhole's innermost point.
+
   # Closures
   buttons:
     title: Buttons
@@ -485,6 +501,7 @@ options:
 
 parts:
   body: Body
+  underArm: Under-arm panel
   armGusset: Underarm gusset
   crotchGusset: Crotch gusset
   back: Back

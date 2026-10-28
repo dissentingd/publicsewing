@@ -41,6 +41,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `knickerbockers` | Knickers gathered into knee bands | Walker 1909 |
 | `shirtwaist-dress` | Buttoned work dress with a turn-down collar and cuffs | Woman's Institute, *Pattern Drafting* (1915) |
 | `tailored-jacket` | Women's semi-fitted jacket, princess seams, peak lapel | Mitchell 1921 |
+| `fitted-jacket` | Women's tight-fitted jacket with an under-arm panel and a shawl collar | Mitchell 1921 |
 | `box-coat` | Women's loose box coat with a notched lapel and set-in flap pockets | Mitchell 1921 |
 | `gored-skirt` | Flared skirt of five to fifteen gores, shaped in its seams, with a CB zip and waistband | Mitchell 1921 |
 | `work-pants` | Full straight work trousers for cotton and khaki, deep rise, no darts | Simons 1916 |

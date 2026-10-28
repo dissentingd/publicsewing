@@ -68,7 +68,7 @@ and marked as derived.
 
 | Garment | Style | FreeSewing | Status | PD source for the style |
 |---|---|---|---|---|
-| **Tailored jacket** | 1 | — (Jaeger is menswear) | **Semi-fitted drafted 2026-10-25** (`designs/tailored-jacket`, on Breanna, not sewn) | Mitchell 1921 `newstandardworko00mitc` |
+| **Tailored jacket** | 1 | — (Jaeger is menswear) | **Semi-fitted drafted 2026-10-25** (`designs/tailored-jacket`, on Breanna, not sewn); **tight-fitted with a shawl collar 2026-10-27** (`designs/fitted-jacket`, not sewn) | Mitchell 1921 `newstandardworko00mitc` |
 | Skirt: pencil, circle, block | 1, 4 | Penelope, Sandy, Sarah | Have | — |
 | A-line / gored skirt | 5 | Sarah | **Drafted 2026-10-27** (`designs/gored-skirt`, 5–15 gores on Sarah, not sewn) | Mitchell 1921 (gored skirts) |
 | Gathered skirt | 4 | Sarah, Sandy | Variant (trivial) | — |
@@ -168,8 +168,12 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
   panel on the fold and gores in pairs laid on Sarah's seat line, the waist shaping in darts on
   the seams, an equal flare at every seam edge, a CB zip and a waistband (2026-10-27). Tested at
   every size; not draped, not sewn.
-- **Next from Mitchell:** the tight-fitted single- and double-dart jackets (an under-arm panel,
-  more front seams, a shawl collar, on the jacket library).
+- **Tight-fitted jacket, single dart** (pp. 42–45): `designs/fitted-jacket`, on the jacket
+  library with three additions to `jacketLayout`: an under-arm panel in place of the side seam
+  (its back seam taken in at the waist), a shaped CB seam, and a shawl collar cut in one with
+  the front (2026-10-27). Tested at every size; not draped, not sewn.
+- **Next from Mitchell:** the double-dart tight-fitted jacket (pp. 46–47: two front seams over
+  the shoulder, no collar), the kimono jackets, the "Prince Albert", the two-piece skirts.
 
 ## ЕМКО СЭВ vol. 3 (1988): done (2026-10-27)
 Corpus `emko`, a private copy, untracked: still in copyright, used only for its methods,

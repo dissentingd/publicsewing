@@ -51,6 +51,7 @@ without declaring them, so they are listed in our package.json.
 | `pinafore/` | Sleeveless gathered pinafore, Walker 1909. [BRIEF.md](pinafore/BRIEF.md) | draft (not sewn) | REVIEW (pose), 2026-10-26 |
 | `shirtwaist-dress/` | Buttoned work dress: easy bodice, turn-down collar, full sleeves into cuffs, gathered skirt, Woman's Institute *Pattern Drafting* §2. [BRIEF.md](shirtwaist-dress/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `tailored-jacket/` | Women's semi-fitted jacket: princess seams flared below the waist, peak or notched lapel, collar, breast welt, set-in flap pockets, back-neck facing, lining, two-piece sleeves, on Breanna, Mitchell 1921. [BRIEF.md](tailored-jacket/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
+| `fitted-jacket/` | Women's tight-fitted jacket: the tailored jacket's princess seams with an under-arm panel in place of the side seam, a shaped CB seam, and a shawl collar cut in one with the front, on Breanna, Mitchell 1921 pp. 42–45. [BRIEF.md](fitted-jacket/BRIEF.md) | draft (not sewn) | not draped |
 | `peacoat/` | Hip-length double-breasted coat: the mackinaw with Simons' D.B. overcoat stand, three-button rows, notched lapel and deep ulster collar, slanted hand-warmer welt pockets, back vent and lining, no belt, on Brian, Simons 1916. [BRIEF.md](peacoat/BRIEF.md) | draft (not sewn) |
 | `box-coat/` | Women's loose box coat: straight body flared from the arms, shaped CB seam, neck dart, notched lapel, collar, buttons near the lapped edge, set-in flap pockets (hip and ticket), two-piece sleeves, on Breanna, Mitchell 1921. [BRIEF.md](box-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `gored-skirt/` | Flared skirt of 5 to 15 gores: a front panel on the fold, gores in pairs, the waist shaping in darts on the seams, flared below the seat, CB zip, waistband, on Sarah, Mitchell 1921 pp. 84–101. [BRIEF.md](gored-skirt/BRIEF.md) | draft (not sewn) | not draped |
@@ -69,7 +70,7 @@ without declaring them, so they are listed in our package.json.
 | `lib/hood.mjs` | A two-piece hood sewn to the neckline, drawstring casing optional (ЕМКО designs) | |  |
 | `lib/lapel.mjs` | The notched or peaked lapel shared by the coats and the women's jackets | |  |
 | `lib/body3.mjs` | Three-piece body on Bent, back vent, welt pockets and flaps, rounded front corners, notched lapel (military blouse, topcoat, jacket) | |  |
-| `lib/jacket.mjs` | Women's jackets and coats on Breanna: princess panels, or a box body with a pivoted neck dart; lapels, CB seam, buttons near the edge | |  |
+| `lib/jacket.mjs` | Women's jackets and coats on Breanna: princess panels (optionally an under-arm panel, a shaped CB seam, a shawl collar), or a box body with a pivoted neck dart; lapels, CB seam, buttons near the edge | |  |
 | `lib/pockets.mjs` | Patch pockets, flaps, belts, set-in flap pockets (flap, jet, bag) | |  |
 | `lib/trousers.mjs` | Legs on Titan: gathered into bands (knickerbockers), or tailored with darts, fly and pockets (trousers); strips (waistband, fly, belt loops) | |  |
 | `lib/skirt.mjs` | Gored skirts on Sarah: gores laid on the seat line, waist darts on the seams, equal flare at every seam edge (gored skirt) | |  |

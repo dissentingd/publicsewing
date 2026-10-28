@@ -10,7 +10,11 @@ export function checkJacket(pattern) {
   if (s.backPrincess) near(s.backPrincess[0], s.backPrincess[1], 0.5, 'back princess seam')
   if (s.frontPrincess) near(s.frontPrincess[0], s.frontPrincess[1], 0.5, 'front princess seam')
   if (s.dart) near(s.dart[0], s.dart[1], 0.5, 'neck dart legs')
-  near(s.sideBack, s.sideFront, 0.5, 'side seams')
+  // A side seam, or (with an under-arm panel) the two seams either side of that panel
+  if (s.underarmBack) {
+    near(s.underarmBack[0], s.underarmBack[1], 0.5, 'back under-arm seam')
+    near(s.underarmFront[0], s.underarmFront[1], 0.5, 'front under-arm seam')
+  } else near(s.sideBack, s.sideFront, 0.5, 'side seams')
   near(s.shoulderBack, s.shoulderFront, 0.5, 'shoulder seams')
   // The two-piece sleeve's cap fits the armhole within its ease (sleevecapEase, 1-2%)
   const a = store.get('jacket.armhole')
