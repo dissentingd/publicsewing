@@ -98,7 +98,8 @@ node tools/render.mjs chore-coat cisMaleAdult38       # 1:1 SVG in out/
 
 [designs/README.md](designs/README.md) covers rendering, previews and adding a design. Each
 design's `BRIEF.md` records its source pages, its pieces and how the source's proportions became
-options.
+options. To turn another drafting book into designs, yourself or with a coding agent, see
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## What's in the repo
 
