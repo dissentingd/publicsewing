@@ -137,6 +137,12 @@ options:
   seatPockets:
     title: Seat pockets
     description: A patch pocket on each back.
+  pleats:
+    title: Pleats
+    description: Number of pleats at each front waist.
+  pleatSpacing:
+    title: Pleat spacing
+    description: Gap between the front pleats, as a share of the seat.
   thighFlare:
     title: Thigh flare
     description: How far the outside leg seam flares out at the thigh, as a share of the seat (the back a little more).

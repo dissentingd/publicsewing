@@ -1,0 +1,58 @@
+# Peg-top pants: Simons' "Full Peg Pants" (Drafting Pants and Overalls, 1916, Diagram VIII,
+# pp. 14-15), on the trousers' Titan legs: full over the hips, the extra waist laid in pleats at
+# the front, the leg tapering from a wide knee to a narrow bottom. Fly, pockets and waistband as
+# the trousers. See BRIEF.md.
+extends: ../trousers/spec.yaml
+
+about:
+  id: peg-pants
+  name: Peg-top pants
+  description: Pleated trousers full over the hips, tapering to a narrow bottom
+  difficulty: 3
+  tags: [bottoms]
+  techniques: [pleat, dart, zip, welt-pocket, waistband, hem]
+  version: 0.1.0
+  source: Simons, Drafting Pants and Overalls (1916), Full Peg Pants, Diagram VIII (draftingpantsove00simo)
+
+options:
+  # 34 waist, 40 seat, knee 22, bottom 16, rise 9; the front and back waist together 1/2 seat plus
+  # 2 1/4 in (22 1/4), 5 1/4 in over the half waist
+  seatEase: { pct: 8 }
+  kneeEase: { pct: 37.5, max: 45 } # x knee: 22 in, 2 more than the regular pants
+  hemWidth: { pct: 73, min: 60 } # bottom 16 / knee 22
+  hemShaping: { pct: 0.5 }
+  frontDart:
+    pct: 100
+    min: 50
+    max: 250
+    menu: style
+    title: Pleat depth
+    description: Width taken up by the front pleats, as a share of half the seat less half the waist (with ease).
+  pleats: { count: 2, min: 1, max: 3, menu: style }
+  pleatSpacing: { pct: 3, min: 1.5, max: 6, of: seat, menu: style } # between the pleats
+
+pieces:
+  front:
+    prefix: trousers # named like the inherited pieces
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+    ops:
+      - trouserLeg:
+          which: front
+          dart: d * frontDart
+          dartAt: 0.4
+          dartLength: 0
+          pleats: pleats
+          pleatSpacing: seat * pleatSpacing
+          hemWidth: hemWidth
+          hemSag: waistToFloor * hemShaping
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45

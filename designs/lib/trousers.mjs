@@ -105,6 +105,8 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  *   `calfBelow` under the knee and `cuffW` round at the hem, `cuffBelow` under it (each width
  *   split back/front by `share`, this piece's part). The outseam opens from the hem up to
  *   `openingBelow` under the knee, with `buttons` buttonholes `buttonInset` in on the front.
+ * - `pleats` (front): the dart's width laid as this many pleats at the waist instead (give
+ *   `dartLength: 0`), `pleatSpacing` apart, the first at the dart's place; notched, with fold lines.
  * - `straightOutseam`: the outseam a straight line from the hem corner out past the seat to the
  *   waist (Simons' one-piece overall), so back and front can be cut in one (`legInOnePart`); the
  *   pieces' paths go to `trousers.paths.<which>`.
@@ -238,6 +240,22 @@ export function draftTrouserLeg(sh, args) {
     dart: d,
     dartAtSide: d - dCentre,
     hem: points.hemIn.dist(points.hemOut),
+  }
+
+  // Pleats: the waist is straight (a zero-length dart); notch each pleat's two edges
+  const { pleats = 0, pleatSpacing = 0 } = args
+  if (pleats > 0 && d > 0) {
+    const w = d / pleats
+    const start = (W + d) * dartAt - d / 2
+    const step = Math.min(w + pleatSpacing, (W + d - start - 20) / pleats)
+    for (let i = 0; i < pleats; i++) {
+      const p0 = wIn.shift(a, start + i * step)
+      const p1 = p0.shift(a, w)
+      snippets[`pleat${i}a`] = new Snippet('notch', p0)
+      snippets[`pleat${i}b`] = new Snippet('notch', p1)
+      paths[`pleat${i}`] = new Path().move(p0).line(p0.shift(down, 60)).move(p1).line(p1.shift(down, 60)).addClass('mark dashed')
+    }
+    info.pleats = pleats
   }
 
   // Side pocket in the outseam: notches at the mouth's ends
