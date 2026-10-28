@@ -33,6 +33,7 @@
   "bib-overall": {"default": {}, "plain": {"bibPocket": false, "hipPockets": false, "seatPockets": false, "bibHeight": 0.2}},
   "breeches": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "thighFlare": 0, "breechesLength": 0.6}},
   "service-shirt": {"default": {}, "plain": {"pocketFlaps": false, "shoulderStraps": false, "pocketShape": "square", "buttons": 5}},
+  "hooded-smock": {"default": {}, "variant": {"chestPocket": false, "kangarooPocket": false, "hoodDrawstring": false, "buttons": 1}},
   "work-shirt": {"default": {}, "variant": {"neckFinish": "collar", "breastPocket": false, "sideSlit": 0, "opening": "back"}},
   "field-trousers": {"default": {}, "plain": {"sidePockets": false, "cargoPockets": false, "seatPocket": false, "beltLoops": 0, "pleats": 1}},
   "peg-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "pleats": 1, "frontDart": 0.6}},

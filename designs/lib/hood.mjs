@@ -61,7 +61,9 @@ export function hoodPart({ name, after, nr, options, measurements = ['head'], si
       }
       // The casing folds back along the face edge; it's stitched `casing` inside it
       if (casing > 0) paths.casing = paths.face.offset(-casing).unhide().addClass('mark dashed')
-      snippets.shoulder = new Snippet('notch', paths.neck.shiftAlong(store.get('coat.back').neck))
+      // The shoulder: a coat's back neck, or a yoke garment's
+      const backNeck = (store.get('coat.back', null) ?? store.get('yoke.back', null))?.neck
+      if (backNeck) snippets.shoulder = new Snippet('notch', paths.neck.shiftAlong(backNeck))
       store.set('coat.hood', { neck: paths.neck.length(), target, face: paths.face.length() })
       macro('grainline', {
         from: points.faceNeck.shift(90, 40).shift(180, 40),

@@ -137,6 +137,12 @@ options:
   seatPockets:
     title: Seat pockets
     description: A patch pocket on each back.
+  chestPocket:
+    title: Chest pocket
+    description: A flapped pocket sewn into the front yoke seam.
+  kangarooPocket:
+    title: Kangaroo pocket
+    description: A large patch pocket low on the front, open at its slanted sides for the hands.
   cargoPockets:
     title: Cargo pockets
     description: A flapped bellows pocket on each thigh.

@@ -78,7 +78,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
   All straight lines: the quickest build here.
 - `cs95-trouser` (built 2026-10-28 as `designs/field-trousers`): British CS95 field trouser, size M, 39 pieces: three-piece back,
   front, fly, waistband, belt loops, cargo and patch pockets with flaps.
-- `us-tactical-smock`: hooded smock, **graded XS–XXL** (six sizes): back, front, sleeves,
+- `us-tactical-smock` (built 2026-10-28 as `designs/hooded-smock`): hooded smock, **graded XS–XXL** (six sizes): back, front, sleeves,
   three-piece hood, front placket, pocket bags and flaps.
 - `standard-tshirt`: **graded XS–XL** (Grade Rule Table "Normal_Tee"): front, back,
   sleeve, collar, back-neck tape.
@@ -95,6 +95,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants, breeches, bib overall, overall pants, peg-top pants |
 | Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |
 | Open+Pattern, British CS95 field trouser, DXF, CC BY 4.0 `openpattern/cs95-trouser` | better than A | field trousers |
+| Open+Pattern, US tactical smock, DXF, CC BY 4.0 `openpattern/us-tactical-smock` | better than A | hooded smock |
 | Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | A | pyjama jacket, pyjama trousers, work shirt, service shirt |
 | Sheifer, *Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | A | girl's coat |
 | Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911) `merzspracticalcu00merz` | A | women's peacoat, field jacket |

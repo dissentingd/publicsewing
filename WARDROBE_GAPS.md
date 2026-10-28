@@ -47,6 +47,7 @@ and marked as derived.
 | Trench / ulster | 3 | Carlton | Variant; **ulster drafted 2026-10-27** (`designs/ulster`: the peacoat at 50", four sizes up; not sewn) | Simons 1916 |
 | **Overcoat, straight, yoked** | 1, 3 | Carlton is a belted long coat | **Drafted 2026-10-27** (`designs/winter-coat`: deep front and back yokes, hip welts, turn-down collar, lining; not sewn) | ЕМКО 1988 §3 |
 | **Topcoat, semi-fitted** | 1 | Carlton | **Drafted 2026-10-27** (`designs/topcoat`: side panels, back vent, slanted welts, two-piece sleeves; not sewn) | ЕМКО 1988 §2 |
+| **Hooded smock / anorak** | 3, 5 | — | **Drafted 2026-10-28** (`designs/hooded-smock`: pullover, front yoke, hood, kangaroo pocket; not sewn) | Open+Pattern US tactical smock (CC BY 4.0) |
 | **Hooded windbreaker** | 3, 5 | — (Jett is a bomber) | **Drafted 2026-10-27** (`designs/windbreaker`: zip, yokes, hood or stand collar, slanted welts; not sewn) | ЕМКО 1988 §4 |
 | **Quilted / insulated jacket** | 3 | — | **Drafted 2026-10-27** (`designs/quilted-jacket`: the windbreaker buttoned to the throat, sloped front yoke, quilted lining; not sewn) | ЕМКО 1988 §5 |
 | **Field jacket / military blouse** | 3 | — (Jett is a bomber) | **Military blouse drafted 2026-10-23** (`designs/military-blouse`, not sewn) | Simons 1918 (military blouse) |

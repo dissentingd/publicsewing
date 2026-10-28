@@ -1,0 +1,96 @@
+# Hooded smock: the US tactical smock as digitised by Open+Pattern (CC BY 4.0), on FreeSewing's
+# Brian block through the yoke template: a boxy pullover with a front yoke, a short buttoned
+# placket at the neck, a hood, a flapped chest pocket in the yoke seam, a kangaroo pocket, long
+# sleeves into bands. Sizes are the source's M (chest 100) as shares of the body. See BRIEF.md.
+extends: ../templates/yoke.yaml
+
+about:
+  id: hooded-smock
+  name: Hooded smock
+  description: "A boxy pullover anorak: front yoke, buttoned neck placket, hood, flapped chest pocket, kangaroo pocket"
+  difficulty: 3
+  tags: [tops, outerwear]
+  techniques: [yoke, placket, hood, patch-pocket, flap, button]
+  version: 0.1.0
+  source: US tactical smock, digitised by Open+Pattern (openpattern/us-tactical-smock)
+
+options:
+  chestEase: { pct: 34, min: 15, max: 40, menu: fit } # back and front 68 cm across each on chest 100
+  frontYoke: { bool: true, menu: style }
+  yokeDepth: { pct: 85, min: 40, max: 90, menu: style } # the front top panels 25 cm deep
+  gathers: { pct: 100, min: 100, max: 130, menu: style } # flat, no gathers
+  hemFlare: { pct: 0, min: 0, max: 10, menu: style }
+  skirtLength: { pct: 30, min: 15, max: 50, menu: style } # back 80.6 cm long
+  opening: { dflt: front, list: [front], menu: style }
+  placketDepth: { pct: 43, min: 25, max: 70, menu: style } # the placket 20 cm
+  buttons: { count: 2, min: 1, max: 4, menu: style } # two button tabs
+  neckFinish: { dflt: binding, list: [binding], menu: false } # the hood's seam, bound inside
+  sleeveBand: { pct: 12, min: 8, max: 25, of: wrist, menu: style }
+  sleeveBandEase: { pct: 45, min: 20, max: 80, menu: style }
+  sideSlit: { pct: 0, min: 0, max: 30, menu: style }
+  hemCorner: { pct: 0, min: 0, max: 100, menu: style }
+  # The hood (the windbreaker's two-piece hood, drawn to the placket's edges)
+  hoodHeight: { pct: 75, min: 60, max: 90, of: head, menu: style }
+  hoodDepth: { pct: 46, min: 35, max: 55, of: head, menu: style } # the crown, front to back
+  hoodCorner: { pct: 50, min: 10, max: 80, menu: style }
+  hoodLean: { deg: 10, min: 0, max: 20, menu: style }
+  hoodNeckDrop: { pct: 30, min: 0, max: 50, menu: style }
+  hoodDrawstring: { bool: true, menu: style }
+  chestPocket: { bool: true, menu: style }
+  kangarooPocket: { bool: true, menu: style }
+
+pieces:
+  # Brian's front, as the template's, plus the kangaroo pocket's place (on the fold)
+  frontBase:
+    from: brian.front
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    ops:
+      - yokeSide: { side: front }
+      - store: { key: yoke.frontPocket, value: { x: 0, y: cfWaist.y + waistToFloor * skirtLength - chest * 0.245 - chest * 0.05, w: chest * 0.223, h: chest * 0.245 }, if: kangarooPocket }
+  hood:
+    part: hood
+    after: [backBase, frontBase]
+    nr: 9
+    options: [hoodHeight, hoodDepth, hoodCorner, hoodLean, hoodNeckDrop, hoodDrawstring]
+    target: yoke.back.neck + yoke.front.neck + yoke.front.ext / 2
+    spring: -target * hoodNeckDrop
+    height: head * hoodHeight
+    lean: hoodLean
+    depth: head * hoodDepth
+    corner: head * hoodDepth * hoodCorner
+    casing: if(hoodDrawstring, head * 0.04, 0)
+  # Chest pocket 30 x 22, its flap 26 x 6, sewn into the yoke seam (chest 100)
+  chestPocketBag:
+    part: polygon
+    after: frontBase
+    nr: 10
+    if: chestPocket
+    let:
+      w: chest * 0.3
+      h: chest * 0.22
+    points: [[0, 0], [w, 0], [w, h], [0, h]]
+    allowance: [3, 1, 1, 1]
+  chestFlap:
+    part: polygon
+    after: frontBase
+    nr: 11
+    cut: 2
+    if: chestPocket
+    let:
+      w: chest * 0.26
+      h: chest * 0.06
+    points: [[0, 0], [w, 0], [w, h], [0, h]]
+    buttonholes: [[w / 2, h - 12]]
+  # Kangaroo pocket: 44.6 wide at the foot, the hand openings slanting in to the top
+  kangaroo:
+    part: polygon
+    after: frontBase
+    nr: 12
+    if: kangarooPocket
+    let:
+      w: chest * 0.446
+      h: chest * 0.245
+      s: chest * 0.1
+    points: [[s, 0], [w - s, 0], [w, h], [0, h]]
+    allowance: [1, 2, 1, 2]
