@@ -9,6 +9,8 @@
 //   editor; static/img/drape/<id>/: those renders
 // - static/img/illustrations/<id>.jpg: the finished-garment illustration from illustrations/,
 //   where there is one, at the top of the design's page and in the Designs table
+// - static/img/previews/<id>.png: the design's preview-cisMaleAdult38.png (its pattern pieces),
+//   beside the illustration, for the designs in `flats`
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, copyFileSync, rmSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { join } from 'node:path'
@@ -76,6 +78,10 @@ rmSync(out('docs', 'designs'), { recursive: true, force: true })
 rmSync(out('static', 'img', 'drape'), { recursive: true, force: true })
 rmSync(out('static', 'img', 'illustrations'), { recursive: true, force: true })
 mkdirSync(out('static', 'img', 'illustrations'), { recursive: true })
+rmSync(out('static', 'img', 'previews'), { recursive: true, force: true })
+mkdirSync(out('static', 'img', 'previews'), { recursive: true })
+// Designs whose page shows the pattern pieces beside the illustration (being tried on one first)
+const flats = new Set(['chore-coat'])
 mkdirSync(out('docs', 'designs'), { recursive: true })
 writeFileSync(
   out('docs', 'designs', '_category_.json'),
@@ -120,13 +126,22 @@ ids.forEach((id, i) => {
   const illustrated = existsSync(join(site, 'illustrations', `${id}.jpg`))
   if (illustrated) copyFileSync(join(site, 'illustrations', `${id}.jpg`), out('static', 'img', 'illustrations', `${id}.jpg`))
   const img = (cls, lazy) => `<img className="${cls}" src={useBaseUrl('/img/illustrations/${id}.jpg')} alt="${about.name}: illustration of the finished garment"${lazy ? ' loading="lazy"' : ''} />`
-  const illustration = illustrated
-    ? `<figure className="illustration">
+  // The pattern pieces beside it: the design's committed preview at FreeSewing's 38 chest
+  const preview = flats.has(id) && existsSync(join(designsDir, id, 'preview-cisMaleAdult38.png'))
+  if (preview) copyFileSync(join(designsDir, id, 'preview-cisMaleAdult38.png'), out('static', 'img', 'previews', `${id}.png`))
+  const figures = [
+    illustrated &&
+      `<figure className="illustration">
   ${img('illustration-img')}
   <figcaption>An AI-generated illustration of the design at its default options, not drawn from the pattern.</figcaption>
-</figure>
-`
-    : ''
+</figure>`,
+    preview &&
+      `<figure className="illustration">
+  <a href={useBaseUrl('/img/previews/${id}.png')}><img className="illustration-img preview-img" src={useBaseUrl('/img/previews/${id}.png')} alt="${about.name}: the pattern pieces" /></a>
+  <figcaption>The pattern pieces at the default options, for a 38 in chest, with seam allowance. Click to enlarge.</figcaption>
+</figure>`,
+  ].filter(Boolean)
+  const illustration = figures.length ? `<div className="design-figures">\n${figures.join('\n')}\n</div>\n` : ''
   rows.push(`| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | [${about.name}](/designs/${id}) | ${info.garment} | ${info.source} |`)
   writeFileSync(
     out('docs', 'designs', `${id}.mdx`),

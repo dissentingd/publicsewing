@@ -79,6 +79,22 @@
   border-radius: 8px;
   display: block;
 }
+/* The illustration and the pattern pieces side by side, stacked on a narrow screen */
+.design-figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+.design-figures .illustration {
+  flex: 1 1 280px;
+  margin: 0;
+}
+.preview-img {
+  background: #fff;
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
 .illustration figcaption {
   font-size: 0.8rem;
   color: var(--ifm-color-emphasis-700);
