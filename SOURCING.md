@@ -64,7 +64,7 @@ Library (2026-10-27), by gap:
 - **Jackets:** Finnish M62 reversible jacket and Bundeswehr reversible snow jacket (both
   graded XS–XXL); MA-1 bomber (1971, M); Swedish M54 motorcycle jacket.
 - **Coverall:** Thayaht's TuTa jumpsuit (1920).
-- **T-shirts:** loose, standard, slim (graded XS–XL).
+- **T-shirts:** loose, standard, slim (graded XS–XXL in the held standard tee DXF).
 - Others: Zeltbahn ponchos and hood, boonie hat, high-vis vest, Swiss backpack.
 
 Most are single-size: use them for proportions on our blocks, not as graded pieces.
@@ -80,8 +80,8 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
   front, fly, waistband, belt loops, cargo and patch pockets with flaps.
 - `us-tactical-smock` (built 2026-10-28 as `designs/hooded-smock`): hooded smock, **graded XS–XXL** (six sizes): back, front, sleeves,
   three-piece hood, front placket, pocket bags and flaps.
-- `standard-tshirt`: **graded XS–XL** (Grade Rule Table "Normal_Tee"): front, back,
-  sleeve, collar, back-neck tape.
+- `standard-tshirt`: **graded XS–XXL** (Grade Rule Table "Normal_Tee"): front, back,
+  sleeve, collar, back-neck tape; drafted as `designs/t-shirt` (2026-10-28).
 
 ## Sources in use
 | Source (folder id) | Grade | Designs |
@@ -96,6 +96,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |
 | Open+Pattern, British CS95 field trouser, DXF, CC BY 4.0 `openpattern/cs95-trouser` | better than A | field trousers |
 | Open+Pattern, US tactical smock, DXF, CC BY 4.0 `openpattern/us-tactical-smock` | better than A | hooded smock |
+| Open+Pattern, Standard T-shirt, graded DXF, CC BY 4.0 `openpattern/standard-tshirt` | better than A | T-shirt |
 | Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | A | pyjama jacket, pyjama trousers, work shirt, service shirt |
 | Sheifer, *Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | A | girl's coat |
 | Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911) `merzspracticalcu00merz` | A | women's peacoat, field jacket |

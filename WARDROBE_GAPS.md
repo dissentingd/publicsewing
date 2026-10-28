@@ -63,7 +63,7 @@ and marked as derived.
 | **Nightshirt** | 4 | — | **Drafted 2026-10-23** (`designs/nightshirt`, not sewn) | Walker 1909 `krl00366374` |
 | **Pyjamas** | 4 | — (Paco is summer pants) | **Drafted 2026-10-28** (`designs/pyjama-jacket` on the barber's coat, `designs/pyjama-trousers` on the knickerbockers; not sewn) | Vincent, *Shirts, Undergarments* 1890 `vincentmakingshirts18xx` |
 | Drawstring trousers | 4 | Paco, Waralee | Have | — |
-| Tee, sweatshirt, hoodie | 6 | Teagan, Sven, Hugo, Hannah, Huey | Have | — |
+| Tee, sweatshirt, hoodie | 6 | Teagan, Sven, Hugo, Hannah, Huey | Have; **standard T-shirt variant drafted 2026-10-28** (`designs/t-shirt`, on Brian; not sewn) | Open+Pattern Standard T-shirt (CC BY 4.0) |
 | Underwear, swim | — | Bruce, Shin | Have | — |
 
 ## Women
@@ -103,12 +103,13 @@ and marked as derived.
 | **Girl's coat** | — | **Drafted 2026-10-28** (`designs/girls-coat`: Sheifer's box coat on Mitchell's, to below the knee; not sewn) | Sheifer 1908 `nssheiferssystem00shei` |
 
 **Count** (2026-10-28, by the tables above, 56 rows):
-- **39 rows drafted or done**, the children's measurement sets among them (rows marked
+- **40 rows drafted or done**, the children's measurement sets among them (rows marked
   "Variant; drafted" count here).
 - **1 gap open:** the shift dress (no A source assessed yet). Pyjamas, the women's peacoat and
   field jacket, the boy's suit jacket and the girl's coat closed 2026-10-28.
-- **4 variants.** These are options on existing designs, the cheapest wins. Breeches, the work shirt, the service shirt and the gathered skirt drafted
-  2026-10-28; the bib overall too (a row FreeSewing already covers).
+- **5 variants.** These are options on existing designs, the cheapest wins. Breeches, the work
+  shirt, the service shirt, the gathered skirt and the T-shirt drafted 2026-10-28; the bib overall
+  too (a row FreeSewing already covers).
 - **12 rows already covered** by FreeSewing (the apron row counted here).
 
 ## Progress

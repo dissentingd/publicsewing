@@ -58,6 +58,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `service-shirt` | Button-through camp-collar shirt: back yoke, two flapped breast pockets, shoulder straps | Vincent 1890, Simons 1918 |
 | `hooded-smock` | Boxy pullover anorak: front yoke, buttoned neck placket, hood, flapped chest pocket, kangaroo pocket | Open+Pattern (CC BY 4.0), US tactical smock |
 | `work-shirt` | Roomy pullover work shirt: back yoke, buttoned front fly, neck band or collar, breast pocket | Vincent 1890 |
+| `t-shirt` | Plain crew-neck T-shirt with short set-in sleeves, drafted from your measurements | Open+Pattern Standard T-shirt (CC BY 4.0) |
 | `bib-overall` | Bib-and-brace work overall, side seams buttoned at the hip, patch pockets | Simons 1916 |
 | `field-trousers` | Loose pleated combat trousers with flapped cargo pockets and a flapped seat pocket | Open+Pattern (CC BY 4.0), CS95 |
 | `peg-pants` | Pleated trousers full over the hips, tapering to a narrow bottom | Simons 1916 |
@@ -133,6 +134,10 @@ The jumpsuit follows Thayaht's TuTa (Florence, 1920) as digitised by
 [Open+Pattern](https://openpattern.io), "TuTa Boiler Suit", licensed
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): its pieces and proportions, redrafted
 from measurements (`designs/jumpsuit/BRIEF.md` lists what changed). Credit: Open+Pattern.
+
+The T-shirt, hooded smock and field trousers use Open+Pattern's Standard T-shirt, US Tactical
+Smock and British CS95 Field Trouser as proportion references. They are also CC BY 4.0; credit
+Open+Pattern. Their geometry is redrafted from the wearer's measurements.
 
 Children's sizes come from the USDA's O'Brien surveys (1939), a US government work.
 

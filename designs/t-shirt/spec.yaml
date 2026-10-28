@@ -1,0 +1,55 @@
+# A standard T-shirt, using Open+Pattern's graded Normal_Tee as a proportion reference.
+# Geometry is redrafted from the wearer's measurements on Brian; see BRIEF.md.
+about:
+  id: t-shirt
+  name: T-shirt
+  description: A plain crew-neck T-shirt with short set-in sleeves, drafted from your measurements
+  difficulty: 2
+  tags: [tops, knits]
+  techniques: [knit, set-in-sleeve, neckband]
+  version: 0.1.0
+  source: Open+Pattern, Standard T-shirt (2023), DXF-AAMA grade rule Normal_Tee, CC BY 4.0 (openpattern/standard-tshirt)
+
+block: brian
+
+options:
+  chestEase: { pct: 6, min: 0, max: 20, of: chest, menu: fit } # Open+Pattern M garment width is about 106 cm; assumed chest 100 cm
+  seatEase: { pct: 6, min: 0, max: 20, of: seat, menu: fit }
+  lengthBelowWaist: { pct: 100, min: 70, max: 140, menu: style } # waist to seat
+  sleeveLengthBonus: { pct: -60, min: -75, max: -30, menu: style } # source sleeve is about 23 cm long at M
+  collarWidth: { pct: 4, min: 2, max: 8, of: neck, menu: style } # Open+Pattern neckband is 15 mm wide at M
+  collarSpring: { pct: 0, min: 0, max: 8, menu: style }
+
+pieces:
+  back:
+    from: brian.back
+    hide: tree
+    options: [chestEase, seatEase, lengthBelowWaist]
+    ops:
+      - coatBack: {}
+
+  front:
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [chestEase, seatEase, lengthBelowWaist]
+    ops:
+      - coatFront: { ext: 0, r: 0, facing: 0 }
+
+  collar:
+    after: [back, front]
+    measurements: [neck]
+    options: [collarWidth, collarSpring]
+    let:
+      target: coat.back.neck + coat.front.neck + coat.frontEdge.ext
+    ops:
+      - collar:
+          target: target
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: 0
+
+  sleeve:
+    part: sleeve
+    after: [front]
+    options: [sleeveLengthBonus]
