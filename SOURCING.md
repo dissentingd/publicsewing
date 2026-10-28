@@ -92,7 +92,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Woman's Institute, *Pattern Drafting* (1915/1920) `patterdraftingpicken` | A (blocks) | shirtwaist dress |
 | Mitchell, *Ladies' Tailor-Made Garments* (1921) `newstandardworko00mitc` | A | tailored jacket, fitted jacket, box coat, gored skirt |
 | ЕМКО СЭВ т.3 (1988) `emko` | A (tables) | windbreaker, quilted jacket, winter coat, topcoat, jacket, waistcoat, trousers |
-| Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants |
+| Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants, breeches |
 | Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |
 | Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | A | pyjama jacket, pyjama trousers |
 | Sheifer, *Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | A | girl's coat |
@@ -112,7 +112,7 @@ skirts and dresses are under-represented.
 
 **Quickest next (same systems and libraries as built designs):**
 - Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo`: work pants built
-  (2026-10-27); left: bib (apron) overall, one-piece overall, peg-top pants, breeches.
+  (2026-10-27), breeches (2026-10-28); left: bib (apron) overall, one-piece overall, peg-top pants.
 - Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx`:
   pyjamas built (2026-10-28); left: shirts (work, dress), drawers, dressing gown, aprons.
 - Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo`: boys'

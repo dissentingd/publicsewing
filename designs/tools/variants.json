@@ -30,6 +30,7 @@
   "waistcoat": {"default": {}, "plain": {"breastPocket": false, "lowerPockets": false, "backDart": 0, "frontDart": 0, "liningBack": false, "cutaway": 0}},
   "boys-jacket": {"default": {}, "plain": {"pocketFlaps": false, "hemCurve": 0, "buttons": 2, "breakAt": 1}, "vent": {"vent": true, "breastPockets": true, "buttons": 4, "breakAt": 0}},
   "jacket": {"default": {}, "plain": {"vent": false, "pocketFlaps": false, "hemCurve": 0, "buttons": 1}},
+  "breeches": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "thighFlare": 0, "breechesLength": 0.6}},
   "work-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "backDart": 0.3, "hemWidth": 0.9}},
   "fitted-jacket": {"default": {}, "loose": {"cbSuppression": 0, "underarmSuppression": 0, "buttons": 4, "lengthBelowWaist": 0.3}, "plain": {"pockets": false, "breastPocket": false, "lining": false}},
   "overcoat": {"default": {}, "convertible": {"collarStyle": "convertible", "buttons": 5, "hemFlare": 0}, "raglan": {"sleeveStyle": "raglan", "collarStyle": "military"}, "plain": {"handPockets": false, "lengthBelowWaist": 1.8, "vent": false, "lining": false}},

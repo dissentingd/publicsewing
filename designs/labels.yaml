@@ -104,6 +104,30 @@ options:
   legFlare:
     title: Leg fullness
     description: Extra width at the outside leg seam, as a share of the seat. Below 0% the leg tapers.
+  thighFlare:
+    title: Thigh flare
+    description: How far the outside leg seam flares out at the thigh, as a share of the seat (the back a little more).
+  thighAt:
+    title: Flare position
+    description: Where the thigh flare is widest, as a share of the way from the crotch to the knee.
+  calfWidth:
+    title: Calf width
+    description: Round the leg at the calf line, as a share of the knee measurement.
+  calfAt:
+    title: Calf line
+    description: How far below the knee the calf line falls, as a share of knee to floor.
+  cuffWidth:
+    title: Cuff width
+    description: Round the leg at the bottom, as a share of the ankle measurement.
+  breechesLength:
+    title: Breeches length
+    description: Where the leg ends below the knee, as a share of knee to floor.
+  openingTop:
+    title: Opening top
+    description: How far below the knee the buttoned opening at the side starts, as a share of knee to floor.
+  breechesButtons:
+    title: Buttons at the leg
+    description: Number of buttons closing the opening at the side of the lower leg.
   legLength:
     title: Leg length
     description: Where the leg ends, as a share of waist to floor.

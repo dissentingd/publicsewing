@@ -1,0 +1,112 @@
+# Breeches: Simons' "Riding Breeches" (Drafting Pants and Overalls, 1916, Diagram XV, p. 30), on
+# the trousers' Titan legs: full over the seat and flared out at the side of the thigh, fitted
+# from the knee down to a narrow cuff above the ankle, the side seam buttoned closed below the
+# knee. Waist, fly, pockets and waistband as the trousers. See BRIEF.md.
+extends: ../trousers/spec.yaml
+
+about:
+  id: breeches
+  name: Breeches
+  description: Riding breeches, full at the thigh and flared at the side, fitted from the knee to a buttoned cuff
+  difficulty: 4
+  tags: [bottoms]
+  techniques: [dart, zip, welt-pocket, waistband, buttonhole]
+  version: 0.1.0
+  source: Simons, Drafting Pants and Overalls (1916), Riding Breeches, Diagram XV (draftingpantsove00simo)
+
+options:
+  # Simons drafts a 34 waist, 40 seat, 16 knee, 12 1/2 calf, 10 1/2 shank
+  seatEase: { pct: 8, max: 15 } # roomier than the trousers' 5% for the saddle
+  kneeEase: { pct: 6 } # x knee: forepart 1/2 knee, back 1/2 in wider each side (17 on a 16 knee)
+  legBalance: { pct: 53 } # back's share at the knee: 9 of 17
+  thighFlare: { pct: 5, min: 0, max: 10, of: seat, menu: style } # C to T, 2 in on a 40 seat (the back 2 1/4)
+  thighAt: { pct: 40, min: 20, max: 70, menu: advanced } # x fork to knee: the flare's widest point
+  calfWidth: { pct: 88, min: 70, max: 110, of: knee, menu: fit } # round the calf line; Simons' calf is 78% of his knee
+  calfAt: { pct: 40, min: 20, max: 60, menu: advanced } # x knee to floor: the calf line (F, 4 1/2 in below his fitted knee)
+  cuffWidth: { pct: 118, min: 100, max: 160, of: ankle, menu: fit } # round the cuff (shank 10 1/2)
+  breechesLength: { pct: 80, min: 50, max: 95, menu: style } # x knee to floor: the cuff (G, 12 in below his fitted knee)
+  openingTop: { pct: 8, min: 0, max: 30, menu: advanced } # x knee to floor: the buttoned opening's top, below the knee
+  breechesButtons: { count: 7, min: 3, max: 12, menu: style }
+  hemShaping: { pct: 0, menu: false }
+  hemWidth: { pct: 100, menu: false }
+  lengthBonus: { pct: -4, menu: false }
+
+pieces:
+  front:
+    prefix: trousers # named like the inherited pieces
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat, ankle]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      below: waistToFloor - waistToKnee
+    ops:
+      - trouserLeg:
+          which: front
+          dart: d * frontDart
+          dartAt: 0.55
+          dartLength: waistToSeat * frontDartLength
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45
+          share: 1 - legBalance
+          thighFlare: seat * thighFlare
+          thighAt: thighAt
+          calfBelow: below * calfAt
+          calfW: knee * calfWidth
+          cuffBelow: below * breechesLength
+          cuffW: ankle * cuffWidth
+          openingBelow: below * openingTop
+          buttons: breechesButtons
+          buttonInset: 15
+  back:
+    prefix: trousers # named like the inherited pieces
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat, ankle]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      below: waistToFloor - waistToKnee
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: d * backDart
+          dartAt: 0.4
+          dartFrom: centre
+          dartLength: waistToSeat * backDartLength
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          backPocket: if(backPocket, seat * 0.13, 0)
+          backPocketBelow: waistToSeat * 0.4
+          backPocketWelt: seat * 0.006
+          share: legBalance
+          thighFlare: seat * thighFlare * 1.125 # 2 1/4 in for the forepart's 2
+          thighAt: thighAt
+          calfBelow: below * calfAt
+          calfW: knee * calfWidth
+          cuffBelow: below * breechesLength
+          cuffW: ankle * cuffWidth
+          openingBelow: below * openingTop
+  # The opening: a button stand on the back's edge (folded) and a facing on the front's
+  buttonStand:
+    part: strip
+    after: back
+    nr: 10
+    cut: 2
+    fold: true
+    length: trousers.back.opening + 20
+    width: 30
+  openingFacing:
+    part: strip
+    after: front
+    nr: 11
+    cut: 2
+    length: trousers.front.opening + 20
+    width: 40

@@ -55,7 +55,7 @@ and marked as derived.
 | **Shop coat / lab coat / duster** (unisex) | 2 | — | **Drafted 2026-10-23** (`designs/shop-coat`, not sewn) | Simons 1918 (grocers' gown) |
 | **Service coat** (barber's, white jacket; stand collar or open neck) (unisex) | 2 | — | **Drafted 2026-10-23** (`designs/barbers-coat`, not sewn) | Simons 1918 (barber's coats) |
 | **Bar jacket / short white vest** (unisex) | 2 | Wahid is a dress waistcoat | **Drafted 2026-10-23** (`designs/bar-vest`, not sewn) | Simons 1918 (bar vest) |
-| Breeches | 3 | Cornelius (cycling) | Variant | Simons 1916 |
+| Breeches | 3 | Cornelius (cycling) | Variant; **drafted 2026-10-28** (`designs/breeches`: Simons' riding breeches on the trousers, thigh flare, buttoned lower leg; not sewn) | Simons 1916 `draftingpantsove00simo` |
 | Service / camp-collar shirt | 3, 5 | Simon | Variant (camp collar, epaulettes) | Simons 1918 |
 | Slacks | 5 | Charlie | Have | — |
 | **Nightshirt** | 4 | — | **Drafted 2026-10-23** (`designs/nightshirt`, not sewn) | Walker 1909 `krl00366374` |
@@ -101,11 +101,12 @@ and marked as derived.
 | **Girl's coat** | — | **Drafted 2026-10-28** (`designs/girls-coat`: Sheifer's box coat on Mitchell's, to below the knee; not sewn) | Sheifer 1908 `nssheiferssystem00shei` |
 
 **Count** (2026-10-28, by the tables above, 56 rows):
-- **35 rows drafted or done**, the children's measurement sets among them (rows marked
+- **36 rows drafted or done**, the children's measurement sets among them (rows marked
   "Variant; drafted" count here).
 - **1 gap open:** the shift dress (no A source assessed yet). Pyjamas, the women's peacoat and
   field jacket, the boy's suit jacket and the girl's coat closed 2026-10-28.
-- **8 variants.** These are options on existing designs, the cheapest wins.
+- **7 variants.** These are options on existing designs, the cheapest wins. Breeches drafted
+  2026-10-28.
 - **12 rows already covered** by FreeSewing (the apron row counted here).
 
 ## Progress

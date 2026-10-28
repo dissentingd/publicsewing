@@ -100,6 +100,11 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  *   outseam (`trousers.pockets.side`, for a `weltBag` part).
  * - `backPocket`, `backPocketBelow`, `backPocketWelt` (back): a jetted pocket this long, its
  *   mouth this far below the waist, centred on the dart (`trousers.pockets.back`).
+ * - Breeches (with `cuffBelow`): the leg flares out at the outseam by `thighFlare` at `thighAt`
+ *   (a fraction of the way from the fork to the knee), fits Titan's knee, narrows to `calfW` round
+ *   `calfBelow` under the knee and `cuffW` round at the hem, `cuffBelow` under it (each width
+ *   split back/front by `share`, this piece's part). The outseam opens from the hem up to
+ *   `openingBelow` under the knee, with `buttons` buttonholes `buttonInset` in on the front.
  */
 export function draftTrouserLeg(sh, args) {
   const { which, dart = 0, dartAt = 0.4, dartLength = 0, dartFrom = 'side', hemWidth = 1, hemSag = 0, hemSa = 4 } = args
@@ -134,12 +139,41 @@ export function draftTrouserLeg(sh, args) {
   const sag = (back ? 1 : -1) * hemSag * (4 / 3)
   points.hemCp1 = points.hemIn.shiftFractionTowards(points.hemOut, 1 / 3).shift(-90, sag)
   points.hemCp2 = points.hemIn.shiftFractionTowards(points.hemOut, 2 / 3).shift(-90, sag)
+  // Breeches: fitted below the knee to a cuff, flared at the thigh
+  const br = args.cuffBelow > 0
+  if (br) {
+    const { calfBelow, calfW, cuffBelow, cuffW, share = 0.5, thighFlare = 0, thighAt = 0.4 } = args
+    const cx = points.knee.x
+    const calfY = points.knee.y + calfBelow
+    const cuffY = points.knee.y + cuffBelow
+    points.calfOut = new Point(cx + (out * calfW * share) / 2, calfY)
+    points.calfIn = new Point(cx - (out * calfW * share) / 2, calfY)
+    points.hemOut = new Point(cx + (out * cuffW * share) / 2, cuffY)
+    points.hemIn = new Point(cx - (out * cuffW * share) / 2, cuffY)
+    points.hemCp1 = points.hemIn.shiftFractionTowards(points.hemOut, 1 / 3)
+    points.hemCp2 = points.hemIn.shiftFractionTowards(points.hemOut, 2 / 3)
+    const ty = points.fork.y + (points.knee.y - points.fork.y) * thighAt
+    const straight = new Path().move(points.seatOut).curve(back ? points.seatOutCp1 : points.seatOutCp2, back ? points.kneeOutCp2 : points.kneeOutCp1, points.kneeOut).intersectsY(ty)[0] ?? points.kneeOut
+    points.thighOut = new Point(straight.x + out * thighFlare, ty)
+    points.thighOutCp1 = points.thighOut.shift(90, (ty - points.seatOut.y) / 2)
+    points.thighOutCp2 = points.thighOut.shift(-90, (points.knee.y - ty) / 2)
+    points.seatOutCpD = points.seatOut.shift(-90, (ty - points.seatOut.y) / 3)
+    points.kneeOutCpU = points.kneeOut.shift(90, (points.knee.y - ty) / 3)
+  }
   const hem = new Path().move(points.hemIn).curve(points.hemCp1, points.hemCp2, points.hemOut)
 
   // Seams: outseam from the waist down (always through the seat line), inseam from the fork
   // down, crotch from the waist
   const drawOutseam = () =>
-    back
+    br
+      ? new Path()
+          .move(points.wOut)
+          ._curve(back ? points.seatOutCp2 : points.seatOutCp1, points.seatOut)
+          .curve(points.seatOutCpD, points.thighOutCp1, points.thighOut)
+          .curve(points.thighOutCp2, points.kneeOutCpU, points.kneeOut)
+          .line(points.calfOut)
+          .line(points.hemOut)
+      : back
       ? new Path().move(points.hemOut).line(points.kneeOut).curve(points.kneeOutCp2, points.seatOutCp1, points.seatOut).curve_(points.seatOutCp2, points.wOut).reverse()
       : new Path().move(points.wOut)._curve(points.seatOutCp1, points.seatOut).curve(points.seatOutCp2, points.kneeOutCp1, points.kneeOut).line(points.hemOut)
   let outseam = drawOutseam()
@@ -150,12 +184,14 @@ export function draftTrouserLeg(sh, args) {
   }
   let inseam, crotch
   if (back) {
-    inseam = new Path().move(points.fork).curve(points.forkCp2, points.kneeInCp1, points.kneeIn).line(points.hemIn)
+    inseam = new Path().move(points.fork).curve(points.forkCp2, points.kneeInCp1, points.kneeIn)
     crotch = new Path().move(wIn).line(points.crossSeamCurveStart).curve(points.crossSeamCurveCp1, points.crossSeamCurveCp2, points.fork)
   } else {
-    inseam = new Path().move(points.fork).curve(points.forkCp1, points.kneeInCp2, points.kneeIn).line(points.hemIn)
+    inseam = new Path().move(points.fork).curve(points.forkCp1, points.kneeInCp2, points.kneeIn)
     crotch = new Path().move(wIn).line(points.crotchSeamCurveStart).curve(points.crotchSeamCurveCp2, points.crotchSeamCurveCp1, points.fork)
   }
+  if (br) inseam = inseam.line(points.calfIn)
+  inseam = inseam.line(points.hemIn)
   const waist = new Path().move(points.wOut).line(points.dartOut).line(points.dartTip).line(points.dartIn).line(wIn)
 
   // Back: waist > crotch > inseam > hem > outseam; front the other way round
@@ -200,6 +236,27 @@ export function draftTrouserLeg(sh, args) {
     if (!back) {
       const pockets = store.get('trousers.pockets', null) ?? {}
       store.set('trousers.pockets', { ...pockets, side: { len: pocketWidth, bag: pocketTop + pocketLength + pocketDepth } })
+    }
+  }
+
+  // Breeches opening: the outseam left open from the hem up to `openingBelow` under the knee;
+  // buttonholes along the front's edge (the back's edge takes a button stand)
+  const { openingBelow = 0, buttons = 0, buttonInset = 0 } = args
+  if (br) {
+    const top = outseam.intersectsY(points.knee.y + openingBelow)[0]
+    if (top) {
+      points.openingTop = top
+      snippets.openingTop = new Snippet('notch', top)
+      info.opening = outseam.length() - outseam.split(top)[0].length()
+      const inward = back ? 180 : 0
+      for (let i = 0; !back && i < buttons; i++) {
+        const t = (i + 0.5) / buttons
+        const y = top.y + (points.hemOut.y - top.y) * t
+        const at = outseam.intersectsY(y)[0]
+        if (!at) continue
+        points[`buttonhole${i}`] = at.shift(inward, buttonInset)
+        snippets[`buttonhole${i}`] = new Snippet('buttonhole', points[`buttonhole${i}`]).attr('data-rotate', 90)
+      }
     }
   }
 
