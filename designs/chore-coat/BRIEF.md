@@ -45,8 +45,8 @@ Inches below are the source's at breast 36. Everything becomes a proportion, so 
 | Biceps ease | not stated (roomy work sleeve) | `bicepsEase` 25% |
 
 Pocket sizes were measured off the printed diagram, which is roughly to scale (the back width
-D–M reads 8¼" against the text's 1/3 of 18 + 2¼). They are design proportions, not checked
-values.
+D–M reads 8¼" against the text's 1/3 of 18 + 2½ = 8½, book p. 12, so the diagram is about 3%
+small). They are design proportions, not checked values.
 
 ## Stout figures (Diagrams VI and XI)
 The shared coat body applies Simons' stout rule. The "fat" is how far the waist exceeds a
