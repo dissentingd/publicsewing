@@ -78,6 +78,84 @@ function SizePicker({ design, Design, useLocalStorageState }) {
   )
 }
 
+const save = (name, text, type) => {
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(new Blob([text], { type }))
+  a.download = name
+  a.click()
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000)
+}
+
+// Files for other pattern software, drafted from the editor's current settings, and a SeamlyMe
+// measurements file loaded in as "my measurements"
+function OtherSoftware({ design, Design, useLocalStorageState }) {
+  const [state, setState] = useLocalStorageState(editorConfig(design).stateKey, { defaultValue: {} })
+  const [, setMine] = useLocalStorageState(MY_KEY, { defaultValue: null })
+  const [note, setNote] = React.useState('')
+  const settings = state?.settings ?? {}
+  const ready = settings.measurements && Object.keys(settings.measurements).length
+  const size = settings.metadata?.setName ?? 'own measurements'
+
+  const download = (ext, type) => {
+    const { exportFiles } = require('../../../designs/lib/export/index.mjs')
+    const { about } = require('@site/src/lib/collection.mjs')
+    // CAD and Seamly expect the allowance: the editor's width (kept in samm even while it's
+    // switched off), else 10 mm
+    const sa = settings.samm ?? settings.sa ?? 10
+    try {
+      const files = exportFiles(Design, { ...settings, sa }, { name: design, size, source: about[design]?.source })
+      save(`${design}-${size.replace(/[^\w.-]+/g, '_')}.${ext}`, files[ext], type)
+      setNote('')
+    } catch (e) {
+      setNote(`Couldn't make the file: ${e.message}`)
+    }
+  }
+  const load = async (e) => {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    if (!file) return
+    const { fromSmis } = require('../../../designs/lib/export/index.mjs')
+    try {
+      const { measurements, skipped } = fromSmis(await file.text())
+      setMine((m) => ({ ...(m || {}), ...measurements }))
+      setState((cur) => ({ ...(cur || {}), view: 'draft', settings: { ...(cur?.settings || {}), measurements: { ...(cur?.settings?.measurements || {}), ...measurements }, metadata: undefined } }))
+      setNote(`Loaded ${Object.keys(measurements).length} measurements from ${file.name}${skipped.length ? `; ${skipped.length} have no match here and were left out` : ''}. Check them under Measurements.`)
+    } catch (err) {
+      setNote(`Couldn't read ${file.name}: ${err.message}`)
+    }
+  }
+
+  return (
+    <details className="other-software">
+      <summary>
+        <strong>For other pattern software</strong> (Seamly2D, CLO3D and other CAD)
+      </summary>
+      <p>
+        Drafted at the size and options above, with seam allowance. AAMA DXF opens in CLO3D, Marvelous Designer,
+        Browzwear, Style3D, Optitex, Gerber and Lectra, and as a drawing in LibreCAD or Inkscape. The Seamly2D file
+        is fixed at these measurements: draft again here for other ones.
+      </p>
+      <p>
+        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('dxf', 'application/dxf')}>
+          AAMA DXF
+        </button>{' '}
+        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('sm2d', 'application/xml')}>
+          Seamly2D (.sm2d)
+        </button>{' '}
+        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('smis', 'application/xml')}>
+          SeamlyMe measurements (.smis)
+        </button>{' '}
+        <label className="button button--secondary button--sm">
+          Load SeamlyMe measurements…
+          <input type="file" accept=".smis,.vit" onChange={load} hidden />
+        </label>
+      </p>
+      {!ready ? <p>Choose a size set or enter measurements first.</p> : null}
+      {note ? <p>{note}</p> : null}
+    </details>
+  )
+}
+
 export default function PatternEditor({ design }) {
   return (
     <BrowserOnly fallback={<div className="pattern-editor">Loading the pattern tool…</div>}>
@@ -91,6 +169,7 @@ export default function PatternEditor({ design }) {
             <style>{patternStyle}</style>
             <SizePicker design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} />
             <Editor design={design} localDesigns={designs} config={editorConfig(design)} />
+            <OtherSoftware design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} />
           </div>
         )
       }}

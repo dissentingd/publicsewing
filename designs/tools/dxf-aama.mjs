@@ -6,9 +6,11 @@
 //
 // AAMA layers: 1 piece boundary (and piece text), 2 turn points, 3 curve points, 4 notches,
 // 5 grade reference, 6 mirror line, 7 grain line, 8 internal lines, 13 drill holes,
-// 14 sew line. CLO writes the net (sewn) outline on layer 1 and the outline with seam
-// allowance on layer 14, so sizes here are net. Units come from the "UNITS:" text
-// (METRIC = mm).
+// 14 sew line. The standard puts the cut line (with seam allowance) on layer 1 and the seam
+// on 14, as lib/export/dxf.mjs writes them; CLO swaps them (net outline on 1). Of the two,
+// the one enclosing less is taken as the net outline (not the shorter: a seam can run into
+// a dart the cut line bridges), so sizes here are net either way. Units come from
+// the "UNITS:" text (METRIC = mm).
 import { readFileSync, writeFileSync } from 'node:fs'
 
 /** Group-code pairs → entities (type, layer, codes, vertices) grouped by block */
@@ -67,8 +69,9 @@ const area = (pts) => Math.abs(pts.reduce((a, p, i) => a + p[0] * pts[(i + 1) % 
 export function summarise({ blocks }) {
   return blocks.map((b) => {
     const polys = b.ents.filter((e) => e.type === 'POLYLINE')
-    const net = polys.filter((p) => p.layer === 1).sort((a, c) => c.pts.length - a.pts.length)[0]
-    const outer = polys.filter((p) => p.layer === 14).sort((a, c) => c.pts.length - a.pts.length)[0]
+    const one = polys.filter((p) => p.layer === 1).sort((a, c) => c.pts.length - a.pts.length)[0]
+    const four = polys.filter((p) => p.layer === 14).sort((a, c) => c.pts.length - a.pts.length)[0]
+    const [net, outer] = four && one && area(four.pts) < area(one.pts) ? [four, one] : [one, four]
     const xs = (net?.pts ?? []).map((p) => p[0])
     const ys = (net?.pts ?? []).map((p) => p[1])
     const grain = [...polys, ...b.ents.filter((e) => e.type === 'LINE')].find((p) => p.layer === 7)
