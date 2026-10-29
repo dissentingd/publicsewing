@@ -134,8 +134,11 @@ export function draftJacketLayout(sh, a) {
   const ua = a.underarm
   const cbIn = a.cb?.waist ?? 0
   const cbHip = a.cb?.hip ?? 0
-  const supp = ua ? ua.backSuppression + ua.frontSuppression : 0
-  const e = Math.max(0, (a.seat / 2 - waistW + supp + cbHip) / (ua ? 8 : 6))
+  // A second front seam (`second`, with an under-arm panel only) adds its suppression and two
+  // more flaring edges
+  const sec = ua && a.second ? a.second : null
+  const supp = (ua ? ua.backSuppression + ua.frontSuppression : 0) + (sec ? sec.suppression : 0)
+  const e = Math.max(0, (a.seat / 2 - waistW + supp + cbHip) / ((ua ? 8 : 6) + (sec ? 2 : 0)))
   const slope = e / a.hipDepth
   /** Where an edge from waist point w, flaring by `dir` (+1 out to +x), meets the hem */
   const hemAt = (w, dir) => new Point(w.x + dir * slope * a.length, w.y + a.length)
@@ -335,6 +338,31 @@ export function draftJacketLayout(sh, a) {
       panels.sideFront.marks = { seamTop: r.upper.s, seamBust: M, seamWaist: r.lower.s, hemSeam: hemSc, hemSide: u.hemC, waist: u.Wc, armhole: u.S, shoulder: r.shoulder }
       sideEdge = [u.Wc, u.hemC]
       under.front = u
+      // A second front seam (Mitchell's double dart): from `sec.at` (0-1) along the side front's
+      // shoulder, princess seam to shoulder point, down to the waist half way between the
+      // princess and under-arm seams, opened `sec.suppression` there square to the seam, then
+      // both edges flaring to the hem. Splits the side front into a middle front and a side front.
+      if (sec) {
+        const Q = r.upper.s.shiftFractionTowards(r.shoulder, sec.at)
+        const Wm = r.lower.s.shiftFractionTowards(u.Wc, 0.5)
+        const d = dir(Q, Wm)
+        const n = { x: -d.y, y: d.x }
+        const nn = n.x > 0 ? n : { x: -n.x, y: -n.y } // toward the side (+x)
+        const go = (p, v, k) => new Point(p.x + v.x * k, p.y + v.y * k)
+        const Wa = go(Wm, nn, -sec.suppression / 2)
+        const Wb = go(Wm, nn, sec.suppression / 2)
+        const Lh = a.length / d.y
+        const hemA = go(go(Wa, d, Lh), nn, slope * Lh)
+        const hemB = go(go(Wb, d, Lh), nn, -slope * Lh)
+        panels.middleFront = {
+          outline: seam.side.clone().line(hemSc).line(hemA).line(Wa).line(Q).line(r.upper.s.clone()),
+          fold: false,
+          marks: { seamTop: r.upper.s, seamBust: M, seamWaist: r.lower.s, hemSeam: hemSc, hemSecond: hemA, secondWaist: Wa, secondTop: Q },
+        }
+        panels.sideFront.outline = new Path().move(Q.clone()).line(Wb).line(hemB).line(u.hemC).line(u.Wc).line(u.S).join(u.fromS).line(Q.clone())
+        panels.sideFront.marks = { secondTop: Q, secondWaist: Wb, hemSecond: hemB, hemSide: u.hemC, waist: u.Wc, armhole: u.S, shoulder: r.shoulder }
+        seams.frontSecond = [Q.dist(Wa) + Wa.dist(hemA), Q.dist(Wb) + Wb.dist(hemB)]
+      }
       // The under-arm panel, in the back's frame: the front side mirrored and turned so its side
       // seam (armhole to waist) lies on the back's, the side seam then dropped. Below the waist
       // both edges run down the panel's own middle direction, each flaring by the same `e`.

@@ -42,6 +42,7 @@
   "two-piece-skirt": {"default": {}, "flared": {"goreFlare": 0.5, "panelShare": 0.5, "frontWaistDrop": 0}},
   "knee-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "kneePantsLength": -0.1, "legBottom": 1.25}},
   "knickers": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "knickerDrop": 0.2, "knickerFullness": 1.5}},
+  "double-dart-jacket": {"default": {}, "loose": {"cbSuppression": 0, "underarmSuppression": 0, "secondSuppression": 0, "lengthBelowWaist": 0.3}, "plain": {"lining": false, "secondAt": 0.35, "secondSuppression": 0.2}},
   "work-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "backDart": 0.3, "hemWidth": 0.9}},
   "fitted-jacket": {"default": {}, "loose": {"cbSuppression": 0, "underarmSuppression": 0, "buttons": 4, "lengthBelowWaist": 0.3}, "plain": {"pockets": false, "breastPocket": false, "lining": false}},
   "overcoat": {"default": {}, "convertible": {"collarStyle": "convertible", "buttons": 5, "hemFlare": 0}, "raglan": {"sleeveStyle": "raglan", "collarStyle": "military"}, "plain": {"handPockets": false, "lengthBelowWaist": 1.8, "vent": false, "lining": false}},

@@ -10,6 +10,7 @@ export function checkJacket(pattern) {
   if (s.backPrincess) near(s.backPrincess[0], s.backPrincess[1], 0.5, 'back princess seam')
   if (s.frontPrincess) near(s.frontPrincess[0], s.frontPrincess[1], 0.5, 'front princess seam')
   if (s.dart) near(s.dart[0], s.dart[1], 0.5, 'neck dart legs')
+  if (s.frontSecond) near(s.frontSecond[0], s.frontSecond[1], 0.5, 'second front seam')
   // A side seam, or (with an under-arm panel) the two seams either side of that panel
   if (s.underarmBack) {
     near(s.underarmBack[0], s.underarmBack[1], 0.5, 'back under-arm seam')

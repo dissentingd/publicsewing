@@ -49,6 +49,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `shirtwaist-dress` | Buttoned work dress with a turn-down collar and cuffs | Woman's Institute, *Pattern Drafting* (1915) |
 | `tailored-jacket` | Women's semi-fitted jacket, princess seams, peak lapel | Mitchell 1921 |
 | `fitted-jacket` | Women's tight-fitted jacket with an under-arm panel and a shawl collar | Mitchell 1921 |
+| `double-dart-jacket` | Tight-fitted jacket shaped by two front seams over the shoulder | Mitchell 1921 |
 | `womens-peacoat` | Women's hip-length double-breasted coat, princess seams, wide lapels | Merz 1911 |
 | `field-jacket` | Women's straight hip-length jacket with four flapped patch pockets | Merz 1911 |
 | `box-coat` | Women's loose box coat with a notched lapel and set-in flap pockets | Mitchell 1921 |

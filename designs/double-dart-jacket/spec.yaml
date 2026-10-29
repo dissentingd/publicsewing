@@ -1,0 +1,102 @@
+# Double-dart jacket: Mitchell's tight-fitted jacket "with double dart" (New "Standard" Work ...
+# Ladies' Tailor-Made Garments, 1921, pp. 46-47), on the fitted jacket (FreeSewing's Breanna):
+# its princess seams, under-arm panel, shaped CB and shawl collar, plus a second front seam
+# running from the shoulder to the hem between the princess and under-arm seams, so the front
+# is shaped by two "darts" carried up over the shoulder. No pockets are drawn. See BRIEF.md.
+extends: ../fitted-jacket/spec.yaml
+
+about:
+  id: double-dart-jacket
+  name: Double-dart jacket
+  description: "A tight-fitted jacket shaped by two front seams over the shoulder, an under-arm panel and a shaped back seam"
+  difficulty: 4
+  tags: [jackets]
+  techniques: [princess-seam, shawl-collar, facing, button, lining, two-piece-sleeve]
+  version: 0.1.0
+  source: "Mitchell, New \"Standard\" Work on ... Ladies' Tailor-Made Garments (1921), pp. 46-47 (newstandardworko00mitc)"
+  preview: cisFemaleAdult36
+
+options:
+  # The second seam: from the side front's shoulder (52 and 57-58 both on the shoulder), its
+  # waist suppression opening below the bust as the first's does
+  secondAt: { pct: 50, min: 25, max: 75, menu: style } # along the side front's shoulder, princess seam to shoulder point
+  secondSuppression: { pct: 12, min: 0, max: 25, menu: fit } # x half the seat less half the waist
+  # No pockets drawn (p. 47)
+  pockets: { bool: false, menu: false }
+  breastPocket: { bool: false, menu: false }
+  ticketPocket: { bool: false, menu: false }
+
+pieces:
+  frontBase:
+    from: breanna.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, seat, waistToSeat, waistToFloor, neck, hpsToWaistFront]
+    let:
+      # Half the seat less half the waist, with ease; the CB and under-arm seams take their
+      # shares of it, scaled down where that would leave less than about 6% ease round the waist (Breanna's waist comes out a few % under its waistEase)
+      d: max(0, seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      k: min(1, max(0, waist * (waistEase - 0.09) / 2) / max(1, d * (cbSuppression + underarmSuppression + secondSuppression)))
+    ops:
+      - jacketBase: { side: front }
+      - jacketLayout:
+          seat: seat * (1 + seatEase)
+          hipDepth: waistToSeat
+          length: waistToFloor * lengthBelowWaist
+          lap: chest * buttonExtension
+          breakBelow: hpsToWaistFront * breakBelowBust
+          rollOut: neck * rollOut
+          lapelWidth: neck * lapelWidth
+          gorgeAt: 0.55
+          shawl: { width: neck * collarWidth, lapel: lapelWidth } # lapelWidth: the argument above, in mm
+          underarm:
+            back: underarmBack
+            front: underarmFront
+            backSuppression: d * underarmSuppression * k
+            frontSuppression: 0
+          # The second "dart": a seam from the side front's shoulder to the hem (pp. 46-47)
+          second:
+            at: secondAt
+            suppression: d * secondSuppression * k
+          cb:
+            waist: d * cbSuppression * k
+            hip: waist * cbSeat # (`waist` here is the entry above: the CB suppression)
+          facing: chest * facingWidth
+          backFacing: chest * backFacingDepth
+          lining: lining
+          liningPleat: chest * liningPleat
+          welts:
+            breast:
+              if: breastPocket
+              below: hpsToWaistFront * weltBelow
+              from: chest * weltFromCF
+              len: chest * weltLength
+              rise: weltRise
+              welt: len * weltDepth
+              bag: len * bagDepth
+              clear: chest * 0.02
+          pockets:
+            hip:
+              if: pockets
+              below: waistToSeat * pocketBelow
+              from: chest * pocketFromSeam
+              share: pocketWidth
+              angle: pocketAngle
+              flapRatio: flapDepth
+              bagRatio: bagDepth
+              clear: chest * 0.015
+            ticket:
+              if: pockets and ticketPocket
+              below: waistToSeat * (pocketBelow - ticketAbove)
+              from: chest * pocketFromSeam
+              share: pocketWidth * ticketWidth # of the side front's width at its own mouth
+              angle: pocketAngle
+              flapRatio: ticketFlapDepth
+              bagRatio: bagDepth
+              clear: chest * 0.015
+          sleeveStore: [library.twoPartSleeve, library.topsleeve, library.undersleeve, double-dart-jacket.topsleeve, double-dart-jacket.undersleeve]
+      - store: { key: library.topsleeve.title, value: { nr: 7, brand: "'PublicSewing'" } }
+      - store: { key: library.undersleeve.title, value: { nr: 8, brand: "'PublicSewing'" } }
+
+  middleFront: { part: jacketPanel, after: [backBase, frontBase], panel: middleFront, nr: 21, label: middleFront, cut: 2, lining: lining }

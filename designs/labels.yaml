@@ -137,6 +137,12 @@ options:
   seatPockets:
     title: Seat pockets
     description: A patch pocket on each back.
+  secondAt:
+    title: Second seam position
+    description: Where the second front seam meets the shoulder, from the front seam (0%) to the shoulder point (100%).
+  secondSuppression:
+    title: Second seam shaping
+    description: Width the second front seam takes in at the waist, as a share of half the seat less half the waist.
   legBottom:
     title: Leg bottom
     description: Round the bottom of the leg, as a share of the knee measurement.

@@ -597,3 +597,14 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: elastic at the knee, straight or long legs, long socks, shoes, a belt, braces, a
 > person.
+
+### double-dart-jacket: Double-dart jacket
+> A women's **tight-fitted tailored jacket** in fine wool suiting (navy, grey or dark brown),
+> closely shaped to the waist by **two seams on each front**, both running from the **shoulder**
+> down over the bust to the hem (no darts), with princess seams at the back and an under-arm
+> panel, flaring a little over the hips; length to the **hip**. Single-breasted, **three
+> buttons**, buttoning right over left. A **shawl collar** cut in one with the fronts: a smooth
+> rolled collar and lapel with **no notch**. **No pockets.** **Two-piece sleeves**. Lined.
+>
+> Leave out: pockets, a notched lapel, a belt, darts, trim or braid, a blouse with a frilled
+> collar, a person.
