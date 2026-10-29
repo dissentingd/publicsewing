@@ -186,6 +186,53 @@ Canada.
   sweep's queries and shortlist are in `archive/sourcing/`.
 - **HathiTrust** needs a browser (Cloudflare). LoC scans are 300–400 ppi.
 - After a good find, search the same author and publisher.
+- **Threadloop** (threadloop.app): a crowdsourced index of modern patterns that links to each
+  designer's own site. Search it before choosing a garment, both for free equivalents and
+  for designers whose licence lets us redraft their patterns. Anonymous search works:
+  `/patterns?q=<term>&free=only&commit=Search`, and `/designers?page=N` lists every designer
+  with total and free counts. See the survey below.
+
+## Free modern patterns: Threadloop survey (2026-10-29)
+Threadloop indexes 120,863 patterns from 6,636 designers. 8,750 are free, from 1,799
+designers, and only 150 designers have ten or more. Free doesn't mean reusable: almost every
+free pattern is still the designer's copyright. The aim was to find designers whose licence
+would let PublicSewing redraft their free patterns as made-to-measure designs, with credit.
+Their own sites were checked, not Threadloop's listing.
+
+**Open licences: two, both already in use.**
+
+| Publisher | Free | Licence | Notes |
+|---|---|---|---|
+| Open+Pattern | 9 sets | CC BY 4.0 | Military and workwear; the jumpsuit, field trousers and hooded smock come from it. The rest (Zeltbahn, M54 jacket, MA-1 bomber, M1951 parka, backpacks) are candidates |
+| FreeSewing | 49 listed (278 search hits) | MIT (npm `license` field of every design package) | Already drafted from measurements; our blocks |
+
+**Everything else checked keeps its rights.** Grouped by what its terms say:
+
+| Terms | Publishers (free patterns on Threadloop) |
+|---|---|
+| Personal use only, no derivatives | Peppermint Magazine (17), Grainline Studio (12; read from a search summary), The Museum at FIT (5; site terms forbid modification) |
+| Copyright kept, made items may be sold, files not redistributed | So Sew Easy (84) |
+| Non-commercial research, study and education only | V&A (9: shirt, huipil, Mary Quant dresses, kimono dress, tie-on pockets, bags) |
+| Copyright notice only, no licence | Mood Sewciety (586), Snaply (101), Kotiliesi (83), pattydoo (81; terms forbid editing), Modern Sewing Patterns (42; men's, women's, children's, free in S–XL), Tiana's Closet (178, flagged by Threadloop), LACMA (13 historic garments, each one scaled size), Genesee Country Village & Museum (8; corsets, bloomers), MYOG Tutorials (gear) |
+| No licence found | Initiative Handarbeit (132, knitting), Bernina (109), Meillä kotona (95, knitting), Shkatulka (78; Russian; men's, women's and children's, large size range), DRCOS (43; Japanese garments and cosplay), Dress Developer (48; drafted from measurements already), Choly Knight (197, toys), Unfettered and Sewing Times (bags), Rafael Kouto, Jess Dang, LearnMYOG |
+| Not readable (blocked or verification page) | Burda (383 free of 16,755), La Maison Victor (271), Made for Mermaids (135), Patterns for Pirates (50), Petite Stitchery (48), See Kate Sew (45), Closet Core (15), SHOWstudio (19; designer garments), Umi Mode (no site) |
+
+Many of the top free designers aren't garment designers: SewCanShe (300), Tilda's World (177),
+Purl Soho (121), the fabric shops (Kokka, Art Gallery, Robert Kaufman, Riley Blake, Moda) and
+the quilting sites publish bags, toys, quilts and home goods.
+
+**What PublicSewing adds.** Of the free garment patterns found, only FreeSewing's and Dress
+Developer's are drafted from the wearer's measurements; the rest come in a graded size range
+or, for museum patterns, one size. That is the gap: made-to-measure, children's sizes
+included.
+
+**Next step: ask.** Designers whose terms are silent or keep all rights could still agree to
+have their free patterns redrafted as made-to-measure designs here, credited and linked. The
+strongest candidates for garments are Mood Sewciety, Modern Sewing Patterns, Shkatulka,
+DRCOS, LACMA and the V&A (museums often license on request), and Open+Pattern needs no
+permission. Every use needs the designer's written permission on file before any work. A
+free pattern with no licence is a design reference at most, used the way ЕМКО is: its
+proportions and methods, never its text, pieces or images.
 
 ## Open gaps (sources)
 - **Mid-century (style 5):** needs non-renewed 1930s–50s pattern books; Pivnick *How to
