@@ -66,13 +66,14 @@ index 0d6649a..5f30722 100644
          <H2>Export for printing</H2>
          <p>You can export your pattern in a variety of page formats for printing:</p>
          <div className="tw:grid tw:grid-cols-1 tw:lg:grid-cols-2 tw:gap-2">
-@@ -143,4 +88,29 @@
+@@ -143,4 +88,30 @@
          </div>
 +        <H2>Print at FedEx Office</H2>
 +        <p>
 +          Download a tiled, full-scale PDF on 36 × 48 in sheets, ready for FedEx Office blueprint printing. The
-+          file contains pattern sheets only, including a scale-check square. At checkout, choose 36 × 48 in and
-+          vertical orientation; print at actual size (100%) with fit-to-page turned off.
++          file contains pattern sheets only, including a scale-check square. Typical checkout options are Black &
++          White, 36 × 48 in, Standard White Bond Paper, binding None, and Vertical orientation. Print at actual
++          size (100%) with fit-to-page turned off; options can vary by location.
 +        </p>
 +        <p>
 +          <a href="https://www.office.fedex.com/default/architecture-construction-engineering.html" target="_blank" rel="noreferrer">
@@ -96,7 +97,7 @@ index 0d6649a..5f30722 100644
          <H2>Export for editing</H2>
          <p>
            We recommend SVG for editing, but we also provide a full-sized PDF if you prefer that.
-@@ -158,7 +128,7 @@ export const ExportView = (props) => {
+@@ -158,7 +129,7 @@ export const ExportView = (props) => {
            ))}
          </div>
          <H2>Export as code</H2>

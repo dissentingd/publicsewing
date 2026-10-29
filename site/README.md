@@ -21,7 +21,8 @@ Needs `../designs` installed (`npm install` there): the site builds the designs 
   in `src/components/PatternEditor.jsx`: backend off, our views only, a picker for our size sets,
   and FreeSewing's pattern stylesheet (`patternStyle.mjs`). Its FedEx Office export creates a
   full-scale, tiled ARCH E (36 × 48 in) PDF without a cover or cut-layout pages; users upload it
-  themselves to FedEx Office's blueprint printing product and print at 100%.
+  themselves to FedEx Office's blueprint printing product. It recommends Black & White, 36 × 48 in,
+  Standard White Bond Paper, no binding and vertical orientation, then printing at 100%.
 - **`src/lib/collection.mjs`** replaces `@freesewing/collection` (webpack alias in
   `docusaurus.config.js`), so the editor sees our designs and not FreeSewing's 73.
 - **`patches/@freesewing+react+4.10.2.patch`** (patch-package; FreeSewing's MIT notice
