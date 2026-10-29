@@ -1,5 +1,7 @@
 // Every design's DXF export reads back as the pattern it came from: same pieces, net and cut
 // outlines the length of FreeSewing's seam and allowance paths, every notch, a grain line.
+// The layered SVG has a layer per piece; the projector PDF's cross-reference table points at
+// its objects.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readdirSync, existsSync } from 'node:fs'
@@ -8,6 +10,8 @@ import { fileURLToPath } from 'node:url'
 import { loadDesign, measurementSet } from '../tools/render.mjs'
 import { pieces } from '../lib/export/pieces.mjs'
 import { toDxf } from '../lib/export/dxf.mjs'
+import { toLayeredSvg } from '../lib/export/svg.mjs'
+import { toProjectorPdf } from '../lib/export/pdf.mjs'
 import { parseDxf, summarise } from '../tools/dxf-aama.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -47,6 +51,17 @@ for (const name of designs) {
         assert.equal(b.notches, ps[i].notches.length, `${tag}: notches`)
         assert.notEqual(b.grainDeg, null, `${tag}: grain line`)
       })
+
+      const svg = toLayeredSvg(ps, { title: name, size })
+      assert.ok(!/NaN|undefined/.test(svg), `${size}: no NaN in the SVG`)
+      for (const p of ps) assert.ok(svg.includes(`inkscape:label="${p.name}"`), `${size}: SVG layer ${p.name}`)
+
+      const pdf = toProjectorPdf(ps, { title: name, size })
+      assert.ok(!/NaN|undefined/.test(pdf), `${size}: no NaN in the PDF`)
+      const xref = Number(/startxref\n(\d+)/.exec(pdf)[1])
+      assert.ok(pdf.startsWith('xref', xref), `${size}: PDF startxref`)
+      const offsets = [...pdf.slice(xref).matchAll(/^(\d{10}) 00000 n $/gm)].map((m) => Number(m[1]))
+      offsets.forEach((o, i) => assert.ok(pdf.startsWith(`${i + 1} 0 obj`, o), `${size}: PDF object ${i + 1} offset`))
     }
   })
 }

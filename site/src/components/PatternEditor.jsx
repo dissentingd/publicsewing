@@ -78,9 +78,11 @@ function SizePicker({ design, Design, useLocalStorageState }) {
   )
 }
 
+// PDFs come as one byte per character; everything else is text
 const save = (name, text, type) => {
+  const body = type === 'application/pdf' ? Uint8Array.from(text, (c) => c.charCodeAt(0)) : text
   const a = document.createElement('a')
-  a.href = URL.createObjectURL(new Blob([text], { type }))
+  a.href = URL.createObjectURL(new Blob([body], { type }))
   a.download = name
   a.click()
   setTimeout(() => URL.revokeObjectURL(a.href), 1000)
@@ -96,7 +98,7 @@ function OtherSoftware({ design, Design, useLocalStorageState }) {
   const ready = settings.measurements && Object.keys(settings.measurements).length
   const size = settings.metadata?.setName ?? 'own measurements'
 
-  const download = (ext, type) => {
+  const download = (key, ext, type) => {
     const { exportFiles } = require('../../../designs/lib/export/index.mjs')
     const { about } = require('@site/src/lib/collection.mjs')
     // CAD and Seamly expect the allowance: the editor's width (kept in samm even while it's
@@ -104,7 +106,7 @@ function OtherSoftware({ design, Design, useLocalStorageState }) {
     const sa = settings.samm ?? settings.sa ?? 10
     try {
       const files = exportFiles(Design, { ...settings, sa }, { name: design, size, source: about[design]?.source })
-      save(`${design}-${size.replace(/[^\w.-]+/g, '_')}.${ext}`, files[ext], type)
+      save(`${design}-${size.replace(/[^\w.-]+/g, '_')}${key === 'darkPdf' ? '-dark' : ''}.${ext}`, files[key], type)
       setNote('')
     } catch (e) {
       setNote(`Couldn't make the file: ${e.message}`)
@@ -128,22 +130,32 @@ function OtherSoftware({ design, Design, useLocalStorageState }) {
   return (
     <details className="other-software">
       <summary>
-        <strong>For other pattern software</strong> (Seamly2D, CLO3D and other CAD)
+        <strong>For other pattern software and projectors</strong> (Seamly2D, CLO3D and other CAD, Inkscape)
       </summary>
       <p>
         Drafted at the size and options above, with seam allowance. AAMA DXF opens in CLO3D, Marvelous Designer,
         Browzwear, Style3D, Optitex, Gerber and Lectra, and as a drawing in LibreCAD or Inkscape. The Seamly2D file
-        is fixed at these measurements: draft again here for other ones.
+        is fixed at these measurements: draft again here for other ones. The SVG is full size with a layer per piece
+        (Inkscape, cutting machines); the projector PDF is one page at 100%, to project onto the cutting table.
       </p>
       <p>
-        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('dxf', 'application/dxf')}>
+        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('dxf', 'dxf', 'application/dxf')}>
           AAMA DXF
         </button>{' '}
-        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('sm2d', 'application/xml')}>
+        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('sm2d', 'sm2d', 'application/xml')}>
           Seamly2D (.sm2d)
         </button>{' '}
-        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('smis', 'application/xml')}>
+        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('smis', 'smis', 'application/xml')}>
           SeamlyMe measurements (.smis)
+        </button>{' '}
+        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('svg', 'svg', 'image/svg+xml')}>
+          Layered SVG
+        </button>{' '}
+        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('pdf', 'pdf', 'application/pdf')}>
+          Projector PDF
+        </button>{' '}
+        <button className="button button--secondary button--sm" disabled={!ready} onClick={() => download('darkPdf', 'pdf', 'application/pdf')}>
+          Projector PDF, dark
         </button>{' '}
         <label className="button button--secondary button--sm">
           Load SeamlyMe measurements…
