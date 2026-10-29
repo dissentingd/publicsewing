@@ -57,7 +57,7 @@ export function draftYokeSide(sh, side) {
   const { waistY, yokeY, hemY } = levels(sh, c)
   const S = points.armhole.x
   const arm = armhole(points, Path, paths[`${side}Armhole`]).hide() // armhole bottom -> shoulder
-  const neck = paths[`${side}Collar`] // neck point -> CB/CF
+  let neck = paths[`${side}Collar`] // neck point -> CB/CF
   const open = options.opening === side
   const ext = open ? measurements.chest * options.openingExt : 0
 
@@ -72,7 +72,13 @@ export function draftYokeSide(sh, side) {
     lowerArm = null
   }
   const fold = new Point(0, yokeY)
-  const neckAtFold = points[`${c}Neck`]
+  let neckAtFold = points[`${c}Neck`]
+  // A V neck on the front (`vNeck`, a design option: its depth as a share of the neck point to
+  // the chest line), straight from the neck point down to CF
+  if (side === 'front' && 'vNeck' in options && options.vNeck > 0) {
+    neckAtFold = new Point(0, Math.max(neckAtFold.y, points.armhole.y * options.vNeck))
+    neck = new Path().move(points.s3CollarSplit.clone()).line(neckAtFold)
+  }
 
   // Yoke: from the bottom of the fold round to the top (counter-clockwise on the page)
   let yoke = new Path().move(open ? new Point(-ext, yokeY) : fold).line(armYoke)
@@ -145,6 +151,8 @@ export function draftYokeSide(sh, side) {
     yokeSide: lowerArm ? 0 : points.armhole.dist(armYoke),
     shoulder: points.s3CollarSplit.dist(points.s3ArmholeSplit),
     neck: neck.length(),
+    neckPath: neck,
+    shoulderTip: points.s3ArmholeSplit.clone(),
     neckY: neckAtFold.y,
     yokeY,
     hemY,
@@ -214,7 +222,7 @@ export function yokePiecePart({ name, after, side, piece, nr, label, cut }) {
           if (hit) snippets.sideSlit = new Snippet('notch', hit)
         }
       }
-      if (piece === 'body' && y.whole && y.open) {
+      if (piece === 'body' && y.whole && y.open && y.slit) {
         // Buttons down the placket
         const n = options.buttons
         for (let i = 0; i < n; i++) {
@@ -381,4 +389,73 @@ function splitFirst(path, Path) {
     else if (op.type === 'curve') b = b.curve(op.cp1, op.cp2, op.to)
   }
   return [a, b]
+}
+
+/**
+ * A sailor collar (Simons' middy blouse), flat on the shoulders: its neck edge is the back neck
+ * and the front's V neck, laid together at the neck point with the front's shoulder over the
+ * back's; square across the back `depth` below the CB neck and `width` out from CB, its outer
+ * edge running straight from that corner to the V's point. Cut twice (collar and facing), on the
+ * fold at CB. `size(sh)` gives { depth, width }. Store: `yoke.sailorCollar` (neck, target).
+ */
+export function sailorCollarPart({ name, after, nr, size, enabled = () => true }) {
+  return {
+    name,
+    after,
+    draft: (sh) => {
+      const { paths, Path, Point, points, snippets, Snippet, store, sa, macro, options, part } = sh
+      if (!enabled(options)) return part.hide()
+      const { depth, width } = size(sh)
+      const b = store.get('yoke.back')
+      const f = store.get('yoke.front')
+      // Back neck: neck point -> CB; front neck: neck point -> CF (the V's point)
+      const [hb, cb] = [b.neckPath.start(), b.neckPath.end()]
+      const hf = f.neckPath.start()
+      const unit = (p, q) => {
+        const l = p.dist(q)
+        return [(q.x - p.x) / l, (q.y - p.y) / l]
+      }
+      const ub = unit(hb, b.shoulderTip)
+      const uf = unit(hf, f.shoulderTip)
+      // Normals toward each body (down, +y), the front then mirrored across the shoulder line
+      const norm = (u) => (u[0] > 0 ? [-u[1], u[0]] : [u[1], -u[0]])
+      const nb = norm(ub)
+      const nf = norm(uf)
+      const T = (q) => {
+        const t = (q.x - hf.x) * uf[0] + (q.y - hf.y) * uf[1]
+        const d = (q.x - hf.x) * nf[0] + (q.y - hf.y) * nf[1]
+        return new Point(hb.x + ub[0] * t - nb[0] * d, hb.y + ub[1] * t - nb[1] * d)
+      }
+      const map = (path) => {
+        const out = new Path()
+        for (const op of path.ops) {
+          if (op.type === 'move') out.move(T(op.to))
+          else if (op.type === 'line') out.line(T(op.to))
+          else if (op.type === 'curve') out.curve(T(op.cp1), T(op.cp2), T(op.to))
+        }
+        return out
+      }
+      const frontNeck = map(f.neckPath) // neck point -> V point
+      points.v = frontNeck.end()
+      points.cbNeck = cb.clone()
+      points.cbOut = new Point(cb.x, cb.y + depth)
+      points.corner = new Point(cb.x + width, cb.y + depth)
+      const neck = b.neckPath.clone().reverse().join(frontNeck) // CB -> neck point -> V
+      // Counter-clockwise on the page from the fold's foot: across the back, up to the V, round
+      // the neck to CB
+      const outline = new Path().move(points.cbOut).line(points.corner).line(points.v).join(frontNeck.clone().reverse()).join(b.neckPath.clone())
+      paths.seam = outline.clone().close().addClass('fabric')
+      if (sa) {
+        const off = outline.offset(sa)
+        paths.sa = new Path().move(outline.start()).line(off.start()).join(off).line(outline.end()).addClass('fabric sa')
+      }
+      paths.fold = new Path().move(points.cbNeck).line(points.cbOut).addClass('help dashed')
+      snippets.shoulder = new Snippet('notch', hb.clone())
+      store.set('yoke.sailorCollar', { neck: neck.length(), target: b.neck + f.neck })
+      macro('cutonfold', { from: points.cbOut, to: points.cbNeck, grainline: true })
+      store.cutlist.setCut({ cut: 2, from: 'fabric', onFold: true })
+      title(macro, { at: new Point(cb.x + width * 0.25, cb.y + depth * 0.4), nr, title: 'sailorCollar', scale: 0.5 })
+      return part
+    },
+  }
 }

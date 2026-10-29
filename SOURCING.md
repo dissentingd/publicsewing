@@ -119,8 +119,9 @@ skirts and dresses are under-represented.
   (2026-10-27), breeches, bib overall, one-piece overall (overall pants) and full peg pants (2026-10-28); left: stout and young men's drafts, cuff bottoms.
 - Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx`:
   pyjamas and the work shirt built (2026-10-28); left: shirts (dress, fronted), drawers, dressing gown, aprons.
-- Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo`: boys'
-  pants, blouses, knickers.
+- Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo`: boy's
+  jacket, knee pants, knickers and middy blouse built (2026-10-28/29); left: Norfolk, Eton,
+  scout coat, bloomers, golf and sailor pants.
 - Mitchell 1921 (built system): two-piece skirts; ЕМКО trousers library: shorts and variants.
 
 **By gap:**

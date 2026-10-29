@@ -1,0 +1,59 @@
+# Middy blouse: Simons' "Sailor's Middy Blouse" (Designing Boys' and Juveniles' Clothing, 1922,
+# Diagram 9, pp. 36-40), on FreeSewing's Brian block through the yoke template: a loose pullover,
+# back and front each in one piece, a deep V neck under a square sailor collar, a shield filling
+# the V, long sleeves gathered into cuffs. Drafted from the wearer's measurements, so it fits
+# any size, adults included. See BRIEF.md.
+extends: ../templates/yoke.yaml
+
+about:
+  id: middy-blouse
+  name: Middy blouse
+  description: "A loose pullover with a deep V neck, a square sailor collar and a shield, sleeves into cuffs"
+  difficulty: 2
+  tags: [tops]
+  techniques: [collar, band, button]
+  version: 0.1.0
+  source: Simons, Designing Boys' and Juveniles' Clothing (1922), Sailor's Middy Blouse, Diagram 9 (designingboysjuv00simo)
+  preview: usdaBoyC6
+
+options:
+  # Size 6: breast 24, waist 24, length 21 1/2 (waist length 10 1/2); straight, no waist shaping
+  chestEase: { pct: 25, min: 10, max: 40, menu: fit } # the forepart 1/2 breast plus 4 in from the back's line
+  frontYoke: { bool: false, menu: false }
+  backYoke: { bool: false, menu: false }
+  gathers: { pct: 100, menu: false }
+  hemFlare: { pct: 0, min: 0, max: 10, menu: style }
+  skirtLength: { pct: 35, min: 15, max: 55, menu: style } # x waist to floor below the waist: 11 in of 21 1/2
+  vNeck: { pct: 95, min: 50, max: 130, menu: style } # x neck point to chest line: the V's point
+  collarDepth: { pct: 23, min: 15, max: 30, of: chest, menu: style } # 5 3/4 in at CB on a 24 breast
+  collarSpan: { pct: 95, min: 70, max: 110, menu: style } # x the back's shoulder point: across the back, from CB
+  shield: { bool: true, menu: style }
+  # No opening: the V goes over the head
+  opening: { dflt: back, list: [back], menu: false }
+  placketDepth: { pct: 0, min: 0, max: 10, menu: false }
+  neckFinish: { dflt: binding, list: [binding], menu: false }
+  sleeves: { dflt: long, list: [long, short], menu: style }
+  sleeveBand: { pct: 25, min: 12, max: 35, of: wrist, menu: style } # cuff 2 1/2 in wide
+  sleeveBandEase: { pct: 50, min: 20, max: 80, menu: style } # cuff 7 7/8 in round, the sleeve's 5 in of fullness pleated in
+  sideSlit: { pct: 0, min: 0, max: 30, menu: style }
+  hemCorner: { pct: 0, min: 0, max: 100, menu: style }
+
+pieces:
+  sailorCollar:
+    part: sailorCollar
+    after: [backBase, frontBase]
+    nr: 9
+    depth: chest * collarDepth
+    width: yoke.back.shoulderTip.x * collarSpan
+  # The shield (6 1/2 x 8 1/2 in on size 6): fills the V, buttoned inside at its top corners
+  shieldPiece:
+    part: polygon
+    after: [backBase, frontBase]
+    nr: 10
+    cut: 2
+    if: shield
+    let:
+      w: yoke.front.marks.body.hps.x * 2 + chest * 0.04
+      h: (yoke.front.neckY - yoke.front.marks.body.hps.y) * 0.7
+    points: [[0, 0], [w, 0], [w, h], [0, h]]
+    buttonholes: [[15, 15], [w - 15, 15]]

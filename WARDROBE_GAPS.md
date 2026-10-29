@@ -94,6 +94,7 @@ and marked as derived.
 | **Measurement sets, age 4–14** | — | **Done 2026-10-23** (`designs/sizes`: 39 boys', 36 girls') | USDA O'Brien 1939 |
 | Baby romper / one-piece | Otis, Onyx | Have | — |
 | Bib | Bob | Have | — |
+| **Middy (sailor) blouse** | — | **Drafted 2026-10-29** (`designs/middy-blouse`: V neck, square sailor collar, shield; any size; not sewn) | Simons 1922 `designingboysjuv00simo` |
 | Shirt, tee, trousers, overalls | adult designs | Variant; **knee pants and knickers drafted 2026-10-28** (`designs/knee-pants`, `designs/knickers`) | Simons *Boys' and Juveniles'* 1922 `designingboysjuv00simo` |
 | **Pinafore** | — | **Drafted 2026-10-23** (`designs/pinafore`, not sewn) | Walker 1909 |
 | **Knickers / bloomers** (any size) | — | **Drafted 2026-10-23** (`designs/knickerbockers`, on Titan, not sewn) | Walker 1909 |

@@ -65,6 +65,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `peg-pants` | Pleated trousers full over the hips, tapering to a narrow bottom | Simons 1916 |
 | `overall-pants` | Full work overall trousers with no side seam, each leg cut in one piece | Simons 1916 |
 | `two-piece-skirt` | Plain skirt fitted at hips and waist, shaped in its side seams | Mitchell 1921 |
+| `middy-blouse` | Loose pullover with a deep V neck, square sailor collar and shield | Simons 1922 |
 | `shift-dress` | Simple unfitted dress, front and back each in one piece, a little flared | Pivnick 1949 |
 | `gathered-skirt` | Full skirt of straight breadths gathered into a waistband | Walker 1909 |
 | `knee-pants` | Short trousers to the knee, fly, pockets, waistband | Simons 1922 |

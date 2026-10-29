@@ -38,6 +38,7 @@ import {
   sleeveBandPart,
   placketPart,
   neckBandPart,
+  sailorCollarPart,
 } from './yoke.mjs'
 import { brian } from '../blocks/brian.mjs'
 import { bent } from '../blocks/bent.mjs'
@@ -217,6 +218,9 @@ const factories = {
   sleeveBand: (p, ctx) => sleeveBandPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   placket: (p, ctx) => placketPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   neckBand: (p, ctx) => neckBandPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
+  // A sailor collar on a yoke garment's V neck: `depth` below the CB neck, `width` out from CB
+  sailorCollar: (p, ctx) =>
+    sailorCollarPart({ name: p.name, after: ctx.after(p), nr: p.nr, size: (sh) => evalMap({ depth: p.depth, width: p.width }, lookupIn(sh, ctx.block, {}), {}), enabled: enabledBy(p.if) }),
   legBand: (p, ctx) =>
     legBandPart({ name: p.name, after: ctx.after(p), nr: p.nr, size: (sh) => evalMap({ length: p.length, width: p.width }, lookupIn(sh, ctx.block, {}), {}), enabled: enabledBy(p.if) }),
   // A trouser leg cut in one, back and front joined on their straight outseam (trouserLeg's

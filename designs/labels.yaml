@@ -143,6 +143,18 @@ options:
   secondSuppression:
     title: Second seam shaping
     description: Width the second front seam takes in at the waist, as a share of half the seat less half the waist.
+  vNeck:
+    title: V neck depth
+    description: How deep the V neck goes, as a share of the neck point to the chest line.
+  collarDepth:
+    title: Collar depth
+    description: How far the sailor collar hangs down the back at centre back, as a share of the chest.
+  collarSpan:
+    title: Collar span
+    description: How far the sailor collar's square back reaches across, as a share of the way out to the shoulder point.
+  shield:
+    title: Shield
+    description: A shield (dickey) that fills the V, buttoned inside.
   legBottom:
     title: Leg bottom
     description: Round the bottom of the leg, as a share of the knee measurement.
