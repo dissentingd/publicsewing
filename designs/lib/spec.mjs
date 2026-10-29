@@ -45,7 +45,7 @@ import { bent } from '../blocks/bent.mjs'
 import { titan } from '../blocks/titan.mjs'
 import { breanna } from '../blocks/breanna.mjs'
 import { sarah } from '../blocks/sarah.mjs'
-import { draftSkirtLayout, gorePart } from './skirt.mjs'
+import { draftSkirtLayout, gorePart, culottePart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
@@ -247,6 +247,16 @@ const factories = {
       index: p.index,
       nr: p.nr,
       label: p.label ?? p.name.split('.').pop(),
+      zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
+    }),
+  // A divided skirt's front or back (`which`), from a three-gore skirtLayout: `crotch`, `ext`, `zip`
+  culotte: (p, ctx) =>
+    culottePart({
+      name: p.name,
+      after: ctx.after(p),
+      which: p.which,
+      nr: p.nr,
+      size: (sh) => evalMap({ crotch: p.crotch, ext: p.ext }, lookupIn(sh, ctx.block, {}), {}),
       zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
     }),
   // `material` (default fabric); `lining:` an expression over options, when true it's cut in lining too

@@ -73,6 +73,7 @@ and marked as derived.
 | **Tailored jacket** | 1 | — (Jaeger is menswear) | **Semi-fitted drafted 2026-10-25** (`designs/tailored-jacket`, on Breanna, not sewn); **tight-fitted with a shawl collar 2026-10-27** (`designs/fitted-jacket`, not sewn) | Mitchell 1921 `newstandardworko00mitc` |
 | Skirt: pencil, circle, block | 1, 4 | Penelope, Sandy, Sarah | Have | — |
 | A-line / gored skirt | 5 | Sarah | **Drafted 2026-10-27** (`designs/gored-skirt`, 5–15 gores on Sarah, not sewn); **two-piece skirt 2026-10-28** (`designs/two-piece-skirt`) | Mitchell 1921 (gored and two-piece skirts) |
+| **Culottes (divided skirt)** | 4, 5 | — | **Drafted 2026-10-29** (`designs/culottes`; not sewn) | Pivnick 1949 `pivnickdesignclothes1949` |
 | Gathered skirt | 4 | Sarah, Sandy | Variant; **drafted 2026-10-28** (`designs/gathered-skirt`: straight breadths on a waistband; not sewn) | Walker 1909 frock skirt |
 | Button-down blouse | 1 | Simone | Have | — |
 | Soft blouse (bust darts, other collars) | 1, 5 | Simone, Bella block | Variant | Rosenfeld 1911/1918, WI *Pattern Drafting* 1920 |

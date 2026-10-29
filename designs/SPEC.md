@@ -35,6 +35,7 @@ A piece is either drafted by operations or made by a piece type.
 `strip` (a rectangle: `length`, `width` expressions, `fold`, `cut`, `material`, `label`; e.g. a
 waistband or fly shield; its size goes to `trousers.strips.<piece>`),
 `sailorCollar` (a sailor collar on a yoke garment's V neck, the front's `vNeck` option: `depth` below the CB neck, `width` out from CB; store `yoke.sailorCollar`),
+`culotte` (a divided skirt's `which: front` or `back` from a three-gore `skirtLayout`: the centre edge carried to `crotch` mm and out by `ext`, the inseam straight down; `zip`; store `skirt.culotte.<which>`),
 `legInOne` (a trouser leg cut in one: the back and front, both drafted with `straightOutseam`, joined on the outseam line; store `trousers.leg`),
 `polygon` (a straight-edged piece from its corners: `points` a list of [x, y] expressions, `allowance` per edge in seam allowances, `fold` the index of the edge on the fold, `notches`, `buttons`, `buttonholes`, `lines` (marks), `let` values first, `cut`, `material`, `label`; its edges' lengths go to `polygon.<piece>`),
 `suitPiece` (a flat-cut suit's `piece`: `sleeve`, `armGusset`, `crotchGusset`, `facing`, `band`, `breastPocket`, `lowerPocket`, sized by `suitBody`),

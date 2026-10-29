@@ -1,0 +1,30 @@
+# Culottes: Pivnick's divided skirt (How to Design Beautiful Clothes, 1949, chapter XVIII,
+# pp. 248-252) on FreeSewing's Sarah through the two-piece skirt: the skirt's front and back,
+# each carried down at the CF and CB to the crotch and out into a crotch extension, the inseam
+# then straight down to the hem; "a trouser which looks like a skirt", flared so the split
+# hardly shows. CB zip and waistband as the skirt. See BRIEF.md.
+extends: ../two-piece-skirt/spec.yaml
+
+about:
+  id: culottes
+  name: Culottes
+  description: A divided skirt that looks like a skirt until the wearer moves, with a CB zip and a waistband
+  difficulty: 2
+  tags: [bottoms]
+  techniques: [zip, waistband, hem]
+  version: 0.1.0
+  source: Pivnick, How to Design Beautiful Clothes (1949), divided skirt (culotte), pp. 248-252 (pivnickdesignclothes1949)
+  preview: cisFemaleAdult36
+
+options:
+  length: { pct: 55, min: 35, max: 95, menu: style } # x waist to floor: just below the knee
+  goreFlare: { pct: 35, min: 0, max: 80, menu: style } # flare at the side seams, to hide the split
+  panelShare: { pct: 50, min: 45, max: 55, menu: style } # front and back the same at the hip
+  crotchEase: { pct: 8, min: 0, max: 20, menu: fit } # x crotch depth: "no tightness at the crotch at all"
+  frontExtension: { pct: 6.25, min: 4, max: 10, of: hips, menu: fit } # 1/16 of the hip (3 to 5)
+  backExtension: { pct: 12.5, min: 8, max: 16, of: hips, menu: fit } # 1/8 of the hip (8 to 10)
+  zipLength: { pct: 85, min: 50, max: 100, menu: style } # x waist to seat, on the CB seam
+
+pieces:
+  frontPanel: { part: culotte, which: front, after: layout, nr: 1, crotch: crotchDepth * (1 + crotchEase), ext: hips * frontExtension }
+  gore1: { part: culotte, which: back, after: layout, nr: 2, crotch: crotchDepth * (1 + crotchEase), ext: hips * backExtension, zip: waistToSeat * zipLength }

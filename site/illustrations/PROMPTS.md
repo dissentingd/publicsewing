@@ -629,3 +629,12 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a neckerchief or tie, stripes or braid on the collar, a front opening or buttons
 > down the front, pockets, badges, a hat, a person.
+
+### culottes: Culottes
+> A women's pair of **culottes (a divided skirt)** in wool crepe or cotton twill (navy, camel or
+> olive), **just below the knee**, that **looks like a flared A-line skirt** when standing: wide,
+> softly flaring legs falling from a **plain waistband**, the split between the legs hidden in
+> the fullness. A **zip at the centre back**. Shown flat, front view, standing (not walking).
+>
+> Leave out: pleats, pockets, belt loops, a belt, a fly front, cuffs, cropped wide-leg trouser
+> styling, a person.

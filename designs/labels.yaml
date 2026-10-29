@@ -155,6 +155,15 @@ options:
   shield:
     title: Shield
     description: A shield (dickey) that fills the V, buttoned inside.
+  crotchEase:
+    title: Crotch ease
+    description: Room added below the body's crotch depth, as a share of it.
+  frontExtension:
+    title: Front crotch extension
+    description: How far the front reaches past the centre front at the crotch, as a share of the hips.
+  backExtension:
+    title: Back crotch extension
+    description: How far the back reaches past the centre back at the crotch, as a share of the hips.
   legBottom:
     title: Leg bottom
     description: Round the bottom of the leg, as a share of the knee measurement.

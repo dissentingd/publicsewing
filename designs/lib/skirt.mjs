@@ -164,3 +164,75 @@ export function gorePart({ name, after, index, nr, label, zip = () => 0 }) {
     },
   }
 }
+
+/**
+ * A divided skirt's half (Pivnick's culotte, 1949): a three-gore layout's front panel
+ * (`which: 'front'`) or back gore (`'back'`), its CF (or CB) edge carried down to `crotch` (mm
+ * below the top) and out by `ext` (mm) in a curve, the inseam then straight down to the hem.
+ * The front isn't cut on the fold: both halves are cut in pairs. `zip` (mm) notches the back's
+ * CB. Store: `skirt.culotte.<which>` (side, inseam, crotch, waist).
+ */
+export function culottePart({ name, after, which, nr, size, zip = () => 0 }) {
+  return {
+    name,
+    after,
+    draft: (sh) => {
+      const { points, paths, Path, Point, Snippet, snippets, store, sa, macro, part } = sh
+      const { crotch, ext } = size(sh)
+      const g = store.get('skirt.gores')[which === 'front' ? 0 : 1]
+      const hemDepth = store.get('sarah.hem')
+      const L = store.get('skirt.length')
+      const pt = (q) => new Point(q.x, q.y)
+      const front = which === 'front'
+      // The side seam edge, waist to hem (front: its left edge; back: its right)
+      const side = edgePath(Path, Point, front ? g.left : g.right)
+      // The centre edge, waist down to the crotch line
+      const c = front ? g.right : g.left
+      const centre = edgePath(Path, Point, c)
+      const at = centre.intersectsY(crotch)[0] ?? pt(c.H)
+      const [upper] = centre.split(at)
+      const out = front ? 1 : -1
+      points.fork = new Point(at.x + out * ext, crotch)
+      points.forkCp = at.clone()
+      const curveTop = upper.shiftAlong(Math.max(upper.length() - ext * 1.2, upper.length() * 0.5))
+      const [upperTop] = upper.split(curveTop)
+      const crotchPath = upperTop.clone().curve(at.shiftFractionTowards(curveTop, 0.4), points.forkCp.shiftFractionTowards(points.fork, 0.5), points.fork.clone())
+      points.inseamHem = new Point(points.fork.x, L)
+      const inseam = new Path().move(points.fork.clone()).line(points.inseamHem.clone())
+      const hemEnd = side.end()
+      const hem = new Path().move(points.inseamHem.clone()).line(hemEnd.clone())
+      const waist = new Path().move(side.start()).line(crotchPath.start())
+      // Clockwise on the page: front: waist (side -> CF), down the crotch and inseam,
+      // across the hem, up the side; the back the other way round
+      const outline = front
+        ? waist.clone().join(crotchPath).join(inseam).join(hem).join(side.clone().reverse())
+        : side.clone().join(hem.clone().reverse()).join(inseam.clone().reverse()).join(crotchPath.clone().reverse()).join(waist.clone().reverse())
+      paths.seam = outline.clone().close().addClass('fabric')
+      if (sa) {
+        const segs = front
+          ? [[waist, sa], [crotchPath, sa], [inseam, sa], [hem, hemDepth], [side.clone().reverse(), sa]]
+          : [[side, sa], [hem.clone().reverse(), hemDepth], [inseam.clone().reverse(), sa], [crotchPath.clone().reverse(), sa], [waist.clone().reverse(), sa]]
+        let o
+        for (const [p, k] of segs) {
+          const off = p.offset(-k)
+          o = o ? o.line(off.start()).join(off) : off
+        }
+        paths.sa = o.close().addClass('fabric sa')
+      }
+      const sideEdge = front ? g.left : g.right
+      points.seat = pt(sideEdge.S)
+      snippets.seat = new Snippet('notch', points.seat)
+      const z = zip(sh)
+      if (!front && z > 0) {
+        points.zip = crotchPath.shiftAlong(Math.min(z, crotchPath.length() * 0.6))
+        snippets.zip = new Snippet('notch', points.zip)
+      }
+      store.set(`skirt.culotte.${which}`, { side: side.length(), inseam: inseam.length(), crotch: crotchPath.length(), waist: waist.length() })
+      const midX = (pt(sideEdge.S).x + at.x) / 2
+      macro('grainline', { from: new Point(midX, crotch * 0.4), to: new Point(midX, L - 40) })
+      store.cutlist.setCut({ cut: 2, from: 'fabric' })
+      title(macro, { at: new Point(midX, (crotch + L) / 2.2), nr, title: which, scale: 0.5 })
+      return part
+    },
+  }
+}
