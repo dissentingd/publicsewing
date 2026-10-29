@@ -598,6 +598,9 @@ options:
   frontYoke:
     title: Front yoke
     description: A yoke on the front too. No makes the front one piece, neck to hem.
+  backYoke:
+    title: Back yoke
+    description: A yoke across the back shoulders. No makes the back one piece, neck to hem.
   actionPleat:
     title: Action pleat
     description: Depth of the pleat in the back below the yoke, for reaching forward.

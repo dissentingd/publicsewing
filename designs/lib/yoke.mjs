@@ -31,6 +31,7 @@ export const yokeOptions = {
   sleeveBand: { pct: 15, min: 8, max: 30, ...pctBasedOn('wrist'), menu: 'style' }, // finished band width, x wrist
   sleeveBandEase: { pct: 25, min: 5, max: 60, menu: 'style' },
   frontYoke: { bool: true, menu: 'style' }, // false: the front is one piece, neck to hem
+  backYoke: { bool: true, menu: 'style' }, // false: the back is one piece, neck to hem
   sideSlit: { pct: 0, min: 0, max: 60, menu: 'style' }, // up from the hem, x waist-to-hem
   hemCorner: { pct: 0, min: 0, max: 100, menu: 'style' }, // round the side hem corner, x slit
 }
@@ -80,8 +81,8 @@ export function draftYokeSide(sh, side) {
   if (open) yoke = yoke.line(new Point(-ext, neckAtFold.y))
 
   // Body: fullness added at the fold, flared at the side, from the bottom of the fold round.
-  // With no front yoke the front body runs up to the shoulder and neck, ungathered.
-  const whole = side === 'front' && !options.frontYoke
+  // With no front (or back) yoke that body runs up to the shoulder and neck, ungathered.
+  const whole = side === 'front' ? !options.frontYoke : options.backYoke === false
   const top = armYoke.x
   const spread = whole ? 0 : top * (options.gathers - 1)
   const flare = measurements.seat * options.hemFlare

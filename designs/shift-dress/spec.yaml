@@ -1,0 +1,34 @@
+# Shift dress: Pivnick's one-piece dress foundation (How to Design Beautiful Clothes, 1949,
+# chapter XXI, pp. 269-273), on FreeSewing's Brian block through the yoke template: front and
+# back each in one piece from the shoulder to the hem, no waist seam, the side seams running
+# straight from the armhole and out a little to the hem; a placket down the CB from the neck.
+# Pivnick drafts it for children; drafted from the wearer's measurements it fits any size.
+# See BRIEF.md.
+extends: ../templates/yoke.yaml
+
+about:
+  id: shift-dress
+  name: Shift dress
+  description: "A simple unfitted dress, front and back each in one piece, a little flared, with a back neck opening"
+  difficulty: 1
+  tags: [dresses]
+  techniques: [placket, button, facing, hem]
+  version: 0.1.0
+  source: Pivnick, How to Design Beautiful Clothes (1949), one-piece dress foundation, pp. 269-273 (pivnickdesignclothes1949)
+  preview: cisFemaleAdult36
+
+options:
+  chestEase: { pct: 12, min: 4, max: 30, menu: fit } # the foundation has none ("no seams allowed"); a dress's ease
+  frontYoke: { bool: false, menu: style }
+  backYoke: { bool: false, menu: style }
+  hemFlare: { pct: 4, min: 0, max: 15, menu: style } # x seat: the hem 1 1/4 in (back), 1 1/2 (front) past the half hip
+  skirtLength: { pct: 45, min: 20, max: 85, menu: style } # x waist to floor below the waist: to the knee (the dress length, to measure)
+  opening: { dflt: back, list: [back, front], menu: style }
+  placketDepth: { pct: 40, min: 20, max: 80, menu: style } # x HPS to waist: a neck opening down the CB
+  buttons: { count: 2, min: 1, max: 6, menu: style }
+  neckFinish: { dflt: binding, list: [binding, band, collar], menu: style }
+  collarWidth: { pct: 25, min: 15, max: 35, of: neck, menu: style } # a flat collar, when chosen
+  collarSpring: { pct: 15, min: 0, max: 25, menu: style }
+  sleeves: { dflt: short, list: [long, short, none], menu: style }
+  sideSlit: { pct: 0, min: 0, max: 30, menu: style }
+  hemCorner: { pct: 0, min: 0, max: 100, menu: style }

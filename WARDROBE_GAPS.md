@@ -79,7 +79,7 @@ and marked as derived.
 | Coat | 1 | Carlita | Have | — |
 | **Loose coat** (box coat) | 1 | — (Carlita is fitted) | **Drafted 2026-10-25** (`designs/box-coat`, on Breanna, not sewn) | Mitchell 1921 `newstandardworko00mitc` |
 | **Shirtwaist / work dress** | 2, 5 | — | **Drafted 2026-10-25** (`designs/shirtwaist-dress`, not sewn) | WI *Pattern Drafting* §2 |
-| **Shift dress** | 4 | — (Sasha is fitted) | **Gap** | WI 1920 |
+| **Shift dress** | 4 | — (Sasha is fitted) | **Drafted 2026-10-29** (`designs/shift-dress`: front and back in one piece, no waist seam; not sewn) | Pivnick 1949 `pivnickdesignclothes1949` |
 | **Smock** (any size) | 4 | — | **Drafted 2026-10-23** (`designs/smock`, not sewn) | Walker 1909 (child's overall) |
 | Apron / pinafore apron | 2 | Albert | Have / Variant | Goldsberry 1888 (aprons) |
 | Slacks / overalls | 2, 5 | Titan, Opal | Variant | — |
@@ -103,9 +103,9 @@ and marked as derived.
 | **Girl's coat** | — | **Drafted 2026-10-28** (`designs/girls-coat`: Sheifer's box coat on Mitchell's, to below the knee; not sewn) | Sheifer 1908 `nssheiferssystem00shei` |
 
 **Count** (2026-10-28, by the tables above, 56 rows):
-- **40 rows drafted or done**, the children's measurement sets among them (rows marked
+- **41 rows drafted or done**, the children's measurement sets among them (rows marked
   "Variant; drafted" count here).
-- **1 gap open:** the shift dress (no A source assessed yet). Pyjamas, the women's peacoat and
+- **No gaps open:** the shift dress closed 2026-10-29 (Pivnick 1949). Pyjamas, the women's peacoat and
   field jacket, the boy's suit jacket and the girl's coat closed 2026-10-28.
 - **5 variants.** These are options on existing designs, the cheapest wins. Breeches, the work
   shirt, the service shirt, the gathered skirt and the T-shirt drafted 2026-10-28; the bib overall

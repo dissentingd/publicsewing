@@ -88,6 +88,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 |---|---|---|
 | Simons, *Drafting Cotton Garments and Mackinaws* (1918) `draftingcottonga00simo` | A | chore coat, boys' work coat, shop coat, barber's coat, hunting coat, mackinaw, military blouse, bar vest |
 | Simons, *Designing Overcoat Patterns* (1916) `designingovercoa00simo` | A | peacoat, overcoat, box overcoat, ulster, balmacaan, mantle |
+| Pivnick, *How to Design Beautiful Clothes* (1949, not renewed) `pivnickdesignclothes1949` | A | shift dress |
 | Walker, *Manual of Needlework and Cutting Out* (1909) `krl00366374` | A (grid) | nightshirt, nightgown, smock, frock, pinafore, knickerbockers |
 | Woman's Institute, *Pattern Drafting* (1915/1920) `patterdraftingpicken` | A (blocks) | shirtwaist dress |
 | Mitchell, *Ladies' Tailor-Made Garments* (1921) `newstandardworko00mitc` | A | tailored jacket, fitted jacket, box coat, gored skirt |
@@ -237,6 +238,5 @@ proportions and methods, never its text, pieces or images.
 ## Open gaps (sources)
 - **Mid-century (style 5):** needs non-renewed 1930s–50s pattern books; Pivnick *How to
   Design Beautiful Clothes* (1949, not renewed) `pivnickdesignclothes1949` is held.
-- **Shift dress:** no A source assessed yet.
 - Goldsberry's *National Garment Cutter* (1888) is dimensioned but its scale unit was
   never printed (archive, round 8).

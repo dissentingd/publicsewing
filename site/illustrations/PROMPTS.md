@@ -608,3 +608,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: pockets, a notched lapel, a belt, darts, trim or braid, a blouse with a frilled
 > collar, a person.
+
+### shift-dress: Shift dress
+> A women's **simple shift dress** in plain cotton or linen (navy, rust or sage), **to the
+> knee**, hanging **straight from the shoulders** with **no waist seam and no waist shaping**,
+> widening a little toward the hem (a slight A-line). A **plain round neckline**, finished
+> flat. **Short set-in sleeves** with a narrow band. The back has a short buttoned opening
+> down from the neck (not shown from the front). Shown flat, front view.
+>
+> Leave out: a belt or sash, darts or a fitted waist, a collar, pockets, gathers, prints or
+> trim, a person.
