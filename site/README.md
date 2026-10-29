@@ -19,14 +19,16 @@ Needs `../designs` installed (`npm install` there): the site builds the designs 
   `designs/drape/README.md`) and `static/img/drape/`. All gitignored.
 - **The pattern tool** is FreeSewing's editor (`@freesewing/react` `components/Editor`, MIT),
   in `src/components/PatternEditor.jsx`: backend off, our views only, a picker for our size sets,
-  and FreeSewing's pattern stylesheet (`patternStyle.mjs`).
+  and FreeSewing's pattern stylesheet (`patternStyle.mjs`). Its FedEx Office export creates a
+  full-scale, tiled ARCH E (36 × 48 in) PDF without a cover or cut-layout pages; users upload it
+  themselves to FedEx Office's blueprint printing product and print at 100%.
 - **`src/lib/collection.mjs`** replaces `@freesewing/collection` (webpack alias in
   `docusaurus.config.js`), so the editor sees our designs and not FreeSewing's 73.
 - **`patches/@freesewing+react+4.10.2.patch`** (patch-package; FreeSewing's MIT notice
   applies to the patched files): editor state in localStorage, one key per design (4.10.2
   ignores `stateBackend` and keeps state, measurements included, in the URL); no share links in
-  the export view; the PDF cover page says PublicSewing, without FreeSewing's logo; exported
-  files are named `publicsewing-<design>`.
+  the export view; the PDF cover page says PublicSewing, without FreeSewing's logo; a dedicated
+  FedEx Office ARCH E export; exported files are named `publicsewing-<design>`.
 - `@freesewing/react` imports packages it doesn't declare (`utils`, `i18n`, `plugin-i18n`,
   `plugin-svgattr`, `plugin-timing`, `react-markdown`), hence their place in `package.json`.
   Keep every `@freesewing/*` package at the designs workspace's version.
