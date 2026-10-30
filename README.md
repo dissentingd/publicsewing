@@ -104,7 +104,8 @@ node tools/render.mjs chore-coat cisMaleAdult38       # 1:1 SVG in out/
 [designs/README.md](designs/README.md) covers rendering, previews and adding a design. Each
 design's `BRIEF.md` records its source pages, its pieces and how the source's proportions became
 options. To turn another drafting book into designs, yourself or with a coding agent, see
-[CONTRIBUTING.md](CONTRIBUTING.md).
+[CONTRIBUTING.md](CONTRIBUTING.md); the garments still to build, in order, are in
+[BUILD_QUEUE.md](BUILD_QUEUE.md).
 
 ## What's in the repo
 
@@ -114,6 +115,7 @@ options. To turn another drafting book into designs, yourself or with a coding a
 - `corpus/`: scans (PDF) of the books the designs draw on and of others kept for research,
   with [MANIFEST.yaml](corpus/MANIFEST.yaml) recording each one's origin and rights basis.
   Sources are cited by folder id, e.g. `draftingcottonga00simo`.
+- `BUILD_QUEUE.md`: the ordered queue of garments still to build, and how to take one.
 - `SOURCING.md`: where the designs' sources come from, what makes one worth using, and what's held but not built; `SOURCING-ARCHIVE.md` and `RESEARCH.md`: the full research logs.
 - `scripts/`: the corpus manifest and fetch scripts. `docker/`: the GarmentCode image the 3D
   drapes run in.

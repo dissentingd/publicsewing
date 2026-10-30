@@ -6,6 +6,9 @@ sources, with Claude writing the design code. From 2026-10-27, sources still in 
 also used, as far as copyright law permits: their methods and proportions as design references,
 never their text or figures (ЕМКО СЭВ 1988, below).
 
+**What to build next:** [BUILD_QUEUE.md](BUILD_QUEUE.md), the ordered queue of garments still to
+build, with sources, pages, the design each starts from, and how agents claim them in parallel.
+
 The wardrobe list is the style table in [SOURCING.md](SOURCING.md) (styles 1–5 plus knits).
 The FreeSewing list is `@freesewing/collection` 4.10.2 (npm, 2026-09-13, MIT): 73 designs.
 Status codes:

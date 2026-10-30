@@ -88,7 +88,8 @@ machine that has the full Poppler, or install it.
 
 ## Step 1: Choose a garment and a source
 
-**Garment.** Take one from WARDROBE_GAPS.md. A variant of something we already have (another
+**Garment.** Take the next open item in [BUILD_QUEUE.md](BUILD_QUEUE.md), the ordered list of
+garments still to build (claim it there first), or propose one from WARDROBE_GAPS.md. A variant of something we already have (another
 shirt, another trouser cut) also counts. Rank the candidates by how much they can reuse: a
 garment that extends an existing design costs a fraction of one that needs a new block or a new
 `lib/` module. When several are wanted, build the cheap ones first. Work through a list one
