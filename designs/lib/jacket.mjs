@@ -118,7 +118,7 @@ export function draftJacketBase(sh, { side, backSeamAt = 0.5, style = 'princess'
  * { seat: seat girth with ease, hipDepth: waist to seat line, length: waist to hem,
  *   lap, breakBelow (bust line to the break), rollOut, lapelWidth, gorgeAt (0-1 along the
  *   front neck from the neck point), peak (bool), facing, rows (double-breasted: the two rows
- *   of buttons this far either side of CF) }
+ *   of buttons this far either side of CF), closed (bool: no lapel, buttoned to the neck) }
  */
 export function draftJacketLayout(sh, a) {
   const { Path, Point, store } = sh
@@ -278,8 +278,7 @@ export function draftJacketLayout(sh, a) {
     const G = r.neck.shiftAlong(r.neck.length() * a.gorgeAt)
     const [neckToG] = r.neck.split(G)
     const lapel = jacketLapel(Path, Point, { hps: r.hps, bustY: r.bustY, edgeX, G }, a)
-    const { B, R, lapelEdge } = lapel
-    let { N, P } = lapel
+    let { B, R, N, P, lapelEdge } = lapel
     // The front's top edge, neck point to break: the neck, notch and lapel; or a shawl collar
     // cut in one with the front, its neck edge running on up the crease line from the neck
     // point for the back neck's length, `shawl.width` wide at CB, `shawl.lapel` at the lapel
@@ -298,6 +297,18 @@ export function draftJacketLayout(sh, a) {
         new Path().move(r.hps.clone()).line(Cn.clone()).line(Co.clone()).curve(go(Co, u, -k2), go(Lp, u, k2), Lp.clone()).curve(go(Lp, u, -k1), B.shift(90, k1), B.clone())
       store.set('coat.collar', { neck: r.hps.dist(Cn), target: bk.neck.length(), shawl: true })
       lap.shawl = { Cn, Co }
+    }
+    // Closed to the neck (`closed`, Merz's storm collar): no lapel; the top edge runs from the
+    // neck at CF straight out to the front edge, the collar sewn round to the edge
+    if (a.closed) {
+      const C = r.neck.end()
+      B = new Point(edgeX, C.y)
+      ;[R, N, P] = [B, B, B]
+      lapelEdge = new Path().move(B.clone()).line(B.clone())
+      lap.neckExt = C.dist(B)
+      topEdge = () => new Path().move(r.hps.clone()).join(r.neck.clone()).line(B.clone())
+      lap.buttonTop = B.y + a.lap * 0.4
+      lap.closed = true
     }
     const top = topEdge()
     // The seam runs through the bust, half way between the two dart tips, along the line
@@ -501,7 +512,7 @@ export function draftJacketLayout(sh, a) {
   store.set('jacket.seams', seams)
   store.set('jacket.front', lap)
   store.set('jacket.flare', e)
-  store.set('coat.jacketNeck', { back: bk.neck.length(), front: lap.neckToG.length() })
+  store.set('coat.jacketNeck', { back: bk.neck.length(), front: a.closed ? fr.neck.length() + lap.neckExt : lap.neckToG.length() })
   // FreeSewing's two-part sleeve reads the armhole it must fit from these
   const armhole = { back: bk.scye.length(), front: fr.scye.length() }
   store.set('jacket.armhole', armhole)
@@ -767,10 +778,11 @@ function mapPath(path, Path, f = (p) => p.clone()) {
   return out
 }
 
-/** The buttons' heights on a jacket front (store `jacket.front`): `n` from the break to below the waist */
+/** The buttons' heights on a jacket front (store `jacket.front`): `n` from the break (or `buttonTop`) to below the waist */
 function buttonHeights(f, n) {
   const bottom = f.waistY + (f.hemY - f.waistY) * 0.3
-  return Array.from({ length: n }, (_, i) => (n > 1 ? f.B.y + ((bottom - f.B.y) * i) / (n - 1) : f.B.y))
+  const top = f.buttonTop ?? f.B.y
+  return Array.from({ length: n }, (_, i) => (n > 1 ? top + ((bottom - top) * i) / (n - 1) : top))
 }
 
 /**
@@ -855,7 +867,7 @@ export function jacketPanelPart({ name, after, panel, nr, label, cut = 2, button
             snippets[`buttonhole${i}`] = new Snippet('buttonhole', new Point(f.holeX, y)).attr('data-rotate', 90)
           }
         }
-        paths.crease = new Path().move(f.B.clone()).line(f.R.clone()).addClass('help dotted')
+        if (!f.closed) paths.crease = new Path().move(f.B.clone()).line(f.R.clone()).addClass('help dotted')
         paths.cf = new Path().move(new Point(f.cfx, f.B.y)).line(new Point(f.cfx, f.hemY)).addClass('help dashed')
       }
       // Set-in flap pockets: the mouth, and the flap hanging from it, square to the mouth

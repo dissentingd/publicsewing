@@ -28,7 +28,9 @@ options:
   buttonRow: { pct: 62, min: 40, max: 85, menu: style } # x the lap: each row's distance from CF
   buttons: { count: 3 } # to a row
   breakBelowBust: { pct: 0 } # the lapel turns at the bust line; the top buttons sit high
-  lapelStyle: { dflt: notch }
+  # Merz's storm collar (`storm`): no lapel, buttoned to the neck, a deep collar sewn round to
+  # the front edge; or a notched or peaked lapel
+  lapelStyle: { dflt: notch, list: [peak, notch, storm] }
   lapelWidth: { pct: 32 } # x neck: wide, for the deep overlap
   collarWidth: { pct: 28 } # x neck: Merz's storm collar 3 3/4" at the back, here a deep turn-down collar
   breastPocket: { bool: false }
@@ -55,6 +57,7 @@ pieces:
           lapelWidth: neck * lapelWidth
           gorgeAt: gorgeAt
           peak: lapelStyle == 'peak'
+          closed: lapelStyle == 'storm'
           # Double-breasted: a button either side of CF, `buttonRow` of the lap out
           rows: if(doubleBreasted, chest * buttonExtension * buttonRow, null)
           facing: chest * facingWidth
@@ -94,3 +97,17 @@ pieces:
       - store: { key: library.topsleeve.title, value: { nr: 7, brand: "'PublicSewing'" } }
       - store: { key: library.undersleeve.title, value: { nr: 8, brand: "'PublicSewing'" } }
 
+  # The collar: the tailored jacket's, from CB to the gorge; with the storm collar, round to
+  # the front edge with square ends (Merz: 58 squared from 25)
+  collar:
+    prefix: tailoredjacket # named like the inherited pieces
+    after: [backBase, frontBase]
+    measurements: [neck]
+    options: [collarWidth, collarSpring, collarPoint, lapelStyle]
+    ops:
+      - collar:
+          target: coat.jacketNeck.back + coat.jacketNeck.front
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: if(lapelStyle == 'storm', 0, neck * collarPoint)
+          nr: 6

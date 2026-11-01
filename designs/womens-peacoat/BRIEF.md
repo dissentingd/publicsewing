@@ -29,14 +29,15 @@ double-breasted front (`jacketLayout`'s `rows`), with two rows of buttons.
 | Length | Hip length | `lengthBelowWaist` 28% of waist to floor (about 11 in below the waist) |
 | Overlap | 3¾–4¾ in | `buttonExtension` 11% of the chest (4 in at bust 36), straight |
 | Buttons | Two rows | `doubleBreasted` on; `buttons` 3 to a row, each row `buttonRow` 62% of the lap from CF (2½ in); holes on the outer row |
-| Lapel and collar | Storm collar | `lapelStyle` notch, `lapelWidth` 32% and `collarWidth` 28% of the neck: a wide lapel turning at the bust line (`breakBelowBust` 0) and a deep turn-down collar |
+| Lapel and collar | Storm collar: no lapel, the front buttoned to the neck; the collar sewn from the front edge (25) round to CB, 3¾ in deep at the front and 4¼ at CB, its outer edge swept out ⅓ of the height | `lapelStyle` storm (`lib/jacket.mjs` `closed`): the top edge runs from CF neck straight out to the front edge, the top button 40% of the lap below the neck, the collar from CB to the front edge with square ends, `collarWidth` 28% of neck, constant depth. Or (the default) | `lapelStyle` notch, `lapelWidth` 32% and `collarWidth` 28% of the neck: a wide lapel turning at the bust line (`breakBelowBust` 0) and a deep turn-down collar |
 | Pockets | None drawn | The tailored jacket's hip flap pocket; no breast welt or ticket pocket |
 | Lining | Not given | `lining` on, as the tailored jacket |
 | Facing | Not given | `facingWidth` 17% of the chest (wider than the lap) |
 
 ## Changes and what isn't modelled
-- **The storm collar** is the tailored jacket's notched collar, deeper. Merz's collar, which
-  stands up and buttons across the throat, isn't built.
+- **The storm collar** (2026-11-01) is `lapelStyle` storm. The default stays the notched lapel
+  with a deep collar. The storm collar's depth is constant, not 3¾ in at the front and 4¼ at
+  CB, and no tab is drafted to fasten it across the throat when worn up.
 - **Merz's neck dart** isn't taken; the bust shaping goes into the princess seams, as on the
   tailored jacket.
 - **The overlap is straight**, not narrowed ¾ in at the waist.

@@ -26,7 +26,9 @@ export function checkJacket(pattern) {
   near(collar.neck, collar.target, 1, 'collar vs neckline')
   // The lapel reaches past the crease, and the flare never narrows the seat
   const f = store.get('jacket.front')
-  assert.ok(f.B.y > f.G.y && f.P.y < f.B.y, 'lapel runs up from the break')
+  // (a front closed to the neck has no lapel: its top edge runs level from CF to the edge)
+  if (f.closed) near(f.B.y, f.G.y, 30, 'closed front: the top edge at the neck')
+  else assert.ok(f.B.y > f.G.y && f.P.y < f.B.y, 'lapel runs up from the break')
   assert.ok(store.get('jacket.flare') >= 0, 'flare')
   // Set-in pockets clear the facing, the side seam and the hem; buttons sit on the underlap
   for (const [id, q] of Object.entries(store.get('jacket.pockets') ?? {})) {

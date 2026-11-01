@@ -396,8 +396,8 @@ options:
     description: How far the collar point reaches past the end of the neck edge.
   lapelStyle:
     title: Lapel style
-    description: A notched lapel, or a peaked one pointing up.
-    choices: { notch: Notched, peak: Peaked }
+    description: A notched lapel, a peaked one pointing up, or (storm) no lapel, buttoned to the neck under a deep collar.
+    choices: { notch: Notched, peak: Peaked, storm: Storm collar }
   lapelWidth:
     title: Lapel width
     description: Width of the lapel, as a share of the neck.

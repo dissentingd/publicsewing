@@ -7,6 +7,8 @@ import { testJacket } from './jacket-checks.mjs'
 const rows = (pattern) => {
   const store = pattern.setStores[0]
   const f = store.get('jacket.front')
+  // The storm collar: the buttons start below the neck
+  if (f.closed) assert.ok(f.buttonTop > f.B.y, 'buttons below the neck')
   if (!f.rows) return
   const front = pattern.parts[0]['tailoredjacket.front']
   const bb = front.paths.seam.bbox()
@@ -18,6 +20,7 @@ const rows = (pattern) => {
 
 testJacket('women\'s peacoat', WomensPeacoat, {
   default: {},
+  storm: { lapelStyle: 'storm' },
   single: { doubleBreasted: false, buttonExtension: 0.04, buttons: 4, lapelStyle: 'peak' },
   long: { lengthBelowWaist: 0.5, buttons: 4, pockets: false, lining: false },
 }, rows)
