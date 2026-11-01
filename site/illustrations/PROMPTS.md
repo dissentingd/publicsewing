@@ -638,3 +638,15 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: pleats, pockets, belt loops, a belt, a fly front, cuffs, cropped wide-leg trouser
 > styling, a person.
+
+### shirt: Shirt
+> A men's **classic long-sleeved shirt** in plain white or pale blue cotton poplin, cut
+> **easy, not fitted**, to **below the hips** with the front corners rounded. **Buttoned all
+> down the front** with seven small buttons on a narrow plain placket. A **collar on a stand**
+> (a band round the neck with a pointed turn-down collar sewn to it), buttoned at the throat.
+> **One plain patch pocket on the left breast**, no flap. **Long sleeves pleated into buttoned
+> barrel cuffs**, a short bound opening above each cuff. A **straight yoke across the back
+> shoulders** (seen over the shoulder). Shown flat, front view.
+>
+> Leave out: a tie, epaulettes, a second pocket, pocket flaps, French cuffs or cufflinks, a
+> button-down collar, darts, a contrasting collar, a person.

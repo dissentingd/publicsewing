@@ -40,6 +40,7 @@ body:
         - Jacket (jacket)
         - Waistcoat (waistcoat)
         - Trousers (trousers)
+        - Shirt (shirt)
     validations:
       required: true
   - type: input

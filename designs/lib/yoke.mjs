@@ -394,15 +394,16 @@ export function sleeveBandPart({ name, after, nr }) {
 
 /**
  * The continuous placket binding a sleeve opening: a strip twice the slit long (it is sewn
- * round the slit opened out straight), `width` x the wrist wide, folded in half.
+ * round the slit opened out straight), `width` x the wrist wide, folded in half. The slit is
+ * read from `storeKey` (`coat.sleeve` for the Brian coats' and shirts' sleeves).
  */
-export function sleevePlacketPart({ name, after, nr, width = 0.2 }) {
+export function sleevePlacketPart({ name, after, nr, width = 0.2, storeKey = 'yoke.sleeve' }) {
   return {
     name,
     after,
     draft: ({ paths, Path, Point, store, sa, macro, options, measurements, part }) => {
-      const s = store.get('yoke.sleeve', null)
-      if (options.sleeves !== 'long' || !s?.slit) {
+      const s = store.get(storeKey, null)
+      if ((storeKey === 'yoke.sleeve' && options.sleeves !== 'long') || !s?.slit) {
         macro('rmtitle')
         return part.hide()
       }

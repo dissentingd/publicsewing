@@ -667,16 +667,19 @@ options:
   frontOpening:
     title: Front opening shift
     description: How far the front opening sits forward of the side, as a share of the knee.
+  standHeight:
+    title: Collar stand height
+    description: Height of the band the collar is sewn to, as a share of the neck.
+  cuffFit:
+    title: Cuff ease
+    description: How much the cuff is bigger than the wrist, as a share of the wrist.
+  cuffDepth:
+    title: Cuff depth
+    description: Finished depth of the cuff, as a share of the wrist.
   raglanPieces:
     title: Raglan sleeve pieces
     description: The raglan sleeve in two pieces with an over-arm seam, or in one with a dart at the shoulder.
     choices: { two: Two pieces, one: One piece }
-  blouse:
-    title: Blousing
-    description: Extra length at the centre front of the bodice, tapering to the side, so it blouses over the waist seam.
-  waistShaping:
-    title: Waist shaping
-    description: How far the bodice's side seams come in at the waist, as a share of the chest.
   sleeveSlit:
     title: Sleeve opening
     description: Length of the bound slit at the back of the sleeve's hem, as a share of the wrist (0 for none).
@@ -737,6 +740,8 @@ parts:
   waistband: Waistband
   sash: Sash
   sleevePlacket: Sleeve placket
+  collarStand: Collar stand
+  collarFall: Collar
   flyShield: Fly shield
   fly: Fly
   flyFacing: Fly facing

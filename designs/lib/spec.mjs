@@ -22,6 +22,7 @@ import {
   frontLiningPart,
   backLiningPart,
   sleevePart,
+  cuffPart,
 } from './coat.mjs'
 import { markPocket, pocketPart, flapPart, beltPart, setInPocketPart } from './pockets.mjs'
 import { applyRaglan, raglanSleevePart } from './raglan.mjs'
@@ -74,7 +75,7 @@ export const operations = {
   buttons: { run: placeButtons },
   // A zip up the front edge (after coatFront)
   zip: { run: placeZip },
-  collar: { run: draftCollar },
+  collar: { run: draftCollar, literal: ['key', 'title'] },
   markPocket: { run: (sh, { id, pocket }) => markPocket(sh, id, pocket), literal: ['id'] },
   store: { run: ({ store }, { key, value }) => store.set(key, value), literal: ['key'] },
   // Cut the back or front along its raglan line (after coatBack / coatFront)
@@ -162,6 +163,7 @@ const factories = {
       options: ctx.options(p),
       enabled: enabledBy(p.if),
       lining: p.lining === undefined ? false : enabledBy(p.lining),
+      ...(p.slit === undefined ? {} : { slit: (sh) => evaluate(p.slit, lookupIn(sh, ctx.block, {})) }),
     }),
   // A Brian coat's lining: the front (from the front) and the back (from the back, below a
   // back-neck facing `width` deep, the same expression as that facing's), `pleat` extra at CB
@@ -226,7 +228,16 @@ const factories = {
     yokePiecePart({ name: p.name, after: ctx.after(p), side: p.side, piece: p.piece, nr: p.nr, label: p.label, cut: p.cut }),
   yokeSleeve: (p, ctx) => yokeSleevePart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   sleeveBand: (p, ctx) => sleeveBandPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
-  sleevePlacket: (p, ctx) => sleevePlacketPart({ name: p.name, after: ctx.after(p), nr: p.nr, width: p.width }),
+  sleevePlacket: (p, ctx) => sleevePlacketPart({ name: p.name, after: ctx.after(p), nr: p.nr, width: p.width, storeKey: p.store }),
+  // A shirt's cuff (lib/coat.mjs): { length, depth, lap }
+  cuff: (p, ctx) =>
+    cuffPart({
+      name: p.name,
+      after: ctx.after(p),
+      nr: p.nr,
+      size: (sh) => evalMap({ length: p.length, depth: p.depth, lap: p.lap }, lookupIn(sh, ctx.block, {}), {}),
+      enabled: enabledBy(p.if),
+    }),
   placket: (p, ctx) => placketPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   neckBand: (p, ctx) => neckBandPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   // A sailor collar on a yoke garment's V neck: `depth` below the CB neck, `width` out from CB

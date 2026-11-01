@@ -30,8 +30,8 @@ options:
   collarSpring: { pct: 15, min: 0, max: 25, menu: style } # 1" over half the neck
   # The waist "blouses over the belt": 1" added to the front length at CF (1/36 of the bust),
   # tapering to the side; the under-arm line in 1" at the waist each side (pp. 28, 34-35)
-  blouse: { pct: 2.8, min: 0, max: 6, of: chest, menu: style }
-  waistShaping: { pct: 2.8, min: 0, max: 5, of: chest, menu: fit }
+  blouse: { pct: 2.8, min: 0, max: 6, of: chest, menu: style, title: Blousing, description: "Extra length at the bodice's centre front, tapering to the side, so it blouses over the waist seam." }
+  waistShaping: { pct: 2.8, min: 0, max: 5, of: chest, menu: fit, description: "How far the bodice's side seams come in at the waist, as a share of the chest." }
   # Sleeve opening I-J, half the hand + 1/2" (p. 41): about 4 1/2" on a 6 1/2" wrist; the cuff
   # laps 1" past it, buttoned (cuff length the hand + 1", p. 40)
   sleeveSlit: { pct: 70, min: 0, max: 100, of: wrist, menu: style }

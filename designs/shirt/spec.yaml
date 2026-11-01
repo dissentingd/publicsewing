@@ -1,0 +1,89 @@
+# Shirt: Vincent's yoked shirt (The Cutter's Practical Guide to Cutting and Making Shirts,
+# Undergarments..., 1890, "Yoked and Fronted Shirts", Diagrams 8-12, pp. 5-7; collars and cuffs
+# p. 23), on the service shirt (FreeSewing's Brian): a classic button-through shirt with a back
+# yoke, a collar on a stand, cuffs buttoned over a bound sleeve opening, rounded tails, one
+# breast pocket. See BRIEF.md for where each default is read.
+extends: ../service-shirt/spec.yaml
+
+about:
+  id: shirt
+  name: Shirt
+  description: "A classic button-through shirt: back yoke, collar on a stand, buttoned cuffs, rounded tails"
+  difficulty: 3
+  tags: [tops]
+  techniques: [yoke, collar, cuff, placket, button, patch-pocket]
+  version: 0.1.0
+  source: "Vincent, Cutter's Practical Guide... Shirts, Undergarments (1890), Yoked and Fronted Shirts, pp. 5-7, collars and cuffs p. 23 (vincentmakingshirts18xx)"
+
+options:
+  # The yoked back's side seam a quarter breast plus 1 1/2 to 2 1/2 in, the front's a quarter
+  # breast less 1 in plus 1 1/2 to 2 1/2: about 4 in over the chest, as the service shirt
+  chestEase: { pct: 11 }
+  # Full length to the thigh, the front 2 in shorter than the back (8 1/2 to 33 1/2 against 9 to
+  # 36), the sides rounded up into tails
+  lengthBelowWaist: { pct: 130 } # x waistToSeat
+  frontDrop: { pct: 0 }
+  hemCurve: { pct: 100 } # x the stand: the front corner rounded into a tail
+  buttonExtension: { pct: 2.6 } # x chest: the stand, 1 in on a 38 chest
+  buttons: { count: 7 }
+  yokeDepth: { pct: 30 } # x CB neck to the chest line: 2 in deep at the scye, 3 at CB
+  # One breast pocket, plain
+  breastPocket: { bool: true }
+  pocketFlaps: { bool: false }
+  pocketShape: { dflt: square }
+  shoulderStraps: { bool: false, menu: false }
+  # The collar on a stand (p. 5: "1 1/4 deep at back and 1 inch deep at front", on a 14 1/2"
+  # neck; the stand-and-fall styles of p. 23, Diagrams 4 and 10-12): a band, and the fall sewn
+  # to its top edge
+  standHeight: { pct: 8.6, min: 5, max: 14, of: neck, menu: style } # 1 1/4 / 14 1/2
+  collarWidth: { pct: 15.5, min: 10, max: 25, of: neck, menu: style } # the fall: 2 1/4 / 14 1/2
+  collarPoint: { pct: 6, min: 0, max: 15, of: neck, menu: style } # the fall's point past the stand's end
+  # Sleeves into a cuff: the sleeve's fullness at the hand pleated in; a slit at the back bound
+  # by a continuous placket ("the slit of the sleeve should be faced so as to take buttons")
+  cuffEase: { pct: 75 } # x wrist: the sleeve at the hand
+  sleeveSlit: { pct: 90, min: 40, max: 130, of: wrist, menu: style } # about 6 in on a 7 in wrist
+  cuffFit: { pct: 30, min: 15, max: 60, of: wrist, menu: fit } # the cuff over the wrist (half the cuff + 1 in)
+  cuffDepth: { pct: 36, min: 20, max: 60, of: wrist, menu: style } # 2 1/2 in on a 7 in wrist
+  cuffLap: { pct: 15, min: 8, max: 25, of: wrist, menu: style } # 1 in, buttoned
+
+pieces:
+  # The collar stand: the whole neckline, front edge to front edge, rising a little to the front
+  collar:
+    prefix: barberscoat # named like the inherited pieces
+    after: [back, front]
+    measurements: [neck]
+    options: [standHeight]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext
+          spring: target * 0.06
+          width: neck * standHeight
+          point: 0
+          key: coat.collarStand
+          title: collarStand
+          nr: 12
+
+  # The fall, sewn to the stand's top edge from CB to CF (not over the stand's lap)
+  collarFall:
+    after: [collar]
+    measurements: [neck]
+    options: [collarWidth, collarPoint]
+    ops:
+      - collar:
+          target: coat.collarStand.outer - coat.frontEdge.ext
+          spring: target * 0.13
+          width: neck * collarWidth
+          point: neck * collarPoint
+          nr: 6
+
+  sleeve:
+    prefix: barberscoat
+    part: sleeve
+    after: front
+    options: [sleeveLengthBonus, sleeveSlit, cuffFit, cuffDepth, cuffLap]
+    slit: wrist * sleeveSlit
+  cuff: { part: cuff, after: sleeve, nr: 13, length: wrist * (1 + cuffFit), depth: wrist * cuffDepth, lap: wrist * cuffLap }
+  sleevePlacket: { part: sleevePlacket, after: sleeve, nr: 14, store: coat.sleeve, width: 0.15 }
+
+  # One pocket, on the left front
+  breastPocket: { part: pocket, after: front, key: breast, nr: 7, label: breastPocket, cut: 1, if: breastPocket }

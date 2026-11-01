@@ -479,6 +479,37 @@ export function placeZip({ points, paths, Path, Point, snippets, Snippet, store 
   store.set('coat.zip', { top, bottom, length: bottom - top })
 }
 
+/**
+ * A shirt's cuff, cut 2 and folded: round the wrist (`size(sh)`: { length, depth, lap }),
+ * `length` plus `lap` past the sleeve's opening, buttoned there; the sleeve's hem (store
+ * `coat.sleeve.hem`) is pleated into it.
+ */
+export function cuffPart({ name, after, nr, size, enabled = () => true }) {
+  return {
+    name,
+    after,
+    draft: (sh) => {
+      const { paths, Path, Point, store, sa, macro, snippets, Snippet, options, part } = sh
+      if (!enabled(options)) return part.hide()
+      const { length, depth, lap } = size(sh)
+      const L = length + lap
+      const W = 2 * depth
+      paths.seam = new Path().move(new Point(L, 0)).line(new Point(0, 0)).line(new Point(0, W)).line(new Point(L, W)).close().addClass('fabric')
+      paths.fold = new Path().move(new Point(0, depth)).line(new Point(L, depth)).addClass('help dashed')
+      if (sa) paths.sa = paths.seam.offset(sa).addClass('fabric sa')
+      snippets.button = new Snippet('button', new Point(lap / 2, depth / 2))
+      snippets.buttonhole = new Snippet('buttonhole', new Point(L - lap / 2, depth / 2))
+      store.set('coat.cuff', { length, lap })
+      store.cutlist.setCut([
+        { cut: 2, from: 'fabric' },
+        { cut: 2, from: 'interfacing' },
+      ])
+      title(macro, { at: new Point(L * 0.35, depth * 1.2), nr, title: 'cuff', scale: 0.3 })
+      return part
+    },
+  }
+}
+
 /** A part drawing the front facing: the front's edge strip, neckline to hem */
 export function facingPart({ name, from, nr = 5 }) {
   return {
@@ -705,9 +736,11 @@ export function backLiningPart({ name, from, after, nr, pleat, width, enabled = 
  * A collar, half drawn and cut on the fold at CB. The neck edge, `target` long, rises toward
  * the front by `spring` (the CB is lower), so the outer edge is longer and the collar falls
  * over; the outer edge runs parallel to it, `width` away. `point` carries the outer corner
- * past the front end (0 for a stand collar).
+ * past the front end (0 for a stand collar). `key`: the store key (a collar stand and its
+ * fall are two collars); under any other key than `coat.collar` its outer edge's length is
+ * stored too, as `outer`, for the collar sewn to it. `title`: the part's title.
  */
-export function draftCollar(sh, { target, spring, width, point, nr = 4 }) {
+export function draftCollar(sh, { target, spring, width, point, nr = 4, key = 'coat.collar', title: label = 'collar' }) {
   const { points, paths, Path, Point, store, sa, macro, part } = sh
   points.cbNeck = new Point(0, spring)
   let span = target
@@ -738,31 +771,37 @@ export function draftCollar(sh, { target, spring, width, point, nr = 4 }) {
     const off = paths.saBase.offset(sa)
     paths.sa = new Path().move(points.cbOuter).line(off.start()).join(off).line(points.cbNeck).addClass('fabric sa')
   }
-  store.set('coat.collar', { neck: paths.neck.length(), target })
+  store.set(key, { neck: paths.neck.length(), target, ...(key === 'coat.collar' ? {} : { outer: new Path().move(points.cbOuter).curve(points.cbOuterCp, points.tipCp, points.tip).length() }) })
   macro('cutonfold', { from: points.cbOuter, to: points.cbNeck, grainline: true })
   store.cutlist.setCut([
     { cut: 2, from: 'fabric', onFold: true },
     { cut: 1, from: 'interfacing', onFold: true },
   ])
-  title(macro, { at: new Point(span * 0.45, spring + width * 0.45), nr, title: 'collar', scale: 0.5 })
+  title(macro, { at: new Point(span * 0.45, spring + width * 0.45), nr, title: label, scale: 0.5 })
   return part
 }
 
-/** One-piece sleeve: FreeSewing's sleeve fitted to the armhole, straight to a hem */
-export function sleevePart({ name, after, options, enabled = () => true, lining = false }) {
+/**
+ * One-piece sleeve: FreeSewing's sleeve fitted to the armhole, straight to a hem. `slit(sh)`:
+ * a cuffed sleeve's opening, this long up from the hem in the middle of the back half (0:
+ * none, a turned hem); with one the hem takes a plain seam allowance, for the cuff.
+ */
+export function sleevePart({ name, after, options, enabled = () => true, lining = false, slit = () => 0 }) {
   return {
     name,
     from: librarySleeve,
     after,
     hide: hidePresets.HIDE_TREE,
     options: { ...options, libraryFitSleeve: true },
-    draft: ({ points, paths, Path, store, sa, snippets, macro, options: o, part }) => {
+    draft: (sh) => {
+      const { points, paths, Path, store, sa, snippets, Snippet, macro, options: o, part } = sh
       for (const p in paths) if (p !== 'sleevecap') delete paths[p]
       for (const s in snippets) if (!s.toLowerCase().includes('notch')) delete snippets[s]
       if (!enabled(o)) {
         macro('rmtitle')
         return part.hide()
       }
+      const cut = slit(sh)
       paths.hemBase = new Path().move(points.wristLeft).line(points.wristRight).hide()
       paths.saBase = new Path()
         .move(points.wristRight)
@@ -771,10 +810,18 @@ export function sleevePart({ name, after, options, enabled = () => true, lining 
         .line(points.wristLeft)
         .hide()
       paths.seam = paths.hemBase.join(paths.saBase).close().addClass('fabric')
-      if (sa) paths.sa = allowance(paths, Path, sa).line(paths.hemBase.offset(sa * 3).start()).addClass('fabric sa')
+      if (sa) paths.sa = allowance(paths, Path, sa).line(paths.hemBase.offset(sa * (cut > 0 ? 1 : 3)).start()).addClass('fabric sa')
       // Cut again from lining (a lined coat's sleeves)
       if (lining && lining(o)) store.cutlist.addCut({ cut: 2, from: 'lining' })
+      if (cut > 0) {
+        points.slitHem = points.wristLeft.shiftFractionTowards(points.wristRight, 0.25)
+        points.slitTop = points.slitHem.shift(90, cut)
+        paths.slit = new Path().move(points.slitHem).line(points.slitTop).addClass('mark')
+        snippets.slitTop = new Snippet('notch', points.slitTop)
+        paths.pleats = new Path().move(points.wristLeft.shift(90, 8)).line(points.wristRight.shift(90, 8)).addClass('mark dotted').addText('pleats', 'center text-sm')
+      }
       store.set('coat.sleeve', {
+        ...(cut > 0 ? { slit: cut, hem: points.wristLeft.dist(points.wristRight) } : {}),
         cap: paths.sleevecap.length(),
         armhole:
           store.get('library.sleeve.frontArmholeLength') + store.get('library.sleeve.backArmholeLength'),
