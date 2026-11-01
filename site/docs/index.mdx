@@ -3,46 +3,69 @@ title: PublicSewing
 slug: /
 sidebar_position: 1
 hide_title: true
-description: Made-to-measure sewing patterns for practical, timeless garments, drafted from your own measurements, children's sizes included.
+hide_table_of_contents: true
+description: Made-to-measure patterns for practical, timeless garments, drafted from your own measurements, children's sizes included.
 ---
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
-# PublicSewing
+<main className="home-shell">
+  <section className="home-hero">
+    <div>
+      <div className="home-kicker">A catalog for the sewing table</div>
+      <h1>Good clothes begin with a good pattern.</h1>
+      <p className="home-hero-copy">Practical, timeless garments drafted to your measurements. Explore the catalog, choose a design, and make a pattern for the person who will wear it.</p>
+      <div className="home-actions">
+        <a className="button button--primary" href="/designs">Explore the patterns</a>
+        <a className="button button--secondary" href="/measure">How to measure</a>
+      </div>
+    </div>
+    <figure className="home-hero-art">
+      <img src={useBaseUrl('/img/illustrations/field-jacket.jpg')} alt="Illustration of a classic field jacket" />
+      <figcaption>Field jacket · one of over 50 designs in the catalog</figcaption>
+    </figure>
+  </section>
 
-Made-to-measure sewing patterns for practical, timeless garments, drafted from your own
-measurements, children's sizes included.
+  <section className="home-facts" aria-label="How PublicSewing works">
+    <div className="home-fact"><strong>Made to measure</strong><span>Drafted from your body measurements, at any size.</span></div>
+    <div className="home-fact"><strong>Ready to print</strong><span>Export a tiled pattern at home or a full scale file for a projector.</span></div>
+    <div className="home-fact"><strong>Open and independent</strong><span>A separate project built on FreeSewing's tested pattern blocks.</span></div>
+  </section>
 
-Each design takes its pieces, style lines, proportions and construction from a drafting book:
-five in the public domain (published 1909 to 1921), and one later book used only for its methods
-(ЕМКО, 1988). The geometry comes from
-[FreeSewing](https://freesewing.org)'s tested blocks, so every design drafts at any size. The
-old books are design references: designs are modernised and simplified freely.
+  <section className="home-section">
+    <div className="home-section-head">
+      <div><div className="eyebrow">Start here</div><h2>From first measure to first stitch</h2></div>
+      <p>Pick a garment, draft it at your size, then make a muslin before cutting into your good fabric.</p>
+    </div>
+    <div className="home-cards">
+      <a className="home-card" href="/designs"><span>01 · Browse</span><h3>Find a garment</h3><p>Explore coats, shirts, trousers, dresses and other useful staples.</p></a>
+      <a className="home-card" href="/measure"><span>02 · Prepare</span><h3>Take your measurements</h3><p>Follow the measuring guide or start from one of the available size sets.</p></a>
+      <a className="home-card" href="/muslin"><span>03 · Make</span><h3>Print and sew a muslin</h3><p>Check the fit in inexpensive fabric and share what you learn.</p></a>
+    </div>
+  </section>
 
-PublicSewing is a separate project built on FreeSewing's MIT-licensed packages. It is not part
-of FreeSewing and isn't endorsed by it.
+  <section className="home-note">
+    <h2>Each pattern is still a draft.</h2>
+    <p>These designs draft cleanly and their matching seams have been checked in code, but none has been sewn yet. A muslin is the practical fit check. <strong>Help us put a first garment on the table:</strong> sew a test and <a href="/report">tell us how it went</a>.</p>
+  </section>
 
-:::warning[Every design is a draft]
-None has been sewn yet. Each one drafts cleanly at every measurement set in the test suite, and
-its seams that sew together have matching lengths. That doesn't prove the garment fits. A
-design is marked *tested* only after someone has sewn a muslin and reported it.
-:::
+  <section className="home-section">
+    <div className="home-section-head">
+      <div><div className="eyebrow">A considered approach</div><h2>Old references, new patterns</h2></div>
+      <p>The books inform the garment details. The pattern geometry comes from tested blocks and adapts to the wearer.</p>
+    </div>
+    <p>PublicSewing is an independent project. Historical drafting books guide each garment's pieces, proportions and construction; their methods are reworked into modern, made-to-measure designs. Learn more about the <a href="/sources">sources and licences</a>.</p>
+  </section>
 
-## Testers wanted
+  <section className="home-note">
+    <h2>Privacy</h2>
+    <p>No accounts, no cookies, no analytics. Your measurements stay in your browser's local storage; nothing is sent anywhere. Clearing this site's data in your browser removes them.</p>
+  </section>
 
-If you're comfortable with pattern terms and willing to cut a muslin from an untested draft:
-
-1. Pick a [design](/designs) and [measure yourself](/measure) (or use one of the size sets).
-2. Export a tiled PDF from the design's page and [print and sew a muslin](/muslin).
-3. [Report what happened](/report). A report moves the design towards *tested*.
-
-## Privacy
-
-No accounts, no cookies, no analytics. Your measurements stay in your browser's local storage;
-nothing is sent anywhere. Clearing this site's data in your browser removes them.
-
-## Licence
-
-Free for any noncommercial use. Code: PolyForm Noncommercial 1.0.0; patterns and documentation:
-CC BY-NC 4.0. See [sources and licence](/sources).
-
-**Not for AI training.** We ask that this site not be used to train machine-learning models.
-This is a request, not a licence term.
+  <section className="home-note">
+    <h2>Licence</h2>
+    <div>
+      <p>Free for any noncommercial use. Code: PolyForm Noncommercial 1.0.0; patterns and documentation: CC BY-NC 4.0. See <a href="/sources">sources and licence</a>.</p>
+      <p><strong>Not for AI training.</strong> We ask that this site not be used to train machine-learning models. This is a request, not a licence term.</p>
+    </div>
+  </section>
+</main>
