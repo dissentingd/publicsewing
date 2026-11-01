@@ -5,7 +5,7 @@ import { sets, checkClean, near } from './coat-checks.mjs'
 
 const variants = {
   default: {},
-  plain: { vent: false, pocketFlaps: false, hemCurve: 0, buttons: 1, lining: false },
+  plain: { vent: false, pocketFlaps: false, hemCurve: 0, buttons: 1, lining: false, sleeveVent: false },
 }
 
 const front0 = (pattern) => pattern.parts[0]['jacket.front'].points
@@ -47,6 +47,13 @@ for (const [v, options] of Object.entries(variants)) {
         const inside = get('blouse.insideWelts').inside
         assert.ok(inside.len > 0 && inside.x + inside.len < front.seamStart.x, 'inside pocket clears the front seam')
       }
+      // The sleeve vent: the same extension on both sleeves, so the back seam still matches
+      const ts = parts['militaryblouse.topsleeve'].points
+      const us = parts['militaryblouse.undersleeve'].points
+      if (options.sleeveVent !== false) {
+        near(ts.ventTop.dist(ts.ventCorner), us.ventTop.dist(us.ventCorner), 0.5, 'sleeve vent tops')
+        near(ts.ventTop.dist(ts.tsWristRight), us.ventTop.dist(us.usWristRight), 0.5, 'sleeve vent lengths')
+      } else assert.ok(!ts.ventTop, 'no sleeve vent')
       const b = get('coat.buttons')
       assert.ok(b.top < b.bottom, 'buttons run down the front')
     })

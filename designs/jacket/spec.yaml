@@ -36,6 +36,11 @@ options:
   ventLength: { pct: 110 } # x waistToSeat, up from the hem
   ventWidth: { pct: 4 }
   facingWidth: { pct: 9 }
+  # Sleeve vent (Fig. 5: 8.0 long, two buttons): a closed vent at the hem of the back seam
+  sleeveVent: { bool: true, menu: style }
+  sleeveVentLength: { pct: 47, min: 25, max: 80, of: wrist, menu: style } # 8.0 on a wrist of about 17
+  sleeveVentWidth: { pct: 18, min: 10, max: 30, of: wrist, menu: construction } # the lap past the seam
+  sleeveButtons: { count: 2, min: 0, max: 4, menu: style }
 
 pieces:
   front:
@@ -85,5 +90,23 @@ pieces:
           width: neck * collarWidth
           point: neck * 0.08
           nr: 6
+
+  # Two-piece sleeves with a buttoned vent (Fig. 5), cut again from lining
+  topsleeve:
+    prefix: militaryblouse # named like the inherited pieces
+    part: library
+    from: topsleeve
+    after: [back, front]
+    options: [sleeveLengthBonus, lining, sleeveVent, sleeveVentLength, sleeveVentWidth, sleeveButtons]
+    lining: lining
+    vent: { if: sleeveVent, length: wrist * sleeveVentLength, width: wrist * sleeveVentWidth, buttons: sleeveButtons }
+  undersleeve:
+    prefix: militaryblouse
+    part: library
+    from: undersleeve
+    after: [back, front]
+    options: [sleeveLengthBonus, lining, sleeveVent, sleeveVentLength, sleeveVentWidth]
+    lining: lining
+    vent: { if: sleeveVent, length: wrist * sleeveVentLength, width: wrist * sleeveVentWidth }
 
   lowerFlap: { part: flap, after: front, key: lower, nr: 12, label: lowerFlap, cut: 2, if: lowerPockets and pocketFlaps }

@@ -39,7 +39,7 @@ which this design extends), the notched lapel from `lib/coat.mjs` and Bent's two
 | Lower pockets | Straight, with flaps | Level welts 58% of the front's chest width, 45% of waist to seat below the waist; `pocketFlaps` on, the flap 32% of the mouth deep |
 | Breast pocket | A welt | `breastPockets` on |
 | Vent | At CB | `vent` on, `ventLength` 110% of waist to seat |
-| Sleeve | Two pieces, buttoned vent | Bent's two-piece sleeve |
+| Sleeve | Two pieces, a closed vent 8.0 long with two buttons | Bent's two-piece sleeve; `sleeveVent` on: the back seam's last `sleeveVentLength` 47% of the wrist (8.0 on a wrist of about 17) extended `sleeveVentWidth` 18% of the wrist on both sleeves, its top cut at 45°; `sleeveButtons` 2 on the top sleeve |
 | Lining | Lined, inside breast pockets | The topcoat's: `lining` on (back-neck facing, front, side panel, back and sleeve linings), `insidePockets` on |
 
 ## Construction order
@@ -61,4 +61,5 @@ which this design extends), the notched lapel from `lib/coat.mjs` and Bent's two
   panel, back and sleeve linings, and an inside breast welt (`insidePockets`) in the front
   lining at the chest line. ЕМКО's inside pockets aren't dimensioned; the opening is half the
   front's width at the chest.
-- **Sleeve vent and buttons** are not drawn on Bent's sleeve.
+- **The sleeve vent's lap is ours** (2026-11-01): ЕМКО gives the vent's length, not its lap;
+  `sleeveVentWidth` 18% of the wrist (about 3 cm).

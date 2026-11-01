@@ -27,6 +27,7 @@ options:
   buttonBottom: { pct: 25, min: 0, max: 60, menu: style } # x waistToSeat: the last button below the waist
   breastPockets: { bool: false } # Diagram 2 draws only the lower pocket
   vent: { bool: false } # no vent drawn
+  sleeveVent: { bool: false } # nor a sleeve vent
 
 pieces:
   front:

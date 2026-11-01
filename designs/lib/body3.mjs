@@ -359,20 +359,67 @@ export function body3BackLiningPart(args) {
   }
 }
 
-/** A part from FreeSewing's library as is (e.g. the two-part sleeve), with its logo removed */
-export function libraryPart({ name, from, after, options, lining = false }) {
+/**
+ * A part from FreeSewing's library as is (e.g. the two-part sleeve), with its logo removed.
+ * `vent(sh)`: on the two-part sleeve, { length, width, buttons } for a closed vent at the hem
+ * of the back (elbow) seam, or null; see `sleeveVent`.
+ */
+export function libraryPart({ name, from, after, options, lining = false, vent = () => null }) {
   return {
     name,
     from,
     after,
     hide: hidePresets.HIDE_TREE,
     options,
-    draft: ({ snippets, store, options, part }) => {
+    draft: (sh) => {
+      const { snippets, store, options, part } = sh
       delete snippets.logo
       // Cut again from lining (a lined jacket's sleeves)
       if (lining && lining(options)) store.cutlist.addCut({ cut: 2, from: 'lining' })
+      const v = vent(sh)
+      if (v) sleeveVent(sh, from.name === 'library.topsleeve' ? 'ts' : 'us', v)
       return part
     },
+  }
+}
+
+/**
+ * A closed sleeve vent on the two-part sleeve's top (`ts`) or under (`us`) sleeve: the back
+ * seam's last `length` above the wrist extended `width` out (square to the seam) to the hem
+ * line, its top cut at 45 degrees; the top sleeve carries `buttons` buttons, the lowest a third
+ * of the way up.
+ * Both pieces get the same extension, so the back seam still matches.
+ */
+function sleeveVent({ points, paths, Path, sa, snippets, Snippet }, s, { length, width, buttons = 0 }) {
+  const W = points[`${s}WristRight`]
+  const L = points[`${s}WristLeft`]
+  const rad = (deg) => (deg * Math.PI) / 180
+  const up = W.angle(points.elbowRight)
+  const hem = L.angle(W) // along the hem, away from the sleeve
+  // Square to the seam, on the hem's side: the lap is `width` out from the seam on both sleeves
+  const out = Math.cos(rad(up - 90 - hem)) > 0 ? up - 90 : up + 90
+  points.ventTop = W.shift(up, length)
+  points.ventHem = W.shift(hem, width / Math.abs(Math.sin(rad(hem - up))))
+  points.ventCorner = points.ventTop.shift(out, width).shift(up + 180, width)
+  // The library's seam starts move(wrist right), line(elbowRight) and ends line(wrist left),
+  // line(wrist right), close
+  const rest = new Path()
+  rest.ops = paths.seam.ops.slice(1, -1)
+  const body = new Path().move(points.ventHem).line(points.ventCorner).line(points.ventTop)
+  body.ops.push(...rest.ops)
+  paths.seam = body.close().unhide().setClass('fabric')
+  if (sa) {
+    const open = new Path()
+    open.ops = body.ops.slice(0, -2) // ventHem ... wrist left (less the hem and the close)
+    const hem = new Path().move(L).line(points.ventHem) // W is on this line
+    paths.sa = open.offset(sa).join(hem.offset(sa * 3)).close().setClass('fabric sa')
+  }
+  paths.ventFold = new Path().move(W).line(points.ventTop).addClass('help dashed')
+  if (s === 'ts') {
+    for (let i = 0; i < buttons; i++) {
+      const at = length * (buttons > 1 ? 0.3 + (0.4 * i) / (buttons - 1) : 0.4)
+      snippets[`ventButton${i}`] = new Snippet('button', W.shift(up, at).shift(out + 180, width / 2))
+    }
   }
 }
 

@@ -660,6 +660,18 @@ options:
   liningPleat:
     title: Lining pleat
     description: Extra width at the back lining's centre back, folded into a pleat for movement.
+  sleeveVent:
+    title: Sleeve vent
+    description: A buttoned vent at the hem of the sleeve's back seam.
+  sleeveVentLength:
+    title: Sleeve vent length
+    description: How far the sleeve vent runs up from the hem, as a share of the wrist.
+  sleeveVentWidth:
+    title: Sleeve vent lap
+    description: How far the sleeve vent laps past the seam, as a share of the wrist.
+  sleeveButtons:
+    title: Sleeve buttons
+    description: Buttons on each sleeve vent.
   insidePockets:
     title: Inside pocket
     description: A welt pocket in the front lining at the chest line.

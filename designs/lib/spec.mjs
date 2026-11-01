@@ -312,6 +312,15 @@ const factories = {
       after: ctx.after(p),
       options: ctx.options(p),
       lining: p.lining === undefined ? false : enabledBy(p.lining),
+      // A sleeve vent: { if, length, width, buttons } (lib/body3.mjs sleeveVent)
+      vent:
+        p.vent === undefined
+          ? undefined
+          : (sh) => {
+              const look = lookupIn(sh, ctx.block, {})
+              if (p.vent.if !== undefined && !evaluate(p.vent.if, look)) return null
+              return { length: evaluate(p.vent.length, look), width: evaluate(p.vent.width, look), buttons: evaluate(p.vent.buttons ?? 0, look) }
+            },
     }),
   // Welt pockets: `store` names the store key (blouse.welts unless given)
   welt: (p, ctx) => weltPart({ name: p.name, after: ctx.after(p), key: p.key, nr: p.nr, store: p.store, enabled: enabledBy(p.if) }),
