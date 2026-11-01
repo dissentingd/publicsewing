@@ -24,27 +24,30 @@ two-piece sleeve. Added for this jacket: patch pockets on the box layout (`boxLa
 |---|---|---|
 | Fit | Semi-fitted | The box coat's straight body (`chestEase` 18%), `flare` 2% of the seat each side of the side seam |
 | Length | Hip | `lengthBelowWaist` 28% of waist to floor (about 11 in below the waist) |
-| Front | Fly front, 1¾ in overlap | `buttonExtension` 4.9% of the chest, `buttonInset` 100% (buttons on CF), `buttons` 5 |
+| Front | Fly front, 1¾ in overlap | `buttonExtension` 4.9% of the chest, `buttonInset` 100% (buttons on CF), `buttons` 5; `flyFront` on: a fly strip `flyLap` 150% of the lap wide, from half the lap above the top button to half below the last, its buttonholes on CF |
 | Lapel and collar | Turn collar, crease from the bust line | `breakBelowBust` 0, `lapelStyle` notch, `lapelWidth` and `collarWidth` 20% of the neck |
 | Pockets | Not drawn | Four flapped patch pockets: `breastPockets` (13% of the chest wide, the top 36% of HPS-to-waist above the waist) and `lowerPockets` (17% wide, the top 15% of waist-to-seat below the waist), each `patchDepth` 115% of its width deep, `patchFromCF` 3.5% of the chest behind CF, flaps `flapRatio` 38% of the width; `pocketShape` square |
 
 ## Changes and what isn't modelled
 - **Straight, not semi-fitted.** Merz takes in the waist with a dart under the arm and a back
   dart; the box body here has no waist shaping, as field jackets usually don't.
-- **The fly** (a hidden button strip) isn't drawn; the buttons are marked on CF. A fly can be
-  cut as a strip the facing's width and sewn behind the right front.
+- **The fly's size is ours** (2026-11-01): Merz names the fly but doesn't draw it. A straight
+  strip, cut 2 and interfaced, sewn behind the right front's facing; `flyFront` off marks the
+  buttons on CF with no fly.
 - **The pockets are ours**, not Merz's: none are drawn in the source.
 - Each pocket is narrowed to stay clear of the armhole and side seam, and shortened to stay
   above the hem, on any figure.
 
 ## Pieces
 Front, back (CB seam), facing, collar, top and under sleeves, breast pocket and flap (cut 2
-each), lower pocket and flap (cut 2 each; flaps also in lining).
+each), lower pocket and flap (cut 2 each; flaps also in lining), and the fly (cut 2).
 
 ## Construction
 1. Neck darts; pockets: turn and stitch each pocket's top hem, press the edges under, topstitch
    to the front on its marks; make the flaps (outer and lining), sew each above its pocket.
 2. CB, shoulder and side seams.
-3. Facings to the fronts; the collar to the neck, from CB to the gorge.
+3. Fly: buttonholes in one strip, the two strips sewn together along the front edge, turned,
+   and stitched behind the right front's facing. Facings to the fronts; the collar to the
+   neck, from CB to the gorge.
 4. Sleeves: the two pieces together, then set in.
-5. Hems; buttonholes on the right front (women's), buttons on the left.
+5. Hems; buttons on the left front (the holes are in the fly).

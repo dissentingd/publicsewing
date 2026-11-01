@@ -767,6 +767,48 @@ function mapPath(path, Path, f = (p) => p.clone()) {
   return out
 }
 
+/** The buttons' heights on a jacket front (store `jacket.front`): `n` from the break to below the waist */
+function buttonHeights(f, n) {
+  const bottom = f.waistY + (f.hemY - f.waistY) * 0.3
+  return Array.from({ length: n }, (_, i) => (n > 1 ? f.B.y + ((bottom - f.B.y) * i) / (n - 1) : f.B.y))
+}
+
+/**
+ * A fly (a fly front's hidden button strip), sewn behind the right front's facing: `width(sh)`
+ * x the lap wide from the front edge, from half the lap above the top button to half the lap
+ * below the last; cut 2 (the fly and its facing), the buttonholes on the CF line.
+ */
+export function flyPart({ name, after, nr, label = 'fly', width = () => 1.5, enabled = () => true }) {
+  return {
+    name,
+    after,
+    draft: (sh) => {
+      const { paths, Path, Point, points, store, sa, macro, snippets, Snippet, options, part } = sh
+      if (!enabled(options)) return part.hide()
+      const f = store.get('jacket.front')
+      const lap = Math.abs(f.cfx - f.B.x)
+      const ys = buttonHeights(f, options.buttons)
+      const top = ys[0] - lap / 2
+      const h = ys[ys.length - 1] + lap / 2 - top
+      const w = lap * width(sh)
+      points.topEdge = new Point(0, 0)
+      points.bottomEdge = new Point(0, h)
+      paths.seam = new Path().move(new Point(w, 0)).line(points.topEdge).line(points.bottomEdge).line(new Point(w, h)).close().addClass('fabric')
+      if (sa) paths.sa = paths.seam.offset(sa).addClass('fabric sa')
+      paths.cf = new Path().move(new Point(lap, 0)).line(new Point(lap, h)).addClass('help dashed')
+      for (const [i, y] of ys.entries()) snippets[`buttonhole${i}`] = new Snippet('buttonhole', new Point(lap, y - top)).attr('data-rotate', 90)
+      store.set('jacket.fly', { w, h, top })
+      macro('grainline', { from: new Point(w * 0.45, h - 20), to: new Point(w * 0.45, 20) })
+      store.cutlist.setCut([
+        { cut: 2, from: 'fabric' },
+        { cut: 1, from: 'interfacing' },
+      ])
+      title(macro, { at: new Point(w * 0.2, h * 0.3), nr, title: label, scale: 0.3, rotation: 90 })
+      return part
+    },
+  }
+}
+
 /** One jacket panel from the store (`jacket.panels.<panel>`) */
 export function jacketPanelPart({ name, after, panel, nr, label, cut = 2, buttons = false, material = 'fabric', lining = false, enabled = () => true }) {
   return {
@@ -800,10 +842,8 @@ export function jacketPanelPart({ name, after, panel, nr, label, cut = 2, button
         // the front edge and its button behind CF; double-breasted (rows), a button either side
         // of CF and a buttonhole on the outer one; the crease marked
         const f = store.get('jacket.front')
-        const n = options.buttons
-        const bottom = f.waistY + (f.hemY - f.waistY) * 0.3
-        for (let i = 0; i < n; i++) {
-          const y = n > 1 ? f.B.y + ((bottom - f.B.y) * i) / (n - 1) : f.B.y
+        const ys = buttonHeights(f, options.buttons)
+        for (const [i, y] of ys.entries()) {
           if (f.rows) {
             snippets[`button${i}_0`] = new Snippet('button', new Point(f.cfx - f.rows, y))
             snippets[`button${i}_1`] = new Snippet('button', new Point(f.cfx + f.rows, y))

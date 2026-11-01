@@ -56,6 +56,10 @@ options:
   collarPoint: { pct: 5, min: 0, max: 12, of: neck, menu: style }
   # Construction
   facingWidth: { pct: 10, min: 6, max: 16, of: chest, menu: construction }
+  # Double-breasted: off (and hidden) here; designs that offer it give it a menu
+  doubleBreasted: { bool: false }
+  doubleExtension: { pct: 10.4, min: 8, max: 14, of: chest } # the lap past CF
+  buttonRow: { pct: 62, min: 40, max: 85 } # x the lap: each row's distance from CF
 
 pieces:
   backBase:
@@ -78,7 +82,8 @@ pieces:
           length: waistToFloor * lengthBelowWaist
           flare: seat * flare
           cbOut: seat * cbFlare
-          lap: chest * buttonExtension
+          lap: chest * if(doubleBreasted, doubleExtension, buttonExtension)
+          rows: if(doubleBreasted, chest * doubleExtension * buttonRow, null)
           buttonInset: buttonInset
           pockets:
             hip:
@@ -101,7 +106,7 @@ pieces:
           rollOut: neck * rollOut
           lapelWidth: neck * lapelWidth
           peak: lapelStyle == 'peak'
-          facing: chest * facingWidth
+          facing: chest * if(doubleBreasted, max(facingWidth, doubleExtension * 1.5), facingWidth)
           dartWidth: chest * neckDartWidth
           dartAt: neckDartAt
           dartLength: neckDartLength

@@ -56,7 +56,7 @@ import { breanna } from '../blocks/breanna.mjs'
 import { sarah } from '../blocks/sarah.mjs'
 import { draftSkirtLayout, gorePart, culottePart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
-import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart } from './jacket.mjs'
+import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
 
 const blocks = { brian, bent, titan, breanna, sarah }
@@ -282,6 +282,8 @@ const factories = {
       lining: p.lining === undefined ? false : enabledBy(p.lining),
       enabled: enabledBy(p.if),
     }),
+  // A jacket's fly-front button strip: `width` x the lap (lib/jacket.mjs)
+  fly: (p, ctx) => flyPart({ name: p.name, after: ctx.after(p), nr: p.nr, label: p.label, width: (sh) => evaluate(p.width ?? 1.5, lookupIn(sh, ctx.block, {})), enabled: enabledBy(p.if) }),
   sideBody: (p, ctx) =>
     sideBodyPart({ name: p.name, after: ctx.after(p), nr: p.nr, lining: p.lining === undefined ? false : enabledBy(p.lining) }),
   // A three-piece body's lining (lib/body3.mjs): as frontLining and backLining; the front's

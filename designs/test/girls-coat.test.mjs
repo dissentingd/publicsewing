@@ -5,4 +5,5 @@ testJacket('girl\'s coat', GirlsCoat, {
   default: {},
   short: { lengthBelowWaist: 0.4, buttons: 3, ticketPocket: true },
   plain: { pockets: false, cbFlare: 0, buttonInset: 1 },
+  double: { doubleBreasted: true, buttons: 3 },
 })

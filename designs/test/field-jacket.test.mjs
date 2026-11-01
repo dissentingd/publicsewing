@@ -4,6 +4,9 @@ import { testJacket } from './jacket-checks.mjs'
 
 // Patch pockets lie on the front, clear of its edges, with room for a flap above
 const patches = (pattern) => {
+  // The fly reaches past the lap and covers every buttonhole
+  const fly = pattern.setStores[0].get('jacket.fly', null)
+  if (fly) assert.ok(fly.w > 0 && fly.h > 0, 'fly has a size')
   const p = pattern.setStores[0].get('coat.pockets', null)
   if (!p) return
   const bb = pattern.parts[0]['boxcoat.front'].paths.seam.bbox()
@@ -16,6 +19,6 @@ const patches = (pattern) => {
 
 testJacket('field jacket', FieldJacket, {
   default: {},
-  plain: { breastPockets: false, pocketFlaps: false, pocketShape: 'rounded', buttons: 4 },
+  plain: { breastPockets: false, pocketFlaps: false, pocketShape: 'rounded', buttons: 4, flyFront: false },
   long: { lengthBelowWaist: 0.45, flare: 0.05, pockets: true, lowerPockets: false },
 }, patches)

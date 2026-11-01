@@ -34,7 +34,7 @@ USDA sets in `designs/sizes/`), so it fits any size, adults included.
 |---|---|---|
 | Ease, flare, neck dart, collar, sleeve | As the ladies' box coat | The box coat's: `chestEase` 18%, `flare` 4.4% of the seat each side, the neck dart, notched lapel and collar, two-piece sleeve |
 | Length | By style | `lengthBelowWaist` 58% of waist to floor: just below the knee |
-| Lap | 2½ in on a 36 bust | `buttonExtension` 6.9% of the chest |
+| Lap | 2½ in on a 36 bust; 3½–4 in double-breasted | `buttonExtension` 6.9% of the chest; `doubleBreasted` off: on, the lap is `doubleExtension` 10.4% of the chest (3¾ in on 36), two rows each `buttonRow` 62% of the lap from CF, the facing at least 1½ laps wide |
 | Buttons | Not given | `buttons` 4 |
 | Pocket | 3 in below the waist, one each side | `pocketBelow` 30% of waist to seat; flap pockets; `ticketPocket` off |
 | Children's figure | ¾ in out at the armhole, ¼ in up at the back neck | Not applied: Breanna is drafted from the child's own measurements |
@@ -42,7 +42,8 @@ USDA sets in `designs/sizes/`), so it fits any size, adults included.
 
 ## Changes and what isn't modelled
 - **The pocket is a straight flap pocket**, the box coat's, not Sheifer's slanted mouth.
-- **Double-breasted** (3½–4 in lap) isn't built.
+- **Double-breasted** (2026-11-01) is an option, off by default as in Sheifer's diagram; the
+  rows' spacing is the women's peacoat's, not Sheifer's (he gives only the lap).
 - Sheifer's adjustments for a child's figure aren't applied by hand; the measurements carry the
   child's proportions.
 

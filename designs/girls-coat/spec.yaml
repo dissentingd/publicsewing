@@ -22,6 +22,10 @@ options:
   # N: "2 1/2 inches for single breasted", on a 36 bust
   buttonExtension: { pct: 6.9 }
   buttons: { count: 4 }
+  # "3 1/2 to 4 inches for double breasted": two rows, the lap 3 3/4" on a 36 bust
+  doubleBreasted: { bool: false, menu: style }
+  doubleExtension: { pct: 10.4, menu: style }
+  buttonRow: { pct: 62, menu: style } # x the lap: each row's distance from CF
   # P: "Pocket 3 inches below waist line", one each side, no ticket pocket
   pocketBelow: { pct: 30 } # x waistToSeat: 3" of FreeSewing's 10"
   ticketPocket: { bool: false }
