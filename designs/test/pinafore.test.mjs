@@ -4,4 +4,5 @@ import { testYoke } from './yoke-checks.mjs'
 testYoke('pinafore', Pinafore, {
   default: {},
   variant: { opening: 'back', sleeves: 'long', neckFinish: 'band', gathers: 1.3 },
+  sash: { sash: true, yokeDepth: 0.2 },
 })

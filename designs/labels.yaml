@@ -667,6 +667,18 @@ options:
   frontOpening:
     title: Front opening shift
     description: How far the front opening sits forward of the side, as a share of the knee.
+  sash:
+    title: Sash
+    description: A waistband across the front with a sash tied at the back.
+  sashBand:
+    title: Waistband length
+    description: Length of the front waistband, as a share of the chest.
+  sashLength:
+    title: Sash length
+    description: Length of each sash end, as a share of the chest.
+  sashWidth:
+    title: Sash width
+    description: Cut width of the waistband and sash, folded in half, as a share of the chest.
   flyFront:
     title: Fly front
     description: Hide the buttons' holes in a strip sewn behind the right front.
@@ -707,6 +719,7 @@ parts:
   gore6: Gore 6
   gore7: Gore 7
   waistband: Waistband
+  sash: Sash
   flyShield: Fly shield
   fly: Fly
   flyFacing: Fly facing

@@ -20,11 +20,16 @@ A sleeveless over-dress, its body gathered into narrow yokes or bands, open at t
 | Fullness | gathered | `gathers` 170% |
 | Length | to the knee | `skirtLength` 47% |
 | Opening | back | `opening` back, `placketDepth` 60%, `buttons` 2 |
+| Sash (strap pinafore, p. 248) | a waistband 16 × 2 over the front's gathers, two sash ends 20 × 2 tied at the back (child of 2, chest about 21) | `sash` off; on: a waistband `sashBand` 76% of the chest long and two ties `sashLength` 95%, both `sashWidth` 9.5% of the chest wide, cut on the fold |
 
 ## Changes and open points
-- **No shoulder straps or sash.** The strap pinafore's straps and sash aren't drafted. The
-  yoke version covers the same use.
+- **Shoulder straps:** the strap pinafore's neckbands and straps (front band 10½ × 3½, back
+  bands, straps 6 × 3½) are one piece here, the yoke: at its shallowest (`yokeDepth` 20%) it is
+  a band round the neck and over the shoulders. Walker's bodies are rectangles gathered into
+  the bands; ours are Brian's front and back, gathered the same way.
+- **The sash** (2026-11-01) is sewn over the front at the waist; no line is marked on the
+  front body for it.
 - **Ages 4 and up.** The infant pinafores are below the USDA sizes.
 
 ## Checks
-As the smock (test/pinafore.test.mjs).
+As the smock (test/pinafore.test.mjs), with a `sash` variant.
