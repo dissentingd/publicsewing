@@ -667,6 +667,10 @@ options:
   frontOpening:
     title: Front opening shift
     description: How far the front opening sits forward of the side, as a share of the knee.
+  raglanPieces:
+    title: Raglan sleeve pieces
+    description: The raglan sleeve in two pieces with an over-arm seam, or in one with a dart at the shoulder.
+    choices: { two: Two pieces, one: One piece }
   blouse:
     title: Blousing
     description: Extra length at the centre front of the bodice, tapering to the side, so it blouses over the waist seam.

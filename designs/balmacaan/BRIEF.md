@@ -42,9 +42,12 @@ A loose overcoat to below the knee with raglan sleeves:
 | Lining | Not given | `lining` off. The lining (from the peacoat) goes only with the ulster and shawl collars |
 
 ## Changes and what isn't modelled
-- **The one-piece raglan sleeve isn't built.** Simons gives both; the split sleeve is his second
-  version and is what the raglan library makes. Its "hinge" notch is the library's armhole
-  notch, where the raglan line meets the armhole.
+- **Both of Simons' sleeves** (`raglanPieces`, 2026-11-01): the split sleeve (two pieces, an
+  over-arm seam; the default) and the one-piece sleeve, the front and back halves joined down
+  the over-arm line, the two shoulder seams becoming a dart from the neck. The dart's point is
+  set where its legs are the same length, within about 1 cm of the over-arm line. The split
+  sleeve's "hinge" notch is the library's armhole notch, where the raglan line meets the
+  armhole.
 - **The raglan line** runs from the neck to the armhole notch (`lib/raglan.mjs`, from the
   mackinaw's Diagram XXIII), not down to the underarm as in Simons' balmacaan diagram, so less of
   the body goes onto the sleeve.

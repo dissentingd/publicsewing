@@ -43,6 +43,7 @@ testCoat(
     setIn: { sleeveStyle: 'setIn', buttons: 5 },
     ulster: { collarStyle: 'ulster', buttonTop: 1.6, lining: true, hemFlare: 0 },
     plain: { handPockets: false, lengthBelowWaist: 1.8, vent: false },
+    oneSleeve: { raglanPieces: 'one' },
   },
   (pattern) => {
     handPocket(pattern)
