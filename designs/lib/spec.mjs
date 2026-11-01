@@ -45,6 +45,7 @@ import {
   yokePiecePart,
   yokeSleevePart,
   sleeveBandPart,
+  sleevePlacketPart,
   placketPart,
   neckBandPart,
   sailorCollarPart,
@@ -225,6 +226,7 @@ const factories = {
     yokePiecePart({ name: p.name, after: ctx.after(p), side: p.side, piece: p.piece, nr: p.nr, label: p.label, cut: p.cut }),
   yokeSleeve: (p, ctx) => yokeSleevePart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   sleeveBand: (p, ctx) => sleeveBandPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
+  sleevePlacket: (p, ctx) => sleevePlacketPart({ name: p.name, after: ctx.after(p), nr: p.nr, width: p.width }),
   placket: (p, ctx) => placketPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   neckBand: (p, ctx) => neckBandPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   // A sailor collar on a yoke garment's V neck: `depth` below the CB neck, `width` out from CB

@@ -667,6 +667,18 @@ options:
   frontOpening:
     title: Front opening shift
     description: How far the front opening sits forward of the side, as a share of the knee.
+  blouse:
+    title: Blousing
+    description: Extra length at the centre front of the bodice, tapering to the side, so it blouses over the waist seam.
+  waistShaping:
+    title: Waist shaping
+    description: How far the bodice's side seams come in at the waist, as a share of the chest.
+  sleeveSlit:
+    title: Sleeve opening
+    description: Length of the bound slit at the back of the sleeve's hem, as a share of the wrist (0 for none).
+  cuffLap:
+    title: Cuff lap
+    description: How far the cuff laps past the sleeve opening to button, as a share of the wrist.
   sash:
     title: Sash
     description: A waistband across the front with a sash tied at the back.
@@ -720,6 +732,7 @@ parts:
   gore7: Gore 7
   waistband: Waistband
   sash: Sash
+  sleevePlacket: Sleeve placket
   flyShield: Fly shield
   fly: Fly
   flyFacing: Fly facing

@@ -61,17 +61,22 @@ export function draftYokeSide(sh, side) {
   const open = options.opening === side
   const ext = open ? measurements.chest * options.openingExt : 0
 
-  // Yoke seam meets the armhole (or, for a bodice to the waist, the side seam)
+  // Yoke seam meets the armhole (or, for a bodice to the waist, the side seam). A bodice to the
+  // waist can be taken in at the side seam's foot (`waistShaping`, a design option: x chest),
+  // and its front dropped at CF (`blouse`, x chest), tapering to the side, to blouse over the
+  // waist seam.
+  const optional = (k) => (k in options ? options[k] : 0)
   let armYoke, upperArm, lowerArm
   if (yokeY < points.armhole.y - 1) {
     armYoke = arm.intersectsY(yokeY)[0]
     ;[lowerArm, upperArm] = arm.split(armYoke)
   } else {
-    armYoke = new Point(S, yokeY)
+    armYoke = new Point(S - measurements.chest * optional('waistShaping'), yokeY)
     upperArm = arm
     lowerArm = null
   }
-  const fold = new Point(0, yokeY)
+  const drop = !lowerArm && side === 'front' ? measurements.chest * optional('blouse') : 0
+  const fold = new Point(0, yokeY + drop)
   let neckAtFold = points[`${c}Neck`]
   // A V neck on the front (`vNeck`, a design option: its depth as a share of the neck point to
   // the chest line), straight from the neck point down to CF
@@ -81,7 +86,9 @@ export function draftYokeSide(sh, side) {
   }
 
   // Yoke: from the bottom of the fold round to the top (counter-clockwise on the page)
-  let yoke = new Path().move(open ? new Point(-ext, yokeY) : fold).line(armYoke)
+  let yoke = new Path().move(open ? new Point(-ext, fold.y) : fold)
+  if (open && drop) yoke = yoke.line(fold)
+  yoke = drop ? yoke.curve(fold.shift(0, armYoke.x * 0.5), armYoke.shift(180, armYoke.x * 0.3), armYoke) : yoke.line(armYoke)
   if (!lowerArm) yoke = yoke.line(points.armhole)
   yoke = yoke.join(upperArm).line(points.s3CollarSplit).join(neck)
   if (open) yoke = yoke.line(new Point(-ext, neckAtFold.y))
@@ -113,7 +120,7 @@ export function draftYokeSide(sh, side) {
   // yoke seam's ends, the underarm, shoulder, neck point and hem corners
   const marks = {
     yoke: yoke && {
-      seamFold: open ? new Point(-ext, yokeY) : fold,
+      seamFold: open ? new Point(-ext, fold.y) : fold,
       seamArm: armYoke,
       ...(lowerArm ? {} : { underarm: points.armhole }),
       shoulder: points.s3ArmholeSplit,
@@ -303,7 +310,7 @@ export function yokeSleevePart({ name, after, nr }) {
     after,
     hide: hidePresets.HIDE_TREE,
     options: { libraryFitSleeve: true },
-    draft: ({ points, paths, Path, Point, store, sa, snippets, macro, options, measurements, part }) => {
+    draft: ({ points, paths, Path, Point, store, sa, snippets, Snippet, macro, options, measurements, part }) => {
       for (const p in paths) if (p !== 'sleevecap') delete paths[p]
       for (const s in snippets) if (!s.toLowerCase().includes('notch')) delete snippets[s]
       if (options.sleeves === 'none') {
@@ -327,6 +334,16 @@ export function yokeSleevePart({ name, after, nr }) {
         paths.sa = hem.line(off.start()).join(off).line(hem.start()).addClass('fabric sa')
       }
       paths.gathers = new Path().move(points.wristLeft.shift(90, 8)).line(points.wristRight.shift(90, 8)).addClass('mark dotted')
+      // A sleeve opening (`sleeveSlit`, a design option: x wrist), long sleeves only: a slit up
+      // from the hem in the middle of the back half, bound by a continuous placket, so the cuff
+      // can button round the wrist
+      const slit = options.sleeves === 'long' && 'sleeveSlit' in options ? measurements.wrist * options.sleeveSlit : 0
+      if (slit > 0) {
+        points.slitHem = points.wristLeft.shiftFractionTowards(points.wristRight, 0.25)
+        points.slitTop = points.slitHem.shift(90, slit)
+        paths.slit = new Path().move(points.slitHem).line(points.slitTop).addClass('mark')
+        snippets.slitTop = new Snippet('notch', points.slitTop)
+      }
       // Band round the wrist (long) or the arm (short)
       const round = options.sleeves === 'short' ? measurements.biceps * (1 + options.bicepsEase * 0.5) : measurements.wrist
       store.set('yoke.sleeve', {
@@ -336,6 +353,7 @@ export function yokeSleevePart({ name, after, nr }) {
         hem: points.wristLeft.dist(points.wristRight),
         band: Math.min(round * (1 + options.sleeveBandEase), points.wristLeft.dist(points.wristRight)),
         bandWidth: measurements.wrist * options.sleeveBand,
+        ...(slit ? { slit } : {}),
       })
       store.cutlist.setCut({ cut: 2, from: 'fabric' })
       return part
@@ -343,24 +361,58 @@ export function yokeSleevePart({ name, after, nr }) {
   }
 }
 
-/** The sleeve band: a straight strip folded in half */
+/**
+ * The sleeve band: a straight strip folded in half. With a sleeve opening (`yoke.sleeve.slit`)
+ * it laps `cuffLap` (a design option, x wrist) past the opening, buttoned there.
+ */
 export function sleeveBandPart({ name, after, nr }) {
   return {
     name,
     after,
-    draft: ({ paths, Path, Point, store, sa, macro, options, part }) => {
+    draft: ({ paths, Path, Point, store, sa, macro, options, measurements, snippets, Snippet, part }) => {
       if (options.sleeves === 'none') {
         macro('rmtitle')
         return part.hide()
       }
       const s = store.get('yoke.sleeve')
-      const L = s.band
+      const lap = s.slit ? measurements.wrist * options.cuffLap : 0
+      const L = s.band + lap
       const W = 2 * s.bandWidth
+      if (lap) {
+        snippets.button = new Snippet('button', new Point(lap / 2, W / 4))
+        snippets.buttonhole = new Snippet('buttonhole', new Point(L - lap / 2, W / 4))
+      }
       paths.seam = new Path().move(new Point(L, 0)).line(new Point(0, 0)).line(new Point(0, W)).line(new Point(L, W)).close().addClass('fabric')
       paths.fold = new Path().move(new Point(0, W / 2)).line(new Point(L, W / 2)).addClass('help dashed')
       if (sa) paths.sa = paths.seam.offset(sa).addClass('fabric sa')
       store.cutlist.setCut({ cut: 2, from: 'fabric' })
       title(macro, { at: new Point(L * 0.3, W * 0.3), nr, title: 'sleeveBand', scale: 0.25 })
+      return part
+    },
+  }
+}
+
+/**
+ * The continuous placket binding a sleeve opening: a strip twice the slit long (it is sewn
+ * round the slit opened out straight), `width` x the wrist wide, folded in half.
+ */
+export function sleevePlacketPart({ name, after, nr, width = 0.2 }) {
+  return {
+    name,
+    after,
+    draft: ({ paths, Path, Point, store, sa, macro, options, measurements, part }) => {
+      const s = store.get('yoke.sleeve', null)
+      if (options.sleeves !== 'long' || !s?.slit) {
+        macro('rmtitle')
+        return part.hide()
+      }
+      const L = 2 * s.slit + 10
+      const W = 2 * measurements.wrist * width
+      paths.seam = new Path().move(new Point(L, 0)).line(new Point(0, 0)).line(new Point(0, W)).line(new Point(L, W)).close().addClass('fabric')
+      paths.fold = new Path().move(new Point(0, W / 2)).line(new Point(L, W / 2)).addClass('help dashed')
+      if (sa) paths.sa = paths.seam.offset(sa).addClass('fabric sa')
+      store.cutlist.setCut({ cut: 2, from: 'fabric' })
+      title(macro, { at: new Point(L * 0.3, W * 0.2), nr, title: 'sleevePlacket', scale: 0.2 })
       return part
     },
   }

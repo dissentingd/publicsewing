@@ -28,6 +28,14 @@ options:
   neckFinish: { dflt: collar, list: [binding, band, collar], menu: style }
   collarWidth: { pct: 27, min: 15, max: 35, of: neck, menu: style } # 3 1/2" at CB on a 13" neck
   collarSpring: { pct: 15, min: 0, max: 25, menu: style } # 1" over half the neck
+  # The waist "blouses over the belt": 1" added to the front length at CF (1/36 of the bust),
+  # tapering to the side; the under-arm line in 1" at the waist each side (pp. 28, 34-35)
+  blouse: { pct: 2.8, min: 0, max: 6, of: chest, menu: style }
+  waistShaping: { pct: 2.8, min: 0, max: 5, of: chest, menu: fit }
+  # Sleeve opening I-J, half the hand + 1/2" (p. 41): about 4 1/2" on a 6 1/2" wrist; the cuff
+  # laps 1" past it, buttoned (cuff length the hand + 1", p. 40)
+  sleeveSlit: { pct: 70, min: 0, max: 100, of: wrist, menu: style }
+  cuffLap: { pct: 15, min: 8, max: 25, of: wrist, menu: style }
 
 # A bodice to the waist and a skirt; the neck band is a collar, the sleeve band a cuff
 pieces:
@@ -37,3 +45,4 @@ pieces:
   backYoke: { name: backBodice, part: yokePiece, after: [backBase, frontBase], side: back, piece: yoke, nr: 4, label: backBodice, cut: 1 }
   sleeveBand: { name: cuff, part: sleeveBand, after: sleeve, nr: 6 }
   neckBand: { name: collar, part: neckBand, after: [backBase, frontBase], nr: 8 }
+  sleevePlacket: { part: sleevePlacket, after: sleeve, nr: 9, width: 0.2 }
