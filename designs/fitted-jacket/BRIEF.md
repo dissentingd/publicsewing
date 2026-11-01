@@ -61,4 +61,4 @@ of the side seam, a shaped CB seam, and a shawl collar cut in one with the front
 - **The waist is looser than Mitchell's** at his proportions: his figure is corseted (waist
   26½ on hips 40), and the same shaping on FreeSewing's sets would leave no ease.
 - **Mitchell's double-dart tight-fitted jacket** (pp. 46–47: seven parts, two front seams over
-  the shoulder, no collar) isn't built.
+  the shoulder, no collar) is its own design, `double-dart-jacket`, on this one.

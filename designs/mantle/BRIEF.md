@@ -42,7 +42,8 @@ A loose overcoat whose back is cut in one with the whole sleeve:
   sleeve, each sewn to the body along a raglan line, with an over-arm seam. Merging the back
   body with both sleeve halves means turning the sleeve down over the underarm, as a kimono
   cut does, and isn't built. The look is the same from the front: a raglan line from the neck
-  to the underarm.
+  to the underarm. (2026-11-01: the balmacaan's one-piece raglan sleeve, `raglanPieces`, is
+  the first step; the back-in-one waits for the kimono sleeve of BUILD_QUEUE items 2 and 8.)
 - **The raglan line** runs from the neck to the armhole notch (`lib/raglan.mjs`), not to the
   underarm.
 - **The pocket is straight**, not slanted.
