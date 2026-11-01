@@ -4,6 +4,11 @@ import { themes } from 'prism-react-renderer'
 
 const repo = 'https://github.com/dissentingd/publicsewing'
 
+// Docusaurus's second CSS minifier, clean-css, can't parse daisyUI's @starting-style blocks: it
+// leaves a stray '}' that makes the browser drop the next rule (our light-mode :root palette).
+// This keeps cssnano and skips clean-css.
+process.env.USE_SIMPLE_CSS_MINIFIER ??= 'true'
+
 /** @type {import('@docusaurus/types').Config} */
 export default {
   title: 'PublicSewing',
@@ -63,7 +68,7 @@ export default {
     }),
   ],
   themeConfig: {
-    colorMode: { respectPrefersColorScheme: true },
+    colorMode: { defaultMode: 'light', respectPrefersColorScheme: false },
     navbar: {
       title: 'PublicSewing',
       items: [
