@@ -27,7 +27,16 @@ import { markPocket, pocketPart, flapPart, beltPart, setInPocketPart } from './p
 import { applyRaglan, raglanSleevePart } from './raglan.mjs'
 import { backYokeCut, backPanelPart, frontYokeCut, frontPanelPart } from './panels.mjs'
 import { hoodPart } from './hood.mjs'
-import { draftBody3Back, draftBody3Front, sideBodyPart, libraryPart, weltPart, weltBagPart } from './body3.mjs'
+import {
+  draftBody3Back,
+  draftBody3Front,
+  sideBodyPart,
+  libraryPart,
+  weltPart,
+  weltBagPart,
+  body3FrontLiningPart,
+  body3BackLiningPart,
+} from './body3.mjs'
 import { topsleeve, undersleeve } from '@freesewing/library'
 import {
   yokeOptions,
@@ -273,7 +282,29 @@ const factories = {
       lining: p.lining === undefined ? false : enabledBy(p.lining),
       enabled: enabledBy(p.if),
     }),
-  sideBody: (p, ctx) => sideBodyPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
+  sideBody: (p, ctx) =>
+    sideBodyPart({ name: p.name, after: ctx.after(p), nr: p.nr, lining: p.lining === undefined ? false : enabledBy(p.lining) }),
+  // A three-piece body's lining (lib/body3.mjs): as frontLining and backLining; the front's
+  // `pocket` is an inside breast pocket's opening length (0: none)
+  body3FrontLining: (p, ctx) =>
+    body3FrontLiningPart({
+      name: p.name,
+      from: ctx.parts[p.from],
+      after: ctx.after(p),
+      nr: p.nr,
+      pocket: p.pocket === undefined ? undefined : (sh) => evaluate(p.pocket, lookupIn(sh, ctx.block, {})),
+      enabled: enabledBy(p.if),
+    }),
+  body3BackLining: (p, ctx) =>
+    body3BackLiningPart({
+      name: p.name,
+      from: ctx.parts[p.from],
+      after: ctx.after(p),
+      nr: p.nr,
+      pleat: (sh) => evaluate(p.pleat, lookupIn(sh, ctx.block, {})),
+      width: (sh) => evaluate(p.width, lookupIn(sh, ctx.block, {})),
+      enabled: enabledBy(p.if),
+    }),
   library: (p, ctx) =>
     libraryPart({
       name: p.name,

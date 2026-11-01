@@ -46,8 +46,9 @@ Simons drafts size 6 for juveniles (ages 4 to 8 or 10), size 12 for boys and siz
 - The vent and breast welt can be turned on (`vent`, `breastPockets`).
 
 ## Pieces
-As the jacket: back (CB seam), side panel, front, facing, collar, top and under sleeves, and
-the lower pockets' flaps and bags.
+As the jacket: back (CB seam), side panel, front, facing, collar, top and under sleeves, the
+lower pockets' flaps and bags, and the jacket's lining (back-neck facing, front and back
+linings, inside pocket; `lining` and `insidePockets`, on by default as on the jacket).
 
 ## Construction
 As the jacket's brief, with no vent.

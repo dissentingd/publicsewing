@@ -660,6 +660,9 @@ options:
   liningPleat:
     title: Lining pleat
     description: Extra width at the back lining's centre back, folded into a pleat for movement.
+  insidePockets:
+    title: Inside pocket
+    description: A welt pocket in the front lining at the chest line.
 
 parts:
   body: Body
@@ -723,6 +726,9 @@ parts:
   breastFlap: Breast pocket flap
   lowerFlap: Lower pocket flap
   breastWelt: Breast welt
+  insideWelt: Inside pocket welt
+  insidePocketBag: Inside pocket bag
+  insideBag: Inside pocket bag
   breastBag: Breast pocket bag
   breastPocketBag: Breast pocket bag
   lowerWelt: Lower welt

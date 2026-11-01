@@ -34,7 +34,7 @@ pieces:
     from: bent.front
     hide: tree
     measurements: [seat, waist, waistToSeat, neck]
-    options: [frontDrop, hemCurve, buttonExtension, buttons, breastPockets, lowerPockets, pocketFlaps, facingWidth, lapelWidth, gorgeAt, breakAt, buttonBottom]
+    options: [frontDrop, hemCurve, buttonExtension, buttons, breastPockets, lowerPockets, pocketFlaps, facingWidth, lapelWidth, gorgeAt, breakAt, buttonBottom, lining, neckFacingWidth, insidePockets]
     let:
       ext: chest * buttonExtension
       q: underarm.x # the front's width at the chest, CF to the old side seam
@@ -63,4 +63,6 @@ pieces:
             rollOut: neck * 0.05
             gorgeAt: gorgeAt
             width: neck * lapelWidth
+      # Lined, as the jacket: the facing meets a back-neck facing on the shoulder
+      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: lining }
 

@@ -37,6 +37,7 @@ A semi-fitted overcoat in the cut of a suit jacket:
 | Pockets | Slanted welts, the darts ending in them | `lowerPockets` on: a welt below the waist, slanting down toward the front, its welt 18% of the mouth; `breastPockets` off |
 | Collar | Turn-down | A turn-down collar `collarWidth` 27% of neck, front edge to front edge |
 | Sleeves | Two pieces | FreeSewing's two-part sleeve fitted to the armhole; `cuffEase` 85% of the wrist |
+| Lining | Lined (not tabulated) | `lining` on: the facing runs to the shoulder and meets a back-neck facing `neckFacingWidth` 14% of neck deep; a front lining from the facing to the front seam, the side panel and sleeves cut again from lining, a back lining below the neck facing with `liningPleat` 2.5% of chest extra at CB (cut in pairs above the vent); `insidePockets` on: a welt in the left front lining at the chest line, half the front's width long |
 
 ## Construction order
 1. Welt pockets in the foreparts (the military blouse's order).
@@ -46,12 +47,17 @@ A semi-fitted overcoat in the cut of a suit jacket:
 4. Collar: under collar to the neckline, top collar to the facings' neckline; facings to the
    front edges, turned and pressed.
 5. Sleeves: the two seams, then set in, easing the cap.
-6. Hems; buttonholes on the right front.
+6. Lining: inside pocket in the front lining; front linings to the facings, side panel and
+   back linings, the CB pleat basted; sleeve linings; bagged to the coat at the hems and
+   sleeve ends, the back lining's edges sewn to the vent.
+7. Hems; buttonholes on the right front.
 
 ## Changes and what isn't modelled
 - **Geometry from Bent**, through the military blouse's three-piece body; only ЕМКО's
   proportions are kept.
 - **No chest or belly dart.** The waist is taken in at the side panel's seams instead, and stout
   figures are handled by Bent's own drafting.
-- **No lining yet.** The three-piece body has no lining pieces; the sleeves are FreeSewing's.
+- **The lining pieces are ours** (`lib/body3.mjs`, the coat library's lining on the three-piece
+  body, 2026-11-01): ЕМКО lines the coat but gives no lining pattern. Turning `lining` off
+  gives the old facing, which stops at the neckline.
 - **The vent's length is ours.** ЕМКО draws an open vent without tabulating it.

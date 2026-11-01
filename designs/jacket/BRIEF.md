@@ -40,6 +40,7 @@ which this design extends), the notched lapel from `lib/coat.mjs` and Bent's two
 | Breast pocket | A welt | `breastPockets` on |
 | Vent | At CB | `vent` on, `ventLength` 110% of waist to seat |
 | Sleeve | Two pieces, buttoned vent | Bent's two-piece sleeve |
+| Lining | Lined, inside breast pockets | The topcoat's: `lining` on (back-neck facing, front, side panel, back and sleeve linings), `insidePockets` on |
 
 ## Construction order
 1. Breast welt; lower pockets (flap, jets, bags).
@@ -56,5 +57,8 @@ which this design extends), the notched lapel from `lib/coat.mjs` and Bent's two
 - **No chest or belly dart.** The three-piece body's two seams take the waist shaping; ЕМКО's
   darts into the pocket mouth aren't modelled (as on the topcoat).
 - **The collar is cut in one**, not on a separate stand.
-- **No lining pieces yet**, and no inside pockets (as on the topcoat).
+- **The lining pieces are ours**, as the topcoat's (2026-11-01): a back-neck facing, front, side
+  panel, back and sleeve linings, and an inside breast welt (`insidePockets`) in the front
+  lining at the chest line. ЕМКО's inside pockets aren't dimensioned; the opening is half the
+  front's width at the chest.
 - **Sleeve vent and buttons** are not drawn on Bent's sleeve.

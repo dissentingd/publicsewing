@@ -118,7 +118,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       diff(restA, restB, tol, k, found)
       if (found.length) {
         failed++
-        if (failed <= 5) console.log(found.slice(0, 10).join('\n'))
+        // SNAP_ALL=1: every difference in every case
+        if (process.env.SNAP_ALL || failed <= 5) console.log(found.slice(0, process.env.SNAP_ALL ? Infinity : 10).join('\n'))
       }
     }
     const n = Object.keys(base.cases).length

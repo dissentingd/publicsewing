@@ -4,9 +4,9 @@
 // mirror each other about a vertical line, so they are the same length by construction.
 // Built on Bent (Brian with a two-piece sleeve). Reads the options waistEase, seatEase,
 // backShare (the back seam's share of the waist suppression) and lengthBelowWaist.
-// Store: `blouse.back`, `blouse.front`, `blouse.sideBody`, `blouse.welts`.
+// Store: `blouse.back`, `blouse.front`, `blouse.sideBody`, `blouse.welts`, `blouse.insideWelts`.
 import { hidePresets } from '@freesewing/core'
-import { cleanup, armhole, title, placeButtons, draftNotchLapel, BRAND } from './coat.mjs'
+import { cleanup, armhole, title, placeButtons, draftNotchLapel, frontLiningPart, backLiningPart, BRAND } from './coat.mjs'
 
 /** Hem and the body's half widths (mm) at chest, waist and seat */
 function bodyTargets({ points, measurements, options }) {
@@ -132,8 +132,9 @@ export function draftBody3Back(sh, { seamAt = 0.3, vent, nr = 2 } = {}) {
  * need be); the welt is `welt` x len wide, the bag `bag` x len deep; drawn when `mark`.
  * `r`: the front corner rounded to this radius (0: square). `lapel`: a notched lapel
  * ({ breakY, rollOut, gorgeAt, width }, as `draftNotchLapel` takes) instead of the round neck.
+ * `toShoulder`: the facing runs round the neck to the shoulder (for a lining), not to the neckline.
  */
-export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons, welts = {}, clear = 0, welt = 0.2, nr = 1, r = 0, lapel }) {
+export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons, welts = {}, clear = 0, welt = 0.2, nr = 1, r = 0, lapel, toShoulder = false }) {
   const { points, paths, Path, Point, options, store, sa, macro, snippets, Snippet, part } = sh
   cleanup(sh, ['frontArmhole', 'frontCollar'])
   const { waistY, seatY, hemY } = levels(sh, 'cf')
@@ -145,7 +146,7 @@ export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons,
   const { left, right } = seamEdges(sh, points.seamStart, points.seamStart.x, Dw * k, Ds * k, waistY, seatY, hemY)
   store.set('blouse.front', { right, lowerArm, seam: left.length() })
   points.seamHem = left.end()
-  store.set('coat.frontEdge', { ext, facing, r, drop })
+  store.set('coat.frontEdge', { ext, facing, r, drop, ...(toShoulder ? { toShoulder } : {}) })
   points.edgeNeck = new Point(-ext, points.cfNeck.y)
   points.edgeHem = new Point(-ext, hemY + drop)
   points.cornerTop = points.edgeHem
@@ -251,11 +252,11 @@ export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons,
  * joined where the side seam would be (x = S), the front half mirrored about that line.
  * Drawn in the back's coordinates.
  */
-export function sideBodyPart({ name, after, nr = 3 }) {
+export function sideBodyPart({ name, after, nr = 3, lining = false }) {
   return {
     name,
     after,
-    draft: ({ points, paths, Path, Point, store, sa, macro, part }) => {
+    draft: ({ points, paths, Path, Point, store, sa, macro, options, part }) => {
       const bk = store.get('blouse.back')
       const fr = store.get('blouse.front')
       const S = bk.S
@@ -286,8 +287,74 @@ export function sideBodyPart({ name, after, nr = 3 }) {
       points.mid = new Point(S, (points.backHem.y + backSeam.start().y) / 2)
       macro('grainline', { from: points.mid.shift(-90, 150), to: points.mid.shift(90, 150) })
       store.cutlist.setCut({ cut: 2, from: 'fabric' })
+      // Cut again from lining (a lined jacket's side body)
+      if (lining && lining(options)) store.cutlist.addCut({ cut: 2, from: 'lining' })
       title(macro, { at: points.mid.shift(0, 10), nr, title: 'sideBody', scale: 0.5 })
       return part
+    },
+  }
+}
+
+/**
+ * What coat.mjs's lining parts read from a Brian back or front, rebuilt on a body3 back or
+ * front (`which`): `points.hem` at the seam's hem and `paths.bodyBase`, from there up the seam
+ * and armhole to the neck point; on the back `paths.saBase` carries on round the neck to CB.
+ */
+function liningBase(sh, which) {
+  const { points, paths, Path, store } = sh
+  const left = flipPathX(store.get(`blouse.${which}`).right, points.seamStart.x, Path)
+  const upperArm = paths.armholeFull.split(points.seamStart)[1]
+  points.hem = points.seamHem
+  paths.bodyBase = left.reverse().join(upperArm).line(points.s3CollarSplit).hide()
+  if (which === 'back') paths.saBase = paths.bodyBase.clone().join(paths.backCollar).hide()
+}
+
+/**
+ * The front lining of a three-piece body (`from` the front): coat.mjs's, from the facing's
+ * inner edge to the forepart's seam (the side body is cut again from lining). The facing must
+ * run to the shoulder (a lapel, or `toShoulder`). `pocket(sh)`: an inside breast pocket's
+ * opening length (0: none), level at the chest line from the facing's edge, kept `clear` of
+ * the seam; its welt `welt` and bag `bag` x the length, in store `blouse.insideWelts.inside`.
+ */
+export function body3FrontLiningPart({ name, from, after, nr, pocket = () => 0, welt = 0.18, bag = 1.3, clear = 0, enabled = () => true }) {
+  const lining = frontLiningPart({ name, from, after, nr, enabled })
+  return {
+    ...lining,
+    draft: (sh) => {
+      const { points, paths, Path, Point, store, options, part } = sh
+      if (!enabled(options)) return lining.draft(sh)
+      // The seam's forepart edge, kept before the lining part clears the inherited paths
+      const left = flipPathX(store.get('blouse.front').right, points.seamStart.x, Path)
+      liningBase(sh, 'front')
+      lining.draft(sh)
+      const len = pocket(sh)
+      if (len > 0) {
+        const { ext, facing } = store.get('coat.frontEdge')
+        const x = -ext + facing
+        const y = points.armhole.y
+        const max = (left.intersectsY(y)[0] || points.seamHem).x - clear
+        const p = { x, y, len: Math.min(len, max - x) }
+        p.welt = p.len * welt
+        p.bag = p.len * bag
+        store.set('blouse.insideWelts', { inside: p })
+        points.insideWeltA = new Point(p.x, p.y)
+        points.insideWeltB = new Point(p.x + p.len, p.y)
+        paths.insideWelt = new Path().move(points.insideWeltA).line(points.insideWeltB).addClass('mark')
+      }
+      return part
+    },
+  }
+}
+
+/** The back lining of a three-piece body (`from` the back): coat.mjs's, CB to the back seam */
+export function body3BackLiningPart(args) {
+  const lining = backLiningPart(args)
+  const enabled = args.enabled ?? (() => true)
+  return {
+    ...lining,
+    draft: (sh) => {
+      if (enabled(sh.options)) liningBase(sh, 'back')
+      return lining.draft(sh)
     },
   }
 }

@@ -32,13 +32,20 @@ options:
   ventLength: { pct: 140, min: 60, max: 200, menu: style } # x waistToSeat, up from the hem
   ventWidth: { pct: 4.5, min: 3, max: 8, of: chest, menu: construction } # the vent's lap past CB
   facingWidth: { pct: 9 }
+  # Lining (ЕМКО's coats and jackets are lined): front lining from the facing, which then runs
+  # to the shoulder, to the front seam; the side body and sleeves cut again; a back lining below
+  # a back-neck facing, with an ease pleat at CB; an inside breast pocket on the left lining
+  lining: { bool: true, menu: construction }
+  liningPleat: { pct: 2.5, min: 0, max: 5, of: chest, menu: construction } # extra at the back lining's CB
+  neckFacingWidth: { pct: 14, min: 8, max: 25, of: neck, menu: construction } # the back-neck facing's depth and shoulder width
+  insidePockets: { bool: true, menu: construction }
 
 pieces:
   back:
     from: bent.back
     hide: tree
     measurements: [seat, waist, waistToSeat]
-    options: [chestEase, waistEase, seatEase, bicepsEase, cuffEase, backShare, lengthBelowWaist, vent, ventLength, ventWidth]
+    options: [chestEase, waistEase, seatEase, bicepsEase, cuffEase, backShare, lengthBelowWaist, vent, ventLength, ventWidth, liningPleat]
     ops:
       - body3Back:
           seamAt: 0.3
@@ -48,7 +55,7 @@ pieces:
     from: bent.front
     hide: tree
     measurements: [seat, waist, waistToSeat]
-    options: [frontDrop, buttonExtension, buttons, breastPockets, lowerPockets, facingWidth]
+    options: [frontDrop, buttonExtension, buttons, breastPockets, lowerPockets, facingWidth, lining, neckFacingWidth, insidePockets]
     let:
       ext: chest * buttonExtension
       q: underarm.x # the front's width at the chest, CF to the old side seam
@@ -59,6 +66,7 @@ pieces:
           ext: ext
           drop: waistToSeat * frontDrop
           facing: chest * facingWidth
+          toShoulder: lining
           buttons:
             count: buttons
             top: cfNeck.y + ext * 1.4
@@ -68,6 +76,8 @@ pieces:
           welts:
             breast: { x: q * 0.22, y: underarm.y + q * 0.08, len: q * 0.36, rise: q * 0.06, bag: 1.15, mark: breastPockets }
             lower: { x: q * 0.24, y: cfWaist.y + waistToSeat * 0.3, len: q * 0.5, rise: q * 0.12, bag: 1.4, mark: lowerPockets }
+      # Lined: the facing meets a back-neck facing on the shoulder
+      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: lining }
 
   # Fig. 9: a turn-down collar, front edge to front edge
   collar:
@@ -81,3 +91,11 @@ pieces:
           width: neck * collarWidth
           point: neck * 0.06
           nr: 6
+
+  # Lining (ours: ЕМКО lines the coat but tabulates no lining pieces); the side body and
+  # sleeves are cut again from lining (military-blouse/spec.yaml)
+  backNeckFacing: { part: backNeckFacing, from: back, nr: 13, width: neck * neckFacingWidth, if: lining }
+  frontLining: { part: body3FrontLining, from: front, nr: 14, pocket: "if(insidePockets, underarm.x * 0.5, 0)", if: lining }
+  backLining: { part: body3BackLining, from: back, nr: 15, width: neck * neckFacingWidth, pleat: chest * liningPleat, if: lining }
+  insideWelt: { part: welt, after: frontLining, key: inside, store: blouse.insideWelts, nr: 16, if: lining and insidePockets }
+  insideBag: { part: weltBag, after: frontLining, key: inside, store: blouse.insideWelts, nr: 17, if: lining and insidePockets }

@@ -32,6 +32,8 @@ options:
   lowerPockets: { bool: true, menu: style }
   # Construction
   facingWidth: { pct: 8, min: 5, max: 12, of: chest, menu: construction }
+  # Lining: off (and hidden) here; the topcoat and jacket turn it on
+  lining: { bool: false }
 
 pieces:
   # The back seam leaves the armhole about a third of the way up (Q in the diagram)
@@ -76,6 +78,7 @@ pieces:
     part: sideBody
     after: [back, front]
     nr: 3
+    lining: lining
 
   facing:
     part: facing
@@ -98,8 +101,9 @@ pieces:
 
   # Two-piece coat sleeve ("similar to the sack coat sleeve"): FreeSewing's two-part sleeve,
   # fitted to the armhole
-  topsleeve: { part: library, from: topsleeve, after: [back, front], options: [sleeveLengthBonus] }
-  undersleeve: { part: library, from: undersleeve, after: [back, front], options: [sleeveLengthBonus] }
+  # Cut again from lining when a design lines the body (`lining`, off here)
+  topsleeve: { part: library, from: topsleeve, after: [back, front], options: [sleeveLengthBonus, lining], lining: lining }
+  undersleeve: { part: library, from: undersleeve, after: [back, front], options: [sleeveLengthBonus, lining], lining: lining }
 
   # Welt pockets: a welt (cut on the fold) and two bag pieces per opening
   breastWelt: { part: welt, after: front, key: breast, nr: 8, if: breastPockets }

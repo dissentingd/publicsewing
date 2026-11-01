@@ -494,7 +494,8 @@ export function facingPart({ name, from, nr = 5 }) {
 
       const { f = 0 } = store.get('coat.frontEdge')
       if (paths.shawl) return shoulderFacing(sh, x, f, nr, paths.shawl)
-      if (store.get('coat.frontEdge').vNeck) return shoulderFacing(sh, x, f, nr, paths.neckline)
+      const { vNeck, toShoulder } = store.get('coat.frontEdge')
+      if (vNeck || toShoulder) return shoulderFacing(sh, x, f, nr, paths.neckline)
       // Neckline from the front edge to where the facing ends
       const cut = paths.neckline.intersectsX(x)[0]
       points.facingNeck = cut || paths.neckline.end()
