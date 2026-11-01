@@ -105,7 +105,8 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  *   `calfBelow` under the knee and `cuffW` round at the hem, `cuffBelow` under it (each width
  *   split back/front by `share`, this piece's part). With `openingBelow`, the outseam opens from
  *   the hem up to that far under the knee, with `buttons` buttonholes `buttonInset` in on the
- *   front.
+ *   front. `openingShift` (both pieces): the outseam from the knee down moved this far toward
+ *   the front (narrowing the forepart, widening the back), so the opening runs down the shin.
  * - `pleats` (front): the dart's width laid as this many pleats at the waist instead (give
  *   `dartLength: 0`), `pleatSpacing` apart, the first at the dart's place; notched, with fold lines.
  * - `straightOutseam`: the outseam a straight line from the hem corner out past the seat to the
@@ -164,6 +165,14 @@ export function draftTrouserLeg(sh, args) {
     points.thighOutCp1 = points.thighOut.shift(90, (ty - points.seatOut.y) / 2)
     points.thighOutCp2 = points.thighOut.shift(-90, (points.knee.y - ty) / 2)
     points.seatOutCpD = points.seatOut.shift(-90, (ty - points.seatOut.y) / 3)
+    // Front buttoning: from the knee down, `openingShift` taken off the forepart's outseam side
+    // and added to the back's, so the seam (and the opening) runs down the front of the shin
+    const s = args.openingShift ?? 0
+    if (s) {
+      for (const k of ['kneeOut', 'calfOut', 'hemOut']) points[k] = points[k].shift(0, s)
+      points.hemCp1 = points.hemIn.shiftFractionTowards(points.hemOut, 1 / 3)
+      points.hemCp2 = points.hemIn.shiftFractionTowards(points.hemOut, 2 / 3)
+    }
     points.kneeOutCpU = points.kneeOut.shift(90, (points.knee.y - ty) / 3)
   }
   const hem = new Path().move(points.hemIn).curve(points.hemCp1, points.hemCp2, points.hemOut)

@@ -27,6 +27,10 @@ options:
   breechesLength: { pct: 80, min: 50, max: 95, menu: style } # x knee to floor: the cuff (G, 12 in below his fitted knee)
   openingTop: { pct: 8, min: 0, max: 30, menu: advanced } # x knee to floor: the buttoned opening's top, below the knee
   breechesButtons: { count: 7, min: 3, max: 12, menu: style }
+  # The opening down the outseam, or (Simons' alternative) down the front of the shin: 2 1/4"
+  # off the forepart's lower edge, added to the back (14% of his 16" knee)
+  breechesOpening: { dflt: side, list: [side, front], menu: style }
+  frontOpening: { pct: 14, min: 8, max: 25, of: knee, menu: advanced } # x knee: how far forward
   hemShaping: { pct: 0, menu: false }
   hemWidth: { pct: 100, menu: false }
   lengthBonus: { pct: -4, menu: false }
@@ -61,6 +65,7 @@ pieces:
           cuffBelow: below * breechesLength
           cuffW: ankle * cuffWidth
           openingBelow: below * openingTop
+          openingShift: if(breechesOpening == 'front', knee * frontOpening, 0)
           buttons: breechesButtons
           buttonInset: 15
   back:
@@ -94,6 +99,7 @@ pieces:
           cuffBelow: below * breechesLength
           cuffW: ankle * cuffWidth
           openingBelow: below * openingTop
+          openingShift: if(breechesOpening == 'front', knee * frontOpening, 0)
   # The opening: a button stand on the back's edge (folded) and a facing on the front's
   buttonStand:
     part: strip

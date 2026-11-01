@@ -660,6 +660,13 @@ options:
   liningPleat:
     title: Lining pleat
     description: Extra width at the back lining's centre back, folded into a pleat for movement.
+  breechesOpening:
+    title: Opening
+    description: The buttoned opening below the knee, down the side or down the front of the shin.
+    choices: { side: Down the side, front: Down the front }
+  frontOpening:
+    title: Front opening shift
+    description: How far the front opening sits forward of the side, as a share of the knee.
   flyFront:
     title: Fly front
     description: Hide the buttons' holes in a strip sewn behind the right front.

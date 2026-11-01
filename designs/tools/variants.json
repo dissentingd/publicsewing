@@ -31,7 +31,7 @@
   "boys-jacket": {"default": {}, "plain": {"pocketFlaps": false, "hemCurve": 0, "buttons": 2, "breakAt": 1}, "vent": {"vent": true, "breastPockets": true, "buttons": 4, "breakAt": 0}},
   "jacket": {"default": {}, "plain": {"vent": false, "pocketFlaps": false, "hemCurve": 0, "buttons": 1, "lining": false, "sleeveVent": false}},
   "bib-overall": {"default": {}, "plain": {"bibPocket": false, "hipPockets": false, "seatPockets": false, "bibHeight": 0.2}},
-  "breeches": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "thighFlare": 0, "breechesLength": 0.6}},
+  "breeches": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "thighFlare": 0, "breechesLength": 0.6}, "front": {"breechesOpening": "front"}},
   "service-shirt": {"default": {}, "plain": {"pocketFlaps": false, "shoulderStraps": false, "pocketShape": "square", "buttons": 5}},
   "hooded-smock": {"default": {}, "variant": {"chestPocket": false, "kangarooPocket": false, "hoodDrawstring": false, "buttons": 1}},
   "work-shirt": {"default": {}, "variant": {"neckFinish": "collar", "breastPocket": false, "sideSlit": 0, "opening": "back"}},

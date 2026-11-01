@@ -32,7 +32,7 @@ knee to a cuff, a buttoned opening at the lower outseam).
 | Knee | Forepart ½ knee, back ½ in wider each side (17 round a 16 knee) | Titan's knee with `kneeEase` 6%, the back's share `legBalance` 53% (9 of 17) |
 | Calf | ½ calf, the back wider; 12½ calf on a 16 knee (78%) | `calfWidth` 88% of the knee, `calfAt` 40% of knee to floor below the knee |
 | Bottom | Shank 10½ | `cuffWidth` 118% of the ankle, `breechesLength` 80% of knee to floor below the knee |
-| Opening | Down the outseam below the knee (or the front) | From `openingTop` 8% of knee to floor below the knee to the hem; `breechesButtons` 7, holes on the front |
+| Opening | Down the outseam below the knee (or the front) | From `openingTop` 8% of knee to floor below the knee to the hem; `breechesButtons` 7, holes on the front. `breechesOpening` side; front moves the seam from the knee down `frontOpening` 14% of the knee forward (2¼ in on his 16), off the forepart and onto the back |
 | Waist, fly, pockets | Waistband, Vees | The trousers' waist darts, zip fly, side and back pockets, waistband, belt loops |
 
 ## Changes and what isn't modelled
@@ -40,7 +40,8 @@ knee to a cuff, a buttoned opening at the lower outseam).
   measurement alone that would be tighter than most calves at the calf line, so the default is
   88%. Lower it for a close fit (`calfWidth`).
 - **The knee fits at the knee**, Titan's knee line, not 7 in below the thigh line.
-- **Front buttoning** isn't built; the opening is at the outseam.
+- **Front buttoning** (2026-11-01, `breechesOpening` front) shifts the seam from the knee down,
+  which leaves a small angle in the forepart's outseam at the knee; Simons' diagram blends it.
 - **No strappings** (the reinforcing patches inside the knee of riding breeches).
 
 ## Pieces

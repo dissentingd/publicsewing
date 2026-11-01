@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { Breeches } from '../breeches/src/index.mjs'
 import { sets, checkClean, near } from './coat-checks.mjs'
 
-const variants = { default: {}, plain: { sidePockets: false, backPocket: false, beltLoops: 0, thighFlare: 0, breechesLength: 0.6 } }
+const variants = { default: {}, plain: { sidePockets: false, backPocket: false, beltLoops: 0, thighFlare: 0, breechesLength: 0.6 }, front: { breechesOpening: 'front' } }
 
 for (const [v, options] of Object.entries(variants)) {
   for (const [name, measurements] of Object.entries(sets)) {
