@@ -65,3 +65,10 @@ pieces:
     fold: true
     length: skirt.waist + waistToFloor * waistbandHeight
     width: waistToFloor * waistbandHeight
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  nine:
+    name: 9 gores
+    description: "A front panel and four gores either side: narrower panels with more seams, and the same flare."
+    options: { gores: 9 }

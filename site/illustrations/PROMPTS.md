@@ -914,3 +914,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > flat, front view, the sash ends just visible at the sides.
 >
 > Leave out: sleeves, frills, a bib with straps, pockets, a separate dress underneath, a person.
+
+### gored-skirt.nine: Gored skirt, 9 gores
+> A women's **long nine-gore skirt** in plain wool or linen (navy, grey, brown or cream), **nearly
+> to the floor**. Smooth and close over the hips, then **flaring evenly to a wide hem** in a soft
+> cone, the **seams running down from the waist to the hem**: a **narrow front panel** in the middle,
+> four narrow gores either side. A plain **narrow waistband**. Shown flat, front view, as the skirt
+> alone.
+>
+> Leave out: pleats, gathers, a yoke, pockets, a slit, a train, a ruffle, buttons, a belt, a person, a
+> blouse.
