@@ -3,7 +3,7 @@
 # 4 in below the knee, the fullness gathered into a strap buckled or buttoned below the knee
 # through a short slit at the side seam; fly, pockets and waistband as the trousers. Drafted from
 # the wearer's own measurements, so they fit men too (plus-fours). See BRIEF.md.
-extends: ../trousers/spec.yaml
+extends: ../suit-trousers/spec.yaml
 
 about:
   id: knickers

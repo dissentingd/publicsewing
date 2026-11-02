@@ -4,7 +4,7 @@
 `designingboysjuv00simo` (laptop). "Boys' Knee Pants", Diagram 40, pp. 115–116. US 1922, public
 domain. Size 6: waist 24, seat 26, rise 6, inseam 8, knee 12 (inches).
 
-**Block:** FreeSewing's Titan, through ЕМКО's trousers (`extends: ../trousers/spec.yaml`), the
+**Block:** FreeSewing's Titan, through ЕМКО's trousers (`extends: ../suit-trousers/spec.yaml`), the
 leg ended just below the knee with the breeches mode of `trouserLeg` (`cuffBelow`, `cuffW`).
 
 **Status:** draft. Not sewn.

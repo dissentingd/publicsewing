@@ -1,4 +1,4 @@
-# Girl's coat
+# Girls' coat
 
 **Source:** N. S. Sheifer, *System of Designing and Grading Ladies', Misses' & Children's
 Garments* (New York, 1908), corpus `nssheiferssystem00shei` (laptop; PDF pp. 32–33 box coat,

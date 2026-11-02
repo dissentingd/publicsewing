@@ -6,7 +6,7 @@ Regular Pants draft, Diagrams III–V (pp. 6–9); pockets from "Drafting Pants 
 Lays" (p. 28). US 1916, public domain. Inches below are Simons', for his model: waist 34, seat
 40, inseam 32.
 
-**Block:** FreeSewing's Titan, through the trousers design (`extends: ../trousers/spec.yaml`):
+**Block:** FreeSewing's Titan, through the trousers design (`extends: ../suit-trousers/spec.yaml`):
 the same `trouserLeg` legs, fly, waistband, loops and pocket pieces, with Simons' proportions
 for work pants as option defaults.
 

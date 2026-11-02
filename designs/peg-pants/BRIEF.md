@@ -5,7 +5,7 @@ corpus `draftingpantsove00simo` (tracked). "Full Peg Pants", Diagram VIII, pp. 1
 18–19). US 1916, public domain. Inches below are Simons', for a 34 waist, 40 seat, 22 knee, 16
 bottom, 9 rise.
 
-**Block:** FreeSewing's Titan, through ЕМКО's trousers (`extends: ../trousers/spec.yaml`,
+**Block:** FreeSewing's Titan, through ЕМКО's trousers (`extends: ../suit-trousers/spec.yaml`,
 `lib/trousers.mjs`): their legs, back dart, zip fly, side and back pockets, waistband and loops.
 Added for these: front pleats on `trouserLeg` (`pleats`, `pleatSpacing`).
 

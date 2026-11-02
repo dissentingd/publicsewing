@@ -83,7 +83,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `jacket` | Single-breasted two-button jacket: side panels, notched lapel, flap pockets, back vent | ЕМКО 1988 |
 | `boys-jacket` | Boy's three-button suit jacket, notched lapel, flap pockets | Simons 1922 |
 | `waistcoat` | Lined V-neck waistcoat with cutaway points, darts and welt pockets | ЕМКО 1988 |
-| `trousers` | Semi-fitted straight trousers: waist darts, zip fly, side and back pockets, waistband | ЕМКО 1988 |
+| `suit-trousers` | Semi-fitted straight trousers: waist darts, zip fly, side and back pockets, waistband | ЕМКО 1988 |
 
 [WARDROBE_GAPS.md](WARDROBE_GAPS.md) compares a full wardrobe against what FreeSewing already
 has and lists what's next.

@@ -2,7 +2,7 @@
 # "especially adapted for khaki and all cotton materials", on the trousers' Titan legs: fuller
 # than Simons' regular pants through the seat, knee and bottom, the rise an inch deeper, no
 # darts, a straight hem. Fly, pockets, waistband and loops as the trousers. See BRIEF.md.
-extends: ../trousers/spec.yaml
+extends: ../suit-trousers/spec.yaml
 
 about:
   id: work-pants

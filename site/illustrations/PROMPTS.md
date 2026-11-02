@@ -946,7 +946,7 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 
 *Current image has pleats, turn-ups, and cream cloth; the pattern has one dart each side and a plain hem.*
 
-### trousers: Trousers
+### suit-trousers: Suit trousers
 > **No pleats and no turn-ups: one small dart each side of the front waist, and a plain hem. Coloured cloth, grey, navy or brown.**
 > A pair of men's **semi-fitted straight trousers** in plain wool suiting (grey, navy or
 > brown). A **waistband with seven belt loops**, a **zip fly** (a neat fly placket, zip hidden),

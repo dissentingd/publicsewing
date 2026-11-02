@@ -1,4 +1,4 @@
-# Boy's jacket
+# Boys' jacket
 
 **Source:** Simons, *Designing Boys' and Juveniles' Clothing* (The Clothing Designer Co., New
 York, 1922), corpus `designingboysjuv00simo` (laptop). Diagram 1, construction lines (pp.

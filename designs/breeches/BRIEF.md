@@ -5,7 +5,7 @@ corpus `draftingpantsove00simo` (tracked). "Riding Breeches", Diagram XV, p. 30 
 1916, public domain. Inches below are Simons', for a 34 waist, 40 seat, 16 knee, 12½ calf, 10½
 shank, 10 rise.
 
-**Block:** FreeSewing's Titan, through ЕМКО's trousers (`extends: ../trousers/spec.yaml`,
+**Block:** FreeSewing's Titan, through ЕМКО's trousers (`extends: ../suit-trousers/spec.yaml`,
 `lib/trousers.mjs`): their waist darts, zip fly, side and back pockets, waistband and loops. Added
 for the breeches: a breeches leg on the `trouserLeg` operation (thigh flare, a leg fitted from the
 knee to a cuff, a buttoned opening at the lower outseam).

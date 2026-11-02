@@ -2,7 +2,7 @@
 # 4.0), on the trousers' Titan legs: two pleats each front, straight loose legs, a cargo pocket
 # with a flap on each thigh, a flapped seat pocket, a fly, side pockets, waistband and belt loops.
 # Pocket and flap sizes are the source's size M (seat 102) as shares of the seat. See BRIEF.md.
-extends: ../trousers/spec.yaml
+extends: ../suit-trousers/spec.yaml
 
 about:
   id: field-trousers

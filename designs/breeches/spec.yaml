@@ -2,7 +2,7 @@
 # the trousers' Titan legs: full over the seat and flared out at the side of the thigh, fitted
 # from the knee down to a narrow cuff above the ankle, the side seam buttoned closed below the
 # knee. Waist, fly, pockets and waistband as the trousers. See BRIEF.md.
-extends: ../trousers/spec.yaml
+extends: ../suit-trousers/spec.yaml
 
 about:
   id: breeches

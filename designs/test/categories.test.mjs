@@ -21,6 +21,12 @@ for (const c of categories) {
   })
 }
 
+// Docusaurus makes a page named like its folder that folder's landing page: the sidebar group
+// would link to the garment instead of opening
+for (const c of categories) {
+  test(`${c.id}: no design with the section's name`, () => assert.ok(!designs.includes(c.id)))
+}
+
 test('every section has a design', () => {
   const used = new Set(designs.map((d) => readSpec(new URL(`${d}/spec.yaml`, root)).about.category))
   for (const id of known) assert.ok(used.has(id), id)

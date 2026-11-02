@@ -6,7 +6,7 @@
 PDF, renders; not tracked). Read with `node tools/dxf-aama.mjs` (net outlines; sizes below in
 cm, size M).
 
-**Block:** FreeSewing's Titan, through ЕМКО's trousers (`extends: ../trousers/spec.yaml`,
+**Block:** FreeSewing's Titan, through ЕМКО's trousers (`extends: ../suit-trousers/spec.yaml`,
 `lib/trousers.mjs`): their legs, back dart, fly, side pockets, waistband and loops; the front
 pleats as the peg-top pants'. Drafted from the wearer's measurements: the source's sizes are a
 design reference, scaled by the seat (M on FreeSewing's `cisMaleAdult38`, seat 102).

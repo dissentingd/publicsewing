@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { Trousers } from '../trousers/src/index.mjs'
+import { Trousers } from '../suit-trousers/src/index.mjs'
 import { sets, checkClean, near } from './coat-checks.mjs'
 
 const variants = { default: {}, plain: { sidePockets: false, backPocket: false, beltLoops: 0, frontDart: 0 } }

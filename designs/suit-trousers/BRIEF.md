@@ -1,4 +1,4 @@
-# Trousers
+# Suit trousers
 
 **Source:** ЕМКО СЭВ, vol. 3, *Base constructions of men's clothing* (Moscow, 1988), corpus
 `emko` (a private copy, not in the repository). §7, men's semi-fitted trousers: base construction

@@ -2,7 +2,7 @@
 # pp. 14-15), on the trousers' Titan legs: full over the hips, the extra waist laid in pleats at
 # the front, the leg tapering from a wide knee to a narrow bottom. Fly, pockets and waistband as
 # the trousers. See BRIEF.md.
-extends: ../trousers/spec.yaml
+extends: ../suit-trousers/spec.yaml
 
 about:
   id: peg-pants

@@ -41,7 +41,7 @@ body:
         - Topcoat (topcoat)
         - Jacket (jacket)
         - Waistcoat (waistcoat)
-        - Trousers (trousers)
+        - Suit trousers (suit-trousers)
         - Shirt (shirt)
     validations:
       required: true

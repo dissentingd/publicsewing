@@ -4,7 +4,7 @@
 `designingboysjuv00simo` (laptop). "Boys' Knickerbockers", Diagram 41, pp. 117–119. US 1922,
 public domain. Size 6: waist 24, seat 26, rise 6, knee 11½, below knee 10 (inches).
 
-**Block:** FreeSewing's Titan, through ЕМКО's trousers (`extends: ../trousers/spec.yaml`), the
+**Block:** FreeSewing's Titan, through ЕМКО's trousers (`extends: ../suit-trousers/spec.yaml`), the
 leg run 4 in below the knee with `trouserLeg`'s breeches mode, its side seam open at the bottom.
 
 **Status:** draft. Not sewn.

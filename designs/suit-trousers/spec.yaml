@@ -1,10 +1,10 @@
-# Trousers: ЕМКО СЭВ т.3's men's semi-fitted trousers (§7, Tables 7.2-7.3, Figs. 34-35) on
+# Suit trousers: ЕМКО СЭВ т.3's men's semi-fitted trousers (§7, Tables 7.2-7.3, Figs. 34-35) on
 # FreeSewing's Titan trouser block: a waist dart in each back and front, legs narrowing a little
 # from the knee to a hem curved at the crease, a zip fly, on-seam side pockets, a jetted back
 # pocket and a waistband. See BRIEF.md for where each default is read.
 about:
   id: trousers
-  name: Trousers
+  name: Suit trousers
   category: trousers
   description: Semi-fitted straight trousers with waist darts, a zip fly, side pockets, a jetted back pocket and a waistband
   difficulty: 3

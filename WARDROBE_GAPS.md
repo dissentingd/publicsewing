@@ -208,7 +208,7 @@ sewn, none draped yet:
   front corners, flap pockets (`lib/body3.mjs`: `r`, `lapel`, welt `flap`);
 - `waistcoat` (§6), on Brian: V neck, cutaway points, back fish dart and front dart, cut-in
   armholes, welts (`lib/coat.mjs`: `armholeCut`, `dart`, `chamfer`);
-- `trousers` (§7), on Titan: back and front waist darts, legs narrowing to a curved hem, zip fly,
+- `suit-trousers` (§7), on Titan: back and front waist darts, legs narrowing to a curved hem, zip fly,
   side and back pockets, waistband (`lib/trousers.mjs`: `trouserLeg`, `strip`).
 
 FreeSewing has a jacket (Jaeger), a waistcoat (Wahid) and the Titan block; ЕМКО's versions are

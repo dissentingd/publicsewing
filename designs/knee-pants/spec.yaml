@@ -2,7 +2,7 @@
 # 40, pp. 115-116), on the trousers' Titan legs: short trousers ending at the knee, straight from
 # the seat, with a turn-up at the bottom; fly, pockets and waistband as the trousers. Drafted from
 # the wearer's own measurements, so they fit men too (shorts). See BRIEF.md.
-extends: ../trousers/spec.yaml
+extends: ../suit-trousers/spec.yaml
 
 about:
   id: knee-pants
