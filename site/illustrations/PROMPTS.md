@@ -957,7 +957,7 @@ wide ones get cropped. No mannequin, hand or head showing. A second thing to che
 >
 > Leave out: a horizontal seam or band on the sleeve, notched lapels, a belt, patch pockets, epaulettes, gold or
 > anchor buttons, a hood, a person.
-*Not used: a seam across each sleeve at the elbow, and the top button sat low. The rest was right.*
+*Not used: a seam across each sleeve at the elbow. The rest was right.*
 
 ### womens-peacoat.single: Women's peacoat, single-breasted
 > **Each sleeve is unbroken from the armhole to the wrist, with no seam across it at the elbow or forearm.** A
