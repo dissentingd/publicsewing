@@ -39,7 +39,7 @@ A loose overcoat to below the knee with raglan sleeves:
 | Buttons | Throat to below the hip line | `buttons` 4, evenly; the top `buttonTop` −320% of the lap from the chest line (2 in below the neck), never nearer the neck than 15% of the neck; the last `buttonBottom` 78% of waist to seat below the waist |
 | Pocket | Slanted welt | The overcoat's hand pockets |
 | Back | CB seam | The overcoat's CB seam and vent |
-| Lining | Not given | `lining` off. The lining (from the peacoat) goes only with the ulster and shawl collars |
+| Lining | Not given | `lining` off. The lining (from the peacoat) needs set-in sleeves |
 
 ## Changes and what isn't modelled
 - **Both of Simons' sleeves** (`raglanPieces`, 2026-11-01): the split sleeve (two pieces, an

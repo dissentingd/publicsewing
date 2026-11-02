@@ -650,7 +650,7 @@ options:
     description: Depth of the back-neck facing down the centre back.
   lining:
     title: Lining
-    description: Line the body. The facings then run to the shoulder, with a back-neck facing.
+    description: Line the body. The facings then run to the shoulder, with a back-neck facing. Coats with raglan sleeves stay unlined.
   hemDepth:
     title: Hem allowance
     description: Depth of the turned-up hem on the legs and sleeves, as a share of waist to floor.

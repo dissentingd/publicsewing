@@ -55,7 +55,7 @@ options:
   vent: { bool: false, menu: style }
   ventLength: { pct: 70, min: 30, max: 120, menu: style } # x waistToSeat, up from the hem
   ventWidth: { pct: 5, min: 3, max: 8, of: chest, menu: construction } # the vent's lap past CB
-  lining: { bool: false, menu: construction } # with the ulster or shawl collar (facings to the shoulder)
+  lining: { bool: false, menu: construction } # facings to the shoulder; not with raglan sleeves, which have no shoulder seam to sew it to
   liningPleat: { pct: 2.5, min: 0, max: 5, of: chest, menu: construction } # extra at the back lining's CB
   neckFacingWidth: { pct: 14, min: 8, max: 25, of: neck, menu: construction } # the back-neck facing's depth and shoulder width
 
@@ -115,7 +115,7 @@ pieces:
           gorgeAt: gorgeAt
           width: neck * lapelWidth
       # A lined coat's front facings run to the shoulder as wide as the back-neck facing
-      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: "lining and (collarStyle == 'ulster' or collarStyle == 'shawl')" }
+      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: "lining and (sleeveStyle != 'raglan' or collarStyle == 'ulster' or collarStyle == 'shawl')" }
       # Two rows of buttons, from just below the chest line to below the belt
       - buttons:
           count: buttons
@@ -224,11 +224,11 @@ pieces:
   lowerFlap: { part: flap, after: front, key: lower, nr: 9, label: lowerFlap, cut: 2, if: lowerPockets }
   handWelt: { part: welt, after: front, key: hand, store: coat.welts, nr: 14, if: handPockets }
   handBag: { part: weltBag, after: front, key: hand, store: coat.welts, nr: 15, if: handPockets }
-  # Lining (with the ulster or shawl collar): a back-neck facing meeting the front facings at the
+  # Lining (set-in sleeves): a back-neck facing meeting the front facings at the
   # shoulder, then front and back lining; the sleeves are cut again in lining
-  backNeckFacing: { part: backNeckFacing, from: back, nr: 16, width: neck * neckFacingWidth, if: "lining and (collarStyle == 'ulster' or collarStyle == 'shawl')" }
-  frontLining: { part: frontLining, from: front, nr: 17, if: "lining and (collarStyle == 'ulster' or collarStyle == 'shawl')" }
-  backLining: { part: backLining, from: back, nr: 18, width: neck * neckFacingWidth, pleat: chest * liningPleat, if: "lining and (collarStyle == 'ulster' or collarStyle == 'shawl')" }
+  backNeckFacing: { part: backNeckFacing, from: back, nr: 16, width: neck * neckFacingWidth, if: "lining and (sleeveStyle != 'raglan' or collarStyle == 'ulster' or collarStyle == 'shawl')" }
+  frontLining: { part: frontLining, from: front, nr: 17, if: "lining and (sleeveStyle != 'raglan' or collarStyle == 'ulster' or collarStyle == 'shawl')" }
+  backLining: { part: backLining, from: back, nr: 18, width: neck * neckFacingWidth, pleat: chest * liningPleat, if: "lining and (sleeveStyle != 'raglan' or collarStyle == 'ulster' or collarStyle == 'shawl')" }
   backBelt: { part: belt, after: [back, front], piece: back, nr: 10, if: belt }
   frontBelt: { part: belt, after: [back, front], piece: front, nr: 11, if: belt }
 

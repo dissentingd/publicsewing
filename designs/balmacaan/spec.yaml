@@ -29,7 +29,7 @@ options:
   buttons: { count: 4 }
   buttonTop: { pct: -320, min: -400 } # x the lap: the top button at the throat, about 2" below the neck (6 1/2" above the chest line)
   buttonBottom: { pct: 78 } # x waistToSeat: the last button about 2" below the hip line (8 1/4" below the waist)
-  lining: { bool: false } # Simons' balmacaans are unlined; the lining goes with the ulster and shawl collars
+  lining: { bool: false } # Simons' balmacaans are unlined; the lining needs set-in sleeves
   # Simons gives both sleeves: the split sleeve (two pieces, an over-arm seam) and the one-piece
   # sleeve, its shoulder seams a dart down to the shoulder point (pp. 32-33)
   raglanPieces: { dflt: two, list: [two, one], menu: style }

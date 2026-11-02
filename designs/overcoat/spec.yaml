@@ -89,7 +89,7 @@ pieces:
           gorgeAt: gorgeAt
           width: neck * lapelWidth
       # A lined coat's front facings run to the shoulder as wide as the back-neck facing
-      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: "lining and (collarStyle == 'ulster' or collarStyle == 'shawl')" }
+      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: "lining and (sleeveStyle != 'raglan' or collarStyle == 'ulster' or collarStyle == 'shawl')" }
       # One row of buttons on CF, from the break down
       - buttons:
           count: buttons
@@ -150,5 +150,5 @@ pieces:
 variants:
   raglan:
     name: Raglan sleeves, military collar
-    description: "Sleeves running up to the neck, under a deep square-ended collar that stands high, in place of the lapels. The top button moves up under the neck so that the coat closes to the throat. Unlined: the lining is drafted only with the lapel and shawl collars."
+    description: "Sleeves running up to the neck, under a deep square-ended collar that stands high, in place of the lapels. The top button moves up under the neck so that the coat closes to the throat. Unlined: raglan sleeves have no lining pattern."
     options: { sleeveStyle: raglan, collarStyle: military, buttonTop: -4 }

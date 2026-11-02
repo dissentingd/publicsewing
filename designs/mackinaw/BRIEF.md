@@ -52,7 +52,7 @@ waist and flapped patch pockets.
   this spec: `buttonTop`, `buttonBottom` and `buttonRow` default to the values used here, and
   `handPockets` (a slanted welt pocket) is off. The `ulster` collar style (a notched lapel and
   a collar sewn to the gorge, Simons 1916), `vent` (a CB seam and back vent) and `lining`
-  (back-neck facing, front and back lining, sleeves in lining; with the ulster or shawl collar)
+  (back-neck facing, front and back lining, sleeves in lining; not with raglan sleeves)
   were added the same day, all off here.
 - **Shawl collar cut in one with the front.** Simons sews a separate shawl collar to a gorge
   (XVIII). We cut it in one with the front and its facing, the common modern method, with a
