@@ -711,3 +711,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > sleeves, hemmed. Shown flat, front view.
 >
 > Leave out: lapels, pointed collar ends, epaulettes, brass buttons, zips, cuffs, a hood, a person.
+
+### mackinaw.raglan: Mackinaw, raglan sleeves
+> A heavy **wool plaid** work jacket (large buffalo or tartan check, e.g. red and black, or
+> green and black). **Double-breasted**: **two rows of three buttons**, wide overlap. A
+> **convertible collar** worn open, turned down over small lapels. **Raglan sleeves**: a seam
+> runs from the neck down to under the arm, front and back, with no shoulder seam, and another
+> along the top of the arm. Length to **mid-thigh**, square corners. A **wide self-fabric belt** at
+> the waist. **Four patch pockets with rounded bottoms and flaps**. Shown flat, front view.
+>
+> Leave out: set-in sleeves, a shoulder seam, single-breasted fronts, zips, cuffs, a hood, a person.

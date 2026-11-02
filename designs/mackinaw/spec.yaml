@@ -242,3 +242,7 @@ variants:
     name: Military collar
     description: "Simons' deeper collar with square ends, cut straighter so that it stands higher, with four rows of buttons, the top pair just under the neck, so the coat closes to the throat."
     options: { collarStyle: military, buttons: 4, buttonTop: -4 }
+  raglan:
+    name: Raglan sleeves
+    description: "Sleeves running up to the neck in place of set-in sleeves, each cut in two pieces with a seam along the top of the arm."
+    options: { sleeveStyle: raglan }

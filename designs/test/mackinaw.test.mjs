@@ -3,6 +3,7 @@ import { testCoat } from './coat-checks.mjs'
 
 testCoat('mackinaw', Mackinaw, 'mackinaw.front', {
   default: {},
+  raglanSleeves: { sleeveStyle: 'raglan' },
   militaryCollar: { collarStyle: 'military', buttons: 4, buttonTop: -4 },
   shawl: { collarStyle: 'shawl' },
   raglan: { sleeveStyle: 'raglan', collarStyle: 'military' },
