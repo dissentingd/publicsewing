@@ -32,3 +32,10 @@ options:
   sleeves: { dflt: short, list: [long, short, none], menu: style }
   sideSlit: { pct: 0, min: 0, max: 30, menu: style }
   hemCorner: { pct: 0, min: 0, max: 100, menu: style }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  sleeveless:
+    name: Sleeveless
+    description: "No sleeves: the armholes are finished with a narrow bias binding, like the neck."
+    options: { sleeves: none }

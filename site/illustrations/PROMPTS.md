@@ -877,3 +877,12 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: short sleeves, a collar, a sash or bow, frills, lace, puffed sleeves, front buttons, a
 > person.
+
+### shift-dress.sleeveless: Shift dress, sleeveless
+> A women's **simple sleeveless shift dress** in plain cotton or linen (navy, rust or sage), **to
+> the knee**, hanging **straight from the shoulders** with **no waist seam and no waist shaping**,
+> widening a little toward the hem (a slight A-line). A **plain round neckline** and **plain
+> armholes**, both finished flat. Shown flat, front view.
+>
+> Leave out: sleeves, cap sleeves, a belt or sash, darts or a fitted waist, a collar, pockets,
+> gathers, prints or trim, a person.

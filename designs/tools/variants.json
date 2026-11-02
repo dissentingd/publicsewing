@@ -46,7 +46,7 @@
   "knee-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "kneePantsLength": -0.1, "legBottom": 1.25}},
   "knickers": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "knickerDrop": 0.2, "knickerFullness": 1.5}},
   "double-dart-jacket": {"default": {}, "loose": {"cbSuppression": 0, "underarmSuppression": 0, "secondSuppression": 0, "lengthBelowWaist": 0.3}, "plain": {"lining": false, "secondAt": 0.35, "secondSuppression": 0.2}},
-  "shift-dress": {"default": {}, "variant": {"sleeves": "none", "neckFinish": "collar", "opening": "front", "hemFlare": 0.1, "sideSlit": 0.2}},
+  "shift-dress": {"default": {}, "sleeveless": {"sleeves": "none"}, "variant": {"sleeves": "none", "neckFinish": "collar", "opening": "front", "hemFlare": 0.1, "sideSlit": 0.2}},
   "middy-blouse": {"default": {}, "variant": {"sleeves": "short", "shield": false, "vNeck": 0.7, "collarDepth": 0.18}},
   "culottes": {"default": {}, "short": {"length": 0.4, "goreFlare": 0.1, "crotchEase": 0.02, "zipLength": 0.6}},
   "work-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "backDart": 0.3, "hemWidth": 0.9}},
