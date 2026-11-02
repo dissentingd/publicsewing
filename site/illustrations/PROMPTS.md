@@ -934,3 +934,14 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: pleats, gathers, a yoke, pockets, a slit, a train, a ruffle, buttons, a belt, a person, a
 > blouse.
+
+### pyjama-jacket.open: Pyjama jacket, open neck
+> A loose men's **pyjama (sleeping) jacket** in soft striped or plain cotton (white with blue or
+> grey stripes, or pale blue). Straight and unfitted, length to **below the seat**, the front hem a
+> little lower than the back. Single-breasted, **five buttons**, the top one on the upper chest, and
+> **above it the neck open in a plain V with no collar and no lapels**. **One square patch pocket on
+> the wearer's left breast**. Plain set-in sleeves, roomy, simply hemmed. Unlined, softly draped.
+> Shown flat, front view.
+>
+> Leave out: a collar of any kind, lapels, piping, frog fastenings, lower pockets, cuffs, a belt or
+> sash, matching trousers, a person.

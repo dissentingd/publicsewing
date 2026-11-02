@@ -7,7 +7,7 @@
   "chore-coat": { "default": {}, "square": { "pocketShape": "square", "buttons": 6, "hemCurve": 1 }, "plain": { "breastPocket": false, "lowerPockets": false, "frontDrop": 0.2, "waistShaping": true } },
   "frock": { "default": {}, "longSleeves": {"sleeves": "long"}, "variant": { "opening": "back", "sleeves": "long", "neckFinish": "band", "gathers": 1.3 } },
   "hunting-coat": { "default": {}, "plain": { "belt": false, "pocketFlaps": false, "pocketPleat": 0, "actionPleat": 0, "pocketShape": "pointed" } },
-  "pyjama-jacket": {"default": {}, "open": {"neckStyle": "open", "lowerPockets": true, "pocketShape": "rounded", "buttons": 4}},
+  "pyjama-jacket": {"default": {}, "openNeck": {"neckStyle": "open"}, "open": {"neckStyle": "open", "lowerPockets": true, "pocketShape": "rounded", "buttons": 4}},
   "pyjama-trousers": {"default": {}, "variant": {"legLength": 0.85, "legFlare": 0, "hemDepth": 0.03}},
   "knickerbockers": { "default": {}, "variant": { "bandBelowKnee": -0.1, "blouse": 0.2, "legFlare": 0 } },
   "mackinaw": { "default": {}, "raglanSleeves": {"sleeveStyle": "raglan"}, "militaryCollar": {"collarStyle": "military", "buttons": 4, "buttonTop": -4}, "shawl": { "collarStyle": "shawl" }, "raglan": { "sleeveStyle": "raglan", "collarStyle": "military" }, "military": { "collarStyle": "military", "pocketShape": "pointed", "hemCurve": 0.6 }, "plain": { "belt": false, "pocketFlaps": false, "breastPockets": false, "pocketShape": "square", "frontDrop": 0 } },
