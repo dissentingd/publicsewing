@@ -738,16 +738,21 @@ export function backLiningPart({ name, from, after, nr, pleat, width, enabled = 
  * over; the outer edge runs parallel to it, `width` away. `point` carries the outer corner
  * past the front end (0 for a stand collar). `key`: the store key (a collar stand and its
  * fall are two collars); under any other key than `coat.collar` its outer edge's length is
- * stored too, as `outer`, for the collar sewn to it. `title`: the part's title.
+ * stored too, as `outer`, for the collar sewn to it. `title`: the part's title. `fold: 'front'`
+ * (a garment opening at the back; `point` 0): cut on the fold at the front end instead, the CB
+ * end open with an allowance, so that the collar opens with the garment.
  */
-export function draftCollar(sh, { target, spring, width, point, nr = 4, key = 'coat.collar', title: label = 'collar' }) {
+export function draftCollar(sh, { target, spring, width, point, nr = 4, key = 'coat.collar', title: label = 'collar', fold = 'cb' }) {
   const { points, paths, Path, Point, store, sa, macro, part } = sh
+  const atFront = fold === 'front'
+  // Square to a fold at the front, or the cut piece would come to a shallow V there
+  const towardCb = (p, to, span) => (atFront ? p.shift(180, span * 0.35) : p.shiftFractionTowards(to, 0.35))
   points.cbNeck = new Point(0, spring)
   let span = target
   for (let run = 0; run < 20; run++) {
     points.frontNeck = new Point(span, 0)
     points.cbNeckCp = points.cbNeck.shift(0, span * 0.5)
-    points.frontNeckCp = points.frontNeck.shiftFractionTowards(points.cbNeck, 0.35)
+    points.frontNeckCp = towardCb(points.frontNeck, points.cbNeck, span)
     paths.neck = new Path().move(points.cbNeck).curve(points.cbNeckCp, points.frontNeckCp, points.frontNeck)
     const delta = paths.neck.length() - target
     if (Math.abs(delta) < 0.2) break
@@ -756,23 +761,23 @@ export function draftCollar(sh, { target, spring, width, point, nr = 4, key = 'c
   points.cbOuter = new Point(0, spring + width)
   points.tip = new Point(span + point, width)
   points.cbOuterCp = points.cbOuter.shift(0, span * 0.5)
-  points.tipCp = points.tip.shiftFractionTowards(points.cbOuter, 0.35)
+  points.tipCp = towardCb(points.tip, points.cbOuter, span)
 
   // Counter-clockwise on the page (outer edge first), so the allowance offsets outward
-  paths.saBase = new Path()
-    .move(points.cbOuter)
-    .curve(points.cbOuterCp, points.tipCp, points.tip)
-    .line(points.frontNeck)
-    .join(paths.neck.reverse())
-    .hide()
+  paths.saBase = atFront
+    ? paths.neck.reverse().line(points.cbOuter).curve(points.cbOuterCp, points.tipCp, points.tip).hide()
+    : new Path().move(points.cbOuter).curve(points.cbOuterCp, points.tipCp, points.tip).line(points.frontNeck).join(paths.neck.reverse()).hide()
   paths.seam = paths.saBase.clone().close().unhide().addClass('fabric')
   paths.neck.hide()
+  // The two ends of the fold, in the direction that puts the piece on the macro's inner side
+  const [foldFrom, foldTo] = atFront ? [points.frontNeck, points.tip] : [points.cbOuter, points.cbNeck]
   if (sa) {
     const off = paths.saBase.offset(sa)
-    paths.sa = new Path().move(points.cbOuter).line(off.start()).join(off).line(points.cbNeck).addClass('fabric sa')
+    const [start, end] = atFront ? [points.frontNeck, points.tip] : [points.cbOuter, points.cbNeck]
+    paths.sa = new Path().move(start).line(off.start()).join(off).line(end).addClass('fabric sa')
   }
-  store.set(key, { neck: paths.neck.length(), target, ...(key === 'coat.collar' ? {} : { outer: new Path().move(points.cbOuter).curve(points.cbOuterCp, points.tipCp, points.tip).length() }) })
-  macro('cutonfold', { from: points.cbOuter, to: points.cbNeck, grainline: true })
+  store.set(key, { neck: paths.neck.length(), target, ...(atFront ? { fold } : {}), ...(key === 'coat.collar' ? {} : { outer: new Path().move(points.cbOuter).curve(points.cbOuterCp, points.tipCp, points.tip).length() }) })
+  macro('cutonfold', { from: foldFrom, to: foldTo, grainline: true })
   store.cutlist.setCut([
     { cut: 2, from: 'fabric', onFold: true },
     { cut: 1, from: 'interfacing', onFold: true },

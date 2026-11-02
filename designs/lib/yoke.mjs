@@ -364,10 +364,12 @@ export function neckBandPart({ name, after, nr }) {
       const b = store.get('yoke.back')
       const f = store.get('yoke.front')
       const target = b.neck + f.neck + (b.ext + f.ext) / 2
+      // With the opening at the back, the ends meet there and the fold is at the front
+      const fold = options.opening === 'back' ? 'front' : 'cb'
       if (options.neckFinish === 'collar') {
-        return draftCollar(sh, { target, spring: target * options.collarSpring, width: measurements.neck * options.collarWidth, point: 0, nr })
+        return draftCollar(sh, { target, spring: target * options.collarSpring, width: measurements.neck * options.collarWidth, point: 0, nr, fold })
       }
-      return draftCollar(sh, { target, spring: target * 0.05, width: measurements.neck * options.bandHeight, point: 0, nr })
+      return draftCollar(sh, { target, spring: target * 0.05, width: measurements.neck * options.bandHeight, point: 0, nr, fold })
     },
   }
 }

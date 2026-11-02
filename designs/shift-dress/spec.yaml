@@ -41,5 +41,5 @@ variants:
     options: { sleeves: none }
   collar:
     name: With a collar
-    description: "A flat collar around the neck in place of the plain binding. The collar is one piece across the back, so the short buttoned opening moves to the front, under it."
+    description: "A flat collar around the neck in place of the plain binding, with the short buttoned opening moved to the front, under it."
     options: { neckFinish: collar, opening: front }
