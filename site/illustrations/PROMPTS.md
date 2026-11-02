@@ -812,3 +812,12 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: buttons on the outside of the leg, boots, leather knee patches, laces, a stripe down the
 > leg, straight legs, a belt, a person.
+
+### barbers-coat.open: Barber's coat, open neck
+> A **white** cotton service coat, crisp and clean. Single-breasted, **four buttons**, the top one
+> on the upper chest, and **above it the neck open in a plain V with no collar and no lapels**.
+> Square front corners; the front hem dips slightly below the back. Length to the upper thigh. One
+> **breast patch pocket** on the wearer's left and **two lower patch pockets**, all with **rounded
+> bottoms**. Plain set-in sleeves, hemmed. Shown flat, front view.
+>
+> Leave out: a collar of any kind, lapels, cuffs, colour, pocket flaps, a person.

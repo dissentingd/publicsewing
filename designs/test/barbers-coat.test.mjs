@@ -14,5 +14,6 @@ function neckFacings(pattern) {
 
 testCoat('barber\'s coat', BarbersCoat, 'barberscoat.front', {
   default: {},
+  openNeck: { neckStyle: 'open' },
   open: { neckStyle: 'open', hemCurve: 0.5, pocketShape: 'chamfered' },
 }, neckFacings)

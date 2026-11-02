@@ -139,3 +139,10 @@ pieces:
     label: lowerPocket
     cut: 2
     if: lowerPockets
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  open:
+    name: Open neck
+    description: "Simons' no-collar barber's coat: open in a V to the top button, a little above the chest line, finished with a facing."
+    options: { neckStyle: open }
