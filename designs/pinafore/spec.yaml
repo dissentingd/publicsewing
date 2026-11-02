@@ -33,3 +33,10 @@ options:
 pieces:
   waistband: { part: strip, after: [backBase, frontBase], nr: 9, label: waistband, cut: 1, fold: true, length: chest * sashBand, width: chest * sashWidth, if: sash }
   sash: { part: strip, after: [backBase, frontBase], nr: 10, label: sash, cut: 2, fold: true, length: chest * sashLength, width: chest * sashWidth, if: sash }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  sash:
+    name: With sash
+    description: "Walker's strap pinafore has this: a band sewn over the front's gathers at the waist, with two sash ends that tie at the back."
+    options: { sash: true }

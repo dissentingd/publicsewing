@@ -905,3 +905,12 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: long sleeves, deep cuffs, a belt or sash, lace, a tucked-in separate blouse, a short
 > skirt, puffed shoulders, a person.
+
+### pinafore.sash: Pinafore, with sash
+> A child's **sleeveless pinafore** in white or checked cotton, worn over a dress; about 5 years
+> old. **Narrow yokes** at the shoulders front and back, the body **gathered** into them, falling
+> to the **knee**. **A flat band across the front at the waist**, holding the gathers in, its **two
+> sash ends tied in a bow at the back**. **Bound armholes** and a **bound neck**, no collar. Shown
+> flat, front view, the sash ends just visible at the sides.
+>
+> Leave out: sleeves, frills, a bib with straps, pockets, a separate dress underneath, a person.
