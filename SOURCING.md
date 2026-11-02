@@ -223,6 +223,8 @@ Many of the top free designers aren't garment designers: SewCanShe (300), Tilda'
 Purl Soho (121), the fabric shops (Kokka, Art Gallery, Robert Kaufman, Riley Blake, Moda) and
 the quilting sites publish bags, toys, quilts and home goods.
 
+**Tutorial section** Can link to other sewing resources to teach anyone interested in learning. https://sewcraftlypatterns.com/tutorials/ is a good first link. We may also wish to provide our own small intro tutorial, with illustrations for understanding basic sewing items and tools used in the process.
+
 **What PublicSewing adds.** Of the free garment patterns found, only FreeSewing's and Dress
 Developer's are drafted from the wearer's measurements; the rest come in a graded size range
 or, for museum patterns, one size. That is the gap: made-to-measure, children's sizes
