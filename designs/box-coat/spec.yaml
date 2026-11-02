@@ -141,3 +141,10 @@ pieces:
   ticketFlap: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: flap, nr: 10, label: ticketFlap, if: pockets and ticketPocket }
   ticketJet: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: jet, nr: 11, label: ticketJet, if: pockets and ticketPocket }
   ticketBag: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: bag, nr: 12, label: ticketPocketBag, if: pockets and ticketPocket }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  peak:
+    name: Peaked lapels
+    description: "Lapels with their points turned up past the collar, in place of the notch."
+    options: { lapelStyle: peak }

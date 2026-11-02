@@ -771,3 +771,14 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: peaked lapels, a belt, patch pockets, exaggerated shoulder pads, double-breasted
 > fronts, a person.
+
+### box-coat.peak: Box coat, peaked lapels
+> A loose women's **box coat** in plain wool cloth (camel, grey or navy). **Straight, unfitted
+> body that flares a little from the arms to the hem**, length to the **hip or upper thigh**.
+> Single-breasted with **peaked lapels, their points turned upward**, and a turn-down collar,
+> **three buttons**, buttoning right over left. **Two set-in flap pockets** at the hips, and a
+> **small ticket pocket with its own flap above the right one**. **Two-piece sleeves**. Shown flat,
+> front view.
+>
+> Leave out: notched lapels, a belt, waist shaping, patch pockets, fur, double-breasted fronts, a
+> person.
