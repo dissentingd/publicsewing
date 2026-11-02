@@ -167,9 +167,16 @@ export function frontPanelPart({ name, from, panel, nr, label, keep = [], lining
     from,
     hide: { inherited: true },
     draft: (sh) => {
+      const buttons = Object.keys(sh.snippets).filter((s) => s.startsWith('button'))
       cleanup(sh, ['edge', 'hemBase', 'neckline', 'armhole', ...(panel === 'yoke' ? [] : keep)])
-      const { paths, Path, Point, points, sa, macro, store } = sh
+      const { paths, Path, Point, points, snippets, Snippet, sa, macro, store } = sh
       for (const p of ['edge', 'hemBase', 'neckline', 'armhole']) paths[p].hide()
+      // Each button placed on the whole front goes on the panel it falls in, either side of the seam
+      const { edgeYoke, armYoke } = points
+      const seamY = (x) => edgeYoke.y + ((armYoke.y - edgeYoke.y) * (x - edgeYoke.x)) / (armYoke.x - edgeYoke.x)
+      for (const b of buttons) {
+        if (points[b].y < seamY(points[b].x) === (panel === 'yoke')) snippets[b] = new Snippet('button', points[b])
+      }
       const segments = frontOutlines[panel](sh)
       paths.seam = segments.map(([p]) => p).reduce((a, b) => a.join(b)).close().unhide().addClass('fabric')
       if (sa) paths.sa = outlineSa(Path, segments, sa).addClass('fabric sa')
