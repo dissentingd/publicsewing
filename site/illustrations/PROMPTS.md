@@ -856,3 +856,15 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a hood, a turn-down collar, visible quilting stitches on the outside, a zip, patch or
 > chest pockets, fur trim, snaps, logos, a person.
+
+### winter-coat.hood: Winter coat, hooded
+> A **knee-length** men's winter overcoat in heavy plain wool (charcoal, navy or brown).
+> **Straight, unfitted** body, flaring very slightly to the hem. Single-breasted, **four buttons**
+> from just below the neck to the hips (no lapels). A **two-piece hood** joined over the crown and
+> sewn all round the neckline, with a **drawstring in the face edge** (shown down on the shoulders).
+> A **deep front yoke**: its seam runs across each side of the chest just above the armpit; and a
+> **shallow back yoke**, both seams topstitched. **One near-level welt pocket on each hip**. Plain
+> set-in sleeves, hemmed. Lined. Shown flat, front view.
+>
+> Leave out: a collar, lapels, a belt, double-breasted fronts, patch or flap pockets, fur trim,
+> epaulettes, cuff tabs, a waist seam, a person.

@@ -109,3 +109,10 @@ pieces:
     after: frontBase
     options: [sleeveLengthBonus, lining]
     lining: lining
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  hood:
+    name: Hooded
+    description: "A two-piece hood sewn around the neckline in place of the turn-down collar, with a drawstring in its face edge."
+    options: { hood: true }

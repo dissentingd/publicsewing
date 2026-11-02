@@ -18,5 +18,6 @@ function yokes(pattern) {
 
 testCoat('winter coat', WinterCoat, 'wintercoat.frontBase', {
   default: {},
+  hood: { hood: true },
   hooded: { hood: true, lining: false, handPockets: false, buttons: 6, lengthBelowWaist: 1.6 },
 }, yokes)
