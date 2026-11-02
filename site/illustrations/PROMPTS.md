@@ -821,3 +821,15 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > bottoms**. Plain set-in sleeves, hemmed. Shown flat, front view.
 >
 > Leave out: a collar of any kind, lapels, cuffs, colour, pocket flaps, a person.
+
+### overcoat.raglan: Overcoat, raglan sleeves and military collar
+> A conservative men's **single-breasted overcoat** in heavy plain wool (charcoal, navy or
+> camel), **to just below the knee**. Straight body with a little ease at the waist, the side
+> seams flaring very slightly to the hem; square front corners. **Raglan sleeves**: a seam from
+> the neck down to under the arm, front and back, with no shoulder seam, and another along the
+> top of the arm. A **deep collar with square ends, standing high**, with no lapels. **Four
+> buttons** in one row from just under the collar to below the waist, closed to the throat. **Two
+> slanted welt hand-warmer pockets** at hand height. Unlined. Shown flat, front view.
+>
+> Leave out: lapels, set-in sleeves, a belt, double-breasted fronts, flap or patch pockets,
+> epaulettes, fur or velvet collar, cuff straps, a person.

@@ -145,3 +145,10 @@ pieces:
               bag: len * 0.85
       - markLine: { id: handPocket, from: [coat.welts.hand.x0, coat.welts.hand.y0], to: [coat.welts.hand.x1, coat.welts.hand.y1], class: mark, if: handPockets }
 
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  raglan:
+    name: Raglan sleeves, military collar
+    description: "Sleeves running up to the neck, under a deep square-ended collar that stands high, in place of the lapels. The top button moves up under the neck so that the coat closes to the throat. Unlined: the lining is drafted only with the lapel and shawl collars."
+    options: { sleeveStyle: raglan, collarStyle: military, buttonTop: -4 }
