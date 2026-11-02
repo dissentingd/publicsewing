@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>PublicSewing</title>
+  <style>
+    .needle { fill: #2b2622; }
+    .thread { fill: none; stroke: #b4552f; stroke-width: 6; stroke-linecap: round; }
+    @media (prefers-color-scheme: dark) {
+      .needle { fill: #eee7dc; }
+      .thread { stroke: #e08a5f; }
+    }
+  </style>
+  <!-- A needle corner to corner, its thread running from the eye in an S down the open side -->
+  <path class="thread" d="M50 15C63 26 57 36 45 37C33 38 29 48 37 54C43 58 52 57 58 52"/>
+  <path class="needle" fill-rule="evenodd" transform="rotate(45 32 32)" d="M30.500 72H33.500L38 12Q38-6 32-6Q26-6 26 12ZM32-1Q29.500-1 29.500 6Q29.500 13 32 13Q34.500 13 34.500 6Q34.500-1 32-1Z"/>
+</svg>
