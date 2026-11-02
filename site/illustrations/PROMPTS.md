@@ -844,3 +844,15 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a hood, a turn-down collar, buttons, snaps, a storm flap, patch or chest pockets,
 > quilting, logos, contrast panels, a person.
+
+### quilted-jacket.no-hood: Quilted jacket, no hood
+> A hip-length **insulated work jacket** in plain sturdy cotton twill (navy, khaki or dark
+> green), padded with a quilted lining, so it looks **smooth and a little puffy**, not stitched in
+> diamonds or channels on the outside. Single-breasted, **seven buttons** on a **wide button
+> stand**, **buttoned right up to a plain stand collar**. A **front yoke seam that slopes up from
+> the front edge toward the shoulder**, and a **back yoke**, both topstitched. **Two slanted welt
+> pockets** in the lower front. Hem level all round, **elastic at the sides of the hem**; plain
+> set-in sleeves. Shown flat, front view.
+>
+> Leave out: a hood, a turn-down collar, visible quilting stitches on the outside, a zip, patch or
+> chest pockets, fur trim, snaps, logos, a person.

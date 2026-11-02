@@ -91,3 +91,10 @@ pieces:
     after: frontBase
     options: [sleeveLengthBonus, quilted]
     lining: quilted
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  no-hood:
+    name: No hood
+    description: "A plain stand collar around the neck in place of the hood, still buttoned to the throat."
+    options: { hood: false }

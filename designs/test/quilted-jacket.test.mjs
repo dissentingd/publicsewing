@@ -16,5 +16,6 @@ function yokes(pattern) {
 
 testCoat('quilted jacket', QuiltedJacket, 'quiltedjacket.frontBase', {
   default: {},
+  noHood: { hood: false },
   plain: { hood: false, quilted: false, handPockets: false, buttons: 5 },
 }, yokes)
