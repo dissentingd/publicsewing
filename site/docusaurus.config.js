@@ -44,6 +44,7 @@ export default {
         for (const p of options.plugins)
           if (Array.isArray(p) && /postcss-preset-env/.test(p[0]))
             p[1] = { ...p[1], features: { 'cascade-layers': false, 'is-pseudo-class': false } }
+        options.config = false
         return options
       },
       configureWebpack(config, isServer, { getJSLoader }) {
