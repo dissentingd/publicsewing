@@ -287,14 +287,17 @@ title: Designs
 sidebar_position: 0
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'
-import TOCInline from '@theme/TOCInline'
 
 Every design is a **draft**: none has been sewn yet. Each page has the pattern tool for that
 design, its 3D drape, and its brief.
 
-<div className="design-sections">
-  <TOCInline toc={toc} />
-</div>
+<nav className="design-sections" aria-label="Sections">
+${categories
+  .map(
+    (c) => `  <a href="#${c.id}"><img src={useBaseUrl('/img/illustrations/${c.image}.jpg')} alt="" /><span>${c.label.replace('&', '&amp;')}</span></a>`
+  )
+  .join('\n')}
+</nav>
 
 ${categories
   .map(

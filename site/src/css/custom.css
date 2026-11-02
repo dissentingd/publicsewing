@@ -228,20 +228,53 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
   color: var(--ifm-color-emphasis-700);
   margin-top: 0.4rem;
 }
-/* The Designs page's jump links, in a row (Docusaurus' TOCInline, a list by default) */
-.design-sections ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1.25rem;
-  padding-left: 0;
-  list-style: none;
+/* The Designs page's jump links: an image per section, named on hover or keyboard focus, and
+ * always on a touch screen, which has no hover */
+.design-sections {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
-.design-sections li {
-  margin: 0;
-  list-style: none;
+.design-sections a {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 4px;
+  color: inherit;
 }
-.design-sections li + li {
-  margin-top: 0;
+.design-sections img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.design-sections span {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 0.15rem 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  text-align: center;
+  background: var(--ifm-background-color);
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+.design-sections a:hover span,
+.design-sections a:focus-visible span {
+  opacity: 1;
+}
+@media (max-width: 600px) {
+  .design-sections {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (hover: none) {
+  .design-sections span {
+    position: static;
+    display: block;
+    opacity: 1;
+  }
 }
 .thumb {
   width: 72px;

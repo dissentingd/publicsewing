@@ -15,6 +15,12 @@ for (const d of designs) {
   })
 }
 
+for (const c of categories) {
+  test(`${c.id}: an illustration to link to it`, () => {
+    assert.ok(existsSync(new URL(`../site/illustrations/${c.image}.jpg`, root)), c.image)
+  })
+}
+
 test('every section has a design', () => {
   const used = new Set(designs.map((d) => readSpec(new URL(`${d}/spec.yaml`, root)).about.category))
   for (const id of known) assert.ok(used.has(id), id)
