@@ -8,6 +8,7 @@ testYoke(
   MiddyBlouse,
   {
     default: {},
+    shortSleeves: { sleeves: 'short' },
     variant: { sleeves: 'short', shield: false, vNeck: 0.7, collarDepth: 0.18 },
   },
   (pattern) => {

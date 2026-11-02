@@ -945,3 +945,14 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a collar of any kind, lapels, piping, frog fastenings, lower pockets, cuffs, a belt or
 > sash, matching trousers, a person.
+
+### middy-blouse.short-sleeves: Middy blouse, short sleeves
+> A **boy's sailor middy blouse** (about 6 years old) in white or navy cotton drill. A **loose
+> pullover**, straight from the shoulders to **below the hips**, no waist seam. A **deep V neck**
+> under a **large square sailor collar**: square and hanging flat across the back, tapering down the
+> front to the point of the V. A plain **shield (dickey)** filling the top of the V. **Short sleeves
+> ending in a narrow band above the elbow**. Child's proportions. Shown flat, front view, the collar's square back
+> just visible over the shoulders.
+>
+> Leave out: long sleeves, cuffs, a neckerchief or tie, stripes or braid on the collar, a front
+> opening or buttons down the front, pockets, badges, a hat, a person.

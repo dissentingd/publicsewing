@@ -57,3 +57,10 @@ pieces:
       h: (yoke.front.neckY - yoke.front.marks.body.hps.y) * 0.7
     points: [[0, 0], [w, 0], [w, h], [0, h]]
     buttonholes: [[15, 15], [w - 15, 15]]
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  short-sleeves:
+    name: Short sleeves
+    description: "Short sleeves ending in a narrow band, in place of the long ones with their cuffs, for warm weather."
+    options: { sleeves: short }
