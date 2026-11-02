@@ -3,7 +3,7 @@
 # Children's Garments, 1908), on the box coat (FreeSewing's Breanna): a loose, straight coat to
 # below the knee, side seams flared from the armhole, a small neck dart, a 2 1/2" lap, flap
 # pockets below the waist, notched lapel and collar, two-piece sleeves. For any size. See BRIEF.md.
-extends: ../box-coat/spec.yaml
+extends: ../womens-box-coat/spec.yaml
 
 about:
   id: girls-coat

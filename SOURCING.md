@@ -78,7 +78,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
   All straight lines: the quickest build here.
 - `cs95-trouser` (built 2026-10-28 as `designs/field-trousers`): British CS95 field trouser, size M, 39 pieces: three-piece back,
   front, fly, waistband, belt loops, cargo and patch pockets with flaps.
-- `us-tactical-smock` (built 2026-10-28 as `designs/hooded-smock`): hooded smock, **graded XS–XXL** (six sizes): back, front, sleeves,
+- `us-tactical-smock` (built 2026-10-28 as `designs/anorak`): hooded smock, **graded XS–XXL** (six sizes): back, front, sleeves,
   three-piece hood, front placket, pocket bags and flaps.
 - `standard-tshirt`: **graded XS–XXL** (Grade Rule Table "Normal_Tee"): front, back,
   sleeve, collar, back-neck tape; drafted as `designs/t-shirt` (2026-10-28).

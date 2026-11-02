@@ -8,7 +8,7 @@ references, in our own words. Lengths below are the book's centimetres, for its 
 figure. The archived pipeline's reading: `archive/recipes/emko/coat_demi_imk.yaml` and
 `archive/pilot/emko/FINDINGS.md`.
 
-**Block:** FreeSewing's Bent, through the military blouse (`designs/military-blouse`, Simons
+**Block:** FreeSewing's Bent, through the military blouse (`designs/military-tunic`, Simons
 1918), whose three-piece body (back, side panel, forepart: `lib/body3.mjs`), welt pockets and
 two-piece sleeve it shares. The topcoat is the military blouse's spec with these changes.
 

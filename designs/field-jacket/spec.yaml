@@ -3,7 +3,7 @@
 # (FreeSewing's Breanna): a straight, hip-length jacket cut for women, buttoned on CF from a small
 # lapel turning at the bust line, a turn collar, four flapped patch pockets, two-piece sleeves.
 # See BRIEF.md.
-extends: ../box-coat/spec.yaml
+extends: ../womens-box-coat/spec.yaml
 
 about:
   id: fieldjacket

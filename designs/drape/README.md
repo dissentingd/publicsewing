@@ -6,7 +6,7 @@ result: the simulator's body and fabric are approximations.
 
 ## Running one (one command)
 ```bash
-node tools/drape.mjs box-coat
+node tools/drape.mjs womens-box-coat
 ```
 [`tools/drape.mjs`](../tools/drape.mjs) drafts the design at the size in [runs.yaml](runs.yaml)
 with the drape body's measurements, exports the outlines, builds the GarmentCode
@@ -157,7 +157,7 @@ and facings left off.
 | Self-intersections | 83 | – |
 | Cloth vertices inside the body | 65: 48 upper arm, 17 wrists | 22: all at the wrists |
 
-Renders: [front](box-coat/front.png), [back](box-coat/back.png).
+Renders: [front](womens-box-coat/front.png), [back](womens-box-coat/back.png).
 - The two pieces and the sleeves assemble; the neck darts sew; the coat hangs straight from
   the shoulders, loose all round, the hem level, at mid-calf (Mitchell's 42½" from the nape).
 - The box coat's sleeve is bigger than the jacket's (armhole 479 mm against 431), and started
@@ -175,8 +175,8 @@ copy, which suits a CB seam as well as a fold. Pockets, flaps and buttons are le
 | Self-intersections (not a fail) | – | 23 | 40 |
 | Frames / time | – | 492 / 47 s | 399 / 40 s |
 
-Renders: [front](box-coat/cbseam-front.png), [back](box-coat/cbseam-back.png) (hem squared);
-[back with the straight hem](box-coat/cbseam-pointed-back.png).
+Renders: [front](womens-box-coat/cbseam-front.png), [back](womens-box-coat/cbseam-back.png) (hem squared);
+[back with the straight hem](womens-box-coat/cbseam-pointed-back.png).
 - The CB seam sews and the back flares out more below the hip, as Mitchell's line does.
 - **With a straight hem the back dipped to a shallow point at CB:** the slanted CB met the
   hem at less than a right angle, so the two backs made a V. The hem now leaves the CB
@@ -210,7 +210,7 @@ drapes of Brian coats, and the three earlier ones re-run.
 | peacoat (vent closed) | male | OK | 7 | 0.11 cm (thighs) | 0.13 cm |
 | hunting coat | male | OK | 11 | 0.11 cm (thighs) | 0.19 cm |
 | tailored jacket | female | OK | 49 | 0.12 cm (thighs) | 1.73 cm |
-| box coat | female | OK | 54 | 0.10 cm (thighs) | 1.91 cm |
+| women's box coat | female | OK | 54 | 0.10 cm (thighs) | 1.91 cm |
 
 Renders: [chore coat](chore-coat/front.png) ([back](chore-coat/back.png)),
 [mackinaw](mackinaw/front.png) ([back](mackinaw/back.png)), [peacoat](peacoat/front.png)
@@ -238,13 +238,13 @@ pattern changed.
 | shop coat | male | OK | 4 | 0.15 cm (chest) |
 | bar vest (sleeveless) | male | OK | 0 | 0.10 cm (chest) |
 | boys' work coat | male* | OK | 7 | 0.11 cm (thighs) |
-| military blouse | male | OK | 0 | 0.15 cm (thighs) |
+| military tunic | male | OK | 0 | 0.15 cm (thighs) |
 | nightshirt | male | OK | 0 | 0.08 cm (thighs) |
 | nightgown | female | OK | 4 | 0.16 cm (thighs) |
-| smock | female | OK | 5 | 0.10 cm (thighs) |
+| children's smock | female | OK | 5 | 0.10 cm (thighs) |
 | frock | female | OK | 0 | 0.11 cm (thighs) |
 | shirtwaist dress | female | OK | 7 | 0.21 cm (thighs) |
-| knickerbockers | male | OK | 0 | 0.13 cm (thighs) |
+| bloomers | male | OK | 0 | 0.13 cm (thighs) |
 | pinafore | female | **REVIEW** | 65 | **2.8 cm (forearms)** |
 
 \* GarmentCode has no children's bodies, so the boys' work coat is draped at adult

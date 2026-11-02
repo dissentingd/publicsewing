@@ -41,6 +41,12 @@ export default {
         { from: '/designs/shirt', to: '/designs/dress-shirt' },
         { from: '/designs/jacket', to: '/designs/suit-jacket' },
         { from: '/designs/boys-jacket', to: '/designs/boys-suit-jacket' },
+        { from: '/designs/knickers', to: '/designs/boys-knickers' },
+        { from: '/designs/knickerbockers', to: '/designs/bloomers' },
+        { from: '/designs/hooded-smock', to: '/designs/anorak' },
+        { from: '/designs/smock', to: '/designs/childrens-smock' },
+        { from: '/designs/box-coat', to: '/designs/womens-box-coat' },
+        { from: '/designs/military-blouse', to: '/designs/military-tunic' },
       ],
     }],
     // The pattern editor (@freesewing/react): Tailwind 4 + daisyUI, our designs in place of

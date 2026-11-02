@@ -50,10 +50,10 @@ and marked as derived.
 | Trench / ulster | 3 | Carlton | Variant; **ulster drafted 2026-10-27** (`designs/ulster`: the peacoat at 50", four sizes up; not sewn) | Simons 1916 |
 | **Overcoat, straight, yoked** | 1, 3 | Carlton is a belted long coat | **Drafted 2026-10-27** (`designs/winter-coat`: deep front and back yokes, hip welts, turn-down collar, lining; not sewn) | ЕМКО 1988 §3 |
 | **Topcoat, semi-fitted** | 1 | Carlton | **Drafted 2026-10-27** (`designs/topcoat`: side panels, back vent, slanted welts, two-piece sleeves; not sewn) | ЕМКО 1988 §2 |
-| **Hooded smock / anorak** | 3, 5 | — | **Drafted 2026-10-28** (`designs/hooded-smock`: pullover, front yoke, hood, kangaroo pocket; not sewn) | Open+Pattern US tactical smock (CC BY 4.0) |
+| **Hooded smock / anorak** | 3, 5 | — | **Drafted 2026-10-28** (`designs/anorak`: pullover, front yoke, hood, kangaroo pocket; not sewn) | Open+Pattern US tactical smock (CC BY 4.0) |
 | **Hooded windbreaker** | 3, 5 | — (Jett is a bomber) | **Drafted 2026-10-27** (`designs/windbreaker`: zip, yokes, hood or stand collar, slanted welts; not sewn) | ЕМКО 1988 §4 |
 | **Quilted / insulated jacket** | 3 | — | **Drafted 2026-10-27** (`designs/quilted-jacket`: the windbreaker buttoned to the throat, sloped front yoke, quilted lining; not sewn) | ЕМКО 1988 §5 |
-| **Field jacket / military blouse** | 3 | — (Jett is a bomber) | **Military blouse drafted 2026-10-23** (`designs/military-blouse`, not sewn) | Simons 1918 (military blouse) |
+| **Field jacket / military blouse** | 3 | — (Jett is a bomber) | **Military blouse drafted 2026-10-23** (`designs/military-tunic`, not sewn) | Simons 1918 (military blouse) |
 | **Hunting / field coat** (belted, action back, bellows pockets) | 3 | — | **Drafted 2026-10-23** (`designs/hunting-coat`, not sewn) | Simons 1918 (hunting coat) |
 | **Mackinaw** | 3 | — | **Drafted 2026-10-23** (`designs/mackinaw`, not sewn; convertible, military or shawl collar; set-in or raglan sleeves) | Simons 1918 |
 | **Shop coat / lab coat / duster** (unisex) | 2 | — | **Drafted 2026-10-23** (`designs/shop-coat`, not sewn) | Simons 1918 (grocers' gown) |
@@ -83,11 +83,11 @@ and marked as derived.
 | Button-down blouse | 1 | Simone | Have | — |
 | Soft blouse (bust darts, other collars) | 1, 5 | Simone, Bella block | Variant | Rosenfeld 1911/1918, WI *Pattern Drafting* 1920 |
 | Coat | 1 | Carlita | Have | — |
-| **Loose coat** (box coat) | 1 | — (Carlita is fitted) | **Drafted 2026-10-25** (`designs/box-coat`, on Breanna, not sewn) | Mitchell 1921 `newstandardworko00mitc` |
+| **Loose coat** (box coat) | 1 | — (Carlita is fitted) | **Drafted 2026-10-25** (`designs/womens-box-coat`, on Breanna, not sewn) | Mitchell 1921 `newstandardworko00mitc` |
 | **Shirtwaist / work dress** | 2, 5 | — | **Drafted 2026-10-25** (`designs/shirtwaist-dress`, not sewn) | WI *Pattern Drafting* §2 |
 | **Shift dress** | 4 | — (Sasha is fitted) | **Drafted 2026-10-29** (`designs/shift-dress`: front and back in one piece, no waist seam; not sewn) | Pivnick 1949 `pivnickdesignclothes1949` |
 | Kimono-sleeve dress | 4 | — | Variant; **drafted 2026-11-02** (`designs/kimono-dress`: short sleeve cut in one with the bodice, no gusset, collar, gathered skirt; not sewn) | Pivnick 1949 `pivnickdesignclothes1949` |
-| **Smock** (any size) | 4 | — | **Drafted 2026-10-23** (`designs/smock`, not sewn) | Walker 1909 (child's overall) |
+| **Smock** (any size) | 4 | — | **Drafted 2026-10-23** (`designs/childrens-smock`, not sewn) | Walker 1909 (child's overall) |
 | Apron / pinafore apron | 2 | Albert | Have / Variant | Goldsberry 1888 (aprons) |
 | Slacks / overalls | 2, 5 | Titan, Opal | Variant | — |
 | **Peacoat, field jacket (women's cut)** | 3 | — | **Drafted 2026-10-28** (`designs/womens-peacoat` on the tailored jacket, double-breasted; `designs/field-jacket` on the box coat, patch pockets; not sewn) | Merz 1911 `merzspracticalcu00merz`, Diagrams XX–XXI |
@@ -102,9 +102,9 @@ and marked as derived.
 | Baby romper / one-piece | Otis, Onyx | Have | — |
 | Bib | Bob | Have | — |
 | **Middy (sailor) blouse** | — | **Drafted 2026-10-29** (`designs/middy-blouse`: V neck, square sailor collar, shield; any size; not sewn) | Simons 1922 `designingboysjuv00simo` |
-| Shirt, tee, trousers, overalls | adult designs | Variant; **knee pants and knickers drafted 2026-10-28** (`designs/knee-pants`, `designs/knickers`) | Simons *Boys' and Juveniles'* 1922 `designingboysjuv00simo` |
+| Shirt, tee, trousers, overalls | adult designs | Variant; **knee pants and knickers drafted 2026-10-28** (`designs/knee-pants`, `designs/boys-knickers`) | Simons *Boys' and Juveniles'* 1922 `designingboysjuv00simo` |
 | **Pinafore** | — | **Drafted 2026-10-23** (`designs/pinafore`, not sewn) | Walker 1909 |
-| **Knickers / bloomers** (any size) | — | **Drafted 2026-10-23** (`designs/knickerbockers`, on Titan, not sewn) | Walker 1909 |
+| **Knickers / bloomers** (any size) | — | **Drafted 2026-10-23** (`designs/bloomers`, on Titan, not sewn) | Walker 1909 |
 | **Boy's work coat** | — | **Drafted 2026-10-23** (`designs/boys-work-coat`; the chore coat with Simons' boys' details, all children's sizes) | Simons 1918 (boys' work coat) |
 | **Boy's suit jacket** | — | **Drafted 2026-10-28** (`designs/boys-suit-jacket`: the jacket at Simons' boys' proportions; not sewn) | Simons 1922 `designingboysjuv00simo` |
 | **Girl's dress** (any size) | — | **Drafted 2026-10-23** (`designs/frock`, not sewn) | Walker 1909 (frocks) |
@@ -167,7 +167,7 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
   (hip and ticket) sloping on the side front, a back-neck facing, and a lining (front and
   back lining pieces, a CB pleat; side panels and sleeves cut again in lining). Pockets and
   lining aren't draped.
-- **Box coat** (pp. 16–19, 60–61): `designs/box-coat`, on the same library (`draftBoxLayout`):
+- **Box coat** (pp. 16–19, 60–61): `designs/womens-box-coat`, on the same library (`draftBoxLayout`):
   back and front, side seams flared from the armholes, Breanna's bust dart pivoted into a 1¼"
   front neck dart, a 3" lap, notched lapel, collar, two-part sleeve. CB seam shaped ½" out at
   the hip line, buttonholes near the lapped edge, set-in flap pockets on the hip line with a

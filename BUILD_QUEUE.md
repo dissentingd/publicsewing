@@ -88,15 +88,15 @@ Priority 1 first: shirts, dresses and women's garments are the thinnest part of 
 | 11 | `surtout` | Two-button double-breasted surtout overcoat | Simons 1916 `designingovercoa00simo` (tracked), pp. 38–39 | `overcoat` | D | Fitted overcoat, waist seam in the source | open |
 | 12 | `french-overcoat` | Young men's French overcoat | Simons 1916, pp. 42–44 | `overcoat` | D | | open |
 | 13 | `prince-albert-jacket` | "Prince Albert" cut tight-fitted jacket | Mitchell 1921, pp. 48–51 | `fitted-jacket` | E | Archive readings: `archive/recipes/mitchell/FINDINGS.md` | open |
-| 14 | `princess-coat` | Fitted princess coat | Pivnick 1949, chapter XXII pp. 275–279 (loose coat pp. 279–282) | `tailored-jacket` | E | Coat length; the loose coat is close to `box-coat` | open |
+| 14 | `princess-coat` | Fitted princess coat | Pivnick 1949, chapter XXII pp. 275–279 (loose coat pp. 279–282) | `tailored-jacket` | E | Coat length; the loose coat is close to `womens-box-coat` | open |
 | 15 | `eton-jacket` | Eton jacket: short, to the waist | Simons 1922, English Eton coat p. 46 | `boys-jacket` | F | | open |
-| 16 | `golf-pants` | Golf pants (plus-fours) | Simons 1922, Diagram 43, pp. 120–123 | `knickers` | A | Fuller and longer than the knickers | open |
+| 16 | `golf-pants` | Golf pants (plus-fours) | Simons 1922, Diagram 43, pp. 120–123 | `boys-knickers` | A | Fuller and longer than the knickers | open |
 | 17 | `high-waisted-skirt` | Two-piece high-waisted skirt | Mitchell 1921, pp. 88–89 | `two-piece-skirt` | B | Waist raised 2 in; may be an option instead | open |
 | 18 | `kilt` | Pleated kilt (Scotch kilt suit's skirt) | Simons 1922, pp. 50–52 | `pleated-skirt` (item 3) | B | After item 3 | open |
 | 19 | `smoking-jacket` | Smoking jacket | Vincent 1890, p. 28 | `dressing-gown` (item 9) | D | After item 9 | open |
 | 20 | `raincoat` | Raincoat | Simons 1922, pp. 118–121 | `overcoat` or `balmacaan` | D | | open |
 | 21 | `db-waistcoat` | Double-breasted waistcoat | Simons 1922, double-breasted vest p. 56 (single-breasted p. 53) | `waistcoat` | D | | open |
-| 22 | `scout-coat` | Scout coat: standing collar, four pockets | Simons 1922, pp. 43–46 | `military-blouse` | D | | open |
+| 22 | `scout-coat` | Scout coat: standing collar, four pockets | Simons 1922, pp. 43–46 | `military-tunic` | D | | open |
 | 23 | `drawers` | Long drawers | Vincent 1890, pants or drawers p. 24 | `pyjama-trousers` | A | | open |
 
 ### Priority 3

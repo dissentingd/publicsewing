@@ -5,7 +5,7 @@ Garments* (New York, 1908), corpus `nssheiferssystem00shei` (laptop; PDF pp. 32â
 84â€“85 children's garments, 96 grading children's patterns). US 1908, public domain. Inches
 below are Sheifer's.
 
-**Block:** FreeSewing's Breanna, through Mitchell's box coat (`extends: ../box-coat/spec.yaml`,
+**Block:** FreeSewing's Breanna, through Mitchell's box coat (`extends: ../womens-box-coat/spec.yaml`,
 `lib/jacket.mjs`), whose construction Sheifer's box coat shares: two body pieces with the side
 seams flared from the armhole and crossing below the waist, a small dart at the front neck, a
 notched lapel and collar, a two-piece sleeve. Drafted from the child's own measurements (the

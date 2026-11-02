@@ -7,7 +7,7 @@ p. 24, which Vincent says they may also be cut from. Public domain (published 18
 1926). Inches below are Vincent's, for a seat of 40.
 
 **Block:** FreeSewing's Titan, through the knickerbockers (`extends:
-../knickerbockers/spec.yaml`): their full gathered legs with a waist casing, run down to the
+../bloomers/spec.yaml`): their full gathered legs with a waist casing, run down to the
 ankle with a plain hem instead of into a knee band. Worn with the pyjama jacket
 (`designs/pyjama-jacket`).
 

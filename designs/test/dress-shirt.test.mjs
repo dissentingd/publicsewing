@@ -3,7 +3,7 @@ import { Shirt } from '../dress-shirt/src/index.mjs'
 import { testCoat, near } from './coat-checks.mjs'
 
 testCoat(
-  'shirt',
+  'dress shirt',
   Shirt,
   'barberscoat.front',
   {

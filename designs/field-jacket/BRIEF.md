@@ -4,7 +4,7 @@
 1911), corpus `merzspracticalcu00merz` (laptop). Diagram XX, "Hunting Jacket—Turn Collar, Fly
 Front", pp. 50–51 (PDF pp. 52–53). US 1911, public domain. Inches below are Merz's.
 
-**Block:** FreeSewing's Breanna, through Mitchell's box coat (`extends: ../box-coat/spec.yaml`,
+**Block:** FreeSewing's Breanna, through Mitchell's box coat (`extends: ../womens-box-coat/spec.yaml`,
 `lib/jacket.mjs`): its straight body, side seams from the armhole, neck dart, lapel, collar and
 two-piece sleeve. Added for this jacket: patch pockets on the box layout (`boxLayout`'s
 `patch`), cut by the coats' pocket and flap pieces.

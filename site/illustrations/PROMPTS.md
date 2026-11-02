@@ -75,7 +75,7 @@ viewer's right.
 
 ## Women's coats and jackets (Mitchell 1921)
 
-### box-coat: Box coat
+### womens-box-coat: Women's box coat
 > A loose women's **box coat** in plain wool cloth (camel, grey or navy). **Straight, unfitted
 > body that flares a little from the arms to the hem**, length to the **hip or upper thigh**.
 > Single-breasted with a **notched lapel** and turn-down collar, **three buttons**, buttoning
@@ -95,7 +95,7 @@ viewer's right.
 >
 > Leave out: collar points, pockets, belt, pyjama trousers, a front yoke.
 
-### smock: Smock
+### childrens-smock: Children's smock
 > A child's loose **smock (overall)** in sturdy washable cotton (holland, gingham or check),
 > worn over clothes; about 6 years old. A **yoke** at the shoulders with the body **gathered**
 > into it, hanging loose to **above the knee**. It **buttons down the back** (two buttons, not
@@ -107,7 +107,7 @@ viewer's right.
 
 ## Trousers (Walker 1909)
 
-### knickerbockers: Knickerbockers
+### bloomers: Bloomers
 > A pair of **full knickerbockers (bloomers)** in plain cotton or wool. An **elastic
 > (gathered) waist**, no fly, no waistband buttons. **Full legs gathered into narrow bands
 > just below the knee**, the fullness **blousing over the bands**. Shown flat, front view, as
@@ -236,7 +236,7 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: a turn-down collar, collar points, a button-through front, a front yoke, epaulettes,
 > a second pocket, a pocket flap, a person, trousers.
 
-### hooded-smock: Hooded smock
+### anorak: Anorak
 > A **boxy pullover anorak** (smock) in windproof cotton (olive, khaki or tan), hip length,
 > straight and roomy. A **deep front yoke** across the chest, with a short **buttoned neck
 > placket** (two buttons) in the middle; no front opening below it. A **hood** attached all
@@ -316,7 +316,7 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: gathers or bands at the knee, turn-ups, cargo pockets, braces, a belt, long socks or
 > shoes, a person.
 
-### knickers: Knickers
+### boys-knickers: Boys' knickers
 > A **boy's pair of knickers (knickerbockers)** (about 6 years old) in tweed or wool (grey or
 > brown). **Full legs** reaching a little below the knee, **gathered into a narrow strap** there
 > and **fastened with a small buckle**, the fullness **blousing over the strap**. A **waistband
@@ -397,7 +397,7 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: peaked lapels, a belt, patch pockets, exaggerated shoulder pads, double-breasted
 > fronts, a person.
 
-### box-coat.peak: Box coat, peaked lapels
+### womens-box-coat.peak: Women's box coat, peaked lapels
 > A loose women's **box coat** in plain wool cloth (camel, grey or navy). **Straight, unfitted
 > body that flares a little from the arms to the hem**, length to the **hip or upper thigh**.
 > Single-breasted with **peaked lapels, their points turned upward**, and a turn-down collar,
@@ -790,7 +790,7 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 
 *Current image has curved patch shapes at the elbows and wrists.*
 
-### military-blouse: Military blouse
+### military-tunic: Military tunic
 > **Plain sleeves with no patches: the only lines on them are the two lengthwise seams of a two-piece sleeve.**
 > A fitted cotton **khaki** field jacket (a 1910s army blouse, without insignia).
 > Single-breasted, **five buttons** up to a **standing collar** that closes at the throat.

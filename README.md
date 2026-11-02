@@ -33,17 +33,17 @@ a check that the pieces sew together into the garment, not a fit result.
 | `balmacaan` | Loose raglan-sleeved overcoat, buttoned to the throat under a stand collar | Simons 1916 |
 | `mantle` | Loose overcoat with wide raglan sleeves cut deep under the arm, flapped patch pockets | Simons 1916 |
 | `hunting-coat` | Belted field coat with an action-pleated back | Simons 1918 |
-| `military-blouse` | Fitted blouse, two-piece sleeve, standing collar | Simons 1918 |
+| `military-tunic` | Fitted tunic, two-piece sleeve, standing collar | Simons 1918 |
 | `boys-work-coat` | The chore coat for children's sizes | Simons 1918 |
 | `barbers-coat` | White service coat | Simons 1918 |
 | `shop-coat` | Long work overcoat (grocer's gown, lab coat, duster) | Simons 1918 |
 | `bar-vest` | Short white jacket | Simons 1918 |
 | `nightshirt` | Yoked nightshirt | Walker 1909 |
 | `nightgown` | Yoked, gathered nightgown | Walker 1909 |
-| `smock` | Yoked smock / child's overall | Walker 1909 |
+| `childrens-smock` | Yoked smock / child's overall | Walker 1909 |
 | `frock` | Bodice-and-skirt dress | Walker 1909 |
 | `pinafore` | Sleeveless gathered pinafore | Walker 1909 |
-| `knickerbockers` | Knickers gathered into knee bands | Walker 1909 |
+| `bloomers` | Bloomers gathered into knee bands | Walker 1909 |
 | `pyjama-jacket` | Loose sleeping jacket buttoned to the throat under a stand collar | Vincent 1890 |
 | `pyjama-trousers` | Full sleeping trousers to the ankle, gathered at the waist | Vincent 1890 |
 | `shirtwaist-dress` | Buttoned work dress with a turn-down collar and cuffs | Woman's Institute, *Pattern Drafting* (1915) |
@@ -52,14 +52,14 @@ a check that the pieces sew together into the garment, not a fit result.
 | `double-dart-jacket` | Tight-fitted jacket shaped by two front seams over the shoulder | Mitchell 1921 |
 | `womens-peacoat` | Women's hip-length double-breasted coat, princess seams, buttoned to the neck under a storm collar | Merz 1911 |
 | `field-jacket` | Women's straight hip-length jacket with four flapped patch pockets | Merz 1911 |
-| `box-coat` | Women's loose box coat with a notched lapel and set-in flap pockets | Mitchell 1921 |
+| `womens-box-coat` | Women's loose box coat with a notched lapel and set-in flap pockets | Mitchell 1921 |
 | `girls-coat` | Girl's loose coat to below the knee, notched collar, flap pockets | Sheifer 1908 |
 | `gored-skirt` | Flared skirt of five to fifteen gores, shaped in its seams, with a CB zip and waistband | Mitchell 1921 |
 | `pleated-skirt` | Skirt fitted to the hips and pleated below them, side or box pleats, CB zip and waistband | Mitchell 1921 |
 | `work-pants` | Full straight work trousers for cotton and khaki, deep rise, no darts | Simons 1916 |
 | `service-shirt` | Button-through camp-collar shirt: back yoke, two flapped breast pockets, shoulder straps | Vincent 1890, Simons 1918 |
 | `dress-shirt` | Classic button-through shirt: back yoke, collar on a stand, buttoned cuffs, breast pocket | Vincent 1890 |
-| `hooded-smock` | Boxy pullover anorak: front yoke, buttoned neck placket, hood, flapped chest pocket, kangaroo pocket | Open+Pattern (CC BY 4.0), US tactical smock |
+| `anorak` | Boxy pullover anorak: front yoke, buttoned neck placket, hood, flapped chest pocket, kangaroo pocket | Open+Pattern (CC BY 4.0), US tactical smock |
 | `work-shirt` | Roomy pullover work shirt: back yoke, buttoned front fly, neck band or collar, breast pocket | Vincent 1890 |
 | `t-shirt` | Plain crew-neck T-shirt with short set-in sleeves, drafted from your measurements | Open+Pattern Standard T-shirt (CC BY 4.0) |
 | `bib-overall` | Bib-and-brace work overall, side seams buttoned at the hip, patch pockets | Simons 1916 |
@@ -73,7 +73,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `culottes` | Divided skirt that looks like a skirt until the wearer moves | Pivnick 1949 |
 | `gathered-skirt` | Full skirt of straight breadths gathered into a waistband | Walker 1909 |
 | `knee-pants` | Short trousers to the knee, fly, pockets, waistband | Simons 1922 |
-| `knickers` | Full trousers to below the knee, gathered into a buckled strap | Simons 1922 |
+| `boys-knickers` | Full trousers to below the knee, gathered into a buckled strap | Simons 1922 |
 | `breeches` | Riding breeches, full and flared at the thigh, fitted from the knee to a buttoned cuff | Simons 1916 |
 | `jumpsuit` | One-piece suit cut almost entirely from rectangles: buttoned front, gussets, patch pockets | Thayaht 1920, via Open+Pattern |
 | `windbreaker` | Hooded zip-front light jacket with yokes and slanted welt pockets | ЕМКО 1988 |
@@ -144,7 +144,7 @@ The jumpsuit follows Thayaht's TuTa (Florence, 1920) as digitised by
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): its pieces and proportions, redrafted
 from measurements (`designs/jumpsuit/BRIEF.md` lists what changed). Credit: Open+Pattern.
 
-The T-shirt, hooded smock and field trousers use Open+Pattern's Standard T-shirt, US Tactical
+The T-shirt, anorak and field trousers use Open+Pattern's Standard T-shirt, US Tactical
 Smock and British CS95 Field Trouser as proportion references. They are also CC BY 4.0; credit
 Open+Pattern. Their geometry is redrafted from the wearer's measurements.
 

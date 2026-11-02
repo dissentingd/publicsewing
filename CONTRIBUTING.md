@@ -299,9 +299,9 @@ If you changed a shared file in `lib/`, every design using it must come out iden
 ```bash
 cp lib/trousers.mjs /tmp/trousers.new.mjs
 git show HEAD:designs/lib/trousers.mjs > lib/trousers.mjs
-for d in trousers work-pants knickerbockers pyjama-trousers; do node tools/snapshot.mjs $d save; done
+for d in suit-trousers work-pants bloomers pyjama-trousers; do node tools/snapshot.mjs $d save; done
 cp /tmp/trousers.new.mjs lib/trousers.mjs
-for d in trousers work-pants knickerbockers pyjama-trousers; do node tools/snapshot.mjs $d compare; done
+for d in suit-trousers work-pants bloomers pyjama-trousers; do node tools/snapshot.mjs $d compare; done
 ```
 
 `compare` checks every point, path, snippet and stored value at every size and variant. New

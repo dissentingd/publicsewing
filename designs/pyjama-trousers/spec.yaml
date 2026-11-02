@@ -2,7 +2,7 @@
 # Making Shirts, Undergarments..., 1890, p. 26), on the knickerbockers (FreeSewing's Titan): full,
 # straight legs to the ankle with a plain hem, the waist gathered on a drawstring or elastic.
 # Worn with the pyjama jacket. See BRIEF.md.
-extends: ../knickerbockers/spec.yaml
+extends: ../bloomers/spec.yaml
 
 about:
   id: pyjama-trousers

@@ -1,7 +1,7 @@
 # Drape a three-piece body on Bent (lib/body3.mjs: the military blouse) on GarmentCode's male
 # average body: back (on the fold), side body, front (cut at CF, so the two sew closed edge to
 # edge), and the two-part sleeve. Collar, facings and welts are left off. Export:
-#   node tools/drape-export.mjs military-blouse cisMaleAdult38 out.json \
+#   node tools/drape-export.mjs military-tunic cisMaleAdult38 out.json \
 #     --pieces back,sideBody,front,topsleeve,undersleeve --clip front=0 --m chest=1000,waist=800,seat=1000
 #
 # Placement as coat-shell.yaml (cm, y up, the body facing +z, its right side at -x; right-hand

@@ -48,7 +48,7 @@ const checks = {
       'neckband length': "follows the wearer's neck, which FreeSewing's sets grow with the chest",
     },
   },
-  'hooded-smock': {
+  anorak: {
     source: 'us-tactical-smock',
     girth: { src: (s) => s.Front.w + s.Back.w, ours: (o) => o.frontBody.w + o.backBody.w },
     dims: [

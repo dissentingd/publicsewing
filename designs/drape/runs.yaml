@@ -50,7 +50,7 @@ tailored-jacket:
   pieces: [back, sideBack, sideFront, front, topsleeve, undersleeve]
   clip: { front: cfLine }
 
-box-coat:
+womens-box-coat:
   config: box.yaml
   size: cisFemaleAdult34
   measurements: { chest: 900, waist: 800, seat: 1070 }
@@ -91,7 +91,7 @@ boys-work-coat:
   clip: { front: 0 }
   split: { sleeve: 0 }
 
-military-blouse:
+military-tunic:
   config: blouse.yaml
   size: cisMaleAdult38
   measurements: { chest: 1000, waist: 800, seat: 1000 }
@@ -107,7 +107,7 @@ nightgown:
   clip: { frontYoke: 0, backYoke: 0 }
   split: { sleeve: 0 }
 
-smock:
+childrens-smock:
   config: yoke.yaml
   size: cisFemaleAdult34
   measurements: { chest: 900, waist: 800, seat: 1070 }
@@ -147,7 +147,7 @@ shirtwaist-dress:
   clip: { frontBodice: 0, backBodice: 0 }
   split: { sleeve: 0 }
 
-knickerbockers:
+bloomers:
   config: trousers.yaml
   holdWaist: true # the elastic isn't simulated: the waist stays pinned for the whole run
   size: cisMaleAdult38

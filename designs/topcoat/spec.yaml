@@ -2,7 +2,7 @@
 # blouse's three-piece body (lib/body3.mjs, FreeSewing's Bent): a semi-fitted, knee-length
 # spring and autumn coat with side panels, a back vent, slanted welt pockets, a turn-down collar
 # and two-piece sleeves. See BRIEF.md for where each default is read.
-extends: ../military-blouse/spec.yaml
+extends: ../military-tunic/spec.yaml
 
 about:
   id: topcoat

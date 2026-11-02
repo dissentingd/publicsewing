@@ -1,7 +1,7 @@
 # Drape a box body (lib/jacket.mjs, draftBoxLayout) on GarmentCode's female average body: back
 # (on the fold), front (cut at CF so the two sew closed edge to edge; the neck dart sewn), and
 # the two-piece sleeve. Collar and facings are left off. Export:
-#   node tools/drape-export.mjs box-coat cisFemaleAdult34 out.json \
+#   node tools/drape-export.mjs womens-box-coat cisFemaleAdult34 out.json \
 #     --pieces back,front,topsleeve,undersleeve --clip front=cfLine --m chest=900,waist=800,seat=1070
 # Placement as jacket.yaml (cm, y up, the body facing +z, its right side at -x; right-hand
 # copies; neck point ~141 up). The sleeves start further from the arm than the jacket's (z
