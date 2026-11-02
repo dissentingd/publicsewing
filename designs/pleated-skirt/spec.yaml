@@ -37,3 +37,10 @@ pieces:
   gore5: { part: gore, index: 5, after: layout, nr: 6, zip: waistToSeat * zipLength, pleat: { style: pleatStyle, hip: seat * pleatHip, hem: seat * pleatHem } }
   gore6: { part: gore, index: 6, after: layout, nr: 7, zip: waistToSeat * zipLength, pleat: { style: pleatStyle, hip: seat * pleatHip, hem: seat * pleatHem } }
   gore7: { part: gore, index: 7, after: layout, nr: 8, zip: waistToSeat * zipLength, pleat: { style: pleatStyle, hip: seat * pleatHip, hem: seat * pleatHem } }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  box:
+    name: Box pleats
+    description: "Mitchell's box-pleated skirt: each gore forms a box pleat, with an allowance on both of its edges instead of one."
+    options: { pleatStyle: box }

@@ -792,3 +792,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a single row of buttons, a belt, a waist seam, gathers, patch pockets, a ticket pocket,
 > fur or velvet collar, a hood, frills, a person.
+
+### pleated-skirt.box: Pleated skirt, box pleats
+> A women's **pleated skirt** in mid-weight wool (charcoal, navy or camel), **just below the
+> knee**. **Smooth and fitted from the waistband over the hips**, with fine seams, then **crisp box
+> pleats**, each a flat panel with its two folds turned toward each other behind it, falling from
+> the hip line to the hem, the skirt gently flared. A **plain narrow waistband**. Shown flat, front
+> view.
+>
+> Leave out: pleats from the waist, side pleats all turned one way, a kilt pin or fringe, plaid,
+> pockets, belt loops, a belt, a person.

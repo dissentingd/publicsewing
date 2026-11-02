@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { PleatedSkirt } from '../pleated-skirt/src/index.mjs'
 import { sets, checkClean, near } from './coat-checks.mjs'
 
-const variants = { default: {}, box: { pleatStyle: 'box', gores: 7 }, long: { gores: 15, length: 0.9, pleatHem: 0.05 } }
+const variants = { default: {}, boxPleats: { pleatStyle: 'box' }, box: { pleatStyle: 'box', gores: 7 }, long: { gores: 15, length: 0.9, pleatHem: 0.05 } }
 
 for (const [v, options] of Object.entries(variants)) {
   for (const [name, measurements] of Object.entries(sets)) {
