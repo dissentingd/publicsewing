@@ -25,7 +25,7 @@ options:
   sleeveLengthBonus: { pct: 5, min: -10, max: 15, menu: style }
   buttonExtension: { pct: 7, min: 5, max: 10, of: chest, menu: style }
   buttons: { count: 3, min: 2, max: 5, menu: style }
-  buttonTop: { pct: 40, min: 0, max: 250, menu: style } # x the stand: top button below the chest line
+  buttonTop: { pct: 40, min: -400, max: 250, menu: style } # x the stand: top button below the chest line (negative: above it, up to the neck)
   buttonBottom: { pct: 55, min: 20, max: 150, menu: style } # x waistToSeat: bottom button below the waist
   buttonRow: { pct: 62, min: 40, max: 90, menu: style } # x the stand: each row's distance from CF
   hemCurve: { pct: 0, min: 0, max: 100, menu: style }
@@ -89,7 +89,7 @@ pieces:
       ext: chest * buttonExtension
       q: underarm.x # the front's width at the chest, CF to side seam
       shawl: collarStyle == 'shawl'
-      topButton: underarm.y + ext * buttonTop
+      topButton: max(cfNeck.y + neck * 0.15, underarm.y + ext * buttonTop) # never closer to the neck than 15% of it
       beltW: chest * beltWidth
       beltY: cfWaist.y - beltW * 0.2
     ops:
