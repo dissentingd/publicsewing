@@ -112,3 +112,18 @@ pieces:
           width: neck * collarWidth
           point: if(lapelStyle == 'storm', 0, neck * collarPoint)
           nr: 6
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  notch:
+    name: Notched lapels
+    description: Wide notched lapels turning at the bust, under the deep collar. Not Merz's; a more familiar peacoat.
+    options: { lapelStyle: notch }
+  peak:
+    name: Peaked lapels
+    description: The same wide lapels with their points turned up, as on Mitchell's tailored jacket.
+    options: { lapelStyle: peak }
+  single:
+    name: Single-breasted
+    description: One row of four buttons on a narrower lap, with peaked lapels.
+    options: { doubleBreasted: false, buttonExtension: 0.04, buttons: 4, lapelStyle: peak }

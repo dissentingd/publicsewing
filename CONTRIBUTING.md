@@ -373,6 +373,10 @@ from the page.
    defaults, then end with a "Leave out" line naming what image models tend to add wrongly
    (cuffs, tabs, extra pockets). The image, `site/illustrations/<design>.jpg` (square, at least
    1024 px), can come later.
+   A choice that changes how the garment looks (a storm collar or lapels) is a **variant**: list
+   it under `variants` in the spec ([designs/SPEC.md](designs/SPEC.md)) so its page explains it,
+   rerun the preview, and add a prompt headed `<design>.<variant>` for its image,
+   `site/illustrations/<design>.<variant>.jpg`.
 3. **Docs:**
    - README.md: the Status table row; it sets the site's order.
    - designs/README.md: the Contents row, and the `lib/` row if you extended a library.

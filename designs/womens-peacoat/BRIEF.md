@@ -36,7 +36,8 @@ double-breasted front (`jacketLayout`'s `rows`), with two rows of buttons.
 
 ## Changes and what isn't modelled
 - **The storm collar** (2026-11-01) is the default, `lapelStyle` storm (Dave, 2026-11-02); the
-  notched or peaked lapel with a deep collar are options. The storm collar's depth is constant, not 3¾ in at the front and 4¼ at
+  notched or peaked lapel with a deep collar, and a single-breasted front, are the page's
+  variants (`variants` in the spec). The storm collar's depth is constant, not 3¾ in at the front and 4¼ at
   CB, and no tab is drafted to fasten it across the throat when worn up.
 - **Merz's neck dart** isn't taken; the bust shaping goes into the princess seams, as on the
   tailored jacket.

@@ -9,7 +9,8 @@ import { designFromSpec } from './spec.mjs'
  * Read a spec file (path or file URL). `extends: <file>` starts from another spec: its pieces
  * (keeping their names, unless the parent is a template with no `about`), block and options,
  * with this spec's about, option changes (merged into the parent's, e.g.
- * `buttons: { count: 5 }`), and pieces added or replaced by key.
+ * `buttons: { count: 5 }`), and pieces added or replaced by key. Its `variants` are its own: a
+ * parent's describe changes from the parent's defaults.
  */
 export function readSpec(file) {
   const url = file instanceof URL ? file : pathToFileURL(file)
@@ -21,7 +22,7 @@ export function readSpec(file) {
   const pieces = {}
   // A parent with no `about` is a template: its pieces take this spec's name
   for (const [k, p] of Object.entries(parent.pieces)) pieces[k] = parent.about ? { prefix: parent.about.id, ...p } : p
-  return { ...parent, about: spec.about ?? parent.about, options, pieces: { ...pieces, ...spec.pieces } }
+  return { ...parent, about: spec.about ?? parent.about, options, pieces: { ...pieces, ...spec.pieces }, variants: spec.variants }
 }
 
 /** Read a spec file and build its design */

@@ -671,3 +671,21 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: an armhole seam, set-in or puffed sleeves, a gusset showing, a belt, buttons below
 > the waist, pockets, a wrap front, Japanese kimono styling (obi, wide hanging sleeves), a person.
+
+### womens-peacoat.peak: Women's peacoat, peaked lapels
+> A women's **hip-length, double-breasted** coat in heavy navy wool, **shaped to the waist by
+> princess seams** and flaring a little over the hips. **Two rows of three buttons**. **Wide
+> peaked lapels, their points turned upward**, turning at the bust, under a **deep turn-down
+> collar**. **A flap pocket set into each hip**. **Two-piece sleeves**. Lined. Shown flat, front view.
+>
+> Leave out: notched lapels, a belt, patch pockets, epaulettes, gold or anchor buttons, a hood, a
+> person.
+
+### womens-peacoat.single: Women's peacoat, single-breasted
+> A women's **hip-length, single-breasted** coat in heavy navy wool, **shaped to the waist by
+> princess seams** and flaring a little over the hips. **One row of four buttons** down a narrow
+> lap. **Wide peaked lapels** turning at the bust, under a **deep turn-down collar**. **A flap
+> pocket set into each hip**. **Two-piece sleeves**. Lined. Shown flat, front view.
+>
+> Leave out: a second row of buttons, a belt, patch pockets, epaulettes, gold buttons, a hood, a
+> person.

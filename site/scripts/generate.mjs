@@ -12,6 +12,9 @@
 // - static/img/previews/<id>.png: the design's preview-<set>.png (its pattern pieces, from
 //   designs/tools/preview.mjs; <set> is the spec's about.preview, else cisMaleAdult38), beside
 //   the illustration
+// - a design's `variants` (its spec): a Variants section after the pattern tool, each with the
+//   settings to change, its illustration (illustrations/<id>.<variant>.jpg, when there is one)
+//   and its pattern pieces (preview-<set>-<variant>.png); see variantSteps
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, copyFileSync, rmSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { join } from 'node:path'
@@ -70,7 +73,8 @@ for (const id of ids) {
 
 mkdirSync(out('src', 'generated'), { recursive: true })
 writeFileSync(out('src', 'generated', 'measurements.json'), JSON.stringify(measurements))
-writeFileSync(out('src', 'generated', 'labels.json'), JSON.stringify(parse(readFileSync(join(designsDir, 'labels.yaml'), 'utf8'))))
+const labelData = parse(readFileSync(join(designsDir, 'labels.yaml'), 'utf8'))
+writeFileSync(out('src', 'generated', 'labels.json'), JSON.stringify(labelData))
 writeFileSync(out('src', 'generated', 'specs.json'), JSON.stringify(specs))
 writeFileSync(out('src', 'generated', 'sizes.json'), JSON.stringify(sizes))
 
@@ -89,6 +93,29 @@ writeFileSync(
 
 /** A brief's Markdown, made safe for MDX: no H1 (the page has its own), relative links to GitHub */
 const repo = 'https://github.com/dissentingd/publicsewing/blob/main'
+// What a variant's option looks like in the pattern tool's menus, from the same labels the tool
+// shows. An option the tool doesn't show can't be a variant's: fail the build rather than publish
+// instructions nobody can follow.
+function variantSteps(spec, labels, options, where) {
+  return Object.entries(options).map(([name, value]) => {
+    const o = spec.options?.[name]
+    if (!o) throw new Error(`${where}: no option ${name}`)
+    if (!o.menu) throw new Error(`${where}: option ${name} isn't shown in the pattern tool`)
+    const l = labels.options[name] ?? {}
+    const show = (v) => {
+      if (typeof v === 'boolean') return v ? 'Yes' : 'No'
+      if (o.list) return l.choices?.[v] ?? String(v)
+      if (o.pct !== undefined) return `${Math.round(v * 1000) / 10}%`
+      if (o.deg !== undefined) return `${v}°`
+      return String(v)
+    }
+    const dflt = o.bool ?? o.dflt ?? o.count ?? o.deg ?? (o.pct !== undefined ? o.pct / 100 : undefined)
+    if (o.list && !o.list.includes(value)) throw new Error(`${where}: ${name} has no choice ${value}`)
+    const menu = o.menu[0].toUpperCase() + o.menu.slice(1)
+    return { menu, title: o.title ?? l.title ?? name, value: show(value), dflt: show(dflt) }
+  })
+}
+
 function mdx(md, id) {
   return md
     .replace(/^# .*\n+/, '')
@@ -143,6 +170,45 @@ ids.forEach((id, i) => {
 </figure>`,
   ].filter(Boolean)
   const illustration = figures.length ? `<div className="design-figures">\n${figures.join('\n')}\n</div>\n` : ''
+  // The variants: this design with other options, each with how to set them
+  const variants = Object.entries(spec.variants ?? {}).map(([key, v]) => {
+    const steps = variantSteps(spec, labelData, v.options, `${id} variant ${key}`)
+    const pic = existsSync(join(site, 'illustrations', `${id}.${key}.jpg`))
+    if (pic) copyFileSync(join(site, 'illustrations', `${id}.${key}.jpg`), out('static', 'img', 'illustrations', `${id}.${key}.jpg`))
+    const pieces = existsSync(join(designsDir, id, `preview-${previewSet}-${key}.png`))
+    if (pieces) copyFileSync(join(designsDir, id, `preview-${previewSet}-${key}.png`), out('static', 'img', 'previews', `${id}.${key}.png`))
+    const figs = [
+      pic &&
+        `<figure className="illustration">
+  <img className="illustration-img" src={useBaseUrl('/img/illustrations/${id}.${key}.jpg')} alt="${about.name}, ${v.name}: illustration of the finished garment" loading="lazy" />
+  <figcaption>An AI-generated illustration of this variant, not drawn from the pattern.</figcaption>
+</figure>`,
+      pieces &&
+        `<figure className="illustration">
+  <a href={useBaseUrl('/img/previews/${id}.${key}.png')}><img className="illustration-img preview-img" src={useBaseUrl('/img/previews/${id}.${key}.png')} alt="${about.name}, ${v.name}: the pattern pieces" loading="lazy" /></a>
+  <figcaption>The pattern pieces of this variant, size ${label(previewSet)}, with seam allowance. Click to enlarge.</figcaption>
+</figure>`,
+    ].filter(Boolean)
+    return `### ${v.name} {#${key}}
+
+${v.description}
+
+In the pattern tool above, open **Design Options**, then set:
+
+${steps.map((s) => `- **${s.menu} → ${s.title}:** ${s.value} (the design's default is ${s.dflt})`).join('\n')}
+
+${figs.length ? `<div className="design-figures">\n${figs.join('\n')}\n</div>\n` : ''}`
+  })
+  const variantNames = Object.entries(spec.variants ?? {}).map(([key, v]) => `[${v.name}](#${key})`)
+  const variantsLine = variantNames.length ? `\n\nThe same pattern also makes these variants: ${variantNames.join(', ')}.` : ''
+  const variantsSection = variants.length
+    ? `## Variants
+
+Each of these is the ${about.name} pattern with different options, not a separate design. To make one, choose your size above, change the settings listed under it, then export. Set them back to return to the design as shown at the top of this page.
+
+${variants.join('\n')}
+`
+    : ''
   rows.push(`| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | [${about.name}](/designs/${id}) | ${info.garment} | ${info.source} |`)
   writeFileSync(
     out('docs', 'designs', `${id}.mdx`),
@@ -162,7 +228,7 @@ match, but that doesn't prove it fits. Sew a muslin before good fabric, and plea
 [report what happened](/report).
 :::
 
-${info.garment}. Source: ${info.source}.
+${info.garment}. Source: ${info.source}.${variantsLine}
 
 ## Make the pattern
 
@@ -172,6 +238,7 @@ Pick a size set or enter your own measurements, change options, then **Export** 
 
 <PatternEditor design="${about.id}" />
 
+${variantsSection}
 ${drape}
 ## The brief
 

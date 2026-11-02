@@ -33,5 +33,9 @@ Needs `../designs` installed (`npm install` there): the site builds the designs 
 - `@freesewing/react` imports packages it doesn't declare (`utils`, `i18n`, `plugin-i18n`,
   `plugin-svgattr`, `plugin-timing`, `react-markdown`), hence their place in `package.json`.
   Keep every `@freesewing/*` package at the designs workspace's version.
+- **Variants:** a spec's `variants` (designs/SPEC.md) become a Variants section on the design's
+  page, after the pattern tool: the settings to change, read from `labels.yaml` so they match the
+  tool's menus (the build fails on an option the tool doesn't show), the variant's pattern pieces,
+  and its illustration if `illustrations/<design>.<variant>.jpg` exists.
 - **Adding a design:** nothing to do here, except adding it to the dropdown in
   `.github/ISSUE_TEMPLATE/muslin-report.yml`.
