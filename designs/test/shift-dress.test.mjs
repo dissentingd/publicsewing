@@ -7,6 +7,7 @@ testYoke(
   ShiftDress,
   {
     default: {},
+    withCollar: { neckFinish: 'collar', opening: 'front' },
     sleeveless: { sleeves: 'none' },
     variant: { sleeves: 'none', neckFinish: 'collar', opening: 'front', hemFlare: 0.1, sideSlit: 0.2 },
   },

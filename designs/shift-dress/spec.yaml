@@ -39,3 +39,7 @@ variants:
     name: Sleeveless
     description: "No sleeves: the armholes are finished with a narrow bias binding, like the neck."
     options: { sleeves: none }
+  collar:
+    name: With a collar
+    description: "A flat collar around the neck in place of the plain binding. The collar is one piece across the back, so the short buttoned opening moves to the front, under it."
+    options: { neckFinish: collar, opening: front }

@@ -886,3 +886,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: sleeves, cap sleeves, a belt or sash, darts or a fitted waist, a collar, pockets,
 > gathers, prints or trim, a person.
+
+### shift-dress.collar: Shift dress, with a collar
+> A women's **simple shift dress** in plain cotton or linen (navy, rust or sage), **to the knee**,
+> hanging **straight from the shoulders** with **no waist seam and no waist shaping**, widening a
+> little toward the hem (a slight A-line). A **small flat collar** lying around the neck, in the
+> same cloth, its two ends meeting at the centre front, above a **short buttoned opening with two buttons**.
+> **Short set-in sleeves** with a narrow band. Shown flat, front view.
+>
+> Leave out: a stand or shirt collar, buttons below the chest, a belt or sash, darts or a fitted
+> waist, pockets, gathers, prints or trim, a person.
