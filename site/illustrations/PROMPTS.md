@@ -760,3 +760,14 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: raglan seams, lapels, a turn-down collar, a belt, double-breasted fronts, patch or flap
 > pockets, epaulettes, cuff straps, a person.
+
+### tailored-jacket.notch: Tailored jacket, notched lapels
+> A women's **semi-fitted tailored jacket** in fine wool suiting (grey, navy or tweed).
+> **Princess seams** shape it to the waist; length to the **high hip**. Single-breasted, **three
+> buttons**, buttoning right over left, with **notched lapels** and a collar, the lapel points
+> level, not turned up. A **breast welt pocket** on the wearer's left, **two flap pockets** at the
+> hips, and a **small ticket pocket with flap above the right one**. **Two-piece sleeves**. Lined.
+> Shown flat, front view.
+>
+> Leave out: peaked lapels, a belt, patch pockets, exaggerated shoulder pads, double-breasted
+> fronts, a person.

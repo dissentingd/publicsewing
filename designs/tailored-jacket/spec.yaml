@@ -167,3 +167,10 @@ pieces:
   ticketFlap: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: flap, nr: 17, label: ticketFlap, if: pockets and ticketPocket }
   ticketJet: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: jet, nr: 18, label: ticketJet, if: pockets and ticketPocket }
   ticketBag: { part: setInPocket, after: [backBase, frontBase], key: ticket, piece: bag, nr: 19, label: ticketPocketBag, if: pockets and ticketPocket }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  notch:
+    name: Notched lapels
+    description: "The more everyday lapel, its top edge meeting the collar in a notch, in place of the peaks."
+    options: { lapelStyle: notch }
