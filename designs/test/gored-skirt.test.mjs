@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { GoredSkirt } from '../gored-skirt/src/index.mjs'
 import { sets, checkClean, near } from './coat-checks.mjs'
 
-const variants = { default: {}, nine: { gores: 9 }, seven: { gores: 7, goreFlare: 0.3 }, fifteen: { gores: 15, frontWaistDrop: 0, zipLength: 0.6 } }
+const variants = { default: {}, fifteenGores: { gores: 15 }, nine: { gores: 9 }, seven: { gores: 7, goreFlare: 0.3 }, fifteen: { gores: 15, frontWaistDrop: 0, zipLength: 0.6 } }
 
 for (const [v, options] of Object.entries(variants)) {
   for (const [name, measurements] of Object.entries(sets)) {

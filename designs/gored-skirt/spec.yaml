@@ -72,3 +72,7 @@ variants:
     name: 9 gores
     description: "A front panel and four gores either side: narrower panels with more seams, and the same flare."
     options: { gores: 9 }
+  fifteen:
+    name: 15 gores
+    description: "Mitchell's most gores: a front panel and seven gores either side, each a slim panel, so the seams themselves become the look."
+    options: { gores: 15 }

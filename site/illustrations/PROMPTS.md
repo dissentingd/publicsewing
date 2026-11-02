@@ -924,3 +924,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: pleats, gathers, a yoke, pockets, a slit, a train, a ruffle, buttons, a belt, a person, a
 > blouse.
+
+### gored-skirt.fifteen: Gored skirt, 15 gores
+> A women's **long fifteen-gore skirt** in plain wool or linen (navy, grey, brown or cream),
+> **nearly to the floor**. Smooth and close over the hips, then **flaring evenly to a wide hem** in a
+> soft cone, with **many fine seams running down from the waist to the hem**: a **slim front panel** in
+> the middle, seven slim gores either side, like the ribs of an umbrella. A plain **narrow waistband**.
+> Shown flat, front view, as the skirt alone.
+>
+> Leave out: pleats, gathers, a yoke, pockets, a slit, a train, a ruffle, buttons, a belt, a person, a
+> blouse.
