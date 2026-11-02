@@ -276,6 +276,21 @@ options:
   panelShaping:
     title: Front panel shaping
     description: The front panel seams' share of the waist shaping (for five gores; less with more). The other seams share the rest.
+  slashHinge:
+    title: Spread starts above the hip
+    description: How far above the seat line each spread starts, as a share of waist to seat. Higher takes more out of the waist.
+  spreadFront:
+    title: Spread at the front
+    description: Width added at the hem by the slash on the front, as a share of the seat, at floor length. A shorter skirt spreads in proportion. Mitchell's rule is least here.
+  spreadSide:
+    title: Spread at the side
+    description: Width added at the hem by the slash at the side seam, shared by the front and back, as a share of the seat, at floor length. Between the front's and the back's by Mitchell's rule.
+  spreadBack:
+    title: Spread at the back
+    description: Width added at the hem by each of the two slashes on the back, as a share of the seat, at floor length. Mitchell's rule is most here.
+  waistShift:
+    title: Back waist over front
+    description: How much less than a quarter of the waist the front takes, and how much more the back, as a share of the waist.
   frontWaistDrop:
     title: Front waist drop
     description: How much lower the waist sits at centre front than at centre back, as a share of waist to seat.

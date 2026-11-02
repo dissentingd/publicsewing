@@ -78,6 +78,7 @@ and marked as derived.
 | Skirt: pencil, circle, block | 1, 4 | Penelope, Sandy, Sarah | Have | — |
 | A-line / gored skirt | 5 | Sarah | **Drafted 2026-10-27** (`designs/gored-skirt`, 5–15 gores on Sarah, not sewn); **two-piece skirt 2026-10-28** (`designs/two-piece-skirt`) | Mitchell 1921 (gored and two-piece skirts) |
 | Pleated skirt (side or box) | 5 | Sarah | Variant; **drafted 2026-11-02** (`designs/pleated-skirt`: the gored skirt with pleat underlays below the hip; not sewn) | Mitchell 1921 pp. 102–107 |
+| Circular skirt (fitted to the hip, very wide hem) | 5 | Sarah | Variant; **drafted 2026-11-02** (`designs/circular-skirt`: a fan slashed and spread from above the hip; not sewn) | Mitchell 1921 pp. 110-113 |
 | **Culottes (divided skirt)** | 4, 5 | — | **Drafted 2026-10-29** (`designs/culottes`; not sewn) | Pivnick 1949 `pivnickdesignclothes1949` |
 | Gathered skirt | 4 | Sarah, Sandy | Variant; **drafted 2026-10-28** (`designs/gathered-skirt`: straight breadths on a waistband; not sewn) | Walker 1909 frock skirt |
 | Button-down blouse | 1 | Simone | Have | — |

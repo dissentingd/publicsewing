@@ -56,6 +56,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `girls-coat` | Girl's loose coat to below the knee, notched collar, flap pockets | Sheifer 1908 |
 | `gored-skirt` | Flared skirt of five to fifteen gores, shaped in its seams, with a CB zip and waistband | Mitchell 1921 |
 | `pleated-skirt` | Skirt fitted to the hips and pleated below them, side or box pleats, CB zip and waistband | Mitchell 1921 |
+| `circular-skirt` | Skirt close at the waist and hips and very wide at the hem, in two pieces, CB zip and waistband | Mitchell 1921 |
 | `work-pants` | Full straight work trousers for cotton and khaki, deep rise, no darts | Simons 1916 |
 | `service-shirt` | Button-through camp-collar shirt: back yoke, two flapped breast pockets, shoulder straps | Vincent 1890, Simons 1918 |
 | `dress-shirt` | Classic button-through shirt: back yoke, collar on a stand, buttoned cuffs, breast pocket | Vincent 1890 |

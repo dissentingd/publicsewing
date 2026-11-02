@@ -193,6 +193,198 @@ export function gorePart({ name, after, index, nr, label, zip = () => 0, pleat =
   }
 }
 
+const unit = (a, b) => {
+  const n = Math.hypot(b.x - a.x, b.y - a.y)
+  return { x: (b.x - a.x) / n, y: (b.y - a.y) / n }
+}
+
+/** `p` turned `a` radians about `c`, so that a point below `c` swings toward CB */
+const turn = (p, c, a) => {
+  const dx = p.x - c.x
+  const dy = p.y - c.y
+  return { x: c.x + dx * Math.cos(a) - dy * Math.sin(a), y: c.y + dx * Math.sin(a) + dy * Math.cos(a) }
+}
+
+/** A smooth path through `pts`, leaving along `t0` and arriving along `t1` (unit vectors) */
+function through(Path, Point, pts, t0, t1) {
+  const q = pts.filter((p, i) => i === 0 || Math.hypot(p.x - pts[i - 1].x, p.y - pts[i - 1].y) > 1)
+  const path = new Path().move(new Point(q[0].x, q[0].y))
+  for (let i = 0; i < q.length - 1; i++) {
+    const d = Math.hypot(q[i + 1].x - q[i].x, q[i + 1].y - q[i].y) / 3
+    const ta = i === 0 ? t0 : unit(q[i - 1], q[i + 1])
+    const tb = i === q.length - 2 ? t1 : unit(q[i], q[i + 2])
+    path.curve(new Point(q[i].x + ta.x * d, q[i].y + ta.y * d), new Point(q[i + 1].x - tb.x * d, q[i + 1].y - tb.y * d), new Point(q[i + 1].x, q[i + 1].y))
+  }
+  return path
+}
+
+const waistOf = (Path, Point, c) => through(Path, Point, c.waist, leftward(c.right), leftward(c.left))
+const hemOf = (Path, Point, c) => through(Path, Point, c.hem, rightward(c.left), rightward(c.right))
+/** Square to an edge running down the piece: toward CB, toward CF */
+const leftward = (e) => {
+  const d = unit(e.S, e.H)
+  return { x: -d.y, y: d.x }
+}
+const rightward = (e) => {
+  const d = unit(e.S, e.H)
+  return { x: d.y, y: -d.x }
+}
+
+/**
+ * Mitchell's two-piece circular skirt on Sarah's base. The half skirt is a fan of straight lines
+ * (`flare`, as `skirtLayout`'s), its CF upright and a side line `frontShare` of the half seat from
+ * CF. The back is divided in three, and one more line goes on the front as far from
+ * the side line as the first back line. Each of the four is slashed up to `hinge` (mm) above the
+ * seat line and spread there: `spreadFront`, `spreadSide` and `spreadBack` (mm at the hem of a
+ * floor-length skirt; a shorter skirt spreads in proportion). So the waist above each slash folds
+ * away. The side seam runs down the middle of the side slash's spread, and what the waist still
+ * has too much goes in a dart on that seam, leaving the front `waistShift` (mm) less than a quarter
+ * waist and the back that much more. Store: `skirt.circular` ({ front, back }: each piece's
+ * `waist`, `hem`, `left` and `right` edges), `skirt.waist`, `skirt.count` (two, so the design's
+ * other gores are left out).
+ */
+export function draftCircularLayout(sh, { frontShare, hinge, spreadFront, spreadSide, spreadBack, flare, frontDrop, waistShift }) {
+  const { points, measurements, store, part, Path, Point } = sh
+  cleanup(sh)
+  const S = points.cfSeat.x - points.cbSeat.x
+  const Wh = store.get('sarah.waistlineEased') / 2
+  const hS = points.cbSeat.y - points.cbTop.y
+  const L = store.get('sarah.length')
+  const below = Math.max(measurements.waistToFloor - hS, 1)
+  const r = below / Math.max(flare, 0.001) // the radius of the seat line's arc about the fan's apex
+  const drop = (x) => frontDrop * ease(Math.min(1, Math.max(0, x / S)))
+  // A line of the fan, x along the seat line's arc from CB: waist, hinge, seat, hem, each a set
+  // distance along it, so all three lines are arcs about the apex, as Mitchell's foundation (p. 87)
+  const line = (x) => {
+    const u = { x: -Math.sin((S - x) / r), y: Math.cos((S - x) / r) }
+    const at = (t) => ({ x: S + u.x * (r + t), y: hS - r + u.y * (r + t) })
+    return { W: at(drop(x) - hS), G: at(-hinge), S: at(0), H: at(L - hS) }
+  }
+  const xSide = S * (1 - frontShare)
+  const cf = line(S)
+  const lf = line(xSide + xSide / 3)
+  const ls = line(xSide)
+  const l1 = line((xSide * 2) / 3)
+  const l2 = line(xSide / 3)
+  const cb = line(0)
+  const R = below + hinge
+  const spread = (T, l, w) => (p) => turn(T(p), T(l.G), w / R)
+  // One transform per panel, from CF toward CB; `T1half` is the middle of the side slash
+  const T0 = (p) => p
+  const T1 = spread(T0, lf, spreadFront)
+  const T1half = spread(T1, ls, spreadSide / 2)
+  const T2 = spread(T1, ls, spreadSide)
+  const T3 = spread(T2, l1, spreadBack)
+  const T4 = spread(T3, l2, spreadBack)
+  const mid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 })
+  const edgeBy = (T, l) => ({ W: T(l.W), S: T(l.S), H: T(l.H) })
+
+  const side = edgeBy(T1half, ls)
+  const G = T1half(ls.G)
+  const d = unit(G, side.H)
+  const frontWaist = [cf.W, mid(T0(lf.W), T1(lf.W))]
+  const backWaist = [mid(T2(l1.W), T3(l1.W)), mid(T3(l2.W), T4(l2.W)), T4(cb.W)]
+  const polyLength = (pts) => pts.slice(1).reduce((t, p, i) => t + Math.hypot(p.x - pts[i].x, p.y - pts[i].y), 0)
+  const f = polyLength([...frontWaist, side.W])
+  const b = polyLength([side.W, ...backWaist])
+  const h = Math.hypot(G.x - side.W.x, G.y - side.W.y)
+  // The pieces with the dart's legs at their waist ends. Sewn together, so the longer comes down
+  // to the other's length. Each waist is one curve, its length near the path through the slashes
+  const pieces = (legF, legB) => {
+    const legLength = Math.min(Math.hypot(h, legF), Math.hypot(h, legB))
+    const sideEdge = (dir, leg) => {
+      const t = h - Math.sqrt(Math.max(legLength ** 2 - leg ** 2, 1))
+      const W = { x: side.W.x + dir * d.y * leg + d.x * t, y: side.W.y - dir * d.x * leg + d.y * t }
+      const k = Math.hypot(G.x - W.x, G.y - W.y) / 3
+      return { W, cpW: { x: W.x + d.x * k, y: W.y + d.y * k }, cpG: { x: G.x - d.x * k, y: G.y - d.y * k }, G, S: side.S, H: side.H }
+    }
+    const left = sideEdge(1, legF)
+    const right = sideEdge(-1, legB)
+    return {
+      front: { waist: [cf.W, left.W], left, hem: [side.H, mid(T0(lf.H), T1(lf.H)), cf.H], right: { ...edgeBy(T0, cf), fold: true } },
+      back: { waist: [right.W, T4(cb.W)], left: edgeBy(T4, cb), hem: [T4(cb.H), mid(T3(l2.H), T4(l2.H)), mid(T2(l1.H), T3(l1.H)), side.H], right },
+    }
+  }
+  // The legs leave the waists at their measures, unless that opens one and laps the other
+  const dart = f + b - Wh
+  let legF = dart < 0 ? dart / 2 : Math.min(dart, Math.max(0, f - (Wh / 2 - waistShift)))
+  let legB = dart - legF
+  const waistLength = (c) => waistOf(Path, Point, c).length()
+  for (let i = 0; i < 3; i++) {
+    const { front, back } = pieces(legF, legB)
+    const over = waistLength(front) + waistLength(back) - Wh
+    legF += over / 2
+    legB += over / 2
+  }
+  const { front, back } = pieces(legF, legB)
+  // The back stands upright on its grain, the middle of its middle panel
+  const grain = line(xSide / 2)
+  const g = unit(T3(grain.G), T3(grain.H))
+  const up = (p) => turn(p, G, Math.atan2(g.x, g.y))
+  const upright = (v) => (Array.isArray(v) ? v.map(upright) : 'x' in v ? up(v) : Object.fromEntries(Object.entries(v).map(([k, q]) => [k, k === 'fold' ? q : upright(q)])))
+  const backUp = upright(back)
+  store.set('skirt.circular', { front, back: backUp })
+  store.set('skirt.waist', 2 * (waistLength(front) + waistLength(backUp)))
+  store.set('skirt.count', 2)
+  return part.hide()
+}
+
+/** An edge of a circular skirt's piece, from the waist to the hem */
+function circularEdge(Path, Point, e) {
+  const pt = (q) => new Point(q.x, q.y)
+  const path = new Path().move(pt(e.W))
+  return e.G ? path.curve(pt(e.cpW), pt(e.cpG), pt(e.G)).line(pt(e.H)) : path.line(pt(e.H))
+}
+
+/**
+ * A circular skirt's `which` piece: the front (on the fold) or the back (cut 2). `zip` (mm) notches
+ * the back's CB. Store: `skirt.seams.<which>` (side, waist, hem).
+ */
+export function circularPart({ name, after, which, nr, zip = () => 0 }) {
+  return {
+    name,
+    after,
+    draft: (sh) => {
+      const { points, paths, Path, Point, Snippet, snippets, store, sa, macro, part } = sh
+      const c = store.get('skirt.circular')[which]
+      const hemDepth = store.get('sarah.hem')
+      const L = circularEdge(Path, Point, c.left)
+      const R = circularEdge(Path, Point, c.right)
+      const waist = waistOf(Path, Point, c)
+      const hem = hemOf(Path, Point, c)
+      paths.seam = waist.join(L).join(hem).join(R.reverse()).close().addClass('fabric')
+      if (sa) {
+        const parts = [waist.offset(sa), L.offset(sa), hem.offset(hemDepth), c.right.fold ? R.reverse() : R.reverse().offset(sa)]
+        let out = null
+        for (const p of parts) out = out ? out.line(p.start()).join(p) : p
+        paths.sa = out.close().addClass('fabric sa')
+      }
+      const sideEdge = which === 'front' ? c.left : c.right
+      points.seat = new Point(sideEdge.S.x, sideEdge.S.y)
+      snippets.seat = new Snippet('notch', points.seat)
+      const z = zip(sh)
+      if (z > 0) {
+        points.zip = L.shiftAlong(Math.min(z, L.length() * 0.6))
+        snippets.zip = new Snippet('notch', points.zip)
+      }
+      const midX = (c.left.S.x + c.right.S.x) / 2
+      const top = Math.max(c.left.W.y, c.right.W.y)
+      if (which === 'front') {
+        macro('cutonfold', { from: new Point(c.right.W.x, c.right.W.y + 20), to: new Point(c.right.H.x, c.right.H.y - 20), grainline: true })
+        store.cutlist.setCut({ cut: 1, from: 'fabric', onFold: true })
+      } else {
+        macro('grainline', { from: new Point(midX, top + 40), to: new Point(midX, Math.min(c.left.H.y, c.right.H.y) - 40) })
+        store.cutlist.setCut({ cut: 2, from: 'fabric' })
+      }
+      const seams = store.get('skirt.seams', null) ?? {}
+      seams[which] = { side: circularEdge(Path, Point, sideEdge).length(), waist: waist.length(), hem: hem.length() }
+      store.set('skirt.seams', seams)
+      title(macro, { at: new Point(midX, (sideEdge.S.y + sideEdge.H.y) / 2), nr, title: which, scale: 0.5 })
+      return part
+    },
+  }
+}
+
 /**
  * A divided skirt's half (Pivnick's culotte, 1949): a three-gore layout's front panel
  * (`which: 'front'`) or back gore (`'back'`), its CF (or CB) edge carried down to `crotch` (mm

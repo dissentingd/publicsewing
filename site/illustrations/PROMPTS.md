@@ -710,6 +710,25 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > the sleeve, set-in or puffed sleeves, a gusset showing, a belt, buttons below the waist, pockets, a wrap front, Japanese kimono
 > styling (obi, wide hanging sleeves), a person.
 
+### circular-skirt: Circular skirt
+> **No seam across the skirt, no darts on the front, and no gathers or pleats at the waist.** A women's **circular skirt**
+> in plain mid-weight wool (charcoal, navy or camel), **below the knee**. **Close and smooth from the waistband
+> over the hips**, then falling in **soft, rounded folds from just below the hips to a very wide hem**, the most fullness
+> at the back. One plain seam down each side. A **plain narrow waistband**; a zip at the centre back (not shown).
+> Shown flat on an invisible form, front view, the hem a wide even curve.
+>
+> Leave out: gathers, pleats, a yoke, a seam across the hips, a front opening, buttons, pockets, belt loops, a belt, a
+> petticoat showing, a pattern on the cloth, a person.
+
+### circular-skirt.wide: Circular skirt, extra wide
+> **No seam across the skirt, and no gathers or pleats at the waist.** The same women's **circular skirt** in plain
+> mid-weight wool, below the knee, **close over the hips**, but **twice as full below them: deep rolling folds all round to
+> a very wide hem**. One plain seam down each side. A plain narrow waistband. Shown
+> flat on an invisible form, front view.
+>
+> Leave out: gathers, pleats, a yoke, a seam across the hips, a front opening, buttons, pockets, belt loops, a belt, a
+> petticoat showing, a pattern on the cloth, a person.
+
 *Current image has five buttons; the pattern has four.*
 
 ### chore-coat: Chore coat

@@ -1,0 +1,68 @@
+# Circular skirt: Mitchell 1921's "Two-Piece Circular Skirt" (pp. 110-113) on FreeSewing's Sarah
+# through the two-piece skirt: "a tight waist and hip line and a very wide bottom", the foundation
+# slashed along four lines up to 1 in above the hip line and spread at the bottom, the waist folding
+# away above the slashes, the rest in a dart on the side seam; a front on the fold and a back with
+# a CB seam and zip. See BRIEF.md.
+extends: ../two-piece-skirt/spec.yaml
+
+about:
+  id: circular-skirt
+  name: Circular skirt
+  category: skirts
+  description: A skirt close at the waist and hips and very wide at the hem, in two pieces, with a CB zip and a waistband
+  difficulty: 2
+  tags: [bottoms]
+  techniques: [zip, waistband, hem]
+  version: 0.1.0
+  source: Mitchell, Ladies' Tailor-Made Garments (1921), two-piece circular skirt, pp. 110-113 (newstandardworko00mitc)
+  preview: cisFemaleAdult36
+
+options:
+  # The side line, p. 111: 9 in of the 20 in half hip, from CF (as the two-piece skirt's p. 86: 1/2 the line 4-7 less 1 in)
+  panelShare: { pct: 45, min: 35, max: 55, menu: style }
+  # The foundation, p. 111: hip 20 in, bottom 34 in
+  goreFlare:
+    pct: 70
+    min: 0
+    max: 120
+    menu: style
+    description: Width added at the hem of a floor-length skirt before it is spread, as a share of the half seat; a shorter skirt in proportion.
+  # p. 110: slashed to "about 1 inch above the hip line", x waist to seat (7 in)
+  slashHinge: { pct: 14, min: 5, max: 40, menu: advanced }
+  # p. 112, x the 40 in hip: 2 in at the front, 3 in at the side seam, 4 in in each of the two back cuts
+  spreadFront: { pct: 5, min: 0, max: 15, of: seat, menu: style }
+  spreadSide: { pct: 7.5, min: 0, max: 20, of: seat, menu: style }
+  spreadBack: { pct: 10, min: 0, max: 25, of: seat, menu: style }
+  # p. 112: 1/4 waist less 3/8 in for the front, plus 3/8 in for the back, x the 26 1/2 in waist (p. 84)
+  waistShift: { pct: 1.4, min: 0, max: 4, of: waist, menu: advanced }
+  length: { pct: 70 } # x waist to floor: below the knee (Mitchell's is near the floor)
+  # The two-piece skirt's shaping, which the spreads and the dart replace (no menu: not shown)
+  gores: { menu: false }
+  cbShaping: { menu: false }
+  panelShaping: { menu: false }
+  panelNarrowing: { menu: false }
+
+pieces:
+  layout:
+    from: sarah.base
+    hide: tree
+    options: all
+    ops:
+      - circularLayout:
+          frontShare: panelShare
+          hinge: waistToSeat * slashHinge
+          spreadFront: seat * spreadFront
+          spreadSide: seat * spreadSide
+          spreadBack: seat * spreadBack
+          flare: goreFlare
+          frontDrop: waistToSeat * frontWaistDrop
+          waistShift: waist * waistShift
+  frontPanel: { part: circular, which: front, after: layout, nr: 1 }
+  gore1: { part: circular, which: back, after: layout, nr: 2, zip: waistToSeat * zipLength }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  wide:
+    name: Extra wide
+    description: "Twice Mitchell's spread at every slash: still least at the front and most at the back, as the rule asks, for a hem that falls in deep folds."
+    options: { spreadFront: 0.1, spreadSide: 0.15, spreadBack: 0.2 }

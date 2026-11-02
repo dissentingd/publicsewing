@@ -56,7 +56,7 @@ import { bent } from '../blocks/bent.mjs'
 import { titan } from '../blocks/titan.mjs'
 import { breanna } from '../blocks/breanna.mjs'
 import { sarah } from '../blocks/sarah.mjs'
-import { draftSkirtLayout, gorePart, culottePart } from './skirt.mjs'
+import { draftSkirtLayout, gorePart, culottePart, draftCircularLayout, circularPart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
@@ -122,6 +122,8 @@ export const operations = {
   },
   // Gored skirt (lib/skirt.mjs): the gores laid out on Sarah's base, into `skirt.*`
   skirtLayout: { run: draftSkirtLayout },
+  // Circular skirt (lib/skirt.mjs): a fan slashed and spread from above the seat line, into `skirt.circular`
+  circularLayout: { run: draftCircularLayout },
   // Change the piece's cutting (e.g. a waistcoat back cut twice from lining)
   cutlist: {
     run: ({ store }, { cut, from, onFold = false }) => store.cutlist.setCut({ cut, from, onFold }),
@@ -289,6 +291,15 @@ const factories = {
       which: p.which,
       nr: p.nr,
       size: (sh) => evalMap({ crotch: p.crotch, ext: p.ext }, lookupIn(sh, ctx.block, {}), {}),
+      zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
+    }),
+  // A circular skirt's front or back (`which`), from circularLayout: `zip`
+  circular: (p, ctx) =>
+    circularPart({
+      name: p.name,
+      after: ctx.after(p),
+      which: p.which,
+      nr: p.nr,
       zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
     }),
   // `material` (default fabric); `lining:` an expression over options, when true it's cut in lining too
