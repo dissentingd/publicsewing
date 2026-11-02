@@ -231,3 +231,10 @@ pieces:
   backLining: { part: backLining, from: back, nr: 18, width: neck * neckFacingWidth, pleat: chest * liningPleat, if: "lining and (collarStyle == 'ulster' or collarStyle == 'shawl')" }
   backBelt: { part: belt, after: [back, front], piece: back, nr: 10, if: belt }
   frontBelt: { part: belt, after: [back, front], piece: front, nr: 11, if: belt }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  shawl:
+    name: Shawl collar
+    description: "Simons' other mackinaw collar: the collar cut in one with the front and rolling down to the top button, with no notch and no separate collar piece."
+    options: { collarStyle: shawl }

@@ -689,3 +689,14 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a second row of buttons, a belt, patch pockets, epaulettes, gold buttons, a hood, a
 > person.
+
+### mackinaw.shawl: Mackinaw, shawl collar
+> A heavy **wool plaid** work jacket (large buffalo or tartan check, e.g. red and black, or
+> green and black). **Double-breasted**: **two rows of three buttons**, wide overlap. A **shawl
+> collar**: one smooth, wide roll from the back of the neck down each front to the top button,
+> with **no notch and no seam across it**. Length to **mid-thigh**, square corners. A **wide
+> self-fabric belt** at the waist. **Four patch pockets with rounded bottoms and flaps**: two at
+> the breast, two below the belt. Plain set-in sleeves, hemmed. Shown flat, front view.
+>
+> Leave out: a notch or lapel step, a fur collar, single-breasted fronts, zips, cuffs, a hood, a
+> person.
