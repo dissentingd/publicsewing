@@ -16,6 +16,7 @@ function yokes(pattern) {
 
 testCoat('windbreaker', Windbreaker, 'windbreaker.frontBase', {
   default: {},
+  noHood: { hood: false },
   collar: { hood: false, handPockets: false },
   sloped: { frontYokeDepth: 0.72, frontYokeArm: 0.36, hoodDrawstring: false, lengthBelowWaist: 1.6 },
 }, yokes)

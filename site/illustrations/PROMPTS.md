@@ -833,3 +833,14 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: lapels, set-in sleeves, a belt, double-breasted fronts, flap or patch pockets,
 > epaulettes, fur or velvet collar, cuff straps, a person.
+
+### windbreaker.no-hood: Windbreaker, no hood
+> A light, hip-length **zip-front jacket** in plain tightly woven cotton or poplin (olive, navy
+> or stone). Straight, roomy body, hem level all round, drawn in a little at the sides by
+> **elastic in the hem**. A **front zip from hem to neck**, its teeth showing between the two
+> fronts (shown zipped up), up to a **plain stand collar**. A **front yoke seam** straight across
+> each side of the chest and a **back yoke**, both topstitched. **Two slanted welt pockets** in the
+> lower front. Plain set-in sleeves, **gathered by elastic at the wrists**. Shown flat, front view.
+>
+> Leave out: a hood, a turn-down collar, buttons, snaps, a storm flap, patch or chest pockets,
+> quilting, logos, contrast panels, a person.

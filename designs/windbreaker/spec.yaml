@@ -133,3 +133,10 @@ pieces:
 
   handWelt: { part: welt, after: frontBase, key: hand, store: coat.welts, nr: 9, if: handPockets }
   handBag: { part: weltBag, after: frontBase, key: hand, store: coat.welts, nr: 10, if: handPockets }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  no-hood:
+    name: No hood
+    description: "A plain stand collar around the neck in place of the hood."
+    options: { hood: false }
