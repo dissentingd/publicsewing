@@ -36,3 +36,10 @@ options:
   breastPockets: { bool: false }
   lowerPockets: { bool: false }
   handPockets: { bool: true } # the slanted welt on p. 29, waist to hip line
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  shawl:
+    name: Shawl collar
+    description: "A smooth roll cut in one with the front, from the back of the neck to the top button, in place of the notched lapels and deep collar."
+    options: { collarStyle: shawl }

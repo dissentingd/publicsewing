@@ -33,6 +33,7 @@ testCoat(
   'mackinaw.front',
   {
     default: {},
+    shawlCollar: { collarStyle: 'shawl' },
     military: { collarStyle: 'military', buttons: 4 },
     raglan: { sleeveStyle: 'raglan', collarStyle: 'convertible' },
     plain: { handPockets: false, lengthBelowWaist: 1.2, vent: false, lining: false },

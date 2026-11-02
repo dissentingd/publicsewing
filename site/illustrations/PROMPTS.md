@@ -721,3 +721,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > the waist. **Four patch pockets with rounded bottoms and flaps**. Shown flat, front view.
 >
 > Leave out: set-in sleeves, a shoulder seam, single-breasted fronts, zips, cuffs, a hood, a person.
+
+### peacoat.shawl: Peacoat, shawl collar
+> A **hip-length, double-breasted** coat in heavy navy wool (melton). **Two rows of three
+> buttons**, widely spaced. A **wide shawl collar**: one smooth roll from the back of the neck
+> down each front to the top button, with **no notch and no seam across it**. **Two slanted welt
+> hand-warmer pockets** at hand height. Plain set-in sleeves. Square front corners. Shown flat,
+> front view.
+>
+> Leave out: a notch or lapel step, a belt, patch pockets, epaulettes, gold or anchor buttons, long
+> length, a person.
