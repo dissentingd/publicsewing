@@ -802,3 +802,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: pleats from the waist, side pleats all turned one way, a kilt pin or fringe, plaid,
 > pockets, belt loops, a belt, a person.
+
+### breeches.front: Breeches, front buttoning
+> A pair of men's **riding breeches** in khaki cord, whipcord or tan twill. **Full over the seat
+> and flaring out wide at the sides of the thigh**, then **fitted closely from the knee to the
+> calf**, ending in a **narrow cuff at mid-calf**. **A row of seven small buttons down the front of
+> each shin**, from just below the knee to the cuff. A **waistband with belt loops**, a fly front,
+> side pockets. Shown flat, front view, as breeches alone.
+>
+> Leave out: buttons on the outside of the leg, boots, leather knee patches, laces, a stripe down the
+> leg, straight legs, a belt, a person.

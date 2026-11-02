@@ -116,3 +116,10 @@ pieces:
     cut: 2
     length: trousers.front.opening + 20
     width: 40
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  front:
+    name: Front buttoning
+    description: "Simons' alternative: the seam below the knee moved forward, so that the buttons run down the front of the shin rather than the outside of the leg."
+    options: { breechesOpening: front }
