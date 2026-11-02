@@ -1,5 +1,6 @@
 // Every design's `variants` (shown on its page): each option is one the pattern tool shows, with a
-// value it can take, and the variant drafts cleanly at every size.
+// value it can take, each setting changes what's drafted, and the variant drafts cleanly at every
+// size.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { existsSync, readdirSync } from 'node:fs'
@@ -9,6 +10,18 @@ import { sets, checkClean } from './coat-checks.mjs'
 
 const root = new URL('../', import.meta.url)
 const designs = readdirSync(root).filter((d) => existsSync(new URL(`${d}/spec.yaml`, root)))
+
+/** What a draft shows: the visible pieces' lines and snippets */
+function drawn(Design, measurements, options) {
+  const out = {}
+  for (const [k, part] of Object.entries(new Design({ measurements, sa: 10, complete: true, options }).draft().parts[0])) {
+    if (part.hidden) continue
+    const paths = Object.entries(part.paths).filter(([, p]) => !p.hidden).map(([n, p]) => [n, p.asPathstring()])
+    const snippets = Object.entries(part.snippets).map(([n, s]) => [n, s.def, s.anchor.x, s.anchor.y])
+    out[k] = { paths, snippets }
+  }
+  return JSON.stringify(out)
+}
 
 for (const d of designs) {
   const file = new URL(`${d}/spec.yaml`, root)
@@ -27,6 +40,17 @@ for (const d of designs) {
       }
     })
     const { Design } = loadSpec(fileURLToPath(file))
+    // A setting can do nothing while another holds it off (`if:` in a spec): raglan sleeves under
+    // the mackinaw's ulster collar. So each has to matter with the variant's other settings in place.
+    test(`variant ${d}.${key}: each setting changes the draft`, () => {
+      const measurements = sets[Design.designConfig.data?.preview ?? 'cisMaleAdult38']
+      const full = drawn(Design, measurements, v.options)
+      assert.notEqual(full, drawn(Design, measurements, {}), 'drafts the same as the design')
+      for (const name of Object.keys(v.options)) {
+        const { [name]: _, ...rest } = v.options
+        assert.notEqual(full, drawn(Design, measurements, rest), `${name} changes nothing`)
+      }
+    })
     for (const [name, measurements] of Object.entries(sets)) {
       test(`variant ${d}.${key}: ${name}`, () => {
         checkClean(new Design({ measurements, sa: 10, options: v.options }).draft())
