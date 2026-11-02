@@ -46,3 +46,10 @@ pieces:
   sleeveBand: { name: cuff, part: sleeveBand, after: sleeve, nr: 6 }
   neckBand: { name: collar, part: neckBand, after: [backBase, frontBase], nr: 8 }
   sleevePlacket: { part: sleevePlacket, after: sleeve, nr: 9, width: 0.2 }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  short-sleeves:
+    name: Short sleeves
+    description: "Short sleeves ending in a deep band, in place of the long ones with their cuffs, for warm weather."
+    options: { sleeves: short }

@@ -896,3 +896,12 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a stand or shirt collar, buttons below the chest, a belt or sash, darts or a fitted
 > waist, pockets, gathers, prints or trim, a person.
+
+### shirtwaist-dress.short-sleeves: Shirtwaist dress, short sleeves
+> A women's **buttoned work dress** in plain cotton (chambray or gingham), about 1915. An easy
+> **bodice to a waist seam**, **buttoned down the front** with **six buttons**, and a **turn-down
+> collar**. A **gathered skirt** to **mid-calf**. **Short sleeves ending in a deep band above the elbow**.
+> Shown flat, front view.
+>
+> Leave out: long sleeves, deep cuffs, a belt or sash, lace, a tucked-in separate blouse, a short
+> skirt, puffed shoulders, a person.
