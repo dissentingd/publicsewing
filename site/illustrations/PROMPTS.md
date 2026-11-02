@@ -8,6 +8,8 @@ entry here.
 
 Save each image as `site/illustrations/<design>.jpg` (square, at least 1024 px).
 
+**To make next: the last section of this file**, which holds every prompt still waiting for an image.
+
 ## Shared style (prepend to every prompt)
 
 > A single garment drawn as a vintage technical fashion illustration: ink line drawing with
@@ -640,67 +642,6 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: pleats, pockets, belt loops, a belt, a fly front, cuffs, cropped wide-leg trouser
 > styling, a person.
 
-### shirt: Shirt
-> A men's **classic long-sleeved shirt** in plain white or pale blue cotton poplin, cut
-> **easy, not fitted**, to **below the hips** with the front corners rounded. **Buttoned all
-> down the front** with seven small buttons on a narrow plain placket. A **collar on a stand**
-> (a band round the neck with a pointed turn-down collar sewn to it), buttoned at the throat.
-> **One plain patch pocket on the left breast**, no flap. **Long sleeves pleated into buttoned
-> barrel cuffs**, a short bound opening above each cuff. A **straight yoke across the back
-> shoulders** (seen over the shoulder). Shown flat, front view.
->
-> Leave out: a tie, epaulettes, a second pocket, pocket flaps, French cuffs or cufflinks, a
-> button-down collar, darts, a contrasting collar, a person.
-
-### pleated-skirt: Pleated skirt
-> A women's **pleated skirt** in mid-weight wool (charcoal, navy or camel), **just below the
-> knee**. **Smooth and fitted from the waistband over the hips**, with fine seams, then **eleven
-> crisp side pleats all turned the same way** falling from the hip line to the hem, the skirt
-> gently flared. A **plain narrow waistband**; a zip at the centre back (not shown). Shown flat,
-> front view.
->
-> Leave out: pleats from the waist, a kilt pin or fringe, plaid, pockets, belt loops, a belt, a
-> person.
-
-### kimono-dress: Kimono dress
-> A women's **day dress** in plain cotton or rayon (rust, teal or navy), **below the knee**. The
-> **short sleeves are cut in one with the bodice**: no armhole seam, the shoulder running
-> smoothly down into a wide sleeve ending above the elbow, with soft folds under the arm. A
-> **turn-down collar**, **five buttons down the front of the bodice** to a **waist seam**, and a
-> **slightly gathered skirt**, gently flared. Shown flat, front view.
->
-> Leave out: an armhole seam, set-in or puffed sleeves, a gusset showing, a belt, buttons below
-> the waist, pockets, a wrap front, Japanese kimono styling (obi, wide hanging sleeves), a person.
-
-### womens-peacoat.peak: Women's peacoat, peaked lapels
-> A women's **hip-length, double-breasted** coat in heavy navy wool, **shaped to the waist by
-> princess seams** and flaring a little over the hips. **Two rows of three buttons**. **Wide
-> peaked lapels, their points turned upward**, turning at the bust, under a **deep turn-down
-> collar**. **A flap pocket set into each hip**. **Two-piece sleeves**. Lined. Shown flat, front view.
->
-> Leave out: notched lapels, a belt, patch pockets, epaulettes, gold or anchor buttons, a hood, a
-> person.
-
-### womens-peacoat.single: Women's peacoat, single-breasted
-> A women's **hip-length, single-breasted** coat in heavy navy wool, **shaped to the waist by
-> princess seams** and flaring a little over the hips. **One row of four buttons** down a narrow
-> lap. **Wide peaked lapels** turning at the bust, under a **deep turn-down collar**. **A flap
-> pocket set into each hip**. **Two-piece sleeves**. Lined. Shown flat, front view.
->
-> Leave out: a second row of buttons, a belt, patch pockets, epaulettes, gold buttons, a hood, a
-> person.
-
-### mackinaw.shawl: Mackinaw, shawl collar
-> A heavy **wool plaid** work jacket (large buffalo or tartan check, e.g. red and black, or
-> green and black). **Double-breasted**: **two rows of three buttons**, wide overlap. A **shawl
-> collar**: one smooth, wide roll from the back of the neck down each front to the top button,
-> with **no notch and no seam across it**. Length to **mid-thigh**, square corners. A **wide
-> self-fabric belt** at the waist. **Four patch pockets with rounded bottoms and flaps**: two at
-> the breast, two below the belt. Plain set-in sleeves, hemmed. Shown flat, front view.
->
-> Leave out: a notch or lapel step, a fur collar, single-breasted fronts, zips, cuffs, a hood, a
-> person.
-
 ### mackinaw.military: Mackinaw, military collar
 > A heavy **wool plaid** work jacket (large buffalo or tartan check, e.g. red and black, or
 > green and black). **Double-breasted**: **two rows of four buttons**, wide overlap, closed to
@@ -741,26 +682,6 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: lapels, pointed collar ends, a belt, patch pockets, epaulettes, gold or anchor buttons,
 > long length, a person.
 
-### balmacaan.one-piece: Balmacaan, one-piece sleeve
-> A **loose, full men's overcoat** in heavy tweed or plain wool (brown, olive or grey
-> herringbone), **to just below the knee**, flaring to a wide, full hem. **Raglan sleeves in one
-> piece**: a seam from the neck down to under the arm, front and back, a **short seam on top of the
-> shoulder that stops at the shoulder point**, and **no seam down the arm**. A **standing (military)
-> collar**, **four buttons** in one row to the throat. **Two slanted welt hand-warmer pockets**.
-> Shown flat, front view.
->
-> Leave out: a seam down the arm, lapels, a turn-down collar, a belt, double-breasted
-> fronts, patch or flap pockets, set-in sleeves, epaulettes, cuff straps, a person.
-
-### balmacaan.set-in: Balmacaan, set-in sleeves
-> A **loose, full men's overcoat** in heavy tweed or plain wool (brown, olive or grey
-> herringbone), **to just below the knee**, flaring to a wide, full hem. **Plain set-in sleeves**
-> with a **shoulder seam** and an armhole seam. A **standing (military) collar**, **four buttons**
-> in one row to the throat. **Two slanted welt hand-warmer pockets**. Shown flat, front view.
->
-> Leave out: raglan seams, lapels, a turn-down collar, a belt, double-breasted fronts, patch or flap
-> pockets, epaulettes, cuff straps, a person.
-
 ### tailored-jacket.notch: Tailored jacket, notched lapels
 > A women's **semi-fitted tailored jacket** in fine wool suiting (grey, navy or tweed).
 > **Princess seams** shape it to the waist; length to the **high hip**. Single-breasted, **three
@@ -783,36 +704,6 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: notched lapels, a belt, waist shaping, patch pockets, fur, double-breasted fronts, a
 > person.
 
-### girls-coat.double: Girls' coat, double-breasted
-> A **girl's loose coat** (about 8 years old) in plain wool cloth (red, navy or camel), **to just
-> below the knee**. **Straight, unfitted body** that **flares a little from the arms to the
-> hem**. **Double-breasted: two rows of three buttons** on a wide lap, under a **notched lapel**
-> and turn-down collar. **One flap pocket set into each hip**. **Two-piece sleeves**. Child's
-> proportions: short body, narrow shoulders. Shown flat, front view.
->
-> Leave out: a single row of buttons, a belt, a waist seam, gathers, patch pockets, a ticket pocket,
-> fur or velvet collar, a hood, frills, a person.
-
-### pleated-skirt.box: Pleated skirt, box pleats
-> A women's **pleated skirt** in mid-weight wool (charcoal, navy or camel), **just below the
-> knee**. **Smooth and fitted from the waistband over the hips**, with fine seams, then **crisp box
-> pleats**, each a flat panel with its two folds turned toward each other behind it, falling from
-> the hip line to the hem, the skirt gently flared. A **plain narrow waistband**. Shown flat, front
-> view.
->
-> Leave out: pleats from the waist, side pleats all turned one way, a kilt pin or fringe, plaid,
-> pockets, belt loops, a belt, a person.
-
-### breeches.front: Breeches, front buttoning
-> A pair of men's **riding breeches** in khaki cord, whipcord or tan twill. **Full over the seat
-> and flaring out wide at the sides of the thigh**, then **fitted closely from the knee to the
-> calf**, ending in a **narrow cuff at mid-calf**. **A row of seven small buttons down the front of
-> each shin**, from just below the knee to the cuff. A **waistband with belt loops**, a fly front,
-> side pockets. Shown flat, front view, as breeches alone.
->
-> Leave out: buttons on the outside of the leg, boots, leather knee patches, laces, a stripe down the
-> leg, straight legs, a belt, a person.
-
 ### barbers-coat.open: Barber's coat, open neck
 > A **white** cotton service coat, crisp and clean. Single-breasted, **four buttons**, the top one
 > on the upper chest, and **above it the neck open in a plain V with no collar and no lapels**.
@@ -821,18 +712,6 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > bottoms**. Plain set-in sleeves, hemmed. Shown flat, front view.
 >
 > Leave out: a collar of any kind, lapels, cuffs, colour, pocket flaps, a person.
-
-### overcoat.raglan: Overcoat, raglan sleeves and military collar
-> A conservative men's **single-breasted overcoat** in heavy plain wool (charcoal, navy or
-> camel), **to just below the knee**. Straight body with a little ease at the waist, the side
-> seams flaring very slightly to the hem; square front corners. **Raglan sleeves**: a seam from
-> the neck down to under the arm, front and back, with no shoulder seam, and another along the
-> top of the arm. A **deep collar with square ends, standing high**, with no lapels. **Four
-> buttons** in one row from just under the collar to below the waist, closed to the throat. **Two
-> slanted welt hand-warmer pockets** at hand height. Unlined. Shown flat, front view.
->
-> Leave out: lapels, set-in sleeves, a belt, double-breasted fronts, flap or patch pockets,
-> epaulettes, fur or velvet collar, cuff straps, a person.
 
 ### windbreaker.no-hood: Windbreaker, no hood
 > A light, hip-length **zip-front jacket** in plain tightly woven cotton or poplin (olive, navy
@@ -844,30 +723,6 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a hood, a turn-down collar, buttons, snaps, a storm flap, patch or chest pockets,
 > quilting, logos, contrast panels, a person.
-
-### quilted-jacket.no-hood: Quilted jacket, no hood
-> A hip-length **insulated work jacket** in plain sturdy cotton twill (navy, khaki or dark
-> green), padded with a quilted lining, so it looks **smooth and a little puffy**, not stitched in
-> diamonds or channels on the outside. Single-breasted, **seven buttons** on a **wide button
-> stand**, **buttoned right up to a plain stand collar**. A **front yoke seam that slopes up from
-> the front edge toward the shoulder**, and a **back yoke**, both topstitched. **Two slanted welt
-> pockets** in the lower front. Hem level all round, **elastic at the sides of the hem**; plain
-> set-in sleeves. Shown flat, front view.
->
-> Leave out: a hood, a turn-down collar, visible quilting stitches on the outside, a zip, patch or
-> chest pockets, fur trim, snaps, logos, a person.
-
-### winter-coat.hood: Winter coat, hooded
-> A **knee-length** men's winter overcoat in heavy plain wool (charcoal, navy or brown).
-> **Straight, unfitted** body, flaring very slightly to the hem. Single-breasted, **four buttons**
-> from just below the neck to the hips (no lapels). A **two-piece hood** joined over the crown and
-> sewn all round the neckline, with a **drawstring in the face edge** (shown down on the shoulders).
-> A **deep front yoke**: its seam runs across each side of the chest just above the armpit; and a
-> **shallow back yoke**, both seams topstitched. **One near-level welt pocket on each hip**. Plain
-> set-in sleeves, hemmed. Lined. Shown flat, front view.
->
-> Leave out: a collar, lapels, a belt, double-breasted fronts, patch or flap pockets, fur trim,
-> epaulettes, cuff tabs, a waist seam, a person.
 
 ### frock.long-sleeves: Frock, long sleeves
 > A simple child's **dress** (about 6 years old) in printed or plain cotton. A **bodice to the
@@ -906,35 +761,6 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: long sleeves, deep cuffs, a belt or sash, lace, a tucked-in separate blouse, a short
 > skirt, puffed shoulders, a person.
 
-### pinafore.sash: Pinafore, with sash
-> A child's **sleeveless pinafore** in white or checked cotton, worn over a dress; about 5 years
-> old. **Narrow yokes** at the shoulders front and back, the body **gathered** into them, falling
-> to the **knee**. **A flat band across the front at the waist**, holding the gathers in, its **two
-> sash ends tied in a bow at the back**. **Bound armholes** and a **bound neck**, no collar. Shown
-> flat, front view, the sash ends just visible at the sides.
->
-> Leave out: sleeves, frills, a bib with straps, pockets, a separate dress underneath, a person.
-
-### gored-skirt.nine: Gored skirt, 9 gores
-> A women's **long nine-gore skirt** in plain wool or linen (navy, grey, brown or cream), **nearly
-> to the floor**. Smooth and close over the hips, then **flaring evenly to a wide hem** in a soft
-> cone, the **seams running down from the waist to the hem**: a **narrow front panel** in the middle,
-> four narrow gores either side. A plain **narrow waistband**. Shown flat, front view, as the skirt
-> alone.
->
-> Leave out: pleats, gathers, a yoke, pockets, a slit, a train, a ruffle, buttons, a belt, a person, a
-> blouse.
-
-### gored-skirt.fifteen: Gored skirt, 15 gores
-> A women's **long fifteen-gore skirt** in plain wool or linen (navy, grey, brown or cream),
-> **nearly to the floor**. Smooth and close over the hips, then **flaring evenly to a wide hem** in a
-> soft cone, with **many fine seams running down from the waist to the hem**: a **slim front panel** in
-> the middle, seven slim gores either side, like the ribs of an umbrella. A plain **narrow waistband**.
-> Shown flat, front view, as the skirt alone.
->
-> Leave out: pleats, gathers, a yoke, pockets, a slit, a train, a ruffle, buttons, a belt, a person, a
-> blouse.
-
 ### pyjama-jacket.open: Pyjama jacket, open neck
 > A loose men's **pyjama (sleeping) jacket** in soft striped or plain cotton (white with blue or
 > grey stripes, or pale blue). Straight and unfitted, length to **below the seat**, the front hem a
@@ -967,3 +793,239 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a band collar, a button-through front, a front yoke, epaulettes, a second pocket, a pocket
 > flap, a person, trousers.
+
+## Illustrations needed (2026-11-02)
+
+These still need an image, or a new one. Save each as `site/illustrations/<heading's key>.jpg`.
+
+Rewritten after looking at the first attempts against the patterns. What went wrong most often: the wrong
+number of buttons, then seams, cuffs and bands the pattern doesn't have. So each rewritten prompt opens with
+what its last attempt got wrong, and names that mistake again under "Leave out". Before keeping an image,
+**count the buttons and panels** and compare them with the prompt. It has to be **square**, at least 1024 px:
+wide ones get cropped. No mannequin, hand or head showing.
+
+*Last attempt had four rows of buttons.*
+
+### mackinaw.shawl: Mackinaw, shawl collar
+> **Exactly three rows of buttons, two buttons to a row, six buttons in all**: the top pair just below
+> the point where the collar ends, one pair above the belt, one pair below it. A heavy **wool plaid**
+> work jacket (large buffalo or tartan check, e.g. red and black, or green and black).
+> **Double-breasted**, wide overlap. A **shawl collar**: one smooth, wide roll from the back of the neck
+> down each front to the top buttons, with **no notch and no seam across it**. Length to **mid-thigh**,
+> square corners. A **wide self-fabric belt** sewn on at the waist. **Four patch pockets with rounded
+> bottoms and flaps**: two at the breast, two below the belt. Plain set-in sleeves, hemmed. A straight,
+> roomy body.
+>
+> Leave out: a fourth row of buttons, a buckle or keeper on the belt, a notch or lapel step, a fur
+> collar, single-breasted fronts, zips, cuffs, a hood, a mannequin, a person.
+
+*Last attempt was herringbone, flared wide, with an open collar.*
+
+### overcoat.raglan: Overcoat, raglan sleeves and military collar
+> **A plain, solid wool with no visible weave pattern, and a straight body that hardly flares.** A
+> conservative men's **single-breasted overcoat** (charcoal, navy or camel), **to just below the knee**;
+> the side seams flare very slightly to the hem; square front corners. **Raglan sleeves**: a seam from the
+> neck down to under the arm, front and back, with no shoulder seam, and another along the top of the arm.
+> A **deep collar with square ends, standing straight up and closed at the throat**, with no lapels and no
+> fold-back. **Exactly four buttons** in one row from just under the collar to below the waist. **Two
+> slanted welt hand-warmer pockets** at hand height. Unlined. Both arms hanging straight down, empty.
+>
+> Leave out: herringbone, tweed, a full or flared skirt, an open or folded-back collar, lapels, set-in
+> sleeves, a fifth button, a hand in a pocket, a belt, double-breasted fronts, flap or patch pockets,
+> epaulettes, fur or velvet collar, cuff straps, a person.
+
+*Last attempt had a seam running down the arm to the wrist, and five buttons with a hand in the pocket.*
+
+### balmacaan.one-piece: Balmacaan, one-piece sleeve
+> **The top of each sleeve is smooth and unbroken from the shoulder point to the wrist, with no seam
+> down the arm.** A **raglan** sleeve: a seam runs from the neck down to under the arm, front and back,
+> and a **short seam on top of the shoulder stops at the shoulder point**. **Exactly four buttons** in one
+> row to the throat. A **loose, full men's overcoat** in heavy tweed or plain wool (brown, olive or grey
+> herringbone), **to just below the knee**, flaring to a wide, full hem. A **standing (military) collar**
+> with square ends. **Two slanted welt hand-warmer pockets**. Both arms hanging straight down, empty.
+>
+> Leave out: any seam along the arm, a fifth button, a hand or arm in a pocket, lapels, a turn-down
+> collar, a belt, double-breasted fronts, patch or flap pockets, set-in sleeves, epaulettes, cuff straps,
+> a person.
+
+*Not attempted yet.*
+
+### balmacaan.set-in: Balmacaan, set-in sleeves
+> A **loose, full men's overcoat** in heavy tweed or plain wool (brown, olive or grey
+> herringbone), **to just below the knee**, flaring to a wide, full hem. **Plain set-in sleeves**
+> with a **shoulder seam** and an armhole seam. A **standing (military) collar**, **four buttons**
+> in one row to the throat. **Two slanted welt hand-warmer pockets**. Shown flat, front view.
+>
+> Leave out: raglan seams, lapels, a turn-down collar, a belt, double-breasted fronts, patch or flap
+> pockets, epaulettes, cuff straps, a person.
+
+*Last attempt had eight buttons, two of them on the collar, plus cuffs and a hem band.*
+
+### quilted-jacket.no-hood: Quilted jacket, no hood
+> **Exactly seven buttons, all on the body of the jacket and none on the collar**, the top one just below
+> the collar. **No cuffs and no band at the hem**: the sleeves are plain and hemmed, and the hem is simply
+> turned up, drawn in a little at the sides by elastic inside it. A hip-length **insulated work jacket** in
+> plain sturdy cotton twill (navy, khaki or dark green), padded with a quilted lining, so it looks **smooth
+> and a little puffy**, not stitched in diamonds or channels on the outside. Single-breasted on a **wide
+> button stand**, buttoned up to a **plain low stand collar**. A **front yoke seam that slopes up from the
+> front edge toward the shoulder**, and a **back yoke**, both topstitched. **Two slanted welt pockets** in
+> the lower front. Plain set-in sleeves.
+>
+> Leave out: an eighth button, buttons or a strap on the collar, a covered placket, ribbed or banded cuffs,
+> a hem band, a hood, a turn-down collar, visible quilting stitches on the outside, a zip, patch or chest
+> pockets, fur trim, snaps, logos, a person.
+
+*Last attempt had five buttons and vertical pockets.*
+
+### winter-coat.hood: Winter coat, hooded
+> **Exactly four buttons**, from just below the neck to the hips, with none below the hips. **The two pockets
+> are near-level welts, almost horizontal**: one on each hip, running back from the front toward the side
+> seam and rising only slightly. A **knee-length** men's winter overcoat in heavy plain wool (charcoal, navy
+> or brown). **Straight, unfitted** body, flaring very slightly to the hem. Single-breasted, no lapels. A
+> **two-piece hood** joined over the crown and sewn all round the neckline, with a **drawstring in the face
+> edge** (shown down on the shoulders). A **deep front yoke**: its seam runs across each side of the chest just
+> above the armpit; and a **shallow back yoke**, both seams topstitched. Plain set-in sleeves, hemmed. Lined.
+>
+> Leave out: a fifth button, vertical or steeply slanted pockets, a collar, lapels, a belt, double-breasted
+> fronts, patch or flap pockets, fur trim, epaulettes, cuff tabs, a waist seam, a person.
+
+*Last attempt had a single row of four buttons.*
+
+### girls-coat.double: Girls' coat, double-breasted
+> **Double-breasted: exactly two parallel rows of buttons, three in each row, six buttons in all**, the
+> two rows set well apart either side of the centre. The right front laps widely over the left, its edge
+> running down beyond the centre. A **girl's loose coat** (about 8 years old) in plain wool cloth (red, navy
+> or camel), **to just below the knee**. **Straight, unfitted body** that **flares a little from the arms
+> to the hem**. A **notched lapel** and turn-down collar. **One flap pocket set level into each hip**.
+> **Two-piece sleeves**. Child's proportions: short body, narrow shoulders.
+>
+> Leave out: a single row of buttons, vertical pockets, a belt, a waist seam, gathers, patch pockets, a
+> ticket pocket, fur or velvet collar, a hood, frills, a person.
+
+*Not attempted yet.*
+
+### womens-peacoat.peak: Women's peacoat, peaked lapels
+> A women's **hip-length, double-breasted** coat in heavy navy wool, **shaped to the waist by
+> princess seams** and flaring a little over the hips. **Two rows of three buttons**. **Wide
+> peaked lapels, their points turned upward**, turning at the bust, under a **deep turn-down
+> collar**. **A flap pocket set into each hip**. **Two-piece sleeves**. Lined. Shown flat, front view.
+>
+> Leave out: notched lapels, a belt, patch pockets, epaulettes, gold or anchor buttons, a hood, a
+> person.
+
+*Not attempted yet.*
+
+### womens-peacoat.single: Women's peacoat, single-breasted
+> A women's **hip-length, single-breasted** coat in heavy navy wool, **shaped to the waist by
+> princess seams** and flaring a little over the hips. **One row of four buttons** down a narrow
+> lap. **Wide peaked lapels** turning at the bust, under a **deep turn-down collar**. **A flap
+> pocket set into each hip**. **Two-piece sleeves**. Lined. Shown flat, front view.
+>
+> Leave out: a second row of buttons, a belt, patch pockets, epaulettes, gold buttons, a hood, a
+> person.
+
+*Last attempt had six buttons and a seam across each knee.*
+
+### breeches.front: Breeches, front buttoning
+> **Exactly seven small buttons in a straight row down the centre of each shin**, from just below the
+> knee to the cuff. **No seam across the knee or calf**: each leg is one continuous piece from the thigh
+> down, with only the buttoned opening below the knee. A pair of men's **riding breeches** in khaki cord,
+> whipcord or tan twill. **Full over the seat and flaring out wide at the sides of the thigh**, then
+> **fitted closely from the knee to the calf**, ending in a **narrow cuff at mid-calf**. A **waistband with
+> belt loops**, a fly front, side pockets. Shown flat, front view, as breeches alone.
+>
+> Leave out: a seam or band at the knee, a separate legging or gaiter, six or eight buttons, buttons on the
+> outside of the leg, boots, leather knee patches, laces, a stripe down the leg, straight legs, a belt, a
+> person.
+
+*Last attempt had a smooth fitted bodice with the skirt gathered from the waist, like a dress.*
+
+### pinafore.sash: Pinafore, with sash
+> **There is no bodice and no waist seam. The fullness starts high up, at a narrow yoke across the top of the
+> chest, and falls loose in soft gathers all the way down, under the band.** A child's **sleeveless pinafore**
+> in white or checked cotton, worn over a dress; about 5 years old. **Narrow yokes** at the shoulders front and
+> back, only a few inches deep, the body **gathered** into them, falling to the **knee**. **A flat band sewn
+> across the front at the waist**, over the gathers, its **two sash ends tied in a bow at the back**, the ends
+> just visible at the sides. **Bound armholes** and a **bound neck**, no collar. A child's proportions. Shown
+> flat, front view.
+>
+> Leave out: a fitted or smooth bodice, a waist seam, a skirt gathered only from the waist, sleeves, frills, a
+> bib with straps, pockets, a separate dress underneath, a person.
+
+*Last attempt (this or the 15 gores, not clear which) had a seam down the centre front.*
+
+### gored-skirt.nine: Gored skirt, 9 gores
+> **No seam at the centre front: a single smooth panel runs down the middle, with exactly two seams to its
+> left and two to its right, so five panels show from the front.** A women's **long nine-gore skirt** in plain
+> wool or linen (navy, grey, brown or cream), **nearly to the floor**. Smooth and close over the hips, then
+> **flaring evenly to a wide hem** in a soft cone, the **seams running unbroken from the waist to the hem**. A
+> plain **narrow waistband**. Shown flat, front view, as the skirt alone.
+>
+> Leave out: a seam down the centre, a seam across the hips, pleats, gathers, a yoke, darts, pockets, a slit, a
+> train, a ruffle, buttons, a belt, a person, a blouse.
+
+*Last attempt (this or the 9 gores, not clear which) had a seam down the centre front.*
+
+### gored-skirt.fifteen: Gored skirt, 15 gores
+> **No seam at the centre front: a slim smooth panel runs down the middle, with exactly three seams to its left
+> and three to its right, so seven slim panels show from the front**, like the ribs of an umbrella. A women's
+> **long fifteen-gore skirt** in plain wool or linen (navy, grey, brown or cream), **nearly to the floor**.
+> Smooth and close over the hips, then **flaring evenly to a wide hem** in a soft cone, the **seams running
+> unbroken from the waist to the hem**. A plain **narrow waistband**. Shown flat, front view, as the skirt alone.
+>
+> Leave out: a seam down the centre, a seam across the hips, pleats, gathers, a yoke, darts, pockets, a slit, a
+> train, a ruffle, buttons, a belt, a person, a blouse.
+
+*Last attempt had a horizontal seam at the hip and two waist darts, and wasn't square.*
+
+### pleated-skirt: Pleated skirt
+> **No horizontal seam anywhere between the waistband and the hem, and no darts.** The skirt is made of long
+> narrow panels that run unbroken from the waistband to the hem; the pleats simply open out from those same seams
+> at the hip line. A women's **pleated skirt** in mid-weight wool (charcoal, navy or camel), **just below the
+> knee**. **Smooth and fitted from the waistband over the hips**, with fine vertical seams, then **eleven crisp
+> side pleats all turned the same way** falling from the hip line to the hem, the skirt gently flared. A **plain
+> narrow waistband**; a zip at the centre back (not shown). Shown flat, front view.
+>
+> Leave out: a yoke, a seam across the hips, darts, pleats from the waist, a kilt pin or fringe, plaid, pockets,
+> belt loops, a belt, a person.
+
+*Not attempted yet; the same warnings as the pleated skirt's failed attempt.*
+
+### pleated-skirt.box: Pleated skirt, box pleats
+> **No horizontal seam anywhere between the waistband and the hem, and no darts.** The skirt is made of
+> long narrow panels that run unbroken from the waistband to the hem. A women's **pleated skirt** in
+> mid-weight wool (charcoal, navy or camel), **just below the knee**. **Smooth and fitted over the hips**,
+> with fine vertical seams, then, starting at the hip line from those same seams, **crisp box pleats**: each
+> a flat panel with its two folds turned toward each other behind it, the skirt gently flared. A **plain
+> narrow waistband**. Shown flat, front view.
+>
+> Leave out: a yoke, a seam across the hips, darts, pleats from the waist, side pleats all turned one way,
+> a kilt pin or fringe, plaid, pockets, belt loops, a belt, a person.
+
+*Last attempt had four buttons, a collar open over small lapels, bodice darts and sleeve bands, and wasn't square.*
+
+### kimono-dress: Kimono dress
+> **Exactly five buttons down the front of the bodice**, from the neck to the waist seam, with the **collar closed
+> at the neck and no lapels**. **The short sleeves are cut in one with the bodice**: no armhole seam, the shoulder
+> running smoothly down into a wide sleeve ending above the elbow in a **plain hem with no band or cuff**, with soft
+> folds under the arm. A women's **day dress** in plain cotton or rayon (rust, teal or navy), **below the knee**. A
+> **turn-down collar with square ends**. An easy bodice with **no darts**, a **waist seam**, and a **slightly
+> gathered skirt**, gently flared.
+>
+> Leave out: a fourth or sixth button, lapels or an open neck, bodice darts or princess seams, a band or turned-back
+> cuff on the sleeve, an armhole seam, set-in or puffed sleeves, a gusset showing, a belt, buttons below the waist,
+> pockets, a wrap front, Japanese kimono styling (obi, wide hanging sleeves), a person.
+
+*Last attempt drew four sleeves, the back's as well as the front's, spread flat, and wasn't square.*
+
+### shirt: Shirt
+> **Exactly two sleeves, both hanging down at the sides of the body: one garment, seen once, from the front, on an
+> invisible form.** A men's **classic long-sleeved shirt** in plain white or pale blue cotton poplin, cut **easy, not
+> fitted**, to **below the hips** with the front corners rounded. **Exactly seven small buttons** all down the front
+> on a narrow plain placket. A **collar on a stand** (a band round the neck with a pointed turn-down collar sewn to
+> it), buttoned at the throat. **One plain square patch pocket on the wearer's left breast**, no flap and no point at
+> the bottom. **Long sleeves pleated into buttoned barrel cuffs**, a short bound opening above each cuff. A **straight
+> yoke across the back shoulders** (seen over the shoulder).
+>
+> Leave out: a third or fourth sleeve, a back view, sleeves spread out flat, a pointed pocket, a tie, epaulettes, a
+> second pocket, pocket flaps, French cuffs or cufflinks, a button-down collar, darts, a contrasting collar, a person.
