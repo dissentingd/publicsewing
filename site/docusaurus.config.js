@@ -15,6 +15,7 @@ export default {
   tagline: 'Made-to-measure patterns for practical, timeless garments',
   url: 'https://publicsewing.org',
   baseUrl: '/',
+  favicon: 'img/favicon.svg',
   trailingSlash: false,
   onBrokenLinks: 'throw',
   markdown: { hooks: { onBrokenMarkdownLinks: 'throw' } },
@@ -22,6 +23,8 @@ export default {
   headTags: [
     // A request not to use the site for AI training (see static/robots.txt and ai.txt)
     { tagName: 'meta', attributes: { name: 'robots', content: 'noai, noimageai' } },
+    // Home-screen icon on iPhones and iPads; browsers without SVG icons use static/favicon.ico
+    { tagName: 'link', attributes: { rel: 'apple-touch-icon', href: '/img/apple-touch-icon.png' } },
   ],
   presets: [
     [

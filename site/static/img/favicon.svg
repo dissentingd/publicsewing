@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>PublicSewing</title>
+  <style>
+    path { fill: #9a4d32; }
+    @media (prefers-color-scheme: dark) { path { fill: #d99b7f; } }
+  </style>
+  <!-- A dressmaker's form: neck cap, torso with a narrow waist, pole and base -->
+  <path d="M27 2H37Q39 2 39 4V7Q39 10 42 11L51 14Q55 15.5 54 20C53 27 44 31 43 37C42 42 52 44 54 50Q54.5 52 52 52H36V56H46Q49 56 49 58Q49 60 46 60H18Q15 60 15 58Q15 56 18 56H28V52H12Q9.5 52 10 50C12 44 22 42 21 37C20 31 11 27 10 20Q9 15.5 13 14L22 11Q25 10 25 7V4Q25 2 27 2Z"/>
+</svg>
