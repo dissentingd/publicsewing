@@ -795,7 +795,7 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > A fitted cotton **khaki** field jacket (a 1910s army blouse, without insignia).
 > Single-breasted, **five buttons** up to a **standing collar** that closes at the throat.
 > Fitted to the body with a seamed side panel; length to the upper thigh. **Four welt pockets**
-> (set-in, no patch pockets): two at the breast, two below the waist. **Two-piece sleeves**,
+> (set-in, no patch pockets): two at the breast, two below the waist. **Two-piece sleeves, their two seams running lengthwise from armhole to wrist, with no seam across the sleeve**,
 > slightly shaped at the elbow.
 >
 > Leave out: elbow patches, curved or pointed shapes on the sleeve, insignia, badges, epaulettes, belt, patch or bellows pockets, flaps, lapels.
@@ -839,7 +839,7 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > **Princess seams** shape it to the waist; length to the **high hip**. Single-breasted, **three
 > buttons**, buttoning right over left, with **peaked lapels** and a collar. A **breast welt
 > pocket** on the wearer's left, **two flap pockets** at the hips set into the princess seams,
-> and a **small ticket pocket with flap above the right one**. **Two-piece sleeves**. Lined.
+> and a **small ticket pocket with flap above the right one**. **Two-piece sleeves, their two seams running lengthwise from armhole to wrist, with no seam across the sleeve**. Lined.
 >
 > Leave out: elbow patches, belt, patch pockets, shoulder pads that look modern-exaggerated, double-breasted
 > fronts, notched lapels (this design defaults to peaked).
@@ -979,7 +979,7 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > below the knee**. **Straight, unfitted body** that **flares a little from the arms to the
 > hem**. Single-breasted, **four buttons** on a wide lap, buttoning right over left, under a
 > **notched lapel** and turn-down collar. **One flap pocket set into each hip** (no patch
-> pockets). **Two-piece sleeves**. Child's proportions: short body, narrow shoulders.
+> pockets). **Two-piece sleeves, their two seams running lengthwise from armhole to wrist, with no seam across the sleeve**. Child's proportions: short body, narrow shoulders.
 >
 > Leave out: a three-button front, belt, waist seam, gathers, double-breasted fronts, patch pockets, a ticket pocket,
 > fur or velvet collar, a hood, frills.
@@ -992,7 +992,7 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > unfitted, flaring very slightly to the hem. Single-breasted, **five buttons** down the centre
 > front, buttoning right over left, from the bust line to the hips. **Small notched lapels**
 > with a turn-down collar, rolling at the bust line. **Four patch pockets with square bottoms
-> and buttonless flaps**: two at the bust, two below the waist. **Two-piece sleeves**, plain at
+> and buttonless flaps**: two at the bust, two below the waist. **Two-piece sleeves, their two seams running lengthwise from armhole to wrist, with no seam across the sleeve**, plain at
 > the wrist.
 >
 > Leave out: a fitted waist, princess or side-panel seams, belt, waist shaping, epaulettes, bellows pleats, zips, cuff tabs, insignia,
@@ -1007,7 +1007,7 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > pair high on the chest, buttoning right over left **up to the neck**: **no lapels**. A
 > **deep storm collar** sewn round the neckline to the front edge, turned down (it can be worn
 > up round the throat). **A flap pocket set into each hip**; no breast or
-> patch pockets. **Two-piece sleeves**. Lined.
+> patch pockets. **Two-piece sleeves, their two seams running lengthwise from armhole to wrist, with no seam across the sleeve**. Lined.
 >
 > Leave out: a fourth row of buttons, belt, single-breasted fronts, patch pockets, slanted hand-warmer pockets,
 > epaulettes, gold or anchor buttons, long length, a hood, lapels or revers.
