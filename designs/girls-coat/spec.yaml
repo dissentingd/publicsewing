@@ -29,3 +29,10 @@ options:
   # P: "Pocket 3 inches below waist line", one each side, no ticket pocket
   pocketBelow: { pct: 30 } # x waistToSeat: 3" of FreeSewing's 10"
   ticketPocket: { bool: false }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  double:
+    name: Double-breasted
+    description: "Two rows of three buttons on the wider lap Sheifer gives for a double-breasted coat."
+    options: { doubleBreasted: true, buttons: 3 }

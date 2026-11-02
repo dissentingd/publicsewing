@@ -782,3 +782,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: notched lapels, a belt, waist shaping, patch pockets, fur, double-breasted fronts, a
 > person.
+
+### girls-coat.double: Girls' coat, double-breasted
+> A **girl's loose coat** (about 8 years old) in plain wool cloth (red, navy or camel), **to just
+> below the knee**. **Straight, unfitted body** that **flares a little from the arms to the
+> hem**. **Double-breasted: two rows of three buttons** on a wide lap, under a **notched lapel**
+> and turn-down collar. **One flap pocket set into each hip**. **Two-piece sleeves**. Child's
+> proportions: short body, narrow shoulders. Shown flat, front view.
+>
+> Leave out: a single row of buttons, a belt, a waist seam, gathers, patch pockets, a ticket pocket,
+> fur or velvet collar, a hood, frills, a person.
