@@ -58,7 +58,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `pleated-skirt` | Skirt fitted to the hips and pleated below them, side or box pleats, CB zip and waistband | Mitchell 1921 |
 | `work-pants` | Full straight work trousers for cotton and khaki, deep rise, no darts | Simons 1916 |
 | `service-shirt` | Button-through camp-collar shirt: back yoke, two flapped breast pockets, shoulder straps | Vincent 1890, Simons 1918 |
-| `shirt` | Classic button-through shirt: back yoke, collar on a stand, buttoned cuffs, breast pocket | Vincent 1890 |
+| `dress-shirt` | Classic button-through shirt: back yoke, collar on a stand, buttoned cuffs, breast pocket | Vincent 1890 |
 | `hooded-smock` | Boxy pullover anorak: front yoke, buttoned neck placket, hood, flapped chest pocket, kangaroo pocket | Open+Pattern (CC BY 4.0), US tactical smock |
 | `work-shirt` | Roomy pullover work shirt: back yoke, buttoned front fly, neck band or collar, breast pocket | Vincent 1890 |
 | `t-shirt` | Plain crew-neck T-shirt with short set-in sleeves, drafted from your measurements | Open+Pattern Standard T-shirt (CC BY 4.0) |
@@ -80,8 +80,8 @@ a check that the pieces sew together into the garment, not a fit result.
 | `quilted-jacket` | Hooded quilt-lined jacket buttoned to the throat, sloped front yokes | ЕМКО 1988 |
 | `winter-coat` | Straight knee-length coat with deep yokes, hip welts, turn-down collar | ЕМКО 1988 |
 | `topcoat` | Semi-fitted knee-length coat with side panels and a back vent | ЕМКО 1988 |
-| `jacket` | Single-breasted two-button jacket: side panels, notched lapel, flap pockets, back vent | ЕМКО 1988 |
-| `boys-jacket` | Boy's three-button suit jacket, notched lapel, flap pockets | Simons 1922 |
+| `suit-jacket` | Single-breasted two-button jacket: side panels, notched lapel, flap pockets, back vent | ЕМКО 1988 |
+| `boys-suit-jacket` | Boy's three-button suit jacket, notched lapel, flap pockets | Simons 1922 |
 | `waistcoat` | Lined V-neck waistcoat with cutaway points, darts and welt pockets | ЕМКО 1988 |
 | `suit-trousers` | Semi-fitted straight trousers: waist darts, zip fly, side and back pockets, waistband | ЕМКО 1988 |
 

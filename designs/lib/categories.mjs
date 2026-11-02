@@ -5,7 +5,7 @@ export const categories = [
   { id: 'coats', label: 'Coats', image: 'balmacaan' },
   { id: 'jackets', label: 'Jackets', image: 'windbreaker' },
   { id: 'vests', label: 'Vests', image: 'waistcoat' },
-  { id: 'tops', label: 'Shirts & tops', image: 'shirt' },
+  { id: 'tops', label: 'Shirts & tops', image: 'dress-shirt' },
   { id: 'dresses', label: 'Dresses', image: 'shirtwaist-dress.short-sleeves' },
   { id: 'skirts', label: 'Skirts', image: 'pleated-skirt' },
   { id: 'trousers', label: 'Trousers & overalls', image: 'work-pants' },

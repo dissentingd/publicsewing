@@ -121,7 +121,7 @@ viewer's right.
 
 Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the entries above.
 
-### jacket: Jacket
+### suit-jacket: Suit jacket
 > A men's **single-breasted two-button suit jacket** in plain wool suiting (mid grey, navy or
 > brown), semi-fitted: shaped gently at the waist by a **side-panel seam** on each side, no
 > side seam under the arm. Length **to cover the seat**. **Notched lapels** rolling to the
@@ -196,7 +196,7 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: lapels, a turn-down collar, belt, double-breasted fronts, patch or flap pockets,
 > set-in sleeves, epaulettes, cuff straps.
 
-### boys-jacket: Boys' jacket
+### boys-suit-jacket: Boys' suit jacket
 > A **boy's single-breasted suit jacket** (about 6 years old) in plain wool or tweed (grey,
 > navy or brown). Semi-fitted, shaped a little at the waist by a side-panel seam; length to
 > cover the seat. **Notched lapels** with a turn-down collar, the lapels rolling to the **top
@@ -616,7 +616,7 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: a yoke, a seam across the hips, darts, pleats from the waist, a kilt pin or fringe, plaid, pockets,
 > belt loops, a belt, a person.
 
-### shirt: Shirt
+### dress-shirt: Dress shirt
 > **Exactly two sleeves, both hanging down at the sides of the body: one garment, seen once, from the front, on an
 > invisible form.** A men's **classic long-sleeved shirt** in plain white or pale blue cotton poplin, cut **easy, not
 > fitted**, to **below the hips** with the front corners rounded. **Exactly seven small buttons** all down the front

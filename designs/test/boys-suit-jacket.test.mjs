@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { BoysJacket } from '../boys-jacket/src/index.mjs'
+import { BoysJacket } from '../boys-suit-jacket/src/index.mjs'
 import { sets, checkClean, near } from './coat-checks.mjs'
 
 const variants = {

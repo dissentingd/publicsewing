@@ -37,7 +37,7 @@ and marked as derived.
 | Garment | Style | FreeSewing | Status | PD source for the style |
 |---|---|---|---|---|
 | Dress shirt | 1 | Simon | Have | — |
-| Sack/suit jacket | 1 | Jaeger (on Bent) | Have; **drafted 2026-10-27** (`designs/jacket`: two-button, notched lapel, side panels, flap pockets, vent; not sewn) | ЕМКО 1988 §1 |
+| Sack/suit jacket | 1 | Jaeger (on Bent) | Have; **drafted 2026-10-27** (`designs/suit-jacket`: two-button, notched lapel, side panels, flap pockets, vent; not sewn) | ЕМКО 1988 §1 |
 | Waistcoat | 1 | Wahid | Have; **drafted 2026-10-27** (`designs/waistcoat`: V neck, cutaway points, darts, welts, lined; not sewn) | ЕМКО 1988 §6 |
 | Dress trousers (pleats, cuffs) | 1 | Titan, Charlie (Theo dropped in v4) | Variant; **darted trousers drafted 2026-10-27** (`designs/trousers`, on Titan: fly, pockets, waistband; not sewn); **pleated peg-top pants 2026-10-28** (`designs/peg-pants`); no cuffs yet; ЕМКО 1988 §7 | Simons *Pants and Overalls* 1916 `draftingpantsove00simo` |
 | Overcoat (Chesterfield) | 1 | Carlton is a belted long coat | Variant; **drafted 2026-10-27** (`designs/overcoat`, `designs/box-overcoat`: Simons' regular and medium box overcoats; `designs/balmacaan` 2026-10-28: raglan sleeves, military collar; not sewn) | Simons *Overcoat Patterns* 1916 `designingovercoa00simo` |
@@ -62,7 +62,7 @@ and marked as derived.
 | Combat / cargo trousers | 3 | Titan | **Drafted 2026-10-28** (`designs/field-trousers`: pleats, flapped cargo and seat pockets; not sewn) | Open+Pattern CS95 field trouser (CC BY 4.0) |
 | Breeches | 3 | Cornelius (cycling) | Variant; **drafted 2026-10-28** (`designs/breeches`: Simons' riding breeches on the trousers, thigh flare, buttoned lower leg; not sewn) | Simons 1916 `draftingpantsove00simo` |
 | Service / camp-collar shirt | 3, 5 | Simon | Variant; **drafted 2026-10-28** (`designs/service-shirt`: Vincent's coat shirt on the pyjama jacket, back yoke, convertible collar, flapped breast pockets, shoulder straps; not sewn) | Vincent 1890 coat shirt, Simons 1918 collar |
-| Classic dress shirt (collar on a stand, cuffs) | 3, 5 | Simon | Variant; **drafted 2026-11-01** (`designs/shirt`: Vincent's yoked shirt on the service shirt, collar on a stand, buttoned cuffs over a bound opening; not sewn) | Vincent 1890 `vincentmakingshirts18xx` |
+| Classic dress shirt (collar on a stand, cuffs) | 3, 5 | Simon | Variant; **drafted 2026-11-01** (`designs/dress-shirt`: Vincent's yoked shirt on the service shirt, collar on a stand, buttoned cuffs over a bound opening; not sewn) | Vincent 1890 `vincentmakingshirts18xx` |
 | Slacks | 5 | Charlie | Have | — |
 | **Nightshirt** | 4 | — | **Drafted 2026-10-23** (`designs/nightshirt`, not sewn) | Walker 1909 `krl00366374` |
 | **Pyjamas** | 4 | — (Paco is summer pants) | **Drafted 2026-10-28** (`designs/pyjama-jacket` on the barber's coat, `designs/pyjama-trousers` on the knickerbockers; not sewn) | Vincent, *Shirts, Undergarments* 1890 `vincentmakingshirts18xx` |
@@ -106,7 +106,7 @@ and marked as derived.
 | **Pinafore** | — | **Drafted 2026-10-23** (`designs/pinafore`, not sewn) | Walker 1909 |
 | **Knickers / bloomers** (any size) | — | **Drafted 2026-10-23** (`designs/knickerbockers`, on Titan, not sewn) | Walker 1909 |
 | **Boy's work coat** | — | **Drafted 2026-10-23** (`designs/boys-work-coat`; the chore coat with Simons' boys' details, all children's sizes) | Simons 1918 (boys' work coat) |
-| **Boy's suit jacket** | — | **Drafted 2026-10-28** (`designs/boys-jacket`: the jacket at Simons' boys' proportions; not sewn) | Simons 1922 `designingboysjuv00simo` |
+| **Boy's suit jacket** | — | **Drafted 2026-10-28** (`designs/boys-suit-jacket`: the jacket at Simons' boys' proportions; not sewn) | Simons 1922 `designingboysjuv00simo` |
 | **Girl's dress** (any size) | — | **Drafted 2026-10-23** (`designs/frock`, not sewn) | Walker 1909 (frocks) |
 | **Girl's coat** | — | **Drafted 2026-10-28** (`designs/girls-coat`: Sheifer's box coat on Mitchell's, to below the knee; not sewn) | Sheifer 1908 `nssheiferssystem00shei` |
 
@@ -204,7 +204,7 @@ sewn, none draped yet:
 - `winter-coat` (§3), on the windbreaker's yoked body: knee length, turn-down collar, lining;
 - `topcoat` (§2 demi-season coat), on the military blouse's three-piece body, with a new back vent
   (`lib/body3.mjs`);
-- `jacket` (§1), on the topcoat: two buttons, a notched lapel on the three-piece body, rounded
+- `suit-jacket` (§1), on the topcoat: two buttons, a notched lapel on the three-piece body, rounded
   front corners, flap pockets (`lib/body3.mjs`: `r`, `lapel`, welt `flap`);
 - `waistcoat` (§6), on Brian: V neck, cutaway points, back fish dart and front dart, cut-in
   armholes, welts (`lib/coat.mjs`: `armholeCut`, `dart`, `chamfer`);

@@ -1,12 +1,12 @@
-# Boys' jacket: Simons' boys' single-breasted sack coat (Designing Boys' and Juveniles'
+# Boys' suit jacket: Simons' boys' single-breasted sack coat (Designing Boys' and Juveniles'
 # Clothing, 1922, Diagrams 1-2, pp. 18-23), on the jacket (FreeSewing's Bent, three-piece body):
 # a three-button suit jacket for boys and youths, notched lapel turning above the waist, flap
 # pockets, rounded front corners, no vent, two-piece sleeves. For any size. See BRIEF.md.
-extends: ../jacket/spec.yaml
+extends: ../suit-jacket/spec.yaml
 
 about:
   id: boysjacket
-  name: Boys' jacket
+  name: Boys' suit jacket
   category: jackets
   description: "A three-button suit jacket for boys: notched lapel, flap pockets, rounded front corners"
   difficulty: 5

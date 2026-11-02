@@ -35,7 +35,14 @@ export default {
   ],
   plugins: [
     // A renamed design's old address
-    ['@docusaurus/plugin-client-redirects', { redirects: [{ from: '/designs/trousers', to: '/designs/suit-trousers' }] }],
+    ['@docusaurus/plugin-client-redirects', {
+      redirects: [
+        { from: '/designs/trousers', to: '/designs/suit-trousers' },
+        { from: '/designs/shirt', to: '/designs/dress-shirt' },
+        { from: '/designs/jacket', to: '/designs/suit-jacket' },
+        { from: '/designs/boys-jacket', to: '/designs/boys-suit-jacket' },
+      ],
+    }],
     // The pattern editor (@freesewing/react): Tailwind 4 + daisyUI, our designs in place of
     // FreeSewing's collection, and our design code's FreeSewing packages from this folder
     () => ({

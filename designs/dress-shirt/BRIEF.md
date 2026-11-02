@@ -1,4 +1,4 @@
-# Shirt
+# Dress shirt
 
 **Source:** W. D. F. Vincent, *The Cutter's Practical Guide to Cutting and Making Shirts,
 Undergarments, Collars…* (London, 1890), corpus `vincentmakingshirts18xx` (tracked). "The
@@ -75,5 +75,5 @@ placket (cut 2), breast pocket (cut 1).
 6. Hem; buttonholes on the right front (men's) and the cuffs, buttons opposite.
 
 ## Checks
-`test/shirt.test.mjs`: the coat checks at every size, plus the stand against the neckline, the
+`test/dress-shirt.test.mjs`: the coat checks at every size, plus the stand against the neckline, the
 fall against the stand's top edge, and the sleeve's hem against the cuff.

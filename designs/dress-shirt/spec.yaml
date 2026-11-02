@@ -1,4 +1,4 @@
-# Shirt: Vincent's yoked shirt (The Cutter's Practical Guide to Cutting and Making Shirts,
+# Dress shirt: Vincent's yoked shirt (The Cutter's Practical Guide to Cutting and Making Shirts,
 # Undergarments..., 1890, "Yoked and Fronted Shirts", Diagrams 8-12, pp. 5-7; collars and cuffs
 # p. 23), on the service shirt (FreeSewing's Brian): a classic button-through shirt with a back
 # yoke, a collar on a stand, cuffs buttoned over a bound sleeve opening, rounded tails, one
@@ -7,7 +7,7 @@ extends: ../service-shirt/spec.yaml
 
 about:
   id: shirt
-  name: Shirt
+  name: Dress shirt
   category: tops
   description: "A classic button-through shirt: back yoke, collar on a stand, buttoned cuffs, rounded tails"
   difficulty: 3

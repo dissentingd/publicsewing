@@ -1,4 +1,4 @@
-// Boys' jacket: built from ../spec.yaml (Simons 1922, on the jacket).
+// Boys' suit jacket: built from ../spec.yaml (Simons 1922, on the jacket).
 import { loadSpec } from '../../lib/load-spec.mjs'
 
 const spec = loadSpec(new URL('../spec.yaml', import.meta.url))

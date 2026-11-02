@@ -1,4 +1,4 @@
-# Jacket: ЕМКО СЭВ т.3's men's semi-fitted jacket (§1, Tables 1.2-1.3, Figs. 1-5), on the
+# Suit jacket: ЕМКО СЭВ т.3's men's semi-fitted jacket (§1, Tables 1.2-1.3, Figs. 1-5), on the
 # topcoat's three-piece body (lib/body3.mjs, FreeSewing's Bent): a single-breasted two-button
 # jacket with side panels, a notched lapel and collar, rounded front corners, flap pockets, a
 # breast welt, a CB seam with a vent and two-piece sleeves. See BRIEF.md for where each default
@@ -7,7 +7,7 @@ extends: ../topcoat/spec.yaml
 
 about:
   id: jacket
-  name: Jacket
+  name: Suit jacket
   category: jackets
   description: A single-breasted two-button jacket with side panels, a notched lapel, flap pockets and a back vent
   difficulty: 5

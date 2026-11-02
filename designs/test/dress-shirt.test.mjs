@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { Shirt } from '../shirt/src/index.mjs'
+import { Shirt } from '../dress-shirt/src/index.mjs'
 import { testCoat, near } from './coat-checks.mjs'
 
 testCoat(

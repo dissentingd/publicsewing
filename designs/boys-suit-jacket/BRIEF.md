@@ -1,4 +1,4 @@
-# Boys' jacket
+# Boys' suit jacket
 
 **Source:** Simons, *Designing Boys' and Juveniles' Clothing* (The Clothing Designer Co., New
 York, 1922), corpus `designingboysjuv00simo` (laptop). Diagram 1, construction lines (pp.
@@ -6,7 +6,7 @@ York, 1922), corpus `designingboysjuv00simo` (laptop). Diagram 1, construction l
 (p. 13). US 1922, public domain. Inches below are Simons', for size 6 (breast 24, waist length
 10½, seat length 14¾, full length 20).
 
-**Block:** FreeSewing's Bent, through ЕМКО's jacket (`extends: ../jacket/spec.yaml`,
+**Block:** FreeSewing's Bent, through ЕМКО's jacket (`extends: ../suit-jacket/spec.yaml`,
 `lib/body3.mjs`): its back with a CB seam, side panel, front, notched lapel, rounded front corner,
 flap pockets and two-piece sleeve. Drafted from the boy's own measurements (the USDA sets in
 `designs/sizes/`), so it fits any size, men included.
