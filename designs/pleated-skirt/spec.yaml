@@ -1,0 +1,39 @@
+# Pleated skirt: Mitchell 1921's pleated skirt foundation, side-pleated and box-pleated skirts
+# (pp. 102-107), on the gored skirt (FreeSewing's Sarah): the foundation cut into gores, each
+# fitted above the hip line by its seams, a pleat underlay added below the hip line on one edge
+# (side pleats) or both (box pleats), a CB zip and a waistband. See BRIEF.md.
+extends: ../gored-skirt/spec.yaml
+
+about:
+  id: pleated-skirt
+  name: Pleated skirt
+  description: A skirt fitted to the hips and pleated below them, side or box pleats, with a CB zip and a waistband
+  difficulty: 3
+  tags: [bottoms]
+  techniques: [pleat, zip, waistband, hem]
+  version: 0.1.0
+  source: Mitchell, Ladies' Tailor-Made Garments (1921), pleated skirt foundation, side and box pleated skirts, pp. 102-107 (newstandardworko00mitc)
+  preview: cisFemaleAdult36
+
+options:
+  # "A fifteen gored skirt is then drafted on the new foundation ... a larger or smaller amount
+  # of gores ... depending upon the amount of pleats called for": a pleat at every seam
+  gores: { dflt: 11 }
+  pleatStyle: { dflt: side, list: [side, box], menu: style }
+  # Each pleat underlay: 2 in at the hip line, 3 in at the bottom (of a 40 in hip); a box pleat
+  # takes one on each edge of its gore
+  pleatHip: { pct: 5, min: 2, max: 10, of: seat, menu: style }
+  pleatHem: { pct: 7.5, min: 2, max: 15, of: seat, menu: style }
+  # The pleated foundation is straighter than the plain one (its CB brought in at the bottom)
+  goreFlare: { pct: 25 }
+  length: { pct: 70 } # x waist to floor: below the knee (Mitchell's are near the floor)
+
+pieces:
+  frontPanel: { part: gore, index: 0, after: layout, nr: 1, pleat: { style: pleatStyle, hip: seat * pleatHip, hem: seat * pleatHem } }
+  gore1: { part: gore, index: 1, after: layout, nr: 2, zip: waistToSeat * zipLength, pleat: { style: pleatStyle, hip: seat * pleatHip, hem: seat * pleatHem } }
+  gore2: { part: gore, index: 2, after: layout, nr: 3, zip: waistToSeat * zipLength, pleat: { style: pleatStyle, hip: seat * pleatHip, hem: seat * pleatHem } }
+  gore3: { part: gore, index: 3, after: layout, nr: 4, zip: waistToSeat * zipLength, pleat: { style: pleatStyle, hip: seat * pleatHip, hem: seat * pleatHem } }
+  gore4: { part: gore, index: 4, after: layout, nr: 5, zip: waistToSeat * zipLength, pleat: { style: pleatStyle, hip: seat * pleatHip, hem: seat * pleatHem } }
+  gore5: { part: gore, index: 5, after: layout, nr: 6, zip: waistToSeat * zipLength, pleat: { style: pleatStyle, hip: seat * pleatHip, hem: seat * pleatHem } }
+  gore6: { part: gore, index: 6, after: layout, nr: 7, zip: waistToSeat * zipLength, pleat: { style: pleatStyle, hip: seat * pleatHip, hem: seat * pleatHem } }
+  gore7: { part: gore, index: 7, after: layout, nr: 8, zip: waistToSeat * zipLength, pleat: { style: pleatStyle, hip: seat * pleatHip, hem: seat * pleatHem } }

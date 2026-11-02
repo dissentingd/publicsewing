@@ -270,6 +270,16 @@ const factories = {
       nr: p.nr,
       label: p.label ?? p.name.split('.').pop(),
       zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
+      // Pleat underlays below the seat line: { style (literal or an expression), hip, hem, if }
+      ...(p.pleat === undefined
+        ? {}
+        : {
+            pleat: (sh) => {
+              const look = lookupIn(sh, ctx.block, {})
+              if (p.pleat.if !== undefined && !evaluate(p.pleat.if, look)) return null
+              return { style: evaluate(p.pleat.style, look), hip: evaluate(p.pleat.hip, look), hem: evaluate(p.pleat.hem, look) }
+            },
+          }),
     }),
   // A divided skirt's front or back (`which`), from a three-gore skirtLayout: `crotch`, `ext`, `zip`
   culotte: (p, ctx) =>

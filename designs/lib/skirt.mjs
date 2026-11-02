@@ -109,11 +109,27 @@ function hemPath(Path, Point, left, right) {
     )
 }
 
+/** An edge's path from the waist to the seat line only */
+function upperPath(Path, Point, e) {
+  const pt = (q) => new Point(q.x, q.y)
+  const path = new Path().move(pt(e.W))
+  return e.fold ? path.line(pt(e.S)) : path.curve(pt(e.cpW), pt(e.cpS), pt(e.S))
+}
+
+/** An edge moved `hip` (mm) out at the seat line and `hem` at the hem, `dir` -1 toward CB, +1 CF */
+const shifted = (e, dir, hip, hem) => ({ ...e, S: { x: e.S.x + dir * hip, y: e.S.y }, H: { x: e.H.x + dir * hem, y: e.H.y } })
+
 /**
  * Gore `index` of the layout (0: the front panel, on the fold; others cut in pairs; hidden past
  * the design's count). `zip` (mm) marks the zip's end on the back gore's CB seam.
+ * `pleat(sh)`: { style, hip, hem } (mm) or null, Mitchell's pleated skirt: below the seat line
+ * each gore takes a pleat underlay `hip` wide there and `hem` at the hem, squared out from the
+ * seat point; on its CB edge only (`side`: side pleats, the next gore's edge sewn to the
+ * underlay's), or on both edges (`box`: box pleats, the underlays sewn together); never on the
+ * CF fold. The gore's own edge below the seat line is marked as the pleat's fold. A seam's
+ * stored length is what is sewn: the edge above the seat line and the underlay's edge below.
  */
-export function gorePart({ name, after, index, nr, label, zip = () => 0 }) {
+export function gorePart({ name, after, index, nr, label, zip = () => 0, pleat = () => null }) {
   return {
     name,
     after,
@@ -123,9 +139,15 @@ export function gorePart({ name, after, index, nr, label, zip = () => 0 }) {
       if (index >= count) return part.hide()
       const { left, right } = store.get('skirt.gores')[index]
       const hem = store.get('sarah.hem')
-      const L = edgePath(Path, Point, left)
-      const R = edgePath(Path, Point, right)
-      const hemP = hemPath(Path, Point, left, right)
+      const pl = pleat(sh)
+      const ul = pl ? shifted(left, -1, pl.hip, pl.hem) : left
+      const ur = pl && pl.style === 'box' && !right.fold ? shifted(right, 1, pl.hip, pl.hem) : right
+      // An edge with an underlay: down to the seat point, squared out, down the underlay
+      const edgeOf = (e, u) =>
+        u === e ? edgePath(Path, Point, e) : upperPath(Path, Point, e).line(new Point(u.S.x, u.S.y)).line(new Point(u.H.x, u.H.y))
+      const L = edgeOf(left, ul)
+      const R = edgeOf(right, ur)
+      const hemP = hemPath(Path, Point, ul, ur)
       const waist = new Path().move(R.start()).line(L.start())
       // Counter-clockwise on the page: the waist right to left, down the left edge, the hem,
       // up the right edge; so offsets go outward
@@ -155,9 +177,15 @@ export function gorePart({ name, after, index, nr, label, zip = () => 0 }) {
         macro('grainline', { from: new Point(midX, top + 40), to: new Point(midX, left.H.y - 40) })
         store.cutlist.setCut({ cut: 2, from: 'fabric' })
       }
-      const seamLen = (e) => edgePath(Path, Point, e).length()
+      // The pleats' folds: the gore's own edges below the seat line
+      for (const [k, e, u] of [['left', left, ul], ['right', right, ur]]) {
+        if (u === e) continue
+        paths[`${k}Fold`] = new Path().move(new Point(e.S.x, e.S.y)).line(new Point(e.H.x, e.H.y)).addClass('help dashed')
+      }
+      const seamLen = (e, u) => (u === e ? edgePath(Path, Point, e).length() : upperPath(Path, Point, e).length() + Math.hypot(u.H.x - u.S.x, u.H.y - u.S.y))
       const lens = store.get('skirt.seams', null) ?? {}
-      lens[index] = { left: seamLen(left), right: right.fold ? null : seamLen(right), waist: waist.length(), hem: hemP.length() }
+      lens[index] = { left: seamLen(left, ul), right: right.fold ? null : seamLen(right, ur), waist: waist.length(), hem: hemP.length() }
+      if (pl) lens[index].pleats = (ul !== left) + (ur !== right)
       store.set('skirt.seams', lens)
       title(macro, { at: new Point(midX, (left.S.y + left.H.y) / 2.4), nr, title: label, scale: 0.5 })
       return part

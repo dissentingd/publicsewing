@@ -651,3 +651,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a tie, epaulettes, a second pocket, pocket flaps, French cuffs or cufflinks, a
 > button-down collar, darts, a contrasting collar, a person.
+
+### pleated-skirt: Pleated skirt
+> A women's **pleated skirt** in mid-weight wool (charcoal, navy or camel), **just below the
+> knee**. **Smooth and fitted from the waistband over the hips**, with fine seams, then **eleven
+> crisp side pleats all turned the same way** falling from the hip line to the hem, the skirt
+> gently flared. A **plain narrow waistband**; a zip at the centre back (not shown). Shown flat,
+> front view.
+>
+> Leave out: pleats from the waist, a kilt pin or fringe, plaid, pockets, belt loops, a belt, a
+> person.

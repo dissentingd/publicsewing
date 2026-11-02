@@ -667,6 +667,16 @@ options:
   frontOpening:
     title: Front opening shift
     description: How far the front opening sits forward of the side, as a share of the knee.
+  pleatStyle:
+    title: Pleats
+    description: Side pleats, all turned one way, or box pleats.
+    choices: { side: Side pleats, box: Box pleats }
+  pleatHip:
+    title: Pleat depth at the hip
+    description: Each pleat's underlay at the hip line, as a share of the seat.
+  pleatHem:
+    title: Pleat depth at the hem
+    description: Each pleat's underlay at the hem, as a share of the seat.
   standHeight:
     title: Collar stand height
     description: Height of the band the collar is sewn to, as a share of the neck.
