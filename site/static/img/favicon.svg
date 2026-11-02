@@ -1,9 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <title>PublicSewing</title>
   <style>
-    path { fill: #9a4d32; }
-    @media (prefers-color-scheme: dark) { path { fill: #d99b7f; } }
+    .needle { fill: #2b2622; }
+    .thread { fill: none; stroke: #b4552f; stroke-width: 5.5; stroke-linecap: round; }
+    @media (prefers-color-scheme: dark) {
+      .needle { fill: #eee7dc; }
+      .thread { stroke: #e08a5f; }
+    }
   </style>
-  <!-- A dressmaker's form: neck cap, torso with a narrow waist, pole and base -->
-  <path d="M27 2H37Q39 2 39 4V7Q39 10 42 11L51 14Q55 15.5 54 20C53 27 44 31 43 37C42 42 52 44 54 50Q54.5 52 52 52H36V56H46Q49 56 49 58Q49 60 46 60H18Q15 60 15 58Q15 56 18 56H28V52H12Q9.5 52 10 50C12 44 22 42 21 37C20 31 11 27 10 20Q9 15.5 13 14L22 11Q25 10 25 7V4Q25 2 27 2Z"/>
+  <!-- PS: a slim upright needle, swelling a little to the right at its eye, and one thread: down from
+       the S's top hook, in front of the needle into the eye, then out from behind it into the rest of the S -->
+  <path class="thread" d="M20.5 14C17 24 56 26 56 44C56 58 38 60 30 51"/>
+  <path class="needle" fill-rule="evenodd" d="M12.5 8Q12.5 2 20 2C25.5 2 28 7 28 14C28 21 25.5 26 23.5 31L15.5 64L12.5 31ZM20.5 6C17.8 6 17.8 22 20.5 22C23.2 22 23.2 6 20.5 6Z"/>
+  <path class="thread" d="M56 15C49 5 30 5 20.5 14"/>
 </svg>
