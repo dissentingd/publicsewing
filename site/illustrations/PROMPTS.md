@@ -740,3 +740,14 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: lapels, pointed collar ends, a belt, patch pockets, epaulettes, gold or anchor buttons,
 > long length, a person.
+
+### balmacaan.one-piece: Balmacaan, one-piece sleeve
+> A **loose, full men's overcoat** in heavy tweed or plain wool (brown, olive or grey
+> herringbone), **to just below the knee**, flaring to a wide, full hem. **Raglan sleeves in one
+> piece**: a seam from the neck down to under the arm, front and back, a **short seam on top of the
+> shoulder that stops at the shoulder point**, and **no seam down the arm**. A **standing (military)
+> collar**, **four buttons** in one row to the throat. **Two slanted welt hand-warmer pockets**.
+> Shown flat, front view.
+>
+> Leave out: a seam down the arm, lapels, a turn-down collar, a belt, double-breasted
+> fronts, patch or flap pockets, set-in sleeves, epaulettes, cuff straps, a person.

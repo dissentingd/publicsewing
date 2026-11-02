@@ -59,3 +59,10 @@ pieces:
     nr: 12
     options: [sleeveLengthBonus, raglanPieces]
     if: "sleeveStyle == 'raglan' and collarStyle != 'shawl' and collarStyle != 'ulster' and raglanPieces == 'one'"
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  one-piece:
+    name: One-piece sleeve
+    description: "Simons' other raglan sleeve: the front and back halves joined along the top of the arm, so the seam there stops at the shoulder."
+    options: { raglanPieces: one }
