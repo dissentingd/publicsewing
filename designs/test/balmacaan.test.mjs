@@ -40,6 +40,7 @@ testCoat(
   'mackinaw.front',
   {
     default: {},
+    setInSleeves: { sleeveStyle: 'setIn' },
     setIn: { sleeveStyle: 'setIn', buttons: 5 },
     ulster: { collarStyle: 'ulster', buttonTop: 1.6, lining: true, hemFlare: 0 },
     plain: { handPockets: false, lengthBelowWaist: 1.8, vent: false },

@@ -66,3 +66,7 @@ variants:
     name: One-piece sleeve
     description: "Simons' other raglan sleeve: the front and back halves joined along the top of the arm, so the seam there stops at the shoulder."
     options: { raglanPieces: one }
+  set-in:
+    name: Set-in sleeves
+    description: "Ordinary sleeves sewn into an armhole, with a shoulder seam, on the same loose body and stand collar."
+    options: { sleeveStyle: setIn }

@@ -751,3 +751,12 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a seam down the arm, lapels, a turn-down collar, a belt, double-breasted
 > fronts, patch or flap pockets, set-in sleeves, epaulettes, cuff straps, a person.
+
+### balmacaan.set-in: Balmacaan, set-in sleeves
+> A **loose, full men's overcoat** in heavy tweed or plain wool (brown, olive or grey
+> herringbone), **to just below the knee**, flaring to a wide, full hem. **Plain set-in sleeves**
+> with a **shoulder seam** and an armhole seam. A **standing (military) collar**, **four buttons**
+> in one row to the throat. **Two slanted welt hand-warmer pockets**. Shown flat, front view.
+>
+> Leave out: raglan seams, lapels, a turn-down collar, a belt, double-breasted fronts, patch or flap
+> pockets, epaulettes, cuff straps, a person.
