@@ -1,13 +1,14 @@
 # Women's peacoat: Merz's double-breasted jacket with a storm collar (Merz's Practical Cutting
 # System for Ladies' Jackets and Cloaks, 1911, Diagram XXI, pp. 52-53), on the tailored jacket
 # (FreeSewing's Breanna): princess seams, semi-fitted, a 4" lap with two rows of three buttons,
-# a wide notched lapel and deep collar, hip flap pockets, a lining, two-piece sleeves. See BRIEF.md.
+# Merz's storm collar (buttoned to the neck under a deep collar; a notched or peaked lapel as
+# options), hip flap pockets, a lining, two-piece sleeves. See BRIEF.md.
 extends: ../tailored-jacket/spec.yaml
 
 about:
   id: womenspeacoat
   name: Women's peacoat
-  description: "A hip-length, double-breasted wool coat cut for women: princess seams, wide lapels, a deep collar, flap pockets"
+  description: "A hip-length, double-breasted wool coat cut for women: princess seams, buttoned to the neck under a deep storm collar, flap pockets"
   difficulty: 4
   tags: [coats, jackets]
   techniques: [princess-seam, lapel, collar, facing, button, flap-pocket, lining, two-piece-sleeve]
@@ -29,10 +30,10 @@ options:
   buttons: { count: 3 } # to a row
   breakBelowBust: { pct: 0 } # the lapel turns at the bust line; the top buttons sit high
   # Merz's storm collar (`storm`): no lapel, buttoned to the neck, a deep collar sewn round to
-  # the front edge; or a notched or peaked lapel
-  lapelStyle: { dflt: notch, list: [peak, notch, storm] }
+  # the front edge (the default, as Merz draws it); or a notched or peaked lapel
+  lapelStyle: { dflt: storm, list: [peak, notch, storm] }
   lapelWidth: { pct: 32 } # x neck: wide, for the deep overlap
-  collarWidth: { pct: 28 } # x neck: Merz's storm collar 3 3/4" at the back, here a deep turn-down collar
+  collarWidth: { pct: 28 } # x neck: Merz's storm collar, 3 3/4" at the front end (4 1/4" at CB)
   breastPocket: { bool: false }
   ticketPocket: { bool: false }
   facingWidth: { pct: 17, min: 12, max: 22 } # wider than the lap

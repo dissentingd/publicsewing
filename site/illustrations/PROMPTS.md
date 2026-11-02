@@ -430,12 +430,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 ### womens-peacoat: Women's peacoat
 > A women's **hip-length, double-breasted** coat in heavy navy wool, **shaped to the waist by
 > princess seams** and flaring a little over the hips. **Two rows of three buttons**, the top
-> pair high on the chest, buttoning right over left. **Wide notched lapels** turning at the
-> bust, under a **deep turn-down collar**. **A flap pocket set into each hip**; no breast or
+> pair high on the chest, buttoning right over left **up to the neck**: **no lapels**. A
+> **deep storm collar** sewn round the neckline to the front edge, turned down (it can be worn
+> up round the throat). **A flap pocket set into each hip**; no breast or
 > patch pockets. **Two-piece sleeves**. Lined.
 >
 > Leave out: belt, single-breasted fronts, patch pockets, slanted hand-warmer pockets,
-> epaulettes, gold or anchor buttons, long length, a hood.
+> epaulettes, gold or anchor buttons, long length, a hood, lapels or revers.
 
 ### pyjama-jacket: Pyjama jacket
 > A loose men's **pyjama (sleeping) jacket** in soft striped or plain cotton (white with blue

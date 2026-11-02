@@ -20,7 +20,7 @@ const rows = (pattern) => {
 
 testJacket('women\'s peacoat', WomensPeacoat, {
   default: {},
-  storm: { lapelStyle: 'storm' },
+  notch: { lapelStyle: 'notch' },
   single: { doubleBreasted: false, buttonExtension: 0.04, buttons: 4, lapelStyle: 'peak' },
   long: { lengthBelowWaist: 0.5, buttons: 4, pockets: false, lining: false },
 }, rows)
