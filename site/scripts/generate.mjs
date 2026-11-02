@@ -5,8 +5,10 @@
 // - src/generated/labels.json: ../designs/labels.yaml (option and part labels)
 // - src/generated/sizes.json: the measurement sets the tests use (FreeSewing's adult sets, the
 //   stout figures, the 75 USDA children's sets), grouped for the size picker
-// - docs/designs/<id>.mdx: a page per design from its BRIEF.md, with its drape renders and the
-//   editor; static/img/drape/<id>/: those renders
+// - docs/designs/<category>/<id>.mdx: a page per design from its BRIEF.md, with its drape renders
+//   and the editor, at /designs/<id> (its slug); static/img/drape/<id>/: those renders. A folder
+//   is a sidebar group, from the design's about.category (lib/categories.mjs)
+// - docs/designs/index.mdx: the Designs page, a table per category, by name within each
 // - static/img/illustrations/<id>.jpg: the finished-garment illustration from illustrations/,
 //   where there is one, at the top of the design's page and in the Designs table
 // - static/img/previews/<id>.png: the design's preview-<set>.png (its pattern pieces, from
@@ -20,6 +22,7 @@ import { fileURLToPath } from 'node:url'
 import { join } from 'node:path'
 import { parse } from 'yaml'
 import { readSpec } from '../../designs/lib/load-spec.mjs'
+import { categories } from '../../designs/lib/categories.mjs'
 import { designFromSpec } from '../../designs/lib/spec.mjs'
 import { sets, stoutSets } from '../../designs/test/coat-checks.mjs'
 import { all as children } from '../../designs/sizes/children.mjs'
@@ -28,16 +31,22 @@ const site = fileURLToPath(new URL('..', import.meta.url))
 const designsDir = join(site, '..', 'designs')
 const out = (...p) => join(site, ...p)
 
-// The designs: every folder with a spec.yaml and a BRIEF.md, in the README's order where it gives one
+// The designs: every folder with a spec.yaml and a BRIEF.md
 // A design in progress (a spec but no brief yet) isn't listed until its brief is written
 const ids = readdirSync(designsDir).filter((d) => existsSync(join(designsDir, d, 'spec.yaml')) && existsSync(join(designsDir, d, 'BRIEF.md')))
 const readme = readFileSync(join(site, '..', 'README.md'), 'utf8')
 const order = [...readme.matchAll(/^\| `([a-z-]+)` \| (.+?) \| (.+?) \|$/gm)].map((m) => ({ id: m[1], garment: m[2], source: m[3] }))
-const rank = (id) => (order.findIndex((o) => o.id === id) + 1 || 999)
-ids.sort((a, b) => rank(a) - rank(b) || a.localeCompare(b))
 
 const specs = {}
 for (const id of ids) specs[id] = readSpec(join(designsDir, id, 'spec.yaml'))
+
+// Section by section, by name within each: the order of the Designs page and the sidebar
+const section = (id) => {
+  const i = categories.findIndex((c) => c.id === specs[id].about.category)
+  if (i < 0) throw new Error(`${id}: about.category isn't one of lib/categories.mjs`)
+  return i
+}
+ids.sort((a, b) => section(a) - section(b) || specs[a].about.name.localeCompare(specs[b].about.name))
 
 // Drape verdicts from the drape README's results tables (by garment name)
 const drapeReadme = readFileSync(join(designsDir, 'drape', 'README.md'), 'utf8')
@@ -90,6 +99,10 @@ writeFileSync(
   out('docs', 'designs', '_category_.json'),
   JSON.stringify({ label: 'Designs', position: 2, link: { type: 'doc', id: 'designs/index' } }, null, 2)
 )
+categories.forEach((c, i) => {
+  mkdirSync(out('docs', 'designs', c.id), { recursive: true })
+  writeFileSync(out('docs', 'designs', c.id, '_category_.json'), JSON.stringify({ label: c.label, position: i + 1 }, null, 2))
+})
 
 /** A brief's Markdown, made safe for MDX: no H1 (the page has its own), relative links to GitHub */
 const repo = 'https://github.com/dissentingd/publicsewing/blob/main'
@@ -124,7 +137,7 @@ function mdx(md, id) {
     .replace(/<(?=[^a-zA-Z/!])/g, '&lt;')
 }
 
-const rows = []
+const rows = Object.fromEntries(categories.map((c) => [c.id, []]))
 ids.forEach((id, i) => {
   const spec = specs[id]
   const about = spec.about
@@ -221,12 +234,16 @@ Each of these is the ${about.name} pattern with different options, not a separat
 ${variants.join('\n')}
 `
     : ''
-  rows.push(`| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | [${about.name}](/designs/${id}) | ${info.garment} | ${info.source} |`)
+  const variantLinks = Object.entries(spec.variants ?? {}).map(([key, v]) => `[${v.name}](/designs/${id}#${key})`)
+  rows[about.category].push(
+    `| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | [${about.name}](/designs/${id})${variantLinks.length ? `<br /><small>Variants: ${variantLinks.join(' · ')}</small>` : ''} | ${info.garment}<br /><small>Difficulty ${about.difficulty} of 5. Source: ${info.source}</small> |`
+  )
   writeFileSync(
-    out('docs', 'designs', `${id}.mdx`),
+    out('docs', 'designs', about.category, `${id}.mdx`),
     `---
 title: ${JSON.stringify(about.name)}
 description: ${JSON.stringify(about.description)}
+slug: /designs/${id}
 sidebar_position: ${i + 1}
 hide_table_of_contents: true
 ---
@@ -270,14 +287,25 @@ title: Designs
 sidebar_position: 0
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'
+import TOCInline from '@theme/TOCInline'
 
 Every design is a **draft**: none has been sewn yet. Each page has the pattern tool for that
 design, its 3D drape, and its brief.
 
-| | Design | Garment | Source |
-|---|---|---|---|
-${rows.join('\n')}
+<div className="design-sections">
+  <TOCInline toc={toc} />
+</div>
+
+${categories
+  .map(
+    (c) => `## ${c.label} {#${c.id}}
+
+| | Design | Garment |
+|---|---|---|
+${rows[c.id].join('\n')}
 `
+  )
+  .join('\n')}`
 )
 
 console.log(`generated: ${ids.length} designs, ${Object.values(sizes).flat().length} size sets`)

@@ -228,6 +228,21 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
   color: var(--ifm-color-emphasis-700);
   margin-top: 0.4rem;
 }
+/* The Designs page's jump links, in a row (Docusaurus' TOCInline, a list by default) */
+.design-sections ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  padding-left: 0;
+  list-style: none;
+}
+.design-sections li {
+  margin: 0;
+  list-style: none;
+}
+.design-sections li + li {
+  margin-top: 0;
+}
 .thumb {
   width: 72px;
   min-width: 72px;
@@ -236,6 +251,17 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
   object-fit: cover;
   border-radius: 4px;
   display: block;
+}
+/* A smaller thumbnail on a phone leaves the Designs tables' text more room */
+@media (max-width: 600px) {
+  .thumb {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+  }
+  .markdown table td:has(> a > .thumb) {
+    padding: 0.4rem;
+  }
 }
 
 @media (max-width: 760px) {
