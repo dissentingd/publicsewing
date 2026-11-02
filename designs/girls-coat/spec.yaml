@@ -8,6 +8,7 @@ extends: ../box-coat/spec.yaml
 about:
   id: girls-coat
   name: Girl's coat
+  category: coats
   description: "A loose, single-breasted coat to below the knee, with a notched collar and flap pockets: for girls, or any size"
   difficulty: 3
   tags: [coats, children]

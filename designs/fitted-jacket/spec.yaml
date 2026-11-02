@@ -6,6 +6,7 @@
 about:
   id: fitted-jacket
   name: Fitted jacket
+  category: jackets
   description: "A tight-fitted, single-breasted jacket: princess seams, an under-arm panel, shaped back seam, shawl collar"
   difficulty: 4
   tags: [jackets]

@@ -5,6 +5,7 @@
 about:
   id: tailoredjacket
   name: Tailored jacket
+  category: jackets
   description: "A semi-fitted, single-breasted jacket: princess seams, peak or notched lapel, two-piece sleeves"
   difficulty: 4
   tags: [jackets]

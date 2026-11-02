@@ -5,6 +5,7 @@
 about:
   id: gored-skirt
   name: Gored skirt
+  category: skirts
   description: A flared skirt of five to fifteen gores, the waist shaped in its seams, with a CB zip and a waistband
   difficulty: 2
   tags: [bottoms]

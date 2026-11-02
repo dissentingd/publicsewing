@@ -5,6 +5,7 @@
 about:
   id: trousers
   name: Trousers
+  category: trousers
   description: Semi-fitted straight trousers with waist darts, a zip fly, side pockets, a jetted back pocket and a waistband
   difficulty: 3
   tags: [bottoms]

@@ -8,6 +8,7 @@ extends: ../topcoat/spec.yaml
 about:
   id: jacket
   name: Jacket
+  category: jackets
   description: A single-breasted two-button jacket with side panels, a notched lapel, flap pockets and a back vent
   difficulty: 5
   tags: [jackets]

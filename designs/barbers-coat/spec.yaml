@@ -4,6 +4,7 @@
 about:
   id: barberscoat
   name: Barber's coat
+  category: jackets
   description: "A white service coat: standing collar buttoned to the neck, or an open neck; patch pockets"
   difficulty: 3
   tags: [jackets, workwear]

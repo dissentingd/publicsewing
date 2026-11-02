@@ -5,6 +5,7 @@
 about:
   id: boxcoat
   name: Box coat
+  category: coats
   description: "A loose, hip-to-thigh-length coat: straight body flared from the arms, notched lapel, two-piece sleeves"
   difficulty: 3
   tags: [coats, jackets]

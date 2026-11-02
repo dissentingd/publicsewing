@@ -6,6 +6,7 @@ extends: ../templates/yoke.yaml
 about:
   id: smock
   name: Smock
+  category: tops
   description: "A loose yoked smock or overall: gathered body, sleeves gathered into bands, back opening"
   difficulty: 2
   tags: [tops, dresses, children]

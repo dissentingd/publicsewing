@@ -9,6 +9,7 @@ block: brian
 about:
   id: jumpsuit
   name: Jumpsuit
+  category: trousers
   description: "A one-piece suit cut almost entirely from rectangles: buttoned front, patch pockets, gussets"
   difficulty: 2
   tags: [coveralls, workwear]

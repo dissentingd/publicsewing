@@ -7,6 +7,7 @@ extends: ../templates/yoke.yaml
 about:
   id: nightgown
   name: Nightgown
+  category: sleepwear
   description: "A long yoked nightgown: gathered body, front placket, neck band, sleeves into wristbands"
   difficulty: 2
   tags: [sleepwear, dresses]

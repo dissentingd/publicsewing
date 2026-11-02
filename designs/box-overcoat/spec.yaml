@@ -7,6 +7,7 @@ extends: ../overcoat/spec.yaml
 about:
   id: box-overcoat
   name: Box overcoat
+  category: coats
   description: "A loose, straight single-breasted overcoat with a full sweep at the hem"
   difficulty: 4
   tags: [coats]

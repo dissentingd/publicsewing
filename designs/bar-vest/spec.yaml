@@ -4,6 +4,7 @@
 about:
   id: barvest
   name: Bar vest
+  category: vests
   description: "A bartender's short, waisted jacket: pointed fronts, standing collar, with or without sleeves"
   difficulty: 3
   tags: [jackets, vests, workwear]

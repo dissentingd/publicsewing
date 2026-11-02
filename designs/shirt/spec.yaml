@@ -8,6 +8,7 @@ extends: ../service-shirt/spec.yaml
 about:
   id: shirt
   name: Shirt
+  category: tops
   description: "A classic button-through shirt: back yoke, collar on a stand, buttoned cuffs, rounded tails"
   difficulty: 3
   tags: [tops]

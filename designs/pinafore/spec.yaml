@@ -7,6 +7,7 @@ extends: ../templates/yoke.yaml
 about:
   id: pinafore
   name: Pinafore
+  category: dresses
   description: A sleeveless gathered pinafore to wear over clothes, buttoned at the back
   difficulty: 1
   tags: [dresses, children, aprons]

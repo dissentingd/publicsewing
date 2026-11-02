@@ -7,6 +7,7 @@ extends: ../templates/yoke.yaml
 about:
   id: kimono-dress
   name: Kimono dress
+  category: dresses
   description: "A dress with short sleeves cut in one with the bodice, a turn-down collar and a slightly gathered skirt"
   difficulty: 2
   tags: [dresses]

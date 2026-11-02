@@ -4,6 +4,7 @@
 about:
   id: shopcoat
   name: Shop coat
+  category: coats
   description: "A long button-front overcoat for work: grocer's gown, lab coat, duster"
   difficulty: 3
   tags: [coats, workwear]

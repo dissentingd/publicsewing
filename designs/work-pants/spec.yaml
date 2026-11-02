@@ -7,6 +7,7 @@ extends: ../trousers/spec.yaml
 about:
   id: work-pants
   name: Work pants
+  category: trousers
   description: Full straight work trousers for cotton and khaki, deep rise, no darts, side and back pockets, waistband
   difficulty: 3
   tags: [bottoms, workwear]

@@ -8,6 +8,7 @@ extends: ../box-coat/spec.yaml
 about:
   id: fieldjacket
   name: Field jacket
+  category: jackets
   description: "A straight, hip-length jacket cut for women: small lapels, buttoned down the front, four flapped patch pockets"
   difficulty: 3
   tags: [jackets]

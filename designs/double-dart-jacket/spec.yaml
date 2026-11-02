@@ -8,6 +8,7 @@ extends: ../fitted-jacket/spec.yaml
 about:
   id: double-dart-jacket
   name: Double-dart jacket
+  category: jackets
   description: "A tight-fitted jacket shaped by two front seams over the shoulder, an under-arm panel and a shaped back seam"
   difficulty: 4
   tags: [jackets]

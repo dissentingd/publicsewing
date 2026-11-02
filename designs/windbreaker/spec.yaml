@@ -5,6 +5,7 @@
 about:
   id: windbreaker
   name: Windbreaker
+  category: jackets
   description: A hooded, zip-front light jacket with front and back yokes and slanted welt pockets
   difficulty: 3
   tags: [jackets, coats]

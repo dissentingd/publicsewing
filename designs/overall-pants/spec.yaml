@@ -8,6 +8,7 @@ extends: ../work-pants/spec.yaml
 about:
   id: overall-pants
   name: Overall pants
+  category: trousers
   description: Full work overall trousers with no side seam, each leg cut in one piece, fly and waistband
   difficulty: 2
   tags: [bottoms, workwear]

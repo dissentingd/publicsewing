@@ -8,6 +8,7 @@ extends: ../overcoat/spec.yaml
 about:
   id: balmacaan
   name: Balmacaan
+  category: coats
   description: "A loose raglan-sleeved overcoat to below the knee, buttoned to the throat under a stand collar"
   difficulty: 4
   tags: [coats]

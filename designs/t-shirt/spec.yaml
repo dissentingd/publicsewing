@@ -3,6 +3,7 @@
 about:
   id: t-shirt
   name: T-shirt
+  category: tops
   description: A plain crew-neck T-shirt with short set-in sleeves, drafted from your measurements
   difficulty: 2
   tags: [tops, knits]

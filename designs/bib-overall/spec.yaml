@@ -7,6 +7,7 @@ extends: ../work-pants/spec.yaml
 about:
   id: bib-overall
   name: Bib overall
+  category: trousers
   description: Bib-and-brace work overall, side seams buttoned at the hip, bib, hip and back patch pockets
   difficulty: 3
   tags: [bottoms, workwear]

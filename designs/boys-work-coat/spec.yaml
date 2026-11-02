@@ -7,6 +7,7 @@ extends: ../chore-coat/spec.yaml
 about:
   id: boysworkcoat
   name: Boys' work coat
+  category: jackets
   description: "A boy's (or girl's) chore coat: five buttons, lower patch pockets, pointed collar"
   difficulty: 3
   tags: [jackets, children]

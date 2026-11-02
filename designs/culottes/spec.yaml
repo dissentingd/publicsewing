@@ -8,6 +8,7 @@ extends: ../two-piece-skirt/spec.yaml
 about:
   id: culottes
   name: Culottes
+  category: skirts
   description: A divided skirt that looks like a skirt until the wearer moves, with a CB zip and a waistband
   difficulty: 2
   tags: [bottoms]

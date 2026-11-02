@@ -8,6 +8,7 @@ extends: ../tailored-jacket/spec.yaml
 about:
   id: womenspeacoat
   name: Women's peacoat
+  category: coats
   description: "A hip-length, double-breasted wool coat cut for women: princess seams, buttoned to the neck under a deep storm collar, flap pockets"
   difficulty: 4
   tags: [coats, jackets]

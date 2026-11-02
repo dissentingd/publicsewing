@@ -4,6 +4,7 @@
 about:
   id: militaryblouse
   name: Military blouse
+  category: jackets
   description: "A fitted cotton field jacket: three-piece body, two-piece sleeves, standing collar, welt pockets"
   difficulty: 4
   tags: [jackets]

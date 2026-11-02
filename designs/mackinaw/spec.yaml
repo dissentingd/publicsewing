@@ -4,6 +4,7 @@
 about:
   id: mackinaw
   name: Mackinaw
+  category: jackets
   description: A double-breasted, belted wool work jacket with flapped patch pockets
   difficulty: 4
   tags: [jackets, coats]

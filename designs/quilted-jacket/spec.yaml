@@ -7,6 +7,7 @@ extends: ../windbreaker/spec.yaml
 about:
   id: quiltedjacket
   name: Quilted jacket
+  category: jackets
   description: A hooded, quilt-lined jacket that buttons to the throat, with sloped front yokes and slanted welt pockets
   difficulty: 3
   tags: [jackets, coats]

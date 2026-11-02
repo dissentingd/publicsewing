@@ -5,6 +5,7 @@
 about:
   id: waistcoat
   name: Waistcoat
+  category: vests
   description: A lined, single-breasted V-neck waistcoat with cutaway points, darts front and back and welt pockets
   difficulty: 3
   tags: [vests]

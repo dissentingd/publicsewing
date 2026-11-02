@@ -6,6 +6,7 @@ extends: ../peacoat/spec.yaml
 about:
   id: ulster
   name: Ulster
+  category: coats
   description: "A long double-breasted overcoat: deep ulster collar that buttons up, wide lapels, slanted pockets, back vent"
   difficulty: 4
   tags: [coats]

@@ -4,6 +4,7 @@
 about:
   id: huntingcoat
   name: Hunting coat
+  category: jackets
   description: A belted cotton field jacket with an action-pleated back and bellows patch pockets
   difficulty: 4
   tags: [jackets]

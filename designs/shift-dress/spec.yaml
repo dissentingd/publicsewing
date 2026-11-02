@@ -9,6 +9,7 @@ extends: ../templates/yoke.yaml
 about:
   id: shift-dress
   name: Shift dress
+  category: dresses
   description: "A simple unfitted dress, front and back each in one piece, a little flared, with a back neck opening"
   difficulty: 1
   tags: [dresses]

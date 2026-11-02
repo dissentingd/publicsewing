@@ -7,6 +7,7 @@ extends: ../gored-skirt/spec.yaml
 about:
   id: two-piece-skirt
   name: Two-piece skirt
+  category: skirts
   description: A plain skirt fitted at the hips and waist, shaped in its side seams, with a CB zip and a waistband
   difficulty: 2
   tags: [bottoms]

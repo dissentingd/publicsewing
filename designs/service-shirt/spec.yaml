@@ -8,6 +8,7 @@ extends: ../pyjama-jacket/spec.yaml
 about:
   id: service-shirt
   name: Service shirt
+  category: tops
   description: "A button-through camp-collar shirt: back yoke, two flapped breast pockets, shoulder straps"
   difficulty: 3
   tags: [tops, workwear]

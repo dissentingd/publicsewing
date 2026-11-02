@@ -7,6 +7,7 @@ extends: ../templates/yoke.yaml
 about:
   id: hooded-smock
   name: Hooded smock
+  category: tops
   description: "A boxy pullover anorak: front yoke, buttoned neck placket, hood, flapped chest pocket, kangaroo pocket"
   difficulty: 3
   tags: [tops, outerwear]

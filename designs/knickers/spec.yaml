@@ -8,6 +8,7 @@ extends: ../trousers/spec.yaml
 about:
   id: knickers
   name: Knickers
+  category: trousers
   description: Full trousers to below the knee, gathered into a buckled strap, with a fly, pockets and waistband
   difficulty: 3
   tags: [bottoms]

@@ -5,6 +5,7 @@
 about:
   id: knickerbockers
   name: Knickerbockers
+  category: sleepwear
   description: Full knee-length knickers or bloomers gathered into leg bands, with an elastic waist
   difficulty: 2
   tags: [bottoms, children, sleepwear]

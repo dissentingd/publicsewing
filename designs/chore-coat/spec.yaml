@@ -3,6 +3,7 @@
 about:
   id: chorecoat
   name: Chore coat
+  category: jackets
   description: A boxy, unlined work jacket with patch pockets and a turn-down collar
   difficulty: 3
   tags: [jackets]

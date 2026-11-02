@@ -8,6 +8,7 @@ extends: ../templates/yoke.yaml
 about:
   id: middy-blouse
   name: Middy blouse
+  category: tops
   description: "A loose pullover with a deep V neck, a square sailor collar and a shield, sleeves into cuffs"
   difficulty: 2
   tags: [tops]

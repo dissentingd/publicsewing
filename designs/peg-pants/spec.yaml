@@ -7,6 +7,7 @@ extends: ../trousers/spec.yaml
 about:
   id: peg-pants
   name: Peg-top pants
+  category: trousers
   description: Pleated trousers full over the hips, tapering to a narrow bottom
   difficulty: 3
   tags: [bottoms]

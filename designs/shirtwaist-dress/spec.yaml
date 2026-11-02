@@ -6,6 +6,7 @@ extends: ../templates/yoke.yaml
 about:
   id: shirtwaistdress
   name: Shirtwaist dress
+  category: dresses
   description: "A buttoned work dress: easy bodice, turn-down collar, full sleeves into cuffs, gathered skirt"
   difficulty: 3
   tags: [dresses]

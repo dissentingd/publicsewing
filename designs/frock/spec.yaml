@@ -6,6 +6,7 @@ extends: ../templates/yoke.yaml
 about:
   id: frock
   name: Frock
+  category: dresses
   description: "A simple dress: bodice to the waist, gathered skirt, short or long sleeves, back buttons"
   difficulty: 2
   tags: [dresses, children]

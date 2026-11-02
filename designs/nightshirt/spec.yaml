@@ -7,6 +7,7 @@ extends: ../templates/yoke.yaml
 about:
   id: nightshirt
   name: Nightshirt
+  category: sleepwear
   description: "A long, loose nightshirt: back yoke, front placket, neck band, side slits"
   difficulty: 2
   tags: [sleepwear, tops]

@@ -9,6 +9,7 @@ extends: ../templates/yoke.yaml
 about:
   id: work-shirt
   name: Work shirt
+  category: tops
   description: "A roomy pullover work shirt: back yoke, buttoned front fly, neck band or collar, wristbands, breast pocket"
   difficulty: 2
   tags: [tops, workwear]

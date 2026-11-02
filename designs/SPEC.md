@@ -8,7 +8,7 @@ by named operations. [chore-coat/spec.yaml](chore-coat/spec.yaml) is the plaines
 
 | Key | What |
 |---|---|
-| `about` | The design's data: `id` (prefixes its piece names), `name`, `description`, `difficulty`, `tags`, `techniques`, `version`, `source` (book, figure, corpus folder id), `preview` (the measurement set of the pattern-pieces preview on its site page, default `cisMaleAdult38`; `tools/preview.mjs`). |
+| `about` | The design's data: `id` (prefixes its piece names), `name`, `category` (its section on the site's Designs page and sidebar: one of `lib/categories.mjs`), `description`, `difficulty`, `tags`, `techniques`, `version`, `source` (book, figure, corpus folder id), `preview` (the measurement set of the pattern-pieces preview on its site page, default `cisMaleAdult38`; `tools/preview.mjs`). |
 | `block` | The FreeSewing block it starts from: `brian`, `bent`, `titan`, `breanna`, `sarah` (`blocks/`). A flat-cut design (the jumpsuit) names one but drafts no piece from it. |
 | `options` | Every option, with the source's number as its default. An option with a block option's name replaces it (the gored skirt sets Sarah's `length`, and hides Sarah's unused options by leaving out `menu`). `{ pct, min, max, of: chest, menu }` is a percentage (of a measurement with `of`); `{ count, min, max }`, `{ bool }` and `{ dflt, list }` as in FreeSewing. The pattern tool labels options from [labels.yaml](labels.yaml) by name (`npm test` checks every shown option has one); `title:` and `description:` on an option override that label for this design. |
 | `pieces` | The pattern pieces, in order (below). |

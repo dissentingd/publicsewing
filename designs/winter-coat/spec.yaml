@@ -7,6 +7,7 @@ extends: ../windbreaker/spec.yaml
 about:
   id: wintercoat
   name: Winter coat
+  category: coats
   description: A straight, knee-length coat with deep front and back yokes, hip welt pockets and a turn-down collar
   difficulty: 4
   tags: [coats]

@@ -8,6 +8,7 @@ extends: ../mackinaw/spec.yaml
 about:
   id: peacoat
   name: Peacoat
+  category: coats
   description: "A hip-length, double-breasted wool coat: wide lapels, a deep collar that buttons up, hand-warmer pockets"
   difficulty: 4
   tags: [coats, jackets]

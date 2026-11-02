@@ -7,6 +7,7 @@ extends: ../peacoat/spec.yaml
 about:
   id: overcoat
   name: Overcoat
+  category: coats
   description: "A single-breasted overcoat to below the knee: notched lapel, back vent, slanted pockets, lined"
   difficulty: 4
   tags: [coats]

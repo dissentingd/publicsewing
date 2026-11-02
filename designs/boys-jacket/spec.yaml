@@ -7,6 +7,7 @@ extends: ../jacket/spec.yaml
 about:
   id: boysjacket
   name: Boy's jacket
+  category: jackets
   description: "A three-button suit jacket for boys: notched lapel, flap pockets, rounded front corners"
   difficulty: 5
   tags: [jackets, children]
