@@ -956,3 +956,14 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: long sleeves, cuffs, a neckerchief or tie, stripes or braid on the collar, a front
 > opening or buttons down the front, pockets, badges, a hat, a person.
+
+### work-shirt.collar: Work shirt, turn-down collar
+> A roomy men's **pullover work shirt** in sturdy cotton drill or chambray (blue, grey or natural).
+> A **yoke across the back shoulders** (from the front, only the yoke seam over the shoulders shows).
+> **No front yoke.** A **front fly opening** from a **turn-down collar** down to mid-chest, with **four
+> buttons**; it doesn't open to the hem. **One patch pocket on the wearer's left breast.** Long, loose
+> sleeves gathered into **narrow buttoned wristbands**. **Long shirttails** well below the seat, with
+> **short slits at the side seams** and rounded corners. Shown untucked, flat, front view.
+>
+> Leave out: a band collar, a button-through front, a front yoke, epaulettes, a second pocket, a pocket
+> flap, a person, trousers.

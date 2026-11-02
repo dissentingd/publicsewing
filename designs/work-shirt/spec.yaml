@@ -55,3 +55,10 @@ pieces:
       h: chest * 0.15
     points: [[0, 0], [w, 0], [w, h], [0, h]]
     allowance: [3, 1, 1, 1]
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  collar:
+    name: Turn-down collar
+    description: "Vincent's alternative to the narrow neck band: a collar that turns down."
+    options: { neckFinish: collar }

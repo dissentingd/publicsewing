@@ -3,5 +3,6 @@ import { testYoke } from './yoke-checks.mjs'
 
 testYoke('work-shirt', WorkShirt, {
   default: {},
+  withCollar: { neckFinish: 'collar' },
   variant: { neckFinish: 'collar', breastPocket: false, sideSlit: 0, opening: 'back' },
 })
