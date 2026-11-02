@@ -45,5 +45,5 @@ variants:
     options: { collarStyle: shawl }
   military:
     name: Military collar
-    description: "A deep square-ended collar that stands high, in place of the lapels, with four rows of buttons, the top pair just under the neck, so the coat closes to the throat."
+    description: "A deep square-ended collar that stands high, in place of the lapels, with four rows of buttons, the top pair just under the neck, so the coat closes to the throat. Unlined: the lining is drafted only with the lapel and shawl collars."
     options: { collarStyle: military, buttons: 4, buttonTop: -4 }
