@@ -238,3 +238,7 @@ variants:
     name: Shawl collar
     description: "Simons' other mackinaw collar: the collar cut in one with the front and rolling down to the top button, with no notch and no separate collar piece."
     options: { collarStyle: shawl }
+  military:
+    name: Military collar
+    description: "Simons' deeper collar with square ends, cut straighter so that it stands higher, with four rows of buttons, the top pair just under the neck, so the coat closes to the throat."
+    options: { collarStyle: military, buttons: 4, buttonTop: -4 }
