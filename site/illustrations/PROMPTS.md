@@ -731,3 +731,12 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a notch or lapel step, a belt, patch pockets, epaulettes, gold or anchor buttons, long
 > length, a person.
+
+### peacoat.military: Peacoat, military collar
+> A **hip-length, double-breasted** coat in heavy navy wool (melton). **Two rows of four
+> buttons**, closed to the throat, the top pair just under the collar. A **deep collar with square ends, standing high** around the
+> neck, with no lapels. **Two slanted welt hand-warmer pockets** at hand height. Plain set-in
+> sleeves. Square front corners. Shown flat, front view.
+>
+> Leave out: lapels, pointed collar ends, a belt, patch pockets, epaulettes, gold or anchor buttons,
+> long length, a person.

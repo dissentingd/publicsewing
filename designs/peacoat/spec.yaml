@@ -43,3 +43,7 @@ variants:
     name: Shawl collar
     description: "A smooth roll cut in one with the front, from the back of the neck to the top button, in place of the notched lapels and deep collar."
     options: { collarStyle: shawl }
+  military:
+    name: Military collar
+    description: "A deep square-ended collar that stands high, in place of the lapels, with four rows of buttons, the top pair just under the neck, so the coat closes to the throat."
+    options: { collarStyle: military, buttons: 4, buttonTop: -4 }
