@@ -47,6 +47,71 @@ function levels({ points, measurements, options }, c) {
 }
 
 /**
+ * A kimono sleeve cut in one with a bodice to the waist (Pivnick's loose kimono, no gusset):
+ * from the side seam's foot, up to `kimonoDepth` (x chest) below the armhole, a curved underarm
+ * out to the sleeve's hem, half the biceps with `bicepsEase` wide; up the hem; back along the
+ * overarm, `kimonoAngle` degrees below level and `kimonoLength` (x shoulderToWrist) past the
+ * shoulder point (more if the hem's under corner would otherwise not clear the side seam), blended into the shoulder from its middle; on to the neck point. Design
+ * options; used when `kimonoLength` is set. The back is drafted first: the front's hem width is
+ * trued so its underarm seam comes out the same length.
+ */
+function kimonoSleeve({ points, Path, options, measurements, store }, side, foot) {
+  const hps = points.s3CollarSplit
+  const tip = points.s3ArmholeSplit
+  const a = -options.kimonoAngle
+  const M = hps.shiftFractionTowards(tip, 0.5)
+  const P = tip.shift(a, M.dist(tip) * 0.6)
+  const blend = new Path().move(M).curve(M.shiftFractionTowards(tip, 0.6), tip.shift(a, M.dist(tip) * 0.2), P)
+  const y = Math.min(points.armhole.y + measurements.chest * options.kimonoDepth, foot.y - 20)
+  const t = (y - points.armhole.y) / (foot.y - points.armhole.y)
+  const U = points.armhole.shiftFractionTowards(foot, t)
+  const W = (measurements.biceps * (1 + options.bicepsEase)) / 2
+  // The overarm's length past P: as asked, or longer if the hem's under corner wouldn't clear
+  // the side seam (a wide sleeve, short and steep); the front's matches the back's
+  const before = hps.dist(M) + blend.length()
+  const backSide = side === 'front' ? store.get('yoke.back') : null
+  let run = M.dist(tip) + measurements.shoulderToWrist * options.kimonoLength - blend.length()
+  if (backSide) run = backSide.kimono.over - before
+  else {
+    const short = U.x + measurements.chest * 0.04 - P.shift(a, run).shift(a - 90, W).x
+    if (short > 0) run += short / Math.cos((a * Math.PI) / 180)
+  }
+  const Over = P.shift(a, run)
+  // The underarm: a rounded corner where the side seam's line meets the sleeve's underside,
+  // starting at U and as far along the underside from the corner as U is from it
+  const underFor = (w) => {
+    const Hu = Over.shift(a - 90, w)
+    const [ax, ay] = [Over.dx(P), Over.dy(P)] // along the underside's line, from Hu inward
+    const [sx, sy] = [foot.x - U.x, foot.y - U.y]
+    const n = ax * sy - ay * sx
+    const m = ((U.x - Hu.x) * sy - (U.y - Hu.y) * sx) / n
+    const C = Hu.translate(ax * m, ay * m)
+    const r = Math.min(Math.max(U.dist(C), 10), Hu.dist(C) * 0.7)
+    const Ut = C.shiftTowards(foot, r)
+    const E = C.shiftTowards(Hu, r)
+    const path = new Path().move(foot).line(Ut).curve(Ut.shiftFractionTowards(C, 0.6), E.shiftFractionTowards(C, 0.6), E).line(Hu)
+    return { Hu, path }
+  }
+  let w = W
+  const target = backSide?.yokeSide
+  if (target) {
+    for (let i = 0; i < 12; i++) {
+      w = Math.max(W * 0.6, Math.min(W * 1.4, w + underFor(w).path.length() - target))
+    }
+  }
+  const { Hu, path: under } = underFor(w)
+  points.kimonoUnder = U
+  points.kimonoHem = Hu
+  points.kimonoOver = Over
+  return {
+    path: under.clone().line(Over).line(P).join(blend.reverse()).line(hps),
+    under: under.length(),
+    over: before + P.dist(Over),
+    hem: Hu.dist(Over),
+  }
+}
+
+/**
  * Draft the yoke and body for one side ('back' or 'front') into `yoke.<side>` in the store,
  * as paths in that side's coordinates (x from CB/CF, the fold).
  */
@@ -89,8 +154,12 @@ export function draftYokeSide(sh, side) {
   let yoke = new Path().move(open ? new Point(-ext, fold.y) : fold)
   if (open && drop) yoke = yoke.line(fold)
   yoke = drop ? yoke.curve(fold.shift(0, armYoke.x * 0.5), armYoke.shift(180, armYoke.x * 0.3), armYoke) : yoke.line(armYoke)
-  if (!lowerArm) yoke = yoke.line(points.armhole)
-  yoke = yoke.join(upperArm).line(points.s3CollarSplit).join(neck)
+  const kimono = !lowerArm && optional('kimonoLength') > 0 ? kimonoSleeve(sh, side, armYoke) : null
+  if (kimono) yoke = yoke.join(kimono.path).join(neck)
+  else {
+    if (!lowerArm) yoke = yoke.line(points.armhole)
+    yoke = yoke.join(upperArm).line(points.s3CollarSplit).join(neck)
+  }
   if (open) yoke = yoke.line(new Point(-ext, neckAtFold.y))
 
   // Body: fullness added at the fold, flared at the side, from the bottom of the fold round.
@@ -155,7 +224,8 @@ export function draftYokeSide(sh, side) {
     yokeSeam: top,
     bodyTop: top + spread,
     side: hemOut.dist(sh2(armTop)) - (r > 1 ? r : 0),
-    yokeSide: lowerArm ? 0 : points.armhole.dist(armYoke),
+    yokeSide: kimono ? kimono.under : lowerArm ? 0 : points.armhole.dist(armYoke),
+    ...(kimono ? { kimono: { over: kimono.over, hem: kimono.hem } } : {}),
     shoulder: points.s3CollarSplit.dist(points.s3ArmholeSplit),
     neck: neck.length(),
     neckPath: neck,

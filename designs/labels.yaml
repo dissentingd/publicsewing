@@ -667,6 +667,15 @@ options:
   frontOpening:
     title: Front opening shift
     description: How far the front opening sits forward of the side, as a share of the knee.
+  kimonoLength:
+    title: Sleeve length
+    description: How far the sleeve runs past the shoulder point, as a share of shoulder to wrist.
+  kimonoAngle:
+    title: Sleeve angle
+    description: How far the sleeve slopes below level, in degrees.
+  kimonoDepth:
+    title: Underarm depth
+    description: How far below the armhole the underarm curve starts, as a share of the chest. Lower gives the arm more room.
   pleatStyle:
     title: Pleats
     description: Side pleats, all turned one way, or box pleats.

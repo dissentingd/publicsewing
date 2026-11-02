@@ -661,3 +661,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: pleats from the waist, a kilt pin or fringe, plaid, pockets, belt loops, a belt, a
 > person.
+
+### kimono-dress: Kimono dress
+> A women's **day dress** in plain cotton or rayon (rust, teal or navy), **below the knee**. The
+> **short sleeves are cut in one with the bodice**: no armhole seam, the shoulder running
+> smoothly down into a wide sleeve ending above the elbow, with soft folds under the arm. A
+> **turn-down collar**, **five buttons down the front of the bodice** to a **waist seam**, and a
+> **slightly gathered skirt**, gently flared. Shown flat, front view.
+>
+> Leave out: an armhole seam, set-in or puffed sleeves, a gusset showing, a belt, buttons below
+> the waist, pockets, a wrap front, Japanese kimono styling (obi, wide hanging sleeves), a person.

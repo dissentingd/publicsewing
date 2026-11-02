@@ -86,6 +86,7 @@ and marked as derived.
 | **Loose coat** (box coat) | 1 | — (Carlita is fitted) | **Drafted 2026-10-25** (`designs/box-coat`, on Breanna, not sewn) | Mitchell 1921 `newstandardworko00mitc` |
 | **Shirtwaist / work dress** | 2, 5 | — | **Drafted 2026-10-25** (`designs/shirtwaist-dress`, not sewn) | WI *Pattern Drafting* §2 |
 | **Shift dress** | 4 | — (Sasha is fitted) | **Drafted 2026-10-29** (`designs/shift-dress`: front and back in one piece, no waist seam; not sewn) | Pivnick 1949 `pivnickdesignclothes1949` |
+| Kimono-sleeve dress | 4 | — | Variant; **drafted 2026-11-02** (`designs/kimono-dress`: short sleeve cut in one with the bodice, no gusset, collar, gathered skirt; not sewn) | Pivnick 1949 `pivnickdesignclothes1949` |
 | **Smock** (any size) | 4 | — | **Drafted 2026-10-23** (`designs/smock`, not sewn) | Walker 1909 (child's overall) |
 | Apron / pinafore apron | 2 | Albert | Have / Variant | Goldsberry 1888 (aprons) |
 | Slacks / overalls | 2, 5 | Titan, Opal | Variant | — |

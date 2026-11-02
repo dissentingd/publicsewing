@@ -69,6 +69,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `two-piece-skirt` | Plain skirt fitted at hips and waist, shaped in its side seams | Mitchell 1921 |
 | `middy-blouse` | Loose pullover with a deep V neck, square sailor collar and shield | Simons 1922 |
 | `shift-dress` | Simple unfitted dress, front and back each in one piece, a little flared | Pivnick 1949 |
+| `kimono-dress` | Dress with short sleeves cut in one with the bodice, a turn-down collar and a slightly gathered skirt | Pivnick 1949 |
 | `culottes` | Divided skirt that looks like a skirt until the wearer moves | Pivnick 1949 |
 | `gathered-skirt` | Full skirt of straight breadths gathered into a waistband | Walker 1909 |
 | `knee-pants` | Short trousers to the knee, fly, pockets, waistband | Simons 1922 |

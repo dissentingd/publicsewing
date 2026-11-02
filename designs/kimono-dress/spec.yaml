@@ -1,0 +1,43 @@
+# Kimono dress: Pivnick's kimono sleeve dress (How to Design Beautiful Clothes, 1949, Pattern 101,
+# pp. 290-295; the kimono sleeves from p. 183) on FreeSewing's Brian through the yoke template: a
+# bodice with a short sleeve cut in one, no gusset, a collar, joined at the waist to a slightly
+# gathered skirt, buttoned down the front bodice. See BRIEF.md.
+extends: ../templates/yoke.yaml
+
+about:
+  id: kimono-dress
+  name: Kimono dress
+  description: "A dress with short sleeves cut in one with the bodice, a turn-down collar and a slightly gathered skirt"
+  difficulty: 2
+  tags: [dresses]
+  techniques: [kimono-sleeve, collar, gathering, button]
+  version: 0.1.0
+  source: Pivnick, How to Design Beautiful Clothes (1949), Pattern 101, pp. 290-295; kimono sleeves pp. 183-192 (pivnickdesignclothes1949)
+  preview: cisFemaleAdult36
+
+options:
+  yokeAt: { dflt: waist, list: [chest, waist], menu: false } # a bodice to the waist
+  chestEase: { pct: 14, min: 6, max: 30, menu: fit }
+  sleeves: { dflt: none, list: [none], menu: false } # the sleeve is in the bodice
+  # The sleeve: "not full length", worn pushed up on the arm; the bodice swung out from it
+  kimonoLength: { pct: 35, min: 15, max: 80, menu: style } # x shoulder to wrist, past the shoulder point
+  kimonoAngle: { deg: 25, min: 15, max: 45, menu: style } # the overarm below level
+  kimonoDepth: { pct: 9, min: 3, max: 16, of: chest, menu: fit } # the underarm's start below the armhole
+  bicepsEase: { pct: 45, min: 25, max: 90, menu: fit } # roomy: no gusset, so the arm has to lift in it
+  waistShaping: { pct: 2, min: 0, max: 5, of: chest, menu: fit, description: "How far the bodice's side seams come in at the waist, as a share of the chest." }
+  opening: { dflt: front, list: [back, front], menu: style }
+  buttons: { count: 5, min: 3, max: 8, menu: style }
+  neckFinish: { dflt: collar, list: [binding, band, collar], menu: style }
+  collarWidth: { pct: 22, min: 12, max: 32, of: neck, menu: style }
+  collarSpring: { pct: 15, min: 0, max: 25, menu: style }
+  skirtLength: { pct: 62, min: 30, max: 98, menu: style } # x waist to floor: below the knee
+  gathers: { pct: 125, min: 100, max: 200, menu: style } # "slight gathers at the waistline"
+  hemFlare: { pct: 8, min: 0, max: 25, menu: style }
+
+# A bodice to the waist and a skirt; the neck band is a collar
+pieces:
+  frontBody: { name: frontSkirt, part: yokePiece, after: [backBase, frontBase], side: front, piece: body, nr: 1, label: frontSkirt, cut: 1 }
+  backBody: { name: backSkirt, part: yokePiece, after: [backBase, frontBase], side: back, piece: body, nr: 2, label: backSkirt, cut: 1 }
+  frontYoke: { name: frontBodice, part: yokePiece, after: [backBase, frontBase], side: front, piece: yoke, nr: 3, label: frontBodice, cut: 1 }
+  backYoke: { name: backBodice, part: yokePiece, after: [backBase, frontBase], side: back, piece: yoke, nr: 4, label: backBodice, cut: 1 }
+  neckBand: { name: collar, part: neckBand, after: [backBase, frontBase], nr: 8 }
