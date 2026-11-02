@@ -168,6 +168,29 @@ function OtherSoftware({ design, Design, useLocalStorageState }) {
   )
 }
 
+// A link to a section below the tool (a variant, the brief) lands short: the browser scrolls before
+// the tool has loaded and pushed the section down. Go back to the section as the page grows, for a
+// few seconds, until the visitor scrolls for themselves.
+function HashLanding() {
+  useEffect(() => {
+    const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)))
+    if (!target) return undefined
+    const land = () => target.scrollIntoView()
+    const stop = () => {
+      observer.disconnect()
+      clearTimeout(timer)
+      for (const e of ['wheel', 'touchstart', 'keydown', 'mousedown']) window.removeEventListener(e, stop)
+    }
+    const observer = new ResizeObserver(land)
+    observer.observe(document.getElementById('__docusaurus') ?? document.documentElement)
+    const timer = setTimeout(stop, 5000)
+    for (const e of ['wheel', 'touchstart', 'keydown', 'mousedown']) window.addEventListener(e, stop, { passive: true })
+    land()
+    return stop
+  }, [])
+  return null
+}
+
 export default function PatternEditor({ design }) {
   return (
     <BrowserOnly fallback={<div className="pattern-editor">Loading the pattern tool…</div>}>
@@ -179,6 +202,7 @@ export default function PatternEditor({ design }) {
         return (
           <div className="pattern-editor">
             <style>{patternStyle}</style>
+            <HashLanding />
             <SizePicker design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} />
             <Editor design={design} localDesigns={designs} config={editorConfig(design)} />
             <OtherSoftware design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} />

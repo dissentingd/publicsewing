@@ -170,7 +170,15 @@ ids.forEach((id, i) => {
 </figure>`,
   ].filter(Boolean)
   const illustration = figures.length ? `<div className="design-figures">\n${figures.join('\n')}\n</div>\n` : ''
-  // The variants: this design with other options, each with how to set them
+  // The variants: this design with other options, each with how to set them. The buttons need
+  // every option any variant touches, and those options' defaults
+  const variantKeys = [...new Set(Object.values(spec.variants ?? {}).flatMap((v) => Object.keys(v.options)))]
+  const variantDefaults = Object.fromEntries(
+    variantKeys.map((k) => {
+      const o = spec.options?.[k] ?? {}
+      return [k, o.bool ?? o.dflt ?? o.count ?? o.deg ?? (o.pct !== undefined ? o.pct / 100 : null)]
+    })
+  )
   const variants = Object.entries(spec.variants ?? {}).map(([key, v]) => {
     const steps = variantSteps(spec, labelData, v.options, `${id} variant ${key}`)
     const pic = existsSync(join(site, 'illustrations', `${id}.${key}.jpg`))
@@ -193,7 +201,9 @@ ids.forEach((id, i) => {
 
 ${v.description}
 
-In the pattern tool above, open **Design Options**, then set:
+<VariantButton design="${about.id}" label="Use this variant" options={${JSON.stringify(v.options)}} keys={${JSON.stringify(variantKeys)}} defaults={${JSON.stringify(variantDefaults)}} />
+
+Or set it by hand: in the pattern tool above, open **Design Options**, then set:
 
 ${steps.map((s) => `- **${s.menu} → ${s.title}:** ${s.value} (the design's default is ${s.dflt})`).join('\n')}
 
@@ -204,7 +214,9 @@ ${figs.length ? `<div className="design-figures">\n${figs.join('\n')}\n</div>\n`
   const variantsSection = variants.length
     ? `## Variants
 
-Each of these is the ${about.name} pattern with different options, not a separate design. To make one, choose your size above, change the settings listed under it, then export. Set them back to return to the design as shown at the top of this page.
+Each of these is the ${about.name} pattern with different options, not a separate design. To make one, choose your size above, press its button (or change its settings by hand), then export.
+
+<VariantButton design="${about.id}" label="Use the design as shown at the top of this page" keys={${JSON.stringify(variantKeys)}} defaults={${JSON.stringify(variantDefaults)}} />
 
 ${variants.join('\n')}
 `
@@ -220,6 +232,7 @@ hide_table_of_contents: true
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import PatternEditor from '@site/src/components/PatternEditor'
+import VariantButton from '@site/src/components/VariantButton'
 
 ${illustration}
 :::warning[Draft, untested]

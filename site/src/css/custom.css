@@ -254,3 +254,8 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
   .home-card { min-height: 170px; }
   .home-note { grid-template-columns: 1fr; gap: 0.75rem; }
 }
+
+.variant-button {
+  margin: 0 0 1rem;
+  white-space: normal;
+}

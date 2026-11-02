@@ -36,6 +36,7 @@ Needs `../designs` installed (`npm install` there): the site builds the designs 
 - **Variants:** a spec's `variants` (designs/SPEC.md) become a Variants section on the design's
   page, after the pattern tool: the settings to change, read from `labels.yaml` so they match the
   tool's menus (the build fails on an option the tool doesn't show), the variant's pattern pieces,
-  and its illustration if `illustrations/<design>.<variant>.jpg` exists.
+  and its illustration if `illustrations/<design>.<variant>.jpg` exists. Its **Use this variant**
+  button (`src/components/VariantButton.jsx`) sets those options in the tool and goes to it.
 - **Adding a design:** nothing to do here, except adding it to the dropdown in
   `.github/ISSUE_TEMPLATE/muslin-report.yml`.
