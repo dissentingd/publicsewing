@@ -29,3 +29,10 @@ pieces:
   backBody: { name: backSkirt, part: yokePiece, after: [backBase, frontBase], side: back, piece: body, nr: 2, label: backSkirt, cut: 1 }
   frontYoke: { name: frontBodice, part: yokePiece, after: [backBase, frontBase], side: front, piece: yoke, nr: 3, label: frontBodice, cut: 1 }
   backYoke: { name: backBodice, part: yokePiece, after: [backBase, frontBase], side: back, piece: yoke, nr: 4, label: backBodice, cut: 1 }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  long-sleeves:
+    name: Long sleeves
+    description: "Full-length sleeves gathered into narrow wristbands, in place of the short ones."
+    options: { sleeves: long }

@@ -3,5 +3,6 @@ import { testYoke } from './yoke-checks.mjs'
 
 testYoke('frock', Frock, {
   default: {},
+  longSleeves: { sleeves: 'long' },
   variant: { opening: 'back', sleeves: 'long', neckFinish: 'band', gathers: 1.3 },
 })

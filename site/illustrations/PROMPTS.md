@@ -868,3 +868,12 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: a collar, lapels, a belt, double-breasted fronts, patch or flap pockets, fur trim,
 > epaulettes, cuff tabs, a waist seam, a person.
+
+### frock.long-sleeves: Frock, long sleeves
+> A simple child's **dress** (about 6 years old) in printed or plain cotton. A **bodice to the
+> waist**, a **gathered skirt** to the **knee**, a **bound round neck** with no collar, and **long
+> sleeves finished with narrow bands at the wrists**. It **buttons down the back** (not visible from
+> the front). Shown flat, front view.
+>
+> Leave out: short sleeves, a collar, a sash or bow, frills, lace, puffed sleeves, front buttons, a
+> person.
