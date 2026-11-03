@@ -6,6 +6,7 @@
 // `<landmark>.x` / `.y` (standard names, mapped through the block's `landmarks`).
 import { Design, hidePresets, pctBasedOn } from '@freesewing/core'
 import { evaluate } from './expr.mjs'
+import { flagMeasurements } from './checks.mjs'
 import {
   bodyOptions,
   bodyMeasurements,
@@ -549,7 +550,8 @@ export function designFromSpec(spec) {
   // A test square on its own piece, in every design: printed at 100%, the box is its stated size
   parts.testSquare = {
     name: `${spec.about.id}.testSquare`,
-    draft: ({ points, paths, Point, Path, macro, part }) => {
+    draft: ({ points, paths, Point, Path, macro, part, store, measurements }) => {
+      flagMeasurements({ store, measurements })
       points.scalebox = new Point(0, 0)
       macro('scalebox', {
         at: points.scalebox,

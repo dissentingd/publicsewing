@@ -1,5 +1,5 @@
 diff --git a/node_modules/@freesewing/react/components/Editor/components/HeaderMenu.mjs b/node_modules/@freesewing/react/components/Editor/components/HeaderMenu.mjs
-index 967071e..bf82872 100644
+index 967071e..b34b9c1 100644
 --- a/node_modules/@freesewing/react/components/Editor/components/HeaderMenu.mjs
 +++ b/node_modules/@freesewing/react/components/Editor/components/HeaderMenu.mjs
 @@ -2,7 +2,6 @@
@@ -10,7 +10,14 @@ index 967071e..bf82872 100644
  import { useAccount } from '@freesewing/react/hooks/useAccount'
  import { useDesignTranslation } from '@freesewing/react/hooks/useDesignTranslation'
  // Components
-@@ -26,8 +25,6 @@ import {
+@@ -19,15 +18,12 @@ import {
+   FlagIcon,
+   MeasurementsIcon,
+   OptionsIcon,
+-  PaperlessIcon,
+   PrintIcon,
+   ResetAllIcon,
+   ResetIcon,
    RightIcon,
    RocketIcon,
    SaIcon,
@@ -19,7 +26,23 @@ index 967071e..bf82872 100644
    SettingsIcon,
    TrashIcon,
    UiIcon,
-@@ -476,40 +473,14 @@ export const HeaderMenuTestIcons = (props) => {
+@@ -325,15 +321,6 @@ export const HeaderMenuDraftViewIcons = (props) => {
+           />
+         </Button>
+       ) : null}
+-      {ux >= levels.paperless ? (
+-        <Button
+-          lgOnly
+-          updateHandler={() => update.settings('paperless', settings.paperless ? 0 : 1)}
+-          tooltip="Turns Paperless on or off (see Core Settings)"
+-        >
+-          <PaperlessIcon className={`${size} ${settings.paperless ? style.custom : style.dflt}`} />
+-        </Button>
+-      ) : null}
+       {ux >= levels.complete ? (
+         <Button
+           lgOnly
+@@ -476,40 +463,14 @@ export const HeaderMenuTestIcons = (props) => {
    )
  }
  
@@ -315,6 +338,48 @@ index 505e296..150aac6 100644
 -
 -  return data
 -}
+diff --git a/node_modules/@freesewing/react/components/Editor/lib/core-settings.mjs b/node_modules/@freesewing/react/components/Editor/lib/core-settings.mjs
+index ee88d39..52c8484 100644
+--- a/node_modules/@freesewing/react/components/Editor/lib/core-settings.mjs
++++ b/node_modules/@freesewing/react/components/Editor/lib/core-settings.mjs
+@@ -13,7 +13,6 @@ import {
+   ExpandIcon,
+   IncludeIcon,
+   MarginIcon,
+-  PaperlessIcon,
+   SaIcon,
+   ScaleIcon,
+   UnitsIcon,
+@@ -113,28 +112,7 @@ export function menuCoreSettingsStructure({
+       },
+       icon: UnitsIcon,
+     },
+-    paperless: {
+-      dense: true,
+-      title: 'Paperless pattern',
+-      about: (
+-        <>
+-          Trees are awesome, and taping together sewing patterns is not much fun. Try our paperless
+-          mode to avoid the need to print out your pattern altogether.
+-        </>
+-      ),
+-      ux: config.uxLevels.core.paperless,
+-      list: [0, 1],
+-      choiceTitles: {
+-        0: 'Generate a regular pattern',
+-        1: 'Generate a paperless pattern',
+-      },
+-      valueTitles: {
+-        0: 'No',
+-        1: 'Yes',
+-      },
+-      dflt: 0,
+-      icon: PaperlessIcon,
+-    },
++    // PublicSewing patch: no Paperless. Our designs draw no dimensions, so it does nothing
+     complete: {
+       dense: true,
+       title: 'Generate a detailed pattern',
 diff --git a/node_modules/@freesewing/react/components/Editor/lib/export/index.mjs b/node_modules/@freesewing/react/components/Editor/lib/export/index.mjs
 index 530601e..fe78f01 100644
 --- a/node_modules/@freesewing/react/components/Editor/lib/export/index.mjs

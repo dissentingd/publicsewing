@@ -6,6 +6,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import BrowserOnly from '@docusaurus/BrowserOnly'
 import useBaseUrl from '@docusaurus/useBaseUrl'
+import { topToBottomMeasurements } from '@freesewing/config'
 import designs from '@site/src/generated/measurements.json'
 import { editorConfig, MY_KEY } from './PatternEditor'
 
@@ -51,7 +52,8 @@ const titleOf = (m) => guide[m]?.[0] ?? m
 // The designs, by name, each under the id of its page (its editor state is under about.id)
 const sorted = Object.entries(designs).sort(([, a], [, b]) => a.name.localeCompare(b.name))
 const findDesign = (id) => sorted.find(([key, d]) => key === id || d.editorId === id)?.[0]
-const inGuideOrder = (list) => Object.keys(guide).filter((m) => list.includes(m))
+// From the head down, as FreeSewing's list has them; a measurement it doesn't list goes last
+const inBodyOrder = (list) => [...topToBottomMeasurements.filter((m) => list.includes(m)), ...list.filter((m) => !topToBottomMeasurements.includes(m))]
 
 /** A measurement's animated figure, or a still one if the device asks for less motion */
 function Figure({ m, figure }) {
@@ -194,8 +196,8 @@ function Tool() {
   const hash = decodeURIComponent(window.location.hash.slice(1))
   const [designId, setDesignId] = useState(() => findDesign(params.get('for')) ?? '')
   const design = designs[designId]
-  const required = design ? inGuideOrder(design.required) : Object.keys(guide)
-  const optional = design ? inGuideOrder(design.optional) : []
+  const required = inBodyOrder(design ? design.required : Object.keys(guide))
+  const optional = design ? inBodyOrder(design.optional) : []
   const list = [...required, ...optional]
 
   const firstOpen = (keys) => keys.find((m) => mine?.[m] === undefined) ?? keys[0]

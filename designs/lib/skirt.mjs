@@ -181,6 +181,8 @@ export function gorePart({ name, after, index, nr, label, zip = () => 0, pleat =
       for (const [k, e, u] of [['left', left, ul], ['right', right, ur]]) {
         if (u === e) continue
         paths[`${k}Fold`] = new Path().move(new Point(e.S.x, e.S.y)).line(new Point(e.H.x, e.H.y)).addClass('help dashed')
+        // At the hem: fold on the gore's edge, bring it to the underlay's
+        macro('pleat', { id: `${k}Pleat`, from: new Point(e.H.x, e.H.y), to: new Point(u.H.x, u.H.y), margin: k === 'left' ? -30 : 30 })
       }
       const seamLen = (e, u) => (u === e ? edgePath(Path, Point, e).length() : upperPath(Path, Point, e).length() + Math.hypot(u.H.x - u.S.x, u.H.y - u.S.y))
       const lens = store.get('skirt.seams', null) ?? {}

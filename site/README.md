@@ -30,7 +30,8 @@ Needs `../designs` installed (`npm install` there): the site builds the designs 
   ignores `stateBackend` and keeps state, measurements included, in the URL); nothing that reaches
   FreeSewing's servers (no Save buttons, which need its backend; help from our own wording and
   figures, `src/components/Measure.jsx` and `ToolHelp.jsx`, not its pages in a frame; a drafting
-  error links to our Measure page and issues); no share links in
+  error links to our Measure page and issues); no Paperless setting (our designs draw no dimensions);
+  no share links in
   the export view; the PDF cover page says PublicSewing, without FreeSewing's logo; a dedicated
   FedEx Office ARCH E export; exported files are named `publicsewing-<design>`.
 - `@freesewing/react` imports packages it doesn't declare (`utils`, `i18n`, `plugin-i18n`,

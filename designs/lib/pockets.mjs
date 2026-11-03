@@ -42,8 +42,11 @@ export function pocketPath(Path, Point, x, y, p, spread = 0, topExtra = 0) {
 }
 
 /** Mark a pocket (and its flap, if any) on a front */
-export function markPocket({ paths, Path, Point }, id, p) {
+export function markPocket({ paths, Path, Point, macro }, id, p) {
   paths[id] = pocketPath(Path, Point, p.x, p.y, p).addClass('mark dashed')
+  // Bartacks down from the mouth's corners, where a patch pocket takes the strain
+  for (const [side, x] of [['Left', p.x], ['Right', p.x + p.w]])
+    macro('bartack', { id: `${id}Bartack${side}`, anchor: new Point(x, p.y), angle: 270, length: 10 })
   if (p.flap) {
     const f = flapSpec(p)
     paths[`${id}Flap`] = pocketPath(Path, Point, p.x - (f.w - p.w) / 2, p.y - p.flap.gap, f).addClass('mark dotted')
