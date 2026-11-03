@@ -628,74 +628,25 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: a third or fourth sleeve, a back view, sleeves spread out flat, a pointed pocket, a tie, epaulettes, a
 > second pocket, pocket flaps, French cuffs or cufflinks, a button-down collar, darts, a contrasting collar, a person.
 
-## Illustrations needed (2026-11-02)
-
-These still need an image, or a new one; the last 29 replace an existing image, after a review of all the older illustrations. Save each as `site/illustrations/<heading's key>.jpg`.
-
-Rewritten after each attempt, by looking at it against the pattern. What went wrong most often: the wrong
-number of buttons, then seams, cuffs and bands the pattern doesn't have. So each rewritten prompt opens with
-what its last attempt got wrong, and names that mistake again under "Leave out". Before keeping an image,
-**count the buttons and panels** and compare them with the prompt. It has to be **square**, at least 1024 px:
-wide ones get cropped. No mannequin, hand, head or handwriting showing. A second thing to check on coats: "two-piece sleeve" tends to come out as a seam across the arm.
-
-*Not used: a seam across each sleeve at the elbow. The buttons, lapels and pockets were right this time.*
-
-### girls-coat.double: Girls' coat, double-breasted
-> **Each sleeve is unbroken from the armhole to the wrist, with no seam across it at the elbow or forearm.**
-> **Double-breasted: exactly two parallel rows of buttons, three in each row, six buttons in all**, the two rows set
-> well apart either side of the centre. A **girl's loose coat** (about 8 years old) in plain wool cloth (red, navy or
-> camel), **to just below the knee**. **Straight, unfitted body** that **flares a little from the arms to the hem**. A
-> **notched lapel** and turn-down collar. **One flap pocket set level into each hip**. **Two-piece sleeves, their two seams running lengthwise from armhole to wrist, with no seam across the sleeve**. Child's
-> proportions: short body, narrow shoulders.
+### norfolk-jacket: Norfolk jacket
+> **A belted tweed jacket: one seam across the chest on each side, three narrow pleats running from that seam down to the belt,
+> and smooth cloth below the belt.** A men's **Norfolk jacket** in brown or green-grey tweed, to the upper thigh. Single-breasted with
+> **notched lapels and a turn-down collar**, **exactly four buttons** down the front, the belt crossing at the waist. A **cloth belt
+> all round**, buttoned at the front, no buckle. A **yoke seam across the upper chest**, just below where the lapels turn; below it
+> **three narrow pleats on each side of the front**, ending at the belt. **Two patch pockets with rounded bottoms and flaps**
+> below the belt. Plain two-seam set-in sleeves, no cuffs. Shown flat on an invisible form, front view.
 >
-> Leave out: a horizontal seam or band on the sleeve, a single row of buttons, vertical pockets, a belt, a waist seam,
-> gathers, patch pockets, a ticket pocket, fur or velvet collar, a hood, frills, a person.
-*Not used: a seam across each sleeve at the elbow. The rest was right.*
+> Leave out: breast pockets, a buckle, pleats below the belt, wide box pleats, elbow patches, shoulder straps, a shirt and tie, a person.
 
-### womens-peacoat.peak: Women's peacoat, peaked lapels
-> **Each sleeve is unbroken from the armhole to the wrist, with no seam across it at the elbow or forearm.** A
-> women's **hip-length, double-breasted** coat in heavy navy wool, **shaped to the waist by princess seams** and
-> flaring a little over the hips. **Two rows of three buttons**. **Wide peaked lapels, their points turned upward**,
-> turning at the bust, under a **deep turn-down collar**. **A flap pocket set into each hip**. **Two-piece sleeves, their two seams running lengthwise from armhole to wrist, with no seam across the sleeve**. Lined.
-> Shown flat, front view.
+### circular-skirt: Circular skirt
+> **No seam across the skirt, no darts on the front, and no gathers or pleats at the waist.** A women's **circular skirt**
+> in plain mid-weight wool (charcoal, navy or camel), **below the knee**. **Close and smooth from the waistband
+> over the hips**, then falling in **soft, rounded folds from just below the hips to a very wide hem**, the most fullness
+> at the back. One plain seam down each side. A **plain narrow waistband**; a zip at the centre back (not shown).
+> Shown flat on an invisible form, front view, the hem a wide even curve.
 >
-> Leave out: a horizontal seam or band on the sleeve, notched lapels, a belt, patch pockets, epaulettes, gold or
-> anchor buttons, a hood, a person.
-*Not used: a seam across each sleeve at the elbow. The rest was right.*
-
-### womens-peacoat.single: Women's peacoat, single-breasted
-> **Each sleeve is unbroken from the armhole to the wrist, with no seam across it at the elbow or forearm.** A
-> women's **hip-length, single-breasted** coat in heavy navy wool, **shaped to the waist by princess seams** and
-> flaring a little over the hips. **Exactly one row of four buttons** down a narrow lap. **Wide peaked lapels, their
-> points turned upward**, turning at the bust, under a **deep turn-down collar**. **A flap pocket set into each
-> hip**. **Two-piece sleeves, their two seams running lengthwise from armhole to wrist, with no seam across the sleeve**. Lined. Shown flat, front view.
->
-> Leave out: a horizontal seam or band on the sleeve, a second row of buttons, notched lapels, a belt, patch pockets,
-> epaulettes, gold buttons, a hood, a person.
-*Not used: only two seams showed, so it read as a three-panel skirt. The centre front was right.*
-
-### gored-skirt.fifteen: Gored skirt, 15 gores
-> **Count the seams: exactly six fine seams show from the front, three either side of a slim centre panel, so seven
-> slim panels of equal width fill the skirt**, like the ribs of an umbrella. No seam at the centre front. A women's **long
-> fifteen-gore skirt** in plain wool or linen (navy, grey, brown or cream), **nearly to the floor**. Smooth and close over
-> the hips, then **flaring evenly to a wide hem** in a soft cone, the **seams running unbroken from the waist to the hem**.
-> A plain **narrow waistband**. Shown flat, front view, as the skirt alone.
->
-> Leave out: wide panels, only two or four seams, a seam down the centre, a seam across the hips, pleats, gathers, a yoke,
-> darts, pockets, a slit, a train, a ruffle, buttons, a belt, a person, a blouse.
-*Not used: a seam down the centre front. Otherwise right: no hip seam, no darts.*
-
-### pleated-skirt.box: Pleated skirt, box pleats
-> **No seam at the centre front: one flat panel is centred on the skirt, with exactly three seams to its left and three
-> to its right, six seams in all.** The panels run unbroken from the waistband to the hem, with no seam across the hips and
-> no darts. A women's **pleated skirt** in mid-weight wool (charcoal, navy or camel), **just below the knee**. **Smooth and
-> fitted over the hips**, then, starting at the hip line from those same seams, **crisp box pleats**: each panel flat, with
-> a fold turned back behind it on both of its edges, the skirt gently flared. A **plain narrow waistband**. Shown flat, front
-> view.
->
-> Leave out: a seam down the centre, a yoke, a seam across the hips, darts, pleats from the waist, side pleats all turned one
-> way, a kilt pin or fringe, plaid, pockets, belt loops, a belt, a person.
-*Not used, again: four buttons, an armhole seam, a rounded collar, buttons off-centre, darts at the waist.*
+> Leave out: gathers, pleats, a yoke, a seam across the hips, a front opening, buttons, pockets, belt loops, a belt, a
+> petticoat showing, a pattern on the cloth, a person.
 
 ### kimono-dress: Kimono dress
 > **The bodice and sleeves are one piece of cloth: no line of any kind runs from the shoulder to the underarm, so the
@@ -710,17 +661,82 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > the sleeve, set-in or puffed sleeves, a gusset showing, a belt, buttons below the waist, pockets, a wrap front, Japanese kimono
 > styling (obi, wide hanging sleeves), a person.
 
-### circular-skirt: Circular skirt
-> **No seam across the skirt, no darts on the front, and no gathers or pleats at the waist.** A women's **circular skirt**
-> in plain mid-weight wool (charcoal, navy or camel), **below the knee**. **Close and smooth from the waistband
-> over the hips**, then falling in **soft, rounded folds from just below the hips to a very wide hem**, the most fullness
-> at the back. One plain seam down each side. A **plain narrow waistband**; a zip at the centre back (not shown).
-> Shown flat on an invisible form, front view, the hem a wide even curve.
+## Illustrations needed (2026-11-02)
+
+These still need an image, or a new one; the last 29 replace an existing image, after a review of all the older illustrations. Save each as `site/illustrations/<heading's key>.jpg`.
+
+Rewritten after each attempt, by looking at it against the pattern. What went wrong most often: the wrong
+number of buttons, then seams, cuffs and bands the pattern doesn't have. So each rewritten prompt opens with
+what its last attempt got wrong, and names that mistake again under "Leave out". Before keeping an image,
+**count the buttons and panels** and compare them with the prompt. It has to be **square**, at least 1024 px:
+wide ones get cropped. No mannequin, hand, head or handwriting showing. A second thing to check on coats: "two-piece sleeve" tends to come out as a seam across the arm.
+
+*Not used: a seam across the body at the waist. The buttons, lapels, pockets and sleeves were right.*
+
+### girls-coat.double: Girls' coat, double-breasted
+> **No seam across the body: the cloth runs unbroken from the shoulder to the hem, with no line at the waist.**
+> **Each sleeve is unbroken from the armhole to the wrist, with no seam across it at the elbow or forearm.**
+> **Double-breasted: exactly two parallel rows of buttons, three in each row, six buttons in all**, the two rows set
+> well apart either side of the centre. A **girl's loose coat** (about 8 years old) in plain wool cloth (red, navy or
+> camel), **to just below the knee**. **Straight, unfitted body** that **flares a little from the arms to the hem**. A
+> **notched lapel** and turn-down collar. **One flap pocket set level into each hip**. **Two-piece sleeves, their two seams running lengthwise from armhole to wrist, with no seam across the sleeve**. Child's
+> proportions: short body, narrow shoulders.
 >
-> Leave out: gathers, pleats, a yoke, a seam across the hips, a front opening, buttons, pockets, belt loops, a belt, a
-> petticoat showing, a pattern on the cloth, a person.
+> Leave out: a line or seam across the body at the waist, a horizontal seam or band on the sleeve, a single row of buttons, vertical pockets, a belt, a waist seam,
+> gathers, patch pockets, a ticket pocket, fur or velvet collar, a hood, frills, a person.
+*Not used: a seam across the body at the waist, notched lapels, and a dress form showing at the neck.*
+
+### womens-peacoat.peak: Women's peacoat, peaked lapels
+> **Peaked lapels: each lapel's point sweeps up past the collar, with no notch between them. No seam across the body at the waist. Nothing shows inside the neck.**
+> **Each sleeve is unbroken from the armhole to the wrist, with no seam across it at the elbow or forearm.** A
+> women's **hip-length, double-breasted** coat in heavy navy wool, **shaped to the waist by princess seams** and
+> flaring a little over the hips. **Two rows of three buttons**. **Wide peaked lapels, their points turned upward**,
+> turning at the bust, under a **deep turn-down collar**. **A flap pocket set into each hip**. **Two-piece sleeves, their two seams running lengthwise from armhole to wrist, with no seam across the sleeve**. Lined.
+> Shown flat, front view.
+>
+> Leave out: a seam across the waist, a dress form, a horizontal seam or band on the sleeve, notched lapels, a belt, patch pockets, epaulettes, gold or
+> anchor buttons, a hood, a person.
+*Not used: notched lapels. The four buttons, seams, pockets and sleeves were right.*
+
+### womens-peacoat.single: Women's peacoat, single-breasted
+> **Peaked lapels: each lapel's point sweeps up past the collar, with no notch between them.**
+> **Each sleeve is unbroken from the armhole to the wrist, with no seam across it at the elbow or forearm.** A
+> women's **hip-length, single-breasted** coat in heavy navy wool, **shaped to the waist by princess seams** and
+> flaring a little over the hips. **Exactly one row of four buttons** down a narrow lap. **Wide peaked lapels, their
+> points turned upward**, turning at the bust, under a **deep turn-down collar**. **A flap pocket set into each
+> hip**. **Two-piece sleeves, their two seams running lengthwise from armhole to wrist, with no seam across the sleeve**. Lined. Shown flat, front view.
+>
+> Leave out: a horizontal seam or band on the sleeve, a second row of buttons, notched lapels, a belt, patch pockets,
+> epaulettes, gold buttons, a hood, a person.
+*Not used: a double-stitched strip down the centre that reads as a seam, and panels of unequal width.*
+
+### gored-skirt.fifteen: Gored skirt, 15 gores
+> **Nothing runs down the centre: the middle of the skirt is the middle of a panel, as wide as the others. No topstitching.**
+> **Count the seams: exactly six fine seams show from the front, three either side of a slim centre panel, so seven
+> slim panels of equal width fill the skirt**, like the ribs of an umbrella. No seam at the centre front. A women's **long
+> fifteen-gore skirt** in plain wool or linen (navy, grey, brown or cream), **nearly to the floor**. Smooth and close over
+> the hips, then **flaring evenly to a wide hem** in a soft cone, the **seams running unbroken from the waist to the hem**.
+> A plain **narrow waistband**. Shown flat, front view, as the skirt alone.
+>
+> Leave out: topstitching, a narrow strip at the centre, wide panels, only two or four seams, a seam down the centre, a seam across the hips, pleats, gathers, a yoke,
+> darts, pockets, a slit, a train, a ruffle, buttons, a belt, a person, a blouse.
+*Not used: a seam down the centre front, again, with a pleat opening on it.*
+
+### pleated-skirt.box: Pleated skirt, box pleats
+> **Look at the centre front: there is no line and no pleat on it. The middle of the skirt is flat cloth, the middle of a panel.**
+> **No seam at the centre front: one flat panel is centred on the skirt, with exactly three seams to its left and three
+> to its right, six seams in all.** The panels run unbroken from the waistband to the hem, with no seam across the hips and
+> no darts. A women's **pleated skirt** in mid-weight wool (charcoal, navy or camel), **just below the knee**. **Smooth and
+> fitted over the hips**, then, starting at the hip line from those same seams, **crisp box pleats**: each panel flat, with
+> a fold turned back behind it on both of its edges, the skirt gently flared. A **plain narrow waistband**. Shown flat, front
+> view.
+>
+> Leave out: a pleat at the centre front, a seam down the centre, a yoke, a seam across the hips, darts, pleats from the waist, side pleats all turned one
+> way, a kilt pin or fringe, plaid, pockets, belt loops, a belt, a person.
+*Not used: no fuller than the default skirt.*
 
 ### circular-skirt.wide: Circular skirt, extra wide
+> **Far fuller than a flared skirt: the hem is about twice as wide as the skirt's length, in deep rolling folds, almost a circle when spread out.**
 > **No seam across the skirt, and no gathers or pleats at the waist.** The same women's **circular skirt** in plain
 > mid-weight wool, below the knee, **close over the hips**, but **twice as full below them: deep rolling folds all round to
 > a very wide hem**. One plain seam down each side. A plain narrow waistband. Shown
@@ -728,16 +744,6 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: gathers, pleats, a yoke, a seam across the hips, a front opening, buttons, pockets, belt loops, a belt, a
 > petticoat showing, a pattern on the cloth, a person.
-
-### norfolk-jacket: Norfolk jacket
-> **A belted tweed jacket: one seam across the chest on each side, three narrow pleats running from that seam down to the belt,
-> and smooth cloth below the belt.** A men's **Norfolk jacket** in brown or green-grey tweed, to the upper thigh. Single-breasted with
-> **notched lapels and a turn-down collar**, **exactly four buttons** down the front, the belt crossing at the waist. A **cloth belt
-> all round**, buttoned at the front, no buckle. A **yoke seam across the upper chest**, just below where the lapels turn; below it
-> **three narrow pleats on each side of the front**, ending at the belt. **Two patch pockets with rounded bottoms and flaps**
-> below the belt. Plain two-seam set-in sleeves, no cuffs. Shown flat on an invisible form, front view.
->
-> Leave out: breast pockets, a buckle, pleats below the belt, wide box pleats, elbow patches, shoulder straps, a shirt and tie, a person.
 
 ### norfolk-jacket.closed: Norfolk jacket, buttoned to the neck
 > **Exactly five buttons from the throat down, and no lapels.** The same **Norfolk jacket** in brown or green-grey tweed, buttoned up
