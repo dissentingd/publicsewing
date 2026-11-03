@@ -95,6 +95,10 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  * - `matchOutseam`: the other piece's outseam length; the waist corner moves up or down to match.
  * - `hemWidth`: the hem's width as a fraction of the knee's; `hemSag`: the hem curves this far
  *   down (back) or up (front) at the crease; `hemSa`: the hem allowance, in seam allowances.
+ * - `turnUp`: a cuff bottom this deep (Simons 1916, Diagrams F and G): below the hem line the piece
+ *   runs on for the cuff, as much again folded under it, and half that again to hem; its sides go
+ *   out by an eighth of the depth at the cuff's fold and at the raw edge, so it folds up to fit the
+ *   leg. The hem is then straight (`hemSag` is ignored); its allowance is a single one.
  * - `fly`, `flyLength` (front): the fly's stitching line, `fly` in from CF, `flyLength` down.
  * - `pocketTop`, `pocketLength`, `pocketWidth`, `pocketDepth`: an on-seam side pocket in the
  *   outseam (`trousers.pockets.side`, for a `weltBag` part).
@@ -143,7 +147,8 @@ export function draftTrouserLeg(sh, args) {
   const halfKnee = Math.abs(points.kneeOut.x - points.knee.x)
   points.hemOut = points.floor.shift(back ? 0 : 180, halfKnee * hemWidth)
   points.hemIn = points.floor.shift(back ? 180 : 0, halfKnee * hemWidth)
-  const sag = (back ? 1 : -1) * hemSag * (4 / 3)
+  const { turnUp = 0 } = args
+  const sag = turnUp > 0 ? 0 : (back ? 1 : -1) * hemSag * (4 / 3)
   points.hemCp1 = points.hemIn.shiftFractionTowards(points.hemOut, 1 / 3).shift(-90, sag)
   points.hemCp2 = points.hemIn.shiftFractionTowards(points.hemOut, 2 / 3).shift(-90, sag)
   // Breeches: fitted below the knee to a cuff, flared at the thigh
@@ -175,7 +180,23 @@ export function draftTrouserLeg(sh, args) {
     }
     points.kneeOutCpU = points.kneeOut.shift(90, (points.knee.y - ty) / 3)
   }
-  const hem = new Path().move(points.hemIn).curve(points.hemCp1, points.hemCp2, points.hemOut)
+  let hem = new Path().move(points.hemIn).curve(points.hemCp1, points.hemCp2, points.hemOut)
+  if (turnUp > 0 && !br) {
+    const w = turnUp / 8
+    const at = (p, sign, k, out) => new Point(p.x + (out ? sign * w : 0), p.y + k * turnUp)
+    const sIn = Math.sign(points.hemIn.x - points.hemOut.x)
+    points.cuffIn = at(points.hemIn, sIn, 1, true)
+    points.cuffOut = at(points.hemOut, -sIn, 1, true)
+    points.underIn = at(points.hemIn, sIn, 2, false)
+    points.underOut = at(points.hemOut, -sIn, 2, false)
+    points.rawIn = at(points.hemIn, sIn, 2.5, true)
+    points.rawOut = at(points.hemOut, -sIn, 2.5, true)
+    hem = new Path().move(points.hemIn).line(points.cuffIn).line(points.underIn).line(points.rawIn).line(points.rawOut).line(points.underOut).line(points.cuffOut).line(points.hemOut)
+    paths.hemLine = new Path().move(points.hemIn).line(points.hemOut).addClass('mark dotted').addText('turn up', 'center text-sm')
+    paths.cuffFold = new Path().move(points.cuffIn).line(points.cuffOut).addClass('help dashed')
+    paths.underFold = new Path().move(points.underIn).line(points.underOut).addClass('help dashed')
+  }
+  const hemAllowance = turnUp > 0 && !br ? 1 : hemSa
 
   // Seams: outseam from the waist down (always through the seat line), inseam from the fork
   // down, crotch from the waist
@@ -229,8 +250,8 @@ export function draftTrouserLeg(sh, args) {
   if (sa) {
     const straightWaist = new Path().move(points.wOut).line(wIn)
     const segs = back
-      ? [[straightWaist, 1], [crotch, 1], [inseam, 1], [hem, hemSa], [outseam.reverse(), 1]]
-      : [[outseam, 1], [hem.reverse(), hemSa], [inseam.reverse(), 1], [crotch.reverse(), 1], [straightWaist.reverse(), 1]]
+      ? [[straightWaist, 1], [crotch, 1], [inseam, 1], [hem, hemAllowance], [outseam.reverse(), 1]]
+      : [[outseam, 1], [hem.reverse(), hemAllowance], [inseam.reverse(), 1], [crotch.reverse(), 1], [straightWaist.reverse(), 1]]
     let o
     for (const [p, k] of segs) {
       const off = p.offset(sa * k)

@@ -16,6 +16,8 @@ about:
   source: British Army CS95 Field Trouser, digitised by Open+Pattern (openpattern/cs95-trouser)
 
 options:
+  turnUps: { menu: false } # not on these legs
+  turnUpDepth: { menu: false }
   seatEase: { pct: 12, max: 20 } # loose through the seat and thigh
   kneeEase: { pct: 40, max: 50 } # straight legs, no taper to speak of
   hemWidth: { pct: 95 }

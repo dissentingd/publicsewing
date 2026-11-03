@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { PegPants } from '../peg-pants/src/index.mjs'
 import { sets, checkClean, near } from './coat-checks.mjs'
 
-const variants = { default: {}, plain: { sidePockets: false, backPocket: false, beltLoops: 0, pleats: 1, frontDart: 0.6 } }
+const variants = { default: {}, turnUps: { turnUps: true }, plain: { sidePockets: false, backPocket: false, beltLoops: 0, pleats: 1, frontDart: 0.6 } }
 
 for (const [v, options] of Object.entries(variants)) {
   for (const [name, measurements] of Object.entries(sets)) {

@@ -16,6 +16,8 @@ about:
   source: Simons, Drafting Pants and Overalls (1916), Riding Breeches, Diagram XV (draftingpantsove00simo)
 
 options:
+  turnUps: { menu: false } # not on these legs
+  turnUpDepth: { menu: false }
   # Simons drafts a 34 waist, 40 seat, 16 knee, 12 1/2 calf, 10 1/2 shank
   seatEase: { pct: 8, max: 15 } # roomier than the trousers' 5% for the saddle
   kneeEase: { pct: 6 } # x knee: forepart 1/2 knee, back 1/2 in wider each side (17 on a 16 knee)

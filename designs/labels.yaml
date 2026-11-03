@@ -245,6 +245,12 @@ options:
   hemWidth:
     title: Hem width
     description: Width of the leg at the hem, as a share of its width at the knee.
+  turnUps:
+    title: Turn-ups
+    description: Runs the leg on below the hem line, to fold up into a cuff. The hem is then straight.
+  turnUpDepth:
+    title: Turn-up depth
+    description: Depth of the cuff when finished, as a share of waist to floor.
   hemShaping:
     title: Hem shaping
     description: How far the hem curves down at the back crease and up at the front, so it sits level over the shoe, as a share of waist to floor.

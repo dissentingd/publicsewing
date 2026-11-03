@@ -18,6 +18,8 @@ about:
   preview: usdaBoyC6 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
+  turnUps: { menu: false } # not on these legs
+  turnUpDepth: { menu: false }
   # Size 6: waist 24, seat 26, rise 6, knee 11 1/2, below knee 10; the drop 4 in (D to E), the
   # bottom 14 round gathered into a 10 in strap (4 in of fullness)
   kneeEase: { pct: 30 } # x knee: fuller than the knee pants

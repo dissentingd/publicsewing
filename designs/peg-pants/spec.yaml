@@ -51,9 +51,17 @@ pieces:
           pleatSpacing: seat * pleatSpacing
           hemWidth: hemWidth
           hemSag: waistToFloor * hemShaping
+          turnUp: if(turnUps, waistToFloor * turnUpDepth, 0)
           fly: waist * flyWidth
           flyLength: waistToSeat * 1.05
           pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
           pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
           pocketWidth: seat * 0.08
           pocketDepth: waistToSeat * 0.45
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  turn-ups:
+    name: Turn-ups
+    description: "Simons' cuff bottoms: the leg runs on below the hem and folds up into a 2 in cuff (on a man's size). Cut them to the finished length: the hem line is marked."
+    options: { turnUps: true }

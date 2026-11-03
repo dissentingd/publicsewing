@@ -16,6 +16,8 @@ about:
   source: Simons, Drafting Pants and Overalls (1916), Work Pants, Diagram IX (draftingpantsove00simo)
 
 options:
+  turnUps: { menu: false } # not on these legs
+  turnUpDepth: { menu: false }
   # Regular pants (Diag. V) against work pants (IX), 34 waist, 40 seat: forepart 1/2 in wider
   # (2 in round, 5% of the seat), knee 21 for 20, bottom 17 for 15 1/2, rise 10 1/2 for 9 1/2,
   # waist 1/2 waist + 1 1/2 a side (9%)

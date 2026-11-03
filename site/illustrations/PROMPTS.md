@@ -755,6 +755,20 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a zip or fly, pockets, belt loops, a belt, side seams, turn-ups, stripes, a person.
 
+### suit-trousers.turn-ups: Suit trousers with turn-ups
+> **A deep turned-up cuff at the bottom of each leg, about 2 in deep, with a crisp fold.** The same men's semi-fitted suit trousers in plain
+> mid-grey wool, straight legs with a pressed crease, a waistband with belt loops, a fly, on-seam side pockets. The cuffs sit
+> **level all round**, plain, with no buttons or tabs. Shown flat, front view.
+>
+> Leave out: pleats, a belt, a turned-up cuff wider than the leg, a stripe, a shirt, shoes, a person.
+
+### peg-pants.turn-ups: Peg-top pants with turn-ups
+> **A deep turned-up cuff at the bottom of each leg, about 2 in deep, with a crisp fold.** The same men's peg-top trousers in plain wool:
+> **pleated and full over the hips, tapering to a narrow bottom**, a waistband with belt loops, a fly. The cuffs sit level, plain. Shown flat,
+> front view.
+>
+> Leave out: a belt, a wide bottom, flat fronts, stripes, a shirt, shoes, a person.
+
 *Current image has five buttons; the pattern has four.*
 
 ### chore-coat: Chore coat

@@ -33,6 +33,10 @@ the seat line. This gives you the extra length on the outside seam that is requi
 | Back | Regular | The trousers' back dart |
 
 ## Changes and what isn't modelled
+- **Turn-ups** (off; `turnUps`, and the variant): Simons, *Drafting Pants and Overalls* (1916), `draftingpantsove00simo`,
+  Diagrams F and G, p. 26. Below the hem line 2 in for the cuff, 2 in folded under and 1 in of hem, 5 in in all, the sides
+  going out ¼ in at the cuff's fold and at the raw edge. `turnUpDepth` 5% of waist to floor, 2 in on about 41 in (our
+  reckoning for his 34 waist); the ¼ in is an eighth of the depth, whatever the depth. The hem is straight with them, as his.
 - **The fullness is laid in pleats**, two each side, folded toward the side seam; Simons leaves the
   finish (pleats or gathers) to the maker.
 - **The inseam isn't squared straight down from the seat**; it's Titan's.

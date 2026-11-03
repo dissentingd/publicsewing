@@ -93,7 +93,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Woman's Institute, *Pattern Drafting* (1915/1920) `patterdraftingpicken` | A (blocks) | shirtwaist dress |
 | Mitchell, *Ladies' Tailor-Made Garments* (1921) `newstandardworko00mitc` | A | tailored jacket, fitted jacket, box coat, gored skirt, pleated skirt, circular skirt |
 | ЕМКО СЭВ т.3 (1988) `emko` | A (tables) | windbreaker, quilted jacket, winter coat, topcoat, jacket, waistcoat, trousers |
-| Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants, breeches, bib overall, overall pants, peg-top pants |
+| Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants, breeches, bib overall, overall pants, peg-top pants, turn-ups |
 | Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |
 | Open+Pattern, British CS95 field trouser, DXF, CC BY 4.0 `openpattern/cs95-trouser` | better than A | field trousers |
 | Open+Pattern, US tactical smock, DXF, CC BY 4.0 `openpattern/us-tactical-smock` | better than A | hooded smock |

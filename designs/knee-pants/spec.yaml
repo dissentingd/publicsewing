@@ -17,6 +17,8 @@ about:
   preview: usdaBoyC6 # the size of the pattern-pieces preview on its page (tools/preview.mjs)
 
 options:
+  turnUps: { menu: false } # not on these legs
+  turnUpDepth: { menu: false }
   # Size 6: waist 24, seat 26, rise 6, inseam 8, knee 12; S and T a quarter knee each side of the
   # forepart's crease, the back 5/8 in wider each side: 14 1/2 round the bottom
   kneeEase: { pct: 20 } # x knee: Titan's knee, to run straight into the bottom
