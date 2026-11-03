@@ -859,6 +859,11 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
 
+### golf-pants: Golf pants
+> **Close-fitting at the knee with a plain straight hem just below it: no gathers, no strap, no cuff and no fullness hanging over.** Boy's **golf pants** in plain tweed or grey wool, full at the side of the thigh and narrowing to the knee, like short breeches. **A short buttoned vent on the outside of each leg at the hem, with exactly three small buttons.** A waistband with belt loops, a fly front, and slanted side pockets. Shown flat, front view, for a boy of about ten.
+>
+> Leave out: plus-fours or any baggy overhang at the knee, a buckle or strap, turn-ups, long socks, shoes, argyle, a golf club, a person.
+
 ### eton-jacket: Eton jacket
 > **Very short, ending just below the waist, with long lapels that roll all the way down to the waist, where the fronts meet at one button.** A boy's **English Eton jacket** in plain black or navy wool. Below that one button the two fronts hang straight down for a short way, ending in **square corners**, not rounded or cut away. **Notched lapels** with a turn-down collar. Plain two-piece sleeves. Shown flat on an invisible form, front view, for a boy of about ten.
 >

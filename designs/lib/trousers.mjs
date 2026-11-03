@@ -109,7 +109,8 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  *   `calfBelow` under the knee and `cuffW` round at the hem, `cuffBelow` under it (each width
  *   split back/front by `share`, this piece's part). With `openingBelow`, the outseam opens from
  *   the hem up to that far under the knee, with `buttons` buttonholes `buttonInset` in on the
- *   front. `openingShift` (both pieces): the outseam from the knee down moved this far toward
+ *   front; `openingLength` (on the back) measures its top that far up the outseam from the hem instead,
+ *   to match the front's where the outseams differ. `openingShift` (both pieces): the outseam from the knee down moved this far toward
  *   the front (narrowing the forepart, widening the back), so the opening runs down the shin.
  * - `pleats` (front): the dart's width laid as this many pleats at the waist instead (give
  *   `dartLength: 0`), `pleatSpacing` apart, the first at the dart's place; notched, with fold lines.
@@ -306,9 +307,9 @@ export function draftTrouserLeg(sh, args) {
 
   // Breeches opening: the outseam left open from the hem up to `openingBelow` under the knee;
   // buttonholes along the front's edge (the back's edge takes a button stand)
-  const { openingBelow, buttons = 0, buttonInset = 0 } = args
+  const { openingBelow, openingLength, buttons = 0, buttonInset = 0 } = args
   if (br && openingBelow !== undefined) {
-    const top = outseam.intersectsY(points.knee.y + openingBelow)[0]
+    const top = openingLength ? outseam.shiftAlong(outseam.length() - openingLength) : outseam.intersectsY(points.knee.y + openingBelow)[0]
     if (top) {
       points.openingTop = top
       snippets.openingTop = new Snippet('notch', top)

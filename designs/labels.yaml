@@ -164,6 +164,12 @@ options:
   skirtSpread:
     title: Extra skirt flare
     description: Extra width at the hem at each of the skirt's three laid-together seams, as a share of the chest. The waist doesn't change.
+  backFlare:
+    title: Back's share of the thigh
+    description: How far the back flares at the thigh, as a multiple of the front's.
+  ventStand:
+    title: Vent width
+    description: Width of the buttoned vent's stand, as a share of the knee.
   secondAt:
     title: Second seam position
     description: Where the second front seam meets the shoulder, from the front seam (0%) to the shoulder point (100%).

@@ -114,7 +114,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | A | pyjama jacket, pyjama trousers, work shirt, service shirt, shirt, dressing gown |
 | Sheifer, *Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | A | girl's coat |
 | Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911) `merzspracticalcu00merz` | A | women's peacoat, field jacket |
-| Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo` | A | boy's jacket, Norfolk jacket, sailor pants, Eton jacket |
+| Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo` | A | boy's jacket, Norfolk jacket, sailor pants, Eton jacket, golf pants |
 | USDA O'Brien body-measurement surveys (1939–41) `childrensbodymea365obri`, `bodymeasurements366obri`, `womensmeasuremen454obri` | C | the 75 children's size sets (`designs/sizes/`) |
 
 Left to build from these: Mitchell's double-dart tight-fitted jacket; Simons 1916's

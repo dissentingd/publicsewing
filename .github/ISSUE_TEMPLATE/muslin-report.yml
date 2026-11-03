@@ -54,6 +54,7 @@ body:
         - Waistcoat (waistcoat)
         - Suit trousers (suit-trousers)
         - Sailor pants (sailor-pants)
+        - Golf pants (golf-pants)
         - Dress shirt (dress-shirt)
     validations:
       required: true

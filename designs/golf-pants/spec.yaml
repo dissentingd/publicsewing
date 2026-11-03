@@ -1,0 +1,124 @@
+# Golf pants: Simons' "Boys' Golf Pants" (Designing Boys' and Juveniles' Clothing, 1922, Diagram 43,
+# pp. 120-123), on the breeches (the trousers' Titan legs): full at the back of the thigh, fitted
+# through the knee to a straight hem just below it, a buttoned vent at the side seam, no strap and no
+# gathers. Waist, fly, pockets and waistband as the trousers. Drafted from the wearer's own
+# measurements, so they fit men too. See BRIEF.md.
+extends: ../breeches/spec.yaml
+
+about:
+  id: golf-pants
+  name: Golf pants
+  category: trousers
+  description: Short trousers fitted through the knee to just below it, full at the thigh, with a buttoned side vent, a fly, pockets and waistband
+  difficulty: 4
+  tags: [bottoms]
+  techniques: [dart, zip, welt-pocket, waistband, buttonhole]
+  version: 0.1.0
+  source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Boys' Golf Pants, Diagram 43, pp. 120-123 (designingboysjuv00simo)"
+  preview: usdaBoyC6
+
+options:
+  # Size 6: seat 26, waist 24, rise 6, inseam 8, drop 4; above knee 10 1/2, knee 11 1/2, below knee
+  # 10 1/2. Each line a quarter of its measure either side of the forepart's centre, the back 3/4"
+  # wider each side: 13 round the knee, 12 round the hem
+  seatEase: { pct: 5, max: 10 } # the trousers', not the breeches' saddle room
+  kneeEase: { pct: 13 } # x knee: 13 on 11 1/2
+  legBalance: { pct: 56 } # the back's share at the knee: 7 1/4 of 13
+  # The thigh: the forepart 1/2" out at the fork line (B to 10), the back 2" past that (10 to 11): 2 1/2"
+  # in all. Titan's back stays at the seat there, so all of that on the back at the fork line hollows
+  # the side seam above it. Shared one to two and lower down, which keeps the seam a smooth curve
+  thighFlare: { pct: 3.2, min: 0, max: 6, of: seat } # 7/8" on 26
+  backFlare: { pct: 200, min: 100, max: 400, menu: advanced } # x thighFlare: 1 3/4", for 2 5/8" in all
+  thighAt: { pct: 35, min: 20, max: 70 } # x fork to knee: the flare's widest point
+  # O, the knee line, is half way from N to P, which are 4" apart. So the hem (P) is 2" below the knee
+  # line, on the USDA boy C6's 14 1/4" knee to floor
+  breechesLength: { pct: 14, min: 5, max: 40 } # x knee to floor
+  calfAt: { pct: 7, min: 2, max: 20 } # half way to the hem
+  calfWidth: { pct: 109, min: 90, max: 125 } # x knee: half way between the knee's 13 and the hem's 12
+  cuffWidth: { pct: 104, min: 90, max: 130, of: knee, title: Hem width, description: "Round the hem, as a share of the knee." } # 12 on 11 1/2
+  # The vent: from V (N, 2" above the knee line) to the hem, 1" wide. No buttons drawn: three are ours
+  openingTop: { pct: -14, min: -30, max: 5, title: Vent top, description: "How far above the knee the buttoned vent starts, as a share of knee to floor: negative is above the knee." }
+  ventStand: { pct: 8.7, min: 5, max: 14, of: knee, menu: construction } # 1" on 11 1/2
+  breechesButtons: { count: 3, min: 0, max: 6 }
+
+pieces:
+  front:
+    prefix: trousers # named like the inherited pieces
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      below: waistToFloor - waistToKnee
+    ops:
+      - trouserLeg:
+          which: front
+          dart: d * frontDart
+          dartAt: 0.55
+          dartLength: waistToSeat * frontDartLength
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45
+          share: 1 - legBalance
+          thighFlare: seat * thighFlare
+          thighAt: thighAt
+          calfBelow: below * calfAt
+          calfW: knee * calfWidth
+          cuffBelow: below * breechesLength
+          cuffW: knee * cuffWidth
+          openingBelow: below * openingTop
+          openingShift: if(breechesOpening == 'front', knee * frontOpening, 0)
+          buttons: breechesButtons
+          buttonInset: 15
+  back:
+    prefix: trousers # named like the inherited pieces
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      below: waistToFloor - waistToKnee
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: d * backDart
+          dartAt: 0.4
+          dartFrom: centre
+          dartLength: waistToSeat * backDartLength
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          backPocket: if(backPocket, seat * 0.13, 0)
+          backPocketBelow: waistToSeat * 0.4
+          backPocketWelt: seat * 0.006
+          share: legBalance
+          thighFlare: seat * thighFlare * backFlare
+          thighAt: thighAt
+          calfBelow: below * calfAt
+          calfW: knee * calfWidth
+          cuffBelow: below * breechesLength
+          cuffW: knee * cuffWidth
+          openingBelow: below * openingTop
+          openingLength: trousers.front.opening # the vent starts above the knee, where the outseams differ
+          openingShift: if(breechesOpening == 'front', knee * frontOpening, 0)
+  buttonStand:
+    part: strip
+    after: back
+    nr: 10
+    cut: 2
+    fold: true
+    length: trousers.back.opening + 20
+    width: knee * ventStand
+  openingFacing:
+    part: strip
+    after: front
+    nr: 11
+    cut: 2
+    length: trousers.front.opening + 20
+    width: knee * ventStand * 1.3
