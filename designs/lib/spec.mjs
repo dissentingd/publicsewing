@@ -194,7 +194,7 @@ const factories = {
       panel: p.panel,
       nr: p.nr,
       label: p.label,
-      args: (sh) => evalMap({ pleat: p.pleat, pleatAt: p.pleatAt }, lookupIn(sh, ctx.block, {}), {}),
+      args: (sh) => evalMap({ pleat: p.pleat, pleatAt: p.pleatAt, pleats: p.pleats, spacing: p.spacing, vent: p.vent }, lookupIn(sh, ctx.block, {}), {}),
       lining: p.lining === undefined ? () => false : enabledBy(p.lining),
     }),
   // One panel of a front cut by frontYokeCut; `from` is the hidden whole front, `keep` names
@@ -207,6 +207,7 @@ const factories = {
       nr: p.nr,
       label: p.label,
       keep: p.keep,
+      args: (sh) => evalMap({ pleat: p.pleat, pleatAt: p.pleatAt, pleats: p.pleats, spacing: p.spacing }, lookupIn(sh, ctx.block, {}), {}),
       lining: p.lining === undefined ? () => false : enabledBy(p.lining),
     }),
   // A two-piece hood (lib/hood.mjs) sewn to the neckline; its sizes are expressions

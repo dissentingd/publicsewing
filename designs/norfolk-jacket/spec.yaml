@@ -1,0 +1,155 @@
+# Norfolk jacket: Simons' Bulgarian Norfolk sack coat (Designing Boys' and Juveniles' Clothing,
+# 1922, Diagram 7, pp. 34-35), on the hunting coat (FreeSewing's Brian): a yoke on the back and
+# the forepart, each cut again at the waist with pleats from the yoke to the waist, a belt, flapped
+# pockets below it, lapels and a vent from the waist down. For any size. See BRIEF.md.
+extends: ../hunting-coat/spec.yaml
+
+about:
+  id: norfolkjacket
+  name: Norfolk jacket
+  category: jackets
+  description: A belted jacket with yokes front and back, pleats from the yokes to the waist, flapped patch pockets and a back vent
+  difficulty: 5
+  tags: [jackets]
+  techniques: [yoke, pleat, patch-pocket, flap, collar, lapel, facing, button, belt, vent]
+  version: 0.1.0
+  source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Diagrams 6-7, pp. 32-35 (designingboysjuv00simo)"
+
+options:
+  # Fit: the boys' suit jacket's (its Diagrams 1-2 are the "previous diagrams" this is drafted on)
+  chestEase: { pct: 17 }
+  # Style: Simons' size 6 is 20 in long on a 10 1/2 in waist length: 9 1/2 in below the waist
+  lengthBelowWaist: { pct: 150 } # x waistToSeat: 9 1/2 in on the USDA boy C6's 6 1/4 in
+  frontDrop: { pct: 15 } # x waistToSeat: about 1 in, measured off Diagram 7 (3 to 4)
+  buttonExtension: { pct: 3.2 } # x chest: the hunting coat's wide stand less, about 7/8 in on a 26 in chest
+  buttons: { count: 4, min: 3, max: 7 } # three and the one on the belt, Diagram 7
+  buttonBottom: { pct: 40, min: 0, max: 80, menu: style } # x waistToSeat: with the top button below the yoke, 2 1/2 in apart at size 6
+  # p. 34: the front yoke 1/2 in above the chest line at the front edge and 1 1/4 in at the
+  # armhole, of about 4 1/2 in from the neck to the chest line
+  frontYokeDepth: { pct: 89, min: 60, max: 95, menu: style } # x CF neck to the chest line, at the front edge
+  frontYokeArm: { pct: 73, min: 40, max: 92, menu: style } # the same, where the seam meets the armhole
+  yokeDepth: { pct: 50, min: 35, max: 70 } # x CB neck to the chest line, measured off Diagram 7 (P, B)
+  # p. 34: "an allowance is made for three pleats", one line each; the amount isn't given (ours)
+  pleats: { count: 3, min: 0, max: 4, menu: style, title: Pleats, description: "How many pleats each front and each side of the back has, from the yoke to the waist." }
+  pleatDepth: { pct: 1, min: 0.5, max: 2.5, of: chest, menu: style, title: Pleat depth, description: "How deep each pleat folds, as a share of the chest. A pleat takes twice this in cloth." }
+  pleatSpacing: { pct: 2.2, min: 1.5, max: 4, of: chest, menu: style, title: Pleat spacing, description: "How far apart the pleats sit when sewn, as a share of the chest." } # about 3/4 in on the 26 in chest, Diagram 7
+  pleatAt: { pct: 46, min: 25, max: 60, menu: style, title: Back pleats' place, description: "Where the first back pleat falls, as a share of the yoke line's width from centre back." } # Diagram 7
+  frontPleatAt: { pct: 55, min: 35, max: 65, menu: style } # x the front's width from CF; ours, clear of the armhole at every size (Diagram 7 is nearer it)
+  actionPleat: { menu: false } # the hunting coat's single pleat, replaced by the pleats above
+  # p. 34: "The belt is cut 1 1/2 inches wide"
+  beltWidth: { pct: 5.8 } # x chest: 1 1/2 of 26
+  # p. 34: "The vent runs from the waist line down to the bottom"
+  backVent: { bool: true, menu: style }
+  backVentWidth: { pct: 4, min: 2, max: 7, of: chest, menu: construction } # ours
+  # Diagram 7 draws a turned-back lapel; Diagram 6 buttons to the neck
+  lapels: { bool: true, menu: style }
+  lapelWidth: { pct: 22, min: 14, max: 32, of: neck, menu: style } # from the crease, the suit jacket's
+  gorgeAt: { pct: 55, min: 30, max: 80, menu: style } # along the front neck from the neck point, the suit jacket's
+  # Pockets: the flap of Diagram 7, below the belt, on a plain patch pocket (ours; the queue's)
+  breastPockets: { bool: false, menu: false } # none drawn, and the front pleats run through there
+  pocketPleat: { pct: 0 }
+  belt: { bool: true, menu: false } # the belt is the point of the jacket, and covers the waist seams
+
+pieces:
+  # The whole front, hidden: the hunting coat's `front`, which its pockets and sleeve follow
+  front:
+    from: brian.front
+    hide: { self: true, from: true, inherited: true }
+    measurements: [seat, waist, waistToSeat, neck]
+    options: [buttonExtension, buttons, buttonBottom, hemCurve, frontDrop, facingWidth, lowerPockets, pocketShape, pocketPleat, pocketFlaps, frontYokeDepth, frontYokeArm, lapels, lapelWidth, gorgeAt, beltWidth, belt, breastPockets]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+      yokeY: cfNeck.y + (underarm.y - cfNeck.y) * frontYokeDepth
+      beltW: chest * beltWidth
+      beltY: cfWaist.y - beltW / 2
+    ops:
+      - coatFront:
+          ext: ext
+          r: ext * 2 * hemCurve
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+      # The lapel turns just above the yoke seam, all of it on the yoke (ours: Diagram 7's crosses it)
+      - lapel:
+          if: lapels
+          breakY: yokeY - ext * 0.25
+          rollOut: neck * 0.05
+          gorgeAt: gorgeAt
+          width: neck * lapelWidth
+      - frontYokeCut: { depth: frontYokeDepth, armDepth: frontYokeArm }
+      - buttons:
+          count: buttons
+          top: if(lapels, yokeY + ext * 0.7, cfNeck.y + ext * 0.8)
+          bottom: cfWaist.y + waistToSeat * buttonBottom
+          rows: [0]
+      # Below the belt, the flap at its lower edge; p. 34: "6 inches down from point T", 1 1/2 in below the waist
+      - store:
+          key: coat.pockets
+          value:
+            lower:
+              x: q * 0.3
+              _top: beltY + beltW + waistToSeat * 0.08
+              h: min(q * 0.62, cfHem.y - q * 0.08 - _top)
+              w: min(q * 0.62, sideHem.x - q * 0.06 - x)
+              shape: pocketShape
+              topHem: w * 0.15
+              pleat: w * pocketPleat
+              flap: { if: pocketFlaps, h: w * 0.32, gap: w * 0.07 }
+              y: _top + if(pocketFlaps, flap.gap, 0)
+      - markPocket: { id: lowerPocket, pocket: coat.pockets.lower, if: lowerPockets }
+
+  frontYoke: { part: frontPanel, from: front, panel: yoke, nr: 1, label: frontYoke }
+  frontMiddle:
+    part: frontPanel
+    from: front
+    panel: middle
+    nr: 2
+    label: frontMiddle
+    pleat: chest * pleatDepth
+    pleats: pleats
+    spacing: chest * pleatSpacing
+    pleatAt: frontPleatAt
+  frontLower: { part: frontPanel, from: front, panel: skirt, nr: 9, label: frontLower, keep: [lowerPocket, lowerPocketFlap] }
+
+  backBase:
+    from: brian.back
+    hide: { self: true, from: true, inherited: true }
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, yokeDepth, pleatDepth, pleats, pleatSpacing, pleatAt, beltWidth, belt, backVent, backVentWidth, frontPleatAt]
+    let:
+      beltW: chest * beltWidth
+    ops:
+      - coatBack: {}
+      - backYokeCut: { depth: yokeDepth }
+      - store: { key: coat.belt, value: { w: beltW, y: cbWaist.y - beltW / 2 } }
+  backYoke: { part: backPanel, from: backBase, panel: yoke, nr: 4, label: backYoke }
+  backMiddle:
+    part: backPanel
+    from: backBase
+    panel: middle
+    nr: 5
+    label: backMiddle
+    pleat: chest * pleatDepth
+    pleats: pleats
+    spacing: chest * pleatSpacing
+    pleatAt: pleatAt
+  backLower: { part: backPanel, from: backBase, panel: lower, nr: 8, label: backLower, vent: "if(backVent, chest * backVentWidth, 0)" }
+
+  # The suit jacket's collar on the lapels; the hunting coat's closed, as Diagram 6
+  collar:
+    after: [backBase, front]
+    measurements: [neck]
+    options: [collarWidth, collarSpring, collarPoint, lapels]
+    ops:
+      - collar:
+          target: if(lapels, coat.back.neck + coat.lapel.neck, coat.back.neck + coat.front.neck + coat.frontEdge.ext / 2)
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: neck * collarPoint
+          nr: 6
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  closed:
+    name: Buttoned to the neck
+    description: "Simons' button-to-the-neck version (Diagram 6): no lapels, the collar closing at the throat, five buttons down the front."
+    options: { lapels: false, buttons: 5 }

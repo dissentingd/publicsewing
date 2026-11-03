@@ -729,6 +729,24 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > Leave out: gathers, pleats, a yoke, a seam across the hips, a front opening, buttons, pockets, belt loops, a belt, a
 > petticoat showing, a pattern on the cloth, a person.
 
+### norfolk-jacket: Norfolk jacket
+> **A belted tweed jacket: one seam across the chest on each side, three narrow pleats running from that seam down to the belt,
+> and smooth cloth below the belt.** A men's **Norfolk jacket** in brown or green-grey tweed, to the upper thigh. Single-breasted with
+> **notched lapels and a turn-down collar**, **exactly four buttons** down the front, the belt crossing at the waist. A **cloth belt
+> all round**, buttoned at the front, no buckle. A **yoke seam across the upper chest**, just below where the lapels turn; below it
+> **three narrow pleats on each side of the front**, ending at the belt. **Two patch pockets with rounded bottoms and flaps**
+> below the belt. Plain two-seam set-in sleeves, no cuffs. Shown flat on an invisible form, front view.
+>
+> Leave out: breast pockets, a buckle, pleats below the belt, wide box pleats, elbow patches, shoulder straps, a shirt and tie, a person.
+
+### norfolk-jacket.closed: Norfolk jacket, buttoned to the neck
+> **Exactly five buttons from the throat down, and no lapels.** The same **Norfolk jacket** in brown or green-grey tweed, buttoned up
+> to the neck under a **small turn-down collar**. A cloth belt all round at the waist, a yoke seam across the upper chest, **three
+> narrow pleats each side of the front** from the seam to the belt, two flapped patch pockets with rounded bottoms below the
+> belt. Shown flat on an invisible form, front view.
+>
+> Leave out: lapels, an open neck, breast pockets, a buckle, pleats below the belt, a shirt and tie, a person.
+
 *Current image has five buttons; the pattern has four.*
 
 ### chore-coat: Chore coat

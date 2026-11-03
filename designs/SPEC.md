@@ -54,7 +54,7 @@ sleeve's store key, `yoke.sleeve` unless given), `fly` (a jacket's fly-front but
 `jacketLayout` or `boxLayout`: `width` x the lap), `library` also takes `vent: { if, length,
 width, buttons }` (a buttoned vent on the two-part sleeve's back seam), `raglanSleeve` takes
 `which: one` (both halves in one piece, a dart for the shoulder seams),
-`frontPanel` (a front cut by `frontYokeCut`: `panel: yoke` or `lower`, `from` the hidden
+`frontPanel` (a front cut by `frontYokeCut`: `panel: yoke` or `lower`, or cut at the waist too, `middle` (with `pleat`, `pleats`, `spacing`, `pleatAt`) and `skirt`, `from` the hidden
 whole front; `keep:` marks the lower panel keeps, e.g. `[handPocket]`; `lining:` an expression,
 true cuts it again in lining, as `backPanel` takes too), `hood` (`lib/hood.mjs`: a two-piece hood
 sewn to the neckline; `target`, `spring`, `height`, `lean`, `depth`, `corner`, `casing` are
@@ -76,7 +76,7 @@ type's `if:` is an expression over options; when it is false the piece is left o
 | `buttons` | Buttons in rows, evenly from `top` to `bottom`. | `lib/coat.mjs` |
 | `zip` | A zip up the front edge, from `top` (the neckline) to `bottom` (the hem); coat checks take it in place of buttons. | `lib/coat.mjs` |
 | `raglan` | Cut the back or front along a raglan line. | `lib/raglan.mjs` |
-| `backYokeCut` | Mark a coat back's yoke line, to cut it into `backPanel`s (`yoke`, `middle`, `lower`, or `body`: yoke line to hem in one). | `lib/panels.mjs` |
+| `backYokeCut` | Mark a coat back's yoke line, to cut it into `backPanel`s (`yoke`, `middle` with `pleat`, `pleatAt`, `pleats`, `spacing`; `lower`, with `vent` a CB seam open to the hem; or `body`: yoke line to hem in one). | `lib/panels.mjs` |
 | `frontYokeCut` | Mark a coat front's yoke seam, from the front edge `depth` down to the armhole at `armDepth` (shares of CF neck to the chest line), to cut it into `frontPanel`s. | `lib/panels.mjs` |
 | `body3Back` / `body3Front` | A three-piece body (back, side body, forepart) on Bent; the back takes `vent: { length, width }`; the front takes `r` (a rounded front corner), `lapel: { breakY, rollOut, gorgeAt, width }` (a notched lapel), `toShoulder` (the facing runs round the neck to the shoulder, for a lining) and, per welt, `flap` (a flap this share of the mouth deep, into `coat.pockets` for a `flap` piece). | `lib/body3.mjs` |
 | `yokeSide` | A yoke garment's back or front, into the store. A design's options can add, on a bodice to the waist: `blouse`, `waistShaping`, and a kimono sleeve (`kimonoLength`, `kimonoAngle`, `kimonoDepth`). | `lib/yoke.mjs` |

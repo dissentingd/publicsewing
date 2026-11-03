@@ -40,6 +40,7 @@ without declaring them, so they are listed in our package.json.
 | `chore-coat/` | Work coat from Simons 1918, on Brian. [BRIEF.md](chore-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `mackinaw/` | Double-breasted belted mackinaw (convertible, military or shawl collar; raglan option), Simons 1918. [BRIEF.md](mackinaw/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `hunting-coat/` | Belted field coat, three-piece action-pleated back, box-pleated flap pockets, Simons 1918. [BRIEF.md](hunting-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
+| `norfolk-jacket/` | Norfolk jacket (any size): the hunting coat with a yoke and waist seam on the front too, three pleats a side, front and back, a belt, lapels, a vent from the waist, Simons 1922 Diagram 7. [BRIEF.md](norfolk-jacket/BRIEF.md) | draft (not sewn) | not draped |
 | `military-tunic/` | Fitted three-piece body on Bent, two-piece sleeve, standing collar, welt pockets, Simons 1918. [BRIEF.md](military-tunic/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `boys-work-coat/` | The chore coat with Simons' boys' details (5 buttons, pointed collar), for children's sizes. [BRIEF.md](boys-work-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `barbers-coat/` | White service coat, standing collar or open neck, Simons 1918. [BRIEF.md](barbers-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |

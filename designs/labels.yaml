@@ -631,6 +631,18 @@ options:
   frontYokeArm:
     title: Front yoke at the armhole
     description: Where the front yoke seam meets the armhole, as a share of the way from the front neck to the chest line. Less than the front yoke depth slopes the seam up toward the shoulder.
+  backVent:
+    title: Back vent
+    description: A centre back seam open from the waist to the hem.
+  backVentWidth:
+    title: Back vent lap
+    description: How far the back vent laps past centre back, as a share of the chest.
+  frontPleatAt:
+    title: Front pleats' place
+    description: Where the first front pleat falls, as a share of the front's width from centre front.
+  lapels:
+    title: Lapels
+    description: Off, the front buttons up to the neck under the collar, with no lapels.
   frontYoke:
     title: Front yoke
     description: A yoke on the front too. No makes the front one piece, neck to hem.
