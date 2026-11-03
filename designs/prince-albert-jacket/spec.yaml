@@ -1,0 +1,126 @@
+# "Prince Albert" jacket: Mitchell's "Prince Albert" cut tight-fitted jacket (New "Standard" Work ...
+# Ladies' Tailor-Made Garments, 1921, pp. 48-51), on the fitted jacket (FreeSewing's Breanna): its
+# under-arm panel and shaped CB, cut through at the waist, the skirt in one piece from the front to
+# the back seam. The back seam curves into the armhole, with a pleat on it and a vent on the CB; a
+# wide lap gives a semi-double-breasted look, with a peaked lapel. No pockets. See BRIEF.md.
+extends: ../fitted-jacket/spec.yaml
+
+about:
+  id: prince-albert-jacket
+  name: Prince Albert jacket
+  category: jackets
+  description: "A tight-fitted jacket cut through at the waist, with a one-piece skirt, back pleats and vent, a wide lap and peaked lapels"
+  difficulty: 5
+  tags: [jackets]
+  techniques: [princess-seam, waist-seam, lapel, facing, button, pleat, vent, lining, two-piece-sleeve]
+  version: 0.1.0
+  source: "Mitchell, New \"Standard\" Work on ... Ladies' Tailor-Made Garments (1921), pp. 48-51 (newstandardworko00mitc)"
+  preview: cisFemaleAdult36
+
+options:
+  # The back seam (p. 48): curves into the armhole at 29, 3 in up from the chest line (10); read
+  # from p. 49, that's 55% of the way to the shoulder point (24). 28, on the chest line, is twice as
+  # far from the CB as 26 is at the waist
+  backSeamRise: { pct: 55, min: 25, max: 85, menu: style }
+  backSeamChest: { pct: 200, min: 120, max: 260, menu: style }
+  # The lap (p. 48): 2 1/4 in, 2 1/2 in below the bust line; 1 1/2 at the waist; 2 1/4 at the hip
+  buttonExtension: { pct: 6.25, min: 3, max: 9, of: chest, menu: style } # 2 1/4" of 36
+  lapWaist: { pct: 4.2, min: 2, max: 7, of: chest, menu: style } # 1 1/2"
+  lapHip: { pct: 6.25, min: 2, max: 9, of: chest, menu: style } # 2 1/4"
+  breakBelowBust: { pct: 11.4, min: 0, max: 40, menu: style } # x hpsToWaistFront; 2 1/2" of 22"
+  # Pleat on the back seam and CB vent (p. 48): each 1 in at the waist, 1 1/2 in at the bottom
+  backPleatWaist: { pct: 2.8, min: 1, max: 6, of: chest, menu: style } # 1"
+  backPleatHem: { pct: 4.2, min: 1, max: 8, of: chest, menu: style } # 1 1/2"
+  ventWaist: { pct: 2.8, min: 1, max: 6, of: chest, menu: style } # 1"
+  ventHem: { pct: 4.2, min: 1, max: 8, of: chest, menu: style } # 1 1/2"
+  # "Should extra fulness or flare be desired" (p. 50): the skirt's parts spread at the bottom, by
+  # an amount left to the cutter
+  skirtSpread: { pct: 0, min: 0, max: 8, of: chest, menu: style } # at each of the skirt's 3 seams
+  lengthBelowWaist: { pct: 40, min: 20, max: 70, menu: style } # x waistToFloor; 16" on p. 49
+  # Lapel and collar, as the tailored jacket's (p. 48: "generally, although not exclusively" peaked)
+  lapelStyle: { dflt: peak, list: [peak, notch], menu: style }
+  gorgeAt: { pct: 55, min: 30, max: 80, menu: style } # along the front neck from the neck point
+  collarWidth: { pct: 20, min: 12, max: 30, of: neck, menu: style } # 2 3/4" from the neck point up
+  collarSpring: { pct: 14, min: 0, max: 25, menu: style }
+  collarPoint: { pct: 5, min: 0, max: 12, of: neck, menu: style }
+  # No pockets drawn (p. 49)
+  pockets: { bool: false, menu: false }
+  breastPocket: { bool: false, menu: false }
+  ticketPocket: { bool: false, menu: false }
+
+pieces:
+  frontBase:
+    from: breanna.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, seat, waistToSeat, waistToFloor, neck, hpsToWaistFront]
+    let:
+      # As the fitted jacket
+      d: max(0, seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      k: min(1, max(0, waist * (waistEase - 0.09) / 2) / max(1, d * (cbSuppression + underarmSuppression)))
+    ops:
+      - jacketBase: { side: front }
+      - jacketLayout:
+          seat: seat * (1 + seatEase)
+          hipDepth: waistToSeat
+          length: waistToFloor * lengthBelowWaist
+          lap: chest * buttonExtension
+          breakBelow: hpsToWaistFront * breakBelowBust
+          rollOut: neck * rollOut
+          lapelWidth: neck * lapelWidth
+          gorgeAt: gorgeAt
+          peak: lapelStyle == 'peak'
+          underarm:
+            back: underarmBack
+            front: underarmFront
+            backSuppression: d * underarmSuppression * k
+            frontSuppression: 0
+          cb:
+            waist: d * cbSuppression * k
+            hip: waist * cbSeat # (`waist` here is the entry above: the CB suppression)
+          backArmhole:
+            rise: backSeamRise
+            chest: backSeamChest
+          waistSeam:
+            lapWaist: chest * lapWaist
+            lapHip: chest * lapHip
+            pleatWaist: chest * backPleatWaist
+            pleatHem: chest * backPleatHem
+            ventWaist: chest * ventWaist
+            ventHem: chest * ventHem
+            spread: chest * skirtSpread
+          facing: chest * facingWidth
+          backFacing: chest * backFacingDepth
+          lining: lining
+          liningPleat: chest * liningPleat
+          sleeveStore: [library.twoPartSleeve, library.topsleeve, library.undersleeve, prince-albert-jacket.topsleeve, prince-albert-jacket.undersleeve]
+      - store: { key: library.topsleeve.title, value: { nr: 7, brand: "'PublicSewing'" } }
+      - store: { key: library.undersleeve.title, value: { nr: 8, brand: "'PublicSewing'" } }
+
+  skirt: { part: jacketPanel, after: [backBase, frontBase], panel: skirt, nr: 21, label: skirt, cut: 2 }
+  skirtLining: { part: jacketPanel, after: [backBase, frontBase], panel: skirtLining, nr: 22, label: skirtLining, cut: 2, material: lining, if: lining }
+
+  # "Mannish" collar, as the tailored jacket's: sewn from CB to the gorge
+  collar:
+    after: [backBase, frontBase]
+    measurements: [neck]
+    options: [collarWidth, collarSpring, collarPoint]
+    ops:
+      - collar:
+          target: coat.jacketNeck.back + coat.jacketNeck.front
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: neck * collarPoint
+          nr: 6
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  notch:
+    name: Notched lapels
+    description: "The source's other lapel: its top edge meets the collar in a notch, in place of the peaks."
+    options: { lapelStyle: notch }
+  flared:
+    name: Flared skirt
+    description: "The skirt's parts spread at the bottom for more flare, as the book allows. The waist stays the same; only the hem grows."
+    options: { skirtSpread: 0.04 }

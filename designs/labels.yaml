@@ -137,6 +137,33 @@ options:
   seatPockets:
     title: Seat pockets
     description: A patch pocket on each back.
+  backSeamRise:
+    title: Back seam on the armhole
+    description: Where the back seam leaves the armhole, from the top of the under-arm seam (0%) to the shoulder point (100%).
+  backSeamChest:
+    title: Back width at the chest
+    description: How far the back seam is from the centre back at the chest line, as a multiple of the back's width at the waist.
+  lapWaist:
+    title: Lap at the waist
+    description: How far the front edge is past centre front at the waist, as a share of the chest.
+  lapHip:
+    title: Lap at the hip
+    description: How far the skirt's front edge is past centre front at the hip and below, as a share of the chest.
+  backPleatWaist:
+    title: Back pleat at the waist
+    description: Width of the pleat on the back seam at the waist, as a share of the chest.
+  backPleatHem:
+    title: Back pleat at the hem
+    description: Width of the pleat on the back seam at the hem, as a share of the chest.
+  ventWaist:
+    title: Back vent at the waist
+    description: Width of the vent's extension on the centre back at the waist, as a share of the chest.
+  ventHem:
+    title: Back vent at the hem
+    description: Width of the vent's extension on the centre back at the hem, as a share of the chest.
+  skirtSpread:
+    title: Extra skirt flare
+    description: Extra width at the hem at each of the skirt's three laid-together seams, as a share of the chest. The waist doesn't change.
   secondAt:
     title: Second seam position
     description: Where the second front seam meets the shoulder, from the front seam (0%) to the shoulder point (100%).
@@ -874,6 +901,8 @@ options:
 parts:
   body: Body
   underArm: Under-arm panel
+  skirt: Skirt
+  skirtLining: Skirt lining
   armGusset: Underarm gusset
   crotchGusset: Crotch gusset
   back: Back

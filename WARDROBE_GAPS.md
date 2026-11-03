@@ -81,6 +81,7 @@ and marked as derived.
 |---|---|---|---|---|
 | **Tailored jacket** | 1 | — (Jaeger is menswear) | **Semi-fitted drafted 2026-10-25** (`designs/tailored-jacket`, on Breanna, not sewn); **tight-fitted with a shawl collar 2026-10-27** (`designs/fitted-jacket`, not sewn) | Mitchell 1921 `newstandardworko00mitc` |
 | Kimono jacket (semi-fitted, sleeves cut with the side panels) | 1 | — | Variant; **drafted 2026-11-03** (`designs/kimono-jacket`, on Breanna; not sewn) | Mitchell 1921 pp. 40-41 |
+| "Prince Albert" jacket (tight-fitted, waist seam, one-piece skirt) | 1 | — | Variant; **drafted 2026-11-03** (`designs/prince-albert-jacket`, on Breanna; not sewn) | Mitchell 1921 pp. 48-51 |
 | Skirt: pencil, circle, block | 1, 4 | Penelope, Sandy, Sarah | Have | — |
 | A-line / gored skirt | 5 | Sarah | **Drafted 2026-10-27** (`designs/gored-skirt`, 5–15 gores on Sarah, not sewn); **two-piece skirt 2026-10-28** (`designs/two-piece-skirt`) | Mitchell 1921 (gored and two-piece skirts) |
 | Pleated skirt (side or box) | 5 | Sarah | Variant; **drafted 2026-11-02** (`designs/pleated-skirt`: the gored skirt with pleat underlays below the hip; not sewn) | Mitchell 1921 pp. 102–107 |
@@ -194,7 +195,7 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
   the front (2026-10-27). Tested at every size; not draped, not sewn.
 - **Built 2026-10-28/29:** the two-piece skirt (`designs/two-piece-skirt`) and the double-dart
   jacket (`designs/double-dart-jacket`: the fitted jacket with a second front seam).
-- **Next from Mitchell:** the kimono jackets, the "Prince Albert".
+- **Built 2026-11-03:** the kimono jacket and the "Prince Albert" jacket (`designs/prince-albert-jacket`: the fitted jacket cut through at the waist, with a one-piece skirt).
 
 ## ЕМКО СЭВ vol. 3 (1988): done (2026-10-27)
 Corpus `emko`, a private copy, untracked: still in copyright, used only for its methods,

@@ -126,6 +126,15 @@ export function draftJacketBase(sh, { side, backSeamAt = 0.5, style = 'princess'
  * at its angle, the neck point to the wrist `length` on both sides (a shoulder dart's width not
  * counted). Square to it at the wrist, the hem; the hem is shared so the two underarm seams, to the
  * side seam `depth` below the armhole, are the same length. Store: `jacket.kimono`.
+ *
+ * `backArmhole` (with `underarm`; Mitchell's "Prince Albert"): the back seam leaves the armhole in
+ * place of the shoulder, `rise` (0-1) of the way up from the under-arm seam's top to the shoulder
+ * point, and passes the chest line `chest` x the back's waist width from the CB.
+ * `waistSeam` (with `underarm`): every panel but the back stops at the waist, and their skirts are
+ * laid edge to edge, front to back seam, as one `skirt` (and `skirtLining`). { lapWaist, lapHip: the
+ * lap there, `lap` being its width at the break; pleatWaist, pleatHem: a pleat on the back and skirt
+ * at the back seam; ventWaist, ventHem: a CB vent on the back; spread: more at the hem, per skirt
+ * seam }. Store: `jacket.seams.waist` [bodice, skirt] and `.pleat` [back, skirt].
  */
 export function draftJacketLayout(sh, a) {
   const { Path, Point, store } = sh
@@ -153,6 +162,8 @@ export function draftJacketLayout(sh, a) {
   const panels = {}
   const seams = {}
   const lineTo = (p, ...pts) => pts.reduce((q, t) => q.line(t.clone()), p)
+  const ws = ua ? a.waistSeam : null
+  const ba = ua ? a.backArmhole : null
 
   /**
    * A princess seam pair: from each panel's top end to its waist end, two smooth curves
@@ -239,20 +250,44 @@ export function draftJacketLayout(sh, a) {
     const cbx = r.centerWaist.x
     const cbWaist = new Point(cbx + cbIn, r.centerWaist.y)
     const hemC = new Point(cbx + cbIn - ((cbIn - cbHip) / a.hipDepth) * a.length, r.centerWaist.y + a.length)
-    const cbLine = cbIn ? [new Point(cbx, r.armhole.y), cbWaist] : []
+    const cbLine = cbIn ? [new Point(cbx, r.armhole.y), cbWaist] : a.waistSeam ? [cbWaist] : []
     const hemCs = hemAt(r.lower.c, 1)
     const hemSc = hemAt(r.lower.s, -1)
     const hemS = hemAt(r.waist, 1)
     // The seam passes through the waist dart's tip, heading for the middle of the dart
-    const M = r.lower.tip
-    const tan = dir(r.upper.c, r.lower.c.shiftFractionTowards(r.lower.s, 0.5))
-    const seam = princess({ top: r.upper.c, bottom: r.lower.c }, { top: r.upper.s, bottom: r.lower.s }, M, tan, M, M)
-    const centre = lineTo(new Path().move(r.hps.clone()).join(r.neck.clone()), ...cbLine, hemC, hemCs, r.lower.c).join(seam.centre.reverse()).line(r.hps.clone())
+    let M = r.lower.tip
+    let tan = dir(r.upper.c, r.lower.c.shiftFractionTowards(r.lower.s, 0.5))
+    let seam
+    // Into the armhole: from Z on the armhole, through M on the chest line, to the waist dart
+    let Z
+    let toZ
+    let fromZ
+    if (ba) {
+      const u = underarmCut(r, ua.back, ua.backSuppression)
+      Z = u.fromS.intersectsY(u.S.y - ba.rise * (u.S.y - r.shoulder.y))[0]
+      if (!Z) throw new Error(`jacket: the back seam misses the armhole`)
+      ;[toZ, fromZ] = u.fromS.split(Z)
+      M = new Point(Math.min(cbx + ba.chest * (r.lower.c.x - cbWaist.x), 0.5 * (cbx + Z.x)), r.armhole.y)
+      tan = dir(M, r.lower.c.shiftFractionTowards(r.lower.s, 0.5))
+      seam = princess({ top: Z, bottom: r.lower.c }, { top: Z, bottom: r.lower.s }, M, tan, new Point(M.x, Z.y), M)
+    } else seam = princess({ top: r.upper.c, bottom: r.lower.c }, { top: r.upper.s, bottom: r.lower.s }, M, tan, M, M)
+    // With a waist seam the back alone runs on to the hem, with a pleat on the back seam and a
+    // vent on the CB
+    const n = ws ? (() => { const d = dir(r.lower.c, hemCs); return { x: -d.y, y: d.x } })() : null
+    const out = n && n.x < 0 ? { x: -n.x, y: -n.y } : n // toward the side (+x)
+    const pleat = ws
+      ? { w: new Point(r.lower.c.x + out.x * ws.pleatWaist, r.lower.c.y + out.y * ws.pleatWaist), h: new Point(hemCs.x + out.x * ws.pleatHem, hemCs.y + out.y * ws.pleatHem) }
+      : null
+    const below = ws
+      ? [new Point(cbWaist.x - ws.ventWaist, cbWaist.y), new Point(hemC.x - ws.ventHem, hemC.y), hemCs, pleat.h, pleat.w]
+      : [hemC, hemCs]
+    let centre = lineTo(new Path().move(r.hps.clone()).join(r.neck.clone()), ...cbLine, ...below, r.lower.c).join(seam.centre.reverse())
+    centre = (ba ? centre.join(fromZ.clone()) : centre).line(r.hps.clone())
     const side = seam.side.clone().line(hemSc).line(hemS).line(r.waist.clone()).join(r.sideAbove.clone())
     panels.back = {
       outline: centre,
-      fold: !cbIn,
-      marks: { hps: r.hps, cbNeck: r.centerNeck, cbHem: hemC, hemSeam: hemCs, seamWaist: r.lower.c, seamBust: M, seamTop: r.upper.c },
+      fold: !cbIn && !ws, // (a vent's CB can't be on a fold)
+      marks: { hps: r.hps, cbNeck: r.centerNeck, cbHem: hemC, hemSeam: hemCs, seamWaist: r.lower.c, seamBust: M, seamTop: ba ? Z : r.upper.c },
     }
     panels.sideBack = {
       outline: closeOver(side, r.scye, r.shoulder, r.upper.s, Path),
@@ -261,13 +296,20 @@ export function draftJacketLayout(sh, a) {
     }
     if (ua) {
       const u = underarmCut(r, ua.back, ua.backSuppression)
-      panels.sideBack.outline = seam.side.clone().line(hemSc).line(u.hemC).line(u.Wc).line(u.S).join(u.fromS).line(r.upper.s.clone())
-      panels.sideBack.marks = { seamTop: r.upper.s, seamBust: M, seamWaist: r.lower.s, hemSeam: hemSc, hemSide: u.hemC, waist: u.Wc, armhole: u.S, shoulder: r.shoulder }
+      panels.sideBack.outline = ws || ba
+        ? lineTo(seam.side.clone(), ...(ws ? [] : [hemSc, u.hemC]), u.Wc, u.S).join(ba ? toZ.clone() : u.fromS.clone().line(r.upper.s.clone()))
+        : seam.side.clone().line(hemSc).line(u.hemC).line(u.Wc).line(u.S).join(u.fromS).line(r.upper.s.clone())
+      panels.sideBack.marks = ws
+        ? { seamTop: ba ? Z : r.upper.s, seamBust: M, seamWaist: r.lower.s, waist: u.Wc, armhole: u.S }
+        : { seamTop: r.upper.s, seamBust: M, seamWaist: r.lower.s, hemSeam: hemSc, hemSide: u.hemC, waist: u.Wc, armhole: u.S, shoulder: r.shoulder }
       under.back = u
+      under.back.hemSc = hemSc
+      under.back.pleat = pleat
+      under.back.out = out
     }
-    backCentre = { seam: seam.centre, hemC, hemCs }
+    backCentre = { seam: seam.centre, hemC, hemCs, fromZ }
     outer.back = { r, body: () => seam.side.clone().line(hemSc).line(hemS).line(r.waist.clone()), hemS, seamLen: r.waist.dist(hemS) }
-    seams.backPrincess = [seam.centre.length() + r.lower.c.dist(hemCs), seam.side.length() + r.lower.s.dist(hemSc)]
+    seams.backPrincess = ws ? [seam.centre.length(), seam.side.length()] : [seam.centre.length() + r.lower.c.dist(hemCs), seam.side.length() + r.lower.s.dist(hemSc)]
     if (!ua) seams.sideBack = r.sideAbove.length() + r.waist.dist(hemS)
     seams.shoulderBack = r.hps.dist(r.shoulder)
   }
@@ -325,7 +367,12 @@ export function draftJacketLayout(sh, a) {
     const M = r.upper.tip.shiftFractionTowards(r.lower.tip, 0.5)
     const tan = dir(r.upper.tip, r.lower.tip)
     const seam = princess({ top: r.upper.c, bottom: r.lower.c }, { top: r.upper.s, bottom: r.lower.s }, M, tan, r.upper.tip, r.lower.tip)
-    const centre = lineTo(top, hemC, hemCs, r.lower.c).join(seam.centre.reverse()).line(r.hps.clone())
+    // With a waist seam the lap narrows to the waist and widens again to the hip
+    const edgeW = ws ? new Point(cfx - ws.lapWaist, r.centerWaist.y) : null
+    const edgeH = ws ? new Point(cfx - ws.lapHip, r.centerWaist.y + a.hipDepth) : null
+    const hemF = ws ? new Point(edgeH.x, hemC.y) : hemC
+    const edgeBelow = ws ? [edgeW, edgeH, hemF] : [hemC]
+    const centre = lineTo(top, ...(ws ? [edgeW] : [hemC, hemCs]), r.lower.c).join(seam.centre.reverse()).line(r.hps.clone())
     const side = seam.side.clone().line(hemSc).line(hemS).line(r.waist.clone()).join(r.sideAbove.clone())
     panels.front = {
       outline: centre,
@@ -336,8 +383,7 @@ export function draftJacketLayout(sh, a) {
         notch: N,
         lapelPoint: P,
         break: B,
-        hemEdge: hemC,
-        hemSeam: hemCs,
+        ...(ws ? { waistEdge: edgeW } : { hemEdge: hemC, hemSeam: hemCs }),
         seamWaist: r.lower.c,
         seamBust: M,
         seamTop: r.upper.c,
@@ -349,14 +395,16 @@ export function draftJacketLayout(sh, a) {
       fold: false,
       marks: { seamTop: r.upper.s, seamBust: M, seamWaist: r.lower.s, hemSeam: hemSc, hemSide: hemS, waist: r.waist, armhole: r.armhole, shoulder: r.shoulder },
     }
-    seams.frontPrincess = [seam.centre.length() + r.lower.c.dist(hemCs), seam.side.length() + r.lower.s.dist(hemSc)]
+    seams.frontPrincess = ws ? [seam.centre.length(), seam.side.length()] : [seam.centre.length() + r.lower.c.dist(hemCs), seam.side.length() + r.lower.s.dist(hemSc)]
     if (!ua) seams.sideFront = r.sideAbove.length() + r.waist.dist(hemS)
     let sideEdge = [r.waist, hemS] // the side front's back edge below the waist, for the pockets
     outer.front = { r, body: () => seam.side.clone().line(hemSc).line(hemS).line(r.waist.clone()), hemS, seamLen: r.waist.dist(hemS) }
     if (ua) {
       const u = underarmCut(r, ua.front, ua.frontSuppression)
-      panels.sideFront.outline = seam.side.clone().line(hemSc).line(u.hemC).line(u.Wc).line(u.S).join(u.fromS).line(r.upper.s.clone())
-      panels.sideFront.marks = { seamTop: r.upper.s, seamBust: M, seamWaist: r.lower.s, hemSeam: hemSc, hemSide: u.hemC, waist: u.Wc, armhole: u.S, shoulder: r.shoulder }
+      panels.sideFront.outline = lineTo(seam.side.clone(), ...(ws ? [] : [hemSc, u.hemC]), u.Wc, u.S).join(u.fromS).line(r.upper.s.clone())
+      panels.sideFront.marks = ws
+        ? { seamTop: r.upper.s, seamBust: M, seamWaist: r.lower.s, waist: u.Wc, armhole: u.S, shoulder: r.shoulder }
+        : { seamTop: r.upper.s, seamBust: M, seamWaist: r.lower.s, hemSeam: hemSc, hemSide: u.hemC, waist: u.Wc, armhole: u.S, shoulder: r.shoulder }
       sideEdge = [u.Wc, u.hemC]
       under.front = u
       // A second front seam (Mitchell's double dart): from `sec.at` (0-1) along the side front's
@@ -407,13 +455,67 @@ export function draftJacketLayout(sh, a) {
       const H2 = new Point(Wf.x + d.x * L - n.x * slope * L, Wf.y + d.y * L - n.y * slope * L)
       const frontScye = mapPath(u.toS.reverse(), Path, T) // the front's S -> armhole
       panels.underArm = {
-        outline: new Path().move(ub.S.clone()).line(ub.Wu.clone()).line(H1).line(H2).line(Wf).line(T(u.S)).join(frontScye).join(ub.toS.clone()),
+        outline: lineTo(new Path().move(ub.S.clone()), ub.Wu, ...(ws ? [] : [H1, H2]), Wf, T(u.S)).join(frontScye).join(ub.toS.clone()),
         fold: false,
-        marks: { backTop: ub.S, backWaist: ub.Wu, backHem: H1, frontHem: H2, frontWaist: Wf, frontTop: T(u.S), armhole: bk.armhole },
+        marks: ws
+          ? { backTop: ub.S, backWaist: ub.Wu, frontWaist: Wf, frontTop: T(u.S), armhole: bk.armhole }
+          : { backTop: ub.S, backWaist: ub.Wu, backHem: H1, frontHem: H2, frontWaist: Wf, frontTop: T(u.S), armhole: bk.armhole },
       }
-      const edge = (S, W, H) => S.dist(W) + W.dist(H)
+      const edge = (S, W, H) => S.dist(W) + (ws ? 0 : W.dist(H))
       seams.underarmBack = [edge(ub.S, ub.Wc, ub.hemC), edge(ub.S, ub.Wu, H1)]
       seams.underarmFront = [edge(u.S, u.Wc, u.hemC), edge(T(u.S), Wf, H2)]
+      // The skirt: each panel's part below the waist laid edge to edge on the one before, front to
+      // back seam. As a fan, so it comes out even whatever the angle of each panel's own waist: a
+      // panel keeps its waist's width, and its two edges flare by the same `e` as everywhere (so
+      // the seat's width is kept), `spread` more at the hem at each seam
+      if (ws) {
+        const L = r.lower.c.dist(hemCs)
+        const flare = Math.atan(slope)
+        const spread = (ws.spread ?? 0) / L
+        const turn = (d, t) => ({ x: d.x * Math.cos(t) + d.y * Math.sin(t), y: -d.x * Math.sin(t) + d.y * Math.cos(t) })
+        const lay = (prev, width) => {
+          const left = turn(prev.d, spread)
+          const mid = turn(left, flare)
+          const w = new Point(prev.w.x + mid.y * width, prev.w.y - mid.x * width)
+          const d = turn(left, 2 * flare)
+          return { w, d, h: new Point(w.x + d.x * L, w.y + d.y * L) }
+        }
+        const s1 = lay({ w: r.lower.c, d: dir(r.lower.c, hemCs) }, r.lower.s.dist(u.Wc))
+        const s2 = lay(s1, Wf.dist(ub.Wu))
+        const s3 = lay(s2, ub.Wc.dist(bk.lower.s))
+        // Smooth through the seams' ends
+        const smooth = (pts) => {
+          const go = (p, d, k) => new Point(p.x + d.x * k, p.y + d.y * k)
+          const tangent = (i) => dir(pts[Math.max(0, i - 1)], pts[Math.min(pts.length - 1, i + 1)])
+          let path = new Path().move(pts[0].clone())
+          for (let i = 0; i + 1 < pts.length; i++) {
+            const k = pts[i].dist(pts[i + 1]) / 3
+            path = path.curve(go(pts[i], tangent(i), k), go(pts[i + 1], tangent(i + 1), -k), pts[i + 1].clone())
+          }
+          return path
+        }
+        const d3 = dir(s3.w, s3.h)
+        const o3 = d3.y > 0 ? { x: d3.y, y: -d3.x } : { x: -d3.y, y: d3.x } // away from the skirt
+        const go3 = (p, k) => new Point(p.x + o3.x * k, p.y + o3.y * k)
+        const skirt = (wTop, hTop, ...edge) => {
+          const waist = smooth([wTop, r.lower.c, s1.w, s2.w, s3.w])
+          const hem = smooth([hTop, hemCs, s1.h, s2.h, s3.h])
+          return { waist, hem, edge }
+        }
+        const main = skirt(edgeW, hemF)
+        panels.skirt = {
+          outline: lineTo(new Path().move(edgeW.clone()), edgeH, hemF).join(main.hem.clone()).line(go3(s3.h, ws.pleatHem)).line(go3(s3.w, ws.pleatWaist)).line(s3.w.clone()).join(main.waist.clone().reverse()),
+          fold: false,
+          marks: { waistEdge: edgeW, seam1Waist: r.lower.c, seam2Waist: s1.w, seam3Waist: s2.w, backSeamWaist: s3.w, seam1Hem: hemCs, seam2Hem: s1.h, seam3Hem: s2.h, backSeamHem: s3.h },
+          lines: { cf: [new Point(cfx, edgeW.y + (r.lower.c.y - edgeW.y) * (ws.lapWaist / (r.lower.c.x - edgeW.x))), new Point(cfx, hemF.y)] },
+        }
+        const bodice = edgeW.dist(r.lower.c) + r.lower.s.dist(u.Wc) + Wf.dist(ub.Wu) + ub.Wc.dist(bk.lower.s)
+        seams.waist = [bodice, main.waist.length()]
+        seams.pleat = [ub.pleat.w.dist(ub.pleat.h), go3(s3.w, ws.pleatWaist).dist(go3(s3.h, ws.pleatHem))]
+        lap.buttonBottom = r.centerWaist.y - a.lap * 0.4
+        lap.cfEnd = edgeW.y
+        lap.skirtLining = { smooth, skirt, s3, edgeW, edgeH, hemF, r }
+      }
     }
     seams.shoulderFront = r.hps.dist(r.upper.c) + r.upper.s.dist(r.shoulder)
     Object.assign(lap, { cfx, edgeX, B, R, G, N, P, hemC, top, lapelEdge, neckToG, hemY: hemC.y, waistY: r.centerWaist.y })
@@ -421,8 +523,7 @@ export function draftJacketLayout(sh, a) {
     // Facing: the front edge strip, lapel included, from the hem up to the shoulder
     const fx = cfx + Math.min(a.facing - a.lap, 0.8 * (r.lower.c.x - cfx))
     const fShoulder = r.hps.shiftFractionTowards(r.upper.c, 0.6)
-    const facing = topEdge()
-      .line(hemC)
+    const facing = lineTo(topEdge(), ...edgeBelow)
       .line(new Point(fx, hemC.y))
       .line(new Point(fx, r.bustY))
       .curve(new Point(fx, r.bustY - (r.bustY - fShoulder.y) * 0.5), fShoulder.shift(-90, (r.bustY - fShoulder.y) * 0.3), fShoulder)
@@ -474,8 +575,8 @@ export function draftJacketLayout(sh, a) {
     // Back-neck facing: the back neck to `backFacing` down the CB, as wide on the shoulder as
     // the front facing; the lining joins both facings
     if (a.backFacing) {
-      const ws = r.hps.dist(fShoulder)
-      const bS = bk.hps.shiftTowards(bk.upper.c, Math.min(ws, 0.9 * bk.hps.dist(bk.upper.c)))
+      const faceW = r.hps.dist(fShoulder)
+      const bS = bk.hps.shiftTowards(bk.upper.c, Math.min(faceW, 0.9 * bk.hps.dist(bk.upper.c)))
       const C = new Point(bk.centerNeck.x, bk.centerNeck.y + a.backFacing)
       const edge = new Path().move(bS).curve(bS.shift(-90, a.backFacing * 0.3), C.shift(0, Math.abs(bS.x - C.x) * 0.5), C) // shoulder -> CB
       panels.backNeckFacing = {
@@ -487,35 +588,44 @@ export function draftJacketLayout(sh, a) {
         // Back lining: below the facing to the hem, with a pleat `liningPleat` wide at the CB fold
         const pleatX = bk.centerNeck.x - a.liningPleat
         const b = backCentre
+        const seamUp = new Path()
+          .move(bS.clone())
+          .join(edge.clone())
+          .line(new Point(pleatX, C.y))
+          .line(new Point(pleatX, b.hemC.y))
+          .line(b.hemCs.clone())
+          .line(bk.lower.c.clone())
+          .join(b.seam.clone().reverse())
         panels.backLining = {
-          outline: new Path()
-            .move(bS.clone())
-            .join(edge.clone())
-            .line(new Point(pleatX, C.y))
-            .line(new Point(pleatX, b.hemC.y))
-            .line(b.hemCs.clone())
-            .line(bk.lower.c.clone())
-            .join(b.seam.clone().reverse())
-            .line(bS.clone()),
+          outline: (b.fromZ ? seamUp.join(b.fromZ.clone()) : seamUp).line(bS.clone()),
           fold: true,
           foldX: pleatX,
         }
         // Front lining: from the facing's inner edge back to the princess seam
         const lowY = r.bustY
         const top = fShoulder
+        const fxWaist = ws ? new Point(fx, edgeW.y + (r.lower.c.y - edgeW.y) * ((fx - edgeW.x) / (r.lower.c.x - edgeW.x))) : null
         panels.frontLining = {
-          outline: new Path()
-            .move(top.clone())
-            .curve(top.shift(-90, (lowY - top.y) * 0.3), new Point(fx, lowY - (lowY - top.y) * 0.5), new Point(fx, lowY))
-            .line(new Point(fx, hemC.y))
-            .line(hemCs.clone())
+          outline: lineTo(
+            new Path()
+              .move(top.clone())
+              .curve(top.shift(-90, (lowY - top.y) * 0.3), new Point(fx, lowY - (lowY - top.y) * 0.5), new Point(fx, lowY)),
+            ...(ws ? [fxWaist] : [new Point(fx, hemC.y), hemCs]),
+          )
             .line(r.lower.c.clone())
             .join(seam.centre.clone().reverse())
             .line(top.clone()),
           fold: false,
         }
+        // The skirt's lining: the skirt from the facing back, without the pleat
+        if (ws) {
+          const k = lap.skirtLining
+          const main = k.skirt(fxWaist, new Point(fx, hemC.y))
+          panels.skirtLining = { outline: new Path().move(fxWaist.clone()).line(new Point(fx, hemC.y)).join(main.hem.clone()).line(k.s3.w.clone()).join(main.waist.clone().reverse()), fold: false }
+        }
       }
     }
+    delete lap.skirtLining
   }
 
   if (a.kimono) {
@@ -834,7 +944,7 @@ function mapPath(path, Path, f = (p) => p.clone()) {
 
 /** The buttons' heights on a jacket front (store `jacket.front`): `n` from the break (or `buttonTop`) to below the waist */
 function buttonHeights(f, n) {
-  const bottom = f.waistY + (f.hemY - f.waistY) * 0.3
+  const bottom = f.buttonBottom ?? f.waistY + (f.hemY - f.waistY) * 0.3
   const top = f.buttonTop ?? f.B.y
   return Array.from({ length: n }, (_, i) => (n > 1 ? top + ((bottom - top) * i) / (n - 1) : top))
 }
@@ -922,7 +1032,7 @@ export function jacketPanelPart({ name, after, panel, nr, label, cut = 2, button
           }
         }
         if (!f.closed) paths.crease = new Path().move(f.B.clone()).line(f.R.clone()).addClass('help dotted')
-        paths.cf = new Path().move(new Point(f.cfx, f.B.y)).line(new Point(f.cfx, f.hemY)).addClass('help dashed')
+        paths.cf = new Path().move(new Point(f.cfx, f.B.y)).line(new Point(f.cfx, f.cfEnd ?? f.hemY)).addClass('help dashed')
       }
       // Set-in flap pockets: the mouth, and the flap hanging from it, square to the mouth
       for (const [id, q] of Object.entries(p.pockets ?? {})) {

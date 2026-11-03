@@ -57,6 +57,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `kimono-jacket` | Semi-fitted jacket with princess seams and sleeves cut in one with the side panels | Mitchell 1921 |
 | `fitted-jacket` | Women's tight-fitted jacket with an under-arm panel and a shawl collar | Mitchell 1921 |
 | `double-dart-jacket` | Tight-fitted jacket shaped by two front seams over the shoulder | Mitchell 1921 |
+| `prince-albert-jacket` | Tight-fitted jacket cut through at the waist, with a one-piece skirt, back pleats and vent, and peaked lapels | Mitchell 1921 |
 | `womens-peacoat` | Women's hip-length double-breasted coat, princess seams, buttoned to the neck under a storm collar | Merz 1911 |
 | `field-jacket` | Women's straight hip-length jacket with four flapped patch pockets | Merz 1911 |
 | `womens-box-coat` | Women's loose box coat with a notched lapel and set-in flap pockets | Mitchell 1921 |

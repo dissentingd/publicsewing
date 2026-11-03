@@ -859,6 +859,23 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
 
+### prince-albert-jacket: Prince Albert jacket
+> **A visible seam all round at the waist, the jacket tight above it and a smooth flared skirt below, with no seams across the skirt's front or sides.** A women's fitted **Prince Albert jacket** in plain dark wool
+> (navy, charcoal or black), the skirt ending **at about mid-thigh**. **Peaked lapels** above a **wide, slightly overlapping front** that narrows at the waist, with **exactly three buttons in one row**, all above the waist seam. Curved seams shape the
+> bodice from the shoulder and armhole down to the waist. Plain two-piece sleeves. Shown flat on an invisible form, front view.
+>
+> Leave out: pockets of any kind, a second row of buttons, a belt, gathers or ruffles at the waist, buttons below the waist, cuff buttons, a blouse with a bow, a person.
+
+### prince-albert-jacket.notch: Prince Albert jacket, notched lapels
+> **Notched lapels, their top edge meeting the collar in a notch and not pointing up.** The same women's fitted jacket in plain dark wool: a visible seam all round at the waist, a smooth flared skirt below it to about mid-thigh, exactly three buttons in one row above the waist seam, plain two-piece sleeves. Shown flat on an invisible form, front view.
+>
+> Leave out: peaked lapels, pockets of any kind, a second row of buttons, a belt, buttons below the waist, cuff buttons, a person.
+
+### prince-albert-jacket.flared: Prince Albert jacket, flared skirt
+> **A fuller skirt, its hem clearly wider, falling in soft folds from a smooth, ungathered waist seam.** The same women's fitted jacket in plain dark wool: tight above the waist, peaked lapels, exactly three buttons in one row above the waist seam, plain two-piece sleeves. Shown flat on an invisible form, front view.
+>
+> Leave out: gathers or pleats at the front or sides of the waist, pockets of any kind, a second row of buttons, a belt, cuff buttons, a person.
+
 *Current image has five buttons; the pattern has four.*
 
 ### chore-coat: Chore coat
