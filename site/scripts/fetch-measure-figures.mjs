@@ -9,24 +9,26 @@ import { join } from 'node:path'
 
 const commit = process.argv[2]
 if (!commit) throw new Error('usage: node scripts/fetch-measure-figures.mjs <freesewing commit>')
-const raw = (path) => `https://raw.githubusercontent.com/freesewing/freesewing/${commit}/${path}`
+const repo = 'https://codeberg.org/freesewing/freesewing'
 const out = fileURLToPath(new URL('../static/img/measure/', import.meta.url))
 const get = async (path) => {
-  const res = await fetch(raw(path))
+  const res = await fetch(`${repo}/raw/commit/${commit}/${path}`)
   if (!res.ok) throw new Error(`${path}: ${res.status}`)
   return res
 }
+const list = async (dir) => {
+  const res = await fetch(`https://codeberg.org/api/v1/repos/freesewing/freesewing/contents/${dir}?ref=${commit}`)
+  if (!res.ok) throw new Error(`${dir}: ${res.status}`)
+  return (await res.json()).map((e) => e.name)
+}
 
-const tree = await (await fetch(`https://api.github.com/repos/freesewing/freesewing/git/trees/${commit}?recursive=1`)).json()
-const base = 'sites/org/src/theme/MDXComponents/'
+const base = 'sites/org/src/theme/MDXComponents'
 let count = 0
 for (const figure of ['sarah', 'tim']) {
   mkdirSync(join(out, figure, 'still'), { recursive: true })
-  const svgs = tree.tree.filter((e) => e.path.startsWith(`${base}${figure}/`) && e.path.endsWith('.svg'))
-  for (const { path } of svgs) {
-    const name = path.split('/').pop()
+  for (const name of (await list(`${base}/${figure}`)).filter((n) => n.endsWith('.svg'))) {
     // The page draws the JPG behind the overlay, so the overlay's own link to it can go
-    const svg = (await (await get(path)).text()).replace(/<image [^>]*\/>\s*/g, '')
+    const svg = (await (await get(`${base}/${figure}/${name}`)).text()).replace(/<image [^>]*\/>\s*/g, '')
     writeFileSync(join(out, figure, name), svg)
     writeFileSync(join(out, figure, 'still', name), svg.replace(/<animate [^>]*\/>\s*/g, ''))
     count++
@@ -40,7 +42,7 @@ for (const figure of ['sarah', 'tim']) {
 const licence = await (await get('LICENSE')).text()
 writeFileSync(
   join(out, 'NOTICE.txt'),
-  `These figures are FreeSewing's, from https://github.com/freesewing/freesewing at commit ${commit}
+  `These figures are FreeSewing's, from ${repo} at commit ${commit}
 (sites/org/src/theme/MDXComponents/ and sites/org/static/img/). The overlays have their link to the
 background image removed, and still/ has their animation removed too. FreeSewing's licence:
 

@@ -27,7 +27,10 @@ Needs `../designs` installed (`npm install` there): the site builds the designs 
   `docusaurus.config.js`), so the editor sees our designs and not FreeSewing's 73.
 - **`patches/@freesewing+react+4.10.2.patch`** (patch-package; FreeSewing's MIT notice
   applies to the patched files): editor state in localStorage, one key per design (4.10.2
-  ignores `stateBackend` and keeps state, measurements included, in the URL); no share links in
+  ignores `stateBackend` and keeps state, measurements included, in the URL); nothing that reaches
+  FreeSewing's servers (no Save buttons, which need its backend; help from our own wording and
+  figures, `src/components/Measure.jsx` and `ToolHelp.jsx`, not its pages in a frame; a drafting
+  error links to our Measure page and issues); no share links in
   the export view; the PDF cover page says PublicSewing, without FreeSewing's logo; a dedicated
   FedEx Office ARCH E export; exported files are named `publicsewing-<design>`.
 - `@freesewing/react` imports packages it doesn't declare (`utils`, `i18n`, `plugin-i18n`,

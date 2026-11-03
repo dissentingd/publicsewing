@@ -355,7 +355,7 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
 .measure-inline { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.6rem; }
 .measure-side { display: none; }
 .measure-credit { margin: 0.5rem 0 0; font-size: 0.8rem; }
-.measure-help { width: min(44rem, 85vw); padding: 1rem; color: var(--ifm-font-color-base); background: var(--ifm-background-color); }
+.measure-help { width: min(44rem, 85vw); max-width: 100%; padding: 0.5rem; }
 .measure-help .measure-switch { margin-top: 0.5rem; }
 @media (min-width: 997px) {
   .measure-panes { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }

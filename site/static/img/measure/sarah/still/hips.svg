@@ -1,7 +1,7 @@
 <!-- __SDEFILE__ - This file is a dependency for the stand-alone environment -->
 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" width="2000" height="1500" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2000 1500">
     <defs>
-        <path id="path" d="M 0 0 c 120 -10 180 -10 225 -10 m -926 -10 c 80 35 170 30 226 12" style="fill: none; stroke-linejoin: round;"/>
+        <path id="path" d="M 0 0 C 120 -10 180 -10 225 -10 M -701 -20 C -621 15 -531 10 -475 -8 M -1106 15 c -21,-7 -43,-10 -70,-18 m -54,-18 c -7,-3 -15,-6 -23,-10" style="fill: none; stroke-linejoin: round;"/>
         <g id="start">
             <path d="M 0 -25 l 0 50" style="stroke: #000; stroke-width: 3px; stroke-linecap: butt; stroke-linejoin: round;" />
             <path d="M 0 0 l -15 -15 l 0 30 z" style="stroke: #000; stroke-width: 3px; fill: #000; stroke-linecap: butt; stroke-linejoin: round;" />

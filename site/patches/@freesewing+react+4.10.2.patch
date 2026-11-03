@@ -1,3 +1,144 @@
+diff --git a/node_modules/@freesewing/react/components/Editor/components/HeaderMenu.mjs b/node_modules/@freesewing/react/components/Editor/components/HeaderMenu.mjs
+index 967071e..bf82872 100644
+--- a/node_modules/@freesewing/react/components/Editor/components/HeaderMenu.mjs
++++ b/node_modules/@freesewing/react/components/Editor/components/HeaderMenu.mjs
+@@ -2,7 +2,6 @@
+ import { missingMeasurements, flattenFlags } from '../lib/index.mjs'
+ // Hooks
+ import React, { useState, useEffect } from 'react'
+-import { useBackend } from '@freesewing/react/hooks/useBackend'
+ import { useAccount } from '@freesewing/react/hooks/useAccount'
+ import { useDesignTranslation } from '@freesewing/react/hooks/useDesignTranslation'
+ // Components
+@@ -26,8 +25,6 @@ import {
+   RightIcon,
+   RocketIcon,
+   SaIcon,
+-  SaveAsIcon,
+-  SaveIcon,
+   SettingsIcon,
+   TrashIcon,
+   UiIcon,
+@@ -476,40 +473,14 @@ export const HeaderMenuTestIcons = (props) => {
+   )
+ }
+ 
++// PublicSewing patch: Export only. Save and Save As need FreeSewing's backend
+ export const HeaderMenuSaveIcons = (props) => {
+-  const { update, state } = props
+-  const { settings = {} } = state // Guard against undefined settings
+-  const backend = useBackend()
++  const { update } = props
+   const Button = HeaderMenuButton
+   const size = 'tw:w-5 tw:h-5'
+-  const saveable = state._?.undos && state._.undos.length > 0
+-
+-  /*
+-   * Save or Save As, depending on state.pattern
+-   */
+-  const savePattern = async () => {
+-    const pid = state.pid || false
+-    if (pid) {
+-      const loadingId = 'savePattern'
+-      update.startLoading(loadingId)
+-      const patternData = { settings }
+-      const result = await backend.updatePattern(pid, patternData)
+-      if (result[0] === 200) {
+-        update.stopLoading(loadingId)
+-        update.view('draft')
+-        update.notifySuccess('Pattern saved')
+-      } else update.notifyFailure('oops', loadingId)
+-    } else update.view('save')
+-  }
+ 
+   return (
+-    <div className="tw:flex tw:flex-row tw:items-center tw:min-h-12 tw:flex-wrap tw:items-center tw:justify-center tw:px-2">
+-      <Button updateHandler={savePattern} tooltip="Save pattern" disabled={saveable ? false : true}>
+-        <SaveIcon className={`${size} ${saveable ? 'tw:text-success' : ''}`} />
+-      </Button>
+-      <Button updateHandler={() => update.view('save')} tooltip="Save pattern as...">
+-        <SaveAsIcon className={`${size} tw:text-secondary`} />
+-      </Button>
++    <div className="tw:flex tw:flex-row tw:items-center tw:min-h-12 tw:flex-wrap tw:items-center tw:lg:h-12">
+       <Button updateHandler={() => update.view('export')} tooltip="Export pattern">
+         <ExportIcon className={`${size} tw:text-secondary`} />
+       </Button>
+diff --git a/node_modules/@freesewing/react/components/Editor/components/menus/Container.mjs b/node_modules/@freesewing/react/components/Editor/components/menus/Container.mjs
+index 4bbe4ce..4a8efc2 100644
+--- a/node_modules/@freesewing/react/components/Editor/components/menus/Container.mjs
++++ b/node_modules/@freesewing/react/components/Editor/components/menus/Container.mjs
+@@ -3,8 +3,6 @@ import { menuValueWasChanged } from '../../lib/index.mjs'
+ import { designOptionType } from '@freesewing/utils'
+ import {
+   modalDesignOptionHelp,
+-  modalCoreSettingHelp,
+-  modalUiPreferenceHelp,
+ } from '@freesewing/react/components/Help'
+ // Context
+ import { ModalContext } from '@freesewing/react/context/Modal'
+@@ -96,28 +94,6 @@ export const MenuItem = ({
+         <HelpIcon />
+       </button>
+     )
+-  else if (type === 'coreSetting')
+-    buttons.push(
+-      <button
+-        key="help"
+-        className="tw:daisy-btn tw:daisy-btn-xs tw:daisy-btn-ghost tw:px-0 tw:text-success"
+-        onClick={() => modalCoreSettingHelp(name, setModal)}
+-        title="Show help for this core setting"
+-      >
+-        <HelpIcon />
+-      </button>
+-    )
+-  else if (type === 'uiPreference')
+-    buttons.push(
+-      <button
+-        key="help"
+-        className="tw:daisy-btn tw:daisy-btn-xs tw:daisy-btn-ghost tw:px-0 tw:text-success"
+-        onClick={() => modalUiPreferenceHelp(name, setModal)}
+-        title="Show help for this UI preference"
+-      >
+-        <HelpIcon />
+-      </button>
+-    )
+   if (allowOverride)
+     buttons.push(
+       <button
+diff --git a/node_modules/@freesewing/react/components/Editor/components/views/DraftErrorHandler.mjs b/node_modules/@freesewing/react/components/Editor/components/views/DraftErrorHandler.mjs
+index 60963a0..cb272f1 100644
+--- a/node_modules/@freesewing/react/components/Editor/components/views/DraftErrorHandler.mjs
++++ b/node_modules/@freesewing/react/components/Editor/components/views/DraftErrorHandler.mjs
+@@ -1,6 +1,6 @@
+ // Dependencies
+ import React, { useState } from 'react'
+-import { relPath, urls } from '@freesewing/config'
++
+ import { Popout } from '../../../Popout/index.mjs'
+ import { CloseIcon, ExpandIcon } from '../../../Icon/index.mjs'
+ import { Link } from '../../../Link/index.mjs'
+@@ -20,18 +20,11 @@ export const DraftErrorHandler = ({ failure, errors }) => {
+         Sorry, there were problems drafting your pattern with the given measurements and options.
+       </p>
+       <p>
+-        Please double check your measurements according to{' '}
+-        <Link href={relPath('docs/measurements/')}>our documentation</Link>. Also check{' '}
+-        <Link href={relPath('docs/about/faq/measurements-issues/')}>
+-          our common measurement issues FAQ entry
+-        </Link>
+-        .
++        Please double check your measurements on the <Link href="/measure">Measure page</Link>.
+       </p>
+       <p>
+-        If you believe your measurements are correct and/or if you&apos;d like further assistance,
+-        you can ask for help <Link href={urls.social.Forum}>on our forum</Link>,{' '}
+-        <Link href={urls.social.Discord}>our Discord server</Link>, or{' '}
+-        <Link href={`${urls.monorepo}/issues`}>report an issue</Link>.
++        If you believe they&apos;re correct, please{' '}
++        <Link href="https://github.com/dissentingd/publicsewing/issues">report an issue</Link>.
+       </p>
+ 
+       <div className={'tw:mt-4'}>
 diff --git a/node_modules/@freesewing/react/components/Editor/components/views/ExportView.mjs b/node_modules/@freesewing/react/components/Editor/components/views/ExportView.mjs
 index 0d6649a..26061e9 100644
 --- a/node_modules/@freesewing/react/components/Editor/components/views/ExportView.mjs
@@ -242,19 +383,59 @@ index 8658453..24de2ff 100644
  
      this.pdf.lineWidth(1)
      this.pdf
+diff --git a/node_modules/@freesewing/react/components/Editor/lib/ui-preferences.mjs b/node_modules/@freesewing/react/components/Editor/lib/ui-preferences.mjs
+index becd11a..ed07783 100644
+--- a/node_modules/@freesewing/react/components/Editor/lib/ui-preferences.mjs
++++ b/node_modules/@freesewing/react/components/Editor/lib/ui-preferences.mjs
+@@ -71,12 +71,12 @@ export function menuUiPreferencesStructure() {
+       choiceTitles: {
+         react: (
+           <span>
+-            Render using <em>@freesewing/react</em>
++            Render as interface components
+           </span>
+         ),
+         svg: (
+           <span>
+-            Render using <em>@freesewing/core</em>
++            Render as a plain SVG
+           </span>
+         ),
+       },
 diff --git a/node_modules/@freesewing/react/components/Help/index.mjs b/node_modules/@freesewing/react/components/Help/index.mjs
-index d53d340..7d7f183 100644
+index d53d340..7523700 100644
 --- a/node_modules/@freesewing/react/components/Help/index.mjs
 +++ b/node_modules/@freesewing/react/components/Help/index.mjs
-@@ -5,6 +5,7 @@ import { domains } from '@freesewing/config'
+@@ -5,6 +5,8 @@ import { domains } from '@freesewing/config'
  import { ModalWrapper } from '@freesewing/react/components/Modal'
  import { NumberCircle } from '@freesewing/react/components/Number'
  import { MiniTip } from '@freesewing/react/components/Mini'
 +import { MeasureHelp } from '@site/src/components/Measure'
++import { OptionHelp } from '@site/src/components/ToolHelp'
  
  /*
   * A component to display an iframe intended for a modal window.
-@@ -110,16 +111,9 @@ const UiPreferenceHelp = ({ name }) =>
+@@ -44,17 +46,8 @@ const DocsHelp = ({ path }) => <Iframe src={relPath(`${path}/?docusaurus-data-fs
+  * @param {string} props.o - The option ID
+  * @returns {JSX.Element}
+  */
+-const DesignOptionHelp = ({ design, o }) =>
+-  design && o ? (
+-    <Iframe
+-      src={relPath(
+-        `docs/designs/${design.toLowerCase()}/options/${o.toLowerCase()}/index.html?docusaurus-data-fs-embed=true`
+-      )}
+-      title="Design Options Help"
+-    />
+-  ) : (
+-    <p>Invalid props provided to DesignOptionHelp.</p>
+-  )
++// PublicSewing patch: our labels, in place of FreeSewing's page in a frame
++const DesignOptionHelp = ({ design, o }) => <OptionHelp design={design} option={o} />
+ 
+ /*
+  * A component to display inline help for a core setting
+@@ -110,16 +103,9 @@ const UiPreferenceHelp = ({ name }) =>
   * @param {string} [props.m = undefined] - The measurment name (id)
   * @returns {JSX.Element}
   */

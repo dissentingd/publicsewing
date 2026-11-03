@@ -3,7 +3,7 @@
 Made-to-measure sewing patterns for practical, timeless garments, drafted from your own
 measurements, children's sizes included.
 
-PublicSewing adds garments that [FreeSewing](https://freesewing.org) doesn't have. Each design
+PublicSewing adds garments that [FreeSewing](https://freesewing.eu) doesn't have. Each design
 takes its pieces, style lines, proportions and construction from a drafting book: five in the
 public domain (published 1909 to 1921, four American and one British) and one later reference
 used only for its methods (ЕМКО, 1988). The geometry comes from FreeSewing's
