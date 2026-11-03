@@ -1,0 +1,85 @@
+# Kilt: a wrap kilt to the knee, from Simons' "Boys' Scotch Kilt Suit" (Designing Boys' and Juveniles'
+# Clothing, 1922, Diagram 14, pp. 50-52) for its hem and length, the rest ours: Simons' skirt is one
+# flared foundation piece, and says nothing of pleats, a wrap or a fastening. Two flat front aprons
+# wrapping past CF, pleated lengths round the sides and back, a waistband and buckled straps. Sarah
+# supplies the measurements only. See BRIEF.md.
+block: sarah
+
+about:
+  id: kilt
+  name: Kilt
+  category: skirts
+  description: A knee-length wrap kilt with flat front aprons, knife pleats round the sides and back, a waistband and buckled straps
+  difficulty: 4
+  tags: [bottoms]
+  techniques: [pleat, waistband, hem]
+  version: 0.1.0
+  source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Boys' Scotch Kilt Suit, Diagram 14, pp. 50-52, for its hem and length (designingboysjuv00simo)"
+  preview: usdaBoyC6
+
+options:
+  waistEase: { pct: 3, min: 0, max: 15, of: waist, menu: fit } # ours
+  seatEase: { pct: 6, min: 0, max: 15, of: seat, menu: fit } # ours
+  # To the knee, the usual kilt length (ours). Simons' 10 1/2" is the variant
+  kiltLength: { pct: 95, min: 40, max: 130, of: waistToKnee, menu: style }
+  # 23 to 24, "the hem, 2 1/4 inches", on the USDA boy C6's 6 1/4" waist to seat
+  kiltHem: { pct: 36, min: 10, max: 60, of: waistToSeat, menu: construction }
+  # The wrap and the pleats are ours: the aprons a little under half the seat, each wrapping most of
+  # the way across the other, and a pleat with as much fold back either side as it shows
+  apronShare: { pct: 45, min: 30, max: 60, of: seat, menu: style }
+  apronShaping: { pct: 30, min: 0, max: 60, menu: fit } # x seat less waist: the rest is in the pleats
+  wrapLap: { pct: 70, min: 30, max: 95, menu: style } # x the apron's own width
+  pleatFace: { pct: 3.6, min: 2, max: 8, of: seat, menu: style } # what shows of each pleat at the seat
+  pleatDepth: { pct: 100, min: 50, max: 150, menu: style } # x the face: the fold back, either side
+  apronEdge: { pct: 7, min: 3, max: 15, of: seat, menu: construction } # the wrapping edge's turned-back facing
+  kiltBand: { pct: 3.5, min: 2, max: 6, of: waistToKnee, menu: style } # the waistband, finished
+  strapWidth: { pct: 4, min: 2, max: 8, of: waist, menu: style }
+  strapLength: { pct: 22, min: 12, max: 35, of: waist, menu: style }
+
+pieces:
+  layout:
+    from: sarah.base
+    hide: tree
+    options: all
+    measurements: [waist, seat, waistToSeat, waistToKnee]
+    let:
+      kneeLength: waistToKnee * kiltLength
+    ops:
+      - kiltLayout:
+          waist: waist * (1 + waistEase)
+          seat: seat * (1 + seatEase)
+          hipDepth: min(waistToSeat, kneeLength * 0.6)
+          length: kneeLength
+          apronShare: apronShare
+          apronShaping: apronShaping
+          lap: wrapLap
+          face: seat * pleatFace
+          depth: seat * pleatFace * pleatDepth
+          hem: waistToSeat * kiltHem
+          edge: seat * apronEdge
+  apron: { part: kiltApron, after: layout, nr: 1 }
+  pleats: { part: kiltPleats, after: layout, nr: 2 }
+  # Round the whole waist, and on past each CF by the aprons' wrap
+  waistband:
+    part: strip
+    after: layout
+    nr: 3
+    fold: true
+    length: kilt.waistRound + 2 * kilt.apron.lap
+    width: waistToKnee * kiltBand
+  # Two a side, one buckling at the waist and one at the hip (ours)
+  strap:
+    part: strip
+    after: layout
+    nr: 4
+    cut: 4
+    fold: true
+    length: waist * strapLength
+    width: waist * strapWidth
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  short:
+    name: Above the knee
+    description: "Simons' length for a boy's kilt: 10 1/2 in on a six-year-old, well above the knee."
+    options: { kiltLength: 0.57 }

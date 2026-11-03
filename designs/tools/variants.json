@@ -49,6 +49,7 @@
   "two-piece-skirt": {"default": {}, "flared": {"goreFlare": 0.5, "panelShare": 0.5, "frontWaistDrop": 0}, "high": {"highWaist": true}, "highFlared": {"highWaist": true, "riseHeight": 0.5, "goreFlare": 0.5}},
   "knee-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "kneePantsLength": -0.1, "legBottom": 1.25}},
   "boys-knickers": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "knickerDrop": 0.2, "knickerFullness": 1.5}},
+  "kilt": {"default": {}, "short": {"kiltLength": 0.57}, "fewPleats": {"pleatFace": 0.08, "pleatDepth": 0.5, "apronShare": 0.6}, "deep": {"pleatFace": 0.02, "pleatDepth": 1.5, "wrapLap": 0.95, "apronShaping": 0.6}},
   "golf-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "thighFlare": 0, "breechesButtons": 0}, "front": {"breechesOpening": "front"}, "long": {"breechesLength": 0.3, "calfAt": 0.15, "openingTop": -0.05}},
   "eton-jacket": {"default": {}, "longer": {"lengthBelowWaist": 0.9}, "plain": {"lining": false, "buttons": 0, "hemCurve": 0.5}},
   "princess-coat": {"default": {}, "fuller": {"hemFlare": 0.18}, "notch": {"lapelStyle": "notch", "buttons": 4}, "plain": {"pockets": false, "lining": false, "halfBelt": false, "doubleBreasted": false, "buttonExtension": 0.04, "hemFlare": 0, "lengthBelowWaist": 0.4}},

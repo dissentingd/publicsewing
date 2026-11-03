@@ -859,6 +859,16 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
 
+### kilt: Kilt
+> **Flat, plain front panels that overlap across the front, with crisp knife pleats only round the sides and back, stitched flat from the waist to the hip and falling free below.** A knee-length **wrap kilt** in plain dark wool or a quiet tartan, on a narrow waistband. The overlap's edge runs straight down the front, off center. **Two small leather straps with buckles** at the side, one at the waist and one at the hip. Shown flat, front three-quarter view, so the flat front and the pleats both show.
+>
+> Leave out: pleats across the front, a sporran or kilt pin, fringe, a belt, pockets, knee socks, a jacket, a person.
+
+### kilt.short: Kilt, above the knee
+> **Short, ending well above the knee.** The same wrap kilt in plain dark wool or a quiet tartan, for a boy of about six: flat overlapping front panels, knife pleats only round the sides and back, stitched flat to the hip, a narrow waistband, two small buckled straps at the side. Shown flat, front three-quarter view.
+>
+> Leave out: pleats across the front, a sporran or kilt pin, fringe, a belt, pockets, knee socks, a jacket, a person.
+
 ### two-piece-skirt.high-waisted: Two-piece skirt, high-waisted
 > **No waistband: the skirt itself runs on about two inches above the natural waist, ending in a plain straight top edge.** A women's plain two-piece skirt in dark wool, close at the waist and hips, falling almost straight to near the ankle with only a slight flare. A single seam at each side and no darts. Shown flat on an invisible form, front view, the top edge clearly above the narrowest part of the waist.
 >

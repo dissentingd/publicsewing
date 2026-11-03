@@ -63,6 +63,7 @@ import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
 import { draftCapeBase, draftCapeLayout, draftDolmanLayout, capePart } from './cape.mjs'
+import { draftKiltLayout, kiltApronPart, kiltPleatsPart } from './kilt.mjs'
 
 const blocks = { brian, bent, titan, breanna, sarah }
 /** FreeSewing library parts a piece can use as is (`part: library`) */
@@ -125,6 +126,8 @@ export const operations = {
   },
   // Gored skirt (lib/skirt.mjs): the gores laid out on Sarah's base, into `skirt.*`
   skirtLayout: { run: draftSkirtLayout },
+  // A wrap kilt (lib/kilt.mjs): aprons and pleated lengths, into `kilt`
+  kiltLayout: { run: draftKiltLayout },
   // Circular skirt (lib/skirt.mjs): a fan slashed and spread from above the seat line, into `skirt.circular`
   circularLayout: { run: draftCircularLayout },
   // A cape (lib/cape.mjs): the block's neck and shoulder into `cape.raw.<which>`, then laid out
@@ -301,6 +304,8 @@ const factories = {
     }),
   // The facing for a gore's rise above the waist (`index`), from skirtLayout's `riseHeight`
   goreFacing: (p, ctx) => goreFacingPart({ name: p.name, after: ctx.after(p), index: p.index, nr: p.nr, label: p.label ?? p.name.split('.').pop() }),
+  kiltApron: (p, ctx) => kiltApronPart({ name: p.name, after: ctx.after(p), nr: p.nr, label: p.label }),
+  kiltPleats: (p, ctx) => kiltPleatsPart({ name: p.name, after: ctx.after(p), nr: p.nr, label: p.label }),
   // A divided skirt's front or back (`which`), from a three-gore skirtLayout: `crotch`, `ext`, `zip`
   culotte: (p, ctx) =>
     culottePart({
@@ -439,7 +444,7 @@ function lookupIn(sh, block, local) {
       // `in` first: reading a missing name logs a FreeSewing warning
       if (head in measurements && measurements[head] !== undefined) return measurements[head]
       if (head in options && options[head] !== undefined) return options[head]
-    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'suit' || head === 'polygon' || head === 'yoke') return store.get(name)
+    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke') return store.get(name)
     else {
       const p = points[landmarks[head] ?? head]
       if (p && rest.length === 1 && (rest[0] === 'x' || rest[0] === 'y')) return p[rest[0]]

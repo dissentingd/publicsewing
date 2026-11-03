@@ -182,6 +182,36 @@ options:
   riseFlare:
     title: Opening above the waist
     description: How far the side seam opens out above the waist, as a share of its height.
+  kiltLength:
+    title: Length
+    description: Waist to hem, as a share of waist to knee.
+  kiltHem:
+    title: Hem depth
+    description: The deep hem, as a share of waist to seat.
+  apronShare:
+    title: Aprons' width
+    description: How much of the seat the flat front aprons cover, between the side seams.
+  apronShaping:
+    title: Apron shaping
+    description: How much of the seat less waist the aprons take in at the side seams. The pleats take in the rest.
+  wrapLap:
+    title: Wrap
+    description: How far each apron wraps past center front, as a share of its own width.
+  pleatFace:
+    title: Pleat width
+    description: How much of each pleat shows at the seat, as a share of the seat.
+  pleatDepth:
+    title: Pleat depth
+    description: How far each pleat folds back, either side, as a share of what shows. Deeper pleats take more cloth.
+  apronEdge:
+    title: Apron edge facing
+    description: The turned-back facing on each apron's wrapping edge, as a share of the seat.
+  kiltBand:
+    title: Waistband height
+    description: Finished height of the waistband, as a share of waist to knee.
+  strapLength:
+    title: Strap length
+    description: Length of each buckled strap, as a share of the waist.
   secondAt:
     title: Second seam position
     description: Where the second front seam meets the shoulder, from the front seam (0%) to the shoulder point (100%).
@@ -929,6 +959,9 @@ parts:
   body: Body
   underArm: Under-arm panel
   skirt: Skirt
+  apron: Apron
+  pleats: Pleated length
+  strap: Strap
   frontFacing: Front facing
   backFacing: Back facing
   skirtLining: Skirt lining
