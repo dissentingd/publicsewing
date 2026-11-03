@@ -5,6 +5,18 @@ import { sets, checkClean, near } from './coat-checks.mjs'
 
 const variants = { default: {}, flared: { goreFlare: 0.5, panelShare: 0.5, frontWaistDrop: 0 } }
 
+// Mitchell's figure (p. 84): the front narrower than the back at the hip, the waists his (p. 86)
+test('two-piece-skirt: Mitchell\'s figure', () => {
+  const IN = 25.4
+  const measurements = { ...sets.cisFemaleAdult36, seat: 40 * IN, hips: 40 * IN, waist: 26.5 * IN, waistToSeat: 7 * IN, waistToHips: 4 * IN, waistToFloor: 41 * IN }
+  const store = new TwoPieceSkirt({ measurements, sa: 10 }).draft().setStores[0]
+  const seams = store.get('skirt.seams')
+  const { left, right } = store.get('skirt.gores')[0]
+  near((right.S.x - left.S.x) / IN, 9, 0.5, 'front at the hip')
+  near(seams[0].waist / IN, 6.25, 0.2, 'front waist')
+  near(seams[1].waist / IN, 7, 0.2, 'back waist')
+})
+
 for (const [v, options] of Object.entries(variants)) {
   for (const [name, measurements] of Object.entries(sets)) {
     test(`two-piece-skirt (${v}): ${name}`, () => {

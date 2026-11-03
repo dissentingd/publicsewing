@@ -18,7 +18,7 @@ about:
 
 options:
   gores: { dflt: 3, list: [3], menu: false } # the front and the back (with its CB seam)
-  panelShare: { pct: 55, min: 45, max: 60, menu: style } # x the half hip: the side seam 1 in behind the middle (11 from 4)
+  panelShare: { pct: 45, min: 40, max: 60, menu: style } # x the half hip: 11 from 4 (the CF side) is 1/2 of 4-7 less 1 in, 9 of 20
   goreFlare: { pct: 20, min: 0, max: 80, menu: style } # the side seam straight from the hem (12) through the hip (11)
   cbShaping: { pct: 21, min: 0, max: 50, menu: advanced } # the foundation's CB shaping
   panelShaping: { pct: 79, min: 50, max: 100, menu: advanced } # the rest at the side seam (13, 14)
