@@ -206,7 +206,7 @@ const turn = (p, c, a) => {
 }
 
 /** A smooth path through `pts`, leaving along `t0` and arriving along `t1` (unit vectors) */
-function through(Path, Point, pts, t0, t1) {
+export function through(Path, Point, pts, t0, t1) {
   const q = pts.filter((p, i) => i === 0 || Math.hypot(p.x - pts[i - 1].x, p.y - pts[i - 1].y) > 1)
   const path = new Path().move(new Point(q[0].x, q[0].y))
   for (let i = 0; i < q.length - 1; i++) {

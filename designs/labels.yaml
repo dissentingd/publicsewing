@@ -768,6 +768,33 @@ options:
   girdleWidth:
     title: Girdle width
     description: Finished width of the tie, as a share of the chest.
+  capePieces:
+    title: Pieces
+    description: Two, with a seam over the shoulder flaring below it, or one, with a dart on the shoulder.
+    choices:
+      two: Two pieces
+      one: One piece
+  capeLength:
+    title: Length
+    description: Centre back neck to the hem, as a share of the nape to the floor.
+  capeDrop:
+    title: Back hem rise
+    description: How much shorter the arc falls at centre back, the hem rising to meet it, as a share of the length.
+  capeGap:
+    title: Shoulder gap
+    description: Space between the back and front shoulder tips when laid out, as a share of the chest. More makes a wider circle.
+  capePivot:
+    title: Arc's centre
+    description: How far the hem's arc is centred short of half way from the front neck to the back neck, as a share of the chest.
+  capeSeamDrop:
+    title: Seam's straight run
+    description: How far the seam runs below the shoulder tip before flaring, as a share of shoulder to wrist.
+  capeFlare:
+    title: Seam flare
+    description: How far each piece's edge leans out past the seam's line, in degrees. More gives a fuller hem.
+  capeButtonSpacing:
+    title: Button spacing
+    description: Distance between the buttons, as a share of the chest.
   sashBand:
     title: Waistband length
     description: Length of the front waistband, as a share of the chest.

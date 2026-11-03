@@ -80,7 +80,7 @@ Priority 1 first: shirts, dresses and women's garments are the thinnest part of 
 | 7 | (option) | Turn-ups (cuff bottoms) for the trousers family | Simons 1916 `draftingpantsove00simo` (tracked), Diagrams F and G, pp. 26–27 | `trousers` | A | An option on `trouserLeg`, not a design; turn it on in `trousers`, `peg-pants` | done (`turnUps` on suit-trousers, peg-pants, each with a variant) |
 | 8 | `kimono-jacket` | Semi-fitted kimono jacket | Mitchell 1921, pp. 40–41; kimono box coat pp. 20–25, set-in kimono sleeve pp. 26–29 | `tailored-jacket` | E | Kimono sleeve on the jacket library | done (kimono-jacket) |
 | 9 | `dressing-gown` | Dressing gown / bath robe: long, shawl collar, belt | Vincent 1890, dressing gowns p. 27, bath robe pp. 30–31 | `mackinaw` (shawl collar) or `overcoat` | D | Wrap front, tie belt, patch pockets | done (dressing-gown) |
-| 10 | `cape` | Circular cape (and the dolman cape) | Pivnick 1949, chapter XIX pp. 254–260; Mitchell 1921 "The Cape" p. 59 | — (new) | G | New family: a circle segment on the shoulders | open |
+| 10 | `cape` | Circular cape (and the dolman cape) | Pivnick 1949, chapter XIX pp. 254–260; Mitchell 1921 "The Cape" p. 59 | — (new) | G | New family: a circle segment on the shoulders. As built: Mitchell's, `lib/cape.mjs`; Pivnick's dolman cape not built (it needs her French lining foundation) | done (cape) |
 
 ### Priority 2
 | # | Design id | Garment | Source (folder id, pages) | Start from | Lane | Notes | Status |

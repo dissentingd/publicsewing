@@ -801,6 +801,25 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a roll collar, lapels, a hood, a zip, stripes, a person.
 
+### cape: Cape
+> **No sleeves and no armholes: one sweep of cloth from the neck over the shoulders, falling in soft folds.** A women's **circular cape** in plain wool (navy, charcoal or camel), to the
+> **hips or upper thigh**. Smooth over the shoulders, with **one plain seam from each shoulder to the hem**. A **small turn-down collar**, and **exactly three buttons** down
+> the front from the neck, the cape falling open below them. Plain hem. Shown flat on an invisible form, front view.
+>
+> Leave out: sleeves, arm slits, a hood, a belt, pockets, fur, fringe, a lining showing, a person.
+
+### cape.one-piece: Cape, one piece
+> **No seam over the shoulder: each side is one sweep of cloth, with only a short dart at the top of the shoulder.** The same women's circular cape in plain wool, to the hips or upper
+> thigh, a small turn-down collar and three buttons from the neck. Shown flat on an invisible form, front view.
+>
+> Leave out: a seam down the side, sleeves, arm slits, a hood, a belt, pockets, a person.
+
+### cape.long: Cape, long
+> **No sleeves and no armholes, and long, to below the knee, falling in deep folds.** The same women's circular cape in plain wool, one plain seam from each shoulder to the hem, a small turn-down
+> collar and three buttons from the neck. Shown flat on an invisible form, front view.
+>
+> Leave out: sleeves, arm slits, a hood, a belt, pockets, a person.
+
 *Current image has five buttons; the pattern has four.*
 
 ### chore-coat: Chore coat

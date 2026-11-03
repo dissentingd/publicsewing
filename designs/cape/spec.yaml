@@ -1,0 +1,88 @@
+# Cape: Mitchell's "The Cape" (New "Standard" Work ... Ladies' Tailor-Made Garments, 1921, pp. 58-59):
+# a quarter circle on the shoulders, in two pieces with a seam over the shoulder flaring below it, or
+# in one with a shoulder dart. FreeSewing's Brian supplies only the neck and shoulder. See BRIEF.md.
+about:
+  id: cape
+  name: Cape
+  category: coats
+  description: A circular cape falling from the shoulders in folds, in two pieces or one, buttoned at the neck under a collar
+  difficulty: 2
+  tags: [coats]
+  techniques: [collar, button, hem]
+  version: 0.1.0
+  source: "Mitchell, New \"Standard\" Work on ... Ladies' Tailor-Made Garments (1921), The Cape, pp. 58-59 (newstandardworko00mitc); Pivnick, How to Design Beautiful Clothes (1949), circular cape, pp. 259-260 (pivnickdesignclothes1949)"
+  preview: cisFemaleAdult36
+
+block: brian
+
+options:
+  capePieces: { dflt: two, list: [two, one], menu: style }
+  # "5 from 2 is the length of the cape": about 29 in as drawn on p. 59, of about 58 in from the nape to the floor
+  capeLength: { pct: 50, min: 20, max: 95, menu: style }
+  # "6 from 5 is 5/8 inch", of the 29 in
+  capeDrop: { pct: 2.2, min: 0, max: 6, menu: advanced } # x the length
+  # "the shoulder points ... should be 1/4 inch apart", of a 38 in breast
+  capeGap: { pct: 0.66, min: 0, max: 3, of: chest, menu: advanced }
+  # "4 from 3 is 1/2 of the line 2-3 less 1/2 inch"
+  capePivot: { pct: 1.3, min: 0, max: 5, of: chest, menu: advanced }
+  # "9 from 8 is 6 inches", of a shoulder to wrist of about 24 in
+  capeSeamDrop: { pct: 25, min: 10, max: 50, menu: style } # x shoulder to wrist
+  capeFlare: { deg: 15, min: 0, max: 30, menu: style } # each piece's edge past the seam's line, measured off p. 59
+  # The lap as drawn, about 2 in on the 38; the facing folded back, and the rest of this, ours
+  buttonExtension: { pct: 5.3, min: 2, max: 9, of: chest, menu: style }
+  facingWidth: { pct: 8, min: 4, max: 14, of: chest, menu: construction }
+  buttons: { count: 3, min: 0, max: 6, menu: style }
+  capeButtonSpacing: { pct: 8, min: 4, max: 14, of: chest, menu: style }
+  collarWidth: { pct: 22, min: 12, max: 40, of: neck, menu: style }
+  collarSpring: { pct: 10, min: 0, max: 25, menu: style }
+  collarPoint: { pct: 5, min: 0, max: 15, of: neck, menu: style }
+
+pieces:
+  backBase:
+    from: brian.back
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    ops:
+      - capeBase: { which: back }
+  frontBase:
+    from: brian.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, neck, shoulderToWrist, hpsToWaistBack, waistToFloor]
+    ops:
+      - capeBase: { which: front }
+      - capeLayout:
+          length: (hpsToWaistBack + waistToFloor) * capeLength
+          drop: (hpsToWaistBack + waistToFloor) * capeLength * capeDrop
+          gap: chest * capeGap
+          pivotLess: chest * capePivot
+          seamDrop: shoulderToWrist * capeSeamDrop
+          flare: capeFlare
+          lap: chest * buttonExtension
+          facing: chest * facingWidth
+  front: { part: cape, which: front, after: [backBase, frontBase], nr: 1, count: buttons, spacing: chest * capeButtonSpacing, if: capePieces == 'two' }
+  back: { part: cape, which: back, after: [backBase, frontBase], nr: 2, if: capePieces == 'two' }
+  whole: { part: cape, which: whole, after: [backBase, frontBase], nr: 1, count: buttons, spacing: chest * capeButtonSpacing, if: capePieces == 'one' }
+  collar:
+    after: [backBase, frontBase]
+    measurements: [neck]
+    options: [collarWidth, collarSpring, collarPoint]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: neck * collarPoint
+          nr: 3
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  one-piece:
+    name: One piece
+    description: "Mitchell's one-piece cape: no seam over the shoulder, a dart there instead, and the hem one unbroken curve."
+    options: { capePieces: one }
+  long:
+    name: Long
+    description: "To below the knee: the same cut made longer, so it falls in deeper folds."
+    options: { capeLength: 0.78 }

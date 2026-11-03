@@ -60,6 +60,7 @@ import { draftSkirtLayout, gorePart, culottePart, draftCircularLayout, circularP
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
+import { draftCapeBase, draftCapeLayout, capePart } from './cape.mjs'
 
 const blocks = { brian, bent, titan, breanna, sarah }
 /** FreeSewing library parts a piece can use as is (`part: library`) */
@@ -124,6 +125,9 @@ export const operations = {
   skirtLayout: { run: draftSkirtLayout },
   // Circular skirt (lib/skirt.mjs): a fan slashed and spread from above the seat line, into `skirt.circular`
   circularLayout: { run: draftCircularLayout },
+  // A cape (lib/cape.mjs): the block's neck and shoulder into `cape.raw.<which>`, then laid out
+  capeBase: { run: draftCapeBase, literal: ['which'] },
+  capeLayout: { run: draftCapeLayout },
   // Change the piece's cutting (e.g. a waistcoat back cut twice from lining)
   cutlist: {
     run: ({ store }, { cut, from, onFold = false }) => store.cutlist.setCut({ cut, from, onFold }),
@@ -301,6 +305,16 @@ const factories = {
       nr: p.nr,
       size: (sh) => evalMap({ crotch: p.crotch, ext: p.ext }, lookupIn(sh, ctx.block, {}), {}),
       zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
+    }),
+  // A cape's piece (`which`: front, back or whole), from capeLayout: `count`, `spacing` its buttons
+  cape: (p, ctx) =>
+    capePart({
+      name: p.name,
+      after: ctx.after(p),
+      which: p.which,
+      nr: p.nr,
+      enabled: enabledBy(p.if),
+      buttons: (sh) => (p.count === undefined ? { count: 0 } : evalMap({ count: p.count, spacing: p.spacing }, lookupIn(sh, ctx.block, {}), {})),
     }),
   // A circular skirt's front or back (`which`), from circularLayout: `zip`
   circular: (p, ctx) =>
