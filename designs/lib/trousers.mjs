@@ -462,10 +462,11 @@ export const legInOnePart = ({ name, after, nr = 1, fall: fallOf = () => null })
   },
 })
 
-/** A rectangle `length` by `width` (`fold`: cut twice as wide, folded lengthwise). */
-export const stripPart = ({ name, after, nr, label, cut = 1, fold = false, material = 'fabric', enabled = () => true, size }) => ({
+/** A rectangle `length` by `width` (`fold`: cut twice as wide, folded lengthwise). `options`: this piece's own. */
+export const stripPart = ({ name, after, nr, label, cut = 1, fold = false, material = 'fabric', enabled = () => true, size, options }) => ({
   name,
   after,
+  ...(options ? { options } : {}),
   draft: (sh) => {
     const { paths, Path, Point, store, sa, macro, options, part } = sh
     if (!enabled(options)) return part.hide()

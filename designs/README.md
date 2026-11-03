@@ -47,6 +47,7 @@ without declaring them, so they are listed in our package.json.
 | `shop-coat/` | Long flared work overcoat (grocers' gown, lab coat, duster), pencil pocket, Simons 1918. [BRIEF.md](shop-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `bar-vest/` | Short waisted white jacket, pointed fronts, standing collar, sleeves optional, Simons 1918. [BRIEF.md](bar-vest/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `nightshirt/` | Long nightshirt: back yoke, front placket, neck band, side slits, Walker 1909. [BRIEF.md](nightshirt/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
+| `dressing-gown/` | Dressing gown (any size): the overcoat's body made long, a wide overlap, a shawl collar, hip patch pockets, a girdle and loops, Vincent 1890 p. 27; his bath robe as a variant. [BRIEF.md](dressing-gown/BRIEF.md) | draft (not sewn) | not draped |
 | `nightgown/` | Long yoked nightgown, gathered, front placket, Walker 1909. [BRIEF.md](nightgown/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `childrens-smock/` | Yoked smock / child's overall, back opening, Walker 1909. [BRIEF.md](childrens-smock/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `frock/` | Bodice and gathered skirt dress, Walker 1909. [BRIEF.md](frock/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |

@@ -111,7 +111,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Open+Pattern, British CS95 field trouser, DXF, CC BY 4.0 `openpattern/cs95-trouser` | better than A | field trousers |
 | Open+Pattern, US tactical smock, DXF, CC BY 4.0 `openpattern/us-tactical-smock` | better than A | hooded smock |
 | Open+Pattern, Standard T-shirt, graded DXF, CC BY 4.0 `openpattern/standard-tshirt` | better than A | T-shirt |
-| Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | A | pyjama jacket, pyjama trousers, work shirt, service shirt, shirt |
+| Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | A | pyjama jacket, pyjama trousers, work shirt, service shirt, shirt, dressing gown |
 | Sheifer, *Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | A | girl's coat |
 | Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911) `merzspracticalcu00merz` | A | women's peacoat, field jacket |
 | Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo` | A | boy's jacket, Norfolk jacket, sailor pants |

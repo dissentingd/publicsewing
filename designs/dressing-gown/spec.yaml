@@ -1,0 +1,77 @@
+# Dressing gown: Vincent's "Dressing Gowns" (The Cutter's Practical Guide ... Shirts and Other
+# Undergarments, 1890, p. 27), on the overcoat (FreeSewing's Brian): long and easy-fitting, a wide
+# overlap, a roll collar cut in one with the front, hip patch pockets, and a girdle through loops at the
+# side seams. His bath robe (pp. 30-31) is the variant. See BRIEF.md.
+extends: ../overcoat/spec.yaml
+
+about:
+  id: dressinggown
+  name: Dressing gown
+  category: sleepwear
+  description: A long, easy-fitting gown with a roll collar, a wide overlap, patch pockets and a girdle
+  difficulty: 3
+  tags: [sleepwear]
+  techniques: [collar, facing, patch-pocket, button]
+  version: 0.1.0
+  source: "Vincent, The Cutter's Practical Guide ... Shirts and Other Undergarments (1890), Dressing Gowns p. 27, Bath Robe pp. 30-31 (vincentmakingshirts18xx)"
+
+options:
+  # "9 to 21 half chest plus 2 1/2 to 3 inches": 5 1/2 in round of a 38 in breast
+  chestEase: { pct: 14.5 }
+  # "0 to 46 full length": 46 in from the nape, 17 in to the waist, 29 in below it
+  lengthBelowWaist: { pct: 275, max: 400 } # x waistToSeat: about 29 in at FreeSewing's 38 (10 5/8 in)
+  hemFlare: { pct: 2.5 } # x seat: about 1 in each side at the hem, of a 40 in seat (H, I)
+  frontDrop: { pct: 7 } # x waistToSeat: 3/4 in at the front (G)
+  # "Allow 2 1/2 to 3 1/2 inches for overlap"
+  buttonExtension: { pct: 7.9, min: 3, max: 11 } # x chest: 3 of 38
+  # Three fastenings, 3 1/2 in apart, the middle one at the waist, as drawn (p. 27)
+  buttons: { count: 3 }
+  buttonTop: { pct: 100, min: -400, max: 250 } # x the overlap: so the middle one falls at the waist on this block
+  buttonBottom: { pct: 33, min: 0, max: 80 } # x waistToSeat: 3 1/2 in below the waist
+  collarStyle: { dflt: shawl, list: [shawl, military], menu: style, title: Collar, description: "The roll collar cut in one with the front, or the bath robe's standing collar." }
+  collarWidth: { pct: 30 } # x neck: about 4 in at CB, as drawn; ours
+  # "Make width of elbow one-fourth breast less 1/2 in, and wrist one-sixth breast plus 1 inch": the
+  # mackinaw's 110% of the wrist comes to that wrist
+  # Pockets: patch pockets on the hips, plain ("the cheaper ones are made up with patch pockets")
+  breastPockets: { bool: false, menu: false }
+  lowerPockets: { bool: true, menu: style }
+  pocketFlaps: { bool: false }
+  # "The cheaper ones are made up with patch pockets and unlined, whilst the better ones are lined":
+  # the setting's there; no vent or hand pockets, which the overcoat has
+  lining: { bool: false }
+  insidePockets: { bool: false, menu: false }
+  vent: { bool: false, menu: false }
+  handPockets: { bool: false, menu: false }
+  belt: { bool: false, menu: false } # a girdle, not a sewn belt
+  beltWidth: { menu: false }
+  sleeveStyle: { dflt: setIn, list: [setIn], menu: false }
+  # "A girdle is generally worn round the waist"; "loops are put on the sideseam for the girdle to go through"
+  girdleLength: { pct: 180, min: 130, max: 260, of: waist, menu: style } # ours: round the waist and tied, with ends
+  girdleWidth: { pct: 3, min: 1.5, max: 6, of: chest, menu: style } # ours, finished
+
+pieces:
+  girdle:
+    part: strip
+    after: front
+    options: [girdleLength, girdleWidth]
+    nr: 14
+    fold: true
+    length: waist * girdleLength
+    width: chest * girdleWidth
+  girdleLoop:
+    part: strip
+    after: front
+    options: [girdleWidth]
+    nr: 15
+    cut: 2
+    fold: true
+    label: girdleLoop
+    length: chest * girdleWidth * 1.4 + 30
+    width: 10
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  bath-robe:
+    name: Bath robe
+    description: "Vincent's bath robe: a little shorter, an ordinary button stand, buttoned to the neck under a standing collar. In towelling or blanket cloth."
+    options: { collarStyle: military, buttonExtension: 0.04, buttons: 7, buttonTop: -4, buttonBottom: 0.6, lengthBelowWaist: 2.55 }

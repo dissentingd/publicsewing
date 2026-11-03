@@ -40,6 +40,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `shop-coat` | Long work overcoat (grocer's gown, lab coat, duster) | Simons 1918 |
 | `bar-vest` | Short white jacket | Simons 1918 |
 | `nightshirt` | Yoked nightshirt | Walker 1909 |
+| `dressing-gown` | Long, easy-fitting gown with a roll collar, a wide overlap, patch pockets and a girdle | Vincent 1890 |
 | `nightgown` | Yoked, gathered nightgown | Walker 1909 |
 | `childrens-smock` | Yoked smock / child's overall | Walker 1909 |
 | `frock` | Bodice-and-skirt dress | Walker 1909 |

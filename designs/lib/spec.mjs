@@ -270,6 +270,7 @@ const factories = {
       material: p.material ?? 'fabric',
       enabled: enabledBy(p.if),
       size: (sh) => evalMap({ length: p.length, width: p.width }, lookupIn(sh, ctx.block, {}), {}),
+      ...(p.options ? { options: ctx.options(p) } : {}),
     }),
   // A gored skirt's gore (`index` 0: the front panel), from skirtLayout; `zip` marks the CB zip's end
   gore: (p, ctx) =>

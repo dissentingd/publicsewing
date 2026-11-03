@@ -786,6 +786,21 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: an armhole seam, peaked lapels, shoulder pads, cuffs, a belt, a breast pocket, Japanese kimono styling, a person.
 
+### dressing-gown: Dressing gown
+> **A long gown tied with a cloth girdle: a deep roll collar in one sweep down each front, no lapel notch, and no buttons showing above the waist.**
+> A men's **dressing gown** in plain soft wool (deep red, navy or grey), to the **mid-calf**. Loose and easy, the fronts overlapping well. The
+> **roll collar** runs down to the waist. A **cloth girdle** tied at the front, its ends hanging. **Two plain patch pockets with rounded bottoms on the hips, no flaps.** Plain set-in
+> sleeves, no cuffs. Shown flat on an invisible form, front view.
+>
+> Leave out: a notched lapel, flaps, a breast pocket, quilting, piping, frogs, tassels, a hood, a belt buckle, a person.
+
+### dressing-gown.bath-robe: Bath robe
+> **Buttoned from the neck to below the hips, under a small standing collar: exactly seven buttons, and a cord or tie at the waist.** A men's
+> **bath robe** in plain towelling or blanket cloth (white, cream or grey), to below the knee, loose. **Two plain patch pockets on the hips**, no flaps. Plain
+> set-in sleeves. Shown flat on an invisible form, front view.
+>
+> Leave out: a roll collar, lapels, a hood, a zip, stripes, a person.
+
 *Current image has five buttons; the pattern has four.*
 
 ### chore-coat: Chore coat

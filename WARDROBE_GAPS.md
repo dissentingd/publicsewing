@@ -67,6 +67,7 @@ and marked as derived.
 | Slacks | 5 | Charlie | Have | — |
 | **Nightshirt** | 4 | — | **Drafted 2026-10-23** (`designs/nightshirt`, not sewn) | Walker 1909 `krl00366374` |
 | **Pyjamas** | 4 | — (Paco is summer pants) | **Drafted 2026-10-28** (`designs/pyjama-jacket` on the barber's coat, `designs/pyjama-trousers` on the knickerbockers; not sewn) | Vincent, *Shirts, Undergarments* 1890 `vincentmakingshirts18xx` |
+| Dressing gown, bath robe | 4 | — | Variant; **drafted 2026-11-03** (`designs/dressing-gown`, on the overcoat; not sewn) | Vincent 1890 pp. 27, 30-31 |
 | Drawstring trousers | 4 | Paco, Waralee | Have | — |
 | Tee, sweatshirt, hoodie | 6 | Teagan, Sven, Hugo, Hannah, Huey | Have; **standard T-shirt variant drafted 2026-10-28** (`designs/t-shirt`, on Brian; not sewn) | Open+Pattern Standard T-shirt (CC BY 4.0) |
 | Underwear, swim | — | Bruce, Shin | Have | — |

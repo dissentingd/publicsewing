@@ -762,6 +762,12 @@ options:
   sash:
     title: Sash
     description: A waistband across the front with a sash tied at the back.
+  girdleLength:
+    title: Girdle length
+    description: Length of the tie, as a share of the waist.
+  girdleWidth:
+    title: Girdle width
+    description: Finished width of the tie, as a share of the chest.
   sashBand:
     title: Waistband length
     description: Length of the front waistband, as a share of the chest.

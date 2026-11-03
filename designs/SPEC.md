@@ -33,7 +33,7 @@ A piece is either drafted by operations or made by a piece type.
 **Piece types** (`part: <type>`, with their own keys): `facing`, `backNeckFacing`, `sleeve`,
 `raglanSleeve`, `pocket`, `flap`, `belt`, `backPanel`, `sideBody`, `library`, `welt`,
 `weltBag`, `yokePiece`, `yokeSleeve`, `sleeveBand`, `placket`, `neckBand`, `legBand`,
-`strip` (a rectangle: `length`, `width` expressions, `fold`, `cut`, `material`, `label`; e.g. a
+`strip` (a rectangle: `length`, `width` expressions, `fold`, `cut`, `material`, `label`, `options` its own; e.g. a
 waistband or fly shield; its size goes to `trousers.strips.<piece>`),
 `sailorCollar` (a sailor collar on a yoke garment's V neck, the front's `vNeck` option: `depth` below the CB neck, `width` out from CB; store `yoke.sailorCollar`),
 `culotte` (a divided skirt's `which: front` or `back` from a three-gore `skirtLayout`: the centre edge carried to `crotch` mm and out by `ext`, the inseam straight down; `zip`; store `skirt.culotte.<which>`),
