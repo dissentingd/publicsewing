@@ -250,7 +250,14 @@ const factories = {
     legBandPart({ name: p.name, after: ctx.after(p), nr: p.nr, size: (sh) => evalMap({ length: p.length, width: p.width }, lookupIn(sh, ctx.block, {}), {}), enabled: enabledBy(p.if) }),
   // A trouser leg cut in one, back and front joined on their straight outseam (trouserLeg's
   // straightOutseam on both)
-  legInOne: (p, ctx) => legInOnePart({ name: p.name, after: ctx.after(p), nr: p.nr }),
+  legInOne: (p, ctx) =>
+    legInOnePart({
+      name: p.name,
+      after: ctx.after(p),
+      nr: p.nr,
+      // A drop front: { below, centre, buttons, inset }, expressions
+      ...(p.fall === undefined ? {} : { fall: (sh) => evalMap(p.fall, lookupIn(sh, ctx.block, {}), {}) }),
+    }),
   // A plain rectangle (waistband, fly shield, belt loops): `length`, `width`, `fold`, `cut`
   strip: (p, ctx) =>
     stripPart({

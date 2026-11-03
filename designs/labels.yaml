@@ -640,6 +640,21 @@ options:
   frontPleatAt:
     title: Front pleats' place
     description: Where the first front pleat falls, as a share of the front's width from centre front.
+  fallDepth:
+    title: Drop front's depth
+    description: How far the side slits run down from the waist, as a share of waist to seat.
+  fallCentre:
+    title: Drop front's centre
+    description: How far down the centre front seam the drop front's fold ends, as a share of waist to seat.
+  fallButtons:
+    title: Buttons on each side
+    description: How many buttons close each side slit, below the waistband's.
+  fallInset:
+    title: Buttonholes' inset
+    description: How far the buttonholes sit in from the slit's edge, as a share of the waist.
+  fallStand:
+    title: Button stand width
+    description: Width of the stand under each slit, as a share of the waist.
   lapels:
     title: Lapels
     description: Off, the front buttons up to the neck under the collar, with no lapels.

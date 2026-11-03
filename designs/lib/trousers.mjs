@@ -111,7 +111,7 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  *   `dartLength: 0`), `pleatSpacing` apart, the first at the dart's place; notched, with fold lines.
  * - `straightOutseam`: the outseam a straight line from the hem corner out past the seat to the
  *   waist (Simons' one-piece overall), so back and front can be cut in one (`legInOnePart`); the
- *   pieces' paths go to `trousers.paths.<which>`.
+ *   pieces' paths go to `trousers.paths.<which>`, the waist Titan's own as `fit` in its store.
  */
 export function draftTrouserLeg(sh, args) {
   const { which, dart = 0, dartAt = 0.4, dartLength = 0, dartFrom = 'side', hemWidth = 1, hemSag = 0, hemSa = 4 } = args
@@ -250,6 +250,7 @@ export function draftTrouserLeg(sh, args) {
     dart: d,
     dartAtSide: d - dCentre,
     hem: points.hemIn.dist(points.hemOut),
+    ...(args.keepFit ? { fit: W } : {}),
   }
 
   // Pleats: the waist is straight (a zero-length dart); notch each pleat's two edges
@@ -341,12 +342,17 @@ export function draftTrouserLeg(sh, args) {
  * A leg cut in one: the back as drafted, and the front laid against it along their shared
  * straight outseam (from `trousers.paths.*`, drafted with `straightOutseam`), so there's no side
  * seam. The outseam's line is marked; the fly comes with the front.
+ * `fall(sh)`: { below, centre, buttons, inset } for a drop front (Simons' sailor pants): a slit on
+ * the outseam's line from the waist to `below` under it, opened to a V that takes the waist back to
+ * the pieces' `fit`, and a marked fold from its tip to `centre` down the crotch seam. The panel above
+ * the fold drops, with `buttons` buttonholes `inset` in along the slit's front edge.
+ * Store: `trousers.fall`.
  */
-export const legInOnePart = ({ name, after, nr = 1 }) => ({
+export const legInOnePart = ({ name, after, nr = 1, fall: fallOf = () => null }) => ({
   name,
   after,
   draft: (sh) => {
-    const { paths, Path, Point, store, sa, macro, part } = sh
+    const { points, paths, Path, Point, store, sa, macro, part, snippets, Snippet } = sh
     const B = store.get('trousers.paths.back')
     const F = store.get('trousers.paths.front')
     // Map the front so its outseam lies on the back's, its body on the other side of the line
@@ -377,10 +383,30 @@ export const legInOnePart = ({ name, after, nr = 1 }) => ({
       }
       return out
     }
-    const [fw2, fc, fi, fhm] = [map(F.waist), map(F.crotch), map(F.inseam), map(F.hem)]
+    const fall = fallOf(sh)
+    let [bWaist, fw2, fc, fi, fhm] = [B.waist, map(F.waist), map(F.crotch), map(F.inseam), map(F.hem)]
+    let slit = []
+    if (fall) {
+      // Each waist cut back to its fit from the outseam's line, the V's two legs to the tip
+      const cutBack = (path, fit) => new Path().move(path.shiftAlong(Math.max(path.length() - fit, 2))).line(path.end())
+      bWaist = cutBack(B.waist, store.get('trousers.back').fit)
+      fw2 = cutBack(fw2, store.get('trousers.front').fit)
+      const tip = bw.shiftTowards(bh, fall.below)
+      const T = fc.shiftAlong(Math.min(fall.centre, fc.length() * 0.5))
+      slit = [new Path().move(fw2.start()).line(tip), new Path().move(tip).line(bWaist.start())]
+      paths.fallFold = new Path().move(tip).line(T).addClass('mark dotted').addText('fold', 'center text-sm')
+      snippets.fallTip = new Snippet('notch', tip)
+      snippets.fallCentre = new Snippet('notch', T)
+      for (let i = 0; i < fall.buttons; i++) {
+        const at = fw2.start().shiftFractionTowards(tip, (i + 0.4) / fall.buttons)
+        points[`buttonhole${i}`] = at.shiftTowards(T, fall.inset)
+        snippets[`buttonhole${i}`] = new Snippet('buttonhole', points[`buttonhole${i}`])
+      }
+      store.set('trousers.fall', { front: slit[0].length(), back: slit[1].length(), fold: tip.dist(T), buttons: fall.buttons, waist: bWaist.length() + fw2.length() })
+    }
     // Back waist > crotch > inseam > hem, then the front's hem > inseam > crotch > waist back
     const segs = [
-      [B.waist, 1],
+      [bWaist, 1],
       [B.crotch, 1],
       [B.inseam, 1],
       [B.hem, B.hemSa],
@@ -388,6 +414,7 @@ export const legInOnePart = ({ name, after, nr = 1 }) => ({
       [fi.reverse(), 1],
       [fc.reverse(), 1],
       [fw2.reverse(), 1],
+      ...slit.map((p) => [p, 1]),
     ]
     let seam
     for (const [p] of segs) seam = seam ? seam.join(p) : p.clone()
@@ -402,7 +429,7 @@ export const legInOnePart = ({ name, after, nr = 1 }) => ({
       }
       paths.sa = o.close().addClass('fabric sa')
     }
-    paths.outseamLine = new Path().move(bw).line(bh).addClass('help dashed').addText('no side seam', 'center text-sm')
+    paths.outseamLine = new Path().move(fall ? bw.shiftTowards(bh, fall.below) : bw).line(bh).addClass('help dashed').addText('no side seam', 'center text-sm')
     if (F.fly) paths.fly = map(F.fly).addClass('mark dashed')
     store.set('trousers.leg', { waist: B.waist.length() + F.waist.length(), outseam: bw.dist(bh) })
     // On the back's grain, square to its hem

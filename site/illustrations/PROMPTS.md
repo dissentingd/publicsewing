@@ -747,6 +747,14 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: lapels, an open neck, breast pockets, a buckle, pleats below the belt, a shirt and tie, a person.
 
+### sailor-pants: Sailor pants
+> **No side seam, no fly, and two short vertical slits at the hips, each with two buttons.** A boy's **sailor trousers** in navy
+> wool (about 6 years old), full length. Close at the hips, narrowing a little to the knee, then **flaring gently to a bell bottom**, plain
+> hem. A **flat panel across the front** below a straight waistband, closed by the **two buttons on each side slit** and one at each
+> end of the waistband. A centre front seam below the panel. Shown flat, front view.
+>
+> Leave out: a zip or fly, pockets, belt loops, a belt, side seams, turn-ups, stripes, a person.
+
 *Current image has five buttons; the pattern has four.*
 
 ### chore-coat: Chore coat

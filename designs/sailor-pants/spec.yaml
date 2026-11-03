@@ -1,0 +1,106 @@
+# Sailor pants: Simons' "Sailor Pants" (Designing Boys' and Juveniles' Clothing, 1922, Diagram 46,
+# pp. 128-130), on the overall pants' Titan legs: "the forepart and the back part of these pants
+# are cut in one piece", with a bell bottom and a drop front opening at slits on the outseam's line.
+# Drafted from the wearer's own measurements, so they fit any size. See BRIEF.md.
+extends: ../overall-pants/spec.yaml
+
+about:
+  id: sailor-pants
+  name: Sailor pants
+  category: trousers
+  description: Bell-bottomed trousers with no side seam, each leg cut in one piece, with a buttoned drop front
+  difficulty: 3
+  tags: [bottoms, children]
+  techniques: [button, waistband, hem]
+  version: 0.1.0
+  source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Sailor Pants, Diagram 46, pp. 128-130 (designingboysjuv00simo)"
+  preview: usdaBoyC6
+
+options:
+  # Size 6: waist 24, seat 28, knee 13 1/2, bottom 16, rise 6
+  seatEase: { pct: 7, max: 20 } # 1/2 in a side, 2 in round of the 28 in seat (H to I)
+  waistEase: { pct: 12.5, max: 20 } # the back's extra 1 1/2 in a side, 3 in round of 24
+  kneeEase: { pct: 30, max: 50 } # V, 4: 14 in round on the USDA boy C6's 10 3/4 in knee
+  hemWidth: { pct: 118, min: 90, max: 160, menu: style } # x the knee's width: W, 5: 16 1/2 in round, of 14
+  crotchDrop: { pct: 2 } # the rise as Titan's: Simons' is 6 in, not the work pants' deep one
+  # E to F, of about 6 1/4 in from the waist to the seat
+  fallDepth: { pct: 48, min: 30, max: 70, menu: style } # x waistToSeat: 3 in
+  # O to T
+  fallCentre: { pct: 32, min: 15, max: 50, menu: style } # x waistToSeat: 2 in
+  # Not given (ours)
+  fallButtons: { count: 2, min: 1, max: 5, menu: style }
+  fallInset: { pct: 2.5, min: 1, max: 5, of: waist, menu: construction }
+  fallStand: { pct: 7, min: 4, max: 12, of: waist, menu: construction }
+  flyWidth: { menu: false } # no fly
+  beltLoops: { count: 0, min: 0, max: 0, menu: false } # none drawn
+
+pieces:
+  front:
+    prefix: trousers # named like the inherited pieces
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    ops:
+      - trouserLeg:
+          which: front
+          dart: 0
+          hemWidth: hemWidth
+          hemSag: 0
+          straightOutseam: 1
+          keepFit: 1
+      - hidePiece: {}
+  back:
+    prefix: trousers # named like the inherited pieces
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: 0
+          hemWidth: hemWidth
+          hemSag: 0
+          straightOutseam: 1
+          keepFit: 1
+      - hidePiece: {}
+  leg:
+    part: legInOne
+    after: [back, front]
+    nr: 1
+    fall:
+      below: waistToSeat * fallDepth
+      centre: waistToSeat * fallCentre
+      buttons: fallButtons
+      inset: waist * fallInset
+  # A band for the back and one for the front, each in one piece round to the side slits; the back
+  # band's ends run on under the front band's by the stand, and button there
+  waistband:
+    part: strip
+    after: [back, front]
+    nr: 3
+    label: backBand
+    fold: true
+    length: 2 * trousers.back.fit + 2 * waist * fallStand
+    width: waistToFloor * waistbandHeight
+  frontBand:
+    part: strip
+    after: [back, front]
+    nr: 4
+    fold: true
+    length: 2 * trousers.front.fit
+    width: waistToFloor * waistbandHeight
+  # Sewn to each slit's edges: the back's stands out under the front's, which is faced
+  flyShield:
+    part: strip
+    after: [back, front]
+    nr: 5
+    label: slitStand
+    cut: 4
+    fold: true
+    length: waistToSeat * fallDepth + 20
+    width: waist * fallStand
+  flyFacing: { part: strip, after: front, nr: 6, length: 1, width: 1, if: "false" }
