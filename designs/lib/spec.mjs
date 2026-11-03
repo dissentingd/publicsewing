@@ -31,7 +31,7 @@ import { hoodPart } from './hood.mjs'
 import {
   draftBody3Back,
   draftBody3Front,
-  sideBodyPart,
+  sideBodyPart, body3SkirtPart,
   libraryPart,
   weltPart,
   weltBagPart,
@@ -306,6 +306,15 @@ const factories = {
       nr: p.nr,
       size: (sh) => evalMap({ crotch: p.crotch, ext: p.ext }, lookupIn(sh, ctx.block, {}), {}),
       zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
+    }),
+  // A skirt in one piece on a body3 body cut off above the seat line: `length`, `lean`, `round`, `facing`
+  body3Skirt: (p, ctx) =>
+    body3SkirtPart({
+      name: p.name,
+      after: ctx.after(p),
+      nr: p.nr,
+      options: ctx.options(p),
+      size: (sh) => evalMap({ length: p.length, lean: p.lean, round: p.round, facing: p.facing }, lookupIn(sh, ctx.block, {}), {}),
     }),
   // A cape's piece (`which`: front, back or whole), from capeLayout: `count`, `spacing` its buttons
   cape: (p, ctx) =>

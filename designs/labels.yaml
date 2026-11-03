@@ -768,6 +768,15 @@ options:
   girdleWidth:
     title: Girdle width
     description: Finished width of the tie, as a share of the chest.
+  skirtSeam:
+    title: Skirt length
+    description: The skirt's centre back seam, as a share of waist to seat.
+  skirtLean:
+    title: Skirt flare
+    description: How far the skirt's centre back seam leans out, in degrees.
+  skirtRound:
+    title: Back seam rounding
+    description: How far the skirt's centre back seam rounds out at its middle, as a share of waist to seat.
   dolmanArm:
     title: Width over the arm
     description: How far the side seam stands out past the armhole, as a share of the chest.

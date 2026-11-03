@@ -41,6 +41,7 @@ waistband or fly shield; its size goes to `trousers.strips.<piece>`),
 `polygon` (a straight-edged piece from its corners: `points` a list of [x, y] expressions, `allowance` per edge in seam allowances, `fold` the index of the edge on the fold, `notches`, `buttons`, `buttonholes`, `lines` (marks), `let` values first, `cut`, `material`, `label`; its edges' lengths go to `polygon.<piece>`),
 `suitPiece` (a flat-cut suit's `piece`: `sleeve`, `armGusset`, `crotchGusset`, `facing`, `band`, `breastPocket`, `lowerPocket`, sized by `suitBody`),
 `gore` (a gored skirt's gore from `skirtLayout`: `index` 0 is the front panel, on the fold; a gore past the design's count is left out; `zip` an expression, the CB zip's length, notched on the last gore; `pleat: { style, hip, hem, if }`, a pleat underlay below the seat line, `hip`/`hem` mm wide, on the gore's CB edge (`side`) or both edges (`box`, never the CF fold), the gore's edge marked as the fold),
+`body3Skirt` (a skirt in one piece on a body3 body cut off above the seat line, which `lengthBelowWaist` does: `length`, `lean`, `round`, `facing`; store `blouse.skirt`),
 `circular` (a circular skirt's `which: front` or `back` from `circularLayout`; `zip` an expression, notched on the back's CB; store `skirt.seams.<which>`),
 `frontLining` and `backLining` (a Brian coat's lining, `from` the front or the back; the back
 takes `width:`, its back-neck facing's, and `pleat:`; `sleeve` takes `lining:` too, and

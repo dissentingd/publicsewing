@@ -1,0 +1,100 @@
+# Surtout: Simons' "Two Button D. B. Y. Men's Surtout" (Designing Overcoats, 1916, pp. 38-39), on the
+# suit jacket's three-piece body (lib/body3.mjs, FreeSewing's Bent): a fitted, double-breasted overcoat with
+# a high waist and a narrow shoulder, cut at the waist to one flared skirt. See BRIEF.md.
+extends: ../suit-jacket/spec.yaml
+
+about:
+  id: surtout
+  name: Surtout
+  category: coats
+  description: A fitted double-breasted overcoat with a waist seam and a flared skirt, two rows of buttons, and side panels
+  difficulty: 5
+  tags: [coats]
+  techniques: [button, welt-pocket, collar, lapel, facing, two-piece-sleeve]
+  version: 0.1.0
+  source: "Simons, Designing Overcoats (1916), Two Button D. B. Y. Men's Surtout, pp. 38-39 (designingovercoa00simo)"
+
+options:
+  # Drafted on 21 and 20 for a 38 breast, as the overcoat's "two sizes up", taken in more at the high waist (ours)
+  chestEase: { pct: 22 }
+  waistEase: { pct: 14 }
+  # "Fashionable waist length, 18 inches" against the natural 16 1/2, x waistToSeat (10 5/8 in at FreeSewing's 38)
+  lengthBelowWaist: { pct: 14, min: 5, max: 40 }
+  # Measured off the diagram: the line 7-18 falls about 3 3/4 in to the front
+  frontDrop: { pct: 35, min: 0, max: 60 }
+  hemCurve: { pct: 0, menu: false }
+  # "X to Y is 2 1/4 inches, 1/2 of the button stand", of a 38 breast
+  buttonExtension: { pct: 5.9, min: 4, max: 9 }
+  buttons: { count: 2, min: 2, max: 4 }
+  buttonRow: { pct: 62, min: 40, max: 90, menu: style } # x the stand: each row's distance from CF; the mackinaw's, ours
+  # The top button at the natural waist, the other about 4 in below it, as drawn
+  buttonBottom: { pct: 38, min: 15, max: 60, menu: style }
+  breakAt: { pct: 100, min: 50, max: 100, menu: style } # chest line to waist: the lapel turns at the top button
+  lapelWidth: { pct: 28, max: 40 } # a double-breasted lapel; about 3 3/4 in as drawn
+  collarWidth: { pct: 24 }
+  # "23 to 24 is 1 1/2"; "26-24-25 ... 1 inch longer than J-K": 23 of 22 in, x waistToSeat
+  skirtSeam: { pct: 216, min: 100, max: 400, menu: style }
+  skirtLean: { deg: 23, min: 5, max: 40, menu: style } # measured off the diagram, 26 to 25
+  skirtRound: { pct: 9.4, min: 0, max: 15, menu: style } # "rounding out 1 inch at point 24"
+  # A breast welt as drawn; the book draws no other pocket, nor a lining, vent or sleeve vent (no menu: not shown)
+  breastPockets: { bool: true }
+  lowerPockets: { bool: false, menu: false }
+  pocketFlaps: { bool: false, menu: false }
+  vent: { bool: false, menu: false }
+  ventLength: { menu: false }
+  ventWidth: { menu: false }
+  lining: { bool: false, menu: false }
+  liningPleat: { menu: false }
+  insidePockets: { bool: false, menu: false }
+  neckFacingWidth: { menu: false }
+  sleeveVent: { bool: false }
+
+pieces:
+  front:
+    prefix: jacket # named like the inherited pieces
+    from: bent.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat, neck]
+    options: [frontDrop, hemCurve, buttonExtension, buttons, buttonRow, buttonBottom, breastPockets, lowerPockets, pocketFlaps, facingWidth, lapelWidth, gorgeAt, breakAt, lining, neckFacingWidth, insidePockets]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to the old side seam
+      topButton: underarm.y + (cfWaist.y - underarm.y) * breakAt
+    ops:
+      - body3Front:
+          seamAt: 0.12
+          ext: ext
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          r: 0
+          buttons:
+            count: buttons
+            top: topButton
+            bottom: cfWaist.y + waistToSeat * buttonBottom
+            rows: [-ext * buttonRow, ext * buttonRow]
+          clear: q * 0.08
+          welt: 0.18
+          welts:
+            breast: { x: q * 0.24, y: underarm.y + q * 0.06, len: q * 0.36, rise: q * 0.05, bag: 1.15, mark: breastPockets }
+            lower: { x: q * 0.22, y: cfWaist.y, len: q * 0.4, rise: 0, bag: 1.3, mark: lowerPockets }
+          lapel:
+            breakY: topButton
+            rollOut: neck * 0.05
+            gorgeAt: gorgeAt
+            width: neck * lapelWidth
+  skirt:
+    part: body3Skirt
+    after: [back, front, sideBody]
+    options: [skirtSeam, skirtLean, skirtRound, facingWidth]
+    nr: 14
+    length: waistToSeat * skirtSeam
+    lean: skirtLean
+    round: waistToSeat * skirtRound
+    facing: chest * facingWidth
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  long:
+    name: Long
+    description: "The skirt to below the knee, in place of Simons' 40 in from the neck."
+    options: { skirtSeam: 3 }

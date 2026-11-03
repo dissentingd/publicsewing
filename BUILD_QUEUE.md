@@ -85,7 +85,7 @@ Priority 1 first: shirts, dresses and women's garments are the thinnest part of 
 ### Priority 2
 | # | Design id | Garment | Source (folder id, pages) | Start from | Lane | Notes | Status |
 |---|---|---|---|---|---|---|---|
-| 11 | `surtout` | Two-button double-breasted surtout overcoat | Simons 1916 `designingovercoa00simo` (tracked), pp. 38–39 | `overcoat` | D | Fitted overcoat, waist seam in the source | open |
+| 11 | `surtout` | Two-button double-breasted surtout overcoat | Simons 1916 `designingovercoa00simo` (tracked), pp. 38–39 | `overcoat` | D | Fitted overcoat, waist seam in the source. As built: on `suit-jacket`, for its side body | done (surtout) |
 | 12 | `french-overcoat` | Young men's French overcoat | Simons 1916, pp. 42–44 | `overcoat` | D | | open |
 | 13 | `prince-albert-jacket` | "Prince Albert" cut tight-fitted jacket | Mitchell 1921, pp. 48–51 | `fitted-jacket` | E | Archive readings: `archive/recipes/mitchell/FINDINGS.md` | open |
 | 14 | `princess-coat` | Fitted princess coat | Pivnick 1949, chapter XXII pp. 275–279 (loose coat pp. 279–282) | `tailored-jacket` | E | Coat length; the loose coat is close to `womens-box-coat` | open |

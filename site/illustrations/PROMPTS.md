@@ -833,6 +833,19 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: sleeves, arm slits, deep folds or flare, a hood, a belt, pockets, a train, a person.
 
+### surtout: Surtout
+> **A seam all round at a high waist, the coat fitted above it and a flared skirt below: exactly four buttons in two rows of two, at and just below that seam.** A men's **surtout**, a fitted
+> double-breasted overcoat, in plain dark wool (navy or charcoal), the skirt to **above the knee**. **Wide notched lapels** rolling to the first button. Narrow shoulders. Fine seams from the
+> armholes to the waist. **One small welt on the left breast.** The skirt plain and flaring, no pockets. Plain two-piece sleeves, no cuff buttons. Shown flat on an invisible form, front view.
+>
+> Leave out: pocket flaps, a belt, a velvet collar, cuff buttons, tails, a long frock coat, a shirt and tie, a person.
+
+### surtout.long: Surtout, long
+> **A seam all round at a high waist, the coat fitted above it and a long flared skirt below, to below the knee.** The same men's double-breasted surtout in plain dark wool, four buttons in two rows of two, notched
+> lapels, one small welt on the left breast. Shown flat on an invisible form, front view.
+>
+> Leave out: pocket flaps, a belt, a velvet collar, cuff buttons, tails, a shirt and tie, a person.
+
 *Current image has five buttons; the pattern has four.*
 
 ### chore-coat: Chore coat

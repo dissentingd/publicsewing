@@ -29,6 +29,8 @@ function seamEdges({ Path, Point }, start, x0, dw, ds, waistY, seatY, hemY) {
     const h = new Point(x0 + (sign * ds) / 2, hemY)
     const a = (waistY - start.y) / 3
     const b = (seatY - waistY) / 3
+    // A body cut off above the seat line, for a skirt (`body3SkirtPart`): straight on from the waist
+    if (hemY <= seatY) return new Path().move(start).curve(start.shift(-90, a), w.shift(90, a), w).line(new Point(w.x, hemY))
     return new Path()
       .move(start)
       .curve(start.shift(-90, a), w.shift(90, a), w)
@@ -76,7 +78,7 @@ export function draftBody3Back(sh, { seamAt = 0.3, vent, nr = 2 } = {}) {
   const [lowerArm, upperArm] = paths.armholeFull.split(points.seamStart)
   const k = options.backShare
   const { left, right } = seamEdges(sh, points.seamStart, points.seamStart.x, Dw * k, Ds * k, waistY, seatY, hemY)
-  store.set('blouse.back', { right, lowerArm, S, hemY, seam: left.length() })
+  store.set('blouse.back', { right, lowerArm, S, hemY, seam: left.length(), ...(hemY <= seatY ? { bottom: left.end().x } : {}) })
   points.seamHem = left.end()
   // CB: the fold, or a seam with a vent at the hem
   let cb = null
@@ -94,7 +96,7 @@ export function draftBody3Back(sh, { seamAt = 0.3, vent, nr = 2 } = {}) {
   const outline = cb ? hem.join(rest).join(cb) : hem.join(rest)
   paths.seam = outline.clone().close().addClass('fabric')
   if (sa) {
-    const h = hem.offset(sa * 3)
+    const h = hem.offset(sa * (hemY <= seatY ? 1 : 3)) // a seam, above the seat line
     const r = rest.offset(sa)
     if (cb) {
       const c = cb.offset(sa)
@@ -133,6 +135,7 @@ export function draftBody3Back(sh, { seamAt = 0.3, vent, nr = 2 } = {}) {
  * `r`: the front corner rounded to this radius (0: square). `lapel`: a notched lapel
  * ({ breakY, rollOut, gorgeAt, width }, as `draftNotchLapel` takes) instead of the round neck.
  * `toShoulder`: the facing runs round the neck to the shoulder (for a lining), not to the neckline.
+ * `buttons.rows` (default on CF): double-breasted, each row's x.
  */
 export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons, welts = {}, clear = 0, welt = 0.2, nr = 1, r = 0, lapel, toShoulder = false }) {
   const { points, paths, Path, Point, options, store, sa, macro, snippets, Snippet, part } = sh
@@ -177,14 +180,14 @@ export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons,
   paths.seam = outline.clone().close().unhide().addClass('fabric')
   if (sa) {
     const e = paths.edge.offset(sa)
-    const hem = paths.hemBase.offset(sa * 3)
+    const hem = paths.hemBase.offset(sa * (hemY <= seatY ? 1 : 3))
     const rest = outline.split(points.seamHem)[1].offset(sa)
     paths.sa = e.line(hem.start()).join(hem).line(rest.start()).join(rest).line(e.start()).addClass('fabric sa')
   }
   paths.cf = new Path().move(points.cfNeck).line(points.cfHem).addClass('help dashed')
   // For the facing: the neckline from the front edge to the shoulder
   paths.neckline = new Path().move(points.edgeNeck).line(points.cfNeck).join(paths.frontCollar.reverse()).hide()
-  placeButtons(sh, { ...buttons, rows: [0] })
+  placeButtons(sh, { rows: [0], ...buttons })
 
   // Welt pockets, clear of the seam
   const foreEdgeAt = (y) => (left.intersectsY(y)[0] || points.seamHem).x
@@ -210,6 +213,7 @@ export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons,
     neck: paths.frontCollar.length(),
     edge: points.edgeNeck.dist(points.edgeHem),
   })
+  if (hemY <= seatY) store.set('blouse.frontBottom', paths.hemBase.length())
   macro('grainline', {
     from: points.cfHem.shift(90, 30).shift(0, S * 0.2),
     to: points.cfNeck.shift(-90, 30).shift(0, S * 0.2),
@@ -275,7 +279,7 @@ export function sideBodyPart({ name, after, nr = 3, lining = false }) {
       const rest = frontSeam.reverse().join(frontArm.reverse()).join(backArm).join(backSeam)
       paths.seam = new Path().move(points.backHem).line(points.frontHem).join(rest).close().addClass('fabric')
       if (sa) {
-        const hem = new Path().move(points.backHem).line(points.frontHem).offset(sa * 3)
+        const hem = new Path().move(points.backHem).line(points.frontHem).offset(sa * (bk.bottom === undefined ? 3 : 1))
         const off = rest.offset(sa)
         paths.sa = hem.line(off.start()).join(off).line(hem.start()).addClass('fabric sa')
       }
@@ -290,6 +294,71 @@ export function sideBodyPart({ name, after, nr = 3, lining = false }) {
       // Cut again from lining (a lined jacket's side body)
       if (lining && lining(options)) store.cutlist.addCut({ cut: 2, from: 'lining' })
       title(macro, { at: points.mid.shift(0, 10), nr, title: 'sideBody', scale: 0.5 })
+      return part
+    },
+  }
+}
+
+/**
+ * A skirt in one piece, seamed to a body3 body cut off above the seat line (Simons' surtout, 1916):
+ * its top fits the back's, side body's and front's bottom edges in turn, hollowed a little, and rises
+ * by the front's drop toward the back. CF straight, with `facing` folded back past the front edge; CB a
+ * seam `length` long, leaning `lean` degrees out and rounded `round` (mm) at its middle.
+ * Store: `blouse.skirt` { top: its top edge, bottom: the body's edge it sews to, back: the CB seam }.
+ */
+export function body3SkirtPart({ name, after, nr, size, options }) {
+  return {
+    name,
+    after,
+    options,
+    draft: (sh) => {
+      const { paths, Path, Point, store, sa, macro, part } = sh
+      const { length, lean, round, facing } = size(sh)
+      const bk = store.get('blouse.back')
+      const fr = store.get('blouse.front')
+      const S = bk.S
+      const flip = (x) => 2 * S - x
+      const [bh, fh] = [bk.right.end(), fr.right.end()]
+      const side = Math.hypot(flip(fh.x) - bh.x, fh.y - bh.y)
+      const bottom = bk.bottom + side + store.get('blouse.frontBottom')
+      const { drop } = store.get('coat.frontEdge')
+      const hollow = length * 0.05
+      const t = (lean * Math.PI) / 180
+      const d = { x: Math.sin(t), y: Math.cos(t) }
+      const n = { x: Math.cos(t), y: -Math.sin(t) } // out, past the seam
+      const topOf = (W) => {
+        const c = new Point(W, -drop)
+        return new Path().move(c).curve(new Point(W * 0.66, -drop * 0.66 + hollow), new Point(W * 0.33, -drop * 0.33 + hollow), new Point(0, 0))
+      }
+      let W = bottom
+      for (let i = 0; i < 4; i++) W += bottom - topOf(W).length()
+      const top = topOf(W)
+      const C = top.start()
+      const E = new Point(C.x + d.x * length, C.y + d.y * length)
+      const yCf = length - drop * 0.4
+      const k = length / 3
+      const seam = new Path().move(C.clone()).curve(new Point(C.x + d.x * k + n.x * round, C.y + d.y * k + n.y * round), new Point(E.x - d.x * k + n.x * round, E.y - d.y * k + n.y * round), E.clone())
+      const edge = new Path().move(new Point(0, 0)).line(new Point(-facing, 0)).line(new Point(-facing, yCf))
+      const w = E.x
+      const hem = new Path()
+        .move(new Point(-facing, yCf))
+        .line(new Point(0, yCf))
+        .curve(new Point(w / 3, yCf), new Point(E.x - (d.y * w) / 3, E.y + (d.x * w) / 3), E.clone())
+      const up = seam.clone().reverse()
+      paths.seam = edge.clone().join(hem).join(up).join(top).close().addClass('fabric')
+      if (sa) {
+        let o = null
+        for (const [p, m] of [[edge, 1], [hem, 2], [up, 1], [top, 1]]) {
+          const off = p.offset(sa * m)
+          o = o ? o.line(off.start()).join(off) : off
+        }
+        paths.sa = o.close().addClass('fabric sa')
+      }
+      paths.foldLine = new Path().move(new Point(0, 0)).line(new Point(0, yCf)).addClass('mark dotted').addText('fold', 'center text-sm')
+      store.set('blouse.skirt', { top: top.length(), bottom, back: seam.length() })
+      macro('grainline', { from: new Point(w * 0.15, yCf - 40), to: new Point(w * 0.15, 40) })
+      store.cutlist.setCut({ cut: 2, from: 'fabric' })
+      title(macro, { at: new Point(w * 0.4, yCf * 0.45), nr, title: 'skirt', scale: 0.6 })
       return part
     },
   }
