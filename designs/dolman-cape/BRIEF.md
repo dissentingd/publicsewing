@@ -33,7 +33,7 @@ are Pivnick's.
 - **Breanna in place of her lining.** Same pieces of information, a different draft, so the numbers are hers but the shoulders aren't.
 - **The back's darts.** Hers has a shoulder dart (Figure 4), and if the back's shoulder is longer she eases it or stitches small darts along the curve (Figure 6). Here the back's seam
   above the notch comes out longer than the front's by about 57 mm at a women's 36, up to 90 at the smallest women's and a man's 38: too much to ease. So a shoulder dart takes the first
-  `dolmanShoulderDart` 2% of the chest, and small darts on the curve take the rest, as many as keep each to `dolmanCurveDart` 1.8%, at most four. The sizes are ours. I tried moving the side seam's
+  `dolmanShoulderDart` 2% of the chest, and small darts on the curve take the rest, as many as keep each to `dolmanCurveDart` 1.8%, at most four. The sizes are ours. Tried and dropped: moving the side seam's
   arm point instead (the curve gains what the seam below loses, so it does little) and closing Breanna's waist dart into the shoulder (it makes the difference worse).
 - **The hem** is square at each side seam and level at the centres, not ruled from hem to hem.
 - **The closure, collar and facing are ours**, as on the cape. She doesn't give them. No arm slits, which she doesn't draft.
