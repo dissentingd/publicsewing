@@ -272,12 +272,15 @@ ${variants.join('\n')}
   const variantLinks = Object.entries(spec.variants ?? {}).map(([key, v]) => `[${v.name}](/designs/${id}#${key})`)
   const { folder } = collectionOf(id)
   const sourceLabel = folder === 'inspired' ? 'Inspired by' : 'Source'
+  // Our version of a pattern people can pay for on its maker's site asks them to, by name of garment
+  if (/Open\+Pattern/.test(about.source ?? '') && !original[id]) throw new Error(`${id}: from Open+Pattern, but no entry in external.yaml has ours: ${id}, so it has no donation link`)
+  const donate = original[id] ? `Please be kind and [donate to ${external.by}](${original[id].url}) for this garment.` : ''
   rows[folder][about.category].push({
     name: about.name,
-    row: `| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | [${about.name}](/designs/${id})${variantLinks.length ? `<br /><small>Variants: ${variantLinks.join(' · ')}</small>` : ''} | ${info.garment}<br /><small>Difficulty ${about.difficulty} of 5. ${sourceLabel}: ${info.source}</small> |`,
+    row: `| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | [${about.name}](/designs/${id})${variantLinks.length ? `<br /><small>Variants: ${variantLinks.join(' · ')}</small>` : ''} | ${info.garment}<br /><small>Difficulty ${about.difficulty} of 5. ${sourceLabel}: ${info.source}${donate ? `. ${donate}` : ''}</small> |`,
   })
   const originalLine = original[id]
-    ? `\n\nOur own interpretation, inspired by [${original[id].name}](${original[id].url}) from [${external.by}](/sources#open-pattern).`
+    ? `\n\nOur own interpretation, inspired by [${original[id].name}](${original[id].url}) from [${external.by}](/sources#open-pattern). ${donate}`
     : /ЕМКО/.test(about.source ?? '')
       ? `\n\nOur own interpretation, inspired by [ЕМКО СЭВ](/sources#emko).`
       : ''

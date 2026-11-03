@@ -42,6 +42,8 @@ Needs `../designs` installed (`npm install` there): the site builds the designs 
   original still in copyright. Every other design is on Historical Designs (`/designs`). A design's
   own page is at `/designs/<id>` either way.
 - **`external.yaml`:** others' patterns, listed among ours on Inspired Designs and tagged External:
-  a link out, with no page or files here. An entry's `ours` links it with the design drafted from it.
+  a link out, with no page or files here. An entry's `ours` links it with the design drafted from it,
+  and gives that design its note asking people to donate, linking to the garment's page on their site.
+  The build fails on a design from Open+Pattern with no such entry.
 - **Adding a design:** nothing to do here, except adding it to the dropdown in
   `.github/ISSUE_TEMPLATE/muslin-report.yml`.
