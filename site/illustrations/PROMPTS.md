@@ -859,6 +859,11 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
 
+### eton-jacket: Eton jacket
+> **Very short, ending just below the waist, with long lapels that roll all the way down to the waist, where the fronts meet at one button.** A boy's **English Eton jacket** in plain black or navy wool. Below that one button the two fronts hang straight down for a short way, ending in **square corners**, not rounded or cut away. **Notched lapels** with a turn-down collar. Plain two-piece sleeves. Shown flat on an invisible form, front view, for a boy of about ten.
+>
+> Leave out: pockets of any kind, a breast pocket, a second button, a tail or any length below the hips, a waistcoat, a shirt collar or bow tie, cuff buttons, a badge or crest, a person.
+
 ### princess-coat: Princess coat
 > **Two rows of exactly six buttons, from the collar down to the waist and none below it, on a long coat with no seam across the waist.** A women's fitted **princess coat** in plain wool (camel, grey or navy),
 > to **mid-calf**. Long curved seams run unbroken from the shoulders to the hem, the coat close at the waist and flaring in a **moderate** skirt below it. A **modest collar, buttoned up to the neck, with no lapels**. On each side, just below the waist, **one slanted banded pocket**, sloping down toward the side. Plain two-piece sleeves. Shown flat on an invisible form, front view.

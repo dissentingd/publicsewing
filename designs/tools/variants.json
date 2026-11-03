@@ -49,6 +49,7 @@
   "two-piece-skirt": {"default": {}, "flared": {"goreFlare": 0.5, "panelShare": 0.5, "frontWaistDrop": 0}},
   "knee-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "kneePantsLength": -0.1, "legBottom": 1.25}},
   "boys-knickers": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "knickerDrop": 0.2, "knickerFullness": 1.5}},
+  "eton-jacket": {"default": {}, "longer": {"lengthBelowWaist": 0.9}, "plain": {"lining": false, "buttons": 0, "hemCurve": 0.5}},
   "princess-coat": {"default": {}, "fuller": {"hemFlare": 0.18}, "notch": {"lapelStyle": "notch", "buttons": 4}, "plain": {"pockets": false, "lining": false, "halfBelt": false, "doubleBreasted": false, "buttonExtension": 0.04, "hemFlare": 0, "lengthBelowWaist": 0.4}},
   "prince-albert-jacket": {"default": {}, "notch": {"lapelStyle": "notch"}, "flared": {"skirtSpread": 0.04}, "plain": {"lining": false, "lengthBelowWaist": 0.3, "cbSuppression": 0, "underarmSuppression": 0}},
   "double-dart-jacket": {"default": {}, "loose": {"cbSuppression": 0, "underarmSuppression": 0, "secondSuppression": 0, "lengthBelowWaist": 0.3}, "plain": {"lining": false, "secondAt": 0.35, "secondSuppression": 0.2}},

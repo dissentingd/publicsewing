@@ -1,0 +1,34 @@
+# Eton jacket: Simons' English Eton coat (Designing Boys' and Juveniles' Clothing, 1922, Diagram 13,
+# pp. 46-49), on the boys' suit jacket (FreeSewing's Bent, three-piece body): cut off 3" below the
+# waist, a wide lapel rolling to the waist, a square front corner, no pockets, no vent. For any size,
+# men included. See BRIEF.md.
+extends: ../boys-suit-jacket/spec.yaml
+
+about:
+  id: eton-jacket
+  name: Eton jacket
+  category: jackets
+  description: "A short jacket ending just below the waist: a wide lapel rolling to the waist, a square front corner, no pockets"
+  difficulty: 4
+  tags: [jackets, children]
+  techniques: [button, collar, lapel, facing, two-piece-sleeve]
+  version: 0.1.0
+  source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Diagram 13, pp. 46-49 (designingboysjuv00simo)"
+  preview: usdaBoyC6
+
+options:
+  # D to E: 3" below the waist, on the USDA boy C6's 6 1/4" waist to seat
+  lengthBelowWaist: { pct: 48, min: 25, max: 100 } # x waistToSeat
+  # 4 to 5: 1 1/4" past CF, on a 24" breast
+  buttonExtension: { pct: 5.2, min: 2.4, max: 9 } # x chest
+  # The crease reaches the front edge at 10, on the waist line
+  breakAt: { pct: 100 }
+  # Point of the lapel, read from the diagram: about 2 1/4" from the crease, on an 11" neck
+  lapelWidth: { pct: 20 }
+  # 12 is the hem's lowest point, a little below 13, and its corner is drawn square
+  frontDrop: { pct: 4 } # x waistToSeat: about 1/4"
+  hemCurve: { pct: 0 }
+  # No button is drawn or described: one at the break, to close it, is ours
+  buttons: { count: 1, min: 0, max: 2 }
+  lowerPockets: { bool: false } # none drawn
+  pocketFlaps: { bool: false }
