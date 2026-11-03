@@ -22,6 +22,13 @@ options:
   goreFlare: { pct: 20, min: 0, max: 80, menu: style } # the side seam straight from the hem (12) through the hip (11)
   cbShaping: { pct: 21, min: 0, max: 50, menu: advanced } # the foundation's CB shaping
   panelShaping: { pct: 79, min: 50, max: 100, menu: advanced } # the rest at the side seam (13, 14)
+  # The high-waisted skirt (p. 88): CF and CB run on above the waist, "2 inches ... or the amount
+  # desired", the side seam's dart reshaped, adding 1/2 or 3/4 in to each part at the waist; finished
+  # without a band. Off by default; the `high-waisted` variant
+  highWaist: { bool: false, menu: style }
+  riseHeight: { pct: 29, min: 10, max: 60, menu: style } # x waistToSeat: 2 in of 7
+  riseEase: { pct: 1.56, min: 0, max: 3, of: seat, menu: fit } # 5/8 in of 40, on each part at each side seam
+  riseFlare: { pct: 10, min: 0, max: 30, menu: advanced } # the side edges open out above the waist: 3/16 in over 2 in, read from p. 89
 
 pieces:
   layout:
@@ -37,3 +44,25 @@ pieces:
           panelShaping: panelShaping
           flare: goreFlare
           frontDrop: waistToSeat * frontWaistDrop
+          riseHeight: if(highWaist, waistToSeat * riseHeight, 0)
+          riseAdd: seat * riseEase
+          riseFlare: riseFlare
+  # The high waist has a facing where the plain skirt has a band
+  waistband:
+    prefix: gored-skirt
+    part: strip
+    after: layout
+    nr: 9
+    fold: true
+    if: not highWaist
+    length: skirt.waist + waistToFloor * waistbandHeight
+    width: waistToFloor * waistbandHeight
+  frontFacing: { part: goreFacing, index: 0, after: layout, nr: 10, label: frontFacing, if: highWaist }
+  backFacing: { part: goreFacing, index: 1, after: layout, nr: 11, label: backFacing, if: highWaist }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  high-waisted:
+    name: High-waisted
+    description: "Mitchell's two-piece high-waisted skirt: the skirt runs on about 2 in above the waist and is finished with a facing, in place of the band."
+    options: { highWaist: true }

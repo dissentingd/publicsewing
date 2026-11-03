@@ -42,6 +42,12 @@ options:
   panelShaping: { menu: false }
   panelNarrowing: { menu: false }
 
+  # The two-piece skirt's high waist isn't offered here
+  highWaist: { menu: false }
+  riseHeight: { menu: false }
+  riseEase: { menu: false }
+  riseFlare: { menu: false }
+
 pieces:
   layout:
     from: sarah.base

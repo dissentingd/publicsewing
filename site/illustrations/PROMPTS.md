@@ -859,6 +859,11 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
 
+### two-piece-skirt.high-waisted: Two-piece skirt, high-waisted
+> **No waistband: the skirt itself runs on about two inches above the natural waist, ending in a plain straight top edge.** A women's plain two-piece skirt in dark wool, close at the waist and hips, falling almost straight to near the ankle with only a slight flare. A single seam at each side and no darts. Shown flat on an invisible form, front view, the top edge clearly above the narrowest part of the waist.
+>
+> Leave out: a waistband, a belt, belt loops, buttons or suspenders on the raised part, pleats, gathers, pockets, a blouse tucked in, a person.
+
 ### golf-pants: Golf pants
 > **Close-fitting at the knee with a plain straight hem just below it: no gathers, no strap, no cuff and no fullness hanging over.** Boy's **golf pants** in plain tweed or grey wool, full at the side of the thigh and narrowing to the knee, like short breeches. **A short buttoned vent on the outside of each leg at the hem, with exactly three small buttons.** A waistband with belt loops, a fly front, and slanted side pockets. Shown flat, front view, for a boy of about ten.
 >

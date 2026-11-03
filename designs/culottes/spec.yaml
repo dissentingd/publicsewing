@@ -26,6 +26,12 @@ options:
   backExtension: { pct: 12.5, min: 8, max: 16, of: hips, menu: fit } # 1/8 of the hip (8 to 10)
   zipLength: { pct: 85, min: 50, max: 100, menu: style } # x waist to seat, on the CB seam
 
+  # The two-piece skirt's high waist isn't offered here
+  highWaist: { menu: false }
+  riseHeight: { menu: false }
+  riseEase: { menu: false }
+  riseFlare: { menu: false }
+
 pieces:
   frontPanel: { part: culotte, which: front, after: layout, nr: 1, crotch: crotchDepth * (1 + crotchEase), ext: hips * frontExtension }
   gore1: { part: culotte, which: back, after: layout, nr: 2, crotch: crotchDepth * (1 + crotchEase), ext: hips * backExtension, zip: waistToSeat * zipLength }

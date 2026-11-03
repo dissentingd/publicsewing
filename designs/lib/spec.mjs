@@ -58,7 +58,7 @@ import { bent } from '../blocks/bent.mjs'
 import { titan } from '../blocks/titan.mjs'
 import { breanna } from '../blocks/breanna.mjs'
 import { sarah } from '../blocks/sarah.mjs'
-import { draftSkirtLayout, gorePart, culottePart, draftCircularLayout, circularPart } from './skirt.mjs'
+import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
@@ -299,6 +299,8 @@ const factories = {
             },
           }),
     }),
+  // The facing for a gore's rise above the waist (`index`), from skirtLayout's `riseHeight`
+  goreFacing: (p, ctx) => goreFacingPart({ name: p.name, after: ctx.after(p), index: p.index, nr: p.nr, label: p.label ?? p.name.split('.').pop() }),
   // A divided skirt's front or back (`which`), from a three-gore skirtLayout: `crotch`, `ext`, `zip`
   culotte: (p, ctx) =>
     culottePart({

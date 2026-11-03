@@ -91,7 +91,7 @@ Priority 1 first: shirts, dresses and women's garments are the thinnest part of 
 | 14 | `princess-coat` | Fitted princess coat | Pivnick 1949, chapter XXII pp. 275–279 (loose coat pp. 279–282) | `tailored-jacket` | E | Coat length; the loose coat is close to `womens-box-coat`. As built: on `womens-peacoat`, the fitted coat only; `lib/jacket.mjs` gained `hemFlare`, a flared CB, `buttonBottom`, `frontSeamMin` | done (princess-coat) |
 | 15 | `eton-jacket` | Eton jacket: short, to the waist | Simons 1922, English Eton coat p. 46 | `boys-jacket` | F | As built: pp. 46-49, Diagram 13; no library changes | done (eton-jacket) |
 | 16 | `golf-pants` | Golf pants (plus-fours) | Simons 1922, Diagram 43, pp. 120–123 | `boys-knickers` | A | As built: on `breeches`. The plate is fitted through the knee, not fuller than the knickers, and not plus-fours | done (golf-pants) |
-| 17 | `high-waisted-skirt` | Two-piece high-waisted skirt | Mitchell 1921, pp. 88–89 | `two-piece-skirt` | B | Waist raised 2 in; may be an option instead | open |
+| 17 | `high-waisted-skirt` | Two-piece high-waisted skirt | Mitchell 1921, pp. 88–89 | `two-piece-skirt` | B | Waist raised 2 in. As built: not a design, a `high-waisted` variant of `two-piece-skirt`; `skirtLayout` gained a rise | done (two-piece-skirt.high-waisted) |
 | 18 | `kilt` | Pleated kilt (Scotch kilt suit's skirt) | Simons 1922, pp. 50–52 | `pleated-skirt` (item 3) | B | After item 3 | open |
 | 19 | `smoking-jacket` | Smoking jacket | Vincent 1890, p. 28 | `dressing-gown` (item 9) | D | After item 9 | open |
 | 20 | `raincoat` | Raincoat | Simons 1922, pp. 118–121 | `overcoat` or `balmacaan` | D | | open |

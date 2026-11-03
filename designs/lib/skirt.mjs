@@ -18,9 +18,13 @@ const ease = (t) => 3 * t * t - 2 * t * t * t
  * line at floor length, less for a shorter skirt, shared equally by every seam edge (the CF fold
  * stays straight). The waist drops `frontDrop` (mm) toward CF. With three gores (Mitchell's
  * two-piece skirt: a front on the fold and a back with a CB seam) `panelShare` sets the front's
- * share of the half seat, and the shaping isn't scaled.
+ * share of the half seat, and the shaping isn't scaled. `riseHeight` (mm; Mitchell's high-waisted
+ * skirt): the top runs on this far above the waist. The panel seam's dart is `riseAdd` smaller each
+ * side at the waist, its edges opening out by `riseFlare` x the height at the top, CB continues on
+ * its own line and CF straight up. Each edge then has `T`, its top, and the gores' seams and zip
+ * count it; `skirt.waist` stays the waist.
  */
-export function draftSkirtLayout(sh, { gores, panelNarrowing, cbShaping, panelShaping, flare, frontDrop, panelShare }) {
+export function draftSkirtLayout(sh, { gores, panelNarrowing, cbShaping, panelShaping, flare, frontDrop, panelShare, riseHeight = 0, riseAdd = 0, riseFlare = 0 }) {
   gores = Number(gores)
   const { points, measurements, store, part } = sh
   cleanup(sh)
@@ -43,7 +47,7 @@ export function draftSkirtLayout(sh, { gores, panelNarrowing, cbShaping, panelSh
   const D = S - Wh // negative on a figure whose waist is wider than the seat
   const dCb = D * cbShaping
   const dPanel = D * panelShaping
-  const dart = (j) => (j === m ? dPanel : (D - dCb - dPanel) / (m - 1))
+  const dart = (j) => (j === m ? dPanel - (riseHeight ? 2 * riseAdd : 0) : (D - dCb - dPanel) / (m - 1))
   const below = Math.max(measurements.waistToFloor - hS, 1)
   const F = Math.max(0, S * flare * Math.min(1, (L - hS) / below))
   const f = F / (2 * m + 1)
@@ -61,14 +65,16 @@ export function draftSkirtLayout(sh, { gores, panelNarrowing, cbShaping, panelSh
     const cpW = { x: W.x, y: W.y + k }
     return { W, cpW, cpS, S: Sp, H }
   }
-  const cf = { W: { x: S, y: waistY(S) }, S: { x: S, y: hS }, H: { x: S, y: L }, fold: true }
+  // The top above the waist: `out` of the height across, +x toward CF
+  const risen = (e, out) => (riseHeight ? { ...e, T: { x: e.W.x + out * riseHeight, y: e.W.y - riseHeight } } : e)
+  const cf = risen({ W: { x: S, y: waistY(S) }, S: { x: S, y: hS }, H: { x: S, y: L }, fold: true }, 0)
   // Gore 0 is the front panel, gore m the back gore at CB
   const list = []
   for (let i = 0; i <= m; i++) {
     const r = m - i + 1 // the seam on the gore's CF side (m + 1: the CF fold)
     const l = m - i // its CB side (0: the CB seam)
-    const right = r > m ? cf : edge(xs[r], -dart(r) / 2, f)
-    const left = l === 0 ? edge(0, dCb, -f) : edge(xs[l], dart(l) / 2, -f)
+    const right = r > m ? cf : risen(edge(xs[r], -dart(r) / 2, f), riseFlare)
+    const left = l === 0 ? risen(edge(0, dCb, -f), dCb / hS) : risen(edge(xs[l], dart(l) / 2, -f), -riseFlare)
     list.push({ left, right })
   }
   store.set('skirt.gores', list)
@@ -80,10 +86,19 @@ export function draftSkirtLayout(sh, { gores, panelNarrowing, cbShaping, panelSh
   return part.hide()
 }
 
+/** An edge's path from its top (the waist, or `T` above it) to the waist */
+function fromTop(Path, Point, e) {
+  const pt = (q) => new Point(q.x, q.y)
+  if (!e.T) return new Path().move(pt(e.W))
+  if (e.fold) return new Path().move(pt(e.T)).line(pt(e.W))
+  const k = (e.W.y - e.T.y) / 3
+  return new Path().move(pt(e.T)).curve(pt({ x: e.T.x, y: e.T.y + k }), pt({ x: e.W.x, y: e.W.y - k }), pt(e.W))
+}
+
 /** An edge's path from the waist to the hem */
 function edgePath(Path, Point, e) {
   const pt = (q) => new Point(q.x, q.y)
-  const path = new Path().move(pt(e.W))
+  const path = fromTop(Path, Point, e)
   if (e.fold) path.line(pt(e.S))
   else path.curve(pt(e.cpW), pt(e.cpS), pt(e.S))
   return path.line(pt(e.H))
@@ -112,7 +127,7 @@ function hemPath(Path, Point, left, right) {
 /** An edge's path from the waist to the seat line only */
 function upperPath(Path, Point, e) {
   const pt = (q) => new Point(q.x, q.y)
-  const path = new Path().move(pt(e.W))
+  const path = fromTop(Path, Point, e)
   return e.fold ? path.line(pt(e.S)) : path.curve(pt(e.cpW), pt(e.cpS), pt(e.S))
 }
 
@@ -163,9 +178,15 @@ export function gorePart({ name, after, index, nr, label, zip = () => 0, pleat =
         points[`${k}Seat`] = new Point(e.S.x, e.S.y)
         snippets[`${k}Seat`] = new Snippet('notch', points[`${k}Seat`])
       }
+      // A rise: the waist's place notched on each edge, and the zip measured from the top
+      for (const [k, e] of [['left', left], ['right', right]]) {
+        if (!e.T) continue
+        points[`${k}Waist`] = new Point(e.W.x, e.W.y)
+        snippets[`${k}Waist`] = new Snippet('notch', points[`${k}Waist`])
+      }
       const z = index === count - 1 ? zip(sh) : 0
       if (z > 0) {
-        points.zip = L.shiftAlong(Math.min(z, L.length() * 0.6))
+        points.zip = L.shiftAlong(Math.min(z + (left.T ? left.W.y - left.T.y : 0), L.length() * 0.6))
         snippets.zip = new Snippet('notch', points.zip)
       }
       const top = Math.max(left.W.y, right.W.y)
@@ -190,6 +211,49 @@ export function gorePart({ name, after, index, nr, label, zip = () => 0, pleat =
       if (pl) lens[index].pleats = (ul !== left) + (ur !== right)
       store.set('skirt.seams', lens)
       title(macro, { at: new Point(midX, (left.S.y + left.H.y) / 2.4), nr, title: label, scale: 0.5 })
+      return part
+    },
+  }
+}
+
+/**
+ * The facing for gore `index`'s rise: its top down to the waist, on the fold where the gore is. Store:
+ * `skirt.riseFacing.<index>` (top: its length, and seams: { left, right }).
+ */
+export function goreFacingPart({ name, after, index, nr, label }) {
+  return {
+    name,
+    after,
+    draft: (sh) => {
+      const { paths, Path, Point, store, sa, macro, part } = sh
+      // (a design that extends one with a rise, with a layout of its own, has none)
+      const g = store.get('skirt.gores', null)?.[index]
+      if (!g?.left.T) return part.hide()
+      const { left, right } = g
+      const L = fromTop(Path, Point, left)
+      const R = fromTop(Path, Point, right)
+      const top = new Path().move(R.start()).line(L.start())
+      const bottom = new Path().move(L.end()).line(R.end())
+      paths.seam = top.join(L).join(bottom).join(R.reverse()).close().addClass('fabric')
+      if (sa) {
+        const parts = [top.offset(sa), L.offset(sa), bottom.offset(sa), right.fold ? R.reverse() : R.reverse().offset(sa)]
+        let out = null
+        for (const p of parts) out = out ? out.line(p.start()).join(p) : p
+        paths.sa = out.close().addClass('fabric sa')
+      }
+      const midX = (left.W.x + right.W.x) / 2
+      const y = (left.W.y + left.T.y) / 2
+      if (right.fold) {
+        macro('cutonfold', { from: new Point(right.W.x, right.W.y - 5), to: new Point(right.T.x, right.T.y + 5), grainline: true })
+        store.cutlist.setCut([{ cut: 1, from: 'fabric', onFold: true }, { cut: 1, from: 'interfacing', onFold: true }])
+      } else {
+        macro('grainline', { from: new Point(midX, left.W.y - 5), to: new Point(midX, left.T.y + 5) })
+        store.cutlist.setCut([{ cut: 2, from: 'fabric' }, { cut: 2, from: 'interfacing' }])
+      }
+      const facings = store.get('skirt.riseFacing', null) ?? {}
+      facings[index] = { top: top.length(), left: L.length(), right: right.fold ? null : R.length() }
+      store.set('skirt.riseFacing', facings)
+      title(macro, { at: new Point(midX, y), nr, title: label, scale: 0.3 })
       return part
     },
   }

@@ -170,6 +170,18 @@ options:
   ventStand:
     title: Vent width
     description: Width of the buttoned vent's stand, as a share of the knee.
+  highWaist:
+    title: High waist
+    description: Runs the skirt on above the waist, finished with a facing in place of the band.
+  riseHeight:
+    title: Height above the waist
+    description: How far the high waist rises above the waist, as a share of waist to seat.
+  riseEase:
+    title: Room at the waist
+    description: Extra at the waist on each piece at each side seam, when the waist is high, as a share of the seat.
+  riseFlare:
+    title: Opening above the waist
+    description: How far the side seam opens out above the waist, as a share of its height.
   secondAt:
     title: Second seam position
     description: Where the second front seam meets the shoulder, from the front seam (0%) to the shoulder point (100%).
@@ -917,6 +929,8 @@ parts:
   body: Body
   underArm: Under-arm panel
   skirt: Skirt
+  frontFacing: Front facing
+  backFacing: Back facing
   skirtLining: Skirt lining
   armGusset: Underarm gusset
   crotchGusset: Crotch gusset

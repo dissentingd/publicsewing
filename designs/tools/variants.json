@@ -46,7 +46,7 @@
   "kimono-dress": {"default": {}, "long": {"kimonoLength": 0.6, "kimonoAngle": 45, "buttons": 7, "skirtLength": 0.85}, "back": {"opening": "back", "neckFinish": "binding", "kimonoLength": 0.15}},
   "circular-skirt": {"default": {}, "wide": {"spreadFront": 0.1, "spreadSide": 0.15, "spreadBack": 0.2}, "plain": {"spreadFront": 0, "spreadSide": 0, "spreadBack": 0, "length": 0.45}, "floor": {"length": 0.95, "panelShare": 0.5}},
   "pleated-skirt": {"default": {}, "boxPleats": {"pleatStyle": "box"}, "box": {"pleatStyle": "box", "gores": 7}, "long": {"gores": 15, "length": 0.9, "pleatHem": 0.05}},
-  "two-piece-skirt": {"default": {}, "flared": {"goreFlare": 0.5, "panelShare": 0.5, "frontWaistDrop": 0}},
+  "two-piece-skirt": {"default": {}, "flared": {"goreFlare": 0.5, "panelShare": 0.5, "frontWaistDrop": 0}, "high": {"highWaist": true}, "highFlared": {"highWaist": true, "riseHeight": 0.5, "goreFlare": 0.5}},
   "knee-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "kneePantsLength": -0.1, "legBottom": 1.25}},
   "boys-knickers": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "knickerDrop": 0.2, "knickerFullness": 1.5}},
   "golf-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "thighFlare": 0, "breechesButtons": 0}, "front": {"breechesOpening": "front"}, "long": {"breechesLength": 0.3, "calfAt": 0.15, "openingTop": -0.05}},
