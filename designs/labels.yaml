@@ -532,6 +532,12 @@ options:
   belt:
     title: Belt
     description: A belt at the waist.
+  halfBelt:
+    title: Half belt
+    description: A short belt sewn across the back at the waist.
+  halfBeltLength:
+    title: Half belt length
+    description: Length of the half belt, as a share of the waist.
   beltWidth:
     title: Belt width
     description: Finished width of the belt, as a share of the chest.
@@ -938,6 +944,7 @@ parts:
   backNeckFacing: Back-neck facing
   frontLining: Front lining
   backLining: Back lining
+  halfBelt: Half belt
   backBelt: Back belt
   frontBelt: Front belt
   backBodice: Back bodice

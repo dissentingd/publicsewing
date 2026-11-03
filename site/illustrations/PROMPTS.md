@@ -859,6 +859,22 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
 
+### princess-coat: Princess coat
+> **Two rows of exactly six buttons, from the collar down to the waist and none below it, on a long coat with no seam across the waist.** A women's fitted **princess coat** in plain wool (camel, grey or navy),
+> to **mid-calf**. Long curved seams run unbroken from the shoulders to the hem, the coat close at the waist and flaring in a **moderate** skirt below it. A **modest collar, buttoned up to the neck, with no lapels**. On each side, just below the waist, **one slanted banded pocket**, sloping down toward the side. Plain two-piece sleeves. Shown flat on an invisible form, front view.
+>
+> Leave out: a seam or belt across the front at the waist, buttons below the waist, lapels, patch pockets, a breast pocket, cuff buttons, a scarf, a person.
+
+### princess-coat.fuller: Princess coat, fuller skirt
+> **A clearly fuller skirt, its hem much wider, falling in soft folds from the seams alone, not gathers.** The same women's fitted coat in plain wool: mid-calf, long curved seams from shoulder to hem with no seam across the waist, two rows of exactly six buttons from the neck to the waist, a modest collar buttoned to the neck, one slanted banded pocket each side. Shown flat on an invisible form, front view.
+>
+> Leave out: gathers or pleats at the waist, a belt, buttons below the waist, lapels, patch pockets, cuff buttons, a person.
+
+### princess-coat.notch: Princess coat, notched lapels
+> **Notched lapels turned back at the chest, always open at the top, with two rows of exactly four buttons below them, down to the waist.** The same women's fitted coat in plain wool: mid-calf, long curved seams from shoulder to hem with no seam across the waist, one slanted banded pocket each side. Shown flat on an invisible form, front view.
+>
+> Leave out: buttons above the lapels' turn, buttons below the waist, a belt, patch pockets, cuff buttons, a blouse with a bow, a person.
+
 ### prince-albert-jacket: Prince Albert jacket
 > **A visible seam all round at the waist, the jacket tight above it and a smooth flared skirt below, with no seams across the skirt's front or sides.** A women's fitted **Prince Albert jacket** in plain dark wool
 > (navy, charcoal or black), the skirt ending **at about mid-thigh**. **Peaked lapels** above a **wide, slightly overlapping front** that narrows at the waist, with **exactly three buttons in one row**, all above the waist seam. Curved seams shape the

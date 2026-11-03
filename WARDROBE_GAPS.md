@@ -51,6 +51,7 @@ and marked as derived.
 | **Overcoat, straight, yoked** | 1, 3 | Carlton is a belted long coat | **Drafted 2026-10-27** (`designs/winter-coat`: deep front and back yokes, hip welts, turn-down collar, lining; not sewn) | ЕМКО 1988 §3 |
 | Surtout (fitted, waist seam) | 1 | — | Variant; **drafted 2026-11-03** (`designs/surtout`, on the suit jacket; not sewn) | Simons 1916 pp. 38-39 |
 | Fitted overcoat (flared, long vent) | 1 | — | Variant; **drafted 2026-11-03** (`designs/fitted-overcoat`, on the suit jacket; not sewn) | Simons 1916 pp. 18-19 |
+| Princess coat (fitted, long, flared, double-breasted) | 1 | — | Variant; **drafted 2026-11-03** (`designs/princess-coat`, on Breanna; not sewn) | Pivnick 1949 pp. 274-279 |
 | **Topcoat, semi-fitted** | 1 | Carlton | **Drafted 2026-10-27** (`designs/topcoat`: side panels, back vent, slanted welts, two-piece sleeves; not sewn) | ЕМКО 1988 §2 |
 | **Hooded smock / anorak** | 3, 5 | — | **Drafted 2026-10-28** (`designs/anorak`: pullover, front yoke, hood, kangaroo pocket; not sewn) | Open+Pattern US tactical smock (CC BY 4.0) |
 | **Hooded windbreaker** | 3, 5 | — (Jett is a bomber) | **Drafted 2026-10-27** (`designs/windbreaker`: zip, yokes, hood or stand collar, slanted welts; not sewn) | ЕМКО 1988 §4 |

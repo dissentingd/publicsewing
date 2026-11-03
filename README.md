@@ -30,6 +30,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `overcoat` | Single-breasted overcoat to below the knee, notched lapel, back vent, lined | Simons 1916 |
 | `surtout` | Fitted double-breasted overcoat with a waist seam, a flared skirt, two rows of buttons and side panels | Simons 1916 |
 | `fitted-overcoat` | Close-fitting single-breasted overcoat flaring below the waist, three buttons, slanted pockets, a long back vent | Simons 1916 |
+| `princess-coat` | Long fitted coat with princess seams and a moderate flare, two rows of six buttons to the waist, a convertible collar | Pivnick 1949 |
 | `box-overcoat` | Loose, straight overcoat with a full sweep | Simons 1916 |
 | `ulster` | Long double-breasted overcoat with a deep collar that buttons up | Simons 1916 |
 | `balmacaan` | Loose raglan-sleeved overcoat, buttoned to the throat under a stand collar | Simons 1916 |

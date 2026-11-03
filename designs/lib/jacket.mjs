@@ -135,6 +135,14 @@ export function draftJacketBase(sh, { side, backSeamAt = 0.5, style = 'princess'
  * lap there, `lap` being its width at the break; pleatWaist, pleatHem: a pleat on the back and skirt
  * at the back seam; ventWaist, ventHem: a CB vent on the back; spread: more at the hem, per skirt
  * seam }. Store: `jacket.seams.waist` [bodice, skirt] and `.pleat` [back, skirt].
+ *
+ * `hemFlare` (Pivnick's fitted coat): each seam edge's width past its waist point at the hem, if more
+ * than the seat needs. Every edge is then `length` long and the hem rises at the seams, so it hangs
+ * level once they're sewn. `cb: { waist: 0, hip: 0, flare: true }`: a CB seam flaring the same way,
+ * cut in pairs, the back lining too. `buttonBottom`: the last button this far below the waist.
+ * `frontSeamMin`: the front seam at least this far from CF at the waist, moved toward the side with
+ * the dart's width unchanged, its tip following; kept off the side seam by leaving half the side
+ * front. Moved by `jacket.front.seamShift`.
  */
 export function draftJacketLayout(sh, a) {
   const { Path, Point, store } = sh
@@ -157,7 +165,11 @@ export function draftJacketLayout(sh, a) {
   const e = Math.max(0, (a.seat / 2 - waistW + supp + cbHip) / ((ua ? 8 : 6) + (sec ? 2 : 0)))
   const slope = e / a.hipDepth
   /** Where an edge from waist point w, flaring by `dir` (+1 out to +x), meets the hem */
-  const hemAt = (w, dir) => new Point(w.x + dir * slope * a.length, w.y + a.length)
+  const hemAt = (w, dir) => {
+    if (!a.hemFlare) return new Point(w.x + dir * slope * a.length, w.y + a.length)
+    const dx = Math.min(Math.max(slope * a.length, a.hemFlare), 0.6 * a.length)
+    return new Point(w.x + dir * dx, w.y + Math.sqrt(a.length ** 2 - dx ** 2))
+  }
 
   const panels = {}
   const seams = {}
@@ -249,8 +261,8 @@ export function draftJacketLayout(sh, a) {
     // line by `cbIn - cbHip` at the seat line, on to the hem
     const cbx = r.centerWaist.x
     const cbWaist = new Point(cbx + cbIn, r.centerWaist.y)
-    const hemC = new Point(cbx + cbIn - ((cbIn - cbHip) / a.hipDepth) * a.length, r.centerWaist.y + a.length)
-    const cbLine = cbIn ? [new Point(cbx, r.armhole.y), cbWaist] : a.waistSeam ? [cbWaist] : []
+    const hemC = a.cb?.flare ? hemAt(cbWaist, -1) : new Point(cbx + cbIn - ((cbIn - cbHip) / a.hipDepth) * a.length, r.centerWaist.y + a.length)
+    const cbLine = cbIn ? [new Point(cbx, r.armhole.y), cbWaist] : a.waistSeam || a.cb?.flare ? [cbWaist] : []
     const hemCs = hemAt(r.lower.c, 1)
     const hemSc = hemAt(r.lower.s, -1)
     const hemS = hemAt(r.waist, 1)
@@ -286,7 +298,7 @@ export function draftJacketLayout(sh, a) {
     const side = seam.side.clone().line(hemSc).line(hemS).line(r.waist.clone()).join(r.sideAbove.clone())
     panels.back = {
       outline: centre,
-      fold: !cbIn && !ws, // (a vent's CB can't be on a fold)
+      fold: !cbIn && !ws && !a.cb?.flare, // (a vent's or a flared CB can't be on a fold)
       marks: { hps: r.hps, cbNeck: r.centerNeck, cbHem: hemC, hemSeam: hemCs, seamWaist: r.lower.c, seamBust: M, seamTop: ba ? Z : r.upper.c },
     }
     panels.sideBack = {
@@ -317,8 +329,16 @@ export function draftJacketLayout(sh, a) {
   // ---- front ----
   const lap = { lap: a.lap, ...(a.rows ? { rows: a.rows } : {}) }
   {
-    const r = fr
+    let r = fr
     const cfx = r.centerWaist.x
+    if (a.frontSeamMin) {
+      const room = 0.5 * (r.waist.x - r.lower.s.x)
+      const by = Math.min(Math.max(0, a.frontSeamMin - (r.lower.c.x - cfx)), room)
+      const rise = (r.waist.y - r.lower.s.y) / (r.waist.x - r.lower.s.x) // along the waist
+      const move = (q, k = 1) => new Point(q.x + by * k, q.y + by * k * rise)
+      r = { ...r, lower: { c: move(r.lower.c), s: move(r.lower.s), tip: move(r.lower.tip) } }
+      lap.seamShift = by
+    }
     const edgeX = cfx - a.lap
     const hemC = new Point(edgeX, r.centerWaist.y + a.length)
     const hemCs = hemAt(r.lower.c, 1)
@@ -519,6 +539,7 @@ export function draftJacketLayout(sh, a) {
     }
     seams.shoulderFront = r.hps.dist(r.upper.c) + r.upper.s.dist(r.shoulder)
     Object.assign(lap, { cfx, edgeX, B, R, G, N, P, hemC, top, lapelEdge, neckToG, hemY: hemC.y, waistY: r.centerWaist.y })
+    if (a.buttonBottom !== undefined) lap.buttonBottom = r.centerWaist.y + a.buttonBottom
 
     // Facing: the front edge strip, lapel included, from the hem up to the shoulder
     const fx = cfx + Math.min(a.facing - a.lap, 0.8 * (r.lower.c.x - cfx))
@@ -588,17 +609,17 @@ export function draftJacketLayout(sh, a) {
         // Back lining: below the facing to the hem, with a pleat `liningPleat` wide at the CB fold
         const pleatX = bk.centerNeck.x - a.liningPleat
         const b = backCentre
-        const seamUp = new Path()
-          .move(bS.clone())
-          .join(edge.clone())
-          .line(new Point(pleatX, C.y))
-          .line(new Point(pleatX, b.hemC.y))
+        const flared = a.cb?.flare
+        const cbLining = flared
+          ? [new Point(pleatX, bk.centerWaist.y), new Point(b.hemC.x - a.liningPleat, b.hemC.y)]
+          : [new Point(pleatX, b.hemC.y)]
+        const seamUp = lineTo(new Path().move(bS.clone()).join(edge.clone()).line(new Point(pleatX, C.y)), ...cbLining)
           .line(b.hemCs.clone())
           .line(bk.lower.c.clone())
           .join(b.seam.clone().reverse())
         panels.backLining = {
           outline: (b.fromZ ? seamUp.join(b.fromZ.clone()) : seamUp).line(bS.clone()),
-          fold: true,
+          fold: !flared,
           foldX: pleatX,
         }
         // Front lining: from the facing's inner edge back to the princess seam
