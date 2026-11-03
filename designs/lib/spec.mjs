@@ -508,6 +508,9 @@ export function designFromSpec(spec) {
     if (p.part) {
       if (!factories[p.part]) throw new Error(`${key}: unknown part type "${p.part}"`)
       parts[key] = factories[p.part](p, ctx)
+      // A piece type draws from what the spec's expressions name, so its measurements count too: the
+      // site's size picker gives a design only those it declares
+      if (p.measurements) parts[key].measurements = [...new Set([...(parts[key].measurements ?? []), ...p.measurements])]
       continue
     }
     const ops = (p.ops ?? []).map((entry) => {

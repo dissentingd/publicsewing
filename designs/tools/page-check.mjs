@@ -76,17 +76,26 @@ for (const design of designs) {
 
   // The tool, at a size. Pieces are the draft's SVG, the largest on the page
   const pathCount = () => page.evaluate(() => Math.max(0, ...[...document.querySelectorAll('.pattern-editor svg')].map((s) => s.querySelectorAll('path').length)))
+  // The draft is the page's largest pattern; a failed one is empty (viewBox 0 0 0 0), and covers the page
+  const hasDrawing = () => page.evaluate(() => [...document.querySelectorAll('.pattern-editor svg.freesewing')].some((s) => (s.getAttribute('viewBox') ?? '').split(' ').slice(2).every((n) => +n > 0)))
   const drafted = async (what) => {
-    await page.waitForFunction(() => [...document.querySelectorAll('.pattern-editor svg')].some((s) => s.querySelectorAll('path').length > 20), null, { timeout: 30000 }).catch(() => {})
+    await page.waitForFunction(() => [...document.querySelectorAll('.pattern-editor svg.freesewing')].some((s) => (s.getAttribute('viewBox') ?? '').split(' ').slice(2).every((n) => +n > 0)), null, { timeout: 15000 }).catch(() => {})
     const n = await pathCount()
     const text = await page.locator('.pattern-editor').innerText()
-    check(n > 20 && !/Unable to draft/.test(text), `${what} (${n} paths)`)
+    const ok = (await hasDrawing()) && !/Unable to draft/.test(text)
+    check(ok, `${what} (${n} paths)`)
+    return ok
   }
   const select = page.locator('.pattern-editor select').filter({ hasText: /\d/ }).first()
   const labels = await select.locator('option').allInnerTexts()
   const size = args.size ?? labels.find((l) => /^Women 36/.test(l)) ?? labels.find((l) => /^Men 38/.test(l)) ?? labels.at(-1)
   await select.selectOption({ label: size })
-  await drafted(`the tool drafts at ${size}`)
+  // With no drawing nothing else on the page can be tested: say why, and go on to the next design
+  if (!(await drafted(`the tool drafts at ${size}`))) {
+    check(false, `not tested further:\n  ${[...new Set(errors)].slice(0, 3).join('\n  ').slice(0, 500)}`)
+    await context.close()
+    continue
+  }
 
   // Each variant's button changes the drawing, and the way back restores it. A button in use is
   // disabled and relabelled, so go through them all by class

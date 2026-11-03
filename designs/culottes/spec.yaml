@@ -33,5 +33,5 @@ options:
   riseFlare: { menu: false }
 
 pieces:
-  frontPanel: { part: culotte, which: front, after: layout, nr: 1, crotch: crotchDepth * (1 + crotchEase), ext: hips * frontExtension }
-  gore1: { part: culotte, which: back, after: layout, nr: 2, crotch: crotchDepth * (1 + crotchEase), ext: hips * backExtension, zip: waistToSeat * zipLength }
+  frontPanel: { part: culotte, which: front, after: layout, nr: 1, measurements: [crotchDepth], crotch: crotchDepth * (1 + crotchEase), ext: hips * frontExtension }
+  gore1: { part: culotte, which: back, after: layout, nr: 2, measurements: [crotchDepth], crotch: crotchDepth * (1 + crotchEase), ext: hips * backExtension, zip: waistToSeat * zipLength }

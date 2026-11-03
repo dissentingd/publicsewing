@@ -35,6 +35,7 @@ based on a skirt foundation pattern."
 | Opening | Not given | The skirt's CB zip, `zipLength` 85% of waist to seat |
 
 ## Changes and what isn't modelled
+- **Fixed 2026-11-03:** the crotch depth wasn't declared as a measurement, so the pattern tool drew nothing. The pattern itself didn't change.
 - **The CF and CB aren't moved out** (½ and 1 in) at the crotch line; the extensions start
   from the skirt's own centre lines.
 - **No CF or CB pleat**: the flare at the sides does the hiding.
