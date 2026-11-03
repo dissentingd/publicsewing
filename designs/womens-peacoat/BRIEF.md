@@ -29,6 +29,7 @@ double-breasted front (`jacketLayout`'s `rows`), with two rows of buttons.
 | Length | Hip length | `lengthBelowWaist` 28% of waist to floor (about 11 in below the waist) |
 | Overlap | 3¾–4¾ in | `buttonExtension` 11% of the chest (4 in at bust 36), straight |
 | Buttons | Two rows | `doubleBreasted` on; `buttons` 3 to a row, each row `buttonRow` 62% of the lap from CF (2½ in); holes on the outer row |
+| Front seam | About 4¼ in from CF at the waist, the inner row about 1 in inside it | `frontSeamClear` 2.8% of the chest past the row (2.8% is 1 in of 36): the seam moves out from Breanna's waist dart, about 3¾ in from CF at Women 36 |
 | Lapel and collar | Storm collar: no lapel, the front buttoned to the neck; the collar sewn from the front edge (25) round to CB, 3¾ in deep at the front and 4¼ at CB, its outer edge swept out ⅓ of the height | `lapelStyle` storm (`lib/jacket.mjs` `closed`): the top edge runs from CF neck straight out to the front edge, the top button 40% of the lap below the neck, the collar from CB to the front edge with square ends, `collarWidth` 28% of neck, constant depth (the default). Or `lapelStyle` notch, `lapelWidth` 32% and `collarWidth` 28% of the neck: a wide lapel turning at the bust line (`breakBelowBust` 0) and a deep turn-down collar |
 | Pockets | None drawn | The tailored jacket's hip flap pocket; no breast welt or ticket pocket |
 | Lining | Not given | `lining` on, as the tailored jacket |
@@ -42,6 +43,10 @@ double-breasted front (`jacketLayout`'s `rows`), with two rows of buttons.
 - **Merz's neck dart** isn't taken; the bust shaping goes into the princess seams, as on the
   tailored jacket.
 - **The overlap is straight**, not narrowed ¾ in at the waist.
+- **The front seam's move** (2026-11-03): before it, the inner row's bottom button fell off the front piece on 95 of the 98 sizes. The
+  seam moves out with the dart's width unchanged, which takes it away from the bust point (about 1 in at Women 36, more on men's sizes,
+  where the dart reached CF) and narrows the side front. Merz's semi-fitted front has no seam over the bust, only a dart line from the
+  chest down.
 - **The inner row of buttons** can fall behind the facing's edge (the facing stops short of
   the princess seam); sew those buttons through the front and its interfacing.
 

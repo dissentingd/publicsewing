@@ -538,6 +538,9 @@ options:
   halfBeltLength:
     title: Half belt length
     description: Length of the half belt, as a share of the waist.
+  frontSeamClear:
+    title: Front seam
+    description: How far the front seam stays from the button row at the waist, as a share of the chest. It moves toward the side with the dart's width unchanged.
   beltWidth:
     title: Belt width
     description: Finished width of the belt, as a share of the chest.

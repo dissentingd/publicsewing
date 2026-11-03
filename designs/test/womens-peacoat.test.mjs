@@ -16,6 +16,12 @@ const rows = (pattern) => {
     assert.ok(s.anchor.x > f.edgeX && s.anchor.x < bb.bottomRight.x, `${k} on the front`)
   }
   assert.ok(f.cfx - f.rows > f.edgeX && f.cfx - f.rows < f.facingX, 'the buttonholes are on the facing')
+  // The inner row stays clear of the front seam at every height, as on Merz's diagram
+  const chest = pattern.settings[0].measurements.chest
+  for (const [k, q] of Object.entries(front.snippets).filter(([, q]) => q.def === 'button')) {
+    const seam = Math.max(...front.paths.seam.intersectsY(q.anchor.y).map((h) => h.x))
+    assert.ok(seam - q.anchor.x > 0.015 * chest, `${k} ${(seam - q.anchor.x).toFixed(0)} mm from the seam`)
+  }
 }
 
 testJacket('women\'s peacoat', WomensPeacoat, {

@@ -28,6 +28,9 @@ options:
   buttonExtension: { pct: 11, max: 14 }
   doubleBreasted: { bool: true, menu: style }
   buttonRow: { pct: 62, min: 40, max: 85, menu: style } # x the lap: each row's distance from CF
+  # Diagram XXI: the inner row about 1" inside the front seam at the waist, itself about 4 1/4" from
+  # CF. Breanna's waist dart is much closer in, so the seam moves out to keep that 1"
+  frontSeamClear: { pct: 2.8, min: 1.5, max: 8, of: chest, menu: fit }
   buttons: { count: 3 } # to a row
   breakBelowBust: { pct: 0 } # the lapel turns at the bust line; the top buttons sit high
   # Merz's storm collar (`storm`): no lapel, buttoned to the neck, a deep collar sewn round to
@@ -62,6 +65,7 @@ pieces:
           closed: lapelStyle == 'storm'
           # Double-breasted: a button either side of CF, `buttonRow` of the lap out
           rows: if(doubleBreasted, chest * buttonExtension * buttonRow, null)
+          frontSeamMin: chest * (frontSeamClear + if(doubleBreasted, buttonExtension * buttonRow, 0))
           facing: chest * facingWidth
           backFacing: chest * backFacingDepth
           lining: lining

@@ -38,7 +38,7 @@ options:
   # the same" (Fig. 3, where it moves a little toward CF from the book's foundation). Fig. 5 ends with the
   # seam about 3 3/4" from CF at the waist, 2 1/4" past the button row. Breanna's waist dart is closer
   # in, and on men's sets reaches CF, so ours moves toward the side: at least this far past the row
-  frontSeamClear: { pct: 4, min: 2, max: 8, of: chest, menu: fit, title: Front seam, description: "How far the front seam stays from the button row at the waist, as a share of the chest. It moves toward the side with the dart's width unchanged." } # about 1 1/2"
+  frontSeamClear: { pct: 4 } # x chest: about 1 1/2"
   # The convertible coat collar (Chapter XVI, Section X): "a large collar", "as wide as desired";
   # about 3 1/4" as Figs. 1 and 2 draw it. `storm` is its construction: sewn round to the front edge
   collarWidth: { pct: 24 }
