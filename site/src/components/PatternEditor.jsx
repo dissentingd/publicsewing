@@ -7,7 +7,7 @@ import React, { useEffect } from 'react'
 import BrowserOnly from '@docusaurus/BrowserOnly'
 import sizes from '@site/src/generated/sizes.json'
 
-const MY_KEY = 'publicsewing-my-measurements'
+export const MY_KEY = 'publicsewing-my-measurements'
 const groups = { women: 'Women', men: 'Men', stout: 'Stout figures', girls: 'Girls (USDA 1939)', boys: 'Boys (USDA 1939)' }
 
 export const editorConfig = (design) => ({
@@ -72,7 +72,8 @@ function SizePicker({ design, Design, useLocalStorageState }) {
         </select>
       </label>{' '}
       <span className="size-picker-note">
-        Or enter your own under <em>Measurements</em>; they're kept in this browser for every design.
+        Or <a href={`/measure?for=${design}`}>take your own, step by step</a>, or enter them under <em>Measurements</em>;
+        they're kept in this browser for every design.
       </span>
     </div>
   )

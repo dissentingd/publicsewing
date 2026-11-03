@@ -79,7 +79,7 @@ const sizes = {
 const measurements = {}
 for (const id of ids) {
   const { patternConfig } = designFromSpec(specs[id]).Design
-  measurements[id] = { name: specs[id].about.name, required: patternConfig.measurements, optional: patternConfig.optionalMeasurements }
+  measurements[id] = { name: specs[id].about.name, editorId: specs[id].about.id, required: patternConfig.measurements, optional: patternConfig.optionalMeasurements }
 }
 
 mkdirSync(out('src', 'generated'), { recursive: true })
@@ -309,7 +309,7 @@ ${info.garment}. ${sourceLabel}: ${info.source}.${originalLine}${variantsLine}
 ## Make the pattern
 
 Pick a size set or enter your own measurements, change options, then **Export** a tiled PDF
-(A4 or Letter). Your measurements stay in this browser. See [Measure yourself](/measure) and
+(A4 or Letter). Your measurements stay in this browser. See [Measure yourself](/measure?for=${id}) and
 [Sew & Test](/sew-and-test).
 
 <PatternEditor design="${about.id}" />

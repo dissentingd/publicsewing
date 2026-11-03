@@ -38,6 +38,11 @@ Needs `../designs` installed (`npm install` there): the site builds the designs 
   tool's menus (the build fails on an option the tool doesn't show), the variant's pattern pieces,
   and its illustration if `illustrations/<design>.<variant>.jpg` exists. Its **Use this variant**
   button (`src/components/VariantButton.jsx`) sets those options in the tool and goes to it.
+- **The Measure page** (`src/components/Measure.jsx`): enter measurements beside an animated figure,
+  saved as the pattern tool's "my measurements"; `/measure?for=<design>` shows only what a design needs.
+  A new measurement needs its wording in `guide` there. The figures are FreeSewing's, copied into
+  `static/img/measure/` from a fixed commit by `scripts/fetch-measure-figures.mjs`, and the tool's
+  measurement help shows them instead of FreeSewing's page.
 - **`inspired.yaml`:** the designs on Inspired Designs (`/inspired`), from a rub-off, a tracing or an
   original still in copyright. Every other design is on Historical Designs (`/designs`). A design's
   own page is at `/designs/<id>` either way.
