@@ -1,0 +1,89 @@
+# Fitted overcoat: Simons' "Young Men's Three Button S. B. Form Fitting Overcoat" (Designing Overcoats, 1916,
+# pp. 18-19; the contents also call p. 19 the French overcoat), on the suit jacket's three-piece body
+# (lib/body3.mjs, FreeSewing's Bent): close at the waist, flaring to the hem, a long back vent, three
+# buttons under a rolled lapel, slanted pockets. See BRIEF.md.
+extends: ../suit-jacket/spec.yaml
+
+about:
+  id: fittedovercoat
+  name: Fitted overcoat
+  category: coats
+  description: A close-fitting single-breasted overcoat flaring below the waist, with three buttons, slanted pockets and a long back vent
+  difficulty: 5
+  tags: [coats]
+  techniques: [button, welt-pocket, flap-pocket, collar, lapel, facing, vent, two-piece-sleeve]
+  version: 0.1.0
+  source: "Simons, Designing Overcoats (1916), Young Men's Three Button S. B. Form Fitting Overcoat, pp. 18-19 (designingovercoa00simo)"
+
+options:
+  # Drafted on 20 and 21 for a 36 breast; taken in at the waist, E to 20 is 1 1/4 in at CB alone (ours, from those)
+  chestEase: { pct: 18 }
+  waistEase: { pct: 14 }
+  seatEase: { pct: 10 }
+  bicepsEase: { pct: 24 }
+  cuffEase: { pct: 85 }
+  # 40 in from the nape, 16 1/2 to the waist: 23 1/2 in below it, x waistToSeat (10 5/8 in at FreeSewing's 38)
+  lengthBelowWaist: { pct: 221, max: 400 }
+  frontDrop: { pct: 19 } # x waistToSeat: 11 to 12 is 2 in
+  # Each panel out at the hem past the seat, measured off p. 19, about 1 1/4 in of a 38 in seat (ours in the split)
+  hemFlare: { pct: 3.2, min: 0, max: 8, of: seat, menu: style }
+  hemCurve: { pct: 0, menu: false }
+  buttonExtension: { pct: 3.3 } # x chest: about 1 1/4 in, as the overcoat
+  buttons: { count: 3, min: 2, max: 5 }
+  breakAt: { pct: 48, min: 0, max: 100, menu: style } # chest line to waist: the lapel turns at the top button, as drawn
+  buttonBottom: { pct: 57, min: 20, max: 90, menu: style } # x waistToSeat: the last button about 6 in below the waist
+  lapelWidth: { pct: 24 }
+  collarWidth: { pct: 22 }
+  # The vent from 22 to the hem: about 21 in as drawn; the jacket's other ends of the range are too short
+  ventLength: { pct: 198, min: 60, max: 260 }
+  ventWidth: { pct: 4 }
+  sleeveVent: { bool: false } # none drawn
+  sleeveButtons: { count: 0 }
+  breastPockets: { bool: true }
+
+pieces:
+  back:
+    prefix: topcoat # named like the inherited pieces
+    from: bent.back
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [chestEase, waistEase, seatEase, bicepsEase, cuffEase, backShare, lengthBelowWaist, vent, ventLength, ventWidth, liningPleat, hemFlare]
+    ops:
+      - body3Back:
+          seamAt: 0.3
+          flare: seat * hemFlare
+          vent: { if: vent, length: waistToSeat * ventLength, width: chest * ventWidth }
+  front:
+    prefix: jacket # named like the inherited pieces
+    from: bent.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat, neck]
+    options: [frontDrop, hemCurve, hemFlare, buttonExtension, buttons, breakAt, buttonBottom, breastPockets, lowerPockets, pocketFlaps, facingWidth, lapelWidth, gorgeAt, lining, neckFacingWidth, insidePockets]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to the old side seam
+      topButton: underarm.y + (cfWaist.y - underarm.y) * breakAt
+    ops:
+      - body3Front:
+          seamAt: 0.12
+          ext: ext
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          r: 0
+          flare: seat * hemFlare
+          buttons:
+            count: buttons
+            top: topButton
+            bottom: cfWaist.y + waistToSeat * buttonBottom
+          clear: q * 0.08
+          welt: 0.18
+          welts:
+            # As drawn, a long slanted welt on the breast, rising to the side; the flap pocket falling to the side
+            breast: { x: q * 0.2, y: underarm.y + q * 0.08, len: q * 0.42, rise: q * 0.14, bag: 1.15, mark: breastPockets }
+            lower: { x: q * 0.24, y: cfWaist.y + waistToSeat * 0.21, len: q * 0.62, rise: q * -0.22, bag: 1.2, mark: lowerPockets, flap: "if(pocketFlaps, 0.28, 0)" }
+          lapel:
+            breakY: topButton
+            rollOut: neck * 0.05
+            gorgeAt: gorgeAt
+            width: neck * lapelWidth
+      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: lining }

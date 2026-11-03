@@ -852,6 +852,13 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a belt, a velvet collar, cuff buttons, tails, a shirt and tie, a person.
 
+### fitted-overcoat: Fitted overcoat
+> **Close at the waist and flaring out below it to a full skirt, with no seam across the waist: long seams run unbroken from the armholes to the hem.** A men's **fitted overcoat** in plain dark wool
+> (navy, charcoal or brown), to **the knee**. Single-breasted, **exactly three buttons**, the top one at the turn of **notched lapels** above the waist. **A long slanted welt on the left breast**, and **one flap pocket
+> each side, sloping down toward the side**. Plain two-piece sleeves, no cuff buttons. Shown flat on an invisible form, front view.
+>
+> Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
+
 *Current image has five buttons; the pattern has four.*
 
 ### chore-coat: Chore coat

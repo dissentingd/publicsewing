@@ -20,13 +20,14 @@ function bodyTargets({ points, measurements, options }) {
 
 /**
  * One seam's two edges, as Paths from its start on the armhole down to the hem. `x0` is the
- * seam's line, dw/ds what it takes in at the waist and seat (split evenly either side).
+ * seam's line, dw/ds what it takes in at the waist and seat (split evenly either side), `flare` how
+ * far each edge goes out past the seat line's width at the hem.
  */
-function seamEdges({ Path, Point }, start, x0, dw, ds, waistY, seatY, hemY) {
+function seamEdges({ Path, Point }, start, x0, dw, ds, waistY, seatY, hemY, flare = 0) {
   const edge = (sign) => {
     const w = new Point(x0 + (sign * dw) / 2, waistY)
     const s = new Point(x0 + (sign * ds) / 2, seatY)
-    const h = new Point(x0 + (sign * ds) / 2, hemY)
+    const h = new Point(x0 + (sign * ds) / 2 - sign * flare, hemY)
     const a = (waistY - start.y) / 3
     const b = (seatY - waistY) / 3
     // A body cut off above the seat line, for a skirt (`body3SkirtPart`): straight on from the waist
@@ -66,9 +67,10 @@ function levels({ points, Point, measurements, options }, c) {
 /**
  * The back panel, on the fold. Its seam leaves the armhole `seamAt` of the way up. `vent`:
  * { length, width }, a back vent from the hem `length` up, lapping `width` past CB, its top cut
- * at 45 degrees; the back is then cut in pairs with a CB seam.
+ * at 45 degrees; the back is then cut in pairs with a CB seam. `flare` (mm): each seam edge out
+ * this much past the seat line's width at the hem (as on the front).
  */
-export function draftBody3Back(sh, { seamAt = 0.3, vent, nr = 2 } = {}) {
+export function draftBody3Back(sh, { seamAt = 0.3, vent, nr = 2, flare = 0 } = {}) {
   const { points, paths, Path, Point, options, store, sa, macro, snippets, Snippet, part } = sh
   cleanup(sh, ['backArmhole', 'backCollar'])
   const { waistY, seatY, hemY } = levels(sh, 'cb')
@@ -77,7 +79,7 @@ export function draftBody3Back(sh, { seamAt = 0.3, vent, nr = 2 } = {}) {
   points.seamStart = paths.armholeFull.shiftAlong(paths.armholeFull.length() * seamAt)
   const [lowerArm, upperArm] = paths.armholeFull.split(points.seamStart)
   const k = options.backShare
-  const { left, right } = seamEdges(sh, points.seamStart, points.seamStart.x, Dw * k, Ds * k, waistY, seatY, hemY)
+  const { left, right } = seamEdges(sh, points.seamStart, points.seamStart.x, Dw * k, Ds * k, waistY, seatY, hemY, flare)
   store.set('blouse.back', { right, lowerArm, S, hemY, seam: left.length(), ...(hemY <= seatY ? { bottom: left.end().x } : {}) })
   points.seamHem = left.end()
   // CB: the fold, or a seam with a vent at the hem
@@ -137,7 +139,7 @@ export function draftBody3Back(sh, { seamAt = 0.3, vent, nr = 2 } = {}) {
  * `toShoulder`: the facing runs round the neck to the shoulder (for a lining), not to the neckline.
  * `buttons.rows` (default on CF): double-breasted, each row's x.
  */
-export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons, welts = {}, clear = 0, welt = 0.2, nr = 1, r = 0, lapel, toShoulder = false }) {
+export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons, welts = {}, clear = 0, welt = 0.2, nr = 1, r = 0, lapel, toShoulder = false, flare = 0 }) {
   const { points, paths, Path, Point, options, store, sa, macro, snippets, Snippet, part } = sh
   cleanup(sh, ['frontArmhole', 'frontCollar'])
   const { waistY, seatY, hemY } = levels(sh, 'cf')
@@ -146,7 +148,7 @@ export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons,
   points.seamStart = paths.armholeFull.shiftAlong(paths.armholeFull.length() * seamAt)
   const [lowerArm, upperArm] = paths.armholeFull.split(points.seamStart)
   const k = 1 - options.backShare
-  const { left, right } = seamEdges(sh, points.seamStart, points.seamStart.x, Dw * k, Ds * k, waistY, seatY, hemY)
+  const { left, right } = seamEdges(sh, points.seamStart, points.seamStart.x, Dw * k, Ds * k, waistY, seatY, hemY, flare)
   store.set('blouse.front', { right, lowerArm, seam: left.length() })
   points.seamHem = left.end()
   store.set('coat.frontEdge', { ext, facing, r, drop, ...(toShoulder ? { toShoulder } : {}) })
