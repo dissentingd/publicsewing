@@ -1,0 +1,41 @@
+# Patterns by others, listed in the Inspired Designs page's category tables and linked, not hosted. Every
+# entry's own page was read for its size and licence (CC BY 4.0, credit Open+Pattern) on 2026-11-03:
+# check both when adding one. Write `about` in our own words; don't copy their text or photos.
+# category: an id from designs/lib/categories.mjs. ours: our design drafted from this pattern.
+# Left out, having no section: German Zeltbahn 31, Zeltbahn Hood, Hungarian Zeltbahn M49/82,
+# British Boonie Hat, US Army Cold Weather Mask, Swiss M70/M79 backpack.
+base: https://openpattern.io/product/
+by: Open+Pattern
+patterns:
+  - { name: US M1951 Fishtail Parka, category: coats, path: us-m1951-fishtail-parka-pattern, about: US Army parka with a fishtail back, sizes: single size (L) }
+
+  - { name: British Army Combat Rain Jacket, category: jackets, path: british-army-combat-rain-jacket-pattern, about: British Army rain jacket, sizes: single size }
+  - { name: British Army CS95 Field Combat Smock, category: jackets, path: british-army-cs95-field-combat-smock, about: British Army field jacket, sizes: single size }
+  - { name: Bundeswehr Reversible Jacket Snow, category: jackets, path: bundeswehr-reversible-jacket-snow, about: German Army reversible jacket for snow, sizes: XS–XXL }
+  - { name: Finnish M62 Reversible Jacket, category: jackets, path: finnish-m62-reversible-jacket, about: Finnish Army reversible jacket, sizes: XS–XXL }
+  - { name: MA-1 Bomber Jacket 1971, category: jackets, path: ma-1-bomber-jacket-1971, about: US flight jacket from 1971, sizes: single size (M) }
+  - { name: Swedish Army M54 Motorcycle Jacket, category: jackets, path: swedish-army-motorcycle-jacket-ordonnansjacka-m-1954, about: Swedish Army dispatch rider's jacket, sizes: single size (M) }
+  - { name: Swedish Army M90 Air Combat Jacket, category: jackets, path: swedish-army-m90-air-combat-jacket, about: Swedish Army combat jacket, sizes: single size }
+  - { name: Swiss M70 Field Jacket, category: jackets, path: swiss-m70-field-jacket, about: Swiss Army field jacket, sizes: 42–66 }
+  - { name: US Army BDU Jacket (1981), category: jackets, path: us-army-bdu-jacket-1981, about: US Army Battle Dress Uniform jacket, sizes: XS–XXL }
+  - { name: US Army ACU Jacket (2014), category: jackets, path: us-army-acu-jacket-2014, about: US Army Combat Uniform jacket, sizes: single size }
+  - { name: US Army M65 Jacket, category: jackets, path: us-army-m65-jacket, about: US Army field jacket, sizes: single size }
+  - { name: US Army Tropical Combat Jacket (1962), category: jackets, path: us-army-tropical-combat-jacket, about: US Army hot-weather combat jacket, sizes: single size }
+  - { name: US Physical Training Reflective Windbreaker, category: jackets, path: us-pt-windbreaker-jacket, about: US military training windbreaker, sizes: XS–XXL }
+
+  - { name: British High Vis Vest, category: vests, path: british-high-vis-vest, about: British high-visibility vest, sizes: single size }
+
+  - { name: British Army CS95 UBACS Shirt, category: tops, path: british-army-cs95-ubacs-shirt, about: British Army shirt worn under body armour, sizes: single size }
+  - { name: British CS95 Combat Shirt, category: tops, path: british-95-combat-shirt-pattern, about: British Army combat shirt, sizes: XS–XXL }
+  - { name: Loose Fit T-Shirt, category: tops, path: loose-fit-t-shirt, about: A loose T-shirt, sizes: XS–XL }
+  - { name: Slim Fit T-Shirt, category: tops, path: slim-fit-t-shirt, about: A slim T-shirt, sizes: XS–XL }
+  - { name: Standard Fit T-Shirt, category: tops, path: standard-fit-t-shirt, about: A standard T-shirt, sizes: XS–XL, ours: t-shirt }
+  - { name: Swiss M59 Field Shirt, category: tops, path: swiss-m59-field-shirt, about: Swiss Army field shirt, sizes: single size }
+  - { name: Swiss M83 Overshirt, category: tops, path: m83-swiss-overshirt, about: Swiss Army overshirt, sizes: XS–XXL }
+  - { name: US Navy Sweatshirt, category: tops, path: us-navy-sweater, about: US Navy sweatshirt, sizes: single size }
+  - { name: US Tactical Smock, category: tops, path: us-tactical-smock, about: Hooded pullover smock, sizes: XS–XXL, ours: anorak }
+
+  - { name: British Army CS95 Field Combat Trouser, category: trousers, path: british-army-cs95-field-combat-trouser, about: British Army field trousers, sizes: single size, ours: field-trousers }
+  - { name: Swiss M70 Field Pant, category: trousers, path: swiss-m70-field-pant, about: Swiss Army field trousers, sizes: XS–XXL }
+  - { name: TuTa Jumpsuit, category: trousers, path: tuta-jumpsuit-thayaht-1920, about: Thayaht's 1920 jumpsuit, sizes: single size, ours: jumpsuit }
+  - { name: US Army ACU Pant (2014), category: trousers, path: us-army-combat-uniform-acu-pant, about: US Army Combat Uniform trousers, sizes: single size }

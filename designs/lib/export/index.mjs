@@ -1,5 +1,6 @@
 // Every export format for one drafted pattern, shared by tools/export.mjs and the site's
 // download panel. Runs in Node and the browser.
+import { adaptedCredit } from '../coat.mjs'
 import { pieces } from './pieces.mjs'
 import { toDxf } from './dxf.mjs'
 import { toSeamly } from './seamly.mjs'
@@ -12,7 +13,8 @@ export { fromSmis } from './smis.mjs'
 /** Credit lines for the files, from a design's `about.source` (CC BY sources must be credited in them) */
 export function credits(source) {
   const lines = source ? [`SOURCE: ${source}`] : []
-  if (/Open\+Pattern/.test(source ?? '')) lines.push('CREDIT: based on a pattern by Open+Pattern (openpattern.io), CC BY 4.0')
+  const credit = adaptedCredit(source)
+  if (credit.length) lines.push(`CREDIT: ${credit.join(' ')}`)
   return lines
 }
 

@@ -326,3 +326,6 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
 .learn-term img { display: block; width: 100%; margin-bottom: 0.75rem; }
 .learn-term dt { margin-bottom: 0.25rem; }
 .learn-term dd { margin: 0; font-size: 0.9rem; line-height: 1.5; }
+
+/* Designs page: a pattern that's someone else's, linked rather than hosted */
+.external-tag { display: inline-block; padding: 0 0.4rem; border: 1px solid var(--ifm-color-emphasis-500); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }

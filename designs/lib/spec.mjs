@@ -23,6 +23,7 @@ import {
   backLiningPart,
   sleevePart,
   cuffPart,
+  adaptedCredit,
 } from './coat.mjs'
 import { markPocket, pocketPart, flapPart, beltPart, setInPocketPart } from './pockets.mjs'
 import { applyRaglan, raglanSleevePart } from './raglan.mjs'
@@ -548,7 +549,7 @@ export function designFromSpec(spec) {
   // A test square on its own piece, in every design: printed at 100%, the box is its stated size
   parts.testSquare = {
     name: `${spec.about.id}.testSquare`,
-    draft: ({ points, Point, macro, part }) => {
+    draft: ({ points, paths, Point, Path, macro, part }) => {
       points.scalebox = new Point(0, 0)
       macro('scalebox', {
         at: points.scalebox,
@@ -557,6 +558,12 @@ export function designFromSpec(spec) {
         text: 'Draft pattern, untested. Print at 100% and measure this box.',
         link: 'publicsewing.org',
       })
+      // Printed patterns have no other place for a source's credit that every format keeps
+      adaptedCredit(spec.about.source).forEach((line, i) => {
+        points[`credit${i}`] = new Point(-51, 34 + i * 5).addText(line, 'text-xs')
+      })
+      if (adaptedCredit(spec.about.source).length)
+        paths.creditSpace = new Path().move(new Point(-51, 30)).line(new Point(58, 46)).hide()
       return part
     },
   }

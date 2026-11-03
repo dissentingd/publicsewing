@@ -22,6 +22,16 @@ export const bodyMeasurements = ['seat', 'waist', 'waistToSeat']
 /** Title macro with our brand instead of FreeSewing's */
 export const title = (macro, config) => macro('title', { brand: BRAND, ...config })
 
+/** The credit an Inspired design carries in every file made from it, by its `about.source` */
+export const adaptedCredit = (source) => {
+  if (/Open\+Pattern/.test(source ?? ''))
+    return ['Our own interpretation, inspired by Open+Pattern (CC BY 4.0).', 'Credit and licence: publicsewing.org/sources#open-pattern']
+  // In Latin letters: the printed pattern's font may not have Cyrillic
+  if (/ЕМКО/.test(source ?? ''))
+    return ['Our own interpretation, inspired by EMKO SEV vol. 3 (1988).', 'More: publicsewing.org/sources#emko']
+  return []
+}
+
 /** Remove what an inherited part drew, except the paths named in `keep` */
 export function cleanup({ paths, snippets, macro }, keep = []) {
   for (const p in paths) if (!keep.includes(p)) delete paths[p]

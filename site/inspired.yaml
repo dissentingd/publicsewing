@@ -1,0 +1,18 @@
+# Designs on the Inspired Designs page; every other design is on Historical Designs. Here: designs
+# from a rub-off or a deconstructed tracing, or from an original still in copyright, taking only its
+# methods and proportions. A list here rather than a spec field, because designs that extend one of
+# these (the boys' suit jacket extends the suit jacket) have their own, historical sources.
+designs:
+  # Open+Pattern's garments, taken apart and digitised (CC BY 4.0)
+  - anorak
+  - field-trousers
+  - jumpsuit
+  - t-shirt
+  # ЕМКО СЭВ т.3 (1988, in copyright), methods and proportions only
+  - quilted-jacket
+  - suit-jacket
+  - suit-trousers
+  - topcoat
+  - waistcoat
+  - windbreaker
+  - winter-coat

@@ -38,5 +38,10 @@ Needs `../designs` installed (`npm install` there): the site builds the designs 
   tool's menus (the build fails on an option the tool doesn't show), the variant's pattern pieces,
   and its illustration if `illustrations/<design>.<variant>.jpg` exists. Its **Use this variant**
   button (`src/components/VariantButton.jsx`) sets those options in the tool and goes to it.
+- **`inspired.yaml`:** the designs on Inspired Designs (`/inspired`), from a rub-off, a tracing or an
+  original still in copyright. Every other design is on Historical Designs (`/designs`). A design's
+  own page is at `/designs/<id>` either way.
+- **`external.yaml`:** others' patterns, listed among ours on Inspired Designs and tagged External:
+  a link out, with no page or files here. An entry's `ours` links it with the design drafted from it.
 - **Adding a design:** nothing to do here, except adding it to the dropdown in
   `.github/ISSUE_TEMPLATE/muslin-report.yml`.

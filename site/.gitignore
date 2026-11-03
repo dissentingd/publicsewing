@@ -4,6 +4,7 @@ build/
 # Written by scripts/generate.mjs from ../designs
 src/generated/
 docs/designs/
+docs/inspired/
 static/img/drape/
 static/img/illustrations/
 static/img/previews/

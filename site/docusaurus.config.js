@@ -93,7 +93,8 @@ export default {
     navbar: {
       title: 'PublicSewing',
       items: [
-        { to: '/designs', label: 'Designs', position: 'left' },
+        { to: '/designs', label: 'Historical Designs', position: 'left' },
+        { to: '/inspired', label: 'Inspired Designs', position: 'left' },
         { to: '/measure', label: 'Measure', position: 'left' },
         { to: '/sew-and-test', label: 'Sew & Test', position: 'left' },
         { to: '/learn', label: 'Learn', position: 'left' },
@@ -104,8 +105,8 @@ export default {
     footer: {
       style: 'light',
       copyright:
-        'PublicSewing © David Borowski II. Code PolyForm Noncommercial 1.0.0, content CC BY-NC 4.0. ' +
-        'Built on FreeSewing (MIT), not part of it. Not for AI training. No cookies, no analytics.',
+        'PublicSewing © David Borowski II. <a href="/sources#licence">Code PolyForm Noncommercial 1.0.0, content CC BY-NC 4.0</a>. ' +
+        '<a href="/sources#freesewing">Built on FreeSewing</a> (MIT), not part of it. Not for AI training. <a href="/sources#privacy">No cookies, no analytics</a>.',
     },
     prism: { theme: themes.github, darkTheme: themes.dracula },
   },

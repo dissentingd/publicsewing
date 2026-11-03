@@ -8,7 +8,9 @@
 // - docs/designs/<category>/<id>.mdx: a page per design from its BRIEF.md, with its drape renders
 //   and the editor, at /designs/<id> (its slug); static/img/drape/<id>/: those renders. A folder
 //   is a sidebar group, from the design's about.category (lib/categories.mjs)
-// - docs/designs/index.mdx: the Designs page, a table per category, by name within each
+// - docs/designs/index.mdx: the Historical Designs page, a table per category, by name within each
+// - docs/inspired/: the same for the designs in inspired.yaml, at /inspired, with others' patterns
+//   from external.yaml among ours: a link out, with no page here. Design pages keep /designs/<id>
 // - static/img/illustrations/<id>.jpg: the finished-garment illustration from illustrations/,
 //   where there is one, at the top of the design's page and in the Designs table
 // - static/img/previews/<id>.png: the design's preview-<set>.png (its pattern pieces, from
@@ -89,20 +91,34 @@ writeFileSync(out('src', 'generated', 'sizes.json'), JSON.stringify(sizes))
 
 // Design pages
 rmSync(out('docs', 'designs'), { recursive: true, force: true })
+rmSync(out('docs', 'inspired'), { recursive: true, force: true })
 rmSync(out('static', 'img', 'drape'), { recursive: true, force: true })
 rmSync(out('static', 'img', 'illustrations'), { recursive: true, force: true })
 mkdirSync(out('static', 'img', 'illustrations'), { recursive: true })
 rmSync(out('static', 'img', 'previews'), { recursive: true, force: true })
 mkdirSync(out('static', 'img', 'previews'), { recursive: true })
-mkdirSync(out('docs', 'designs'), { recursive: true })
-writeFileSync(
-  out('docs', 'designs', '_category_.json'),
-  JSON.stringify({ label: 'Designs', position: 2, link: { type: 'doc', id: 'designs/index' } }, null, 2)
-)
-categories.forEach((c, i) => {
-  mkdirSync(out('docs', 'designs', c.id), { recursive: true })
-  writeFileSync(out('docs', 'designs', c.id, '_category_.json'), JSON.stringify({ label: c.label, position: i + 1 }, null, 2))
-})
+
+// The two pages of designs. `folder` is under docs/: a sidebar group, and the page's address
+const inspiredIds = parse(readFileSync(out('inspired.yaml'), 'utf8')).designs
+for (const id of inspiredIds) if (!ids.includes(id)) throw new Error(`inspired.yaml: no design ${id}`)
+const collections = [
+  { folder: 'designs', label: 'Historical Designs', position: 2, has: (id) => !inspiredIds.includes(id) },
+  { folder: 'inspired', label: 'Inspired Designs', position: 2.5, has: (id) => inspiredIds.includes(id) },
+]
+const collectionOf = (id) => collections.find((c) => c.has(id))
+for (const { folder, label: name, position, has } of collections) {
+  mkdirSync(out('docs', folder), { recursive: true })
+  writeFileSync(
+    out('docs', folder, '_category_.json'),
+    JSON.stringify({ label: name, position, link: { type: 'doc', id: `${folder}/index` } }, null, 2)
+  )
+  // A section with no page of its own here (only others' patterns, or nothing) isn't a sidebar group
+  categories.forEach((c, i) => {
+    if (!ids.some((id) => has(id) && specs[id].about.category === c.id)) return
+    mkdirSync(out('docs', folder, c.id), { recursive: true })
+    writeFileSync(out('docs', folder, c.id, '_category_.json'), JSON.stringify({ label: c.label, position: i + 1 }, null, 2))
+  })
+}
 
 /** A brief's Markdown, made safe for MDX: no H1 (the page has its own), relative links to GitHub */
 const repo = 'https://github.com/dissentingd/publicsewing/blob/main'
@@ -137,7 +153,26 @@ function mdx(md, id) {
     .replace(/<(?=[^a-zA-Z/!])/g, '&lt;')
 }
 
-const rows = Object.fromEntries(categories.map((c) => [c.id, []]))
+const newRows = () => Object.fromEntries(categories.map((c) => [c.id, []]))
+const rows = { designs: newRows(), inspired: newRows() }
+
+// Others' patterns: a row in the Inspired tables, linking out. `ours` ties one to our design from it
+const external = parse(readFileSync(out('external.yaml'), 'utf8'))
+const original = {}
+for (const p of external.patterns) {
+  const where = `external.yaml, ${p.name}`
+  if (!rows.inspired[p.category]) throw new Error(`${where}: category isn't one of lib/categories.mjs`)
+  if (p.ours && !ids.includes(p.ours)) throw new Error(`${where}: no design ${p.ours}`)
+  if (p.ours && !inspiredIds.includes(p.ours)) throw new Error(`${where}: ${p.ours} isn't in inspired.yaml`)
+  const url = `${external.base}${p.path}/`
+  if (p.ours) original[p.ours] = { name: p.name, url }
+  const ours = p.ours ? ` We also draft it to measure: [${specs[p.ours].about.name}](/designs/${p.ours}).` : ''
+  rows.inspired[p.category].push({
+    name: p.name,
+    row: `| | [${p.name}](${url})<br /><span className="external-tag">External</span> | ${p.about}.<br /><small>Fixed sizes: ${p.sizes}. Pattern by [${external.by}](/sources#open-pattern), on their site.${ours}</small> |`,
+  })
+}
+
 ids.forEach((id, i) => {
   const spec = specs[id]
   const about = spec.about
@@ -174,7 +209,7 @@ ids.forEach((id, i) => {
     illustrated &&
       `<figure className="illustration">
   ${img('illustration-img')}
-  <figcaption>An AI-generated illustration of the design at its default options, not drawn from the pattern.</figcaption>
+  <figcaption>An <a href="/sources#illustrations">AI-generated illustration</a> of the design at its default options, not drawn from the pattern.</figcaption>
 </figure>`,
     preview &&
       `<figure className="illustration">
@@ -202,7 +237,7 @@ ids.forEach((id, i) => {
       pic &&
         `<figure className="illustration">
   <img className="illustration-img" src={useBaseUrl('/img/illustrations/${id}.${key}.jpg')} alt="${about.name}, ${v.name}: illustration of the finished garment" loading="lazy" />
-  <figcaption>An AI-generated illustration of this variant, not drawn from the pattern.</figcaption>
+  <figcaption>An <a href="/sources#illustrations">AI-generated illustration</a> of this variant, not drawn from the pattern.</figcaption>
 </figure>`,
       pieces &&
         `<figure className="illustration">
@@ -235,11 +270,19 @@ ${variants.join('\n')}
 `
     : ''
   const variantLinks = Object.entries(spec.variants ?? {}).map(([key, v]) => `[${v.name}](/designs/${id}#${key})`)
-  rows[about.category].push(
-    `| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | [${about.name}](/designs/${id})${variantLinks.length ? `<br /><small>Variants: ${variantLinks.join(' · ')}</small>` : ''} | ${info.garment}<br /><small>Difficulty ${about.difficulty} of 5. Source: ${info.source}</small> |`
-  )
+  const { folder } = collectionOf(id)
+  const sourceLabel = folder === 'inspired' ? 'Inspired by' : 'Source'
+  rows[folder][about.category].push({
+    name: about.name,
+    row: `| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | [${about.name}](/designs/${id})${variantLinks.length ? `<br /><small>Variants: ${variantLinks.join(' · ')}</small>` : ''} | ${info.garment}<br /><small>Difficulty ${about.difficulty} of 5. ${sourceLabel}: ${info.source}</small> |`,
+  })
+  const originalLine = original[id]
+    ? `\n\nOur own interpretation, inspired by [${original[id].name}](${original[id].url}) from [${external.by}](/sources#open-pattern).`
+    : /ЕМКО/.test(about.source ?? '')
+      ? `\n\nOur own interpretation, inspired by [ЕМКО СЭВ](/sources#emko).`
+      : ''
   writeFileSync(
-    out('docs', 'designs', about.category, `${id}.mdx`),
+    out('docs', folder, about.category, `${id}.mdx`),
     `---
 title: ${JSON.stringify(about.name)}
 description: ${JSON.stringify(about.description)}
@@ -258,7 +301,7 @@ match, but that doesn't prove it fits. Sew a muslin before good fabric, and plea
 [report what happened](/sew-and-test#report).
 :::
 
-${info.garment}. Source: ${info.source}.${variantsLine}
+${info.garment}. ${sourceLabel}: ${info.source}.${originalLine}${variantsLine}
 
 ## Make the pattern
 
@@ -280,35 +323,70 @@ ${mdx(brief, id)}
   )
 })
 
-writeFileSync(
-  out('docs', 'designs', 'index.mdx'),
-  `---
-title: Designs
-sidebar_position: 0
+// A page of designs: its introduction, then a table per section that has anything in it
+const designsPage = (folder, title, slug, position, intro) => {
+  const sections = categories.filter((c) => rows[folder][c.id].length)
+  writeFileSync(
+    out('docs', folder, 'index.mdx'),
+    `---
+title: ${title}
+slug: ${slug}
+sidebar_position: ${position}
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
-Every design is a **draft**: none has been sewn yet. Each page has the pattern tool for that
-design, its 3D drape, and its brief.
+${intro}
 
 <nav className="design-sections" aria-label="Sections">
-${categories
+${sections
   .map(
     (c) => `  <a href="#${c.id}"><img src={useBaseUrl('/img/illustrations/${c.image}.jpg')} alt="" /><span>${c.label.replace('&', '&amp;')}</span></a>`
   )
   .join('\n')}
 </nav>
 
-${categories
+${sections
   .map(
     (c) => `## ${c.label} {#${c.id}}
 
 | | Design | Garment |
 |---|---|---|
-${rows[c.id].join('\n')}
+${rows[folder][c.id]
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((r) => r.row)
+  .join('\n')}
 `
   )
   .join('\n')}`
+  )
+}
+
+designsPage(
+  'designs',
+  'Historical Designs',
+  '/designs',
+  0,
+  `Designs from old drafting books and other public-domain sources, redrafted from the wearer's
+measurements. Every design is a **draft**: none has been sewn yet. Each page has the pattern tool
+for that design, its 3D drape, and its brief.
+
+See also [Inspired Designs](/inspired), from copied garments and sources still in copyright.`
 )
 
-console.log(`generated: ${ids.length} designs, ${Object.values(sizes).flat().length} size sets`)
+designsPage(
+  'inspired',
+  'Inspired Designs',
+  '/inspired',
+  0,
+  `Garments that start from a rub-off, a deconstructed tracing, or an original still in copyright.
+Our own designs here take the original's pieces, proportions and construction, and draft them from
+the wearer's measurements, so none is an exact copy. They are all **drafts**: none has been sewn yet.
+You can [copy a garment and submit it](/contribute) too.
+
+Entries tagged <span className="external-tag">External</span> aren't ours: they're fixed-size
+patterns on [${external.by}](/sources#open-pattern)'s site.
+
+See also [Historical Designs](/designs), from old drafting books.`
+)
+
+console.log(`generated: ${ids.length} designs, ${external.patterns.length} external, ${Object.values(sizes).flat().length} size sets`)
