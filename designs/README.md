@@ -11,6 +11,8 @@ npm run sizes                              # re-parse and check the USDA transcr
 NODE_PATH=$(npm root -g) node tools/render.mjs chore-coat cisMaleAdult38 usdaBoyC5 stoutMale48 --png
 NODE_PATH=$(npm root -g) node tools/snap.mjs out/some.svg     # PNG preview of any SVG
 NODE_PATH=$(npm root -g) node tools/preview.mjs chore-coat     # the site page's pattern-pieces preview (no args: all)
+NODE_PATH=$(npm root -g) node tools/compare.mjs chore-coat --pages 12,13   # the source's PDF pages above the pieces at 3 sizes
+NODE_PATH=$(npm root -g) node tools/page-check.mjs chore-coat  # the built page in a browser: drafts, variants, downloads, PDFs
 ```
 
 Converting a design to a spec (`<design>/spec.yaml`, built by `lib/spec.mjs`; the chore coat is

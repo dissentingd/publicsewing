@@ -315,6 +315,15 @@ Tests prove the pieces are consistent, not that they're the right garment. Rende
 NODE_PATH=$(npm root -g) node tools/render.mjs <design> cisMaleAdult38 usdaBoyC5 stoutMale48 --png
 ```
 
+Or put them on one sheet with the source's diagram pages, numbered as PDF pages:
+
+```bash
+NODE_PATH=$(npm root -g) node tools/compare.mjs <design> --pages 53,55
+```
+
+It writes `designs/out/<design>-compare.png`, and takes `--source` for a PDF or image outside
+`corpus/`, `--sets` and `--options`. Don't commit a sheet: the source may be in copyright.
+
 Open the PNGs from `designs/out/` next to the source's diagram. Crop and zoom into a region when
 a mark is small. Look for:
 - the pieces' outlines against the source's;
@@ -384,8 +393,14 @@ from the page.
    - SOURCING.md: the source's row, listing the designs it feeds.
    - WARDROBE_GAPS.md: the garment's row and the progress count.
    - `.github/ISSUE_TEMPLATE/muslin-report.yml`: the design in its dropdown.
-4. **Check the page** with `npm start` in `site/`: the pattern tool drafts, and **Export** makes
-   a PDF.
+4. **Check the page:** `npm run build` in `site/`, then in `designs/`:
+
+   ```bash
+   NODE_PATH=$(npm root -g) node tools/page-check.mjs <design>
+   ```
+
+   It opens the built page in a browser: the tool drafts at a size, each variant's button changes
+   the drawing, every download and the tiled PDFs are made, with no console errors.
 5. **Commit one garment per commit.** Stage your files by name, not `git add -A`: other work may
    be in the same checkout. Before pushing, check the commit's `--stat` for files rewritten only
    by line endings.
