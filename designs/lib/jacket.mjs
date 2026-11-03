@@ -118,7 +118,14 @@ export function draftJacketBase(sh, { side, backSeamAt = 0.5, style = 'princess'
  * { seat: seat girth with ease, hipDepth: waist to seat line, length: waist to hem,
  *   lap, breakBelow (bust line to the break), rollOut, lapelWidth, gorgeAt (0-1 along the
  *   front neck from the neck point), peak (bool), facing, rows (double-breasted: the two rows
- *   of buttons this far either side of CF), closed (bool: no lapel, buttoned to the neck) }
+ *   of buttons this far either side of CF), closed (bool: no lapel, buttoned to the neck),
+ *   kimono (Mitchell's kimona sleeve, cut in one with the side back and side front:
+ *   { length: neck point to wrist, hem: round the sleeve's end, depth: the side seam's top below
+ *   the armhole, angleBack, angleFront: degrees below level }) }
+ * With `kimono` there's no armhole: from the top of each princess seam the overarm runs straight out
+ * at its angle, the neck point to the wrist `length` on both sides (a shoulder dart's width not
+ * counted). Square to it at the wrist, the hem; the hem is shared so the two underarm seams, to the
+ * side seam `depth` below the armhole, are the same length. Store: `jacket.kimono`.
  */
 export function draftJacketLayout(sh, a) {
   const { Path, Point, store } = sh
@@ -221,6 +228,7 @@ export function draftJacketLayout(sh, a) {
     return { S, toS, fromS, Wc, Wu, hemC: hemAt(Wc, 1) }
   }
   const under = {}
+  const outer = {} // each side panel's seam and hem, and what its top is built from, for `kimono`
 
   // ---- back ----
   let backCentre // the back panel's princess seam and hem, for the lining
@@ -258,6 +266,7 @@ export function draftJacketLayout(sh, a) {
       under.back = u
     }
     backCentre = { seam: seam.centre, hemC, hemCs }
+    outer.back = { r, body: () => seam.side.clone().line(hemSc).line(hemS).line(r.waist.clone()), hemS, seamLen: r.waist.dist(hemS) }
     seams.backPrincess = [seam.centre.length() + r.lower.c.dist(hemCs), seam.side.length() + r.lower.s.dist(hemSc)]
     if (!ua) seams.sideBack = r.sideAbove.length() + r.waist.dist(hemS)
     seams.shoulderBack = r.hps.dist(r.shoulder)
@@ -343,6 +352,7 @@ export function draftJacketLayout(sh, a) {
     seams.frontPrincess = [seam.centre.length() + r.lower.c.dist(hemCs), seam.side.length() + r.lower.s.dist(hemSc)]
     if (!ua) seams.sideFront = r.sideAbove.length() + r.waist.dist(hemS)
     let sideEdge = [r.waist, hemS] // the side front's back edge below the waist, for the pockets
+    outer.front = { r, body: () => seam.side.clone().line(hemSc).line(hemS).line(r.waist.clone()), hemS, seamLen: r.waist.dist(hemS) }
     if (ua) {
       const u = underarmCut(r, ua.front, ua.frontSuppression)
       panels.sideFront.outline = seam.side.clone().line(hemSc).line(u.hemC).line(u.Wc).line(u.S).join(u.fromS).line(r.upper.s.clone())
@@ -506,6 +516,50 @@ export function draftJacketLayout(sh, a) {
         }
       }
     }
+  }
+
+  if (a.kimono) {
+    const k = a.kimono
+    const side = (key, angle) => {
+      const { r, seamLen } = outer[key]
+      const t = (angle * Math.PI) / 180
+      const d = { x: Math.cos(t), y: Math.sin(t) }
+      const top = r.upper.s
+      const end = new Point(top.x + d.x * (k.length - r.hps.dist(r.upper.c)), top.y + d.y * (k.length - r.hps.dist(r.upper.c)))
+      const len = r.sideAbove.length()
+      const U = r.sideAbove.shiftAlong(Math.max(len - k.depth, len * 0.4))
+      const [up] = r.sideAbove.split(U)
+      // Square to the overarm, toward the body
+      const under = (w) => new Point(end.x - d.y * w, end.y + d.x * w)
+      return { key, top, end, U, up, under, d, side: up.length() + seamLen }
+    }
+    const b = side('back', k.angleBack)
+    const f = side('front', k.angleFront)
+    const diff = (s) => b.under(k.hem * s).dist(b.U) - f.under(k.hem * (1 - s)).dist(f.U)
+    let lo = 0.05
+    let hi = 0.95
+    if (Math.sign(diff(lo)) !== Math.sign(diff(hi))) {
+      for (let i = 0; i < 40; i++) {
+        const m = (lo + hi) / 2
+        if (Math.sign(diff(m)) === Math.sign(diff(lo))) lo = m
+        else hi = m
+      }
+    } else lo = hi = Math.abs(diff(lo)) < Math.abs(diff(hi)) ? lo : hi
+    const share = (lo + hi) / 2
+    const build = (o, w) => {
+      const wrist = o.under(w)
+      const outline = outer[o.key].body().join(o.up).line(wrist).line(o.end).line(o.top.clone())
+      panels[o.key === 'back' ? 'sideBack' : 'sideFront'].outline = outline
+      Object.assign(panels[o.key === 'back' ? 'sideBack' : 'sideFront'].marks, { underarm: o.U, wristUnder: wrist, wristOver: o.end, armhole: undefined, shoulder: undefined })
+      delete panels[o.key === 'back' ? 'sideBack' : 'sideFront'].marks.armhole
+      delete panels[o.key === 'back' ? 'sideBack' : 'sideFront'].marks.shoulder
+      return { over: o.top.dist(o.end), under: o.U.dist(wrist), hem: w }
+    }
+    const kb = build(b, k.hem * share)
+    const kf = build(f, k.hem * (1 - share))
+    seams.sideBack = b.side
+    seams.sideFront = f.side
+    store.set('jacket.kimono', { back: kb, front: kf, share, toWrist: [outer.back.r.hps.dist(outer.back.r.upper.c) + kb.over, outer.front.r.hps.dist(outer.front.r.upper.c) + kf.over] })
   }
 
   store.set('jacket.panels', panels)

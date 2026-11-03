@@ -18,10 +18,17 @@ export function checkJacket(pattern) {
   } else near(s.sideBack, s.sideFront, 0.5, 'side seams')
   near(s.shoulderBack, s.shoulderFront, 0.5, 'shoulder seams')
   // The two-piece sleeve's cap fits the armhole within its ease (sleevecapEase, 1-2%)
-  const a = store.get('jacket.armhole')
-  const cap = store.get('library.twoPartSleeve.sleevecapLength')
-  const arm = a.back + a.front
-  assert.ok(cap >= arm - 1 && cap <= arm * 1.05, `sleeve cap ${cap.toFixed(1)} vs armhole ${arm.toFixed(1)}`)
+  // (a kimono sleeve is cut in one with the body: its seams are checked instead)
+  const kimono = store.get('jacket.kimono', null)
+  if (kimono) {
+    near(kimono.back.under, kimono.front.under, 1, 'kimono underarm seams')
+    near(kimono.toWrist[0], kimono.toWrist[1], 0.5, 'kimono overarm, neck to wrist')
+  } else {
+    const a = store.get('jacket.armhole')
+    const cap = store.get('library.twoPartSleeve.sleevecapLength')
+    const arm = a.back + a.front
+    assert.ok(cap >= arm - 1 && cap <= arm * 1.05, `sleeve cap ${cap.toFixed(1)} vs armhole ${arm.toFixed(1)}`)
+  }
   const collar = store.get('coat.collar')
   near(collar.neck, collar.target, 1, 'collar vs neckline')
   // The lapel reaches past the crease, and the flare never narrows the seat

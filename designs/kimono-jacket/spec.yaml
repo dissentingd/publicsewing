@@ -1,0 +1,102 @@
+# Kimono jacket: Mitchell's "Semi-Fitted Kimona Jacket" (New "Standard" Work ... Ladies' Tailor-Made
+# Garments, 1921, pp. 40-41), on the tailored jacket (FreeSewing's Breanna): the same princess seams,
+# the sleeve cut in one with the side back and the side front. See BRIEF.md.
+extends: ../tailored-jacket/spec.yaml
+
+about:
+  id: kimonojacket
+  name: Kimono jacket
+  category: jackets
+  description: "A semi-fitted jacket with princess seams and sleeves cut in one with the side panels: no armhole seam"
+  difficulty: 4
+  tags: [jackets]
+  techniques: [princess-seam, lapel, collar, facing, button, flap-pocket]
+  version: 0.1.0
+  source: "Mitchell, New \"Standard\" Work on ... Ladies' Tailor-Made Garments (1921), Semi-Fitted Kimona Jacket, pp. 40-41 (newstandardworko00mitc)"
+  preview: cisFemaleAdult36
+
+options:
+  # The overarm's angle, below level, measured off p. 41: back 29 to 37, front 43 to 46
+  kimonoAngleBack: { deg: 21.5, min: 10, max: 40, menu: style }
+  kimonoAngle: { deg: 33, min: 15, max: 50, menu: style, title: Sleeve angle at the front, description: "How far the front's sleeve line falls below level, in degrees." }
+  # p. 40: "the sleeve length which is 29 inches ... from 19 to 42 and from 43 along the front sleeve line"
+  kimonoLength: { pct: 100, min: 40, max: 110, menu: style, title: Sleeve length, description: "Neck point to the sleeve's end, as a share of shoulder to wrist plus the shoulder." }
+  # p. 40: 36 from 24 is 3 in, of a 38 in bust
+  kimonoDepth: { pct: 7.9, min: 3, max: 15, of: chest, menu: fit, title: Underarm depth, description: "How far below the armhole's place the sleeve meets the side seam, as a share of the chest." }
+  # About 6 in each part, 12 in round, measured off p. 41, on about a 12 in upper arm
+  kimonoHem: { pct: 100, min: 70, max: 150, of: biceps, menu: style }
+  # A two-part sleeve's settings, and a lining the book doesn't give (no menu: not shown)
+  lining: { bool: false, menu: false }
+  liningPleat: { menu: false }
+  breastPocket: { bool: false } # none drawn
+  ticketPocket: { bool: false }
+  bicepsEase: { menu: false }
+
+pieces:
+  frontBase:
+    from: breanna.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, seat, waistToSeat, waistToFloor, neck, hpsToWaistFront, shoulderToWrist, biceps]
+    ops:
+      - jacketBase: { side: front }
+      - jacketLayout:
+          seat: seat * (1 + seatEase)
+          hipDepth: waistToSeat
+          length: waistToFloor * lengthBelowWaist
+          lap: chest * buttonExtension
+          breakBelow: hpsToWaistFront * breakBelowBust
+          rollOut: neck * rollOut
+          lapelWidth: neck * lapelWidth
+          gorgeAt: gorgeAt
+          peak: lapelStyle == 'peak'
+          facing: chest * facingWidth
+          backFacing: chest * backFacingDepth
+          lining: lining
+          liningPleat: chest * liningPleat
+          kimono:
+            length: (shoulderToWrist + shoulderToShoulder * 0.33) * kimonoLength
+            hem: biceps * kimonoHem
+            depth: chest * kimonoDepth
+            angleBack: kimonoAngleBack
+            angleFront: kimonoAngle
+          welts:
+            breast:
+              if: breastPocket
+              below: hpsToWaistFront * weltBelow
+              from: chest * weltFromCF
+              len: chest * weltLength
+              rise: weltRise
+              welt: len * weltDepth
+              bag: len * bagDepth
+              clear: chest * 0.02
+          pockets:
+            hip:
+              if: pockets
+              below: waistToSeat * pocketBelow
+              from: chest * pocketFromSeam
+              share: pocketWidth
+              angle: pocketAngle
+              flapRatio: flapDepth
+              bagRatio: bagDepth
+              clear: chest * 0.015
+            ticket:
+              if: pockets and ticketPocket
+              below: waistToSeat * (pocketBelow - ticketAbove)
+              from: chest * pocketFromSeam
+              share: pocketWidth * ticketWidth
+              angle: pocketAngle
+              flapRatio: ticketFlapDepth
+              bagRatio: bagDepth
+              clear: chest * 0.015
+  # The sleeves are cut with the side panels
+  topsleeve: { part: strip, after: [backBase, frontBase], nr: 7, length: 1, width: 1, if: "false" }
+  undersleeve: { part: strip, after: [backBase, frontBase], nr: 8, length: 1, width: 1, if: "false" }
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  notch:
+    name: Notched lapels
+    description: "The more everyday lapel, its top edge meeting the collar in a notch, in place of the peaks."
+    options: { lapelStyle: notch }

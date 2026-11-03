@@ -769,6 +769,23 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a belt, a wide bottom, flat fronts, stripes, a shirt, shoes, a person.
 
+### kimono-jacket: Kimono jacket
+> **The sleeves have no armhole seam: each sleeve runs in one with the side of the jacket, from a seam on top of the shoulder to the wrist, with a
+> long smooth line from shoulder to cuff.** A women's **semi-fitted jacket** in plain navy or grey wool, to the hip. **Princess seams** from the
+> shoulders down the front, shaped at the waist. Single-breasted, **three buttons**, **peaked lapels** and a turn-down collar. **One flap pocket each
+> side**, sloping, below the waist. The sleeves are fairly wide at the underarm and narrower at the end, plain, no cuffs. Shown flat on an
+> invisible form, front view.
+>
+> Leave out: an armhole seam, set-in or puffed sleeves, shoulder pads, cuffs, a belt, a breast pocket, Japanese kimono styling (wrap front, obi,
+> wide hanging sleeves), a person.
+
+### kimono-jacket.notch: Kimono jacket, notched lapels
+> **The sleeves have no armhole seam: each runs in one with the side of the jacket.** The same women's semi-fitted jacket in plain wool, princess
+> seams, three buttons, one sloping flap pocket each side, but **notched lapels**, the lapel's top meeting the collar in a small V. Shown flat
+> on an invisible form, front view.
+>
+> Leave out: an armhole seam, peaked lapels, shoulder pads, cuffs, a belt, a breast pocket, Japanese kimono styling, a person.
+
 *Current image has five buttons; the pattern has four.*
 
 ### chore-coat: Chore coat

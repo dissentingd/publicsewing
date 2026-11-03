@@ -21,6 +21,7 @@
   "shirtwaist-dress": { "default": {}, "shortSleeves": {"sleeves": "short"}, "variant": { "neckFinish": "band", "sleeves": "short", "opening": "back", "gathers": 1.2, "skirtLength": 0.9 } },
   "womens-peacoat": {"default": {}, "notch": {"lapelStyle": "notch"}, "single": {"doubleBreasted": false, "buttonExtension": 0.04, "buttons": 4, "lapelStyle": "peak"}, "long": {"lengthBelowWaist": 0.5, "buttons": 4, "pockets": false, "lining": false}},
   "field-jacket": {"default": {}, "plain": {"breastPockets": false, "pocketFlaps": false, "pocketShape": "rounded", "buttons": 4, "flyFront": false}, "long": {"lengthBelowWaist": 0.45, "flare": 0.05, "pockets": true, "lowerPockets": false}},
+  "kimono-jacket": {"default": {}, "notchLapels": {"lapelStyle": "notch"}, "short": {"kimonoLength": 0.5, "kimonoHem": 1.4, "pockets": false}, "steep": {"kimonoAngle": 36, "kimonoAngleBack": 26, "kimonoDepth": 0.1}},
   "tailored-jacket": { "default": {}, "notchLapels": {"lapelStyle": "notch"}, "notch": { "lapelStyle": "notch", "buttons": 4, "lengthBelowWaist": 0.3, "backSeamAt": 0.6 }, "plain": { "pockets": false, "breastPocket": false, "lining": false } },
   "childrens-smock": { "default": {}, "variant": { "opening": "front", "sleeves": "short", "neckFinish": "band", "yokeDepth": 0.3, "gathers": 2 } },
   "windbreaker": {"default": {}, "noHood": {"hood": false}, "collar": {"hood": false, "handPockets": false}, "sloped": {"frontYokeDepth": 0.72, "frontYokeArm": 0.36, "hoodDrawstring": false, "lengthBelowWaist": 1.6}},

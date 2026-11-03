@@ -76,6 +76,7 @@ and marked as derived.
 | Garment | Style | FreeSewing | Status | PD source for the style |
 |---|---|---|---|---|
 | **Tailored jacket** | 1 | — (Jaeger is menswear) | **Semi-fitted drafted 2026-10-25** (`designs/tailored-jacket`, on Breanna, not sewn); **tight-fitted with a shawl collar 2026-10-27** (`designs/fitted-jacket`, not sewn) | Mitchell 1921 `newstandardworko00mitc` |
+| Kimono jacket (semi-fitted, sleeves cut with the side panels) | 1 | — | Variant; **drafted 2026-11-03** (`designs/kimono-jacket`, on Breanna; not sewn) | Mitchell 1921 pp. 40-41 |
 | Skirt: pencil, circle, block | 1, 4 | Penelope, Sandy, Sarah | Have | — |
 | A-line / gored skirt | 5 | Sarah | **Drafted 2026-10-27** (`designs/gored-skirt`, 5–15 gores on Sarah, not sewn); **two-piece skirt 2026-10-28** (`designs/two-piece-skirt`) | Mitchell 1921 (gored and two-piece skirts) |
 | Pleated skirt (side or box) | 5 | Sarah | Variant; **drafted 2026-11-02** (`designs/pleated-skirt`: the gored skirt with pleat underlays below the hip; not sewn) | Mitchell 1921 pp. 102–107 |

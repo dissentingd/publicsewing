@@ -49,6 +49,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `pyjama-trousers` | Full sleeping trousers to the ankle, gathered at the waist | Vincent 1890 |
 | `shirtwaist-dress` | Buttoned work dress with a turn-down collar and cuffs | Woman's Institute, *Pattern Drafting* (1915) |
 | `tailored-jacket` | Women's semi-fitted jacket, princess seams, peak lapel | Mitchell 1921 |
+| `kimono-jacket` | Semi-fitted jacket with princess seams and sleeves cut in one with the side panels | Mitchell 1921 |
 | `fitted-jacket` | Women's tight-fitted jacket with an under-arm panel and a shawl collar | Mitchell 1921 |
 | `double-dart-jacket` | Tight-fitted jacket shaped by two front seams over the shoulder | Mitchell 1921 |
 | `womens-peacoat` | Women's hip-length double-breasted coat, princess seams, buttoned to the neck under a storm collar | Merz 1911 |

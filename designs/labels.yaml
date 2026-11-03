@@ -715,6 +715,12 @@ options:
   frontOpening:
     title: Front opening shift
     description: How far the front opening sits forward of the side, as a share of the knee.
+  kimonoAngleBack:
+    title: Sleeve angle at the back
+    description: How far the back's sleeve line falls below level, in degrees.
+  kimonoHem:
+    title: Sleeve end
+    description: Round the sleeve's end, as a share of the upper arm.
   kimonoLength:
     title: Sleeve length
     description: How far the sleeve runs past the shoulder point, as a share of shoulder to wrist.
