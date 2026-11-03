@@ -25,7 +25,7 @@ A piece is either drafted by operations or made by a piece type.
 | Key | What |
 |---|---|
 | `hide` | `tree` hides the block's own parts; or FreeSewing's `{ self, from, inherited }`. |
-| `measurements` | Measurements it needs beyond what its operations declare. |
+| `measurements` | Measurements it needs beyond what its operations declare. On a typed piece (`part:`) too, with `options`. |
 | `options` | The spec options it uses (a list), or `all`. |
 | `let` | Named values for its operations, worked out in order (`ext: chest * buttonExtension`). |
 | `ops` | Operations, run in order: `- <operation>: { arguments }`. Any operation takes `if:`. |

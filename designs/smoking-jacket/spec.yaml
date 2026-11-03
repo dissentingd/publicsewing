@@ -1,0 +1,92 @@
+# Smoking jacket: Vincent's "Smoking Jacket" (The Cutter's Practical Guide ... Shirts and Other
+# Undergarments, 1890, p. 28), on the dressing gown (FreeSewing's Brian): short and easy-fitting, a
+# whole back, a wide overlap with three fastenings, a wide roll collar cut in one with the front, a
+# rounded front corner, set-in hip pockets, gauntlet cuffs, lined. See BRIEF.md.
+extends: ../dressing-gown/spec.yaml
+
+about:
+  id: smoking-jacket
+  name: Smoking jacket
+  category: jackets
+  description: A short, easy-fitting lounging jacket with a wide roll collar, a wide overlap with frogs, gauntlet cuffs and slanted hip pockets
+  difficulty: 4
+  tags: [jackets]
+  techniques: [collar, facing, button, welt-pocket, lining]
+  version: 0.1.0
+  source: "Vincent, The Cutter's Practical Guide ... Shirts and Other Undergarments (1890), Smoking Jacket, p. 28 (vincentmakingshirts18xx)"
+  preview: cisMaleAdult38
+
+options:
+  # "9 to 20 3/4 half chest plus 2 3/4": 5 1/2 in round of a 38 in breast, as the gown's
+  chestEase: { pct: 14.5 }
+  # "O to 30 full length plus 1/2 in", 17 to the waist: 13 in below it as drawn
+  lengthBelowWaist: { pct: 122, max: 400 } # x waistToSeat: 13 of FreeSewing's 38's 10 5/8
+  hemFlare: { pct: 1.9 } # x seat: "allow forepart to overlap back 1 1/2 at bottom": 3/4 in each, of 40
+  frontDrop: { pct: 5 } # x waistToSeat: "add 1/2 in. at bottom"
+  hemCurve: { pct: 45, min: 0, max: 100 } # x the overlap: the rounded corner at G, as drawn
+  # "Add 3 to 3 1/2 inches for overlap"; the diagram marks 3 1/4
+  buttonExtension: { pct: 8.6, min: 3, max: 11 } # x chest: 3 1/4 of 38
+  # Three frogs, as drawn: the top one 1 in below the chest line, the last about 3 1/2 in below the waist
+  buttons: { count: 3, min: 1, max: 6 }
+  buttonTop: { pct: 33 } # x the overlap: 1 in
+  buttonBottom: { pct: 34 } # x waistToSeat: 3 5/8 of 10 5/8
+  # "Wide roll collar", the turn at F; the gown's default, as drawn here too
+  collarStyle: { dflt: shawl, list: [shawl], menu: false }
+  # "The sleeve ... making the elbow about 8 1/2 and cuff about 6 3/4 inches wide" (each half): 13 1/2
+  # round the wrist on a 38 breast: about twice the wrist
+  cuffEase: { pct: 190, min: 110, max: 220 } # x wrist: 13 1/2 of FreeSewing's 38's 7
+  # "The gauntlet cuff ... the quilted facing forms the turn-up": no depth given; ours
+  gauntletCuff: { bool: true, menu: style }
+  gauntletDepth: { pct: 45, min: 25, max: 80, of: wrist, menu: style } # about 3 in
+  gauntletFlare: { pct: 8, min: 0, max: 25, menu: style } # x its width: wider at the turned edge, as a gauntlet is
+  # "Hip pockets are put in with corded mouth": set in, slanted as drawn (12), falling toward the side
+  lowerPockets: { bool: false, menu: false }
+  handPockets: { bool: true, menu: style }
+  handPocketTop: { pct: -5 } # x waistToSeat: its top about 1/2 in below the waist, as drawn
+  handPocketAt: { pct: 33 } # x the front's chest width: its top 5 in behind CF, of 15, past the overlap
+  handPocketLength: { pct: 36 } # x the front's chest width: 4 in down, of 11 on this block, as drawn
+  handPocketLean: { pct: 140, min: 0, max: 180 } # toward the side, per unit down: 5 1/2 in across for the 4 down
+  # "Generally lined through"
+  lining: { bool: true }
+  # Vincent's has no girdle. Kept off the menu's default, for those who want to tie it
+  girdle: { bool: false, menu: style }
+
+pieces:
+  girdle:
+    prefix: dressinggown
+    part: strip
+    after: front
+    options: [girdle, girdleLength, girdleWidth]
+    nr: 14
+    fold: true
+    if: girdle
+    length: waist * girdleLength
+    width: chest * girdleWidth
+  girdleLoop:
+    prefix: dressinggown
+    part: strip
+    after: front
+    options: [girdle, girdleWidth]
+    nr: 15
+    cut: 2
+    fold: true
+    label: girdleLoop
+    if: girdle
+    length: chest * girdleWidth * 1.4 + 30
+    width: 10
+  # The turned-up cuff: round the sleeve's hem, flaring to its turned edge; cut 2 and 2 again in facing
+  gauntlet:
+    part: polygon
+    after: front
+    nr: 16
+    cut: 4
+    label: gauntletCuff
+    if: gauntletCuff
+    options: [gauntletCuff, gauntletDepth, gauntletFlare, cuffEase]
+    measurements: [wrist]
+    let:
+      a: wrist * cuffEase
+      d: wrist * gauntletDepth
+      f: a * gauntletFlare / 2
+    points: [[0, 0], [f, d], [a + f, d], [a + 2 * f, 0]]
+    allowance: [1, 1, 1, 1]

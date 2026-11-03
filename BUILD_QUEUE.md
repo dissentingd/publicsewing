@@ -93,7 +93,7 @@ Priority 1 first: shirts, dresses and women's garments are the thinnest part of 
 | 16 | `golf-pants` | Golf pants (plus-fours) | Simons 1922, Diagram 43, pp. 120–123 | `boys-knickers` | A | As built: on `breeches`. The plate is fitted through the knee, not fuller than the knickers, and not plus-fours | done (golf-pants) |
 | 17 | `high-waisted-skirt` | Two-piece high-waisted skirt | Mitchell 1921, pp. 88–89 | `two-piece-skirt` | B | Waist raised 2 in. As built: not a design, a `high-waisted` variant of `two-piece-skirt`; `skirtLayout` gained a rise | done (two-piece-skirt.high-waisted) |
 | 18 | `kilt` | Pleated kilt (Scotch kilt suit's skirt) | Simons 1922, pp. 50–52 | `pleated-skirt` (item 3) | B | As built: not on the pleated skirt. Simons gives only a flared foundation, with no pleats or wrap; a wrap kilt (the maintainer's choice), `lib/kilt.mjs`, with Simons' hem and length | done (kilt) |
-| 19 | `smoking-jacket` | Smoking jacket | Vincent 1890, p. 28 | `dressing-gown` (item 9) | D | After item 9 | open |
+| 19 | `smoking-jacket` | Smoking jacket | Vincent 1890, p. 28 | `dressing-gown` (item 9) | D | After item 9 | done (smoking-jacket) |
 | 20 | `raincoat` | Raincoat | Simons 1922, pp. 118–121 | `overcoat` or `balmacaan` | D | | open |
 | 21 | `db-waistcoat` | Double-breasted waistcoat | Simons 1922, double-breasted vest p. 56 (single-breasted p. 53) | `waistcoat` | D | | open |
 | 22 | `scout-coat` | Scout coat: standing collar, four pockets | Simons 1922, pp. 43–46 | `military-tunic` | D | | open |

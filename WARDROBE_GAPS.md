@@ -52,6 +52,7 @@ and marked as derived.
 | Surtout (fitted, waist seam) | 1 | — | Variant; **drafted 2026-11-03** (`designs/surtout`, on the suit jacket; not sewn) | Simons 1916 pp. 38-39 |
 | Fitted overcoat (flared, long vent) | 1 | — | Variant; **drafted 2026-11-03** (`designs/fitted-overcoat`, on the suit jacket; not sewn) | Simons 1916 pp. 18-19 |
 | Princess coat (fitted, long, flared, double-breasted) | 1 | — | Variant; **drafted 2026-11-03** (`designs/princess-coat`, on Breanna; not sewn) | Pivnick 1949 pp. 274-279 |
+| Smoking jacket (short, wide roll collar, frogs, gauntlet cuffs) | 1 | — | Variant; **drafted 2026-11-03** (`designs/smoking-jacket`, on the dressing gown; not sewn) | Vincent 1890 p. 28 |
 | High-waisted skirt (runs on above the waist, faced) | 1 | — | Variant of `designs/two-piece-skirt`; **drafted 2026-11-03** (not sewn) | Mitchell 1921 pp. 88-89 |
 | Kilt (wrap, flat aprons, pleated sides and back) | 1 | — | **Drafted 2026-11-03** (`designs/kilt`, flat-cut; not sewn) | Simons 1922 pp. 50-52, hem and length only |
 | **Topcoat, semi-fitted** | 1 | Carlton | **Drafted 2026-10-27** (`designs/topcoat`: side panels, back vent, slanted welts, two-piece sleeves; not sewn) | ЕМКО 1988 §2 |

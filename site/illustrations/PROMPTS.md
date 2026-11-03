@@ -859,6 +859,11 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
 
+### smoking-jacket: Smoking jacket
+> **A wide quilted roll collar in a contrasting silk, turning from the neck down to the chest, and matching quilted turned-back gauntlet cuffs; below the collar, exactly three cord frog fastenings across a wide overlap.** A men's **smoking jacket** in a rich plain velvet or wool (deep burgundy, bottle green or navy), ending **just below the hips**, easy-fitting, with a softly **rounded lower front corner**. On each hip **one slanted set-in pocket with a corded mouth**, sloping down toward the side, no flap. Shown flat on an invisible form, front view.
+>
+> Leave out: a second row of fastenings, buttons, patch pockets, a breast pocket, a belt or sash, a shirt and tie, a pipe or a glass, a person.
+
 ### kilt: Kilt
 > **Flat, plain front panels that overlap across the front, with crisp knife pleats only round the sides and back, stitched flat from the waist to the hip and falling free below.** A knee-length **wrap kilt** in plain dark wool or a quiet tartan, on a narrow waistband. The overlap's edge runs straight down the front, off center. **Two small leather straps with buckles** at the side, one at the waist and one at the hip. Shown flat, front three-quarter view, so the flat front and the pleats both show.
 >

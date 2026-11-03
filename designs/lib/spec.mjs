@@ -516,6 +516,7 @@ export function designFromSpec(spec) {
       // A piece type draws from what the spec's expressions name, so its measurements count too: the
       // site's size picker gives a design only those it declares
       if (p.measurements) parts[key].measurements = [...new Set([...(parts[key].measurements ?? []), ...p.measurements])]
+      if (p.options) parts[key].options = { ...parts[key].options, ...ctx.options(p) }
       continue
     }
     const ops = (p.ops ?? []).map((entry) => {

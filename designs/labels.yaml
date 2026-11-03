@@ -212,6 +212,18 @@ options:
   strapLength:
     title: Strap length
     description: Length of each buckled strap, as a share of the waist.
+  gauntletCuff:
+    title: Gauntlet cuffs
+    description: A deep turned-up cuff on each sleeve, usually faced in a contrast.
+  gauntletDepth:
+    title: Gauntlet depth
+    description: How deep the turned-up cuff is, as a share of the wrist.
+  gauntletFlare:
+    title: Gauntlet flare
+    description: How much wider the cuff is at its turned edge, as a share of its width.
+  girdle:
+    title: Girdle
+    description: A tie belt at the waist, through loops at the side seams.
   secondAt:
     title: Second seam position
     description: Where the second front seam meets the shoulder, from the front seam (0%) to the shoulder point (100%).
@@ -959,6 +971,7 @@ parts:
   body: Body
   underArm: Under-arm panel
   skirt: Skirt
+  gauntletCuff: Gauntlet cuff
   apron: Apron
   pleats: Pleated length
   strap: Strap

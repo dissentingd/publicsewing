@@ -93,6 +93,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `winter-coat` | Straight knee-length coat with deep yokes, hip welts, turn-down collar | ЕМКО 1988 |
 | `topcoat` | Semi-fitted knee-length coat with side panels and a back vent | ЕМКО 1988 |
 | `suit-jacket` | Single-breasted two-button jacket: side panels, notched lapel, flap pockets, back vent | ЕМКО 1988 |
+| `smoking-jacket` | Short lounging jacket: wide roll collar, a wide overlap with frogs, gauntlet cuffs, slanted hip pockets, lined | Vincent 1890 |
 | `eton-jacket` | Short jacket ending just below the waist, a wide lapel rolling to the waist, no pockets | Simons 1922 |
 | `golf-pants` | Short trousers fitted through the knee to just below it, full at the thigh, a buttoned side vent | Simons 1922 |
 | `boys-suit-jacket` | Boy's three-button suit jacket, notched lapel, flap pockets | Simons 1922 |
