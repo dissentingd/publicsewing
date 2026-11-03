@@ -1,0 +1,90 @@
+# Dolman cape: Pivnick's dolman cape (How to Design Beautiful Clothes, 1949, Chapter XIX, pp. 254-258) on
+# FreeSewing's Breanna, which stands in for her French lining: fitted smooth over the shoulders with a
+# bust dart, the shoulder curving out over the arm into a straight side seam, "a straight, coat-like
+# appearance". See BRIEF.md.
+about:
+  id: dolman-cape
+  name: Dolman cape
+  category: coats
+  description: A cape fitted smooth over the shoulders, curving over the arms and hanging straight, with a collar and buttons
+  difficulty: 3
+  tags: [coats]
+  techniques: [dart, collar, button, hem]
+  version: 0.1.0
+  source: "Pivnick, How to Design Beautiful Clothes (1949), the dolman cape, Chapter XIX, pp. 254-258 (pivnickdesignclothes1949)"
+  preview: cisFemaleAdult36
+
+block: breanna
+
+options:
+  # Fit: the lining's, with room for a dress under it (ours)
+  chestEase: { pct: 10, min: 5, max: 25, of: chest, menu: fit }
+  waistEase: { pct: 14, min: 5, max: 25, of: waist, menu: fit }
+  seatEase: { pct: 10, min: 4, max: 25, of: seat, menu: fit }
+  # Breanna's bust dart split between the shoulder and the waist: the shoulder's is sewn, as her lining's
+  # is traced; the waist's is left out, the cape hanging straight past it. Only these positions work
+  # (lib/jacket.mjs)
+  primaryBustDart: { dflt: '06:00', list: ['06:00'], menu: false }
+  secondaryBustDart: { dflt: '12:00', list: ['12:00'], menu: false }
+  shoulderDart: { bool: false, menu: false }
+  waistDart: { bool: true, menu: false }
+  # "for 2 1/2 inches (for all sizes)", of a 36 in bust
+  dolmanArm: { pct: 6.9, min: 2, max: 15, of: chest, menu: style }
+  # "for 3 inches", of a 38 in hip
+  dolmanHip: { pct: 7.9, min: 0, max: 20, of: seat, menu: style }
+  # Measured off Figures 3 and 4: about 24 in below the waist, of about 40 in waist to floor
+  dolmanLength: { pct: 60, min: 35, max: 95, menu: style }
+  dolmanDart: { pct: 12, min: 5, max: 20, of: chest, menu: construction } # the arm dart's length; ours
+  # The closure, which she leaves open: as the cape's (ours)
+  buttonExtension: { pct: 5.3, min: 2, max: 9, of: chest, menu: style }
+  facingWidth: { pct: 8, min: 4, max: 14, of: chest, menu: construction }
+  buttons: { count: 3, min: 0, max: 6, menu: style }
+  capeButtonSpacing: { pct: 8, min: 4, max: 14, of: chest, menu: style }
+  collarWidth: { pct: 22, min: 12, max: 40, of: neck, menu: style }
+  collarSpring: { pct: 10, min: 0, max: 25, menu: style }
+  collarPoint: { pct: 5, min: 0, max: 15, of: neck, menu: style }
+
+pieces:
+  backBase:
+    from: breanna.back
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    ops:
+      - jacketBase: { side: back }
+  frontBase:
+    from: breanna.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, seat, waistToSeat, waistToFloor, neck]
+    ops:
+      - jacketBase: { side: front }
+      - dolmanLayout:
+          seat: seat * (1 + seatEase)
+          hipDepth: waistToSeat
+          length: waistToFloor * dolmanLength
+          arm: chest * dolmanArm
+          hip: seat * dolmanHip
+          lap: chest * buttonExtension
+          facing: chest * facingWidth
+          dartLen: chest * dolmanDart
+  front: { part: cape, which: front, after: [backBase, frontBase], nr: 1, count: buttons, spacing: chest * capeButtonSpacing }
+  back: { part: cape, which: back, after: [backBase, frontBase], nr: 2 }
+  collar:
+    after: [backBase, frontBase]
+    measurements: [neck]
+    options: [collarWidth, collarSpring, collarPoint]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: neck * collarPoint
+          nr: 3
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  long:
+    name: Long
+    description: "Near the floor: Pivnick drafts to the floor and measures the hem up from there."
+    options: { dolmanLength: 0.9 }

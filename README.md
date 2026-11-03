@@ -33,6 +33,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `balmacaan` | Loose raglan-sleeved overcoat, buttoned to the throat under a stand collar | Simons 1916 |
 | `mantle` | Loose overcoat with wide raglan sleeves cut deep under the arm, flapped patch pockets | Simons 1916 |
 | `cape` | Circular cape falling from the shoulders in folds, in two pieces or one, buttoned at the neck under a collar | Mitchell 1921 |
+| `dolman-cape` | Cape fitted smooth over the shoulders, curving over the arms and hanging straight, with a collar and buttons | Pivnick 1949 |
 | `hunting-coat` | Belted field coat with an action-pleated back | Simons 1918 |
 | `norfolk-jacket` | Belted jacket with yokes front and back, pleats from the yokes to the waist, flapped patch pockets and a back vent | Simons 1922 |
 | `military-tunic` | Fitted tunic, two-piece sleeve, standing collar | Simons 1918 |

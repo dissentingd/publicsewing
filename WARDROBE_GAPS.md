@@ -55,7 +55,7 @@ and marked as derived.
 | **Quilted / insulated jacket** | 3 | — | **Drafted 2026-10-27** (`designs/quilted-jacket`: the windbreaker buttoned to the throat, sloped front yoke, quilted lining; not sewn) | ЕМКО 1988 §5 |
 | **Field jacket / military blouse** | 3 | — (Jett is a bomber) | **Military blouse drafted 2026-10-23** (`designs/military-tunic`, not sewn) | Simons 1918 (military blouse) |
 | **Hunting / field coat** (belted, action back, bellows pockets) | 3 | — | **Drafted 2026-10-23** (`designs/hunting-coat`, not sewn) | Simons 1918 (hunting coat) |
-| Cape (circular) | 3 | — | **Drafted 2026-11-03** (`designs/cape`, `lib/cape.mjs`; not sewn). Pivnick's dolman cape not built | Mitchell 1921 pp. 58-59 |
+| Cape (circular) | 3 | — | **Drafted 2026-11-03** (`designs/cape`, `lib/cape.mjs`; not sewn); **dolman drafted 2026-11-03** (`designs/dolman-cape`, on Breanna; not sewn) | Mitchell 1921 pp. 58-59 |
 | Norfolk jacket (yokes, pleats, belt) | 3 | — | Variant; **drafted 2026-11-03** (`designs/norfolk-jacket`, on the hunting coat; not sewn) | Simons 1922 Diagrams 6-7 |
 | **Mackinaw** | 3 | — | **Drafted 2026-10-23** (`designs/mackinaw`, not sewn; convertible, military or shawl collar; set-in or raglan sleeves) | Simons 1918 |
 | **Shop coat / lab coat / duster** (unisex) | 2 | — | **Drafted 2026-10-23** (`designs/shop-coat`, not sewn) | Simons 1918 (grocers' gown) |

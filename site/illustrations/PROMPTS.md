@@ -820,6 +820,19 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: sleeves, arm slits, a hood, a belt, pockets, a person.
 
+### dolman-cape: Dolman cape
+> **No sleeves and no armholes, but not a full circle: the cape fits smooth over the shoulders, curves over the arms and hangs nearly straight, like a coat.** A women's
+> **dolman cape** in plain wool (navy, charcoal or camel), to **just below the knee**, no folds at the shoulder. A **small turn-down collar**, **exactly three buttons** from the neck down. One
+> plain seam from each shoulder over the arm to the hem. Shown flat on an invisible form, front view.
+>
+> Leave out: sleeves, arm slits, deep folds or flare, a hood, a belt, pockets, fur, a person.
+
+### dolman-cape.long: Dolman cape, long
+> **No sleeves and no armholes: smooth over the shoulders, curving over the arms, hanging nearly straight almost to the floor.** The same women's dolman cape in plain wool, a small
+> turn-down collar and three buttons from the neck, one plain seam from each shoulder to the hem. Shown flat on an invisible form, front view.
+>
+> Leave out: sleeves, arm slits, deep folds or flare, a hood, a belt, pockets, a train, a person.
+
 *Current image has five buttons; the pattern has four.*
 
 ### chore-coat: Chore coat

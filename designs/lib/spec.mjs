@@ -60,7 +60,7 @@ import { draftSkirtLayout, gorePart, culottePart, draftCircularLayout, circularP
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
-import { draftCapeBase, draftCapeLayout, capePart } from './cape.mjs'
+import { draftCapeBase, draftCapeLayout, draftDolmanLayout, capePart } from './cape.mjs'
 
 const blocks = { brian, bent, titan, breanna, sarah }
 /** FreeSewing library parts a piece can use as is (`part: library`) */
@@ -128,6 +128,7 @@ export const operations = {
   // A cape (lib/cape.mjs): the block's neck and shoulder into `cape.raw.<which>`, then laid out
   capeBase: { run: draftCapeBase, literal: ['which'] },
   capeLayout: { run: draftCapeLayout },
+  dolmanLayout: { run: draftDolmanLayout },
   // Change the piece's cutting (e.g. a waistcoat back cut twice from lining)
   cutlist: {
     run: ({ store }, { cut, from, onFold = false }) => store.cutlist.setCut({ cut, from, onFold }),

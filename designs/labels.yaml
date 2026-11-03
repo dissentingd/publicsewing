@@ -768,6 +768,18 @@ options:
   girdleWidth:
     title: Girdle width
     description: Finished width of the tie, as a share of the chest.
+  dolmanArm:
+    title: Width over the arm
+    description: How far the side seam stands out past the armhole, as a share of the chest.
+  dolmanHip:
+    title: Width at the hip
+    description: How far the side seam stands out past the hip, as a share of the seat.
+  dolmanLength:
+    title: Length
+    description: Waist to hem, as a share of waist to floor.
+  dolmanDart:
+    title: Arm dart length
+    description: Length of the dart on the curve over the arm, as a share of the chest.
   capePieces:
     title: Pieces
     description: Two, with a seam over the shoulder flaring below it, or one, with a dart on the shoulder.

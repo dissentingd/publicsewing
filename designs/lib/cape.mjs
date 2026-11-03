@@ -129,6 +129,113 @@ export function draftCapeLayout(sh, { length, drop, gap, pivotLess, seamDrop, fl
 }
 
 /**
+ * A dolman cape (Pivnick 1949, Chapter XIX) on a fitted body, read by `draftJacketBase` into
+ * `jacket.raw.*`: smooth over the shoulders, a bust dart in the front's. On each side, a point `arm`
+ * out from the armhole on its own level, a point `hip` out from a quarter seat on the seat line; the
+ * side seam is a straight line through them, and a curve from the shoulder tip, leaving along the
+ * shoulder, goes over the arm to the first. CB and CF straight, the front with `lap` and `facing`
+ * as the cape's. Lengths in mm; `length` waist to hem; `dartLen` the arm dart's. The side seams are the
+ * same length below the seat line (notched), and above it once a dart on the longer one's arm curve is sewn.
+ * Store: as `draftCapeLayout`, the back mirrored so its CB fold is at x = 0.
+ */
+export function draftDolmanLayout(sh, { seat, hipDepth, length, arm, hip, lap, facing, dartLen }) {
+  const { Path, Point, store } = sh
+  const b = store.get('jacket.raw.back')
+  const f = store.get('jacket.raw.front')
+  const unit = (p, q) => {
+    const n = p.dist(q)
+    return { x: (q.x - p.x) / n, y: (q.y - p.y) / n }
+  }
+  const go = (p, d, k) => new Point(p.x + d.x * k, p.y + d.y * k)
+  const lines = (r) => {
+    const cx = r.centerNeck.x
+    const hemY = r.centerWaist.y + length
+    const P2 = new Point(r.armhole.x + arm, r.armhole.y)
+    const P3 = new Point(Math.max(cx + seat / 4 + hip, P2.x), r.centerWaist.y + hipDepth)
+    return { cx, hemY, P2, P3, d: unit(P2, P3), below: (hemY - P3.y) / unit(P2, P3).y }
+  }
+  const lf = lines(f)
+  const lb = lines(b)
+  const below = (lf.below + lb.below) / 2
+  const shoulderOf = (r) => (r.upper.tip && r.upper.c.dist(r.upper.s) > 0.5 ? r.upper.c.dist(r.hps) + r.upper.s.dist(r.shoulder) : r.hps.dist(r.shoulder))
+  const armCurve = (r, l) => {
+    const k = r.shoulder.dist(l.P2) / 3
+    return new Path().move(r.shoulder.clone()).curve(go(r.shoulder, unit(r.hps, r.shoulder), k), go(l.P2, l.d, -k), l.P2.clone())
+  }
+  const seamUp = (r, l) => shoulderOf(r) + armCurve(r, l).length() + l.P2.dist(l.P3)
+  // The longer side's excess goes in a dart on its curve over the arm, part way down, pointing into the
+  // cape (her Figure 6, "small darts ... along the shoulder curve"; one here). Its other side is `inward`
+  const excess = seamUp(b, lb) - seamUp(f, lf)
+  const upper = (r, l, dart) => {
+    const top = new Path().move(r.hps.clone())
+    if (r.upper.tip && r.upper.c.dist(r.upper.s) > 0.5) top.line(r.upper.c.clone()).line(r.upper.tip.clone()).line(r.upper.s.clone())
+    let curve = armCurve(r, l)
+    if (dart > 1) {
+      const m = curve.length() * 0.4
+      const [p, q] = [curve.shiftAlong(m - dart / 2), curve.shiftAlong(m + dart / 2)]
+      const mid = p.shiftFractionTowards(q, 0.5)
+      const inward = unit(mid, r.armhole)
+      const tip = go(mid, inward, Math.min(dartLen, mid.dist(r.armhole) * 0.8))
+      const [before] = curve.split(p)
+      const [, after] = curve.split(q)
+      curve = before.line(tip).line(q).join(after)
+    }
+    return top.line(r.shoulder.clone()).join(curve).line(l.P3.clone()).line(go(l.P3, l.d, below))
+  }
+  const hemOf = (corner, d, hemY, cx) => ({ corner, centre: new Point(cx, hemY), square: { x: d.y, y: -d.x } })
+  // The front, as it is
+  const fc = go(lf.P3, lf.d, below)
+  const edgeX = lf.cx - lap - facing
+  const fh = hemOf(fc, lf.d, lf.hemY, lf.cx)
+  const yCf = lf.hemY
+  const front = {
+    edge: new Path().move(f.centerNeck.clone()).line(new Point(edgeX, f.centerNeck.y)).line(new Point(edgeX, yCf)),
+    hem: new Path().move(new Point(edgeX, yCf)).line(fh.centre.clone()).join(through(Path, Point, [fh.centre, fc], { x: 1, y: 0 }, fh.square)),
+    side: upper(f, lf, Math.max(-excess, 0)),
+    neck: f.neck.clone(),
+  }
+  // The back, mirrored, so its outline runs the same way round with the fold at x = 0
+  const M = (p) => new Point(lb.cx - p.x, p.y)
+  const map = (path) => {
+    const out = new Path()
+    for (const op of path.ops) {
+      if (op.type === 'move') out.move(M(op.to))
+      else if (op.type === 'line') out.line(M(op.to))
+      else if (op.type === 'curve') out.curve(M(op.cp1), M(op.cp2), M(op.to))
+    }
+    return out
+  }
+  const bc = M(go(lb.P3, lb.d, below))
+  const bd = unit(M(lb.P3), bc)
+  const back = {
+    neck: map(b.neck),
+    side: map(upper(b, lb, Math.max(excess, 0))),
+    hem: through(Path, Point, [bc, new Point(0, lb.hemY)], { x: bd.y, y: -bd.x }, { x: 1, y: 0 }),
+  }
+  store.set('cape.layout', {
+    front,
+    back,
+    cf: f.centerNeck.clone(),
+    cb: M(b.centerNeck),
+    edgeX,
+    lap,
+    facing,
+    yCf,
+    notches: { front: [lf.P3, f.shoulder], back: [M(lb.P3), M(b.shoulder)] },
+  })
+  store.set('cape.seams', {
+    below,
+    upper: [seamUp(f, lf) - Math.max(-excess, 0), seamUp(b, lb) - Math.max(excess, 0)],
+    armDart: Math.abs(excess),
+    dart: [f.upper.c.dist(f.upper.tip), f.upper.s.dist(f.upper.tip)],
+    hem: [front.hem.length() - (lf.cx - edgeX), back.hem.length()],
+  })
+  store.set('coat.back', { neck: b.neck.length() })
+  store.set('coat.front', { neck: f.neck.length() })
+  return sh.part
+}
+
+/**
  * A cape's `which` piece: 'front' (cut 2) or 'back' (on the fold at CB), or 'whole', the one-piece
  * cape (on the fold at CB). `buttons(sh)`: { count, spacing } on CF. `enabled` hides it.
  */
@@ -198,6 +305,7 @@ export function capePart({ name, after, which, nr, buttons = () => ({ count: 0 }
           snippets[`button${i}`] = new Snippet('button', points[`button${i}`])
         }
       }
+      for (const [i, q] of (c.notches?.[which] ?? []).entries()) snippets[`notch${i}`] = new Snippet('notch', new Point(q.x, q.y))
       const bb = paths.seam.bbox()
       const at = new Point(bb.topLeft.x + (bb.bottomRight.x - bb.topLeft.x) * 0.45, bb.topLeft.y + (bb.bottomRight.y - bb.topLeft.y) * 0.6)
       title(macro, { at, nr, title: which, scale: 0.6 })
