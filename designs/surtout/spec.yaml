@@ -36,17 +36,21 @@ options:
   skirtSeam: { pct: 216, min: 100, max: 400, menu: style }
   skirtLean: { deg: 23, min: 5, max: 40, menu: style } # measured off the diagram, 26 to 25
   skirtRound: { pct: 9.4, min: 0, max: 15, menu: style } # "rounding out 1 inch at point 24"
-  # A breast welt as drawn; the book draws no other pocket, nor a lining, vent or sleeve vent (no menu: not shown)
+  # A breast welt as drawn. The book draws no other pocket and no lining: these are ours
   breastPockets: { bool: true }
   lowerPockets: { bool: false, menu: false }
   pocketFlaps: { bool: false, menu: false }
+  skirtPockets: { bool: true, menu: style }
+  skirtPocketWidth: { pct: 16, min: 10, max: 22, of: chest, menu: style } # 6 in of 38, as an overcoat's
+  skirtPocketBelow: { pct: 38, min: 15, max: 80, menu: style } # x waistToSeat: clear of the waist seam, at a hand's reach
+  skirtPocketAt: { pct: 30, min: 15, max: 55, menu: style } # x the skirt's top, from the front edge: past the double-breasted lap
+  skirtFlapDepth: { pct: 34, min: 20, max: 50, menu: style } # x the mouth
   vent: { bool: false, menu: false }
   ventLength: { menu: false }
   ventWidth: { menu: false }
-  lining: { bool: false, menu: false }
-  liningPleat: { menu: false }
-  insidePockets: { bool: false, menu: false }
-  neckFacingWidth: { menu: false }
+  lining: { bool: true, menu: construction }
+  liningPleat: { pct: 2.5 }
+  insidePockets: { bool: true, menu: construction }
   sleeveVent: { bool: false }
 
 pieces:
@@ -82,15 +86,35 @@ pieces:
             rollOut: neck * 0.05
             gorgeAt: gorgeAt
             width: neck * lapelWidth
+      # Lined: the facing meets a back-neck facing on the shoulder
+      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: lining }
   skirt:
     part: body3Skirt
     after: [back, front, sideBody]
-    options: [skirtSeam, skirtLean, skirtRound, facingWidth]
-    nr: 14
+    options: [skirtSeam, skirtLean, skirtRound, facingWidth, skirtPockets, skirtPocketWidth, skirtPocketBelow, skirtPocketAt, skirtFlapDepth]
+    nr: 22
     length: waistToSeat * skirtSeam
     lean: skirtLean
     round: waistToSeat * skirtRound
     facing: chest * facingWidth
+    pocketLen: if(skirtPockets, chest * skirtPocketWidth, 0)
+    pocketBelow: waistToSeat * skirtPocketBelow
+    pocketAt: skirtPocketAt
+    pocketFlap: skirtFlapDepth
+  skirtLining:
+    part: body3Skirt
+    after: [back, front, sideBody]
+    options: [skirtSeam, skirtLean, skirtRound, facingWidth, lining]
+    nr: 18
+    lining: true
+    if: lining
+    length: waistToSeat * skirtSeam
+    lean: skirtLean
+    round: waistToSeat * skirtRound
+    facing: chest * facingWidth
+  skirtFlap: { part: flap, after: skirt, key: skirt, nr: 19, label: skirtFlap, cut: 2, if: skirtPockets }
+  skirtWelt: { part: welt, after: skirt, key: pocket, store: blouse.skirtWelts, nr: 20, if: skirtPockets }
+  skirtBag: { part: weltBag, after: skirt, key: pocket, store: blouse.skirtWelts, nr: 21, if: skirtPockets }
 
 # The same pattern with other options, shown on its page after the pattern tool
 variants:

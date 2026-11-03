@@ -304,16 +304,20 @@ export function sideBodyPart({ name, after, nr = 3, lining = false }) {
  * its top fits the back's, side body's and front's bottom edges in turn, hollowed a little, and rises
  * by the front's drop toward the back. CF straight, with `facing` folded back past the front edge; CB a
  * seam `length` long, leaning `lean` degrees out and rounded `round` (mm) at its middle.
+ * `pocket`: { len, below, at, flap } a set-in flap pocket: its level mouth `len` long, `below` the waist seam, starting
+ * `at` of the skirt's top from the front edge; for `flap` and `weltBag`, `coat.pockets.skirt` and `blouse.skirtWelts.pocket`.
+ * `lining`: the skirt again in lining, from the facing's inner edge, with a single hem.
  * Store: `blouse.skirt` { top: its top edge, bottom: the body's edge it sews to, back: the CB seam }.
  */
-export function body3SkirtPart({ name, after, nr, size, options }) {
+export function body3SkirtPart({ name, after, nr, size, options, lining = false, enabled = () => true }) {
   return {
     name,
     after,
     options,
     draft: (sh) => {
       const { paths, Path, Point, store, sa, macro, part } = sh
-      const { length, lean, round, facing } = size(sh)
+      if (!enabled(sh.options)) return part.hide()
+      const { length, lean, round, facing, pocketLen = 0, pocketBelow = 0, pocketAt = 0, pocketFlap = 0 } = size(sh)
       const bk = store.get('blouse.back')
       const fr = store.get('blouse.front')
       const S = bk.S
@@ -338,23 +342,52 @@ export function body3SkirtPart({ name, after, nr, size, options }) {
       const yCf = length - drop * 0.4
       const k = length / 3
       const seam = new Path().move(C.clone()).curve(new Point(C.x + d.x * k + n.x * round, C.y + d.y * k + n.y * round), new Point(E.x - d.x * k + n.x * round, E.y - d.y * k + n.y * round), E.clone())
-      const edge = new Path().move(new Point(0, 0)).line(new Point(-facing, 0)).line(new Point(-facing, yCf))
       const w = E.x
-      const hem = new Path()
-        .move(new Point(-facing, yCf))
-        .line(new Point(0, yCf))
-        .curve(new Point(w / 3, yCf), new Point(E.x - (d.y * w) / 3, E.y + (d.x * w) / 3), E.clone())
+      const sweep = new Path().move(new Point(0, yCf)).curve(new Point(w / 3, yCf), new Point(E.x - (d.y * w) / 3, E.y + (d.x * w) / 3), E.clone())
       const up = seam.clone().reverse()
-      paths.seam = edge.clone().join(hem).join(up).join(top).close().addClass('fabric')
+      let edge, hem, topEdge, hemK
+      if (lining) {
+        // From the facing's inner edge, which folds back `facing` from the front edge
+        const atTop = top.intersectsX(facing)[0] ?? new Point(facing, 0)
+        const atHem = sweep.intersectsX(facing)[0] ?? new Point(facing, yCf)
+        edge = new Path().move(atTop).line(atHem)
+        hem = sweep.split(atHem)[1]
+        topEdge = top.split(atTop)[0]
+        hemK = 1
+      } else {
+        edge = new Path().move(new Point(0, 0)).line(new Point(-facing, 0)).line(new Point(-facing, yCf))
+        hem = new Path().move(new Point(-facing, yCf)).line(new Point(0, yCf)).join(sweep)
+        topEdge = top
+        hemK = 2
+      }
+      paths.seam = edge.clone().join(hem).join(up).join(topEdge).close().addClass('fabric')
       if (sa) {
         let o = null
-        for (const [p, m] of [[edge, 1], [hem, 2], [up, 1], [top, 1]]) {
+        for (const [p, m] of [[edge, 1], [hem, hemK], [up, 1], [topEdge, 1]]) {
           const off = p.offset(sa * m)
           o = o ? o.line(off.start()).join(off) : off
         }
         paths.sa = o.close().addClass('fabric sa')
       }
+      if (lining) {
+        macro('grainline', { from: new Point(w * 0.3, yCf - 40), to: new Point(w * 0.3, 40) })
+        store.cutlist.setCut({ cut: 2, from: 'lining' })
+        title(macro, { at: new Point(w * 0.45, yCf * 0.45), nr, title: 'skirtLining', scale: 0.6 })
+        return part
+      }
       paths.foldLine = new Path().move(new Point(0, 0)).line(new Point(0, yCf)).addClass('mark dotted').addText('fold', 'center text-sm')
+      if (pocketLen > 0) {
+        const x0 = W * pocketAt
+        const y = (top.intersectsX(x0)[0] ?? new Point(x0, 0)).y + pocketBelow
+        const len = Math.min(pocketLen, W * 0.9 - x0)
+        const h = len * pocketFlap
+        const [a, b] = [new Point(x0, y), new Point(x0 + len, y)]
+        paths.pocketMouth = new Path().move(a).line(b).addClass('mark')
+        paths.pocketFlap = new Path().move(a).line(a.shift(-90, h)).line(b.shift(-90, h)).line(b).addClass('mark dotted')
+        store.set('coat.pockets', { ...(store.get('coat.pockets', null) ?? {}), skirt: { x: x0, y, w: len, shape: 'rounded', flap: { h, gap: 0, button: false } } })
+        store.set('blouse.skirtWelts', { pocket: { len, welt: len * 0.04, bag: len * 1.25 } })
+        store.set('blouse.skirtPocket', { x: x0, y, len, bag: len * 1.25, W, yCf })
+      }
       store.set('blouse.skirt', { top: top.length(), bottom, back: seam.length() })
       macro('grainline', { from: new Point(w * 0.15, yCf - 40), to: new Point(w * 0.15, 40) })
       store.cutlist.setCut({ cut: 2, from: 'fabric' })

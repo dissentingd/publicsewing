@@ -314,7 +314,10 @@ const factories = {
       after: ctx.after(p),
       nr: p.nr,
       options: ctx.options(p),
-      size: (sh) => evalMap({ length: p.length, lean: p.lean, round: p.round, facing: p.facing }, lookupIn(sh, ctx.block, {}), {}),
+      lining: p.lining ?? false,
+      enabled: enabledBy(p.if),
+      size: (sh) =>
+        evalMap({ length: p.length, lean: p.lean, round: p.round, facing: p.facing, pocketLen: p.pocketLen ?? 0, pocketBelow: p.pocketBelow ?? 0, pocketAt: p.pocketAt ?? 0, pocketFlap: p.pocketFlap ?? 0 }, lookupIn(sh, ctx.block, {}), {}),
     }),
   // A cape's piece (`which`: front, back or whole), from capeLayout: `count`, `spacing` its buttons
   cape: (p, ctx) =>

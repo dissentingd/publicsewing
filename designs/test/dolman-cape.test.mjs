@@ -20,6 +20,8 @@ for (const [v, options] of Object.entries(variants)) {
       assert.ok(s.below > 0, 'side seam below the seat line')
       near(s.upper[0], s.upper[1], 1, 'side seams above the notch')
       near(s.dart[0], s.dart[1], 0.5, 'dart legs')
+      // The back's darts stay small
+      assert.ok(s.backDarts.each < measurements.chest * (v === 'wide' ? 0.04 : 0.03), `back darts ${s.backDarts.each.toFixed(0)}`)
       const c = store.get('coat.collar')
       near(c.neck, c.target, 1, 'collar')
       // It stands well out from the body: the hem round more than the seat

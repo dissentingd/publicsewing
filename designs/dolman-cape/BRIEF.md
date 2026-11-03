@@ -31,10 +31,10 @@ are Pivnick's.
 
 ## Changes and what isn't modelled
 - **Breanna in place of her lining.** Same pieces of information, a different draft, so the numbers are hers but the shoulders aren't.
-- **One arm dart, not several small ones.** The back's seam above the notch comes out longer than the front's, about 45 mm at a women's 36, too much to
-  ease. All of it goes in one dart on the back's arm curve, ours in place of her row of small ones. It's a large dart: sewing it as two or
-  three is a fair change, and worth trying in a muslin.
-- **No back shoulder dart:** Breanna's back has none there; hers does.
+- **The back's darts.** Hers has a shoulder dart (Figure 4), and if the back's shoulder is longer she eases it or stitches small darts along the curve (Figure 6). Here the back's seam
+  above the notch comes out longer than the front's by about 57 mm at a women's 36, up to 90 at the smallest women's and a man's 38: too much to ease. So a shoulder dart takes the first
+  `dolmanShoulderDart` 2% of the chest, and small darts on the curve take the rest, as many as keep each to `dolmanCurveDart` 1.8%, at most four. The sizes are ours. I tried moving the side seam's
+  arm point instead (the curve gains what the seam below loses, so it does little) and closing Breanna's waist dart into the shoulder (it makes the difference worse).
 - **The hem** is square at each side seam and level at the centres, not ruled from hem to hem.
 - **The closure, collar and facing are ours**, as on the cape. She doesn't give them. No arm slits, which she doesn't draft.
 - **Sizes:** "for all sizes" becomes a share of the figure, so children's capes aren't over-wide.
@@ -43,11 +43,11 @@ are Pivnick's.
 Front (cut 2), back (fold), collar.
 
 ## Construction
-1. Bust darts, the arm darts.
+1. Bust darts; the back's shoulder and curve darts.
 2. Shoulder and side seams in one, from the neck to the hem, matching the notches.
 3. Fold the facing back. Collar to the neck, with the facing's top.
 4. Hem, buttonholes, buttons.
 
 ## Checks
 `test/dolman-cape.test.mjs`: every size, the default, long, short with no hip extension, and wide. Side seams above and below the
-notch, the bust dart's legs, the collar, the hem past the seat.
+notch with the back's darts sewn, each dart small, the bust dart's legs, the collar, the hem past the seat.

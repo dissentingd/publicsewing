@@ -39,19 +39,23 @@ sleeve. Added for this coat: a body cut off above the seat line, buttons in two 
 - **The ¼ in Vee at 20 isn't drafted.**
 - **The CF hem** is set from the back seam and the fall, a little shorter at the front than his: compare in a muslin.
 - **Skirt facing:** cut on and folded back (ours). The body's is the suit jacket's.
-- **No pockets in the skirt, no lining, no vent, no sleeve vent**: the book gives none, though a real coat would want pockets and a lining.
+- **Skirt pockets and the lining are ours.** The book draws neither, but a real coat wants both. A set-in flap pocket each side of the skirt: `skirtPocketWidth` 16% of the chest (6 in of 38), its
+  level mouth `skirtPocketBelow` 38% of waist to seat below the waist seam, `skirtPocketAt` 30% of the way along. The lining as the suit jacket's: front and back linings on a back-neck facing, side body and
+  sleeves cut again, an inside breast pocket; and the skirt cut again from the facing's inner edge. Both can be turned off.
+- **No vent or sleeve vent:** none drawn.
 - **Fit:** Simons draws a young man's coat. Children's and stout sizes draft, but it's a young man's cut.
 
 ## Pieces
-Front, back (fold), side body (cut 2 each but the back), skirt (cut 2), facing, collar, top and under sleeves, breast welt and bag.
+Front, back (fold), side body (cut 2 each but the back), skirt (cut 2), facing, back-neck facing, collar, top and under sleeves, breast welt and bag, skirt pocket flap, welt and bag. In lining: front, back, side body, sleeves, skirt, inside pocket.
 
 ## Construction
-1. Breast welts. Back, side bodies and fronts together.
+1. Breast welts. Back, side bodies and fronts together. Skirt pockets, flaps hanging from the mouths.
 2. Skirt's CB seam, then the skirt to the body, matching CB, each panel's seams and the front edge. Fold the skirt's facing back.
 3. Facing, collar, lapels.
 4. Shoulders, sleeves.
-5. Hem, buttons and buttonholes.
+5. Make the lining up the same way, skirt to body at the waist; set it in round the facings and at the cuffs.
+6. Hem, buttons and buttonholes.
 
 ## Checks
 `test/surtout.test.mjs`: every size, the default, long, plain, and a wider stand and skirt. Seams between the panels, shoulders, collar, sleeve cap, the skirt's
-top against the body's bottom, the buttons and the break.
+top against the body's bottom, the buttons and the break, the pocket on the skirt with its bag above the hem, the lining's pieces.

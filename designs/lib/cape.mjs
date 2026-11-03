@@ -134,11 +134,11 @@ export function draftCapeLayout(sh, { length, drop, gap, pivotLess, seamDrop, fl
  * out from the armhole on its own level, a point `hip` out from a quarter seat on the seat line; the
  * side seam is a straight line through them, and a curve from the shoulder tip, leaving along the
  * shoulder, goes over the arm to the first. CB and CF straight, the front with `lap` and `facing`
- * as the cape's. Lengths in mm; `length` waist to hem; `dartLen` the arm dart's. The side seams are the
- * same length below the seat line (notched), and above it once a dart on the longer one's arm curve is sewn.
+ * as the cape's. Lengths in mm; `length` waist to hem; `shoulderMax`, `curveMax`, `dartLen`: the back's darts. The side seams
+ * are the same length below the seat line (notched), and above it once those are sewn.
  * Store: as `draftCapeLayout`, the back mirrored so its CB fold is at x = 0.
  */
-export function draftDolmanLayout(sh, { seat, hipDepth, length, arm, hip, lap, facing, dartLen }) {
+export function draftDolmanLayout(sh, { seat, hipDepth, length, arm, hip, lap, facing, shoulderMax, curveMax, dartLen }) {
   const { Path, Point, store } = sh
   const b = store.get('jacket.raw.back')
   const f = store.get('jacket.raw.front')
@@ -147,38 +147,59 @@ export function draftDolmanLayout(sh, { seat, hipDepth, length, arm, hip, lap, f
     return { x: (q.x - p.x) / n, y: (q.y - p.y) / n }
   }
   const go = (p, d, k) => new Point(p.x + d.x * k, p.y + d.y * k)
-  const lines = (r) => {
+  const lines = (r, out) => {
     const cx = r.centerNeck.x
     const hemY = r.centerWaist.y + length
-    const P2 = new Point(r.armhole.x + arm, r.armhole.y)
+    const P2 = new Point(r.armhole.x + out, r.armhole.y)
     const P3 = new Point(Math.max(cx + seat / 4 + hip, P2.x), r.centerWaist.y + hipDepth)
     return { cx, hemY, P2, P3, d: unit(P2, P3), below: (hemY - P3.y) / unit(P2, P3).y }
   }
-  const lf = lines(f)
-  const lb = lines(b)
-  const below = (lf.below + lb.below) / 2
   const shoulderOf = (r) => (r.upper.tip && r.upper.c.dist(r.upper.s) > 0.5 ? r.upper.c.dist(r.hps) + r.upper.s.dist(r.shoulder) : r.hps.dist(r.shoulder))
   const armCurve = (r, l) => {
     const k = r.shoulder.dist(l.P2) / 3
     return new Path().move(r.shoulder.clone()).curve(go(r.shoulder, unit(r.hps, r.shoulder), k), go(l.P2, l.d, -k), l.P2.clone())
   }
   const seamUp = (r, l) => shoulderOf(r) + armCurve(r, l).length() + l.P2.dist(l.P3)
-  // The longer side's excess goes in a dart on its curve over the arm, part way down, pointing into the
-  // cape (her Figure 6, "small darts ... along the shoulder curve"; one here). Its other side is `inward`
-  const excess = seamUp(b, lb) - seamUp(f, lf)
-  const upper = (r, l, dart) => {
+  const lf = lines(f, arm)
+  const lb = lines(b, arm)
+  const below = (lf.below + lb.below) / 2
+  // The back's seam above the notch is the longer. Pivnick takes it out with a shoulder dart on the back
+  // (Figure 4, W-V-U) and small darts along the shoulder curve (Figure 6): here the first up to `shoulderMax`,
+  // the rest in as many as keep each to `curveMax`, at most four
+  const excess = Math.max(seamUp(b, lb) - seamUp(f, lf), 0)
+  const shoulderDart = Math.min(excess, shoulderMax)
+  const onCurve = excess - shoulderDart
+  const curveDarts = onCurve > 1 ? Math.min(4, Math.ceil(onCurve / curveMax)) : 0
+  const wedge = (a0, b0, r) => {
+    const mid = a0.shiftFractionTowards(b0, 0.5)
+    return go(mid, unit(mid, r.armhole), Math.min(dartLen, mid.dist(r.armhole) * 0.8))
+  }
+  const upper = (r, l, darted) => {
     const top = new Path().move(r.hps.clone())
     if (r.upper.tip && r.upper.c.dist(r.upper.s) > 0.5) top.line(r.upper.c.clone()).line(r.upper.tip.clone()).line(r.upper.s.clone())
+    if (darted && shoulderDart > 1) {
+      const m = r.hps.shiftFractionTowards(r.shoulder, 0.5)
+      const [p, q] = [m.shiftTowards(r.hps, shoulderDart / 2), m.shiftTowards(r.shoulder, shoulderDart / 2)]
+      top.line(p).line(wedge(p, q, r)).line(q)
+    }
     let curve = armCurve(r, l)
-    if (dart > 1) {
-      const m = curve.length() * 0.4
-      const [p, q] = [curve.shiftAlong(m - dart / 2), curve.shiftAlong(m + dart / 2)]
-      const mid = p.shiftFractionTowards(q, 0.5)
-      const inward = unit(mid, r.armhole)
-      const tip = go(mid, inward, Math.min(dartLen, mid.dist(r.armhole) * 0.8))
-      const [before] = curve.split(p)
-      const [, after] = curve.split(q)
-      curve = before.line(tip).line(q).join(after)
+    if (darted && curveDarts > 0) {
+      const L = curve.length()
+      const w = onCurve / curveDarts
+      const marks = Array.from({ length: curveDarts }, (_, i) => {
+        const m = L * (curveDarts > 1 ? 0.15 + (0.45 * i) / (curveDarts - 1) : 0.35)
+        const [p, q] = [curve.shiftAlong(m - w / 2), curve.shiftAlong(m + w / 2)]
+        return { p, q, tip: wedge(p, q, r) }
+      })
+      let rest = curve
+      let out = null
+      for (const { p, q, tip } of marks) {
+        const [before] = rest.split(p)
+        const [, after] = rest.split(q)
+        out = (out ? out.join(before) : before).line(tip).line(q)
+        rest = after
+      }
+      curve = out.join(rest)
     }
     return top.line(r.shoulder.clone()).join(curve).line(l.P3.clone()).line(go(l.P3, l.d, below))
   }
@@ -191,7 +212,7 @@ export function draftDolmanLayout(sh, { seat, hipDepth, length, arm, hip, lap, f
   const front = {
     edge: new Path().move(f.centerNeck.clone()).line(new Point(edgeX, f.centerNeck.y)).line(new Point(edgeX, yCf)),
     hem: new Path().move(new Point(edgeX, yCf)).line(fh.centre.clone()).join(through(Path, Point, [fh.centre, fc], { x: 1, y: 0 }, fh.square)),
-    side: upper(f, lf, Math.max(-excess, 0)),
+    side: upper(f, lf, false),
     neck: f.neck.clone(),
   }
   // The back, mirrored, so its outline runs the same way round with the fold at x = 0
@@ -209,7 +230,7 @@ export function draftDolmanLayout(sh, { seat, hipDepth, length, arm, hip, lap, f
   const bd = unit(M(lb.P3), bc)
   const back = {
     neck: map(b.neck),
-    side: map(upper(b, lb, Math.max(excess, 0))),
+    side: map(upper(b, lb, true)),
     hem: through(Path, Point, [bc, new Point(0, lb.hemY)], { x: bd.y, y: -bd.x }, { x: 1, y: 0 }),
   }
   store.set('cape.layout', {
@@ -225,8 +246,8 @@ export function draftDolmanLayout(sh, { seat, hipDepth, length, arm, hip, lap, f
   })
   store.set('cape.seams', {
     below,
-    upper: [seamUp(f, lf) - Math.max(-excess, 0), seamUp(b, lb) - Math.max(excess, 0)],
-    armDart: Math.abs(excess),
+    upper: [seamUp(f, lf), seamUp(b, lb) - excess],
+    backDarts: { total: excess, shoulder: shoulderDart, curve: curveDarts, each: curveDarts ? onCurve / curveDarts : 0 },
     dart: [f.upper.c.dist(f.upper.tip), f.upper.s.dist(f.upper.tip)],
     hem: [front.hem.length() - (lf.cx - edgeX), back.hem.length()],
   })

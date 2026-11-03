@@ -768,6 +768,21 @@ options:
   girdleWidth:
     title: Girdle width
     description: Finished width of the tie, as a share of the chest.
+  skirtPockets:
+    title: Skirt pockets
+    description: A flap pocket set into each side of the skirt.
+  skirtPocketWidth:
+    title: Pocket width
+    description: Length of the pocket's mouth, as a share of the chest.
+  skirtPocketBelow:
+    title: Pocket depth
+    description: How far the pocket's mouth sits below the waist seam, as a share of waist to seat.
+  skirtFlapDepth:
+    title: Pocket flap depth
+    description: Depth of the pocket's flap, as a share of its mouth.
+  skirtPocketAt:
+    title: Pocket place
+    description: Where the pocket's mouth starts, as a share of the skirt's top from the front edge.
   skirtSeam:
     title: Skirt length
     description: The skirt's centre back seam, as a share of waist to seat.
@@ -783,12 +798,18 @@ options:
   dolmanHip:
     title: Width at the hip
     description: How far the side seam stands out past the hip, as a share of the seat.
+  dolmanShoulderDart:
+    title: Back shoulder dart
+    description: Widest the back's shoulder dart can be, as a share of the chest.
+  dolmanCurveDart:
+    title: Arm darts
+    description: Widest each small dart on the back's curve over the arm can be, as a share of the chest. Narrower makes more of them, up to four.
+  dolmanDartLength:
+    title: Back dart length
+    description: Length of the back's darts, as a share of the chest.
   dolmanLength:
     title: Length
     description: Waist to hem, as a share of waist to floor.
-  dolmanDart:
-    title: Arm dart length
-    description: Length of the dart on the curve over the arm, as a share of the chest.
   capePieces:
     title: Pieces
     description: Two, with a seam over the shoulder flaring below it, or one, with a dart on the shoulder.
