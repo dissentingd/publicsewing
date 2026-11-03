@@ -25,7 +25,7 @@ options:
   # "Allow 2 1/2 to 3 1/2 inches for overlap"
   buttonExtension: { pct: 7.9, min: 3, max: 11 } # x chest: 3 of 38
   # Three fastenings, 3 1/2 in apart, the middle one at the waist, as drawn (p. 27)
-  buttons: { count: 3 }
+  buttons: { count: 3, min: 2, max: 8 }
   buttonTop: { pct: 100, min: -400, max: 250 } # x the overlap: so the middle one falls at the waist on this block
   buttonBottom: { pct: 33, min: 0, max: 80 } # x waistToSeat: 3 1/2 in below the waist
   collarStyle: { dflt: shawl, list: [shawl, military], menu: style, title: Collar, description: "The roll collar cut in one with the front, or the bath robe's standing collar." }
