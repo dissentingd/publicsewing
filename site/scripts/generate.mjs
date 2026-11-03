@@ -255,7 +255,7 @@ ${illustration}
 :::warning[Draft, untested]
 No one has sewn this design yet. It drafts cleanly at every size in the test suite and its seams
 match, but that doesn't prove it fits. Sew a muslin before good fabric, and please
-[report what happened](/report).
+[report what happened](/sew-and-test#report).
 :::
 
 ${info.garment}. Source: ${info.source}.${variantsLine}
@@ -264,7 +264,7 @@ ${info.garment}. Source: ${info.source}.${variantsLine}
 
 Pick a size set or enter your own measurements, change options, then **Export** a tiled PDF
 (A4 or Letter). Your measurements stay in this browser. See [Measure yourself](/measure) and
-[Print and sew a muslin](/muslin).
+[Sew & Test](/sew-and-test).
 
 <PatternEditor design="${about.id}" />
 

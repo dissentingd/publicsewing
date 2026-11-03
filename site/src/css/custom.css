@@ -318,3 +318,11 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
   margin: 0 0 1rem;
   white-space: normal;
 }
+
+/* The Learn page's index: room for an illustration on each entry */
+.learn-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; margin: 0 0 2rem; }
+.learn-term { padding: 1rem; border: 1px solid var(--ifm-color-emphasis-300); scroll-margin-top: calc(var(--ifm-navbar-height) + 1rem); }
+.learn-term:target { border-color: var(--ifm-color-primary); }
+.learn-term img { display: block; width: 100%; margin-bottom: 0.75rem; }
+.learn-term dt { margin-bottom: 0.25rem; }
+.learn-term dd { margin: 0; font-size: 0.9rem; line-height: 1.5; }

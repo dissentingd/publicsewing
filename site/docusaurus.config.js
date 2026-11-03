@@ -37,9 +37,11 @@ export default {
     ],
   ],
   plugins: [
-    // A renamed design's old address
+    // A renamed page's or design's old address
     ['@docusaurus/plugin-client-redirects', {
       redirects: [
+        { from: '/muslin', to: '/sew-and-test' },
+        { from: '/report', to: '/sew-and-test' },
         { from: '/designs/trousers', to: '/designs/suit-trousers' },
         { from: '/designs/shirt', to: '/designs/dress-shirt' },
         { from: '/designs/jacket', to: '/designs/suit-jacket' },
@@ -93,8 +95,9 @@ export default {
       items: [
         { to: '/designs', label: 'Designs', position: 'left' },
         { to: '/measure', label: 'Measure', position: 'left' },
-        { to: '/muslin', label: 'Sew a muslin', position: 'left' },
-        { to: '/report', label: 'Report a test', position: 'left' },
+        { to: '/sew-and-test', label: 'Sew & Test', position: 'left' },
+        { to: '/learn', label: 'Learn', position: 'left' },
+        { to: '/contribute', label: 'Contribute', position: 'left' },
         { href: repo, label: 'GitHub', position: 'right' },
       ],
     },

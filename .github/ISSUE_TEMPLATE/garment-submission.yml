@@ -1,0 +1,86 @@
+name: Garment submission
+description: You copied a garment into a pattern (rub-off or deconstruction). Offer it as a source for a new design.
+title: "Garment: <what it is>"
+labels: [garment-submission]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. How to copy a garment, and what happens next: https://publicsewing.org/contribute
+
+        **Everything in this issue is public.** Leave out logos, printed artwork and labels, and
+        crop faces from photos.
+  - type: input
+    id: garment
+    attributes:
+      label: What is it?
+      description: For example "denim chore coat" or "1940s wool overcoat".
+    validations:
+      required: true
+  - type: dropdown
+    id: method
+    attributes:
+      label: How did you copy it?
+      options:
+        - Rub-off (the garment is still whole)
+        - Deconstruction (taken apart and traced)
+        - Measured it, no pieces traced
+        - Other (say below)
+    validations:
+      required: true
+  - type: textarea
+    id: pieces
+    attributes:
+      label: The pattern pieces
+      description: >
+        Drop files here: a PDF of your pattern, a zipped DXF, or photos taken straight down with
+        each piece flat beside a ruler. List the pieces, and say whether seam allowance is
+        included and how wide.
+    validations:
+      required: true
+  - type: textarea
+    id: measurements
+    attributes:
+      label: Measurements of the finished garment
+      description: >
+        Laid flat: chest, waist, hem, length, sleeve, and anything else characteristic. Say
+        whether in inches or cm, and whether each is across the flat or all the way round.
+    validations:
+      required: true
+  - type: textarea
+    id: photos
+    attributes:
+      label: Photos of the garment
+      description: Front, back and inside, if you can.
+  - type: textarea
+    id: construction
+    attributes:
+      label: How it's made
+      description: The order of construction as far as you can tell, closures, pockets, lining, fabric.
+  - type: textarea
+    id: origin
+    attributes:
+      label: Where it came from
+      description: >
+        As far as you know: maker or brand, era, military or work issue, or whether you or your
+        family made it.
+    validations:
+      required: true
+  - type: input
+    id: credit
+    attributes:
+      label: How should we credit you?
+      description: A name or handle, or "GitHub username".
+    validations:
+      required: true
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Permission
+      options:
+        - label: I made these pieces, notes and photos myself.
+          required: true
+        - label: >
+            I license them under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), so
+            PublicSewing and others can use them, including to make designs, with credit.
+          required: true

@@ -22,6 +22,19 @@ So a source is only worth fetching if it carries **numbers a design can be built
 Also prefer: a worked example (stated measures that match the draft), legible scans
 (≥2000 px on every leaf), whole garments rather than one block.
 
+## Garment submissions
+Anyone can copy a garment (rub-off or deconstruction) and offer it through the `garment-submission`
+issue form; the site's Contribute page explains how. Intake:
+1. **Grade it** with the table above: dimensioned pieces or a DXF are A, finished measurements are
+   B. Photos and prose alone are D: thank them, say what numbers would make it usable, close it.
+2. **Check the rights.** Both permission boxes ticked (their work, CC BY 4.0). A current designer's
+   recent garment, or one with logos or printed art: ask or decline.
+3. **Add it to the corpus** as `corpus/submission-<issue number>/`: the attachments, the issue text
+   as `submission.md`. In `scripts/corpus_manifest.py`, add it to the by-hand sources, with the issue
+   URL as `origin`, the licence and credit as `rights`; run `write`. Allow the folder in `.gitignore`.
+4. **Queue it** in BUILD_QUEUE.md, cited by folder id, and link the item on the issue. Credit the
+   contributor in the brief and on the site's Sources page, as CC BY 4.0 needs.
+
 ## Styles
 Children's is a category within each style. WARDROBE_GAPS.md tracks each garment.
 
