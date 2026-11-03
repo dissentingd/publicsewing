@@ -33,7 +33,7 @@ options:
   primaryBustDart: { dflt: '06:00', list: ['06:00'], menu: false }
   secondaryBustDart: { dflt: '12:00', list: ['12:00'], menu: false }
   shoulderDart: { bool: false, menu: fit }
-  waistDart: { bool: true, menu: fit }
+  waistDart: { bool: true, menu: false } # the jacket drafts through it (lib/jacket.mjs)
   backSeamAt: { pct: 50, min: 30, max: 70, menu: style } # along the back shoulder from the neck
   # Tight-fitted (p. 42): the CB in 2 in at the waist and 1 1/2 at the hip line, 7 in below it;
   # the under-arm panel's back seam in 1 1/4 at the waist (p. 44). Shares of the half seat less

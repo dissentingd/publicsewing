@@ -383,6 +383,27 @@ index 8658453..24de2ff 100644
  
      this.pdf.lineWidth(1)
      this.pdf
+diff --git a/node_modules/@freesewing/react/components/Editor/lib/export/plugin-tiler.mjs b/node_modules/@freesewing/react/components/Editor/lib/export/plugin-tiler.mjs
+index b948e24..bec36f1 100644
+--- a/node_modules/@freesewing/react/components/Editor/lib/export/plugin-tiler.mjs
++++ b/node_modules/@freesewing/react/components/Editor/lib/export/plugin-tiler.mjs
+@@ -181,12 +181,13 @@ const basePlugin = ({
+       // draft the part
+       pattern.draftPartForSet(partName, pattern.activeSet)
+ 
+-      // if the pattern size is supposed to be re-set to the full width and height of all pages, do that
++      // PublicSewing patch: FreeSewing's fix for its issue 938. The size is exactly the pages'. A part
++      // moved into the negative region made it larger than the pages, and the print came out too small
+       const generatedPageData = pattern.setStores[pattern.activeSet].get(partName)
+       if (setPatternSize === true || setPatternSize === 'width')
+-        pattern.width = Math.max(pattern.width, sheetWidth * generatedPageData.cols)
++        pattern.width = sheetWidth * generatedPageData.cols
+       if (setPatternSize === true || setPatternSize === 'height')
+-        pattern.height = Math.max(pattern.height, sheetHeight * generatedPageData.rows)
++        pattern.height = sheetHeight * generatedPageData.rows
+ 
+       removeFromOnly(pattern, partName)
+     },
 diff --git a/node_modules/@freesewing/react/components/Editor/lib/ui-preferences.mjs b/node_modules/@freesewing/react/components/Editor/lib/ui-preferences.mjs
 index becd11a..ed07783 100644
 --- a/node_modules/@freesewing/react/components/Editor/lib/ui-preferences.mjs

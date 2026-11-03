@@ -7,6 +7,7 @@ not copied), plus children's measurement sets. Node 22.
 cd designs
 npm install
 npm test                                   # sizes + every design at every size
+npm run test:robust                        # every menu option at its extremes, core settings, each part alone
 npm run sizes                              # re-parse and check the USDA transcription
 NODE_PATH=$(npm root -g) node tools/render.mjs chore-coat cisMaleAdult38 usdaBoyC5 stoutMale48 --png
 NODE_PATH=$(npm root -g) node tools/snap.mjs out/some.svg     # PNG preview of any SVG

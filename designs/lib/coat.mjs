@@ -542,8 +542,7 @@ export function facingPart({ name, from, nr = 5 }) {
       points.facingNeck = cut || paths.neckline.end()
       const neck = cut ? paths.neckline.split(cut)[0] : paths.neckline.clone()
       // Hem: follow the front's hem out to the facing's width
-      points.facingHem = paths.hemBase.intersectsX(x - f)[0] || new Point(x - f, points.cfHem.y)
-      const hem = paths.hemBase.split(points.facingHem)[0]
+      const hem = hemToFacing(sh, x, f)
       // Inner edge: parallel to the front edge (which bows out for a stout figure)
       let inner = new Path().move(points.facingHem)
       if (f > 0.5) {
@@ -554,9 +553,7 @@ export function facingPart({ name, from, nr = 5 }) {
       }
       inner = inner.line(points.facingNeck)
 
-      paths.seam = paths.edge
-        .clone()
-        .join(hem)
+      paths.seam = (hem ? paths.edge.clone().join(hem) : paths.edge.clone())
         .join(inner)
         .join(neck.reverse())
         .close()
@@ -579,6 +576,20 @@ export function facingPart({ name, from, nr = 5 }) {
 }
 
 /**
+ * The front's hem out to a facing's width, and points.facingHem where it ends. A facing no wider
+ * than a rounded front corner ends where the corner does, with no hem of its own (null).
+ */
+function hemToFacing({ points, paths, Point }, x, f) {
+  const start = paths.hemBase.start()
+  if (x - f <= start.x) {
+    points.facingHem = start.clone()
+    return null
+  }
+  points.facingHem = paths.hemBase.intersectsX(x - f)[0] || new Point(x - f, points.cfHem.y)
+  return paths.hemBase.split(points.facingHem)[0]
+}
+
+/**
  * The inner edge of a facing that runs to the shoulder, from the hem up to the shoulder seam a
  * little way out from the neck point (`facingWidth`'s x, parallel to a stout front's edge).
  * Sets points.facingHem and points.facingShoulder. Out from the neck point by
@@ -587,7 +598,7 @@ export function facingPart({ name, from, nr = 5 }) {
  */
 function shoulderFacingInner(sh, x, f) {
   const { points, paths, Path, Point, store } = sh
-  points.facingHem = paths.hemBase.intersectsX(x - f)[0] || new Point(x - f, points.cfHem.y)
+  hemToFacing(sh, x, f)
   const along = store.get('coat.neckFacing', null)?.width ?? points.s3CollarSplit.dist(points.s3ArmholeSplit) * 0.3
   points.facingShoulder = points.s3CollarSplit.shiftTowards(points.s3ArmholeSplit, along)
   let inner = new Path().move(points.facingHem)
@@ -601,9 +612,9 @@ function shoulderFacingInner(sh, x, f) {
  */
 function shoulderFacing(sh, x, f, nr, top) {
   const { points, paths, Path, Point, store, sa, macro, part } = sh
+  const hem = hemToFacing(sh, x, f)
   const inner = shoulderFacingInner(sh, x, f).line(points.s3CollarSplit)
-  const hem = paths.hemBase.split(points.facingHem)[0]
-  paths.seam = paths.edge.clone().join(hem).join(inner).join(top.reverse()).close().unhide().addClass('fabric')
+  paths.seam = (hem ? paths.edge.clone().join(hem) : paths.edge.clone()).join(inner).join(top.reverse()).close().unhide().addClass('fabric')
   if (sa) paths.sa = paths.seam.offset(sa).addClass('fabric sa')
   for (const p of ['neckline', 'edge', 'hemBase', 'shawl']) paths[p]?.hide()
   store.set('coat.facing', { neck: top.length(), edge: paths.edge.length(), shoulder: points.facingShoulder.dist(points.s3CollarSplit) })
@@ -672,7 +683,8 @@ export function frontLiningPart({ name, from, after, nr, enabled = () => true })
       if (!enabled(options)) return part.hide()
       const { ext, facing, f = 0 } = store.get('coat.frontEdge')
       const inner = shoulderFacingInner(sh, -ext + facing, f) // hem -> shoulder
-      const hem = paths.hemBase.split(points.facingHem)[1]
+      // A facing no wider than a rounded corner leaves the lining the whole hem
+      const hem = points.facingHem.sitsRoughlyOn(paths.hemBase.start()) ? paths.hemBase.clone() : paths.hemBase.split(points.facingHem)[1]
       const body = paths.bodyBase.split(points.facingShoulder)[0] // hem, side seam, armhole, shoulder
       paths.seam = hem.join(body).join(inner.reverse()).close().unhide().addClass('lining')
       if (sa) paths.sa = paths.seam.offset(sa).addClass('lining sa')

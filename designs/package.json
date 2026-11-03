@@ -6,6 +6,7 @@
   "license": "SEE LICENSE IN ../LICENSE",
   "scripts": {
     "test": "node --test",
+    "test:robust": "node tools/robust-check.mjs",
     "sizes": "node sizes/usda1939/parse.mjs && node sizes/usda1939/check.mjs",
     "render": "node tools/render.mjs"
   },
