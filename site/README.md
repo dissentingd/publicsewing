@@ -1,7 +1,7 @@
 # site: publicsewing.org
 
 A Docusaurus site: a page per design with the pattern tool, plus the measuring, sew and test,
-learn, contribute and sources pages. Static, deployed to GitHub Pages by `.github/workflows/site.yml` on push to
+learn, contribute, sources and credits pages. Static, deployed to GitHub Pages by `.github/workflows/site.yml` on push to
 `main`. No accounts, no server, no cookies, no analytics.
 
 ```bash

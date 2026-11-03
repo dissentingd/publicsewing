@@ -99,6 +99,7 @@ export default {
         { to: '/sew-and-test', label: 'Sew & Test', position: 'left' },
         { to: '/learn', label: 'Learn', position: 'left' },
         { to: '/contribute', label: 'Contribute', position: 'left' },
+        { to: '/credits', label: 'Credits', position: 'left' },
         { href: repo, label: 'GitHub', position: 'right' },
       ],
     },
