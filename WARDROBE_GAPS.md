@@ -51,6 +51,7 @@ and marked as derived.
 | **Overcoat, straight, yoked** | 1, 3 | Carlton is a belted long coat | **Drafted 2026-10-27** (`designs/winter-coat`: deep front and back yokes, hip welts, turn-down collar, lining; not sewn) | ЕМКО 1988 §3 |
 | Surtout (fitted, waist seam) | 1 | — | Variant; **drafted 2026-11-03** (`designs/surtout`, on the suit jacket; not sewn) | Simons 1916 pp. 38-39 |
 | Fitted overcoat (flared, long vent) | 1 | — | Variant; **drafted 2026-11-03** (`designs/fitted-overcoat`, on the suit jacket; not sewn) | Simons 1916 pp. 18-19 |
+| Raincoat (loose, full sweep, buttoned to the neck, two-piece collar) | 1 | — | Variant; **drafted 2026-11-04** (`designs/raincoat`, on the overcoat; not sewn) | Simons 1922 pp. 105-107 |
 | Princess coat (fitted, long, flared, double-breasted) | 1 | — | Variant; **drafted 2026-11-03** (`designs/princess-coat`, on Breanna; not sewn) | Pivnick 1949 pp. 274-279 |
 | Smoking jacket (short, wide roll collar, frogs, gauntlet cuffs) | 1 | — | Variant; **drafted 2026-11-03** (`designs/smoking-jacket`, on the dressing gown; not sewn) | Vincent 1890 p. 28 |
 | High-waisted skirt (runs on above the waist, faced) | 1 | — | Variant of `designs/two-piece-skirt`; **drafted 2026-11-03** (not sewn) | Mitchell 1921 pp. 88-89 |

@@ -859,6 +859,11 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
 
+### raincoat: Raincoat
+> **Buttoned right up to the neck under a small two-part collar: no lapels, a stand with a turned-down leaf above it, and exactly four buttons in one row.** A plain, loose **raincoat** in fawn or olive rainproof cotton, to **just below the knee**, close through the shoulders and widening to a **very full hem** that hangs in soft folds from the seams, not gathers. **One slanted welt pocket on each hip**, its top toward the center. Plain set-in sleeves with no straps. Shown flat on an invisible form, front view, for a boy of about twelve.
+>
+> Leave out: a belt, epaulettes, a storm flap, a hood, lapels, double-breasted fastening, wrist straps, a checked lining showing, an umbrella, a person.
+
 ### smoking-jacket: Smoking jacket
 > **A wide quilted roll collar in a contrasting silk, turning from the neck down to the chest, and matching quilted turned-back gauntlet cuffs; below the collar, exactly three cord frog fastenings across a wide overlap.** A men's **smoking jacket** in a rich plain velvet or wool (deep burgundy, bottle green or navy), ending **just below the hips**, easy-fitting, with a softly **rounded lower front corner**. On each hip **one slanted set-in pocket with a corded mouth**, sloping down toward the side, no flap. Shown flat on an invisible form, front view.
 >

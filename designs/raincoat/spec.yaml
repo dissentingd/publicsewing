@@ -1,0 +1,81 @@
+# Raincoat: Simons' "Raincoat" (Designing Boys' and Juveniles' Clothing, 1922, Diagram 36, pp. 105-107),
+# on the overcoat (FreeSewing's Brian): loose, below the knee, its side seams crossing into a very full
+# sweep, buttoned to the neck under a two-piece collar, slanted pockets, unlined. Drafted from the
+# wearer's own measurements, so it fits men too. See BRIEF.md.
+extends: ../overcoat/spec.yaml
+
+about:
+  id: raincoat
+  name: Raincoat
+  category: coats
+  description: A loose coat to below the knee with a very full sweep, buttoned to the neck under a two-piece collar, with slanted pockets
+  difficulty: 3
+  tags: [coats]
+  techniques: [welt-pocket, collar, facing, button]
+  version: 0.1.0
+  source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Raincoat, Diagram 36, pp. 105-107 (designingboysjuv00simo)"
+  preview: usdaBoyC12
+
+options:
+  # "Drafted three sizes larger than the regular breast measure". The overcoat's two sizes up are
+  # 24%, the balmacaan's four 29%
+  chestEase: { pct: 26.5 }
+  # Size 12: 14 3/4 to the waist, 40 in all: 25 1/4 below it, of the USDA boy C12's 8 waist to seat
+  lengthBelowWaist: { pct: 315, max: 450 }
+  # The panels cross: at the hem the forepart's seam is about 5 1/2 in past S, the back's about 2 1/2.
+  # Read from the plate, a mean of 4 in each side, on a 33 in seat. The coat's edges are equal
+  hemFlare: { pct: 12 }
+  frontDrop: { pct: 15 } # x waistToSeat: 14 to 7, 1 1/4 in at the front, of 8
+  # 4 to 5, the lap, 2 1/4 in on a 29 in breast
+  buttonExtension: { pct: 7.8, min: 3, max: 11 }
+  # "Made to button up to the neck": four dots on CF, the last about 6 in below the waist
+  buttons: { count: 4, min: 3, max: 7 }
+  buttonTop: { pct: -210, min: -400 } # x the lap: the top about 4 3/4 in above the chest line
+  buttonBottom: { pct: 75 } # x waistToSeat: 6 of 8
+  hemCurve: { pct: 0, min: 0, max: 100 } # the front corner drawn square
+  # A two-piece collar, stand and leaf: not the mackinaw's other collars
+  collarStyle: { dflt: military, list: [military], menu: false }
+  sleeveStyle: { dflt: setIn, list: [setIn], menu: false }
+  # 15 to 17, the stand, 1 1/2 in; 17 to 18, the leaf, 2 1/4 in: on about a 14 3/4 in neck
+  standHeight: { pct: 10, min: 5, max: 16, of: neck, menu: style }
+  collarWidth: { pct: 15, min: 10, max: 26, of: neck, menu: style }
+  collarPoint: { pct: 5, min: 0, max: 15, of: neck, menu: style } # 21 past 20: a little, as drawn
+  # Slanted pockets with a large bag, as drawn: the top at the waist, 57% across, 5 in down, 2 in over
+  handPockets: { bool: true }
+  handPocketTop: { pct: 0 }
+  handPocketAt: { pct: 57 }
+  handPocketLength: { pct: 54 }
+  handPocketLean: { pct: 40 }
+  breastPockets: { bool: false, menu: false }
+  lowerPockets: { bool: false, menu: false }
+  vent: { bool: false } # none drawn
+  lining: { bool: false } # none described
+
+pieces:
+  # The stand: the whole neckline, front edge to front edge, rising a little to the front
+  collar:
+    prefix: mackinaw # named like the inherited pieces
+    after: [back, front]
+    measurements: [neck]
+    options: [standHeight, collarStyle] # the front reads collarStyle, and the parent's collar declared it
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext * 0.9
+          spring: target * 0.06
+          width: neck * standHeight
+          point: 0
+          key: coat.collarStand
+          title: collarStand
+          nr: 4
+  # The leaf, sewn to the stand's top edge, to just short of its lap
+  collarFall:
+    after: [collar]
+    measurements: [neck]
+    options: [collarWidth, collarPoint]
+    ops:
+      - collar:
+          target: coat.collarStand.outer - coat.frontEdge.ext * 0.9
+          spring: target * 0.13
+          width: neck * collarWidth
+          point: neck * collarPoint
+          nr: 20
