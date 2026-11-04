@@ -320,6 +320,30 @@ options:
   calfWidth:
     title: Calf width
     description: Round the leg at the calf line, as a share of the knee measurement.
+  scoutCalfWidth:
+    title: Scout calf width
+    description: Round the scout trousers at the calf, as a share of the knee measurement.
+  scoutCalfBalance:
+    title: Scout calf balance
+    description: The back's share of the calf width.
+  scoutHemWidth:
+    title: Scout hem width
+    description: Round the scout trousers at the hem, as a share of the knee measurement.
+  scoutHemBalance:
+    title: Scout hem balance
+    description: The back's share of the hem width.
+  scoutLength:
+    title: Scout leg length
+    description: How far below the knee the hem ends, as a share of knee to floor.
+  scoutCalfAt:
+    title: Scout calf line
+    description: Where the calf line falls between the knee and floor.
+  backKneeV:
+    title: Back knee tuck
+    description: Depth of the V tuck sewn across the back knee, as a share of the knee.
+  backHemPleat:
+    title: Back hem pleat
+    description: Width of the pleat at the back hem, as a share of the knee.
   calfAt:
     title: Calf line
     description: How far below the knee the calf line falls, as a share of knee to floor.

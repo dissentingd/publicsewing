@@ -1,0 +1,102 @@
+# Simons 1922, Diagram 44, pp. 122, 124-125: long scout trousers, shaped at the back knee.
+# The queue's knee-pants base is short; use the trousers' fly, pockets and waistband instead.
+extends: ../suit-trousers/spec.yaml
+
+about:
+  id: scout-pants
+  name: Scout pants
+  category: trousers
+  description: Full-length tapered scout trousers with a shaped back knee, a back hem pleat, fly and waistband
+  difficulty: 4
+  tags: [bottoms]
+  techniques: [dart, zip, welt-pocket, waistband, pleat, hem]
+  version: 0.1.0
+  source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Boys' Scout Pants, Diagram 44, pp. 122, 124-125 (designingboysjuv00simo)"
+  preview: cisMaleAdult32 # nearest available waist to Simons' 28 in size 14; its seat is larger
+
+options:
+  turnUps: { menu: false }
+  turnUpDepth: { menu: false }
+  hemShaping: { pct: 0, menu: false }
+  hemWidth: { pct: 100, menu: false }
+  # On the size 14 plate: the front is 11 in round at the upper knee; the back adds 3/4 in
+  # on each side, making 12 1/2 in around. The lower calf is 12 + 1 1/4 = 13 1/4 in.
+  kneeEase: { pct: 14, min: 5, max: 30, of: knee, menu: fit } # 12.5 / 11
+  legBalance: { pct: 56, menu: advanced } # 7 / 12.5 at upper knee
+  scoutCalfWidth: { pct: 106, min: 85, max: 125, of: knee, menu: fit } # 13.25 / 12.5
+  scoutCalfBalance: { pct: 55, min: 50, max: 65, menu: advanced } # 7.25 / 13.25
+  scoutHemWidth: { pct: 96, min: 75, max: 120, of: knee, menu: fit } # (9.5 + 2.5) / 12.5
+  scoutHemBalance: { pct: 60, min: 50, max: 68, menu: advanced } # 7.25 / 12
+  scoutLength: { pct: 69, min: 60, max: 95, menu: style } # (23 - 12) / (28 - 12), knee to floor
+  scoutCalfAt: { pct: 34, min: 25, max: 50, menu: advanced } # (17.5 - 12) / (28 - 12)
+  backKneeV: { pct: 4.5, min: 0, max: 8, of: knee, menu: construction } # 1/2 / 11 in at size 14
+  backHemPleat: { pct: 4.5, min: 0, max: 8, of: knee, menu: construction } # 1/2 / 11 in at size 14
+  lengthBonus: { pct: 0, menu: false }
+
+pieces:
+  front:
+    prefix: trousers
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      below: waistToFloor - waistToKnee
+    ops:
+      - trouserLeg:
+          which: front
+          dart: d * frontDart
+          dartAt: 0.55
+          dartLength: waistToSeat * frontDartLength
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45
+          share: 1 - legBalance
+          calfShare: 1 - scoutCalfBalance
+          cuffShare: 1 - scoutHemBalance
+          calfBelow: below * scoutCalfAt
+          calfW: knee * scoutCalfWidth
+          cuffBelow: below * scoutLength
+          cuffW: knee * scoutHemWidth
+  back:
+    prefix: trousers
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      below: waistToFloor - waistToKnee
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: d * backDart
+          dartAt: 0.4
+          dartFrom: centre
+          dartLength: waistToSeat * backDartLength
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          backPocket: if(backPocket, seat * 0.13, 0)
+          backPocketBelow: waistToSeat * 0.4
+          backPocketWelt: seat * 0.006
+          share: legBalance
+          calfShare: scoutCalfBalance
+          cuffShare: scoutHemBalance
+          calfBelow: below * scoutCalfAt
+          calfW: knee * scoutCalfWidth
+          cuffBelow: below * scoutLength
+          cuffW: knee * scoutHemWidth
+          backKneeV: knee * backKneeV
+          backHemPleat: knee * backHemPleat
+
+variants:
+  narrow:
+    name: Narrow leg
+    description: A closer lower leg, using the same knee shaping and back pleat.
+    options: { scoutCalfWidth: 0.93, scoutHemWidth: 0.90 }

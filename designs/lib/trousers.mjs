@@ -155,14 +155,14 @@ export function draftTrouserLeg(sh, args) {
   // Breeches: fitted below the knee to a cuff, flared at the thigh
   const br = args.cuffBelow > 0
   if (br) {
-    const { calfBelow, calfW, cuffBelow, cuffW, share = 0.5, thighFlare = 0, thighAt = 0.4 } = args
+    const { calfBelow, calfW, cuffBelow, cuffW, share = 0.5, calfShare = share, cuffShare = share, thighFlare = 0, thighAt = 0.4 } = args
     const cx = points.knee.x
     const calfY = points.knee.y + calfBelow
     const cuffY = points.knee.y + cuffBelow
-    points.calfOut = new Point(cx + (out * calfW * share) / 2, calfY)
-    points.calfIn = new Point(cx - (out * calfW * share) / 2, calfY)
-    points.hemOut = new Point(cx + (out * cuffW * share) / 2, cuffY)
-    points.hemIn = new Point(cx - (out * cuffW * share) / 2, cuffY)
+    points.calfOut = new Point(cx + (out * calfW * calfShare) / 2, calfY)
+    points.calfIn = new Point(cx - (out * calfW * calfShare) / 2, calfY)
+    points.hemOut = new Point(cx + (out * cuffW * cuffShare) / 2, cuffY)
+    points.hemIn = new Point(cx - (out * cuffW * cuffShare) / 2, cuffY)
     points.hemCp1 = points.hemIn.shiftFractionTowards(points.hemOut, 1 / 3)
     points.hemCp2 = points.hemIn.shiftFractionTowards(points.hemOut, 2 / 3)
     const ty = points.fork.y + (points.knee.y - points.fork.y) * thighAt
@@ -263,6 +263,33 @@ export function draftTrouserLeg(sh, args) {
   paths.crease = new Path().move(points.floor).line(new Point(points.floor.x, points.fork.y)).addClass('help dashed')
   if (!straight) snippets.knee = new Snippet('notch', points.kneeOut)
   snippets.kneeIn = new Snippet('notch', points.kneeIn)
+
+  // Scout trousers: the back is shortened by sewing a shallow V across the knee.
+  // The V and the pleat at the hem are construction marks; the cut retains the intake.
+  if (back && br && args.backKneeV > 0) {
+    const y = points.knee.y + (points.calfOut.y - points.knee.y) * 0.22
+    const kOut = outseam.intersectsY(y)[0]
+    const kInUpper = inseam.intersectsY(y - args.backKneeV / 2)[0]
+    const kInLower = inseam.intersectsY(y + args.backKneeV / 2)[0]
+    if (kOut && kInUpper && kInLower) {
+      points.kneeVUpper = kInUpper
+      points.kneeVLower = kInLower
+      points.kneeVTip = kOut
+      paths.kneeV = new Path().move(kInUpper).line(kOut).line(kInLower).addClass('mark dashed')
+      snippets.kneeVUpper = new Snippet('notch', kInUpper)
+      snippets.kneeVLower = new Snippet('notch', kInLower)
+    }
+  }
+  if (back && br && args.backHemPleat > 0) {
+    const centre = points.hemIn.shiftFractionTowards(points.hemOut, 0.5)
+    const a = centre.shift(180, args.backHemPleat / 2)
+    const b = centre.shift(0, args.backHemPleat / 2)
+    points.hemPleatIn = a
+    points.hemPleatOut = b
+    paths.hemPleat = new Path().move(a).line(a.shift(90, args.backHemPleat * 2)).move(b).line(b.shift(90, args.backHemPleat * 2)).addClass('mark dashed')
+    snippets.hemPleatIn = new Snippet('notch', a)
+    snippets.hemPleatOut = new Snippet('notch', b)
+  }
 
   const info = {
     outseam: outseam.length(),

@@ -1329,3 +1329,8 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > **Buttoned all down the front to the neck, under a deep collar with long points, and bloused over a wide belt sewn on at the waist.** A loose boy's **middy blouse** in plain white cotton duck, with five white buttons on a front opening and one on the belt, the body's fullness tucked evenly into the belt so it hangs over it all round. A **deep turn-down collar** lying flat on the shoulders, its long points meeting at the throat. **Long full sleeves pleated into wide buttoned cuffs**. Child's proportions. Shown flat, front view.
 >
 > Leave out: a V neck, a shield, a square sailor back, stripes or braid on the collar, a neckerchief or tie, pockets, belt loops, a buckle, badges, a hat, a person.
+
+### scout-pants: Scout pants
+> **Long tapered scout trousers with the extra shape at the back of the knee and a pleat at each back hem.** Plain sturdy khaki cotton drill, sized for a teenage boy. A conventional waistband with belt loops and a fly, straight front, side pockets, legs narrowing gently toward the ankle. Show the garment flat at a slight three-quarter angle so the seam crossing the back knee and the small pleat at the back hem are visible. Historic 1920s utility clothing, clean technical editorial illustration.
+>
+> Leave out: shorts, knee bands, puttees, a side leg opening, cargo pockets, badges, a person or mannequin.

@@ -107,7 +107,7 @@ Priority 1 first: shirts, dresses and women's garments are the thinnest part of 
 | # | Design id | Garment | Source (folder id, pages) | Start from | Lane | Notes | Status |
 |---|---|---|---|---|---|---|---|
 | 24 | `button-middy` | Button-on middy: buttoned to the neck, belted at the waist | Simons 1922, Diagram 10, p. 42 | `middy-blouse` | D | As built: on `pyjama-jacket`, not the sailor middy: it opens all down the front on a cut-on stand, with a belt sewn to the hem | done (button-middy) |
-| 25 | `scout-pants` | Scout pants | Simons 1922, Diagram 44, pp. 123–125 | `knee-pants` | A | | open |
+| 25 | `scout-pants` | Scout pants | Simons 1922, Diagram 44, pp. 122, 124–125 | `knee-pants` | A | As built: on `suit-trousers`; the plate reaches the shank, with a shaped back knee and hem pleat, rather than ending at the knee | done (scout-pants) |
 | 26 | `cape-overcoat` | Shoulder-cape overcoat | Simons 1916, p. 21; boys' cape overcoat Simons 1922 p. 126 | `overcoat` + item 10 | D | After item 10 | open |
 | 27 | `riding-skirt` | Divided and apron riding skirts | Mitchell 1921, pp. 116–121 | `culottes` | B | | open |
 | 28 | `painters-jacket` | Painter's jacket: knee length, three patch pockets | Vincent 1890, p. 35 | `barbers-coat` | D | | open |

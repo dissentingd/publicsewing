@@ -127,6 +127,7 @@ and marked as derived.
 | **Boy's suit jacket** | — | **Drafted 2026-10-28** (`designs/boys-suit-jacket`: the jacket at Simons' boys' proportions; not sewn) | Simons 1922 `designingboysjuv00simo` |
 | Eton jacket (short, a lapel to the waist) | — | **Drafted 2026-11-03** (`designs/eton-jacket`, on the boys' suit jacket; not sewn) | Simons 1922 pp. 46-49 |
 | Golf pants (fitted through the knee, full thigh, side vent) | — | **Drafted 2026-11-03** (`designs/golf-pants`, on the breeches; not sewn) | Simons 1922 pp. 120-123 |
+| Scout pants (tapered long leg, shaped back knee) | — | **Drafted 2026-11-04** (`designs/scout-pants`, on the suit trousers; not sewn) | Simons 1922 Diagram 44, pp. 122, 124-125 |
 | **Girl's dress** (any size) | — | **Drafted 2026-10-23** (`designs/frock`, not sewn) | Walker 1909 (frocks) |
 | **Girl's coat** | — | **Drafted 2026-10-28** (`designs/girls-coat`: Sheifer's box coat on Mitchell's, to below the knee; not sewn) | Sheifer 1908 `nssheiferssystem00shei` |
 

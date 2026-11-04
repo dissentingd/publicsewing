@@ -100,6 +100,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `smoking-jacket` | Short lounging jacket: wide roll collar, a wide overlap with frogs, gauntlet cuffs, slanted hip pockets, lined | Vincent 1890 |
 | `eton-jacket` | Short jacket ending just below the waist, a wide lapel rolling to the waist, no pockets | Simons 1922 |
 | `golf-pants` | Short trousers fitted through the knee to just below it, full at the thigh, a buttoned side vent | Simons 1922 |
+| `scout-pants` | Full-length tapered trousers with a shaped back knee and back hem pleat | Simons 1922 |
 | `boys-suit-jacket` | Boy's three-button suit jacket, notched lapel, flap pockets | Simons 1922 |
 | `waistcoat` | Lined V-neck waistcoat with cutaway points, darts and welt pockets | ЕМКО 1988 |
 | `db-waistcoat` | Double-breasted waistcoat: a wide stand with two rows of buttons, a V neck to the front edge, a deep point | Simons 1922 |
