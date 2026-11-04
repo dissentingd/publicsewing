@@ -48,6 +48,7 @@ without declaring them, so they are listed in our package.json.
 | `scout-coat/` | Simons' Boy Scout jacket: the military tunic with a turned-down collar and four large flapped patch pockets, Simons 1922 Diagrams 11-12. [BRIEF.md](scout-coat/BRIEF.md) | draft (not sewn) | not draped |
 | `boys-work-coat/` | The chore coat with Simons' boys' details (5 buttons, pointed collar), for children's sizes. [BRIEF.md](boys-work-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `barbers-coat/` | White service coat, standing collar or open neck, Simons 1918. [BRIEF.md](barbers-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
+| `painters-jacket/` | Vincent's knee-covering work jacket with three patch pockets, five buttons and separate button cuffs, on the barber's coat. [BRIEF.md](painters-jacket/BRIEF.md) | draft (not sewn) | not draped |
 | `shop-coat/` | Long flared work overcoat (grocers' gown, lab coat, duster), pencil pocket, Simons 1918. [BRIEF.md](shop-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `bar-vest/` | Short waisted white jacket, pointed fronts, standing collar, sleeves optional, Simons 1918. [BRIEF.md](bar-vest/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `nightshirt/` | Long nightshirt: back yoke, front placket, neck band, side slits, Walker 1909. [BRIEF.md](nightshirt/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |

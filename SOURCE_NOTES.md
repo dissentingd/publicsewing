@@ -49,6 +49,7 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 ## Vincent 1890 (`vincentmakingshirts18xx`)
 - "D.B." in the smoking jacket's text is one row of frogs on a wide overlap, on the plate.
 - Collars and cuffs for several shirts are shared on p. 23.
+- Painter's jacket is book p. 35, PDF p. 39: 36 in breast, 34 in long from neck level, 17½ in to waist; the text supplies five buttons and the cook's jacket sleeve. Its three pocket sizes and collar height are marked on the plate.
 
 ## Pivnick 1949 (`pivnickdesignclothes1949`)
 - Figures carry no numbers: read proportions, with the scale from a known length such as neck point

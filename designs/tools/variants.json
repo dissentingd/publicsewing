@@ -3,6 +3,7 @@
   "girls-coat": {"default": {}, "short": {"lengthBelowWaist": 0.4, "buttons": 3, "ticketPocket": true}, "plain": {"pockets": false, "cbFlare": 0, "buttonInset": 1}, "double": {"doubleBreasted": true, "buttons": 3}},
   "womens-box-coat": { "default": {}, "peakLapels": {"lapelStyle": "peak"}, "variant": { "lapelStyle": "peak", "neckDartWidth": 0, "buttons": 4, "lengthBelowWaist": 0.45, "flare": 0.08 }, "plain": { "pockets": false, "cbFlare": 0, "buttonInset": 1 } },
   "barbers-coat": { "default": {}, "openNeck": {"neckStyle": "open"}, "open": { "neckStyle": "open", "hemCurve": 0.5, "pocketShape": "chamfered" } },
+  "painters-jacket": { "default": {}, "plain": {"breastPocket": false, "lowerPockets": false}, "variant": {"lengthBelowWaist": 1.8, "buttons": 6, "pocketShape": "square", "cuffDepth": 0.5} },
   "boys-work-coat": { "default": {}, "square": { "pocketShape": "square", "buttons": 6, "hemCurve": 1 }, "plain": { "breastPocket": false, "lowerPockets": false, "frontDrop": 0.2, "waistShaping": true } },
   "chore-coat": { "default": {}, "square": { "pocketShape": "square", "buttons": 6, "hemCurve": 1 }, "plain": { "breastPocket": false, "lowerPockets": false, "frontDrop": 0.2, "waistShaping": true } },
   "frock": { "default": {}, "longSleeves": {"sleeves": "long"}, "variant": { "opening": "back", "sleeves": "long", "neckFinish": "band", "gathers": 1.3 } },

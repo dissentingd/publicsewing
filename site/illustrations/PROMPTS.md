@@ -1349,3 +1349,8 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > **A long, asymmetric 1921 riding apron made from two sweeping panels.** Plain dark brown wool serge. The broad front apron drapes across the legs and has a high cutaway at one side; the narrower back panel has a curved cutaway for sitting astride. A narrow cloth strap wraps around one leg just above the knee and buttons to a short tab and the back panel. Show the garment alone at a slight three-quarter angle, with the strap and asymmetric cutaway visible. Clean technical editorial illustration on a plain background.
 >
 > Leave out: a symmetrical skirt, culotte leg tubes, a saddle, a horse, a rider or mannequin, pockets, pleats, decorative trim or a belt.
+
+### painters-jacket: Painter's jacket
+> **A long, easy-fitting painter's work jacket from 1890.** Unbleached cotton twill, reaching just over the knees. A narrow upright Prussian collar, single buttoned front with five visible buttons, one rounded patch pocket at the chest and two larger rounded patch pockets below the waist. Long sleeves end in narrow buttoned cuffs. Show it on a standing adult in a front three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: lapels, belt, hood, epaulettes, pocket flaps, extra pockets, double-breasted buttons or modern coverall styling.

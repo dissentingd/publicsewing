@@ -1,0 +1,41 @@
+# Painter's jacket, Vincent 1890, p. 35 (PDF p. 39). See BRIEF.md.
+extends: ../barbers-coat/spec.yaml
+
+about:
+  id: painters-jacket
+  name: Painter's jacket
+  category: jackets
+  description: "A knee-covering work jacket with three patch pockets, five buttons and button cuffs"
+  difficulty: 3
+  tags: [jackets, workwear]
+  techniques: [patch-pocket, collar, facing, button, cuff]
+  version: 0.1.0
+  source: "Vincent, The Cutter's Practical Guide to Cutting and Making Shirts, Undergarments (1890), Painter's Jacket, p. 35 (vincentmakingshirts18xx)"
+
+options:
+  chestEase: { pct: 18 } # plate: easy fit over a 36 in breast
+  lengthBelowWaist: { pct: 210 } # 17 1/2 to 34 in on plate; x waistToSeat
+  frontDrop: { pct: 0 } # plate: level hem
+  buttons: { count: 5 } # text and plate
+  collarHeight: { pct: 11.5 } # Prussian stand collar, plate about 1 3/4 in
+  pocketShape: { dflt: rounded } # plate
+  sleeveSlit: { pct: 75, min: 40, max: 130, of: wrist, menu: style } # our opening for button cuff
+  cuffFit: { pct: 35, min: 15, max: 65, of: wrist, menu: fit } # our cuff fit
+  cuffDepth: { pct: 35, min: 20, max: 60, of: wrist, menu: style } # plate about 2 1/2 in
+  cuffLap: { pct: 15, min: 8, max: 25, of: wrist, menu: style } # our button overlap
+
+pieces:
+  sleeve:
+    prefix: barberscoat
+    part: sleeve
+    after: front
+    options: [sleeveLengthBonus, sleeveSlit, cuffFit, cuffDepth, cuffLap]
+    slit: wrist * sleeveSlit
+  cuff: { part: cuff, after: sleeve, nr: 9, length: wrist * (1 + cuffFit), depth: wrist * cuffDepth, lap: wrist * cuffLap }
+  sleevePlacket: { part: sleevePlacket, after: sleeve, nr: 10, store: coat.sleeve, width: 0.15 }
+
+variants:
+  plain:
+    name: Plain
+    description: "Without patch pockets."
+    options: { breastPocket: false, lowerPockets: false }
