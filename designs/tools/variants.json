@@ -67,6 +67,7 @@
   "middy-blouse": {"default": {}, "shortSleeves": {"sleeves": "short"}, "variant": {"sleeves": "short", "shield": false, "vNeck": 0.7, "collarDepth": 0.18}},
   "culottes": {"default": {}, "short": {"length": 0.4, "goreFlare": 0.1, "crotchEase": 0.02, "zipLength": 0.6}},
   "riding-skirt": {"default": {}, "plain": {"goreFlare": 0.45}, "deep-seat": {"crotchDepthShare": 1.32, "backExtension": 0.30}},
+  "apron-riding-skirt": {"default": {}, "plain": {"apronSweep": 0.82}, "short": {"apronLength": 0.75, "openingLength": 0.23}},
   "work-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "backDart": 0.3, "hemWidth": 0.9}},
   "fitted-jacket": {"default": {}, "loose": {"cbSuppression": 0, "underarmSuppression": 0, "buttons": 4, "lengthBelowWaist": 0.3}, "plain": {"pockets": false, "breastPocket": false, "lining": false}},
   "dressing-gown": {"default": {}, "bathRobe": {"collarStyle": "military", "buttonExtension": 0.04, "buttons": 7, "buttonTop": -4, "buttonBottom": 0.6, "lengthBelowWaist": 2.55}, "plain": {"lowerPockets": false, "hemFlare": 0, "buttons": 2, "frontDrop": 0}},

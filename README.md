@@ -89,6 +89,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `kilt` | Knee-length wrap kilt: flat front aprons, knife pleats round the sides and back, buckled straps | Simons 1922 (hem and length) |
 | `culottes` | Divided skirt that looks like a skirt until the wearer moves | Pivnick 1949 |
 | `riding-skirt` | Five-gore divided riding skirt with a free-hanging front overlap | Mitchell 1921 |
+| `apron-riding-skirt` | Two-part asymmetric riding apron with a buttoned leg strap | Mitchell 1921 |
 | `gathered-skirt` | Full skirt of straight breadths gathered into a waistband | Walker 1909 |
 | `knee-pants` | Short trousers to the knee, fly, pockets, waistband | Simons 1922 |
 | `boys-knickers` | Full trousers to below the knee, gathered into a buckled strap | Simons 1922 |

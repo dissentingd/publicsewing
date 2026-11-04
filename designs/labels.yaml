@@ -1016,6 +1016,10 @@ parts:
   bottomFlap: Bottom pocket flap
   gauntletCuff: Gauntlet cuff
   apron: Apron
+  frontApron: Front apron (Part I)
+  backApron: Back apron (Part II)
+  legStrap: Long leg strap
+  shortTab: Short button tab
   pleats: Pleated length
   strap: Strap
   frontFacing: Front facing

@@ -1,0 +1,132 @@
+# Mitchell's two-part asymmetric apron riding skirt, scaled from the measured
+# 26 1/2 in waist, 40 in hip, 37/38 in lengths of the source draft.
+block: sarah
+
+about:
+  id: apron-riding-skirt
+  name: Apron riding skirt
+  category: skirts
+  description: A long asymmetric two-part riding apron with side cutaways and a buttoned leg strap
+  difficulty: 4
+  tags: [bottoms]
+  techniques: [dart, button, hem]
+  version: 0.1.0
+  source: Mitchell, Ladies' Tailor-Made Garments (1921), Ladies Apron Riding Skirt, Parts I-II, pp. 118-121 (newstandardworko00mitc)
+  preview: cisFemaleAdult36
+
+options:
+  apronLength: { pct: 92, min: 70, max: 100, menu: style, title: Apron length, description: Hem length as a share of the waist-to-floor measurement. } # source 39 in against modern 42.3 in model
+  apronSweep: { pct: 100, min: 75, max: 130, menu: style, title: Apron sweep, description: Width of the asymmetric apron pieces as a share of the source's hip-scaled draft. }
+  openingLength: { pct: 27, min: 20, max: 35, menu: style, title: Back opening, description: Length of the back seam opening as a share of the apron length. } # 10-11 in of 39 in
+  legStrapLength: { pct: 125, min: 100, max: 160, menu: fit, title: Leg strap length, description: Length of the strap that passes around the leg above the knee, as a share of the knee circumference. }
+  legStrapWidth: { pct: 6.35, min: 4, max: 9, of: waistToKnee, menu: style, title: Leg strap width, description: Finished strap width as a share of waist to knee. } # about 1 1/2 in
+
+pieces:
+  layout:
+    from: sarah.base
+    hide: tree
+    options: all
+  # Source plate coordinates in inches: A=(0,0), x positive to the right.
+  # sx scales the 40 in hip; sy scales the 39 in back length.
+  partI:
+    part: polygon
+    after: layout
+    nr: 1
+    label: frontApron
+    measurements: [hips, waistToFloor]
+    let:
+      sx: hips * apronSweep / 40
+      sy: waistToFloor * apronLength / 39
+    points:
+      - [-24.875 * sx, -1 * sy] # 22
+      - [-14.375 * sx, -7 * sy] # 21
+      - [-11.625 * sx, -4.5 * sy] # 20
+      - [-13.5 * sx, 0]
+      - [-15.25 * sx, 5.5 * sy] # curve 20-17
+      - [-14.7 * sx, 9 * sy]
+      - [-12.875 * sx, 11.5 * sy] # 17
+      - [-14.375 * sx, 15.5 * sy] # 12
+      - [-3 * sx, 1 * sy] # 11
+      - [0, 2 * sy] # 3
+      - [6.375 * sx, 0] # 8
+      - [22 * sx, 34 * sy] # 10
+      - [15 * sx, 36.5 * sy]
+      - [8 * sx, 38.5 * sy]
+      - [0, 39 * sy] # 7
+      - [-10 * sx, 38.5 * sy]
+      - [-20 * sx, 36.5 * sy]
+      - [-30.25 * sx, 33.75 * sy] # 23
+      - [-17.625 * sx, 15.5 * sy] # 15
+    notches:
+      - [-12.875 * sx, 11.5 * sy] # long leg strap at 17
+      - [-17.625 * sx, 15.5 * sy] # short button tab above 15
+    lines:
+      - [[6.375 * sx, 0], [7 * sx, 7 * sy]] # front waist dart
+      - [[7.625 * sx, 0], [7 * sx, 7 * sy]]
+      - [[-14.375 * sx, -7 * sy], [-14.375 * sx, -4.5 * sy]] # upper side dart
+      - [[-11.625 * sx, -4.5 * sy], [-14.375 * sx, -4.5 * sy]]
+  partII:
+    part: polygon
+    after: layout
+    nr: 2
+    label: backApron
+    measurements: [hips, waistToFloor]
+    let:
+      sx: hips * apronSweep / 40
+      sy: waistToFloor * apronLength / 39
+    points:
+      - [-8 * sx, 0.625 * sy] # 39
+      - [-7.375 * sx, 0.625 * sy] # 38, opening top
+      - [0, 1 * sy] # 26
+      - [7.25 * sx, 0] # 30
+      - [8.5 * sx, 0] # 31
+      - [10 * sx, 12 * sy] # 32
+      - [8.5 * sx, 12.3 * sy] # shaped seat curve
+      - [6.5 * sx, 13 * sy]
+      - [5 * sx, 14.5 * sy]
+      - [4 * sx, 16 * sy]
+      - [3.25 * sx, 17.5 * sy]
+      - [5.5 * sx, 39 * sy] # 37; point 36 marks the construction line, not the cut edge
+      - [0, 39 * sy] # 29
+      - [-7 * sx, 38.5 * sy]
+      - [-14.25 * sx, 36.5 * sy] # 43
+    notches:
+      - [(-8 - 6.25 * 39 * openingLength / 35.875) * sx, (0.625 + 39 * openingLength) * sy] # back opening end, on the 39-43 edge
+      - [3.25 * sx, 11.25 * sy] # button a little above point 36
+    buttons:
+      - [3.25 * sx, 11.25 * sy]
+    lines:
+      - [[-3.625 * sx, 1 * sy], [-3.25 * sx, 7 * sy]] # back dart
+      - [[-2.25 * sx, 1 * sy], [-3.25 * sx, 7 * sy]]
+      - [[2.25 * sx, 1 * sy], [3.25 * sx, 7 * sy]] # side dart
+      - [[3.625 * sx, 1 * sy], [3.25 * sx, 7 * sy]]
+      - [[7.25 * sx, 0], [8 * sx, 6 * sy]] # outer dart
+      - [[8.5 * sx, 0], [8 * sx, 6 * sy]]
+  longStrap:
+    part: strip
+    after: partI
+    nr: 3
+    label: legStrap
+    fold: true
+    measurements: [knee, waistToKnee]
+    length: knee * legStrapLength
+    width: waistToKnee * legStrapWidth
+  shortTab:
+    part: strip
+    after: partI
+    nr: 4
+    label: shortTab
+    fold: true
+    measurements: [waistToKnee]
+    length: waistToKnee * legStrapWidth # source 1 1/2 in
+    width: waistToKnee * legStrapWidth / 3
+
+variants:
+  plain:
+    name: Narrower sweep
+    description: The same two-part apron with less cloth in the sweep.
+    options: { apronSweep: 0.82 }
+  short:
+    name: Shorter length
+    description: The two-part apron shortened well above the ankle.
+    options: { apronLength: 0.75, openingLength: 0.23 }

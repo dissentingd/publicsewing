@@ -110,7 +110,7 @@ Priority 1 first: shirts, dresses and women's garments are the thinnest part of 
 | 25 | `scout-pants` | Scout pants | Simons 1922, Diagram 44, pp. 122, 124–125 | `knee-pants` | A | As built: on `suit-trousers`; the plate reaches the shank, with a shaped back knee and hem pleat, rather than ending at the knee | done (scout-pants) |
 | 26 | `cape-overcoat` | Full-length cape overcoat | Simons 1916, pp. 30–31; boys' cape overcoat Simons 1922, Diagram 38, pp. 110–112 | `overcoat` + item 10 | G | As built: the plates show a whole-back cape and separate foreparts, with no coat body; on `cape`, with a standing military collar | done (cape-overcoat) |
 | 27a | `riding-skirt` | Divided five-gore riding skirt | Mitchell 1921, pp. 116–117 | `gored-skirt` | B | Five-gore plate; narrow front overlap hangs free from the waist | done (riding-skirt) |
-| 27b | `apron-riding-skirt` | Asymmetric apron riding skirt | Mitchell 1921, pp. 118–121 | — | B | Separate Part I and Part II drafts with a leg strap | open |
+| 27b | `apron-riding-skirt` | Asymmetric apron riding skirt | Mitchell 1921, pp. 118–121 | — | B | Separate source-scaled Part I and Part II shapes, with long leg strap, short tab and back opening | done (apron-riding-skirt) |
 | 28 | `painters-jacket` | Painter's jacket: knee length, three patch pockets | Vincent 1890, p. 35 | `barbers-coat` | D | | open |
 | 29 | `aprons` | Work aprons (carpenter's, butcher's, barman's…) | Vincent 1890, pp. 39–40 | — | G | `polygon` pieces; FreeSewing's Albert covers one apron | open |
 | 30 | `reefer` | Boys' reefer | Simons 1922, pp. 74–80; Vincent 1897 `cutters-prac-guide-jacket-cutting` (untracked) | `peacoat` | D | Close to `peacoat` | open |

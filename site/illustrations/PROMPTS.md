@@ -1344,3 +1344,8 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > **A full-length five-gore divided riding skirt, appearing as a skirt while standing.** Dark wool twill, circa 1921. A narrow smooth front panel hangs free from the waistband over the front division. Side and back gores flare broadly toward the hem; the rear is cut with room for sitting astride. Show the garment alone at a slight three-quarter angle, with one side opened just enough to reveal the divided legs and the front overlap. Clean technical editorial illustration on a plain background.
 >
 > Leave out: a short culotte hem, modern trouser pockets, a saddle, a rider or mannequin, a bustle, pleats, decorative buttons or lace.
+
+### apron-riding-skirt: Apron riding skirt
+> **A long, asymmetric 1921 riding apron made from two sweeping panels.** Plain dark brown wool serge. The broad front apron drapes across the legs and has a high cutaway at one side; the narrower back panel has a curved cutaway for sitting astride. A narrow cloth strap wraps around one leg just above the knee and buttons to a short tab and the back panel. Show the garment alone at a slight three-quarter angle, with the strap and asymmetric cutaway visible. Clean technical editorial illustration on a plain background.
+>
+> Leave out: a symmetrical skirt, culotte leg tubes, a saddle, a horse, a rider or mannequin, pockets, pleats, decorative trim or a belt.
