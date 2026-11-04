@@ -59,6 +59,7 @@ body:
         - Suit trousers (suit-trousers)
         - Sailor pants (sailor-pants)
         - Golf pants (golf-pants)
+        - Drawers (drawers)
         - Kilt (kilt)
         - Dress shirt (dress-shirt)
     validations:

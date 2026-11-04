@@ -1,0 +1,31 @@
+# Drawers: Vincent's "Pants or Drawers" (The Cutter's Practical Guide ... Shirts and Other Undergarments,
+# 1890, p. 24), on the overall pants (FreeSewing's Titan): no side seam, each leg cut in one piece, easy
+# fitting, to just below the knee, buttoned at a fly and waistband. Drafted from the wearer's own
+# measurements, so it fits any size. See BRIEF.md.
+extends: ../overall-pants/spec.yaml
+
+about:
+  id: drawers
+  name: Drawers
+  category: sleepwear
+  description: Easy-fitting drawers to just below the knee, each leg cut in one piece with no side seam, buttoned at the waist
+  difficulty: 2
+  tags: [bottoms, sleepwear]
+  techniques: [waistband, hem, buttonhole]
+  version: 0.1.0
+  source: "Vincent, The Cutter's Practical Guide ... Shirts and Other Undergarments (1890), Pants or Drawers, p. 24 (vincentmakingshirts18xx)"
+  preview: cisMaleAdult38
+
+options:
+  # "From I to this line should not be less than one-fourth of the seat plus 1 inch": 4 in round of 40
+  seatEase: { pct: 10 }
+  # "Measure up the size of the waist, allowing 2 inches for sewing of the seams", on about 32
+  waistEase: { pct: 6.5 }
+  # "In the case of drawers they would only extend to just below the knee": x waistToFloor, from the block's
+  # floor length, as FreeSewing's Titan shortens a leg
+  lengthBonus: { pct: -37, min: -45, max: 5 }
+  # At the bottom, twice (a quarter of the seat less 1 in), plus 1 1/2 in on each edge (the leg-seam's
+  # "about 1 1/2 in"): 21 in round of 40. Against the knee with this design's ease
+  hemWidth: { pct: 104, min: 70, max: 130 }
+  # Buttons, not belt loops
+  beltLoops: { count: 0, min: 0, max: 0, menu: false }

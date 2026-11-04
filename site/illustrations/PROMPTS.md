@@ -859,6 +859,11 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
 
+### drawers: Drawers
+> **No seam down the outside of the leg: each leg is one smooth piece, from the waistband to a plain hem just below the knee.** Easy-fitting men's **drawers** in plain white or cream cotton calico, fairly full in the leg, on a narrow waistband, with a short buttoned fly and small white buttons. Shown flat, front view.
+>
+> Leave out: a seam or stripe down the outside of the leg, elastic, gathered or ribbed hems, ties, pockets, patterns, a drawstring, a person.
+
 ### scout-coat: Scout coat
 > **Four large patch pockets with flaps: two at the chest and two bigger ones below the waist, each with a pointed flap and a small button.** A boy's **scout coat** in plain khaki or olive cotton twill, fitted and hip length, buttoned right to the neck with **exactly five buttons in one row**, under a **plain turned-down collar**. Plain two-piece sleeves. Shown flat on an invisible form, front view, for a boy of about twelve.
 >

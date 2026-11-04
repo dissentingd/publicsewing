@@ -54,6 +54,7 @@ and marked as derived.
 | Raincoat (loose, full sweep, buttoned to the neck, two-piece collar) | 1 | — | Variant; **drafted 2026-11-04** (`designs/raincoat`, on the overcoat; not sewn) | Simons 1922 pp. 105-107 |
 | Double-breasted waistcoat (wide stand, two rows, deep point) | 1 | — | Variant; **drafted 2026-11-04** (`designs/db-waistcoat`, on the waistcoat; not sewn) | Simons 1922 pp. 56-57 |
 | Scout coat (three-piece, four flapped patch pockets) | 1 | — | Variant; **drafted 2026-11-04** (`designs/scout-coat`, on the military tunic; not sewn) | Simons 1922 pp. 43-47 |
+| Drawers (below the knee, no side seam) | 1 | — | Variant; **drafted 2026-11-04** (`designs/drawers`, on the overall pants; not sewn) | Vincent 1890 p. 24 |
 | Princess coat (fitted, long, flared, double-breasted) | 1 | — | Variant; **drafted 2026-11-03** (`designs/princess-coat`, on Breanna; not sewn) | Pivnick 1949 pp. 274-279 |
 | Smoking jacket (short, wide roll collar, frogs, gauntlet cuffs) | 1 | — | Variant; **drafted 2026-11-03** (`designs/smoking-jacket`, on the dressing gown; not sewn) | Vincent 1890 p. 28 |
 | High-waisted skirt (runs on above the waist, faced) | 1 | — | Variant of `designs/two-piece-skirt`; **drafted 2026-11-03** (not sewn) | Mitchell 1921 pp. 88-89 |

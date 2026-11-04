@@ -55,6 +55,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `bloomers` | Bloomers gathered into knee bands | Walker 1909 |
 | `pyjama-jacket` | Loose sleeping jacket buttoned to the throat under a stand collar | Vincent 1890 |
 | `pyjama-trousers` | Full sleeping trousers to the ankle, gathered at the waist | Vincent 1890 |
+| `drawers` | Easy-fitting drawers to just below the knee, each leg in one piece with no side seam, buttoned at the waist | Vincent 1890 |
 | `shirtwaist-dress` | Buttoned work dress with a turn-down collar and cuffs | Woman's Institute, *Pattern Drafting* (1915) |
 | `tailored-jacket` | Women's semi-fitted jacket, princess seams, peak lapel | Mitchell 1921 |
 | `kimono-jacket` | Semi-fitted jacket with princess seams and sleeves cut in one with the side panels | Mitchell 1921 |
