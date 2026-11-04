@@ -1,0 +1,7 @@
+// Double-breasted waistcoat: built from ../spec.yaml (Simons 1922, on the waistcoat's body).
+import { loadSpec } from '../../lib/load-spec.mjs'
+
+const spec = loadSpec(new URL('../spec.yaml', import.meta.url))
+
+export const DbWaistcoat = spec.Design
+export const { about } = spec

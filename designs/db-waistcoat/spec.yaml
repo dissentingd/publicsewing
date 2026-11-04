@@ -1,0 +1,92 @@
+# Double-breasted waistcoat: Simons' "Double-Breasted Vest" (Designing Boys' and Juveniles' Clothing,
+# 1922, Diagram 16, pp. 56-57), on the waistcoat's body (FreeSewing's Brian): a V neck running out to the
+# front edge, a wide button stand with two rows of buttons, a deep chamfered point, welt pockets, lined.
+# Drafted from the wearer's own measurements, so it fits men too. See BRIEF.md.
+extends: ../waistcoat/spec.yaml
+
+about:
+  id: db-waistcoat
+  name: Double-breasted waistcoat
+  category: vests
+  description: A lined waistcoat with a wide button stand, two rows of buttons, a V neck running to the front edge and a deep point
+  difficulty: 3
+  tags: [vests]
+  techniques: [dart, welt-pocket, button, facing, lining]
+  version: 0.1.0
+  source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Double-Breasted Vest, Diagram 16, pp. 56-57 (designingboysjuv00simo)"
+  preview: cisMaleAdult38
+
+options:
+  # 8 to 11, half the stand, "2 1/4 inches ... a 4 1/2-inch button stand"; size 14, about a 31 in breast
+  buttonExtension: { pct: 7.3, min: 4, max: 11 } # x chest
+  # Four dots on the row drawn, 47 of the stand's 60 units out
+  buttons: { count: 4, min: 2, max: 6 }
+  buttonRow: { pct: 78, min: 50, max: 90, of: buttonExtension, menu: style, title: Button rows, description: "How far each row is from center front, as a share of the stand." }
+  # The V: from the neck down to 14, on the front edge, about 2 1/2 in below the chest line (11). The
+  # waistcoat's own V, measured from the CF neck, is deepened to reach it
+  neckDepth: { pct: 28, min: 12, max: 40 }
+  # The side's hem, F, about 2 3/4 in below the waist, of about 8 1/2 waist to seat
+  lengthBelowWaist: { pct: 33 }
+  # 10, the point, on CF about 4 in below the side's hem; the corner 16 to 10 cut off, across the stand
+  frontDrop: { pct: 47, max: 70 }
+  cutaway: { pct: 10, min: 0, max: 14 } # x chest: the chamfer, so it reaches about to CF
+  facingWidth: { pct: 13, min: 8, max: 18 } # wider than the stand, to take the outer row
+  # The side seam's lens does the shaping on the plate. A 1/4 in V at 18 and 19 is optional: "when a tight
+  # waist is desired". So the front dart's here, smaller than the waistcoat's
+  frontDart: { pct: 1, min: 0, max: 3 }
+
+pieces:
+  front:
+    prefix: waistcoat # named like the inherited pieces
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [frontDrop, cutaway, neckDepth, buttonExtension, buttons, buttonRow, facingWidth, armholeDrop, shoulderLength, backDart, frontDart, breastPocket, lowerPockets]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to side seam
+      vBottom: cfNeck.y + chest * neckDepth
+    ops:
+      - coatFront:
+          ext: ext
+          r: chest * cutaway
+          chamfer: true
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          straightHem: true
+          neckY: vBottom
+          armholeCut: { drop: chest * armholeDrop, shoulder: 1 - shoulderLength }
+          dart:
+            x: q * 0.5
+            top: underarm.y + q * 0.12
+            bottom: cfWaist.y + waistToSeat
+            width: chest * frontDart
+            letOut: chest * (backDart + frontDart) / 2
+      # Two rows, from just below the V to just below the waist
+      - buttons:
+          count: buttons
+          top: vBottom + ext * 1.1 # far enough below the V for the outer row to clear its edge, stout figures too
+          bottom: cfWaist.y + waistToSeat * lengthBelowWaist * 0.75
+          rows: [-ext * buttonRow, ext * buttonRow]
+      # Welt pockets, as drawn: one below the chest line, one at the waist, rising toward the side
+      - store:
+          key: coat.welts
+          value:
+            breast:
+              x0: q * 0.33
+              y0: underarm.y + q * 0.16
+              x1: q * 0.66
+              y1: underarm.y + q * 0.09
+              len: q * 0.34
+              welt: q * 0.08
+              bag: q * 0.5
+            lower:
+              x0: q * 0.33
+              y0: cfWaist.y + q * 0.06
+              x1: q * 0.8
+              y1: cfWaist.y - q * 0.03
+              len: q * 0.48
+              welt: q * 0.09
+              bag: q * 0.5
+      - markLine: { id: breastPocket, from: [coat.welts.breast.x0, coat.welts.breast.y0], to: [coat.welts.breast.x1, coat.welts.breast.y1], class: mark, if: breastPocket }
+      - markLine: { id: lowerPocket, from: [coat.welts.lower.x0, coat.welts.lower.y0], to: [coat.welts.lower.x1, coat.welts.lower.y1], class: mark, if: lowerPockets }

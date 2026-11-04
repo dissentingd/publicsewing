@@ -859,6 +859,11 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
 
+### db-waistcoat: Double-breasted waistcoat
+> **Two rows of exactly four buttons on a wide overlapping front, under a plain V neck with no lapels or collar, the fronts coming to one deep angled point.** A men's **double-breasted waistcoat** in plain dark wool (navy, charcoal or black), sleeveless, ending just below the waist at the sides. **One slanted welt pocket on each side at the chest and one at the waist**, each rising toward the side. Shown flat on an invisible form, front view.
+>
+> Leave out: lapels, a collar, a shawl neck, a watch chain, flaps on the pockets, a shirt and tie, a jacket, a person.
+
 ### raincoat: Raincoat
 > **Buttoned right up to the neck under a small two-part collar: no lapels, a stand with a turned-down leaf above it, and exactly four buttons in one row.** A plain, loose **raincoat** in fawn or olive rainproof cotton, to **just below the knee**, close through the shoulders and widening to a **very full hem** that hangs in soft folds from the seams, not gathers. **One slanted welt pocket on each hip**, its top toward the center. Plain set-in sleeves with no straps. Shown flat on an invisible form, front view, for a boy of about twelve.
 >
