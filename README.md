@@ -82,6 +82,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `sailor-pants` | Bell-bottomed trousers with no side seam, each leg cut in one piece, with a buttoned drop front | Simons 1922 |
 | `two-piece-skirt` | Plain skirt fitted at hips and waist, shaped in its side seams | Mitchell 1921 |
 | `middy-blouse` | Loose pullover with a deep V neck, square sailor collar and shield | Simons 1922 |
+| `button-middy` | Loose blouse buttoned to the neck under a deep pointed collar, its fullness taken into a snug belt | Simons 1922 |
 | `shift-dress` | Simple unfitted dress, front and back each in one piece, a little flared | Pivnick 1949 |
 | `kimono-dress` | Dress with short sleeves cut in one with the bodice, a turn-down collar and a slightly gathered skirt | Pivnick 1949 |
 | `kilt` | Knee-length wrap kilt: flat front aprons, knife pleats round the sides and back, buckled straps | Simons 1922 (hem and length) |

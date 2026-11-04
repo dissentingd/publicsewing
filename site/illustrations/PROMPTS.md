@@ -1324,3 +1324,8 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a panel or placket below the V, a neckerchief or tie, stripes or braid on the collar, a front opening or buttons
 > down the front, pockets, badges, a hat, a person.
+
+### button-middy: Button-on middy
+> **Buttoned all down the front to the neck, under a deep collar with long points, and bloused over a wide belt sewn on at the waist.** A loose boy's **middy blouse** in plain white cotton duck, with five white buttons on a front opening and one on the belt, the body's fullness tucked evenly into the belt so it hangs over it all round. A **deep turn-down collar** lying flat on the shoulders, its long points meeting at the throat. **Long full sleeves pleated into wide buttoned cuffs**. Child's proportions. Shown flat, front view.
+>
+> Leave out: a V neck, a shield, a square sailor back, stripes or braid on the collar, a neckerchief or tie, pockets, belt loops, a buckle, badges, a hat, a person.

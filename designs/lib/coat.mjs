@@ -109,9 +109,9 @@ export const armhole = (points, Path, half) =>
     .curve(points.armholeHollowCp2, points.armholePitchCp1, points.armholePitch)
     .join(half)
 
-/** Seam allowance: hemBase gets 3 x sa, saBase gets sa, closing to `from`..`to` */
-function allowance(paths, Path, sa, ends) {
-  const hem = paths.hemBase.offset(sa * 3)
+/** Seam allowance: hemBase gets `hemSa` x sa (3: a turned hem), saBase gets sa, closing to `from`..`to` */
+function allowance(paths, Path, sa, ends, hemSa = 3) {
+  const hem = paths.hemBase.offset(sa * hemSa)
   const rest = paths.saBase.offset(sa)
   let p = ends ? new Path().move(ends[0]).line(hem.start()) : new Path().move(hem.start())
   p = p.join(hem).line(rest.start()).join(rest)
@@ -183,7 +183,7 @@ function cutArmhole(sh, cut) {
 }
 
 /** The back: Brian's back, boxy, on the fold, hem `lengthBelowWaist` below the waist */
-export function draftCoatBack(sh, { nr = 2, armholeCut, dart } = {}) {
+export function draftCoatBack(sh, { nr = 2, armholeCut, dart, hemSa } = {}) {
   const { points, paths, Path, Point, store, sa, macro, snippets, Snippet, part } = sh
   cleanup(sh, ['backArmhole', 'backCollar'])
   coatBody(sh, 'cb')
@@ -203,7 +203,7 @@ export function draftCoatBack(sh, { nr = 2, armholeCut, dart } = {}) {
     .join(paths.saBase)
     .close()
     .addClass('fabric')
-  if (sa) paths.sa = allowance(paths, Path, sa, [points.cbHem, points.cbNeck]).addClass('fabric sa')
+  if (sa) paths.sa = allowance(paths, Path, sa, [points.cbHem, points.cbNeck], hemSa).addClass('fabric sa')
 
   store.set('coat.back', {
     side: sideSeamLength(points),
@@ -237,7 +237,7 @@ export function draftCoatBack(sh, { nr = 2, armholeCut, dart } = {}) {
  * - `neckY`: a V neck. The neckline runs straight-ish from the shoulder to the front edge at
  *   that height (no collar, or a shawl collar built on it), instead of Brian's round neck.
  */
-export function draftCoatFront(sh, { ext, r, drop = 0, facing, nr = 1, neckY, straightHem = false, chamfer = false, armholeCut, dart }) {
+export function draftCoatFront(sh, { ext, r, drop = 0, facing, nr = 1, neckY, straightHem = false, chamfer = false, armholeCut, dart, hemSa }) {
   const { points, paths, Path, Point, store, sa, macro, snippets, Snippet, part } = sh
   cleanup(sh, ['frontArmhole', 'frontCollar'])
   coatBody(sh, 'cf')
@@ -303,7 +303,7 @@ export function draftCoatFront(sh, { ext, r, drop = 0, facing, nr = 1, neckY, st
   paths.seam = paths.edge.join(paths.hemBase).join(paths.saBase).close().addClass('fabric')
   if (sa) {
     const edge = paths.edge.offset(sa)
-    const rest = allowance(paths, Path, sa)
+    const rest = allowance(paths, Path, sa, undefined, hemSa)
     paths.sa = edge.line(rest.start()).join(rest).line(edge.start()).addClass('fabric sa')
   }
   paths.cf = new Path().move(new Point(0, top)).line(new Point(0, chestY))

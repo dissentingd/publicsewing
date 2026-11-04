@@ -62,6 +62,7 @@ body:
         - Drawers (drawers)
         - Kilt (kilt)
         - Dress shirt (dress-shirt)
+        - Button-on middy (button-middy)
     validations:
       required: true
   - type: input

@@ -1,0 +1,121 @@
+# Button-on middy: Simons' "Button on Middy Blouse" (Designing Boys' and Juveniles' Clothing, 1922,
+# Diagram 10, pp. 41-42), on the pyjama jacket (FreeSewing's Brian): a loose blouse buttoned to the
+# neck under a deep pointed collar, cut well below the waist and its fullness taken into a snug
+# belt, so it blouses over; sleeves into buttoned cuffs. Drafted from the wearer's measurements, so
+# it fits any size, adults included. See BRIEF.md.
+extends: ../pyjama-jacket/spec.yaml
+
+about:
+  id: button-middy
+  name: Button-on middy
+  category: tops
+  description: "A loose blouse buttoned to the neck under a deep pointed collar, its fullness taken into a snug belt"
+  difficulty: 2
+  tags: [tops]
+  techniques: [collar, cuff, placket, button, facing, gathering]
+  version: 0.1.0
+  source: Simons, Designing Boys' and Juveniles' Clothing (1922), Button on Middy Blouse, Diagram 10 (designingboysjuv00simo)
+  preview: usdaBoyC6
+
+options:
+  # "Drafted similar to the previous diagrams": the forepart 1/2 breast plus 4 in from the back's line
+  chestEase: { pct: 25, min: 10, max: 40 }
+  # 3 to 5, 0 to P and 0 to 2: the hem 1 1/2 in out at each side of the side seam; 36 in round at
+  # the hem on a 24 breast. On the seat, as the coat family's hem is
+  seatEase: { pct: 45, min: 10, max: 70 }
+  lengthBelowWaist: { pct: 64, min: 30, max: 120 } # E 4 in below the waist; x waistToSeat
+  frontDrop: { pct: 24, min: 0, max: 50 } # 3 to 4, 1 1/2 in at CF; x waistToSeat
+  buttonExtension: { pct: 4 } # S to T, the 1 in button stand on a 24 breast
+  buttons: { count: 5, min: 3, max: 8 } # the plate's row, the neck to level with E
+  hemCurve: { pct: 0, menu: false }
+  # Off the menus: the jacket's stand collar and pockets
+  neckStyle: { dflt: stand, list: [stand], menu: false }
+  collarHeight: { menu: false }
+  breastPocket: { bool: false, menu: false }
+  lowerPockets: { bool: false, menu: false }
+  pocketShape: { menu: false }
+  # The collar: 9 to 14 and 8 to 16 about 3 1/4 to 3 7/8 in, on a neck of about 12; 14 to 17 read
+  # from the plate, about 1 1/2 in; 9 to 11 the spring, 3/4 in over the 6 in half
+  collarWidth: { pct: 30, min: 15, max: 40, of: neck, menu: style }
+  collarPoint: { pct: 13, min: 0, max: 25, of: neck, menu: style }
+  collarSpring: { pct: 12.5, min: 5, max: 20, menu: style }
+  # The belt: 18 to 19 about 2 in, read from the plate; 13 in the half, 1/2 the waist plus the stand
+  beltWidth: { pct: 7.5, min: 3, max: 10, of: chest, menu: style }
+  # Diagram 9's sleeve: the cuff 7 7/8 in round and 2 1/2 in wide, on a wrist of about 5 1/2
+  cuffEase: { pct: 100, min: 60, max: 160 } # x wrist: the sleeve at the hand, its fullness in the seam
+  sleeveSlit: { pct: 70, min: 40, max: 130, of: wrist, menu: style } # ours: the source shows none
+  cuffFit: { pct: 45, min: 20, max: 70, of: wrist, menu: fit } # 7 7/8 in over the wrist
+  cuffDepth: { pct: 46, min: 25, max: 60, of: wrist, menu: style } # 2 1/2 in
+  cuffLap: { pct: 15, min: 8, max: 25, of: wrist, menu: style } # ours
+
+pieces:
+  # The hem is sewn to the belt, so it takes a plain allowance
+  back:
+    prefix: barberscoat
+    from: brian.back
+    hide: tree
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, neckStyle]
+    ops:
+      - coatBack: { hemSa: 1 }
+
+  front:
+    prefix: barberscoat
+    from: brian.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [frontDrop, buttonExtension, buttons, hemCurve, facingWidth, breastPocket, lowerPockets, pocketShape]
+    let:
+      ext: chest * buttonExtension
+    ops:
+      - coatFront:
+          ext: ext
+          r: 0
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          hemSa: 1
+          straightHem: true
+      # The plate's row: the neck to level with E; 1 1/2 stands above the front hem
+      - buttons:
+          count: buttons
+          top: cfNeck.y + ext * 0.9
+          bottom: cfWaist.y + waistToSeat * (lengthBelowWaist + frontDrop) - ext * 1.5
+          rows: [0]
+
+  # 8, 13, 11: 6 in on half a neck of about 5 1/2, so the ends meet just past CF when buttoned
+  collar:
+    prefix: barberscoat
+    after: [back, front]
+    measurements: [neck]
+    options: [collarWidth, collarPoint, collarSpring]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext * 0.25
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: neck * collarPoint
+
+  # Sleeves into a cuff, opened at the back and buttoned, as the dress shirt's
+  sleeve:
+    prefix: barberscoat
+    part: sleeve
+    after: front
+    options: [sleeveLengthBonus, sleeveSlit, cuffFit, cuffDepth, cuffLap]
+    slit: wrist * sleeveSlit
+  cuff: { part: cuff, after: sleeve, nr: 9, length: wrist * (1 + cuffFit), depth: wrist * cuffDepth, lap: wrist * cuffLap }
+  sleevePlacket: { part: sleevePlacket, after: sleeve, nr: 10, store: coat.sleeve, width: 0.15 }
+
+  # 18 to 21: the waist plus the two stands, doubled along its length, buttoned at CF
+  belt:
+    part: polygon
+    after: front
+    nr: 11
+    measurements: [waist]
+    options: [beltWidth]
+    let:
+      l: waist + 2 * coat.frontEdge.ext
+      w: chest * beltWidth
+      x: coat.frontEdge.ext
+    points: [[0, 0], [l, 0], [l, 2 * w], [0, 2 * w]]
+    lines: [[[0, w], [l, w]]]
+    buttons: [[x, w / 2]]
+    buttonholes: [[l - x, w / 2]]
