@@ -13,6 +13,11 @@ person choosing garments and reviewing the result. The reference docs say *what*
 
 This file covers what those don't: *how* the work is done, and the decisions made along the way.
 
+**Building with an agent?** Three more files keep the cost down. [AGENTS.md](AGENTS.md) is the short
+loop for every garment; this file is for reading once. [SOURCE_NOTES.md](SOURCE_NOTES.md) holds what's
+known about each book. `BUILD_NOTES.md`, your own and git-ignored, holds what's true on your machine.
+See "Your notes file" and "Spending fewer tokens", near the end.
+
 ## The approach
 
 - **The book is a design reference, not data to reproduce.** It says which pieces a garment has,
@@ -84,12 +89,41 @@ npm start
 ```
 
 On Windows, Git for Windows' bash ships `pdftotext` but not `pdftoppm`. Render pages on any
-machine that has the full Poppler, or install it.
+machine that has the full Poppler, or install it. Pillow can do what `montage` does here, so you
+needn't install ImageMagick as well.
+
+The repo's own tools, run in `designs/` (those that make images or use a browser need
+`NODE_PATH=$(npm root -g)` first):
+
+| Tool | Answers |
+|---|---|
+| `tools/measures.mjs <set> [measurement ...]` | What do I divide this source number by? |
+| `tools/probe.mjs <design> [set] [options json]` | Which parts drafted, and what are the errors, with stacks? |
+| `tools/part.mjs <design> <set> <part,part> [options json]` | What does this one piece look like, large? |
+| `tools/render.mjs <design> <set> ... --png` | What do all the pieces look like at these sizes? |
+| `tools/compare.mjs <design> --pages <pdf pages>` | Does it match the plate, on one sheet? |
+| `tools/buttons.mjs <design>` | Is every button on its piece at every size? |
+| `tools/snapshot.mjs <design> save` / `compare` | Did my `lib/` change move this design? |
+| `tools/preview.mjs <design>` | The preview PNG the site shows |
+| `tools/page-look.mjs '' <design> [size]` | What does the built page's tool show, with console errors? |
+| `tools/page-check.mjs <design>` | Does everything on the built page work? |
+
+Scratch scripts go in `designs/tools/` named `_name.mjs`, where they can import the repo's modules
+and git ignores them. ES module imports ignore `NODE_PATH`: load Playwright as `tools/render.mjs` does.
+
+A few traps that catch most setups:
+- `npm test` takes several minutes, longer than many agents' default command timeout. Run it in the
+  background.
+- On Windows, Python printing non-ASCII fails unless `PYTHONIOENCODING=utf-8` is set; always open files
+  with `encoding='utf8'`. Line-ending warnings from git are noise, but do check a commit's `--stat`.
+- In a script that edits files, compute all the new text first and write afterwards. A failed
+  assertion after the file was opened for writing once emptied it.
+- A fresh git worktree has no `node_modules`: `npm install` in `designs/` first.
 
 ## Step 1: Choose a garment and a source
 
 **Garment.** Take the next open item in [BUILD_QUEUE.md](BUILD_QUEUE.md), the ordered list of
-garments still to build (claim it there first), or propose one from WARDROBE_GAPS.md. A variant of something we already have (another
+garments still to build (see "Taking an item" there), or propose one from WARDROBE_GAPS.md. A variant of something we already have (another
 shirt, another trouser cut) also counts. Rank the candidates by how much they can reuse: a
 garment that extends an existing design costs a fraction of one that needs a new block or a new
 `lib/` module. When several are wanted, build the cheap ones first. Work through a list one
@@ -278,14 +312,14 @@ Choose in this order:
    exports.
 3. **Draft at once, at three sizes:** `cisMaleAdult38`, a small child (`usdaBoyC5`) and a stout
    figure (`stoutMale48`), plus the source's own size if it isn't one of them. Don't wait for the
-   full test suite. A scratch script that imports the
-   design, drafts it and prints the store values and seam lengths you care about finds most
-   problems in seconds:
+   full test suite. `tools/probe.mjs` shows which parts drafted, and any errors. A scratch script
+   that drafts it and prints the store values and seam lengths you care about finds most problems in
+   seconds:
 
    ```js
-   // scratch.mjs, kept outside the repo
-   const { Breeches } = await import('file:///.../designs/breeches/src/index.mjs')
-   const { sets } = await import('file:///.../designs/test/coat-checks.mjs')
+   // designs/tools/_check.mjs, ignored by git
+   import { Breeches } from '../breeches/src/index.mjs'
+   import { sets } from '../test/coat-checks.mjs'
    for (const name of ['cisMaleAdult38', 'usdaBoyC5', 'stoutMale48']) {
      const p = new Breeches({ measurements: sets[name], sa: 10 }).draft()
      const s = p.setStores[0]
@@ -313,9 +347,8 @@ Choose in this order:
    - A literal inside a spec value needs its own quotes: `shape: "'square'"`.
    - An option left on the menu must still do something in your override. `variants.test.mjs` catches
      this only for options a variant sets.
-   - `Unable to draft part`, with the error shown as `{}`: print the error's `stack` from
-     `store.logs.error` instead. When a key seems to do nothing, read its builder in `lib/spec.mjs`
-     before trying another spelling.
+   - `Unable to draft part`: `tools/probe.mjs` prints the error's stack. When a key seems to do
+     nothing, read its builder in `lib/spec.mjs` before trying another spelling.
 
 ## Step 6: Make every size work
 
@@ -549,9 +582,85 @@ for content (README.md, "License").
   what cost time. Most of the traps in this guide came from such a log. Whatever turns out general
   belongs here.
 
-A starting prompt:
+## Your notes file
 
-> Read CONTRIBUTING.md and designs/SPEC.md. Add a design `<design-id>` for <garment> from
+An agent starts each session knowing nothing about your machine, so it spends tokens finding out
+which tools you have, failing on the same trap, and re-deciding what you've settled. A notes file stops
+that. It's what makes a second design from a source cheaper than the first.
+
+Keep what you learn in the place where it will be found:
+
+| What | Where | Why |
+|---|---|---|
+| Your machine: tools, paths, servers, recipes, traps, private context | `BUILD_NOTES.md` at the repo root | Git-ignored, so it's never published |
+| A book: its page offset, unit quirks, wrong contents, how to read its plates | [SOURCE_NOTES.md](SOURCE_NOTES.md) | Tracked: every contributor gets it |
+| A method that applies to any garment | This file, or AGENTS.md | Tracked |
+| One garment's reasoning | Its `BRIEF.md` | Tracked |
+
+**Set it up once:**
+
+```bash
+cp BUILD_NOTES.example.md BUILD_NOTES.md
+git check-ignore BUILD_NOTES.md        # prints the name if it's ignored
+```
+
+Then have your agent fill in the Environment table from what it finds, rather than from what it
+assumes:
+
+```bash
+for t in node npm python pdftotext pdftoppm pdfinfo tesseract git gh; do command -v $t || echo "MISSING $t"; done
+node -v
+python -c "import PIL; print('Pillow', PIL.__version__)"
+NODE_PATH=$(npm root -g) node -e "require('playwright'); console.log('playwright ok')"
+```
+
+Record what's missing as well as what's there, so no one goes looking again. Note how long a full
+`npm test` takes here, and where any source that isn't tracked is kept.
+
+**Then keep it up as you build, not at the end.** When a command fails, a tool is missing, or a choice
+would apply to the next garment, add a line straight away, and correct anything stale. Keep it short:
+it's read in full every session, so it costs tokens each time. Move facts about a book to SOURCE_NOTES.md,
+and methods to this file in a pull request.
+
+**Never put in a tracked file:** addresses, hostnames, usernames, home paths, keys, or people's names.
+Before committing, check the diff for them. Scratch scripts named `designs/tools/_*` and
+`BUILD_NOTES.md` are ignored for you. Other private notes belong in your clone's `.git/info/exclude`.
+Stage files by name, so nothing untracked is swept in.
+
+**Handing over to another agent:** point it at AGENTS.md, which most agents read on their own and which
+sends them to `BUILD_NOTES.md`. If your agent reads a different file by default, make that file one line
+naming AGENTS.md, and keep the file out of git. Don't keep a second copy of the instructions: copies
+go stale.
+
+## Spending fewer tokens
+
+What made these builds cheap, roughly in order of how much it saved:
+
+- **Extend a design.** Our cheapest garments were a dozen lines of spec on the right parent. The time
+  goes into choosing that parent, so read the plate first.
+- **Don't read what you can search.** For a garment you need one queue row, one book's notes, the
+  parent's spec and brief, and the plate. `grep -n` for an operation in `designs/SPEC.md` or `lib/`, then
+  read that function. Don't open the large docs whole: for a table row, `grep` the row beside it.
+- **Reuse the last commit as the template for the docs:** `git show --stat HEAD` lists every file a
+  garment touches, and `git show HEAD -- <docs>` shows each row's form.
+- **Text before images.** An image costs far more than the same page's text. Search the text to find the
+  page, then render only the plate, at about 130 dpi. For a render, one `compare.mjs` sheet replaces
+  several views; use `part.mjs` to see a detail rather than a whole render at a higher resolution.
+- **Collapse test output.** A problem fails at up to 98 sizes per variant, identically. Send the output
+  to a file, read the exit code, and count distinct failures:
+  ```bash
+  grep -E "AssertionError|Error:" out.txt | sed 's/[0-9.]\+/N/g' | sort | uniq -c | sort -rn | head
+  ```
+- **Run the small test set while you build,** and the full suite once, in the background, before a push.
+- **Draft at one size first.** `probe.mjs` answers in about a second, against minutes for the tests.
+- **Ask early.** A question costs a line. Building the wrong kilt costs a session.
+- **Write down what cost time,** at once, in your notes file.
+- **Use a cheaper model for mechanical work,** if your tools allow it: finding pages, filling in doc
+  rows. Keep reading plates and choosing the base with your best one, since those decide the result.
+
+## A starting prompt
+
+> Read AGENTS.md, and CONTRIBUTING.md and designs/SPEC.md if you haven't. Add a design `<design-id>` for <garment> from
 > <source title, folder id, pages>. Find the section by searching the book's text, render the
 > diagram pages and read them as images, plate and text both. The item's notes and suggested base
 > are guesses: choose the base from the construction the diagram shows, and say so if it differs.

@@ -56,6 +56,10 @@ archive/catalog/**/.*.building/
 # (regenerate with archive/scripts/emko_ocr_pages.py in the tools image)
 archive/data/emko/ocr/p-*.txt
 
+# your own notes file (BUILD_NOTES.example.md) and scratch scripts
+BUILD_NOTES.md
+designs/tools/_*
+
 # internal working notes: kept locally, not published
 CLAUDE.md
 CLOUDBOX.md

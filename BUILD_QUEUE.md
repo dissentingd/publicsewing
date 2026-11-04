@@ -9,20 +9,24 @@ is variants and new garments from sources already held. The catalog so far is
 1. **Pick the first item with status `open` in your lane** (see Lanes). Items in different lanes
    can be built at the same time; items in the same lane go one after another, because they
    change the same shared library file.
-2. **Claim it** before any other work: change its status to `claimed (<agent or branch>,
-   <date>)` in this file, commit that change alone, and push it. If the push is rejected
-   because someone else claimed it first, pull and pick the next one.
+2. **Claim it** before any other work, if anyone else is building: change its status to
+   `claimed (<agent or branch>, <date>)` in this file and commit that alone. A push to `main`
+   deploys the site, so don't push a claim to `main`: agents sharing a checkout see the commit, and
+   the person running several agents gives each its own item and lane. An outside contributor says
+   which item in an issue or draft pull request.
 3. **Build it** by the per-garment workflow (below), in a branch or worktree of your own if
    other agents share the checkout.
 4. **Finish it**: set its status to `done (<design id>, <commit>)` in the same commit as the
    design, or `blocked (<why>)` with a line saying what's needed. Don't push unless you've been
    told to; the person running you decides.
 
-Before starting, read [designs/README.md](designs/README.md) and [designs/SPEC.md](designs/SPEC.md),
-and look at the item's "start from" design: most items extend an existing design.
+Before starting, read [AGENTS.md](AGENTS.md), the book's row in [SOURCE_NOTES.md](SOURCE_NOTES.md),
+and your `BUILD_NOTES.md` if you have one. The item's notes, "start from" and pages are guesses made
+before the pages were read: most items extend an existing design, but read the plate before choosing
+which, and correct the row as you finish.
 
 ## Per-garment workflow
-Follow [CONTRIBUTING.md](CONTRIBUTING.md), Steps 2–10, for the item you claimed: read the
+Follow [AGENTS.md](AGENTS.md), with [CONTRIBUTING.md](CONTRIBUTING.md) Steps 2–10 behind it, for the item you claimed: read the
 source's pages (render the diagrams and read them as images, not only the OCR), map every
 source number to an option default, extend the "start from" design, make every size pass,
 snapshot every design whose shared `lib/` file you change, look at the renders, write the
@@ -39,8 +43,8 @@ copies, so ask the person running you for it.
 
 A starting prompt for an agent (fill in the item's row):
 
-> Read BUILD_QUEUE.md, CONTRIBUTING.md and designs/SPEC.md. Claim item <#> in BUILD_QUEUE.md
-> (commit and push the claim alone). Build `<design id>`, <garment>, from <source, folder id,
+> Read AGENTS.md and BUILD_QUEUE.md, and CONTRIBUTING.md and designs/SPEC.md if you haven't. Claim
+> item <#> in BUILD_QUEUE.md (commit the claim alone; don't push). Build `<design id>`, <garment>, from <source, folder id,
 > pages>, extending `<start from>`. Find the section with pdftotext, render the diagram pages
 > and read them as images. Map every source number to an option default, showing the
 > arithmetic and the page. Make every size pass, and snapshot any design whose shared lib/
