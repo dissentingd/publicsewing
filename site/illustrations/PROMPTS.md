@@ -859,6 +859,11 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a seam or belt at the waist, a second row of buttons, patch pockets, a velvet collar, cuff buttons, a shirt and tie, a person.
 
+### scout-coat: Scout coat
+> **Four large patch pockets with flaps: two at the chest and two bigger ones below the waist, each with a pointed flap and a small button.** A boy's **scout coat** in plain khaki or olive cotton twill, fitted and hip length, buttoned right to the neck with **exactly five buttons in one row**, under a **plain turned-down collar**. Plain two-piece sleeves. Shown flat on an invisible form, front view, for a boy of about twelve.
+>
+> Leave out: a belt, badges, a neckerchief, epaulettes, a hat, shorts or trousers, lapels, a person.
+
 ### db-waistcoat: Double-breasted waistcoat
 > **Two rows of exactly four buttons on a wide overlapping front, under a plain V neck with no lapels or collar, the fronts coming to one deep angled point.** A men's **double-breasted waistcoat** in plain dark wool (navy, charcoal or black), sleeveless, ending just below the waist at the sides. **One slanted welt pocket on each side at the chest and one at the waist**, each rising toward the side. Shown flat on an invisible form, front view.
 >

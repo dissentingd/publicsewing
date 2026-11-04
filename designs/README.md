@@ -45,6 +45,7 @@ without declaring them, so they are listed in our package.json.
 | `hunting-coat/` | Belted field coat, three-piece action-pleated back, box-pleated flap pockets, Simons 1918. [BRIEF.md](hunting-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `norfolk-jacket/` | Norfolk jacket (any size): the hunting coat with a yoke and waist seam on the front too, three pleats a side, front and back, a belt, lapels, a vent from the waist, Simons 1922 Diagram 7. [BRIEF.md](norfolk-jacket/BRIEF.md) | draft (not sewn) | not draped |
 | `military-tunic/` | Fitted three-piece body on Bent, two-piece sleeve, standing collar, welt pockets, Simons 1918. [BRIEF.md](military-tunic/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
+| `scout-coat/` | Simons' Boy Scout jacket: the military tunic with a turned-down collar and four large flapped patch pockets, Simons 1922 Diagrams 11-12. [BRIEF.md](scout-coat/BRIEF.md) | draft (not sewn) | not draped |
 | `boys-work-coat/` | The chore coat with Simons' boys' details (5 buttons, pointed collar), for children's sizes. [BRIEF.md](boys-work-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `barbers-coat/` | White service coat, standing collar or open neck, Simons 1918. [BRIEF.md](barbers-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |
 | `shop-coat/` | Long flared work overcoat (grocers' gown, lab coat, duster), pencil pocket, Simons 1918. [BRIEF.md](shop-coat/BRIEF.md) | draft (not sewn) | OK, 2026-10-26 |

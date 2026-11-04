@@ -224,6 +224,21 @@ options:
   girdle:
     title: Girdle
     description: A tie belt at the waist, through loops at the side seams.
+  topPocketWidth:
+    title: Top pocket width
+    description: Width of the chest pocket, as a share of the chest.
+  topPocketDepth:
+    title: Top pocket depth
+    description: Depth of the chest pocket, flap included, as a share of the chest.
+  bottomPocketWidth:
+    title: Bottom pocket width
+    description: Width of the lower pocket, as a share of the chest.
+  bottomPocketDepth:
+    title: Bottom pocket depth
+    description: Depth of the lower pocket, flap included, as a share of the chest.
+  pocketBelowWaist:
+    title: Bottom pocket position
+    description: How far below the waist the lower pocket's flap starts, as a share of waist to seat.
   secondAt:
     title: Second seam position
     description: Where the second front seam meets the shoulder, from the front seam (0%) to the shoulder point (100%).
@@ -971,6 +986,10 @@ parts:
   body: Body
   underArm: Under-arm panel
   skirt: Skirt
+  topPocket: Top pocket
+  topFlap: Top pocket flap
+  bottomPocket: Bottom pocket
+  bottomFlap: Bottom pocket flap
   gauntletCuff: Gauntlet cuff
   apron: Apron
   pleats: Pleated length

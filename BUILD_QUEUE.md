@@ -96,7 +96,7 @@ Priority 1 first: shirts, dresses and women's garments are the thinnest part of 
 | 19 | `smoking-jacket` | Smoking jacket | Vincent 1890, p. 28 | `dressing-gown` (item 9) | D | After item 9 | done (smoking-jacket) |
 | 20 | `raincoat` | Raincoat | Simons 1922, pp. 105–107 | `overcoat` or `balmacaan` | D | As built: on `overcoat`. The book's contents give p. 118, wrongly | done (raincoat) |
 | 21 | `db-waistcoat` | Double-breasted waistcoat | Simons 1922, double-breasted vest p. 56 (single-breasted p. 53) | `waistcoat` | D | As built: a design, not a variant, for its own source: `waistcoat` is ЕМКО's | done (db-waistcoat) |
-| 22 | `scout-coat` | Scout coat: standing collar, four pockets | Simons 1922, pp. 43–46 | `military-tunic` | D | | open |
+| 22 | `scout-coat` | Scout coat: standing collar, four pockets | Simons 1922, pp. 43–46 | `military-tunic` | D | As built: a turned-down collar and patch pockets, not the tunic's standing collar and welts | done (scout-coat) |
 | 23 | `drawers` | Long drawers | Vincent 1890, pants or drawers p. 24 | `pyjama-trousers` | A | | open |
 
 ### Priority 3

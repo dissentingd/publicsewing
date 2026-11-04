@@ -49,6 +49,7 @@
   "two-piece-skirt": {"default": {}, "flared": {"goreFlare": 0.5, "panelShare": 0.5, "frontWaistDrop": 0}, "high": {"highWaist": true}, "highFlared": {"highWaist": true, "riseHeight": 0.5, "goreFlare": 0.5}},
   "knee-pants": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "kneePantsLength": -0.1, "legBottom": 1.25}},
   "boys-knickers": {"default": {}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "knickerDrop": 0.2, "knickerFullness": 1.5}},
+  "scout-coat": {"default": {}, "plain": {"breastPockets": false, "lowerPockets": false, "frontDrop": 0, "buttons": 3}, "big": {"topPocketWidth": 0.2, "bottomPocketWidth": 0.24, "bottomPocketDepth": 0.32, "pocketBelowWaist": 0.8}},
   "db-waistcoat": {"default": {}, "plain": {"breastPocket": false, "lowerPockets": false, "backDart": 0, "frontDart": 0, "liningBack": false, "cutaway": 0, "buttons": 2}, "narrow": {"buttonExtension": 0.05, "buttonRow": 0.6, "buttons": 3}},
   "raincoat": {"default": {}, "plain": {"handPockets": false, "hemFlare": 0.02, "buttons": 3, "frontDrop": 0, "lengthBelowWaist": 2}, "closer": {"chestEase": 0.2, "hemFlare": 0.2}},
   "smoking-jacket": {"default": {}, "tied": {"girdle": true}, "plain": {"handPockets": false, "gauntletCuff": false, "lining": false, "hemCurve": 0, "buttons": 2, "frontDrop": 0}},

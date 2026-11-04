@@ -1,0 +1,107 @@
+# Scout coat: Simons' "Boy Scout Jacket" (Designing Boys' and Juveniles' Clothing, 1922, Diagrams 11-12,
+# pp. 43-46), on the military tunic (FreeSewing's Bent, three-piece body): buttoned to the neck under a
+# turned-down collar, four large patch pockets with flaps, two-piece sleeves. Drafted from the wearer's
+# own measurements, so it fits men too. See BRIEF.md.
+extends: ../military-tunic/spec.yaml
+
+about:
+  id: scout-coat
+  name: Scout coat
+  category: jackets
+  description: A fitted three-piece jacket buttoned to the neck, with a turned-down collar and four large flapped patch pockets
+  difficulty: 4
+  tags: [jackets, children]
+  techniques: [patch-pocket, collar, facing, button, two-piece-sleeve]
+  version: 0.1.0
+  source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Boy Scout Jacket, Diagrams 11-12, pp. 43-46 (designingboysjuv00simo)"
+  preview: usdaBoyC12
+
+options:
+  # Breast 31, waist length 14 3/4, seat length 21, full length 26 1/2: 11 3/4 below the waist of 6 1/4
+  lengthBelowWaist: { pct: 188 }
+  # 11 to 12, the lap, 1 1/2 in of 31
+  buttonExtension: { pct: 4.8, min: 2, max: 7 }
+  buttons: { count: 5, min: 3, max: 7 } # five dots, as drawn
+  buttonBottom: { pct: 43, min: 10, max: 80, of: waistToSeat, menu: style } # 2 3/4 in below the waist
+  frontDrop: { pct: 8 } # x waistToSeat: 25 a little below the hem, as drawn
+  # The collar (Diagram 12): "should finish 13 inches", 1 3/4 in to the fold and 1 3/4 in on: 3 1/2 in,
+  # of the 13 in neck; turned down, 1/2 in of spring
+  collarHeight: { pct: 27, min: 15, max: 35, title: Collar width, description: "Width of the collar, stand and fall in one, as a share of the neck." }
+  collarPoint: { pct: 8, min: 0, max: 16, of: neck, menu: style } # its point past the front, as Fig. 2's
+  # "The top pocket is 4 1/2 inches wide and 5 inches deep. The bottom pocket is 5 1/2 inches wide and
+  # 7 1/2 inches deep": of 31. Placed as drawn. The flaps are styled "as illustrated"
+  topPocketWidth: { pct: 14.5, min: 8, max: 20, of: chest, menu: style }
+  topPocketDepth: { pct: 16, min: 8, max: 24, of: chest, menu: style }
+  bottomPocketWidth: { pct: 17.7, min: 10, max: 24, of: chest, menu: style }
+  bottomPocketDepth: { pct: 24, min: 12, max: 32, of: chest, menu: style }
+  pocketBelowWaist: { pct: 50, min: 25, max: 80, of: waistToSeat, menu: style } # the bottom pocket's top: 3 in of 6 1/4
+  # The tunic's welt pockets don't apply
+  weltPockets: { bool: false, menu: false }
+
+pieces:
+  front:
+    prefix: militaryblouse # named like the inherited pieces
+    from: bent.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat]
+    options: [frontDrop, buttonExtension, buttons, buttonBottom, breastPockets, lowerPockets, facingWidth, topPocketWidth, topPocketDepth, bottomPocketWidth, bottomPocketDepth, pocketBelowWaist]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to the old side seam
+    ops:
+      - body3Front:
+          seamAt: 0.12
+          ext: ext
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          buttons:
+            count: buttons
+            top: cfNeck.y + ext * 1.2
+            bottom: cfWaist.y + waistToSeat * buttonBottom
+      - store:
+          key: coat.pockets
+          value:
+            breast:
+              x: chest * 0.055 # 1 3/4 in behind CF: clear of the lap
+              # Bent's forepart is narrower than Simons' (a quarter of the chest, not a third)
+              w: min(chest * topPocketWidth, seamHem.x * 0.78 - x)
+              y: underarm.y - chest * 0.01 + w * 0.3
+              h: chest * topPocketDepth - w * 0.3
+              shape: "'square'"
+              topHem: w * 0.12
+              flap: { h: w * 0.3, gap: w * 0.04 }
+            lower:
+              x: seamHem.x * 0.3 # Simons' 3 1/2 in of his 10 in forepart
+              w: min(chest * bottomPocketWidth, seamHem.x * 0.92 - x)
+              y: cfWaist.y + waistToSeat * pocketBelowWaist + w * 0.26
+              _room: cfHem.y - q * 0.06 - y
+              h: min(chest * bottomPocketDepth - w * 0.26, _room)
+              shape: "'square'"
+              topHem: w * 0.12
+              flap: { h: w * 0.26, gap: w * 0.04 }
+      - markPocket: { id: breastPocket, pocket: coat.pockets.breast, if: breastPockets }
+      - markPocket: { id: lowerPocket, pocket: coat.pockets.lower, if: lowerPockets }
+
+  # Turned down, the ends past the front edge a little
+  collar:
+    prefix: militaryblouse
+    after: [back, front]
+    measurements: [neck]
+    options: [collarHeight, collarPoint]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext * 0.9
+          spring: target * 0.077 # 1/2 in of about 6 1/2
+          width: neck * collarHeight
+          point: neck * collarPoint
+          nr: 6
+
+  # In place of the tunic's welt pockets
+  breastWelt: { prefix: militaryblouse, part: welt, after: front, key: breast, nr: 8, if: weltPockets, options: [weltPockets] }
+  breastBag: { prefix: militaryblouse, part: weltBag, after: front, key: breast, nr: 9, if: weltPockets, options: [weltPockets] }
+  lowerWelt: { prefix: militaryblouse, part: welt, after: front, key: lower, nr: 10, if: weltPockets, options: [weltPockets] }
+  lowerBag: { prefix: militaryblouse, part: weltBag, after: front, key: lower, nr: 11, if: weltPockets, options: [weltPockets] }
+  topPocket: { part: pocket, after: front, key: breast, nr: 12, label: topPocket, cut: 2, if: breastPockets }
+  topFlap: { part: flap, after: front, key: breast, nr: 13, label: topFlap, cut: 2, if: breastPockets }
+  bottomPocket: { part: pocket, after: front, key: lower, nr: 14, label: bottomPocket, cut: 2, if: lowerPockets }
+  bottomFlap: { part: flap, after: front, key: lower, nr: 15, label: bottomFlap, cut: 2, if: lowerPockets }
