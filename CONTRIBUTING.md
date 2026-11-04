@@ -95,6 +95,20 @@ garment that extends an existing design costs a fraction of one that needs a new
 `lib/` module. When several are wanted, build the cheap ones first. Work through a list one
 garment at a time, committing after each.
 
+**Treat a queue item as a lead, not a specification.** Its notes, its "start from" design and
+even its page numbers were written before anyone read the pages, and many have turned out wrong:
+"plus-fours" whose plate was fitted through the knee, a page taken from a book's own mistaken
+contents, a "kilt" that was one flared piece with no pleats or wrap. Read the source (Step 2),
+then correct the item's notes. If the source can't carry the garment, ask the person running you
+what they want rather than choosing for them.
+
+**Design or variant?** Decide before making a folder:
+- A look reached only by choosing options on an existing design is a **variant** of it, listed
+  under `variants` in that design's spec (Step 10).
+- A garment with a source of its own is a **design**, even if options could nearly reach it, so
+  that one page doesn't mix two sources' credits.
+- Overlap with an existing design is no reason to skip a garment.
+
 **Source.** It must carry numbers (SOURCING.md's grades):
 - **A:** point-by-point drafts, dimensioned pieces, proportion tables.
 - **B:** finished measurements by size, or dimensioned pocket and collar placements.
@@ -119,8 +133,8 @@ A scanned drafting book is hard to navigate. What works:
    pdftotext -layout book.pdf book.txt
    ```
 
-   Search it for the garment's name and the contents page. If the PDF has no text layer, OCR it
-   with Tesseract first.
+   Search it for the garment's name, not just the contents page: contents pages can be wrong. If
+   the PDF has no text layer, OCR it with Tesseract first.
 2. **Map PDF pages to book pages.** They rarely match: front matter shifts them (one book ran
    six pages ahead), and some scans are out of order. Grep page by page to find which PDF pages
    hold the section:
@@ -141,6 +155,22 @@ A scanned drafting book is hard to navigate. What works:
    drops fractions. One brief recorded "2¼ in" from the OCR where the page prints "2½ in", and a
    reader caught it. If you can't confirm a number from the image, leave it out of the brief
    rather than guess.
+6. **Read the plate as well as the words.** The plate often holds what the text doesn't: a button
+   count, a belt's width, how far a collar's point reaches. Where they differ, the plate usually
+   shows what was meant: "D.B." in one book's text is one row of frogs on a wide overlap on its
+   plate. Record which you followed.
+   - **Take a scale from the plate.** Find a length the text states, and divide. In the button-on
+     middy's Diagram 10, S to C is ½ breast + 4 in = 16 in across 484 px, or about 30 px to the
+     inch. Anything else can then be measured, and marked "read from the plate" in the brief.
+     Figures with no numbers at all can be read the same way, from a known length such as neck
+     point to waist.
+   - **Use the scale to test the units.** The same draft says X to Y is "1/6 of breast", which
+     would make a 24 in breast's neck 4 in deep. The plate shows 2 in: a sixth of the *half* breast.
+   - **Know what a line means.** A heavy diagonal may be a lapel folded over the body, not a
+     cutaway front. Crossing side seams belong to the other panel, and their flares can differ.
+     Say what an unlabelled mark is taken to be ("read as tucks"), so a reviewer can disagree.
+7. **Follow references to other diagrams.** "Drafted similar to the previous diagram" means pieces
+   the plate doesn't draw, such as the sleeve and cuff, are on the previous diagram's pages.
 
 Write down, with page numbers:
 - the pieces;
@@ -172,6 +202,20 @@ source's dimensions, then check them. For example, the pyjama trousers' hem came
 round against Vincent's 17 in (43.2 cm). For a quick check, print the size set's measurements
 and the drafted values from a scratch Node script (below).
 
+**A book drafted at another size calibrates at that size.** A size 6 draft calibrates on
+`usdaBoyC6`, and its `about.preview` is set to match. Print the stand-in's measurements before
+working anything out. Divide by the stand-in's number when the book doesn't give the measure at
+all: Simons' size 6 states no waist to seat, so his 4 in below the waist is 4 / 6¼ (`usdaBoyC6`),
+or 64%. Then check the result: the middy's hem came out 36⅔ in round against his 36.
+
+**Then look at it at the other end of the range.** A share taken from a child can look odd on an
+adult (that middy's 2 in belt becomes 3 in). Keep the source's number as the default, make the
+option's range cover the alternative, and say so in the brief.
+
+**Check an option's name before using it.** `designs/labels.yaml` has one namespace, and a label
+says what the option is a share of. `grep` it first: `pleatHem` already meant something else, and
+`strapWidth` was already "a share of the waist". Reuse a name only if its label's meaning fits.
+
 **"Drafted N sizes up."** Overcoat books often draft a larger breast than the wearer's for
 ease. Each size is about 2 in of chest, so turn it into extra `chestEase` over the parent's.
 
@@ -180,6 +224,13 @@ have. Label it as ours in the brief.
 
 ## Step 4: Choose what to build on
 
+**Choose by how it's built, not by what it's called.** Name the construction from the diagram
+first: where the seams are, whether the front opens on a cut-on stand or is cut on the fold, whether
+it has a side body, whether a leg has a side seam. Then find the design that already builds that.
+The button-on middy shares a name with `middy-blouse`, a pullover on the fold, but it opens all down
+the front on a stand, so it's on `pyjama-jacket`. The drawers have no side seam, so they're on
+`overall-pants`, not `pyjama-trousers`.
+
 Choose in this order:
 
 1. **Extend an existing design** with `extends:` when the garment is a variant of one. Most of
@@ -187,7 +238,12 @@ Choose in this order:
    service shirt extends the pyjama jacket.
 
    Read the parent's spec and its brief first. Your spec then changes only option defaults and
-   adds or replaces pieces.
+   adds or replaces pieces. Try the spec alone before touching a library, and borrow pieces from
+   sideways: the dress shirt's `cuff` and `sleevePlacket` work on any coat.
+
+   Your design can have children too. Before adding a piece or option to a design that others
+   extend, run `grep -l <design>/spec designs/*/spec.yaml`: they inherit it, and a spec can't remove
+   a parent's piece.
 2. **A block**, when nothing is close:
 
    | Block | For | Library |
@@ -221,7 +277,8 @@ Choose in this order:
 2. Create `designs/<design>/src/index.mjs`. Copy the parent's or a sibling's and rename the
    exports.
 3. **Draft at once, at three sizes:** `cisMaleAdult38`, a small child (`usdaBoyC5`) and a stout
-   figure (`stoutMale48`). Don't wait for the full test suite. A scratch script that imports the
+   figure (`stoutMale48`), plus the source's own size if it isn't one of them. Don't wait for the
+   full test suite. A scratch script that imports the
    design, drafts it and prints the store values and seam lengths you care about finds most
    problems in seconds:
 
@@ -242,6 +299,23 @@ Choose in this order:
 6. **Labels.** Every option shown in the pattern tool needs a title and a description: shared
    ones go in `designs/labels.yaml`, design-specific ones as `title:` and `description:` in the
    spec. `test/labels.test.mjs` enforces this.
+7. **Overriding an inherited piece.** Spec errors that cost time, and what they mean:
+   - To replace an inherited piece, use its name and the parent's `prefix:` (`prefix: barberscoat`),
+     and copy its whole `ops:` list. Parts are then named by that prefix in tests too
+     (`barberscoat.front`).
+   - `Error: unknown option "x"`: something still reads an option that no piece declares. An
+     overridden `front` must keep what the inherited pieces read, such as `breastPocket` for the
+     pocket pieces, even when it's off the menu (`breastPocket: { bool: false, menu: false }`).
+     Typed pieces (`part:`) take `options:` and `measurements:` too.
+   - Replacing a piece also drops what it registered: a collar override must declare again the
+     options the parent's collar brought.
+   - An inherited piece can't be removed. Give it an `if:` on an option that's off, with `menu: false`.
+   - A literal inside a spec value needs its own quotes: `shape: "'square'"`.
+   - An option left on the menu must still do something in your override. `variants.test.mjs` catches
+     this only for options a variant sets.
+   - `Unable to draft part`, with the error shown as `{}`: print the error's `stack` from
+     `store.logs.error` instead. When a key seems to do nothing, read its builder in `lib/spec.mjs`
+     before trying another spelling.
 
 ## Step 6: Make every size work
 
@@ -281,20 +355,34 @@ Then add the tests:
    The families are `coat-checks.mjs` (Brian and Bent), `jacket-checks.mjs` (Breanna),
    `yoke-checks.mjs` and `suit-checks.mjs` (flat-cut). Trousers write their own asserts, as
    `test/peg-pants.test.mjs` does: matching outseams and inseams, a waistband that fits the
-   waist, a fly above the fork. Add a check for whatever this garment could get wrong.
+   waist, a fly above the fork. Add a check for whatever this garment could get wrong: the family's
+   checks don't know that a belt must fit the waist, or that a hem must be fuller than the belt it's
+   gathered into. Check every button at its own height on its piece, not against the piece's bounding
+   box: a stout figure shifts the front, and a dart can cross a button row.
 2. **Variants.** Pick a "plain" variant that turns the options off (no pockets, other closures),
-   and add the same variants to `designs/tools/variants.json`.
-3. **Run the tests.** Run the new design's tests and the labels test while you iterate, then
-   `npm test` once at the end:
+   and one that pulls the defaults apart, and add the same variants to
+   `designs/tools/variants.json`. Pulling them apart finds what a default hid: the middy's last button
+   sat level with the back's hem, which was clear of the dropped front until `frontDrop: 0`. Place
+   marks from what they must clear, so they move with it.
+3. **Run the tests.** Run these while you iterate, then `npm test` once before asking to push. It
+   takes minutes, so run it in the background:
 
    ```bash
-   node --test test/<design>.test.mjs test/labels.test.mjs
+   node --test test/<design>.test.mjs test/variants.test.mjs test/labels.test.mjs test/declared-measurements.test.mjs
    ```
+
+   Go by the exit code, not a filtered read of the output. `declared-measurements` matters because
+   the tests hand a design every measurement while the site passes only those it declares, so a
+   design can pass everything and fail on its live page.
+
+   A sweep that says everything is broken is usually itself broken: check the sweep first.
 
 ## Step 7: Prove you didn't move other designs
 
-If you changed a shared file in `lib/`, every design using it must come out identical. Take the
-"before" snapshot from the committed version of the file, without losing your edit:
+If you changed a shared file in `lib/`, every design using it must come out identical, however
+obviously safe the edit looks, a new default parameter included. Passing tests don't prove this.
+Include the children of any design you touch. Take the "before" snapshot from the committed version
+of the file, without losing your edit:
 
 ```bash
 cp lib/trousers.mjs /tmp/trousers.new.mjs
@@ -329,8 +417,10 @@ a mark is small. Look for:
 - the pieces' outlines against the source's;
 - pocket, button and dart marks on their pieces, at the source's places (one bib-overall pocket
   mark first landed outside the front, and all the tests still passed);
-- the child and stout renders still making sense;
-- the source's worked example: at size 38, does a key dimension match what the book prints?
+- the child and stout renders still making sense, and an adult's if the source drafts a child;
+- the source's worked example: at its size, does a key dimension match what the book prints?
+- whether it can be worn. A stand-collar variant whose top button sat at the chest line, so it
+  couldn't close, passed every test.
 
 A 3D drape is an optional, stronger check that the pieces sew into the garment; see
 [designs/drape/README.md](designs/drape/README.md).
@@ -344,7 +434,11 @@ Write `designs/<design>/BRIEF.md` as you go, and finish it last, from what was a
 
 **Source:** author, title (place, year), corpus folder id; the pages, figures or tables used.
 
-**Block:** the block or design this extends, and the lib/ operations it relies on.
+**Block:** the block or design this extends, the lib/ operations it relies on, and why, if that
+isn't the design the queue suggested.
+
+**Threadloop:** whether a free equivalent exists, and whether any is drafted from measurements
+(SOURCING.md, "Free modern patterns"). Search the garment's name and its nearest modern word.
 
 **Status:** draft. Not sewn.
 
@@ -366,6 +460,9 @@ What to cut, and how many.
 The sewing order, in our own words.
 ```
 
+If the source covers only part of the garment (a kilt's hem and length, say), say so at the top.
+Keep three things distinct: what the text states, what you read from the plate, and what's ours.
+
 Before you commit, re-read the brief against the page images. Delete any claim you can't back
 from the page.
 
@@ -386,13 +483,18 @@ from the page.
    it under `variants` in the spec ([designs/SPEC.md](designs/SPEC.md)) so its page explains it,
    rerun the preview, and add a prompt headed `<design>.<variant>` for its image,
    `site/illustrations/<design>.<variant>.jpg`.
+   Adding a variant to an existing design also rewrites its default preview, with only the title
+   block's date changed: restore that file with `git checkout` rather than committing it.
 3. **Docs:**
+   - BUILD_QUEUE.md: the item's status, `done (<design>)`, and an "As built" note on anything that
+     differed from the item, in the design's own commit.
    - README.md: the Status table row; it sets the site's order.
    - designs/README.md: the Contents row, and the `lib/` row if you extended a library.
    - designs/SPEC.md: any new operation or piece type.
    - SOURCING.md: the source's row, listing the designs it feeds.
    - WARDROBE_GAPS.md: the garment's row and the progress count.
-   - `.github/ISSUE_TEMPLATE/muslin-report.yml`: the design in its dropdown.
+   - `.github/ISSUE_TEMPLATE/muslin-report.yml`: the design in its dropdown
+     (`test/muslin-report.test.mjs` fails without it).
 4. **Check the page:** `npm run build` in `site/`, then in `designs/`:
 
    ```bash
@@ -402,18 +504,26 @@ from the page.
    It opens the built page in a browser: the tool drafts at a size, each variant's button changes
    the drawing, every download and the tiled PDFs are made, with no console errors.
 5. **Commit one garment per commit.** Stage your files by name, not `git add -A`: other work may
-   be in the same checkout. Before pushing, check the commit's `--stat` for files rewritten only
-   by line endings.
+   be in the same checkout. Check the commit's `--stat` for files rewritten only by line endings.
+   Read the test result before committing: don't chain the commit after a test run with `;`.
+6. **Pushing `main` deploys the site.** Don't push unless the person running you asks, each time.
+   Run the full `npm test` first. If the push is rejected, look at what the new commits touch,
+   rebase rather than merge, and rerun the tests for anything they could have affected.
 
 ## Step 11: Open a pull request
 
 - [ ] The source's rights are checked; the brief cites it by folder id, with pages.
 - [ ] No source text, figure or scan of an in-copyright work is committed.
 - [ ] Every source number is an option default with a comment, mapped in the brief.
-- [ ] Every fraction was read from the page image, not only the OCR.
+- [ ] Every fraction was read from the page image, not only the OCR, and the plate read as well
+      as the text.
+- [ ] The base was chosen from the diagram's construction, and any queue note it contradicts is
+      corrected.
 - [ ] Every change and clamp is listed in the brief.
 - [ ] `npm test` passes, labels included; snapshots match for any shared `lib/` file you changed.
-- [ ] You looked at the renders at an adult, a child and a stout size.
+- [ ] You looked at the renders at an adult, a child and a stout size, and beside the source's
+      diagram.
+- [ ] The page check passes.
 - [ ] The preview PNG is committed, the prompt added and the docs updated.
 - [ ] The status says `draft`.
 
@@ -433,13 +543,40 @@ for content (README.md, "License").
 - **Review "Changes" first.** It's where the agent records what it simplified, clamped or
   guessed.
 - **One garment at a time,** each committed before the next starts.
+- **Have it re-read this file's checklists at the end.** Steps get skipped when an edit looks
+  harmless. Ask it to report what it didn't run or couldn't verify, plainly.
+- **Keep a working log.** One line per garment on what it decided that the next could reuse and
+  what cost time. Most of the traps in this guide came from such a log. Whatever turns out general
+  belongs here.
 
 A starting prompt:
 
 > Read CONTRIBUTING.md and designs/SPEC.md. Add a design `<design-id>` for <garment> from
-> <source title, folder id, pages>. Find the section with pdftotext, render the diagram pages
-> and read them as images. Extend `<nearest design>` if it fits; otherwise build on `<block>`.
-> Map every source number to an option default, showing the arithmetic and the page. Draft at
-> cisMaleAdult38, usdaBoyC5 and stoutMale48 early. Make every size pass, and snapshot any
-> design whose shared lib/ file you change. Render the design and compare it with the diagram,
-> write the brief, and finish with Step 10. Commit only your own files.
+> <source title, folder id, pages>. Find the section by searching the book's text, render the
+> diagram pages and read them as images, plate and text both. The item's notes and suggested base
+> are guesses: choose the base from the construction the diagram shows, and say so if it differs.
+> Ask me if the source can't carry the garment. Map every source number to an option default,
+> showing the arithmetic and the page; take a scale from the plate for what the text omits. Draft
+> early at the source's own size, an adult, a child and a stout figure. Make every size pass, and
+> snapshot any design whose shared lib/ file you change. Render the design and compare it with the
+> diagram, write the brief, and finish with Step 10. Commit only your own files, and don't push
+> unless I ask. Tell me what you changed from the source and what you didn't verify.
+
+## A worked example: the button-on middy
+
+Simons 1922, Diagram 10, from queue item to commit, for the shape of the judgment calls. Its brief
+is [designs/button-middy/BRIEF.md](designs/button-middy/BRIEF.md).
+
+| Step | What happened |
+|---|---|
+| Find the pages | Book p. 42 is the text, and p. 41 the plate. Reading the page before p. 42 found the plate, which a text search misses. The text says "drafted similar to the previous diagrams", so the sleeve and cuff came from Diagram 9, p. 40 |
+| Read the plate | The text gives no button count: five marks on the plate. The belt's 2 in width and the collar point's 1½ in were measured with a scale from the plate, and marked so in the brief. Four lens shapes at the hem were read as tucks |
+| Check the units | "1/6 of breast" on a 24 in breast would be a 4 in neck. The plate's scale shows 2 in, so it means the half breast |
+| Choose the base | The queue said `middy-blouse`, which is a pullover cut on the fold. The plate has a 1 in stand down the front, so it's on `pyjama-jacket`, and the queue item was corrected. The cuff and its placket were taken from `dress-shirt` |
+| Map the numbers | 4 in below the waist / 6¼ in waist to seat at `usdaBoyC6` = `lengthBelowWaist` 64%. A 1½ in front drop = `frontDrop` 24%. A 1 in stand / 24 in breast = `buttonExtension` 4% |
+| Library | The hem is sewn to a belt, so it mustn't take a turned hem's allowance: `hemSa` added to `coatBack` and `coatFront`, off by default, then snapshotted. A ruled hem already had `straightHem`, used because the text says "draw line 2, 4, 5" |
+| Draft early | `Unknown option "breastPocket"`: the override had dropped options the inherited pockets read |
+| Test | Added: the belt fits the waist plus both stands, the hem is fuller than the waist, the buttons clear the hem, the sleeve is fuller than the cuff. A `longer` variant with no front drop caught the last button on the hem |
+| Look | Beside the plate at C6, then adult and stout. The adult's 3 in belt was kept, as an option, and noted |
+| Brief | Lists what's ours (the sleeve opening, the buttoned cuff) and what's less than the source (the sleeve's fullness, an even collar depth), so a reviewer starts there |
+| Finish | Preview, prompt, docs, queue status with an "As built" note, page check, one commit |
