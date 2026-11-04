@@ -306,12 +306,13 @@ const factories = {
   goreFacing: (p, ctx) => goreFacingPart({ name: p.name, after: ctx.after(p), index: p.index, nr: p.nr, label: p.label ?? p.name.split('.').pop() }),
   kiltApron: (p, ctx) => kiltApronPart({ name: p.name, after: ctx.after(p), nr: p.nr, label: p.label }),
   kiltPleats: (p, ctx) => kiltPleatsPart({ name: p.name, after: ctx.after(p), nr: p.nr, label: p.label }),
-  // A divided skirt's front or back (`which`), from a three-gore skirtLayout: `crotch`, `ext`, `zip`
+  // A divided skirt's front or back (`which`), optionally targeting `index`: `crotch`, `ext`, `zip`
   culotte: (p, ctx) =>
     culottePart({
       name: p.name,
       after: ctx.after(p),
       which: p.which,
+      index: p.index,
       nr: p.nr,
       size: (sh) => evalMap({ crotch: p.crotch, ext: p.ext }, lookupIn(sh, ctx.block, {}), {}),
       zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),

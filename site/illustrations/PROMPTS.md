@@ -1339,3 +1339,8 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > **A full-length cape, not a coat under a short shoulder cape.** A 1920s military-style shoulder cape in heavy dark navy wool, cut to mid-calf, with a whole back, separate broad foreparts, a narrow upright collar and a wide front stand closed by three plain dark buttons near the throat. The cape hangs from the shoulders in long clean folds and opens down the front. Show it on a standing adult figure in a front three-quarter view so the sweep and standing collar are clear. Plain background, technical editorial illustration.
 >
 > Leave out: sleeves, armholes, a jacket body underneath, a hood, epaulettes, a short capelet, insignia or braiding.
+
+### riding-skirt: Divided riding skirt
+> **A full-length five-gore divided riding skirt, appearing as a skirt while standing.** Dark wool twill, circa 1921. A narrow smooth front panel hangs free from the waistband over the front division. Side and back gores flare broadly toward the hem; the rear is cut with room for sitting astride. Show the garment alone at a slight three-quarter angle, with one side opened just enough to reveal the divided legs and the front overlap. Clean technical editorial illustration on a plain background.
+>
+> Leave out: a short culotte hem, modern trouser pockets, a saddle, a rider or mannequin, a bustle, pleats, decorative buttons or lace.

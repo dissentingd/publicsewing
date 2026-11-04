@@ -1,0 +1,40 @@
+# Mitchell's divided five-gore riding skirt: a narrow front panel and two pairs of
+# divided gores. The front panel remains separate above the fork.
+extends: ../gored-skirt/spec.yaml
+
+about:
+  id: riding-skirt
+  name: Divided riding skirt
+  category: skirts
+  description: A five-gore riding skirt with a divided lower skirt and shaped front and back crotch extensions
+  difficulty: 3
+  tags: [bottoms]
+  techniques: [zip, waistband, hem]
+  version: 0.1.0
+  source: Mitchell, Ladies' Tailor-Made Garments (1921), Divided Riding Skirt, pp. 116-117 (newstandardworko00mitc)
+  preview: cisFemaleAdult36
+
+options:
+  gores: { dflt: 5, list: [5], menu: false }
+  panelNarrowing: { pct: 1.25, min: 0, max: 4, of: seat, menu: false }
+  goreFlare: { pct: 70, min: 30, max: 120, menu: style }
+  length: { pct: 95, min: 70, max: 100, menu: style }
+  crotchDepthShare: { pct: 118, min: 100, max: 140, menu: fit, title: Fork depth, description: Depth from the waist to the divided fork as a share of body crotch depth. } # 13 in against an 11 in modern crotch depth
+  frontExtension: { pct: 11.25, min: 7, max: 16, of: hips, menu: fit } # 4 1/2 in on a 40 in hip
+  backExtension: { pct: 26.25, min: 18, max: 32, of: hips, menu: fit } # 1/2 in more than 1/4 hip: 10 1/2 in on 40 in hip
+  zipLength: { pct: 100, min: 60, max: 130, menu: style }
+
+pieces:
+  frontPanel: { part: gore, index: 0, after: layout, nr: 1 }
+  gore1: { part: culotte, which: front, index: 1, after: layout, nr: 2, measurements: [crotchDepth], crotch: crotchDepth * crotchDepthShare, ext: hips * frontExtension }
+  gore2: { part: culotte, which: back, index: 2, after: layout, nr: 3, measurements: [crotchDepth], crotch: crotchDepth * crotchDepthShare, ext: hips * backExtension, zip: waistToSeat * zipLength }
+
+variants:
+  plain:
+    name: Less flare
+    description: The divided skirt with a closer walking silhouette.
+    options: { goreFlare: 0.45 }
+  deep-seat:
+    name: Deep seat
+    description: A longer back crotch extension and lower fork for riding ease.
+    options: { crotchDepthShare: 1.32, backExtension: 0.30 }

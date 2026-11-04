@@ -40,6 +40,7 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Diagram XXI's plate is faint. Its text doesn't place the buttons.
 
 ## Mitchell 1921 (`newstandardworko00mitc`)
+- Riding skirts: divided skirt text/plate on PDF pp. 120-121 (book pp. 116-117); apron riding skirt Part I on PDF pp. 122-123 (book pp. 118-119), Part II on PDF pp. 124-125 (book pp. 120-121). The divided draft has a narrow, separate full-length front panel alongside two pairs of divided gores, not a two-panel culotte. The apron draft has separate Part I and Part II pieces joined by a buttoned leg strap.
 - Text and diagrams alternate: in the Prince Albert jacket (pp. 48–51), text is on PDF 52 and 54, and
   diagrams on PDF 53 and 55.
 - His skirt fans about 60° on p. 51, on a corseted figure. A modern figure's seat less waist gives less.

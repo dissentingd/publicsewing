@@ -452,20 +452,21 @@ export function circularPart({ name, after, which, nr, zip = () => 0 }) {
 }
 
 /**
- * A divided skirt's half (Pivnick's culotte, 1949): a three-gore layout's front panel
- * (`which: 'front'`) or back gore (`'back'`), its CF (or CB) edge carried down to `crotch` (mm
+ * A divided skirt's half (Pivnick's culotte, 1949): by default a three-gore layout's front panel
+ * (`which: 'front'`) or back gore (`'back'`); `index` can choose a gore in a wider skirt.
+ * Its centre-side edge is carried down to `crotch` (mm
  * below the top) and out by `ext` (mm) in a curve, the inseam then straight down to the hem.
  * The front isn't cut on the fold: both halves are cut in pairs. `zip` (mm) notches the back's
  * CB. Store: `skirt.culotte.<which>` (side, inseam, crotch, waist).
  */
-export function culottePart({ name, after, which, nr, size, zip = () => 0 }) {
+export function culottePart({ name, after, which, index, nr, size, zip = () => 0 }) {
   return {
     name,
     after,
     draft: (sh) => {
       const { points, paths, Path, Point, Snippet, snippets, store, sa, macro, part } = sh
       const { crotch, ext } = size(sh)
-      const g = store.get('skirt.gores')[which === 'front' ? 0 : 1]
+      const g = store.get('skirt.gores')[index ?? (which === 'front' ? 0 : 1)]
       const hemDepth = store.get('sarah.hem')
       const L = store.get('skirt.length')
       const pt = (q) => new Point(q.x, q.y)

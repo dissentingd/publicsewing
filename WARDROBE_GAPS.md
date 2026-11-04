@@ -96,6 +96,7 @@ and marked as derived.
 | Pleated skirt (side or box) | 5 | Sarah | Variant; **drafted 2026-11-02** (`designs/pleated-skirt`: the gored skirt with pleat underlays below the hip; not sewn) | Mitchell 1921 pp. 102–107 |
 | Circular skirt (fitted to the hip, very wide hem) | 5 | Sarah | Variant; **drafted 2026-11-02** (`designs/circular-skirt`: a fan slashed and spread from above the hip; not sewn) | Mitchell 1921 pp. 110-113 |
 | **Culottes (divided skirt)** | 4, 5 | — | **Drafted 2026-10-29** (`designs/culottes`; not sewn) | Pivnick 1949 `pivnickdesignclothes1949` |
+| Divided riding skirt | 5 | — | **Drafted 2026-11-04** (`designs/riding-skirt`, five gores and a front overlap; not sewn) | Mitchell 1921 pp. 116-117 |
 | Gathered skirt | 4 | Sarah, Sandy | Variant; **drafted 2026-10-28** (`designs/gathered-skirt`: straight breadths on a waistband; not sewn) | Walker 1909 frock skirt |
 | Button-down blouse | 1 | Simone | Have | — |
 | Soft blouse (bust darts, other collars) | 1, 5 | Simone, Bella block | Variant | Rosenfeld 1911/1918, WI *Pattern Drafting* 1920 |
