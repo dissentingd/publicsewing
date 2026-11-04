@@ -100,7 +100,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Source (folder id) | Grade | Designs |
 |---|---|---|
 | Simons, *Drafting Cotton Garments and Mackinaws* (1918) `draftingcottonga00simo` | A | chore coat, boys' work coat, shop coat, barber's coat, hunting coat, mackinaw, military blouse, bar vest |
-| Simons, *Designing Overcoat Patterns* (1916) `designingovercoa00simo` | A | peacoat, overcoat, box overcoat, ulster, balmacaan, mantle, surtout, fitted overcoat |
+| Simons, *Designing Overcoat Patterns* (1916) `designingovercoa00simo` | A | peacoat, overcoat, box overcoat, ulster, balmacaan, mantle, surtout, fitted overcoat, cape overcoat |
 | Pivnick, *How to Design Beautiful Clothes* (1949, not renewed) `pivnickdesignclothes1949` | A | shift dress, culottes, kimono dress, dolman cape, princess coat |
 | Walker, *Manual of Needlework and Cutting Out* (1909) `krl00366374` | A (grid) | nightshirt, nightgown, smock, frock, pinafore, knickerbockers |
 | Woman's Institute, *Pattern Drafting* (1915/1920) `patterdraftingpicken` | A (blocks) | shirtwaist dress |
@@ -114,11 +114,11 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | A | pyjama jacket, pyjama trousers, work shirt, service shirt, shirt, dressing gown, smoking jacket, drawers |
 | Sheifer, *Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | A | girl's coat |
 | Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911) `merzspracticalcu00merz` | A | women's peacoat, field jacket |
-| Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo` | A | boy's jacket, Norfolk jacket, sailor pants, Eton jacket, golf pants, scout pants, kilt (hem and length only), raincoat, double-breasted waistcoat, scout coat, button-on middy |
+| Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo` | A | boy's jacket, Norfolk jacket, sailor pants, Eton jacket, golf pants, scout pants, cape overcoat, kilt (hem and length only), raincoat, double-breasted waistcoat, scout coat, button-on middy |
 | USDA O'Brien body-measurement surveys (1939–41) `childrensbodymea365obri`, `bodymeasurements366obri`, `womensmeasuremen454obri` | C | the 75 children's size sets (`designs/sizes/`) |
 
 Left to build from these: Mitchell's double-dart tight-fitted jacket; Simons 1916's
-balmacaans, mantle, surtout and French overcoats, cape.
+balmacaans, mantle, surtout, French overcoats and cape overcoat.
 
 ## Held, grade A, not built yet
 In the corpus; all public domain in the US. Grouped by the gap they'd fill. **Variants are

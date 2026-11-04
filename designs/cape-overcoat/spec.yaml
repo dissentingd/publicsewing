@@ -1,0 +1,34 @@
+# Simons' shoulder cape overcoat is a full-length cape with a military collar,
+# a whole back and separate foreparts, rather than a coat body under a short cape.
+# The 1916 source is primary; the boys' 1922 Diagram 38 confirms the construction.
+extends: ../cape/spec.yaml
+
+about:
+  id: cape-overcoat
+  name: Cape overcoat
+  category: coats
+  description: A long shoulder cape with a whole back, separate fronts, a high military collar and a wide button stand
+  difficulty: 3
+  tags: [coats]
+  techniques: [collar, button, hem]
+  version: 0.1.0
+  source: "Simons, Designing Overcoat Patterns (1916), Shoulder Cape Overcoat, pp. 30-31 (designingovercoa00simo); Simons, Designing Boys' and Juveniles' Clothing (1922), Cape Overcoat, Diagram 38, pp. 110-112 (designingboysjuv00simo)"
+  preview: cisMaleAdult38 # the 1916 source's 38 in chest; the available model is 39.37 in
+
+options:
+  capePieces: { dflt: two, menu: false } # Simons' whole back and separate foreparts
+  capeLength: { pct: 65.5, min: 45, max: 85, menu: style } # 42 in / 64.17 in nape to floor at cisMaleAdult38
+  capeDrop: { pct: 0, menu: false } # the plate's hem lies level at CB and CF
+  buttonExtension: { pct: 9, min: 5, max: 14, menu: style } # half of the 7 in cut-on stand / 38 in chest
+  facingWidth: { pct: 9, min: 5, max: 14, menu: construction } # other half of the 7 in stand
+  collarWidth: { pct: 10, min: 8, max: 20, menu: style } # 1.5 in back stand / 14.96 in neck at cisMaleAdult38
+  collarSpring: { pct: 0, menu: false } # a military stand, not a falling collar
+  collarPoint: { pct: 0, menu: false }
+  # The remaining cape pivot and seam positions come from the parent construction;
+  # Simons' points and Mitchell's quarter-circle pivot are not interchangeable.
+
+variants:
+  shorter:
+    name: Shorter cape
+    description: The same two-piece cape made to mid-thigh length, with its military collar and wide stand.
+    options: { capeLength: 0.50 }

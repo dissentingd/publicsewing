@@ -66,6 +66,7 @@ and marked as derived.
 | **Field jacket / military blouse** | 3 | — (Jett is a bomber) | **Military blouse drafted 2026-10-23** (`designs/military-tunic`, not sewn) | Simons 1918 (military blouse) |
 | **Hunting / field coat** (belted, action back, bellows pockets) | 3 | — | **Drafted 2026-10-23** (`designs/hunting-coat`, not sewn) | Simons 1918 (hunting coat) |
 | Cape (circular) | 3 | — | **Drafted 2026-11-03** (`designs/cape`, `lib/cape.mjs`; not sewn); **dolman drafted 2026-11-03** (`designs/dolman-cape`, on Breanna; not sewn) | Mitchell 1921 pp. 58-59 |
+| Cape overcoat (full-length, standing collar) | — | **Drafted 2026-11-04** (`designs/cape-overcoat`, on the cape; not sewn) | Simons 1916 pp. 30-31; Simons 1922 Diagram 38 |
 | Norfolk jacket (yokes, pleats, belt) | 3 | — | Variant; **drafted 2026-11-03** (`designs/norfolk-jacket`, on the hunting coat; not sewn) | Simons 1922 Diagrams 6-7 |
 | **Mackinaw** | 3 | — | **Drafted 2026-10-23** (`designs/mackinaw`, not sewn; convertible, military or shawl collar; set-in or raglan sleeves) | Simons 1918 |
 | **Shop coat / lab coat / duster** (unisex) | 2 | — | **Drafted 2026-10-23** (`designs/shop-coat`, not sewn) | Simons 1918 (grocers' gown) |
@@ -247,7 +248,7 @@ shift, the jacket's darts, lining and collar stand, the waistcoat's CB shaping. 
   `designs/overcoat`, `box-overcoat`, `ulster`, on the peacoat), and the balmacaan (2026-10-28:
   `designs/balmacaan`, the split-sleeve version; the one-piece raglan sleeve isn't built) and the mantle
   (2026-10-28: `designs/mantle`, on the balmacaan; its back-and-sleeve-in-one cut isn't built). Still to
-  use: the surtout and French overcoats, the shoulder cape.
+  use: the one-piece raglan sleeve and the mantle's back-and-sleeve-in-one cut. The surtout, fitted overcoat and full-length cape are drafted.
 - **Later Woman's Institute volumes**, held but not tracked: `gb_wi1924_draftingpatterndesigning`
   and `gb_wi1928_patterndesigningdraping` (US 1924, 1928; public domain). Check what each scan
   actually holds before planning on it.

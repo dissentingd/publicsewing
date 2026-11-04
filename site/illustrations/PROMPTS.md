@@ -1334,3 +1334,8 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > **Long tapered scout trousers with the extra shape at the back of the knee and a pleat at each back hem.** Plain sturdy khaki cotton drill, sized for a teenage boy. A conventional waistband with belt loops and a fly, straight front, side pockets, legs narrowing gently toward the ankle. Show the garment flat at a slight three-quarter angle so the seam crossing the back knee and the small pleat at the back hem are visible. Historic 1920s utility clothing, clean technical editorial illustration.
 >
 > Leave out: shorts, knee bands, puttees, a side leg opening, cargo pockets, badges, a person or mannequin.
+
+### cape-overcoat: Cape overcoat
+> **A full-length cape, not a coat under a short shoulder cape.** A 1920s military-style shoulder cape in heavy dark navy wool, cut to mid-calf, with a whole back, separate broad foreparts, a narrow upright collar and a wide front stand closed by three plain dark buttons near the throat. The cape hangs from the shoulders in long clean folds and opens down the front. Show it on a standing adult figure in a front three-quarter view so the sweep and standing collar are clear. Plain background, technical editorial illustration.
+>
+> Leave out: sleeves, armholes, a jacket body underneath, a hood, epaulettes, a short capelet, insignia or braiding.

@@ -31,9 +31,11 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Heavy crossing lines from the armhole go to the *other* panel's side, and the two flares can differ.
 - Diagram 43, "golf pants", is fitted through the knee, not plus-fours.
 - Diagram 44, scout pants, is full length to the shank with a V tuck across the back knee and a back hem pleat; the text is on pp. 122 and 124, with the plate on p. 125.
+- Diagram 38 is the full-length cape overcoat, pp. 110-112, not p. 126 (which is long trousers). Its plate shows a whole back and separate fronts, not a short shoulder cape over a coat.
 - Diagram 7's Norfolk has a front and back with a side seam, not a three-piece body.
 
 ## Simons 1916 (`designingovercoa00simo`)
+- The shoulder cape overcoat is on pp. 30-31, not p. 21. It is a full-length cape with a military collar and a whole back; the 7 in button stand is a cut-on front extension.
 - The contents name p. 19 "French", but it's the form-fitting overcoat's diagram. Pp. 42–44 are a mackinaw.
 - Diagram XXI's plate is faint. Its text doesn't place the buttons.
 

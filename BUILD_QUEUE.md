@@ -108,7 +108,7 @@ Priority 1 first: shirts, dresses and women's garments are the thinnest part of 
 |---|---|---|---|---|---|---|---|
 | 24 | `button-middy` | Button-on middy: buttoned to the neck, belted at the waist | Simons 1922, Diagram 10, p. 42 | `middy-blouse` | D | As built: on `pyjama-jacket`, not the sailor middy: it opens all down the front on a cut-on stand, with a belt sewn to the hem | done (button-middy) |
 | 25 | `scout-pants` | Scout pants | Simons 1922, Diagram 44, pp. 122, 124–125 | `knee-pants` | A | As built: on `suit-trousers`; the plate reaches the shank, with a shaped back knee and hem pleat, rather than ending at the knee | done (scout-pants) |
-| 26 | `cape-overcoat` | Shoulder-cape overcoat | Simons 1916, p. 21; boys' cape overcoat Simons 1922 p. 126 | `overcoat` + item 10 | D | After item 10 | open |
+| 26 | `cape-overcoat` | Full-length cape overcoat | Simons 1916, pp. 30–31; boys' cape overcoat Simons 1922, Diagram 38, pp. 110–112 | `overcoat` + item 10 | G | As built: the plates show a whole-back cape and separate foreparts, with no coat body; on `cape`, with a standing military collar | done (cape-overcoat) |
 | 27 | `riding-skirt` | Divided and apron riding skirts | Mitchell 1921, pp. 116–121 | `culottes` | B | | open |
 | 28 | `painters-jacket` | Painter's jacket: knee length, three patch pockets | Vincent 1890, p. 35 | `barbers-coat` | D | | open |
 | 29 | `aprons` | Work aprons (carpenter's, butcher's, barman's…) | Vincent 1890, pp. 39–40 | — | G | `polygon` pieces; FreeSewing's Albert covers one apron | open |
