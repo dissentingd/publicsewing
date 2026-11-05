@@ -201,6 +201,21 @@ options:
   kiltLength:
     title: Length
     description: Waist to hem, as a share of waist to knee.
+  tunicHipDepth:
+    title: Hip line depth
+    description: Distance from the waist arc to the hip arc, as a share of waist to seat.
+  tunicHipEase:
+    title: Hip ease
+    description: Extra width on each half at the hip arc, as a share of the seat.
+  tunicDartTip:
+    title: Dart tip above hip
+    description: Distance from the hip arc to the dart tip, as a share of waist to seat.
+  tunicHemOffset:
+    title: Centre hem drop
+    description: Extra depth at the centre of the curved hem, as a share of waist to seat.
+  tunicLength:
+    title: Tunic length
+    description: Waist to hem, as a share of waist to floor.
   kiltHem:
     title: Hem depth
     description: The deep hem, as a share of waist to seat.

@@ -58,7 +58,7 @@ import { bent } from '../blocks/bent.mjs'
 import { titan } from '../blocks/titan.mjs'
 import { breanna } from '../blocks/breanna.mjs'
 import { sarah } from '../blocks/sarah.mjs'
-import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart } from './skirt.mjs'
+import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
@@ -130,6 +130,7 @@ export const operations = {
   kiltLayout: { run: draftKiltLayout },
   // Circular skirt (lib/skirt.mjs): a fan slashed and spread from above the seat line, into `skirt.circular`
   circularLayout: { run: draftCircularLayout },
+  tunicLayout: { run: draftTunicLayout, measurements: ['waist', 'seat'] },
   // A cape (lib/cape.mjs): the block's neck and shoulder into `cape.raw.<which>`, then laid out
   capeBase: { run: draftCapeBase, literal: ['which'] },
   jacketCapeBase: { run: draftJacketCapeBase, literal: ['which'] },
@@ -349,6 +350,7 @@ const factories = {
       nr: p.nr,
       zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
     }),
+  tunic: (p, ctx) => tunicPart({ name: p.name, after: ctx.after(p), nr: p.nr }),
   // `material` (default fabric); `lining:` an expression over options, when true it's cut in lining too
   jacketPanel: (p, ctx) =>
     jacketPanelPart({

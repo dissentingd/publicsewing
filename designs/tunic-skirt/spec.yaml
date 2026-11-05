@@ -1,0 +1,49 @@
+# Schorr 1917 Diagram 7: one radial half panel, a central waist dart, mirrored at the front and back seams.
+about:
+  id: tunic-skirt
+  name: Tunic skirt
+  category: skirts
+  description: A short radial overskirt with a central dart in each half and a sweeping curved hem
+  difficulty: 2
+  tags: [bottoms]
+  techniques: [dart, zip, hem]
+  version: 0.1.0
+  source: Schorr, The Expert Designer (1917), Diagram 7, PDF pp. 38-39 (expertdesignerpr00scho)
+  preview: cisFemaleAdult36
+
+block: sarah
+
+options:
+  # A-B is half the 26 in waist; the radial layout reads the body's waist directly.
+  # B-C is 6 in; 6 / Women 36's 10.24 in waist-to-seat depth.
+  tunicHipDepth: { pct: 58.6, min: 40, max: 100, menu: fit }
+  # C-G is half the 42 in hip plus 1/2 in; 0.5 / 42.
+  tunicHipEase: { pct: 1.19, min: 0, max: 4, of: seat, menu: fit }
+  # Point 6 is 1 in from point 5 toward the waist; 1 / 10.24.
+  tunicDartTip: { pct: 9.8, min: 5, max: 25, menu: advanced }
+  # Point 4 is 1 1/2 in below the midpoint reference; 1.5 / 10.24.
+  tunicHemOffset: { pct: 14.6, min: 0, max: 40, menu: advanced }
+  # Schorr leaves the finished length "as desired"; this short overskirt is our choice.
+  tunicLength: { pct: 45, min: 25, max: 70, menu: style }
+  # Sarah base options, hidden because the radial draft replaces its straight skirt.
+  length: { pct: 45, menu: false }
+
+pieces:
+  layout:
+    from: sarah.base
+    hide: tree
+    options: all
+    ops:
+      - tunicLayout:
+          hipDepth: waistToSeat * tunicHipDepth
+          hipEase: seat * tunicHipEase
+          dartTip: waistToSeat * tunicDartTip
+          hemOffset: waistToSeat * tunicHemOffset
+          length: waistToFloor * tunicLength
+  panel: { part: tunic, after: layout, nr: 1 }
+
+variants:
+  longer:
+    name: Longer tunic
+    description: A longer version of Schorr's radial panel.
+    options: { tunicLength: 0.6 }

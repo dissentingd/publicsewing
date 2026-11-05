@@ -1409,3 +1409,13 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > The same charcoal three-quarter women's Inverness coat and closed turn collar, with its separate broad shoulder cape shortened to the waist. Show the long buttoned coat front beneath the cape, full front three-quarter view, plain background, clean technical editorial illustration.
 >
 > Leave out: lapels, pockets, belts, cuffs, fitted sleeves, hoods or extra button rows.
+
+### tunic-skirt: Schorr's basque or tunic skirt
+> A short 1917 wool tunic skirt worn over a simple longer under-skirt, with a close waist, one visible central dart on each half, and a broad curved hem that flares from the hip. Show front three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: pleats, tiers, pockets, gathers, belts or a bodice.
+
+### tunic-skirt.longer: Longer tunic skirt
+> The same 1917 wool tunic skirt, extended toward the knee while keeping its central darts and radial curved hem. Show front three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: pleats, tiers, pockets, gathers, belts or a bodice.

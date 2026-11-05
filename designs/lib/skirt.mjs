@@ -395,6 +395,68 @@ export function draftCircularLayout(sh, { frontShare, hinge, spreadFront, spread
   return part.hide()
 }
 
+/** Schorr's Diagram 7: a radial half skirt with its excess waist in one central dart. */
+export function draftTunicLayout(sh, { hipDepth, hipEase, dartTip, length, hemOffset }) {
+  const { measurements, store, part } = sh
+  cleanup(sh)
+  const waist = measurements.waist / 2
+  const hip = measurements.seat / 2 + hipEase
+  const radius = waist
+  const hipRadius = radius + hipDepth
+  // Preserve a small dart when the measured hip arc is close; very straight figures get no dart.
+  const measuredAngle = hip / hipRadius
+  const angle = Math.max(measuredAngle, measuredAngle >= 0.9 ? 1.04 : 1)
+  const dartAngle = Math.max(0, angle - waist / radius)
+  store.set('skirt.tunic', { radius, hipRadius, hemRadius: radius + length, angle, dartAngle, tipRadius: Math.max(radius + 15, hipRadius - dartTip), hemOffset })
+  store.set('skirt.waist', measurements.waist)
+  return part.hide()
+}
+
+export function tunicPart({ name, after, nr }) {
+  return {
+    name, after,
+    draft: (sh) => {
+      const { paths, Path, Point, Snippet, snippets, store, sa, macro, part } = sh
+      const { radius, hipRadius, hemRadius, angle, dartAngle, tipRadius, hemOffset } = store.get('skirt.tunic')
+      const mid = angle / 2
+      const at = (r, a) => new Point(r * Math.sin(a - mid), r * Math.cos(a - mid))
+      const arc = (r, a, b) => {
+        const pts = Array.from({ length: 13 }, (_, i) => at(r, a + (b - a) * i / 12))
+        const path = new Path().move(pts[0])
+        for (const pt of pts.slice(1)) path.line(pt)
+        return path
+      }
+      const front = at(radius, 0), back = at(radius, angle)
+      const leg1 = at(radius, mid - dartAngle / 2), leg2 = at(radius, mid + dartAngle / 2)
+      const tip = at(tipRadius, mid)
+      const waist = dartAngle > 0.001
+        ? arc(radius, 0, mid - dartAngle / 2).line(tip).line(leg2).join(arc(radius, mid + dartAngle / 2, angle))
+        : arc(radius, 0, angle)
+      const backEdge = new Path().move(back).line(at(hemRadius, angle))
+      const hemPts = Array.from({ length: 25 }, (_, i) => {
+        const t = i / 24
+        return at(hemRadius + hemOffset * Math.sin(Math.PI * t), angle * (1 - t))
+      })
+      const hem = new Path().move(hemPts[0])
+      for (const pt of hemPts.slice(1)) hem.line(pt)
+      const frontEdge = new Path().move(at(hemRadius, 0)).line(front)
+      paths.seam = waist.join(backEdge).join(hem).join(frontEdge).close().addClass('fabric')
+      if (sa) paths.sa = paths.seam.offset(-sa).addClass('fabric sa')
+      if (dartAngle > 0.001) {
+        paths.dart = new Path().move(leg1).line(tip).line(leg2).addClass('mark')
+        snippets.dart = new Snippet('notch', tip)
+      }
+      const zip = backEdge.shiftAlong(Math.min(backEdge.length() * 0.5, hipRadius - radius))
+      snippets.zip = new Snippet('notch', zip)
+      macro('grainline', { from: at(radius + 40, mid), to: at(hemRadius - 40, mid) })
+      store.cutlist.setCut({ cut: 2, from: 'fabric' })
+      store.set('skirt.tunic.seams', { front: frontEdge.length(), back: backEdge.length(), waist: radius * (angle - dartAngle), hip: hipRadius * angle, hem: hem.length() })
+      title(macro, { at: at((radius + hemRadius) / 2, mid), nr, title: 'tunic skirt', scale: 0.5 })
+      return part
+    },
+  }
+}
+
 /** An edge of a circular skirt's piece, from the waist to the hem */
 function circularEdge(Path, Point, e) {
   const pt = (q) => new Point(q.x, q.y)
