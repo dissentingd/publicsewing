@@ -51,6 +51,11 @@ options:
   handPocketLean: { pct: 21, min: 0, max: 50, menu: style } # toward the side, per unit down (12 degrees)
   handPocketHorizontal: { bool: false, menu: false } # a shallow, near-horizontal welt for the boys' reefer
   handPocketWelt: { pct: 12, min: 8, max: 20, menu: style } # x the mouth: finished welt width
+  lowerWelt: { bool: false, menu: false } # a second welt, used by Simons' boys' reefer
+  lowerWeltAt: { pct: 38, min: 25, max: 55, menu: false } # x the front's chest width from CF
+  lowerWeltBelow: { pct: 82, min: 50, max: 105, menu: false } # x waistToSeat below the waist
+  lowerWeltLength: { pct: 45, min: 30, max: 60, menu: false } # x the front's chest width
+  lowerWeltRise: { pct: 8, min: 0, max: 20, menu: false } # rise toward the side per unit of run
   # Construction
   facingWidth: { pct: 14, min: 10, max: 20, of: chest, menu: construction }
   # Back vent (a CB seam) and lining, off for the mackinaw (the peacoat turns them on)
@@ -85,7 +90,7 @@ pieces:
     from: brian.front
     hide: tree
     measurements: [seat, waist, waistToSeat]
-    options: [buttonExtension, buttons, buttonTop, buttonBottom, buttonRow, hemCurve, frontDrop, facingWidth, breastPockets, lowerPockets, pocketShape, pocketFlaps, handPockets, handPocketTop, handPocketAt, handPocketLength, handPocketLean, handPocketHorizontal, handPocketWelt, lapelWidth, gorgeAt, lining, liningPleat, neckFacingWidth]
+    options: [buttonExtension, buttons, buttonTop, buttonBottom, buttonRow, hemCurve, frontDrop, facingWidth, breastPockets, lowerPockets, pocketShape, pocketFlaps, handPockets, handPocketTop, handPocketAt, handPocketLength, handPocketLean, handPocketHorizontal, handPocketWelt, lowerWelt, lowerWeltAt, lowerWeltBelow, lowerWeltLength, lowerWeltRise, lapelWidth, gorgeAt, lining, liningPleat, neckFacingWidth]
     let:
       # Double-breasted: a wide stand, hem sweeping down toward the front edge
       ext: chest * buttonExtension
@@ -173,6 +178,23 @@ pieces:
               welt: len * handPocketWelt
               bag: len * 0.85
       - markLine: { id: handPocket, from: [coat.welts.hand.x0, coat.welts.hand.y0], to: [coat.welts.hand.x1, coat.welts.hand.y1], class: mark, if: handPockets }
+      - store:
+          if: lowerWelt
+          key: coat.lowerWelts
+          value:
+            lower:
+              _x0: q * lowerWeltAt
+              _y0: min(cfWaist.y + waistToSeat * lowerWeltBelow, cfHem.y - q * lowerWeltLength - q * 0.15)
+              _run: min(q * lowerWeltLength, sideHem.x - q * 0.1 - _x0)
+              _rise: _run * lowerWeltRise
+              x0: _x0
+              y0: _y0
+              x1: _x0 + _run
+              y1: _y0 - _rise
+              len: sqrt(_run * _run + _rise * _rise)
+              welt: len * handPocketWelt
+              bag: len * 0.85
+      - markLine: { id: lowerWelt, from: [coat.lowerWelts.lower.x0, coat.lowerWelts.lower.y0], to: [coat.lowerWelts.lower.x1, coat.lowerWelts.lower.y1], class: mark, if: lowerWelt }
 
   facing:
     part: facing
@@ -227,6 +249,8 @@ pieces:
   lowerFlap: { part: flap, after: front, key: lower, nr: 9, label: lowerFlap, cut: 2, if: lowerPockets }
   handWelt: { part: welt, after: front, key: hand, store: coat.welts, nr: 14, if: handPockets }
   handBag: { part: weltBag, after: front, key: hand, store: coat.welts, nr: 15, if: handPockets }
+  lowerWeltPiece: { part: welt, after: front, key: lower, store: coat.lowerWelts, nr: 19, options: [lowerWelt], if: lowerWelt }
+  lowerWeltBag: { part: weltBag, after: front, key: lower, store: coat.lowerWelts, nr: 20, options: [lowerWelt], if: lowerWelt }
   # Lining (set-in sleeves): a back-neck facing meeting the front facings at the
   # shoulder, then front and back lining; the sleeves are cut again in lining
   backNeckFacing: { part: backNeckFacing, from: back, nr: 16, width: neck * neckFacingWidth, if: "lining and (sleeveStyle != 'raglan' or collarStyle == 'ulster' or collarStyle == 'shawl')" }

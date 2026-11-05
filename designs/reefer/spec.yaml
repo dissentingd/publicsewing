@@ -6,7 +6,7 @@ about:
   id: reefer
   name: Boys' reefer
   category: coats
-  description: "A mid-thigh double-breasted reefer with a regular collar, three button pairs and a slanted welt pocket"
+  description: "A mid-thigh double-breasted reefer with a regular collar, three button pairs and two pairs of shallow welt pockets"
   difficulty: 4
   tags: [coats, children]
   techniques: [welt-pocket, collar, facing, button]
@@ -33,5 +33,10 @@ options:
   handPocketLength: { pct: 42 } # narrower than the adult peacoat's hand-warmer welt
   handPocketLean: { pct: 12, title: Chest welt slope, description: How much the welt falls toward the side relative to its horizontal length. } # Diagram 23
   handPocketHorizontal: { bool: true } # Diagram 23's shallow, nearly horizontal chest welt
+  lowerWelt: { bool: true, menu: style, title: Lower welt pockets, description: A second shallow welt pair near the seat line, as marked on Diagram 23. }
+  lowerWeltAt: { pct: 38, menu: style, title: Lower welt position, description: How far from centre front the lower welt starts. } # about 2/5 of the forepart's width
+  lowerWeltBelow: { pct: 82, menu: style, title: Lower welt height, description: How far below the waist the lower welt sits. } # nearly at the seat line
+  lowerWeltLength: { pct: 45, menu: style, title: Lower welt length, description: Length of the lower pocket mouth as a share of the front width. } # about half the forepart's width
+  lowerWeltRise: { pct: 8, menu: style, title: Lower welt rise, description: How much the welt rises toward the side relative to its horizontal length. } # shallow rise on the plate
   vent: { bool: false } # none drawn
   lining: { bool: false } # none specified

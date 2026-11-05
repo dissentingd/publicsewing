@@ -113,7 +113,7 @@ Priority 1 first: shirts, dresses and women's garments are the thinnest part of 
 | 27b | `apron-riding-skirt` | Asymmetric apron riding skirt | Mitchell 1921, pp. 118–121 | — | B | Separate source-scaled Part I and Part II shapes, with long leg strap, short tab and back opening | done (apron-riding-skirt) |
 | 28 | `painters-jacket` | Painter's jacket: knee length, three patch pockets | Vincent 1890, p. 35 | `barbers-coat` | D | As built: on `barbers-coat`, with five buttons and separate button cuffs; pocket and collar geometry approximate Vincent's plate | done (painters-jacket) |
 | 29 | `aprons` | Work aprons (carpenter's, butcher's, barman's…) | Vincent 1890, pp. 39–40 | — | G | As built: one flat-cut pattern with eight selectable diagram styles, scaled from the fixed adult plate dimensions | done (aprons) |
-| 30 | `reefer` | Boys' reefer | Simons 1922, Diagram 23, pp. 74–75 | `peacoat` | D | As built: double-breasted outline on the peacoat, with shorter regular collar and shallow chest welt; the plate's lower pocket and side-seam flare are not modelled | done (reefer) |
+| 30 | `reefer` | Boys' reefer | Simons 1922, Diagram 23, pp. 74–75 | `peacoat` | D | As built: double-breasted outline on the peacoat, with shorter regular collar and two pairs of shallow welts; the side-seam flare is not modelled | done (reefer) |
 
 ### Blocked
 | Item | Needs |

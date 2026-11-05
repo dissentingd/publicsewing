@@ -1351,7 +1351,7 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > Leave out: a symmetrical skirt, culotte leg tubes, a saddle, a horse, a rider or mannequin, pockets, pleats, decorative trim or a belt.
 
 ### reefer: Boys' double-breasted reefer
-> A mid-thigh boys' reefer coat from 1922, in dark navy wool. Straight double-breasted front with three visible buttons in each row, modest notched lapels and a regular narrow collar, a slanted chest welt pocket on each side, long plain sleeves, no belt or back vent. Show it on a standing twelve-year-old in a front three-quarter view, plain background, clean technical editorial illustration.
+> A mid-thigh boys' reefer coat from 1922, in dark navy wool. Straight double-breasted front with three visible buttons in each row, modest notched lapels and a regular narrow collar, a shallow slanted chest welt and a second shallow welt below the waist on each side, long plain sleeves, no belt or back vent. Show it on a standing twelve-year-old in a front three-quarter view, plain background, clean technical editorial illustration.
 >
 > Leave out: broad peacoat lapels, patch pockets, hood, epaulettes, belt, oversized buttons or modern logos.
 

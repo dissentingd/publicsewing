@@ -19,15 +19,15 @@ Diagram 23 gives single-breasted and double-breasted outlines on the same back a
 | Front | 2½ in from centre front, with buttons 4 in from edge | `buttonExtension` 8.6% of chest; `buttonRow` 60% of the extension, leaving 1½ in between the button and centre front |
 | Buttons | Three positions on the plate | Three pairs, from near the chest line to below the waist |
 | Collar | Regular collar and turned lapel | Narrower `ulster` collar and lapel on the peacoat's block |
-| Pocket | Slanted chest welt | The block's welt moved above the waist and shortened |
+| Pockets | Slanted chest welt and a lower pocket mark near the seat line | Two pairs of shallow welts: the upper moved above the waist, the lower starts at 38% of the front width and 82% of waist-to-seat below the waist; the lower mouth runs 45% of the front width and rises 8% toward the side |
 | Hem | Level, with spread at the side seams | Level; the Brian coat block has less flare |
 
 ## Changes and what isn't modelled
 
 - The source's single-breasted outline is not a variant: the inherited double-breasted front has two button rows, and a single-breasted version needs a different front draft.
-- The plate's second, lower pocket mark is omitted. The inherited block supplies one pair of welts; the reefer turns that welt to the source's shallow chest angle. Adding another pocket needs a separate placement and bag piece.
+- The lower mark has no drafting or construction instructions in Simons. Its welt and bag use the same construction as the chest welt, with position and angle read from the plate. The lower bag is raised as needed to clear the hem on short sizes.
 - The exact side-seam flare, centre-back shaping, and source collar construction are simplified to the Brian coat block. The source does not detail a lining or vent, so both are off.
 
 ## Pieces and construction
 
-Back, front, facing, collar, sleeves, and welt and pocket-bag pieces. Sew the welts and bags to the fronts; join back and shoulders and sides; add facings and collar; make and set sleeves; finish hem and buttonholes. The front is cut in mirrored pairs and closes right over left.
+Back, front, facing, collar, sleeves, and two pairs each of welt and pocket-bag pieces. Sew both welt pairs and their bags to the fronts; join back and shoulders and sides; add facings and collar; make and set sleeves; finish hem and buttonholes. The front is cut in mirrored pairs and closes right over left.
