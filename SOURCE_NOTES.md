@@ -33,6 +33,7 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Diagram 44, scout pants, is full length to the shank with a V tuck across the back knee and a back hem pleat; the text is on pp. 122 and 124, with the plate on p. 125.
 - Diagram 38 is the full-length cape overcoat, pp. 110-112, not p. 126 (which is long trousers). Its plate shows a whole back and separate fronts, not a short shoulder cape over a coat.
 - Diagram 7's Norfolk has a front and back with a side seam, not a three-piece body.
+- Diagram 23, pp. 74–75 (PDF pp. 80–81), puts the single- and double-breasted reefer on one back and forepart. The text says the double-breasted edge is 2½ in from centre front and its button line 4 in from that edge; the plate also marks a lower pocket without explaining its construction.
 
 ## Simons 1916 (`designingovercoa00simo`)
 - The shoulder cape overcoat is on pp. 30-31, not p. 21. It is a full-length cape with a military collar and a whole back; the 7 in button stand is a cut-on front extension.

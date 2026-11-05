@@ -1,0 +1,35 @@
+# Boys' double-breasted reefer, Simons 1922 Diagram 23, pp. 74-75.
+# The plate also gives a single-breasted outline; this design follows the D.B. front.
+extends: ../peacoat/spec.yaml
+
+about:
+  id: reefer
+  name: Boys' reefer
+  category: coats
+  description: "A mid-thigh double-breasted reefer with a regular collar, three button pairs and a slanted welt pocket"
+  difficulty: 4
+  tags: [coats, children]
+  techniques: [welt-pocket, collar, facing, button]
+  version: 0.1.0
+  source: "Simons, Designing Boys' and Juveniles' Clothing (1922), Diagram 23, pp. 74-75 (designingboysjuv00simo)"
+  preview: usdaBoyC12
+
+options:
+  chestEase: { pct: 11 } # 3 in extra on the source's 29 in breast
+  bicepsEase: { pct: 25 } # room for a jacket underneath; ours, not numbered in Diagram 23
+  lengthBelowWaist: { pct: 175 } # 30 in from nape, about 14 in below a boy's 16 in waist length
+  frontDrop: { pct: 0 } # Diagram 23 has a level hem
+  buttonExtension: { pct: 8.6 } # Z to D.B. edge 5 is 2 1/2 in on 29 in breast
+  buttons: { count: 3 } # three pairs on Diagram 23
+  buttonTop: { pct: 65 } # upper pair near the breast line; x half stand
+  buttonBottom: { pct: 40 } # lowest pair below the waist line, as drawn
+  buttonRow: { pct: 60 } # buttons 4 in from the edge, i.e. 1 1/2 in behind CF
+  collarStyle: { dflt: ulster } # its regular notched collar and turned lapel, without the peacoat's depth
+  collarWidth: { pct: 25 } # regular overcoat collar, approximately 3 in on the plate
+  lapelWidth: { pct: 24 } # lapel falls from the upper button toward the gorge
+  handPockets: { bool: true } # the slanted chest welt in the plate
+  handPocketTop: { pct: 45 } # starts between chest and waist lines
+  handPocketLength: { pct: 42 } # narrower than the adult peacoat's hand-warmer welt
+  handPocketLean: { pct: 12 } # shallow downward slant toward the side
+  vent: { bool: false } # none drawn
+  lining: { bool: false } # none specified

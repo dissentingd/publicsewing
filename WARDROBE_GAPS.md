@@ -47,6 +47,7 @@ and marked as derived.
 | **Coverall / boiler suit** | 2, 3 | — | **Drafted 2026-10-27** (`designs/jumpsuit`: flat-cut, one body piece, gussets, buttoned front, patch pockets; not sewn) | Thayaht's TuTa 1920, Open+Pattern (CC BY 4.0); Simons 1916 has a one-piece overall too |
 | **Chore / work coat** | 2 | — | **Drafted 2026-10-23** (`designs/chore-coat`, not sewn) | Simons 1918 (work coat) |
 | **Peacoat / reefer** | 3 | — | **Drafted 2026-10-26** (`designs/peacoat`: the mackinaw at hip length with Simons' D.B. overcoat details: ulster collar and notched lapel, hand-warmer pockets, vent, lining; not sewn) | Simons 1916 D.B. overcoats (no reefer as such) |
+| Boys' reefer | 3 | — | **Drafted 2026-11-05** (`designs/reefer`: longer double-breasted coat with a high welt, on the peacoat; not sewn) | Simons 1922 Diagram 23 |
 | Trench / ulster | 3 | Carlton | Variant; **ulster drafted 2026-10-27** (`designs/ulster`: the peacoat at 50", four sizes up; not sewn) | Simons 1916 |
 | **Overcoat, straight, yoked** | 1, 3 | Carlton is a belted long coat | **Drafted 2026-10-27** (`designs/winter-coat`: deep front and back yokes, hip welts, turn-down collar, lining; not sewn) | ЕМКО 1988 §3 |
 | Surtout (fitted, waist seam) | 1 | — | Variant; **drafted 2026-11-03** (`designs/surtout`, on the suit jacket; not sewn) | Simons 1916 pp. 38-39 |

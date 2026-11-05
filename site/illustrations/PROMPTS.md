@@ -1350,6 +1350,11 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a symmetrical skirt, culotte leg tubes, a saddle, a horse, a rider or mannequin, pockets, pleats, decorative trim or a belt.
 
+### reefer: Boys' double-breasted reefer
+> A mid-thigh boys' reefer coat from 1922, in dark navy wool. Straight double-breasted front with three visible buttons in each row, modest notched lapels and a regular narrow collar, a slanted chest welt pocket on each side, long plain sleeves, no belt or back vent. Show it on a standing twelve-year-old in a front three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: broad peacoat lapels, patch pockets, hood, epaulettes, belt, oversized buttons or modern logos.
+
 ### painters-jacket: Painter's jacket
 > **A long, easy-fitting painter's work jacket from 1890.** Unbleached cotton twill, reaching just over the knees. A narrow upright Prussian collar, single buttoned front with five visible buttons, one rounded patch pocket at the chest and two larger rounded patch pockets below the waist. Long sleeves end in narrow buttoned cuffs. Show it on a standing adult in a front three-quarter view, plain background, clean technical editorial illustration.
 >
