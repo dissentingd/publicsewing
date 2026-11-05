@@ -25,7 +25,7 @@ Diagram 23 gives single-breasted and double-breasted outlines on the same back a
 ## Changes and what isn't modelled
 
 - The source's single-breasted outline is not a variant: the inherited double-breasted front has two button rows, and a single-breasted version needs a different front draft.
-- The plate's second, lower pocket mark is omitted. The inherited block supplies one pair of welts, and its welt leans mostly vertically rather than the source's nearly horizontal chest welt. Adding another pocket or changing the welt angle needs a separate placement and bag piece.
+- The plate's second, lower pocket mark is omitted. The inherited block supplies one pair of welts; the reefer turns that welt to the source's shallow chest angle. Adding another pocket needs a separate placement and bag piece.
 - The exact side-seam flare, centre-back shaping, and source collar construction are simplified to the Brian coat block. The source does not detail a lining or vent, so both are off.
 
 ## Pieces and construction

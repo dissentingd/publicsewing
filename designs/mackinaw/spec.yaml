@@ -49,6 +49,7 @@ options:
   handPocketAt: { pct: 56, min: 35, max: 75, menu: style } # x the front's chest width: top behind CF
   handPocketLength: { pct: 58, min: 35, max: 80, menu: style } # x the front's chest width
   handPocketLean: { pct: 21, min: 0, max: 50, menu: style } # toward the side, per unit down (12 degrees)
+  handPocketHorizontal: { bool: false, menu: false } # a shallow, near-horizontal welt for the boys' reefer
   handPocketWelt: { pct: 12, min: 8, max: 20, menu: style } # x the mouth: finished welt width
   # Construction
   facingWidth: { pct: 14, min: 10, max: 20, of: chest, menu: construction }
@@ -84,7 +85,7 @@ pieces:
     from: brian.front
     hide: tree
     measurements: [seat, waist, waistToSeat]
-    options: [buttonExtension, buttons, buttonTop, buttonBottom, buttonRow, hemCurve, frontDrop, facingWidth, breastPockets, lowerPockets, pocketShape, pocketFlaps, handPockets, handPocketTop, handPocketAt, handPocketLength, handPocketLean, handPocketWelt, lapelWidth, gorgeAt, lining, liningPleat, neckFacingWidth]
+    options: [buttonExtension, buttons, buttonTop, buttonBottom, buttonRow, hemCurve, frontDrop, facingWidth, breastPockets, lowerPockets, pocketShape, pocketFlaps, handPockets, handPocketTop, handPocketAt, handPocketLength, handPocketLean, handPocketHorizontal, handPocketWelt, lapelWidth, gorgeAt, lining, liningPleat, neckFacingWidth]
     let:
       # Double-breasted: a wide stand, hem sweeping down toward the front edge
       ext: chest * buttonExtension
@@ -161,8 +162,9 @@ pieces:
             hand:
               _x0: q * handPocketAt
               _y0: cfWaist.y - waistToSeat * handPocketTop
-              _down: min(q * handPocketLength, cfHem.y - q * 0.1 - _y0)
-              _dx: min(_down * handPocketLean, sideHem.x - q * 0.1 - _x0)
+              _run: min(q * handPocketLength, sideHem.x - q * 0.1 - _x0)
+              _down: if(handPocketHorizontal, _run * handPocketLean, min(q * handPocketLength, cfHem.y - q * 0.1 - _y0))
+              _dx: if(handPocketHorizontal, _run, min(_down * handPocketLean, sideHem.x - q * 0.1 - _x0))
               x0: _x0
               y0: _y0
               x1: _x0 + _dx

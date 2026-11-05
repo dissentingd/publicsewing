@@ -27,9 +27,11 @@ options:
   collarStyle: { dflt: ulster } # its regular notched collar and turned lapel, without the peacoat's depth
   collarWidth: { pct: 25 } # regular overcoat collar, approximately 3 in on the plate
   lapelWidth: { pct: 24 } # lapel falls from the upper button toward the gorge
-  handPockets: { bool: true } # the slanted chest welt in the plate
-  handPocketTop: { pct: 45 } # starts between chest and waist lines
+  handPockets: { bool: true, title: Chest welt pockets, description: A shallow welt on each forepart above the waist. } # Diagram 23
+  handPocketTop: { pct: 45, title: Chest welt height, description: How far above the waist the welt starts. } # starts between chest and waist lines
+  handPocketAt: { pct: 42 } # the plate's chest welt starts about 2/5 of the front width from CF
   handPocketLength: { pct: 42 } # narrower than the adult peacoat's hand-warmer welt
-  handPocketLean: { pct: 12 } # shallow downward slant toward the side
+  handPocketLean: { pct: 12, title: Chest welt slope, description: How much the welt falls toward the side relative to its horizontal length. } # Diagram 23
+  handPocketHorizontal: { bool: true } # Diagram 23's shallow, nearly horizontal chest welt
   vent: { bool: false } # none drawn
   lining: { bool: false } # none specified
