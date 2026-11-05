@@ -15,6 +15,9 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 | Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | 4 | yes |
 | Pivnick, *How to Design Beautiful Clothes* (1949, not renewed) `pivnickdesignclothes1949` | 8 | no |
 | Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911) `merzspracticalcu00merz` | 2 | no |
+| d'Alessio, *Designing, Cutting and Grading Gentlemen and Boys Clothes* (1906) `artofdesigningcu00ales` | 6 | no |
+| Weiler, *Ladies' Tailor* (1915) `weilerladiestail00weil` | 4 | no |
+| Schorr, *The Expert Designer* (1917) `expertdesignerpr00scho` | not established | no |
 
 ## All scans
 - The OCR drops or confuses fractions ("\ l/2" for 1½, a blank for ¼). Read numbers from the image.
@@ -22,6 +25,16 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 
 ## Merz 1911 (`merzspracticalcu00merz`)
 - Diagram XXIV, Inverness: text book p. 58/PDF p. 60, plate book p. 59/PDF p. 61. Its body references Diagrams XVIII, XXII and XXIII. OCR drops the cape's 3/4-inch darts and reads the collar's 1/4-inch spring unreliably; verify the page image.
+- Diagram XIV, riding frock coat: text book p. 38/PDF p. 40, plate book p. 39/PDF p. 41. Diagram XVII, three-piece long coat: text book p. 44/PDF p. 46, plate book p. 45/PDF p. 47. Check the printed page number; the diagram number alone does not identify a PDF page.
+
+## Schorr 1917 (`expertdesignerpr00scho`)
+- Diagram 7, Basque or Tunic Skirt: text PDF p. 38, plate PDF p. 39. The worked 26 in waist/42 in hip example has a radial outline and a wedge closed into a dart. Diagram 65, Four Gore (Panel) Skirt: text PDF p. 94, plate PDF p. 95. Plate pages do not show a printed page number in these examples.
+
+## d'Alessio 1906 (`artofdesigningcu00ales`)
+- Cyclists' breeches, Fig. 30: figure PDF p. 73, text printed p. 68/PDF p. 74. The text gives a 27 in length and 21½ in knee, but at least one metric conversion disagrees with the inch value; follow the plate and inch text.
+
+## Weiler 1915 (`weilerladiestail00weil`)
+- Riding Habit Coat: text printed p. 82/PDF p. 86, plate printed p. 83/PDF p. 87. The plate labels panel positions and the text starts from a 40 in hip. OCR fractions need checking against the plate.
 
 ## Simons 1922 (`designingboysjuv00simo`)
 - **"1/6 of breast" can mean a sixth of the half breast.** In Diagram 10's neck it's 2 in on a 24 in

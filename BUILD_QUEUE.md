@@ -1,14 +1,13 @@
 # Build queue
 
-The garments still to be built, in order, and how an agent takes one. Written 2026-10-30, when
-every row of [WARDROBE_GAPS.md](WARDROBE_GAPS.md) was drafted or covered: from here on the work
-is variants and new garments from sources already held. The catalog so far is
-[designs/README.md](designs/README.md).
+The garments still to be built, in order, and how an agent takes one. Rows 1–31 are
+complete through 2026-11-05. Rows 32 onward use additional scans supplied in November 2026;
+the first `open` row is next. The catalog is [designs/README.md](designs/README.md).
 
 ## Taking an item
-1. **Pick the first item with status `open` in your lane** (see Lanes). Items in different lanes
-   can be built at the same time; items in the same lane go one after another, because they
-   change the same shared library file.
+1. **Pick the first item with status `open` below.** If several agents are working at once,
+   each takes the first open item in a free lane (see Lanes). Items in the same lane go one
+   after another because they may change the same shared library file.
 2. **Claim it** before any other work, if anyone else is building: change its status to
    `claimed (<agent or branch>, <date>)` in this file and commit that alone. A push to `main`
    deploys the site, so don't push a claim to `main`: agents sharing a checkout see the commit, and
@@ -16,9 +15,9 @@ is variants and new garments from sources already held. The catalog so far is
    which item in an issue or draft pull request.
 3. **Build it** by the per-garment workflow (below), in a branch or worktree of your own if
    other agents share the checkout.
-4. **Finish it**: set its status to `done (<design id>, <commit>)` in the same commit as the
-   design, or `blocked (<why>)` with a line saying what's needed. Don't push unless you've been
-   told to; the person running you decides.
+4. **Finish it**: set its status to `done (<design id>)` in the design's commit, or
+   `blocked (<why>)` with a line saying what's needed. Don't push unless you've been told to;
+   the person running you decides.
 
 Before starting, read [AGENTS.md](AGENTS.md), the book's row in [SOURCE_NOTES.md](SOURCE_NOTES.md),
 and your `BUILD_NOTES.md` if you have one. The item's notes, "start from" and pages are guesses made
@@ -38,8 +37,9 @@ brief, then the preview, illustration prompt and docs of Step 10. Also:
 - **This file:** the item's status, in the design's commit.
 
 Sources are cited by corpus folder id ([corpus/MANIFEST.yaml](corpus/MANIFEST.yaml)). "Tracked"
-means the PDF is in `corpus/<id>/` in this repo; an untracked one is only in the full corpus
-copies, so ask the person running you for it.
+means the PDF is in `corpus/<id>/` in this repo. For an untracked source, first check the
+supplied local scans, then ask the person running you if it is unavailable. Do not add a scan
+to the repo without checking [SOURCING.md](SOURCING.md) and the corpus conventions.
 
 A starting prompt for an agent (fill in the item's row):
 
@@ -70,7 +70,8 @@ by every item; their changes are additions, so pull and rebase before committing
 small merge conflicts there.
 
 ## Queue
-Priority 1 first: shirts, dresses and women's garments are the thinnest part of the catalog.
+Read open rows in order. Earlier priorities favored shirts, dresses and women's garments,
+which were the thinnest parts of the catalog.
 
 ### Priority 1
 | # | Design id | Garment | Source (folder id, pages) | Start from | Lane | Notes | Status |
@@ -115,6 +116,31 @@ Priority 1 first: shirts, dresses and women's garments are the thinnest part of 
 | 29 | `aprons` | Work aprons (carpenter's, butcher's, barman's…) | Vincent 1890, pp. 39–40 | — | G | As built: one flat-cut pattern with eight selectable diagram styles, scaled from the fixed adult plate dimensions | done (aprons) |
 | 30 | `reefer` | Boys' reefer | Simons 1922, Diagram 23, pp. 74–75 | `peacoat` | D | As built: double-breasted outline on the peacoat, with shorter regular collar and two pairs of shallow welts; the side-seam flare is not modelled | done (reefer) |
 | 31 | `inverness-coat` | Women's Inverness coat | Merz 1911, Diagram XXIV, pp. 58–59 | `womens-box-coat` + cape | E | As built: long loose box body under a separate one-piece shoulder cape, closed front and turn collar; two marked cape darts and a 1-inch lowered armhole; the transferred shoulder and tight back remain approximated | done (inverness-coat) |
+
+### Next from the supplied scans
+
+These sources have point drafts or worked dimensions (grade A). Page pairs below are PDF pages;
+printed pages are given where verified. The starting design is a lead, not a decision: read the
+plate and the text before choosing the construction. These scans are not yet in the tracked
+corpus or `corpus/MANIFEST.yaml`.
+
+| # | Design id | Garment | Source and pages | Start from | Lane | Why this is next / what to check | Status |
+|---|---|---|---|---|---|---|---|
+| 32 | `tunic-skirt` | Basque or tunic skirt | Schorr 1917 `expertdesignerpr00scho`, Diagram 7, PDF text 38, plate 39 | `circular-skirt` or a new flat skirt layout | B | Worked 26 in waist / 42 in hip; a radial short overskirt with a shaped waist dart, not a conventional full-length skirt. Confirm fractions and the fold from the plate. | open |
+| 33 | `cycling-breeches` | Cyclists' breeches | d'Alessio 1906 `artofdesigningcu00ales`, Fig. 30, PDF plate 73, text 74 (printed p. 68) | `breeches` | A | 27 in length, 21½ in knee and a raised front waist for cycling posture; distinct from riding breeches and golf pants. Check the text's inconsistent metric conversion against the plate. | open |
+| 34 | `riding-habit-coat` | Women's riding habit coat | Weiler 1915 `weilerladiestail00weil`, PDF text 86, plate 87 (printed pp. 82–83) | `fitted-jacket` or `princess-coat` | E | 40 in hip example; extra seat room, side piece and two-inch front button extension. Check the multi-panel seams and OCR fractions on the plate. | open |
+| 35 | `riding-frock-coat` | Women's riding frock coat | Merz 1911 `merzspracticalcu00merz`, Diagram XIV, PDF text 40, plate 41 (printed pp. 38–39) | `prince-albert-jacket` | E | 36 in length, waist opening and separately drafted skirt with hip ease; confirm the lapel and skirt fractions on the plate. | open |
+| 36 | `four-gore-skirt` | Four-gore panel skirt | Schorr 1917 `expertdesignerpr00scho`, Diagram 65, PDF text 94, plate 95 | `gored-skirt` | B | Worked waist suppression: 18 in outline to 13 in half waist, divided among three positions. Confirm how Schorr counts the four panels; the existing design starts at five gores. | open |
+| 37 | `three-piece-long-coat` | Women's three-piece long coat | Merz 1911 `merzspracticalcu00merz`, Diagram XVII, PDF text 46, plate 47 (printed pp. 44–45) | `tailored-jacket` | E | Semi-fitted front and back with three-piece divisions and point-based hip distribution. Confirm which lines are seams before choosing the base. | open |
+
+### Sources to inspect before queueing a garment
+
+| Source | What is known | Next check |
+|---|---|---|
+| Sheifer 1908 `nssheiferssystem00shei` | Its girl's coat is built; the scan also has a skirt coat (PDF around p. 80) and multi-panel corset coats. | Read the text and plate together, then pick a construction distinct from the existing coat family. |
+| Vincent, *Jacket Cutting* (1897) `cutters-prac-guide-jacket-cutting` | The supplied PDF has no searchable text layer. | Inspect its plates and missing-page coverage before citing a new garment. |
+| Vincent, *British Military Uniforms* `militaryuniformsbritish-images` | Service frock and khaki knickerbockers have substantial instructions (PDF pp. 9–12), but overlap existing tunic and breeches designs. | Compare their plates and specific seams with the built designs. |
+| Ratner 1908 `ratnersuptodatem00ratn` | OCR exposes headings but too few reliable dimensions to select an item. | Read a candidate text/plate pair at higher resolution. |
 
 ### Blocked
 | Item | Needs |
