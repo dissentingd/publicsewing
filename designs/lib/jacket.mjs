@@ -746,8 +746,16 @@ export function draftBoxLayout(sh, a) {
   const [neckToQ] = fr.neck.split(Q)
   const hps = rot(fr.hps)
   const shoulder = rot(fr.shoulder)
-  const armF = rot(fr.armhole)
-  const scyeF = rotPath(fr.scye)
+  // A sleeveless cape coat can lower the scye at the side seam while leaving the shoulder
+  // point fixed. Moving the curve's control points by their depth keeps its upper shape.
+  const armholeDrop = sh.measurements.chest * (sh.options.armholeDrop ?? 0)
+  const lowerScye = (path, arm, top) => mapPath(path, Path, (p) => {
+    const share = Math.max(0, Math.min(1, (p.y - top.y) / (arm.y - top.y)))
+    return new Point(p.x, p.y + armholeDrop * share)
+  })
+  const armF0 = rot(fr.armhole)
+  const armF = new Point(armF0.x, armF0.y + armholeDrop)
+  const scyeF = lowerScye(rotPath(fr.scye), armF0, shoulder)
   const neckF = rotPath(neckToQ) // neck point -> the dart's side leg
   const Qs = rot(Q)
   const mouth = Q.shiftFractionTowards(Qs, 0.5)
@@ -761,7 +769,8 @@ export function draftBoxLayout(sh, a) {
 
   // ---- side seams: from each armhole, out by e at the seat line, on to the hem ----
   const cfx = fr.centerWaist.x
-  const armB = bk.armhole
+  const armB = new Point(bk.armhole.x, bk.armhole.y + armholeDrop)
+  const scyeB = lowerScye(bk.scye, bk.armhole, bk.shoulder)
   const drop = seatY - armB.y // armhole to seat line (the back's)
   const widths = armB.x - cbx + cbOut + (armF.x - cfx)
   const e = Math.max(a.flare, (a.seat / 2 - widths) / 2)
@@ -783,7 +792,7 @@ export function draftBoxLayout(sh, a) {
     hem.curve(new Point(cbHem.x + sq.x * k, cbHem.y + sq.y * k), hemB.shiftFractionTowards(cbHem, 1 / 3), hemB)
   }
   panels.back = {
-    outline: new Path().move(bk.hps.clone()).join(bk.neck.clone()).line(cbHem).join(hem).line(armB.clone()).join(bk.scye.clone()).line(bk.hps.clone()),
+    outline: new Path().move(bk.hps.clone()).join(bk.neck.clone()).line(cbHem).join(hem).line(armB.clone()).join(scyeB.clone()).line(bk.hps.clone()),
     fold: cbOut < 1e-6,
     marks: { hps: bk.hps, cbNeck: bk.centerNeck, cbHem, hemSide: hemB, armhole: armB, shoulder: bk.shoulder },
   }
@@ -904,7 +913,7 @@ export function draftBoxLayout(sh, a) {
   })
   store.set('jacket.flare', e)
   store.set('coat.jacketNeck', { back: bk.neck.length(), front: neckF.length() + (closed ? Q.dist(B) : 0) })
-  const armhole = { back: bk.scye.length(), front: scyeF.length() }
+  const armhole = { back: scyeB.length(), front: scyeF.length() }
   store.set('jacket.armhole', armhole)
   for (const prefix of a.sleeveStore ?? []) {
     store.set(`${prefix}.backArmholeLength`, armhole.back)

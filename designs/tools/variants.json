@@ -2,7 +2,7 @@
   "bar-vest": { "default": {}, "sleeved": { "sleeves": true }, "plain": { "sleeves": true, "pockets": false, "collarHeight": 0, "buttons": 4 } },
   "girls-coat": {"default": {}, "short": {"lengthBelowWaist": 0.4, "buttons": 3, "ticketPocket": true}, "plain": {"pockets": false, "cbFlare": 0, "buttonInset": 1}, "double": {"doubleBreasted": true, "buttons": 3}},
   "womens-box-coat": { "default": {}, "peakLapels": {"lapelStyle": "peak"}, "variant": { "lapelStyle": "peak", "neckDartWidth": 0, "buttons": 4, "lengthBelowWaist": 0.45, "flare": 0.08 }, "plain": { "pockets": false, "cbFlare": 0, "buttonInset": 1 } },
-  "inverness-coat": { "default": {}, "plain": { "buttons": 3, "capeLength": 0.42, "capeShoulderExtension": 0 }, "wide": { "capeLength": 0.72, "capeShoulderExtension": 0.08, "chestEase": 0.25 } },
+  "inverness-coat": { "default": {}, "plain": { "buttons": 3, "capeLength": 0.42, "capeShoulderExtension": 0, "armholeDrop": 0 }, "wide": { "capeLength": 0.72, "capeShoulderExtension": 0.08, "chestEase": 0.25 } },
   "barbers-coat": { "default": {}, "openNeck": {"neckStyle": "open"}, "open": { "neckStyle": "open", "hemCurve": 0.5, "pocketShape": "chamfered" } },
   "painters-jacket": { "default": {}, "plain": {"breastPocket": false, "lowerPockets": false}, "variant": {"lengthBelowWaist": 1.8, "buttons": 6, "pocketShape": "square", "cuffDepth": 0.5} },
   "aprons": { "default": {}, "plain": {"apronType": "carpenter"}, "variant": {"apronType": "painter", "apronWidth": 1.1, "apronLength": 0.8, "tieLength": 0.9} },

@@ -33,6 +33,7 @@ options:
   capeLength: { pct: 57, min: 35, max: 75, menu: style } # plate: to upper hip, measured against the coat length
   capeGap: { pct: 0.6, min: 0, max: 2, of: chest, menu: style } # shoulder spread, ours
   capeShoulderExtension: { pct: 5.6, min: 0, max: 9, of: chest, menu: style } # text: 2 in from point 30 to A at 36 in bust
+  armholeDrop: { pct: 2.8, min: 0, max: 5, of: chest, menu: fit } # text p. 58: line S-T one inch deeper at 36 in bust
   capeDartWidth: { pct: 2.1, min: 0, max: 4, of: chest, menu: construction } # text: two 3/4 in shoulder darts
   capeDartGap: { pct: 5.6, min: 2, max: 9, of: chest, menu: construction } # text: 2 in between the dart mouths
   capeDartLength: { pct: 7.3, min: 4, max: 11, of: chest, menu: construction } # text: 2 5/8 in dart length

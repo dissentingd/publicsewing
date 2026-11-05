@@ -5,7 +5,7 @@ import { sets, checkClean, near } from './coat-checks.mjs'
 
 const variants = {
   default: {},
-  plain: { buttons: 3, capeLength: 0.42, capeShoulderExtension: 0 },
+  plain: { buttons: 3, capeLength: 0.42, capeShoulderExtension: 0, armholeDrop: 0 },
   wide: { capeLength: 0.72, capeShoulderExtension: 0.08, chestEase: 0.25 },
 }
 
@@ -28,6 +28,8 @@ for (const [variant, options] of Object.entries(variants)) {
       const raw = store.get('jacket.raw.front')
       const cape = store.get('cape.raw.front')
       near(cape.tip.dist(raw.shoulder), measurements.chest * (options.capeShoulderExtension ?? 0.056), 1, 'cape shoulder extension')
+      const bodyArmhole = store.get('jacket.panels').back.marks.armhole
+      near(bodyArmhole.y - store.get('jacket.raw.back').armhole.y, measurements.chest * (options.armholeDrop ?? 0.028), 1, 'lowered armhole')
       const darts = store.get('cape.layout').whole.darts
       assert.equal(darts.length, 2, 'two shoulder darts')
       for (const [i, dart] of darts.entries()) {

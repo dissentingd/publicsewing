@@ -20,6 +20,7 @@ options:
   # Fit: "a loose hanging effect" (Breanna's own ease options, opened up)
   chestEase: { pct: 18, min: 8, max: 30, of: chest, menu: fit }
   seatEase: { pct: 12, min: 4, max: 30, of: seat, menu: fit }
+  armholeDrop: { pct: 0, menu: false } # a cape descendant may lower the sleeveless armhole
   bicepsEase: { pct: 25, min: 10, max: 50, of: biceps, menu: fit }
   # Breanna's bust dart stays at the waist (it is pivoted into the neck below); no back darts
   primaryBustDart: { dflt: '06:00', list: ['06:00'], menu: false }
