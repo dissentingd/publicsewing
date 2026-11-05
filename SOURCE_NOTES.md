@@ -32,7 +32,7 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Diagram 7, Basque or Tunic Skirt: text PDF p. 38, plate PDF p. 39. The worked 26 in waist/42 in hip example has a radial outline and a wedge closed into a dart. Diagram 65, Four Gore (Panel) Skirt: text PDF p. 94, plate PDF p. 95. Plate pages do not show a printed page number in these examples.
 
 ## d'Alessio 1906 (`artofdesigningcu00ales`)
-- Cyclists' breeches, Fig. 30: figure PDF p. 73, text printed p. 68/PDF p. 74. The text gives a 27 in length and 21½ in knee, but at least one metric conversion disagrees with the inch value; follow the plate and inch text.
+- Cyclists' breeches, Fig. 30: figure PDF p. 73, text printed p. 68/PDF p. 74. The plate has a full leg gathered into a separate band. The English text gives 27 in total length, 23 in to the knee line, 21½ in around the knee, 30½ in around the thigh, a 16 × 3 in band and a 2 in raised **back** waist (F on the back piece). Its 27 in = 62½ cm conversion is wrong; use inches. Titan's back waist already rises about 2 in at the proportion-40 model.
 
 ## Weiler 1915 (`weilerladiestail00weil`)
 - Riding Habit Coat: text printed p. 82/PDF p. 86, plate printed p. 83/PDF p. 87. The plate labels panel positions and the text starts from a 40 in hip. OCR fractions need checking against the plate.

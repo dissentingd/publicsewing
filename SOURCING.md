@@ -106,6 +106,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Woman's Institute, *Pattern Drafting* (1915/1920) `patterdraftingpicken` | A (blocks) | shirtwaist dress |
 | Mitchell, *Ladies' Tailor-Made Garments* (1921) `newstandardworko00mitc` | A | tailored jacket, fitted jacket, box coat, gored skirt, pleated skirt, circular skirt, divided riding skirt, apron riding skirt, kimono jacket, cape, Prince Albert jacket |
 | Schorr, *The Expert Designer* (1917) `expertdesignerpr00scho` | A | tunic skirt (Diagram 7) |
+| d'Alessio, *The Art of Designing, Cutting and Grading Gentlemen and Boys Clothes* (1906) `artofdesigningcu00ales` | A | cycling breeches (Fig. 30) |
 | ЕМКО СЭВ т.3 (1988) `emko` | A (tables) | windbreaker, quilted jacket, winter coat, topcoat, jacket, waistcoat, trousers |
 | Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants, breeches, bib overall, overall pants, peg-top pants, turn-ups |
 | Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |

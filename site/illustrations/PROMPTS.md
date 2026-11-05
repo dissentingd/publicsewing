@@ -1419,3 +1419,13 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > The same 1917 wool tunic skirt, extended toward the knee while keeping its central darts and radial curved hem. Show front three-quarter view, plain background, clean technical editorial illustration.
 >
 > Leave out: pleats, tiers, pockets, gathers, belts or a bodice.
+
+### cycling-breeches: Cycling breeches
+> Early twentieth-century men's cycling breeches in dark wool twill, full through the thighs, ending just below the knee and gathered into broad three-inch buttoned knee bands. A high back waist accommodates a forward-leaning riding position. Show a front three-quarter full-length view on a plain background, clean technical editorial illustration.
+>
+> Leave out: long fitted calves, ankle cuffs, bicycle, helmet, elastic waist or cargo pockets.
+
+### cycling-breeches.plain: Plain cycling breeches
+> The same short wool cycling breeches with a quieter thigh line and no pockets, gathered into broad buttoned knee bands. Front three-quarter full-length view, plain background, clean technical editorial illustration.
+>
+> Leave out: long fitted calves, ankle cuffs, bicycle, helmet, elastic waist or cargo pockets.

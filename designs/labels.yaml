@@ -309,6 +309,18 @@ options:
   knickerDrop:
     title: Drop
     description: How far below the knee the leg ends, as a share of knee to floor.
+  cycleThighWidth:
+    title: Thigh fullness
+    description: Target fullness at the thigh, as a share of the seat.
+  cycleBandLength:
+    title: Knee band length
+    description: Circumference of the gathered knee band, as a share of the knee.
+  cycleBandWidth:
+    title: Knee band width
+    description: Cut width of the folded knee band, as a share of waist to seat.
+  cycleThighAt:
+    title: Fullest thigh point
+    description: Where the thigh is fullest between fork and knee.
   panelShare:
     title: Front width
     description: The front's share of the half hip; the rest is the back's.
