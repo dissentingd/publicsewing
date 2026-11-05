@@ -1354,3 +1354,43 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > **A long, easy-fitting painter's work jacket from 1890.** Unbleached cotton twill, reaching just over the knees. A narrow upright Prussian collar, single buttoned front with five visible buttons, one rounded patch pocket at the chest and two larger rounded patch pockets below the waist. Long sleeves end in narrow buttoned cuffs. Show it on a standing adult in a front three-quarter view, plain background, clean technical editorial illustration.
 >
 > Leave out: lapels, belt, hood, epaulettes, pocket flaps, extra pockets, double-breasted buttons or modern coverall styling.
+
+### aprons: Plasterer's apron
+> A plain unbleached twill plasterer's work apron from 1890, shown alone, with a narrow bib rising from a broad rectangular lower body, a neck tape, two waist ties, and one small patch pocket on each upper side of the body. Full front view, clean technical editorial illustration on a plain background.
+>
+> Leave out: sleeves, a jacket, shoulder straps, a central tool pocket, a belt buckle, modern logos or tools.
+
+### aprons.carpenter: Carpenter's bib apron
+> An 1890 carpenter's work apron shown alone: broad rectangular lower body, narrow bib, neck tape and two waist ties. Unbleached heavy cotton, full front view, clean technical editorial illustration.
+>
+> Leave out: pockets, sleeves, a jacket, buckles or modern logos.
+
+### aprons.butcherSquare: Square butcher's apron
+> A plain 1890 butcher's work apron shown alone: broad rectangle with a straight square top and two long waist ties, white twill, full front view, clean technical editorial illustration.
+>
+> Leave out: a bib, pockets, a pointed top, sleeves or modern logos.
+
+### aprons.butcherPoint: Pointed butcher's apron
+> An 1890 butcher's apron shown alone: broad rectangular lower body, short centered triangular point rising above the top edge with a buttonhole, and two long waist ties. White twill, full front view, clean technical editorial illustration.
+>
+> Leave out: a full bib, pockets, sleeves or modern logos.
+
+### aprons.hairdresser: Hairdresser's apron
+> An 1890 hairdresser's apron shown alone: broad plain rectangle with a square top and two waist ties, crisp white calico, full front view, clean technical editorial illustration.
+>
+> Leave out: a bib, pockets, sleeves, collars or modern logos.
+
+### aprons.barman: Barman's apron
+> A short 1890 barman's apron shown alone: narrow plain rectangle ending above the knee, straight top, one buttonhole and a short elastic tab with a button. White drill, full front view, clean technical editorial illustration.
+>
+> Leave out: a bib, pockets, long waist ties, sleeves or modern logos.
+
+### aprons.grocer: Grocer's apron
+> An 1890 grocer's apron shown alone: long plain rectangular panel, straight top, fringe along both the top and bottom edges, and a small back hook fastening. Heavy white linen, full front view, clean technical editorial illustration.
+>
+> Leave out: a bib, waist ties, pockets, sleeves or modern logos.
+
+### aprons.painter: Painter's apron
+> An 1890 painter's apron shown alone: a narrow bib above a broad lower body, neck tape, two waist ties and one large rectangular central pocket for brushes. Unbleached twill, full front view, clean technical editorial illustration.
+>
+> Leave out: side pockets, sleeves, a jacket, buckles, tools or modern logos.

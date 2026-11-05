@@ -72,6 +72,7 @@ and marked as derived.
 | **Shop coat / lab coat / duster** (unisex) | 2 | — | **Drafted 2026-10-23** (`designs/shop-coat`, not sewn) | Simons 1918 (grocers' gown) |
 | **Service coat** (barber's, white jacket; stand collar or open neck) (unisex) | 2 | — | **Drafted 2026-10-23** (`designs/barbers-coat`, not sewn) | Simons 1918 (barber's coats) |
 | Painter's jacket (knee-covering work coat) | 2 | — | **Drafted 2026-11-04** (`designs/painters-jacket` on the barber's coat; not sewn) | Vincent 1890 p. 35 |
+| Work aprons (bib, square, pointed, short) | 2 | — | **Drafted 2026-11-04** (`designs/aprons`, eight styles; not sewn) | Vincent 1890 pp. 39–40 |
 | **Bar jacket / short white vest** (unisex) | 2 | Wahid is a dress waistcoat | **Drafted 2026-10-23** (`designs/bar-vest`, not sewn) | Simons 1918 (bar vest) |
 | Combat / cargo trousers | 3 | Titan | **Drafted 2026-10-28** (`designs/field-trousers`: pleats, flapped cargo and seat pockets; not sewn) | Open+Pattern CS95 field trouser (CC BY 4.0) |
 | Breeches | 3 | Cornelius (cycling) | Variant; **drafted 2026-10-28** (`designs/breeches`: Simons' riding breeches on the trousers, thigh flare, buttoned lower leg; not sewn) | Simons 1916 `draftingpantsove00simo` |

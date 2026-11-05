@@ -46,6 +46,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `boys-work-coat` | The chore coat for children's sizes | Simons 1918 |
 | `barbers-coat` | White service coat | Simons 1918 |
 | `painters-jacket` | Knee-covering work jacket with three patch pockets, five buttons and button cuffs | Vincent 1890 |
+| `aprons` | Eight flat-cut work aprons: bib, square, pointed and short styles | Vincent 1890 |
 | `shop-coat` | Long work overcoat (grocer's gown, lab coat, duster) | Simons 1918 |
 | `bar-vest` | Short white jacket | Simons 1918 |
 | `nightshirt` | Yoked nightshirt | Walker 1909 |

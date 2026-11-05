@@ -1,0 +1,199 @@
+# Eight work aprons from Vincent 1890, p. 39 (PDF p. 43). See BRIEF.md.
+block: brian
+
+about:
+  id: aprons
+  name: Work aprons
+  category: tops
+  description: "Eight flat-cut work aprons: bib, square, pointed and short styles"
+  difficulty: 1
+  tags: [accessories, workwear]
+  techniques: [hem, patch-pocket, tie, buttonhole]
+  version: 0.1.0
+  source: "Vincent, The Cutter's Practical Guide to Cutting and Making Shirts, Undergarments (1890), Aprons, p. 39 (vincentmakingshirts18xx)"
+
+options:
+  apronType: { dflt: plasterer, list: [plasterer, carpenter, butcherSquare, butcherPoint, hairdresser, barman, grocer, painter], menu: style }
+  apronWidth: { pct: 125, min: 80, max: 150, of: waist, menu: fit } # plasterer: 38 in wide on a 30.5 in waist model
+  apronLength: { pct: 67, min: 40, max: 110, of: waistToFloor, menu: style } # plasterer: 30 in below waist
+  bibHeight: { pct: 22.4, min: 15, max: 35, of: waistToFloor, menu: style } # diagram 1: about 10 in
+  bibWidth: { pct: 32, min: 20, max: 45, of: waist, menu: style } # diagram 1: 10 in across neck
+  tieLength: { pct: 75, min: 50, max: 110, of: waist, menu: fit } # ours, long enough to knot behind
+  tieWidth: { pct: 3, min: 2, max: 5, of: waist, menu: style } # ours, a finished narrow tie
+
+pieces:
+  bibBody:
+    part: polygon
+    nr: 1
+    label: apron
+    if: apronType == 'plasterer' or apronType == 'carpenter' or apronType == 'painter'
+    measurements: [waist, waistToFloor]
+    options: all
+    let:
+      w: waist * apronWidth * if(apronType == 'painter', 0.87, if(apronType == 'carpenter', 0.92, 1))
+      h: waistToFloor * apronLength * if(apronType == 'plasterer', 1, 1.1)
+      bh: waistToFloor * bibHeight
+      nw: waist * bibWidth
+    points:
+      - [-nw / 2, -bh]
+      - [nw / 2, -bh]
+      - [nw / 2 + (w - nw) * 0.12, -bh * 0.55]
+      - [w / 2, -bh * 0.18]
+      - [w / 2, h]
+      - [-w / 2, h]
+      - [-w / 2, -bh * 0.18]
+      - [-nw / 2 - (w - nw) * 0.12, -bh * 0.55]
+    notches:
+      - [-w / 2, 0]
+      - [w / 2, 0]
+      - [-nw / 2, -bh]
+      - [nw / 2, -bh]
+
+  squareBody:
+    part: polygon
+    nr: 1
+    label: apron
+    if: apronType == 'butcherSquare' or apronType == 'hairdresser' or apronType == 'grocer'
+    measurements: [waist, waistToFloor]
+    options: all
+    let:
+      w: waist * apronWidth * if(apronType == 'hairdresser', 1.04, 0.92)
+      h: waistToFloor * apronLength * if(apronType == 'grocer', 1.33, if(apronType == 'butcherSquare', 1.2, 1.27))
+    points:
+      - [-w / 2, 0]
+      - [w / 2, 0]
+      - [w / 2, h]
+      - [-w / 2, h]
+    notches:
+      - [-w / 2, 0]
+      - [w / 2, 0]
+
+  pointedBody:
+    part: polygon
+    nr: 1
+    label: apron
+    if: apronType == 'butcherPoint'
+    measurements: [waist, waistToFloor]
+    options: all
+    let:
+      w: waist * apronWidth * 0.92
+      h: waistToFloor * apronLength * 1.27
+      peak: waistToFloor * bibHeight * 0.55
+    points:
+      - [0, -peak]
+      - [w / 2, 0]
+      - [w / 2, h]
+      - [-w / 2, h]
+      - [-w / 2, 0]
+    buttonholes:
+      - [0, -peak * 0.72]
+    notches:
+      - [-w / 2, 0]
+      - [w / 2, 0]
+
+  shortBody:
+    part: polygon
+    nr: 1
+    label: apron
+    if: apronType == 'barman'
+    measurements: [waist, waistToFloor]
+    options: all
+    let:
+      w: waist * apronWidth * 0.68
+      h: waistToFloor * apronLength * 0.73
+    points:
+      - [-w / 2, 0]
+      - [w / 2, 0]
+      - [w / 2, h]
+      - [-w / 2, h]
+    buttonholes:
+      - [w * 0.42, h * 0.05]
+
+  elasticTab:
+    part: polygon
+    after: shortBody
+    nr: 2
+    label: Elastic tab
+    material: elastic
+    if: apronType == 'barman'
+    measurements: [waist]
+    let:
+      l: waist * 0.16
+      w: waist * tieWidth
+    points:
+      - [0, 0]
+      - [l, 0]
+      - [l, w]
+      - [0, w]
+    buttons:
+      - [l * 0.8, w * 0.5]
+
+  waistTies:
+    part: strip
+    after: bibBody
+    nr: 2
+    label: Waist tie
+    cut: 2
+    fold: true
+    if: apronType != 'grocer' and apronType != 'barman'
+    measurements: [waist]
+    options: [tieLength, tieWidth]
+    length: waist * tieLength
+    width: waist * tieWidth / 2
+
+  neckTie:
+    part: strip
+    after: bibBody
+    nr: 3
+    label: Neck tie
+    fold: true
+    if: apronType == 'plasterer' or apronType == 'carpenter' or apronType == 'painter'
+    measurements: [waist]
+    length: waist * 0.65
+    width: waist * tieWidth / 2
+
+  sidePockets:
+    part: polygon
+    after: bibBody
+    nr: 4
+    label: Side pocket
+    cut: 2
+    if: apronType == 'plasterer'
+    measurements: [waist, waistToFloor]
+    let:
+      w: waist * apronWidth * 0.18
+      h: waistToFloor * apronLength * 0.22
+    points:
+      - [0, 0]
+      - [w, 0]
+      - [w, h]
+      - [0, h]
+    lines:
+      - [[0, w * 0.08], [w, w * 0.08]]
+
+  toolPocket:
+    part: polygon
+    after: bibBody
+    nr: 4
+    label: Tool pocket
+    if: apronType == 'painter'
+    measurements: [waist, waistToFloor]
+    let:
+      w: waist * apronWidth * 0.5
+      h: waistToFloor * apronLength * 0.25
+    points:
+      - [0, 0]
+      - [w, 0]
+      - [w, h]
+      - [0, h]
+    lines:
+      - [[0, w * 0.04], [w, w * 0.04]]
+
+variants:
+  carpenter: { name: Carpenter's bib, description: "Diagram 2: bib apron with ties, without pockets.", options: { apronType: carpenter } }
+  butcherSquare: { name: Butcher's square, description: "Diagram 3: square-top butcher's apron with ties.", options: { apronType: butcherSquare } }
+  butcherPoint: { name: Butcher's point, description: "Diagram 4: pointed top and buttonhole.", options: { apronType: butcherPoint } }
+  hairdresser: { name: Hairdresser's, description: "Diagram 5: broad square apron with ties.", options: { apronType: hairdresser } }
+  barman: { name: Barman's, description: "Diagram 6: short apron with buttonhole; use an elastic tab and button.", options: { apronType: barman } }
+  grocer: { name: Grocer's, description: "Diagram 7: square apron, fringed at top and bottom, fastened with a hook.", options: { apronType: grocer } }
+  painter: { name: Painter's, description: "Diagram 8: bib apron with a broad central tool pocket.", options: { apronType: painter } }

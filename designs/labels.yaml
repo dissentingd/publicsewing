@@ -6,6 +6,22 @@
 # own labels. "x waist to seat" etc.: the option is a fraction of that measurement.
 
 options:
+  apronType:
+    title: Apron style
+    description: One of Vincent's eight work apron diagrams.
+    choices: { plasterer: Plasterer's, carpenter: Carpenter's, butcherSquare: Butcher's square, butcherPoint: Butcher's pointed, hairdresser: Hairdresser's, barman: Barman's, grocer: Grocer's, painter: Painter's }
+  apronWidth:
+    title: Apron width
+    description: Width of the apron body as a share of the waist; each style adjusts this proportion.
+  apronLength:
+    title: Apron length
+    description: Length below the waist as a share of waist to floor; each style adjusts this proportion.
+  tieLength:
+    title: Tie length
+    description: Length of each waist tie as a share of the waist.
+  tieWidth:
+    title: Tie width
+    description: Finished width of the ties as a share of the waist.
   # Fit
   chestEase:
     title: Chest ease
