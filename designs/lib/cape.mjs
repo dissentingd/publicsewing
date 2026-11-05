@@ -19,6 +19,16 @@ export function draftCapeBase(sh, { which }) {
   return part.hide()
 }
 
+/** Reuse the neck and shoulder of a Breanna jacket body for a separate shoulder cape. */
+export function draftJacketCapeBase(sh, { which }) {
+  const r = sh.store.get(`jacket.raw.${which}`)
+  const extension = (sh.measurements.chest ?? 0) * (sh.options.capeShoulderExtension ?? 0)
+  sh.store.set(`cape.raw.${which}`, {
+    hps: r.hps.clone(), tip: r.shoulder.shiftTowards(r.hps, -extension), centre: r.centerNeck.clone(), neck: r.neck.clone(),
+  })
+  return sh.part
+}
+
 /**
  * Lay both out and draw the hem, on a base after both `draftCapeBase`s. Lengths in mm:
  * { length: CB neck to the hem; drop: how much shorter the arc falls at CB (the hem rises to meet

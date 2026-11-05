@@ -791,7 +791,13 @@ export function draftBoxLayout(sh, a) {
   // ---- front ----
   const edgeX = cfx - a.lap
   const hemC = new Point(edgeX, fr.centerWaist.y + a.length)
-  const { B, R, N, P, lapelEdge } = jacketLapel(Path, Point, { hps, bustY: fr.bustY, edgeX, G: Q }, a)
+  let { B, R, N, P, lapelEdge } = jacketLapel(Path, Point, { hps, bustY: fr.bustY, edgeX, G: Q }, a)
+  const closed = sh.options.lapelStyle === 'closed'
+  if (closed) {
+    B = new Point(edgeX, Q.y)
+    ;[R, N, P] = [B, B, B]
+    lapelEdge = new Path().move(B.clone()).line(B.clone())
+  }
   panels.front = {
     outline: new Path()
       .move(hps.clone())
@@ -894,9 +900,10 @@ export function draftBoxLayout(sh, a) {
     ...(inset < 1 ? { holeX, buttonX: 2 * cfx - holeX } : {}),
     ...(a.rows ? { rows: a.rows } : {}),
     facingX: fx,
+    closed,
   })
   store.set('jacket.flare', e)
-  store.set('coat.jacketNeck', { back: bk.neck.length(), front: neckF.length() })
+  store.set('coat.jacketNeck', { back: bk.neck.length(), front: neckF.length() + (closed ? Q.dist(B) : 0) })
   const armhole = { back: bk.scye.length(), front: scyeF.length() }
   store.set('jacket.armhole', armhole)
   for (const prefix of a.sleeveStore ?? []) {

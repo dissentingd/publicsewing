@@ -68,6 +68,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `prince-albert-jacket` | Tight-fitted jacket cut through at the waist, with a one-piece skirt, back pleats and vent, and peaked lapels | Mitchell 1921 |
 | `womens-peacoat` | Women's hip-length double-breasted coat, princess seams, buttoned to the neck under a storm collar | Merz 1911 |
 | `field-jacket` | Women's straight hip-length jacket with four flapped patch pockets | Merz 1911 |
+| `inverness-coat` | Women's three-quarter coat with a separate shoulder cape and closed turn collar | Merz 1911 |
 | `womens-box-coat` | Women's loose box coat with a notched lapel and set-in flap pockets | Mitchell 1921 |
 | `girls-coat` | Girl's loose coat to below the knee, notched collar, flap pockets | Sheifer 1908 |
 | `gored-skirt` | Flared skirt of five to fifteen gores, shaped in its seams, with a CB zip and waistband | Mitchell 1921 |

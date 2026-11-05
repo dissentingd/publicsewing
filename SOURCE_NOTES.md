@@ -14,10 +14,14 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 | Mitchell, *Ladies' Tailor-Made Garments* (1921) `newstandardworko00mitc` | 4 | yes |
 | Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | 4 | yes |
 | Pivnick, *How to Design Beautiful Clothes* (1949, not renewed) `pivnickdesignclothes1949` | 8 | no |
+| Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911) `merzspracticalcu00merz` | 2 | no |
 
 ## All scans
 - The OCR drops or confuses fractions ("\ l/2" for 1½, a blank for ¼). Read numbers from the image.
 - A contents page can be wrong. Search the text for the garment's name.
+
+## Merz 1911 (`merzspracticalcu00merz`)
+- Diagram XXIV, Inverness: text book p. 58/PDF p. 60, plate book p. 59/PDF p. 61. Its body references Diagrams XVIII, XXII and XXIII. OCR drops the cape's 3/4-inch darts and reads the collar's 1/4-inch spring unreliably; verify the page image.
 
 ## Simons 1922 (`designingboysjuv00simo`)
 - **"1/6 of breast" can mean a sixth of the half breast.** In Diagram 10's neck it's 2 in on a 24 in

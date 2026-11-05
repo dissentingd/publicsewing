@@ -68,6 +68,7 @@ and marked as derived.
 | **Hunting / field coat** (belted, action back, bellows pockets) | 3 | — | **Drafted 2026-10-23** (`designs/hunting-coat`, not sewn) | Simons 1918 (hunting coat) |
 | Cape (circular) | 3 | — | **Drafted 2026-11-03** (`designs/cape`, `lib/cape.mjs`; not sewn); **dolman drafted 2026-11-03** (`designs/dolman-cape`, on Breanna; not sewn) | Mitchell 1921 pp. 58-59 |
 | Cape overcoat (full-length, standing collar) | — | **Drafted 2026-11-04** (`designs/cape-overcoat`, on the cape; not sewn) | Simons 1916 pp. 30-31; Simons 1922 Diagram 38 |
+| Inverness coat (body under shoulder cape) | — | **Drafted 2026-11-05** (`designs/inverness-coat`, on Breanna and the circular cape layout; not sewn) | Merz 1911 Diagram XXIV |
 | Norfolk jacket (yokes, pleats, belt) | 3 | — | Variant; **drafted 2026-11-03** (`designs/norfolk-jacket`, on the hunting coat; not sewn) | Simons 1922 Diagrams 6-7 |
 | **Mackinaw** | 3 | — | **Drafted 2026-10-23** (`designs/mackinaw`, not sewn; convertible, military or shawl collar; set-in or raglan sleeves) | Simons 1918 |
 | **Shop coat / lab coat / duster** (unisex) | 2 | — | **Drafted 2026-10-23** (`designs/shop-coat`, not sewn) | Simons 1918 (grocers' gown) |

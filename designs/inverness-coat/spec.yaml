@@ -1,0 +1,74 @@
+# Merz 1911, Diagram XXIV: a loose-front, tight-back three-quarter coat under a shoulder cape.
+extends: ../womens-box-coat/spec.yaml
+
+about:
+  id: invernesscoat
+  name: Women's Inverness coat
+  category: coats
+  description: A three-quarter coat with a separate shoulder cape, closed turn collar and loose front
+  difficulty: 4
+  tags: [coats, capes]
+  techniques: [dart, collar, facing, button, hem]
+  version: 0.1.0
+  source: "Merz, Practical Cutting System for Ladies' Jackets and Cloaks (1911), Diagram XXIV, pp. 58-59 (merzspracticalcu00merz)"
+  preview: cisFemaleAdult36
+
+options:
+  chestEase: { pct: 16 }
+  seatEase: { pct: 12 }
+  lengthBelowWaist: { pct: 66 } # plate: three-quarter coat, about 26 in below waist on a 40 in waist-to-floor
+  flare: { pct: 4 } # plate: long side seams spread toward the hem
+  cbFlare: { pct: 1.5 } # plate: shaped CB seam, not cut on fold
+  buttonExtension: { pct: 2.1 } # text: cape edge 3/4 in past centre on a 36 in bust
+  buttonInset: { pct: 100 } # closure on centre front
+  buttons: { count: 5 } # our choice; the plate gives no count
+  pockets: { bool: false } # none shown
+  ticketPocket: { bool: false }
+  neckDartWidth: { pct: 1.8 } # a modest neck dart to shape the loose front; ours
+  lapelWidth: { pct: 15 }
+  lapelStyle: { dflt: closed, list: [closed], menu: false }
+  collarWidth: { pct: 24 } # text: 3 1/4 in high, on approximately 13.5 in neck
+  collarSpring: { pct: 2 } # text: 1/4 in spring at the outer edge
+  collarPoint: { pct: 0 } # closed turn collar
+  capeLength: { pct: 57, min: 35, max: 75, menu: style } # plate: to upper hip, measured against the coat length
+  capeGap: { pct: 0.6, min: 0, max: 2, of: chest, menu: style } # shoulder spread, ours
+  capeShoulderExtension: { pct: 5.6, min: 0, max: 9, of: chest, menu: style } # text: 2 in from point 30 to A at 36 in bust
+  capePivot: { pct: 1.3, min: 0, max: 4, of: chest, menu: advanced } # cape library pivot, ours
+  capeDrop: { pct: 0, menu: false }
+  capeSeamDrop: { pct: 25, menu: false }
+  capeFlare: { deg: 15, menu: false }
+
+pieces:
+  capeLayoutBase:
+    from: breanna.front
+    after: [backBase, frontBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, hpsToWaistBack, waistToFloor, shoulderToWrist]
+    ops:
+      - jacketCapeBase: { which: back }
+      - jacketCapeBase: { which: front }
+      - capeLayout:
+          length: (hpsToWaistBack + waistToFloor * lengthBelowWaist) * capeLength
+          drop: 0
+          gap: chest * capeGap
+          pivotLess: chest * capePivot
+          seamDrop: shoulderToWrist * capeSeamDrop
+          flare: capeFlare
+          lap: chest * buttonExtension
+          facing: chest * facingWidth
+  cape: { part: cape, which: whole, after: [capeLayoutBase], nr: 5 }
+  topsleeve: { if: false }
+  undersleeve: { if: false }
+  hipFlap: { if: false }
+  hipJet: { if: false }
+  hipBag: { if: false }
+  ticketFlap: { if: false }
+  ticketJet: { if: false }
+  ticketBag: { if: false }
+
+variants:
+  shorter:
+    name: Shorter shoulder cape
+    description: A shorter cape ending around the waist.
+    options: { capeLength: 0.42 }

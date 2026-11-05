@@ -976,6 +976,9 @@ options:
   capeGap:
     title: Shoulder gap
     description: Space between the back and front shoulder tips when laid out, as a share of the chest. More makes a wider circle.
+  capeShoulderExtension:
+    title: Shoulder cape extension
+    description: How far the cape reaches past the coat shoulder, as a share of the chest.
   capePivot:
     title: Arc's centre
     description: How far the hem's arc is centred short of half way from the front neck to the back neck, as a share of the chest.

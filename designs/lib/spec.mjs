@@ -62,7 +62,7 @@ import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularL
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
-import { draftCapeBase, draftCapeLayout, draftDolmanLayout, capePart } from './cape.mjs'
+import { draftCapeBase, draftJacketCapeBase, draftCapeLayout, draftDolmanLayout, capePart } from './cape.mjs'
 import { draftKiltLayout, kiltApronPart, kiltPleatsPart } from './kilt.mjs'
 
 const blocks = { brian, bent, titan, breanna, sarah }
@@ -132,6 +132,7 @@ export const operations = {
   circularLayout: { run: draftCircularLayout },
   // A cape (lib/cape.mjs): the block's neck and shoulder into `cape.raw.<which>`, then laid out
   capeBase: { run: draftCapeBase, literal: ['which'] },
+  jacketCapeBase: { run: draftJacketCapeBase, literal: ['which'] },
   capeLayout: { run: draftCapeLayout },
   dolmanLayout: { run: draftDolmanLayout },
   // Change the piece's cutting (e.g. a waistcoat back cut twice from lining)

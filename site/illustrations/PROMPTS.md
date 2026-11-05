@@ -1399,3 +1399,13 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > An 1890 painter's apron shown alone: a narrow bib above a broad lower body, neck tape, two waist ties and one large rectangular central pocket for brushes. Unbleached twill, full front view, clean technical editorial illustration.
 >
 > Leave out: side pockets, sleeves, a jacket, buckles, tools or modern logos.
+
+### inverness-coat: Women's Inverness coat
+> An early twentieth-century women's Inverness coat in dark charcoal wool, three-quarter length to below the knee. A long, gently shaped coat body closes with a single straight row of five buttons to the throat beneath a high turn collar. A separate broad shoulder cape flows from the collar and ends around the upper hip, covering the arms; no fitted sleeves show. Full front three-quarter view, plain background, clean technical editorial illustration with the cape and underlying front both visible.
+>
+> Leave out: lapels, pockets, belts, cuffs, fitted sleeves, hoods or extra button rows.
+
+### inverness-coat.shorter: Women's Inverness coat, shorter shoulder cape
+> The same charcoal three-quarter women's Inverness coat and closed turn collar, with its separate broad shoulder cape shortened to the waist. Show the long buttoned coat front beneath the cape, full front three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: lapels, pockets, belts, cuffs, fitted sleeves, hoods or extra button rows.
