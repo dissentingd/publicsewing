@@ -35,10 +35,11 @@ export function draftJacketCapeBase(sh, { which }) {
  *   it); gap: between the shoulder tips; pivotLess: the arc's centre, this much less than half way
  *   from the CF neck toward the CB neck; seamDrop: the seam's straight run below the shoulder tip;
  *   flare (degrees): how far each piece's edge leans out past the seam's line below that;
- *   lap, facing: the front edge past CF, then folded back }
+ *   lap, facing: the front edge past CF, then folded back; optional dartWidth, dartGap,
+ *   dartLength: two marked shoulder darts on the one-piece cape }
  * Coordinates: x along CB's line, y along CF's, from where they cross.
  */
-export function draftCapeLayout(sh, { length, drop, gap, pivotLess, seamDrop, flare, lap, facing }) {
+export function draftCapeLayout(sh, { length, drop, gap, pivotLess, seamDrop, flare, lap, facing, dartWidth = 0, dartGap = 0, dartLength = 0 }) {
   const { Path, Point, store } = sh
   const b = store.get('cape.raw.back')
   const f = store.get('cape.raw.front')
@@ -80,11 +81,26 @@ export function draftCapeLayout(sh, { length, drop, gap, pivotLess, seamDrop, fl
 
   // The one-piece cape: a dart on the shoulder, the arc all the way round
   const tm = tb.shiftFractionTowards(tf, 0.5)
+  const shoulderLength = tm.dist(hf)
+  const dartScale = dartWidth > 0 ? Math.min(1, shoulderLength * 0.8 / (2 * dartWidth + dartGap)) : 0
+  const w = dartWidth * dartScale
+  const between = dartGap * dartScale
+  const along = unit(tm, hf)
+  const inward = { x: along.y, y: -along.x }
+  const dartStart = (shoulderLength - (2 * w + between)) / 2
+  const darts = w > 0 ? [0, 1].map((i) => {
+    const start = dartStart + i * (w + between)
+    const a = go(tm, along, start)
+    const b = go(a, along, w)
+    const mid = a.shiftFractionTowards(b, 0.5)
+    return { a, b, tip: go(mid, inward, Math.min(dartLength, shoulderLength * 0.45)) }
+  }) : []
   const arc = Array.from({ length: 5 }, (_, i) => onCircle(aCf + ((aCb - aCf) * i) / 4))
   const whole = {
     top: new Path().move(cb.clone()).join(backNeck.clone().reverse()).line(tm.clone()).line(hf.clone()).join(frontNeck.clone()).line(new Point(edgeX, cf.y)).line(new Point(edgeX, yCf)),
     hem: new Path().move(new Point(edgeX, yCf)).line(hemCf.clone()).join(through(Path, Point, [hemCf, ...arc.slice(1, -1), hemCb], { x: 1, y: 0 }, { x: 0, y: -1 })),
     dart: [hb.dist(tm), hf.dist(tm)],
+    darts,
   }
 
   // The two-piece cape: the seam's line from half way between the neck points through half way
@@ -334,6 +350,11 @@ export function capePart({ name, after, which, nr, buttons = () => ({ count: 0 }
         for (let i = 0; i < count; i++) {
           points[`button${i}`] = new Point(0, c.cf.y + spacing * (i + 0.5))
           snippets[`button${i}`] = new Snippet('button', points[`button${i}`])
+        }
+      }
+      if (which === 'whole') {
+        for (const [i, d] of (c.whole.darts ?? []).entries()) {
+          paths[`shoulderDart${i + 1}`] = new Path().move(d.a.clone()).line(d.tip.clone()).line(d.b.clone()).addClass('mark dotted')
         }
       }
       for (const [i, q] of (c.notches?.[which] ?? []).entries()) snippets[`notch${i}`] = new Snippet('notch', new Point(q.x, q.y))

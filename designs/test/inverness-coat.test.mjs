@@ -28,6 +28,18 @@ for (const [variant, options] of Object.entries(variants)) {
       const raw = store.get('jacket.raw.front')
       const cape = store.get('cape.raw.front')
       near(cape.tip.dist(raw.shoulder), measurements.chest * (options.capeShoulderExtension ?? 0.056), 1, 'cape shoulder extension')
+      const darts = store.get('cape.layout').whole.darts
+      assert.equal(darts.length, 2, 'two shoulder darts')
+      for (const [i, dart] of darts.entries()) {
+        assert.ok(dart.a.dist(dart.b) > 0 && dart.a.dist(dart.b) <= measurements.chest * 0.021 + 1, 'dart mouth')
+        assert.ok(dart.tip.dist(dart.a) > dart.a.dist(dart.b), 'dart reaches into the cape')
+        assert.ok(parts['invernesscoat.cape'].paths[`shoulderDart${i + 1}`], 'dart marked on cape')
+      }
+      if (variant === 'default' && name === 'cisFemaleAdult36') {
+        near(darts[0].a.dist(darts[0].b), measurements.chest * 0.021, 1, 'Merz dart width')
+        near(darts[0].b.dist(darts[1].a), measurements.chest * 0.056, 1, 'Merz dart gap')
+        near(darts[0].tip.dist(darts[0].a.shiftFractionTowards(darts[0].b, 0.5)), measurements.chest * 0.073, 1, 'Merz dart length')
+      }
     })
   }
 }

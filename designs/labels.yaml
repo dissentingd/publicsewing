@@ -979,6 +979,15 @@ options:
   capeShoulderExtension:
     title: Shoulder cape extension
     description: How far the cape reaches past the coat shoulder, as a share of the chest.
+  capeDartWidth:
+    title: Cape dart width
+    description: Width of each of two shoulder darts, as a share of the chest.
+  capeDartGap:
+    title: Space between cape darts
+    description: Space between the two shoulder dart mouths, as a share of the chest.
+  capeDartLength:
+    title: Cape dart length
+    description: Length of each shoulder dart from its mouth, as a share of the chest.
   capePivot:
     title: Arc's centre
     description: How far the hem's arc is centred short of half way from the front neck to the back neck, as a share of the chest.
