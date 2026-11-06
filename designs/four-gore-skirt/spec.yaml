@@ -1,0 +1,55 @@
+# Schorr Diagram 65: four panel shapes across the half skirt. The front is on the
+# fold; the other three shapes are cut in pairs. Sarah supplies body measurements.
+extends: ../gored-skirt/spec.yaml
+
+about:
+  id: four-gore-skirt
+  name: Four-gore panel skirt
+  category: skirts
+  description: A long skirt of four panel shapes with waist shaping divided among three seams
+  difficulty: 2
+  tags: [bottoms]
+  techniques: [zip, waistband, hem]
+  version: 0.1.0
+  source: Schorr, The Expert Designer (1917), Diagram 65, PDF pp. 94-95 (expertdesignerpr00scho)
+  preview: cisFemaleAdult36
+
+options:
+  gores: { dflt: 7, list: [7], menu: false } # four shapes: front fold plus three pairs
+  panelNarrowing: { pct: 0, menu: false }
+  # A–1 and G–2 are 3 in on the 20 in half-hip outline, so the front half panel is 15%.
+  panelShare: { pct: 15, min: 10, max: 25, menu: style }
+  # The 5 in surplus on Schorr's 18 in outline / 13 in half waist: front ½,
+  # side 2½, back-middle 2 in. The layout's seven-gore attenuation is 11/13.
+  panelShaping: { pct: 11.82, min: 5, max: 20, menu: advanced } # 10% after attenuation
+  middleShaping: { pct: 40, min: 25, max: 55, menu: advanced } # back-middle, 2/5
+  cbShaping: { pct: 0, menu: false } # no CB dart on Diagram 65
+  # Front and back hem divisions move 2 in outward from their 3 in waist positions;
+  # at full floor length, 70% of the half hip yields about 2 in per seam edge.
+  goreFlare: { pct: 70, min: 20, max: 120, menu: style }
+  # The Systematical Outline takes front, side and back lengths from the figure.
+  # This near-floor length and slight front drop are our choices.
+  length: { pct: 95, min: 50, max: 100, menu: style }
+  frontWaistDrop: { pct: 8, min: 0, max: 25, menu: fit }
+
+pieces:
+  layout:
+    from: sarah.base
+    hide: tree
+    options: all
+    ops:
+      - skirtLayout:
+          gores: gores
+          panelNarrowing: seat * panelNarrowing
+          panelShare: panelShare
+          cbShaping: cbShaping
+          panelShaping: panelShaping
+          middleShaping: middleShaping
+          flare: goreFlare
+          frontDrop: waistToSeat * frontWaistDrop
+
+variants:
+  straighter:
+    name: Straighter hem
+    description: Less flare below the hip, with the same four panel shapes and fitted waist.
+    options: { goreFlare: 0.4 }

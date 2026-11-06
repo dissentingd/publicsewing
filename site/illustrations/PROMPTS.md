@@ -1445,3 +1445,12 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > The same fitted riding frock coat, with a wider sweep at the long skirt hem while the waist and hip stay close. Front three-quarter full-length view, plain background, clean technical editorial illustration.
 >
 > Leave out: pockets, belt, decorative pleats, cape, bustle or visible back vent.
+### four-gore-skirt: Four-gore panel skirt
+> An early twentieth-century long wool skirt with a close waist and four smooth panel shapes across the half skirt. Three shaped seam lines descend from the waist, the side panel opening into a moderately flared near-floor hem. Front three-quarter full-length view, plain background, clean technical editorial illustration.
+>
+> Leave out: pleats, visible waist darts, gathers, pockets, tiers or a train.
+
+### four-gore-skirt.straighter: Straighter hem
+> The same close-waisted four-panel skirt, with less spread below the hip and a narrower near-floor hem. Front three-quarter full-length view, plain background, clean technical editorial illustration.
+>
+> Leave out: pleats, visible waist darts, gathers, pockets, tiers or a train.

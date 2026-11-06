@@ -24,7 +24,7 @@ const ease = (t) => 3 * t * t - 2 * t * t * t
  * its own line and CF straight up. Each edge then has `T`, its top, and the gores' seams and zip
  * count it; `skirt.waist` stays the waist.
  */
-export function draftSkirtLayout(sh, { gores, panelNarrowing, cbShaping, panelShaping, flare, frontDrop, panelShare, riseHeight = 0, riseAdd = 0, riseFlare = 0 }) {
+export function draftSkirtLayout(sh, { gores, panelNarrowing, cbShaping, panelShaping, middleShaping, flare, frontDrop, panelShare, riseHeight = 0, riseAdd = 0, riseFlare = 0 }) {
   gores = Number(gores)
   const { points, measurements, store, part } = sh
   cleanup(sh)
@@ -47,7 +47,11 @@ export function draftSkirtLayout(sh, { gores, panelNarrowing, cbShaping, panelSh
   const D = S - Wh // negative on a figure whose waist is wider than the seat
   const dCb = D * cbShaping
   const dPanel = D * panelShaping
-  const dart = (j) => (j === m ? dPanel - (riseHeight ? 2 * riseAdd : 0) : (D - dCb - dPanel) / (m - 1))
+  // Schorr's four pattern panels have unequal middle darts (near back, then side).
+  // Without this optional share, Mitchell's equal distribution is unchanged.
+  const dart = (j) => j === m ? dPanel - (riseHeight ? 2 * riseAdd : 0)
+    : middleShaping !== undefined && m === 3 ? (j === 1 ? D * middleShaping : D - dCb - dPanel - D * middleShaping)
+      : (D - dCb - dPanel) / (m - 1)
   const below = Math.max(measurements.waistToFloor - hS, 1)
   const F = Math.max(0, S * flare * Math.min(1, (L - hS) / below))
   const f = F / (2 * m + 1)

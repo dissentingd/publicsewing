@@ -29,6 +29,7 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Diagram XIV text gives 36 in total length, ¾ in lapel extension, and 20½ in half hip including ½ in ease. The skirt is swept from point 6; the source does not give a numeric hem sweep. The back opening is opposite J at the waist.
 
 ## Schorr 1917 (`expertdesignerpr00scho`)
+- Diagram 65 has four panel shapes across A–G on the half skirt: front on the fold plus three cut in pairs. The 18 in outline to 13 in half waist removes ½ in at front point 1, 2½ in at side point 5, and 2 in near back point 2. Points 1 and 2 are 3 in from the waist ends, and their hem ends 5 in from the hem corners.
 - Diagram 7 text (PDF p. 38) says C–G is half the 42 in hip plus **½ in**, so 21½ in; B–C is 6 in and point 6 is 1 in from point 5. The plate (PDF p. 39) shows the radial half panel and the hem wedge closed into a central waist dart. Length and finished bottom width are left to choice; no numeric hem width is supplied.
 - Diagram 7, Basque or Tunic Skirt: text PDF p. 38, plate PDF p. 39. The worked 26 in waist/42 in hip example has a radial outline and a wedge closed into a dart. Diagram 65, Four Gore (Panel) Skirt: text PDF p. 94, plate PDF p. 95. Plate pages do not show a printed page number in these examples.
 

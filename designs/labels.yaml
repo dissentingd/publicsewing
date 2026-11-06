@@ -332,7 +332,10 @@ options:
     description: Where the thigh is fullest between fork and knee.
   panelShare:
     title: Front width
-    description: The front's share of the half hip; the rest is the back's.
+    description: The front panel's share of the half hip; the rest goes to the other panels.
+  middleShaping:
+    title: Back-middle waist shaping
+    description: Share of the total waist reduction taken at the seam between the back and side panels.
   placketLength:
     title: Placket length
     description: Length of the opening at the left side seam, as a share of waist to seat.

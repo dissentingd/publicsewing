@@ -101,6 +101,7 @@ and marked as derived.
 | Pleated skirt (side or box) | 5 | Sarah | Variant; **drafted 2026-11-02** (`designs/pleated-skirt`: the gored skirt with pleat underlays below the hip; not sewn) | Mitchell 1921 pp. 102–107 |
 | Circular skirt (fitted to the hip, very wide hem) | 5 | Sarah | Variant; **drafted 2026-11-02** (`designs/circular-skirt`: a fan slashed and spread from above the hip; not sewn) | Mitchell 1921 pp. 110-113 |
 | Tunic skirt (short radial overskirt) | 5 | Sarah | **Drafted 2026-11-05** (`designs/tunic-skirt`; not sewn) | Schorr 1917, Diagram 7 |
+| Four-gore panel skirt | 5 | Sarah | **Drafted 2026-11-06** (`designs/four-gore-skirt`; not sewn) | Schorr 1917, Diagram 65 |
 | **Culottes (divided skirt)** | 4, 5 | — | **Drafted 2026-10-29** (`designs/culottes`; not sewn) | Pivnick 1949 `pivnickdesignclothes1949` |
 | Divided riding skirt | 5 | — | **Drafted 2026-11-04** (`designs/riding-skirt`, five gores and a front overlap; not sewn) | Mitchell 1921 pp. 116-117 |
 | Apron riding skirt | 5 | — | **Drafted 2026-11-04** (`designs/apron-riding-skirt`, asymmetric two-part apron and leg strap; not sewn) | Mitchell 1921 pp. 118-121 |
