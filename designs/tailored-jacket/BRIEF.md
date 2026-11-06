@@ -49,7 +49,7 @@ shoulder and the waist, so the princess seams follow the darts.
 | Crease | From 3" below the bust line, through ½" in front of the neck point | `breakBelowBust` 14% of HPS-to-waist-front (3/22), `rollOut` 3.7% of neck (½/13½) |
 | Lapel | Peak | `lapelStyle` peak (or notch), `lapelWidth` 26% of neck (about 3½", as p. 39 draws it), `gorgeAt` 55% along the front neck from the neck point |
 | Collar | Stand 1¼", 2¾" from the neck point up | `collarWidth` 20% of neck (2¾/13½), `collarSpring` 14%, `collarPoint` 5% of neck |
-| Buttons | (not printed) | `buttons` 3, from the break to below the waist |
+| Buttons | (not printed) | `buttons` 3, from the break to below the waist; `frontSeamClear` keeps the front seam at least 2.8% of chest from CF at the waist so every mark stays on the panel |
 | Sleeve | Two-piece | FreeSewing's two-part sleeve, fitted to the jacket's armhole |
 | Facing | (not drafted) | Front facing, lapel included, `facingWidth` 8% of chest; back-neck facing `backFacingDepth` 9% of chest down the CB, meeting the front facing on the shoulder |
 | Breast pocket | A welt across the front seam | `breastPocket` on: a welt pocket, `weltFromCF` 6.2% of chest behind CF, `weltBelow` 4% of HPS-to-waist-front below the bust line, `weltLength` 9.2% of chest, `weltRise` 16°, `weltDepth` 22% of its length; cut across the princess seam where it reaches it, the rest of its length on the side front; shortened to clear the underarm |
@@ -98,3 +98,7 @@ shoulder and the waist, so the princess seams follow the darts.
 - **Mitchell's front seam starts 1¼" past half way along the shoulder;** Breanna's 12:00 dart
   lands at half way, and no other Breanna position keeps it on the shoulder (12:30 is the
   shoulder tip). Moving it needs a dart rotation of our own.
+- **On a small men's set, Breanna's front dart can reach CF at the waist.** The notch
+  variant's third button then fell 4.4 mm outside the front panel. The `frontSeamClear`
+  floor moves the lower princess seam toward the side where needed; this is our fit
+  adaptation, not a measurement from Mitchell.

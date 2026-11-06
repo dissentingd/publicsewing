@@ -137,7 +137,7 @@ corpus or `corpus/MANIFEST.yaml`.
 
 | Source | What is known | Next check |
 |---|---|---|
-| Sheifer 1908 `nssheiferssystem00shei` | Its girl's coat is built; the scan also has a skirt coat (PDF around p. 80) and multi-panel corset coats. | Read the text and plate together, then pick a construction distinct from the existing coat family. |
+| Sheifer 1908 `nssheiferssystem00shei` | Its girl's coat is built. The skirt coat (text PDF p. 80, plate p. 81) has a dropped curved skirt seam that the current waist-seam draft cannot express. Multi-panel corset coats remain. | Inspect a corset coat's text and plate, or plan a shared construction change for the dropped skirt seam. |
 | Vincent, *Jacket Cutting* (1897) `cutters-prac-guide-jacket-cutting` | The supplied PDF has no searchable text layer. | Inspect its plates and missing-page coverage before citing a new garment. |
 | Vincent, *British Military Uniforms* `militaryuniformsbritish-images` | Service frock and khaki knickerbockers have substantial instructions (PDF pp. 9–12), but overlap existing tunic and breeches designs. | Compare their plates and specific seams with the built designs. |
 | Ratner 1908 `ratnersuptodatem00ratn` | OCR exposes headings but too few reliable dimensions to select an item. | Read a candidate text/plate pair at higher resolution. |

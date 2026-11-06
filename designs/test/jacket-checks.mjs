@@ -3,10 +3,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { sets, checkClean, near } from './coat-checks.mjs'
 
-// Known to fail the button check below, until these designs use frontSeamMin: label (variant): set
-const buttonOffPiece = new Set(['tailored jacket (notch): cisMaleAdult32']) // a mark 4.4 mm past the seam
-
-export function checkJacket(pattern, { buttonsOnPiece = true } = {}) {
+export function checkJacket(pattern) {
   const store = checkClean(pattern)
   const s = store.get('jacket.seams')
   // Princess jackets: each seam pair; box bodies: the neck dart's legs
@@ -63,7 +60,7 @@ export function checkJacket(pattern, { buttonsOnPiece = true } = {}) {
   for (const [k, q] of Object.entries(front?.snippets ?? {})) {
     if (q.def !== 'button') continue
     const hits = front.paths.seam.intersectsY(q.anchor.y)
-    if (buttonsOnPiece && hits.length) assert.ok(q.anchor.x <= Math.max(...hits.map((h) => h.x)) + 2, `${k} is on the front at its height`)
+    if (hits.length) assert.ok(q.anchor.x <= Math.max(...hits.map((h) => h.x)) + 2, `${k} is on the front at its height`)
   }
   return store
 }
@@ -74,7 +71,7 @@ export function testJacket(label, Design, variants = { default: {} }, extra) {
     for (const [name, measurements] of Object.entries(sets)) {
       test(`${label} (${v}): ${name}`, () => {
         const pattern = new Design({ measurements, sa: 10, options }).draft()
-        checkJacket(pattern, { buttonsOnPiece: !buttonOffPiece.has(`${label} (${v}): ${name}`) })
+        checkJacket(pattern)
         if (extra) extra(pattern)
       })
     }

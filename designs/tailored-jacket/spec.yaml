@@ -35,6 +35,9 @@ options:
   # Style
   lengthBelowWaist: { pct: 42, min: 20, max: 70, menu: style } # x waistToFloor; 17" of ~40"
   buttonExtension: { pct: 3.2, min: 2, max: 6, of: chest, menu: style } # the 1 1/4" lap
+  # Breanna's front dart can leave the seam at CF on a small waist. Keep the
+  # button line inside the front panel; this clearance is our adaptation.
+  frontSeamClear: { pct: 2.8, min: 1.5, max: 8, of: chest, menu: fit }
   buttons: { count: 3, min: 1, max: 6, menu: style }
   breakBelowBust: { pct: 14, min: 0, max: 40, menu: style } # x hpsToWaistFront; 3" of 22"
   rollOut: { pct: 3.7, min: 0, max: 10, of: neck, menu: style } # crease 1/2" in front of the neck point
@@ -89,6 +92,7 @@ pieces:
           hipDepth: waistToSeat
           length: waistToFloor * lengthBelowWaist
           lap: chest * buttonExtension
+          frontSeamMin: chest * frontSeamClear
           breakBelow: hpsToWaistFront * breakBelowBust
           rollOut: neck * rollOut
           lapelWidth: neck * lapelWidth
