@@ -69,6 +69,7 @@
   "princess-coat": {"default": {}, "fuller": {"hemFlare": 0.18}, "notch": {"lapelStyle": "notch", "buttons": 4}, "plain": {"pockets": false, "lining": false, "halfBelt": false, "doubleBreasted": false, "buttonExtension": 0.04, "hemFlare": 0, "lengthBelowWaist": 0.4}},
   "prince-albert-jacket": {"default": {}, "notch": {"lapelStyle": "notch"}, "flared": {"skirtSpread": 0.04}, "plain": {"lining": false, "lengthBelowWaist": 0.3, "cbSuppression": 0, "underarmSuppression": 0}},
   "double-dart-jacket": {"default": {}, "loose": {"cbSuppression": 0, "underarmSuppression": 0, "secondSuppression": 0, "lengthBelowWaist": 0.3}, "plain": {"lining": false, "secondAt": 0.35, "secondSuppression": 0.2}},
+  "riding-habit-coat": {"default": {}, "plain": {"lining": false, "ridingHemFlare": 0.06, "ridingBackFlare": 0.015}, "fuller": {"seatEase": 0.2, "ridingHemFlare": 0.15}},
   "shift-dress": {"default": {}, "withCollar": {"neckFinish": "collar", "opening": "front"}, "sleeveless": {"sleeves": "none"}, "variant": {"sleeves": "none", "neckFinish": "collar", "opening": "front", "hemFlare": 0.1, "sideSlit": 0.2}},
   "middy-blouse": {"default": {}, "shortSleeves": {"sleeves": "short"}, "variant": {"sleeves": "short", "shield": false, "vNeck": 0.7, "collarDepth": 0.18}},
   "culottes": {"default": {}, "short": {"length": 0.4, "goreFlare": 0.1, "crotchEase": 0.02, "zipLength": 0.6}},

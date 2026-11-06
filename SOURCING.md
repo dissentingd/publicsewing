@@ -151,7 +151,7 @@ skirts and dresses are under-represented.
 | Women's peacoat / field jacket | Merz, *Ladies' Jackets and Cloaks* (1911) `merzspracticalcu00merz`; Sheifer (above) | Women's jacket and cloak drafts |
 | Field jacket, pea jacket | Vincent, *British Military Uniforms* (1902, 1914) `cutters-guide-brit.-mil.-uniforms.-1`, `militaryuniformsbritish-images` | Pea jacket ("British warm"), tunics, overcoats |
 | Children's (graded) | Rosenfeld, *Practical Designer* (1911, 1918) `practicaldesigne01rose`, `practicaldesigne02rose` | Children's size tables, grading nests |
-| Women's | Schorr, *The Expert Designer* (1917) `expertdesignerpr00scho`; Ratner (1908) `ratnersuptodatem00ratn`; Weiler (1915) `weilerladiestail00weil` | Drafting; Ratner grades ladies' and children's |
+| Women's | Schorr, *The Expert Designer* (1917) `expertdesignerpr00scho`; Ratner (1908) `ratnersuptodatem00ratn`; Weiler (1915) `weilerladiestail00weil` | Drafting; Ratner grades ladies' and children's; Weiler's riding habit coat is drafted |
 | Men's tailored, trousers | Simons, *Science of Grading* (1924) `scienceofgrading00simo`, *Sack Coats* (1918) `designingsackcoa00simo`, *Pants and Overalls* (1916) `draftingpantsove00simo`; Vincent, *Systems of Cutting* (1903) `b1108865`; Regal (1904–17) `americangarmentc01rega`, `americanpatterng00rega`; Rude (1906) `gb_rude1906_nycuttingschool`; Croonborg, Gordon | Men's systems; Simons is the reference system |
 
 Downloaded 2026-10-27 and not yet in MANIFEST.yaml or on Cloudbox: the round-11 books

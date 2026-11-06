@@ -35,7 +35,7 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Cyclists' breeches, Fig. 30: figure PDF p. 73, text printed p. 68/PDF p. 74. The plate has a full leg gathered into a separate band. The English text gives 27 in total length, 23 in to the knee line, 21½ in around the knee, 30½ in around the thigh, a 16 × 3 in band and a 2 in raised **back** waist (F on the back piece). Its 27 in = 62½ cm conversion is wrong; use inches. Titan's back waist already rises about 2 in at the proportion-40 model.
 
 ## Weiler 1915 (`weilerladiestail00weil`)
-- Riding Habit Coat: text printed p. 82/PDF p. 86, plate printed p. 83/PDF p. 87. The plate labels panel positions and the text starts from a 40 in hip. OCR fractions need checking against the plate.
+- Riding Habit Coat: text printed p. 82/PDF p. 86, plate printed p. 83/PDF p. 87. It starts from a 40 in hip; the back is 1¼ in at waist and 1¾ in at hip, with a 1¾ in optional back slit. The preceding tight-fitting coat is text/plate PDF pp. 84–85. OCR confuses these fractions, so read the page image.
 
 ## Simons 1922 (`designingboysjuv00simo`)
 - **"1/6 of breast" can mean a sixth of the half breast.** In Diagram 10's neck it's 2 in on a 24 in

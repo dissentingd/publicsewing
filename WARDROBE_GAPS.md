@@ -217,6 +217,7 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
 - **Built 2026-10-28/29:** the two-piece skirt (`designs/two-piece-skirt`) and the double-dart
   jacket (`designs/double-dart-jacket`: the fitted jacket with a second front seam).
 - **Built 2026-11-03:** the kimono jacket and the "Prince Albert" jacket (`designs/prince-albert-jacket`: the fitted jacket cut through at the waist, with a one-piece skirt).
+- **Built 2026-11-05:** Weiler's riding habit coat (`designs/riding-habit-coat`), with a narrow back panel, six shaped body panels per side and extra seat room. Drafted, not sewn.
 
 ## ЕМКО СЭВ vol. 3 (1988): done (2026-10-27)
 Corpus `emko`, a private copy, untracked: still in copyright, used only for its methods,

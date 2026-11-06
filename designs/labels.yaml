@@ -276,6 +276,15 @@ options:
   secondSuppression:
     title: Second seam shaping
     description: Width the second front seam takes in at the waist, as a share of half the seat less half the waist.
+  ridingBackWidth:
+    title: Back panel width
+    description: Width of the narrow centre back panel at the waist, as a share of the seat.
+  ridingBackFlare:
+    title: Back panel flare
+    description: How much the narrow back panel widens at the hem, as a share of the seat.
+  ridingHemFlare:
+    title: Riding skirt flare
+    description: How far each panel edge opens at the hem for room over the saddle, as a share of the seat.
   vNeck:
     title: V neck depth
     description: How deep the V neck goes, as a share of the neck point to the chest line.

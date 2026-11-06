@@ -337,6 +337,13 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: pockets, a notched lapel, a belt, darts, trim or braid, a blouse with a frilled
 > collar, a person.
 
+### riding-habit-coat: Riding habit coat
+> A women's early 1910s **riding habit coat** in dark wool broadcloth, closely shaped at the
+> waist and opening into a **long, full riding skirt** over the hips. Show a narrow centre
+> back panel and **six shaped body panels on each side**, with a single breasted buttoned
+> front, a smooth shawl collar, and fitted two piece sleeves. Full length view, front
+> three quarter angle, on a plain background. No horse or person.
+
 ### culottes: Culottes
 > A women's pair of **culottes (a divided skirt)** in wool crepe or cotton twill (navy, camel or
 > olive), **just below the knee**, that **looks like a flared A-line skirt** when standing: wide,

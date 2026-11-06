@@ -63,13 +63,15 @@ function darts(points, side) {
  * Read one side of Breanna (after its own draft) into the store as `jacket.raw.<side>`.
  * `style` 'princess' needs a waist dart on both sides and a shoulder dart on the front; 'box'
  * needs only the front's waist dart (pivoted into the neck later) and no back dart.
+ * `backWaistWidth` (mm) moves the back dart toward CB, keeping its intake and upper shoulder
+ * point, for a narrow back panel such as Weiler's riding habit.
  */
-export function draftJacketBase(sh, { side, backSeamAt = 0.5, style = 'princess' }) {
-  const { points, paths, Path, store, part } = sh
+export function draftJacketBase(sh, { side, backSeamAt = 0.5, backWaistWidth = 0, style = 'princess' }) {
+  const { points, paths, Path, Point, store, part } = sh
   const segs = segments(paths.seam)
   const center = side === 'front' ? 'cf' : 'cb'
   const ds = darts(points, side)
-  const lower = ds.at(-1)
+  let lower = ds.at(-1)
   const upper = side === 'front' && style === 'princess' ? ds[0] : null
   if (style === 'box') {
     if (side === 'front' ? ds.length !== 1 : ds.length !== 0) {
@@ -77,6 +79,12 @@ export function draftJacketBase(sh, { side, backSeamAt = 0.5, style = 'princess'
     }
   } else if (!lower || (side === 'front' && (!upper || upper === lower))) {
     throw new Error(`jacket: Breanna's ${side} needs a waist dart${side === 'front' ? ' and a shoulder dart' : ''}`)
+  }
+  if (side === 'back' && backWaistWidth > 0) {
+    const target = Math.min(lower.c.x, points.cbWaist.x + Math.max(20, backWaistWidth))
+    const shift = target - lower.c.x
+    const move = (p) => new Point(p.x + shift, p.y)
+    lower = { c: move(lower.c), s: move(lower.s), tip: move(lower.tip) }
   }
   if (upper) {
     // The shoulder dart must sit on the shoulder seam, between the shoulder tip and the neck
@@ -263,7 +271,7 @@ export function draftJacketLayout(sh, a) {
     const cbWaist = new Point(cbx + cbIn, r.centerWaist.y)
     const hemC = a.cb?.flare ? hemAt(cbWaist, -1) : new Point(cbx + cbIn - ((cbIn - cbHip) / a.hipDepth) * a.length, r.centerWaist.y + a.length)
     const cbLine = cbIn ? [new Point(cbx, r.armhole.y), cbWaist] : a.waistSeam || a.cb?.flare ? [cbWaist] : []
-    const hemCs = hemAt(r.lower.c, 1)
+    const hemCs = a.backHemFlare === undefined ? hemAt(r.lower.c, 1) : new Point(r.lower.c.x + a.backHemFlare, r.lower.c.y + Math.sqrt(a.length ** 2 - a.backHemFlare ** 2))
     const hemSc = hemAt(r.lower.s, -1)
     const hemS = hemAt(r.waist, 1)
     // The seam passes through the waist dart's tip, heading for the middle of the dart
@@ -471,8 +479,15 @@ export function draftJacketLayout(sh, a) {
       const n = { x: -d.y, y: d.x } // toward the back's side (x < 0 when d is straight down)
       const L = a.length
       const Wf = T(u.Wu)
-      const H1 = new Point(ub.Wu.x + d.x * L + n.x * slope * L, ub.Wu.y + d.y * L + n.y * slope * L)
-      const H2 = new Point(Wf.x + d.x * L - n.x * slope * L, Wf.y + d.y * L - n.y * slope * L)
+      let H1 = new Point(ub.Wu.x + d.x * L + n.x * slope * L, ub.Wu.y + d.y * L + n.y * slope * L)
+      let H2 = new Point(Wf.x + d.x * L - n.x * slope * L, Wf.y + d.y * L - n.y * slope * L)
+      if (a.backHemFlare !== undefined && !ws) {
+        // The long riding skirt amplifies the usual sub-millimetre difference between the
+        // side-panel and under-arm edges. Keep the edge directions but match their lengths.
+        const fit = (w, h, target) => w.shiftFractionTowards(h, target / w.dist(h))
+        H1 = fit(ub.Wu, H1, ub.S.dist(ub.Wc) + ub.Wc.dist(ub.hemC) - ub.S.dist(ub.Wu))
+        H2 = fit(Wf, H2, u.S.dist(u.Wc) + u.Wc.dist(u.hemC) - T(u.S).dist(Wf))
+      }
       const frontScye = mapPath(u.toS.reverse(), Path, T) // the front's S -> armhole
       panels.underArm = {
         outline: lineTo(new Path().move(ub.S.clone()), ub.Wu, ...(ws ? [] : [H1, H2]), Wf, T(u.S)).join(frontScye).join(ub.toS.clone()),
