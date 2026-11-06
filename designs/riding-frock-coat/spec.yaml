@@ -1,0 +1,122 @@
+# Merz Diagram XIV (1911), pp. 38-39: riding frock coat with a separate swept skirt.
+# The Prince Albert waist construction supplies the one-piece front-to-back skirt.
+extends: ../fitted-jacket/spec.yaml
+
+about:
+  id: riding-frock-coat
+  name: Riding frock coat
+  category: coats
+  description: "A fitted riding coat with a long swept skirt, waist seam and turned lapels"
+  difficulty: 5
+  tags: [coats]
+  techniques: [princess-seam, waist-seam, lapel, facing, button, lining, two-piece-sleeve]
+  version: 0.1.0
+  source: "Merz, Practical Cutting System for Ladies' Jackets and Cloaks (1911), Diagram XIV, pp. 38-39 (merzspracticalcu00merz)"
+  preview: cisFemaleAdult36
+
+options:
+  # 36 in total from the top, about 20 in below the level waist in Diagram XIV.
+  lengthBelowWaist: { pct: 48, min: 30, max: 70, menu: style }
+  # The plate's half-hip is 20 in with 1/2 in ease; doubled, about 2.5%.
+  seatEase: { pct: 2.5, min: 2, max: 25, of: seat, menu: fit }
+  # The lapel extension is 3/4 in; the waist/hip edge follows the same line.
+  buttonExtension: { pct: 2.1, min: 1, max: 9, of: chest, menu: style }
+  lapWaist: { pct: 2.1, min: 1, max: 7, of: chest, menu: style }
+  lapHip: { pct: 2.1, min: 1, max: 9, of: chest, menu: style }
+  # Broad radial sweep seen on the plate; the source does not assign a numeric hem spread.
+  skirtSpread: { pct: 7, min: 0, max: 15, of: chest, menu: style }
+  # Diagram XIV has a back opening at the waist, with no pleat or CB vent shown.
+  backPleatWaist: { pct: 0, min: 0, max: 6, of: chest, menu: style }
+  backPleatHem: { pct: 0, min: 0, max: 8, of: chest, menu: style }
+  ventWaist: { pct: 0, min: 0, max: 6, of: chest, menu: style }
+  ventHem: { pct: 0, min: 0, max: 8, of: chest, menu: style }
+  cbSuppression: { pct: 0, min: 0, max: 45, menu: fit }
+  cbSeat: { pct: 0, min: 0, max: 100, menu: fit }
+  # Our adaptation of the long curved back seam; Merz gives no rise or chest ratio.
+  backSeamRise: { pct: 55, min: 25, max: 85, menu: style }
+  backSeamChest: { pct: 200, min: 120, max: 260, menu: style }
+  # The opening is 4 in below the level waist in the text, though the plate places
+  # the lapel break above it. We follow the plate's practical lapel position.
+  breakBelowBust: { pct: 11.4, min: 0, max: 40, menu: style }
+  # Lapel and collar proportions not specified by Merz: inherited block proportions.
+  lapelStyle: { dflt: notch, list: [peak, notch], menu: style }
+  gorgeAt: { pct: 55, min: 30, max: 80, menu: style } # along the front neck from the neck point
+  collarWidth: { pct: 20, min: 12, max: 30, of: neck, menu: style }
+  collarSpring: { pct: 14, min: 0, max: 25, menu: style }
+  collarPoint: { pct: 5, min: 0, max: 12, of: neck, menu: style }
+  # No pockets drawn on Diagram XIV.
+  pockets: { bool: false, menu: false }
+  breastPocket: { bool: false, menu: false }
+  ticketPocket: { bool: false, menu: false }
+pieces:
+  frontBase:
+    from: breanna.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, seat, waistToSeat, waistToFloor, neck, hpsToWaistFront]
+    let:
+      # As the fitted jacket
+      d: max(0, seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+      k: min(1, max(0, waist * (waistEase - 0.09) / 2) / max(1, d * (cbSuppression + underarmSuppression)))
+    ops:
+      - jacketBase: { side: front }
+      - jacketLayout:
+          seat: seat * (1 + seatEase)
+          hipDepth: waistToSeat
+          length: waistToFloor * lengthBelowWaist
+          lap: chest * buttonExtension
+          breakBelow: hpsToWaistFront * breakBelowBust
+          rollOut: neck * rollOut
+          lapelWidth: neck * lapelWidth
+          gorgeAt: gorgeAt
+          peak: lapelStyle == 'peak'
+          underarm:
+            back: underarmBack
+            front: underarmFront
+            backSuppression: d * underarmSuppression * k
+            frontSuppression: 0
+          cb:
+            waist: d * cbSuppression * k
+            hip: waist * cbSeat # (`waist` here is the entry above: the CB suppression)
+          backArmhole:
+            rise: backSeamRise
+            chest: backSeamChest
+          waistSeam:
+            lapWaist: chest * lapWaist
+            lapHip: chest * lapHip
+            pleatWaist: chest * backPleatWaist
+            pleatHem: chest * backPleatHem
+            ventWaist: chest * ventWaist
+            ventHem: chest * ventHem
+            spread: chest * skirtSpread
+          facing: chest * facingWidth
+          backFacing: chest * backFacingDepth
+          lining: lining
+          liningPleat: chest * liningPleat
+          sleeveStore: [library.twoPartSleeve, library.topsleeve, library.undersleeve, riding-frock-coat.topsleeve, riding-frock-coat.undersleeve]
+      - store: { key: library.topsleeve.title, value: { nr: 7, brand: "'PublicSewing'" } }
+      - store: { key: library.undersleeve.title, value: { nr: 8, brand: "'PublicSewing'" } }
+
+  skirt: { part: jacketPanel, after: [backBase, frontBase], panel: skirt, nr: 21, label: skirt, cut: 2 }
+  skirtLining: { part: jacketPanel, after: [backBase, frontBase], panel: skirtLining, nr: 22, label: skirtLining, cut: 2, material: lining, if: lining }
+
+  # "Mannish" collar, as the tailored jacket's: sewn from CB to the gorge
+  collar:
+    after: [backBase, frontBase]
+    measurements: [neck]
+    options: [collarWidth, collarSpring, collarPoint]
+    ops:
+      - collar:
+          target: coat.jacketNeck.back + coat.jacketNeck.front
+          spring: target * collarSpring
+          width: neck * collarWidth
+          point: neck * collarPoint
+          nr: 6
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  fuller:
+    name: Fuller skirt
+    description: "More sweep at the skirt hem while keeping the same waist and hip fit."
+    options: { skirtSpread: 0.11 }

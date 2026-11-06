@@ -26,6 +26,7 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 ## Merz 1911 (`merzspracticalcu00merz`)
 - Diagram XXIV, Inverness: text book p. 58/PDF p. 60, plate book p. 59/PDF p. 61. Its body references Diagrams XVIII, XXII and XXIII. OCR drops the cape's 3/4-inch darts and reads the collar's 1/4-inch spring unreliably; verify the page image.
 - Diagram XIV, riding frock coat: text book p. 38/PDF p. 40, plate book p. 39/PDF p. 41. Diagram XVII, three-piece long coat: text book p. 44/PDF p. 46, plate book p. 45/PDF p. 47. Check the printed page number; the diagram number alone does not identify a PDF page.
+- Diagram XIV text gives 36 in total length, ¾ in lapel extension, and 20½ in half hip including ½ in ease. The skirt is swept from point 6; the source does not give a numeric hem sweep. The back opening is opposite J at the waist.
 
 ## Schorr 1917 (`expertdesignerpr00scho`)
 - Diagram 7 text (PDF p. 38) says C–G is half the 42 in hip plus **½ in**, so 21½ in; B–C is 6 in and point 6 is 1 in from point 5. The plate (PDF p. 39) shows the radial half panel and the hem wedge closed into a central waist dart. Length and finished bottom width are left to choice; no numeric hem width is supplied.

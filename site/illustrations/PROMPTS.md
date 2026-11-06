@@ -1436,3 +1436,12 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > The same short wool cycling breeches with a quieter thigh line and no pockets, gathered into broad buttoned knee bands. Front three-quarter full-length view, plain background, clean technical editorial illustration.
 >
 > Leave out: long fitted calves, ankle cuffs, bicycle, helmet, elastic waist or cargo pockets.
+### riding-frock-coat: Riding frock coat
+> An early twentieth-century women's riding frock coat in dark wool, fitted upper body with shaped seams, narrow turned lapels, and a separate long skirt sweeping wide below the waist. Show a front three-quarter full-length view on a plain background, clean technical editorial illustration.
+>
+> Leave out: pockets, belt, decorative pleats, cape, bustle or visible back vent.
+
+### riding-frock-coat.fuller: Fuller riding frock skirt
+> The same fitted riding frock coat, with a wider sweep at the long skirt hem while the waist and hip stay close. Front three-quarter full-length view, plain background, clean technical editorial illustration.
+>
+> Leave out: pockets, belt, decorative pleats, cape, bustle or visible back vent.

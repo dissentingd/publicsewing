@@ -66,6 +66,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `fitted-jacket` | Women's tight-fitted jacket with an under-arm panel and a shawl collar | Mitchell 1921 |
 | `double-dart-jacket` | Tight-fitted jacket shaped by two front seams over the shoulder | Mitchell 1921 |
 | `riding-habit-coat` | Long six-panel riding coat with a narrow back and full skirt | Weiler 1915 |
+| `riding-frock-coat` | Fitted riding coat with a separate swept skirt and turned lapels | Merz 1911 |
 | `prince-albert-jacket` | Tight-fitted jacket cut through at the waist, with a one-piece skirt, back pleats and vent, and peaked lapels | Mitchell 1921 |
 | `womens-peacoat` | Women's hip-length double-breasted coat, princess seams, buttoned to the neck under a storm collar | Merz 1911 |
 | `field-jacket` | Women's straight hip-length jacket with four flapped patch pockets | Merz 1911 |
