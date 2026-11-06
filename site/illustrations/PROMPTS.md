@@ -1454,3 +1454,13 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > The same close-waisted four-panel skirt, with less spread below the hip and a narrower near-floor hem. Front three-quarter full-length view, plain background, clean technical editorial illustration.
 >
 > Leave out: pleats, visible waist darts, gathers, pockets, tiers or a train.
+
+### three-piece-long-coat: Three-piece long coat
+> An early twentieth-century women's semi-fitted long wool coat. Show long shaped seams from the upper body through the waist to a moderately flared calf-length hem, with a narrow back, side panels and smooth front. The adapted pattern closes high at the neck under a small storm collar and has three front buttons. Front three-quarter full-length view on a plain background, clean technical editorial illustration.
+>
+> Leave out: pockets, cape, belt, waist seam, pleats or a train.
+
+### three-piece-long-coat.fuller: Fuller coat
+> The same long shaped coat with more room around the hip for layering. Keep the continuous panels, high storm collar and calf-length hem. Front three-quarter full-length view on a plain background, clean technical editorial illustration.
+>
+> Leave out: pockets, cape, belt, waist seam or pleats.

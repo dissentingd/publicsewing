@@ -1,0 +1,69 @@
+# Merz Diagram XVII (1911), pp. 44-45. Continuous three-piece long coat.
+# The tailored jacket supplies the closest existing continuous princess-panel draft.
+extends: ../tailored-jacket/spec.yaml
+
+about:
+  id: three-piece-long-coat
+  name: Three-piece long coat
+  category: coats
+  description: "A semi-fitted long coat with shaped front, side and back sections"
+  difficulty: 4
+  tags: [coats]
+  techniques: [princess-seam, facing, button, lining, two-piece-sleeve]
+  version: 0.1.0
+  source: "Merz, Practical Cutting System for Ladies' Jackets and Cloaks (1911), Diagram XVII, pp. 44-45 (merzspracticalcu00merz)"
+  preview: cisFemaleAdult36
+
+options:
+  # The plate's waist-to-hem distance is about 1.15 times neck-to-waist;
+  # 70% of waist-to-floor gives that long proportion on the reference model.
+  lengthBelowWaist: { pct: 70, min: 35, max: 90, menu: style }
+  # Merz draws a continuous semi-fitted body; the inherited princess divisions
+  # approximate its back and front shaping. These ease values are our choices.
+  chestEase: { pct: 14, min: 5, max: 25, of: chest, menu: fit }
+  waistEase: { pct: 14, min: 5, max: 25, of: waist, menu: fit }
+  seatEase: { pct: 8, min: 4, max: 25, of: seat, menu: fit }
+  # No pockets, lapel shape, or fastener count are specified on Diagram XVII.
+  breastPocket: { bool: false, menu: false }
+  pockets: { bool: false, menu: false }
+  ticketPocket: { bool: false, menu: false }
+  lapelStyle: { dflt: storm, list: [storm, notch, peak], menu: style }
+  # Keep the front seam beyond the button line on small-waist models.
+  frontSeamClear: { pct: 2.8, min: 1.5, max: 8, of: chest, menu: fit }
+  buttons: { count: 3, min: 1, max: 6, menu: style }
+  buttonExtension: { pct: 4.5, min: 2, max: 8, of: chest, menu: style }
+
+pieces:
+  frontBase:
+    from: breanna.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, seat, waistToSeat, waistToFloor, neck, hpsToWaistFront]
+    ops:
+      - jacketBase: { side: front }
+      - jacketLayout:
+          seat: seat * (1 + seatEase)
+          hipDepth: waistToSeat
+          length: waistToFloor * lengthBelowWaist
+          lap: chest * buttonExtension
+          breakBelow: hpsToWaistFront * breakBelowBust
+          rollOut: neck * rollOut
+          lapelWidth: neck * lapelWidth
+          gorgeAt: gorgeAt
+          peak: lapelStyle == 'peak'
+          closed: lapelStyle == 'storm'
+          frontSeamMin: chest * frontSeamClear
+          facing: chest * facingWidth
+          backFacing: chest * backFacingDepth
+          lining: lining
+          liningPleat: chest * liningPleat
+          sleeveStore: [library.twoPartSleeve, library.topsleeve, library.undersleeve, three-piece-long-coat.topsleeve, three-piece-long-coat.undersleeve]
+      - store: { key: library.topsleeve.title, value: { nr: 7, brand: "'PublicSewing'" } }
+      - store: { key: library.undersleeve.title, value: { nr: 8, brand: "'PublicSewing'" } }
+
+variants:
+  fuller:
+    name: Fuller coat
+    description: "More room through the hip for layering."
+    options: { seatEase: 0.12 }
