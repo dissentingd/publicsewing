@@ -223,12 +223,15 @@ const alsoFs = {}
 fsIds.forEach((id, i) => {
   const d = fs[id]
   const name = d.data.name
-  const credit = `[FreeSewing](/sources#freesewing)'s design by ${d.data.design}, MIT licensed`
+  // We list them to send people to FreeSewing, not to take their place (Dave, 2026-11-09)
+  const by = d.data.design === 'Joost De Cock' ? '' : `, this one by ${d.data.design}`
+  const credit = `one of many amazing designs from Joost De Cock's [FreeSewing](https://freesewing.eu) project${by}, [MIT licensed](/sources#freesewing)`
+  const thanks = `They deserve more credit and have more to offer, so [check this design out there first](${d.url}).`
   const ours = (d.ours ?? []).map((o) => `[${specs[o].about.name}](/designs/${o})`)
   for (const o of d.ours ?? []) (alsoFs[o] ??= []).push(`[${name}](/designs/${id})`)
   rows.inspired[d.category].push({
     name,
-    row: `| | [${name}](/designs/${id})<br /><span className="external-tag">FreeSewing</span> | ${d.about}.<br /><small>Difficulty ${d.data.difficulty} of 5. ${credit}. [Its page on FreeSewing](${d.url}).${ours.length ? ` We also draft our own: ${ours.join(', ')}.` : ''}</small> |`,
+    row: `| | [${name}](/designs/${id})<br /><span className="external-tag">FreeSewing</span> | ${d.about}.<br /><small>Difficulty ${d.data.difficulty} of 5. This is ${credit}. ${thanks} Feel free to use ours, if it offers something you need otherwise.${ours.length ? ` We also draft our own: ${ours.join(', ')}.` : ''}</small> |`,
   })
   writeFileSync(
     out('docs', 'inspired', d.category, `${id}.mdx`),
@@ -242,9 +245,10 @@ hide_table_of_contents: true
 import PatternEditor from '@site/src/components/PatternEditor'
 
 :::info[FreeSewing's design, not ours]
-${name} is ${credit}. We list it so you can draft it here, ${d.sizes === 'babies' ? 'at our baby and toddler sizes, 3 months to 3 years' : d.sizes === 'all' ? "at our sizes too, babies' and children's included" : "at our sizes too, children's included"}.
-[${name} on FreeSewing](${d.url}) has its documentation, its own testing status and the community
-around it: please go and say thanks. The printed pattern carries FreeSewing's name.
+${name} is ${credit}. ${thanks} Its page there has its documentation, its testing status and the
+community around it. Feel free to use ours, if it offers something you need otherwise: here you can
+draft it ${d.sizes === 'babies' ? 'at our baby and toddler sizes, 3 months to 3 years' : d.sizes === 'all' ? "at our sizes too, babies' and children's included" : "at our sizes too, children's included"}. The printed pattern carries
+FreeSewing's name.
 :::
 
 ${d.about}.${ours.length ? ` We also draft our own: ${ours.join(', ')}.` : ''}
