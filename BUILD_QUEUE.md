@@ -121,8 +121,7 @@ which were the thinnest parts of the catalog.
 
 These sources have point drafts or worked dimensions (grade A). Page pairs below are PDF pages;
 printed pages are given where verified. The starting design is a lead, not a decision: read the
-plate and the text before choosing the construction. These scans are not yet in the tracked
-corpus or `corpus/MANIFEST.yaml`.
+plate and the text before choosing the construction. They are in `corpus/MANIFEST.yaml`, not tracked in git.
 
 | # | Design id | Garment | Source and pages | Start from | Lane | Why this is next / what to check | Status |
 |---|---|---|---|---|---|---|---|
@@ -132,6 +131,36 @@ corpus or `corpus/MANIFEST.yaml`.
 | 35 | `riding-frock-coat` | Women's riding frock coat | Merz 1911 `merzspracticalcu00merz`, Diagram XIV, PDF text 40, plate 41 (printed pp. 38–39) | `prince-albert-jacket` | E | Built on the fitted jacket's waist-seam construction: 36 in total length, ¾ in lap, ½ in ease on the 20 in half hip. Skirt sweep is read from the plate; back opening is omitted. | done (riding-frock-coat) |
 | 36 | `four-gore-skirt` | Four-gore panel skirt | Schorr 1917 `expertdesignerpr00scho`, Diagram 65, PDF text 94, plate 95 | `gored-skirt` | B | Built as four pattern shapes across the half skirt: front on fold plus three cut in pairs; 5 in waist suppression divided ½, 2½ and 2 in. | done (four-gore-skirt) |
 | 37 | `three-piece-long-coat` | Women's three-piece long coat | Merz 1911 `merzspracticalcu00merz`, Diagram XVII, PDF text 46, plate 47 (printed pp. 44–45) | `tailored-jacket` | E | Built on continuous princess panels; the plate's diagonal transfer lines are not seams. Local ⅜ and ¼ in hip increments are not overall ease. Four-panel layout approximates the source; front closes high. | done (three-piece-long-coat) |
+
+### Catalog expansion (2026-11-09)
+
+The maintainer's priorities: men's suits, trousers, casualwear, denim, dresses, shirts and
+neckwear, and garments from outside Western tailoring. Pages are **book pages from each
+contents list**: find the PDF page and the plate before starting, and add the offset to
+SOURCE_NOTES.md. Same-source alternatives (a second button count, a double-breasted front)
+are probably variants of the row above them, not designs: decide after reading the plate.
+
+| # | Design id | Garment | Source and pages | Start from | Lane | Notes | Status |
+|---|---|---|---|---|---|---|---|
+| 38 | `sack-coat` | Men's single-breasted sack coat, the suit jacket | Simons, *Sack Coats* (1918) `designingsackcoa00simo` (tracked), Conservative Sack, Diagram III | `suit-jacket` | D | With `suit-trousers` and `waistcoat`, a full suit. Read Diagram IV (collars) too | open |
+| 39 | (variant) | Double-breasted and two-button English sack coats | Same book, Diagrams VI and VIII | `sack-coat` | D | Variants of 38 if options reach them | open |
+| 40 | `dinner-jacket` | Tuxedo | Same book, Young Men's Tuxedo, Diagram X | `sack-coat` | D | Faced lapels, one button | open |
+| 41 | `tailcoat` | Full dress coat | Same book, Diagram XII | `prince-albert-jacket` or `surtout` | D | Cut away at the waist in front; tails behind | open |
+| 42 | `frock-coat` | Men's single-breasted frock coat | Same book, Diagram XI | `surtout` | D | Waist seam and skirt | open |
+| 43 | `slacks` | Men's slacks with a continuous waistband | Simons, *Drafting Trousers* (1945) `simonsdraftingtrousers1945` (Cloudbox), pp. 42–43; cotton slacks p. 47 | `suit-trousers` | A | 1945: SOURCING.md found no renewal; confirm before use. Cotton slacks (chinos) as a variant | open |
+| 44 | `shorts` | Shorts, men's and women's | Same book, men's p. 78, boys' p. 104, women's p. 121 | `slacks` | A | One design at any size if the drafts agree | open |
+| 45 | `womens-trousers` | Women's trousers and pleated slacks | Same book, pp. 116 and 119; Pivnick 1949 ch. XX, p. 261 | `suit-trousers` | A | Pleated slacks as a variant | open |
+| 46 | `jeans` | Five-pocket jeans | **Our design:** Simons 1945 work trousers p. 33 for the leg; CBSE and Bharat Skills denim exercises for methods only | `work-pants` | A | Back yoke, patch back pockets, scooped front pockets, coin pocket, fly, waistband; rivet marks. Atacac is a reference only (SOURCING.md, Decisions) | open |
+| 47 | `denim-jacket` | Denim jacket (trucker) | **Our design**, on the field jacket or chore coat | `field-jacket` or `chore-coat` | D | Front and back yokes, chest flap pockets, waistband, button cuffs. No held draft: say so in the brief | open |
+| 48 | `jodhpurs` | Jodhpurs, men's and women's | Simons 1945, pp. 70 and 133 | `breeches` | A | Flared thigh, close leg to the ankle | open |
+| 49 | `football-shirt` | Woven pullover sports shirt | Vincent 1890 `vincentmakingshirts18xx` (tracked), pp. 29–31 | `work-shirt` | C | Casual: placket front, collar; the book separates it from a knitted jersey | open |
+| 50 | `necktie` | Four-in-hand necktie | US Army purchase description GL-PD 19021 (2019, US government work); DLA A-A-55199A | — | G | Not held: fetch first. Regular 61 in and short 57 in, 3 in at the wide end. A bias `polygon` piece with interlining | open |
+| 51 | `bow-tie` | Bow tie | US Navy MIL-N-29113B | `necktie` | G | Not held: fetch and check its tables first | open |
+| 52 | `childs-dress` | Child's dress | Pivnick 1949, Patterns 105 and 106, pp. 296–305 | `shift-dress` | C | Two patterns: variants if one base serves | open |
+| 53 | `salwar` | Salwar trousers | **Inspired by** CBSE, *Basic Pattern Development*, practicals | `pyjama-trousers` | A | Methods and proportions only (SOURCING.md, Decisions). Not held: fetch first | open |
+| 54 | `kameez` | Kameez (long tunic), with kurta variants | **Inspired by** CBSE practicals; Bharat Skills, *Dress Making* vol. I | `shift-dress` | C | Methods only. Side slits, A-line and kalidar variants | open |
+| 55 | `churidar` | Churidar pyjama | **Inspired by** CBSE practicals | `salwar` | A | Methods only; bias-cut, gathered at the ankle | open |
+| 56 | `choli` | Choli (saree blouse) | **Inspired by** CBSE practicals | `fitted-jacket` | E | Methods only; darted, short | open |
 
 ### Sources to inspect before queueing a garment
 

@@ -258,3 +258,128 @@ proportions and methods, never its text, pieces or images.
   Design Beautiful Clothes* (1949, not renewed) `pivnickdesignclothes1949` is held.
 - Goldsberry's *National Garment Cutter* (1888) is dimensioned but its scale unit was
   never printed (archive, round 8).
+
+## Children's source follow-up (2026-11-07)
+
+The archive's prior gate checks control this list. These are not newly cleared
+Grade A build sources merely because a scan contains numbered drafting steps.
+
+| Source | Grade A material inspected | Best use |
+|---|---|---|
+| [Blakely and Patton, *The Practical System for Drafting Ladies' and Children's Clothing* (1907)](https://archive.org/details/practicalsystemf00blak) | Boy's working apron with measurements printed on the diagram; girl's working apron with numbered measurements and directions; children's waists and a one-piece dress | **Previously tested and rejected by the archive's 2026-10-20 gate check**: no independent result checks, ambiguous directions, and diagrams not reliably to scale. Instructions/reference only; do not queue as a verified Grade A source. |
+| [Glickstein, *Ladies', Misses' and Children's Garments* (1909)](https://archive.org/details/glicksteinssyste00glic) | Children's box-coat diagrams for size 8 (28-inch bust, stated scale) and sleeve diagrams for sizes 8 and 12 | Previously listed in the archive as unassessed. Its printed scale and actual pattern geometry still need verification; lower priority than held Simons and Rosenfeld sources. |
+
+Related access lead, **not graded**: Glickstein's separate *System of Designing and
+Cutting for Men's, Boys' and Children's Garments and Novelties* (1909) is
+[catalogued with page images at HathiTrust](https://onlinebooks.library.upenn.edu/webbin/book/browse?c=x&key=Tailoring+--+Handbooks%2C+manuals%2C+etc.&type=lcsubc),
+but its garment plates have not been inspected.
+
+## Expanded wardrobe sourcing leads (2026-11-07)
+
+The current catalog has drafted suit jackets, trousers and dresses, but limited
+variety in those families. Further sourcing should prioritize distinct trousers,
+dresses, one-piece garments, shirts and neckwear over additional coats. Non-Western
+garments are a catalog-wide gap. These leads are research inputs, not build-queue
+items; inspect each garment's complete draft and rights before implementation.
+
+| Gap | New source and evidence | Status |
+|---|---|---|
+| South Asian garments, women's trousers, neckline variants | [CBSE, *Basic Pattern Development*](https://cbseacademic.nic.in/web_material/publication/cbse/41BasicPatternDevelopment-XII.pdf), practicals 3–14: measured drafts for salwar, churidar payjama, saree and choli blouses, kameez, A-line kameez, kalidar and two-kali kurtas; V, U, round, square, glass and sweetheart necklines | **A geometry, inspected online.** In-copyright educational source: methods and proportions only under the project's current policy; do not copy pages or figures. |
+| South Asian clothing, dress variation, jeans and shirt/trouser construction | [Bharat Skills, *Dress Making, Volume I of II: Practical*](https://bharatskills.gov.in/pdf/E_Books/Dress_Making_Volume_I_of_II_Practical.pdf): measured drafting exercises for princess-line and umbrella/yoke kameez, salwar/surwar, children's frock, and a denim jeans exercise; construction and grading for men's shirts and trousers | **A for the measured draft exercises; inspect garment by garment.** It is a separate Indian government vocational source, not simply another CBSE edition. Some chapters are construction or block adaptation only. Apply the project's in-copyright method-only policy unless reuse permission is established. |
+| Jeans and adult short-leg jumpsuit | [Atacac Sharewear](https://shop.atacac.com/collections/sharewear): [3D-pocket jeans](https://shop.atacac.com/products/3d-pocket-jeans) and [jumpsuit](https://shop.atacac.com/collections/sharewear/products/jumpsuit) list printable PDF and DXF pattern files and CC BY-SA terms on their item pages | **A geometry offered, files not obtained.** Check download content and the share-alike obligations before adapting or redistributing pattern geometry. |
+| Dresses and neckwear | Isabel De Nyse Conover, *A Complete Course in Dressmaking* (1922): [dress volume](https://archive.org/details/completecoursein06cono) and [men's-clothes volume](https://archive.org/details/completecoursein00cono). The latter has a measured necktie draft; the dress volume discusses multiple dress forms and pattern making. | **Lower-priority lead.** Much of the material adapts existing patterns rather than supplying complete new drafts; inspect individual plates before considering Grade A. US public domain by publication date. |
+
+For T-shirts and related tops, the maintainer supplied
+[WikiHow's neckline overview](https://www.wikihow.com/Types-of-Necklines) as a
+**style vocabulary reference**, not a Grade A geometry source. The page was inaccessible
+to the research agent (robots.txt); a screenshot supplied by the maintainer on
+2026-11-07 shows 27 labeled examples. It names round, scoop, boat, V-neck,
+plunging, halter, jewel, collar, sweetheart, square, surplice, split, mock,
+cowl, turtleneck, one-shoulder, off-the-shoulder, strapless, tie neck, apron
+neck, Queen Anne, asymmetrical neck, keyhole neck, scalloped neck, U-shaped
+neck, illusion neck and convertible neckline. This is a vocabulary and scope
+reference, not a dimensioned pattern source.
+
+For implementation, group simple neckline reshaping (round, scoop, boat, V,
+plunging, jewel, square, sweetheart, split, Queen Anne, asymmetrical, scalloped,
+U-shaped and keyhole) separately from designs
+that change support, closure, collar or bodice structure (halter, surplice,
+cowl, collar, mock, turtleneck, one-shoulder, off-the-shoulder, strapless,
+tie neck, apron neck, illusion and convertible). These groupings are implementation judgments,
+not claims made by the screenshot. Use CBSE's dimensioned neckline constructions
+above for draft geometry, and verify other shapes against measured sources.
+
+The maintainer welcomes additional **inspired designs** based on Open+Pattern. Keep a
+historic source design distinct from a new design inspired by it. An inspired design
+should name and link its direct source and encourage a donation to that source,
+following the existing Open+Pattern attribution practice. Check each source's own
+license before reusing pattern files.
+
+**Decisions (2026-11-09):**
+- **Atacac Sharewear is a reference only.** Its patterns are CC BY-SA, and share-alike
+  would carry over to an adapted design, against the repo's noncommercial licences. Jeans
+  are our own design instead, on our trousers, from public-domain work-trouser drafts.
+- **CBSE and Bharat Skills are queued as inspired designs,** methods and proportions only,
+  under the copyright rule above: never their text, figures or page images.
+
+Still without a newly verified Grade A source in this pass: matched men's and women's
+suit trouser/jacket sets, broader women's trouser cuts, a conventional adult romper,
+bowties and ascots, Henley or jersey drafting, and denim garments beyond jeans.
+More jacket or coat references alone will not fill these gaps.
+
+### Institutional specifications found 2026-11-07
+
+The previous search understated institutional documentation. Search by **manufacturing
+specification**, **purchase description**, **pattern number** and **FOI release**, not
+only by sewing-pattern terms. These examples contain useful numbers, but their
+full cutting patterns are generally separate contractor/government files.
+
+| Institution and direct source | Relevant content | Geometry and access |
+|---|---|---|
+| [UK Ministry of Defence, FOI2024-13877](https://assets.publishing.service.gov.uk/media/677d59f6d119b3453766554d/FOI2024_13877.pdf) | Released specifications include men's No. 2 dress jacket and trousers (DC/MS/6263-2), women's No. 2 dress trousers (DC/MS/7108), and men's long-sleeve shirts (DC/MS/6951). The men's suit lists 99 sizes; women's trousers list 31 sizes. | **B, detailed manufacturing/finished dimensions.** Electronic pattern numbers are identified but the pattern geometry is not in the PDF. The specifications assert Crown copyright and restrictive use terms; inspect rights before use beyond factual methods or measurements. |
+| [US DLA, A-A-55199A necktie specification](https://quicksearch.dla.mil/Transient/9E1920CF835F4B1C90FD84451B5D2913.pdf) | Four-in-hand construction, interlining and placement dimensions; points to government-furnished patterns. | **B.** The separate cutting pattern is not included. |
+| [US Army, GL-PD 19021 necktie purchase description](https://imlive.s3.amazonaws.com/Federal%20Government/ID262543746976429383384241382749370320737/GL-PD_19021_-_Necktie_-_Final_-_15Jul19.pdf) | Regular and short ties: 61 and 57 inches long, both 3 inches at the widest end, with intermediate and narrow-end widths; component list and construction. | **B, strong for a modern tie.** It explicitly says standard cutting patterns are furnished by the government separately. |
+| [US Navy, MIL-N-29113B woman's bow necktie](https://quicksearch.dla.mil/Transient/DADB5BA85AE548BE80BDA0451491FAFC.pdf) | Specification for a pre-tied women's bow necktie. | **B candidate.** Inspect its full dimensional tables and figures; the transient DLA link may expire. |
+
+The UK document demonstrates that modern public-sector suit and trouser data exists.
+Its pattern identifiers give a concrete path for an access request, while its
+published measurements can support an independently drafted pattern. Do not list
+the unpublished government patterns as held Grade A sources.
+
+### Historical-source recheck 2026-11-07
+
+Historical cutting manuals often print the actual draft rather than referring
+the reader to a contractor's separate pattern file. The immediate problem is
+partly catalog use: some usable drafts are already held but were overlooked
+when summarizing gaps.
+
+- [Vincent, *Cutter's Practical Guide… Shirts, Undergarments*](https://archive.org/details/vincentmakingshirts18xx), already held as `vincentmakingshirts18xx`, includes a **football shirt** chapter at book pp. 29–31 with a numbered draft and sleeve/hood instructions. It describes a woven Association-football shirt and distinguishes it from a knitted Rugby jersey. This is a shirt/athletic-wear lead, **not** a knit jersey pattern.
+- [Pivnick, *How to Design Beautiful Clothes* (1949)](https://archive.org/details/pivnickdesignclothes1949), already held as `pivnickdesignclothes1949`, has trousers, slacks and shorts as well as dresses. Recheck those plates before claiming a women's trouser source gap; the gap may be in queued/built variants.
+- [Simons, *Drafting Trousers for Men, Boys, Women* (1945)](https://archive.org/details/simonsdraftingtrousers1945), already held as `simonsdraftingtrousers1945`, is a direct source for women's and men's mid-century trouser cuts. The archive reports a 600 ppi scan and no renewal found in its local CCE search. Check its specific drafts before looking for another trouser manual.
+- Vincent's [*Systems of Cutting All Kinds of Tailor-Made Garments* (1903)](https://archive.org/details/b1108865), already held as `b1108865`, includes proportioned trousers, breeches, waistcoats, and lounge/reefer coats. It may serve tailored sets even where a separate uniform specification is inaccessible.
+
+Search future historical additions by the **specific garment name in the full
+text or contents** and verify the corresponding diagram. A title or catalog
+subject alone does not establish Grade A completeness.
+
+**Additional historical leads located after the archive recheck:**
+
+| Source | Garments supported by the scanned text | Gate before use |
+|---|---|---|
+| [Allington, *Practical Sewing and Dressmaking* (1913)](https://archive.org/details/practicalsewingd00alli) | Book pp. 203–209 give a child's romper draft and cutting directions; the contents also list children's pajamas, a Russian blouse suit, and several dresses. US public domain by date. | **Candidate, not gated.** The catalog says its drafting chart was supplied in a pocket. Confirm that the scan includes that chart, that all romper curves can be reconstructed, and that the print gives a usable independent check. This is a child's romper, not the requested adult one. |
+| [Weidel, *Instruction Book* (1914 edition)](https://archive.org/details/weidelsinstructi01weid) | Contents list a ladies' shirt, middy blouse, skirts, drawers, and a numbered “Japanese Kimono with Straight Front” draft. US public domain by date. | **Candidate, not gated.** The method depends on Weidel's combined square and curves; establish the tool's dimensions and scan completeness. The labeled kimono is a Western tailoring interpretation, not evidence for traditional Japanese construction. |
+| [Blackmore, *The ABC of Cutting and Making Garments for Everyday Needs* (1920)](https://play.google.com/store/books/details/Betsy_L_Blackmore_The_ABC_of_Cutting_and_Making_Ga?id=Jpw_AQAAMAAJ) | Bibliographic description promises drawn patterns, cutting layouts, and construction for everyday garments. Free full-view listing, but plates and garment contents have not been inspected. | **Unverified lead, access may require a browser.** Check exact garment list, numbered dimensions, completeness, scan quality, and US rights before assigning a grade. |
+
+### Locally supplied scans reviewed 2026-11-07
+
+The newly supplied scans add two useful candidates to the expanded wardrobe search. These are **candidate sources**, not garment-level Grade A approvals; check the relevant plate, text, scale and independent dimensions before building a design.
+
+| Work | Scope and finding | Next check |
+|---|---|---|
+| Paul Elle, *The Cutter: A Treatise on Cutting Ladies' Garments* (1903), supplied as `The_Cutter.pdf` | Numbered proportional drafts for women's waist and jacket forms, long and short trousers, skirts, blouses, girls' dresses, vests and riding wear. The scale is printed in the book. Previously named in the sourcing archive, but this scan was not in the corpus manifest. | Prioritize the women's trouser and blouse plates, then a dress or tailored jacket; confirm each draft can be reconstructed without a missing tool or chart. |
+| W. D. F. Vincent, *The Cutter's Practical Guide to Cutting Livery Garments*, supplied as `The Cutters Practical Guide_British Liveries.pdf` | The title page identifies coats, vests, trousers, breeches and gaiters for livery servants. This image-only scan adds a specific ceremonial and occupational clothing source. | Inspect the numbered plates visually for complete dimensions and usable resolution. It is not evidence for non-Western garments or ordinary suit sets. |
+| Walker and Strachan, *Manual of Needlework and Cutting Out*, revised edition (1914), supplied as `Manual_of_Needlework_and_Cutting_Out.pdf` | A substantially revised edition of the Walker work already held in a 1909 scan. Its later cutting section includes blouses, skirts, nightwear, children’s overalls, sleeping suits, and other basic garments. | Compare exact plates with the held edition; keep only drafts that add usable geometry or a distinct garment. |
+| Wakeman and Heller, *Scientific Sewing and Garment Cutting* (1898), supplied as `Scientific_Sewing_and_Garment_Cutting.pdf` | Another scan of a work already in the corpus manifest (`scientificsewing00wake`). It covers basic and children's garments. | Compare image quality and completeness with the held scan before replacing or adding anything. |
+| Vincent, *Making Shirts*, supplied as `vincentmakingshirts18xx.pdf` | Byte-identical to the held `vincentmakingshirts18xx` PDF. | No import needed. |
+
+These scans do not yet supply a verified adult romper, denim draft, neckwear pattern, or non-Western construction source. The livery volume broadens occupational and ceremonial menswear but does not resolve those gaps.
