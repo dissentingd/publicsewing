@@ -86,7 +86,10 @@ export const rules = {
   underbust: ['= chest (no bust)', (z) => mm(z.chest)],
   bustFront: ['0.52 x chest (USDA 1939 front arc proportion)', (z) => 0.52 * mm(z.chest)],
   highBustFront: ['0.52 x chest', (z) => 0.52 * mm(z.chest)],
-  waist: ['CS151-50 waist; babies: = chest, as at toddler size 1', (z) => mm(z.waist ?? z.chest)],
+  // Checked 2026-11-09: Snyder's bare-body waist is 0.86-0.90 of chest under 18 months, 0.95 at 3 years,
+  // where CS151-50 agrees. CS151-50 measured over clothing, a nappy included, and its ratio falls as
+  // children leave them (1.00 at toddler 1, 0.90 by 6), so waist = chest suits clothes worn over one
+  waist: ['CS151-50 waist; babies: = chest, as at toddler size 1 (over a nappy)', (z) => mm(z.waist ?? z.chest)],
   waistBack: ['half the waist', (z) => mm(z.waist ?? z.chest) / 2],
   seat: ['CS151-50 hip (sizes 2, 3); else 1.05 x waist (its size 2 proportion)', (z) => (z.hip ? mm(z.hip) : 1.05 * mm(z.waist ?? z.chest))],
   seatBack: ['0.49 x seat (USDA 1939 back hip arc proportion)', (z) => 0.49 * (z.hip ? mm(z.hip) : 1.05 * mm(z.waist ?? z.chest))],
