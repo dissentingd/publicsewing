@@ -31,6 +31,7 @@ import { categories } from '../../designs/lib/categories.mjs'
 import { designFromSpec } from '../../designs/lib/spec.mjs'
 import { sets, stoutSets } from '../../designs/test/coat-checks.mjs'
 import { all as children } from '../../designs/sizes/children.mjs'
+import { babies } from '../../designs/sizes/babies.mjs'
 
 const site = fileURLToPath(new URL('..', import.meta.url))
 const designsDir = join(site, '..', 'designs')
@@ -69,6 +70,8 @@ const label = (k) =>
     .replace(/^stoutFemale(\d+)$/, 'Stout women $1')
     .replace(/^usdaBoy([BCD])(\d+)$/, 'Boys $2$1')
     .replace(/^usdaGirl([BCD])(\d+)$/, 'Girls $2$1')
+    .replace(/^cs151Baby(\d+)m$/, 'Baby $1 months')
+    .replace(/^cs151Toddler(\d+)$/, 'Toddler $1')
 const group = (obj) => Object.entries(obj).map(([id, measurements]) => ({ id, label: label(id), measurements }))
 const sizes = {
   women: group(Object.fromEntries(Object.entries(adult).filter(([k]) => /Female/.test(k)))),
@@ -76,6 +79,8 @@ const sizes = {
   stout: group(stoutSets),
   girls: group(Object.fromEntries(Object.entries(children).filter(([k]) => /Girl/.test(k)))),
   boys: group(Object.fromEntries(Object.entries(children).filter(([k]) => /Boy/.test(k)))),
+  // offered only to designs whose freesewing.yaml entry has `sizes: babies` or `all`
+  babies: group(babies),
 }
 
 // Measurements each design needs
@@ -226,7 +231,7 @@ hide_table_of_contents: true
 import PatternEditor from '@site/src/components/PatternEditor'
 
 :::info[FreeSewing's design, not ours]
-${name} is ${credit}. We list it so you can draft it here, at our sizes too, children's included.
+${name} is ${credit}. We list it so you can draft it here, ${d.sizes === 'babies' ? 'at our baby and toddler sizes, 3 months to 3 years' : d.sizes === 'all' ? "at our sizes too, babies' and children's included" : "at our sizes too, children's included"}.
 [${name} on FreeSewing](${d.url}) has its documentation, its own testing status and the community
 around it: please go and say thanks. The printed pattern carries FreeSewing's name.
 :::
@@ -238,7 +243,7 @@ ${d.about}.${ours.length ? ` We also draft our own: ${ours.join(', ')}.` : ''}
 Pick a size set or enter your own measurements, change options, then **Export** a tiled PDF
 (A4 or Letter). Your measurements stay in this browser. See [Measure yourself](/measure?for=${id}).
 
-<PatternEditor design="${id}" />
+<PatternEditor design="${id}"${d.sizes ? ` sizes="${d.sizes}"` : ''} />
 `
   )
 })

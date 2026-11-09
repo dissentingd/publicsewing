@@ -13,6 +13,7 @@
   "dependencies": {
     "@freesewing/aaron": "4.10.2",
     "@freesewing/bent": "4.10.2",
+    "@freesewing/bob": "4.10.2",
     "@freesewing/breanna": "4.10.2",
     "@freesewing/brian": "4.10.2",
     "@freesewing/bruce": "4.10.2",
@@ -25,6 +26,9 @@
     "@freesewing/lumina": "4.10.2",
     "@freesewing/lumira": "4.10.2",
     "@freesewing/models": "4.10.2",
+    "@freesewing/onyx": "4.10.2",
+    "@freesewing/otis": "4.10.2",
+    "@freesewing/plugin-bust": "4.10.2",
     "@freesewing/plugin-theme": "^4.10.2",
     "@freesewing/plugin-transform": "^4.10.2",
     "@freesewing/sarah": "4.10.2",

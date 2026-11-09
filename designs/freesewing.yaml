@@ -10,6 +10,8 @@
 #   about: one sentence, in our own words
 #   ours: our designs of the same garment, linked both ways (BUILD_QUEUE.md F11)
 #   needs: packages it imports without declaring them, installed alongside (record new ones here)
+#   sizes: which size sets it's tested at and offered: (none) our 98; `babies` the baby and toddler
+#     sets (sizes/babies.mjs) only; `all` both
 # test/freesewing-designs.test.mjs drafts each at every size set. Their type in the garment
 # family tree is garments/tree.yaml (`freesewing:`).
 upstream: https://freesewing.eu/designs/
@@ -82,3 +84,25 @@ designs:
     name: Flat cap
     category: hats
     about: "A flat cap with a top, a side band and a small stiffened brim, sized from the head measurement"
+  otis:
+    package: '@freesewing/otis'
+    export: Otis
+    name: Baby romper
+    category: babies
+    sizes: babies
+    about: "A knit baby romper with short or long sleeves, a snap placket and bound neck and leg openings, drafted from the waist alone"
+  onyx:
+    package: '@freesewing/onyx'
+    export: Onyx
+    name: One-piece
+    category: babies
+    sizes: all
+    needs: ['@freesewing/plugin-bust']
+    about: "A knit one-piece with raglan sleeves, a neckband or a hood, a zip at the front or back or none, and an optional skirt, for any age from baby up"
+  bob:
+    package: '@freesewing/bob'
+    export: Bob
+    name: Bib
+    category: babies
+    sizes: all
+    about: "A simple bib, sized from the head measurement, with its neck opening, width and length as options"

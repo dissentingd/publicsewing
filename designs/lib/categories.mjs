@@ -11,5 +11,6 @@ export const categories = [
   { id: 'skirts', label: 'Skirts', image: 'pleated-skirt' },
   { id: 'trousers', label: 'Trousers & overalls', image: 'work-pants' },
   { id: 'sleepwear', label: 'Sleepwear & underwear', image: 'nightshirt' },
+  { id: 'babies', label: 'Babies & toddlers', image: 'babies' },
   { id: 'hats', label: 'Hats', image: 'hats' },
 ]

@@ -8,7 +8,11 @@ import BrowserOnly from '@docusaurus/BrowserOnly'
 import sizes from '@site/src/generated/sizes.json'
 
 export const MY_KEY = 'publicsewing-my-measurements'
-const groups = { women: 'Women', men: 'Men', stout: 'Stout figures', girls: 'Girls (USDA 1939)', boys: 'Boys (USDA 1939)' }
+const allGroups = { women: 'Women', men: 'Men', stout: 'Stout figures', girls: 'Girls (USDA 1939)', boys: 'Boys (USDA 1939)', babies: 'Babies and toddlers (CS151-50)' }
+// Which groups a design offers: `sizes` from its freesewing.yaml entry. The baby and toddler sets
+// only where it says so: most designs aren't made for babies
+const groupsFor = (which) =>
+  which === 'babies' ? { babies: allGroups.babies } : which === 'all' ? allGroups : Object.fromEntries(Object.entries(allGroups).filter(([g]) => g !== 'babies'))
 
 export const editorConfig = (design) => ({
   enableBackend: false,
@@ -21,7 +25,8 @@ export const editorConfig = (design) => ({
   hrefNewSet: false,
 })
 
-function SizePicker({ design, Design, useLocalStorageState }) {
+function SizePicker({ design, Design, useLocalStorageState, which }) {
+  const groups = groupsFor(which)
   const [state, setState] = useLocalStorageState(editorConfig(design).stateKey, { defaultValue: {} })
   const [mine, setMine] = useLocalStorageState(MY_KEY, { defaultValue: null })
   const needed = [...Design.patternConfig.measurements, ...Design.patternConfig.optionalMeasurements]
@@ -193,7 +198,7 @@ function HashLanding() {
   return null
 }
 
-export default function PatternEditor({ design }) {
+export default function PatternEditor({ design, sizes: which }) {
   return (
     <BrowserOnly fallback={<div className="pattern-editor">Loading the pattern tool…</div>}>
       {() => {
@@ -205,7 +210,7 @@ export default function PatternEditor({ design }) {
           <div className="pattern-editor">
             <style>{patternStyle}</style>
             <HashLanding />
-            <SizePicker design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} />
+            <SizePicker design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} which={which} />
             <Editor design={design} localDesigns={designs} config={editorConfig(design)} />
             <OtherSoftware design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} />
           </div>
