@@ -2,12 +2,16 @@
 # See garments/README.md. Each node:
 #   name; parent (none for a zone); traits: the elements (elements.yaml) a type needs;
 #   designs: our designs of this type; variants: <design>.<variant> that make it;
+#   freesewing: FreeSewing designs of this type, to list as theirs (credited), not ours;
 #   knit: true when it's usually cut from knit cloth (our blocks are for woven cloth);
 #   note.
 # A node's coverage is worked out by tools/garments.mjs: built (it has designs or variants),
 # buildable (every trait is covered), partial, or gap.
 # Organisation cross-checked against the Getty Art & Architecture Thesaurus (ODC-By 1.0) and
 # Fashionpedia's apparel categories (CC BY 4.0); the tree itself is ours.
+
+# Every design in @freesewing/collection 4.10.2 (npm), for the test to check names against
+freesewingDesigns: [aaron, albert, ashley, bee, bella, benjamin, bent, bibi, bob, breanna, brian, bruce, carlita, carlton, cathrin, charlie, cornelius, crux, devon, diana, florence, florent, gozer, hannah, hi, holmes, hortensia, huey, hugo, jaeger, jane, jett, lily, lucy, lumina, lumira, lunetius, noble, octoplushy, onyx, opal, otis, paco, penelope, percy, polly, sabrina, sandy, sarah, sasha, shale, shelly, shin, simon, simone, skully, sophie, sunny, sven, tamiko, teagan, tiberius, tina, titan, toni, trayvon, tristan, uma, umbra, wahid, walburga, waralee, yuri]
 
 nodes:
   # ======================= Zones =======================
@@ -20,7 +24,7 @@ nodes:
 
   # ======================= Upper body =======================
   shirts: { name: Shirts, parent: upper }
-  dress-shirt-t: { name: Dress shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, hem-curved-tail], designs: [dress-shirt] }
+  dress-shirt-t: { name: Dress shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, hem-curved-tail], designs: [dress-shirt], freesewing: [simon, simone] }
   work-shirt-t: { name: Work shirt, pullover, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-placket, collar-turndown, cuff-band, pocket-patch], designs: [work-shirt] }
   camp-shirt: { name: Camp (service) shirt, parent: shirts, traits: [body-boxy, closure-buttons, collar-convertible, pocket-patch-flap, sleeve-set-in], designs: [service-shirt] }
   oxford-button-down: { name: Button-down collar shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, hem-curved-tail], note: "A dress shirt variant: buttons at the collar points" }
@@ -36,7 +40,7 @@ nodes:
   shirtwaist-blouse: { name: Shirtwaist blouse, parent: blouses, traits: [body-yoke, closure-buttons, collar-turndown, sleeve-gathered, cuff-barrel], note: "The shirtwaist dress's bodice" }
   peasant-blouse: { name: Peasant blouse, parent: blouses, traits: [body-yoke, neck-round, gathers, sleeve-gathered, waist-drawstring] }
   bow-blouse: { name: Tie-neck blouse, parent: blouses, traits: [body-yoke, closure-buttons, collar-tie, sleeve-gathered, cuff-barrel] }
-  wrap-blouse: { name: Wrap blouse, parent: blouses, traits: [body-darted-bodice, neck-surplice, closure-wrap, sleeve-set-in] }
+  wrap-blouse: { name: Wrap blouse, parent: blouses, traits: [body-darted-bodice, neck-surplice, closure-wrap, sleeve-set-in], freesewing: [tina] }
   shell-top: { name: Shell top, parent: blouses, traits: [body-darted-bodice, neck-round, sleeveless, closure-zip-back] }
   smock-top: { name: Smock, parent: blouses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered, cuff-band], designs: [childrens-smock] }
   choli-t: { name: Choli (saree blouse), parent: blouses, traits: [body-darted-bodice, sleeve-short, closure-buttons], note: "Queue 56, inspired by CBSE" }
@@ -44,18 +48,18 @@ nodes:
   tunic-top: { name: Tunic top, parent: blouses, traits: [body-yoke, neck-split, hem-side-slits] }
 
   knit-tops: { name: Knit tops, parent: upper }
-  t-shirt-t: { name: T-shirt, parent: knit-tops, traits: [body-knit, neck-round, sleeve-set-in], designs: [t-shirt], knit: true, note: "Built by another agent; to be reviewed" }
+  t-shirt-t: { name: T-shirt, parent: knit-tops, traits: [body-knit, neck-round, sleeve-set-in], designs: [t-shirt], knit: true, note: "Built by another agent; to be reviewed", freesewing: [teagan] }
   polo: { name: Polo shirt, parent: knit-tops, traits: [body-knit, closure-placket, collar-turndown, cuff-rib], knit: true }
   henley: { name: Henley, parent: knit-tops, traits: [body-knit, closure-placket, neck-round], knit: true }
   rugby-shirt: { name: Rugby shirt, parent: knit-tops, traits: [body-knit, closure-placket, collar-turndown, cuff-rib], knit: true }
-  sweatshirt: { name: Sweatshirt, parent: knit-tops, traits: [body-knit, sleeve-raglan, cuff-rib, waistband-jacket], knit: true }
-  hoodie: { name: Hoodie, parent: knit-tops, traits: [body-knit, hood, pocket-kangaroo, cuff-rib, waistband-jacket], knit: true }
+  sweatshirt: { name: Sweatshirt, parent: knit-tops, traits: [body-knit, sleeve-raglan, cuff-rib, waistband-jacket], knit: true, freesewing: [sven] }
+  hoodie: { name: Hoodie, parent: knit-tops, traits: [body-knit, hood, pocket-kangaroo, cuff-rib, waistband-jacket], knit: true, freesewing: [hugo, huey, hannah, yuri] }
   turtleneck-top: { name: Turtleneck, parent: knit-tops, traits: [body-knit, neck-raised], knit: true }
-  tank-top: { name: Tank top, parent: knit-tops, traits: [body-knit, sleeveless, neck-scoop], knit: true }
+  tank-top: { name: Tank top, parent: knit-tops, traits: [body-knit, sleeveless, neck-scoop], knit: true, freesewing: [aaron] }
   cardigan: { name: Cardigan, parent: knit-tops, traits: [body-knit, closure-buttons, neck-v, cuff-rib], knit: true }
 
   waistcoats: { name: Waistcoats and vests, parent: upper }
-  waistcoat-sb: { name: Single-breasted waistcoat, parent: waistcoats, traits: [body-boxy, sleeveless, neck-v, closure-buttons, front-cutaway, pocket-welt, lining], designs: [waistcoat] }
+  waistcoat-sb: { name: Single-breasted waistcoat, parent: waistcoats, traits: [body-boxy, sleeveless, neck-v, closure-buttons, front-cutaway, pocket-welt, lining], designs: [waistcoat], freesewing: [wahid] }
   waistcoat-db: { name: Double-breasted waistcoat, parent: waistcoats, traits: [body-boxy, sleeveless, neck-v, closure-double-breasted, front-cutaway, pocket-welt, lining], designs: [db-waistcoat] }
   bar-jacket: { name: Bartender's jacket, parent: waistcoats, traits: [body-boxy, collar-stand, closure-buttons, front-cutaway], designs: [bar-vest] }
   waistcoat-shawl: { name: Shawl-collar (evening) waistcoat, parent: waistcoats, traits: [body-boxy, sleeveless, collar-shawl, closure-buttons, front-cutaway, lining] }
@@ -64,7 +68,7 @@ nodes:
   # ======================= Jackets (tailored and casual) =======================
   jackets: { name: Jackets, parent: upper }
   suit-jackets: { name: Suit and sports jackets, parent: jackets }
-  sack-coat-t: { name: Single-breasted suit jacket, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-notched, closure-buttons, pocket-welt, pocket-flap-set-in, vent-back, lining], designs: [suit-jacket, boys-suit-jacket], note: "Simons' sack coat is queue 38" }
+  sack-coat-t: { name: Single-breasted suit jacket, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-notched, closure-buttons, pocket-welt, pocket-flap-set-in, vent-back, lining], designs: [suit-jacket, boys-suit-jacket], note: "Simons' sack coat is queue 38", freesewing: [jaeger] }
   db-jacket: { name: Double-breasted suit jacket, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-peak, closure-double-breasted, pocket-welt, lining], note: "Queue 39, probably a variant of 38" }
   dinner-jacket-t: { name: Dinner jacket (tuxedo), parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-shawl, closure-buttons, pocket-welt, lining], note: "Queue 40" }
   norfolk: { name: Norfolk jacket, parent: suit-jackets, traits: [body-boxy, pleats-box-body, belt, pocket-patch, sleeve-set-in], designs: [norfolk-jacket] }
@@ -89,12 +93,12 @@ nodes:
   field: { name: Field jacket, parent: work-jackets, traits: [body-box-darted, closure-buttons, pocket-patch-flap, belt], designs: [field-jacket, hunting-coat] }
   tunic-military: { name: Military tunic, parent: work-jackets, traits: [body-three-piece, collar-stand, sleeve-two-piece, pocket-welt], designs: [military-tunic] }
   scout: { name: Scout coat, parent: work-jackets, traits: [body-three-piece, collar-turndown, pocket-patch-flap], designs: [scout-coat] }
-  denim-jacket-t: { name: Denim (trucker) jacket, parent: work-jackets, traits: [body-boxy, yoke-front, yoke-shirt-back, tucks, pocket-patch-flap, waistband-jacket, cuff-barrel, collar-turndown], note: "Queue 47, our design" }
+  denim-jacket-t: { name: Denim (trucker) jacket, parent: work-jackets, traits: [body-boxy, yoke-front, yoke-shirt-back, tucks, pocket-patch-flap, waistband-jacket, cuff-barrel, collar-turndown], note: "Queue 47, our design", freesewing: [devon] }
   casual-jackets: { name: Casual jackets, parent: jackets }
   windbreaker-t: { name: Windbreaker, parent: casual-jackets, traits: [body-boxy, hood, closure-zip-front, yoke-front, pocket-welt], designs: [windbreaker] }
   anorak-t: { name: Anorak (pullover), parent: casual-jackets, traits: [body-yoke, hood, closure-placket, pocket-patch], designs: [anorak] }
   quilted: { name: Quilted jacket, parent: casual-jackets, traits: [body-boxy, quilting, hood, closure-buttons, pocket-welt], designs: [quilted-jacket] }
-  bomber: { name: Bomber (flight) jacket, parent: casual-jackets, traits: [body-boxy, closure-zip-front, sleeve-raglan, cuff-rib, waistband-jacket, pocket-welt], note: "Rib parts are knit" }
+  bomber: { name: Bomber (flight) jacket, parent: casual-jackets, traits: [body-boxy, closure-zip-front, sleeve-raglan, cuff-rib, waistband-jacket, pocket-welt], note: "Rib parts are knit", freesewing: [jett] }
   harrington: { name: Harrington jacket, parent: casual-jackets, traits: [body-boxy, sleeve-raglan, closure-zip-front, collar-stand, cuff-rib, waistband-jacket] }
   safari: { name: Safari jacket, parent: casual-jackets, traits: [body-boxy, collar-convertible, pocket-cargo, belt, closure-buttons] }
   shacket: { name: Shirt jacket (shacket), parent: casual-jackets, traits: [body-boxy, collar-shirt, closure-buttons, pocket-patch-flap] }
@@ -106,7 +110,7 @@ nodes:
   womens-peacoat-t: { name: Women's peacoat, parent: peacoats, traits: [body-princess, closure-double-breasted, collar-storm], designs: [womens-peacoat] }
   mackinaw-t: { name: Mackinaw, parent: peacoats, traits: [body-boxy, closure-double-breasted, collar-shawl, pocket-patch-flap, belt], designs: [mackinaw] }
   overcoats: { name: Overcoats, parent: coats }
-  overcoat-t: { name: Overcoat, parent: overcoats, traits: [body-boxy, closure-buttons, collar-notched, vent-back, lining], designs: [overcoat, box-overcoat, topcoat] }
+  overcoat-t: { name: Overcoat, parent: overcoats, traits: [body-boxy, closure-buttons, collar-notched, vent-back, lining], designs: [overcoat, box-overcoat, topcoat], freesewing: [carlita] }
   fitted-overcoat-t: { name: Fitted (Chesterfield) overcoat, parent: overcoats, traits: [body-three-piece, closure-buttons, collar-notched, vent-back, lining], designs: [fitted-overcoat] }
   ulster-t: { name: Ulster, parent: overcoats, traits: [body-boxy, closure-double-breasted, collar-notched, belt], designs: [ulster] }
   balmacaan-t: { name: Balmacaan, parent: overcoats, traits: [body-boxy, sleeve-raglan, collar-stand, closure-buttons], designs: [balmacaan, mantle] }
@@ -125,7 +129,7 @@ nodes:
   cape-t: { name: Circular cape, parent: capes, traits: [cape-circle, collar-stand], designs: [cape] }
   dolman-t: { name: Dolman cape, parent: capes, traits: [sleeve-dolman, body-princess], designs: [dolman-cape] }
   cape-overcoat-t: { name: Cape overcoat, parent: capes, traits: [cape-circle, collar-turndown], designs: [cape-overcoat] }
-  inverness-t: { name: Inverness coat, parent: capes, traits: [body-box-darted, cape-shoulder, collar-storm], designs: [inverness-coat] }
+  inverness-t: { name: Inverness coat, parent: capes, traits: [body-box-darted, cape-shoulder, collar-storm], designs: [inverness-coat], freesewing: [carlton] }
   poncho: { name: Poncho, parent: capes, traits: [flat-polygon, hood] }
 
   # ======================= Lower body =======================
@@ -133,7 +137,7 @@ nodes:
   tailored-trousers: { name: Tailored (suit) trousers, parent: trousers, traits: [leg-tailored, closure-fly, darts, pocket-trouser-slant, pocket-trouser-back-jetted, waistband, belt-loops], designs: [suit-trousers] }
   pleated-trousers: { name: Pleated trousers, parent: trousers, traits: [leg-tailored, pleats-trouser, closure-fly, pocket-trouser-slant, waistband], designs: [peg-pants] }
   slacks-t: { name: Slacks, parent: trousers, traits: [leg-tailored, closure-fly, pocket-trouser-slant, waistband, belt-loops], note: "Queue 43" }
-  chinos: { name: Chinos (cotton slacks), parent: trousers, traits: [leg-tailored, closure-fly, pocket-trouser-slant, pocket-trouser-back-jetted, waistband, belt-loops], note: "Queue 43, a variant" }
+  chinos: { name: Chinos (cotton slacks), parent: trousers, traits: [leg-tailored, closure-fly, pocket-trouser-slant, pocket-trouser-back-jetted, waistband, belt-loops], note: "Queue 43, a variant", freesewing: [charlie] }
   work-trousers: { name: Work trousers, parent: trousers, traits: [leg-tailored, closure-fly, pocket-patch, waistband], designs: [work-pants] }
   overall-trousers: { name: Overall pants, parent: trousers, traits: [leg-in-one, closure-fly, waistband], designs: [overall-pants] }
   jeans-t: { name: Jeans, parent: trousers, traits: [leg-tailored, closure-fly, yoke-trouser-back, pocket-scoop, pocket-coin, pocket-trouser-back-patch, waistband, belt-loops], note: "Queue 46, our design" }
@@ -141,14 +145,14 @@ nodes:
   sailor-trousers: { name: Sailor trousers, parent: trousers, traits: [leg-in-one, leg-flared, closure-fall-front], designs: [sailor-pants] }
   womens-trousers-t: { name: Women's trousers, parent: trousers, traits: [leg-tailored, darts, closure-zip-back, waistband], note: "Queue 45" }
   wide-leg: { name: Wide-leg (palazzo) trousers, parent: trousers, traits: [leg-tailored, waist-faced, closure-zip-back] }
-  drawstring-trousers: { name: Drawstring trousers, parent: trousers, traits: [leg-gathered, waist-drawstring, pocket-on-seam] }
+  drawstring-trousers: { name: Drawstring trousers, parent: trousers, traits: [leg-gathered, waist-drawstring, pocket-on-seam], freesewing: [paco] }
   salwar-t: { name: Salwar, parent: trousers, traits: [leg-gathered, waist-drawstring], note: "Queue 53, inspired by CBSE" }
   churidar-t: { name: Churidar, parent: trousers, traits: [body-bias, waist-drawstring, leg-gathered], note: "Queue 55, inspired by CBSE" }
   joggers: { name: Joggers, parent: trousers, traits: [leg-gathered, waist-elastic, leg-rib-cuff, pocket-on-seam], knit: true }
   breeches-family: { name: Breeches and knee trousers, parent: lower }
   breeches-t: { name: Riding breeches, parent: breeches-family, traits: [leg-breeches, closure-side-opening, closure-fly, waistband], designs: [breeches] }
   jodhpurs-t: { name: Jodhpurs, parent: breeches-family, traits: [leg-breeches, closure-fly, waistband], note: "Queue 48" }
-  knickers-t: { name: Knickerbockers, parent: breeches-family, traits: [leg-gathered, leg-breeches, waistband], designs: [boys-knickers, golf-pants, cycling-breeches] }
+  knickers-t: { name: Knickerbockers, parent: breeches-family, traits: [leg-gathered, leg-breeches, waistband], designs: [boys-knickers, golf-pants, cycling-breeches], freesewing: [cornelius] }
   knee-pants-t: { name: Knee pants, parent: breeches-family, traits: [leg-tailored, leg-shorts, closure-fly], designs: [knee-pants, scout-pants] }
   shorts-family: { name: Shorts, parent: lower }
   shorts-t: { name: Tailored shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts, closure-fly, waistband, pocket-trouser-slant], note: "Queue 44" }
@@ -158,13 +162,13 @@ nodes:
   skirts: { name: Skirts, parent: lower }
   gored-t: { name: Gored skirt, parent: skirts, traits: [skirt-gored, waistband, closure-zip-back], designs: [gored-skirt, four-gore-skirt] }
   a-line: { name: A-line skirt, parent: skirts, traits: [skirt-two-piece, waist-faced, closure-zip-back], designs: [two-piece-skirt] }
-  circle: { name: Circle skirt, parent: skirts, traits: [skirt-circular, waistband, closure-zip-back], designs: [circular-skirt] }
+  circle: { name: Circle skirt, parent: skirts, traits: [skirt-circular, waistband, closure-zip-back], designs: [circular-skirt], freesewing: [sandy] }
   pleated: { name: Pleated skirt, parent: skirts, traits: [skirt-gored, pleats-skirt, waistband], designs: [pleated-skirt] }
   kilt-t: { name: Kilt and wrap skirt, parent: skirts, traits: [skirt-wrap, pleats-skirt, closure-wrap], designs: [kilt] }
   dirndl: { name: Gathered (dirndl) skirt, parent: skirts, traits: [skirt-gathered, waistband], designs: [gathered-skirt] }
   tunic-overskirt: { name: Tunic (overskirt), parent: skirts, traits: [skirt-radial-tunic, darts], designs: [tunic-skirt] }
   divided: { name: Divided skirt and culottes, parent: skirts, traits: [skirt-divided, waistband, closure-zip-back], designs: [culottes, riding-skirt, apron-riding-skirt] }
-  pencil: { name: Pencil skirt, parent: skirts, traits: [skirt-pencil, darts, waist-faced, closure-zip-back] }
+  pencil: { name: Pencil skirt, parent: skirts, traits: [skirt-pencil, darts, waist-faced, closure-zip-back], freesewing: [penelope] }
   yoke-skirt: { name: Yoke skirt, parent: skirts, traits: [skirt-two-piece, yoke-skirt-hip, closure-zip-back] }
   tiered: { name: Tiered skirt, parent: skirts, traits: [skirt-tiered, gathers, waist-elastic] }
 
@@ -176,7 +180,7 @@ nodes:
   frock-t: { name: Child's frock, parent: dresses, traits: [body-yoke, waist-seam, skirt-gathered, closure-buttons], designs: [frock] }
   childs-dress-t: { name: Child's dress, parent: dresses, traits: [body-yoke, collar-flat], note: "Queue 52" }
   sheath: { name: Sheath dress, parent: dresses, traits: [body-darted-bodice, neck-round, sleeveless, closure-zip-back] }
-  fit-and-flare: { name: Fit-and-flare dress, parent: dresses, traits: [body-darted-bodice, waist-seam, skirt-circular, closure-zip-back] }
+  fit-and-flare: { name: Fit-and-flare dress, parent: dresses, traits: [body-darted-bodice, waist-seam, skirt-circular, closure-zip-back], freesewing: [sasha] }
   wrap-dress: { name: Wrap dress, parent: dresses, traits: [body-darted-bodice, neck-surplice, closure-wrap, waist-seam] }
   empire-dress: { name: Empire-waist dress, parent: dresses, traits: [body-yoke, waist-raised, skirt-gathered] }
   drop-waist: { name: Drop-waist dress, parent: dresses, traits: [body-yoke, waist-dropped, pleats-skirt] }
@@ -190,9 +194,9 @@ nodes:
   jumper-dress: { name: Jumper (pinafore dress), parent: pinafores, traits: [body-darted-bodice, sleeveless, neck-square, skirt-gored] }
   one-pieces: { name: Jumpsuits, overalls and rompers, parent: whole }
   jumpsuit-t: { name: Jumpsuit, parent: one-pieces, traits: [body-flat, closure-buttons, belt], designs: [jumpsuit] }
-  bib-overall-t: { name: Bib overall, parent: one-pieces, traits: [leg-in-one, bib, closure-side-opening], designs: [bib-overall] }
+  bib-overall-t: { name: Bib overall, parent: one-pieces, traits: [leg-in-one, bib, closure-side-opening], designs: [bib-overall], freesewing: [opal] }
   coverall: { name: Coverall (boiler suit), parent: one-pieces, traits: [body-boxy, leg-tailored, closure-zip-front, collar-turndown, pocket-patch] }
-  romper: { name: Romper, parent: one-pieces, traits: [body-yoke, leg-gathered, leg-shorts, closure-buttons] }
+  romper: { name: Romper, parent: one-pieces, traits: [body-yoke, leg-gathered, leg-shorts, closure-buttons], freesewing: [otis] }
   dungarees: { name: Dungarees, parent: one-pieces, traits: [leg-tailored, bib, pocket-patch, closure-side-opening] }
   robes: { name: Robes and gowns, parent: whole }
   dressing-gown-t: { name: Dressing gown, parent: robes, traits: [body-boxy, collar-shawl, closure-wrap, belt, pocket-patch], designs: [dressing-gown] }
@@ -214,12 +218,37 @@ nodes:
 
   # ======================= Neckwear and accessories =======================
   neckwear: { name: Neckwear, parent: accessory }
-  necktie-t: { name: Necktie, parent: neckwear, traits: [flat-bias-tie], note: "Queue 50" }
-  bow-tie-t: { name: Bow tie, parent: neckwear, traits: [flat-bias-tie], note: "Queue 51" }
+  necktie-t: { name: Necktie, parent: neckwear, traits: [flat-bias-tie], note: "Queue 50", freesewing: [trayvon] }
+  bow-tie-t: { name: Bow tie, parent: neckwear, traits: [flat-bias-tie], note: "Queue 51", freesewing: [benjamin] }
   ascot: { name: Ascot and cravat, parent: neckwear, traits: [flat-bias-tie] }
   neckerchief: { name: Neckerchief, parent: neckwear, traits: [flat-polygon] }
   aprons-family: { name: Aprons, parent: accessory }
-  apron-t: { name: Work aprons, parent: aprons-family, traits: [flat-polygon, pocket-patch], designs: [aprons] }
+  apron-t: { name: Work aprons, parent: aprons-family, traits: [flat-polygon, pocket-patch], designs: [aprons], freesewing: [albert] }
   headwear: { name: Headwear, parent: accessory }
-  cap-flat: { name: Flat cap, parent: headwear, note: "Needs a head block; not on FreeSewing's woven blocks" }
+  cap-flat: { name: Flat cap, parent: headwear, traits: [headwear-panels], freesewing: [florent] }
   bucket-hat: { name: Bucket hat, parent: headwear }
+
+  # --- FreeSewing designs with no type above (2026-11-09) ---
+  princess-top: { name: Princess-seam fitted top, parent: blouses, traits: [body-princess, neck-round], freesewing: [tristan] }
+  draped-top: { name: Draped (cowl) neck top, parent: blouses, traits: [body-darted-bodice, neck-cowl], freesewing: [diana] }
+  zero-waste-top: { name: Zero-waste top, parent: blouses, traits: [body-flat, sleeve-kimono], freesewing: [tamiko] }
+  slip-dress: { name: Slip dress, parent: dresses, traits: [body-darted-bodice, sleeveless, gathers], freesewing: [sophie] }
+  wrap-trousers: { name: Wrap trousers, parent: trousers, traits: [leg-tailored, closure-wrap], freesewing: [waralee] }
+  climbing-trousers: { name: Climbing and hiking trousers, parent: trousers, traits: [leg-tailored, crotch-gusset, closure-fly], freesewing: [crux] }
+  a-line-shorts: { name: A-line shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts], freesewing: [ashley] }
+  casual-shorts: { name: Casual shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts, waistband], freesewing: [shale] }
+  fall-front-shorts: { name: Fall-front shorts, parent: shorts-family, traits: [leg-gathered, leg-shorts, closure-fall-front], freesewing: [percy] }
+  baby-one-piece: { name: Baby one-piece, parent: one-pieces, traits: [body-knit, leg-knit, closure-snaps], knit: true, freesewing: [onyx] }
+  boxer-briefs: { name: Boxer briefs, parent: underwear, traits: [underwear-knit], knit: true, freesewing: [bruce] }
+  briefs: { name: Briefs, parent: underwear, traits: [underwear-knit], knit: true, freesewing: [uma, umbra] }
+  corset: { name: Corset, parent: underwear, traits: [corsetry, closure-lacing], freesewing: [cathrin] }
+  active: { name: Swim and activewear, parent: sleep }
+  leggings: { name: Leggings, parent: active, traits: [leg-knit, waist-elastic], knit: true, freesewing: [lily, lumina, lumira] }
+  swim-trunks: { name: Swim trunks, parent: active, traits: [leg-gathered, leg-shorts, waist-drawstring], freesewing: [shin] }
+  bikini-top: { name: Bikini top, parent: active, traits: [swimwear-knit], knit: true, freesewing: [bee] }
+  sports-top: { name: Sports top, parent: active, traits: [body-knit, swimwear-knit], knit: true, freesewing: [sabrina] }
+  rash-guard: { name: Raglan swim shirt (rash guard), parent: active, traits: [body-knit, sleeve-raglan], knit: true, freesewing: [shelly] }
+  deerstalker: { name: Deerstalker hat, parent: headwear, traits: [headwear-panels], freesewing: [holmes] }
+  baby-bib: { name: Baby bib, parent: accessory, traits: [flat-polygon], freesewing: [bob] }
+  bags: { name: Bags, parent: accessory, freesewing: [hortensia] }
+  historical: { name: Historical dress (FreeSewing's; not our scope), parent: accessory, freesewing: [jane, lucy, lunetius, tiberius, walburga, sunny] }

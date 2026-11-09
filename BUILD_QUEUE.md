@@ -64,6 +64,8 @@ Each lane is the shared code its items are likely to touch. One agent per lane a
 | E | `lib/jacket.mjs` | women's jackets and coats (Breanna) |
 | F | `lib/body3.mjs` | three-piece jackets (Bent) |
 | G | `lib/flat.mjs` or a new lib file | flat-cut and new families (capes, aprons) |
+| H | `designs/freesewing.yaml`, `site/` | FreeSewing designs listed as theirs |
+| I | `designs/blocks/`, a new checks module | new blocks (Bella, Bibi) |
 
 `lib/spec.mjs`, `labels.yaml`, `tools/variants.json`, the READMEs and `PROMPTS.md` are touched
 by every item; their changes are additions, so pull and rebase before committing and expect
@@ -147,20 +149,68 @@ are probably variants of the row above them, not designs: decide after reading t
 | 40 | `dinner-jacket` | Tuxedo | Same book, Young Men's Tuxedo, Diagram X | `sack-coat` | D | Faced lapels, one button | open |
 | 41 | `tailcoat` | Full dress coat | Same book, Diagram XII | `prince-albert-jacket` or `surtout` | D | Cut away at the waist in front; tails behind | open |
 | 42 | `frock-coat` | Men's single-breasted frock coat | Same book, Diagram XI | `surtout` | D | Waist seam and skirt | open |
-| 43 | `slacks` | Men's slacks with a continuous waistband | Simons, *Drafting Trousers* (1945) `simonsdraftingtrousers1945` (Cloudbox), pp. 42–43; cotton slacks p. 47 | `suit-trousers` | A | 1945: SOURCING.md found no renewal; confirm before use. Cotton slacks (chinos) as a variant | open |
-| 44 | `shorts` | Shorts, men's and women's | Same book, men's p. 78, boys' p. 104, women's p. 121 | `slacks` | A | One design at any size if the drafts agree | open |
+| 43 | `slacks` | Men's slacks with a continuous waistband | Simons, *Drafting Trousers* (1945) `simonsdraftingtrousers1945` (Cloudbox), pp. 42–43; cotton slacks p. 47 | `suit-trousers` | A | 1945: SOURCING.md found no renewal; confirm before use. Cotton slacks (chinos) as a variant; FreeSewing's Charlie is listed too (F5) | open |
+| 44 | `shorts` | Shorts, men's and women's | Same book, men's p. 78, boys' p. 104, women's p. 121 | `slacks` | A | One design at any size if the drafts agree. Covers the `leg-shorts` element; FreeSewing's shorts are listed too (F6) | open |
 | 45 | `womens-trousers` | Women's trousers and pleated slacks | Same book, pp. 116 and 119; Pivnick 1949 ch. XX, p. 261 | `suit-trousers` | A | Pleated slacks as a variant | open |
-| 46 | `jeans` | Five-pocket jeans | **Our design:** Simons 1945 work trousers p. 33 for the leg; CBSE and Bharat Skills denim exercises for methods only | `work-pants` | A | Back yoke, patch back pockets, scooped front pockets, coin pocket, fly, waistband; rivet marks. Atacac is a reference only (SOURCING.md, Decisions) | open |
-| 47 | `denim-jacket` | Denim jacket (trucker) | **Our design**, on the field jacket or chore coat | `field-jacket` or `chore-coat` | D | Front and back yokes, chest flap pockets, waistband, button cuffs. No held draft: say so in the brief | open |
+| 46 | `jeans` | Five-pocket jeans | **Our design:** Simons 1945 work trousers p. 33 for the leg; CBSE and Bharat Skills denim exercises for methods only | `work-pants` | A | Back yoke, patch back pockets, scooped front pockets, coin pocket, fly, waistband; rivet marks. Atacac is a reference only (SOURCING.md, Decisions). Needs four new elements: trouser back yoke, scooped pocket, coin pocket, patch back pockets | open |
+| 47 | `denim-jacket` | Denim jacket (trucker) | **Our design**, on the field jacket or chore coat | `field-jacket` or `chore-coat` | D | Front and back yokes, chest flap pockets, waistband, button cuffs. No held draft: say so in the brief | dropped 2026-11-09: FreeSewing's Devon has these features; list it instead |
 | 48 | `jodhpurs` | Jodhpurs, men's and women's | Simons 1945, pp. 70 and 133 | `breeches` | A | Flared thigh, close leg to the ankle | open |
 | 49 | `football-shirt` | Woven pullover sports shirt | Vincent 1890 `vincentmakingshirts18xx` (tracked), pp. 29–31 | `work-shirt` | C | Casual: placket front, collar; the book separates it from a knitted jersey | open |
-| 50 | `necktie` | Four-in-hand necktie | US Army purchase description GL-PD 19021 (2019, US government work); DLA A-A-55199A | — | G | Not held: fetch first. Regular 61 in and short 57 in, 3 in at the wide end. A bias `polygon` piece with interlining | open |
-| 51 | `bow-tie` | Bow tie | US Navy MIL-N-29113B | `necktie` | G | Not held: fetch and check its tables first | open |
+| 50 | `necktie` | Four-in-hand necktie | US Army purchase description GL-PD 19021 (2019, US government work); DLA A-A-55199A | — | G | Not held: fetch first. Regular 61 in and short 57 in, 3 in at the wide end. A bias `polygon` piece with interlining | dropped 2026-11-09: FreeSewing's Trayvon covers it (width and length options); list it instead |
+| 51 | `bow-tie` | Bow tie | US Navy MIL-N-29113B | `necktie` | G | Not held: fetch and check its tables first | dropped 2026-11-09: FreeSewing's Benjamin covers it (four bow shapes, three end shapes); list it instead |
 | 52 | `childs-dress` | Child's dress | Pivnick 1949, Patterns 105 and 106, pp. 296–305 | `shift-dress` | C | Two patterns: variants if one base serves | open |
 | 53 | `salwar` | Salwar trousers | **Inspired by** CBSE, *Basic Pattern Development*, practicals | `pyjama-trousers` | A | Methods and proportions only (SOURCING.md, Decisions). Not held: fetch first | open |
 | 54 | `kameez` | Kameez (long tunic), with kurta variants | **Inspired by** CBSE practicals; Bharat Skills, *Dress Making* vol. I | `shift-dress` | C | Methods only. Side slits, A-line and kalidar variants | open |
 | 55 | `churidar` | Churidar pyjama | **Inspired by** CBSE practicals | `salwar` | A | Methods only; bias-cut, gathered at the ankle | open |
-| 56 | `choli` | Choli (saree blouse) | **Inspired by** CBSE practicals | `fitted-jacket` | E | Methods only; darted, short | open |
+| 56 | `choli` | Choli (saree blouse) | **Inspired by** CBSE practicals | Bella block (B1) | I | Methods only; darted, short. After B1 | open |
+
+### FreeSewing designs to list (2026-11-09)
+
+Decided 2026-11-09: the catalog now grows with FreeSewing's own designs as well as ours. They are listed
+under **Inspired Designs, by category**, each page crediting and linking FreeSewing and that design's
+page there, and keeping FreeSewing's title brand on the printed pattern. They're npm dependencies at
+the pinned FreeSewing version, wrapped, never re-specced as ours: no `spec.yaml`, no BRIEF, no muslin
+status. A listed design adds a garment, not an element: see Blocks below for the ones our library
+builds on. Their garment types are in `designs/garments/tree.yaml` (`freesewing:`).
+
+| # | Item | What | Lane | Notes | Status |
+|---|---|---|---|---|---|
+| F0 | Listing mechanism | `designs/freesewing.yaml` (the registry), `test/freesewing-designs.test.mjs` (drafts at every set, no errors or NaN), pages from `site/scripts/generate.mjs` with a credit box and no brief or Variants, the Inspired Designs listing by category, and `collection.mjs` with each design's own i18n | H | Needs each design's undeclared dependencies installed too (record them in your notes). With it: FreeSewing's MIT notice for `site/patches/` and `site/static/img/measure/`, the LICENSE wording, and README and site text saying some designs are FreeSewing's. Editor: turn on `editSettings` and `timing`; point the `docs` view at our pages | open |
+| F1 | Pilot: Teagan, Sven, Hugo, Bruce, Uma | T-shirt, sweatshirt, raglan hoodie, boxer briefs, briefs | H | After F0. Teagan sits beside our `t-shirt` | open |
+| F2 | Lily, Lumina, Lumira, Aaron, Jett, Florent | Leggings, tank top, bomber jacket, flat cap | H | | open |
+| F3 | Devon, Trayvon, Benjamin | Denim jacket, necktie, bow tie | H | In place of queue items 47, 50 and 51 | open |
+| F4 | Huey, Hannah, Yuri | Zip hoodie, women's hoodie, hooded sweater | H | Hannah imports `@freesewing/toni` without declaring it | open |
+| F5 | Charlie, Penelope, Paco, Waralee, Crux | Chinos, pencil skirt, summer trousers, wrap trousers, climbing trousers | H | Fill types we lack. Crux failed at one children's set in the probe | open |
+| F6 | Ashley, Shale, Percy | A-line, casual and fall-front shorts | H | Shale imports `@freesewing/i18n` without declaring it. Queue 44 (Simons) is still ours | open |
+| F7 | Tina, Tristan, Diana, Tamiko, Sophie, Sasha | Wrap top, princess top, draped-neck top, zero-waste top, slip dress, skater dress | H | Not yet probed | open |
+| F8 | Shin, Bee, Sabrina, Shelly | Swim trunks, bikini top, sports tops, swim shirt | H | Not yet probed | open |
+| F9 | Cathrin, Holmes, Hortensia | Corset, deerstalker, handbag | H | | open |
+| F10 | Otis, Onyx, Bob | Baby romper, one-piece, bib | H | Below our children's range: needs baby measurement sets first | blocked (baby sizes) |
+| — | Simon, Simone, Jaeger, Wahid, Carlton, Carlita, Cornelius, Opal, Sandy, Albert | Garments we already build | H | List as "FreeSewing's version" or not at all: the maintainer decides | open (decision) |
+| — | Jane, Lucy, Lunetius, Tiberius, Walburga, Sunny; toys and costumes | Historical dress, plush toys | — | Out of scope | not planned |
+
+### Blocks: elements our library can't build yet (2026-11-09)
+
+The missing elements that block the most garment types (`designs/garments/COVERAGE.md`, the first
+table). Adopting a FreeSewing block the way we use Brian, under our landmark names in `designs/blocks/`
+with a checks module, lets our own specs build on it. Each opens a branch of the tree.
+
+| # | Item | Element it covers | Types it unblocks | Lane | Notes | Status |
+|---|---|---|---|---|---|---|
+| B1 | Bella block | `body-darted-bodice` | Shell top, choli, sheath dress, wrap dress, sundress, jumper dress | I | FreeSewing's womenswear bodice block. Then queue 56 (choli) starts from it | open |
+| B2 | Bibi block, and knit checks | `body-knit` | Polo, henley, rugby shirt, turtleneck, cardigan, T-shirt dress, undershirt | I | FreeSewing's knit top block. Knit garments need stretch-aware checks (negative ease) | open |
+| B3 | Rib bands and cuffs | `cuff-rib`, `leg-rib-cuff`, `waistband-jacket` | With B2: polo, rugby shirt, cardigan, joggers, Harrington jacket | I | A rib piece sized from the edge it finishes, at a stretch ratio (Sven and Hugo have them) | open |
+| B4 | Noble block | princess bodice for dresses | Princess-line dress | I | Optional: Breanna's princess layout may already serve | open |
+
+### Buildable now, needing a source or a decision
+
+Every element of these is covered (`COVERAGE.md`, ◐), so each is a spec on an existing base. Queue them
+when a source turns up, or as our own designs.
+
+Button-down collar shirt (a `dress-shirt` variant), overshirt, grandad shirt, shirtwaist blouse,
+shawl-collar waistcoat, utility vest, blazer (a sack-coat variant), safari jacket, shirt jacket,
+wide-leg trousers, shirt dress, smock dress, coverall, dungarees, kimono robe, wrap coat, poncho,
+neckerchief.
 
 ### Sources to inspect before queueing a garment
 

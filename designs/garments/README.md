@@ -22,6 +22,9 @@ and the traits cut across it.
 - **buildable:** every trait is covered, so it needs a spec, sources and tests, but no new library code;
 - **partly buildable:** a trait is partial;
 - **blocked:** a trait is missing, or it's cut from knit cloth, which our blocks don't handle.
+- **listed (◆):** FreeSewing has a design of it (`freesewing:` on the type), which we list as theirs,
+  credited. A listed design adds a garment, not an element: an element's `freesewing:` names the
+  FreeSewing design or block that would cover it if we adopted it as a block, as we do Brian.
 
 The top table ranks missing elements by how many unbuilt types each blocks. Build those first: each one
 unlocks a branch.

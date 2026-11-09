@@ -8,7 +8,7 @@ import { load, render } from '../tools/garments.mjs'
 import { operations } from '../lib/spec.mjs'
 
 const root = new URL('../', import.meta.url)
-const { tree, elements: E } = load()
+const { tree, elements: E, freesewing } = load()
 const elements = E.elements
 const designs = readdirSync(root).filter((d) => existsSync(new URL(`${d}/spec.yaml`, root)))
 // Piece types: the keys of `factories` in lib/spec.mjs (not exported, so read from the source)
@@ -23,6 +23,7 @@ test('every element is well formed and names real code and designs', () => {
     if (e.status === 'covered') assert.ok(e.lib?.length, `${k}: a covered element names what builds it`)
     for (const l of e.lib ?? []) assert.ok(libNames.has(l.split('.')[0]), `${k}: ${l} is not an operation or piece type`)
     for (const d of e.seen ?? []) assert.ok(designs.includes(d), `${k}: no design ${d}`)
+    for (const f of e.freesewing ?? []) assert.ok(freesewing.includes(f), `${k}: no FreeSewing design ${f}`)
   }
 })
 
@@ -32,6 +33,7 @@ test('every tree node is well formed', () => {
     if (n.parent) assert.ok(tree[n.parent], `${id}: parent ${n.parent} exists`)
     for (const t of n.traits ?? []) assert.ok(elements[t], `${id}: no element ${t}`)
     for (const d of n.designs ?? []) assert.ok(designs.includes(d), `${id}: no design ${d}`)
+    for (const f of n.freesewing ?? []) assert.ok(freesewing.includes(f), `${id}: no FreeSewing design ${f}`)
     for (const v of n.variants ?? []) {
       const [d, key] = v.split('.')
       const spec = readFileSync(new URL(`${d}/spec.yaml`, root), 'utf8')
@@ -47,5 +49,5 @@ test('every design sits in the tree', () => {
 
 test('garments/COVERAGE.md is up to date (node tools/garments.mjs)', () => {
   const md = readFileSync(new URL('garments/COVERAGE.md', root), 'utf8').replace(/\r\n/g, '\n')
-  assert.equal(md, render({ tree, elements: E }))
+  assert.equal(md, render({ tree, elements: E, freesewing }))
 })
