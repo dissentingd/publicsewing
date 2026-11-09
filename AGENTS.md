@@ -34,7 +34,7 @@ Work in `designs/`, with one commit per garment. Stage files by name.
    child, an adult and `stoutMale48`.
 7. **Test,** with a `plain` variant and one that pulls the defaults apart, also in `tools/variants.json`:
    ```bash
-   node --test --test-reporter=dot test/<design>.test.mjs test/variants.test.mjs test/labels.test.mjs test/declared-measurements.test.mjs > "$S/t.txt" 2>&1; echo "exit $?"
+   node --test --test-reporter=dot test/<design>.test.mjs test/variants.test.mjs test/labels.test.mjs test/declared-measurements.test.mjs test/brief.test.mjs > "$S/t.txt" 2>&1; echo "exit $?"
    grep -E "AssertionError|Error:" "$S/t.txt" | sed 's/[0-9.]\+/N/g' | sort | uniq -c | sort -rn | head
    ```
 8. **Shared `lib/` file changed?** Snapshot its family from the committed version (CONTRIBUTING.md, Step 7).
@@ -44,7 +44,7 @@ Work in `designs/`, with one commit per garment. Stage files by name.
    NODE_PATH=$(npm root -g) node tools/compare.mjs <design> --pages <pdf pages> --sets <set>
    NODE_PATH=$(npm root -g) node tools/render.mjs <design> usdaBoyC5 stoutMale48 --png
    ```
-10. **Write `BRIEF.md`,** keeping apart what the text states, what you read from the plate and what's ours.
+10. **Write `BRIEF.md`** from the template in CONTRIBUTING.md, Step 9, keeping apart what the text states, what you read from the plate and what's ours. `test/brief.test.mjs` checks its sections.
 11. **Finish.** Copy the shape of the last garment's commit: `git show --stat HEAD`, then
     `git show HEAD -- README.md designs/README.md SOURCING.md WARDROBE_GAPS.md BUILD_QUEUE.md`.
     Run `NODE_PATH=$(npm root -g) node tools/preview.mjs <design>`, add the illustration prompt, add the

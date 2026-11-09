@@ -496,6 +496,10 @@ The sewing order, in our own words.
 If the source covers only part of the garment (a kilt's hem and length, say), say so at the top.
 Keep three things distinct: what the text states, what you read from the plate, and what's ours.
 
+`test/brief.test.mjs` fails if a brief lacks any of these sections, or the Threadloop line. Briefs older
+than the test are listed with what they lack in `test/brief-exemptions.json`. Never add a new design to
+that list; remove an entry once its brief is complete.
+
 Before you commit, re-read the brief against the page images. Delete any claim you can't back
 from the page.
 
