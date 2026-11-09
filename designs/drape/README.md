@@ -48,6 +48,38 @@ specification, simulates it on the GPU host, fetches the front and back renders 
   run (GarmentCode releases it after 400 frames by default). A labelled run is written as one
   edge: GarmentCode labels only the vertices it meshes inside an edge.
 
+## Draping the rest, unattended
+[`tools/drape-pipeline.mjs`](../tools/drape-pipeline.mjs) drapes every design with a brief and no
+entry in `runs.yaml`, on the GPU host itself, and leaves a report to review later. Run it on
+Cloudbox through [`tools/drape-pipeline.sh`](../tools/drape-pipeline.sh), which keeps its own
+clone of this repo (reset to `origin/main` before each run), a pinned Node and the
+dependencies under `~/drape-pipeline`:
+```bash
+ssh <gpu host> 'sh ~/drape-pipeline/repo/designs/tools/drape-pipeline.sh --background'   # all of them
+ssh <gpu host> 'sh ~/drape-pipeline/repo/designs/tools/drape-pipeline.sh status'         # the log's tail
+```
+- **Settings:** a design first borrows a draped design's entry, its nearest draped ancestor's
+  (through `extends:`) first, when the config's pieces and points are all among its parts; up to
+  four are put through the quick check (export and specification, no GPU). Otherwise a local model (Ollama on the same host,
+  `qwen2.5-coder:7b` by default, kept on the CPU so the simulator has the GPU) proposes them from
+  the configs' pieces and points and the design's parts, and is shown each error to try again,
+  three times. It may answer that no config fits: that design needs a new config, by hand.
+- **Failures:** a failed GPU step (upload, simulation, inside check, fetch) is retried twice,
+  after 30 s and 2 min, then the design is skipped. The run stops after 3 designs in a row fail
+  on the host (or the model doesn't answer), 5 drapes in a row fail, or the same drape error
+  comes 3 times in a row. A design whose settings can't be found is skipped without counting. Before starting it checks the container, GPU, disk,
+  Python and the model; a second run won't start while one is going.
+- **Output,** under `out/drape-pipeline/` in its clone: `state.json` (every design's last outcome
+  and commit: a design that drapes isn't tried again, one skipped waits for a new commit),
+  and per run `pipeline.log`, `events.jsonl`, `report.md` (verdicts, numbers, renders, reasons),
+  `proposals.yaml` (settings that draped) and `llm/` (every prompt and answer).
+- **Nothing is changed in the repo.** Review the renders, then copy the settings you accept from
+  `proposals.yaml` into `runs.yaml`. A drape that passes can still be wrong (a piece flipped, a
+  seam sewn to the wrong edge): look at every render.
+- Flags: `--max N`, `--hours H`, `--dry-run` (quick check only), `--no-llm`, `--redo`,
+  `--retry-skipped`, or design ids to try only those. `PIPELINE_MODEL`, `OLLAMA_URL` change the
+  model.
+
 The steps it runs, by hand:
 ```bash
 node tools/drape-export.mjs hunting-coat cisMaleAdult38 out/drape/hc.json --pieces backBase,front,sleeve --clip front=0 --split sleeve=0 --m chest=1000,waist=800,seat=1000
