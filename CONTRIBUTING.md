@@ -259,6 +259,10 @@ have. Label it as ours in the brief.
 
 ## Step 4: Choose what to build on
 
+**Start from the garment family tree.** [designs/garments/COVERAGE.md](designs/garments/COVERAGE.md) places
+every garment type with the elements it needs, which of them the library builds, and the designs each
+element is already used in. Those designs are where to copy construction and proportions from.
+
 **Choose by how it's built, not by what it's called.** Name the construction from the diagram
 first: where the seams are, whether the front opens on a cut-on stand or is cut on the fold, whether
 it has a side body, whether a leg has a side seam. Then find the design that already builds that.

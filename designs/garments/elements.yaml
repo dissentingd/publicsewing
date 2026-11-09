@@ -1,0 +1,324 @@
+# Garment elements: the traits garments are built from, and what in lib/ builds each.
+# See garments/README.md. A garment type in tree.yaml lists the elements it needs; a type whose
+# elements are all `covered` can be built from the library without new code.
+#
+# Each element:
+#   name, group (see `groups`), status: covered | partial | gap
+#   lib: the operations or piece types that build it (lib/spec.mjs), as `name` or `name.argument`
+#   seen: designs that use it, for its reference proportions (sourced numbers to reuse)
+#   note: what's partial or missing
+# Vocabulary cross-checked against Fashionpedia's parts and attributes (CC BY 4.0) and the Getty Art &
+# Architecture Thesaurus (ODC-By 1.0); the entries and their coverage are ours.
+
+groups:
+  body: Body structure
+  sleeve: Sleeves and armholes
+  cuff: Cuffs and sleeve ends
+  neckline: Necklines
+  collar: Collars, lapels and hoods
+  closure: Closures
+  pocket: Pockets
+  yoke: Yokes
+  shaping: Darts, pleats and fullness
+  skirt: Skirt shapes
+  leg: Legs
+  waist: Waists
+  hem: Hems, vents and fronts
+  finish: Facings and linings
+  cape: Capes
+  flat: Flat pieces
+
+elements:
+  # --- Body structure ---
+  body-boxy:
+    { name: Boxy body (back and front, side seams), group: body, status: covered, lib: [coatBack, coatFront], seen: [chore-coat, barbers-coat, overcoat] }
+  body-three-piece:
+    { name: Three-piece body (back, side body, forepart), group: body, status: covered, lib: [body3Back, body3Front, sideBody], seen: [suit-jacket, eton-jacket, scout-coat] }
+  body-princess:
+    { name: Princess-seamed fitted body, group: body, status: covered, lib: [jacketBase, jacketLayout, jacketPanel], seen: [tailored-jacket, fitted-jacket, princess-coat] }
+  body-box-darted:
+    { name: Box body with a pivoted bust dart, group: body, status: covered, lib: [boxLayout], seen: [womens-box-coat, field-jacket] }
+  body-yoke:
+    { name: Loose body hung from a yoke or bodice, group: body, status: covered, lib: [yokeSide, yokePiece], seen: [work-shirt, shift-dress, nightgown] }
+  body-flat:
+    { name: Flat-cut body from rectangles, group: body, status: covered, lib: [suitBody, suitPiece], seen: [jumpsuit] }
+  body-darted-bodice:
+    { name: Fitted dress bodice with bust and waist darts, group: body, status: partial, lib: [jacketBase], seen: [tailored-jacket], note: "Breanna's darts are used only as jacket panels; no darted dress bodice to the waist" }
+  body-knit:
+    { name: Knit body with negative or zero ease, group: body, status: gap, note: "Needs a knit block (FreeSewing has some) and stretch-aware checks" }
+  body-bias:
+    { name: Bias-cut body, group: body, status: gap }
+  waist-seam:
+    { name: Waist seam joining bodice and skirt, group: body, status: covered, lib: [yokePiece, jacketLayout.waistSeam], seen: [shirtwaist-dress, prince-albert-jacket, riding-frock-coat] }
+  waist-raised:
+    { name: Raised (empire) waist seam, group: body, status: gap }
+  waist-dropped:
+    { name: Dropped waist seam, group: body, status: partial, lib: [yokeSide], note: "A deep yoke reaches it; no hip-level bodice" }
+
+  # --- Sleeves ---
+  sleeve-set-in:
+    { name: Set-in sleeve, one piece, group: sleeve, status: covered, lib: [sleeve, yokeSleeve], seen: [barbers-coat, work-shirt] }
+  sleeve-two-piece:
+    { name: Two-piece tailored sleeve, group: sleeve, status: covered, lib: [library], seen: [suit-jacket, tailored-jacket] }
+  sleeve-raglan:
+    { name: Raglan sleeve, group: sleeve, status: covered, lib: [raglan, raglanSleeve], seen: [balmacaan, raincoat] }
+  sleeve-kimono:
+    { name: Kimono sleeve, cut in one with the body, group: sleeve, status: covered, lib: [yokeSide, jacketLayout.kimono], seen: [kimono-dress, kimono-jacket] }
+  sleeve-dolman:
+    { name: Dolman (cape) sleeve, group: sleeve, status: covered, lib: [dolmanLayout], seen: [dolman-cape] }
+  sleeve-short:
+    { name: Short sleeve, group: sleeve, status: covered, lib: [yokeSleeve], seen: [shift-dress, middy-blouse] }
+  sleeve-gathered:
+    { name: Full sleeve gathered into a band (bishop, peasant), group: sleeve, status: covered, lib: [yokeSleeve, sleeveBand], seen: [frock, shirtwaist-dress] }
+  sleeve-puff-cap:
+    { name: Puffed sleeve cap, group: sleeve, status: gap }
+  sleeve-cap:
+    { name: Cap sleeve, group: sleeve, status: gap }
+  sleeve-bell:
+    { name: Bell or flared sleeve, group: sleeve, status: gap }
+  sleeveless:
+    { name: Sleeveless armhole, group: sleeve, status: covered, lib: [coatFront.armholeCut, yokeSleeve], seen: [waistcoat, shift-dress] }
+
+  # --- Cuffs ---
+  cuff-band:
+    { name: Sleeve band, group: cuff, status: covered, lib: [sleeveBand], seen: [shift-dress, middy-blouse] }
+  cuff-barrel:
+    { name: Buttoned barrel cuff over a sleeve placket, group: cuff, status: covered, lib: [cuff, sleevePlacket, sleeve.slit], seen: [dress-shirt, button-middy] }
+  cuff-turnback:
+    { name: Turned-back or gauntlet cuff, group: cuff, status: partial, lib: [polygon], seen: [smoking-jacket], note: "A flat piece; no shaped cuff" }
+  cuff-french:
+    { name: French (double) cuff, group: cuff, status: gap, note: "The barrel cuff doubled, with link holes" }
+  cuff-rib:
+    { name: Knit rib cuff, group: cuff, status: gap }
+  cuff-tab:
+    { name: Strap and button at the wrist, group: cuff, status: partial, lib: [polygon], note: "A strap can be a polygon; no placement on the sleeve" }
+
+  # --- Necklines ---
+  neck-round:
+    { name: Round (jewel) neck, group: neckline, status: covered, lib: [yokeSide], seen: [shift-dress] }
+  neck-scoop:
+    { name: Scoop neck, group: neckline, status: covered, lib: [yokeSide.neckline], seen: [shift-dress] }
+  neck-square:
+    { name: Square neck, group: neckline, status: covered, lib: [yokeSide.neckline], seen: [shift-dress] }
+  neck-boat:
+    { name: Boat (bateau) neck, group: neckline, status: covered, lib: [yokeSide.neckline], seen: [shift-dress] }
+  neck-v:
+    { name: V neck, group: neckline, status: covered, lib: [yokeSide.neckline, coatFront.neckY], seen: [shift-dress, middy-blouse, waistcoat] }
+  neck-keyhole:
+    { name: Keyhole neck, group: neckline, status: gap }
+  neck-split:
+    { name: Split neck (a slit at CF), group: neckline, status: partial, lib: [placket], note: "A placket slit; no faced slit without buttons" }
+  neck-sweetheart:
+    { name: Sweetheart neck, group: neckline, status: gap }
+  neck-halter:
+    { name: Halter neck, group: neckline, status: gap }
+  neck-off-shoulder:
+    { name: Off-the-shoulder or one-shoulder neck, group: neckline, status: gap }
+  neck-surplice:
+    { name: Surplice (crossed wrap) neck, group: neckline, status: gap }
+  neck-cowl:
+    { name: Cowl neck, group: neckline, status: gap, note: "Pivnick 1949 ch. XVI, p. 236" }
+  neck-raised:
+    { name: Raised or turtle neck, cut on, group: neckline, status: gap, note: "Pivnick 1949 ch. XVI, p. 235" }
+
+  # --- Collars ---
+  collar-stand:
+    { name: Stand (band, mandarin, military) collar, group: collar, status: covered, lib: [collar, neckBand], seen: [barbers-coat, nightgown] }
+  collar-shirt:
+    { name: Shirt collar on a stand, group: collar, status: covered, lib: [collar], seen: [dress-shirt] }
+  collar-convertible:
+    { name: Convertible (camp) collar, group: collar, status: covered, lib: [collar], seen: [service-shirt] }
+  collar-turndown:
+    { name: Turn-down collar, one piece, group: collar, status: covered, lib: [collar, neckBand], seen: [work-shirt, button-middy] }
+  collar-flat:
+    { name: Flat (Peter Pan) collar, group: collar, status: covered, lib: [neckBand], seen: [shift-dress] }
+  collar-sailor:
+    { name: Sailor collar, group: collar, status: covered, lib: [sailorCollar], seen: [middy-blouse] }
+  collar-notched:
+    { name: Notched lapel and collar, group: collar, status: covered, lib: [lapel, jacketLayout, collar], seen: [suit-jacket, tailored-jacket] }
+  collar-peak:
+    { name: Peak lapel, group: collar, status: covered, lib: [lapel, jacketLayout], seen: [womens-box-coat, tailored-jacket] }
+  collar-shawl:
+    { name: Shawl collar, group: collar, status: covered, lib: [shawl, jacketLayout.shawl], seen: [mackinaw, fitted-jacket] }
+  collar-storm:
+    { name: Storm (funnel) collar, closed to the neck, group: collar, status: covered, lib: [jacketLayout.closed, collar], seen: [womens-peacoat, three-piece-long-coat] }
+  collar-tie:
+    { name: Tie or bow collar, group: collar, status: gap }
+  collar-ruffle:
+    { name: Ruffled collar or jabot, group: collar, status: gap }
+  hood:
+    { name: Hood, group: collar, status: covered, lib: [hood], seen: [anorak, windbreaker] }
+
+  # --- Closures ---
+  closure-buttons:
+    { name: Buttoned front on a stand, group: closure, status: covered, lib: [coatFront, buttons], seen: [chore-coat, button-middy] }
+  closure-double-breasted:
+    { name: Double-breasted front, group: closure, status: covered, lib: [buttons, jacketLayout.rows], seen: [peacoat, db-waistcoat, womens-peacoat] }
+  closure-placket:
+    { name: Placket opening, part way, group: closure, status: covered, lib: [placket], seen: [work-shirt, nightshirt] }
+  closure-zip-front:
+    { name: Zip front, group: closure, status: covered, lib: [zip], seen: [windbreaker, quilted-jacket] }
+  closure-zip-back:
+    { name: Centre-back or side zip, group: closure, status: covered, lib: [gore.zip, culotte.zip], seen: [gored-skirt, culottes] }
+  closure-fly:
+    { name: Trouser fly, group: closure, status: covered, lib: [trouserLeg.fly, fly], seen: [suit-trousers, work-pants] }
+  closure-fall-front:
+    { name: Drop (fall) front, group: closure, status: covered, lib: [legInOne.fall], seen: [sailor-pants] }
+  closure-wrap:
+    { name: Wrap front, tied or belted, group: closure, status: covered, lib: [coatFront, belt], seen: [dressing-gown, kilt] }
+  closure-side-opening:
+    { name: Buttoned side or leg opening, group: closure, status: covered, lib: [trouserLeg.openingBelow], seen: [breeches] }
+  closure-frogs:
+    { name: Frogs or toggles, group: closure, status: partial, lib: [buttons], seen: [smoking-jacket], note: "Marked as buttons" }
+  closure-lacing:
+    { name: Lacing, group: closure, status: gap }
+  closure-snaps:
+    { name: Snaps or press studs, group: closure, status: partial, lib: [buttons], note: "Marked as buttons" }
+
+  # --- Pockets ---
+  pocket-patch:
+    { name: Patch pocket, group: pocket, status: covered, lib: [pocket, markPocket], seen: [chore-coat, barbers-coat] }
+  pocket-patch-flap:
+    { name: Patch pocket with a flap, group: pocket, status: covered, lib: [pocket, flap], seen: [service-shirt, scout-coat] }
+  pocket-welt:
+    { name: Welt or jetted pocket, group: pocket, status: covered, lib: [welt, weltBag, setInPocket], seen: [suit-jacket, tailored-jacket] }
+  pocket-flap-set-in:
+    { name: Set-in flap pocket, group: pocket, status: covered, lib: [setInPocket], seen: [womens-box-coat, tailored-jacket] }
+  pocket-trouser-slant:
+    { name: Slant trouser side pocket, group: pocket, status: covered, lib: [trouserLeg.pocketTop], seen: [suit-trousers] }
+  pocket-trouser-back-jetted:
+    { name: Jetted trouser back pocket, group: pocket, status: covered, lib: [trouserLeg.backPocket], seen: [suit-trousers] }
+  pocket-trouser-back-patch:
+    { name: Patch back pocket on trousers, group: pocket, status: partial, seen: [field-trousers], note: "The field trousers have a flapped seat pocket; jeans need two shaped patches without flaps" }
+  pocket-scoop:
+    { name: Scooped (jeans) front pocket with facing and bag, group: pocket, status: gap }
+  pocket-coin:
+    { name: Coin (watch) pocket, group: pocket, status: partial, lib: [polygon], note: "The piece is easy; its placement is not" }
+  pocket-on-seam:
+    { name: In-seam side pocket, group: pocket, status: gap }
+  pocket-cargo:
+    { name: Bellows (cargo) pocket, group: pocket, status: covered, lib: [pocket, flap], seen: [field-trousers, hunting-coat] }
+  pocket-kangaroo:
+    { name: Kangaroo pocket, group: pocket, status: gap }
+
+  # --- Yokes ---
+  yoke-shirt-back:
+    { name: Shirt back yoke, group: yoke, status: covered, lib: [backYokeCut, backPanel, yokePiece], seen: [dress-shirt, work-shirt] }
+  yoke-front:
+    { name: Front yoke, group: yoke, status: covered, lib: [frontYokeCut, frontPanel, yokePiece], seen: [hunting-coat, childrens-smock] }
+  yoke-trouser-back:
+    { name: Trouser back yoke, group: yoke, status: gap, note: "Jeans" }
+  yoke-skirt-hip:
+    { name: Skirt hip yoke, group: yoke, status: gap }
+
+  # --- Shaping ---
+  darts:
+    { name: Waist darts, group: shaping, status: covered, lib: [coatFront.dart, trouserLeg.dart, skirtLayout], seen: [suit-trousers, gored-skirt] }
+  gathers:
+    { name: Gathers, group: shaping, status: covered, lib: [yokePiece, gatheredLeg], seen: [nightgown, bloomers] }
+  pleats-skirt:
+    { name: Knife or box pleats in a skirt, group: shaping, status: covered, lib: [gore.pleat, kiltPleats], seen: [pleated-skirt, kilt] }
+  pleats-trouser:
+    { name: Trouser front pleats, group: shaping, status: covered, lib: [trouserLeg.pleats], seen: [peg-pants] }
+  pleat-action:
+    { name: Back action pleat, group: shaping, status: covered, lib: [backPanel], seen: [hunting-coat] }
+  pleats-box-body:
+    { name: Box pleats down a body (Norfolk), group: shaping, status: covered, lib: [backPanel, frontPanel], seen: [norfolk-jacket] }
+  tucks:
+    { name: Tucks or front pleats on a shirt or jacket, group: shaping, status: gap, note: "Trucker jacket, tucked blouse" }
+  shirring:
+    { name: Shirring or smocking, group: shaping, status: gap }
+
+  # --- Skirts ---
+  skirt-gored:
+    { name: Gored skirt, group: skirt, status: covered, lib: [skirtLayout, gore], seen: [gored-skirt, four-gore-skirt] }
+  skirt-two-piece:
+    { name: Two-piece straight or A-line skirt, group: skirt, status: covered, lib: [skirtLayout, gore], seen: [two-piece-skirt] }
+  skirt-circular:
+    { name: Circular or part-circle skirt, group: skirt, status: covered, lib: [circularLayout, circular], seen: [circular-skirt] }
+  skirt-gathered:
+    { name: Gathered (dirndl) skirt, group: skirt, status: covered, lib: [yokePiece, strip], seen: [gathered-skirt, shirtwaist-dress] }
+  skirt-wrap:
+    { name: Wrap skirt, group: skirt, status: covered, lib: [kiltLayout, kiltApron], seen: [kilt] }
+  skirt-radial-tunic:
+    { name: Radial tunic overskirt, group: skirt, status: covered, lib: [tunicLayout, tunic], seen: [tunic-skirt] }
+  skirt-divided:
+    { name: Divided skirt, group: skirt, status: covered, lib: [culotte], seen: [culottes, riding-skirt] }
+  skirt-pencil:
+    { name: Straight pencil skirt with a vent, group: skirt, status: partial, lib: [skirtLayout], note: "No back vent on skirts" }
+  skirt-tiered:
+    { name: Tiered skirt, group: skirt, status: gap }
+
+  # --- Legs ---
+  leg-tailored:
+    { name: Tailored trouser leg, group: leg, status: covered, lib: [trouserLeg], seen: [suit-trousers, work-pants] }
+  leg-gathered:
+    { name: Full leg gathered at the waist or knee, group: leg, status: covered, lib: [gatheredLeg, legBand], seen: [bloomers, pyjama-trousers] }
+  leg-breeches:
+    { name: Breeches leg, fitted below the knee, group: leg, status: covered, lib: [trouserLeg.cuffBelow], seen: [breeches, cycling-breeches] }
+  leg-in-one:
+    { name: Leg in one piece, no side seam, group: leg, status: covered, lib: [legInOne], seen: [overall-pants, drawers] }
+  leg-flared:
+    { name: Flared (bell) leg, group: leg, status: covered, lib: [legInOne, trouserLeg.hemWidth], seen: [sailor-pants] }
+  turn-ups:
+    { name: Turn-ups (cuff bottoms), group: leg, status: covered, lib: [trouserLeg.turnUp], seen: [suit-trousers, peg-pants] }
+  leg-shorts:
+    { name: Shorts length, group: leg, status: partial, lib: [trouserLeg], seen: [knee-pants], note: "Shortened to the knee; not checked shorter" }
+  leg-rib-cuff:
+    { name: Ankle rib or elastic cuff, group: leg, status: gap }
+
+  # --- Waists ---
+  waistband:
+    { name: Straight waistband, group: waist, status: covered, lib: [strip], seen: [suit-trousers, gored-skirt] }
+  belt-loops:
+    { name: Belt loops, group: waist, status: covered, lib: [strip], seen: [suit-trousers] }
+  belt:
+    { name: Belt or half belt, group: waist, status: covered, lib: [belt, polygon], seen: [norfolk-jacket, button-middy] }
+  waist-elastic:
+    { name: Elastic waist, group: waist, status: covered, lib: [gatheredLeg], seen: [pyjama-trousers] }
+  waist-drawstring:
+    { name: Drawstring waist, group: waist, status: partial, lib: [gatheredLeg], note: "Elastic channel only" }
+  waist-faced:
+    { name: Faced waist (no band), group: waist, status: covered, lib: [goreFacing], seen: [two-piece-skirt] }
+  waist-high:
+    { name: High-waisted rise, group: waist, status: covered, lib: [skirtLayout.riseHeight], seen: [two-piece-skirt] }
+  bib:
+    { name: Bib and straps, group: waist, status: covered, lib: [polygon], seen: [bib-overall, pinafore] }
+  waistband-jacket:
+    { name: Hem band on a jacket, group: waist, status: gap, note: "Trucker and bomber jackets" }
+
+  # --- Hems, vents and fronts ---
+  hem-turned:
+    { name: Turned hem, group: hem, status: covered, lib: [coatBack, coatFront], seen: [chore-coat] }
+  hem-curved-tail:
+    { name: Curved shirt tails, group: hem, status: covered, lib: [coatFront], seen: [dress-shirt] }
+  hem-side-slits:
+    { name: Side slits, group: hem, status: covered, lib: [yokeSide], seen: [work-shirt] }
+  vent-back:
+    { name: Back vent, group: hem, status: covered, lib: [backVent, body3Back], seen: [suit-jacket, overcoat] }
+  front-cutaway:
+    { name: Cutaway or pointed front, group: hem, status: covered, lib: [coatFront.chamfer], seen: [waistcoat, db-waistcoat] }
+  front-drop:
+    { name: Front hem longer than the back, group: hem, status: covered, lib: [coatFront], seen: [pyjama-jacket] }
+  tails:
+    { name: Tails (cutaway at the waist, long behind), group: hem, status: gap, note: "Tailcoat, queue 41" }
+
+  # --- Finishes ---
+  facing:
+    { name: Front and neck facings, group: finish, status: covered, lib: [facing, backNeckFacing], seen: [barbers-coat, tailored-jacket] }
+  lining:
+    { name: Full lining, group: finish, status: covered, lib: [frontLining, backLining], seen: [overcoat, tailored-jacket] }
+  quilting:
+    { name: Quilted or padded layers, group: finish, status: partial, seen: [quilted-jacket], note: "Pieces only; quilting lines unmarked" }
+
+  # --- Capes ---
+  cape-circle:
+    { name: Circular cape, group: cape, status: covered, lib: [capeBase, capeLayout, cape], seen: [cape, mantle] }
+  cape-shoulder:
+    { name: Shoulder cape over a coat, group: cape, status: covered, lib: [jacketCapeBase, capeLayout], seen: [inverness-coat, cape-overcoat] }
+
+  # --- Flat pieces ---
+  flat-polygon:
+    { name: Straight-edged flat piece, group: flat, status: covered, lib: [polygon, strip], seen: [aprons] }
+  flat-bias-tie:
+    { name: Bias-cut tie with interlining, group: flat, status: gap, note: "Necktie, queue 50" }

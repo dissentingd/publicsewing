@@ -1,0 +1,225 @@
+# The garment family tree: every garment type, by descent, from body zone down to a named type.
+# See garments/README.md. Each node:
+#   name; parent (none for a zone); traits: the elements (elements.yaml) a type needs;
+#   designs: our designs of this type; variants: <design>.<variant> that make it;
+#   knit: true when it's usually cut from knit cloth (our blocks are for woven cloth);
+#   note.
+# A node's coverage is worked out by tools/garments.mjs: built (it has designs or variants),
+# buildable (every trait is covered), partial, or gap.
+# Organisation cross-checked against the Getty Art & Architecture Thesaurus (ODC-By 1.0) and
+# Fashionpedia's apparel categories (CC BY 4.0); the tree itself is ours.
+
+nodes:
+  # ======================= Zones =======================
+  upper: { name: Upper body }
+  lower: { name: Lower body }
+  whole: { name: Whole body (one piece) }
+  outer: { name: Outerwear }
+  sleep: { name: Sleepwear, loungewear and underwear }
+  accessory: { name: Neckwear and accessories }
+
+  # ======================= Upper body =======================
+  shirts: { name: Shirts, parent: upper }
+  dress-shirt-t: { name: Dress shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, hem-curved-tail], designs: [dress-shirt] }
+  work-shirt-t: { name: Work shirt, pullover, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-placket, collar-turndown, cuff-band, pocket-patch], designs: [work-shirt] }
+  camp-shirt: { name: Camp (service) shirt, parent: shirts, traits: [body-boxy, closure-buttons, collar-convertible, pocket-patch-flap, sleeve-set-in], designs: [service-shirt] }
+  oxford-button-down: { name: Button-down collar shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, hem-curved-tail], note: "A dress shirt variant: buttons at the collar points" }
+  western-shirt: { name: Western shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, yoke-front, closure-snaps, collar-shirt, cuff-barrel, pocket-patch-flap] }
+  overshirt: { name: Overshirt (shirt jacket), parent: shirts, traits: [body-boxy, yoke-shirt-back, closure-buttons, collar-shirt, pocket-patch-flap, cuff-barrel] }
+  tuxedo-shirt: { name: Formal (tuxedo) shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-stand, cuff-french, tucks] }
+  football-shirt-t: { name: Woven sports pullover, parent: shirts, traits: [body-yoke, closure-placket, collar-turndown, cuff-band], note: "Queue 49" }
+  grandad-shirt: { name: Band-collar (grandad) shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-placket, collar-stand, cuff-barrel, hem-curved-tail] }
+
+  blouses: { name: Blouses, parent: upper }
+  middy: { name: Middy (sailor) blouse, parent: blouses, traits: [body-yoke, neck-v, collar-sailor, cuff-band], designs: [middy-blouse] }
+  middy-button: { name: Button-on middy, parent: blouses, traits: [body-boxy, closure-buttons, collar-turndown, cuff-barrel, belt], designs: [button-middy] }
+  shirtwaist-blouse: { name: Shirtwaist blouse, parent: blouses, traits: [body-yoke, closure-buttons, collar-turndown, sleeve-gathered, cuff-barrel], note: "The shirtwaist dress's bodice" }
+  peasant-blouse: { name: Peasant blouse, parent: blouses, traits: [body-yoke, neck-round, gathers, sleeve-gathered, waist-drawstring] }
+  bow-blouse: { name: Tie-neck blouse, parent: blouses, traits: [body-yoke, closure-buttons, collar-tie, sleeve-gathered, cuff-barrel] }
+  wrap-blouse: { name: Wrap blouse, parent: blouses, traits: [body-darted-bodice, neck-surplice, closure-wrap, sleeve-set-in] }
+  shell-top: { name: Shell top, parent: blouses, traits: [body-darted-bodice, neck-round, sleeveless, closure-zip-back] }
+  smock-top: { name: Smock, parent: blouses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered, cuff-band], designs: [childrens-smock] }
+  choli-t: { name: Choli (saree blouse), parent: blouses, traits: [body-darted-bodice, sleeve-short, closure-buttons], note: "Queue 56, inspired by CBSE" }
+  kameez-t: { name: Kameez and kurta, parent: blouses, traits: [body-yoke, neck-split, hem-side-slits, sleeve-set-in], note: "Queue 54, inspired by CBSE" }
+  tunic-top: { name: Tunic top, parent: blouses, traits: [body-yoke, neck-split, hem-side-slits] }
+
+  knit-tops: { name: Knit tops, parent: upper }
+  t-shirt-t: { name: T-shirt, parent: knit-tops, traits: [body-knit, neck-round, sleeve-set-in], designs: [t-shirt], knit: true, note: "Built by another agent; to be reviewed" }
+  polo: { name: Polo shirt, parent: knit-tops, traits: [body-knit, closure-placket, collar-turndown, cuff-rib], knit: true }
+  henley: { name: Henley, parent: knit-tops, traits: [body-knit, closure-placket, neck-round], knit: true }
+  rugby-shirt: { name: Rugby shirt, parent: knit-tops, traits: [body-knit, closure-placket, collar-turndown, cuff-rib], knit: true }
+  sweatshirt: { name: Sweatshirt, parent: knit-tops, traits: [body-knit, sleeve-raglan, cuff-rib, waistband-jacket], knit: true }
+  hoodie: { name: Hoodie, parent: knit-tops, traits: [body-knit, hood, pocket-kangaroo, cuff-rib, waistband-jacket], knit: true }
+  turtleneck-top: { name: Turtleneck, parent: knit-tops, traits: [body-knit, neck-raised], knit: true }
+  tank-top: { name: Tank top, parent: knit-tops, traits: [body-knit, sleeveless, neck-scoop], knit: true }
+  cardigan: { name: Cardigan, parent: knit-tops, traits: [body-knit, closure-buttons, neck-v, cuff-rib], knit: true }
+
+  waistcoats: { name: Waistcoats and vests, parent: upper }
+  waistcoat-sb: { name: Single-breasted waistcoat, parent: waistcoats, traits: [body-boxy, sleeveless, neck-v, closure-buttons, front-cutaway, pocket-welt, lining], designs: [waistcoat] }
+  waistcoat-db: { name: Double-breasted waistcoat, parent: waistcoats, traits: [body-boxy, sleeveless, neck-v, closure-double-breasted, front-cutaway, pocket-welt, lining], designs: [db-waistcoat] }
+  bar-jacket: { name: Bartender's jacket, parent: waistcoats, traits: [body-boxy, collar-stand, closure-buttons, front-cutaway], designs: [bar-vest] }
+  waistcoat-shawl: { name: Shawl-collar (evening) waistcoat, parent: waistcoats, traits: [body-boxy, sleeveless, collar-shawl, closure-buttons, front-cutaway, lining] }
+  vest-utility: { name: Utility vest, parent: waistcoats, traits: [body-boxy, sleeveless, closure-zip-front, pocket-cargo] }
+
+  # ======================= Jackets (tailored and casual) =======================
+  jackets: { name: Jackets, parent: upper }
+  suit-jackets: { name: Suit and sports jackets, parent: jackets }
+  sack-coat-t: { name: Single-breasted suit jacket, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-notched, closure-buttons, pocket-welt, pocket-flap-set-in, vent-back, lining], designs: [suit-jacket, boys-suit-jacket], note: "Simons' sack coat is queue 38" }
+  db-jacket: { name: Double-breasted suit jacket, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-peak, closure-double-breasted, pocket-welt, lining], note: "Queue 39, probably a variant of 38" }
+  dinner-jacket-t: { name: Dinner jacket (tuxedo), parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-shawl, closure-buttons, pocket-welt, lining], note: "Queue 40" }
+  norfolk: { name: Norfolk jacket, parent: suit-jackets, traits: [body-boxy, pleats-box-body, belt, pocket-patch, sleeve-set-in], designs: [norfolk-jacket] }
+  eton: { name: Eton jacket, parent: suit-jackets, traits: [body-three-piece, collar-notched, sleeve-two-piece], designs: [eton-jacket] }
+  smoking: { name: Smoking jacket, parent: suit-jackets, traits: [body-boxy, collar-shawl, closure-frogs, cuff-turnback, pocket-welt], designs: [smoking-jacket] }
+  blazer: { name: Blazer, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-notched, closure-buttons, pocket-patch, lining], note: "A sack-coat variant with patch pockets" }
+  womens-tailored: { name: Women's tailored jackets, parent: jackets }
+  tailored-t: { name: Semi-fitted tailored jacket, parent: womens-tailored, traits: [body-princess, collar-notched, sleeve-two-piece, pocket-flap-set-in, lining], designs: [tailored-jacket, double-dart-jacket] }
+  fitted-t: { name: Tight-fitted jacket, parent: womens-tailored, traits: [body-princess, collar-shawl, sleeve-two-piece, lining], designs: [fitted-jacket] }
+  prince-albert-t: { name: Prince Albert jacket, parent: womens-tailored, traits: [body-princess, waist-seam, collar-notched, sleeve-two-piece, lining], designs: [prince-albert-jacket] }
+  kimono-jacket-t: { name: Kimono jacket, parent: womens-tailored, traits: [body-princess, sleeve-kimono, collar-notched], designs: [kimono-jacket] }
+  riding-habit: { name: Riding habit coat, parent: womens-tailored, traits: [body-princess, collar-shawl, sleeve-two-piece, lining], designs: [riding-habit-coat] }
+  riding-frock: { name: Riding frock coat, parent: womens-tailored, traits: [body-princess, waist-seam, collar-notched, sleeve-two-piece, lining], designs: [riding-frock-coat] }
+  frock-coats: { name: Frock and dress coats, parent: jackets }
+  frock-coat-t: { name: Men's frock coat, parent: frock-coats, traits: [body-three-piece, waist-seam, collar-notched, sleeve-two-piece, lining], note: "Queue 42" }
+  surtout-t: { name: Surtout, parent: frock-coats, traits: [body-three-piece, closure-double-breasted, collar-notched, lining], designs: [surtout] }
+  tailcoat-t: { name: Tailcoat (full dress), parent: frock-coats, traits: [body-three-piece, waist-seam, tails, collar-peak, sleeve-two-piece, lining], note: "Queue 41" }
+  work-jackets: { name: Work and utility jackets, parent: jackets }
+  chore: { name: Chore coat, parent: work-jackets, traits: [body-boxy, closure-buttons, collar-turndown, pocket-patch, sleeve-set-in], designs: [chore-coat, boys-work-coat] }
+  barbers: { name: Service coat (barber's, chef's), parent: work-jackets, traits: [body-boxy, closure-buttons, collar-stand, pocket-patch], designs: [barbers-coat] }
+  painters: { name: Painter's jacket, parent: work-jackets, traits: [body-boxy, closure-buttons, collar-stand, pocket-patch, cuff-barrel], designs: [painters-jacket] }
+  field: { name: Field jacket, parent: work-jackets, traits: [body-box-darted, closure-buttons, pocket-patch-flap, belt], designs: [field-jacket, hunting-coat] }
+  tunic-military: { name: Military tunic, parent: work-jackets, traits: [body-three-piece, collar-stand, sleeve-two-piece, pocket-welt], designs: [military-tunic] }
+  scout: { name: Scout coat, parent: work-jackets, traits: [body-three-piece, collar-turndown, pocket-patch-flap], designs: [scout-coat] }
+  denim-jacket-t: { name: Denim (trucker) jacket, parent: work-jackets, traits: [body-boxy, yoke-front, yoke-shirt-back, tucks, pocket-patch-flap, waistband-jacket, cuff-barrel, collar-turndown], note: "Queue 47, our design" }
+  casual-jackets: { name: Casual jackets, parent: jackets }
+  windbreaker-t: { name: Windbreaker, parent: casual-jackets, traits: [body-boxy, hood, closure-zip-front, yoke-front, pocket-welt], designs: [windbreaker] }
+  anorak-t: { name: Anorak (pullover), parent: casual-jackets, traits: [body-yoke, hood, closure-placket, pocket-patch], designs: [anorak] }
+  quilted: { name: Quilted jacket, parent: casual-jackets, traits: [body-boxy, quilting, hood, closure-buttons, pocket-welt], designs: [quilted-jacket] }
+  bomber: { name: Bomber (flight) jacket, parent: casual-jackets, traits: [body-boxy, closure-zip-front, sleeve-raglan, cuff-rib, waistband-jacket, pocket-welt], note: "Rib parts are knit" }
+  harrington: { name: Harrington jacket, parent: casual-jackets, traits: [body-boxy, sleeve-raglan, closure-zip-front, collar-stand, cuff-rib, waistband-jacket] }
+  safari: { name: Safari jacket, parent: casual-jackets, traits: [body-boxy, collar-convertible, pocket-cargo, belt, closure-buttons] }
+  shacket: { name: Shirt jacket (shacket), parent: casual-jackets, traits: [body-boxy, collar-shirt, closure-buttons, pocket-patch-flap] }
+
+  # ======================= Outerwear =======================
+  coats: { name: Coats, parent: outer }
+  peacoats: { name: Peacoats and reefers, parent: coats }
+  peacoat-t: { name: Peacoat, parent: peacoats, traits: [body-boxy, closure-double-breasted, collar-notched, pocket-welt], designs: [peacoat, reefer] }
+  womens-peacoat-t: { name: Women's peacoat, parent: peacoats, traits: [body-princess, closure-double-breasted, collar-storm], designs: [womens-peacoat] }
+  mackinaw-t: { name: Mackinaw, parent: peacoats, traits: [body-boxy, closure-double-breasted, collar-shawl, pocket-patch-flap, belt], designs: [mackinaw] }
+  overcoats: { name: Overcoats, parent: coats }
+  overcoat-t: { name: Overcoat, parent: overcoats, traits: [body-boxy, closure-buttons, collar-notched, vent-back, lining], designs: [overcoat, box-overcoat, topcoat] }
+  fitted-overcoat-t: { name: Fitted (Chesterfield) overcoat, parent: overcoats, traits: [body-three-piece, closure-buttons, collar-notched, vent-back, lining], designs: [fitted-overcoat] }
+  ulster-t: { name: Ulster, parent: overcoats, traits: [body-boxy, closure-double-breasted, collar-notched, belt], designs: [ulster] }
+  balmacaan-t: { name: Balmacaan, parent: overcoats, traits: [body-boxy, sleeve-raglan, collar-stand, closure-buttons], designs: [balmacaan, mantle] }
+  duster: { name: Duster and shop coat, parent: overcoats, traits: [body-boxy, closure-buttons, collar-notched, pocket-patch], designs: [shop-coat] }
+  winter: { name: Winter coat, parent: overcoats, traits: [body-boxy, yoke-front, yoke-shirt-back, pocket-welt, collar-turndown], designs: [winter-coat] }
+  trench: { name: Trench coat, parent: overcoats, traits: [body-boxy, sleeve-raglan, closure-double-breasted, collar-notched, belt, yoke-shirt-back, cuff-tab, pocket-welt] }
+  duffle: { name: Duffle coat, parent: overcoats, traits: [body-boxy, hood, closure-frogs, pocket-patch, yoke-front] }
+  womens-coats: { name: Women's coats, parent: coats }
+  box-coat-t: { name: Box coat, parent: womens-coats, traits: [body-box-darted, collar-peak, pocket-flap-set-in], designs: [womens-box-coat, girls-coat] }
+  princess-coat-t: { name: Princess coat, parent: womens-coats, traits: [body-princess, collar-storm, closure-double-breasted], designs: [princess-coat] }
+  long-coat-t: { name: Semi-fitted long coat, parent: womens-coats, traits: [body-princess, collar-storm, lining], designs: [three-piece-long-coat] }
+  wrap-coat: { name: Wrap coat, parent: womens-coats, traits: [body-box-darted, closure-wrap, collar-shawl, belt] }
+  rainwear: { name: Rainwear, parent: coats }
+  raincoat-t: { name: Raincoat, parent: rainwear, traits: [body-boxy, sleeve-raglan, closure-buttons, collar-stand], designs: [raincoat] }
+  capes: { name: Capes and cape coats, parent: outer }
+  cape-t: { name: Circular cape, parent: capes, traits: [cape-circle, collar-stand], designs: [cape] }
+  dolman-t: { name: Dolman cape, parent: capes, traits: [sleeve-dolman, body-princess], designs: [dolman-cape] }
+  cape-overcoat-t: { name: Cape overcoat, parent: capes, traits: [cape-circle, collar-turndown], designs: [cape-overcoat] }
+  inverness-t: { name: Inverness coat, parent: capes, traits: [body-box-darted, cape-shoulder, collar-storm], designs: [inverness-coat] }
+  poncho: { name: Poncho, parent: capes, traits: [flat-polygon, hood] }
+
+  # ======================= Lower body =======================
+  trousers: { name: Trousers, parent: lower }
+  tailored-trousers: { name: Tailored (suit) trousers, parent: trousers, traits: [leg-tailored, closure-fly, darts, pocket-trouser-slant, pocket-trouser-back-jetted, waistband, belt-loops], designs: [suit-trousers] }
+  pleated-trousers: { name: Pleated trousers, parent: trousers, traits: [leg-tailored, pleats-trouser, closure-fly, pocket-trouser-slant, waistband], designs: [peg-pants] }
+  slacks-t: { name: Slacks, parent: trousers, traits: [leg-tailored, closure-fly, pocket-trouser-slant, waistband, belt-loops], note: "Queue 43" }
+  chinos: { name: Chinos (cotton slacks), parent: trousers, traits: [leg-tailored, closure-fly, pocket-trouser-slant, pocket-trouser-back-jetted, waistband, belt-loops], note: "Queue 43, a variant" }
+  work-trousers: { name: Work trousers, parent: trousers, traits: [leg-tailored, closure-fly, pocket-patch, waistband], designs: [work-pants] }
+  overall-trousers: { name: Overall pants, parent: trousers, traits: [leg-in-one, closure-fly, waistband], designs: [overall-pants] }
+  jeans-t: { name: Jeans, parent: trousers, traits: [leg-tailored, closure-fly, yoke-trouser-back, pocket-scoop, pocket-coin, pocket-trouser-back-patch, waistband, belt-loops], note: "Queue 46, our design" }
+  cargo: { name: Cargo trousers, parent: trousers, traits: [leg-tailored, pleats-trouser, pocket-cargo, closure-fly, waistband], designs: [field-trousers] }
+  sailor-trousers: { name: Sailor trousers, parent: trousers, traits: [leg-in-one, leg-flared, closure-fall-front], designs: [sailor-pants] }
+  womens-trousers-t: { name: Women's trousers, parent: trousers, traits: [leg-tailored, darts, closure-zip-back, waistband], note: "Queue 45" }
+  wide-leg: { name: Wide-leg (palazzo) trousers, parent: trousers, traits: [leg-tailored, waist-faced, closure-zip-back] }
+  drawstring-trousers: { name: Drawstring trousers, parent: trousers, traits: [leg-gathered, waist-drawstring, pocket-on-seam] }
+  salwar-t: { name: Salwar, parent: trousers, traits: [leg-gathered, waist-drawstring], note: "Queue 53, inspired by CBSE" }
+  churidar-t: { name: Churidar, parent: trousers, traits: [body-bias, waist-drawstring, leg-gathered], note: "Queue 55, inspired by CBSE" }
+  joggers: { name: Joggers, parent: trousers, traits: [leg-gathered, waist-elastic, leg-rib-cuff, pocket-on-seam], knit: true }
+  breeches-family: { name: Breeches and knee trousers, parent: lower }
+  breeches-t: { name: Riding breeches, parent: breeches-family, traits: [leg-breeches, closure-side-opening, closure-fly, waistband], designs: [breeches] }
+  jodhpurs-t: { name: Jodhpurs, parent: breeches-family, traits: [leg-breeches, closure-fly, waistband], note: "Queue 48" }
+  knickers-t: { name: Knickerbockers, parent: breeches-family, traits: [leg-gathered, leg-breeches, waistband], designs: [boys-knickers, golf-pants, cycling-breeches] }
+  knee-pants-t: { name: Knee pants, parent: breeches-family, traits: [leg-tailored, leg-shorts, closure-fly], designs: [knee-pants, scout-pants] }
+  shorts-family: { name: Shorts, parent: lower }
+  shorts-t: { name: Tailored shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts, closure-fly, waistband, pocket-trouser-slant], note: "Queue 44" }
+  bermuda: { name: Bermuda shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts, turn-ups, closure-fly, waistband] }
+  cargo-shorts: { name: Cargo shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts, pocket-cargo, closure-fly, waistband] }
+  boxer-shorts-t: { name: Elastic-waist shorts, parent: shorts-family, traits: [leg-gathered, leg-shorts, waist-elastic] }
+  skirts: { name: Skirts, parent: lower }
+  gored-t: { name: Gored skirt, parent: skirts, traits: [skirt-gored, waistband, closure-zip-back], designs: [gored-skirt, four-gore-skirt] }
+  a-line: { name: A-line skirt, parent: skirts, traits: [skirt-two-piece, waist-faced, closure-zip-back], designs: [two-piece-skirt] }
+  circle: { name: Circle skirt, parent: skirts, traits: [skirt-circular, waistband, closure-zip-back], designs: [circular-skirt] }
+  pleated: { name: Pleated skirt, parent: skirts, traits: [skirt-gored, pleats-skirt, waistband], designs: [pleated-skirt] }
+  kilt-t: { name: Kilt and wrap skirt, parent: skirts, traits: [skirt-wrap, pleats-skirt, closure-wrap], designs: [kilt] }
+  dirndl: { name: Gathered (dirndl) skirt, parent: skirts, traits: [skirt-gathered, waistband], designs: [gathered-skirt] }
+  tunic-overskirt: { name: Tunic (overskirt), parent: skirts, traits: [skirt-radial-tunic, darts], designs: [tunic-skirt] }
+  divided: { name: Divided skirt and culottes, parent: skirts, traits: [skirt-divided, waistband, closure-zip-back], designs: [culottes, riding-skirt, apron-riding-skirt] }
+  pencil: { name: Pencil skirt, parent: skirts, traits: [skirt-pencil, darts, waist-faced, closure-zip-back] }
+  yoke-skirt: { name: Yoke skirt, parent: skirts, traits: [skirt-two-piece, yoke-skirt-hip, closure-zip-back] }
+  tiered: { name: Tiered skirt, parent: skirts, traits: [skirt-tiered, gathers, waist-elastic] }
+
+  # ======================= Whole body =======================
+  dresses: { name: Dresses, parent: whole }
+  shift: { name: Shift dress, parent: dresses, traits: [body-yoke, neck-round, sleeve-short], designs: [shift-dress], variants: [shift-dress.scoop, shift-dress.square, shift-dress.boat, shift-dress.v-neck, shift-dress.sleeveless] }
+  shirtwaist: { name: Shirtwaist dress, parent: dresses, traits: [body-yoke, waist-seam, closure-buttons, collar-turndown, skirt-gathered, cuff-barrel], designs: [shirtwaist-dress] }
+  kimono-dress-t: { name: Kimono-sleeve dress, parent: dresses, traits: [body-yoke, sleeve-kimono, waist-seam], designs: [kimono-dress] }
+  frock-t: { name: Child's frock, parent: dresses, traits: [body-yoke, waist-seam, skirt-gathered, closure-buttons], designs: [frock] }
+  childs-dress-t: { name: Child's dress, parent: dresses, traits: [body-yoke, collar-flat], note: "Queue 52" }
+  sheath: { name: Sheath dress, parent: dresses, traits: [body-darted-bodice, neck-round, sleeveless, closure-zip-back] }
+  fit-and-flare: { name: Fit-and-flare dress, parent: dresses, traits: [body-darted-bodice, waist-seam, skirt-circular, closure-zip-back] }
+  wrap-dress: { name: Wrap dress, parent: dresses, traits: [body-darted-bodice, neck-surplice, closure-wrap, waist-seam] }
+  empire-dress: { name: Empire-waist dress, parent: dresses, traits: [body-yoke, waist-raised, skirt-gathered] }
+  drop-waist: { name: Drop-waist dress, parent: dresses, traits: [body-yoke, waist-dropped, pleats-skirt] }
+  sundress: { name: Sundress, parent: dresses, traits: [body-darted-bodice, sleeveless, neck-square, skirt-gathered] }
+  shirt-dress: { name: Shirt dress, parent: dresses, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, belt] }
+  princess-dress: { name: Princess-line dress, parent: dresses, traits: [body-princess, neck-round, closure-zip-back] }
+  smock-dress: { name: Smock dress, parent: dresses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered] }
+  t-shirt-dress: { name: T-shirt dress, parent: dresses, traits: [body-knit, neck-round, sleeve-set-in], knit: true }
+  pinafores: { name: Pinafores and jumpers, parent: whole }
+  pinafore-t: { name: Pinafore, parent: pinafores, traits: [body-yoke, sleeveless, skirt-gathered, closure-buttons], designs: [pinafore] }
+  jumper-dress: { name: Jumper (pinafore dress), parent: pinafores, traits: [body-darted-bodice, sleeveless, neck-square, skirt-gored] }
+  one-pieces: { name: Jumpsuits, overalls and rompers, parent: whole }
+  jumpsuit-t: { name: Jumpsuit, parent: one-pieces, traits: [body-flat, closure-buttons, belt], designs: [jumpsuit] }
+  bib-overall-t: { name: Bib overall, parent: one-pieces, traits: [leg-in-one, bib, closure-side-opening], designs: [bib-overall] }
+  coverall: { name: Coverall (boiler suit), parent: one-pieces, traits: [body-boxy, leg-tailored, closure-zip-front, collar-turndown, pocket-patch] }
+  romper: { name: Romper, parent: one-pieces, traits: [body-yoke, leg-gathered, leg-shorts, closure-buttons] }
+  dungarees: { name: Dungarees, parent: one-pieces, traits: [leg-tailored, bib, pocket-patch, closure-side-opening] }
+  robes: { name: Robes and gowns, parent: whole }
+  dressing-gown-t: { name: Dressing gown, parent: robes, traits: [body-boxy, collar-shawl, closure-wrap, belt, pocket-patch], designs: [dressing-gown] }
+  kimono-robe: { name: Kimono robe, parent: robes, traits: [body-flat, sleeve-kimono, closure-wrap, belt] }
+  kaftan: { name: Kaftan, parent: robes, traits: [body-flat, neck-split, hem-side-slits] }
+
+  # ======================= Sleepwear and underwear =======================
+  nightwear: { name: Nightwear, parent: sleep }
+  nightshirt-t: { name: Nightshirt, parent: nightwear, traits: [body-yoke, closure-placket, collar-stand, hem-side-slits], designs: [nightshirt] }
+  nightgown-t: { name: Nightgown, parent: nightwear, traits: [body-yoke, gathers, closure-placket, collar-stand], designs: [nightgown] }
+  pyjama-jacket-t: { name: Pyjama jacket, parent: nightwear, traits: [body-boxy, closure-buttons, collar-stand, pocket-patch], designs: [pyjama-jacket] }
+  pyjama-trousers-t: { name: Pyjama trousers, parent: nightwear, traits: [leg-gathered, waist-elastic], designs: [pyjama-trousers] }
+  underwear: { name: Underwear, parent: sleep }
+  drawers-t: { name: Drawers, parent: underwear, traits: [leg-in-one, closure-fly, waistband], designs: [drawers] }
+  bloomers-t: { name: Bloomers, parent: underwear, traits: [leg-gathered, waist-elastic], designs: [bloomers] }
+  boxer-shorts: { name: Boxer shorts, parent: underwear, traits: [leg-gathered, leg-shorts, waist-elastic, closure-fly] }
+  slip: { name: Slip, parent: underwear, traits: [body-bias, sleeveless] }
+  undershirt: { name: Undershirt, parent: underwear, traits: [body-knit, sleeveless, neck-scoop], knit: true }
+
+  # ======================= Neckwear and accessories =======================
+  neckwear: { name: Neckwear, parent: accessory }
+  necktie-t: { name: Necktie, parent: neckwear, traits: [flat-bias-tie], note: "Queue 50" }
+  bow-tie-t: { name: Bow tie, parent: neckwear, traits: [flat-bias-tie], note: "Queue 51" }
+  ascot: { name: Ascot and cravat, parent: neckwear, traits: [flat-bias-tie] }
+  neckerchief: { name: Neckerchief, parent: neckwear, traits: [flat-polygon] }
+  aprons-family: { name: Aprons, parent: accessory }
+  apron-t: { name: Work aprons, parent: aprons-family, traits: [flat-polygon, pocket-patch], designs: [aprons] }
+  headwear: { name: Headwear, parent: accessory }
+  cap-flat: { name: Flat cap, parent: headwear, note: "Needs a head block; not on FreeSewing's woven blocks" }
+  bucket-hat: { name: Bucket hat, parent: headwear }

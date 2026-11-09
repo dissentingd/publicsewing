@@ -25,7 +25,8 @@ Work in `designs/`, with one commit per garment. Stage files by name.
    pdftoppm -f <pdf page> -l <pdf page> -r 130 -png ../corpus/<id>/<id>.pdf "$S/p"
    ```
    Read fractions from the image. Take a scale from the plate for what the text omits.
-4. **Choose the base** from the construction the plate shows, then read that spec and its brief:
+4. **Choose the base** from the construction the plate shows. Find the garment's type in
+   `designs/garments/COVERAGE.md`: its traits name the designs to copy from. Then read that spec and its brief:
    `grep -l "<word>" */spec.yaml`. A look reached only by options is a variant, not a design.
 5. **Write** `<design>/spec.yaml` and `src/index.mjs` (copy a sibling's). Each source number is an
    option default with a comment. `node tools/measures.mjs <set> <measurement>` gives the divisor.
@@ -49,7 +50,8 @@ Work in `designs/`, with one commit per garment. Stage files by name.
     `git show HEAD -- README.md designs/README.md SOURCING.md WARDROBE_GAPS.md BUILD_QUEUE.md`.
     Run `NODE_PATH=$(npm root -g) node tools/preview.mjs <design>`, add the illustration prompt, add the
     design to the muslin report, and set the queue status. Then `npm run build` in `site/` and
-    `NODE_PATH=$(npm root -g) node tools/page-check.mjs <design>`.
+    `NODE_PATH=$(npm root -g) node tools/page-check.mjs <design>`. Add the design to its type in
+    `designs/garments/tree.yaml`, mark any element you built as covered, and run `node tools/garments.mjs`.
 12. **Report** what you changed from the source and anything you didn't run or verify. Add a line to
     your notes on what cost time.
 
