@@ -118,6 +118,11 @@ rmSync(out('docs', 'inspired'), { recursive: true, force: true })
 rmSync(out('static', 'img', 'drape'), { recursive: true, force: true })
 rmSync(out('static', 'img', 'illustrations'), { recursive: true, force: true })
 mkdirSync(out('static', 'img', 'illustrations'), { recursive: true })
+// A section's own illustration, when it isn't a design's (designs copy theirs below)
+for (const c of categories) {
+  const src = join(site, 'illustrations', `${c.image}.jpg`)
+  if (existsSync(src)) copyFileSync(src, out('static', 'img', 'illustrations', `${c.image}.jpg`))
+}
 rmSync(out('static', 'img', 'previews'), { recursive: true, force: true })
 mkdirSync(out('static', 'img', 'previews'), { recursive: true })
 
@@ -408,7 +413,10 @@ ${intro}
 <nav className="design-sections" aria-label="Sections">
 ${sections
   .map(
-    (c) => `  <a href="#${c.id}"><img src={useBaseUrl('/img/illustrations/${c.image}.jpg')} alt="" /><span>${c.label.replace('&', '&amp;')}</span></a>`
+    (c) =>
+      existsSync(join(site, 'illustrations', `${c.image}.jpg`))
+        ? `  <a href="#${c.id}"><img src={useBaseUrl('/img/illustrations/${c.image}.jpg')} alt="" /><span>${c.label.replace('&', '&amp;')}</span></a>`
+        : `  <a href="#${c.id}" className="no-image"><span>${c.label.replace('&', '&amp;')}</span></a>`
   )
   .join('\n')}
 </nav>

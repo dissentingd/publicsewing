@@ -76,3 +76,9 @@ designs:
     name: Bomber jacket
     category: jackets
     about: "A lined bomber jacket with set-in sleeves, a buttoned or snapped front, diagonal welt pockets, a back yoke, and rib collar, cuffs and waistband"
+  florent:
+    package: '@freesewing/florent'
+    export: Florent
+    name: Flat cap
+    category: hats
+    about: "A flat cap with a top, a side band and a small stiffened brim, sized from the head measurement"

@@ -1496,3 +1496,8 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > The same long shaped coat with more room around the hip for layering. Keep the continuous panels, high storm collar and calf-length hem. Front three-quarter full-length view on a plain background, clean technical editorial illustration.
 >
 > Leave out: pockets, cape, belt, waist seam or pleats.
+
+### hats: Hats section (the section link on the Designs pages, not a design's page)
+> A man's flat cap, drawn alone: a soft rounded crown cut as one flat top piece sewn to a narrow side band, the crown pulled slightly forward over a **small, short, stiff brim** in front. Mid-grey wool tweed with a faint herringbone. Three-quarter front view from slightly above, the cap resting on an invisible head form, centred, with margin all round. Square.
+>
+> Leave out: a button on top, a snap holding the crown to the brim, panels or segments in the crown (it's one piece), ear flaps, a band or ribbon, a long baseball-cap peak, a head or face.
