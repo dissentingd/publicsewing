@@ -10,6 +10,7 @@ import { dirname, extname, join, normalize } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 import { readSpec } from '../lib/load-spec.mjs'
+import { parse } from 'yaml'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const build = join(here, '..', '..', 'site', 'build')
@@ -50,8 +51,17 @@ for (const design of designs) {
     console.log(`${ok ? 'ok  ' : 'FAIL'} ${design}: ${what}`)
     if (!ok) failed++
   }
-  const specFile = join(here, '..', design, 'spec.yaml')
-  const spec = readSpec(specFile)
+  // Ours from its spec; FreeSewing's (freesewing.yaml) from its package, with no variants
+  let specFile = join(here, '..', design, 'spec.yaml')
+  let spec
+  if (existsSync(specFile)) spec = readSpec(specFile)
+  else {
+    specFile = join(here, '..', 'freesewing.yaml')
+    const entry = parse(readFileSync(specFile, 'utf8')).designs[design]
+    if (!entry) throw new Error(`${design}: no spec.yaml, and not in freesewing.yaml`)
+    const Design = (await import(entry.package))[entry.export]
+    spec = { about: { name: Design.designConfig.data.name }, variants: {} }
+  }
   const built = join(build, 'designs', `${design}.html`)
   if (!existsSync(built)) {
     check(false, 'no page in site/build (rebuild the site?)')

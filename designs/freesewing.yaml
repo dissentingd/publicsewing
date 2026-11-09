@@ -1,0 +1,24 @@
+# FreeSewing's own designs, listed on publicsewing.org as theirs (decided 2026-11-09).
+# They're npm dependencies at the pinned FreeSewing version (package.json here and in site/),
+# never copied or re-specced: no spec.yaml, no BRIEF.md, no muslin status. Each gets a page under
+# Inspired Designs, crediting and linking FreeSewing, and keeps FreeSewing's title on the printed
+# pattern. FreeSewing's code is MIT (site/patches/LICENSE-freesewing).
+#
+# Each entry, keyed by the design's id (its page is /designs/<id>):
+#   package, export: what to import from npm
+#   name: the garment, in our words; category: one of lib/categories.mjs
+#   about: one sentence, in our own words
+#   ours: our designs of the same garment, linked both ways (BUILD_QUEUE.md F11)
+#   needs: packages it imports without declaring them, installed alongside (record new ones here)
+# test/freesewing-designs.test.mjs drafts each at every size set. Their type in the garment
+# family tree is garments/tree.yaml (`freesewing:`).
+upstream: https://freesewing.eu/designs/
+
+designs:
+  teagan:
+    package: '@freesewing/teagan'
+    export: Teagan
+    name: T-shirt
+    category: tops
+    about: "A close-fitting knit T-shirt with short or long sleeves and a neck band, shaped for the bust where there is one"
+    ours: [t-shirt]

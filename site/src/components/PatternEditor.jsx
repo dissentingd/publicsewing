@@ -16,7 +16,8 @@ export const editorConfig = (design) => ({
   // No 'designs' (FreeSewing's collection picker), 'save' (its backend) or 'docs' (its site)
   mainViews: ['draft', 'export'],
   extraViews: ['measurements', 'undos', 'layout'],
-  devViews: ['inspect', 'logs', 'test'],
+  // editSettings (the settings as YAML) and timing are FreeSewing's own dev views; neither needs its backend
+  devViews: ['inspect', 'logs', 'test', 'editSettings', 'timing'],
   hrefNewSet: false,
 })
 

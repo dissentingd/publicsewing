@@ -9,8 +9,10 @@ Not covered by either license:
 - the scanned books in corpus/, which are in the public domain in the United States;
 - the USDA children's body measurements (O'Brien et al., 1939), a US government work, as
   transcribed in designs/sizes/ (the code that parses and checks them is covered here);
-- FreeSewing's packages, installed from npm and not copied into this repository, which keep
-  their own MIT license;
+- FreeSewing's packages, installed from npm, and the parts of them copied or patched here
+  (site/patches/, site/static/img/measure/), which keep their own MIT license
+  (site/patches/LICENSE-freesewing). FreeSewing's designs listed on the site
+  (designs/freesewing.yaml) are theirs, used from npm;
 - the drafting methods, formulas, proportions and measurement tables read from any source
   book, which are not copyrightable.
 

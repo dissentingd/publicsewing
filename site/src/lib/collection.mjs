@@ -1,6 +1,6 @@
 // Stands in for @freesewing/collection (a webpack alias in docusaurus.config.js), which the
 // editor (@freesewing/react) uses for its list of designs and for option and part labels. It
-// exports the same names, for PublicSewing's designs instead of FreeSewing's 73.
+// exports the same names, for PublicSewing's designs and the FreeSewing ones we list.
 import specs from '../generated/specs.json'
 import labels from '../generated/labels.json'
 import { designFromSpec } from '../../../designs/lib/spec.mjs'
@@ -9,9 +9,12 @@ import { i18n as bent } from '@freesewing/bent'
 import { i18n as breanna } from '@freesewing/breanna'
 import { i18n as titan } from '@freesewing/titan'
 import { i18n as sarah } from '@freesewing/sarah'
+import { designs as fsDesigns, i18n as fsI18n } from '../generated/freesewing.mjs'
 
 export const designs = {}
 for (const spec of Object.values(specs)) designs[spec.about.id] = designFromSpec(spec).Design
+// FreeSewing's own designs we list (designs/freesewing.yaml), as they are, with their own labels
+Object.assign(designs, fsDesigns)
 
 export const collection = Object.keys(designs)
 
@@ -46,3 +49,4 @@ for (const spec of Object.values(specs)) {
     if (so.title || so.description) o[name] = { t: so.title ?? o[name]?.t, d: so.description ?? o[name]?.d }
   i18n[spec.about.id] = { en: { o, p: { ...labels.parts } } }
 }
+Object.assign(i18n, fsI18n)
