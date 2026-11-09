@@ -4,6 +4,8 @@
 
 **Block:** FreeSewing's Sarah through the existing five-gore skirt layout (`gored-skirt`). Its narrow front panel and two gore pairs provide the source's three distinct pattern shapes. The front and back divided gores reuse the culotte curve operation, now able to target any gore index.
 
+**Threadloop:** no free riding skirt ("riding skirt" finds hoods and corsets). "Culottes" has 18 free patterns (So Sew Easy, Mood's Maple Culottes, La Maison Victor's Wei and Betsy); Misusu's "Draw Your Own Culottes" may be drafted from the wearer's measurements, which wasn't checked.
+
 **Status:** draft. Not sewn.
 
 ## What Mitchell states and draws

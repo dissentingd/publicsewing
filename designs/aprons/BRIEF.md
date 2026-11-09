@@ -2,6 +2,8 @@
 
 **Status: draft.** Not sewn or fit tested.
 
+**Threadloop:** "apron" has 84 free patterns (Tessuti, Purl Soho, Made for Mermaids among them), and FreeSewing's Albert is another. They're mostly kitchen and craft aprons, not Vincent's trade aprons, and nothing listed says it's drafted from measurements.
+
 ## Source
 Vincent, *The Cutter's Practical Guide to Cutting and Making Shirts, Undergarments* (1890), book p. 39, PDF p. 43, `vincentmakingshirts18xx`. One plate presents eight reduced apron diagrams. The text describes materials, fastening and pocket placement; dimensions are written on the diagrams.
 

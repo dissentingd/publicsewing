@@ -4,6 +4,8 @@
 
 **Block:** FreeSewing's Sarah supplies body measurements. The two aprons are drawn from Mitchell's point coordinates rather than Sarah's skirt outlines. Part I is the wide asymmetric front drape; Part II is the narrower back drape with a curved cutaway. The two straps are separate flat pieces.
 
+**Threadloop:** no free riding skirt ("riding skirt" finds hoods and corsets). The nearest, "culottes", has 18 free patterns, all divided skirts rather than an apron over breeches; nothing listed says it's drafted from measurements.
+
 **Status:** draft. Not sewn.
 
 ## What Mitchell states and what the plates show

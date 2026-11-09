@@ -4,6 +4,8 @@
 
 **Block:** FreeSewing's Brian, through the peacoat and mackinaw. The design uses the wearer's measurements and is available at child and adult sizes.
 
+**Threadloop:** no free reefer. "Pea coat" finds two free coats, Mood's Amelie Peacoat and Bergen Coat, both women's; nothing listed is a boys' coat or says it's drafted from measurements.
+
 **Status:** draft. Not sewn.
 
 ## What the source shows

@@ -1,19 +1,54 @@
 # Four-gore panel skirt
 
-**Source:** Schorr, *The Expert Designer* (1917), Diagram 65, PDF text p. 94 and plate p. 95 (`expertdesignerpr00scho`). US 1917, public domain. **Status:** draft; not sewn.
+**Source:** Schorr, *The Expert Designer* (1917), Diagram 65 (text PDF p. 94, plate PDF p. 95),
+`expertdesignerpr00scho`. US 1917, public domain. The book's printed page numbers aren't established
+for this scan.
 
-## What Schorr gives
+**Block:** extends `gored-skirt` (Sarah, `lib/skirt.mjs`), with seven gores. `skirtLayout` gained
+`middleShaping`, so the three middle darts needn't be equal.
 
-The half-skirt outline runs from center front A to center back G. Points 1 and 2 lie 3 in from those ends along the waist, and their hem ends 3 and 4 lie 5 in from the respective hem corners. Point 5 bisects 1–2; point 6 bisects the hip line. Lines 1–3, 5–6 and 2–4 divide the half outline into **four panel shapes**. The front shape is cut on a fold, and the other three are cut twice, giving seven sewn panels in total. This explains the source's “four gore” name as a count of shapes in the half draft.
+**Threadloop:** "gored skirt" finds four free patterns, three of them skirts (Indygo Junction's Modern
+Gored Skirt; Hot Patterns' Bossa Nova and Voodoo Chile). Nothing listed says it's drafted from measurements.
 
-In Schorr's example, the waist outline is 18 in and the target half waist is 13 in. Its 5 in surplus is taken at the three divisions: ½ in at the front, 2½ in at the side and 2 in near the back. The source specifies front, side and back lengths from the wearer and states that seam allowances are not included. It does not give one fixed skirt length, waistband, or closure.
+**Status:** draft. Not sewn.
 
-## Adaptation
+## What the source shows
+- **Outline:** a half skirt from CF (A) to CB (G). Points 1 and 2 are 3 in from each end along the waist;
+  their hem ends, 3 and 4, are 5 in from the hem corners. Point 5 bisects 1–2, and point 6 the hip line.
+- **Shapes:** the lines 1–3, 5–6 and 2–4 cut the half into **four shapes**: the front on the fold and three
+  others cut twice, seven panels in all. That is what "four gore" counts.
+- **Waist:** an 18 in outline taken to a 13 in half waist. The 5 in surplus is shared ½ in at the front,
+  2½ in at the side and 2 in near the back.
+- **Lengths:** front, side and back from the wearer. No seam allowance is included.
+- **Not given:** a fixed length, waistband or closure.
 
-FreeSewing Sarah supplies the body measurements and the gored-skirt layout supplies fitted, sewable curved edges. `panelShare` places the front half panel at 15% of the half hip, from Schorr's 3 in on a 20 in half hip. `panelShaping` and `middleShaping` distribute the body-specific difference between hip and waist in the source's 1:5:4 ratio. `goreFlare` at 70% gives about 2 in outward on a panel edge at the source's near-floor length. The `straighter` variant reduces the hem flare; it is our alternative.
+## How it maps onto the block
+Reference size `cisFemaleAdult36`.
 
-The default 95% waist-to-floor length, slight front waist drop, center-back zip and waistband come from the existing skirt construction. Their exact measurements are ours because Diagram 65 does not supply them. A muslin must establish fit and hem length.
+| Feature | Schorr | Here (option default) |
+|---|---|---|
+| Panels | Four shapes, seven panels | `gores` 7 |
+| Front panel | 3 in on a 20 in half hip | `panelShare` 15% of the half hip |
+| Front dart | ½ in of the 5 in surplus | `panelShaping` 11.82%, 10% after the layout's seven-gore attenuation (11/13) |
+| Middle darts | 2½ in at the side, 2 in near the back | `middleShaping` 40%: the back-middle takes 2 of the 5 in, and the side the 2½ left |
+| CB dart | None | `cbShaping` 0 |
+| Hem flare | 3 in at the waist to 5 in at the hem, 2 in out per seam edge | `goreFlare` 70% of the half hip, about 2 in at near-floor length |
+| Length | From the wearer | `length` 95% of waist to floor: ours |
+| Front waist | Not given | `frontWaistDrop` 8%: ours |
+
+**Variant:** `straighter`: less hem flare. Ours.
+
+## Changes and what isn't modelled
+- **Seam allowance is added,** where Schorr's draft has none.
+- **The darts follow the figure:** the source's 1 : 5 : 4 shares are applied to each wearer's own hip and
+  waist difference, not to a fixed 5 in.
+- **The length, front waist drop, CB zip and waistband** come from the gored skirt: Diagram 65 gives none
+  of them.
+
+## Pieces
+Front panel (on the fold), three side panels (each cut 2), waistband.
 
 ## Construction
-
-Cut the front panel on the fold and each of the other three panels twice. Sew the panel seams, leaving an opening at center back for the zip. Join the waistband, insert the zip and finish the hem after checking its length on the wearer.
+1. Sew the panel seams, leaving an opening at CB for the zip.
+2. Insert the zip; join the waistband.
+3. Try on, then level and finish the hem.

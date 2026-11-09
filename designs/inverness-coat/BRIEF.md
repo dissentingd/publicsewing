@@ -1,21 +1,67 @@
 # Women's Inverness coat
 
-**Source:** Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911), Diagram XXIV, text p. 58 (PDF p. 60), plate p. 59 (PDF p. 61), `merzspracticalcu00merz`. The referenced tight back, transferred shoulder and loose front are in Diagrams XVIII, XXII and XXIII. US 1911, public domain.
+**Source:** Merz, *Practical Cutting System for Ladies' Jackets and Cloaks* (1911), Diagram XXIV, text
+p. 58 (PDF p. 60), plate p. 59 (PDF p. 61), `merzspracticalcu00merz`. The tight back, transferred
+shoulder and loose front it refers to are Diagrams XVIII, XXII and XXIII. US 1911, public domain.
+
+**Block:** extends `womens-box-coat` (Breanna, `boxLayout` in `lib/jacket.mjs`): a shaped back, a loose
+front with a neck dart, long flared side seams, facing and buttons. For it, `boxLayout` gained
+`armholeDrop` and a `closed` front, and `lib/cape.mjs` gained `jacketCapeBase` and the cape's two shoulder
+darts.
+
+**Threadloop:** no free Inverness. "Cape coat" finds 60 free patterns (Mood's Coleus Cape Coat and others);
+none is a coat with a separate shoulder cape, and nothing says it's drafted from measurements.
 
 **Status:** draft. Not sewn.
 
-## What Merz gives
+## What the source shows
+- A loose-fronted, tight-backed, three-quarter Inverness, the turn collar closed in front.
+- **Armhole:** lowered 1 in (the line S–T).
+- **Cape:** a separate shoulder cape reaching 2 in past the shoulder (point 30 to A), with two ¾ in
+  shoulder darts 2 in apart and 2⅝ in long. Its length is to taste. Its front sits ½ in from point 25
+  and ¾ in from point 9.
+- **Collar:** 3¼ in high, ¼ in spring at its outer edge, its front end 2½ in.
+- **Plate:** a long shaped body under the cape.
+- **Not given:** pockets, buttons or a sleeve.
 
-Merz calls this a loose-fronted, tight-back, three-quarter Inverness with a turn collar closed in front. The plate shows a long shaped body under a separate shoulder cape. The armhole is lowered 1 inch. The cape extends 2 inches beyond the shoulder, with two small 3/4-inch darts separated by 2 inches. Its length is to taste. The cape front sits 1/2 inch from point 25 and 3/4 inch from point 9. The collar rises 3 1/4 inches, with 1/4 inch spring at its outer edge; its front end is 2 1/2 inches. The text does not specify pockets, buttons, or a sleeve.
+## How it maps onto the block
+Reference size `cisFemaleAdult36` (Merz drafts a 36 in bust).
 
-## How this draft is made
+| Feature | Merz | Here (option default) |
+|---|---|---|
+| Armhole | 1 in deeper | `armholeDrop` 2.8% of the chest, the shoulder point fixed |
+| Cape past the shoulder | 2 in | `capeShoulderExtension` 5.6% of the chest |
+| Cape darts | Two, ¾ in wide, 2 in apart, 2⅝ in long | `capeDartWidth` 2.1%, `capeDartGap` 5.6%, `capeDartLength` 7.3% of the chest |
+| Cape length | To taste; the plate's to the upper hip | `capeLength` 57% of the coat's neck to hem, from the plate |
+| Coat length | Three-quarter | `lengthBelowWaist` 66% of waist to floor, about 26 in, from the plate |
+| Front | Closed, no lapel | `lapelStyle` closed |
+| Cape front edge | ¾ in past centre | `buttonExtension` 2.1% of the chest |
+| Collar | 3¼ in high, ¼ in spring | `collarWidth` 24% of the neck, `collarSpring` 2% |
+| Body flare | Long side seams spreading to the hem | `flare` 4%, `cbFlare` 1.5%, from the plate |
+| Ease | Not given | `chestEase` 16%, `seatEase` 12%: ours |
+| Buttons | Not given | `buttons` 5, on CF: ours |
+| Neck dart | — | `neckDartWidth` 1.8%: ours, to shape the loose front |
+| Pockets, sleeves | None | Left out |
 
-The body reuses the Breanna-based women's box coat: separate shaped back, loose front with a neck dart, long flared side seams, facing, and button closure. The `closed` front option runs the top edge from the neck to the front edge without a lapel. `armholeDrop` lowers both armhole bottoms by 2.8% of chest, one inch at 36 inches, while keeping the shoulder points fixed. The separate one-piece cape uses the same block's neck and shoulder, extended by `capeShoulderExtension` (5.6% of chest, 2 inches at 36 inches), and a circular hem. Two marked shoulder darts are each `capeDartWidth` 2.1% of chest (3/4 inch), with `capeDartGap` 5.6% (2 inches) between their mouths, and `capeDartLength` 7.3% (2 5/8 inches) to their tips. Its default length is 57% of the coat's neck-to-hem distance, estimated from the plate. The coat length is 66% of waist-to-floor below the waist, also estimated from the plate. The collar width is 24% of neck, about 3 1/4 inches at the reference size; spring is 2% of its seam length, about 1/4 inch. The 5 buttons and 16% chest ease are our choices.
+**Variant:** `shorter` (Shorter shoulder cape): `capeLength` 42%. Ours.
 
-## Differences and limits
+## Changes and what isn't modelled
+- **The body keeps the box coat's side seams.** It doesn't transfer the shoulder as Merz instructs, and
+  doesn't reproduce his tighter waist and hip divisions at the back.
+- **The lowered armhole** deforms Breanna's curve smoothly, rather than redrawing it from Merz's points.
+- **The cape is circular,** an approximation of his sweep. Its darts are marked on the cut piece but don't
+  reshape the outer edge.
+- **The collar is an even width** with a simple spring, not his separate front and back heights.
+- **No sleeves or pockets:** neither is on the plate. The parent's sleeve and pocket pieces are overridden
+  with empty pieces, which draft nothing.
 
-The body retains the box coat's side seam geometry. It does not transfer the shoulder as Merz instructs or reproduce his tighter waist and hip back divisions. The lowered armhole is a smooth deformation of Breanna's curve rather than Merz's point draft. The cape remains a circular approximation of Merz's sweep; its two darts are marked on the cut piece but do not reshape the outer edge after sewing. The shared collar has constant width and a simple outer spring, rather than Merz's separately dimensioned front and back heights. The two-piece sleeves and pockets of the parent are omitted: neither is on the Inverness plate. These differences need a muslin before fit claims.
+## Pieces
+Fronts and backs (each cut 2), facings, collar, cape (on the fold). Add a cape facing and interfacing as
+preferred.
 
-## Pieces and sewing
-
-Cut two coat fronts, two shaped backs, two facings, one cape on the fold and one collar; add the cape's facing and interfacing as preferred. Sew the body shoulder and side seams, close the front neck dart, and finish its front edges with the facings. Sew the two marked cape shoulder darts, finish the curved hem and front edges, then secure it at the neck under the collar. Sew the collar, hem the body, and place buttons on centre front. Check the cape's clearance over the arm and adjust its length and shoulder extension in a muslin.
+## Construction
+1. Body shoulder and side seams; close the front neck dart; facings to the front edges.
+2. Sew the cape's two shoulder darts; finish its hem and front edges.
+3. Baste the cape to the neckline, and sew the collar over both.
+4. Hem the body; buttons on CF.
+5. In a muslin, check the cape's clearance over the arm, and adjust its length and shoulder extension.
