@@ -163,6 +163,7 @@ are probably variants of the row above them, not designs: decide after reading t
 | 54 | `kameez` | Kameez (long tunic), with kurta variants | **Inspired by** CBSE practicals; Bharat Skills, *Dress Making* vol. I | `shift-dress` | C | Methods only. Side slits, A-line and kalidar variants | open |
 | 55 | `churidar` | Churidar pyjama | **Inspired by** CBSE practicals | `salwar` | A | Methods only; bias-cut, gathered at the ankle | open |
 | 56 | `choli` | Choli (saree blouse) | **Inspired by** CBSE practicals | Bella block (B1) | I | Methods only; darted, short. After B1 | open |
+| 57 | `brimmed-hat` | Brimmed hat (sailor or boater shape), with a soft bucket-hat variant | Ben-Yûsuf, *The Art of Millinery* (1909), Lesson I "Drafting Buckram Frames", book pp. 7–24 (supplied as `The_Art_of_Millinery.pdf`, not in the corpus) | — (no block: drafted from `head`) | G | The book drafts a buckram frame: an oval or round brim set out from the head's length and width with its own front, back and side depths; a crown tip (head size, smaller for a conical crown, larger for a bell crown); and the crown's side band, a straight strip or a curved band from the head size, tip size and crown height. Make it in fabric with interfacing, not wire and buckram. Head length and width aren't measurements we have: take them as options proportional to `head`. Opens a Hats section of our own beside FreeSewing's Florent; `garments/tree.yaml` needs a brimmed-hat type (`bucket-hat` exists) | open |
 
 ### FreeSewing designs to list (2026-11-09)
 
