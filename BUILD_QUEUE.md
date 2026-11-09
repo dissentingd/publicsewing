@@ -186,7 +186,7 @@ builds on. Their garment types are in `designs/garments/tree.yaml` (`freesewing:
 | F8 | Shin, Bee, Sabrina, Shelly | Swim trunks, bikini top, sports tops, swim shirt | H | Not yet probed | open |
 | F9 | Cathrin, Holmes, Hortensia | Corset, deerstalker, handbag | H | | open |
 | F10 | Otis, Onyx, Bob | Baby romper, one-piece, bib | H | Below our children's range: needs baby measurement sets first | blocked (baby sizes) |
-| — | Simon, Simone, Jaeger, Wahid, Carlton, Carlita, Cornelius, Opal, Sandy, Albert | Garments we already build | H | List as "FreeSewing's version" or not at all: the maintainer decides | open (decision) |
+| F11 | Simon, Simone, Jaeger, Wahid, Carlton, Carlita, Cornelius, Opal, Sandy, Albert | Garments we also build | H | Decided 2026-11-09: list all, side by side, each as "FreeSewing's version" with a link between it and ours. Simone (bust-shaped), Sandy (a true circle) and Carlton (a men's caped coat) also fill gaps | open |
 | — | Jane, Lucy, Lunetius, Tiberius, Walburga, Sunny; toys and costumes | Historical dress, plush toys | — | Out of scope | not planned |
 
 ### Blocks: elements our library can't build yet (2026-11-09)
