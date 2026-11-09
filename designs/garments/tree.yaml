@@ -98,7 +98,7 @@ nodes:
   windbreaker-t: { name: Windbreaker, parent: casual-jackets, traits: [body-boxy, hood, closure-zip-front, yoke-front, pocket-welt], designs: [windbreaker] }
   anorak-t: { name: Anorak (pullover), parent: casual-jackets, traits: [body-yoke, hood, closure-placket, pocket-patch], designs: [anorak] }
   quilted: { name: Quilted jacket, parent: casual-jackets, traits: [body-boxy, quilting, hood, closure-buttons, pocket-welt], designs: [quilted-jacket] }
-  bomber: { name: Bomber (flight) jacket, parent: casual-jackets, traits: [body-boxy, closure-zip-front, sleeve-raglan, cuff-rib, waistband-jacket, pocket-welt], note: "Rib parts are knit", freesewing: [jett] }
+  bomber: { name: Bomber (flight) jacket, parent: casual-jackets, traits: [body-boxy, closure-zip-front, sleeve-set-in, cuff-rib, waistband-jacket, pocket-welt, lining], note: "Rib parts are knit. Usually zipped; Jett closes with buttons or snaps (a letterman front)", freesewing: [jett] }
   harrington: { name: Harrington jacket, parent: casual-jackets, traits: [body-boxy, sleeve-raglan, closure-zip-front, collar-stand, cuff-rib, waistband-jacket] }
   safari: { name: Safari jacket, parent: casual-jackets, traits: [body-boxy, collar-convertible, pocket-cargo, belt, closure-buttons] }
   shacket: { name: Shirt jacket (shacket), parent: casual-jackets, traits: [body-boxy, collar-shirt, closure-buttons, pocket-patch-flap] }

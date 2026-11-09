@@ -140,7 +140,7 @@ Each gap or partial element, with the unbuilt garment types that need it. A type
       - ● Windbreaker [windbreaker]
       - ● Anorak (pullover) [anorak]
       - ● Quilted jacket [quilted-jacket]
-      - ◆ Bomber (flight) jacket {FreeSewing: jett} _(Rib parts are knit)_
+      - ◆ Bomber (flight) jacket {FreeSewing: jett} _(Rib parts are knit. Usually zipped; Jett closes with buttons or snaps (a letterman front))_
       - ○ Harrington jacket — cuff-rib, waistband-jacket
       - ◐ Safari jacket
       - ◐ Shirt jacket (shacket)
