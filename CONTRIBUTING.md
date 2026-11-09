@@ -90,7 +90,8 @@ npm start
 
 On Windows, Git for Windows' bash ships `pdftotext` but not `pdftoppm`. Render pages on any
 machine that has the full Poppler, or install it. Pillow can do what `montage` does here, so you
-needn't install ImageMagick as well.
+needn't install ImageMagick as well. On Windows with Smart App Control on, Pillow's unsigned DLLs may be
+blocked: `pdftoppm -x -y -W -H` crops as it renders, and PyMuPDF can crop and tile pages.
 
 The repo's own tools, run in `designs/` (those that make images or use a browser need
 `NODE_PATH=$(npm root -g)` first):
