@@ -200,7 +200,7 @@ function prompt(design, parts, hint) {
     {
       role: 'system',
       content: `You choose 3D drape settings for a sewing pattern. A drape config places named pieces on a body and sews them; it names points as <piece>.<point>. Settings say which of the design's parts become the config's pieces:
-- config: one of the config files below, or null when none fits the garment (then say why)
+- config: one of the config files below. Answer null only when the garment is of a kind no config sews at all (a skirt, a cape, an apron, trousers with a fly); otherwise try the nearest config: a coat, jacket or shirt with a back, front and sleeve can try coat-shell.yaml, jacket.yaml or box.yaml, a waistcoat coat-vest.yaml, trousers trousers.yaml. You will be shown the error and can fix it, so trying costs little.
 - pieces: part names WITHOUT the prefix, the ones the config sews (collars, facings, pockets, linings, cuffs and bands are left out)
 - prefix: the part-name prefix before the dot, when it isn't the design id
 - back: the design's back part name, when the config calls it "back" and the design doesn't
