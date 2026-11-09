@@ -9,5 +9,5 @@ export const categories = [
   { id: 'dresses', label: 'Dresses', image: 'shirtwaist-dress.short-sleeves' },
   { id: 'skirts', label: 'Skirts', image: 'pleated-skirt' },
   { id: 'trousers', label: 'Trousers & overalls', image: 'work-pants' },
-  { id: 'sleepwear', label: 'Sleepwear', image: 'nightshirt' },
+  { id: 'sleepwear', label: 'Sleepwear & underwear', image: 'nightshirt' },
 ]

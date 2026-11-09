@@ -22,3 +22,27 @@ designs:
     category: tops
     about: "A close-fitting knit T-shirt with short or long sleeves and a neck band, shaped for the bust where there is one"
     ours: [t-shirt]
+  sven:
+    package: '@freesewing/sven'
+    export: Sven
+    name: Sweatshirt
+    category: tops
+    about: "A plain knit sweatshirt with set-in sleeves, rib cuffs and a rib band at the hem"
+  hugo:
+    package: '@freesewing/hugo'
+    export: Hugo
+    name: Hoodie
+    category: tops
+    about: "A pullover hooded sweatshirt with raglan sleeves, a front pouch pocket and rib cuffs and hem"
+  bruce:
+    package: '@freesewing/bruce'
+    export: Bruce
+    name: Boxer briefs
+    category: sleepwear
+    about: "Close-fitting knit boxer briefs with a front pouch and a little leg"
+  uma:
+    package: '@freesewing/uma'
+    export: Uma
+    name: Briefs
+    category: sleepwear
+    about: "Simple knit briefs with a gusset, whose rise and leg openings can be set high or low"
