@@ -190,20 +190,31 @@ function mdx(md, id) {
 const newRows = () => Object.fromEntries(categories.map((c) => [c.id, []]))
 const rows = { designs: newRows(), inspired: newRows() }
 
-// Others' patterns: a row in the Inspired tables, linking out. `ours` ties one to our design from it
+// Others' patterns: a row in the Historical tables (Open+Pattern copies real garments), linking out.
+// `ours` ties one to our design from it. A thumbnail where we hold their render:
+// illustrations/external/<path>.jpg, a front view from their CC BY 4.0 download, resized
 const external = parse(readFileSync(out('external.yaml'), 'utf8'))
 const original = {}
 for (const p of external.patterns) {
   const where = `external.yaml, ${p.name}`
-  if (!rows.inspired[p.category]) throw new Error(`${where}: category isn't one of lib/categories.mjs`)
+  if (!rows.designs[p.category]) throw new Error(`${where}: category isn't one of lib/categories.mjs`)
   if (p.ours && !ids.includes(p.ours)) throw new Error(`${where}: no design ${p.ours}`)
   if (p.ours && !inspiredIds.includes(p.ours)) throw new Error(`${where}: ${p.ours} isn't in inspired.yaml`)
   const url = `${external.base}${p.path}/`
   if (p.ours) original[p.ours] = { name: p.name, url }
   const ours = p.ours ? ` We also draft it to measure: [${specs[p.ours].about.name}](/designs/${p.ours}).` : ''
-  rows.inspired[p.category].push({
+  const pic = join(site, 'illustrations', 'external', `${p.path}.jpg`)
+  if (existsSync(pic)) {
+    mkdirSync(out('static', 'img', 'illustrations', 'external'), { recursive: true })
+    copyFileSync(pic, out('static', 'img', 'illustrations', 'external', `${p.path}.jpg`))
+  }
+  const thumb = existsSync(pic)
+    ? `<a href="${url}"><img className="thumb" src={useBaseUrl('/img/illustrations/external/${p.path}.jpg')} alt="${p.name}: ${external.by}'s 3D render" loading="lazy" /></a>`
+    : ''
+  const picCredit = existsSync(pic) ? ` Image: ${external.by}'s render, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), resized.` : ''
+  rows.designs[p.category].push({
     name: p.name,
-    row: `| | [${p.name}](${url})<br /><span className="external-tag">External</span> | ${p.about}.<br /><small>Fixed sizes: ${p.sizes}. Pattern by [${external.by}](/sources#open-pattern), on their site.${ours}</small> |`,
+    row: `| ${thumb} | [${p.name}](${url})<br /><span className="external-tag">External</span> | ${p.about}.<br /><small>Fixed sizes: ${p.sizes}. Pattern by [${external.by}](/sources#open-pattern), on their site.${picCredit}${ours}</small> |`,
   })
 }
 
@@ -451,6 +462,9 @@ designsPage(
 measurements. Every design is a **draft**: none has been sewn yet. Each page has the pattern tool
 for that design, its 3D drape, and its brief.
 
+Entries tagged <span className="external-tag">External</span> aren't ours: they're
+[${external.by}](/sources#open-pattern)'s patterns of real garments, in fixed sizes, on their site.
+
 See also [Inspired Designs](/inspired), from copied garments and sources still in copyright.`
 )
 
@@ -464,9 +478,7 @@ Our own designs here take the original's pieces, proportions and construction, a
 the wearer's measurements, so none is an exact copy. They are all **drafts**: none has been sewn yet.
 You can [copy a garment and submit it](/contribute) too.
 
-Entries tagged <span className="external-tag">External</span> aren't ours: they're fixed-size
-patterns on [${external.by}](/sources#open-pattern)'s site. Entries tagged
-<span className="external-tag">FreeSewing</span> aren't ours either: they're [FreeSewing](/sources#freesewing)'s
+Entries tagged <span className="external-tag">FreeSewing</span> aren't ours: they're [FreeSewing](/sources#freesewing)'s
 own designs, drafted to measure here with their credit.
 
 See also [Historical Designs](/designs), from old drafting books.`
