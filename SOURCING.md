@@ -259,6 +259,20 @@ proportions and methods, never its text, pieces or images.
 - Goldsberry's *National Garment Cutter* (1888) is dimensioned but its scale unit was
   never printed (archive, round 8).
 
+## Baby and toddler measurements (2026-11-09)
+
+`designs/sizes/babies.mjs` builds six sets below the USDA 1939 range (24 to 37 in tall, 3 to 37
+months) for BUILD_QUEUE F10. Both sources were supplied as PDFs (`~/Downloads/chatgpt/`), not in
+the corpus.
+
+| Source | What it gives | Use |
+|---|---|---|
+| Commercial Standard CS151-50, *Body Measurements for the Sizing of Apparel for Infants, Babies, Toddlers and Children* (US National Bureau of Standards, 1950; US government work), supplied as `Body_Measurements_for_the_Sizing_of_Appa.pdf` (19 pp.) | Size tables in inches, boys and girls together, one build: babies 3–36 months (Table 1: stature, chest, vertical trunk, shoulder-and-arm and vertical lengths only), toddlers 1–4 (Table 5: adds waist, thigh, neck, armscye, upper arm, cross-back, shoulder, scye depth, crotch length), children 2–6X (Table 7: adds hip). Girths over indoor clothing. Garment lengths (Tables 2, 6) | The sets' sizes, lengths and most girths |
+| Snyder, Spencer, Owings and Schneider, *Physical Characteristics of Children as Related to Death and Injury for Consumer Product Safety Design* (Univ. of Michigan HSRI for the CPSC, 1975, UM-HSRI-BI-75-5; [NIST AnthroKids](https://math.nist.gov/~SRessler/anthrokids/child.html)), supplied as `Snyder_1975_Child.pdf` (240 pp., tables are images) | Bare-body percentiles by age from birth: head, chest, waist, forearm, upper arm, mid-thigh, calf, ankle girth (neck from 25 months); no hip or wrist girth | Head, ankle and wrist (from forearm) at every size; babies' arm and thigh girths as growth curves applied to toddler size 1 |
+
+Checked and not used: NHANES 2021–23 body measures (BMX_L): its babies have only weight, length,
+head (to 6 months) and arm girth and length, and it's per-person data, not size tables.
+
 ## Children's source follow-up (2026-11-07)
 
 The archive's prior gate checks control this list. These are not newly cleared

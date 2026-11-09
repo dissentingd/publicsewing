@@ -186,7 +186,7 @@ builds on. Their garment types are in `designs/garments/tree.yaml` (`freesewing:
 | F7 | Tina, Tristan, Diana, Tamiko, Sophie, Sasha | Wrap top, princess top, draped-neck top, zero-waste top, slip dress, skater dress | H | Not yet probed | open |
 | F8 | Shin, Bee, Sabrina, Shelly | Swim trunks, bikini top, sports tops, swim shirt | H | Not yet probed | open |
 | F9 | Cathrin, Holmes, Hortensia | Corset, deerstalker, handbag | H | | open |
-| F10 | Otis, Onyx, Bob | Baby romper, one-piece, bib | H | Below our children's range: needs baby measurement sets first | blocked (baby sizes) |
+| F10 | Otis, Onyx, Bob | Baby romper, one-piece, bib | H | Below our children's range. Baby sets now exist (2026-11-09): `designs/sizes/babies.mjs`, six sets from 24 to 37 in (CS151-50 and Snyder 1975, SOURCING.md); all three draft at each with no errors or warnings. Left: give `freesewing.yaml` a way to test and offer a design at the baby sets instead of the 98 (Otis needs only waist, Bob nothing, Onyx 19 measurements), and add the sets to the site's size picker. Onyx imports `@freesewing/plugin-bust` without declaring it | open |
 | F11 | Simon, Simone, Jaeger, Wahid, Carlton, Carlita, Cornelius, Opal, Sandy, Albert | Garments we also build | H | Decided 2026-11-09: list all, under Inspired Designs like the rest of FreeSewing's, not beside our historical versions; each page links to the other ("also as ..."). Simone (bust-shaped), Sandy (a true circle) and Carlton (a men's caped coat) also fill gaps | open |
 | — | Jane, Lucy, Lunetius, Tiberius, Walburga, Sunny; toys and costumes | Historical dress, plush toys | — | Out of scope | not planned |
 
