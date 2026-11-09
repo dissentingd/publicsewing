@@ -143,6 +143,37 @@ export function draftYokeSide(sh, side) {
   const drop = !lowerArm && side === 'front' ? measurements.chest * optional('blouse') : 0
   const fold = new Point(0, yokeY + drop)
   let neckAtFold = points[`${c}Neck`]
+  // A reshaped neckline (`neckline`, a design option: round, square, boat or v; a scoop is round, widened and deepened), used only
+  // when the design declares it and leaves the block's neck when 'round' with no widening or drop.
+  // `neckWiden` (x neck) moves both neck points out along the shoulder by the same amount, so the
+  // shoulder seams still match; `neckDrop` (x the neck point to the chest line) deepens the front
+  // at CF. A boat neck is wide and shallow, so it takes no drop.
+  if ('neckline' in options) {
+    const widen = measurements.neck * (options.neckWiden ?? 0)
+    const dropBy = options.neckDrop ?? 0
+    const shape = options.neckline
+    if (shape !== 'round' || widen > 0 || dropBy > 0) {
+      const shoulder = points.s3CollarSplit.dist(points.s3ArmholeSplit)
+      const hps = points.s3CollarSplit.shiftTowards(points.s3ArmholeSplit, Math.min(widen, shoulder * 0.6))
+      points.s3CollarSplit = hps
+      let y = neckAtFold.y
+      if (side === 'front') {
+        y = shape === 'boat' ? hps.y + (neckAtFold.y - hps.y) * 0.35 : Math.max(neckAtFold.y, hps.y + points.armhole.y * dropBy)
+      }
+      neckAtFold = new Point(0, y)
+      const k = 0.55
+      if (side === 'front' && shape === 'square') neck = new Path().move(hps.clone()).line(new Point(hps.x, y)).line(neckAtFold)
+      else if (side === 'front' && shape === 'v') neck = new Path().move(hps.clone()).line(neckAtFold)
+      else {
+        // Leave the neck point square to the shoulder, so a shallow neck doesn't meet it at a spike
+        const tip = points.s3ArmholeSplit
+        const len = Math.hypot(tip.x - hps.x, tip.y - hps.y)
+        const reach = Math.max((y - hps.y) * k, hps.x * 0.2)
+        const cp1 = new Point(hps.x - ((tip.y - hps.y) / len) * reach, hps.y + ((tip.x - hps.x) / len) * reach)
+        neck = new Path().move(hps.clone()).curve(cp1, new Point(hps.x * (1 - k), y), neckAtFold)
+      }
+    }
+  }
   // A V neck on the front (`vNeck`, a design option: its depth as a share of the neck point to
   // the chest line), straight from the neck point down to CF
   if (side === 'front' && 'vNeck' in options && options.vNeck > 0) {

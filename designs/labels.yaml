@@ -285,6 +285,16 @@ options:
   ridingHemFlare:
     title: Riding skirt flare
     description: How far each panel edge opens at the hem for room over the saddle, as a share of the seat.
+  neckline:
+    title: Neckline
+    description: The shape of the neckline. Round with no extra width or depth is the block's neck; widen and deepen it for a scoop.
+    choices: { round: Round, square: Square, boat: Boat, v: V neck }
+  neckWiden:
+    title: Neck width
+    description: How far each neck point moves out along the shoulder, as a share of the neck.
+  neckDrop:
+    title: Neck depth
+    description: How much deeper the front neck goes at the centre, as a share of the neck point to the chest line.
   vNeck:
     title: V neck depth
     description: How deep the V neck goes, as a share of the neck point to the chest line.

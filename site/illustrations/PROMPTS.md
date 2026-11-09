@@ -463,6 +463,38 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: a stand or shirt collar, buttons below the chest, a belt or sash, darts or a fitted
 > waist, pockets, gathers, prints or trim, a person.
 
+
+### shift-dress.scoop: Shift dress, scoop neck
+> A women's **simple shift dress** in plain cotton or linen (navy, rust or sage), **to the knee**,
+> hanging **straight from the shoulders** with **no waist seam and no waist shaping**, widening a
+> little toward the hem (a slight A-line). A **wide, deep scooped round neckline**, lower and wider than a crew neck, finished with a narrow binding. **Short set-in sleeves** with a narrow band. Shown flat, front view.
+>
+> Leave out: a collar, buttons on the front, a belt or sash, darts or a fitted waist, pockets,
+> gathers, prints or trim, a person.
+
+### shift-dress.square: Shift dress, square neck
+> A women's **simple shift dress** in plain cotton or linen (navy, rust or sage), **to the knee**,
+> hanging **straight from the shoulders** with **no waist seam and no waist shaping**, widening a
+> little toward the hem (a slight A-line). A **square neckline**: straight down from the shoulders, then straight across the chest, finished flat. **Short set-in sleeves** with a narrow band. Shown flat, front view.
+>
+> Leave out: a collar, buttons on the front, a belt or sash, darts or a fitted waist, pockets,
+> gathers, prints or trim, a person.
+
+### shift-dress.boat: Shift dress, boat neck
+> A women's **simple shift dress** in plain cotton or linen (navy, rust or sage), **to the knee**,
+> hanging **straight from the shoulders** with **no waist seam and no waist shaping**, widening a
+> little toward the hem (a slight A-line). A **wide, shallow boat neckline** running nearly straight across from near one shoulder to the other, finished flat. **Short set-in sleeves** with a narrow band. Shown flat, front view.
+>
+> Leave out: a collar, buttons on the front, a belt or sash, darts or a fitted waist, pockets,
+> gathers, prints or trim, a person.
+
+### shift-dress.v-neck: Shift dress, V neck
+> A women's **simple shift dress** in plain cotton or linen (navy, rust or sage), **to the knee**,
+> hanging **straight from the shoulders** with **no waist seam and no waist shaping**, widening a
+> little toward the hem (a slight A-line). A **V neckline** in straight lines from the shoulders down to a point at the centre front, finished flat. **Short set-in sleeves** with a narrow band. Shown flat, front view.
+>
+> Leave out: a collar, buttons on the front, a belt or sash, darts or a fitted waist, pockets,
+> gathers, prints or trim, a person.
 ### shirtwaist-dress.short-sleeves: Shirtwaist dress, short sleeves
 > A women's **buttoned work dress** in plain cotton (chambray or gingham), about 1915. An easy
 > **bodice to a waist seam**, **buttoned down the front** with **six buttons**, and a **turn-down

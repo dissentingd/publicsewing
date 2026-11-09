@@ -73,7 +73,7 @@
   "three-piece-long-coat": {"default": {}, "fuller": {"seatEase": 0.12}, "plain": {"lining": false, "buttons": 2, "lengthBelowWaist": 0.5}},
   "double-dart-jacket": {"default": {}, "loose": {"cbSuppression": 0, "underarmSuppression": 0, "secondSuppression": 0, "lengthBelowWaist": 0.3}, "plain": {"lining": false, "secondAt": 0.35, "secondSuppression": 0.2}},
   "riding-habit-coat": {"default": {}, "plain": {"lining": false, "ridingHemFlare": 0.06, "ridingBackFlare": 0.015}, "fuller": {"seatEase": 0.2, "ridingHemFlare": 0.15}},
-  "shift-dress": {"default": {}, "withCollar": {"neckFinish": "collar", "opening": "front"}, "sleeveless": {"sleeves": "none"}, "variant": {"sleeves": "none", "neckFinish": "collar", "opening": "front", "hemFlare": 0.1, "sideSlit": 0.2}},
+  "shift-dress": {"default": {}, "withCollar": {"neckFinish": "collar", "opening": "front"}, "sleeveless": {"sleeves": "none"}, "scoop": {"neckWiden": 0.08, "neckDrop": 0.45}, "square": {"neckline": "square", "neckWiden": 0.1, "neckDrop": 0.4}, "boat": {"neckline": "boat", "neckWiden": 0.2}, "vNeck": {"neckline": "v", "neckWiden": 0.04, "neckDrop": 0.6}, "variant": {"sleeves": "none", "neckFinish": "collar", "opening": "front", "hemFlare": 0.1, "sideSlit": 0.2}},
   "middy-blouse": {"default": {}, "shortSleeves": {"sleeves": "short"}, "variant": {"sleeves": "short", "shield": false, "vNeck": 0.7, "collarDepth": 0.18}},
   "culottes": {"default": {}, "short": {"length": 0.4, "goreFlare": 0.1, "crotchEase": 0.02, "zipLength": 0.6}},
   "riding-skirt": {"default": {}, "plain": {"goreFlare": 0.45}, "deep-seat": {"crotchDepthShare": 1.32, "backExtension": 0.30}},

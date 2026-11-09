@@ -28,6 +28,10 @@ options:
   placketDepth: { pct: 40, min: 20, max: 80, menu: style } # x HPS to waist: a neck opening down the CB
   buttons: { count: 2, min: 1, max: 6, menu: style }
   neckFinish: { dflt: binding, list: [binding, band, collar], menu: style }
+  # Neckline shapes: ours, not Pivnick's, who keeps the foundation's neck. Defaults leave it as drafted
+  neckline: { dflt: round, list: [round, square, boat, v], menu: style }
+  neckWiden: { pct: 0, min: 0, max: 25, of: neck, menu: style } # each neck point out along the shoulder
+  neckDrop: { pct: 0, min: 0, max: 80, menu: style } # x neck point to chest line, at CF
   collarWidth: { pct: 25, min: 15, max: 35, of: neck, menu: style } # a flat collar, when chosen
   collarSpring: { pct: 15, min: 0, max: 25, menu: style }
   sleeves: { dflt: short, list: [long, short, none], menu: style }
@@ -44,3 +48,19 @@ variants:
     name: With a collar
     description: "A flat collar around the neck in place of the plain binding, with the short buttoned opening moved to the front, under it."
     options: { neckFinish: collar, opening: front }
+  scoop:
+    name: Scoop neck
+    description: "A wider, deeper round neck, finished with the same bias binding."
+    options: { neckWiden: 0.08, neckDrop: 0.45 }
+  square:
+    name: Square neck
+    description: "Straight down from a widened neck point, then straight across the front, finished with a binding or a facing."
+    options: { neckline: square, neckWiden: 0.1, neckDrop: 0.4 }
+  boat:
+    name: Boat neck
+    description: "A wide, shallow neck running out toward the shoulders, nearly level across the front."
+    options: { neckline: boat, neckWiden: 0.2 }
+  v-neck:
+    name: V neck
+    description: "Straight lines from a slightly widened neck point down to a point at the centre front."
+    options: { neckline: v, neckWiden: 0.04, neckDrop: 0.6 }

@@ -41,6 +41,11 @@ the shoulder to the hem, no waist seam.
 - **The CB is straight**, on the fold, not swung out below the waist; the flare is at the sides.
 - **Brian has no bust dart**, so the front isn't shaped over the bust; with the ease and flare
   the dress hangs straight from the shoulders, as a shift does.
+- **The neckline variants are ours** (2026-11-09): scoop, square, boat and V. Pivnick keeps the
+  foundation's neck here. `neckline` picks the shape; `neckWiden` (x the neck) moves both neck points
+  out along the shoulder, so the shoulders still match, and `neckDrop` (x the neck point to the chest
+  line) deepens the front. A scoop is the round neck widened and deepened. The binding follows the new
+  neck's length. Pivnick's chapter XVI (pp. 210–236) has collars and raised and cowl necklines, for later.
 
 ## Pieces
 Front (on the fold), back (on the fold, with the placket slit), sleeves and sleeve bands, placket,
