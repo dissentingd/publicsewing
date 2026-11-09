@@ -46,3 +46,33 @@ designs:
     name: Briefs
     category: sleepwear
     about: "Simple knit briefs with a gusset, whose rise and leg openings can be set high or low"
+  lily:
+    package: '@freesewing/lily'
+    export: Lily
+    name: Leggings
+    category: trousers
+    about: "Basic stretch leggings, a front and a back with a waistband, eased to how far the fabric stretches and shortened from the ankle as you like"
+  lumina:
+    package: '@freesewing/lumina'
+    export: Lumina
+    name: Paneled leggings
+    category: trousers
+    about: "Stretch leggings with a side panel down each leg, a waistband that can dip at the back, and optional pockets in the side panels"
+  lumira:
+    package: '@freesewing/lumira'
+    export: Lumira
+    name: Gusseted leggings
+    category: trousers
+    about: "Stretch leggings with a crotch gusset, which can widen into a round gusset at the back, with an optional waistband and room for a cycling chamois"
+  aaron:
+    package: '@freesewing/aaron'
+    export: Aaron
+    name: Tank top
+    category: tops
+    about: "A knit tank top with a scooped neck and armholes finished with knit binding"
+  jett:
+    package: '@freesewing/jett'
+    export: Jett
+    name: Bomber jacket
+    category: jackets
+    about: "A lined bomber jacket with set-in sleeves, a buttoned or snapped front, diagonal welt pockets, a back yoke, and rib collar, cuffs and waistband"
