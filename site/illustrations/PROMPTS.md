@@ -27,6 +27,16 @@ viewer's right.
 
 ## Men's coats and jackets (Simons 1916 and 1918)
 
+### sack-coat: Sack coat
+> A **man's single-breasted sack suit jacket** of about 1918, in plain dark grey or navy worsted. **Straight
+> and easy**: it hangs from the chest with little shaping at the waist, length just covering the seat.
+> **Notched lapels** with a turn-down collar, rolling to the **top button just below the chest**; **three
+> buttons**. **Two flap pockets below the waist, slanting down toward the front**. **Rounded front corners**,
+> plain two-piece sleeves. Front three-quarter view on a man, full length to the knee, plain background,
+> clean technical editorial illustration.
+>
+> Leave out: a breast pocket, a back vent, sleeve buttons, a waist seam or belt, a double-breasted front.
+
 ### boys-work-coat: Boys' work coat
 > A child's work jacket (about 8 years old) in sturdy plain cotton drill, blue or brown.
 > Single-breasted, **five buttons** from the neck to below the waist. Front hem corners

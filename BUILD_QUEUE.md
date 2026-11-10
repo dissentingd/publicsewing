@@ -144,7 +144,7 @@ are probably variants of the row above them, not designs: decide after reading t
 
 | # | Design id | Garment | Source and pages | Start from | Lane | Notes | Status |
 |---|---|---|---|---|---|---|---|
-| 38 | `sack-coat` | Men's single-breasted sack coat, the suit jacket | Simons, *Sack Coats* (1918) `designingsackcoa00simo` (tracked), Conservative Sack, Diagram III | `suit-jacket` | D | With `suit-trousers` and `waistcoat`, a full suit. Read Diagram IV (collars) too | open |
+| 38 | `sack-coat` | Men's single-breasted sack coat, the suit jacket | Simons, *Sack Coats* (1918) `designingsackcoa00simo` (tracked), Conservative Sack, Diagram III | `suit-jacket` | F | As built: on `suit-jacket` (Bent, `lib/body3.mjs`, so lane F), no library change; Simons' two-piece body becomes the three-piece one at his chest, waist and seat widths. Diagrams III–V, pp. 6–9 (PDF 10–13) | done (sack-coat) |
 | 39 | (variant) | Double-breasted and two-button English sack coats | Same book, Diagrams VI and VIII | `sack-coat` | D | Variants of 38 if options reach them | open |
 | 40 | `dinner-jacket` | Tuxedo | Same book, Young Men's Tuxedo, Diagram X | `sack-coat` | D | Faced lapels, one button | open |
 | 41 | `tailcoat` | Full dress coat | Same book, Diagram XII | `prince-albert-jacket` or `surtout` | D | Cut away at the waist in front; tails behind | open |

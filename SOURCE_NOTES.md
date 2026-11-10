@@ -11,6 +11,7 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 |---|---|---|
 | Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo` | 6 | yes |
 | Simons, *Designing Overcoat Patterns* (1916) `designingovercoa00simo` | 4 | yes |
+| Simons, *Designing Sack Coats and Vests* (1918) `designingsackcoa00simo` | 4 | yes |
 | Mitchell, *Ladies' Tailor-Made Garments* (1921) `newstandardworko00mitc` | 4 | yes |
 | Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | 4 | yes |
 | Pivnick, *How to Design Beautiful Clothes* (1949, not renewed) `pivnickdesignclothes1949` | 8 | no |
@@ -59,6 +60,17 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Diagram 38 is the full-length cape overcoat, pp. 110-112, not p. 126 (which is long trousers). Its plate shows a whole back and separate fronts, not a short shoulder cape over a coat.
 - Diagram 7's Norfolk has a front and back with a side seam, not a three-piece body.
 - Diagram 23, pp. 74–75 (PDF pp. 80–81), puts the single- and double-breasted reefer on one back and forepart. The text says the double-breasted edge is 2½ in from centre front and its button line 4 in from that edge; the plate also marks a lower pocket without explaining its construction.
+
+## Simons 1918, sack coats (`designingsackcoa00simo`)
+- Diagrams I–III (pp. 5–7, PDF 9–11) are the base the book asks you to memorise: a back with a CB seam and a
+  forepart running under the arm, no side body or dart. The forepart's side seam crosses the back's below the
+  waist and overlaps it 2¼ in at the seat line.
+- His widths include the seams' make-up, which he doesn't separate out. 33, the front edge, is 1½ in past 32:
+  read as a stand with CF in its middle, as his 1922 boys' book states for its 1¼ in stand.
+- No buttons, breast pocket or vent are drawn on Diagram III. The size 36 draft is 30 in long; the proportions
+  (p. 47, PDF 51, printed sideways) give 31.
+- The seat line (E) is only 5½ in below the waist, much higher than a modern waist-to-seat: scale lengths below
+  the waist from the wearer's own measurement, not his.
 
 ## Simons 1916 (`designingovercoa00simo`)
 - The shoulder cape overcoat is on pp. 30-31, not p. 21. It is a full-length cape with a military collar and a whole back; the 7 in button stand is a cut-on front extension.

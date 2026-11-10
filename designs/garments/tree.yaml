@@ -68,7 +68,7 @@ nodes:
   # ======================= Jackets (tailored and casual) =======================
   jackets: { name: Jackets, parent: upper }
   suit-jackets: { name: Suit and sports jackets, parent: jackets }
-  sack-coat-t: { name: Single-breasted suit jacket, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-notched, closure-buttons, pocket-welt, pocket-flap-set-in, vent-back, lining], designs: [suit-jacket, boys-suit-jacket], note: "Simons' sack coat is queue 38", freesewing: [jaeger] }
+  sack-coat-t: { name: Single-breasted suit jacket, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-notched, closure-buttons, pocket-welt, pocket-flap-set-in, vent-back, lining], designs: [suit-jacket, boys-suit-jacket, sack-coat], freesewing: [jaeger] }
   db-jacket: { name: Double-breasted suit jacket, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-peak, closure-double-breasted, pocket-welt, lining], note: "Queue 39, probably a variant of 38" }
   dinner-jacket-t: { name: Dinner jacket (tuxedo), parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-shawl, closure-buttons, pocket-welt, lining], note: "Queue 40" }
   norfolk: { name: Norfolk jacket, parent: suit-jackets, traits: [body-boxy, pleats-box-body, belt, pocket-patch, sleeve-set-in], designs: [norfolk-jacket] }

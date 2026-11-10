@@ -1,0 +1,82 @@
+# Sack coat: Simons' conservative sack (Designing Sack Coats and Vests, 1918, Diagrams I-V,
+# pp. 4-9), on the suit jacket (FreeSewing's Bent, three-piece body): the single-breasted
+# three-button suit jacket, hanging straight from the chest, with a notched lapel turning just
+# below the chest, slanted flap pockets, rounded front corners, no vent and two-piece sleeves.
+# For any size. See BRIEF.md for where each default is read.
+extends: ../suit-jacket/spec.yaml
+
+about:
+  id: sackcoat
+  name: Sack coat
+  category: jackets
+  description: "A straight-hanging three-button suit jacket: notched lapel, slanted flap pockets, rounded front corners"
+  difficulty: 5
+  tags: [jackets]
+  techniques: [button, welt-pocket, collar, lapel, facing, two-piece-sleeve]
+  version: 0.1.0
+  source: "Simons, Designing Sack Coats and Vests (1918), Diagrams I-V, pp. 4-9 (designingsackcoa00simo)"
+  preview: cisMaleAdult36 # Simons drafts size 36
+
+options:
+  # Fit. Simons' widths include his seams' make-up: less 1/2" a half for the CB and side seams
+  # (ours), the coat's net ease is
+  chestEase: { pct: 15 } # 2 1/2" over the half breast to 32, + 3/4" (the stand's half) - 1/2": 2 3/4" on 18
+  waistEase: { pct: 21 } # half waist 19 7/8" (back H-4 6 1/2", forepart 28 to CF 13 3/8") - 1/2" on his 32" waist's 16
+  seatEase: { pct: 19 } # half seat 23 1/8" (back to 11 6 7/8", forepart 29 to CF 16 1/4") - 1/2" on his 38" seat's 19
+  cuffEase: { pct: 87 } # x wrist: his 12 1/2" cuff (proportions, size 36) on the 36 set's 6.7" wrist
+  # Style
+  lengthBelowWaist: { pct: 122 } # x waistToSeat: 30" long, the waist at 17 1/2": 12 1/2" on the 36 set's 10.3"
+  frontDrop: { pct: 10 } # x waistToSeat: the hem falls about 1 3/4" at 41, 3/4" of it the waist's drop (38): 1"
+  hemCurve: { pct: 55 } # the corner 40-42 rounded about 2", x 10% of chest
+  buttonExtension: { pct: 2.1 } # x chest: 33 is 1 1/2" past 32, a stand of which CF is the middle: 3/4"
+  buttons: { count: 3 } # not drawn: three, the lapel turning at the top one
+  breakAt: { pct: 25, min: 0, max: 100, menu: style } # chest line to waist: 46, 2" below the chest line (of 8")
+  buttonBottom: { pct: 35, min: 0, max: 60, menu: style } # x waistToSeat: at the pockets, 3 5/8" below the waist
+  lapelWidth: { pct: 20 } # x neck: about 3" from the crease at its widest, on his 15" neck
+  collarWidth: { pct: 23 } # x neck: Diagram IV, stand 1 1/4" (N-D) and turnover 2 1/4" (C-K) on 15"
+  breastPockets: { bool: false } # Diagram III draws only the lower pockets
+  lowerPocketBelow: { pct: 41, min: 20, max: 70, menu: style } # x waistToSeat: 44, the mouth's front end, 4 1/4" below the waist
+  lowerPocketWidth: { pct: 18, min: 12, max: 24, of: chest, menu: style } # 44-45, 3 1/4" each side of 43: 6 1/2" on 36
+  pocketFromCF: { pct: 13.5, min: 6, max: 20, of: chest, menu: style } # 44 is about 4 7/8" behind CF
+  pocketSlant: { pct: 13, min: 0, max: 25, menu: style } # x the mouth's length: 45 is about 7/8" higher than 44
+  vent: { bool: false } # the back's CB runs straight to J
+  sleeveVent: { bool: false } # Diagram V draws no sleeve vent
+
+pieces:
+  front:
+    prefix: jacket # named like the inherited pieces
+    from: bent.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat, neck]
+    options: [frontDrop, hemCurve, buttonExtension, buttons, breastPockets, lowerPockets, pocketFlaps, facingWidth, lapelWidth, gorgeAt, breakAt, buttonBottom, lowerPocketBelow, lowerPocketWidth, pocketFromCF, pocketSlant, lining, neckFacingWidth, insidePockets]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to the old side seam
+      # The lapel turns `breakAt` of the way from the chest line to the waist (46: 2" of 8")
+      topButton: underarm.y + (cfWaist.y - underarm.y) * breakAt
+      pocketLen: chest * lowerPocketWidth
+    ops:
+      # Three buttons from the break to the pockets' level; the lapel turns at the top one.
+      # Flap pockets slanting down to the front below the waist; a breast welt at the chest (off)
+      - body3Front:
+          seamAt: 0.12
+          ext: ext
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          r: chest * 0.1 * hemCurve
+          buttons:
+            count: buttons
+            top: topButton
+            bottom: cfWaist.y + waistToSeat * buttonBottom
+          clear: q * 0.08
+          welt: 0.18
+          welts:
+            breast: { x: q * 0.24, y: underarm.y + q * 0.06, len: q * 0.36, rise: q * 0.05, bag: 1.15, mark: breastPockets }
+            lower: { x: chest * pocketFromCF, y: cfWaist.y + waistToSeat * lowerPocketBelow, len: pocketLen, rise: pocketLen * pocketSlant, bag: 1.3, mark: lowerPockets, flap: "if(pocketFlaps, 0.32, 0)" }
+          lapel:
+            breakY: topButton
+            rollOut: neck * 0.05
+            gorgeAt: gorgeAt
+            width: neck * lapelWidth
+      # Lined, as the jacket: the facing meets a back-neck facing on the shoulder
+      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: lining }

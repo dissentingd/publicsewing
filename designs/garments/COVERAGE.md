@@ -109,7 +109,7 @@ Each gap or partial element, with the unbuilt garment types that need it. A type
     - ◐ Utility vest
   - **Jackets**
     - Suit and sports jackets
-      - ● Single-breasted suit jacket [suit-jacket, boys-suit-jacket] {FreeSewing: jaeger} _(Simons' sack coat is queue 38)_
+      - ● Single-breasted suit jacket [suit-jacket, boys-suit-jacket, sack-coat] {FreeSewing: jaeger}
       - ◐ Double-breasted suit jacket _(Queue 39, probably a variant of 38)_
       - ◐ Dinner jacket (tuxedo) _(Queue 40)_
       - ● Norfolk jacket [norfolk-jacket]

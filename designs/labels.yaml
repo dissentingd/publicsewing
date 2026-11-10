@@ -768,6 +768,9 @@ options:
   pocketWidth:
     title: Pocket width
     description: Width of the pocket mouth, as a share of the chest.
+  pocketSlant:
+    title: Pocket slant
+    description: How much higher the pocket mouth's back end sits than its front end, as a share of its length.
   pocketAngle:
     title: Pocket angle
     description: How much the pocket mouth drops towards the side, in degrees.

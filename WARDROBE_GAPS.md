@@ -164,7 +164,8 @@ and marked as derived.
   - **Stout figures** (Diagrams VI, XI, XXII) are built into every coat.
   - **Longs and shorts, and mail-order changes** (XXIV, D, E): drafting from each person's
     measurements covers these.
-  - **The conservative sack coat** (I–V) is covered by FreeSewing's Jaeger.
+  - **The conservative sack coat** (I–V): built 2026-11-10 as `designs/sack-coat`, from
+    *Designing Sack Coats and Vests* (1918), on the suit jacket. Drafted, not sewn.
 
 ## Walker 1909: done (2026-10-23)
 `krl00366374`. Six designs:
@@ -221,6 +222,7 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
 - **Built 2026-11-05:** Weiler's riding habit coat (`designs/riding-habit-coat`), with a narrow back panel, six shaped body panels per side and extra seat room. Drafted, not sewn.
 - **Built 2026-11-06:** Merz's riding frock coat (`designs/riding-frock-coat`), with a fitted upper body and separately drafted swept skirt. Drafted, not sewn.
 - **Built 2026-11-06:** Merz's three-piece long coat (`designs/three-piece-long-coat`), with continuous shaped panels. Drafted, not sewn.
+- **Built 2026-11-10:** Simons' conservative sack coat (`designs/sack-coat`), the suit jacket at his 1918 proportions. Drafted, not sewn.
 
 ## ЕМКО СЭВ vol. 3 (1988): done (2026-10-27)
 Corpus `emko`, a private copy, untracked: still in copyright, used only for its methods,
