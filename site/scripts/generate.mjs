@@ -299,7 +299,7 @@ ${d.about}.${ours.length ? ` We also draft our own: ${ours.join(', ')}.` : ''}
 Pick a size set or enter your own measurements, change options, then **Export** a tiled PDF
 (A4 or Letter). Your measurements stay in this browser. See [Measure yourself](/measure?for=${id}).
 
-<PatternEditor design="${id}"${d.sizes ? ` sizes="${d.sizes}"` : ''} />
+<PatternEditor design="${id}"${d.sizes ? ` sizes="${d.sizes}"` : ''}${d.skip ? ` skip="${d.skip.join(' ')}"` : ''} />
 `
   )
 })

@@ -58,6 +58,10 @@ import { bent } from '../blocks/bent.mjs'
 import { titan } from '../blocks/titan.mjs'
 import { breanna } from '../blocks/breanna.mjs'
 import { sarah } from '../blocks/sarah.mjs'
+import { bella } from '../blocks/bella.mjs'
+import { bibi } from '../blocks/bibi.mjs'
+import { noble } from '../blocks/noble.mjs'
+import { ribPart } from './rib.mjs'
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
@@ -65,7 +69,7 @@ import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
 import { draftCapeBase, draftJacketCapeBase, draftCapeLayout, draftDolmanLayout, capePart } from './cape.mjs'
 import { draftKiltLayout, kiltApronPart, kiltPleatsPart } from './kilt.mjs'
 
-const blocks = { brian, bent, titan, breanna, sarah }
+const blocks = { brian, bent, titan, breanna, sarah, bella, bibi, noble }
 /** FreeSewing library parts a piece can use as is (`part: library`) */
 const libraryParts = { topsleeve, undersleeve }
 
@@ -432,6 +436,18 @@ const factories = {
           {},
         ),
     }),
+  // A rib band or cuff (`edge`, `stretch`, `height`, `round`), sized from the edge it finishes
+  rib: (p, ctx) =>
+    ribPart({
+      name: p.name,
+      after: ctx.after(p),
+      nr: p.nr,
+      label: p.label,
+      cut: p.cut ?? 1,
+      material: p.material ?? 'ribbing',
+      enabled: enabledBy(p.if),
+      shape: (sh) => evalMap({ ...p.let, edge: p.edge, stretch: p.stretch, height: p.height, round: p.round }, lookupIn(sh, ctx.block, {}), {}),
+    }),
   // A set-in flap pocket's flap, jet or bag (`jacket.pockets`, from boxLayout)
   setInPocket: (p, ctx) =>
     setInPocketPart({ name: p.name, after: ctx.after(p), key: p.key, piece: p.piece, nr: p.nr, label: p.label, enabled: enabledBy(p.if) }),
@@ -448,9 +464,11 @@ function lookupIn(sh, block, local) {
       // `in` first: reading a missing name logs a FreeSewing warning
       if (head in measurements && measurements[head] !== undefined) return measurements[head]
       if (head in options && options[head] !== undefined) return options[head]
-    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke') return store.get(name)
+    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke' || head === 'rib') return store.get(name)
     else {
-      const p = points[landmarks[head] ?? head]
+      // A landmark names one point, or a list when the block's parts name it differently (Bella's
+      // back has `waistSide`, its front `sideHem`): the first this part has
+      const p = points[[landmarks[head] ?? head].flat().find((n) => n in points) ?? head]
       if (p && rest.length === 1 && (rest[0] === 'x' || rest[0] === 'y')) return p[rest[0]]
     }
     throw new Error(`unknown name "${name}"`)
@@ -547,6 +565,9 @@ export function designFromSpec(spec) {
     if (measurements.length) part.measurements = measurements
     if (Object.keys(options).length) part.options = options
     part.draft = (sh) => {
+      // `if:` an option expression; when false the piece isn't cut (as a block part hides itself:
+      // Bibi's sleeve with `sleeves` off)
+      if (p.if !== undefined && !enabledBy(p.if)(sh.options)) return sh.part.hide()
       const lookup = lookupIn(sh, block, {})
       // The piece's `let` values (null ones too, so later expressions can test them)
       const local = {}

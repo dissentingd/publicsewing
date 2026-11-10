@@ -1549,3 +1549,13 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > A man's flat cap, drawn alone: a soft rounded crown cut as one flat top piece sewn to a narrow side band, the crown pulled slightly forward over a **small, short, stiff brim** in front. Mid-grey wool tweed with a faint herringbone. Three-quarter front view from slightly above, the cap resting on an invisible head form, centred, with margin all round. Square.
 >
 > Leave out: a button on top, a snap holding the crown to the brim, panels or segments in the crown (it's one piece), ear flaps, a band or ribbon, a long baseball-cap peak, a head or face.
+
+### swim: Swim & sport section (the section link on the Designs pages, not a design's page)
+> A pair of knee-length swim trunks, drawn alone: a plain front and back with a flat elastic waistband and a drawstring tied in a small bow at the front, the legs straight and slightly loose. Navy quick-dry fabric with a faint sheen. Three-quarter front view on an invisible form, centred, with margin all round. Square.
+>
+> Leave out: pockets, a fly, side stripes, prints or logos, a mesh lining showing, belt loops, a person or legs.
+
+### accessories: Accessories section (the section link on the Designs pages, not a design's page)
+> A classic necktie, drawn alone and laid in a loose S-curve as if just untied: a long pointed blade narrowing to a pointed tail, cut on the bias, with a keeper loop on the back of the blade. Deep burgundy silk with a small woven diamond pattern. Seen from above, centred, with margin all round. Square.
+>
+> Leave out: a knot, a tie clip or pin, a shirt or collar, a box or hanger, a label, a person.

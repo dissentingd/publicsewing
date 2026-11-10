@@ -25,7 +25,9 @@ export const editorConfig = (design) => ({
   hrefNewSet: false,
 })
 
-function SizePicker({ design, Design, useLocalStorageState, which }) {
+function SizePicker({ design, Design, useLocalStorageState, which, skip }) {
+  // `skip` (freesewing.yaml): size sets the design can't draft at
+  const skipped = (skip ?? '').split(' ')
   const groups = groupsFor(which)
   const [state, setState] = useLocalStorageState(editorConfig(design).stateKey, { defaultValue: {} })
   const [mine, setMine] = useLocalStorageState(MY_KEY, { defaultValue: null })
@@ -68,7 +70,7 @@ function SizePicker({ design, Design, useLocalStorageState, which }) {
           {mine ? <option value="mine">My measurements{missingMine.length ? ` (${missingMine.length} missing)` : ''}</option> : null}
           {Object.entries(groups).map(([g, label]) => (
             <optgroup key={g} label={label}>
-              {sizes[g].map((s) => (
+              {sizes[g].filter((s) => !skipped.includes(s.id)).map((s) => (
                 <option key={s.id} value={s.id}>
                   {s.label}
                 </option>
@@ -198,7 +200,7 @@ function HashLanding() {
   return null
 }
 
-export default function PatternEditor({ design, sizes: which }) {
+export default function PatternEditor({ design, sizes: which, skip }) {
   return (
     <BrowserOnly fallback={<div className="pattern-editor">Loading the pattern tool…</div>}>
       {() => {
@@ -210,7 +212,7 @@ export default function PatternEditor({ design, sizes: which }) {
           <div className="pattern-editor">
             <style>{patternStyle}</style>
             <HashLanding />
-            <SizePicker design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} which={which} />
+            <SizePicker design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} which={which} skip={skip} />
             <Editor design={design} localDesigns={designs} config={editorConfig(design)} />
             <OtherSoftware design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} />
           </div>

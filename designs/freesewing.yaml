@@ -12,6 +12,8 @@
 #   needs: packages it imports without declaring them, installed alongside (record new ones here)
 #   sizes: which size sets it's tested at and offered: (none) our 98; `babies` the baby and toddler
 #     sets (sizes/babies.mjs) only; `all` both
+#   skip: size sets it can't draft at (a FreeSewing bug, recorded here), left out of the tests and
+#     the size picker
 # test/freesewing-designs.test.mjs drafts each at every size set. Their type in the garment
 # family tree is garments/tree.yaml (`freesewing:`).
 upstream: https://freesewing.eu/designs/
@@ -106,3 +108,237 @@ designs:
     category: babies
     sizes: all
     about: "A simple bib, sized from the head measurement, with its neck opening, width and length as options"
+  devon:
+    package: '@freesewing/devon'
+    export: Devon
+    name: Denim jacket
+    category: jackets
+    needs: ['@freesewing/noble']
+    about: "A trucker-style denim jacket with front and back yokes, paneled front and back, a two-piece sleeve with a buttoned cuff, a shirt collar on a stand, a waistband, and optional flapped chest pockets"
+  trayvon:
+    package: '@freesewing/trayvon'
+    export: Trayvon
+    name: Necktie
+    category: accessories
+    about: "A classic necktie cut on the bias, with a lined tip and tail, interfacing, and a keeper loop"
+  benjamin:
+    package: '@freesewing/benjamin'
+    export: Benjamin
+    name: Bow tie
+    category: accessories
+    about: "A self-tie bow tie sized from the neck, in a butterfly, diamond or square shape, with straight, pointed or rounded ends"
+  huey:
+    package: '@freesewing/huey'
+    export: Huey
+    name: Zip hoodie
+    category: tops
+    about: "A hooded sweatshirt with raglan sleeves that zips up the front, with a two-piece hood, front pockets, and rib cuffs and hem"
+  hannah:
+    package: '@freesewing/hannah'
+    export: Hannah
+    name: Hooded top
+    category: tops
+    needs: ['@freesewing/toni']
+    skip: [stoutMale48]
+    about: "A fitted knit top with a hood, shaped at the waist with side seams or darts, with set-in, raglan, dolman or no sleeves"
+  yuri:
+    package: '@freesewing/yuri'
+    export: Yuri
+    name: Hooded sweater
+    category: tops
+    about: "A loose knit pullover whose wide hood wraps around the neck like a cowl, with a gusset where the hood meets the front, and set-in sleeves"
+  charlie:
+    package: '@freesewing/charlie'
+    export: Charlie
+    name: Chinos
+    category: trousers
+    about: "Cotton chinos with a fly front, slanted front pockets, jetted back pockets, a waistband and belt loops"
+  penelope:
+    package: '@freesewing/penelope'
+    export: Penelope
+    name: Pencil skirt
+    category: skirts
+    about: "A darted pencil skirt narrowing to the hem, with a zip at the back or side, an optional back vent, and a waistband or none"
+  paco:
+    package: '@freesewing/paco'
+    export: Paco
+    name: Summer trousers
+    category: trousers
+    about: "Loose, light summer trousers with an elastic or drawstring waistband, side pockets, welted back pockets, and plain or elasticated cuffs"
+  waralee:
+    package: '@freesewing/waralee'
+    export: Waralee
+    name: Wrap trousers
+    category: trousers
+    about: "Wide wrap trousers cut generously in the leg, which wrap around the body and tie with long straps at the front, back or side"
+  crux:
+    package: '@freesewing/crux'
+    export: Crux
+    name: Climbing trousers
+    category: trousers
+    needs: ['@freesewing/cornelius']
+    skip: [usdaGirlC4]
+    about: "Climbing and hiking trousers with a crotch gusset, optionally articulated knees, a fly, a choice of waistband and hem, and many pocket choices, full-length or cut to capris or shorts"
+  ashley:
+    package: '@freesewing/ashley'
+    export: Ashley
+    name: A-line shorts
+    category: trousers
+    about: "Flared A-line shorts with a back yoke, a fly front, front pockets, a waistband and belt loops"
+  shale:
+    package: '@freesewing/shale'
+    export: Shale
+    name: Casual shorts
+    category: trousers
+    needs: ['@freesewing/i18n', '@freesewing/plugin-ringsector']
+    about: "Easy shorts with an elastic waistband, all round or at the back only, and patch, inset or no pockets"
+  percy:
+    package: '@freesewing/percy'
+    export: Percy
+    name: Fall-front shorts
+    category: trousers
+    about: "Shorts with a buttoned fall front instead of a fly, a waistband in pieces, side pockets, an optional front pleat, and cuffs at the hem"
+  tristan:
+    package: '@freesewing/tristan'
+    export: Tristan
+    name: Princess top
+    category: tops
+    needs: ['@freesewing/noble', '@freesewing/plugin-ringsector']
+    about: "A close-fitting princess-seamed top that closes with a zip or lacing at the front, side or back, with an optional peplum"
+  diana:
+    package: '@freesewing/diana'
+    export: Diana
+    name: Draped top
+    category: tops
+    about: "A loose knit top with a cowl neck draping at the front, and set-in sleeves of any length"
+  tamiko:
+    package: '@freesewing/tamiko'
+    export: Tamiko
+    name: Zero-waste top
+    category: tops
+    about: "A loose, boxy top cut as one rectangle of fabric with no waste, its sleeves cut in one with the body"
+  sophie:
+    package: '@freesewing/sophie'
+    export: Sophie
+    name: Slip dress
+    category: dresses
+    about: "A slip dress on narrow straps, with shaped cups and front and back panels"
+  sasha:
+    package: '@freesewing/sasha'
+    export: Sasha
+    name: Skater dress
+    category: dresses
+    needs: ['@freesewing/noble']
+    about: "A princess-seamed dress, fitted through the bodice and flaring from the waist into a full skirt, with optional pockets"
+  shin:
+    package: '@freesewing/shin'
+    export: Shin
+    name: Swim trunks
+    category: swim
+    about: "Short swim trunks with a front, a back and a waistband, cut for stretch fabric"
+  bee:
+    package: '@freesewing/bee'
+    export: Bee
+    name: Bikini top
+    category: swim
+    about: "A triangle bikini top with ties at the neck and under the bust, which can cross at the back and be made reversible"
+  sabrina:
+    package: '@freesewing/sabrina'
+    export: Sabrina
+    name: Sports top
+    category: swim
+    about: "A close-fitting sports top cut in front, side and back panels, with a band at the hem"
+  shelly:
+    package: '@freesewing/shelly'
+    export: Shelly
+    name: Swim shirt
+    category: swim
+    about: "A close-fitting raglan-sleeved knit shirt with a neckband, for swimming or sport (a rash guard)"
+  cathrin:
+    package: '@freesewing/cathrin'
+    export: Cathrin
+    name: Corset
+    category: sleepwear
+    about: "An underbust corset shaped by many narrow panels, laced at the back"
+  holmes:
+    package: '@freesewing/holmes'
+    export: Holmes
+    name: Deerstalker
+    category: hats
+    about: "A deerstalker hat with a crown in gores, a peak at front and back, and ear flaps, sized from the head measurement"
+  hortensia:
+    package: '@freesewing/hortensia'
+    export: Hortensia
+    name: Handbag
+    category: accessories
+    about: "A zipped handbag with front, side and bottom panels, reinforced sides and a strap"
+  simon:
+    package: '@freesewing/simon'
+    export: Simon
+    name: Button-up shirt
+    category: tops
+    ours: [dress-shirt, work-shirt]
+    about: "A button-up shirt with a yoke, a collar on a stand, barrel or French cuffs with plackets, and many options for the front, the hem and the fit"
+  simone:
+    package: '@freesewing/simone'
+    export: Simone
+    name: Button-up shirt, bust-shaped
+    category: tops
+    ours: [dress-shirt, work-shirt]
+    about: "The same button-up shirt shaped for the bust, with a full-bust adjustment and darts"
+  jaeger:
+    package: '@freesewing/jaeger'
+    export: Jaeger
+    name: Suit jacket
+    category: jackets
+    ours: [suit-jacket, sack-coat, boys-suit-jacket]
+    about: "A single-breasted suit jacket with a notched lapel, a two-piece sleeve, a side panel, chest and flap pockets, and a back vent"
+  wahid:
+    package: '@freesewing/wahid'
+    export: Wahid
+    name: Waistcoat
+    category: vests
+    ours: [waistcoat]
+    about: "A lined, single-breasted waistcoat with welt pockets and a choice of neck, hem and front shapes"
+  carlton:
+    package: '@freesewing/carlton'
+    export: Carlton
+    name: Long belted coat
+    category: coats
+    ours: [overcoat, ulster]
+    about: "A long double-breasted coat with a stand collar, a half belt and a pleated tail at the back, a two-piece sleeve with cuffs, flap pockets and inside pockets"
+  carlita:
+    package: '@freesewing/carlita'
+    export: Carlita
+    name: Long belted coat, bust-shaped
+    category: coats
+    ours: [overcoat, ulster]
+    about: "The same long belted coat shaped for the bust, with a side panel"
+  cornelius:
+    package: '@freesewing/cornelius'
+    export: Cornelius
+    name: Cycling breeches
+    category: trousers
+    ours: [cycling-breeches, golf-pants, boys-knickers]
+    about: "Cycling breeches ending below the knee in a leg band, with a fly, side pockets and a waistband"
+  opal:
+    package: '@freesewing/opal'
+    export: Opal
+    name: Bib overalls
+    category: trousers
+    ours: [bib-overall]
+    about: "Bib overalls with a bib placket, a waistband, slash, bib, back and carpenter pockets, and a hammer loop"
+  sandy:
+    package: '@freesewing/sandy'
+    export: Sandy
+    name: Circle skirt
+    category: skirts
+    ours: [circular-skirt]
+    about: "A circle skirt, from a quarter circle to a full one or more, with a waistband and as many seams as you choose"
+  albert:
+    package: '@freesewing/albert'
+    export: Albert
+    name: Apron
+    category: tops
+    ours: [aprons]
+    about: "A work apron with a bib, a front pocket and straps"

@@ -54,6 +54,12 @@ export function clockwise(g) {
   const v = g.verts
   const area = v.reduce((s, q, i) => s + q[0] * v[(i + 1) % v.length][1] - v[(i + 1) % v.length][0] * q[1], 0)
   if (area >= 0) return g
+  // An open outline (a seam path FreeSewing doesn't close, as in its Sophie): one segment fewer
+  // than vertices. Reversed, the vertices run backwards and segment i is old segment n-2-i
+  if (!g.closed && g.segs.length === v.length - 1) {
+    const segs = [...g.segs].reverse().map((s) => (s.cp1 ? { cp1: s.cp2, cp2: s.cp1 } : {}))
+    return { verts: [...v].reverse(), segs, closed: false }
+  }
   // Segment i joins verts i and i+1; reversed, vertex order runs 0, n-1, ..., 1
   const n = v.length
   const verts = [v[0], ...v.slice(1).reverse()]
