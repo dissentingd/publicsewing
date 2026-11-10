@@ -15,4 +15,5 @@ export const categories = [
   { id: 'babies', label: 'Babies & toddlers', image: 'babies' },
   { id: 'hats', label: 'Hats', image: 'hats' },
   { id: 'accessories', label: 'Accessories', image: 'accessories' },
+  { id: 'blocks', label: 'Blocks', image: 'blocks' },
 ]

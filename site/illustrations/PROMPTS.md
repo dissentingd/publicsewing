@@ -1559,3 +1559,8 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > A classic necktie, drawn alone and laid in a loose S-curve as if just untied: a long pointed blade narrowing to a pointed tail, cut on the bias, with a keeper loop on the back of the blade. Deep burgundy silk with a small woven diamond pattern. Seen from above, centred, with margin all round. Square.
 >
 > Leave out: a knot, a tie clip or pin, a shirt or collar, a box or hanger, a label, a person.
+
+### blocks: Blocks section (the section link on the Designs pages, not a design's page)
+> A dressmaker's basic bodice block drawn as a flat pattern piece: the front of a close-fitting bodice with a neckline, a shoulder, an armhole curve, a side seam and a single waist dart, outlined in black ink on brown pattern card, with a straight grainline arrow, a few notches and faint pencil construction lines. Seen flat from above, centred, with margin all round. Square.
+>
+> Leave out: any text or numbers, a garment made up, a dress form, scissors, pins or a tape measure, a person.

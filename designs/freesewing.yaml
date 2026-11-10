@@ -342,3 +342,57 @@ designs:
     category: tops
     ours: [aprons]
     about: "A work apron with a bib, a front pocket and straps"
+  umbra:
+    package: '@freesewing/umbra'
+    export: Umbra
+    name: Undies
+    category: sleepwear
+    about: "Simple knit underwear with an elastic waist, whose rise, leg openings and coverage front and back are all options"
+  bibi:
+    package: '@freesewing/bibi'
+    export: Bibi
+    name: Knit top or dress
+    category: tops
+    about: "A plain knit top that becomes a dress by its length option, with or without sleeves, cuffs or ribbing, a bust dart or gathers, and a bound neck"
+  brian:
+    package: '@freesewing/brian'
+    export: Brian
+    name: Body block, flat chest
+    category: blocks
+    about: "A plain close-fitting body block, front, back and one-piece sleeve, for a figure without a bust: the start for shirts, coats and jackets of your own"
+  bent:
+    package: '@freesewing/bent'
+    export: Bent
+    name: Body block, two-piece sleeve
+    category: blocks
+    about: "Brian's body block with a two-piece sleeve shaped to the elbow, the start for coats and jackets"
+  breanna:
+    package: '@freesewing/breanna'
+    export: Breanna
+    name: Body block, bust darts
+    category: blocks
+    about: "A plain close-fitting body block for a figure with a bust, with a choice of bust dart positions and a fitted sleeve"
+  bella:
+    package: '@freesewing/bella'
+    export: Bella
+    name: Bodice block, side dart
+    category: blocks
+    about: "A close-fitting bodice block for a figure with a bust, with a side bust dart and waist darts front and back, and a sleeve"
+  noble:
+    package: '@freesewing/noble'
+    export: Noble
+    name: Princess bodice block
+    category: blocks
+    about: "A close-fitting bodice block with princess seams running from the waist to the shoulder or the armhole, front and back"
+  titan:
+    package: '@freesewing/titan'
+    export: Titan
+    name: Trouser block
+    category: blocks
+    about: "A dartless trouser block, front and back, drafted from the seat and the crotch seam, the start for trousers of your own"
+  sarah:
+    package: '@freesewing/sarah'
+    export: Sarah
+    name: Skirt block
+    category: blocks
+    about: "A straight skirt block with waist darts front and back, the start for skirts of your own"
