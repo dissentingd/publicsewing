@@ -221,10 +221,23 @@ for (const p of external.patterns) {
     mkdirSync(out('static', 'img', 'illustrations', 'external'), { recursive: true })
     copyFileSync(pic, out('static', 'img', 'illustrations', 'external', `${p.path}.jpg`))
   }
+  // Where Open+Pattern has no render we can use, our AI illustration (illustrations/openpattern/)
+  const aiPic = join(site, 'illustrations', 'openpattern', `${p.path}.jpg`)
+  const useAi = !existsSync(pic) && existsSync(aiPic)
+  if (useAi) {
+    mkdirSync(out('static', 'img', 'illustrations', 'openpattern'), { recursive: true })
+    copyFileSync(aiPic, out('static', 'img', 'illustrations', 'openpattern', `${p.path}.jpg`))
+  }
   const thumb = existsSync(pic)
     ? `<a href="${url}"><img className="thumb" src={useBaseUrl('/img/illustrations/external/${p.path}.jpg')} alt="${p.name}: ${external.by}'s 3D render" loading="lazy" /></a>`
-    : ''
-  const picCredit = existsSync(pic) ? ` Image: ${external.by}'s render, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), resized.` : ''
+    : useAi
+      ? `<a href="${url}"><img className="thumb" src={useBaseUrl('/img/illustrations/openpattern/${p.path}.jpg')} alt="${p.name}: illustration of the finished garment" loading="lazy" /></a>`
+      : ''
+  const picCredit = existsSync(pic)
+    ? ` Image: ${external.by}'s render, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), resized.`
+    : useAi
+      ? ` Image: an [AI-generated illustration](/sources#illustrations), not ${external.by}'s.`
+      : ''
   rows.designs[p.category].push({
     name: p.name,
     row: `| ${thumb} | ${designCell(`[${p.name}](${url})`, 0, tagLine(srcTag(external.by, url, 'external'), srcTag('CC BY 4.0', CC_BY, 'licence')))} | ${garmentCell(`${p.about}.`, `<small>Fixed sizes: ${p.sizes}, on their site.${picCredit}${ours}</small>`)} |`,
@@ -242,9 +255,16 @@ fsIds.forEach((id, i) => {
   const thanks = `They deserve more credit and have more to offer, so [check this design out there first](${d.url}).`
   const ours = (d.ours ?? []).map((o) => `[${specs[o].about.name}](/designs/${o})`)
   for (const o of d.ours ?? []) (alsoFs[o] ??= []).push(`[${name}](/designs/${id})`)
+  const fsPic = join(site, 'illustrations', 'freesewing', `${id}.jpg`)
+  const fsIllustrated = existsSync(fsPic)
+  if (fsIllustrated) {
+    mkdirSync(out('static', 'img', 'illustrations', 'freesewing'), { recursive: true })
+    copyFileSync(fsPic, out('static', 'img', 'illustrations', 'freesewing', `${id}.jpg`))
+  }
+  const fsImg = (cls, lazy) => `<img className="${cls}" src={useBaseUrl('/img/illustrations/freesewing/${id}.jpg')} alt="${name}: illustration of the finished garment"${lazy ? ' loading="lazy"' : ''} />`
   rows.inspired[d.category].push({
     name,
-    row: `| | ${designCell(`[${name}](/designs/${id})`, d.data.difficulty, tagLine(srcTag('FreeSewing', d.url, 'external'), srcTag('MIT', '/sources#freesewing', 'licence')))} | ${garmentCell(`${d.about}.`, ours.length ? `<small>We also draft our own: ${ours.join(', ')}.</small>` : '', supportNote('FreeSewing', d.url))} |`,
+    row: `| ${fsIllustrated ? `<a href="/designs/${id}">${fsImg('thumb', true)}</a>` : ''} | ${designCell(`[${name}](/designs/${id})`, d.data.difficulty, tagLine(srcTag('FreeSewing', d.url, 'external'), srcTag('MIT', '/sources#freesewing', 'licence')))} | ${garmentCell(`${d.about}.`, ours.length ? `<small>We also draft our own: ${ours.join(', ')}.</small>` : '', supportNote('FreeSewing', d.url))} |`,
   })
   writeFileSync(
     out('docs', 'inspired', d.category, `${id}.mdx`),
@@ -255,8 +275,16 @@ slug: /designs/${id}
 sidebar_position: ${1000 + i}
 hide_table_of_contents: true
 ---
+import useBaseUrl from '@docusaurus/useBaseUrl'
 import PatternEditor from '@site/src/components/PatternEditor'
-
+${fsIllustrated ? `
+<div className="design-figures">
+<figure className="illustration">
+  ${fsImg('illustration-img')}
+  <figcaption>An <a href="/sources#illustrations">AI-generated illustration</a> of the design at its default options, not drawn from the pattern and not FreeSewing's.</figcaption>
+</figure>
+</div>
+` : ''}
 :::info[FreeSewing's design, not ours]
 ${name} is ${credit}. ${thanks} Its page there has its documentation, its testing status and the
 community around it. Feel free to use ours, if it offers something you need otherwise: here you can
