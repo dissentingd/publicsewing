@@ -31,8 +31,8 @@ const DEPTH_LIMIT = 1.0 // cm inside the body, outside the wrists and hands, bef
 const TIMEOUT = { sim: 20 * 60e3, step: 5 * 60e3 }
 // The configs' bodies (their yaml in GarmentCode's assets/bodies), which placements are set for
 const REFERENCE = {
-  m_smpl_average_A40: { height: 178.1, head_l: 25.6, bust: 100 },
-  f_smpl_average_A40: { height: 165, head_l: 25, bust: 90 },
+  m_smpl_average_A40: { height: 178.1, head_l: 25.6, bust: 100, shoulder_w: 38.2 },
+  f_smpl_average_A40: { height: 165, head_l: 25, bust: 90, shoulder_w: 38 },
 }
 
 const run = (cmd, args, opts = {}) => execFileSync(cmd, args, { cwd: DESIGNS, encoding: 'utf8', maxBuffer: 1 << 28, ...opts })
@@ -143,12 +143,33 @@ export function drape(design, { name, options: extra = {}, entry, upTo, set } = 
     const sy = (target.height - target.head_l) / (ref.height - ref.head_l)
     const sxz = target.bust / ref.bust
     scale = sy
+    // Each body's right arm, measured from its mesh: a line, its angle down, its radius
+    const container = hostSettings().container
+    const armOf = (path) => JSON.parse(stage('upload', () => h.sh(`docker exec ${container} python /data/drape_bodies.py arm ${path}`)).trim().split('\n').pop())
+    const armRef = armOf(`/opt/garmentcode/assets/bodies/${config.body}.obj`)
+    const armT = armOf(`/data/bodies/${body}.obj`)
+    const onAxis = (a, x) => {
+      const t = (x - a.point[0]) / a.dir[0]
+      return a.point.map((c, i) => c + t * a.dir[i])
+    }
+    const turn = armT.angle - armRef.angle
     const scaled = structuredClone(config)
-    for (const p of Object.values(scaled.pieces)) p.translation = [p.translation[0] * sxz, p.translation[1] * sy, p.translation[2] * sxz]
+    for (const p of Object.values(scaled.pieces)) {
+      const [x, y, z] = p.translation
+      if (p.rotation?.[2]) {
+        // A sleeve: keep its offset from the arm's line as on the config's body, spaced by the
+        // arm's radius, at the matching point along this body's arm; turned by the angle change
+        const q = onAxis(armRef, x)
+        const s = armT.radius / armRef.radius
+        const qt = onAxis(armT, x * (target.shoulder_w / REFERENCE[config.body].shoulder_w))
+        p.translation = [qt[0] + (x - q[0]), qt[1] + (y - q[1]) * s, qt[2] + (z - q[2]) * s]
+        p.rotation = [p.rotation[0], p.rotation[1], p.rotation[2] + turn]
+      } else p.translation = [x * sxz, y * sy, z * sxz]
+    }
     scaled.body = body
     configPath = join(out, `${name}-config.yaml`)
     writeFileSync(configPath, stringify(scaled))
-    console.log(`body ${body}: placements scaled ${sy.toFixed(3)} up, ${sxz.toFixed(3)} across`)
+    console.log(`body ${body}: body pieces scaled ${sy.toFixed(3)} up, ${sxz.toFixed(3)} across; sleeves on its arm, turned ${turn.toFixed(1)} deg`)
   }
   const specArgs = ['tools/drape_spec.py', outlines, configPath, specs, name]
   if (r.back) specArgs.push('--back', r.back)
