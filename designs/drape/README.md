@@ -48,6 +48,29 @@ specification, simulates it on the GPU host, fetches the front and back renders 
   run (GarmentCode releases it after 400 frames by default). A labelled run is written as one
   edge: GarmentCode labels only the vertices it meshes inside an edge.
 
+## At a size set, on a matched body (2026-11-10)
+`node tools/drape.mjs <design> --set <size set>` drafts the design at that set's own
+measurements and drapes it on the nearest of GarmentCodeData v2's 5000 body shapes (ETH Zurich,
+CC BY-SA 4.0), instead of the runs.yaml size on the config's average body.
+- [`bodies.yaml`](bodies.yaml) says which body each set drapes on, from
+  [`tools/drape-bodies.mjs`](../tools/drape-bodies.mjs): the weighted mean difference over chest,
+  waist, seat, waist height, underbust, thigh and wrist. 21 of the 23 adult and stout sets have a
+  body within 5% (most within 1-2.5%); men's 48 and 50 don't, nor do the children's sets below
+  about 147 cm (the dataset's smallest body), so 20 of the 75 have one.
+- The dataset itself stays on the GPU host (its share-alike licence doesn't mix with ours):
+  [`tools/drape_bodies.py`](../tools/drape_bodies.py) indexes it there and installs a body into
+  the data folder, and `docker/ccat_sim.py` links it in for GarmentCode. Copy the index to
+  `out/bodies-index.json` to re-run the matching.
+- The configs place pieces for the average bodies, so drape.mjs scales the placements to the
+  body: up and down by nape height, across and front to back by bust, and drape_inside.py's
+  regions by height. An approximation: arms follow shoulder width, not bust.
+- Two of their measurements differ from ours by definition and aren't matched on: back waist
+  length (theirs from the nape) and arm length.
+
+First try, the chore coat: men's 34 OK (body 00359), men's 38 OK (04661, 0 intersections), men's
+46 REVIEW (03240: 196 intersections, 1.2 cm into the upper arm: the sleeve placement's scaling
+or the sleeve itself, not yet known).
+
 ## Draping the rest, unattended
 [`tools/drape-pipeline.mjs`](../tools/drape-pipeline.mjs) drapes every design with a brief and no
 entry in `runs.yaml`, on the GPU host itself, and leaves a report to review later. Run it on

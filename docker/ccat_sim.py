@@ -22,6 +22,14 @@ ap.add_argument('-b', '--body', default='mean_all')
 ap.add_argument('-s', '--sim_config', default='./assets/Sim_props/default_sim_props.yaml')
 a = ap.parse_args()
 
+# A body from GarmentCodeData's 5000 (designs/tools/drape_bodies.py installs it in /data/bodies):
+# link it into the bodies folder GarmentCode reads
+import os
+for ext in ('obj', 'yaml'):
+    src, dst = Path(f'/data/bodies/{a.body}.{ext}'), Path(f'./assets/bodies/{a.body}.{ext}')
+    if src.exists() and not dst.exists():
+        os.symlink(src, dst)
+
 props = data_config.Properties(a.sim_config)
 props.set_section_stats('sim', fails={}, sim_time={}, spf={}, fin_frame={}, body_collisions={}, self_collisions={})
 props.set_section_stats('render', render_time={})

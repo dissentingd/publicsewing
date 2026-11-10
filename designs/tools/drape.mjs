@@ -1,6 +1,8 @@
 // One command for a 3D drape: export a design's outlines, build the GarmentCode specification,
 // simulate it on the GPU host, fetch the renders, and say where the cloth goes inside the body.
-// Usage: node tools/drape.mjs <design> [--name <run name>] [--options '<json>']
+// Usage: node tools/drape.mjs <design> [--set <size set>] [--name <run name>] [--options '<json>']
+//   --set: draft at that size set and drape on its nearest dataset body (drape/bodies.yaml)
+//   instead of the runs.yaml size on the config's average body
 //   The design's drape settings are in drape/runs.yaml. Results go to out/drape/<name>/
 //   (renders, result.json).
 // The GPU host runs GarmentCode in a Docker container (built from docker/, see
@@ -19,7 +21,7 @@ import { copyFileSync, cpSync, existsSync, mkdirSync, readFileSync, statSync, wr
 import { homedir } from 'node:os'
 import { basename, dirname, isAbsolute, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { parse } from 'yaml'
+import { parse, stringify } from 'yaml'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const DESIGNS = join(HERE, '..')
@@ -27,6 +29,11 @@ const REPO = join(DESIGNS, '..')
 const DEPTH_LIMIT = 1.0 // cm inside the body, outside the wrists and hands, before a drape needs a look
 // How long a step may take before it counts as hung (simulations take 1-4 minutes on Cloudbox)
 const TIMEOUT = { sim: 20 * 60e3, step: 5 * 60e3 }
+// The configs' bodies (their yaml in GarmentCode's assets/bodies), which placements are set for
+const REFERENCE = {
+  m_smpl_average_A40: { height: 178.1, head_l: 25.6, bust: 100 },
+  f_smpl_average_A40: { height: 165, head_l: 25, bust: 90 },
+}
 
 const run = (cmd, args, opts = {}) => execFileSync(cmd, args, { cwd: DESIGNS, encoding: 'utf8', maxBuffer: 1 << 28, ...opts })
 
@@ -88,12 +95,22 @@ function hostOps({ host, data }) {
  * pipeline's proposals). `upTo: 'spec'` stops once the specification is built: a quick check
  * that needs no GPU.
  */
-export function drape(design, { name, options: extra = {}, entry, upTo } = {}) {
+export function drape(design, { name, options: extra = {}, entry, upTo, set } = {}) {
   const runs = parse(readFileSync(join(DESIGNS, 'drape', 'runs.yaml'), 'utf8'))
-  const r = entry ?? runs[design]
+  let r = entry ?? runs[design]
   if (!r) throw new Error(`no drape settings for ${design} in drape/runs.yaml (has: ${Object.keys(runs).join(', ')})`)
   if (!r.config || !existsSync(join(DESIGNS, 'drape', r.config))) throw new DrapeError('export', `no drape config "${r.config}" in drape/`)
   const config = parse(readFileSync(join(DESIGNS, 'drape', r.config), 'utf8'))
+  // At a size set: drafted at the set's own measurements, on its nearest dataset body
+  // (drape/bodies.yaml), the config's placements scaled to that body
+  let body = config.body
+  if (set) {
+    const match = parse(readFileSync(join(DESIGNS, 'drape', 'bodies.yaml'), 'utf8'))[set]
+    if (!match) throw new DrapeError('export', `no size set ${set} in drape/bodies.yaml`)
+    if (!match.body) throw new DrapeError('export', `${set} has no body within reach (nearest ${match.nearest}, ${match.error}% off)`)
+    body = `gcd_${match.body}`
+    r = { ...r, size: set, measurements: undefined }
+  }
   name ??= `${design}-${new Date().toISOString().slice(0, 10)}`.replace(/[^a-z0-9-]/gi, '')
   const out = join(DESIGNS, 'out', 'drape', name)
   mkdirSync(out, { recursive: true })
@@ -108,7 +125,32 @@ export function drape(design, { name, options: extra = {}, entry, upTo } = {}) {
   if (r.prefix) exportArgs.push('--prefix', r.prefix)
   console.log(stage('export', () => run(process.execPath, exportArgs, { timeout: TIMEOUT.step })).trim())
   const specs = join(out, 'specs')
-  const specArgs = ['tools/drape_spec.py', outlines, join('drape', r.config), specs, name]
+  let configPath = join('drape', r.config)
+  let scale = 1
+  if (body !== config.body) {
+    // The config places pieces for its own average body: scale up and down by nape height,
+    // across and front to back by bust. The body goes up to the host first
+    const { host, data } = hostSettings()
+    const h = hostOps({ host, data })
+    const id = body.slice(4)
+    const bodies = process.env.DRAPE_BODIES ?? '~/custom-clothing/datasets/garmentcodedata-v2/extract/bodies'
+    const target = stage('upload', () => {
+      h.put(join(HERE, 'drape_bodies.py'))
+      h.sh(`python3 ${h.dir}/drape_bodies.py install ${bodies} ${id} ${h.dir}`)
+      return parse(h.sh(`cat ${h.dir}/bodies/${body}.yaml`)).body
+    })
+    const ref = REFERENCE[config.body]
+    const sy = (target.height - target.head_l) / (ref.height - ref.head_l)
+    const sxz = target.bust / ref.bust
+    scale = sy
+    const scaled = structuredClone(config)
+    for (const p of Object.values(scaled.pieces)) p.translation = [p.translation[0] * sxz, p.translation[1] * sy, p.translation[2] * sxz]
+    scaled.body = body
+    configPath = join(out, `${name}-config.yaml`)
+    writeFileSync(configPath, stringify(scaled))
+    console.log(`body ${body}: placements scaled ${sy.toFixed(3)} up, ${sxz.toFixed(3)} across`)
+  }
+  const specArgs = ['tools/drape_spec.py', outlines, configPath, specs, name]
   if (r.back) specArgs.push('--back', r.back)
   console.log(stage('spec', () => run(process.env.PYTHON ?? 'python', specArgs, { timeout: TIMEOUT.step })).trim())
   if (upTo === 'spec') return { design, name, stage: 'spec' }
@@ -130,7 +172,7 @@ export function drape(design, { name, options: extra = {}, entry, upTo } = {}) {
     props = ' -s /data/sim_props_hold.yaml'
   }
   const sim = stage('sim', () =>
-    h.sh(`docker exec -w /opt/garmentcode ${container} python /data/ccat_sim.py -p /data/ps/${name}/${name}_specification.json -b ${config.body}${props}`, TIMEOUT.sim),
+    h.sh(`docker exec -w /opt/garmentcode ${container} python /data/ccat_sim.py -p /data/ps/${name}/${name}_specification.json -b ${body}${props}`, TIMEOUT.sim),
   ).replace(/\r/g, '\n')
   const grab = (re) => sim.match(re)?.[1]
   const logDir = grab(/^OUT (\/data\/Logs\/\S+)/m)
@@ -139,7 +181,8 @@ export function drape(design, { name, options: extra = {}, entry, upTo } = {}) {
     design,
     name,
     size: r.size,
-    body: config.body,
+    body,
+    set: set ?? null,
     options: { ...r.options, ...extra },
     garmentcode: {
       intersections: Number(grab(/BODY CLOTH INTERSECTIONS:\s*(\d+)/)),
@@ -149,7 +192,7 @@ export function drape(design, { name, options: extra = {}, entry, upTo } = {}) {
   }
 
   // 4. Where the cloth is inside the body, and 5. the renders
-  const inside = stage('inside', () => h.sh(`docker exec ${container} python /data/drape_inside.py ${logDir}/${name}_sim.obj /opt/garmentcode/assets/bodies/${config.body}.obj --json`))
+  const inside = stage('inside', () => h.sh(`docker exec ${container} python /data/drape_inside.py ${logDir}/${name}_sim.obj /opt/garmentcode/assets/bodies/${body}.obj --json --scale ${scale}`))
   result.inside = stage('inside', () => JSON.parse(inside.trim().split('\n').pop()))
   stage('fetch', () => {
     for (const view of ['front', 'back']) h.get(`${logDir}/${name}_render_${view}.png`, out)
@@ -167,7 +210,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2)
   const flag = (f) => (args.includes(f) ? args[args.indexOf(f) + 1] : undefined)
   try {
-    const r = drape(args[0], { name: flag('--name'), options: JSON.parse(flag('--options') ?? '{}') })
+    const r = drape(args[0], { name: flag('--name'), set: flag('--set'), options: JSON.parse(flag('--options') ?? '{}') })
     const g = r.garmentcode
     console.log(`\n${r.design} on ${r.body} (drafted at ${r.size}): ${r.verdict}`)
     console.log(`  GarmentCode: ${g.intersections} body-cloth intersections (its limit 35), ${g.selfIntersections} self-intersections, ${g.frames} frames`)

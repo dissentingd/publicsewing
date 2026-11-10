@@ -3,7 +3,8 @@ body vertex's normal (within 3 cm). A proxy for GarmentCode's body-cloth interse
 not the same measure: use it to see where the contacts are and how deep.
 
 Run in the garmentcode container (numpy, scipy, trimesh):
-  python /data/drape_inside.py /data/Logs/<run>/<name>_sim.obj /opt/garmentcode/assets/bodies/<body>.obj [--json]
+  python /data/drape_inside.py /data/Logs/<run>/<name>_sim.obj /opt/garmentcode/assets/bodies/<body>.obj [--json] [--scale s]
+(--scale: the body's height over the average body's, so the regions' bounds scale with it)
 (--json: one JSON object, { inside, distinct, regions: { <region>: { count, deepest, median } } },
 for tools/drape.mjs)
 
@@ -27,8 +28,11 @@ side = np.einsum('ij,ij->i', cloth.vertices - body.vertices[idx], body.vertex_no
 inside = np.where((side < 0) & (dist < 3))[0]
 
 
+SCALE = float(sys.argv[sys.argv.index('--scale') + 1]) if '--scale' in sys.argv else 1.0
+
+
 def region(p):
-    x, y, _ = p
+    x, y, _ = p / SCALE
     if abs(x) > 45:
         return 'wrist/hand'
     if abs(x) > 20:

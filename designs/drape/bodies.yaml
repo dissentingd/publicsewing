@@ -1,0 +1,765 @@
+# Each size set's nearest body in GarmentCodeData v2's 5000 body shapes (ETH Zurich, CC BY-SA 4.0;
+# the data stays on the GPU host), from tools/drape-bodies.mjs. error: the weighted mean
+# difference in %, off: each measurement's (+ means the body is bigger). body: null when none is
+# within 5% (nearest says which was closest). Drape on one as gcd_<body>.
+cisFemaleAdult28:
+  body: "00504"
+  error: 3.6
+  off:
+    chest: 8.6
+    waist: -4.1
+    seat: -0.6
+    waistToFloor: 0.6
+    hpsToWaistBack: -5.4
+    underbust: 4.4
+    shoulderToWrist: -12
+    upperLeg: 3.7
+    wrist: -4.1
+cisFemaleAdult30:
+  body: "00051"
+  error: 2.2
+  off:
+    chest: 2.9
+    waist: -4.5
+    seat: -0.9
+    waistToFloor: -0.2
+    hpsToWaistBack: -5.8
+    underbust: -0.1
+    shoulderToWrist: -11
+    upperLeg: 1.6
+    wrist: -6.1
+cisFemaleAdult32:
+  body: "04387"
+  error: 1.4
+  off:
+    chest: 3.6
+    waist: 0
+    seat: -1
+    waistToFloor: -0.1
+    hpsToWaistBack: -9.5
+    underbust: 0.4
+    shoulderToWrist: -11.6
+    upperLeg: 1.1
+    wrist: -6.6
+cisFemaleAdult34:
+  body: "03027"
+  error: 1
+  off:
+    chest: 0.2
+    waist: -0.3
+    seat: -0.1
+    waistToFloor: 1.3
+    hpsToWaistBack: -10
+    underbust: -2
+    shoulderToWrist: -12.3
+    upperLeg: 2.1
+    wrist: -6.7
+cisFemaleAdult36:
+  body: "04419"
+  error: 1.2
+  off:
+    chest: 0.4
+    waist: 2
+    seat: -0.9
+    waistToFloor: -0.1
+    hpsToWaistBack: -11.7
+    underbust: -0.1
+    shoulderToWrist: -10.9
+    upperLeg: 2.4
+    wrist: -4.5
+cisFemaleAdult38:
+  body: "02516"
+  error: 1.6
+  off:
+    chest: -1.8
+    waist: 1.2
+    seat: -0.2
+    waistToFloor: 0.3
+    hpsToWaistBack: -12
+    underbust: -2.2
+    shoulderToWrist: -12.3
+    upperLeg: 5.1
+    wrist: -5.1
+cisFemaleAdult40:
+  body: "04772"
+  error: 2.3
+  off:
+    chest: -5.9
+    waist: 0.1
+    seat: -0.3
+    waistToFloor: -0.1
+    hpsToWaistBack: -12.1
+    underbust: -3
+    shoulderToWrist: -10
+    upperLeg: 6.9
+    wrist: -3.3
+cisFemaleAdult42:
+  body: "01246"
+  error: 2.9
+  off:
+    chest: -5
+    waist: 4.4
+    seat: 0.2
+    waistToFloor: -0.2
+    hpsToWaistBack: -11.9
+    underbust: -3.4
+    shoulderToWrist: -9.6
+    upperLeg: 5.5
+    wrist: -4.1
+cisFemaleAdult44:
+  body: "04469"
+  error: 3.5
+  off:
+    chest: -6.3
+    waist: 4.8
+    seat: -4.4
+    waistToFloor: 0.1
+    hpsToWaistBack: -16.5
+    underbust: -1
+    shoulderToWrist: -5.9
+    upperLeg: 2
+    wrist: -3.5
+cisFemaleAdult46:
+  body: "01999"
+  error: 3.8
+  off:
+    chest: -5.5
+    waist: 8.7
+    seat: -0.3
+    waistToFloor: -0.3
+    hpsToWaistBack: -12.1
+    underbust: 0.9
+    shoulderToWrist: -9.3
+    upperLeg: 8.1
+    wrist: 0.8
+cisMaleAdult32:
+  body: "02307"
+  error: 2.3
+  off:
+    chest: 5.2
+    waist: -0.5
+    seat: -0.1
+    waistToFloor: 1
+    hpsToWaistBack: -14.6
+    underbust: -6.1
+    shoulderToWrist: -3.9
+    upperLeg: -6.2
+    wrist: -1.2
+cisMaleAdult34:
+  body: "00359"
+  error: 1.4
+  off:
+    chest: 1.1
+    waist: -0.5
+    seat: 0.3
+    waistToFloor: 0.7
+    hpsToWaistBack: -11.7
+    underbust: -7.6
+    shoulderToWrist: -8.3
+    upperLeg: -4.5
+    wrist: -0.2
+cisMaleAdult36:
+  body: "01944"
+  error: 1
+  off:
+    chest: -0.1
+    waist: 0.2
+    seat: 0.3
+    waistToFloor: -0.4
+    hpsToWaistBack: -17.4
+    underbust: -8.7
+    shoulderToWrist: -8.1
+    upperLeg: -3.1
+    wrist: -2.1
+cisMaleAdult38:
+  body: "04661"
+  error: 1.3
+  off:
+    chest: -1.1
+    waist: -0.9
+    seat: 0.1
+    waistToFloor: 1.1
+    hpsToWaistBack: -15
+    underbust: -8
+    shoulderToWrist: -6.9
+    upperLeg: 1.5
+    wrist: 1.6
+cisMaleAdult40:
+  body: "00788"
+  error: 1.9
+  off:
+    chest: -0.6
+    waist: 3.3
+    seat: -1.3
+    waistToFloor: -0.8
+    hpsToWaistBack: -17.2
+    underbust: -3.9
+    shoulderToWrist: -6
+    upperLeg: -3.5
+    wrist: 2.2
+cisMaleAdult42:
+  body: "00806"
+  error: 2.3
+  off:
+    chest: -2.2
+    waist: 4.5
+    seat: 1.4
+    waistToFloor: 0.5
+    hpsToWaistBack: -17.2
+    underbust: -9.7
+    shoulderToWrist: -8.2
+    upperLeg: -0.9
+    wrist: 0.5
+cisMaleAdult44:
+  body: "00806"
+  error: 3.1
+  off:
+    chest: -6.7
+    waist: 0.3
+    seat: -1.6
+    waistToFloor: -1.5
+    hpsToWaistBack: -19.8
+    underbust: -13.8
+    shoulderToWrist: -9.6
+    upperLeg: -3
+    wrist: -2.1
+cisMaleAdult46:
+  body: "03240"
+  error: 4.1
+  off:
+    chest: -8.4
+    waist: 1.7
+    seat: 1.1
+    waistToFloor: -2.7
+    hpsToWaistBack: -25.6
+    underbust: -17.5
+    shoulderToWrist: -8.9
+    upperLeg: -1.4
+    wrist: -5.5
+cisMaleAdult48:
+  body: null
+  nearest: "01808"
+  error: 5.3
+cisMaleAdult50:
+  body: null
+  nearest: "01999"
+  error: 5.6
+stoutMale42:
+  body: "03318"
+  error: 2.4
+  off:
+    chest: 5.8
+    waist: -2.1
+    seat: 0.9
+    waistToFloor: -1.5
+    hpsToWaistBack: -20.5
+    underbust: -0.5
+    shoulderToWrist: -7.5
+    upperLeg: -1.3
+    wrist: 2.8
+stoutMale48:
+  body: "02938"
+  error: 4.6
+  off:
+    chest: 0.4
+    waist: -11
+    seat: -5.2
+    waistToFloor: -2.3
+    hpsToWaistBack: -22.8
+    underbust: -7.3
+    shoulderToWrist: -11.6
+    upperLeg: 4.3
+    wrist: 0.4
+stoutFemale44:
+  body: "02198"
+  error: 3.6
+  off:
+    chest: 0.6
+    waist: -9.2
+    seat: -3
+    waistToFloor: 0.5
+    hpsToWaistBack: -13.4
+    underbust: 7.2
+    shoulderToWrist: -9.9
+    upperLeg: 5.6
+    wrist: 0.6
+usdaBoyB1:
+  body: null
+  nearest: "04027"
+  error: 45.2
+usdaBoyC1:
+  body: null
+  nearest: "04996"
+  error: 39.8
+usdaBoyD1:
+  body: null
+  nearest: "04996"
+  error: 35.3
+usdaBoyB2:
+  body: null
+  nearest: "04996"
+  error: 39.4
+usdaBoyC2:
+  body: null
+  nearest: "04996"
+  error: 34.3
+usdaBoyD2:
+  body: null
+  nearest: "04996"
+  error: 30.7
+usdaBoyB3:
+  body: null
+  nearest: "04996"
+  error: 33.5
+usdaBoyC3:
+  body: null
+  nearest: "04996"
+  error: 29.7
+usdaBoyD3:
+  body: null
+  nearest: "04996"
+  error: 26.9
+usdaBoyB4:
+  body: null
+  nearest: "04996"
+  error: 29.5
+usdaBoyC4:
+  body: null
+  nearest: "04996"
+  error: 26.5
+usdaBoyD4:
+  body: null
+  nearest: "04996"
+  error: 23.1
+usdaBoyB5:
+  body: null
+  nearest: "04996"
+  error: 24.4
+usdaBoyC5:
+  body: null
+  nearest: "04996"
+  error: 21.6
+usdaBoyD5:
+  body: null
+  nearest: "01544"
+  error: 18.7
+usdaBoyB6:
+  body: null
+  nearest: "04996"
+  error: 21.3
+usdaBoyC6:
+  body: null
+  nearest: "04996"
+  error: 18.1
+usdaBoyD6:
+  body: null
+  nearest: "01544"
+  error: 13.9
+usdaBoyB7:
+  body: null
+  nearest: "04996"
+  error: 17.6
+usdaBoyC7:
+  body: null
+  nearest: "01544"
+  error: 13.9
+usdaBoyD7:
+  body: null
+  nearest: "01544"
+  error: 10.1
+usdaBoyB8:
+  body: null
+  nearest: "01544"
+  error: 14.2
+usdaBoyC8:
+  body: null
+  nearest: "01544"
+  error: 10.4
+usdaBoyD8:
+  body: null
+  nearest: "01544"
+  error: 7.3
+usdaBoyB9:
+  body: null
+  nearest: "01544"
+  error: 9.9
+usdaBoyC9:
+  body: null
+  nearest: "01544"
+  error: 6.8
+usdaBoyD9:
+  body: null
+  nearest: "01544"
+  error: 5.1
+usdaBoyB10:
+  body: null
+  nearest: "03762"
+  error: 7.3
+usdaBoyC10:
+  body: null
+  nearest: "03762"
+  error: 5.6
+usdaBoyD10:
+  body: "03762"
+  error: 3.9
+  off:
+    chest: 1.6
+    waist: -9
+    seat: 0.6
+    waistToFloor: -0.8
+    hpsToWaistBack: 0.5
+    underbust: -14
+    shoulderToWrist: -13.8
+    upperLeg: 0.8
+    wrist: -14.2
+usdaBoyB11:
+  body: null
+  nearest: "03632"
+  error: 5.2
+usdaBoyC11:
+  body: "03632"
+  error: 3.9
+  off:
+    chest: -0.5
+    waist: -8.4
+    seat: 0.9
+    waistToFloor: 0.1
+    hpsToWaistBack: -3.3
+    underbust: -16.1
+    shoulderToWrist: -12.6
+    upperLeg: 2.5
+    wrist: -17
+usdaBoyD11:
+  body: "04122"
+  error: 2.7
+  off:
+    chest: 0.3
+    waist: -1.9
+    seat: -0.3
+    waistToFloor: -1.9
+    hpsToWaistBack: -8.5
+    underbust: -15
+    shoulderToWrist: -19.3
+    upperLeg: 0
+    wrist: -20.1
+usdaBoyB12:
+  body: "01201"
+  error: 3.3
+  off:
+    chest: 3.6
+    waist: -0.5
+    seat: 3.3
+    waistToFloor: 1.5
+    hpsToWaistBack: 2.7
+    underbust: -7.5
+    shoulderToWrist: -10.5
+    upperLeg: 6.7
+    wrist: -9.1
+usdaBoyC12:
+  body: "04308"
+  error: 2.5
+  off:
+    chest: 2.5
+    waist: 2.7
+    seat: -0.4
+    waistToFloor: 0.7
+    hpsToWaistBack: -1.5
+    underbust: -8.9
+    shoulderToWrist: -13.4
+    upperLeg: -1
+    wrist: -14.1
+usdaBoyD12:
+  body: "01796"
+  error: 2.1
+  off:
+    chest: 0
+    waist: 0.1
+    seat: 0.9
+    waistToFloor: -0.9
+    hpsToWaistBack: -8.6
+    underbust: -15.5
+    shoulderToWrist: -14.3
+    upperLeg: 0.2
+    wrist: -19
+usdaBoyB13:
+  body: "03870"
+  error: 1.9
+  off:
+    chest: -0.1
+    waist: 0.4
+    seat: 0
+    waistToFloor: -1.7
+    hpsToWaistBack: -5.5
+    underbust: -11.1
+    shoulderToWrist: -11.2
+    upperLeg: 2.1
+    wrist: -14.3
+usdaBoyC13:
+  body: "01902"
+  error: 2.1
+  off:
+    chest: -0.2
+    waist: 0
+    seat: 0.1
+    waistToFloor: -1.4
+    hpsToWaistBack: -11.7
+    underbust: -14
+    shoulderToWrist: -16.4
+    upperLeg: 0.5
+    wrist: -20.2
+usdaBoyD13:
+  body: "00768"
+  error: 2.1
+  off:
+    chest: -0.1
+    waist: 3
+    seat: -0.4
+    waistToFloor: 0.8
+    hpsToWaistBack: -2.9
+    underbust: -9.6
+    shoulderToWrist: -10.7
+    upperLeg: -0.7
+    wrist: -13.7
+usdaGirlB1:
+  body: null
+  nearest: "04027"
+  error: 44.8
+usdaGirlC1:
+  body: null
+  nearest: "04996"
+  error: 39.1
+usdaGirlD1:
+  body: null
+  nearest: "04996"
+  error: 33.9
+usdaGirlB2:
+  body: null
+  nearest: "04027"
+  error: 38.9
+usdaGirlC2:
+  body: null
+  nearest: "04996"
+  error: 34.2
+usdaGirlD2:
+  body: null
+  nearest: "04996"
+  error: 29.4
+usdaGirlB3:
+  body: null
+  nearest: "04027"
+  error: 34.2
+usdaGirlC3:
+  body: null
+  nearest: "04996"
+  error: 29.6
+usdaGirlD3:
+  body: null
+  nearest: "04996"
+  error: 25.4
+usdaGirlB4:
+  body: null
+  nearest: "04996"
+  error: 29.5
+usdaGirlC4:
+  body: null
+  nearest: "04996"
+  error: 24.9
+usdaGirlD4:
+  body: null
+  nearest: "04996"
+  error: 21.8
+usdaGirlB5:
+  body: null
+  nearest: "04996"
+  error: 24
+usdaGirlC5:
+  body: null
+  nearest: "04996"
+  error: 20.6
+usdaGirlD5:
+  body: null
+  nearest: "04996"
+  error: 18
+usdaGirlB6:
+  body: null
+  nearest: "04996"
+  error: 19.5
+usdaGirlC6:
+  body: null
+  nearest: "04996"
+  error: 16.8
+usdaGirlD6:
+  body: null
+  nearest: "01544"
+  error: 12.7
+usdaGirlB7:
+  body: null
+  nearest: "04996"
+  error: 15.5
+usdaGirlC7:
+  body: null
+  nearest: "01544"
+  error: 13
+usdaGirlD7:
+  body: null
+  nearest: "01544"
+  error: 8.2
+usdaGirlB8:
+  body: null
+  nearest: "01544"
+  error: 12.3
+usdaGirlC8:
+  body: null
+  nearest: "01544"
+  error: 8.4
+usdaGirlD8:
+  body: null
+  nearest: "01544"
+  error: 5.1
+usdaGirlB9:
+  body: null
+  nearest: "01544"
+  error: 7.8
+usdaGirlC9:
+  body: "01544"
+  error: 4.3
+  off:
+    chest: 8.6
+    waist: 0.3
+    seat: 3.2
+    waistToFloor: -1.1
+    hpsToWaistBack: 0.4
+    underbust: -11.2
+    shoulderToWrist: -11.3
+    upperLeg: 6.9
+    wrist: -8.9
+usdaGirlD9:
+  body: "03762"
+  error: 3
+  off:
+    chest: 3.7
+    waist: -3.2
+    seat: -0.8
+    waistToFloor: 2.8
+    hpsToWaistBack: 3.2
+    underbust: -10.8
+    shoulderToWrist: -9.2
+    upperLeg: 0.2
+    wrist: -7.7
+usdaGirlB10:
+  body: "02397"
+  error: 4.3
+  off:
+    chest: 6.9
+    waist: -0.8
+    seat: 4.1
+    waistToFloor: 2.7
+    hpsToWaistBack: 0.8
+    underbust: -8.6
+    shoulderToWrist: -7.8
+    upperLeg: 6.7
+    wrist: -6.7
+usdaGirlC10:
+  body: "03762"
+  error: 2.3
+  off:
+    chest: 2.9
+    waist: -1.6
+    seat: -1.1
+    waistToFloor: -0.5
+    hpsToWaistBack: -0.4
+    underbust: -11.2
+    shoulderToWrist: -12.3
+    upperLeg: 1.4
+    wrist: -7.7
+usdaGirlD10:
+  body: "03937"
+  error: 2.4
+  off:
+    chest: 1.4
+    waist: 0.7
+    seat: 0.2
+    waistToFloor: 1.9
+    hpsToWaistBack: -4.7
+    underbust: -16.3
+    shoulderToWrist: -11
+    upperLeg: -0.8
+    wrist: -12.5
+usdaGirlB11:
+  body: "03632"
+  error: 2.3
+  off:
+    chest: 2.6
+    waist: -1.3
+    seat: -0.9
+    waistToFloor: 0.4
+    hpsToWaistBack: -3.3
+    underbust: -11.7
+    shoulderToWrist: -11.1
+    upperLeg: 1.6
+    wrist: -9.6
+usdaGirlC11:
+  body: "00970"
+  error: 1.9
+  off:
+    chest: 1.4
+    waist: 0
+    seat: 1.1
+    waistToFloor: 0.3
+    hpsToWaistBack: -4.1
+    underbust: -14.4
+    shoulderToWrist: -12.6
+    upperLeg: -0.2
+    wrist: -12.3
+usdaGirlD11:
+  body: "03787"
+  error: 1.6
+  off:
+    chest: 0.5
+    waist: -0.2
+    seat: -0.2
+    waistToFloor: 0.9
+    hpsToWaistBack: -2.4
+    underbust: -12.5
+    shoulderToWrist: -9.9
+    upperLeg: 2
+    wrist: -8.3
+usdaGirlB12:
+  body: "04713"
+  error: 2.3
+  off:
+    chest: 0.2
+    waist: -4.4
+    seat: -0.6
+    waistToFloor: -0.5
+    hpsToWaistBack: -2.5
+    underbust: -10.2
+    shoulderToWrist: -10.9
+    upperLeg: 3.8
+    wrist: -5.6
+usdaGirlC12:
+  body: "03326"
+  error: 2
+  off:
+    chest: 0.6
+    waist: -0.1
+    seat: 0
+    waistToFloor: -2.2
+    hpsToWaistBack: -6.3
+    underbust: -14.4
+    shoulderToWrist: -14.4
+    upperLeg: 0
+    wrist: -12.8
+usdaGirlD12:
+  body: "04563"
+  error: 1.8
+  off:
+    chest: 0.2
+    waist: -0.2
+    seat: -1.3
+    waistToFloor: 0.1
+    hpsToWaistBack: -4.5
+    underbust: -15.5
+    shoulderToWrist: -13.9
+    upperLeg: 0.2
+    wrist: -11.8
