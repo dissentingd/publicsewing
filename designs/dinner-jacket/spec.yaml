@@ -1,0 +1,77 @@
+# Dinner jacket: Simons' young men's tuxedo (Designing Sack Coats and Vests, 1918, Diagram X,
+# pp. 18-19), on the sack coat (FreeSewing's Bent, three-piece body): his two-button English sack
+# with one button at the waist, a narrow stand, peaked lapels rolling to the button, the front cut
+# away below it, pockets without flaps, no vent. For any size. See BRIEF.md.
+extends: ../sack-coat/spec.yaml
+
+about:
+  id: dinnerjacket
+  name: Dinner jacket
+  category: jackets
+  description: "A one-button dinner jacket (tuxedo): peaked lapels rolling to the waist, the front cut away below the button, jetted pockets"
+  difficulty: 5
+  tags: [jackets]
+  techniques: [button, welt-pocket, collar, lapel, facing, two-piece-sleeve]
+  version: 0.1.0
+  source: "Simons, Designing Sack Coats and Vests (1918), Diagram X, pp. 18-19 (designingsackcoa00simo)"
+  preview: cisMaleAdult36 # Simons drafts size 36
+
+options:
+  # "All the allowances and measurements are the same" as the English coat (Diagram VIII)
+  chestEase: { pct: 14 } # 3 3/4" past half the breast, 1/4" less than the sack coat
+  waistEase: { pct: 16 } # the waist taken in 7/8" a half by the Vees, as the English coat
+  # "Only 1 inch is allowed for the button stand from T to U"
+  buttonExtension: { pct: 1.4 } # x chest: CF in the stand's middle, 1/2" past it
+  buttons: { count: 1 } # 10, at the waist
+  breakAt: { pct: 100 } # chest line to waist: the lapel rolls to 10, on the waist line
+  lapelStyle: { dflt: peak } # the plate's lapel points up past its notch
+  hemCurve: { pct: 70 } # the corner at 13 rounded about 2 1/2", x 10% of chest
+  # "From 10 to 27 is 1 3/4 inches. Line 23-27 is then squared to line 13, which gives the run of front"
+  cutawayTop: { pct: 17, min: 0, max: 60, menu: style } # x waistToSeat: 27, 1 3/4" below the button, on the 36 set's 10.3"
+  cutawayWidth: { pct: 8.3, min: 0, max: 14, of: chest, menu: style } # 11 to 13, about 3" in at the hem, read from the plate
+  # The "regular pocket" 24-26 (Simons' other choice is a slash pocket sewn into the Vee at 18)
+  pocketFlaps: { bool: false } # jetted: no flap drawn
+  lowerPocketBelow: { pct: 43 } # x waistToSeat: 24, the mouth's front end, about 4 1/2" below the waist
+  lowerPocketWidth: { pct: 16 } # 24-26, about 5 7/8" on 36
+  pocketFromCF: { pct: 16 } # 24 about 5 3/4" behind CF
+  pocketSlant: { pct: 22 } # 26 about 1 1/4" higher than 24
+
+pieces:
+  front:
+    prefix: jacket # named like the inherited pieces
+    from: bent.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat, neck]
+    options: [frontDrop, hemCurve, buttonExtension, doubleBreasted, doubleExtension, buttonRow, lapelStyle, buttons, breastPockets, lowerPockets, pocketFlaps, facingWidth, lapelWidth, gorgeAt, breakAt, buttonBottom, lowerPocketBelow, lowerPocketWidth, pocketFromCF, pocketSlant, cutawayTop, cutawayWidth, lining, neckFacingWidth, insidePockets]
+    let:
+      ext: chest * if(doubleBreasted, doubleExtension, buttonExtension)
+      q: underarm.x # the front's width at the chest, CF to the old side seam
+      topButton: underarm.y + (cfWaist.y - underarm.y) * breakAt
+      pocketLen: chest * lowerPocketWidth
+    ops:
+      # One button where the lapel turns; below it the front cut away to a rounded corner.
+      # Jetted pockets slanting down to the front below the waist; a breast welt at the chest (off)
+      - body3Front:
+          seamAt: 0.12
+          ext: ext
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          r: chest * 0.1 * hemCurve
+          cutaway: { top: topButton + waistToSeat * cutawayTop, by: chest * cutawayWidth }
+          buttons:
+            count: buttons
+            top: topButton
+            bottom: cfWaist.y + waistToSeat * buttonBottom
+            rows: ["if(doubleBreasted, -ext * buttonRow, 0)", "if(doubleBreasted, ext * buttonRow, null)"]
+          clear: q * 0.08
+          welt: 0.18
+          welts:
+            breast: { x: q * 0.24, y: underarm.y + q * 0.06, len: q * 0.36, rise: q * 0.05, bag: 1.15, mark: breastPockets }
+            lower: { x: chest * pocketFromCF, y: cfWaist.y + waistToSeat * lowerPocketBelow, len: pocketLen, rise: pocketLen * pocketSlant, bag: 1.3, mark: lowerPockets, flap: "if(pocketFlaps, 0.32, 0)" }
+          lapel:
+            breakY: topButton
+            rollOut: neck * 0.05
+            gorgeAt: gorgeAt
+            width: neck * lapelWidth
+            peak: lapelStyle == 'peak'
+      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: lining }

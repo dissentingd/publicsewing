@@ -515,6 +515,12 @@ options:
   shoulderLength:
     title: Shoulder length
     description: Length of the shoulder seam, as a share of the block's (a waistcoat's armhole is cut in at the shoulder).
+  cutawayTop:
+    title: Cutaway start
+    description: How far below the top button the front edge starts to slope away, as a share of waist to seat.
+  cutawayWidth:
+    title: Cutaway
+    description: How far the front edge slopes in toward the side by the hem, as a share of the chest. 0 keeps it straight.
   cutaway:
     title: Cutaway point
     description: How much of the front point is cut off at an angle, as a share of the chest. 0 leaves it square.

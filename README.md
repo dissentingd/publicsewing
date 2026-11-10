@@ -117,6 +117,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `scout-pants` | Full-length tapered trousers with a shaped back knee and back hem pleat | Simons 1922 |
 | `boys-suit-jacket` | Boy's three-button suit jacket, notched lapel, flap pockets | Simons 1922 |
 | `sack-coat` | Straight-hanging three-button suit jacket: notched lapel turning below the chest, slanted flap pockets, rounded corners | Simons 1918 |
+| `dinner-jacket` | One-button dinner jacket (tuxedo): peaked lapels rolling to the waist, the front cut away below the button, jetted pockets | Simons 1918 |
 | `waistcoat` | Lined V-neck waistcoat with cutaway points, darts and welt pockets | ЕМКО 1988 |
 | `db-waistcoat` | Double-breasted waistcoat: a wide stand with two rows of buttons, a V neck to the front edge, a deep point | Simons 1922 |
 | `suit-trousers` | Semi-fitted straight trousers: waist darts, zip fly, side and back pockets, waistband | ЕМКО 1988 |

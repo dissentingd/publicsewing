@@ -27,6 +27,17 @@ viewer's right.
 
 ## Men's coats and jackets (Simons 1916 and 1918)
 
+### dinner-jacket: Dinner jacket
+> A **man's single-breasted dinner jacket (tuxedo)** of about 1918, in black wool barathea, worn open over a white
+> dress shirt. **Exactly one button, at the waist.** **Peaked lapels faced in black silk satin**, pointing up, rolling
+> all the way down to that one button. **Below the button the fronts slope away to the sides**, opening into a
+> wide inverted V down to **rounded corners** at the hem; length just covering the seat. **Two jetted pockets with no
+> flaps** below the waist. Plain two-piece sleeves. Front three-quarter view on a man, full length to the knee,
+> plain background, clean technical editorial illustration.
+>
+> Leave out: a second button, a shawl collar, notched lapels, pocket flaps, a breast pocket, a back vent, tails,
+> a waistcoat or cummerbund in colour.
+
 ### sack-coat.double: Double-breasted sack coat
 > **Double-breasted: exactly two parallel rows of buttons, two in each row, four buttons in all**, the rows set
 > either side of the centre, the top pair at the waist. A **man's double-breasted sack suit jacket** of about 1918

@@ -70,7 +70,7 @@ nodes:
   suit-jackets: { name: Suit and sports jackets, parent: jackets }
   sack-coat-t: { name: Single-breasted suit jacket, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-notched, closure-buttons, pocket-welt, pocket-flap-set-in, vent-back, lining], designs: [suit-jacket, boys-suit-jacket, sack-coat], freesewing: [jaeger] }
   db-jacket: { name: Double-breasted suit jacket, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-peak, closure-double-breasted, pocket-welt, lining], variants: [sack-coat.double] }
-  dinner-jacket-t: { name: Dinner jacket (tuxedo), parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-shawl, closure-buttons, pocket-welt, lining], note: "Queue 40" }
+  dinner-jacket-t: { name: Dinner jacket (tuxedo), parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-peak, closure-buttons, pocket-welt, lining], designs: [dinner-jacket] }
   norfolk: { name: Norfolk jacket, parent: suit-jackets, traits: [body-boxy, pleats-box-body, belt, pocket-patch, sleeve-set-in], designs: [norfolk-jacket] }
   eton: { name: Eton jacket, parent: suit-jackets, traits: [body-three-piece, collar-notched, sleeve-two-piece], designs: [eton-jacket] }
   smoking: { name: Smoking jacket, parent: suit-jackets, traits: [body-boxy, collar-shawl, closure-frogs, cuff-turnback, pocket-welt], designs: [smoking-jacket] }

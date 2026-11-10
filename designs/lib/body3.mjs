@@ -138,8 +138,10 @@ export function draftBody3Back(sh, { seamAt = 0.3, vent, nr = 2, flare = 0 } = {
  * ({ breakY, rollOut, gorgeAt, width }, as `draftNotchLapel` takes) instead of the round neck.
  * `toShoulder`: the facing runs round the neck to the shoulder (for a lining), not to the neckline.
  * `buttons.rows` (default on CF): double-breasted, each row's x.
+ * `cutaway`: { top, by } the front edge straight down to height `top`, then sloping `by` in toward
+ * the side at the hem (a dinner jacket's open front below its button); the corner rounds on that slope.
  */
-export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons, welts = {}, clear = 0, welt = 0.2, nr = 1, r = 0, lapel, toShoulder = false, flare = 0 }) {
+export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons, welts = {}, clear = 0, welt = 0.2, nr = 1, r = 0, lapel, toShoulder = false, flare = 0, cutaway }) {
   const { points, paths, Path, Point, options, store, sa, macro, snippets, Snippet, part } = sh
   cleanup(sh, ['frontArmhole', 'frontCollar'])
   const { waistY, seatY, hemY } = levels(sh, 'cf')
@@ -153,15 +155,22 @@ export function draftBody3Front(sh, { seamAt = 0.12, ext, drop, facing, buttons,
   points.seamHem = left.end()
   store.set('coat.frontEdge', { ext, facing, r, drop, ...(toShoulder ? { toShoulder } : {}) })
   points.edgeNeck = new Point(-ext, points.cfNeck.y)
-  points.edgeHem = new Point(-ext, hemY + drop)
+  // A cutaway: the edge runs straight down to `cutaway.top`, then slopes `cutaway.by` in to the hem
+  const cut = cutaway && cutaway.by > 0 ? cutaway : null
+  if (cut) points.cutawayTop = new Point(-ext, Math.min(cut.top, hemY + drop - 1))
+  points.edgeHem = new Point(-ext + (cut ? cut.by : 0), hemY + drop)
   points.cornerTop = points.edgeHem
-  paths.edge = new Path().move(points.edgeNeck).line(points.edgeHem).hide()
+  const edgeStart = () => {
+    const p = new Path().move(points.edgeNeck)
+    return cut ? p.line(points.cutawayTop) : p
+  }
+  paths.edge = edgeStart().line(points.edgeHem).hide()
   let hemStart = points.edgeHem
   if (r > 0) {
-    points.cornerTop = points.edgeHem.shift(90, r)
+    const from = cut ? points.cutawayTop : points.edgeNeck
+    points.cornerTop = points.edgeHem.shiftTowards(from, Math.min(r, points.edgeHem.dist(from) * 0.9))
     points.cornerEnd = points.edgeHem.shift(0, r)
-    paths.edge = new Path()
-      .move(points.edgeNeck)
+    paths.edge = edgeStart()
       .line(points.cornerTop)
       .curve(points.cornerTop.shiftFractionTowards(points.edgeHem, 0.55), points.cornerEnd.shiftFractionTowards(points.edgeHem, 0.55), points.cornerEnd)
       .hide()

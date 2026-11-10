@@ -74,6 +74,8 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Diagram VI (double-breasted, text p. 10, plate p. 11) and VIII (two-button English, text p. 14, plate p. 15)
   re-letter the construction lines (B–G, with D the chest line and E the waist) and add front Vees. Diagram VII
   (three-button, "high suppressed waist") is between them and isn't queued.
+- Diagram X, the tuxedo (text p. 18, plate p. 19), is the English coat with a 1 in stand, one button on the waist
+  line and the front cut away below it; the lapel is drawn folded over the forepart.
 
 ## Simons 1916 (`designingovercoa00simo`)
 - The shoulder cape overcoat is on pp. 30-31, not p. 21. It is a full-length cape with a military collar and a whole back; the 7 in button stand is a cut-on front extension.
