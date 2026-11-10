@@ -71,37 +71,45 @@ First try, the chore coat: men's 34 OK (body 00359), men's 38 OK (04661, 0 inter
 46 REVIEW (03240: 196 intersections, 1.2 cm into the upper arm: the sleeve placement's scaling
 or the sleeve itself, not yet known).
 
-## Draping the rest, unattended
-[`tools/drape-pipeline.mjs`](../tools/drape-pipeline.mjs) drapes every design with a brief and no
-entry in `runs.yaml`, on the GPU host itself, and leaves a report to review later. Run it on
-Cloudbox through [`tools/drape-pipeline.sh`](../tools/drape-pipeline.sh), which keeps its own
-clone of this repo (reset to `origin/main` before each run), a pinned Node and the
-dependencies under `~/drape-pipeline`:
-```bash
-ssh <gpu host> 'sh ~/drape-pipeline/repo/designs/tools/drape-pipeline.sh --background'   # all of them
-ssh <gpu host> 'sh ~/drape-pipeline/repo/designs/tools/drape-pipeline.sh status'         # the log's tail
-```
-- **Settings:** a design first borrows a draped design's entry, its nearest draped ancestor's
-  (through `extends:`) first, when the config's pieces and points are all among its parts; up to
-  four are put through the quick check (export and specification, no GPU). Otherwise a local model (Ollama on the same host,
-  `qwen2.5-coder:7b` by default, kept on the CPU so the simulator has the GPU) proposes them from
-  the configs' pieces and points and the design's parts, and is shown each error to try again,
-  three times. It may answer that no config fits: that design needs a new config, by hand.
+## The pipeline: unattended drapes, every night
+[`tools/drape-pipeline.mjs`](../tools/drape-pipeline.mjs) drapes on the GPU host itself and
+leaves a report to review later. Each design drapes on its config's average body and at a small
+and a large size set on their matched bodies (men's 34 and 46, women's 30 and 42; `--sets`).
+- **regress:** draped designs (runs.yaml) a change since the last regression run may affect: a
+  design's own files and its descendants'; all of them when drafting code, blocks, a drape step,
+  the simulation script or the dependencies change, or a config the design uses. Each drape is
+  compared with the last one of the same design and size: OK turned REVIEW, intersections up by
+  half and ten, or cloth half a centimetre deeper is flagged in the report.
+- **new:** designs with a brief and no runs.yaml entry. Settings come from a draped design whose
+  config's pieces and points are all among its parts (its ancestor's first), through a quick
+  check (export and specification, no GPU). With `--llm`, a local model (Ollama on the host, on
+  the CPU) is asked when none fits; off by default, since in its first runs it solved none.
+- **nightly:** regress, then new.
 - **Failures:** a failed GPU step (upload, simulation, inside check, fetch) is retried twice,
-  after 30 s and 2 min, then the design is skipped. The run stops after 3 designs in a row fail
-  on the host (or the model doesn't answer), 5 drapes in a row fail, or the same drape error
-  comes 3 times in a row. A design whose settings can't be found is skipped without counting. Before starting it checks the container, GPU, disk,
-  Python and the model; a second run won't start while one is going.
-- **Output,** under `out/drape-pipeline/` in its clone: `state.json` (every design's last outcome
-  and commit: a design that drapes isn't tried again, one skipped waits for a new commit),
-  and per run `pipeline.log`, `events.jsonl`, `report.md` (verdicts, numbers, renders, reasons),
-  `proposals.yaml` (settings that draped) and `llm/` (every prompt and answer).
-- **Nothing is changed in the repo.** Review the renders, then copy the settings you accept from
-  `proposals.yaml` into `runs.yaml`. A drape that passes can still be wrong (a piece flipped, a
-  seam sewn to the wrong edge): look at every render.
-- Flags: `--max N`, `--hours H`, `--dry-run` (quick check only), `--no-llm`, `--redo`,
-  `--retry-skipped`, or design ids to try only those. `PIPELINE_MODEL`, `OLLAMA_URL` change the
-  model.
+  after 30 s and 2 min, then that drape is skipped. The run stops after 3 drapes in a row fail
+  on the host, 5 in a row fail, or the same drape error comes 3 times in a row; a design whose
+  settings can't be found is skipped without counting. It checks the container, GPU, disk and
+  Python first, and holds a lock.
+- **Output,** under `out/drape-pipeline/` in its clone: `state.json` (each new design's outcome,
+  each drape's last result, the commit the last regression run covered) and per run
+  `pipeline.log`, `events.jsonl`, `report.md` (verdicts, numbers, renders, changes, reasons) and
+  `proposals.yaml` (settings that draped for designs not in runs.yaml; review the renders, then
+  copy them in). It never changes the repo.
+
+[`tools/drape-pipeline.sh`](../tools/drape-pipeline.sh) runs it on Cloudbox from its own clone
+of this repo (reset to `origin/main` before each run), with a pinned Node, under `~/drape-pipeline`:
+```bash
+ssh <gpu host> 'sh ~/drape-pipeline/run.sh --background --mode regress --all'   # one run, detached
+ssh <gpu host> 'sh ~/drape-pipeline/run.sh status'                              # the latest log
+```
+From cron, `sh ~/drape-pipeline/run.sh nightly` writes `~/drape-pipeline/logs/<date>.log`. Each
+run deletes the pipeline's simulations (about 17 MB each) after 14 days, and its runs and logs
+after 30.
+
+First runs, 2026-11-09 (average bodies only, with the model): 23 of the 76 undraped designs
+draped (22 OK, the fitted jacket REVIEW), every one on borrowed settings; the rest have no
+config yet (skirts, capes, aprons, tailored trousers, raglan sleeves, the military tunic's
+family, kimono cuts).
 
 The steps it runs, by hand:
 ```bash

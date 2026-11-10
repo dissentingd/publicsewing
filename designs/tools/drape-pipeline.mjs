@@ -1,25 +1,37 @@
-// Drape every design that has no drape yet, unattended, and leave a report to review later.
+// Drape designs unattended and leave a report to review later: designs a change may have
+// affected, again (regress), and designs with no drape yet (new). Each drapes on its config's
+// average body and at a small and a large size set, each on its nearest dataset body.
 // Runs on the GPU host (Cloudbox) through tools/drape-pipeline.sh, or anywhere drape.mjs runs.
 //
-// Usage: node tools/drape-pipeline.mjs [design ...] [--max N] [--hours H] [--no-llm] [--dry-run]
-//          [--redo] [--retry-skipped]
-//   design ...       only these (default: every design with a brief and no runs.yaml entry)
+// Usage: node tools/drape-pipeline.mjs [design ...] [--mode new|regress|nightly] [--sets a,b|none]
+//          [--all] [--max N] [--hours H] [--llm] [--dry-run] [--redo] [--retry-skipped]
+//   design ...       only these (a draped design is draped again, a new one gets settings first)
+//   --mode           new (default): designs with a brief and no runs.yaml entry. regress: draped
+//                    designs a change since the last regression run may affect (a design's own
+//                    files and its descendants'; everything for shared code, configs or blocks),
+//                    each compared with its last drape. nightly: regress, then new
+//   --sets           size sets to drape at besides the average body (default DEFAULT_SETS)
+//   --all            regress: every draped design, not only the affected ones
 //   --max N          stop after N designs; --hours H: start no design after H hours
-//   --no-llm         don't ask the model; inherited settings only
+//   --llm            ask the model when no draped design's settings fit (off by default: in the
+//                    first runs it solved none)
 //   --dry-run        settings and the quick check only (export + spec), no simulation
-//   --redo           drape again designs the state file says are done
-//   --retry-skipped  try again designs skipped at this commit (by default they wait for a new one)
+//   --redo           new: try again designs the state file says are done
+//   --retry-skipped  new: try again designs skipped at this commit (by default they wait)
 //
-// For each design:
-//   1. Settings: its nearest ancestor's runs.yaml entry (through `extends:`), when that
-//      ancestor's pieces are all among the design's parts. Otherwise, or when the quick check
-//      fails, the model (Ollama, PIPELINE_MODEL, default qwen2.5-coder:7b, on the CPU so the GPU
-//      stays free for the simulator) proposes settings from the configs and the design's parts,
-//      and is shown each error to try again: LLM_TRIES attempts.
+// For each new design:
+//   1. Settings: a draped design's runs.yaml entry whose config's pieces and points are all
+//      among this design's parts, its nearest ancestor's first. With --llm, when none passes the
+//      quick check, the model (Ollama, PIPELINE_MODEL, default qwen2.5-coder:7b, on the CPU so
+//      the GPU stays free for the simulator) proposes settings and is shown each error:
+//      LLM_TRIES attempts.
 //   2. Quick check: export and build the specification (drape.mjs, upTo 'spec'), no GPU.
+// Then, for every design, each size:
 //   3. Drape: simulate, check inside the body, fetch renders. A failure in a step that can
 //      fail for a passing reason (upload, sim, inside, fetch) is retried SIM_TRIES times, waiting
-//      longer each time. Then the design is skipped and the run goes on.
+//      longer each time. Then the drape is skipped and the run goes on. A drape is compared with
+//      the last one of the same design and size: OK turned REVIEW, intersections up by half and
+//      ten, or cloth half a centimetre deeper inside the body is flagged in the report.
 // The run stops itself: after STOP_INFRA designs in a row failing on the host (container, GPU,
 // disk, copying, the model), STOP_SKIPS drapes in a row failing, or the same drape error
 // STOP_SAME times in a row, since then the next designs would fail the same way. A design
@@ -27,7 +39,8 @@
 // Before starting it checks the container, the GPU, the model, Python and free disk.
 //
 // Output, under out/drape-pipeline/ (gitignored):
-//   state.json            every design's last outcome and the commit it was tried at
+//   state.json            every new design's last outcome, every drape's last result (to compare),
+//                         and the commit the last regression run covered
 //   <run>/pipeline.log    what happened, readable; <run>/events.jsonl the same as data
 //   <run>/report.md       a table to review: verdict, numbers, renders, why skipped
 //   <run>/proposals.yaml  settings that draped, to copy into drape/runs.yaml after a look
@@ -59,15 +72,34 @@ const BODIES = {
   m_smpl_average_A40: { size: 'cisMaleAdult38', measurements: { chest: 1000, waist: 800, seat: 1000 } },
   f_smpl_average_A40: { size: 'cisFemaleAdult34', measurements: { chest: 900, waist: 800, seat: 1070 } },
 }
+// The size sets each design also drapes at, besides the config's average body: a small and a
+// large one, each on its nearest dataset body (drape/bodies.yaml). --sets changes them
+const DEFAULT_SETS = {
+  m_smpl_average_A40: ['cisMaleAdult34', 'cisMaleAdult46'],
+  f_smpl_average_A40: ['cisFemaleAdult30', 'cisFemaleAdult42'],
+}
 const INFRA = /No such container|Cannot connect to the Docker daemon|is not running|CUDA|out of memory|No space left|Connection (refused|reset|closed)|ssh:|timed out|ENOSPC|EACCES/i
 
 // ---------------------------------------------------------------- arguments, lock, logging
 const args = process.argv.slice(2)
 const flag = (f) => args.includes(f)
 const value = (f) => (args.includes(f) ? args[args.indexOf(f) + 1] : undefined)
-const valued = new Set(['--max', '--hours'].flatMap((f) => (args.includes(f) ? [args.indexOf(f) + 1] : [])))
+const valued = new Set(['--max', '--hours', '--mode', '--sets'].flatMap((f) => (args.includes(f) ? [args.indexOf(f) + 1] : [])))
 const only = args.filter((a, i) => !a.startsWith('--') && !valued.has(i))
-const opts = { max: Number(value('--max') ?? Infinity), hours: Number(value('--hours') ?? Infinity), llm: !flag('--no-llm'), dry: flag('--dry-run'), redo: flag('--redo'), retrySkipped: flag('--retry-skipped') }
+const setsArg = value('--sets')
+const opts = {
+  mode: value('--mode') ?? 'new',
+  sets: setsArg === undefined ? undefined : setsArg === 'none' ? [] : setsArg.split(','),
+  all: flag('--all'),
+  max: Number(value('--max') ?? Infinity),
+  hours: Number(value('--hours') ?? Infinity),
+  llm: flag('--llm'),
+  dry: flag('--dry-run'),
+  redo: flag('--redo'),
+  retrySkipped: flag('--retry-skipped'),
+}
+if (!['new', 'regress', 'nightly'].includes(opts.mode)) throw new Error(`--mode is new, regress or nightly, not ${opts.mode}`)
+const drapeName = (design, set) => (set ? `${design}-${set}-pipeline` : `${design}-pipeline`)
 
 const runId = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19)
 const RUN = join(OUT, runId)
@@ -305,12 +337,12 @@ async function settle(design) {
   return { skip: `${LLM_TRIES} proposals failed; last: ${firstLine(tries.at(-1).err)}`, kind: 'settings' }
 }
 
-/** The drape itself, retried when a host step fails */
-async function simulate(design, entry) {
+/** The drape itself, retried when a host step fails. `set`: at a size set on its matched body */
+async function simulate(design, entry, set) {
   let last
   for (let n = 1; n <= SIM_TRIES; n++) {
     try {
-      return { result: drape(design, { name: `${design}-pipeline`, entry }) }
+      return { result: drape(design, { name: drapeName(design, set), entry, set }) }
     } catch (e) {
       last = e
       const host = e instanceof DrapeError ? ['upload', 'sim', 'inside', 'fetch'].includes(e.stage) : true
@@ -368,32 +400,101 @@ async function modelReady() {
 }
 
 // ---------------------------------------------------------------- the run
+// state.json: { designs: { <design>: last settings outcome }, drapes: { <design>@<set>: last
+// drape }, regressedAt: the commit the last regression run covered }
 const statePath = join(OUT, 'state.json')
-const state = existsSync(statePath) ? JSON.parse(readFileSync(statePath, 'utf8')) : {}
+const loaded = existsSync(statePath) ? JSON.parse(readFileSync(statePath, 'utf8')) : {}
+const state = loaded.designs ? loaded : { designs: loaded, drapes: {}, regressedAt: null }
 const saveState = () => writeFileSync(statePath, JSON.stringify(state, null, 1))
+
+/** The sizes a design drapes at: its config's average body ('avg'), then opts.sets for that body */
+function setsFor(entry) {
+  const body = parse(readFileSync(join(DESIGNS, 'drape', entry.config), 'utf8')).body
+  const wanted = opts.sets ?? DEFAULT_SETS[body] ?? []
+  const matched = parse(readFileSync(join(DESIGNS, 'drape', 'bodies.yaml'), 'utf8'))
+  return ['avg', ...wanted.filter((s) => matched[s]?.body)]
+}
+
+/** What changed since the last drape of the same design and size, worth a look */
+function compare(prev, result) {
+  if (!prev?.result) return null
+  const deepest = (r) => Math.max(0, ...Object.entries(r.inside.regions).filter(([k]) => k !== 'wrist/hand').map(([, s]) => s.deepest))
+  const notes = []
+  if (prev.result.verdict === 'OK' && result.verdict === 'REVIEW') notes.push('was OK')
+  const [a, b] = [prev.result.garmentcode.intersections, result.garmentcode.intersections]
+  if (b > a * 1.5 + 10) notes.push(`intersections ${a} -> ${b}`)
+  const [da, db] = [deepest(prev.result), deepest(result)]
+  if (db > da + 0.5) notes.push(`deepest ${da} -> ${db} cm`)
+  return notes.length ? `changed since ${prev.commit}: ${notes.join(', ')}` : null
+}
+
+/** Draped designs a change since commit `from` can affect (all of them when unsure) */
+function affected(from) {
+  const draped = Object.keys(runs)
+  if (!from) return { list: draped, why: 'no earlier regression run' }
+  let files
+  try {
+    files = sh('git', ['diff', '--name-only', from, 'HEAD', '--', '.', '../docker']).trim().split('\n').filter(Boolean)
+  } catch {
+    return { list: draped, why: `can't diff from ${from}` }
+  }
+  // Files every drape goes through: drafting code (not the site's lists or the exporters), the
+  // blocks, the drape steps, the simulation script and the dependencies
+  const shared = files.filter(
+    (f) =>
+      /^designs\/(lib|blocks|templates)\//.test(f) && !/^designs\/lib\/(categories\.mjs|export\/)/.test(f) ||
+      /^designs\/tools\/(drape\.mjs|drape-export\.mjs|drape_spec\.py|drape_inside\.py|drape_bodies\.py|render\.mjs|gcspec\/)/.test(f) ||
+      /^designs\/package-lock\.json$|^docker\/ccat_sim\.py$/.test(f),
+  )
+  if (shared.length) return { list: draped, why: `shared files changed: ${shared.slice(0, 5).join(', ')}` }
+  const descends = (x, d) => {
+    for (let id = x, i = 0; i < 10; i++) {
+      const e = specOf(id).extends
+      if (!e) return false
+      id = relative(DESIGNS, dirname(resolve(DESIGNS, id, e)))
+      if (id === d) return true
+      if (!existsSync(join(DESIGNS, id, 'spec.yaml'))) return false
+    }
+    return false
+  }
+  const hit = new Set()
+  for (const f of files) {
+    const m = f.match(/^designs\/([^/]+)\//)
+    if (!m) continue
+    if (m[1] === 'drape') {
+      const file = f.slice('designs/drape/'.length)
+      for (const d of draped) if (runs[d].config === file || ['runs.yaml', 'bodies.yaml'].includes(file)) hit.add(d)
+    } else if (existsSync(join(DESIGNS, m[1], 'spec.yaml'))) {
+      for (const d of draped) if (d === m[1] || descends(d, m[1])) hit.add(d)
+    }
+  }
+  return { list: [...hit], why: `${files.length} files changed since ${from}` }
+}
 
 function report(rows, stopped) {
   const rel = (p) => relative(RUN, join(DESIGNS, p)).replace(/\\/g, '/')
   const n = (v) => rows.filter((r) => r.status === v).length
+  const changed = rows.filter((r) => r.change)
   const lines = [
     `# Drape pipeline, ${runId}`,
     '',
-    `Commit ${commit()}, ${opts.dry ? 'dry run (quick check only), ' : ''}${opts.llm ? `model ${MODEL}` : 'no model'}. ${rows.length} designs: ${n('OK')} OK, ${n('REVIEW')} to review, ${n('checked')} checked, ${n('skipped')} skipped.${stopped ? `\n\n**Stopped early:** ${stopped}` : ''}`,
+    `Commit ${commit()}, ${opts.mode}${opts.dry ? ', dry run (quick check only)' : ''}, ${opts.llm ? `model ${MODEL}` : 'no model'}. ${rows.length} drapes: ${n('OK')} OK, ${n('REVIEW')} to review, ${n('checked')} checked, ${n('skipped')} skipped${changed.length ? `, **${changed.length} changed since their last drape**` : ''}.${stopped ? `\n\n**Stopped early:** ${stopped}` : ''}`,
     '',
-    'Verdicts are drape.mjs\'s: REVIEW when cloth is more than 1 cm inside the body outside the wrists. Look at every render anyway: a drape can pass and still be wrong (a piece flipped, a seam sewn to the wrong edge). Settings that draped are in proposals.yaml.',
+    "Verdicts are drape.mjs's: REVIEW when cloth is more than 1 cm inside the body outside the wrists. Look at every render anyway: a drape can pass and still be wrong (a piece flipped, a seam sewn to the wrong edge). Size `avg` is the config's average body; the others are our size sets on their nearest dataset body (drape/bodies.yaml). Settings that draped, for designs not yet in runs.yaml, are in proposals.yaml.",
     '',
-    '| Design | Outcome | Settings from | GarmentCode (limit 35) | Deepest inside, outside the wrists | Renders | Notes |',
-    '|---|---|---|---|---|---|---|',
+    '| Design | Size | Outcome | Settings from | GarmentCode (limit 35) | Deepest inside, outside the wrists | Renders | Notes |',
+    '|---|---|---|---|---|---|---|---|',
     ...rows.map((r) => {
       const g = r.result?.garmentcode
       const deep = r.result ? Object.entries(r.result.inside.regions).filter(([k]) => k !== 'wrist/hand').sort((a, b) => b[1].deepest - a[1].deepest)[0] : null
       const renders = r.result ? r.result.renders.map((p, i) => `[${i ? 'back' : 'front'}](${rel(p)})`).join(' ') : ''
-      return `| ${r.design} | ${r.status} | ${r.source ?? ''} | ${g ? `${g.intersections} (self ${g.selfIntersections}, ${g.frames} frames)` : ''} | ${deep ? `${deep[1].deepest} cm (${deep[0]})` : ''} | ${renders} | ${(r.reason ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ').slice(0, 300)} |`
+      const notes = [r.change ? `**${r.change}**` : '', r.reason ?? ''].filter(Boolean).join('. ')
+      return `| ${r.design} | ${r.set ?? ''} | ${r.status} | ${r.source ?? ''} | ${g ? `${g.intersections} (self ${g.selfIntersections}, ${g.frames} frames)` : ''} | ${deep ? `${deep[1].deepest} cm (${deep[0]})` : ''} | ${renders} | ${notes.replace(/\|/g, '\\|').replace(/\n/g, ' ').slice(0, 300)} |`
     }),
   ]
   writeFileSync(join(RUN, 'report.md'), lines.join('\n') + '\n')
-  const proposals = Object.fromEntries(rows.filter((r) => r.entry && r.status !== 'skipped').map((r) => [r.design, r.entry]))
-  writeFileSync(join(RUN, 'proposals.yaml'), `# Drape settings that ${opts.dry ? 'passed the quick check' : 'draped'} in run ${runId}: review the renders, then copy into drape/runs.yaml\n${Object.keys(proposals).length ? stringify(proposals) : ''}`)
+  const proposals = Object.fromEntries(rows.filter((r) => r.entry && r.status !== 'skipped' && !runs[r.design]).map((r) => [r.design, r.entry]))
+  writeFileSync(join(RUN, 'proposals.yaml'), `# Drape settings that ${opts.dry ? 'passed the quick check' : 'draped'} in run ${runId}, for designs not in runs.yaml: review the renders, then copy them in\n${Object.keys(proposals).length ? stringify(proposals) : ''}`)
 }
 
 async function main() {
@@ -412,14 +513,28 @@ async function main() {
     return 3
   }
 
-  const todo = (only.length ? only : designs.filter((d) => !runs[d])).filter((d) => {
-    const s = state[d]
-    if (only.length || opts.redo || !s) return true
-    if (['OK', 'REVIEW'].includes(s.status)) return false
-    if (s.status === 'skipped' && s.commit === at && !opts.retrySkipped) return false
-    return true
-  })
-  log('info', `${todo.length} designs to try: ${todo.join(', ')}`)
+  // What to drape: draped designs a change can affect (regress), designs with no drape (new)
+  const jobs = []
+  if (only.length) for (const d of only) jobs.push({ design: d, mode: runs[d] ? 'regress' : 'new' })
+  else {
+    if (['regress', 'nightly'].includes(opts.mode)) {
+      const a = opts.all ? { list: Object.keys(runs), why: '--all' } : affected(state.regressedAt)
+      log('info', `regression: ${a.list.length} draped designs to drape again (${a.why})`)
+      for (const d of a.list) jobs.push({ design: d, mode: 'regress' })
+    }
+    if (['new', 'nightly'].includes(opts.mode)) {
+      const fresh = designs.filter((d) => !runs[d]).filter((d) => {
+        const s = state.designs[d]
+        if (opts.redo || !s) return true
+        if (['OK', 'REVIEW'].includes(s.status)) return false
+        if (s.status === 'skipped' && s.commit === at && !opts.retrySkipped) return false
+        return true
+      })
+      log('info', `new: ${fresh.length} designs without a drape to try`)
+      for (const d of fresh) jobs.push({ design: d, mode: 'new' })
+    }
+  }
+  log('info', `${jobs.length} designs: ${jobs.map((j) => j.design).join(', ')}`)
 
   const rows = []
   let infraRun = 0
@@ -427,42 +542,13 @@ async function main() {
   let sameRun = 0
   let lastSig = ''
   let stopped = ''
-  for (const design of todo) {
-    if (rows.length >= opts.max) {
-      stopped = `reached --max ${opts.max}`
-      break
-    }
-    if ((Date.now() - started) / 36e5 > opts.hours) {
-      stopped = `reached --hours ${opts.hours}`
-      break
-    }
-    log('info', `== ${design} (${rows.length + 1} of ${todo.length})`, { design })
-    const t0 = Date.now()
-    const row = { design }
-    const s = await settle(design)
-    if (s.skip) Object.assign(row, { status: 'skipped', reason: s.skip, kind: s.kind })
-    else {
-      Object.assign(row, { entry: s.entry, source: s.source })
-      if (opts.dry) row.status = 'checked'
-      else {
-        const sim = await simulate(design, s.entry)
-        if (sim.result) Object.assign(row, { status: sim.result.verdict, result: sim.result })
-        else Object.assign(row, { status: 'skipped', reason: `drape failed${sim.stage ? ` at ${sim.stage}` : ''}: ${sim.error}`, kind: sim.kind })
-      }
-    }
-    row.seconds = Math.round((Date.now() - t0) / 1000)
-    rows.push(row)
-    state[design] = { status: row.status, commit: at, run: runId, reason: row.reason, kind: row.kind, entry: row.entry, verdict: row.result?.verdict, at: new Date().toISOString() }
-    saveState()
-    report(rows)
-    log(row.status === 'skipped' ? 'warn' : 'info', `${design}: ${row.status}${row.reason ? `: ${firstLine(row.reason)}` : ''} (${row.seconds} s)`, { design, status: row.status, kind: row.kind, seconds: row.seconds })
-
-    // Stop when the next designs would fail the same way. Only failures in the drape itself
-    // or on the host count: a design whose settings can't be found (kinds no-settings,
-    // needs-config, settings) is an expected outcome, and a family of designs can share one
-    if (row.status === 'skipped' && ['no-settings', 'needs-config', 'settings'].includes(row.kind)) {
-      // neither counts nor resets
-    } else if (row.status === 'skipped') {
+  let done = 0
+  // Stop when the next drapes would fail the same way. Only failures in the drape itself or on
+  // the host count: a design whose settings can't be found (no-settings, needs-config, settings)
+  // is an expected outcome, and a family of designs can share one
+  const count = (row) => {
+    if (row.status === 'skipped' && ['no-settings', 'needs-config', 'settings'].includes(row.kind)) return
+    if (row.status === 'skipped') {
       skipRun++
       infraRun = row.kind === 'infra' ? infraRun + 1 : 0
       const sig = signature(row.reason)
@@ -472,13 +558,75 @@ async function main() {
       skipRun = infraRun = sameRun = 0
       lastSig = ''
     }
-    if (infraRun >= STOP_INFRA) stopped = `${infraRun} designs in a row failed on the host; last: ${firstLine(row.reason)}`
+    if (infraRun >= STOP_INFRA) stopped = `${infraRun} drapes in a row failed on the host; last: ${firstLine(row.reason)}`
     else if (sameRun >= STOP_SAME) stopped = `the same error ${sameRun} times in a row: ${lastSig}`
     else if (skipRun >= STOP_SKIPS) stopped = `${skipRun} drapes in a row failed`
+  }
+  const record = (row) => {
+    rows.push(row)
+    report(rows)
+    log(row.status === 'skipped' ? 'warn' : 'info', `${row.design}${row.set ? ` at ${row.set}` : ''}: ${row.status}${row.change ? ` (${row.change})` : ''}${row.reason ? `: ${firstLine(row.reason)}` : ''} (${row.seconds} s)`, { design: row.design, set: row.set, status: row.status, kind: row.kind, change: row.change, seconds: row.seconds })
+    count(row)
+  }
+
+  for (const { design, mode } of jobs) {
+    if (done >= opts.max) {
+      stopped = `reached --max ${opts.max}`
+      break
+    }
+    if ((Date.now() - started) / 36e5 > opts.hours) {
+      stopped = `reached --hours ${opts.hours}`
+      break
+    }
+    done++
+    log('info', `== ${design} (${done} of ${jobs.length}, ${mode})`, { design, mode })
+    let t0 = Date.now()
+    let entry = runs[design]
+    let source = 'runs.yaml'
+    if (mode === 'new') {
+      const s = await settle(design)
+      state.designs[design] = { status: s.skip ? 'skipped' : opts.dry ? 'checked' : 'settled', commit: at, run: runId, reason: s.skip, kind: s.kind, entry: s.entry, at: new Date().toISOString() }
+      saveState()
+      if (s.skip) {
+        record({ design, status: 'skipped', reason: s.skip, kind: s.kind, seconds: Math.round((Date.now() - t0) / 1000) })
+        if (stopped) break
+        continue
+      }
+      entry = s.entry
+      source = s.source
+      if (opts.dry) {
+        record({ design, status: 'checked', entry, source, seconds: Math.round((Date.now() - t0) / 1000) })
+        continue
+      }
+    } else if (opts.dry) continue
+
+    const verdicts = []
+    for (const set of setsFor(entry)) {
+      t0 = Date.now()
+      const key = `${design}@${set}`
+      const sim = await simulate(design, entry, set === 'avg' ? undefined : set)
+      const row = { design, set, entry, source, seconds: Math.round((Date.now() - t0) / 1000) }
+      if (sim.result) {
+        Object.assign(row, { status: sim.result.verdict, result: sim.result, change: compare(state.drapes[key], sim.result) })
+        state.drapes[key] = { commit: at, run: runId, result: sim.result, at: new Date().toISOString() }
+        verdicts.push(sim.result.verdict)
+      } else Object.assign(row, { status: 'skipped', reason: `drape failed${sim.stage ? ` at ${sim.stage}` : ''}: ${sim.error}`, kind: sim.kind })
+      saveState()
+      record(row)
+      if (stopped) break
+    }
+    if (mode === 'new') {
+      state.designs[design].status = verdicts.includes('REVIEW') ? 'REVIEW' : verdicts.length ? 'OK' : 'skipped'
+      saveState()
+    }
     if (stopped) break
   }
+  if (!stopped && !opts.dry && ['regress', 'nightly'].includes(opts.mode) && !only.length) {
+    state.regressedAt = at
+    saveState()
+  }
   report(rows, stopped)
-  log(stopped && !/--max|--hours/.test(stopped) ? 'error' : 'info', `done: ${rows.length} designs in ${Math.round((Date.now() - started) / 60e3)} min${stopped ? `; stopped: ${stopped}` : ''}. Report: ${join(RUN, 'report.md')}`)
+  log(stopped && !/--max|--hours/.test(stopped) ? 'error' : 'info', `done: ${rows.length} drapes of ${done} designs in ${Math.round((Date.now() - started) / 60e3)} min${stopped ? `; stopped: ${stopped}` : ''}. Report: ${join(RUN, 'report.md')}`)
   return stopped && !/--max|--hours/.test(stopped) ? 2 : 0
 }
 

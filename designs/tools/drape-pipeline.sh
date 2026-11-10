@@ -1,8 +1,11 @@
 #!/bin/sh
 # Run tools/drape-pipeline.mjs on the GPU host (Cloudbox), unattended, from its own checkout.
 #
-#   ssh <gpu host> 'sh ~/drape-pipeline/repo/designs/tools/drape-pipeline.sh --background [args]'
-#   (first time: copy this file up and run it with `setup`, which clones the repo)
+#   ssh <gpu host> 'sh ~/drape-pipeline/run.sh --background [args]'   # one run, detached
+#   ssh <gpu host> 'sh ~/drape-pipeline/run.sh status'                # the latest log's tail
+#   crontab: 0 2 * * * sh $HOME/drape-pipeline/run.sh nightly         # regress, then new
+#   (first time: copy this file up as ~/drape-pipeline/run.sh and run it with `setup`, which
+#   clones the repo; after that each run keeps run.sh the repo's copy)
 #
 # Keeps everything under ~/drape-pipeline: repo/ (a clone of the public repo, reset to
 # origin/main before each run unless PIPELINE_NO_UPDATE=1), node/ (a pinned Node), and
@@ -42,6 +45,17 @@ setup() {
     (cd "$REPO/designs" && npm ci --no-audit --no-fund --loglevel=error)
     echo "$sum" > "$BASE/.deps"
   fi
+  # Keep ~/drape-pipeline/run.sh (what cron calls) the repo's copy; a rename, so a run that's
+  # reading the old one isn't disturbed
+  cp "$REPO/designs/tools/drape-pipeline.sh" "$BASE/run.sh.new" && mv "$BASE/run.sh.new" "$BASE/run.sh"
+}
+
+# Old output: the pipeline's simulations (about 17 MB each) after 14 days, its runs and logs
+# after 30. Drapes run by hand (not *-pipeline_*) are kept
+prune() {
+  find "$DRAPE_DATA/Logs" -maxdepth 1 -type d -name '*-pipeline_*' -mtime +14 -exec rm -rf {} + 2>/dev/null || true
+  find "$REPO/designs/out/drape-pipeline" -mindepth 1 -maxdepth 1 -type d -mtime +30 -exec rm -rf {} + 2>/dev/null || true
+  find "$BASE/logs" -type f -mtime +30 -delete 2>/dev/null || true
 }
 
 case "${1:-}" in
@@ -51,8 +65,14 @@ case "${1:-}" in
     exit 0
     ;;
   status)
-    tail -n 30 "$BASE/latest.log" 2>/dev/null || echo "no run yet"
+    tail -n 30 "$(ls -t "$BASE"/latest.log "$BASE"/logs/*.log 2>/dev/null | head -1)" 2>/dev/null || echo "no run yet"
     exit 0
+    ;;
+  nightly)
+    # From cron: drape again what changed, then try the new designs; a dated log
+    shift
+    mkdir -p "$BASE/logs"
+    exec sh "$0" --mode nightly "$@" > "$BASE/logs/$(date +%F).log" 2>&1 < /dev/null
     ;;
   --background)
     shift
@@ -66,5 +86,6 @@ esac
 exec 9> "$BASE/.run.lock"
 if ! flock -n 9; then echo "a run is already going"; exit 1; fi
 setup
+prune
 cd "$REPO/designs"
 "$NODE" tools/drape-pipeline.mjs "$@"
