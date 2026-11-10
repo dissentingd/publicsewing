@@ -75,9 +75,23 @@ seams; our reading, since he doesn't say), and divide by his own body measure fo
   Simons' points 15–27. His collar is the suit jacket's turn-down collar at his width, not
   Diagram IV point by point, and his sleeve is FreeSewing's two-part sleeve.
 - **Buttons** aren't drawn: three is ours, the conservative style of the time.
-- The double-breasted and two-button English coats (Diagrams VI and VIII), the dinner jacket,
-  frock coat and dress coat are queued separately (BUILD_QUEUE.md, items 39–42).
+- The double-breasted and two-button English coats (Diagrams VI and VIII) are variants (below).
+  The dinner jacket, frock coat and dress coat are queued separately (BUILD_QUEUE.md, items 40–42).
 - The vent, sleeve vent and breast welt can be turned on (`vent`, `sleeveVent`, `breastPockets`).
+
+## Variants
+Both are drafted "based on the explanation in the conservative sack coat", so each is this
+design with other options.
+
+| Variant | Simons | Options |
+|---|---|---|
+| `double`: Double-breasted | Diagram VI, pp. 9–11 (PDF 13–15). "21 to Z is ½ of button stand, 2½ inches": a 2½ in lap; peaked lapels rolling to 10, at the waist; two rows of two buttons, the second about 4¾ in below the waist; a breast welt; the corner 11-12 square | `doubleBreasted`, `doubleExtension` 6.9% of the chest, `lapelStyle: peak`, `buttons` 2, `breakAt` 95%, `buttonBottom` 47%, `hemCurve` 0, `breastPockets` |
+| `english`: Two-button English | Diagram VIII, pp. 13–15 (PDF 17–19). The lapel 5 in long from the chest line to 9 (of 7 in to the waist); two buttons, the second about 3½ in below the waist; 3¾ in past half the breast, ¼ in less than Diagram III; the waist taken in ⅞ in a half by the Vees at 13 and 14; a breast welt; the flap's back end about 1½ in lower than its front | `buttons` 2, `breakAt` 70%, `buttonBottom` 33%, `chestEase` 14%, `waistEase` 16%, `breastPockets`, `pocketSlant` −20% |
+
+Not carried over: Diagram VI's front darts (13, 14) and Diagram VIII's Vees, whose suppression the side
+panel takes; VIII's very narrow shoulder, its high waist (16¾ in waist length) and its sleeve head
+½ in higher; VI's front edge slanting in to the hem. Simons' button row spacing on VI isn't settled by
+the plate: `buttonRow` 60% of the lap either side of CF is ours.
 
 ## Pieces
 As the suit jacket: back (CB seam), side panel, front, facing, collar, top and under sleeves, the

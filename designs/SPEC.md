@@ -116,7 +116,9 @@ looked up in this order:
    `neckPoint`, `shoulderTip`, `sideSeat`, `sideHem`; mapped to the block's own names in
    `blocks/`) or the block's name (`cfNeck`, `cfWaist`, `armholeHollow`).
 
-A value that comes out `null` is left out (so an operation sees it as not given). A map with
+A value that comes out `null` is left out (so an operation sees it as not given), from a list too
+(`rows: ["if(doubleBreasted, -ext, 0)", "if(doubleBreasted, ext, null)"]` is one row or two; quote an
+item with a comma in it). A map with
 `if:` false is left out. A `_name` entry is a working value: later entries can use it, but it
 isn't stored.
 

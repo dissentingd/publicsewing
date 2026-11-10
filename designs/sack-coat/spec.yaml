@@ -30,6 +30,11 @@ options:
   hemCurve: { pct: 55 } # the corner 40-42 rounded about 2", x 10% of chest
   buttonExtension: { pct: 2.1 } # x chest: 33 is 1 1/2" past 32, a stand of which CF is the middle: 3/4"
   buttons: { count: 3 } # not drawn: three, the lapel turning at the top one
+  # Diagram VI, double-breasted: "21 to Z is 1/2 of button stand, 2 1/2 inches in this case"
+  doubleBreasted: { bool: false, menu: style }
+  doubleExtension: { pct: 6.9, min: 5, max: 10, of: chest, menu: style } # 2 1/2" past CF on 36
+  buttonRow: { pct: 60, min: 40, max: 85, menu: style } # x the lap: each row's distance from CF (ours)
+  lapelStyle: { dflt: notch, list: [notch, peak], menu: style } # Diagram VI's lapel is peaked
   breakAt: { pct: 25, min: 0, max: 100, menu: style } # chest line to waist: 46, 2" below the chest line (of 8")
   buttonBottom: { pct: 35, min: 0, max: 60, menu: style } # x waistToSeat: at the pockets, 3 5/8" below the waist
   lapelWidth: { pct: 20 } # x neck: about 3" from the crease at its widest, on his 15" neck
@@ -38,9 +43,24 @@ options:
   lowerPocketBelow: { pct: 41, min: 20, max: 70, menu: style } # x waistToSeat: 44, the mouth's front end, 4 1/4" below the waist
   lowerPocketWidth: { pct: 18, min: 12, max: 24, of: chest, menu: style } # 44-45, 3 1/4" each side of 43: 6 1/2" on 36
   pocketFromCF: { pct: 13.5, min: 6, max: 20, of: chest, menu: style } # 44 is about 4 7/8" behind CF
-  pocketSlant: { pct: 13, min: 0, max: 25, menu: style } # x the mouth's length: 45 is about 7/8" higher than 44
+  pocketSlant: { pct: 13, min: -25, max: 25, menu: style } # x the mouth's length: 45 is about 7/8" higher than 44
   vent: { bool: false } # the back's CB runs straight to J
   sleeveVent: { bool: false } # Diagram V draws no sleeve vent
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  double:
+    name: Double-breasted
+    description: "Simons' young men's double-breasted sack (Diagram VI): a 2 1/2 inch lap with two rows of two buttons, peaked lapels rolling to the waist, a breast welt and square front corners."
+    # 10, the break, at the waist; the second button 4 3/4" below it; corner 11-12 square
+    options: { doubleBreasted: true, lapelStyle: peak, buttons: 2, breakAt: 0.95, buttonBottom: 0.47, hemCurve: 0, breastPockets: true }
+  english:
+    name: Two-button English
+    description: "Simons' two-button English sack (Diagram VIII): closer at the waist, a longer lapel rolling to the top of two buttons, a breast welt and pockets dropping toward the side."
+    # 9, the break, 5" below the chest line (of 7"); the second button 3 1/2" below the waist;
+    # 3 3/4" past half the breast (1/4" less than Diagram III) and the waist taken in 7/8" a half
+    # by the Vees at 13 and 14; the flap's back end about 1 1/2" lower than its front
+    options: { buttons: 2, breakAt: 0.7, buttonBottom: 0.33, chestEase: 0.14, waistEase: 0.16, breastPockets: true, pocketSlant: -0.2 }
 
 pieces:
   front:
@@ -48,9 +68,9 @@ pieces:
     from: bent.front
     hide: tree
     measurements: [seat, waist, waistToSeat, neck]
-    options: [frontDrop, hemCurve, buttonExtension, buttons, breastPockets, lowerPockets, pocketFlaps, facingWidth, lapelWidth, gorgeAt, breakAt, buttonBottom, lowerPocketBelow, lowerPocketWidth, pocketFromCF, pocketSlant, lining, neckFacingWidth, insidePockets]
+    options: [frontDrop, hemCurve, buttonExtension, doubleBreasted, doubleExtension, buttonRow, lapelStyle, buttons, breastPockets, lowerPockets, pocketFlaps, facingWidth, lapelWidth, gorgeAt, breakAt, buttonBottom, lowerPocketBelow, lowerPocketWidth, pocketFromCF, pocketSlant, lining, neckFacingWidth, insidePockets]
     let:
-      ext: chest * buttonExtension
+      ext: chest * if(doubleBreasted, doubleExtension, buttonExtension)
       q: underarm.x # the front's width at the chest, CF to the old side seam
       # The lapel turns `breakAt` of the way from the chest line to the waist (46: 2" of 8")
       topButton: underarm.y + (cfWaist.y - underarm.y) * breakAt
@@ -68,6 +88,8 @@ pieces:
             count: buttons
             top: topButton
             bottom: cfWaist.y + waistToSeat * buttonBottom
+            # Double-breasted: a row either side of CF, `buttonRow` of the lap out
+            rows: ["if(doubleBreasted, -ext * buttonRow, 0)", "if(doubleBreasted, ext * buttonRow, null)"]
           clear: q * 0.08
           welt: 0.18
           welts:
@@ -78,5 +100,6 @@ pieces:
             rollOut: neck * 0.05
             gorgeAt: gorgeAt
             width: neck * lapelWidth
+            peak: lapelStyle == 'peak'
       # Lined, as the jacket: the facing meets a back-neck facing on the shoulder
       - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: lining }

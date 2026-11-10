@@ -472,9 +472,9 @@ function evalMap(map, lookup, parent, literal = [], local = Object.create(parent
   return out
 }
 
-/** A map with an `if:` that is false comes out null (left out of its parent) */
+/** A map with an `if:` that is false comes out null (left out of its parent); so does a list's null item */
 function evalValue(v, lookup, local) {
-  if (Array.isArray(v)) return v.map((x) => evalValue(x, lookup, local))
+  if (Array.isArray(v)) return v.map((x) => evalValue(x, lookup, local)).filter((x) => x !== null)
   const find = (name) => {
     if (name in local) return local[name]
     // A dotted name can read into an earlier value: `lower.x`

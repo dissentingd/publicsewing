@@ -6,6 +6,8 @@ import { sets, checkClean, near } from './coat-checks.mjs'
 const variants = {
   default: {},
   plain: { pocketFlaps: false, hemCurve: 0, buttons: 2, breakAt: 1, pocketSlant: 0 },
+  double: { doubleBreasted: true, lapelStyle: 'peak', buttons: 2, breakAt: 0.95, buttonBottom: 0.47, hemCurve: 0, breastPockets: true },
+  english: { buttons: 2, breakAt: 0.7, buttonBottom: 0.33, chestEase: 0.14, waistEase: 0.16, breastPockets: true, pocketSlant: -0.2 },
   vent: { vent: true, breastPockets: true, sleeveVent: true, buttons: 4, breakAt: 0, lowerPocketBelow: 0.6, lowerPocketWidth: 0.22, pocketSlant: 0.25 },
 }
 

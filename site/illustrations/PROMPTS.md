@@ -27,6 +27,25 @@ viewer's right.
 
 ## Men's coats and jackets (Simons 1916 and 1918)
 
+### sack-coat.double: Double-breasted sack coat
+> **Double-breasted: exactly two parallel rows of buttons, two in each row, four buttons in all**, the rows set
+> either side of the centre, the top pair at the waist. A **man's double-breasted sack suit jacket** of about 1918
+> in plain dark navy worsted, **straight and easy**, length just covering the seat. **Peaked lapels pointing up**,
+> rolling all the way to the top buttons at the waist. A **breast welt pocket** and two flap pockets below the
+> waist. **Square front corners.** Plain two-piece sleeves. Front three-quarter view on a man, full length to the
+> knee, plain background, clean technical editorial illustration.
+>
+> Leave out: rounded front corners, a back vent, sleeve buttons, a belt, a third button in a row.
+
+### sack-coat.english: Two-button English sack coat
+> A **man's two-button single-breasted sack suit jacket** of about 1918, in grey worsted, a little **closer at
+> the waist** than a plain sack, length just covering the seat. **Long notched lapels** rolling low, to the **top
+> of two buttons** just above the waist. A **breast welt pocket**; two **flap pockets below the waist whose back
+> ends sit lower than their front ends**. **Rounded front corners.** Plain two-piece sleeves. Front three-quarter
+> view on a man, full length to the knee, plain background, clean technical editorial illustration.
+>
+> Leave out: a third button, peaked lapels, a back vent, sleeve buttons, a belt, padded or wide shoulders.
+
 ### sack-coat: Sack coat
 > A **man's single-breasted sack suit jacket** of about 1918, in plain dark grey or navy worsted. **Straight
 > and easy**: it hangs from the chest with little shaping at the waist, length just covering the seat.
