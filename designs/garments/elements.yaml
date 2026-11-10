@@ -203,7 +203,7 @@ elements:
   pocket-cargo:
     { name: Bellows (cargo) pocket, group: pocket, status: covered, lib: [pocket, flap], seen: [field-trousers, hunting-coat] }
   pocket-kangaroo:
-    { name: Kangaroo pocket, group: pocket, status: gap, freesewing: [hugo] }
+    { name: Kangaroo pocket, group: pocket, status: covered, lib: [polygon, yokeSide], seen: [anorak], freesewing: [hugo] }
 
   # --- Yokes ---
   yoke-shirt-back:

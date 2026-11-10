@@ -52,7 +52,6 @@ Each gap or partial element, with the unbuilt garment types that need it. A type
 | Keyhole neck (`neck-keyhole`) | gap | 0 |  |  |
 | Off-the-shoulder or one-shoulder neck (`neck-off-shoulder`) | gap | 0 |  |  |
 | Sweetheart neck (`neck-sweetheart`) | gap | 0 |  |  |
-| Kangaroo pocket (`pocket-kangaroo`) | gap | 0 | hugo |  |
 | Quilted or padded layers (`quilting`) | partial | 0 |  |  |
 | Shirring or smocking (`shirring`) | gap | 0 |  |  |
 | Straight pencil skirt with a vent (`skirt-pencil`) | partial | 0 | penelope |  |
@@ -415,7 +414,7 @@ Each gap or partial element, with the unbuilt garment types that need it. A type
 | Coin (watch) pocket (`pocket-coin`) | partial: The piece is easy; its placement is not | `polygon` |  |  |
 | In-seam side pocket (`pocket-on-seam`) | gap |  |  | sasha |
 | Bellows (cargo) pocket (`pocket-cargo`) | covered | `pocket`, `flap` | field-trousers, hunting-coat |  |
-| Kangaroo pocket (`pocket-kangaroo`) | gap |  |  | hugo |
+| Kangaroo pocket (`pocket-kangaroo`) | covered | `polygon`, `yokeSide` | anorak | hugo |
 
 ### Yokes
 

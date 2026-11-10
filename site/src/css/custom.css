@@ -309,6 +309,20 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
   }
 }
 
+/* On a phone, each Designs-table row stacks: the picture and the Design column side by side, the
+   Garment column full width beneath, so nothing scrolls sideways */
+@media (max-width: 600px) {
+  .design-table table { display: block; overflow: visible; }
+  .design-table thead { display: none; }
+  .design-table tbody { display: block; }
+  .design-table tr { display: grid; grid-template-columns: auto 1fr; border-top: 1px solid var(--ifm-color-emphasis-300); }
+  .design-table td { display: block; border: 0; }
+  .design-table td:nth-child(1):empty { display: none; }
+  .design-table td:nth-child(1):empty + td { grid-column: 1 / -1; }
+  .design-table td:nth-child(3) { grid-column: 1 / -1; padding-top: 0; }
+  .design-table .src-tag { white-space: normal; }
+}
+
 @media (max-width: 760px) {
   .pattern-editor [class*='max-w-xl']:has(input[id^='edit-']) { grid-template-columns: 1fr; }
   .pattern-editor [class*='max-w-xl']:has(input[id^='edit-']) > div:has(> fieldset input[id^='edit-']) { grid-template-columns: 1fr; }
@@ -341,6 +355,19 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
 
 /* Designs page: a pattern that's someone else's, linked rather than hosted */
 .external-tag { display: inline-block; padding: 0 0.4rem; border: 1px solid var(--ifm-color-emphasis-500); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+
+/* Designs tables: source and licence tags in the Design column, as links. A coloured tag is
+   another project's design; a plain one is ours (its source) or a licence */
+.src-tag { display: inline-block; max-width: 100%; overflow-wrap: anywhere; margin: 0.15rem 0.2rem 0 0; padding: 0 0.4rem; border: 1px solid var(--ifm-color-emphasis-500); border-radius: 2px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1.5; text-transform: uppercase; white-space: nowrap; color: var(--ifm-font-color-base); }
+.src-tag:hover { text-decoration: none; border-color: var(--ifm-color-primary); color: var(--ifm-color-primary); }
+.src-tag--external { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: var(--ifm-background-color); }
+.src-tag--external:hover { background: var(--ifm-color-primary-darker); color: var(--ifm-background-color); }
+.src-tag--licence { font-weight: 600; color: var(--ifm-color-emphasis-700); border-style: dashed; }
+/* Difficulty, five dots: filled for the level, faint for the rest */
+.difficulty { font-size: 0.85rem; letter-spacing: 0.12em; color: var(--ifm-color-primary); white-space: nowrap; }
+.difficulty-off { color: var(--ifm-color-emphasis-300); }
+/* The one-line credit for another project's design, under the description */
+.support-note { display: inline-block; margin-top: 0.2rem; font-size: 0.72rem; line-height: 1.4; color: var(--ifm-color-emphasis-700); }
 
 /* The Measure page: a list of measurements beside the figure for the one selected */
 .measure-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin: 1.5rem 0 0.75rem; padding: 0.75rem; border: 1px solid var(--ifm-color-emphasis-300); }

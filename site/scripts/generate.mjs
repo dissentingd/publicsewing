@@ -193,6 +193,19 @@ const rows = { designs: newRows(), inspired: newRows() }
 // Others' patterns: a row in the Historical tables (Open+Pattern copies real garments), linking out.
 // `ours` ties one to our design from it. A thumbnail where we hold their render:
 // illustrations/external/<path>.jpg, a front view from their CC BY 4.0 download, resized
+// The Designs tables. Design column: name, difficulty as dots, then small link tags for the
+// source and licence (coloured for another project's design). Garment column: description,
+// variants, and for another project's design one short, uniform credit line.
+const difficultyDots = (n) =>
+  n ? `<span className="difficulty" title="Difficulty ${n} of 5" aria-label="Difficulty ${n} of 5">${'●'.repeat(n)}<span className="difficulty-off">${'●'.repeat(Math.max(0, 5 - n))}</span></span>` : ''
+const srcTag = (text, href, kind = 'source') => `<a className="src-tag src-tag--${kind}" href="${href}">${text}</a>`
+const tagLine = (...tags) => tags.filter(Boolean).join(' ')
+const supportNote = (project, href) =>
+  `<small className="support-note">[${project}](${href}) did the hard part, so please support them and use their design from them first. Feel free to use ours if it offers something you need.</small>`
+const designCell = (link, difficulty, tags) => [link, difficultyDots(difficulty), tags].filter(Boolean).join('<br />')
+const garmentCell = (text, ...extra) => [text, ...extra.filter(Boolean)].join('<br />')
+const CC_BY = 'https://creativecommons.org/licenses/by/4.0/'
+
 const external = parse(readFileSync(out('external.yaml'), 'utf8'))
 const original = {}
 for (const p of external.patterns) {
@@ -214,7 +227,7 @@ for (const p of external.patterns) {
   const picCredit = existsSync(pic) ? ` Image: ${external.by}'s render, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), resized.` : ''
   rows.designs[p.category].push({
     name: p.name,
-    row: `| ${thumb} | [${p.name}](${url})<br /><span className="external-tag">External</span> | ${p.about}.<br /><small>Fixed sizes: ${p.sizes}. Pattern by [${external.by}](/sources#open-pattern), on their site.${picCredit}${ours}</small> |`,
+    row: `| ${thumb} | ${designCell(`[${p.name}](${url})`, 0, tagLine(srcTag(external.by, url, 'external'), srcTag('CC BY 4.0', CC_BY, 'licence')))} | ${garmentCell(`${p.about}.`, `<small>Fixed sizes: ${p.sizes}, on their site.${picCredit}${ours}</small>`)} |`,
   })
 }
 
@@ -231,7 +244,7 @@ fsIds.forEach((id, i) => {
   for (const o of d.ours ?? []) (alsoFs[o] ??= []).push(`[${name}](/designs/${id})`)
   rows.inspired[d.category].push({
     name,
-    row: `| | [${name}](/designs/${id})<br /><span className="external-tag">FreeSewing</span> | ${d.about}.<br /><small>Difficulty ${d.data.difficulty} of 5. This is ${credit}. ${thanks} Feel free to use ours, if it offers something you need otherwise.${ours.length ? ` We also draft our own: ${ours.join(', ')}.` : ''}</small> |`,
+    row: `| | ${designCell(`[${name}](/designs/${id})`, d.data.difficulty, tagLine(srcTag('FreeSewing', d.url, 'external'), srcTag('MIT', '/sources#freesewing', 'licence')))} | ${garmentCell(`${d.about}.`, ours.length ? `<small>We also draft our own: ${ours.join(', ')}.</small>` : '', supportNote('FreeSewing', d.url))} |`,
   })
   writeFileSync(
     out('docs', 'inspired', d.category, `${id}.mdx`),
@@ -364,13 +377,18 @@ ${variants.join('\n')}
   const sourceLabel = folder === 'inspired' ? 'Inspired by' : 'Source'
   // Our version of a pattern people can pay for on its maker's site asks them to, by name of garment
   if (/Open\+Pattern/.test(about.source ?? '') && !original[id]) throw new Error(`${id}: from Open+Pattern, but no entry in external.yaml has ours: ${id}, so it has no donation link`)
-  const donate = original[id] ? `Please be kind and [donate to ${external.by}](${original[id].url}) for this garment.` : ''
+  // Tags: the source (to the brief, which names it in full), or the original another project made
+  const ourTags = original[id]
+    ? tagLine(srcTag(external.by, original[id].url, 'external'), srcTag('CC BY 4.0', CC_BY, 'licence'))
+    : /ЕМКО/.test(about.source ?? '')
+      ? srcTag('ЕМКО 1988', '/sources#emko')
+      : srcTag(info.source.replace(/[*_]/g, ''), `/designs/${id}#the-brief`)
   rows[folder][about.category].push({
     name: about.name,
-    row: `| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | [${about.name}](/designs/${id})${variantLinks.length ? `<br /><small>Variants: ${variantLinks.join(' · ')}</small>` : ''} | ${info.garment}<br /><small>Difficulty ${about.difficulty} of 5. ${sourceLabel}: ${info.source}${donate ? `. ${donate}` : ''}</small> |`,
+    row: `| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | ${designCell(`[${about.name}](/designs/${id})`, about.difficulty, ourTags)} | ${garmentCell(info.garment, variantLinks.length ? `<small>Variants: ${variantLinks.join(' · ')}</small>` : '', original[id] ? supportNote(external.by, original[id].url) : '')} |`,
   })
   const originalLine = original[id]
-    ? `\n\nOur own interpretation, inspired by [${original[id].name}](${original[id].url}) from [${external.by}](/sources#open-pattern). ${donate}`
+    ? `\n\nOur own interpretation, inspired by [${original[id].name}](${original[id].url}) from [${external.by}](/sources#open-pattern). ${external.by} did the hard part, so please [support them](${original[id].url}) and use their design from them first. Feel free to use ours if it offers something you need.`
     : /ЕМКО/.test(about.source ?? '')
       ? `\n\nOur own interpretation, inspired by [ЕМКО СЭВ](/sources#emko).`
       : ''
@@ -445,12 +463,16 @@ ${sections
   .map(
     (c) => `## ${c.label} {#${c.id}}
 
+<div className="design-table">
+
 | | Design | Garment |
 |---|---|---|
 ${rows[folder][c.id]
   .sort((a, b) => a.name.localeCompare(b.name))
   .map((r) => r.row)
   .join('\n')}
+
+</div>
 `
   )
   .join('\n')}`
@@ -466,7 +488,7 @@ designsPage(
 measurements. Every design is a **draft**: none has been sewn yet. Each page has the pattern tool
 for that design, its 3D drape, and its brief.
 
-Entries tagged <span className="external-tag">External</span> aren't ours: they're
+Entries with a coloured tag aren't ours: <span className="src-tag src-tag--external">Open+Pattern</span> ones are
 [${external.by}](/sources#open-pattern)'s patterns of real garments, in fixed sizes, on their site.
 
 See also [Inspired Designs](/inspired), from copied garments and sources still in copyright.`
@@ -482,7 +504,7 @@ Our own designs here take the original's pieces, proportions and construction, a
 the wearer's measurements, so none is an exact copy. They are all **drafts**: none has been sewn yet.
 You can [copy a garment and submit it](/contribute) too.
 
-Entries tagged <span className="external-tag">FreeSewing</span> aren't ours: they're [FreeSewing](/sources#freesewing)'s
+Entries tagged <span className="src-tag src-tag--external">FreeSewing</span> aren't ours: they're [FreeSewing](/sources#freesewing)'s
 own designs, drafted to measure here with their credit.
 
 See also [Historical Designs](/designs), from old drafting books.`
