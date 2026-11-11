@@ -83,7 +83,7 @@ nodes:
   riding-habit: { name: Riding habit coat, parent: womens-tailored, traits: [body-princess, collar-shawl, sleeve-two-piece, lining], designs: [riding-habit-coat] }
   riding-frock: { name: Riding frock coat, parent: womens-tailored, traits: [body-princess, waist-seam, collar-notched, sleeve-two-piece, lining], designs: [riding-frock-coat] }
   frock-coats: { name: Frock and dress coats, parent: jackets }
-  frock-coat-t: { name: Men's frock coat, parent: frock-coats, traits: [body-three-piece, waist-seam, collar-notched, sleeve-two-piece, lining], note: "Queue 42" }
+  frock-coat-t: { name: Men's frock coat, parent: frock-coats, traits: [body-three-piece, waist-seam, collar-notched, sleeve-two-piece, lining], designs: [frock-coat, surtout] }
   surtout-t: { name: Surtout, parent: frock-coats, traits: [body-three-piece, closure-double-breasted, collar-notched, lining], designs: [surtout] }
   tailcoat-t: { name: Tailcoat (full dress), parent: frock-coats, traits: [body-three-piece, waist-seam, tails, collar-peak, sleeve-two-piece, lining], designs: [tailcoat] }
   work-jackets: { name: Work and utility jackets, parent: jackets }

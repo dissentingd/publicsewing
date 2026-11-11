@@ -27,6 +27,17 @@ viewer's right.
 
 ## Men's coats and jackets (Simons 1916 and 1918)
 
+### frock-coat: Frock coat
+> A **man's single-breasted cutaway frock coat (morning coat)** of about 1918 in dark grey wool, **fitted at the
+> waist** with a seam just below it. **Three buttons**, closed, under **notched lapels**. Below the buttons **the
+> skirt's front edges slope away to the sides and back in one long curve**, so the coat is short at the front and
+> reaches **the back of the knee behind**. Plain two-piece sleeves. Front three-quarter view showing the sloping
+> skirt, full length to the knee, over dark striped trousers, plain background, clean technical editorial
+> illustration.
+>
+> Leave out: separate tails with a square-cut front (a dress tailcoat), a double-breasted front, pockets, a breast
+> pocket, a belt, peaked lapels.
+
 ### tailcoat: Tailcoat
 > A **man's full dress tailcoat** of about 1918 in black wool, **worn open** over a white waistcoat and shirt.
 > **The fronts stop just below the waist, cut straight across**, sloping up a little toward the sides; **behind,

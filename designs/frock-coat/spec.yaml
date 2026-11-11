@@ -1,0 +1,42 @@
+# Frock coat: Simons' three-button single-breasted frock coat (Designing Sack Coats and Vests, 1918,
+# Diagram XI, pp. 20-21), on the tailcoat (the surtout's three-piece body cut at the waist,
+# lib/body3.mjs, FreeSewing's Bent): fitted, cut through a little below the waist, buttoned with
+# three buttons under notched lapels, and a skirt whose front slopes away from the front edge to
+# the back at the hem. For any size. See BRIEF.md.
+extends: ../tailcoat/spec.yaml
+
+about:
+  id: frockcoat
+  name: Frock coat
+  category: jackets
+  description: "A fitted three-button coat with a waist seam and a long skirt sloping away behind: a cutaway frock or morning coat"
+  difficulty: 5
+  tags: [jackets]
+  techniques: [button, collar, lapel, facing, two-piece-sleeve]
+  version: 0.1.0
+  source: "Simons, Designing Sack Coats and Vests (1918), Diagram XI, pp. 20-21 (designingsackcoa00simo)"
+  preview: cisMaleAdult36 # Simons drafts size 36
+
+options:
+  # Fit. "9 to 10 is 4 inches for 1 1/2 inches button stand and 2 1/2 make-up": CF in the stand's
+  # middle, less 1/2" a half for the seams' make-up, as the sack coat (ours)
+  chestEase: { pct: 15 } # 2 1/2 + 3/4 - 1/2: 2 3/4" on 18
+  waistEase: { pct: 17 } # half waist about 19 3/8" at F, as drawn, less 1/2", on his 32" waist's 16
+  # The waist seam at the "fashionable length", F, 18", 1 1/4" below the natural waist (16 3/4")
+  lengthBelowWaist: { pct: 12 } # x waistToSeat: 1 1/4" on the 36 set's 10.3"
+  # 18, the front's point, about 2 1/2" below 29 at the side, as drawn
+  frontDrop: { pct: 25 } # x waistToSeat
+  buttonExtension: { pct: 2.1 } # x chest: the 1 1/2" stand, CF in its middle: 3/4"
+  buttons: { count: 3 } # Simons' title: three buttons
+  buttonsBehindCF: { pct: 0, menu: false } # buttoned: on CF
+  breakAt: { pct: 38 } # chest line to waist: 16, "the length of lapel, 2 3/4 inches from 10", of 7 1/4"
+  buttonBottom: { pct: 12 } # x waistToSeat: 17, on the waist seam line F
+  lapelStyle: { dflt: notch } # 15, 2" past the notch 14
+  lapelWidth: { pct: 17 } # x neck: 14 is 2 1/4" from the break line, the point a little wider, on his 15" neck
+  # Skirt: "H is 37 inches from B, the full length", the waist seam at 18: 19" down the back
+  skirtSeam: { pct: 185 } # x waistToSeat (10.3")
+  skirtLean: { deg: 12 } # U to H, as drawn
+  skirtRound: { pct: 9.7 } # "23 is 1 inch from 22": the back seam rounded out 1"
+  # The skirt's front, 24 (1/4" from the forepart's point 18), slopes to 25, "1/3 of breast from H"
+  tailAt: { pct: 2, min: 0.5 } # x the skirt's top from the front: from the front edge
+  tailWidth: { pct: 16.7 } # x chest: 6" at the hem from the back seam

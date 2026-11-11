@@ -78,6 +78,8 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
   line and the front cut away below it; the lapel is drawn folded over the forepart.
 - Diagram XII, the full dress coat (text p. 22, plate p. 23), letters its lines B–H with E the "fashionable" and F
   the natural waist; the size of the Vee at 19 is lost in the scan ("x inch").
+- Diagram XI, the frock coat (text p. 20, plate p. 21), is "the basis for all body fitting garments": its skirt
+  front slopes from the forepart's point to ⅓ of the breast from the back at the hem (a cutaway).
 
 ## Simons 1916 (`designingovercoa00simo`)
 - The shoulder cape overcoat is on pp. 30-31, not p. 21. It is a full-length cape with a military collar and a whole back; the 7 in button stand is a cut-on front extension.
