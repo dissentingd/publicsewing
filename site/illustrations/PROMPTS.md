@@ -1627,3 +1627,19 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > illustration.
 >
 > Leave out: a tall or folded collar, a zip, buttons, pockets, rib cuffs or hem band, a logo, a person.
+
+### cardigan: Cardigan
+> A **long-sleeved knit cardigan** in oatmeal wool jersey, **buttoned with five buttons** up a **narrow self-fabric
+> band** that runs up both fronts and round a **V neck ending above the bust**. Plain set-in sleeves ending in **rib
+> cuffs**, and a **rib band at the hip**. Slightly loose. Front three-quarter view on an invisible form, plain
+> background, clean technical editorial illustration.
+>
+> Leave out: pockets, a collar or shawl collar, a zip, a belt, cable or textured knitting, a top underneath, a
+> person.
+
+### cardigan.plain: Cardigan, plain hem
+> The same **buttoned V-neck knit cardigan** in oatmeal wool jersey, the band up the fronts and round the neck, but
+> with **plain hemmed sleeves and a plain hem at the hip**, no rib bands. Front three-quarter view on an invisible
+> form, plain background, clean technical editorial illustration.
+>
+> Leave out: rib cuffs or a rib hem band, pockets, a collar, a zip, a belt, a person.

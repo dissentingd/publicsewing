@@ -702,6 +702,12 @@ options:
   openingExt:
     title: Opening lap
     description: Width of the lap at the opening, as a share of the chest.
+  vNeckDepth:
+    title: V neck depth
+    description: How far the V neck runs down centre front, from the neck point, as a share of the neck point to the front waist.
+  frontBandWidth:
+    title: Front band width
+    description: Finished width of the band up the fronts and round the neck, as a share of the neck.
   placketWidth:
     title: Placket width
     description: Finished width of the placket down the front, as a share of the neck.
@@ -1108,6 +1114,7 @@ options:
     description: A welt pocket in the front lining at the chest line.
 
 parts:
+  frontBand: Front band
   hemBand: Hem band
   body: Body
   underArm: Under-arm panel

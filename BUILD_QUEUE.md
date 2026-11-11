@@ -215,7 +215,7 @@ listing, not a design. Each uses `test/knit-checks.mjs` or `test/bodice-checks.m
 |---|---|---|---|---|---|---|
 | K1 | `turtleneck` | Turtleneck, with a mock-neck variant | Bibi + `rib` collar | I | Neck raised, collar cut from the stored neck opening; collar and neck edge must stretch over the head (children: up to 83% and 65%). `brand` retitles Bibi's pieces; spec names `block.<key>` read Bibi's store | done (turtleneck, turtleneck.mockNeck) |
 | K2 | `henley` | Henley, with polo and rugby-shirt variants (a knit or woven collar) | Bibi | I | As built: `placketBox` (`lib/knit.mjs`) marks the box on Bibi's front; the `knitPlacket` piece type (`lib/placket.mjs`) cuts the strips, as many buttons as fit; the band or collar is a `rib` piece | done (henley, henley.polo, henley.rugby) |
-| K3 | `cardigan` | Cardigan | Bibi | I | Front cut open at CF with a rib button band up the front and round the neck | open |
+| K3 | `cardigan` | Cardigan | Bibi | I | As built: `openFront` (`lib/knit.mjs`) opens Bibi's front with a straight V and allowance all round; the `frontBand` piece type (`lib/placket.mjs`) runs up the fronts flat and round the neck stretched, as many buttons as fit | done (cardigan, cardigan.plain) |
 | K4 | Bella dresses and tops | Shell top, sheath, sundress, wrap dress, jumper dress | Bella | I | Need closures (back zip) and skirts joined at the waist on Bella | open |
 | K5 | `princess-dress` | Princess-line dress | Noble | I | Noble's seams carried on below the waist into a skirt | open |
 | K6 | `joggers`, Harrington jacket | Rib cuffs on existing bases | Titan, raglan | I | The leg and body operations must store the hem widths the rib bands need | open |

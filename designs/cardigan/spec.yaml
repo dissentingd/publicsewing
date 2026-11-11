@@ -1,0 +1,85 @@
+# A cardigan: Bibi's knit top opened down centre front with a V neck, finished with one band up
+# the fronts and round the neck, buttoned, over rib cuffs and a rib hem band. Our own design, with
+# no book behind it; see BRIEF.md.
+about:
+  id: cardigan
+  name: Cardigan
+  category: tops
+  description: A buttoned knit cardigan with a V neck, a front band, long sleeves and rib cuffs and hem, drafted from your measurements
+  difficulty: 3
+  tags: [tops, knits]
+  techniques: [knit, set-in-sleeve, buttonholes, ribbing]
+  version: 0.1.0
+  source: Our own design, on FreeSewing's Bibi knit block
+
+block: bibi
+
+options:
+  sleeveLength: { pct: 100, min: -20, max: 110, menu: style.sleeves } # to the wrist
+  # Bibi's rib cuffs and hem band, on by default here
+  useCuffRibbing: { bool: true, menu: style }
+  useWaistRibbing: { bool: true, menu: style }
+  chestEase: { pct: 8, min: 0, max: 25, menu: fit } # worn over a top: Bibi's knit default is 2%
+  vNeckDepth: { pct: 55, min: 30, max: 85, of: hpsToWaistFront, menu: style } # the V from the neck point, about 24 cm on a 36 in figure; above the waist at any size
+  frontBandWidth: { pct: 7, min: 4, max: 10, of: neck, menu: style } # about 2.7 cm, finished
+  collarStretch: { pct: 8, min: 0, max: 20, menu: fit } # the band round the neck only
+  buttons: { count: 5, min: 3, max: 8, menu: style }
+
+pieces:
+  back:
+    from: bibi.back
+    hide: tree
+    options: [useWaistRibbing, chestEase]
+    ops:
+      - brand: { nr: 2, title: back }
+  front:
+    from: bibi.front
+    hide: tree
+    options: [useWaistRibbing, chestEase, vNeckDepth]
+    measurements: [hpsToWaistFront]
+    ops:
+      - brand: { nr: 1, title: front }
+      - openFront: { depth: hpsToWaistFront * vNeckDepth }
+  sleeve:
+    from: bibi.sleeve
+    hide: tree
+    if: sleeves
+    options: [sleeveLength, useCuffRibbing]
+    ops:
+      - brand: { nr: 3, title: sleeve }
+  cuff:
+    from: bibi.cuff
+    hide: tree
+    if: sleeves and useCuffRibbing
+    options: [useCuffRibbing]
+    ops:
+      - brand: { nr: 5, title: cuff }
+  hemBand:
+    from: bibi.waistband
+    hide: tree
+    if: useWaistRibbing
+    options: [useWaistRibbing]
+    ops:
+      - brand: { nr: 6, title: hemBand }
+  # Bibi's neck binding, drafted (Bibi's back and front read its height) but not cut
+  neckBinding:
+    from: bibi.neckBinding
+    hide: tree
+    if: false
+  frontBand:
+    part: frontBand
+    after: [back, front]
+    options: [frontBandWidth, collarStretch, buttons, useWaistRibbing]
+    measurements: [neck]
+    buttons: buttons
+    height: neck * frontBandWidth
+    stretch: collarStretch
+    below: if(useWaistRibbing, block.ribbingHeight, 0)
+    nr: 4
+    label: frontBand
+
+variants:
+  plain:
+    name: Plain hem
+    description: No rib cuffs or hem band; the sleeves and body hemmed, the front band running to the hem.
+    options: { useCuffRibbing: false, useWaistRibbing: false }

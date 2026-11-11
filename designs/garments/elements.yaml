@@ -107,7 +107,7 @@ elements:
   neck-boat:
     { name: Boat (bateau) neck, group: neckline, status: covered, lib: [yokeSide.neckline], seen: [shift-dress] }
   neck-v:
-    { name: V neck, group: neckline, status: covered, lib: [yokeSide.neckline, coatFront.neckY], seen: [shift-dress, middy-blouse, waistcoat] }
+    { name: V neck, group: neckline, status: covered, lib: [yokeSide.neckline, coatFront.neckY, openFront], seen: [shift-dress, middy-blouse, waistcoat, cardigan] }
   neck-keyhole:
     { name: Keyhole neck, group: neckline, status: gap }
   neck-split:

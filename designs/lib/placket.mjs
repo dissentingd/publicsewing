@@ -33,3 +33,45 @@ export const knitPlacketPart = ({ name, after, nr, label, cut = 2, material = 'f
       }
     },
   })
+
+/**
+ * A cardigan's front band (after a front with `openFront`, and Bibi's back): one strip up the right
+ * front, round the neck and down the left front, folded lengthwise to `height`. It lies flat along
+ * the fronts (from the foot of the hem band, if there is one) and is shortened by `stretch` round
+ * the neck, so it hugs it. Buttonholes on the first front's stretch, buttons on the other's, from
+ * two band-widths above the hem to half a band-width below the V, as many as fit a band-width apart; notches at the V points, the
+ * shoulders and centre back. Stores `knit.frontBand` { front, neck, length }
+ */
+export const frontBandPart = ({ name, after, nr, label, cut = 1, material = 'fabric', enabled, shape }) =>
+  polygonPart({
+    name,
+    after,
+    nr,
+    label,
+    cut,
+    material,
+    enabled,
+    shape: (sh) => {
+      const { buttons = 5, height, stretch = 0.1, below = 0 } = shape(sh)
+      const { store } = sh
+      const f = store.get('knit.front')
+      const F = f.edge + below
+      const half = (f.neck + store.get('neckSizeBack')) * (1 - stretch)
+      const V = f.neck * (1 - stretch)
+      const L = 2 * (F + half)
+      const H = 2 * height
+      const lo = 2 * height
+      const hi = F - height / 2
+      // As many of the buttons asked for as fit a band-width apart (a short front takes fewer)
+      const n = Math.max(1, Math.min(Math.round(buttons), Math.floor((hi - lo) / height) + 1))
+      const xs = n === 1 ? [hi] : Array.from({ length: n }, (_, i) => lo + ((hi - lo) * i) / (n - 1))
+      store.set('knit.frontBand', { front: F, neck: half, length: L, buttons: xs })
+      return {
+        points: [[0, 0], [L, 0], [L, H], [0, H]],
+        lines: [[[0, H / 2], [L, H / 2]]],
+        notches: [F, F + V, L / 2, L - F - V, L - F].map((x) => [x, 0]),
+        buttonholes: xs.map((x) => [x, height / 2]),
+        buttons: xs.map((x) => [L - x, height / 2]),
+      }
+    },
+  })

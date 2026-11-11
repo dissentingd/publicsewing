@@ -62,8 +62,8 @@ import { bella } from '../blocks/bella.mjs'
 import { bibi } from '../blocks/bibi.mjs'
 import { noble } from '../blocks/noble.mjs'
 import { ribPart } from './rib.mjs'
-import { brandPart, draftPlacketBox } from './knit.mjs'
-import { knitPlacketPart } from './placket.mjs'
+import { brandPart, draftPlacketBox, draftOpenFront } from './knit.mjs'
+import { knitPlacketPart, frontBandPart } from './placket.mjs'
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
@@ -92,6 +92,8 @@ export const operations = {
   brand: { run: brandPart, literal: ['title'] },
   // A box placket down centre front of a front cut on the fold (Bibi's); `knit.placket` in the store
   placketBox: { run: draftPlacketBox },
+  // A cardigan's open front with a V neck, on Bibi's front; `knit.front` in the store
+  openFront: { run: draftOpenFront },
   // Cut the back or front along its raglan line (after coatBack / coatFront)
   raglan: { run: (sh, { which, ...rest }) => applyRaglan(sh, which, rest), literal: ['which'] },
   // A shawl collar cut in one with the front (after coatFront with a neckY)
@@ -442,6 +444,18 @@ const factories = {
           lookupIn(sh, ctx.block, {}),
           {},
         ),
+    }),
+  // A cardigan's front band (after openFront): `buttons`, `height`, `stretch` round the neck, `below`
+  // (the hem band's height, which the band runs past)
+  frontBand: (p, ctx) =>
+    frontBandPart({
+      name: p.name,
+      after: ctx.after(p),
+      nr: p.nr,
+      label: p.label,
+      material: p.material ?? 'fabric',
+      enabled: enabledBy(p.if),
+      shape: (sh) => evalMap({ ...p.let, buttons: p.buttons, height: p.height, stretch: p.stretch, below: p.below }, lookupIn(sh, ctx.block, {}), {}),
     }),
   // A knit top's placket strips (after a front with placketBox), `buttons` buttonholes
   knitPlacket: (p, ctx) =>

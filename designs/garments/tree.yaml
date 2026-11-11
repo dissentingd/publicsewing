@@ -56,7 +56,7 @@ nodes:
   hoodie: { name: Hoodie, parent: knit-tops, traits: [body-knit, hood, pocket-kangaroo, cuff-rib, waistband-jacket], knit: true, freesewing: [hugo, huey, hannah, yuri] }
   turtleneck-top: { name: Turtleneck, parent: knit-tops, traits: [body-knit, neck-raised], knit: true, designs: [turtleneck], variants: [turtleneck.mockNeck] }
   tank-top: { name: Tank top, parent: knit-tops, traits: [body-knit, sleeveless, neck-scoop], knit: true, freesewing: [aaron] }
-  cardigan: { name: Cardigan, parent: knit-tops, traits: [body-knit, closure-buttons, neck-v, cuff-rib], knit: true }
+  cardigan: { name: Cardigan, parent: knit-tops, traits: [body-knit, closure-buttons, neck-v, cuff-rib], knit: true, designs: [cardigan], variants: [cardigan.plain] }
 
   waistcoats: { name: Waistcoats and vests, parent: upper }
   waistcoat-sb: { name: Single-breasted waistcoat, parent: waistcoats, traits: [body-boxy, sleeveless, neck-v, closure-buttons, front-cutaway, pocket-welt, lining], designs: [waistcoat], freesewing: [wahid] }
