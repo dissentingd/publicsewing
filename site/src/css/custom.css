@@ -345,6 +345,11 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
   white-space: normal;
 }
 
+.brief-detail { margin: 1rem 0; padding: 0.7rem 1rem; border: 1px solid var(--ifm-color-emphasis-300); }
+.brief-detail > summary { cursor: pointer; font-weight: 700; }
+.brief-main > summary { font-size: 1.4rem; }
+.brief-detail[open] > summary { margin-bottom: 1rem; }
+
 /* Wardrobe map, generated from the garment family tree. */
 .wardrobe-tree { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); gap: 1.25rem; margin-top: 2rem; }
 .wardrobe-zone { padding: 1.25rem; border: 1px solid var(--ifm-color-emphasis-300); border-top: 3px solid var(--ifm-color-primary); }

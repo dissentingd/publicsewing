@@ -226,6 +226,27 @@ function mdx(md, id) {
     .replace(/<(?=[^a-zA-Z/!])/g, '&lt;')
 }
 
+// Keep the source brief intact while moving practical making information ahead of the editor.
+function briefSections(brief, id) {
+  const converted = mdx(brief, id)
+  const sections = converted.split(/(?=^## )/m)
+  const practical = []
+  const background = []
+  for (const section of sections) {
+    const heading = section.match(/^## (.+)$/m)?.[1] ?? ''
+    if (/^(Pieces|Construction)\b/i.test(heading)) practical.push(section)
+    else {
+      const label = /^What (?:the source|the sources|Mitchell)\b/i.test(heading) ? 'What Source Shows'
+        : /^How (?:it|the source) maps\b|^Mapping\b/i.test(heading) ? 'How It Maps'
+        : /^(Changes|Departures)\b/i.test(heading) ? "Changes and what isn't modelled" : null
+      background.push(label
+        ? `<details className="brief-detail">\n<summary>${label}</summary>\n\n${section.replace(/^## .+\n/, '')}\n</details>`
+        : section)
+    }
+  }
+  return { practical: practical.join('\n'), background: background.join('\n') }
+}
+
 const newRows = () => Object.fromEntries(categories.map((c) => [c.id, []]))
 const rows = { designs: newRows(), inspired: newRows() }
 
@@ -348,6 +369,7 @@ ids.forEach((id, i) => {
   const about = spec.about
   const info = order.find((o) => o.id === id) ?? { garment: about.description, source: about.source }
   const brief = readFileSync(join(designsDir, id, 'BRIEF.md'), 'utf8')
+  const { practical, background } = briefSections(brief, id)
   const drapeSrc = join(designsDir, 'drape', id)
   const renders = existsSync(drapeSrc) ? readdirSync(drapeSrc).filter((f) => /\.png$/.test(f)).sort() : []
   if (renders.length) {
@@ -481,6 +503,8 @@ match, but that doesn't prove it fits. Sew a muslin before good fabric, and plea
 
 ${info.garment}. ${sourceLabel}: ${info.source}.${originalLine}${alsoFs[id] ? `\n\nAlso as FreeSewing's ${alsoFs[id].join(', ')}, under Inspired Designs.` : ''}${variantsLine}
 
+${practical}
+
 ## Make the pattern
 
 Pick a size set or enter your own measurements, change options, then **Export** a tiled PDF
@@ -491,12 +515,13 @@ Pick a size set or enter your own measurements, change options, then **Export** 
 
 ${variantsSection}
 ${drape}
-## The brief
+<details className="brief-detail brief-main" id="the-brief">
+<summary>The Brief</summary>
 
-How the source became this design: its pieces, how the source's proportions became options, and
-the construction order. The same file is [BRIEF.md on GitHub](${repo}/designs/${id}/BRIEF.md).
+How the source became this design. The full file is [BRIEF.md on GitHub](${repo}/designs/${id}/BRIEF.md).
 
-${mdx(brief, id)}
+${background}
+</details>
 `
   )
 })
