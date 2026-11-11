@@ -1,0 +1,110 @@
+# A henley: Bibi's knit top with a buttoned box placket down centre front and a knit neckband.
+# Polo and rugby-shirt variants put a flat knit collar on the neck instead of the band. Our own
+# design, with no book behind it; see BRIEF.md.
+about:
+  id: henley
+  name: Henley
+  category: tops
+  description: A knit top with a buttoned placket at the front of a round neck finished with a band, or a knit collar for a polo, drafted from your measurements
+  difficulty: 3
+  tags: [tops, knits]
+  techniques: [knit, set-in-sleeve, placket, buttonholes, ribbing]
+  version: 0.1.0
+  source: Our own design, on FreeSewing's Bibi knit block
+
+block: bibi
+
+options:
+  sleeveLength: { pct: 100, min: -20, max: 110, menu: style.sleeves } # to the wrist; 20% is Bibi's short sleeve
+  # The placket: from the neck down, and its finished width (the box cut out of the front)
+  placketDepth: { pct: 30, min: 15, max: 55, of: hpsToWaistBack, menu: style } # about 13 cm on a 38 in figure
+  placketWidth: { pct: 8, min: 5, max: 12, of: neck, menu: style } # about 3 cm
+  buttons: { count: 3, min: 1, max: 6, menu: style }
+  neckFinish: { dflt: band, list: [band, collar], menu: style }
+  bandHeight: { pct: 5, min: 3, max: 8, of: neck, menu: style } # about 2 cm, finished
+  collarHeight: { pct: 20, min: 12, max: 30, of: neck, menu: style, description: 'Finished height of the knit collar, as a share of the neck. About 20% is a polo collar.' }
+  collarStretch: { pct: 8, min: 0, max: 20, menu: fit }
+  # Bibi's rib cuffs, here shown in the menu (Bibi shows it only once a cuff is on)
+  useCuffRibbing: { bool: false, menu: style }
+
+pieces:
+  back:
+    from: bibi.back
+    hide: tree
+    ops:
+      - brand: { nr: 2, title: back }
+  front:
+    from: bibi.front
+    hide: tree
+    measurements: [hpsToWaistBack, neck]
+    options: [placketDepth, placketWidth]
+    ops:
+      - brand: { nr: 1, title: front }
+      - placketBox: { length: hpsToWaistBack * placketDepth, width: neck * placketWidth }
+  sleeve:
+    from: bibi.sleeve
+    options: [sleeveLength, useCuffRibbing]
+    hide: tree
+    if: sleeves
+    ops:
+      - brand: { nr: 3, title: sleeve }
+  cuff:
+    from: bibi.cuff
+    options: [useCuffRibbing]
+    hide: tree
+    if: sleeves and useCuffRibbing
+    ops:
+      - brand: { nr: 7, title: cuff }
+  hemBand:
+    from: bibi.waistband
+    hide: tree
+    if: useWaistRibbing
+    ops:
+      - brand: { nr: 8, title: hemBand }
+  # Bibi's neck binding, drafted (Bibi's back and front read its height) but not cut
+  neckBinding:
+    from: bibi.neckBinding
+    hide: tree
+    if: false
+  placket:
+    part: knitPlacket
+    after: [front]
+    options: [buttons]
+    buttons: buttons
+    nr: 4
+    label: placket
+  # The neckband or collar runs round the whole neck, the plackets' tops included, ending at the
+  # placket's edges: not a ring
+  neckBand:
+    part: rib
+    after: [back, front]
+    if: neckFinish == 'band'
+    options: [bandHeight, collarStretch, neckFinish]
+    measurements: [neck]
+    edge: 2 * (block.neckSizeBack + block.neckSizeFront)
+    stretch: collarStretch
+    height: neck * bandHeight
+    material: fabric
+    nr: 5
+    label: neckBand
+  collar:
+    part: rib
+    after: [back, front]
+    if: neckFinish == 'collar'
+    options: [collarHeight, collarStretch, neckFinish]
+    measurements: [neck]
+    edge: 2 * (block.neckSizeBack + block.neckSizeFront)
+    stretch: collarStretch
+    height: neck * collarHeight
+    nr: 6
+    label: collar
+
+variants:
+  polo:
+    name: Polo shirt
+    description: A flat knit collar in place of the band, a shorter two-button placket and short sleeves.
+    options: { neckFinish: collar, sleeveLength: 0.2, buttons: 2, placketDepth: 0.25 }
+  rugby:
+    name: Rugby shirt
+    description: A deeper collar, a long, wide placket and rib cuffs, with long sleeves.
+    options: { neckFinish: collar, collarHeight: 0.22, placketDepth: 0.4, placketWidth: 0.1, useCuffRibbing: true }

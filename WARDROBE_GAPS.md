@@ -227,6 +227,7 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
 - **Built 2026-11-10:** Simons' full dress coat (`designs/tailcoat`), on the surtout with its skirt cut away to tails. Drafted, not sewn.
 - **Built 2026-11-11:** Simons' frock coat (`designs/frock-coat`), on the tailcoat with the skirt sloping away from the front edge. Drafted, not sewn.
 - **Built 2026-11-11:** a turtleneck (`designs/turtleneck`), our own design and the first on the Bibi knit block, with a rib collar (`lib/rib.mjs`). Drafted, not sewn.
+- **Built 2026-11-11:** a henley (`designs/henley`), our own design on Bibi, with a buttoned box placket (`lib/knit.mjs`, `lib/placket.mjs`) and polo and rugby-shirt variants. Drafted, not sewn.
 
 ## ЕМКО СЭВ vol. 3 (1988): done (2026-10-27)
 Corpus `emko`, a private copy, untracked: still in copyright, used only for its methods,

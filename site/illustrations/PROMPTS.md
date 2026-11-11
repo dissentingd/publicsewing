@@ -1595,3 +1595,35 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a zip, buttons or a placket, pockets, a rib hem band or rib cuffs, a cowl or loose draped neck, a
 > logo or print, a person.
+
+### henley: Henley
+> A **long-sleeved knit henley** in heather grey cotton jersey. A **round crew neck finished with a narrow
+> self-fabric band**, and below it at centre front a **short buttoned placket with three small buttons**, the top
+> one left open. Plain set-in sleeves to the wrist, plain hems at the cuffs and the hip. Front three-quarter view
+> on an invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: a collar, a hood, pockets, rib cuffs or a rib hem band, a zip, a logo or print, a person.
+
+### henley.polo: Henley, polo shirt
+> A **short-sleeved knit polo shirt** in navy cotton piqué. A **flat-knit turn-down collar** and below it at centre
+> front a **two-button placket**. Plain short set-in sleeves, a plain hem at the hip. Front three-quarter view on
+> an invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: a chest pocket, a logo or embroidery, tipping stripes on the collar, rib sleeve bands, side vents, a
+> person.
+
+### henley.rugby: Henley, rugby shirt
+> A **long-sleeved rugby shirt** in heavy cotton jersey with **wide horizontal stripes of bottle green and cream**.
+> A **white turn-down collar** and below it at centre front a **long, wide three-button placket**. Long set-in
+> sleeves ending in **rib cuffs**, a plain hem at the hip. Front three-quarter view on an invisible form, plain
+> background, clean technical editorial illustration.
+>
+> Leave out: a pocket, a badge or number, a rib hem band, a zip, a person.
+
+### turtleneck.mockNeck: Turtleneck, mock neck
+> The same **close-fitting long-sleeved knit top** in charcoal merino jersey, but with a **short rib-knit collar
+> standing up round the neck, about four centimetres high, not folded down**. Plain set-in sleeves to the wrist,
+> plain hems. Front three-quarter view on an invisible form, plain background, clean technical editorial
+> illustration.
+>
+> Leave out: a tall or folded collar, a zip, buttons, pockets, rib cuffs or hem band, a logo, a person.

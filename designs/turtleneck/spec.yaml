@@ -1,4 +1,4 @@
-# A turtleneck: Bibi's knit top with its neckline raised close to the neck and a tall rib collar,
+# A turtleneck: Bibi's knit top at its crew neckline with a tall rib collar,
 # cut as a tube from the neck opening, folded in half and turned down when worn. Our own design,
 # with no book behind it; see BRIEF.md.
 about:
@@ -15,9 +15,10 @@ about:
 block: bibi
 
 options:
-  # Bibi's own neckline options, set close to the neck (Bibi's defaults are 15% and 25%, a crew neck)
-  necklineWidth: { pct: 0, min: -5, max: 30, menu: style }
-  necklineDepth: { pct: 20, min: 20, max: 50, menu: style }
+  # Bibi's own neckline options, at Bibi's crew neck: any closer and the collar comes out shorter than
+  # the neck and too tight to pass over the head (BRIEF.md), so they only open it further
+  necklineWidth: { pct: 15, min: 15, max: 40, menu: style }
+  necklineDepth: { pct: 25, min: 25, max: 50, menu: style }
   sleeveLength: { pct: 100, min: -20, max: 110, menu: style.sleeves } # to the wrist
   # The collar: its finished height (it's cut twice this and folded), and how much shorter than the
   # neck opening it's cut, so it hugs the neck
@@ -27,16 +28,19 @@ options:
 pieces:
   back:
     from: bibi.back
+    options: [necklineWidth, necklineDepth]
     ops:
       - brand: { nr: 2, title: back }
     hide: tree
   front:
     from: bibi.front
+    options: [necklineWidth, necklineDepth]
     ops:
       - brand: { nr: 1, title: front }
     hide: tree
   sleeve:
     from: bibi.sleeve
+    options: [sleeveLength]
     ops:
       - brand: { nr: 3, title: sleeve }
     hide: tree
@@ -70,3 +74,9 @@ pieces:
     round: true
     nr: 4
     label: collar
+
+variants:
+  mockNeck:
+    name: Mock neck
+    description: A short collar, about a third the height, standing up round the neck without folding down.
+    options: { collarHeight: 0.12 }

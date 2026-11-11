@@ -702,6 +702,9 @@ options:
   openingExt:
     title: Opening lap
     description: Width of the lap at the opening, as a share of the chest.
+  placketWidth:
+    title: Placket width
+    description: Finished width of the placket down the front, as a share of the neck.
   placketDepth:
     title: Placket length
     description: Length of the placket opening from the neck, as a share of the back neck to waist.

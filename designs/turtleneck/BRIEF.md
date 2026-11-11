@@ -20,21 +20,26 @@ measure or openly licensed. None was used.
 
 | Element | Default | Option | Why |
 |---|---|---|---|
-| Neck width | Bibi's neckline widened 0% (its own default 15%) | `necklineWidth` | Close to the neck, so the collar stands round it |
-| Neck depth | 20% (Bibi's least; its default 25%) | `necklineDepth` | Raised as far as Bibi allows |
+| Neck width | 15%, Bibi's crew neck (no closer) | `necklineWidth` | Closer, and the collar comes out shorter than the neck (0.87 × at Boys 1C) and needs 116% stretch to pass a child's head |
+| Neck depth | 25%, Bibi's crew neck (no higher) | `necklineDepth` | As above |
 | Sleeve length | 100% (to the wrist) | `sleeveLength` | A turtleneck is usually long-sleeved |
 | Collar height, finished | 30% of the neck (about 11 cm on a 36 in figure); cut twice that and folded | `collarHeight` | Turns down once when worn; 10–15% is a mock neck |
 | Collar length | the neck opening less 10% | `collarStretch` | Sewn on slightly stretched so it hugs the neck |
 | Cuffs, hem band | off | Bibi's `useCuffRibbing`, `useWaistRibbing` | Plain hems by default |
 | Fit, length, ease | Bibi's | Bibi's | Bibi's knit ease (2% at the chest), to the seat |
 
+## Variants
+
+- **Mock neck:** the collar 12% of the neck high (about 4.5 cm), standing up without folding down.
+
 ## Changes and what isn't modelled
 
 - **Over the head.** The collar and the neck edge it's sewn to both pass over the head. At the
-  defaults an adult's collar stretches 21–54% to do it (Women 28 the most) and a child's up to 83%
-  (Girls 1B), whose head is big for the neck; the body's neck edge then stretches up to 65%. So
+  defaults an adult's collar stretches up to 54% to do it (Women 28) and a child's up to 83%
+  (Girls 1B), whose head is big for the neck; the body's neck edge then stretches up to 65%. That
+  is why the neckline stays at Bibi's crew neck. So
   cut the collar from rib (1x1 rib stretches about 100%) and the body from a jersey with good
-  stretch; for small children, a wider neck (`necklineWidth`) lowers both. The test holds the
+  stretch; for small children, a wider neck (`necklineWidth`) lowers both. The collar is never shorter than the neck (1.02 × at least). The test holds the
   collar to 100% and the neck edge to 75% at every size.
 - Bibi's own neck binding is left out: the collar replaces it.
 - No shoulder snaps or back-neck zip for small children (see above).

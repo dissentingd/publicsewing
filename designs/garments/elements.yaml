@@ -159,7 +159,7 @@ elements:
   closure-double-breasted:
     { name: Double-breasted front, group: closure, status: covered, lib: [buttons, jacketLayout.rows], seen: [peacoat, db-waistcoat, womens-peacoat] }
   closure-placket:
-    { name: Placket opening, part way, group: closure, status: covered, lib: [placket], seen: [work-shirt, nightshirt] }
+    { name: Placket opening, part way, group: closure, status: covered, lib: [placket, placketBox, knitPlacket], seen: [work-shirt, nightshirt, henley], note: "Knit tops: a box placket at centre front (placketBox, knitPlacket)" }
   closure-zip-front:
     { name: Zip front, group: closure, status: covered, lib: [zip], seen: [windbreaker, quilted-jacket] }
   closure-zip-back:

@@ -1,8 +1,8 @@
 // Rib bands and cuffs (BUILD_QUEUE B3, 2026-11-10): a knit strip that finishes an edge (a hem, a
 // cuff, a neck, a jacket's waistband), cut shorter than the edge so it pulls in when sewn on
 // stretched. Sized from the edge it finishes: length = edge × (1 − stretch). Cut double height and
-// folded lengthwise; a `round` band (a cuff, a waistband all round) is joined into a ring, so its
-// ends take seam allowance. Drawn by the polygon piece type (lib/flat.mjs).
+// folded lengthwise; a `round` band (a cuff, a waistband all round) is joined into a ring, an open
+// one (a henley's neckband) ends at an opening; both ends take seam allowance. Drawn by the polygon piece type (lib/flat.mjs).
 import { polygonPart } from './flat.mjs'
 
 /** A rib band's size: `edge` (mm, the edge it finishes), `stretch` (the fraction it's shortened by), `height` (finished) */
@@ -24,15 +24,17 @@ export const ribPart = ({ name, after, nr, label, cut = 1, material = 'ribbing',
     material,
     enabled,
     shape: (sh) => {
+      // `round` (a ring, or a band ending at an opening) doesn't change the piece, only how it's sewn
       const { round = false, ...size } = shape(sh)
       const r = ribSize(size)
       sh.store.set(`rib.${key}`, r)
       const [L, H] = [r.length, 2 * r.height]
       return {
         points: [[0, 0], [L, 0], [L, H], [0, H]],
-        // Allowance on the long edges (sewn to the garment, both layers together); on the short
-        // ends only where they're joined into a ring
-        allowance: [1, round ? 1 : 0, 1, round ? 1 : 0],
+        // Allowance all round: the long edges are sewn to the garment, both layers together; the
+        // short ends are joined into a ring (`round`) or turned in where the band ends at an
+        // opening (a henley's placket)
+        allowance: [1, 1, 1, 1],
         // Quarter notches, to spread the stretch evenly; the fold line along the middle
         notches: [1, 2, 3].map((q) => [(q * L) / 4, 0]),
         lines: [[[0, H / 2], [L, H / 2]]],

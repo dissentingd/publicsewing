@@ -24,7 +24,7 @@ testKnit(
     default: {},
     plain: { useCuffRibbing: true, useWaistRibbing: true },
     mockNeck: { collarHeight: 0.12, sleeveLength: 0.2 },
-    apart: { collarHeight: 0.45, collarStretch: 0.25, necklineDepth: 0.5, necklineWidth: 0.3, length: 'hips', sleeves: false },
+    apart: { collarHeight: 0.45, collarStretch: 0.25, necklineDepth: 0.5, necklineWidth: 0.4, length: 'hips', sleeves: false },
   },
   collar
 )

@@ -49,12 +49,12 @@ nodes:
 
   knit-tops: { name: Knit tops, parent: upper }
   t-shirt-t: { name: T-shirt, parent: knit-tops, traits: [body-knit, neck-round, sleeve-set-in], designs: [t-shirt], knit: true, note: "Built by another agent; to be reviewed", freesewing: [teagan] }
-  polo: { name: Polo shirt, parent: knit-tops, traits: [body-knit, closure-placket, collar-turndown, cuff-rib], knit: true }
-  henley: { name: Henley, parent: knit-tops, traits: [body-knit, closure-placket, neck-round], knit: true }
-  rugby-shirt: { name: Rugby shirt, parent: knit-tops, traits: [body-knit, closure-placket, collar-turndown, cuff-rib], knit: true }
+  polo: { name: Polo shirt, parent: knit-tops, traits: [body-knit, closure-placket, collar-turndown, cuff-rib], knit: true, variants: [henley.polo] }
+  henley: { name: Henley, parent: knit-tops, traits: [body-knit, closure-placket, neck-round], knit: true, designs: [henley] }
+  rugby-shirt: { name: Rugby shirt, parent: knit-tops, traits: [body-knit, closure-placket, collar-turndown, cuff-rib], knit: true, variants: [henley.rugby] }
   sweatshirt: { name: Sweatshirt, parent: knit-tops, traits: [body-knit, sleeve-raglan, cuff-rib, waistband-jacket], knit: true, freesewing: [sven] }
   hoodie: { name: Hoodie, parent: knit-tops, traits: [body-knit, hood, pocket-kangaroo, cuff-rib, waistband-jacket], knit: true, freesewing: [hugo, huey, hannah, yuri] }
-  turtleneck-top: { name: Turtleneck, parent: knit-tops, traits: [body-knit, neck-raised], knit: true, designs: [turtleneck] }
+  turtleneck-top: { name: Turtleneck, parent: knit-tops, traits: [body-knit, neck-raised], knit: true, designs: [turtleneck], variants: [turtleneck.mockNeck] }
   tank-top: { name: Tank top, parent: knit-tops, traits: [body-knit, sleeveless, neck-scoop], knit: true, freesewing: [aaron] }
   cardigan: { name: Cardigan, parent: knit-tops, traits: [body-knit, closure-buttons, neck-v, cuff-rib], knit: true }
 

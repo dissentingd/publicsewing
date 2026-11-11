@@ -62,7 +62,8 @@ import { bella } from '../blocks/bella.mjs'
 import { bibi } from '../blocks/bibi.mjs'
 import { noble } from '../blocks/noble.mjs'
 import { ribPart } from './rib.mjs'
-import { brandPart } from './knit.mjs'
+import { brandPart, draftPlacketBox } from './knit.mjs'
+import { knitPlacketPart } from './placket.mjs'
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
@@ -89,6 +90,8 @@ export const operations = {
   store: { run: ({ store }, { key, value }) => store.set(key, value), literal: ['key'] },
   // A block's piece as it is, with our title in place of its own and no logo (Bibi's pieces)
   brand: { run: brandPart, literal: ['title'] },
+  // A box placket down centre front of a front cut on the fold (Bibi's); `knit.placket` in the store
+  placketBox: { run: draftPlacketBox },
   // Cut the back or front along its raglan line (after coatBack / coatFront)
   raglan: { run: (sh, { which, ...rest }) => applyRaglan(sh, which, rest), literal: ['which'] },
   // A shawl collar cut in one with the front (after coatFront with a neckY)
@@ -440,6 +443,18 @@ const factories = {
           {},
         ),
     }),
+  // A knit top's placket strips (after a front with placketBox), `buttons` buttonholes
+  knitPlacket: (p, ctx) =>
+    knitPlacketPart({
+      name: p.name,
+      after: ctx.after(p),
+      nr: p.nr,
+      label: p.label,
+      cut: p.cut ?? 2,
+      material: p.material ?? 'fabric',
+      enabled: enabledBy(p.if),
+      shape: (sh) => evalMap({ ...p.let, buttons: p.buttons }, lookupIn(sh, ctx.block, {}), {}),
+    }),
   // A rib band or cuff (`edge`, `stretch`, `height`, `round`), sized from the edge it finishes
   rib: (p, ctx) =>
     ribPart({
@@ -468,7 +483,7 @@ function lookupIn(sh, block, local) {
       // `in` first: reading a missing name logs a FreeSewing warning
       if (head in measurements && measurements[head] !== undefined) return measurements[head]
       if (head in options && options[head] !== undefined) return options[head]
-    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke' || head === 'rib') return store.get(name)
+    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke' || head === 'rib' || head === 'knit') return store.get(name)
     // A value the block stores under its own name (Bibi's `neckSizeBack`): `block.<key>`
     else if (head === 'block') return store.get(rest.join('.'))
     else {
