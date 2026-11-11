@@ -94,6 +94,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `field-trousers` | Loose pleated combat trousers with flapped cargo pockets and a flapped seat pocket | Open+Pattern (CC BY 4.0), CS95 |
 | `peg-pants` | Pleated trousers full over the hips, tapering to a narrow bottom | Simons 1916 |
 | `slacks` | Two-pleat slacks with a wide straight leg and the waistband cut in one with the legs | Simons 1945 |
+| `shorts` | Tailored shorts: a plain front, a back dart, a fly, pockets and a 2 in waistband, the leg cut well above the knee; men's, women's and children's | Simons 1945 |
 | `overall-pants` | Full work overall trousers with no side seam, each leg cut in one piece | Simons 1916 |
 | `sailor-pants` | Bell-bottomed trousers with no side seam, each leg cut in one piece, with a buttoned drop front | Simons 1922 |
 | `two-piece-skirt` | Plain skirt fitted at hips and waist, shaped in its side seams | Mitchell 1921 |

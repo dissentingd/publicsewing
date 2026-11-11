@@ -88,6 +88,8 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Slacks: Diagram 9 (pp. 42–44), Diagram 10 continuous waistband (pp. 45–46, plate PDF p. 54), Diagram 10A
   cotton slacks (p. 47). The plates draw the front and back over each other on one set of lines.
 - Diagram 9 states its seams (¼ in) are in the draft; 10A ½ in. It gives no seat ease as such.
+- Shorts: men's Diagram 21 (text p. 78, plate p. 79), boys' 35 (p. 104), ladies' 41 (pp. 121–123): the same
+  construction at three sizes. The men's leg is lengthened ¼ in per inch of inseam over 32.
 
 ## Simons 1916 (`designingovercoa00simo`)
 - The shoulder cape overcoat is on pp. 30-31, not p. 21. It is a full-length cape with a military collar and a whole back; the 7 in button stand is a cut-on front extension.

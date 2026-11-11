@@ -497,6 +497,12 @@ options:
   continuousBand:
     title: Cut-on waistband
     description: The waistband cut in one with the legs, the pleats sewn down into it. Off, a separate waistband.
+  shortsInseam:
+    title: Leg length
+    description: How far the leg runs down from the fork, as a share of the full trouser inseam.
+  shortsFlare:
+    title: Leg flare
+    description: How far the inseam flares out at the hem, as a share of the seat.
   waistbandHeight:
     title: Waistband height
     description: Finished height of the waistband, as a share of waist to floor.

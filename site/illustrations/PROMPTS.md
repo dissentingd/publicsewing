@@ -27,6 +27,23 @@ viewer's right.
 
 ## Men's coats and jackets (Simons 1916 and 1918)
 
+### shorts: Shorts
+> **Men's tailored shorts** of the 1940s in light tan cotton drill, shown on an invisible figure. **A plain, flat
+> front with no pleats**, a zip fly, a **separate waistband about two inches deep** with belt loops, side-seam
+> pockets. **The legs end a hand's width above the knee**, cut straight across and **flaring very slightly** at
+> the inner leg, with plain hems. Front three-quarter view, plain background, clean technical editorial
+> illustration.
+>
+> Leave out: pleats, cuffs, cargo pockets, an elastic or drawstring waist, legs to the knee or below.
+
+### shorts.banded: Shorts with a cut-on band
+> **Women's tailored shorts** of the 1940s in navy cotton, on an invisible figure. **The waistband is cut in one
+> with the shorts**, no seam at the waist, with **a stitched dart in each front** running down from the top of the
+> band. **The legs end about three inches above the knee**, straight across, plain hems. Side zip or fly, plain
+> background, front three-quarter view, clean technical editorial illustration.
+>
+> Leave out: a separate waistband, pleats, cuffs, belt loops, an elastic waist, very short legs.
+
 ### slacks: Slacks
 > **Men's two-pleat slacks** of the 1940s in mid-grey wool flannel, shown flat or on an invisible figure, full
 > length. **Two pleats each side of the front**, folded toward the side seam, the inner one on the crease.

@@ -119,6 +119,10 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  *   straight on up, the dart's legs on to the top
  *   (the vee open to it), the pleats' marks and the fly from the top. The waist seam's measures
  *   (`waist`, `outseam`, `crotch`) stay the waist's; `band` is the top edge, less any dart.
+ * - `shortInseam`: shorts (Simons 1945, Diagrams 21, 35, 41): the leg cut off straight across this
+ *   far below the crotch (measured up from the floor by the wearer's inseam, so back and front match);
+ *   `matchInseam` (the back): its cut moved so its inseam is this long, the front's; `cutFlare`: the inseam flaring this far out at the hem from about half
+ *   way down (his 1 1/2 in, R to S). Not with breeches or a straight outseam; no turn-up.
  * - `straightOutseam`: the outseam a straight line from the hem corner out past the seat to the
  *   waist (Simons' one-piece overall), so back and front can be cut in one (`legInOnePart`); the
  *   pieces' paths go to `trousers.paths.<which>`, the waist Titan's own as `fit` in its store.
@@ -230,11 +234,48 @@ export function draftTrouserLeg(sh, args) {
       : back
       ? new Path().move(points.hemOut).line(points.kneeOut).curve(points.kneeOutCp2, points.seatOutCp1, points.seatOut).curve_(points.seatOutCp2, points.wOut).reverse()
       : new Path().move(points.wOut)._curve(points.seatOutCp1, points.seatOut).curve(points.seatOutCp2, points.kneeOutCp1, points.kneeOut).line(points.hemOut)
-  let outseam = drawOutseam()
+  // Shorts: everything below `shortInseam` under the fork cut off
+  // (at the same height on back and front, whose forks differ: the full inseam's length above the floor, less this)
+  const fullInseam = sh.measurements.inseam ?? points.floor.y - points.fork.y
+  let cutY = !straight && !br && args.shortInseam > 0 ? Math.max(points.floor.y - fullInseam + args.shortInseam, points.fork.y + 10) : null
+  const cutFlare = Math.max(0, args.cutFlare ?? 0)
+  // The inseam cut off at height y, flaring `cutFlare` out from half way down
+  const fullIn = (back
+    ? new Path().move(points.fork).curve(points.forkCp2, points.kneeInCp1, points.kneeIn)
+    : new Path().move(points.fork).curve(points.forkCp1, points.kneeInCp2, points.kneeIn)
+  ).line(points.hemIn)
+  const cutInseam = (y) => {
+    const at = fullIn.intersectsY(y)[0] ?? fullIn.end()
+    const upper = fullIn.split(at)[0]
+    if (!(cutFlare > 0)) return { path: upper, hemIn: at }
+    const mid = upper.shiftAlong(upper.length() * 0.5)
+    const hemIn = at.shift(back ? 180 : 0, cutFlare)
+    return { path: upper.split(mid)[0].line(hemIn), hemIn }
+  }
+  // `matchInseam` (the back): its cut moved up or down so its inseam is the front's length (their forks
+  // and floors differ by a few millimetres); the outseam is then matched at the waist as usual
+  if (cutY !== null && args.matchInseam > 0 && cutY < points.hemIn.y) {
+    let [lo, hi] = [points.fork.y + 10, points.hemIn.y - 1]
+    if (cutInseam(lo).path.length() < args.matchInseam && cutInseam(hi).path.length() > args.matchInseam) {
+      for (let i = 0; i < 40; i++) {
+        const m = (lo + hi) / 2
+        if (cutInseam(m).path.length() < args.matchInseam) lo = m
+        else hi = m
+      }
+      cutY = (lo + hi) / 2
+    }
+  }
+  const drawFull = drawOutseam
+  const drawCut = () => {
+    const o = drawFull()
+    const at = cutY !== null && cutY < o.end().y ? o.intersectsY(cutY)[0] : null
+    return at ? o.split(at)[0] : o
+  }
+  let outseam = drawCut()
   // True this outseam to the other piece's at the waist corner (`matchOutseam`)
   for (let i = 0; args.matchOutseam && i < 3; i++) {
     points.wOut = straight ? points.hemOut.shift(su, args.matchOutseam) : points.wOut.shift(-90, outseam.length() - args.matchOutseam)
-    outseam = drawOutseam()
+    outseam = drawCut()
   }
   let inseam, crotch
   if (back) {
@@ -246,6 +287,14 @@ export function draftTrouserLeg(sh, args) {
   }
   if (br) inseam = inseam.line(points.calfIn)
   inseam = inseam.line(points.hemIn)
+  const cut = cutY !== null && cutY < points.hemIn.y
+  if (cut) {
+    const c = cutInseam(cutY)
+    points.hemIn = c.hemIn
+    inseam = c.path
+    points.hemOut = outseam.end()
+    hem = new Path().move(points.hemIn).line(points.hemOut)
+  }
   let waist = new Path().move(points.wOut).line(points.dartOut).line(points.dartTip).line(points.dartIn).line(wIn)
 
   // A continuous waistband: the leg carried on up `bandRise` past the waist
@@ -303,9 +352,9 @@ export function draftTrouserLeg(sh, args) {
     }
     paths.sa = o.close().addClass('fabric sa')
   }
-  paths.crease = new Path().move(points.floor).line(new Point(points.floor.x, points.fork.y)).addClass('help dashed')
-  if (!straight) snippets.knee = new Snippet('notch', points.kneeOut)
-  snippets.kneeIn = new Snippet('notch', points.kneeIn)
+  paths.crease = new Path().move(cut ? new Point(points.floor.x, cutY) : points.floor).line(new Point(points.floor.x, points.fork.y)).addClass('help dashed')
+  if (!straight && !cut) snippets.knee = new Snippet('notch', points.kneeOut)
+  if (!cut) snippets.kneeIn = new Snippet('notch', points.kneeIn)
 
   // Scout trousers: the back is shortened by sewing a shallow V across the knee.
   // The V and the pleat at the hem are construction marks; the cut retains the intake.
@@ -427,9 +476,11 @@ export function draftTrouserLeg(sh, args) {
 
   if (straight) store.set(`trousers.paths.${which}`, { waist, crotch, inseam, hem, outseam, fly: paths.fly, hemSa })
   store.set(`trousers.${which}`, info)
-  macro('grainline', { from: points.floor.shift(90, 30), to: new Point(points.floor.x, points.fork.y) })
+  // Shorts: the grainline and title on the cut leg, not down to the floor and knee
+  const bottomY = cut ? cutY : points.floor.y
+  macro('grainline', { from: new Point(points.floor.x, bottomY - 30), to: new Point(points.floor.x, points.fork.y) })
   store.cutlist.setCut({ cut: 2, from: 'fabric' })
-  title(macro, { at: new Point(points.knee.x, (points.fork.y + points.knee.y) / 2), nr: back ? 2 : 1, title: which })
+  title(macro, { at: new Point(points.knee.x, cut ? (points.fork.y + cutY) / 2 : (points.fork.y + points.knee.y) / 2), nr: back ? 2 : 1, title: which })
   return part
 }
 

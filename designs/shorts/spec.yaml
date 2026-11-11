@@ -1,0 +1,108 @@
+# Shorts: Simons' men's shorts (Drafting Trousers, 1945, Diagram 21, pp. 78-79), with his boys' and
+# ladies' shorts (Diagrams 35 and 41) as checks and a variant, on the suit trousers' Titan legs: a plain
+# front, a dart in the back, the leg cut off well above the knee with the inseam flaring a little at the
+# hem, a 2 in waistband, fly and pockets. For any size, men's, women's and children's. See BRIEF.md.
+extends: ../suit-trousers/spec.yaml
+
+about:
+  id: shorts
+  name: Shorts
+  category: trousers
+  description: "Tailored shorts with a plain front, a back dart, a fly, pockets and a 2 inch waistband, the leg cut well above the knee"
+  difficulty: 3
+  tags: [bottoms]
+  techniques: [dart, zip, welt-pocket, waistband, hem]
+  version: 0.1.0
+  source: "Simons, Drafting Trousers (1945), Men's Shorts, Diagram 21, pp. 78-79; Diagrams 35 and 41 (simonsdraftingtrousers1945)"
+  preview: cisMaleAdult34 # Simons drafts waist 34, seat 40
+
+options:
+  # Waist 34, seat 40, "11 1/2 inch rise including a 2 inch waistband", the leg on a 32 inseam
+  frontDart: { pct: 0, min: 0, max: 60, menu: style } # a plain front: "M and N are each 1/4 of 17 from L"
+  backDart: { pct: 15 } # "Take out a 1/2 inch vee at point W": of about 3 3/8" at 34/40
+  # "C is 11 inches from B", the leg below the fork, "based upon a 32 inseam"
+  shortsInseam: { pct: 34, min: 15, max: 70, of: inseam, menu: style } # 11 / 32
+  shortsFlare: { pct: 3.75, min: 0, max: 8, of: seat, menu: style } # "S is 1 1/2 inches from R": on 40
+  waistbandHeight: { pct: 4.8 } # x waistToFloor: 2" on his about 42"
+  continuousBand: { bool: false, menu: style } # Diagram 41's cut-on band, in the variant
+  # Cut straight across above the knee: no cuff, no curved hem
+  turnUps: { bool: false, menu: false }
+  turnUpDepth: { menu: false }
+  hemShaping: { pct: 0, menu: false }
+  hemWidth: { menu: false }
+  fitKnee: { menu: false }
+  kneeEase: { menu: false }
+  lengthBonus: { menu: false }
+
+pieces:
+  front:
+    prefix: trousers # named like the inherited pieces
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat, inseam]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+    ops:
+      - trouserLeg:
+          which: front
+          dart: d * frontDart
+          dartAt: 0.55
+          dartLength: waistToSeat * frontDartLength
+          hemWidth: hemWidth
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45
+          shortInseam: inseam * shortsInseam
+          cutFlare: seat * shortsFlare
+          bandRise: if(continuousBand, waistToFloor * waistbandHeight, 0)
+  back:
+    prefix: trousers
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat, inseam]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          matchInseam: trousers.front.inseam
+          dart: d * backDart
+          dartAt: 0.4
+          dartFrom: centre
+          dartLength: waistToSeat * backDartLength
+          hemWidth: hemWidth
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          backPocket: if(backPocket, seat * 0.13, 0)
+          backPocketBelow: waistToSeat * 0.4
+          backPocketWelt: seat * 0.006
+          shortInseam: inseam * shortsInseam
+          cutFlare: seat * shortsFlare
+          bandRise: if(continuousBand, waistToFloor * waistbandHeight, 0)
+  # The waistband, unless it's cut on (the variant)
+  waistband:
+    prefix: trousers
+    part: strip
+    after: [back, front]
+    nr: 3
+    cut: 2
+    fold: true
+    options: [continuousBand, waistbandHeight]
+    length: trousers.back.waist + trousers.front.waist + trousers.front.flyWidth * 1.2
+    width: waistToFloor * waistbandHeight
+    if: not continuousBand
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  banded:
+    name: Cut-on band
+    description: "Simons' ladies' shorts (Diagram 41): a shorter leg, 3 inches above the knee, the waistband cut in one with the legs, a 1 1/2 inch dart in each front and a 1 inch dart in each back."
+    # Waist 28, seat 38, inseam 9 ("3 inches less than the knee length"); "Make the vee 5 inches down"
+    options: { continuousBand: true, shortsInseam: 0.3, frontDart: 0.44, frontDartLength: 0.49, backDart: 0.3 }

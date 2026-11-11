@@ -267,7 +267,7 @@ elements:
   turn-ups:
     { name: Turn-ups (cuff bottoms), group: leg, status: covered, lib: [trouserLeg.turnUp], seen: [suit-trousers, peg-pants] }
   leg-shorts:
-    { name: Shorts length, group: leg, status: partial, lib: [trouserLeg], seen: [knee-pants], note: "Shortened to the knee; not checked shorter", freesewing: [ashley, shale, percy] }
+    { name: Shorts length, group: leg, status: covered, lib: [trouserLeg.shortInseam], seen: [shorts, knee-pants], freesewing: [ashley, shale, percy] }
   leg-rib-cuff:
     { name: Ankle rib or elastic cuff, group: leg, status: partial, lib: [rib], note: "The rib piece type sizes the band; its edge comes from a measurement or a stored hem width, which the leg operations don't store yet" }
 

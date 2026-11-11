@@ -155,7 +155,7 @@ nodes:
   knickers-t: { name: Knickerbockers, parent: breeches-family, traits: [leg-gathered, leg-breeches, waistband], designs: [boys-knickers, golf-pants, cycling-breeches], freesewing: [cornelius] }
   knee-pants-t: { name: Knee pants, parent: breeches-family, traits: [leg-tailored, leg-shorts, closure-fly], designs: [knee-pants, scout-pants] }
   shorts-family: { name: Shorts, parent: lower }
-  shorts-t: { name: Tailored shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts, closure-fly, waistband, pocket-trouser-slant], note: "Queue 44" }
+  shorts-t: { name: Tailored shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts, closure-fly, waistband], designs: [shorts] }
   bermuda: { name: Bermuda shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts, turn-ups, closure-fly, waistband] }
   cargo-shorts: { name: Cargo shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts, pocket-cargo, closure-fly, waistband] }
   boxer-shorts-t: { name: Elastic-waist shorts, parent: shorts-family, traits: [leg-gathered, leg-shorts, waist-elastic] }
