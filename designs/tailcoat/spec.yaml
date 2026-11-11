@@ -1,0 +1,111 @@
+# Tailcoat: Simons' young men's full dress coat (Designing Sack Coats and Vests, 1918, Diagram XII,
+# pp. 22-23), on the surtout's three-piece body cut at the waist (lib/body3.mjs, FreeSewing's Bent):
+# fronts cut across just below the waist and worn open, peaked lapels, three buttons on each front,
+# and the skirt cut away in front to long tails behind. For any size. See BRIEF.md.
+extends: ../surtout/spec.yaml
+
+about:
+  id: tailcoat
+  name: Tailcoat
+  category: jackets
+  description: "A full dress coat: fitted, the fronts cut square across at the waist, peaked lapels, long tails behind"
+  difficulty: 5
+  tags: [jackets]
+  techniques: [button, collar, lapel, facing, two-piece-sleeve]
+  version: 0.1.0
+  source: "Simons, Designing Sack Coats and Vests (1918), Diagram XII, pp. 22-23 (designingsackcoa00simo)"
+  preview: cisMaleAdult36 # Simons drafts size 36
+
+options:
+  # Fit. 40 to 10 is half the breast; "10 to 11 is 2 5/8 inches. 11 to 12 is 1 inch": CF in the middle
+  # of 11-12, less 1/2" a half for the seams' make-up, as the sack coat (ours)
+  chestEase: { pct: 15 } # 2 5/8 + 1/2 - 1/2: 2 5/8" on 18
+  waistEase: { pct: 11 } # half waist about 18 1/4" at F, as drawn, less 1/2", on his 32" waist's 16
+  # The waist seam at the natural waist (F, 17 1/2"), where Bent's waist is
+  lengthBelowWaist: { pct: 3, min: 0, max: 40 } # x waistToSeat: just below it, so the body has a bottom edge
+  # 17, the front's point, "15 is 1/6 of 18 from line F": the front cut about 4" below 18 at the side, as drawn
+  frontDrop: { pct: 39, min: 15, max: 60 } # x waistToSeat, on the 36 set's 10.3"
+  buttonExtension: { pct: 1.4, min: 0.5, max: 5 } # x chest: 11-12, 1", CF in its middle
+  buttons: { count: 3 } # three drawn on the forepart
+  buttonRow: { menu: false }
+  buttonsBehindCF: { pct: 9, min: 0, max: 12, of: chest, menu: style } # about 3 1/4" behind CF, as drawn; the coat is worn open
+  breakAt: { pct: 80 } # chest line to waist: 14, on the "fashionable waist" line E, 1 1/2" above F
+  buttonBottom: { pct: 20, min: 5, max: 40 } # x waistToSeat: the third button about 2 1/2" below F, kept on the front (below)
+  lapelStyle: { dflt: peak, list: [peak, notch], menu: style } # 31 points up past the notch 32
+  lapelWidth: { pct: 26 } # x neck: about 3 7/8" from the crease at 31, on his 15" neck
+  breastPockets: { bool: false, menu: false } # none drawn
+  # Skirt: "B to H is 37 inches", the waist seam at 17 1/2": 19 1/2" down the back
+  skirtSeam: { pct: 190 } # x waistToSeat (10.3")
+  skirtLean: { deg: 4, min: 0 } # I-5 hangs almost straight
+  skirtRound: { pct: 0 }
+  skirtPockets: { bool: false, menu: false }
+  # The tail: 20 on the front's bottom edge, "24 to 25 is 1/4 of 18" at the hem
+  tailAt: { pct: 27, min: 10, max: 70, menu: style } # x the skirt's top from the front: 20, as drawn
+  tailWidth: { pct: 13, min: 8, max: 25, of: chest, menu: style } # 5 to 25 about 4 3/4" at the hem, as drawn
+
+pieces:
+  front:
+    prefix: jacket # named like the inherited pieces
+    from: bent.front
+    hide: tree
+    measurements: [seat, waist, waistToSeat, neck]
+    options: [frontDrop, hemCurve, buttonExtension, buttons, buttonsBehindCF, buttonBottom, breastPockets, lowerPockets, pocketFlaps, facingWidth, lapelWidth, lapelStyle, gorgeAt, breakAt, lining, neckFacingWidth, insidePockets]
+    let:
+      ext: chest * buttonExtension
+      q: underarm.x # the front's width at the chest, CF to the old side seam
+      topButton: underarm.y + (cfWaist.y - underarm.y) * breakAt
+      # The front is cut off below the waist, its bottom edge rising from the front's point to the side
+      # seam: the last button no lower than 3/4 of that edge's fall below the side, where it sits (ours)
+      buttonX: chest * buttonsBehindCF
+      # (the edge eases up as 1 - 3t^2 + 2t^3 of the way t from the front edge to the front seam, near armholeHollow)
+      _t: min(1, (buttonX + ext) / (armholeHollow.x + ext))
+      lowest: cfWaist.y + waistToSeat * (lengthBelowWaist + frontDrop * 0.75 * (1 - 3 * _t * _t + 2 * _t * _t * _t)) - chest * 0.01
+    ops:
+      # Worn open: the lapel rolls to 14; three buttons in a row behind CF, from there down
+      - body3Front:
+          seamAt: 0.12
+          ext: ext
+          drop: waistToSeat * frontDrop
+          facing: chest * facingWidth
+          r: 0
+          buttons:
+            count: buttons
+            top: topButton
+            bottom: min(cfWaist.y + waistToSeat * buttonBottom, lowest)
+            rows: [buttonX]
+          clear: q * 0.08
+          welt: 0.18
+          welts:
+            breast: { x: q * 0.24, y: underarm.y + q * 0.06, len: q * 0.36, rise: q * 0.05, bag: 1.15, mark: breastPockets }
+            lower: { x: q * 0.22, y: cfWaist.y, len: q * 0.4, rise: 0, bag: 1.3, mark: lowerPockets }
+          lapel:
+            breakY: topButton
+            rollOut: neck * 0.05
+            gorgeAt: gorgeAt
+            width: neck * lapelWidth
+            peak: lapelStyle == 'peak'
+      - store: { key: coat.neckFacing, value: { width: neck * neckFacingWidth }, if: lining }
+  skirt:
+    part: body3Skirt
+    after: [back, front, sideBody]
+    options: [skirtSeam, skirtLean, skirtRound, facingWidth, skirtPockets, tailAt, tailWidth]
+    nr: 22
+    length: waistToSeat * skirtSeam
+    lean: skirtLean
+    round: waistToSeat * skirtRound
+    facing: chest * facingWidth
+    tailAt: tailAt
+    tailWidth: chest * tailWidth
+  skirtLining:
+    part: body3Skirt
+    after: [back, front, sideBody]
+    options: [skirtSeam, skirtLean, skirtRound, facingWidth, tailAt, tailWidth, lining]
+    nr: 18
+    lining: true
+    if: lining
+    length: waistToSeat * skirtSeam
+    lean: skirtLean
+    round: waistToSeat * skirtRound
+    facing: chest * facingWidth
+    tailAt: tailAt
+    tailWidth: chest * tailWidth

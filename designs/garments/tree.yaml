@@ -85,7 +85,7 @@ nodes:
   frock-coats: { name: Frock and dress coats, parent: jackets }
   frock-coat-t: { name: Men's frock coat, parent: frock-coats, traits: [body-three-piece, waist-seam, collar-notched, sleeve-two-piece, lining], note: "Queue 42" }
   surtout-t: { name: Surtout, parent: frock-coats, traits: [body-three-piece, closure-double-breasted, collar-notched, lining], designs: [surtout] }
-  tailcoat-t: { name: Tailcoat (full dress), parent: frock-coats, traits: [body-three-piece, waist-seam, tails, collar-peak, sleeve-two-piece, lining], note: "Queue 41" }
+  tailcoat-t: { name: Tailcoat (full dress), parent: frock-coats, traits: [body-three-piece, waist-seam, tails, collar-peak, sleeve-two-piece, lining], designs: [tailcoat] }
   work-jackets: { name: Work and utility jackets, parent: jackets }
   chore: { name: Chore coat, parent: work-jackets, traits: [body-boxy, closure-buttons, collar-turndown, pocket-patch, sleeve-set-in], designs: [chore-coat, boys-work-coat] }
   barbers: { name: Service coat (barber's, chef's), parent: work-jackets, traits: [body-boxy, closure-buttons, collar-stand, pocket-patch], designs: [barbers-coat] }

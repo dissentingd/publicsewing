@@ -686,6 +686,9 @@ options:
   doubleBreasted:
     title: Double-breasted
     description: Two rows of buttons either side of the centre front. Off, one row.
+  buttonsBehindCF:
+    title: Button position
+    description: How far behind the centre front the buttons sit on each front of a coat worn open, as a share of the chest.
   buttonRow:
     title: Button rows
     description: Distance of each row of buttons from the centre front, as a share of the stand.
@@ -992,6 +995,12 @@ options:
   skirtPocketAt:
     title: Pocket place
     description: Where the pocket's mouth starts, as a share of the skirt's top from the front edge.
+  tailAt:
+    title: Tail start
+    description: Where the tail leaves the waist seam, as a share of the skirt's top from the front.
+  tailWidth:
+    title: Tail width
+    description: Width of the tail at the hem, from its back edge, as a share of the chest.
   skirtSeam:
     title: Skirt length
     description: The skirt's centre back seam, as a share of waist to seat.

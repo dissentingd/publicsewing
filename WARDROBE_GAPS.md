@@ -224,6 +224,7 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
 - **Built 2026-11-06:** Merz's three-piece long coat (`designs/three-piece-long-coat`), with continuous shaped panels. Drafted, not sewn.
 - **Built 2026-11-10:** Simons' conservative sack coat (`designs/sack-coat`), the suit jacket at his 1918 proportions. Drafted, not sewn.
 - **Built 2026-11-10:** Simons' tuxedo (`designs/dinner-jacket`), on the sack coat with the front cut away below one button. Drafted, not sewn.
+- **Built 2026-11-10:** Simons' full dress coat (`designs/tailcoat`), on the surtout with its skirt cut away to tails. Drafted, not sewn.
 
 ## ЕМКО СЭВ vol. 3 (1988): done (2026-10-27)
 Corpus `emko`, a private copy, untracked: still in copyright, used only for its methods,

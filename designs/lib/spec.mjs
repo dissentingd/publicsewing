@@ -323,7 +323,8 @@ const factories = {
       size: (sh) => evalMap({ crotch: p.crotch, ext: p.ext }, lookupIn(sh, ctx.block, {}), {}),
       zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
     }),
-  // A skirt in one piece on a body3 body cut off above the seat line: `length`, `lean`, `round`, `facing`
+  // A skirt in one piece on a body3 body cut off above the seat line: `length`, `lean`, `round`, `facing`;
+  // `tailAt`, `tailWidth` (both > 0): cut away in front to a tail
   body3Skirt: (p, ctx) =>
     body3SkirtPart({
       name: p.name,
@@ -333,7 +334,7 @@ const factories = {
       lining: p.lining ?? false,
       enabled: enabledBy(p.if),
       size: (sh) =>
-        evalMap({ length: p.length, lean: p.lean, round: p.round, facing: p.facing, pocketLen: p.pocketLen ?? 0, pocketBelow: p.pocketBelow ?? 0, pocketAt: p.pocketAt ?? 0, pocketFlap: p.pocketFlap ?? 0 }, lookupIn(sh, ctx.block, {}), {}),
+        evalMap({ length: p.length, lean: p.lean, round: p.round, facing: p.facing, pocketLen: p.pocketLen ?? 0, pocketBelow: p.pocketBelow ?? 0, pocketAt: p.pocketAt ?? 0, pocketFlap: p.pocketFlap ?? 0, tailAt: p.tailAt ?? 0, tailWidth: p.tailWidth ?? 0 }, lookupIn(sh, ctx.block, {}), {}),
     }),
   // A cape's piece (`which`: front, back or whole), from capeLayout: `count`, `spacing` its buttons
   cape: (p, ctx) =>

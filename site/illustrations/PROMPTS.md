@@ -27,6 +27,17 @@ viewer's right.
 
 ## Men's coats and jackets (Simons 1916 and 1918)
 
+### tailcoat: Tailcoat
+> A **man's full dress tailcoat** of about 1918 in black wool, **worn open** over a white waistcoat and shirt.
+> **The fronts stop just below the waist, cut straight across**, sloping up a little toward the sides; **behind,
+> two long tails fall to the back of the knee**, their front edges curving back from the waist. **Peaked lapels
+> faced in black silk**, pointing up. **Three buttons on each front**, in a row a little behind the edge. Fitted
+> at the waist. Plain two-piece sleeves. Front three-quarter view showing the tails behind, full length to the
+> knee, plain background, clean technical editorial illustration.
+>
+> Leave out: a front closed and buttoned, fronts reaching the hips, pockets, a breast pocket, a shawl collar,
+> a cummerbund, a bow tie in colour.
+
 ### dinner-jacket: Dinner jacket
 > A **man's single-breasted dinner jacket (tuxedo)** of about 1918, in black wool barathea, worn open over a white
 > dress shirt. **Exactly one button, at the waist.** **Peaked lapels faced in black silk satin**, pointing up, rolling

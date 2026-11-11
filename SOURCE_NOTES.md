@@ -76,6 +76,8 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
   (three-button, "high suppressed waist") is between them and isn't queued.
 - Diagram X, the tuxedo (text p. 18, plate p. 19), is the English coat with a 1 in stand, one button on the waist
   line and the front cut away below it; the lapel is drawn folded over the forepart.
+- Diagram XII, the full dress coat (text p. 22, plate p. 23), letters its lines B–H with E the "fashionable" and F
+  the natural waist; the size of the Vee at 19 is lost in the scan ("x inch").
 
 ## Simons 1916 (`designingovercoa00simo`)
 - The shoulder cape overcoat is on pp. 30-31, not p. 21. It is a full-length cape with a military collar and a whole back; the 7 in button stand is a cut-on front extension.

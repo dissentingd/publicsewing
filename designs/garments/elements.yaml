@@ -301,11 +301,11 @@ elements:
   vent-back:
     { name: Back vent, group: hem, status: covered, lib: [backVent, body3Back], seen: [suit-jacket, overcoat] }
   front-cutaway:
-    { name: Cutaway or pointed front, group: hem, status: covered, lib: [coatFront.chamfer], seen: [waistcoat, db-waistcoat] }
+    { name: Cutaway or pointed front, group: hem, status: covered, lib: [coatFront.chamfer, body3Front.cutaway], seen: [waistcoat, db-waistcoat, dinner-jacket] }
   front-drop:
     { name: Front hem longer than the back, group: hem, status: covered, lib: [coatFront], seen: [pyjama-jacket] }
   tails:
-    { name: Tails (cutaway at the waist, long behind), group: hem, status: gap, note: "Tailcoat, queue 41" }
+    { name: Tails (cutaway at the waist, long behind), group: hem, status: covered, lib: [body3Skirt.tailAt], seen: [tailcoat] }
 
   # --- Finishes ---
   facing:

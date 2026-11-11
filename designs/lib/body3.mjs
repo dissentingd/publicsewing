@@ -318,6 +318,9 @@ export function sideBodyPart({ name, after, nr = 3, lining = false }) {
  * `pocket`: { len, below, at, flap } a set-in flap pocket: its level mouth `len` long, `below` the waist seam, starting
  * `at` of the skirt's top from the front edge; for `flap` and `weltBag`, `coat.pockets.skirt` and `blouse.skirtWelts.pocket`.
  * `lining`: the skirt again in lining, from the facing's inner edge, with a single hem.
+ * `tailAt`, `tailWidth` (both > 0): a tail (a dress coat's): the front cut away in a curve from the top,
+ * `tailAt` (0-1) of its length from the front, down to the hem `tailWidth` from the back seam; no facing,
+ * no pocket, the lining the same shape.
  * Store: `blouse.skirt` { top: its top edge, bottom: the body's edge it sews to, back: the CB seam }.
  */
 export function body3SkirtPart({ name, after, nr, size, options, lining = false, enabled = () => true }) {
@@ -328,7 +331,9 @@ export function body3SkirtPart({ name, after, nr, size, options, lining = false,
     draft: (sh) => {
       const { paths, Path, Point, store, sa, macro, part } = sh
       if (!enabled(sh.options)) return part.hide()
-      const { length, lean, round, facing, pocketLen = 0, pocketBelow = 0, pocketAt = 0, pocketFlap = 0 } = size(sh)
+      const { length, lean, round, facing, pocketLen: pl = 0, pocketBelow = 0, pocketAt = 0, pocketFlap = 0, tailAt = 0, tailWidth = 0 } = size(sh)
+      const tail = tailAt > 0 && tailWidth > 0
+      const pocketLen = tail ? 0 : pl
       const bk = store.get('blouse.back')
       const fr = store.get('blouse.front')
       const S = bk.S
@@ -357,7 +362,21 @@ export function body3SkirtPart({ name, after, nr, size, options, lining = false,
       const sweep = new Path().move(new Point(0, yCf)).curve(new Point(w / 3, yCf), new Point(E.x - (d.y * w) / 3, E.y + (d.x * w) / 3), E.clone())
       const up = seam.clone().reverse()
       let edge, hem, topEdge, hemK
-      if (lining) {
+      if (tail) {
+        // A tail: from the top, `tailAt` of the way back, in a curve down to the hem `tailWidth` from the seam
+        const P = top.shiftAlong(top.length() * (1 - Math.min(tailAt, 0.9))) // top runs back to front
+        const back = sweep.clone().reverse() // E -> CF
+        const H = back.shiftAlong(Math.min(tailWidth, back.length() * 0.95))
+        const after = back.split(H)[1]
+        const tan = after.length() > 1 ? after.shiftAlong(Math.min(30, after.length() * 0.5)) : new Point(0, yCf)
+        const reach = H.dist(P)
+        edge = new Path()
+          .move(P)
+          .curve(new Point(P.x + (H.x - P.x) * 0.2, P.y + (H.y - P.y) * 0.55), H.shiftTowards(tan, reach * 0.3), H)
+        hem = back.split(H)[0].reverse()
+        topEdge = top.split(P)[0]
+        hemK = lining ? 1 : 2
+      } else if (lining) {
         // From the facing's inner edge, which folds back `facing` from the front edge
         const atTop = top.intersectsX(facing)[0] ?? new Point(facing, 0)
         const atHem = sweep.intersectsX(facing)[0] ?? new Point(facing, yCf)
@@ -379,6 +398,14 @@ export function body3SkirtPart({ name, after, nr, size, options, lining = false,
           o = o ? o.line(off.start()).join(off) : off
         }
         paths.sa = o.close().addClass('fabric sa')
+      }
+      if (tail) {
+        const g = edge.start().x + (w - edge.start().x) * 0.5
+        store.set('blouse.skirt', { top: top.length(), bottom, back: seam.length(), tail: { edge: edge.length(), top: topEdge.length() } })
+        macro('grainline', { from: new Point(g, yCf - 40), to: new Point(g, 40) })
+        store.cutlist.setCut({ cut: 2, from: lining ? 'lining' : 'fabric' })
+        title(macro, { at: new Point(g, yCf * 0.4), nr, title: lining ? 'skirtLining' : 'skirt', scale: 0.5 })
+        return part
       }
       if (lining) {
         macro('grainline', { from: new Point(w * 0.3, yCf - 40), to: new Point(w * 0.3, 40) })

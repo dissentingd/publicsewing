@@ -13,7 +13,7 @@ const elements = E.elements
 const designs = readdirSync(root).filter((d) => existsSync(new URL(`${d}/spec.yaml`, root)))
 // Piece types: the keys of `factories` in lib/spec.mjs (not exported, so read from the source)
 const src = readFileSync(new URL('lib/spec.mjs', root), 'utf8')
-const factories = new Set([...src.slice(src.indexOf('const factories = {')).matchAll(/^ {2}([a-zA-Z]+):/gm)].map((m) => m[1]))
+const factories = new Set([...src.slice(src.indexOf('const factories = {')).matchAll(/^ {2}([a-zA-Z][a-zA-Z0-9]*):/gm)].map((m) => m[1]))
 const libNames = new Set([...Object.keys(operations), ...factories])
 
 test('every element is well formed and names real code and designs', () => {
