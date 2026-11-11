@@ -1586,3 +1586,12 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > A dressmaker's basic bodice block drawn as a flat pattern piece: the front of a close-fitting bodice with a neckline, a shoulder, an armhole curve, a side seam and a single waist dart, outlined in black ink on brown pattern card, with a straight grainline arrow, a few notches and faint pencil construction lines. Seen flat from above, centred, with margin all round. Square.
 >
 > Leave out: any text or numbers, a garment made up, a dress form, scissors, pins or a tape measure, a person.
+
+### turtleneck: Turtleneck
+> A **close-fitting long-sleeved knit turtleneck** in plain charcoal merino jersey. A **tall rib-knit collar folded
+> down once** so it sits doubled round the neck. Plain set-in sleeves to the wrist with **plain hemmed cuffs**, and a
+> **plain hem** at the hip. Smooth, slightly stretchy fabric that follows the body. Front three-quarter view on an
+> invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: a zip, buttons or a placket, pockets, a rib hem band or rib cuffs, a cowl or loose draped neck, a
+> logo or print, a person.

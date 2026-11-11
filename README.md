@@ -86,6 +86,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `anorak` | Boxy pullover anorak: front yoke, buttoned neck placket, hood, flapped chest pocket, kangaroo pocket | Open+Pattern (CC BY 4.0), US tactical smock |
 | `work-shirt` | Roomy pullover work shirt: back yoke, buttoned front fly, neck band or collar, breast pocket | Vincent 1890 |
 | `t-shirt` | Plain crew-neck T-shirt with short set-in sleeves, drafted from your measurements | Open+Pattern Standard T-shirt (CC BY 4.0) |
+| `turtleneck` | Close-fitting knit top with a tall folded rib collar and long sleeves | Our own design, on FreeSewing's Bibi |
 | `bib-overall` | Bib-and-brace work overall, side seams buttoned at the hip, patch pockets | Simons 1916 |
 | `field-trousers` | Loose pleated combat trousers with flapped cargo pockets and a flapped seat pocket | Open+Pattern (CC BY 4.0), CS95 |
 | `peg-pants` | Pleated trousers full over the hips, tapering to a narrow bottom | Simons 1916 |

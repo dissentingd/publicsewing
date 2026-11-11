@@ -1,0 +1,72 @@
+# A turtleneck: Bibi's knit top with its neckline raised close to the neck and a tall rib collar,
+# cut as a tube from the neck opening, folded in half and turned down when worn. Our own design,
+# with no book behind it; see BRIEF.md.
+about:
+  id: turtleneck
+  name: Turtleneck
+  category: tops
+  description: A close-fitting knit top with a tall folded collar, long sleeves and plain or ribbed cuffs and hem, drafted from your measurements
+  difficulty: 2
+  tags: [tops, knits]
+  techniques: [knit, set-in-sleeve, ribbing]
+  version: 0.1.0
+  source: Our own design, on FreeSewing's Bibi knit block
+
+block: bibi
+
+options:
+  # Bibi's own neckline options, set close to the neck (Bibi's defaults are 15% and 25%, a crew neck)
+  necklineWidth: { pct: 0, min: -5, max: 30, menu: style }
+  necklineDepth: { pct: 20, min: 20, max: 50, menu: style }
+  sleeveLength: { pct: 100, min: -20, max: 110, menu: style.sleeves } # to the wrist
+  # The collar: its finished height (it's cut twice this and folded), and how much shorter than the
+  # neck opening it's cut, so it hugs the neck
+  collarHeight: { pct: 30, min: 8, max: 45, of: neck, menu: style, description: 'Finished height of the folded collar, as a share of the neck. About 30% turns down; 10-15% is a mock neck.' } # a turned-down turtleneck; 10-15% is a mock neck
+  collarStretch: { pct: 10, min: 0, max: 25, menu: fit }
+
+pieces:
+  back:
+    from: bibi.back
+    ops:
+      - brand: { nr: 2, title: back }
+    hide: tree
+  front:
+    from: bibi.front
+    ops:
+      - brand: { nr: 1, title: front }
+    hide: tree
+  sleeve:
+    from: bibi.sleeve
+    ops:
+      - brand: { nr: 3, title: sleeve }
+    hide: tree
+    if: sleeves
+  cuff:
+    from: bibi.cuff
+    ops:
+      - brand: { nr: 5, title: cuff }
+    hide: tree
+    if: sleeves and useCuffRibbing
+  hemBand:
+    from: bibi.waistband
+    ops:
+      - brand: { nr: 6, title: hemBand }
+    hide: tree
+    if: useWaistRibbing
+  # Bibi's neck binding, drafted (Bibi's back and front read its height) but not cut: the collar
+  # replaces it
+  neckBinding:
+    from: bibi.neckBinding
+    hide: tree
+    if: false
+  collar:
+    part: rib
+    after: [back, front]
+    options: [collarHeight, collarStretch]
+    measurements: [neck]
+    edge: 2 * (block.neckSizeBack + block.neckSizeFront)
+    stretch: collarStretch
+    height: neck * collarHeight
+    round: true
+    nr: 4
+    label: collar

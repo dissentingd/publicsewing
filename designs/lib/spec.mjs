@@ -62,6 +62,7 @@ import { bella } from '../blocks/bella.mjs'
 import { bibi } from '../blocks/bibi.mjs'
 import { noble } from '../blocks/noble.mjs'
 import { ribPart } from './rib.mjs'
+import { brandPart } from './knit.mjs'
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
@@ -86,6 +87,8 @@ export const operations = {
   collar: { run: draftCollar, literal: ['key', 'title'] },
   markPocket: { run: (sh, { id, pocket }) => markPocket(sh, id, pocket), literal: ['id'] },
   store: { run: ({ store }, { key, value }) => store.set(key, value), literal: ['key'] },
+  // A block's piece as it is, with our title in place of its own and no logo (Bibi's pieces)
+  brand: { run: brandPart, literal: ['title'] },
   // Cut the back or front along its raglan line (after coatBack / coatFront)
   raglan: { run: (sh, { which, ...rest }) => applyRaglan(sh, which, rest), literal: ['which'] },
   // A shawl collar cut in one with the front (after coatFront with a neckY)
@@ -466,6 +469,8 @@ function lookupIn(sh, block, local) {
       if (head in measurements && measurements[head] !== undefined) return measurements[head]
       if (head in options && options[head] !== undefined) return options[head]
     } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke' || head === 'rib') return store.get(name)
+    // A value the block stores under its own name (Bibi's `neckSizeBack`): `block.<key>`
+    else if (head === 'block') return store.get(rest.join('.'))
     else {
       // A landmark names one point, or a list when the block's parts name it differently (Bella's
       // back has `waistSide`, its front `sideHem`): the first this part has

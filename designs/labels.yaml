@@ -604,6 +604,9 @@ options:
   hoodDrawstring:
     title: Hood drawstring
     description: A casing for a drawstring along the hood's face edge.
+  collarStretch:
+    title: Collar stretch
+    description: How much shorter than the neck opening a knit collar is cut, so it hugs the neck when sewn on stretched.
   collarSpring:
     title: Collar spring
     description: >
@@ -1102,6 +1105,7 @@ options:
     description: A welt pocket in the front lining at the chest line.
 
 parts:
+  hemBand: Hem band
   body: Body
   underArm: Under-arm panel
   skirt: Skirt

@@ -112,7 +112,7 @@ looked up in this order:
    earlier entries: `lower.x`);
 2. measurements (`chest`, `waistToSeat`);
 3. options (`buttonExtension`, already a fraction);
-4. `coat.<key>`, `trousers.<key>`, `skirt.<key>` or `suit.<key>` from the store (`coat.frontEdge.ext`, `trousers.front.fly`, `skirt.waist`);
+4. `coat.<key>`, `trousers.<key>`, `skirt.<key>`, `suit.<key>` or `rib.<key>` from the store (`coat.frontEdge.ext`, `trousers.front.fly`, `skirt.waist`), or `block.<key>` for a value the block stores under its own name (Bibi's `block.neckSizeBack`);
 5. `<landmark>.x` / `.y`: points on the piece, by their standard name (`underarm`,
    `neckPoint`, `shoulderTip`, `sideSeat`, `sideHem`; mapped to the block's own names in
    `blocks/`) or the block's name (`cfNeck`, `cfWaist`, `armholeHollow`).

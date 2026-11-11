@@ -9,6 +9,9 @@ import { i18n as bent } from '@freesewing/bent'
 import { i18n as breanna } from '@freesewing/breanna'
 import { i18n as titan } from '@freesewing/titan'
 import { i18n as sarah } from '@freesewing/sarah'
+import { i18n as bella } from '@freesewing/bella'
+import { i18n as bibi } from '@freesewing/bibi'
+import { i18n as noble } from '@freesewing/noble'
 import { designs as fsDesigns, i18n as fsI18n } from '../generated/freesewing.mjs'
 
 export const designs = {}
@@ -37,7 +40,7 @@ export const examples = { id: [], href: {} }
 // Labels: the blocks' own (their strings are shared, e.g. 'brian:waistLine'), and for each of our
 // designs the FreeSewing shape { en: { o, p } }: its block's option labels, then labels.yaml's,
 // then the spec's own `title` / `description`; list choices as `<option>.<choice>`
-const blockI18n = { brian, bent, breanna, titan, sarah }
+const blockI18n = { brian, bent, breanna, titan, sarah, bella, bibi, noble }
 export const i18n = { ...blockI18n }
 for (const spec of Object.values(specs)) {
   const o = { ...blockI18n[spec.block]?.en?.o }

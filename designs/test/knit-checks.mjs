@@ -11,7 +11,8 @@ import assert from 'node:assert/strict'
 import { sets, near } from './coat-checks.mjs'
 
 // FreeSewing warnings from Bibi itself that don't affect the draft: it reads `bindingHeight`
-// before any part has stored it (every draft, every size, 4.10.2)
+// before any part has stored it (every draft, every size, 4.10.2). A design without a neck binding
+// still drafts Bibi's (`if: false`): its back and front read the binding's height
 const upstream = [/^Store\.get\(key\) on key `bindingHeight`, which is undefined$/]
 export const KNIT_SEAM = 0.04
 
@@ -45,7 +46,8 @@ export function bibiSeams(pattern, prefix = 'bibi') {
     cap: s && !s.hidden ? s.paths.sleevecap.length() : undefined,
     // The whole neck opening (both halves) and the binding cut for it
     neck: 2 * (store.get('neckSizeBack') + store.get('neckSizeFront')),
-    binding: parts[`${prefix}.neckBinding`].points.topLeft.dist(parts[`${prefix}.neckBinding`].points.bottomLeft),
+    // (none where a collar finishes the neck instead)
+    binding: parts[`${prefix}.neckBinding`] ? parts[`${prefix}.neckBinding`].points.topLeft.dist(parts[`${prefix}.neckBinding`].points.bottomLeft) : undefined,
     chest: 2 * (half(b, 'cbChest') + half(f, 'cbChest')),
   }
 }
@@ -59,7 +61,7 @@ export function checkKnit(pattern, prefix) {
   near(s.shoulderBack, s.shoulderFront, 0.5, 'shoulder seams')
   // Bibi fits its cap to the armhole to within 2 mm either way, as Bella does
   if (s.cap !== undefined) assert.ok(Math.abs(s.cap - s.armhole) <= 2, `sleeve cap ${s.cap.toFixed(1)} vs armhole ${s.armhole.toFixed(1)}`)
-  assert.ok(s.binding <= s.neck + 0.5, `neck binding ${s.binding.toFixed(1)} vs neck ${s.neck.toFixed(1)}`)
+  if (s.binding !== undefined) assert.ok(s.binding <= s.neck + 0.5, `neck binding ${s.binding.toFixed(1)} vs neck ${s.neck.toFixed(1)}`)
   const { measurements, options } = pattern.settings[0]
   const ease = options?.chestEase ?? pattern.config.options.chestEase.pct / 100
   assert.ok(s.chest >= measurements.chest * (1 + ease - 0.01), `finished chest ${s.chest.toFixed(0)} vs body ${measurements.chest} at ${(100 * ease).toFixed(0)}% ease`)

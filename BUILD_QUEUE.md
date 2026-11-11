@@ -204,6 +204,22 @@ with a checks module, lets our own specs build on it. Each opens a branch of the
 | B3 | Rib bands and cuffs | `cuff-rib`, `leg-rib-cuff`, `waistband-jacket` | With B2: polo, rugby shirt, cardigan, joggers, Harrington jacket | I | A rib piece sized from the edge it finishes, at a stretch ratio (Sven and Hugo have them) | done (2026-11-10): the `rib` piece type (`lib/rib.mjs`, on `polygon`): `edge`, `stretch` (0.15), `height`, `round`; `rib.<piece>` in the store; `test/rib.test.mjs`. A piece type can't read another piece's points: the edge comes from a measurement or a store value an operation sets |
 | B4 | Noble block | princess bodice for dresses | Princess-line dress | I | Optional: Breanna's princess layout may already serve | done (2026-11-10): `blocks/noble.mjs`, `checkPrincess`/`testPrincess` in `test/bodice-checks.mjs` (princess seams within 2 mm, side seams; Noble's back pieces keep Bella's whole back as `seam`, their outlines are `insideSeam`/`outsideSeam`), `test/noble-block.test.mjs` with the dart to the shoulder or the armhole |
 
+### Our own designs on the new blocks (2026-11-11)
+
+Garments the Bella, Bibi and Noble blocks unblock, designed by us from the blocks with no book behind
+them (Dave, 2026-11-11: own designs, the Bibi knits first). A look Bibi already reaches by its own
+options (a T-shirt dress: `length: knee`; an undershirt: `sleeves: false`) is a variant of the Bibi
+listing, not a design. Each uses `test/knit-checks.mjs` or `test/bodice-checks.mjs`.
+
+| # | Design id | Garment | Start from | Lane | Notes | Status |
+|---|---|---|---|---|---|---|
+| K1 | `turtleneck` | Turtleneck, with a mock-neck variant | Bibi + `rib` collar | I | Neck raised, collar cut from the stored neck opening; collar and neck edge must stretch over the head (children: up to 83% and 65%). `brand` retitles Bibi's pieces; spec names `block.<key>` read Bibi's store | done (turtleneck) |
+| K2 | `henley` | Henley, with polo and rugby-shirt variants (a knit or woven collar) | Bibi | I | Needs a front placket operation on Bibi's front (`lib/knit.mjs`) | open |
+| K3 | `cardigan` | Cardigan | Bibi | I | Front cut open at CF with a rib button band up the front and round the neck | open |
+| K4 | Bella dresses and tops | Shell top, sheath, sundress, wrap dress, jumper dress | Bella | I | Need closures (back zip) and skirts joined at the waist on Bella | open |
+| K5 | `princess-dress` | Princess-line dress | Noble | I | Noble's seams carried on below the waist into a skirt | open |
+| K6 | `joggers`, Harrington jacket | Rib cuffs on existing bases | Titan, raglan | I | The leg and body operations must store the hem widths the rib bands need | open |
+
 ### Buildable now, needing a source or a decision
 
 Every element of these is covered (`COVERAGE.md`, ◐), so each is a spec on an existing base. Queue them

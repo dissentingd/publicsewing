@@ -54,7 +54,7 @@ nodes:
   rugby-shirt: { name: Rugby shirt, parent: knit-tops, traits: [body-knit, closure-placket, collar-turndown, cuff-rib], knit: true }
   sweatshirt: { name: Sweatshirt, parent: knit-tops, traits: [body-knit, sleeve-raglan, cuff-rib, waistband-jacket], knit: true, freesewing: [sven] }
   hoodie: { name: Hoodie, parent: knit-tops, traits: [body-knit, hood, pocket-kangaroo, cuff-rib, waistband-jacket], knit: true, freesewing: [hugo, huey, hannah, yuri] }
-  turtleneck-top: { name: Turtleneck, parent: knit-tops, traits: [body-knit, neck-raised], knit: true }
+  turtleneck-top: { name: Turtleneck, parent: knit-tops, traits: [body-knit, neck-raised], knit: true, designs: [turtleneck] }
   tank-top: { name: Tank top, parent: knit-tops, traits: [body-knit, sleeveless, neck-scoop], knit: true, freesewing: [aaron] }
   cardigan: { name: Cardigan, parent: knit-tops, traits: [body-knit, closure-buttons, neck-v, cuff-rib], knit: true }
 

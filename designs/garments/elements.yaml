@@ -47,9 +47,9 @@ elements:
   body-flat:
     { name: Flat-cut body from rectangles, group: body, status: covered, lib: [suitBody, suitPiece], seen: [jumpsuit] }
   body-darted-bodice:
-    { name: Fitted dress bodice with bust and waist darts, group: body, status: partial, lib: [jacketBase], seen: [tailored-jacket], note: "Breanna's darts are used only as jacket panels; no darted dress bodice to the waist", freesewing: [bella] }
+    { name: Fitted dress bodice with bust and waist darts, group: body, status: covered, lib: [jacketBase], seen: [tailored-jacket], note: "The Bella block (blocks/bella.mjs, 2026-11-10) drafts it to the waist, checked by test/bodice-checks.mjs; Breanna's darts are used only as jacket panels", freesewing: [bella] }
   body-knit:
-    { name: Knit body with negative or zero ease, group: body, status: gap, note: "Needs a knit block (FreeSewing has some) and stretch-aware checks", freesewing: [bibi, teagan, aaron] }
+    { name: Knit body with negative or zero ease, group: body, status: covered, lib: [brand], seen: [turtleneck], note: "The Bibi block (blocks/bibi.mjs, 2026-11-10) as drafted, its pieces retitled by `brand`; stretch-aware checks in test/knit-checks.mjs", freesewing: [bibi, teagan, aaron] }
   body-bias:
     { name: Bias-cut body, group: body, status: gap }
   waist-seam:
@@ -93,7 +93,7 @@ elements:
   cuff-french:
     { name: French (double) cuff, group: cuff, status: gap, note: "The barrel cuff doubled, with link holes" }
   cuff-rib:
-    { name: Knit rib cuff, group: cuff, status: gap, freesewing: [sven, hugo, huey, jett] }
+    { name: Knit rib cuff, group: cuff, status: covered, lib: [rib], seen: [turtleneck], note: "The rib piece type (lib/rib.mjs), or Bibi's own cuffs (useCuffRibbing)", freesewing: [sven, hugo, huey, jett] }
   cuff-tab:
     { name: Strap and button at the wrist, group: cuff, status: partial, lib: [polygon], note: "A strap can be a polygon; no placement on the sleeve" }
 
@@ -123,7 +123,7 @@ elements:
   neck-cowl:
     { name: Cowl neck, group: neckline, status: gap, note: "Pivnick 1949 ch. XVI, p. 236", freesewing: [diana] }
   neck-raised:
-    { name: Raised or turtle neck, cut on, group: neckline, status: gap, note: "Pivnick 1949 ch. XVI, p. 235" }
+    { name: Raised or turtle neck, cut on, group: neckline, status: partial, lib: [rib], seen: [turtleneck], note: "As a separate folded rib collar (turtleneck); cut on, as Pivnick 1949 ch. XVI, p. 235, isn't modelled" }
 
   # --- Collars ---
   collar-stand:
@@ -269,7 +269,7 @@ elements:
   leg-shorts:
     { name: Shorts length, group: leg, status: partial, lib: [trouserLeg], seen: [knee-pants], note: "Shortened to the knee; not checked shorter", freesewing: [ashley, shale, percy] }
   leg-rib-cuff:
-    { name: Ankle rib or elastic cuff, group: leg, status: gap }
+    { name: Ankle rib or elastic cuff, group: leg, status: partial, lib: [rib], note: "The rib piece type sizes the band; its edge comes from a measurement or a stored hem width, which the leg operations don't store yet" }
 
   # --- Waists ---
   waistband:
@@ -289,7 +289,7 @@ elements:
   bib:
     { name: Bib and straps, group: waist, status: covered, lib: [polygon], seen: [bib-overall, pinafore] }
   waistband-jacket:
-    { name: Hem band on a jacket, group: waist, status: gap, note: "Trucker and bomber jackets", freesewing: [sven, hugo, jett, devon] }
+    { name: Hem band on a jacket, group: waist, status: partial, lib: [rib], note: "Trucker and bomber jackets. A rib band (lib/rib.mjs) needs the hem width stored by the body's operations; a woven band isn't modelled", freesewing: [sven, hugo, jett, devon] }
 
   # --- Hems, vents and fronts ---
   hem-turned:
