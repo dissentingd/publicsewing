@@ -1,0 +1,105 @@
+# Slacks: Simons' young men's slacks with a continuous waistband (Drafting Trousers, 1945,
+# Diagrams 9 and 10, pp. 42-46), on the peg-top pants' Titan legs: two front pleats, a wide straight
+# leg, and the waistband cut in one with the legs, the pleats sewn down into it. Fly, pockets and
+# belt loops as the trousers. For any size. See BRIEF.md.
+extends: ../peg-pants/spec.yaml
+
+about:
+  id: slacks
+  name: Slacks
+  category: trousers
+  description: "Two-pleat slacks with a wide straight leg and the waistband cut in one with the legs"
+  difficulty: 3
+  tags: [bottoms]
+  techniques: [pleat, zip, welt-pocket, hem]
+  version: 0.1.0
+  source: "Simons, Drafting Trousers (1945), Diagrams 9-10, pp. 42-46 (simonsdraftingtrousers1945)"
+  preview: cisMaleAdult34 # Simons drafts waist 34, seat 40
+
+options:
+  # Waist 34, seat 40, knee 22, bottom 21, inseam 32, rise 12 including the band (Diagram 9)
+  seatEase: { pct: 8 } # the peg-top pants', Simons' 1916 pleated draft (his 1945 text doesn't state it)
+  kneeEase: { pct: 37.5 } # x knee: 22", as the peg-top pants
+  hemWidth: { pct: 95, min: 60 } # bottom 21 / knee 22
+  # "N is 2 1/2 inches from M. This is the allowance made for the pleat V-W, and the pleat X-Y":
+  # 1 1/2 and 1 inch
+  frontDart: { pct: 73, min: 30 } # x half the seat less half the waist (with ease): 2 1/2" of about 3 3/8" at 34/40
+  pleats: { count: 2 }
+  backDart: { pct: 8 } # "Take out 1/4 inch for the vee of the backpart": of about 3 3/8"
+  # Diagram 10: "From G to 12 and N to 13 are each 2 inches"; "Extend the rise from 4 to 19, 2 inches"
+  continuousBand: { bool: true, menu: style }
+  waistbandHeight: { pct: 4.8 } # x waistToFloor: 2" on his about 42" (inseam 32 + rise 12 - band 2)
+
+pieces:
+  front:
+    prefix: trousers # named like the inherited pieces
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+    ops:
+      - trouserLeg:
+          which: front
+          dart: d * frontDart
+          dartAt: 0.4
+          dartLength: 0
+          pleats: pleats
+          pleatSpacing: seat * pleatSpacing
+          hemWidth: hemWidth
+          hemSag: waistToFloor * hemShaping
+          turnUp: if(turnUps, waistToFloor * turnUpDepth, 0)
+          fly: waist * flyWidth
+          flyLength: waistToSeat * 1.05
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45
+          bandRise: if(continuousBand, waistToFloor * waistbandHeight, 0)
+  back:
+    prefix: trousers
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: d * backDart
+          dartAt: 0.4
+          dartFrom: centre
+          dartLength: waistToSeat * backDartLength
+          hemWidth: hemWidth
+          hemSag: waistToFloor * hemShaping
+          turnUp: if(turnUps, waistToFloor * turnUpDepth, 0)
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          backPocket: if(backPocket, seat * 0.13, 0)
+          backPocketBelow: waistToSeat * 0.4
+          backPocketWelt: seat * 0.006
+          bandRise: if(continuousBand, waistToFloor * waistbandHeight, 0)
+  # A separate waistband only when the band isn't cut on (Diagram 10A's cotton slacks)
+  waistband:
+    prefix: trousers
+    part: strip
+    after: [back, front]
+    nr: 3
+    cut: 2
+    fold: true
+    options: [continuousBand, waistbandHeight]
+    length: trousers.back.waist + trousers.front.waist + trousers.front.flyWidth * 1.2
+    width: waistToFloor * waistbandHeight
+    if: not continuousBand
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  cotton:
+    name: Cotton slacks
+    description: "Simons' cotton slacks (Diagram 10A): a separate waistband 2 inches wide and one 1 1/2 inch pleat each side, for cotton cloth."
+    # "Q is 1 1/2 inches from P, the amount allowed for the pleat": of about 3 3/8"
+    options: { continuousBand: false, pleats: 1, frontDart: 0.44 }

@@ -114,6 +114,11 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  *   the front (narrowing the forepart, widening the back), so the opening runs down the shin.
  * - `pleats` (front): the dart's width laid as this many pleats at the waist instead (give
  *   `dartLength: 0`), `pleatSpacing` apart, the first at the dart's place; notched, with fold lines.
+ * - `bandRise`: a continuous waistband, the leg cut on this far above the waist (Simons 1945,
+ *   Diagram 10): squared up from the waist at the outseam and CF, the back's seat seam carried
+ *   straight on up, the dart's legs on to the top
+ *   (the vee open to it), the pleats' marks and the fly from the top. The waist seam's measures
+ *   (`waist`, `outseam`, `crotch`) stay the waist's; `band` is the top edge, less any dart.
  * - `straightOutseam`: the outseam a straight line from the hem corner out past the seat to the
  *   waist (Simons' one-piece overall), so back and front can be cut in one (`legInOnePart`); the
  *   pieces' paths go to `trousers.paths.<which>`, the waist Titan's own as `fit` in its store.
@@ -241,18 +246,56 @@ export function draftTrouserLeg(sh, args) {
   }
   if (br) inseam = inseam.line(points.calfIn)
   inseam = inseam.line(points.hemIn)
-  const waist = new Path().move(points.wOut).line(points.dartOut).line(points.dartTip).line(points.dartIn).line(wIn)
+  let waist = new Path().move(points.wOut).line(points.dartOut).line(points.dartTip).line(points.dartIn).line(wIn)
+
+  // A continuous waistband: the leg carried on up `bandRise` past the waist
+  const bandRise = straight ? 0 : Math.max(0, args.bandRise ?? 0)
+  let crotchCut = crotch
+  let outseamCut = outseam
+  let topIn = wIn
+  let topOut = points.wOut
+  if (bandRise > 0) {
+    const up = down + 180
+    // Where the line through p in direction ang meets the waist line moved up by bandRise
+    const L0 = wIn.shift(up, bandRise)
+    const L1 = points.wOut.shift(up, bandRise)
+    const meet = (p, q) => {
+      const [x1, y1, x2, y2] = [p.x, p.y, q.x, q.y]
+      const [x3, y3, x4, y4] = [L0.x, L0.y, L1.x, L1.y]
+      const den = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)
+      if (Math.abs(den) < 1e-9) return p.shift(up, bandRise)
+      const t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / den
+      return new Point(x1 + t * (x2 - x1), y1 + t * (y2 - y1))
+    }
+    // Squared up from the waist, as Simons' 12 and 13; the back's seat seam carried on up its own line (3 to 18)
+    points.bandIn = back ? meet(crotch.shiftAlong(Math.min(20, crotch.length() / 4)), wIn) : wIn.shift(up, bandRise)
+    points.bandOut = points.wOut.shift(up, bandRise)
+    topIn = points.bandIn
+    topOut = points.bandOut
+    if (d > 0 && dartLength > 0) {
+      points.bandDartOut = meet(points.dartTip, points.dartOut)
+      points.bandDartIn = meet(points.dartTip, points.dartIn)
+      waist = new Path().move(topOut).line(points.bandDartOut).line(points.dartTip).line(points.bandDartIn).line(topIn)
+    } else {
+      waist = new Path().move(topOut).line(topIn)
+    }
+    crotchCut = new Path().move(topIn).line(wIn).join(crotch)
+    outseamCut = new Path().move(topOut).line(points.wOut).join(outseam)
+    paths.waistLine = new Path().move(wIn).line(points.wOut).addClass('mark dashed').addText('waist', 'center text-sm')
+    snippets.bandWaistIn = new Snippet('notch', wIn)
+    snippets.bandWaistOut = new Snippet('notch', points.wOut)
+  }
 
   // Back: waist > crotch > inseam > hem > outseam; front the other way round
   paths.seam = (back
-    ? waist.clone().join(crotch).join(inseam).join(hem).join(outseam.reverse())
-    : outseam.clone().join(hem.reverse()).join(inseam.reverse()).join(crotch.reverse()).join(waist.reverse())
+    ? waist.clone().join(crotchCut).join(inseam).join(hem).join(outseamCut.reverse())
+    : outseamCut.clone().join(hem.reverse()).join(inseam.reverse()).join(crotchCut.reverse()).join(waist.reverse())
   ).close().addClass('fabric')
   if (sa) {
-    const straightWaist = new Path().move(points.wOut).line(wIn)
+    const straightWaist = new Path().move(topOut).line(topIn)
     const segs = back
-      ? [[straightWaist, 1], [crotch, 1], [inseam, 1], [hem, hemAllowance], [outseam.reverse(), 1]]
-      : [[outseam, 1], [hem.reverse(), hemAllowance], [inseam.reverse(), 1], [crotch.reverse(), 1], [straightWaist.reverse(), 1]]
+      ? [[straightWaist, 1], [crotchCut, 1], [inseam, 1], [hem, hemAllowance], [outseamCut.reverse(), 1]]
+      : [[outseamCut, 1], [hem.reverse(), hemAllowance], [inseam.reverse(), 1], [crotchCut.reverse(), 1], [straightWaist.reverse(), 1]]
     let o
     for (const [p, k] of segs) {
       const off = p.offset(sa * k)
@@ -300,6 +343,9 @@ export function draftTrouserLeg(sh, args) {
     dartAtSide: d - dCentre,
     hem: points.hemIn.dist(points.hemOut),
     ...(args.keepFit ? { fit: W } : {}),
+    ...(bandRise > 0
+      ? { band: topIn.dist(topOut) - (points.bandDartIn && points.bandDartOut ? points.bandDartIn.dist(points.bandDartOut) : d), bandRise }
+      : {}),
   }
 
   // Pleats: the waist is straight (a zero-length dart); notch each pleat's two edges
@@ -309,11 +355,11 @@ export function draftTrouserLeg(sh, args) {
     const start = (W + d) * dartAt - d / 2
     const step = Math.min(w + pleatSpacing, (W + d - start - 20) / pleats)
     for (let i = 0; i < pleats; i++) {
-      const p0 = wIn.shift(a, start + i * step)
+      const p0 = wIn.shift(a, start + i * step).shift(down + 180, bandRise)
       const p1 = p0.shift(a, w)
       snippets[`pleat${i}a`] = new Snippet('notch', p0)
       snippets[`pleat${i}b`] = new Snippet('notch', p1)
-      paths[`pleat${i}`] = new Path().move(p0).line(p0.shift(down, 60)).move(p1).line(p1.shift(down, 60)).addClass('mark dashed')
+      paths[`pleat${i}`] = new Path().move(p0).line(p0.shift(down, 60 + bandRise)).move(p1).line(p1.shift(down, 60 + bandRise)).addClass('mark dashed')
     }
     info.pleats = pleats
   }
@@ -359,11 +405,11 @@ export function draftTrouserLeg(sh, args) {
     const L = Math.min(flyLength, crotch.length() * 0.9)
     const inward = wIn.angle(points.wOut)
     points.flyBottom = crotch.shiftAlong(L)
-    points.flyTop = wIn.shift(inward, fly)
+    points.flyTop = bandRise > 0 ? topIn.shift(inward, fly) : wIn.shift(inward, fly)
     points.flyTurn = crotch.shiftAlong(Math.max(L - fly, 0)).shift(inward, fly)
     paths.fly = new Path().move(points.flyTop).line(points.flyTurn).curve_(points.flyTurn.shift(-90, fly * 0.6), points.flyBottom).addClass('mark dashed')
     snippets.flyBottom = new Snippet('notch', points.flyBottom)
-    info.fly = L
+    info.fly = L + bandRise
     info.flyWidth = fly
   }
 

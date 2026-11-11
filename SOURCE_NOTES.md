@@ -12,6 +12,7 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 | Simons, *Designing Boys' and Juveniles' Clothing* (1922) `designingboysjuv00simo` | 6 | yes |
 | Simons, *Designing Overcoat Patterns* (1916) `designingovercoa00simo` | 4 | yes |
 | Simons, *Designing Sack Coats and Vests* (1918) `designingsackcoa00simo` | 4 | yes |
+| Simons, *Drafting Trousers for Men, Boys, Women* (1945, not renewed) `simonsdraftingtrousers1945` | 8 | no |
 | Mitchell, *Ladies' Tailor-Made Garments* (1921) `newstandardworko00mitc` | 4 | yes |
 | Vincent, *Cutter's Practical Guide… Shirts, Undergarments* (1890) `vincentmakingshirts18xx` | 4 | yes |
 | Pivnick, *How to Design Beautiful Clothes* (1949, not renewed) `pivnickdesignclothes1949` | 8 | no |
@@ -80,6 +81,13 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
   the natural waist; the size of the Vee at 19 is lost in the scan ("x inch").
 - Diagram XI, the frock coat (text p. 20, plate p. 21), is "the basis for all body fitting garments": its skirt
   front slopes from the forepart's point to ⅓ of the breast from the back at the hem (a cutaway).
+
+## Simons 1945, trousers (`simonsdraftingtrousers1945`)
+- Not renewed: NYPL's renewal records for 1972 and 1973 list nothing by Simons or the Garment Technical
+  Institute (checked 2026-11-11). Simons died in 1944; the book is posthumous.
+- Slacks: Diagram 9 (pp. 42–44), Diagram 10 continuous waistband (pp. 45–46, plate PDF p. 54), Diagram 10A
+  cotton slacks (p. 47). The plates draw the front and back over each other on one set of lines.
+- Diagram 9 states its seams (¼ in) are in the draft; 10A ½ in. It gives no seat ease as such.
 
 ## Simons 1916 (`designingovercoa00simo`)
 - The shoulder cape overcoat is on pp. 30-31, not p. 21. It is a full-length cape with a military collar and a whole back; the 7 in button stand is a cut-on front extension.

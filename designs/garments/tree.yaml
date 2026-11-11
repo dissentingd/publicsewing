@@ -136,8 +136,8 @@ nodes:
   trousers: { name: Trousers, parent: lower }
   tailored-trousers: { name: Tailored (suit) trousers, parent: trousers, traits: [leg-tailored, closure-fly, darts, pocket-trouser-slant, pocket-trouser-back-jetted, waistband, belt-loops], designs: [suit-trousers] }
   pleated-trousers: { name: Pleated trousers, parent: trousers, traits: [leg-tailored, pleats-trouser, closure-fly, pocket-trouser-slant, waistband], designs: [peg-pants] }
-  slacks-t: { name: Slacks, parent: trousers, traits: [leg-tailored, closure-fly, pocket-trouser-slant, waistband, belt-loops], note: "Queue 43" }
-  chinos: { name: Chinos (cotton slacks), parent: trousers, traits: [leg-tailored, closure-fly, pocket-trouser-slant, pocket-trouser-back-jetted, waistband, belt-loops], note: "Queue 43, a variant", freesewing: [charlie] }
+  slacks-t: { name: Slacks, parent: trousers, traits: [leg-tailored, closure-fly, pleats-trouser, waistband-cut-on, belt-loops], designs: [slacks] }
+  chinos: { name: Chinos (cotton slacks), parent: trousers, traits: [leg-tailored, closure-fly, pocket-trouser-slant, pocket-trouser-back-jetted, waistband, belt-loops], variants: [slacks.cotton], freesewing: [charlie] }
   work-trousers: { name: Work trousers, parent: trousers, traits: [leg-tailored, closure-fly, pocket-patch, waistband], designs: [work-pants] }
   overall-trousers: { name: Overall pants, parent: trousers, traits: [leg-in-one, closure-fly, waistband], designs: [overall-pants] }
   jeans-t: { name: Jeans, parent: trousers, traits: [leg-tailored, closure-fly, yoke-trouser-back, pocket-scoop, pocket-coin, pocket-trouser-back-patch, waistband, belt-loops], note: "Queue 46, our design" }

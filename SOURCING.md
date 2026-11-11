@@ -109,6 +109,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | d'Alessio, *The Art of Designing, Cutting and Grading Gentlemen and Boys Clothes* (1906) `artofdesigningcu00ales` | A | cycling breeches (Fig. 30) |
 | ЕМКО СЭВ т.3 (1988) `emko` | A (tables) | windbreaker, quilted jacket, winter coat, topcoat, jacket, waistcoat, trousers |
 | Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants, breeches, bib overall, overall pants, peg-top pants, turn-ups |
+| Simons, *Drafting Trousers for Men, Boys, Women* (1945, not renewed) `simonsdraftingtrousers1945` | A | slacks |
 | Simons, *Designing Sack Coats and Vests* (1918) `designingsackcoa00simo` | A | sack coat, dinner jacket, tailcoat, frock coat |
 | Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |
 | Open+Pattern, British CS95 field trouser, DXF, CC BY 4.0 `openpattern/cs95-trouser` | better than A | field trousers |
@@ -375,7 +376,7 @@ when summarizing gaps.
 
 - [Vincent, *Cutter's Practical Guide… Shirts, Undergarments*](https://archive.org/details/vincentmakingshirts18xx), already held as `vincentmakingshirts18xx`, includes a **football shirt** chapter at book pp. 29–31 with a numbered draft and sleeve/hood instructions. It describes a woven Association-football shirt and distinguishes it from a knitted Rugby jersey. This is a shirt/athletic-wear lead, **not** a knit jersey pattern.
 - [Pivnick, *How to Design Beautiful Clothes* (1949)](https://archive.org/details/pivnickdesignclothes1949), already held as `pivnickdesignclothes1949`, has trousers, slacks and shorts as well as dresses. Recheck those plates before claiming a women's trouser source gap; the gap may be in queued/built variants.
-- [Simons, *Drafting Trousers for Men, Boys, Women* (1945)](https://archive.org/details/simonsdraftingtrousers1945), already held as `simonsdraftingtrousers1945`, is a direct source for women's and men's mid-century trouser cuts. The archive reports a 600 ppi scan and no renewal found in its local CCE search. Check its specific drafts before looking for another trouser manual.
+- [Simons, *Drafting Trousers for Men, Boys, Women* (1945)](https://archive.org/details/simonsdraftingtrousers1945), already held as `simonsdraftingtrousers1945`, is a direct source for women's and men's mid-century trouser cuts. The archive reports a 600 ppi scan and no renewal found in its local CCE search; NYPL's renewal records for 1972–73 confirm none (checked 2026-11-11). Check its specific drafts before looking for another trouser manual.
 - Vincent's [*Systems of Cutting All Kinds of Tailor-Made Garments* (1903)](https://archive.org/details/b1108865), already held as `b1108865`, includes proportioned trousers, breeches, waistcoats, and lounge/reefer coats. It may serve tailored sets even where a separate uniform specification is inaccessible.
 
 Search future historical additions by the **specific garment name in the full

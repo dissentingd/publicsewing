@@ -27,6 +27,23 @@ viewer's right.
 
 ## Men's coats and jackets (Simons 1916 and 1918)
 
+### slacks: Slacks
+> **Men's two-pleat slacks** of the 1940s in mid-grey wool flannel, shown flat or on an invisible figure, full
+> length. **Two pleats each side of the front**, folded toward the side seam, the inner one on the crease.
+> **The waistband is cut in one with the legs**: no seam at the waist, the pleats stitched down to the top of
+> the band, which is about two inches deep. **Wide, nearly straight legs**, the bottom almost as wide as the knee,
+> plain hems. Zip fly, side-seam pockets, belt loops. Front three-quarter view, plain background, clean technical
+> editorial illustration.
+>
+> Leave out: a separate waistband sewn on at the waist, cuffs, a tapered or slim leg, a belt in a contrasting colour.
+
+### slacks.cotton: Cotton slacks
+> The same slacks in **khaki cotton twill**: **one pleat each side** of the front, a **separate waistband two
+> inches wide sewn on at the waist**, wide nearly straight legs, plain hems. Zip fly, side-seam pockets, belt
+> loops. Front three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: a second pleat, a waistband cut in one with the legs, cuffs, cargo pockets, a slim leg.
+
 ### frock-coat: Frock coat
 > A **man's single-breasted cutaway frock coat (morning coat)** of about 1918 in dark grey wool, **fitted at the
 > waist** with a seam just below it. **Three buttons**, closed, under **notched lapels**. Below the buttons **the

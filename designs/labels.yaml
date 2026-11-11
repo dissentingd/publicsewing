@@ -494,6 +494,9 @@ options:
   zipLength:
     title: Zip length
     description: Length of the zip in the centre back seam, as a share of waist to seat.
+  continuousBand:
+    title: Cut-on waistband
+    description: The waistband cut in one with the legs, the pleats sewn down into it. Off, a separate waistband.
   waistbandHeight:
     title: Waistband height
     description: Finished height of the waistband, as a share of waist to floor.

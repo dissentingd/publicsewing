@@ -50,6 +50,7 @@
   "field-trousers": {"default": {}, "plain": {"sidePockets": false, "cargoPockets": false, "seatPocket": false, "beltLoops": 0, "pleats": 1}},
   "peg-pants": {"default": {}, "turnUps": {"turnUps": true}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "pleats": 1, "frontDart": 0.6}},
   "sailor-pants": {"default": {}, "shallow": {"fallDepth": 0.3, "fallCentre": 0.15, "fallButtons": 1, "hemWidth": 1}, "bell": {"hemWidth": 1.6, "fallButtons": 5, "fallDepth": 0.7}},
+  "slacks": {"default": {}, "separate": {"continuousBand": false, "pleats": 1, "frontDart": 0.45}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "turnUps": true, "waistbandHeight": 0.06}},
   "overall-pants": {"default": {}, "plain": {"beltLoops": 0, "hemWidth": 1, "seatEase": 0.1}},
   "gathered-skirt": {"default": {}, "short": {"gathers": 1.3, "skirtLength": 0.35, "placketLength": 0.6}},
   "kimono-dress": {"default": {}, "long": {"kimonoLength": 0.6, "kimonoAngle": 45, "buttons": 7, "skirtLength": 0.85}, "back": {"opening": "back", "neckFinish": "binding", "kimonoLength": 0.15}},

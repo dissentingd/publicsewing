@@ -223,7 +223,7 @@ elements:
   pleats-skirt:
     { name: Knife or box pleats in a skirt, group: shaping, status: covered, lib: [gore.pleat, kiltPleats], seen: [pleated-skirt, kilt] }
   pleats-trouser:
-    { name: Trouser front pleats, group: shaping, status: covered, lib: [trouserLeg.pleats], seen: [peg-pants] }
+    { name: Trouser front pleats, group: shaping, status: covered, lib: [trouserLeg.pleats], seen: [peg-pants, slacks] }
   pleat-action:
     { name: Back action pleat, group: shaping, status: covered, lib: [backPanel], seen: [hunting-coat] }
   pleats-box-body:
@@ -286,6 +286,8 @@ elements:
     { name: Faced waist (no band), group: waist, status: covered, lib: [goreFacing], seen: [two-piece-skirt] }
   waist-high:
     { name: High-waisted rise, group: waist, status: covered, lib: [skirtLayout.riseHeight], seen: [two-piece-skirt] }
+  waistband-cut-on:
+    { name: Waistband cut in one with the trousers, group: waist, status: covered, lib: [trouserLeg.bandRise], seen: [slacks] }
   bib:
     { name: Bib and straps, group: waist, status: covered, lib: [polygon], seen: [bib-overall, pinafore] }
   waistband-jacket:
