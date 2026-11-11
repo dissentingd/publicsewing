@@ -95,6 +95,7 @@ export default {
       items: [
         { to: '/designs', label: 'Historical Designs', position: 'left' },
         { to: '/inspired', label: 'Inspired Designs', position: 'left' },
+        { to: '/wardrobe', label: 'Wardrobe', position: 'left' },
         { to: '/measure', label: 'Measure', position: 'left' },
         { to: '/sew-and-test', label: 'Sew & Test', position: 'left' },
         { to: '/learn', label: 'Learn', position: 'left' },

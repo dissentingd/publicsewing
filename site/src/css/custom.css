@@ -345,6 +345,18 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
   white-space: normal;
 }
 
+/* Wardrobe map, generated from the garment family tree. */
+.wardrobe-tree { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); gap: 1.25rem; margin-top: 2rem; }
+.wardrobe-zone { padding: 1.25rem; border: 1px solid var(--ifm-color-emphasis-300); border-top: 3px solid var(--ifm-color-primary); }
+.wardrobe-zone h2 { margin: 0 0 1rem; font-size: 1.4rem; }
+.wardrobe-tree ul { margin: 0; padding-left: 1.1rem; list-style: none; border-left: 1px solid var(--ifm-color-emphasis-300); }
+.wardrobe-tree li { margin: 0.4rem 0; }
+.wardrobe-entry { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.75rem; line-height: 1.4; }
+.wardrobe-branch > .wardrobe-entry { font-weight: 700; }
+.wardrobe-leaf > .wardrobe-entry { font-size: 0.94rem; }
+.wardrobe-patterns { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; font-size: 0.75rem; font-weight: 400; }
+.wardrobe-patterns a { padding: 0.08rem 0.35rem; border: 1px solid var(--ifm-color-primary); border-radius: 3px; text-transform: capitalize; }
+
 /* The Learn page's index: room for an illustration on each entry */
 .learn-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; margin: 0 0 2rem; }
 .learn-term { padding: 1rem; border: 1px solid var(--ifm-color-emphasis-300); scroll-margin-top: calc(var(--ifm-navbar-height) + 1rem); }
