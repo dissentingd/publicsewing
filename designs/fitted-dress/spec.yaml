@@ -1,0 +1,103 @@
+# A fitted dress: Bella's darted bodice, its neckline reshaped, joined at the waist to a gathered,
+# straight or A-line skirt, closed by a zip down centre back. Sundress, sheath and jumper-dress
+# variants. Our own design, with no book behind it; see BRIEF.md.
+about:
+  id: fitted-dress
+  name: Fitted dress
+  category: dresses
+  description: A dress with a fitted, darted bodice and a gathered, straight or A-line skirt joined at the waist, a round, square or V neck and a back zip, drafted from your measurements
+  difficulty: 3
+  tags: [dresses]
+  techniques: [darts, zip, gathering]
+  version: 0.1.0
+  source: Our own design, on FreeSewing's Bella bodice block
+  preview: cisFemaleAdult36
+
+block: bella
+
+options:
+  neckShape: { dflt: round, list: [round, square, v], menu: style }
+  neckWiden: { pct: 5, min: 0, max: 15, of: neck, menu: style } # along the shoulder, back and front
+  neckDepth: { pct: 25, min: 12, max: 60, of: hpsToWaistFront, menu: style, description: 'How far the front neck runs below the neck point, as a share of the neck point to the front waist.' } # about 11 cm on a 36 in figure
+  backNeckDepth: { pct: 5, min: 0, max: 40, of: hpsToWaistBack, menu: style } # lowered at centre back
+  sleeves: { bool: false, menu: style }
+  skirtStyle: { dflt: aline, list: [gathered, straight, aline], menu: style }
+  skirtLength: { pct: 45, min: 25, max: 85, of: waistToFloor, menu: style } # to the knee
+  gathers: { pct: 180, min: 120, max: 300, menu: style } # a gathered skirt's width, against the waist
+  seatEase: { pct: 4, min: 0, max: 15, menu: fit }
+  hemFlare: { pct: 6, min: 0, max: 20, of: seat, menu: style } # an A-line skirt's, at each side
+  zipLength: { pct: 60, min: 30, max: 100, of: waistToSeat, menu: style, description: 'How far the zip runs below the waist, down the centre back of the skirt, as a share of waist to seat.' }
+
+pieces:
+  back:
+    from: bella.back
+    hide: tree
+    options: [neckWiden, backNeckDepth]
+    measurements: [neck, hpsToWaistBack]
+    ops:
+      - brand: { nr: 2, title: back }
+      - bodiceNeck: { which: back, widen: neck * neckWiden, depth: hpsToWaistBack * backNeckDepth }
+      - bodiceWaist: { which: back }
+  front:
+    from: bella.front
+    hide: tree
+    options: [neckShape, neckWiden, neckDepth]
+    measurements: [neck, hpsToWaistFront]
+    ops:
+      - brand: { nr: 1, title: front }
+      - bodiceNeck: { which: front, widen: neck * neckWiden, style: neckShape, depth: hpsToWaistFront * neckDepth }
+      - bodiceWaist: { which: front }
+  sleeve:
+    from: bella.sleeve
+    hide: tree
+    if: sleeves
+    options: [sleeves]
+    ops:
+      - brand: { nr: 5, title: sleeve }
+  skirtFront:
+    part: dressSkirt
+    which: front
+    after: [front]
+    nr: 3
+    label: skirtFront
+    options: [skirtStyle, skirtLength, gathers, seatEase, hemFlare]
+    measurements: [seat, waistToSeat, waistToFloor]
+    style: skirtStyle
+    gathers: gathers
+    seat: seat
+    waistToSeat: waistToSeat
+    seatEase: seatEase
+    flare: seat * hemFlare
+    length: waistToFloor * skirtLength
+    dartDepth: 0.55 # the dart's tip, as a share of waist to seat
+  skirtBack:
+    part: dressSkirt
+    which: back
+    after: [back]
+    nr: 4
+    label: skirtBack
+    options: [skirtStyle, skirtLength, gathers, seatEase, hemFlare, zipLength]
+    measurements: [seat, waistToSeat, waistToFloor]
+    style: skirtStyle
+    gathers: gathers
+    seat: seat
+    waistToSeat: waistToSeat
+    seatEase: seatEase
+    flare: seat * hemFlare
+    length: waistToFloor * skirtLength
+    zip: waistToSeat * zipLength
+    dartDepth: 0.7
+
+variants:
+  sundress:
+    name: Sundress
+    description: A wide square neck front and back, no sleeves, and a gathered skirt below the knee.
+    options: { neckShape: square, neckWiden: 0.12, neckDepth: 0.32, backNeckDepth: 0.25, skirtStyle: gathered, skirtLength: 0.5 }
+  sheath:
+    name: Sheath
+    description: A high round neck and a straight, darted skirt to just above the knee.
+    options: { neckDepth: 0.17, skirtStyle: straight, skirtLength: 0.4 }
+  jumper:
+    name: Jumper dress
+    description: A deep square neck to wear over a blouse, and a flared A-line skirt.
+    options: { neckShape: square, neckWiden: 0.1, neckDepth: 0.5, backNeckDepth: 0.17, hemFlare: 0.1, skirtLength: 0.5 }

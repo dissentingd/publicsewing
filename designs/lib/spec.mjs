@@ -64,6 +64,7 @@ import { noble } from '../blocks/noble.mjs'
 import { ribPart } from './rib.mjs'
 import { brandPart, draftPlacketBox, draftOpenFront } from './knit.mjs'
 import { knitPlacketPart, frontBandPart } from './placket.mjs'
+import { draftBodiceNeck, draftBodiceWaist, dressSkirtPart } from './bodice.mjs'
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
@@ -94,6 +95,10 @@ export const operations = {
   placketBox: { run: draftPlacketBox },
   // A cardigan's open front with a V neck, on Bibi's front; `knit.front` in the store
   openFront: { run: draftOpenFront },
+  // Bella bodices (lib/bodice.mjs): reshape the neckline (`which`, `widen`, `style`, `depth`), and
+  // record the waist seam for the skirt (`bodice.waist.<which>`)
+  bodiceNeck: { run: draftBodiceNeck, literal: ['which'] },
+  bodiceWaist: { run: draftBodiceWaist, literal: ['which'] },
   // Cut the back or front along its raglan line (after coatBack / coatFront)
   raglan: { run: (sh, { which, ...rest }) => applyRaglan(sh, which, rest), literal: ['which'] },
   // A shawl collar cut in one with the front (after coatFront with a neckY)
@@ -445,6 +450,23 @@ const factories = {
           {},
         ),
     }),
+  // A dress skirt sewn to a Bella bodice (after the bodice piece with bodiceWaist): `which`, and
+  // `style` (gathered, straight, aline), `gathers`, `seatEase`, `flare`, `length`, `zip`, `dartDepth`
+  dressSkirt: (p, ctx) =>
+    dressSkirtPart({
+      name: p.name,
+      after: ctx.after(p),
+      nr: p.nr,
+      label: p.label,
+      which: p.which,
+      enabled: enabledBy(p.if),
+      shape: (sh) =>
+        evalMap(
+          { ...p.let, style: p.style, gathers: p.gathers, seat: p.seat, waistToSeat: p.waistToSeat, seatEase: p.seatEase, flare: p.flare, length: p.length, zip: p.zip, dartDepth: p.dartDepth },
+          lookupIn(sh, ctx.block, {}),
+          {}
+        ),
+    }),
   // A cardigan's front band (after openFront): `buttons`, `height`, `stretch` round the neck, `below`
   // (the hem band's height, which the band runs past)
   frontBand: (p, ctx) =>
@@ -497,7 +519,7 @@ function lookupIn(sh, block, local) {
       // `in` first: reading a missing name logs a FreeSewing warning
       if (head in measurements && measurements[head] !== undefined) return measurements[head]
       if (head in options && options[head] !== undefined) return options[head]
-    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke' || head === 'rib' || head === 'knit') return store.get(name)
+    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke' || head === 'rib' || head === 'knit' || head === 'bodice') return store.get(name)
     // A value the block stores under its own name (Bibi's `neckSizeBack`): `block.<key>`
     else if (head === 'block') return store.get(rest.join('.'))
     else {

@@ -705,6 +705,17 @@ options:
   openingExt:
     title: Opening lap
     description: Width of the lap at the opening, as a share of the chest.
+  neckShape:
+    title: Neck shape
+    description: The front neckline's shape, from the neck point to centre front.
+    choices: { round: Round, square: Square, v: V }
+  backNeckDepth:
+    title: Back neck depth
+    description: How far the back neck is lowered at centre back, as a share of the neck point to the back waist.
+  skirtStyle:
+    title: Skirt style
+    description: A gathered skirt, a straight darted one, or one flared to an A-line.
+    choices: { gathered: Gathered, straight: Straight, aline: A-line }
   vNeckDepth:
     title: V neck depth
     description: How far the V neck runs down centre front, from the neck point, as a share of the neck point to the front waist.
@@ -1117,6 +1128,8 @@ options:
     description: A welt pocket in the front lining at the chest line.
 
 parts:
+  skirtBack: Skirt back
+  skirtFront: Skirt front
   frontBand: Front band
   hemBand: Hem band
   body: Body

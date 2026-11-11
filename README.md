@@ -89,6 +89,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `turtleneck` | Close-fitting knit top with a tall folded rib collar and long sleeves | Our own design, on FreeSewing's Bibi |
 | `henley` | Knit top with a buttoned placket at a round neck; polo and rugby-shirt variants with a knit collar | Our own design, on FreeSewing's Bibi |
 | `cardigan` | Buttoned knit cardigan with a V neck, a front band, and rib cuffs and hem | Our own design, on FreeSewing's Bibi |
+| `fitted-dress` | Darted bodice joined at the waist to a gathered, straight or A-line skirt, back zip; sundress, sheath and jumper-dress variants | Our own design, on FreeSewing's Bella |
 | `bib-overall` | Bib-and-brace work overall, side seams buttoned at the hip, patch pockets | Simons 1916 |
 | `field-trousers` | Loose pleated combat trousers with flapped cargo pockets and a flapped seat pocket | Open+Pattern (CC BY 4.0), CS95 |
 | `peg-pants` | Pleated trousers full over the hips, tapering to a narrow bottom | Simons 1916 |

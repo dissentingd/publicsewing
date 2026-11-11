@@ -1660,3 +1660,34 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > form, plain background, clean technical editorial illustration.
 >
 > Leave out: rib cuffs or a rib hem band, pockets, a collar, a zip, a belt, a person.
+
+### fitted-dress: Fitted dress
+> A **sleeveless knee-length dress** in plain navy cotton sateen, with a **fitted darted bodice** and a **round
+> neck a little below the base of the neck**, joined by a **waist seam** to an **A-line skirt** flaring gently to
+> the knee. Closed by an invisible zip down centre back (not seen from the front). Front three-quarter view on an
+> invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: sleeves, a collar, buttons, a belt or sash, pockets, gathers or pleats, a lining showing, a person.
+
+### fitted-dress.sundress: Fitted dress, sundress
+> A **sleeveless summer dress** in a small blue and white cotton print, with a **fitted darted bodice**, a **wide
+> square neck** cut low front and back on broad shoulder straps, and a **full gathered skirt** below the knee,
+> joined at the waist. Front three-quarter view on an invisible form, plain background, clean technical
+> editorial illustration.
+>
+> Leave out: sleeves, ties or thin spaghetti straps, buttons, a belt, pockets, ruffles, a person.
+
+### fitted-dress.sheath: Fitted dress, sheath
+> A **sleeveless sheath dress** in charcoal wool crepe, closely fitted, with a **high round neck**, a **darted
+> bodice** and a **straight, darted skirt** to just above the knee, joined at the waist. Front three-quarter view
+> on an invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: sleeves, a collar, a belt, a slit, pockets, flare, a person.
+
+### fitted-dress.jumper: Fitted dress, jumper dress
+> A **sleeveless jumper (pinafore) dress** in rust corduroy, with a **deep square neck** and wide shoulders, a
+> **fitted darted bodice** and an **A-line skirt** flaring to below the knee, joined at the waist, worn over a
+> plain cream blouse with long sleeves. Front three-quarter view on an invisible form, plain background, clean
+> technical editorial illustration.
+>
+> Leave out: buttons or a bib, pockets, a belt, gathers, a person.

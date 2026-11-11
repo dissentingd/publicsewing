@@ -53,7 +53,7 @@ elements:
   body-bias:
     { name: Bias-cut body, group: body, status: gap }
   waist-seam:
-    { name: Waist seam joining bodice and skirt, group: body, status: covered, lib: [yokePiece, jacketLayout.waistSeam], seen: [shirtwaist-dress, prince-albert-jacket, riding-frock-coat] }
+    { name: Waist seam joining bodice and skirt, group: body, status: covered, lib: [yokePiece, jacketLayout.waistSeam, bodiceWaist, dressSkirt], seen: [shirtwaist-dress, prince-albert-jacket, riding-frock-coat, fitted-dress] }
   waist-raised:
     { name: Raised (empire) waist seam, group: body, status: gap }
   waist-dropped:
@@ -81,7 +81,7 @@ elements:
   sleeve-bell:
     { name: Bell or flared sleeve, group: sleeve, status: gap }
   sleeveless:
-    { name: Sleeveless armhole, group: sleeve, status: covered, lib: [coatFront.armholeCut, yokeSleeve], seen: [waistcoat, shift-dress] }
+    { name: Sleeveless armhole, group: sleeve, status: covered, lib: [coatFront.armholeCut, yokeSleeve], seen: [waistcoat, shift-dress, fitted-dress] }
 
   # --- Cuffs ---
   cuff-band:
@@ -101,11 +101,11 @@ elements:
   neck-round:
     { name: Round (jewel) neck, group: neckline, status: covered, lib: [yokeSide], seen: [shift-dress] }
   neck-scoop:
-    { name: Scoop neck, group: neckline, status: covered, lib: [yokeSide.neckline], seen: [shift-dress] }
+    { name: Scoop neck, group: neckline, status: covered, lib: [yokeSide.neckline, bodiceNeck], seen: [shift-dress, fitted-dress] }
   neck-square:
-    { name: Square neck, group: neckline, status: covered, lib: [yokeSide.neckline], seen: [shift-dress] }
+    { name: Square neck, group: neckline, status: covered, lib: [yokeSide.neckline, bodiceNeck], seen: [shift-dress, fitted-dress] }
   neck-boat:
-    { name: Boat (bateau) neck, group: neckline, status: covered, lib: [yokeSide.neckline], seen: [shift-dress] }
+    { name: Boat (bateau) neck, group: neckline, status: covered, lib: [yokeSide.neckline, bodiceNeck], seen: [shift-dress, fitted-dress] }
   neck-v:
     { name: V neck, group: neckline, status: covered, lib: [yokeSide.neckline, coatFront.neckY, openFront], seen: [shift-dress, middy-blouse, waistcoat, cardigan] }
   neck-keyhole:
@@ -163,7 +163,7 @@ elements:
   closure-zip-front:
     { name: Zip front, group: closure, status: covered, lib: [zip], seen: [windbreaker, quilted-jacket] }
   closure-zip-back:
-    { name: Centre-back or side zip, group: closure, status: covered, lib: [gore.zip, culotte.zip], seen: [gored-skirt, culottes] }
+    { name: Centre-back or side zip, group: closure, status: covered, lib: [gore.zip, culotte.zip, dressSkirt.zip], seen: [gored-skirt, culottes, fitted-dress] }
   closure-fly:
     { name: Trouser fly, group: closure, status: covered, lib: [trouserLeg.fly, fly], seen: [suit-trousers, work-pants] }
   closure-fall-front:
@@ -241,7 +241,7 @@ elements:
   skirt-circular:
     { name: Circular or part-circle skirt, group: skirt, status: covered, lib: [circularLayout, circular], seen: [circular-skirt] }
   skirt-gathered:
-    { name: Gathered (dirndl) skirt, group: skirt, status: covered, lib: [yokePiece, strip], seen: [gathered-skirt, shirtwaist-dress] }
+    { name: Gathered (dirndl) skirt, group: skirt, status: covered, lib: [yokePiece, strip, dressSkirt], seen: [gathered-skirt, shirtwaist-dress, fitted-dress] }
   skirt-wrap:
     { name: Wrap skirt, group: skirt, status: covered, lib: [kiltLayout, kiltApron], seen: [kilt] }
   skirt-radial-tunic:

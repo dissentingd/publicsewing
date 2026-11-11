@@ -179,19 +179,20 @@ nodes:
   kimono-dress-t: { name: Kimono-sleeve dress, parent: dresses, traits: [body-yoke, sleeve-kimono, waist-seam], designs: [kimono-dress] }
   frock-t: { name: Child's frock, parent: dresses, traits: [body-yoke, waist-seam, skirt-gathered, closure-buttons], designs: [frock] }
   childs-dress-t: { name: Child's dress, parent: dresses, traits: [body-yoke, collar-flat], note: "Queue 52" }
-  sheath: { name: Sheath dress, parent: dresses, traits: [body-darted-bodice, neck-round, sleeveless, closure-zip-back] }
+  sheath: { name: Sheath dress, parent: dresses, traits: [body-darted-bodice, neck-round, sleeveless, closure-zip-back], variants: [fitted-dress.sheath], note: "Ours has a waist seam; a true sheath carries its darts through with none" }
   fit-and-flare: { name: Fit-and-flare dress, parent: dresses, traits: [body-darted-bodice, waist-seam, skirt-circular, closure-zip-back], freesewing: [sasha] }
+  fitted-dress-t: { name: Fitted dress with a waist seam, parent: dresses, traits: [body-darted-bodice, waist-seam, neck-round, closure-zip-back], designs: [fitted-dress] }
   wrap-dress: { name: Wrap dress, parent: dresses, traits: [body-darted-bodice, neck-surplice, closure-wrap, waist-seam] }
   empire-dress: { name: Empire-waist dress, parent: dresses, traits: [body-yoke, waist-raised, skirt-gathered] }
   drop-waist: { name: Drop-waist dress, parent: dresses, traits: [body-yoke, waist-dropped, pleats-skirt] }
-  sundress: { name: Sundress, parent: dresses, traits: [body-darted-bodice, sleeveless, neck-square, skirt-gathered] }
+  sundress: { name: Sundress, parent: dresses, traits: [body-darted-bodice, sleeveless, neck-square, skirt-gathered], variants: [fitted-dress.sundress] }
   shirt-dress: { name: Shirt dress, parent: dresses, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, belt] }
   princess-dress: { name: Princess-line dress, parent: dresses, traits: [body-princess, neck-round, closure-zip-back] }
   smock-dress: { name: Smock dress, parent: dresses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered] }
   t-shirt-dress: { name: T-shirt dress, parent: dresses, traits: [body-knit, neck-round, sleeve-set-in], knit: true }
   pinafores: { name: Pinafores and jumpers, parent: whole }
   pinafore-t: { name: Pinafore, parent: pinafores, traits: [body-yoke, sleeveless, skirt-gathered, closure-buttons], designs: [pinafore] }
-  jumper-dress: { name: Jumper (pinafore dress), parent: pinafores, traits: [body-darted-bodice, sleeveless, neck-square, skirt-gored] }
+  jumper-dress: { name: Jumper (pinafore dress), parent: pinafores, traits: [body-darted-bodice, sleeveless, neck-square, skirt-gored], variants: [fitted-dress.jumper], note: "Ours has an A-line skirt, not gores" }
   one-pieces: { name: Jumpsuits, overalls and rompers, parent: whole }
   jumpsuit-t: { name: Jumpsuit, parent: one-pieces, traits: [body-flat, closure-buttons, belt], designs: [jumpsuit] }
   bib-overall-t: { name: Bib overall, parent: one-pieces, traits: [leg-in-one, bib, closure-side-opening], designs: [bib-overall], freesewing: [opal] }
