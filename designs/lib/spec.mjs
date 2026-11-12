@@ -12,6 +12,7 @@ import {
   bodyMeasurements,
   draftCoatBack,
   draftCoatFront,
+  draftCoatHem,
   draftCollar,
   draftShawl,
   draftNotchLapel,
@@ -83,6 +84,7 @@ const libraryParts = { topsleeve, undersleeve }
 export const operations = {
   coatBack: { run: draftCoatBack, options: bodyOptions, measurements: bodyMeasurements },
   coatFront: { run: draftCoatFront },
+  coatHem: { run: draftCoatHem, literal: ['which'] },
   buttons: { run: placeButtons },
   // A zip up the front edge (after coatFront)
   zip: { run: placeZip },
@@ -217,7 +219,7 @@ const factories = {
     flapPart({ name: p.name, after: ctx.after(p), key: p.key, nr: p.nr, label: p.label, cut: p.cut, enabled: enabledBy(p.if) }),
   belt: (p, ctx) => beltPart({ name: p.name, after: ctx.after(p), piece: p.piece, nr: p.nr, enabled: enabledBy(p.if) }),
   raglanSleeve: (p, ctx) =>
-    raglanSleevePart({ name: p.name, after: ctx.after(p), which: p.which, nr: p.nr, options: ctx.options(p), enabled: enabledBy(p.if) }),
+    raglanSleevePart({ name: p.name, after: ctx.after(p), which: p.which, nr: p.nr, options: ctx.options(p), hemSa: p.hemSa ?? 3, enabled: enabledBy(p.if) }),
   // One panel of a back cut across the body; `from` is the hidden whole back
   backPanel: (p, ctx) =>
     backPanelPart({

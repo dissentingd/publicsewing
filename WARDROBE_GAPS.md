@@ -232,6 +232,7 @@ cuff (pp. 24–42). It has no jacket, shift dress or skirt, so it covers only th
 - **Built 2026-11-11:** a fitted dress (`designs/fitted-dress`), our own design and the first on the Bella block (`lib/bodice.mjs`), with sundress, sheath and jumper-dress variants. Drafted, not sewn.
 - **Built 2026-11-12:** a shell top and a wrap dress (`designs/shell-top`, `designs/wrap-dress`), our own Bella-based designs. The shell continues its darts below the waist; the dress crosses at the front and ties. Drafted, not sewn.
 - **Built 2026-11-12:** a princess dress (`designs/princess-dress`), our own Noble-based design with four continuous panels, a flared skirt and a centre-back zip. Drafted, not sewn.
+- **Built 2026-11-12:** a Harrington-style jacket (`designs/harrington-jacket`), our own Brian-based short raglan zip jacket with a rib waistband and cuffs. Drafted, not sewn.
 
 ## ЕМКО СЭВ vol. 3 (1988): done (2026-10-27)
 Corpus `emko`, a private copy, untracked: still in copyright, used only for its methods,

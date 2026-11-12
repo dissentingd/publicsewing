@@ -1749,6 +1749,23 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: a waist seam, sleeves, buttons, belt, pockets, gathers, ruffles, a person.
 
+### harrington-jacket: Harrington jacket
+> A **short woven Harrington-style jacket** in tan cotton twill, with a straight centre-front
+> separating zip, a low standing collar, one-piece raglan sleeves, ribbed cuffs and a broad ribbed
+> waistband drawing the hem in at the upper hip. Clean simple front, no pockets or back yoke.
+> Front three-quarter view on an invisible form, plain background, clean technical editorial
+> illustration.
+>
+> Leave out: buttons, hood, pockets, back yoke, belt, shoulder epaulettes, a person.
+
+### harrington-jacket.relaxed: Relaxed Harrington
+> A **relaxed Harrington-style jacket** in dark olive lightweight canvas, with a roomy body, a
+> straight front zip, a standing collar, raglan sleeves, rib cuffs and a deeper rib waistband.
+> Front three-quarter view on an invisible form, plain background, clean technical editorial
+> illustration.
+>
+> Leave out: buttons, hood, pockets, back yoke, belt, shoulder epaulettes, a person.
+
 ### princess-dress.armhole: Armhole princess dress
 > A **sleeveless princess-line dress** in muted terracotta cotton, with a round neck, fitted
 > bust and waist, and four continuous shaped panels to a softly flared knee-length hem. The

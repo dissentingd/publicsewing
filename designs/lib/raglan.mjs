@@ -19,7 +19,7 @@ const lowerArmhole = (points, Path) =>
  * 'back' or 'front'. Rebuilds the piece's seam and stores the shoulder section for the sleeve.
  * `neckShare`: how far along the neckline (from the neck point) the raglan line starts.
  */
-export function applyRaglan(sh, which, { neckShare = 0.3 } = {}) {
+export function applyRaglan(sh, which, { neckShare = 0.3, hemSa = 3 } = {}) {
   const { points, paths, Path, store, sa } = sh
   const half = paths[`${which}Armhole`] // armhole notch -> shoulder
   const neck = paths[`${which}Collar`].clone() // neck point -> CB / CF
@@ -53,7 +53,7 @@ export function applyRaglan(sh, which, { neckShare = 0.3 } = {}) {
     paths.saBase = side.join(lower).join(paths.raglan).join(rest).hide()
     paths.seam = new Path().move(points.cbNeck).line(points.cbHem).join(paths.hemBase).join(paths.saBase).close().addClass('fabric')
     if (sa) {
-      const hem = paths.hemBase.offset(sa * 3)
+      const hem = paths.hemBase.offset(sa * hemSa)
       const off = paths.saBase.offset(sa)
       paths.sa = new Path().move(points.cbHem).line(hem.start()).join(hem).line(off.start()).join(off).line(points.cbNeck).addClass('fabric sa')
     }
@@ -63,7 +63,7 @@ export function applyRaglan(sh, which, { neckShare = 0.3 } = {}) {
     paths.seam = paths.edge.join(paths.hemBase).join(paths.saBase).close().addClass('fabric')
     if (sa) {
       const edge = paths.edge.offset(sa)
-      const hem = paths.hemBase.offset(sa * 3)
+      const hem = paths.hemBase.offset(sa * hemSa)
       const off = paths.saBase.offset(sa)
       paths.sa = edge.line(hem.start()).join(hem).line(off.start()).join(off).line(edge.start()).addClass('fabric sa')
     }
@@ -128,7 +128,7 @@ function placeSection({ points, paths, Path, Point, store }, which) {
  * point beside that line as far from both neck points. `enabled(options)` decides whether the
  * design uses this sleeve.
  */
-export function raglanSleevePart({ name, after, which, nr, options = {}, enabled = () => true }) {
+export function raglanSleevePart({ name, after, which, nr, options = {}, hemSa = 3, enabled = () => true }) {
   return {
     name,
     from: librarySleeve,
@@ -142,7 +142,7 @@ export function raglanSleevePart({ name, after, which, nr, options = {}, enabled
       macro('rmtitle')
       macro('rmgrainline')
       if (!enabled(o)) return part.hide()
-      if (which === 'one') return oneSleeve(sh, nr)
+      if (which === 'one') return oneSleeve(sh, nr, hemSa)
       const front = which === 'front'
       const { s: shoulderSeamStart, afterArm, cap } = placeSection(sh, which)
       points.shoulder = shoulderSeamStart
@@ -188,7 +188,7 @@ export function raglanSleevePart({ name, after, which, nr, options = {}, enabled
 }
 
 /** The one-piece raglan sleeve (raglanSleevePart with `which: 'one'`) */
-function oneSleeve(sh, nr) {
+function oneSleeve(sh, nr, hemSa = 3) {
   const { points, paths, Path, Point, store, sa, macro, snippets, Snippet, part } = sh
   const fr = placeSection(sh, 'front')
   const bk = placeSection(sh, 'back')
@@ -224,7 +224,7 @@ function oneSleeve(sh, nr) {
     .hide()
   paths.seam = paths.hemBase.join(paths.saBase).close().addClass('fabric')
   if (sa) {
-    const hem = paths.hemBase.offset(sa * 3)
+    const hem = paths.hemBase.offset(sa * hemSa)
     const off = paths.saBase.offset(sa)
     paths.sa = hem.line(off.start()).join(off).line(hem.start()).addClass('fabric sa')
   }
@@ -234,7 +234,8 @@ function oneSleeve(sh, nr) {
   // For the coat checks: each side's cap, "over-arm" (here the dart's legs) and underarm
   store.set('raglan.sleeve.front', { cap: fr.cap.length(), overarm: legs[0], underarm: points.wristRight.dist(points.bicepsRight) })
   store.set('raglan.sleeve.back', { cap: bk.cap.length(), overarm: legs[1], underarm: points.wristLeft.dist(points.bicepsLeft) })
-  store.set('raglan.sleeve.one', { dart: legs })
+  store.set('raglan.sleeve.one', { dart: legs, hem: paths.hemBase.length() })
+  store.set('coat.raglanSleeveHem', paths.hemBase.length())
   macro('grainline', { from: new Point(20, points.centerWrist.y - 40), to: new Point(20, points.centerBiceps.y) })
   store.cutlist.setCut({ cut: 2, from: 'fabric' })
   title(macro, { at: new Point(40, points.centerBiceps.y + 60), nr, title: 'sleeve', scale: 0.6 })

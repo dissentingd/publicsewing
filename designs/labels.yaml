@@ -44,6 +44,12 @@ options:
     title: Princess seam origin
     description: Where the princess seams begin, at the shoulder or armhole.
     choices: { shoulder: Shoulder, armhole: Armhole }
+  ribStretch:
+    title: Ribbing reduction
+    description: How much shorter the rib cuffs and waistband are than the edges they finish.
+  cuffHeight:
+    title: Rib cuff height
+    description: Finished cuff height as a share of the wrist.
   # Fit
   chestEase:
     title: Chest ease

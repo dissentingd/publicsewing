@@ -224,6 +224,11 @@ export function draftCoatBack(sh, { nr = 2, armholeCut, dart, hemSa } = {}) {
   return part
 }
 
+/** Record the sewn lower edge of a Brian body piece for a separate rib waistband. */
+export function draftCoatHem({ paths, store }, { which }) {
+  store.set(`coat.hem.${which}`, paths.hemBase.length())
+}
+
 /**
  * The front: Brian's front with a button stand `ext` past CF, a front corner rounded to
  * radius `r`, and a hem that drops `drop` toward the front edge (0 for a level hem).

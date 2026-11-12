@@ -219,7 +219,7 @@ listing, not a design. Each uses `test/knit-checks.mjs` or `test/bodice-checks.m
 | K4 | `fitted-dress` | Sheath, sundress, jumper dress | Bella | I | As built: one design, the three as variants: `bodiceNeck` reshapes Bella's neck (round, square, V), `bodiceWaist` records the waist seam, the `dressSkirt` piece type cuts a gathered, straight or A-line skirt to it, a back zip; `test/bodice-checks.mjs` `testDress` | done (fitted-dress, .sundress, .sheath, .jumper) |
 | K4b | `shell-top`, `wrap-dress` | Shell top, wrap dress | Bella | I | As built: `bodiceHip` carries Bella's darts to the hip in a continuous shell; `wrapFront` extends two mirrored fronts across the waist, with overlapping A-line skirt fronts and separate ties | done (shell-top, wrap-dress) |
 | K5 | `princess-dress` | Princess-line dress | Noble | I | As built: four continuous Noble panels flare below the waist, with shoulder- and armhole-seam variants and a centre-back zip | done (princess-dress) |
-| K6 | `joggers`, Harrington jacket | Rib cuffs on existing bases | Titan, raglan | I | The leg and body operations must store the hem widths the rib bands need | open |
+| K6 | `joggers`, `harrington-jacket` | Rib cuffs on existing bases | Titan, raglan | I | As built for the jacket: `coatHem` and one-piece `raglanSleeve` store hem edges for ribbing; a short zip-front raglan body with stand collar, rib cuffs and waistband. Joggers still open | partly done (harrington-jacket) |
 
 ### Buildable now, needing a source or a decision
 

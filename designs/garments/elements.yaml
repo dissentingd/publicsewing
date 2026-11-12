@@ -291,7 +291,7 @@ elements:
   bib:
     { name: Bib and straps, group: waist, status: covered, lib: [polygon], seen: [bib-overall, pinafore] }
   waistband-jacket:
-    { name: Hem band on a jacket, group: waist, status: partial, lib: [rib], note: "Trucker and bomber jackets. A rib band (lib/rib.mjs) needs the hem width stored by the body's operations; a woven band isn't modelled", freesewing: [sven, hugo, jett, devon] }
+    { name: Hem band on a jacket, group: waist, status: covered, lib: [coatHem, rib], seen: [harrington-jacket], note: "Rib band sized from a Brian body's stored hem edge; a woven band is not modelled", freesewing: [sven, hugo, jett, devon] }
 
   # --- Hems, vents and fronts ---
   hem-turned:

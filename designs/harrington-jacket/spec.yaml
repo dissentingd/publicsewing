@@ -1,0 +1,99 @@
+about:
+  id: harrington-jacket
+  name: Harrington jacket
+  category: jackets
+  description: A short zip-front woven jacket with raglan sleeves, a stand collar, rib cuffs and a rib waistband, drafted to your measurements
+  difficulty: 3
+  tags: [jackets]
+  techniques: [raglan sleeve, zip, ribbing, collar]
+  version: 0.1.0
+  source: Our own design, on FreeSewing's Brian block
+  preview: cisMaleAdult38
+
+block: brian
+
+options:
+  chestEase: { pct: 16, min: 10, max: 30, of: chest, menu: fit }
+  bicepsEase: { pct: 25, min: 15, max: 45, of: biceps, menu: fit }
+  cuffEase: { pct: 100, min: 60, max: 150, of: wrist, menu: fit }
+  seatEase: { pct: 8, min: 0, max: 20, of: seat, menu: fit }
+  lengthBelowWaist: { pct: 65, min: 40, max: 95, of: waistToSeat, menu: style }
+  hemFlare: { pct: 0, min: 0, max: 10, of: seat, menu: style }
+  frontDrop: { pct: 0, min: 0, max: 15, of: waistToSeat, menu: style }
+  buttonExtension: { pct: 2, min: 1, max: 5, of: chest, menu: style }
+  facingWidth: { pct: 12, min: 8, max: 20, of: chest, menu: construction }
+  collarWidth: { pct: 9, min: 6, max: 15, of: neck, menu: style }
+  sleeveLengthBonus: { pct: 0, min: -5, max: 10, menu: style }
+  ribStretch: { pct: 15, min: 5, max: 30, menu: fit }
+  cuffHeight: { pct: 18, min: 12, max: 30, of: wrist, menu: style }
+  bandHeight: { pct: 4, min: 2.5, max: 7, of: chest, menu: style }
+
+pieces:
+  back:
+    from: brian.back
+    hide: tree
+    options: [chestEase, bicepsEase, cuffEase, seatEase, lengthBelowWaist, hemFlare]
+    measurements: [seat, waist, waistToSeat]
+    ops:
+      - coatBack: { hemSa: 1 }
+      - raglan: { which: back, hemSa: 1 }
+      - coatHem: { which: back }
+  front:
+    from: brian.front
+    hide: tree
+    options: [buttonExtension, facingWidth, frontDrop, hemFlare]
+    measurements: [chest, seat, waist, waistToSeat]
+    let:
+      ext: chest * buttonExtension
+    ops:
+      - coatFront: { ext: ext, r: 0, drop: waistToSeat * frontDrop, facing: chest * facingWidth, hemSa: 1 }
+      - raglan: { which: front, hemSa: 1 }
+      - zip: { top: edgeNeck.y, bottom: edgeHem.y }
+      - coatHem: { which: front }
+  facing: { part: facing, from: front }
+  collar:
+    after: [back, front]
+    options: [collarWidth]
+    measurements: [neck]
+    ops:
+      - collar:
+          target: coat.back.neck + coat.front.neck + coat.frontEdge.ext * 0.9
+          spring: target * 0.06
+          width: neck * collarWidth
+          point: 0
+  sleeve:
+    part: raglanSleeve
+    after: [back, front]
+    which: one
+    nr: 4
+    options: [sleeveLengthBonus]
+    hemSa: 1
+  cuff:
+    part: rib
+    after: [sleeve]
+    nr: 5
+    label: cuff
+    cut: 2
+    options: [ribStretch, cuffHeight]
+    measurements: [wrist]
+    edge: coat.raglanSleeveHem
+    stretch: ribStretch
+    height: wrist * cuffHeight
+    round: true
+  waistband:
+    part: rib
+    after: [back, front]
+    nr: 6
+    label: waistband
+    options: [ribStretch, bandHeight]
+    measurements: [chest]
+    edge: 2 * (coat.hem.back + coat.hem.front)
+    stretch: ribStretch
+    height: chest * bandHeight
+    round: false
+
+variants:
+  relaxed:
+    name: Relaxed Harrington
+    description: More room in the body and a deeper rib waistband.
+    options: { chestEase: 0.24, bandHeight: 0.06 }
