@@ -90,6 +90,8 @@ a check that the pieces sew together into the garment, not a fit result.
 | `henley` | Knit top with a buttoned placket at a round neck; polo and rugby-shirt variants with a knit collar | Our own design, on FreeSewing's Bibi |
 | `cardigan` | Buttoned knit cardigan with a V neck, a front band, and rib cuffs and hem | Our own design, on FreeSewing's Bibi |
 | `fitted-dress` | Darted bodice joined at the waist to a gathered, straight or A-line skirt, back zip; sundress, sheath and jumper-dress variants | Our own design, on FreeSewing's Bella |
+| `shell-top` | Sleeveless darted woven top, continuous from shoulder to hip, with round or square neck | Our own design, on FreeSewing's Bella |
+| `wrap-dress` | Surplice dress with crossing front panels, A-line skirt and waist ties | Our own design, on FreeSewing's Bella |
 | `bib-overall` | Bib-and-brace work overall, side seams buttoned at the hip, patch pockets | Simons 1916 |
 | `field-trousers` | Loose pleated combat trousers with flapped cargo pockets and a flapped seat pocket | Open+Pattern (CC BY 4.0), CS95 |
 | `peg-pants` | Pleated trousers full over the hips, tapering to a narrow bottom | Simons 1916 |

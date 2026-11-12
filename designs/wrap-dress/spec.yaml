@@ -1,0 +1,103 @@
+about:
+  id: wrap-dress
+  name: Wrap dress
+  category: dresses
+  description: A darted surplice dress with two crossing fronts, an A-line skirt and waist ties, drafted to your measurements
+  difficulty: 3
+  tags: [dresses]
+  techniques: [darts, ties]
+  version: 0.1.0
+  source: Our own design, on FreeSewing's Bella bodice block
+  preview: cisFemaleAdult36
+
+block: bella
+
+options:
+  neckShape: { dflt: v, list: [v], menu: style }
+  skirtStyle: { dflt: aline, list: [aline], menu: style }
+  neckWiden: { pct: 5, min: 0, max: 12, of: neck, menu: style }
+  backNeckDepth: { pct: 5, min: 0, max: 25, of: hpsToWaistBack, menu: style }
+  wrapOverlap: { pct: 25, min: 15, max: 40, of: waist, menu: style }
+  sleeves: { bool: true, menu: style }
+  skirtLength: { pct: 50, min: 30, max: 80, of: waistToFloor, menu: style }
+  seatEase: { pct: 6, min: 0, max: 15, menu: fit }
+  hemFlare: { pct: 8, min: 0, max: 20, of: seat, menu: style }
+  tieLength: { pct: 120, min: 75, max: 200, of: waist, menu: style }
+  tieWidth: { pct: 3, min: 2, max: 6, of: waistToSeat, menu: style, description: 'Cut width of each tie as a share of waist to seat.' }
+
+pieces:
+  back:
+    from: bella.back
+    hide: tree
+    options: [neckWiden, backNeckDepth]
+    measurements: [neck, hpsToWaistBack]
+    ops:
+      - brand: { nr: 2, title: back }
+      - bodiceNeck: { which: back, widen: neck * neckWiden, depth: hpsToWaistBack * backNeckDepth }
+      - bodiceWaist: { which: back }
+      - cutlist: { cut: 2, from: fabric, onFold: false }
+  front:
+    from: bella.front
+    hide: tree
+    options: [neckShape, neckWiden, wrapOverlap]
+    measurements: [neck, waist, hpsToWaistFront]
+    ops:
+      - brand: { nr: 1, title: front }
+      - bodiceNeck: { which: front, widen: neck * neckWiden, style: neckShape, depth: hpsToWaistFront * 0.45 }
+      - wrapFront: { overlap: waist * wrapOverlap }
+      - bodiceWaist: { which: front, overlap: waist * wrapOverlap }
+  sleeve:
+    from: bella.sleeve
+    hide: tree
+    if: sleeves
+    options: [sleeves]
+    ops:
+      - brand: { nr: 6, title: sleeve }
+  skirtFront:
+    part: dressSkirt
+    which: front
+    after: [front]
+    nr: 3
+    label: skirtFront
+    options: [skirtStyle, skirtLength, seatEase, hemFlare, wrapOverlap]
+    measurements: [seat, waist, waistToSeat, waistToFloor]
+    style: skirtStyle
+    gathers: 1
+    seat: seat
+    waistToSeat: waistToSeat
+    seatEase: seatEase
+    flare: seat * hemFlare
+    length: waistToFloor * skirtLength
+    wrap: waist * wrapOverlap
+    dartDepth: 0.55
+  skirtBack:
+    part: dressSkirt
+    which: back
+    after: [back]
+    nr: 4
+    label: skirtBack
+    options: [skirtStyle, skirtLength, seatEase, hemFlare]
+    measurements: [seat, waistToSeat, waistToFloor]
+    style: skirtStyle
+    gathers: 1
+    seat: seat
+    waistToSeat: waistToSeat
+    seatEase: seatEase
+    flare: seat * hemFlare
+    length: waistToFloor * skirtLength
+    dartDepth: 0.7
+  tie:
+    part: polygon
+    nr: 5
+    label: tie
+    options: [tieLength, tieWidth]
+    measurements: [waist, waistToSeat]
+    points: [[0, 0], [waist * tieLength, 0], [waist * tieLength, waistToSeat * tieWidth], [0, waistToSeat * tieWidth]]
+    allowance: [1, 1, 1, 1]
+    cut: 2
+
+variants:
+  sleeveless:
+    name: Sleeveless wrap dress
+    description: The same surplice dress with bound armholes.
+    options: { sleeves: false }

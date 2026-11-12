@@ -41,7 +41,7 @@ nodes:
   peasant-blouse: { name: Peasant blouse, parent: blouses, traits: [body-yoke, neck-round, gathers, sleeve-gathered, waist-drawstring] }
   bow-blouse: { name: Tie-neck blouse, parent: blouses, traits: [body-yoke, closure-buttons, collar-tie, sleeve-gathered, cuff-barrel] }
   wrap-blouse: { name: Wrap blouse, parent: blouses, traits: [body-darted-bodice, neck-surplice, closure-wrap, sleeve-set-in], freesewing: [tina] }
-  shell-top: { name: Shell top, parent: blouses, traits: [body-darted-bodice, neck-round, sleeveless, closure-zip-back] }
+  shell-top: { name: Shell top, parent: blouses, traits: [body-darted-bodice, neck-round, sleeveless], designs: [shell-top], variants: [shell-top.square] }
   smock-top: { name: Smock, parent: blouses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered, cuff-band], designs: [childrens-smock] }
   choli-t: { name: Choli (saree blouse), parent: blouses, traits: [body-darted-bodice, sleeve-short, closure-buttons], note: "Queue 56, inspired by CBSE" }
   kameez-t: { name: Kameez and kurta, parent: blouses, traits: [body-yoke, neck-split, hem-side-slits, sleeve-set-in], note: "Queue 54, inspired by CBSE" }
@@ -182,7 +182,7 @@ nodes:
   sheath: { name: Sheath dress, parent: dresses, traits: [body-darted-bodice, neck-round, sleeveless, closure-zip-back], variants: [fitted-dress.sheath], note: "Ours has a waist seam; a true sheath carries its darts through with none" }
   fit-and-flare: { name: Fit-and-flare dress, parent: dresses, traits: [body-darted-bodice, waist-seam, skirt-circular, closure-zip-back], freesewing: [sasha] }
   fitted-dress-t: { name: Fitted dress with a waist seam, parent: dresses, traits: [body-darted-bodice, waist-seam, neck-round, closure-zip-back], designs: [fitted-dress] }
-  wrap-dress: { name: Wrap dress, parent: dresses, traits: [body-darted-bodice, neck-surplice, closure-wrap, waist-seam] }
+  wrap-dress: { name: Wrap dress, parent: dresses, traits: [body-darted-bodice, neck-surplice, closure-wrap, waist-seam], designs: [wrap-dress], variants: [wrap-dress.sleeveless] }
   empire-dress: { name: Empire-waist dress, parent: dresses, traits: [body-yoke, waist-raised, skirt-gathered] }
   drop-waist: { name: Drop-waist dress, parent: dresses, traits: [body-yoke, waist-dropped, pleats-skirt] }
   sundress: { name: Sundress, parent: dresses, traits: [body-darted-bodice, sleeveless, neck-square, skirt-gathered], variants: [fitted-dress.sundress] }
