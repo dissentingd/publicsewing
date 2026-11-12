@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url'
 import { readSpec, loadSpec } from '../lib/load-spec.mjs'
 import { sets, checkClean } from './coat-checks.mjs'
 import { checkKnitClean } from './knit-checks.mjs'
+import { checkNobleClean } from './bodice-checks.mjs'
 
 const root = new URL('../', import.meta.url)
 const designs = readdirSync(root).filter((d) => existsSync(new URL(`${d}/spec.yaml`, root)))
@@ -55,7 +56,7 @@ for (const d of designs) {
     for (const [name, measurements] of Object.entries(sets)) {
       test(`variant ${d}.${key}: ${name}`, () => {
         // (a knit design on Bibi allows Bibi's own warning: test/knit-checks.mjs)
-        ;(spec.block === 'bibi' ? checkKnitClean : checkClean)(new Design({ measurements, sa: 10, options: v.options }).draft())
+        ;(spec.block === 'bibi' ? checkKnitClean : spec.block === 'noble' ? checkNobleClean : checkClean)(new Design({ measurements, sa: 10, options: v.options }).draft())
       })
     }
   }

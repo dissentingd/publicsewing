@@ -64,7 +64,7 @@ import { noble } from '../blocks/noble.mjs'
 import { ribPart } from './rib.mjs'
 import { brandPart, draftPlacketBox, draftOpenFront } from './knit.mjs'
 import { knitPlacketPart, frontBandPart } from './placket.mjs'
-import { draftBodiceNeck, draftBodiceWaist, draftBodiceHip, draftWrapFront, dressSkirtPart } from './bodice.mjs'
+import { draftBodiceNeck, draftBodiceWaist, draftBodiceHip, draftWrapFront, draftPrincessDress, dressSkirtPart } from './bodice.mjs'
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
@@ -101,6 +101,7 @@ export const operations = {
   bodiceWaist: { run: draftBodiceWaist, literal: ['which'] },
   bodiceHip: { run: draftBodiceHip, literal: ['which'] },
   wrapFront: { run: draftWrapFront },
+  princessDress: { run: draftPrincessDress, literal: ['panel'] },
   // Cut the back or front along its raglan line (after coatBack / coatFront)
   raglan: { run: (sh, { which, ...rest }) => applyRaglan(sh, which, rest), literal: ['which'] },
   // A shawl collar cut in one with the front (after coatFront with a neckY)

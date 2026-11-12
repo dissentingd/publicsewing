@@ -187,7 +187,7 @@ nodes:
   drop-waist: { name: Drop-waist dress, parent: dresses, traits: [body-yoke, waist-dropped, pleats-skirt] }
   sundress: { name: Sundress, parent: dresses, traits: [body-darted-bodice, sleeveless, neck-square, skirt-gathered], variants: [fitted-dress.sundress] }
   shirt-dress: { name: Shirt dress, parent: dresses, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, belt] }
-  princess-dress: { name: Princess-line dress, parent: dresses, traits: [body-princess, neck-round, closure-zip-back] }
+  princess-dress: { name: Princess-line dress, parent: dresses, traits: [body-princess, neck-round, closure-zip-back], designs: [princess-dress], variants: [princess-dress.armhole] }
   smock-dress: { name: Smock dress, parent: dresses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered] }
   t-shirt-dress: { name: T-shirt dress, parent: dresses, traits: [body-knit, neck-round, sleeve-set-in], knit: true }
   pinafores: { name: Pinafores and jumpers, parent: whole }

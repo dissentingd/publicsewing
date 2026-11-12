@@ -1,0 +1,60 @@
+about:
+  id: princess-dress
+  name: Princess dress
+  category: dresses
+  description: A sleeveless princess-seam dress in four continuous panels from shoulder to hem, fitted to your measurements
+  difficulty: 3
+  tags: [dresses]
+  techniques: [princess seams, binding]
+  version: 0.1.0
+  source: Our own design, on FreeSewing's Noble princess bodice block
+  preview: cisFemaleAdult36
+
+block: noble
+
+options:
+  dartPosition: { dflt: shoulder, list: [shoulder, armhole], menu: style }
+  dressLength: { pct: 45, min: 30, max: 80, of: waistToFloor, menu: style }
+  princessFlare: { pct: 5, min: 0, max: 15, of: seat, menu: style }
+  sideFlare: { pct: 8, min: 0, max: 20, of: seat, menu: style }
+  zipLength: { pct: 60, min: 30, max: 100, of: waistToSeat, menu: style }
+
+pieces:
+  backInside:
+    from: noble.backInside
+    hide: tree
+    options: [dressLength, princessFlare, zipLength]
+    measurements: [waistToFloor, waistToSeat, seat]
+    ops:
+      - brand: { nr: 1, title: backInside }
+      - princessDress: { panel: backInside, length: waistToFloor * dressLength, princessFlare: seat * princessFlare, zip: waistToSeat * zipLength }
+  backOutside:
+    from: noble.backOutside
+    hide: tree
+    options: [dressLength, princessFlare, sideFlare]
+    measurements: [waistToFloor, seat]
+    ops:
+      - brand: { nr: 2, title: backOutside }
+      - princessDress: { panel: backOutside, length: waistToFloor * dressLength, princessFlare: seat * princessFlare, sideFlare: seat * sideFlare }
+  frontInside:
+    from: noble.frontInside
+    hide: tree
+    options: [dressLength, princessFlare]
+    measurements: [waistToFloor, seat]
+    ops:
+      - brand: { nr: 3, title: frontInside }
+      - princessDress: { panel: frontInside, length: waistToFloor * dressLength, princessFlare: seat * princessFlare }
+  frontOutside:
+    from: noble.frontOutside
+    hide: tree
+    options: [dressLength, princessFlare, sideFlare]
+    measurements: [waistToFloor, seat]
+    ops:
+      - brand: { nr: 4, title: frontOutside }
+      - princessDress: { panel: frontOutside, length: waistToFloor * dressLength, princessFlare: seat * princessFlare, sideFlare: seat * sideFlare }
+
+variants:
+  armhole:
+    name: Armhole princess dress
+    description: Princess seams rise from the armhole instead of the shoulder.
+    options: { dartPosition: armhole }

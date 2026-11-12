@@ -90,6 +90,56 @@ export function draftWrapFront(sh, { overlap }) {
   store.set('bodice.wrap', { overlap, neckline: points.neckPoint.dist(tip) })
 }
 
+/** Continue one Noble princess panel below the waist. Matching princess edges receive the same
+ * flare and length, and both outside panels receive the same side flare. */
+export function draftPrincessDress(sh, { panel, length, princessFlare = 0, sideFlare = 0, zip = 0 }) {
+  const { points, paths, Path, Point, Snippet, snippets, sa, store } = sh
+  const inside = panel.endsWith('Inside')
+  const back = panel.startsWith('back')
+  const pathName = back ? (inside ? 'insideSeam' : 'outsideSeam') : 'seam'
+  const base = paths[pathName]
+  const waist = back
+    ? (inside ? points.dartBottomLeft : points.dartBottomRight)
+    : (inside ? points.waistDartLeft : points.waistDartRight)
+  const outer = inside
+    ? (back ? points.waistCenter : points.cfHem)
+    : (back ? points.waistSide : points.sideHem)
+  const princessHip = new Point(waist.x + princessFlare, waist.y + length)
+  const outerHip = new Point(outer.x + (inside ? 0 : sideFlare), outer.y + length)
+  points.princessHip = princessHip
+  points.outerHip = outerHip
+  let outline
+  if (back && inside) {
+    const upper = base.split(waist)[1]
+    outline = new Path().move(outerHip).line(princessHip).line(waist).join(upper).line(outerHip).close()
+  } else if (inside) {
+    const upper = base.split(waist)[1].split(outer)[0]
+    outline = new Path().move(outerHip).line(princessHip).line(waist).join(upper).line(outerHip).close()
+  } else {
+    const upper = base.split(outer)[1]
+    outline = new Path().move(princessHip).line(outerHip).line(outer).join(upper).line(princessHip).close()
+  }
+  paths[pathName] = outline.attr('class', 'fabric')
+  paths.saBase = outline.clone().hide()
+  if (sa) paths.sa = paths.saBase.offset(sa).attr('class', 'fabric sa')
+  else delete paths.sa
+  if (back && inside) {
+    if (store.cutlist.getGrainOrigin() === 'cutonfold') store.cutlist.removeGrain()
+    store.cutlist.removeCutOnFold()
+    store.cutlist.setCut({ cut: 2, from: 'fabric', onFold: false })
+    if (zip > 0) {
+      const y = outer.y + zip
+      const x = points.cbNeck.x + (outerHip.x - points.cbNeck.x) * (y - points.cbNeck.y) / (outerHip.y - points.cbNeck.y)
+      snippets.zipEnd = new Snippet('notch', new Point(x, y))
+    }
+  }
+  store.set(`princessDress.${panel}`, {
+    lowerPrincess: waist.dist(princessHip),
+    lowerSide: inside ? null : outer.dist(outerHip),
+    hem: princessHip.dist(outerHip),
+  })
+}
+
 /** Extend Bella's darted waist to a hip hem in the same piece. The waist dart continues below
  * the waist and closes at the hip; there is no seam across the waist. */
 export function draftBodiceHip(sh, { which, length, flare = 0 }) {

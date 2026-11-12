@@ -39,7 +39,7 @@ elements:
   body-three-piece:
     { name: Three-piece body (back, side body, forepart), group: body, status: covered, lib: [body3Back, body3Front, sideBody], seen: [suit-jacket, eton-jacket, scout-coat] }
   body-princess:
-    { name: Princess-seamed fitted body, group: body, status: covered, lib: [jacketBase, jacketLayout, jacketPanel], seen: [tailored-jacket, fitted-jacket, princess-coat] }
+    { name: Princess-seamed fitted body, group: body, status: covered, lib: [jacketBase, jacketLayout, jacketPanel, princessDress], seen: [tailored-jacket, fitted-jacket, princess-coat, princess-dress] }
   body-box-darted:
     { name: Box body with a pivoted bust dart, group: body, status: covered, lib: [boxLayout], seen: [womens-box-coat, field-jacket] }
   body-yoke:

@@ -1739,3 +1739,21 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > invisible form, plain background, clean technical editorial illustration.
 >
 > Leave out: sleeves, buttons, a zipper, lapels, pockets, ruffles, a person.
+
+### princess-dress: Princess dress
+> A **sleeveless princess-line dress** in dark indigo linen, fitted at the bust and waist, with a
+> round neck and four long shaped panels running uninterrupted from shoulder to a softly flared
+> knee-length hem. The princess seams start at the shoulders. A discreet centre-back zipper is
+> visible only in a slight three-quarter back glimpse. Plain background, invisible form, clean
+> technical editorial illustration.
+>
+> Leave out: a waist seam, sleeves, buttons, belt, pockets, gathers, ruffles, a person.
+
+### princess-dress.armhole: Armhole princess dress
+> A **sleeveless princess-line dress** in muted terracotta cotton, with a round neck, fitted
+> bust and waist, and four continuous shaped panels to a softly flared knee-length hem. The
+> princess seams begin at the armholes instead of the shoulders; a centre-back zip closes it.
+> Front three-quarter view on an invisible form, plain background, clean technical editorial
+> illustration.
+>
+> Leave out: a waist seam, sleeves, buttons, belt, pockets, gathers, ruffles, a person.

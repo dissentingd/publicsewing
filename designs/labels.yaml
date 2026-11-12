@@ -31,6 +31,19 @@ options:
   wrapOverlap:
     title: Wrap overlap
     description: How far each front crosses centre front, as a share of the waist.
+  dressLength:
+    title: Dress length below waist
+    description: Distance from the waist to the hem as a share of waist to floor.
+  princessFlare:
+    title: Princess seam flare
+    description: Width added at each princess seam edge at the hem as a share of the seat.
+  sideFlare:
+    title: Side seam flare
+    description: Width added at each side seam edge at the hem as a share of the seat.
+  dartPosition:
+    title: Princess seam origin
+    description: Where the princess seams begin, at the shoulder or armhole.
+    choices: { shoulder: Shoulder, armhole: Armhole }
   # Fit
   chestEase:
     title: Chest ease
