@@ -64,7 +64,7 @@ import { noble } from '../blocks/noble.mjs'
 import { ribPart } from './rib.mjs'
 import { brandPart, draftPlacketBox, draftOpenFront } from './knit.mjs'
 import { knitPlacketPart, frontBandPart } from './placket.mjs'
-import { draftBodiceNeck, draftBodiceWaist, dressSkirtPart } from './bodice.mjs'
+import { draftBodiceNeck, draftBodiceWaist, draftBodiceHip, draftWrapFront, dressSkirtPart } from './bodice.mjs'
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
@@ -99,6 +99,8 @@ export const operations = {
   // record the waist seam for the skirt (`bodice.waist.<which>`)
   bodiceNeck: { run: draftBodiceNeck, literal: ['which'] },
   bodiceWaist: { run: draftBodiceWaist, literal: ['which'] },
+  bodiceHip: { run: draftBodiceHip, literal: ['which'] },
+  wrapFront: { run: draftWrapFront },
   // Cut the back or front along its raglan line (after coatBack / coatFront)
   raglan: { run: (sh, { which, ...rest }) => applyRaglan(sh, which, rest), literal: ['which'] },
   // A shawl collar cut in one with the front (after coatFront with a neckY)
@@ -459,10 +461,11 @@ const factories = {
       nr: p.nr,
       label: p.label,
       which: p.which,
+      wrapCut: Boolean(p.wrap),
       enabled: enabledBy(p.if),
       shape: (sh) =>
         evalMap(
-          { ...p.let, style: p.style, gathers: p.gathers, seat: p.seat, waistToSeat: p.waistToSeat, seatEase: p.seatEase, flare: p.flare, length: p.length, zip: p.zip, dartDepth: p.dartDepth },
+          { ...p.let, style: p.style, gathers: p.gathers, seat: p.seat, waistToSeat: p.waistToSeat, seatEase: p.seatEase, flare: p.flare, length: p.length, zip: p.zip, dartDepth: p.dartDepth, wrap: p.wrap },
           lookupIn(sh, ctx.block, {}),
           {}
         ),

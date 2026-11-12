@@ -1708,3 +1708,34 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > technical editorial illustration.
 >
 > Leave out: buttons or a bib, pockets, a belt, gathers, a person.
+
+### shell-top: Shell top
+> A **sleeveless woven shell top** in warm ivory linen, with a high round neck, shaped shoulders,
+> a side bust dart and long waist darts that taper below the waist. The body runs continuously
+> from shoulder to hip without a horizontal seam. Front three-quarter view on an invisible form,
+> plain background, clean technical editorial illustration.
+>
+> Leave out: sleeves, buttons, a zipper, a waist seam, pockets, a belt, a person.
+
+### shell-top.square: Square neck shell
+> A **sleeveless woven shell top** in deep teal cotton, with a wide square neck, side bust dart,
+> front and back shaping darts and a continuous body to the hip. Front three-quarter view on an
+> invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: sleeves, buttons, a zipper, a waist seam, pockets, a belt, a person.
+
+### wrap-dress: Wrap dress
+> A **surplice wrap dress** in matte plum cotton, with two diagonal front neck edges crossing at
+> the waist, long fitted sleeves, a darted bodice, a waist seam and a knee length A-line skirt
+> with two overlapping front panels. A narrow self-fabric waist tie closes at one side. Front
+> three-quarter view on an invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: buttons, a zipper, lapels, pockets, ruffles, a person.
+
+### wrap-dress.sleeveless: Sleeveless wrap dress
+> A **sleeveless surplice wrap dress** in soft green cotton, with two diagonal front neck edges
+> crossing at the waist, a darted bodice, a waist seam and an overlapping knee length A-line
+> skirt. A narrow self-fabric waist tie closes at one side. Front three-quarter view on an
+> invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: sleeves, buttons, a zipper, lapels, pockets, ruffles, a person.

@@ -22,6 +22,15 @@ options:
   tieWidth:
     title: Tie width
     description: Finished width of the ties as a share of the waist.
+  hipLength:
+    title: Length below waist
+    description: Length of the shell below the waist as a share of waist to seat.
+  hipFlare:
+    title: Hip flare
+    description: Extra width at each side of the hem as a share of the seat.
+  wrapOverlap:
+    title: Wrap overlap
+    description: How far each front crosses centre front, as a share of the waist.
   # Fit
   chestEase:
     title: Chest ease

@@ -1,0 +1,48 @@
+about:
+  id: shell-top
+  name: Shell top
+  category: tops
+  description: A sleeveless darted woven top running from shoulder to hip without a waist seam, drafted to your measurements
+  difficulty: 2
+  tags: [shirts, tops]
+  techniques: [darts, binding]
+  version: 0.1.0
+  source: Our own design, on FreeSewing's Bella bodice block
+  preview: cisFemaleAdult36
+
+block: bella
+
+options:
+  neckShape: { dflt: round, list: [round, square, v], menu: style }
+  neckWiden: { pct: 5, min: 0, max: 15, of: neck, menu: style }
+  neckDepth: { pct: 25, min: 12, max: 60, of: hpsToWaistFront, menu: style }
+  backNeckDepth: { pct: 5, min: 0, max: 30, of: hpsToWaistBack, menu: style }
+  hipLength: { pct: 85, min: 55, max: 120, of: waistToSeat, menu: style }
+  hipFlare: { pct: 5, min: 0, max: 15, of: seat, menu: fit }
+
+pieces:
+  back:
+    from: bella.back
+    hide: tree
+    options: [neckWiden, backNeckDepth, hipLength, hipFlare]
+    measurements: [neck, hpsToWaistBack, waistToSeat, seat]
+    ops:
+      - brand: { nr: 2, title: back }
+      - bodiceNeck: { which: back, widen: neck * neckWiden, depth: hpsToWaistBack * backNeckDepth }
+      - bodiceHip: { which: back, length: waistToSeat * hipLength, flare: seat * hipFlare }
+      - cutlist: { cut: 1, from: fabric, onFold: true }
+  front:
+    from: bella.front
+    hide: tree
+    options: [neckShape, neckWiden, neckDepth, hipLength, hipFlare]
+    measurements: [neck, hpsToWaistFront, waistToSeat, seat]
+    ops:
+      - brand: { nr: 1, title: front }
+      - bodiceNeck: { which: front, widen: neck * neckWiden, style: neckShape, depth: hpsToWaistFront * neckDepth }
+      - bodiceHip: { which: front, length: waistToSeat * hipLength, flare: seat * hipFlare }
+
+variants:
+  square:
+    name: Square neck shell
+    description: A square neckline on the same continuous darted body.
+    options: { neckShape: square, neckWiden: 0.1, neckDepth: 0.32 }

@@ -59,7 +59,7 @@ export function draftBodiceNeck(sh, { which, widen = 0, style = 'round', depth }
  * figure, the darts closed), dartX (the waist dart's middle, from centre front or back), dartLength }
  * and the side seam's foot. Front: cfHem to sideHem; back: waistCenter to waistSide
  */
-export function draftBodiceWaist(sh, { which }) {
+export function draftBodiceWaist(sh, { which, overlap = 0 }) {
   const { points, store } = sh
   const front = which === 'front'
   const [start, l, r, end] = front
@@ -69,8 +69,60 @@ export function draftBodiceWaist(sh, { which }) {
   const dart = front ? l && r && l.dist(r) > 0.5 : true
   const seam = dart ? start.dist(l) + r.dist(end) : start.dist(end)
   const dartX = dart ? (l.x + r.x) / 2 - start.x : (end.x - start.x) / 2
-  store.set(`bodice.waist.${which}`, { seam, dartX, dart: dart ? l.dist(r) : 0 })
+  store.set(`bodice.waist.${which}`, { seam: seam + overlap, dartX, dart: dart ? l.dist(r) : 0 })
 }
+
+/** A crossing front cut twice: the neckline runs from the shoulder to the other side of the
+ * waist, and the waist edge carries on past centre front. The pair overlap when worn. */
+export function draftWrapFront(sh, { overlap }) {
+  const { points, paths, Path, Point, sa, store, macro } = sh
+  const tip = new Point(points.cfHem.x - overlap, points.cfHem.y)
+  points.wrapTip = tip
+  const throughShoulder = paths.seam.split(points.neckPoint)[0]
+  paths.seam = new Path().move(tip).line(points.cfHem).join(throughShoulder).line(tip).close().attr('class', 'fabric')
+  paths.saBase = paths.seam.clone().hide()
+  if (sa) paths.sa = paths.saBase.offset(sa).attr('class', 'fabric sa')
+  else delete paths.sa
+  if (store.cutlist.getGrainOrigin() === 'cutonfold') store.cutlist.removeGrain()
+  store.cutlist.removeCutOnFold()
+  store.cutlist.setCut({ cut: 2, from: 'fabric', onFold: false })
+  macro('grainline', { from: new Point(points.waistDartTip.x, points.cfHem.y - 30), to: new Point(points.waistDartTip.x, points.hps.y + 60) })
+  store.set('bodice.wrap', { overlap, neckline: points.neckPoint.dist(tip) })
+}
+
+/** Extend Bella's darted waist to a hip hem in the same piece. The waist dart continues below
+ * the waist and closes at the hip; there is no seam across the waist. */
+export function draftBodiceHip(sh, { which, length, flare = 0 }) {
+  const { points, paths, Path, Point, sa, store } = sh
+  const front = which === 'front'
+  const center = front ? points.cfHem : points.waistCenter
+  const side = front ? points.sideHem : points.waistSide
+  const left = front ? points.waistDartLeft : points.dartBottomLeft
+  const right = front ? points.waistDartRight : points.dartBottomRight
+  const hasDart = left && right && left.dist(right) > 0.5 &&
+    baseHasPoint(paths.seam, left) && baseHasPoint(paths.seam, right)
+  const hemCenter = new Point(center.x, center.y + length)
+  const hemSide = new Point(side.x + flare, side.y + length)
+  points.hipCenter = hemCenter
+  points.hipSide = hemSide
+  const base = paths.seam
+  const upper = base.split(side)[1]
+  const lowerTip = hasDart ? new Point((left.x + right.x) / 2, (left.y + right.y) / 2 + length * 0.7) : null
+  if (lowerTip) {
+    points.hipDartTip = lowerTip
+    const dart = base.split(left)[1].split(right)[0]
+    paths.waistDart = new Path().move(lowerTip).line(left).join(dart).line(lowerTip).close().addClass('mark dashed')
+  }
+  // The dart is an internal closed diamond. The outside runs straight through the waist.
+  const outline = new Path().move(hemCenter).line(hemSide).line(side).join(upper).line(hemCenter).close().attr('class', 'fabric')
+  paths.seam = outline
+  paths.saBase = outline.clone().hide()
+  if (sa) paths.sa = paths.saBase.offset(sa).attr('class', 'fabric sa')
+  else delete paths.sa
+  store.set(`bodice.hip.${which}`, { side: side.dist(hemSide), hem: hemCenter.dist(hemSide), dart: hasDart ? left.dist(lowerTip) - right.dist(lowerTip) : 0 })
+}
+
+const baseHasPoint = (path, point) => path.divide().some((segment) => segment.end().sitsRoughlyOn(point))
 
 /**
  * A dress skirt, front or back (`which`), sewn to the bodice's waist (`bodice.waist.<which>`):
@@ -79,28 +131,29 @@ export function draftBodiceWaist(sh, { which }) {
  * seam). `length` from the waist. Front on the fold; back cut 2, centre back seamed for the zip,
  * notched `zip` below the waist. Stores `bodice.skirt.<which>` { waist, side, top, dartLegs }
  */
-export function dressSkirtPart({ name, after, nr, label, which, enabled, shape }) {
+export function dressSkirtPart({ name, after, nr, label, which, enabled, shape, wrapCut = false }) {
   return polygonPart({
     name,
     after,
     nr,
     label,
-    cut: which === 'front' ? 1 : 2,
+    cut: which === 'front' && !wrapCut ? 1 : 2,
     enabled,
     shape: (sh) => {
-      const { style, gathers, seat, waistToSeat, seatEase, flare, length: L, zip = 0, dartDepth } = shape(sh)
+      const { style, gathers, seat, waistToSeat, seatEase, flare, length: L, zip = 0, dartDepth, wrap = 0 } = shape(sh)
       const w = sh.store.get(`bodice.waist.${which}`)
       const back = which === 'back'
+      const sewnWaist = w.seam - (back ? 0 : wrap)
       const Hq = (seat / 4) * (1 + seatEase)
       let pts
       let top
       let dartLegs = null
       if (style === 'gathered') {
-        top = Math.max(w.seam * gathers, Hq * 1.1)
+        top = Math.max(sewnWaist * gathers, Hq * 1.1)
         pts = [[0, 0], [top, 0], [top, L], [0, L]]
       } else {
-        top = Math.max(Hq, w.seam)
-        const D = top - w.seam
+        top = Math.max(Hq, sewnWaist)
+        const D = top - sewnWaist
         const s = Math.min(D / 3, 20)
         const d = D - s
         const hem = top + (style === 'aline' ? flare : 0)
@@ -118,16 +171,20 @@ export function dressSkirtPart({ name, after, nr, label, which, enabled, shape }
       // Allowance: the hem deep; centre front on the fold, centre back seamed
       const allowance = pts.map((_, i) => (i === n - 2 ? 3 : 1))
       // The waist edge sewn to the bodice (gathered: before gathering), and the side seam's length
-      const waistEdge = style === 'gathered' ? top : w.seam
+      const waistEdge = (style === 'gathered' ? top : sewnWaist) + (back ? 0 : wrap)
       const side =
         style === 'gathered'
           ? L
           : Math.hypot(pts[n - 3][0] - pts[n - 4][0], pts[n - 3][1] - pts[n - 4][1]) + Math.hypot(pts[n - 2][0] - pts[n - 3][0], pts[n - 2][1] - pts[n - 3][1])
+      if (wrap && !back) {
+        pts[0][0] = -wrap
+        pts[n - 1][0] = -wrap
+      }
       sh.store.set(`bodice.skirt.${which}`, { waist: waistEdge, side, top, dartLegs })
       return {
         points: pts,
         allowance,
-        fold: back ? -1 : n - 1,
+        fold: back || wrap ? -1 : n - 1,
         notches: back && zip > 0 ? [[0, zip]] : [],
       }
     },
