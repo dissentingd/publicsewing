@@ -525,7 +525,7 @@ function lookupIn(sh, block, local) {
       // `in` first: reading a missing name logs a FreeSewing warning
       if (head in measurements && measurements[head] !== undefined) return measurements[head]
       if (head in options && options[head] !== undefined) return options[head]
-    } else if (head === 'coat' || head === 'trousers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke' || head === 'rib' || head === 'knit' || head === 'bodice') return store.get(name)
+    } else if (head === 'coat' || head === 'trousers' || head === 'knickers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke' || head === 'rib' || head === 'knit' || head === 'bodice') return store.get(name)
     // A value the block stores under its own name (Bibi's `neckSizeBack`): `block.<key>`
     else if (head === 'block') return store.get(rest.join('.'))
     else {

@@ -1774,3 +1774,19 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > illustration.
 >
 > Leave out: a waist seam, sleeves, buttons, belt, pockets, gathers, ruffles, a person.
+
+### joggers: Joggers
+> Relaxed **pull-on joggers** in charcoal stable sweatshirt knit, tapered from a roomy hip and
+> thigh to folded rib ankle cuffs. Show an elastic waist casing and discreet in-seam pockets
+> opening along both side seams. Front three-quarter view on an invisible form, plain background,
+> clean technical editorial illustration.
+>
+> Leave out: fly, zipper, belt loops, back patch pockets, cargo pockets, drawstring, a person.
+
+### joggers.plain: Plain joggers
+> Relaxed **pull-on joggers** in muted blue stable knit, with a visible elastic casing at the
+> waist, tapered full-length legs and folded rib ankle cuffs. Side seams are uninterrupted,
+> with no pockets. Front three-quarter view on an invisible form, plain background, clean
+> technical editorial illustration.
+>
+> Leave out: pockets, fly, zipper, belt loops, drawstring, cargo flaps, a person.

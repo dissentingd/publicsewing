@@ -9,7 +9,7 @@ import { cleanup, title } from './coat.mjs'
  * `flare` at the outseam) to `hemY`, where it gathers into a band at `bandY`. With `hem` (a
  * depth) the leg has no band: it ends in a plain hem turned up at `hemY - hem`.
  */
-export function draftGatheredLeg(sh, { which, bandY, hemY, flare, casing, hem }) {
+export function draftGatheredLeg(sh, { which, bandY, hemY, flare, casing, hem, pocket, minimumHem = 0, matchOutseam }) {
   const { points, paths, Path, Point, measurements, store, sa, macro, part } = sh
   cleanup(sh)
   macro('rmscalebox')
@@ -33,6 +33,15 @@ export function draftGatheredLeg(sh, { which, bandY, hemY, flare, casing, hem })
   // Titan's back and front forks sit at slightly different heights; give both inseams the
   // same length (from the upper-leg line), so the hem slants a few mm into the band
   points.hemIn = new Point(points.fork.x, points.fork.y + hemY - measurements.waistToUpperLeg)
+  if (minimumHem > 0 && Math.abs(points.hemOut.x - points.hemIn.x) < minimumHem)
+    points.hemOut = new Point(points.hemIn.x + out * minimumHem, hemY)
+  if (matchOutseam) {
+    const run = matchOutseam - casing
+    const rise = Math.abs(points.hemOut.y - points.wOut.y)
+    const dx = Math.sqrt(Math.max(0, run * run - rise * rise))
+    const direction = Math.sign(points.hemOut.x - points.wOut.x) || out
+    points.hemOut = new Point(points.wOut.x + direction * dx, hemY)
+  }
 
   // Counter-clockwise on the page
   paths.seam = back
@@ -47,6 +56,18 @@ export function draftGatheredLeg(sh, { which, bandY, hemY, flare, casing, hem })
     paths.gathers = new Path().move(points.hemIn.shift(90, 8)).line(points.hemOut.shift(90, 8)).addClass('mark dotted')
     points.vent = points.hemOut.shiftTowards(points.wOut, measurements.waistToKnee * 0.12)
     sh.snippets.vent = new sh.Snippet('notch', points.vent)
+  }
+  if (pocket) {
+    const at = (down) => {
+      const y = points.wOut.y + down
+      const t = down / (points.hemOut.y - points.wOut.y)
+      return new Point(points.wOut.x + (points.hemOut.x - points.wOut.x) * t, y)
+    }
+    const top = at(pocket.top)
+    const bottom = at(pocket.top + pocket.length)
+    sh.snippets.pocketTop = new sh.Snippet('notch', top)
+    sh.snippets.pocketBottom = new sh.Snippet('notch', bottom)
+    store.set(`knickers.pocket.${which}`, { opening: top.dist(bottom), top: pocket.top, length: pocket.length, depth: pocket.depth })
   }
 
   store.set(`knickers.${which}`, {

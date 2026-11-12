@@ -94,6 +94,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `wrap-dress` | Surplice dress with crossing front panels, A-line skirt and waist ties | Our own design, on FreeSewing's Bella |
 | `princess-dress` | Sleeveless princess seam dress with continuous panels to a flared hem, back zip | Our own design, on FreeSewing's Noble |
 | `harrington-jacket` | Short raglan zip jacket with stand collar, rib cuffs and waistband | Our own design, on FreeSewing's Brian |
+| `joggers` | Pull-on tapered trousers with in-seam pockets and rib ankle cuffs | Our own design, on FreeSewing's Titan |
 | `bib-overall` | Bib-and-brace work overall, side seams buttoned at the hip, patch pockets | Simons 1916 |
 | `field-trousers` | Loose pleated combat trousers with flapped cargo pockets and a flapped seat pocket | Open+Pattern (CC BY 4.0), CS95 |
 | `peg-pants` | Pleated trousers full over the hips, tapering to a narrow bottom | Simons 1916 |

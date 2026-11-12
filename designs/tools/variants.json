@@ -1,4 +1,5 @@
 {
+  "joggers": {"default": {}, "plain": {"pockets": false}, "apart": {"ankleLength": 0.88, "legTaper": 0.2, "ankleEase": 0.35, "ribStretch": 0.22, "sidePocketTop": 0.15, "sidePocketLength": 0.7}},
   "bar-vest": { "default": {}, "sleeved": { "sleeves": true }, "plain": { "sleeves": true, "pockets": false, "collarHeight": 0, "buttons": 4 } },
   "girls-coat": {"default": {}, "short": {"lengthBelowWaist": 0.4, "buttons": 3, "ticketPocket": true}, "plain": {"pockets": false, "cbFlare": 0, "buttonInset": 1}, "double": {"doubleBreasted": true, "buttons": 3}},
   "womens-box-coat": { "default": {}, "peakLapels": {"lapelStyle": "peak"}, "variant": { "lapelStyle": "peak", "neckDartWidth": 0, "buttons": 4, "lengthBelowWaist": 0.45, "flare": 0.08 }, "plain": { "pockets": false, "cbFlare": 0, "buttonInset": 1 } },

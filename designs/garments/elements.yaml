@@ -199,7 +199,7 @@ elements:
   pocket-coin:
     { name: Coin (watch) pocket, group: pocket, status: partial, lib: [polygon], note: "The piece is easy; its placement is not" }
   pocket-on-seam:
-    { name: In-seam side pocket, group: pocket, status: gap, freesewing: [sasha] }
+    { name: In-seam side pocket, group: pocket, status: covered, lib: [gatheredLeg, polygon], seen: [joggers], freesewing: [sasha] }
   pocket-cargo:
     { name: Bellows (cargo) pocket, group: pocket, status: covered, lib: [pocket, flap], seen: [field-trousers, hunting-coat] }
   pocket-kangaroo:
@@ -269,7 +269,7 @@ elements:
   leg-shorts:
     { name: Shorts length, group: leg, status: covered, lib: [trouserLeg.shortInseam], seen: [shorts, knee-pants], freesewing: [ashley, shale, percy] }
   leg-rib-cuff:
-    { name: Ankle rib or elastic cuff, group: leg, status: partial, lib: [rib], note: "The rib piece type sizes the band; its edge comes from a measurement or a stored hem width, which the leg operations don't store yet" }
+    { name: Ankle rib or elastic cuff, group: leg, status: covered, lib: [gatheredLeg, rib], seen: [joggers] }
 
   # --- Waists ---
   waistband:

@@ -1,0 +1,88 @@
+about:
+  id: joggers
+  name: Joggers
+  category: trousers
+  description: Relaxed pull-on joggers with an elastic waist, tapered legs, in-seam pockets and rib ankle cuffs, drafted to your measurements
+  difficulty: 2
+  tags: [trousers, activewear]
+  techniques: [elastic, ribbing, in-seam pocket]
+  version: 0.1.0
+  source: Our own design, on FreeSewing's Titan trouser block
+  preview: cisFemaleAdult36
+
+block: titan
+
+options:
+  seatEase: { pct: 8, min: 4, max: 25, of: seat, menu: fit }
+  ankleLength: { pct: 95, min: 85, max: 103, of: waistToFloor, menu: style }
+  legTaper: { pct: 33, min: 20, max: 40, of: seat, menu: style, description: 'Width removed at each outer leg hem as a share of the seat, with a floor set by ankle ease.' }
+  ankleEase: { pct: 20, min: 10, max: 40, of: ankle, menu: fit }
+  casing: { pct: 3.5, min: 2, max: 6, of: waist, menu: style }
+  ribStretch: { pct: 15, min: 5, max: 25, menu: fit }
+  cuffHeight: { pct: 18, min: 12, max: 30, of: ankle, menu: style, description: 'Finished ankle cuff height as a share of the ankle circumference.' }
+  pockets: { bool: true, menu: style }
+  sidePocketTop: { pct: 25, min: 10, max: 40, of: waistToSeat, menu: style }
+  sidePocketLength: { pct: 60, min: 40, max: 80, of: waistToSeat, menu: style }
+  sidePocketDepth: { pct: 18, min: 12, max: 25, of: seat, menu: style }
+
+pieces:
+  front:
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToFloor, waistToUpperLeg, ankle]
+    ops:
+      - gatheredLeg:
+          which: front
+          hemY: waistToFloor * ankleLength
+          flare: -seat * legTaper
+          minimumHem: ankle * (1 + ankleEase) / 2
+          casing: 2 * waist * casing + 6
+          pocket: { if: pockets, top: waistToSeat * sidePocketTop, length: waistToSeat * sidePocketLength, depth: seat * sidePocketDepth }
+  back:
+    from: titan.back
+    hide: tree
+    after: [front]
+    options: all
+    measurements: [waistToFloor, waistToUpperLeg, ankle]
+    ops:
+      - gatheredLeg:
+          which: back
+          hemY: waistToFloor * ankleLength
+          flare: -seat * legTaper
+          minimumHem: ankle * (1 + ankleEase) / 2
+          matchOutseam: knickers.front.outseam
+          casing: 2 * waist * casing + 6
+          pocket: { if: pockets, top: waistToSeat * sidePocketTop, length: waistToSeat * sidePocketLength, depth: seat * sidePocketDepth }
+  cuff:
+    part: rib
+    after: [front, back]
+    nr: 3
+    label: cuff
+    cut: 2
+    options: [ribStretch, cuffHeight]
+    measurements: [ankle]
+    edge: knickers.front.hem + knickers.back.hem
+    stretch: ribStretch
+    height: ankle * cuffHeight
+    round: true
+  pocketBag:
+    part: polygon
+    after: [front, back]
+    if: pockets
+    nr: 4
+    label: pocketBag
+    cut: 4
+    options: [pockets, sidePocketDepth]
+    measurements: [seat]
+    let:
+      opening: (knickers.pocket.front.opening + knickers.pocket.back.opening) / 2
+      depth: seat * sidePocketDepth
+    points: [[0, 0], [depth, 0], [depth * 1.15, opening * 0.45], [depth, opening], [0, opening]]
+    allowance: [1, 1, 1, 1, 1]
+
+variants:
+  plain:
+    name: Plain joggers
+    description: The same relaxed pull-on leg without in-seam pockets.
+    options: { pockets: false }

@@ -782,6 +782,21 @@ options:
   pockets:
     title: Pockets
     description: Pockets on the front.
+  ankleLength:
+    title: Ankle length
+    description: Length of the trouser leg as a share of waist to floor.
+  ankleEase:
+    title: Ankle ease
+    description: Minimum extra circumference at the trouser hem as a share of the ankle.
+  sidePocketTop:
+    title: Side pocket top
+    description: Distance from the waist to the pocket mouth as a share of waist to seat.
+  sidePocketLength:
+    title: Side pocket length
+    description: Length of the in-seam pocket opening as a share of waist to seat.
+  sidePocketDepth:
+    title: Side pocket depth
+    description: Depth of the pocket bag as a share of the seat.
   pocketShape:
     title: Pocket shape
     description: The shape of the patch pockets' bottom corners.

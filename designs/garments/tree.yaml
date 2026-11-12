@@ -148,7 +148,7 @@ nodes:
   drawstring-trousers: { name: Drawstring trousers, parent: trousers, traits: [leg-gathered, waist-drawstring, pocket-on-seam], freesewing: [paco] }
   salwar-t: { name: Salwar, parent: trousers, traits: [leg-gathered, waist-drawstring], note: "Queue 53, inspired by CBSE" }
   churidar-t: { name: Churidar, parent: trousers, traits: [body-bias, waist-drawstring, leg-gathered], note: "Queue 55, inspired by CBSE" }
-  joggers: { name: Joggers, parent: trousers, traits: [leg-gathered, waist-elastic, leg-rib-cuff, pocket-on-seam], knit: true }
+  joggers: { name: Joggers, parent: trousers, traits: [leg-gathered, waist-elastic, leg-rib-cuff, pocket-on-seam], designs: [joggers], variants: [joggers.plain], knit: true }
   breeches-family: { name: Breeches and knee trousers, parent: lower }
   breeches-t: { name: Riding breeches, parent: breeches-family, traits: [leg-breeches, closure-side-opening, closure-fly, waistband], designs: [breeches] }
   jodhpurs-t: { name: Jodhpurs, parent: breeches-family, traits: [leg-breeches, closure-fly, waistband], note: "Queue 48" }
