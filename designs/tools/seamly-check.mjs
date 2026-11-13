@@ -47,7 +47,7 @@ const report = ssh(`docker run --rm -v ~/${remote}:/work seamly-cli`)
 mkdirSync(join(out, 'dxf'), { recursive: true })
 execFileSync('scp', ['-q', '-r', `${host}:${remote}/dxf/.`, join(out, 'dxf')])
 
-// 3. Compare: Seamly writes the seam line on layer 8 (the longest closed polyline there) and
+// 3. Compare: Seamly writes the seam line on layer 8 (the largest-perimeter closed polyline there) and
 // the cut line on layer 1; a piece's seam should keep its length
 let bad = 0
 for (const line of report.trim().split('\n')) {
@@ -64,7 +64,7 @@ for (const line of report.trim().split('\n')) {
         const want = ours[name][b.name]
         if (want === undefined) continue
         seen.add(b.name)
-        const seam = b.ents.filter((e) => e.type === 'POLYLINE' && e.layer === 8).sort((a, c) => c.pts.length - a.pts.length)[0]
+        const seam = b.ents.filter((e) => e.type === 'POLYLINE' && e.layer === 8).sort((a, c) => perimeter(c.pts) - perimeter(a.pts))[0]
         const got = seam ? perimeter(seam.pts) : 0
         if (Math.abs(got - want) > Math.max(1, want * 0.002)) problems.push(`${b.name} seam ${got.toFixed(1)} vs ${want.toFixed(1)}`)
       }
