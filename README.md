@@ -1,24 +1,26 @@
 # PublicSewing
 
-Made-to-measure sewing patterns for practical, timeless garments, drafted from your own
-measurements, children's sizes included.
+Made-to-measure sewing patterns for practical, timeless garments, available free of charge.
+PublicSewing brings documented designs together so more people can make and adapt useful clothes.
+Draft to your own measurements or use a size set, including children's sizes. Not for AI training.
 
 PublicSewing adds garments that [FreeSewing](https://freesewing.eu) doesn't have, and lists some of
-FreeSewing's own designs beside them, credited as theirs (`designs/freesewing.yaml`). Each of our designs
-takes its pieces, style lines, proportions and construction from a drafting book: five in the
-public domain (published 1909 to 1921, four American and one British) and one later reference
-used only for its methods (ЕМКО, 1988). The geometry comes from FreeSewing's
-tested blocks, so every design drafts at any size. The old books are design references: designs
-are modernised and simplified freely, and historical accuracy is not a goal.
+FreeSewing's own designs beside them, credited as theirs (`designs/freesewing.yaml`). Our designs
+draw on public-domain drafting books and documented newer sources used within their rights.
+Community members can also submit measured garments for future designs. Each design credits its source and records how the
+reference became a pattern. The geometry generally comes from FreeSewing's community-developed
+blocks and is redrafted to the wearer's measurements; a few designs use other construction.
+Historical accuracy is not a goal.
 
-PublicSewing is a separate project built on FreeSewing's MIT-licensed packages. It is not part
-of FreeSewing and isn't endorsed by it.
+PublicSewing is a separate project built on FreeSewing's MIT-licensed packages and the work of its
+contributors. It is not part of FreeSewing and isn't endorsed by it.
 
 ## Status
 
-**Every design is a draft. None has been sewn yet.** Each one drafts cleanly at every
-measurement set in the test suite, and its seams that sew together have matching lengths. That
-doesn't prove the garment fits. A design is marked `tested` only after someone has sewn a
+**Every design is a draft. None has been sewn yet.** Automated checks draft the designs against
+the project's measurement sets, including public USDA children's body-measurement data, and check
+that seams meant to join have matching lengths. These checks catch drafting errors; they do not
+verify fit on a person. A design is marked `tested` only after someone has sewn a
 muslin and recorded the result in its brief. If you sew one, please report what happened.
 Some designs are also draped in a 3D cloth simulator ([designs/drape](designs/drape/README.md)):
 a check that the pieces sew together into the garment, not a fit result.
@@ -86,15 +88,15 @@ a check that the pieces sew together into the garment, not a fit result.
 | `anorak` | Boxy pullover anorak: front yoke, buttoned neck placket, hood, flapped chest pocket, kangaroo pocket | Open+Pattern (CC BY 4.0), US tactical smock |
 | `work-shirt` | Roomy pullover work shirt: back yoke, buttoned front fly, neck band or collar, breast pocket | Vincent 1890 |
 | `t-shirt` | Plain crew-neck T-shirt with short set-in sleeves, drafted from your measurements | Open+Pattern Standard T-shirt (CC BY 4.0) |
-| `turtleneck` | Close-fitting knit top with a tall folded rib collar and long sleeves | Our own design, on FreeSewing's Bibi |
-| `henley` | Knit top with a buttoned placket at a round neck; polo and rugby-shirt variants with a knit collar | Our own design, on FreeSewing's Bibi |
-| `cardigan` | Buttoned knit cardigan with a V neck, a front band, and rib cuffs and hem | Our own design, on FreeSewing's Bibi |
-| `fitted-dress` | Darted bodice joined at the waist to a gathered, straight or A-line skirt, back zip; sundress, sheath and jumper-dress variants | Our own design, on FreeSewing's Bella |
-| `shell-top` | Sleeveless darted woven top, continuous from shoulder to hip, with round or square neck | Our own design, on FreeSewing's Bella |
-| `wrap-dress` | Surplice dress with crossing front panels, A-line skirt and waist ties | Our own design, on FreeSewing's Bella |
-| `princess-dress` | Sleeveless princess seam dress with continuous panels to a flared hem, back zip | Our own design, on FreeSewing's Noble |
-| `harrington-jacket` | Short raglan zip jacket with stand collar, rib cuffs and waistband | Our own design, on FreeSewing's Brian |
-| `joggers` | Pull-on tapered trousers with in-seam pockets and rib ankle cuffs | Our own design, on FreeSewing's Titan |
+| `turtleneck` | Close-fitting knit top with a tall folded rib collar and long sleeves | Built on FreeSewing's Bibi |
+| `henley` | Knit top with a buttoned placket at a round neck; polo and rugby-shirt variants with a knit collar | Built on FreeSewing's Bibi |
+| `cardigan` | Buttoned knit cardigan with a V neck, a front band, and rib cuffs and hem | Built on FreeSewing's Bibi |
+| `fitted-dress` | Darted bodice joined at the waist to a gathered, straight or A-line skirt, back zip; sundress, sheath and jumper-dress variants | Built on FreeSewing's Bella |
+| `shell-top` | Sleeveless darted woven top, continuous from shoulder to hip, with round or square neck | Built on FreeSewing's Bella |
+| `wrap-dress` | Surplice dress with crossing front panels, A-line skirt and waist ties | Built on FreeSewing's Bella |
+| `princess-dress` | Sleeveless princess seam dress with continuous panels to a flared hem, back zip | Built on FreeSewing's Noble |
+| `harrington-jacket` | Short raglan zip jacket with stand collar, rib cuffs and waistband | Built on FreeSewing's Brian |
+| `joggers` | Pull-on tapered trousers with in-seam pockets and rib ankle cuffs | Built on FreeSewing's Titan |
 | `bib-overall` | Bib-and-brace work overall, side seams buttoned at the hip, patch pockets | Simons 1916 |
 | `field-trousers` | Loose pleated combat trousers with flapped cargo pockets and a flapped seat pocket | Open+Pattern (CC BY 4.0), CS95 |
 | `peg-pants` | Pleated trousers full over the hips, tapering to a narrow bottom | Simons 1916 |
@@ -211,9 +213,10 @@ Prince Browne in 1921, W. D. F. Vincent in 1926. We haven't found when Gertrud B
 in Germany only if she died before 1956. No design uses it.
 
 Drafting methods, formulas, proportions and body measurements aren't copyrightable; the
-expression of a book (its text, layout and illustrations) is. Each design takes its pieces,
-proportions and construction from a book, gets its geometry from FreeSewing's blocks, and is
-written in our own words. No source text or illustration is reproduced outside `corpus/`.
+expression of a book (its text, layout and illustrations) is. Book-based designs take their pieces,
+proportions and construction from their sources; most designs get their geometry from FreeSewing's
+blocks. All briefs are written in our own words. No source text or illustration is reproduced
+outside `corpus/`.
 
 ЕМКО СЭВ (1988) is still in copyright. Its designs (windbreaker, quilted jacket, winter coat,
 topcoat, jacket, waistcoat, trousers) take only its methods, proportions and construction, which copyright doesn't cover;

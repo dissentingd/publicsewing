@@ -4,6 +4,7 @@
 #   designs: our designs of this type; variants: <design>.<variant> that make it;
 #   freesewing: FreeSewing designs of this type, to list as theirs (credited), not ours;
 #   knit: true when it's usually cut from knit cloth (our blocks are for woven cloth);
+#   research: true when a source and construction have not been verified; do not count as buildable;
 #   note.
 # A node's coverage is worked out by tools/garments.mjs: built (it has designs or variants),
 # buildable (every trait is covered), partial, or gap.
@@ -33,6 +34,10 @@ nodes:
   tuxedo-shirt: { name: Formal (tuxedo) shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-stand, cuff-french, tucks] }
   football-shirt-t: { name: Woven sports pullover, parent: shirts, traits: [body-yoke, closure-placket, collar-turndown, cuff-band], note: "Queue 49" }
   grandad-shirt: { name: Band-collar (grandad) shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-placket, collar-stand, cuff-barrel, hem-curved-tail] }
+  scrub-top: { name: Medical scrub top, parent: shirts, research: true }
+  adaptive-upper: { name: Adaptive upper-body garments, parent: upper }
+  easy-dressing-top: { name: Easy-dressing top, parent: adaptive-upper, research: true, note: "Specify an opening and wearer need before drafting" }
+  nursing-top: { name: Nursing blouse, parent: adaptive-upper, research: true, note: "Document access opening and fit requirements" }
 
   blouses: { name: Blouses, parent: upper }
   middy: { name: Middy (sailor) blouse, parent: blouses, traits: [body-yoke, neck-v, collar-sailor, cuff-band], designs: [middy-blouse] }
@@ -45,6 +50,9 @@ nodes:
   smock-top: { name: Smock, parent: blouses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered, cuff-band], designs: [childrens-smock] }
   choli-t: { name: Choli (saree blouse), parent: blouses, traits: [body-darted-bodice, sleeve-short, closure-buttons], note: "Queue 56, inspired by CBSE" }
   kameez-t: { name: Kameez and kurta, parent: blouses, traits: [body-yoke, neck-split, hem-side-slits, sleeve-set-in], note: "Queue 54, inspired by CBSE" }
+  jeogori: { name: Jeogori, parent: blouses, research: true }
+  huipil: { name: Community-specific huipil, parent: blouses, research: true, note: "Identify community and region; document weaving and assembly separately" }
+  unku: { name: Community-specific unku, parent: blouses, research: true }
   tunic-top: { name: Tunic top, parent: blouses, traits: [body-yoke, neck-split, hem-side-slits] }
 
   knit-tops: { name: Knit tops, parent: upper }
@@ -102,6 +110,7 @@ nodes:
   harrington: { name: Harrington jacket, parent: casual-jackets, traits: [body-boxy, sleeve-raglan, closure-zip-front, collar-stand, cuff-rib, waistband-jacket], designs: [harrington-jacket], variants: [harrington-jacket.relaxed] }
   safari: { name: Safari jacket, parent: casual-jackets, traits: [body-boxy, collar-convertible, pocket-cargo, belt, closure-buttons] }
   shacket: { name: Shirt jacket (shacket), parent: casual-jackets, traits: [body-boxy, collar-shirt, closure-buttons, pocket-patch-flap] }
+  haori: { name: Haori, parent: casual-jackets, research: true }
 
   # ======================= Outerwear =======================
   coats: { name: Coats, parent: outer }
@@ -118,6 +127,7 @@ nodes:
   winter: { name: Winter coat, parent: overcoats, traits: [body-boxy, yoke-front, yoke-shirt-back, pocket-welt, collar-turndown], designs: [winter-coat] }
   trench: { name: Trench coat, parent: overcoats, traits: [body-boxy, sleeve-raglan, closure-double-breasted, collar-notched, belt, yoke-shirt-back, cuff-tab, pocket-welt] }
   duffle: { name: Duffle coat, parent: overcoats, traits: [body-boxy, hood, closure-frogs, pocket-patch, yoke-front] }
+  chapan: { name: Chapan / chopon, parent: overcoats, research: true }
   womens-coats: { name: Women's coats, parent: coats }
   box-coat-t: { name: Box coat, parent: womens-coats, traits: [body-box-darted, collar-peak, pocket-flap-set-in], designs: [womens-box-coat, girls-coat] }
   princess-coat-t: { name: Princess coat, parent: womens-coats, traits: [body-princess, collar-storm, closure-double-breasted], designs: [princess-coat] }
@@ -131,6 +141,11 @@ nodes:
   cape-overcoat-t: { name: Cape overcoat, parent: capes, traits: [cape-circle, collar-turndown], designs: [cape-overcoat] }
   inverness-t: { name: Inverness coat, parent: capes, traits: [body-box-darted, cape-shoulder, collar-storm], designs: [inverness-coat], freesewing: [carlton] }
   poncho: { name: Poncho, parent: capes, traits: [flat-polygon, hood] }
+
+  # These named traditions need source and construction review before trait mapping.
+  andean-poncho: { name: Region-specific Andean poncho, parent: capes, research: true, note: "Document woven dimensions, finishing and community-specific construction" }
+  shawls-wraps: { name: Shawls and shoulder wraps, parent: outer }
+  lliclla: { name: Lliclla, parent: shawls-wraps, research: true }
 
   # ======================= Lower body =======================
   trousers: { name: Trousers, parent: lower }
@@ -148,6 +163,11 @@ nodes:
   drawstring-trousers: { name: Drawstring trousers, parent: trousers, traits: [leg-gathered, waist-drawstring, pocket-on-seam], freesewing: [paco] }
   salwar-t: { name: Salwar, parent: trousers, traits: [leg-gathered, waist-drawstring], note: "Queue 53, inspired by CBSE" }
   churidar-t: { name: Churidar, parent: trousers, traits: [body-bias, waist-drawstring, leg-gathered], note: "Queue 55, inspired by CBSE" }
+  adaptive-trousers: { name: Adaptive trousers, parent: trousers }
+  scrub-trousers: { name: Medical scrub trousers, parent: trousers, research: true }
+  waterproof-overtrousers: { name: Waterproof over-trousers, parent: trousers, research: true, note: "Specify waterproof fabric, seam treatment and over-layer ease" }
+  side-opening-trousers: { name: Side-opening trousers, parent: adaptive-trousers, research: true }
+  seated-fit-trousers: { name: Seated-fit trousers, parent: adaptive-trousers, research: true, note: "Needs seated measurements and wearer testing" }
   joggers: { name: Joggers, parent: trousers, traits: [leg-gathered, waist-elastic, leg-rib-cuff, pocket-on-seam], designs: [joggers], variants: [joggers.plain], knit: true }
   breeches-family: { name: Breeches and knee trousers, parent: lower }
   breeches-t: { name: Riding breeches, parent: breeches-family, traits: [leg-breeches, closure-side-opening, closure-fly, waistband], designs: [breeches] }
@@ -172,6 +192,14 @@ nodes:
   yoke-skirt: { name: Yoke skirt, parent: skirts, traits: [skirt-two-piece, yoke-skirt-hip, closure-zip-back] }
   tiered: { name: Tiered skirt, parent: skirts, traits: [skirt-tiered, gathers, waist-elastic] }
 
+  hakama: { name: Hakama, parent: trousers, research: true }
+  chima: { name: Chima, parent: skirts, research: true }
+  baji: { name: Baji, parent: trousers, research: true }
+  wrapped-lower: { name: Wrapped lower garments, parent: lower }
+  dhoti: { name: Dhoti, parent: wrapped-lower, research: true, note: "Record fabric dimensions and wrapping method" }
+  lavalava: { name: Lavalava / laplap, parent: wrapped-lower, research: true, note: "Record island, fabric dimensions and wrapping method" }
+  pareu: { name: Pareu, parent: wrapped-lower, research: true, note: "Record island, fabric dimensions and wrapping method" }
+
   # ======================= Whole body =======================
   dresses: { name: Dresses, parent: whole }
   shift: { name: Shift dress, parent: dresses, traits: [body-yoke, neck-round, sleeve-short], designs: [shift-dress], variants: [shift-dress.scoop, shift-dress.square, shift-dress.boat, shift-dress.v-neck, shift-dress.sleeveless] }
@@ -189,6 +217,8 @@ nodes:
   shirt-dress: { name: Shirt dress, parent: dresses, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, belt] }
   princess-dress: { name: Princess-line dress, parent: dresses, traits: [body-princess, neck-round, closure-zip-back], designs: [princess-dress], variants: [princess-dress.armhole] }
   smock-dress: { name: Smock dress, parent: dresses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered] }
+  maternity-dress: { name: Maternity dress, parent: dresses, research: true, note: "Specify stage and fit requirements" }
+  qipao: { name: Qipao / cheongsam, parent: dresses, research: true }
   t-shirt-dress: { name: T-shirt dress, parent: dresses, traits: [body-knit, neck-round, sleeve-set-in], knit: true }
   pinafores: { name: Pinafores and jumpers, parent: whole }
   pinafore-t: { name: Pinafore, parent: pinafores, traits: [body-yoke, sleeveless, skirt-gathered, closure-buttons], designs: [pinafore] }
@@ -198,11 +228,22 @@ nodes:
   bib-overall-t: { name: Bib overall, parent: one-pieces, traits: [leg-in-one, bib, closure-side-opening], designs: [bib-overall], freesewing: [opal] }
   coverall: { name: Coverall (boiler suit), parent: one-pieces, traits: [body-boxy, leg-tailored, closure-zip-front, collar-turndown, pocket-patch] }
   romper: { name: Romper, parent: one-pieces, traits: [body-yoke, leg-gathered, leg-shorts, closure-buttons], freesewing: [otis] }
+  infant-sleepsuit: { name: Infant sleepsuit, parent: one-pieces, research: true, note: "Infant sizing and opening safety need review" }
   dungarees: { name: Dungarees, parent: one-pieces, traits: [leg-tailored, bib, pocket-patch, closure-side-opening] }
   robes: { name: Robes and gowns, parent: whole }
   dressing-gown-t: { name: Dressing gown, parent: robes, traits: [body-boxy, collar-shawl, closure-wrap, belt, pocket-patch], designs: [dressing-gown] }
   kimono-robe: { name: Kimono robe, parent: robes, traits: [body-flat, sleeve-kimono, closure-wrap, belt] }
   kaftan: { name: Kaftan, parent: robes, traits: [body-flat, neck-split, hem-side-slits] }
+
+  # Kimono sleeves and robe silhouettes elsewhere in the tree are distinct from these garments.
+  kimono-traditional: { name: Kimono (traditional construction), parent: robes, research: true }
+  yukata: { name: Yukata, parent: robes, research: true }
+  juban: { name: Juban, parent: robes, research: true }
+  djellaba: { name: Djellaba, parent: robes, research: true }
+  boubou: { name: Boubou / mbubb, parent: robes, research: true }
+  agbada: { name: Agbádá, parent: robes, research: true }
+  loungewear-sets: { name: Loungewear sets, parent: sleep }
+  jinbei: { name: Jinbei, parent: loungewear-sets, research: true }
 
   # ======================= Sleepwear and underwear =======================
   nightwear: { name: Nightwear, parent: sleep }
@@ -216,6 +257,10 @@ nodes:
   boxer-shorts: { name: Boxer shorts, parent: underwear, traits: [leg-gathered, leg-shorts, waist-elastic, closure-fly] }
   slip: { name: Slip, parent: underwear, traits: [body-bias, sleeveless] }
   undershirt: { name: Undershirt, parent: underwear, traits: [body-knit, sleeveless, neck-scoop], knit: true }
+  sari-petticoat: { name: Sari petticoat, parent: underwear, research: true }
+  chemise: { name: Chemise / shift, parent: underwear, research: true }
+  petticoat: { name: Petticoat, parent: underwear, research: true }
+  bra: { name: Bra / brassiere, parent: underwear, research: true }
 
   # ======================= Neckwear and accessories =======================
   neckwear: { name: Neckwear, parent: accessory }

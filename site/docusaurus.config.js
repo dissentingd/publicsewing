@@ -12,7 +12,7 @@ process.env.USE_SIMPLE_CSS_MINIFIER ??= 'true'
 /** @type {import('@docusaurus/types').Config} */
 export default {
   title: 'PublicSewing',
-  tagline: 'Made-to-measure patterns for practical, timeless garments',
+  tagline: 'Made-to-measure sewing patterns for practical, timeless garments',
   url: 'https://publicsewing.org',
   baseUrl: '/',
   favicon: 'img/favicon.svg',

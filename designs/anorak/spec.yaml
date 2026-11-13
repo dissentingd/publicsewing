@@ -14,6 +14,7 @@ about:
   techniques: [yoke, placket, hood, patch-pocket, flap, button]
   version: 0.1.0
   source: US tactical smock, digitised by Open+Pattern (openpattern/us-tactical-smock)
+  garmentTraditions: [us-tactical-smock]
 
 options:
   chestEase: { pct: 34, min: 15, max: 40, menu: fit } # back and front 68 cm across each on chest 100

@@ -45,6 +45,21 @@ const order = [...readme.matchAll(/^\| `([a-z-]+)` \| (.+?) \| (.+?) \|$/gm)].ma
 
 const specs = {}
 for (const id of ids) specs[id] = readSpec(join(designsDir, id, 'spec.yaml'))
+const traditions = parse(readFileSync(join(designsDir, 'garments', 'traditions.yaml'), 'utf8')).traditions
+const sourceTraditions = parse(readFileSync(join(designsDir, 'garments', 'source-traditions.yaml'), 'utf8')).sources
+const designTraditions = parse(readFileSync(join(designsDir, 'garments', 'design-traditions.yaml'), 'utf8')).designs
+for (const id of ids) {
+  const keys = [...(designTraditions[id] ?? []), ...(specs[id].about.garmentTraditions ?? (specs[id].about.garmentTradition ? [specs[id].about.garmentTradition] : []))]
+  for (const key of keys) if (!traditions[key]) throw new Error(`${id}: no garment tradition ${key}`)
+}
+for (const id of Object.keys(designTraditions)) if (!specs[id]) throw new Error(`no built design ${id} in design-traditions.yaml`)
+for (const [key, tradition] of Object.entries(traditions)) {
+  if (!tradition.flag) throw new Error(`${key}: tradition needs an icon before appearing on the site`)
+  if (tradition.flag && !existsSync(out('static', 'img', 'flags', `${tradition.flag}.svg`)))
+    throw new Error(`${key}: no flag icon ${tradition.flag}.svg`)
+}
+for (const [source, keys] of Object.entries(sourceTraditions))
+  for (const key of keys) if (!traditions[key]) throw new Error(`${source}: no tradition ${key}`)
 
 // Section by section, by name within each: the order of the Designs page and the sidebar
 const section = (id) => {
@@ -120,7 +135,7 @@ function wardrobeBranch(node) {
     return `<a href="/designs/${id}">${escapeHtml(name.replace(/[-.]/g, ' '))}</a>`
   }).filter(Boolean).join(' ')
   const descendants = garmentChildren.get(node.id) ?? []
-  return `<li class="${descendants.length ? 'wardrobe-branch' : 'wardrobe-leaf'}"><div class="wardrobe-entry"><span>${escapeHtml(node.name)}</span>${links ? `<span class="wardrobe-patterns">${links}</span>` : ''}</div>${descendants.length ? `<ul>${descendants.map(wardrobeBranch).join('')}</ul>` : ''}</li>`
+  return `<li class="${descendants.length ? 'wardrobe-branch' : 'wardrobe-leaf'}"><div class="wardrobe-entry"><span>${escapeHtml(node.name)}</span>${links ? `<span class="wardrobe-patterns">${links}</span>` : ''}${node.research ? '<span class="wardrobe-research">Research lead</span>' : ''}</div>${descendants.length ? `<ul>${descendants.map(wardrobeBranch).join('')}</ul>` : ''}</li>`
 }
 const wardrobeIntro = `---
 title: A wardrobe in progress
@@ -132,11 +147,18 @@ Our aim is to make it possible to sew a **full wardrobe**: everyday layers, work
 occasion wear, outerwear and the pieces worn underneath. A wardrobe means choice across sizes,
 ages, weather and ways of dressing, not a single prescribed set of clothes.
 
-This map shows the garment families we are working toward. Pattern links appear beside types
-that have a design on this site. Unlinked types show where the collection can grow; some need
-only a new design, while others need new pattern pieces or techniques. The map follows our
+This map groups garments by form and use. A garment tradition belongs in each design's source
+record, where its community, place and period can be described as precisely as the evidence allows.
+Pattern links appear beside types
+that have a design on this site. Unlinked types show where the collection can grow: some need
+a design, new pattern pieces or techniques; research candidates still need a verified source and
+construction method before we can assess whether they are buildable. The map follows our
 [garment coverage plan](https://github.com/dissentingd/publicsewing/blob/main/designs/garments/COVERAGE.md)
 and updates when the site is built.
+
+The map names garments without claiming to represent every community or regional form.
+Wrapped and woven garments may need dimensions, fabric width, wrapping or weaving methods,
+and community-specific context beyond a printable sewing pattern.
 
 The patterns are still drafts until they have been sewn and tested. [See how to test one](/sew-and-test).
 
@@ -260,9 +282,22 @@ const difficultyDots = (n) =>
   n ? `<span className="difficulty" title="Difficulty ${n} of 5" aria-label="Difficulty ${n} of 5">${'●'.repeat(n)}<span className="difficulty-off">${'●'.repeat(Math.max(0, 5 - n))}</span></span>` : ''
 const srcTag = (text, href, kind = 'source') => `<a className="src-tag src-tag--${kind}" href="${href}">${text}</a>`
 const tagLine = (...tags) => tags.filter(Boolean).join(' ')
+const traditionTag = (key) => {
+  if (!key) return ''
+  const { flag, label } = traditions[key]
+  return `<span className="tradition-tag" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}">${flag ? `<img src={useBaseUrl('/img/flags/${flag}.svg')} alt="" />` : ''}</span>`
+}
+const traditionKeys = (id, about) => {
+  const keys = new Set([...(designTraditions[id] ?? []), ...(about.garmentTraditions ?? (about.garmentTradition ? [about.garmentTradition] : []))])
+  for (const [source, inherited] of Object.entries(sourceTraditions))
+    if (about.source?.includes(`(${source})`) || about.source?.includes(`; ${source})`))
+      for (const key of inherited) keys.add(key)
+  return [...keys]
+}
+const traditionTags = (id, about) => traditionKeys(id, about).map(traditionTag).join(' ')
 const supportNote = (project, href) =>
   `<small className="support-note">[${project}](${href}) did the hard part, so please support them and use their design from them first. Feel free to use ours if it offers something you need.</small>`
-const designCell = (link, difficulty, tags) => [link, difficultyDots(difficulty), tags].filter(Boolean).join('<br />')
+const designCell = (link, difficulty, tags, icons = '') => [difficulty ? link : tagLine(link, icons), difficulty ? tagLine(difficultyDots(difficulty), icons) : '', tags].filter(Boolean).join('<br />')
 const garmentCell = (text, ...extra) => [text, ...extra.filter(Boolean)].join('<br />')
 const CC_BY = 'https://creativecommons.org/licenses/by/4.0/'
 
@@ -271,6 +306,7 @@ const original = {}
 for (const p of external.patterns) {
   const where = `external.yaml, ${p.name}`
   if (!rows.designs[p.category]) throw new Error(`${where}: category isn't one of lib/categories.mjs`)
+  for (const key of p.traditions ?? []) if (!traditions[key]) throw new Error(`${where}: no tradition ${key}`)
   if (p.ours && !ids.includes(p.ours)) throw new Error(`${where}: no design ${p.ours}`)
   if (p.ours && !inspiredIds.includes(p.ours)) throw new Error(`${where}: ${p.ours} isn't in inspired.yaml`)
   const url = `${external.base}${p.path}/`
@@ -300,7 +336,7 @@ for (const p of external.patterns) {
       : ''
   rows.designs[p.category].push({
     name: p.name,
-    row: `| ${thumb} | ${designCell(`[${p.name}](${url})`, 0, tagLine(srcTag(external.by, url, 'external'), srcTag('CC BY 4.0', CC_BY, 'licence')))} | ${garmentCell(`${p.about}.`, `<small>Fixed sizes: ${p.sizes}, on their site.${picCredit}${ours}</small>`)} |`,
+    row: `| ${thumb} | ${designCell(`[${p.name}](${url})`, 0, tagLine(srcTag(external.by, url, 'external'), srcTag('CC BY 4.0', CC_BY, 'licence')), (p.traditions ?? []).map(traditionTag).join(' '))} | ${garmentCell(`${p.about}.`, `<small>Fixed sizes: ${p.sizes}, on their site.${picCredit}${ours}</small>`)} |`,
   })
 }
 
@@ -474,7 +510,7 @@ ${variants.join('\n')}
       : srcTag(info.source.replace(/[*_]/g, ''), `/designs/${id}#the-brief`)
   rows[folder][about.category].push({
     name: about.name,
-    row: `| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | ${designCell(`[${about.name}](/designs/${id})`, about.difficulty, ourTags)} | ${garmentCell(info.garment, variantLinks.length ? `<small>Variants: ${variantLinks.join(' · ')}</small>` : '', original[id] ? supportNote(external.by, original[id].url) : '')} |`,
+    row: `| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | ${designCell(`[${about.name}](/designs/${id})`, about.difficulty, ourTags, traditionTags(id, about))} | ${garmentCell(info.garment, variantLinks.length ? `<small>Variants: ${variantLinks.join(' · ')}</small>` : '', original[id] ? supportNote(external.by, original[id].url) : '')} |`,
   })
   const originalLine = original[id]
     ? `\n\nOur own interpretation, inspired by [${original[id].name}](${original[id].url}) from [${external.by}](/sources#open-pattern). ${external.by} did the hard part, so please [support them](${original[id].url}) and use their design from them first. Feel free to use ours if it offers something you need.`
@@ -503,6 +539,8 @@ match, but that doesn't prove it fits. Sew a muslin before good fabric, and plea
 
 ${info.garment}. ${sourceLabel}: ${info.source}.${originalLine}${alsoFs[id] ? `\n\nAlso as FreeSewing's ${alsoFs[id].join(', ')}, under Inspired Designs.` : ''}${variantsLine}
 
+${traditionTags(id, about) ? `${traditionTags(id, about)}\n` : ''}
+
 ${practical}
 
 ## Make the pattern
@@ -527,8 +565,25 @@ ${background}
 })
 
 // A page of designs: its introduction, then a table per section that has anything in it
+// The wardrobe's broad areas, adapted for the catalog's existing categories. Empty areas are
+// omitted on each index, while category ids and links stay stable.
+const designGroups = [
+  { id: 'upper-body', label: 'Upper body', categories: ['tops', 'vests', 'jackets'] },
+  { id: 'lower-body', label: 'Lower body', categories: ['skirts', 'trousers'] },
+  { id: 'whole-body', label: 'Whole body', categories: ['dresses'] },
+  { id: 'outerwear', label: 'Outerwear', categories: ['coats'] },
+  { id: 'sleep-active', label: 'Sleepwear & activewear', categories: ['sleepwear', 'swim'] },
+  { id: 'children', label: 'Babies & toddlers', categories: ['babies'] },
+  { id: 'accessories', label: 'Accessories', categories: ['hats', 'accessories'] },
+  { id: 'blocks', label: 'Blocks', categories: ['blocks'] },
+]
+if (new Set(designGroups.flatMap((g) => g.categories)).size !== categories.length)
+  throw new Error('designGroups must place each catalog category once')
 const designsPage = (folder, title, slug, position, intro) => {
-  const sections = categories.filter((c) => rows[folder][c.id].length)
+  const groups = designGroups.map((g) => ({
+    ...g,
+    sections: g.categories.map((id) => categories.find((c) => c.id === id)).filter((c) => rows[folder][c.id].length),
+  })).filter((g) => g.sections.length)
   writeFileSync(
     out('docs', folder, 'index.mdx'),
     `---
@@ -541,19 +596,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 ${intro}
 
 <nav className="design-sections" aria-label="Sections">
-${sections
-  .map(
-    (c) =>
-      existsSync(join(site, 'illustrations', `${c.image}.jpg`))
-        ? `  <a href="#${c.id}"><img src={useBaseUrl('/img/illustrations/${c.image}.jpg')} alt="" /><span>${c.label.replace('&', '&amp;')}</span></a>`
-        : `  <a href="#${c.id}" className="no-image"><span>${c.label.replace('&', '&amp;')}</span></a>`
-  )
+${groups.flatMap((g) => g.sections)
+  .map((c) => existsSync(join(site, 'illustrations', `${c.image}.jpg`))
+    ? `  <a href="#${c.id}"><img src={useBaseUrl('/img/illustrations/${c.image}.jpg')} alt="" /><span>${escapeHtml(c.label)}</span></a>`
+    : `  <a href="#${c.id}" className="no-image"><span>${escapeHtml(c.label)}</span></a>`)
   .join('\n')}
 </nav>
 
-${sections
-  .map(
-    (c) => `## ${c.label} {#${c.id}}
+${groups
+  .map((g) => `## ${g.label} {#${g.id}}
+
+${g.sections.map((c) => `### ${c.label} {#${c.id}}
 
 <div className="design-table">
 
@@ -565,8 +618,8 @@ ${rows[folder][c.id]
   .join('\n')}
 
 </div>
-`
-  )
+`).join('\n')}
+`)
   .join('\n')}`
   )
 }

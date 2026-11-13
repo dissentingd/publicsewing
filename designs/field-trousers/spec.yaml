@@ -14,6 +14,7 @@ about:
   techniques: [pleat, patch-pocket, flap, zip, waistband, hem]
   version: 0.1.0
   source: British Army CS95 Field Trouser, digitised by Open+Pattern (openpattern/cs95-trouser)
+  garmentTraditions: [british-army-cs95]
 
 options:
   turnUps: { menu: false } # not on these legs

@@ -383,6 +383,7 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
 .wardrobe-leaf > .wardrobe-entry { font-size: 0.94rem; }
 .wardrobe-patterns { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; font-size: 0.75rem; font-weight: 400; }
 .wardrobe-patterns a { padding: 0.08rem 0.35rem; border: 1px solid var(--ifm-color-primary); border-radius: 3px; text-transform: capitalize; }
+.wardrobe-research { padding: 0.08rem 0.35rem; border: 1px dashed var(--ifm-color-emphasis-500); border-radius: 3px; color: var(--ifm-color-emphasis-700); font-size: 0.72rem; font-weight: 400; }
 
 /* The Learn page's index: room for an illustration on each entry */
 .learn-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; margin: 0 0 2rem; }
@@ -402,6 +403,8 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
 .src-tag--external { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: var(--ifm-background-color); }
 .src-tag--external:hover { background: var(--ifm-color-primary-darker); color: var(--ifm-background-color); }
 .src-tag--licence { font-weight: 600; color: var(--ifm-color-emphasis-700); border-style: dashed; }
+.tradition-tag { display: inline-flex; align-items: center; vertical-align: middle; padding: 0.12rem; border: 1px solid var(--ifm-color-emphasis-500); border-radius: 3px; }
+.tradition-tag img { display: block; width: 1.2rem; height: 0.8rem; object-fit: cover; }
 /* Difficulty, five dots: filled for the level, faint for the rest */
 .difficulty { font-size: 0.85rem; letter-spacing: 0.12em; color: var(--ifm-color-primary); white-space: nowrap; }
 .difficulty-off { color: var(--ifm-color-emphasis-300); }

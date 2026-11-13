@@ -1,0 +1,80 @@
+# Reference traditions and named garment traditions used by built designs.
+# A design can carry several. National reference labels identify the drafting lineage
+# of a cited book; specific garment labels identify a form's named tradition.
+traditions:
+  american-patternmaking:
+    label: American patternmaking
+    country: United States
+    flag: us
+  british-patternmaking:
+    label: British patternmaking
+    country: United Kingdom
+    flag: gb
+  soviet-cmea-patternmaking:
+    label: Soviet-era CMEA patternmaking
+    country: Soviet Union
+    flag: su
+  scottish-kilt:
+    label: Scottish kilt tradition
+    country: Scotland
+    flag: scotland
+  scottish-balmacaan:
+    label: Scottish Balmacaan coat tradition
+    country: Scotland
+    flag: scotland
+  scottish-inverness:
+    label: Scottish Inverness coat tradition
+    country: Scotland
+    flag: scotland
+  english-eton:
+    label: English Eton jacket tradition
+    country: England
+    flag: england
+  english-norfolk:
+    label: English Norfolk jacket tradition
+    country: England
+    flag: england
+  british-harrington:
+    label: British Harrington jacket tradition
+    country: United Kingdom
+    flag: gb
+  british-army-cs95:
+    label: British Army CS95 field uniform
+    country: United Kingdom
+    flag: gb
+  us-tactical-smock:
+    label: US tactical smock
+    country: United States
+    flag: us
+  thayaht-tuta:
+    label: Thayaht's TuTa (Florence, 1920)
+    country: Italy
+    flag: it
+  german-army:
+    label: German Army uniform
+    country: Germany
+    flag: de
+  finnish-army:
+    label: Finnish Army uniform
+    country: Finland
+    flag: fi
+  swedish-army:
+    label: Swedish Army uniform
+    country: Sweden
+    flag: se
+  swiss-army:
+    label: Swiss Army uniform
+    country: Switzerland
+    flag: ch
+  us-military:
+    label: US military uniform
+    country: United States
+    flag: us
+  british-army:
+    label: British Army uniform
+    country: United Kingdom
+    flag: gb
+  british-workwear:
+    label: British workwear reference
+    country: United Kingdom
+    flag: gb

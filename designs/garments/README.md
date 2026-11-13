@@ -16,12 +16,21 @@ the generated view: start there.
 Garments aren't a pure tree: a yoke turns up on shirts, jeans and jackets. So the tree gives descent,
 and the traits cut across it.
 
+Group garments by form and use. The separate `traditions.yaml` registry supplies labels and
+icons for the catalog and design pages. `source-traditions.yaml` associates cited drafting books
+with national reference lineages; `design-traditions.yaml` records named garment associations;
+and a spec can add `about.garmentTraditions` for specific cited designs. Several markers may
+appear together. They describe traditions that inform this interpretation, not exclusive
+ownership or an authentic reconstruction. Record supporting details in the brief and audit.
+
 ## Coverage
 `node tools/garments.mjs` works out each type's coverage and writes COVERAGE.md:
 - **built:** we have a design or variant of it;
 - **buildable:** every trait is covered, so it needs a spec, sources and tests, but no new library code;
 - **partly buildable:** a trait is partial;
 - **blocked:** a trait is missing, or it's cut from knit cloth, which our blocks don't handle.
+- **research candidate (◇):** the source and construction have not been verified; trait coverage
+  and buildability are deliberately undecided (`research: true` in `tree.yaml`).
 - **listed (◆):** FreeSewing has a design of it (`freesewing:` on the type), which we list as theirs,
   credited. A listed design adds a garment, not an element: an element's `freesewing:` names the
   FreeSewing design or block that would cover it if we adopted it as a block, as we do Brian.

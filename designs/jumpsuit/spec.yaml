@@ -16,6 +16,7 @@ about:
   techniques: [gusset, button, band, pocket]
   version: 0.1.0
   source: Thayaht, TuTa (1920), digitised by Open+Pattern, TuTa Boiler Suit (openpattern/tuta-jumpsuit)
+  garmentTraditions: [thayaht-tuta]
 
 options:
   # Fit

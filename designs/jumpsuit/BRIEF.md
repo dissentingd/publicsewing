@@ -6,6 +6,10 @@ Licence **CC BY 4.0**: credit Open+Pattern. Held as corpus folder `openpattern/t
 (DXF-AAMA, PDF, renders; not tracked). Read with `node tools/dxf-aama.mjs` (net outlines, so
 the numbers below are sewn sizes, in cm).
 
+**Garment tradition:** Thayaht's TuTa, designed in Florence in 1920. The [Uffizi Galleries](https://www.uffizi.it/en/artworks/tuta-thayaht-en)
+document the original garment and its launch. This marker identifies the historical source,
+not the origin of jumpsuits generally.
+
 **Block:** none. The TuTa's point is that it's cut from straight-edged shapes with almost no
 waste, so every piece here is a rectangle, square, triangle or diamond sized from the wearer's
 measurements (`lib/flat.mjs`, Dave's choice 2026-10-27). The defaults reproduce the source's M on

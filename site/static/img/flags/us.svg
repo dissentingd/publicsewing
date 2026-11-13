@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 32" role="img" aria-label="United States flag">
+  <defs>
+    <pattern id="stripes" width="60" height="4.923" patternUnits="userSpaceOnUse">
+      <rect width="60" height="4.923" fill="#fff"/>
+      <rect width="60" height="2.462" fill="#b22234"/>
+    </pattern>
+    <pattern id="stars" width="4.4" height="3.3" patternUnits="userSpaceOnUse">
+      <circle cx="1.1" cy="0.8" r="0.38" fill="#fff"/>
+      <circle cx="3.3" cy="2.45" r="0.38" fill="#fff"/>
+    </pattern>
+  </defs>
+  <rect width="60" height="32" fill="url(#stripes)"/>
+  <rect width="24" height="17.23" fill="#3c3b6e"/>
+  <rect width="24" height="17.23" fill="url(#stars)"/>
+</svg>

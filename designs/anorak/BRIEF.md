@@ -5,6 +5,9 @@ Tactical Smock", 2023-12-23, graded XS–XXL, CLO3D export. Licence **CC BY 4.0*
 Open+Pattern. Held as corpus folder `openpattern/us-tactical-smock/` (DXF-AAMA, PDF, renders;
 not tracked). Read with `node tools/dxf-aama.mjs` (net outlines; sizes below in cm, size M).
 
+**Garment tradition:** the source is identified as a US tactical smock. This label describes
+the source pattern; the evidence here does not establish an official military issue pattern.
+
 **Block:** FreeSewing's Brian, through the yoke template (`extends: ../templates/yoke.yaml`,
 `lib/yoke.mjs`): a front yoke, the body below it, a placket slit at the front, sleeves into bands;
 the hood is the windbreaker's (`lib/hood.mjs`), the pockets `polygon` pieces. Drafted from the

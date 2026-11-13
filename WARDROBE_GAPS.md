@@ -1,10 +1,11 @@
-# Wardrobe gaps vs FreeSewing (2026-10-23; status updated 2026-10-27)
+# Wardrobe gaps vs FreeSewing
 
-Direction (2026-10-23): build on FreeSewing's MIT code as a separate catalog (a fork,
-not upstream contributions) and backfill it with practical garments drawn from public-domain
-sources, with Claude writing the design code. From 2026-10-27, sources still in copyright are
-also used, as far as copyright law permits: their methods and proportions as design references,
-never their text or figures (ЕМКО СЭВ 1988, below).
+PublicSewing builds on FreeSewing's MIT code as a separate catalog of made-to-measure patterns.
+Design references include public-domain drafting books, documented newer sources used within
+their rights, and possible future community garment submissions. Sources still in copyright
+contribute methods and proportions as design references, never copied text or figures
+(ЕМКО СЭВ 1988, below). The original wardrobe tables below track earlier gaps against FreeSewing;
+the research section adds candidates that those tables did not cover.
 
 **What to build next:** [BUILD_QUEUE.md](BUILD_QUEUE.md), the ordered queue of garments still to
 build, with sources, pages, the design each starts from, and how agents claim them in parallel.
@@ -16,12 +17,13 @@ Status codes:
 - **Variant**: an existing design plus new options or parts.
 - **Gap**: needs a new design.
 
-## The biggest gap: children's sizes
+## Children's sizes: available, with fit work ahead
 
 `@freesewing/models` ships measurement sets for adults (women 28–46, men 32–50), dolls and
-giants only. **It has no children's sizes.** Every design is drafted from measurements, so
-children's measurement sets would open much of the catalog to children in one step. Adult ease
-and proportions still need checking at child sizes.
+giants, but no children's sets. The project added 75 sets from the USDA O'Brien surveys in
+`designs/sizes/` (39 boys', 36 girls', roughly ages 4–14). Designs draft against those sets;
+adult ease and proportions still need checking through sewn tests at child sizes. Infant and
+toddler measurements and garment-specific requirements remain separate research gaps.
 
 Source: USDA, Ruth O'Brien et al.
 - *Children's Body Measurements for Sizing Garments and Patterns* (1939,
@@ -29,8 +31,75 @@ Source: USDA, Ruth O'Brien et al.
 - The survey report *Body Measurements of American Boys and Girls* (also held).
 
 These are US government works, so they are public domain (17 USC §105). Some FreeSewing
-measurements (e.g. shoulder slope, HPS to waist) aren't in the survey. They would be derived,
-and marked as derived.
+measurements (e.g. shoulder slope, HPS to waist) aren't in the survey; derived values are
+marked as derived in the size-set data.
+
+## Additional wardrobe research candidates (2026-11-13)
+
+The current garment tree covers some South Asian garments already: choli, kameez/kurta, salwar
+and churidar. Their queue entries and source notes remain the starting point. The tree now also
+shows research candidates from the additional garment notes. A ◇ candidate has no verified
+pattern source or construction mapping yet; it is not counted as buildable. These are planning
+leads, not a market-size ranking. No comparable demand dataset was provided.
+
+| Candidate family | First source or construction question | Existing overlap |
+|---|---|---|
+| Sari blouse, petticoat, salwar, kameez/kurta, churidar | Confirm a measured draft, the local terminology and fit conventions, then item-level rights. Review the existing CBSE leads first. | Choli, kameez/kurta, salwar and churidar are already in `tree.yaml`; the sari petticoat is a new candidate. |
+| Kimono, yukata, haori, juban, jinbei, hakama | Find Japanese garment-making instructions with dimensions, layout, seams and construction. | A kimono sleeve, kimono jacket or kimono robe does not establish traditional construction. |
+| Jeogori, chima, baji; qipao | Find garment-specific Korean- or Chinese-language drafts with measurements and documented period or regional form. | No equivalent traditional construction is recorded in the current tree. |
+| Boubou/mbubb, agbádá, djellaba, chapan/chopon | Identify a named maker or technical source, place and garment-specific draft; verify rights and attribution. | Generic robes and kaftans do not establish these forms. |
+| Huipil, unku, Andean poncho, lliclla; Pacific wraps | Name the community or island and record fabric width, weaving, finishing, assembly and wrapping where relevant. A sewing pattern may cover only part of the method. | Generic poncho and flat-cut traits do not establish these traditions. |
+| Adaptive tops and trousers, nursing and maternity garments, infant sleepsuits | Define the wearer need, measurements, openings and testing requirements before choosing a base. | Some ordinary blocks may help, but fit and use cannot be inferred from them. |
+| Medical scrubs and waterproof over-trousers | Find construction and sizing requirements for the intended use, including pocket placement, layering and fabric or seam treatment. | Existing shirts and trousers may supply bases, but do not establish functional performance. |
+| Chemise, petticoat and bra | Seek a dimensioned source and distinguish these from the existing slip, corset and FreeSewing underwear listings. | The tree already lists the latter types. |
+
+Source leads in the supplied research notes include tutorials, commercial patterns, museum
+projects and catalogues. A lead is not permission to reproduce a pattern. For each candidate,
+record its maker or author, community/place/period where applicable, measurements and scale,
+construction evidence, rights, and what would be inferred. `SOURCING.md`'s A–D grading still
+decides whether the source can support a design. Market audience remains unmeasured.
+
+### Garment tradition markers on design pages
+
+The wardrobe tree groups garments by form and use. The separate `designs/garments/traditions.yaml`
+registry gives built designs multiple national, cultural, historical, social, or religious
+tradition markers where supported. `source-traditions.yaml` assigns national **reference
+traditions** to cited drafting books, and `design-traditions.yaml` adds named garment
+associations. Specific source designs can also be marked in their specs. The same icons
+appear in catalog tables and on individual design pages; names are available on hover
+and to screen readers. A marker shows an influence on
+our interpretation, not exclusive ownership or an authentic reconstruction.
+
+The first pass marks 100 of 109 designs: 96 by national reference lineage (including the
+seven Soviet-era ЕМКО designs with the USSR flag), three by specific cited garment, and six
+by named garment tradition, with overlapping labels on five of those six. The
+[tradition audit](designs/garments/TRADITION_AUDIT.md) records the assignments, qualifications,
+and nine still unmarked. A book's country can identify its drafting lineage even where the
+garment itself also belongs to another tradition. Research candidates in the wardrobe tree
+do not receive design-page markers until a built design exists.
+
+The linked Open+Pattern catalog rows are also marked where their own descriptions identify a
+national reference: 25 of 28, including German, Finnish, Swedish, Swiss, British, and US
+military garments and the Italian TuTa. Three generic T-shirts remain unassigned. The 59
+FreeSewing listings need their own review.
+
+Garment-form icons are a separate navigation idea. They could label the catalog's category
+headings and make those headings recognizable if the tables become collapsible. A form icon would
+describe a table section; a tradition flag would describe the source of an individual design.
+
+### Research backlog: garment history and catalog metadata
+
+Build a sourced reference for roughly the last 200 years of garment history, changing use, and
+fashion trends or recurring "waves" across regions and communities rather than only the countries
+of the current drafting books. Record when and where a style rose, receded or returned, and how
+its cut, materials and social use changed; avoid treating one market's timeline as universal.
+Use it to identify significant missing garments, place existing designs in context, and decide
+which metadata would improve discovery as the catalog grows. Candidate fields include a
+garment's own name and spelling variants, associated community or region, period, trend or wave,
+use, material, construction system, source type, and how closely our design follows it. Keep source publication
+origin separate from garment tradition, cite each claim, and allow multiple or uncertain values.
+This is research and schema work for later; it does not change the current build queue or assign
+new tradition flags without source review.
 
 ## Men
 
@@ -141,10 +210,11 @@ and marked as derived.
 | **Girl's dress** (any size) | — | **Drafted 2026-10-23** (`designs/frock`, not sewn) | Walker 1909 (frocks) |
 | **Girl's coat** | — | **Drafted 2026-10-28** (`designs/girls-coat`: Sheifer's box coat on Mitchell's, to below the knee; not sewn) | Sheifer 1908 `nssheiferssystem00shei` |
 
-**Count** (2026-10-28, by the tables above, 56 rows):
+**Count** (2026-10-28, by the Men, Women and Children tables above, 56 rows; excludes the
+research candidates):
 - **41 rows drafted or done**, the children's measurement sets among them (rows marked
   "Variant; drafted" count here).
-- **No gaps open:** the shift dress closed 2026-10-29 (Pivnick 1949). Pyjamas, the women's peacoat and
+- **No gaps open in those tables:** the shift dress closed 2026-10-29 (Pivnick 1949). Pyjamas, the women's peacoat and
   field jacket, the boy's suit jacket and the girl's coat closed 2026-10-28.
 - **5 variants.** These are options on existing designs, the cheapest wins. Breeches, the work
   shirt, the service shirt, the gathered skirt and the T-shirt drafted 2026-10-28; the bib overall

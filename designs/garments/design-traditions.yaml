@@ -1,0 +1,10 @@
+# First-pass named garment associations. These identify the tradition invoked by
+# the garment name and construction, not an authentic reconstruction. National
+# reference-method traditions are inherited separately from source-traditions.yaml.
+designs:
+  kilt: [scottish-kilt]
+  balmacaan: [scottish-balmacaan]
+  inverness-coat: [scottish-inverness]
+  eton-jacket: [english-eton]
+  norfolk-jacket: [english-norfolk]
+  harrington-jacket: [british-harrington]

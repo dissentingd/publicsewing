@@ -4,7 +4,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
-import { load, render } from '../tools/garments.mjs'
+import { coverage, load, render } from '../tools/garments.mjs'
 import { operations } from '../lib/spec.mjs'
 
 const root = new URL('../', import.meta.url)
@@ -40,6 +40,11 @@ test('every tree node is well formed', () => {
       assert.ok(new RegExp(`^  ${key}:`, 'm').test(spec), `${id}: no variant ${v}`)
     }
   }
+})
+
+test('research candidates are not counted as buildable before source review', () => {
+  assert.equal(coverage({ research: true, traits: ['body-boxy'] }, elements), 'research')
+  assert.equal(coverage({ research: true }, elements), 'research')
 })
 
 test('every design sits in the tree', () => {

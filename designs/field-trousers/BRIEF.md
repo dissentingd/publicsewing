@@ -6,6 +6,9 @@
 PDF, renders; not tracked). Read with `node tools/dxf-aama.mjs` (net outlines; sizes below in
 cm, size M).
 
+**Garment tradition:** British Army CS95 field uniform (United Kingdom). This identifies the
+source garment, not a claim that our redraft is an official uniform pattern.
+
 **Block:** FreeSewing's Titan, through ЕМКО's trousers (`extends: ../suit-trousers/spec.yaml`,
 `lib/trousers.mjs`): their legs, back dart, fly, side pockets, waistband and loops; the front
 pleats as the peg-top pants'. Drafted from the wearer's measurements: the source's sizes are a
