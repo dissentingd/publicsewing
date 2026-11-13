@@ -66,14 +66,14 @@ viewer's right.
 > waist** with a seam just below it. **Three buttons**, closed, under **notched lapels**. Below the buttons **the
 > skirt's front edges slope away to the sides and back in one long curve**, so the coat is short at the front and
 > reaches **the back of the knee behind**. Plain two-piece sleeves. Front three-quarter view showing the sloping
-> skirt, full length to the knee, over dark striped trousers, plain background, clean technical editorial
+> skirt, with the complete empty coat floating by itself against a plain background, clean technical editorial
 > illustration.
 >
 > Leave out: separate tails with a square-cut front (a dress tailcoat), a double-breasted front, pockets, a breast
 > pocket, a belt, peaked lapels.
 
 ### tailcoat: Tailcoat
-> A **man's full dress tailcoat** of about 1918 in black wool, **worn open** over a white waistcoat and shirt.
+> A **man's full dress tailcoat** of about 1918 in black wool, **hanging open as an empty coat**.
 > **The fronts stop just below the waist, cut straight across**, sloping up a little toward the sides; **behind,
 > two long tails fall to the back of the knee**, their front edges curving back from the waist. **Peaked lapels
 > faced in black silk**, pointing up. **Three buttons on each front**, in a row a little behind the edge. Fitted
@@ -84,11 +84,11 @@ viewer's right.
 > a cummerbund, a bow tie in colour.
 
 ### dinner-jacket: Dinner jacket
-> A **man's single-breasted dinner jacket (tuxedo)** of about 1918, in black wool barathea, worn open over a white
-> dress shirt. **Exactly one button, at the waist.** **Peaked lapels faced in black silk satin**, pointing up, rolling
+> A **man's single-breasted dinner jacket (tuxedo)** of about 1918, in black wool barathea, hanging open
+> as an empty jacket. **Exactly one button, at the waist.** **Peaked lapels faced in black silk satin**, pointing up, rolling
 > all the way down to that one button. **Below the button the fronts slope away to the sides**, opening into a
 > wide inverted V down to **rounded corners** at the hem; length just covering the seat. **Two jetted pockets with no
-> flaps** below the waist. Plain two-piece sleeves. Front three-quarter view on a man, full length to the knee,
+> flaps** below the waist. Plain two-piece sleeves. Front three-quarter view of the complete empty jacket,
 > plain background, clean technical editorial illustration.
 >
 > Leave out: a second button, a shawl collar, notched lapels, pocket flaps, a breast pocket, a back vent, tails,
