@@ -79,6 +79,6 @@
     "@freesewing/wahid": "4.10.2",
     "@freesewing/waralee": "4.10.2",
     "@freesewing/yuri": "4.10.2",
-    "yaml": "2.8.1"
+    "yaml": "^2.8.3"
   }
 }

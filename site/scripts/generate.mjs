@@ -5,6 +5,7 @@
 // - src/generated/labels.json: ../designs/labels.yaml (option and part labels)
 // - src/generated/sizes.json: the measurement sets the tests use (FreeSewing's adult sets, the
 //   stout figures, the 75 USDA children's sets), grouped for the size picker
+// - src/generated/catalog.json: structured entries for the two React design indexes
 // - docs/designs/<category>/<id>.mdx: a page per design from its BRIEF.md, with its drape renders
 //   and the editor, at /designs/<id> (its slug); static/img/drape/<id>/: those renders. A folder
 //   is a sidebar group, from the design's about.category (lib/categories.mjs)
@@ -336,6 +337,17 @@ for (const p of external.patterns) {
       : ''
   rows.designs[p.category].push({
     name: p.name,
+    entry: {
+      id: `openpattern-${p.path}`, name: p.name, href: url,
+      image: existsSync(pic) ? `/img/illustrations/external/${p.path}.jpg` : useAi ? `/img/illustrations/openpattern/${p.path}.jpg` : null,
+      imageCredit: existsSync(pic) ? "Open+Pattern's render, CC BY 4.0, resized" : useAi ? 'AI-generated illustration, not drawn from the pattern' : null,
+      description: p.about, difficulty: null, status: 'External pattern',
+      source: { text: external.by, href: url },
+      licence: { text: 'CC BY 4.0', href: CC_BY },
+      traditions: (p.traditions ?? []).map((key) => ({ key, ...traditions[key] })),
+      sizing: `Fixed sizes: ${p.sizes}`,
+      related: p.ours ? [{ name: specs[p.ours].about.name, href: `/designs/${p.ours}` }] : [],
+    },
     row: `| ${thumb} | ${designCell(`[${p.name}](${url})`, 0, tagLine(srcTag(external.by, url, 'external'), srcTag('CC BY 4.0', CC_BY, 'licence')), (p.traditions ?? []).map(traditionTag).join(' '))} | ${garmentCell(`${p.about}.`, `<small>Fixed sizes: ${p.sizes}, on their site.${picCredit}${ours}</small>`)} |`,
   })
 }
@@ -360,6 +372,17 @@ fsIds.forEach((id, i) => {
   const fsImg = (cls, lazy) => `<img className="${cls}" src={useBaseUrl('/img/illustrations/freesewing/${id}.jpg')} alt="${name}: illustration of the finished garment"${lazy ? ' loading="lazy"' : ''} />`
   rows.inspired[d.category].push({
     name,
+    entry: {
+      id, name, href: `/designs/${id}`,
+      image: fsIllustrated ? `/img/illustrations/freesewing/${id}.jpg` : null,
+      imageCredit: fsIllustrated ? 'AI-generated illustration, not drawn from the pattern or by FreeSewing' : null,
+      description: d.about, difficulty: d.data.difficulty ?? null, status: 'FreeSewing design',
+      source: { text: 'FreeSewing', href: d.url },
+      licence: { text: 'MIT', href: '/sources#freesewing' },
+      traditions: [],
+      sizing: d.sizes === 'babies' ? 'Baby and toddler sizes' : d.sizes === 'all' ? 'Adult, child and baby sizes' : 'Adult and child sizes',
+      related: (d.ours ?? []).map((o) => ({ name: specs[o].about.name, href: `/designs/${o}` })),
+    },
     row: `| ${fsIllustrated ? `<a href="/designs/${id}">${fsImg('thumb', true)}</a>` : ''} | ${designCell(`[${name}](/designs/${id})`, d.data.difficulty, tagLine(srcTag('FreeSewing', d.url, 'external'), srcTag('MIT', '/sources#freesewing', 'licence')))} | ${garmentCell(`${d.about}.`, ours.length ? `<small>We also draft our own: ${ours.join(', ')}.</small>` : '', supportNote('FreeSewing', d.url))} |`,
   })
   writeFileSync(
@@ -510,6 +533,24 @@ ${variants.join('\n')}
       : srcTag(info.source.replace(/[*_]/g, ''), `/designs/${id}#the-brief`)
   rows[folder][about.category].push({
     name: about.name,
+    entry: {
+      id, name: about.name, href: `/designs/${id}`,
+      image: illustrated ? `/img/illustrations/${id}.jpg` : null,
+      imageCredit: illustrated ? 'AI-generated illustration, not drawn from the pattern' : null,
+      description: info.garment, difficulty: about.difficulty ?? null, status: 'Draft · not yet sewn',
+      source: original[id]
+        ? { text: `Inspired by ${original[id].name}`, href: original[id].url }
+        : /ЕМКО/.test(about.source ?? '')
+          ? { text: 'Inspired by ЕМКО 1988', href: '/sources#emko' }
+          : { text: info.source.replace(/[*_]/g, ''), href: `/designs/${id}#the-brief` },
+      licence: original[id] ? { text: 'Source: CC BY 4.0', href: CC_BY } : null,
+      traditions: traditionKeys(id, about).map((key) => ({ key, ...traditions[key] })),
+      sizing: 'Drafted to your measurements',
+      patternParts: Object.keys(spec.pieces ?? {}).length,
+      techniques: about.techniques ?? [],
+      variants: Object.entries(spec.variants ?? {}).map(([key, v]) => ({ name: v.name, href: `/designs/${id}#${key}` })),
+      related: original[id] ? [{ name: original[id].name, href: original[id].url }] : [],
+    },
     row: `| ${illustrated ? `<a href="/designs/${id}">${img('thumb', true)}</a>` : ''} | ${designCell(`[${about.name}](/designs/${id})`, about.difficulty, ourTags, traditionTags(id, about))} | ${garmentCell(info.garment, variantLinks.length ? `<small>Variants: ${variantLinks.join(' · ')}</small>` : '', original[id] ? supportNote(external.by, original[id].url) : '')} |`,
   })
   const originalLine = original[id]
@@ -564,7 +605,16 @@ ${background}
   )
 })
 
-// A page of designs: its introduction, then a table per section that has anything in it
+const catalog = Object.fromEntries(Object.entries(rows).map(([folder, sections]) => [
+  folder,
+  Object.fromEntries(Object.entries(sections).map(([category, entries]) => [
+    category,
+    entries.sort((a, b) => a.name.localeCompare(b.name)).map(({ entry }) => entry),
+  ])),
+]))
+writeFileSync(out('src', 'generated', 'catalog.json'), JSON.stringify(catalog))
+
+// A page of designs: its introduction, then a catalog per section that has anything in it
 // The wardrobe's broad areas, adapted for the catalog's existing categories. Empty areas are
 // omitted on each index, while category ids and links stay stable.
 const designGroups = [
@@ -592,6 +642,7 @@ slug: ${slug}
 sidebar_position: ${position}
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'
+import DesignCatalog from '@site/src/components/DesignCatalog'
 
 ${intro}
 
@@ -608,16 +659,7 @@ ${groups
 
 ${g.sections.map((c) => `### ${c.label} {#${c.id}}
 
-<div className="design-table">
-
-| | Design | Garment |
-|---|---|---|
-${rows[folder][c.id]
-  .sort((a, b) => a.name.localeCompare(b.name))
-  .map((r) => r.row)
-  .join('\n')}
-
-</div>
+<DesignCatalog folder="${folder}" category="${c.id}" />
 `).join('\n')}
 `)
   .join('\n')}`
