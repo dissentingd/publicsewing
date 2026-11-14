@@ -411,6 +411,43 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
 /* The one-line credit for another project's design, under the description */
 .support-note { display: inline-block; margin-top: 0.2rem; font-size: 0.72rem; line-height: 1.4; color: var(--ifm-color-emphasis-700); }
 
+/* Design indexes: a compact selector beside a detailed preview. */
+.design-catalog { display: grid; grid-template-columns: minmax(13rem, 0.85fr) minmax(0, 1.4fr); gap: 1rem; margin: 1rem 0 2.75rem; align-items: start; }
+.design-catalog-list, .design-catalog-preview { border: 1px solid var(--ifm-color-emphasis-300); background: var(--ifm-background-color); }
+.design-catalog-list-head, .design-catalog-row { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; width: 100%; padding: 0.65rem 0.85rem; }
+.design-catalog-list-head { color: var(--ifm-color-emphasis-700); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.design-catalog-row { border: 0; border-top: 1px solid var(--ifm-color-emphasis-300); border-radius: 0; background: transparent; color: var(--ifm-font-color-base); font: inherit; text-align: left; cursor: pointer; }
+.design-catalog-row:hover, .design-catalog-row:focus-visible { background: var(--ifm-color-emphasis-100); }
+.design-catalog-row.is-selected { background: var(--ifm-color-emphasis-100); box-shadow: inset 3px 0 var(--ifm-color-primary); }
+.design-catalog-row-name { min-width: 0; font-weight: 650; }
+.design-catalog-dots { flex: none; color: var(--ifm-color-primary); font-size: 0.72rem; letter-spacing: 0.05em; white-space: nowrap; }
+.design-catalog-dots span { color: var(--ifm-color-emphasis-300); }
+.design-catalog-row-kind { flex: none; color: var(--ifm-color-emphasis-700); font-size: 0.7rem; }
+.design-catalog-preview { min-width: 0; padding: 1rem; }
+.design-catalog-hero { display: grid; grid-template-columns: minmax(8rem, 38%) 1fr; gap: 1.1rem; align-items: start; }
+.design-catalog-hero > img, .design-catalog-no-image { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--ifm-color-emphasis-100); }
+.design-catalog-no-image { display: grid; place-items: center; padding: 1rem; color: var(--ifm-color-emphasis-700); text-align: center; }
+.design-catalog-hero-copy h4 { margin: 0.15rem 0 0.5rem; font-size: clamp(1.2rem, 2vw, 1.6rem); }
+.design-catalog-hero-copy p { margin: 0.45rem 0; line-height: 1.5; }
+.design-catalog-kicker { color: var(--ifm-color-emphasis-700); font-size: 0.73rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.design-catalog-difficulty { font-size: 0.85rem; font-weight: 650; }
+.design-catalog-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+.design-catalog-source { display: inline-flex; flex-direction: column; gap: 0.1rem; max-width: 100%; padding: 0.45rem 0.7rem; border: 1px solid var(--ifm-color-primary); color: var(--ifm-font-color-base); line-height: 1.25; overflow-wrap: anywhere; }
+.design-catalog-source:hover { background: var(--ifm-color-emphasis-100); text-decoration: none; }
+.design-catalog-source span { color: var(--ifm-color-emphasis-700); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.design-catalog-source strong { font-size: 0.88rem; }
+.design-catalog-tradition { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.6rem; border: 1px solid var(--ifm-color-emphasis-300); font-size: 0.78rem; }
+.design-catalog-tradition img { width: 1.2rem; height: 0.8rem; object-fit: cover; }
+.design-catalog-facts { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0.75rem 0; padding: 0.8rem 0; border-top: 1px solid var(--ifm-color-emphasis-300); border-bottom: 1px solid var(--ifm-color-emphasis-300); }
+.design-catalog-facts div { min-width: 6rem; }
+.design-catalog-facts dt { color: var(--ifm-color-emphasis-700); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.design-catalog-facts dd { margin: 0.15rem 0 0; font-size: 0.86rem; }
+.design-catalog-detail { margin: 0.45rem 0; font-size: 0.87rem; line-height: 1.45; }
+.design-catalog-credit { margin: 0.85rem 0; color: var(--ifm-color-emphasis-700); font-size: 0.74rem; }
+.design-catalog-action { margin-top: 0.5rem; }
+@media (max-width: 900px) { .design-catalog { grid-template-columns: 1fr; } .design-catalog-hero { grid-template-columns: minmax(7rem, 32%) 1fr; } }
+@media (max-width: 500px) { .design-catalog-hero { grid-template-columns: 1fr; } .design-catalog-hero > img, .design-catalog-no-image { max-height: 18rem; aspect-ratio: 3 / 2; } }
+
 /* The Measure page: a list of measurements beside the figure for the one selected */
 .measure-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin: 1.5rem 0 0.75rem; padding: 0.75rem; border: 1px solid var(--ifm-color-emphasis-300); }
 .measure-controls select { max-width: 100%; padding: 0.25rem; font: inherit; }
