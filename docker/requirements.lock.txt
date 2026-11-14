@@ -1,16 +1,16 @@
-# Python 3.9.25
+# Python 3.11.14
 aiofiles==25.1.0
 aiohappyeyeballs==2.6.1
-aiohttp==3.13.5
+aiohttp==3.14.4
 aiosignal==1.4.0
 annotated-doc==0.0.5
 annotated-types==0.7.0
-anyio==4.12.1
+anyio==4.14.2
 async-timeout==5.0.1
 attrs==26.1.0
 bidict==0.23.1
 cairocffi==1.7.1
-cairosvg==2.8.2
+cairosvg==2.9.1
 certifi==2026.10.23
 cffi==2.0.0
 cgal==6.0.1.post202410241521
@@ -21,7 +21,7 @@ cycler==0.12.1
 defusedxml==0.7.1
 docutils==0.23
 exceptiongroup==1.3.1
-fastapi==0.128.8
+fastapi==0.162.7
 fonttools==4.60.2
 freetype-py==2.5.1
 frozenlist==1.8.0
@@ -40,13 +40,13 @@ libigl==2.6.3
 markdown2==2.5.5
 markupsafe==3.0.4
 matplotlib==3.9.4
-multidict==6.7.1
+multidict==6.9.1
 networkx==3.2.1
-nicegui==2.24.2
+nicegui==3.12.0
 numpy==1.26.4
-orjson==3.11.5
+orjson==3.11.6
 packaging==26.3
-pillow==11.3.0
+pillow==13.0.0
 propcache==0.4.1
 pscript==0.7.7
 psutil==7.2.2
@@ -59,16 +59,16 @@ pyopengl==3.1.0
 pyparsing==3.3.3
 pyrender==0.1.45
 python-dateutil==2.9.0.post0
-python-dotenv==1.2.1
+python-dotenv==1.2.2
 python-engineio==4.14.0
-python-multipart==0.0.20
+python-multipart==0.0.31
 python-socketio==5.17.0
 pyyaml==6.0.3
 scipy==1.13.1
-setuptools==82.0.1
+setuptools==84.1.0
 simple-websocket==1.1.0
 six==1.17.0
-starlette==0.49.3
+starlette==1.3.1
 svgpathtools==1.8.0
 svgwrite==1.4.3
 tinycss2==1.4.0
@@ -83,5 +83,5 @@ webencodings==0.5.1
 websockets==15.0.1
 wheel==0.48.0
 wsproto==1.2.0
-yarl==1.22.0
+yarl==1.25.1
 zipp==3.23.1
