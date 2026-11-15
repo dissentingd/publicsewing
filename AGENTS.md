@@ -45,6 +45,9 @@ Work in `designs/`, with one commit per garment. Stage files by name.
    NODE_PATH=$(npm root -g) node tools/compare.mjs <design> --pages <pdf pages> --sets <set>
    NODE_PATH=$(npm root -g) node tools/render.mjs <design> usdaBoyC5 stoutMale48 --png
    ```
+   **Infant wear:** a design offered at the baby sets or in the `babies` category needs a review in
+   `designs/safety/infant-reviews.yaml` against `infant-checklist.yaml`; `test/infant-safety.test.mjs`
+   fails without it.
 10. **Write `BRIEF.md`** from the template in CONTRIBUTING.md, Step 9, keeping apart what the text states, what you read from the plate and what's ours. `test/brief.test.mjs` checks its sections.
 11. **Finish.** Copy the shape of the last garment's commit: `git show --stat HEAD`, then
     `git show HEAD -- README.md designs/README.md SOURCING.md WARDROBE_GAPS.md BUILD_QUEUE.md`.
