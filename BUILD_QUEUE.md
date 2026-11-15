@@ -240,6 +240,16 @@ neckerchief.
 | Vincent, *British Military Uniforms* `militaryuniformsbritish-images` | Service frock and khaki knickerbockers have substantial instructions (PDF pp. 9–12), but overlap existing tunic and breeches designs. | Compare their plates and specific seams with the built designs. |
 | Ratner 1908 `ratnersuptodatem00ratn` | OCR exposes headings but too few reliable dimensions to select an item. | Read a candidate text/plate pair at higher resolution. |
 
+### Infant wear safety (2026-11-15)
+
+Nothing new is offered at the baby sets (`sizes/babies.mjs`) until S1 is done. S2 makes the review
+a test so it can't be skipped later.
+
+| # | Item | Scope | Status |
+|---|---|---|---|
+| S1 | Infant safety review | Review every design or listing offered at baby sizes: FreeSewing's Otis, Onyx and Bob (F10; Onyx and Bob at `all` sizes), and any future sleepsuit, snowsuit or romper. Against published infant-clothing safety requirements (e.g. US CPSC rules and ASTM F1816 on drawstrings, small parts and snap/button attachment, children's sleepwear flammability; UK/EU BS EN 14682 on cords and drawstrings): no drawstrings or long ties at the neck or hood, fasteners that can be pulled off or swallowed (snaps, buttons, decorations), openings and nappy access, neck and leg openings that don't trap, fabric and flammability notes. Record the requirements found, each design's result, and what its instructions must tell the sewer. A design that fails gets fixed or unlisted at baby sizes | open |
+| S2 | Automatic infant safety check | A test that fails when any spec or `freesewing.yaml` entry offered at baby sizes lacks a current safety review record (e.g. a `safety:` block in the spec or registry: review date, checklist version, result, notes), and when a reviewed design's options allow what the checklist forbids (a drawstring or tie at the neck, a hood cord, small decorative parts). The checklist from S1 becomes a versioned file the test reads; a new checklist version marks older reviews stale. Run in `npm test` | open, after S1 |
+
 ### Blocked
 | Item | Needs |
 |---|---|

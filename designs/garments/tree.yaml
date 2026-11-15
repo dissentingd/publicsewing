@@ -3,7 +3,8 @@
 #   name; parent (none for a zone); traits: the elements (elements.yaml) a type needs;
 #   designs: our designs of this type; variants: <design>.<variant> that make it;
 #   freesewing: FreeSewing designs of this type, to list as theirs (credited), not ours;
-#   knit: true when it's usually cut from knit cloth (our blocks are for woven cloth);
+#   knit: true when it's usually cut from knit cloth; blocked unless one of its traits is a covered
+#     knit element (one whose id ends in -knit, e.g. body-knit from the Bibi block);
 #   research: true when a source and construction have not been verified; do not count as buildable;
 #   note.
 # A node's coverage is worked out by tools/garments.mjs: built (it has designs or variants),
@@ -65,6 +66,7 @@ nodes:
   turtleneck-top: { name: Turtleneck, parent: knit-tops, traits: [body-knit, neck-raised], knit: true, designs: [turtleneck], variants: [turtleneck.mockNeck] }
   tank-top: { name: Tank top, parent: knit-tops, traits: [body-knit, sleeveless, neck-scoop], knit: true, freesewing: [aaron] }
   cardigan: { name: Cardigan, parent: knit-tops, traits: [body-knit, closure-buttons, neck-v, cuff-rib], knit: true, designs: [cardigan], variants: [cardigan.plain] }
+  track-jacket: { name: Track jacket, parent: knit-tops, traits: [body-knit, closure-zip-front, collar-stand, cuff-rib, waistband-jacket], knit: true }
 
   waistcoats: { name: Waistcoats and vests, parent: upper }
   waistcoat-sb: { name: Single-breasted waistcoat, parent: waistcoats, traits: [body-boxy, sleeveless, neck-v, closure-buttons, front-cutaway, pocket-welt, lining], designs: [waistcoat], freesewing: [wahid] }
@@ -191,6 +193,7 @@ nodes:
   pencil: { name: Pencil skirt, parent: skirts, traits: [skirt-pencil, darts, waist-faced, closure-zip-back], freesewing: [penelope] }
   yoke-skirt: { name: Yoke skirt, parent: skirts, traits: [skirt-two-piece, yoke-skirt-hip, closure-zip-back] }
   tiered: { name: Tiered skirt, parent: skirts, traits: [skirt-tiered, gathers, waist-elastic] }
+  knit-skirt: { name: Knit skirt, parent: skirts, traits: [skirt-pencil, waist-elastic], knit: true, note: "No knit lower-body element yet" }
 
   hakama: { name: Hakama, parent: trousers, research: true }
   chima: { name: Chima, parent: skirts, research: true }
@@ -220,6 +223,9 @@ nodes:
   maternity-dress: { name: Maternity dress, parent: dresses, research: true, note: "Specify stage and fit requirements" }
   qipao: { name: Qipao / cheongsam, parent: dresses, research: true }
   t-shirt-dress: { name: T-shirt dress, parent: dresses, traits: [body-knit, neck-round, sleeve-set-in], knit: true }
+  halter-dress: { name: Halter dress, parent: dresses, traits: [body-darted-bodice, neck-halter, waist-seam, closure-zip-back] }
+  strapless-dress: { name: Strapless dress, parent: dresses, traits: [corsetry, waist-seam, closure-zip-back] }
+  blouson-dress: { name: Blouson dress, parent: dresses, traits: [body-darted-bodice, waist-seam, waist-elastic, gathers] }
   pinafores: { name: Pinafores and jumpers, parent: whole }
   pinafore-t: { name: Pinafore, parent: pinafores, traits: [body-yoke, sleeveless, skirt-gathered, closure-buttons], designs: [pinafore] }
   jumper-dress: { name: Jumper (pinafore dress), parent: pinafores, traits: [body-darted-bodice, sleeveless, neck-square, skirt-gored], variants: [fitted-dress.jumper], note: "Ours has an A-line skirt, not gores" }
@@ -227,8 +233,9 @@ nodes:
   jumpsuit-t: { name: Jumpsuit, parent: one-pieces, traits: [body-flat, closure-buttons, belt], designs: [jumpsuit] }
   bib-overall-t: { name: Bib overall, parent: one-pieces, traits: [leg-in-one, bib, closure-side-opening], designs: [bib-overall], freesewing: [opal] }
   coverall: { name: Coverall (boiler suit), parent: one-pieces, traits: [body-boxy, leg-tailored, closure-zip-front, collar-turndown, pocket-patch] }
-  romper: { name: Romper, parent: one-pieces, traits: [body-yoke, leg-gathered, leg-shorts, closure-buttons], freesewing: [otis] }
-  infant-sleepsuit: { name: Infant sleepsuit, parent: one-pieces, research: true, note: "Infant sizing and opening safety need review" }
+  romper: { name: Romper, parent: one-pieces, traits: [body-yoke, leg-gathered, leg-shorts, closure-buttons], freesewing: [otis], note: "Listed at baby sizes: in the infant safety review (BUILD_QUEUE S1)" }
+  infant-sleepsuit: { name: Infant sleepsuit, parent: one-pieces, research: true, note: "Waits for the infant safety review (BUILD_QUEUE S1)" }
+  snowsuit: { name: Snowsuit, parent: one-pieces, research: true, note: "Babies and children; infant sizes wait for the safety review (BUILD_QUEUE S1)" }
   dungarees: { name: Dungarees, parent: one-pieces, traits: [leg-tailored, bib, pocket-patch, closure-side-opening] }
   robes: { name: Robes and gowns, parent: whole }
   dressing-gown-t: { name: Dressing gown, parent: robes, traits: [body-boxy, collar-shawl, closure-wrap, belt, pocket-patch], designs: [dressing-gown] }
@@ -256,6 +263,7 @@ nodes:
   bloomers-t: { name: Bloomers, parent: underwear, traits: [leg-gathered, waist-elastic], designs: [bloomers] }
   boxer-shorts: { name: Boxer shorts, parent: underwear, traits: [leg-gathered, leg-shorts, waist-elastic, closure-fly] }
   slip: { name: Slip, parent: underwear, traits: [body-bias, sleeveless] }
+  camisole: { name: Camisole, parent: underwear, traits: [body-darted-bodice, sleeveless, neck-v] }
   undershirt: { name: Undershirt, parent: underwear, traits: [body-knit, sleeveless, neck-scoop], knit: true }
   sari-petticoat: { name: Sari petticoat, parent: underwear, research: true }
   chemise: { name: Chemise / shift, parent: underwear, research: true }
@@ -284,7 +292,7 @@ nodes:
   a-line-shorts: { name: A-line shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts], freesewing: [ashley] }
   casual-shorts: { name: Casual shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts, waistband], freesewing: [shale] }
   fall-front-shorts: { name: Fall-front shorts, parent: shorts-family, traits: [leg-gathered, leg-shorts, closure-fall-front], freesewing: [percy] }
-  baby-one-piece: { name: Baby one-piece, parent: one-pieces, traits: [body-knit, leg-knit, closure-snaps], knit: true, freesewing: [onyx] }
+  baby-one-piece: { name: Baby one-piece, parent: one-pieces, traits: [body-knit, leg-knit, closure-snaps], knit: true, freesewing: [onyx], note: "Listed at baby sizes: in the infant safety review (BUILD_QUEUE S1)" }
   boxer-briefs: { name: Boxer briefs, parent: underwear, traits: [underwear-knit], knit: true, freesewing: [bruce] }
   briefs: { name: Briefs, parent: underwear, traits: [underwear-knit], knit: true, freesewing: [uma, umbra] }
   corset: { name: Corset, parent: underwear, traits: [corsetry, closure-lacing], freesewing: [cathrin] }
@@ -294,6 +302,8 @@ nodes:
   bikini-top: { name: Bikini top, parent: active, traits: [swimwear-knit], knit: true, freesewing: [bee] }
   sports-top: { name: Sports top, parent: active, traits: [body-knit, swimwear-knit], knit: true, freesewing: [sabrina] }
   rash-guard: { name: Raglan swim shirt (rash guard), parent: active, traits: [body-knit, sleeve-raglan], knit: true, freesewing: [shelly] }
+  swimsuit: { name: Swimsuit (one-piece), parent: active, traits: [body-knit, swimwear-knit], knit: true }
+  leotard: { name: Leotard and bodysuit, parent: active, traits: [body-knit, swimwear-knit, sleeve-set-in], knit: true }
   deerstalker: { name: Deerstalker hat, parent: headwear, traits: [headwear-panels], freesewing: [holmes] }
   baby-bib: { name: Baby bib, parent: accessory, traits: [flat-polygon], freesewing: [bob] }
   bags: { name: Bags, parent: accessory, freesewing: [hortensia] }

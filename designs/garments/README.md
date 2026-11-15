@@ -28,7 +28,7 @@ ownership or an authentic reconstruction. Record supporting details in the brief
 - **built:** we have a design or variant of it;
 - **buildable:** every trait is covered, so it needs a spec, sources and tests, but no new library code;
 - **partly buildable:** a trait is partial;
-- **blocked:** a trait is missing, or it's cut from knit cloth, which our blocks don't handle.
+- **blocked:** a trait is missing, or it's cut from knit cloth and none of its traits is a covered knit element (`body-knit` from the Bibi block, 2026-11-10, is the only one so far).
 - **research candidate (◇):** the source and construction have not been verified; trait coverage
   and buildability are deliberately undecided (`research: true` in `tree.yaml`).
 - **listed (◆):** FreeSewing has a design of it (`freesewing:` on the type), which we list as theirs,
