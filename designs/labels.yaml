@@ -139,6 +139,15 @@ options:
   sideSlit:
     title: Side slits
     description: Slits up the side seams from the hem, as a share of waist to hem. 0% is none.
+  flareFrom:
+    title: Flare from
+    description: Where the gores start to flare, against the skirt's length from the waist.
+  hipYokeDepth:
+    title: Yoke depth
+    description: Depth of a skirt's hip yoke below the waist, against waist to seat.
+  goreEdgeFlare:
+    title: Gore flare
+    description: How far each gore edge flares out at the hem, against the seat.
   firstTier:
     title: First tier
     description: Width of the top tier before it's gathered into the waistband, against the waist.

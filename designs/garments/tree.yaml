@@ -191,7 +191,7 @@ nodes:
   tunic-overskirt: { name: Tunic (overskirt), parent: skirts, traits: [skirt-radial-tunic, darts], designs: [tunic-skirt] }
   divided: { name: Divided skirt and culottes, parent: skirts, traits: [skirt-divided, waistband, closure-zip-back], designs: [culottes, riding-skirt, apron-riding-skirt] }
   pencil: { name: Pencil skirt, parent: skirts, traits: [skirt-pencil, darts, waist-faced, closure-zip-back], freesewing: [penelope] }
-  yoke-skirt: { name: Yoke skirt, parent: skirts, traits: [skirt-two-piece, yoke-skirt-hip, closure-zip-back] }
+  yoke-skirt: { name: Yoke skirt, parent: skirts, traits: [skirt-gored, yoke-skirt-hip, waistband], designs: [yoke-skirt] }
   tiered: { name: Tiered skirt, parent: skirts, traits: [skirt-tiered, gathers, waistband], designs: [tiered-skirt] }
   knit-skirt: { name: Knit skirt, parent: skirts, traits: [skirt-pencil, waist-elastic], knit: true, note: "No knit lower-body element yet" }
 

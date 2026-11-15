@@ -181,6 +181,7 @@ const labelData = parse(readFileSync(join(designsDir, 'labels.yaml'), 'utf8'))
 const methodSources = [
   { test: /ЕМКО/, tag: 'ЕМКО 1988', name: 'ЕМКО СЭВ', anchor: 'emko' },
   { test: /Armstrong/, tag: 'Armstrong 2010', name: 'Armstrong, *Patternmaking for Fashion Design*', anchor: 'armstrong' },
+  { test: /Aldrich/, tag: 'Aldrich 2015', name: "Aldrich, *Metric Pattern Cutting for Women's Wear*", anchor: 'aldrich' },
 ]
 
 // Infant safety (designs/safety, BUILD_QUEUE S1): a design reviewed for baby sizes shows its

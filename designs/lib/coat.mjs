@@ -29,6 +29,8 @@ export const adaptedCredit = (source) => {
   // In Latin letters: the printed pattern's font may not have Cyrillic
   if (/ЕМКО/.test(source ?? ''))
     return ['Our own interpretation, inspired by EMKO SEV vol. 3 (1988).', 'More: publicsewing.org/sources#emko']
+  if (/Aldrich/.test(source ?? ''))
+    return ["Our own interpretation, inspired by Aldrich, Metric Pattern Cutting for Women's Wear (2015).", 'More: publicsewing.org/sources#aldrich']
   if (/Armstrong/.test(source ?? ''))
     return ['Our own interpretation, inspired by Armstrong, Patternmaking for Fashion Design (2010).', 'More: publicsewing.org/sources#armstrong']
   return []

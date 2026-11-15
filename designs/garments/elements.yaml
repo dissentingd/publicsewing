@@ -213,7 +213,7 @@ elements:
   yoke-trouser-back:
     { name: Trouser back yoke, group: yoke, status: gap, note: "Jeans" }
   yoke-skirt-hip:
-    { name: Skirt hip yoke, group: yoke, status: gap }
+    { name: Skirt hip yoke, group: yoke, status: covered, lib: [yokeLayout, skirtYoke], seen: [yoke-skirt] }
 
   # --- Shaping ---
   darts:

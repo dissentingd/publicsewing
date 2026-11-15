@@ -1588,6 +1588,11 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: ruffled edges, lace, pockets, a drawstring, an underskirt showing, or a train.
 
+### yoke-skirt: Yoke skirt
+> A long woven skirt, close and smooth over the hips in a shaped yoke with no darts, below which eight long panels flare out from about the knee into a full near-ankle hem. A narrow waistband. Front three-quarter full-length view, plain background, clean technical editorial illustration.
+>
+> Leave out: pleats, gathers, pockets, buttons, a slit or a train.
+
 ### three-piece-long-coat: Three-piece long coat
 > An early twentieth-century women's semi-fitted long wool coat. Show long shaped seams from the upper body through the waist to a moderately flared calf-length hem, with a narrow back, side panels and smooth front. The adapted pattern closes high at the neck under a small storm collar and has three front buttons. Front three-quarter full-length view on a plain background, clean technical editorial illustration.
 >
