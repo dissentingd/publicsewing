@@ -45,13 +45,13 @@ export function render({ tree, elements: E }) {
 
   // Missing elements, by how many unbuilt types each blocks
   out.push('## What to build next: missing elements', '')
-  out.push('Each gap or partial element, with the unbuilt garment types that need it. A type is unblocked when all its elements are covered.', '')
-  out.push('| Element | Status | Blocks | From FreeSewing | Types |', '|---|---|---|---|---|')
+  out.push('Each gap or partial element, with the unbuilt garment types that need it and the BUILD_QUEUE.md item that supplies it (`queue:` in elements.yaml). A type is unblocked when all its elements are covered.', '')
+  out.push('| Element | Status | Blocks | Queue | From FreeSewing | Types |', '|---|---|---|---|---|---|')
   const blocks = Object.entries(elements)
     .filter(([, e]) => e.status !== 'covered')
     .map(([k, e]) => [k, e, leaves.filter((id) => !['built', 'listed'].includes(cov[id]) && tree[id].traits?.includes(k))])
     .sort((a, b) => b[2].length - a[2].length || a[0].localeCompare(b[0]))
-  for (const [k, e, ts] of blocks) out.push(`| ${e.name} (\`${k}\`) | ${e.status} | ${ts.length} | ${(e.freesewing ?? []).join(', ')} | ${ts.map((t) => tree[t].name).join(', ')} |`)
+  for (const [k, e, ts] of blocks) out.push(`| ${e.name} (\`${k}\`) | ${e.status} | ${ts.length} | ${e.queue ?? ''} | ${(e.freesewing ?? []).join(', ')} | ${ts.map((t) => tree[t].name).join(', ')} |`)
   out.push('')
 
   // The tree
