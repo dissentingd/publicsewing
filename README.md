@@ -83,7 +83,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `tunic-skirt` | Short radial overskirt with a central waist dart and a curved hem | Schorr 1917 |
 | `four-gore-skirt` | Long panel skirt with Schorr's three-part waist shaping | Schorr 1917 |
 | `yoke-skirt` | Long skirt of eight flared gores below a smooth hip yoke, the waist darts closed in the yoke, side zip | Aldrich 2015 (inspired by) |
-| `tiered-skirt` | Four gathered tiers, each wider and a little deeper than the one above, on a waistband with a side placket | Armstrong 2010 (inspired by) |
+| `tiered-skirt` | Four gathered tiers, each wider and a little deeper than the one above, on a waistband with a side placket | Joseph-Armstrong 2010 (inspired by) |
 | `work-pants` | Full straight work trousers for cotton and khaki, deep rise, no darts | Simons 1916 |
 | `service-shirt` | Button-through camp-collar shirt: back yoke, two flapped breast pockets, shoulder straps | Vincent 1890, Simons 1918 |
 | `dress-shirt` | Classic button-through shirt: back yoke, collar on a stand, buttoned cuffs, breast pocket | Vincent 1890 |

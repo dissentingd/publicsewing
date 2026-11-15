@@ -1,8 +1,7 @@
 # Tiered skirt
 
 **Source:** Helen Joseph-Armstrong, *Patternmaking for Fashion Design*, 5th ed. (Pearson, 2010;
-international edition 2014), corpus `armstrongpatternmaking2014` (a private copy, not in the
-repository). Chapter 13, "Tiers": attached tiers, Design 2, book pp. 315–316 (PDF pp. 322–323;
+international edition 2014), the maintainer's own copy; not in the repository. Chapter 13, "Tiers": attached tiers, Design 2, book pp. 315–316 (PDF pp. 322–323;
 PDF = book + 7, checked on p. 316). Still in copyright: only its proportions and construction are
 used here, as design references, in our own words; no text or figure is reproduced. Lengths below
 are the book's inches.
@@ -32,7 +31,7 @@ What's ours: every width as a proportion of the body, since the book's widths de
 fabric and its standard figure; the tier depths as a growth rate; the opening.
 
 ## How it maps onto the block
-| Feature | Armstrong | Here (option default) |
+| Feature | Joseph-Armstrong | Here (option default) |
 |---|---|---|
 | Length | 29 in | `skirtLength` 70% of waist to floor (29 in at a 41.3 in waist to floor) |
 | Tier depths | 6¼, 6¾, 7¼, 8¾ in | `tierGrowth` 112%: each tier 12% deeper than the one above, the four adding up to the length (6.1, 6.8, 7.6, 8.5 in at 29 in) |
@@ -49,7 +48,7 @@ fabric and its standard figure; the tier depths as a growth rate; the opening.
   tier is gathered straight into the waistband, as the tiers' straight panels already are.
 - **A side placket** in place of the waistband zip, as on the gathered skirt.
 - **The back drop** blends straight to the side seam, not in a curve.
-- Armstrong's separated tiers on an underskirt (Designs 4–6) and flared tiers aren't modelled.
+- Joseph-Armstrong's separated tiers on an underskirt (Designs 4–6) and flared tiers aren't modelled.
 
 ## Pieces
 First tier front and back (each on the fold), second, third and fourth tiers (each on the fold,

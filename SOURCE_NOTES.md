@@ -21,19 +21,19 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 | Weiler, *Ladies' Tailor* (1915) `weilerladiestail00weil` | 4 | no |
 | Schorr, *The Expert Designer* (1917) `expertdesignerpr00scho` | not established | no |
 | Sheifer, *System of Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | not established | no |
-| Armstrong, *Patternmaking for Fashion Design* (5th ed., 2010; in copyright, a private copy) `armstrongpatternmaking2014` | 7 | no |
-| Aldrich, *Metric Pattern Cutting for Women's Wear* (6th ed., 2015; in copyright, a private copy) `aldrichwomenswear2015` | 4 | no |
+| Helen Joseph-Armstrong, *Patternmaking for Fashion Design* (5th ed., 2010; in copyright, the maintainer's own copy) | 7 | no |
+| Winifred Aldrich, *Metric Pattern Cutting for Women's Wear* (6th ed., 2015; in copyright, the maintainer's own copy) | 4 | no |
 
 ## All scans
 - The OCR drops or confuses fractions ("\ l/2" for 1½, a blank for ¼). Read numbers from the image.
 - A contents page can be wrong. Search the text for the garment's name.
 
-## Armstrong 2010 (`armstrongpatternmaking2014`)
+## Joseph-Armstrong 2010
 - In copyright: methods and proportions only, in our own words. Imperial units. Its styles are worked
   on its own slopers and often size panels by fabric width (36–45 in); restate those against the body.
 - Tiers (ch. 13): text book p. 315, figures p. 316. The text layer garbles figure labels; check the page image.
 
-## Aldrich 2015 (`aldrichwomenswear2015`)
+## Aldrich 2015 (women's wear)
 - In copyright: methods and proportions only, in our own words. Metric. Its styles start from a
   named block (natural-waist basic or low-waist production skirt, book pp. 24–25): note which.
   FreeSewing's Sarah follows its skirt block.

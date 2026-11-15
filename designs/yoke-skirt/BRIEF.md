@@ -1,7 +1,7 @@
 # Yoke skirt
 
 **Source:** Winifred Aldrich, *Metric Pattern Cutting for Women's Wear*, 6th ed. (Wiley, 2015),
-corpus `aldrichwomenswear2015` (a private copy, not in the repository). Chapter 3, "Waistline
+the maintainer's own copy; not in the repository. Chapter 3, "Waistline
 adaptations: yokes", 5, Yoked skirt with gores, book p. 41 (PDF p. 45; PDF = book + 4, checked on
 pp. 24 and 41), on the basic skirt block, book p. 24 (PDF p. 28). Still in copyright: only its
 construction and proportions are used here, as design references, in our own words; no text or

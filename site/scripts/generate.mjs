@@ -177,11 +177,12 @@ writeFileSync(out('src', 'generated', 'measurements.json'), JSON.stringify(measu
 const labelData = parse(readFileSync(join(designsDir, 'labels.yaml'), 'utf8'))
 
 // Books still in copyright that designs take only methods and proportions from: credited once on the
-// Sources page (its anchor), and "inspired by" everywhere else. A spec's about.source names the book
+// Sources page (its anchor), and "inspired by" everywhere else. A spec's about.source names the book;
+// its about.taken, what the design takes from it ("tier proportions"), goes in the page's credit
 const methodSources = [
   { test: /ЕМКО/, tag: 'ЕМКО 1988', name: 'ЕМКО СЭВ', anchor: 'emko' },
-  { test: /Armstrong/, tag: 'Armstrong 2010', name: 'Armstrong, *Patternmaking for Fashion Design*', anchor: 'armstrong' },
-  { test: /Aldrich/, tag: 'Aldrich 2015', name: "Aldrich, *Metric Pattern Cutting for Women's Wear*", anchor: 'aldrich' },
+  { test: /Armstrong/, tag: 'Joseph-Armstrong 2010', name: "Helen Joseph-Armstrong's *Patternmaking for Fashion Design*", anchor: 'armstrong' },
+  { test: /Aldrich/, tag: 'Aldrich 2015', name: "Winifred Aldrich's *Metric Pattern Cutting for Women's Wear*", anchor: 'aldrich' },
 ]
 
 // Infant safety (designs/safety, BUILD_QUEUE S1): a design reviewed for baby sizes shows its
@@ -590,7 +591,9 @@ ${variants.join('\n')}
   const originalLine = original[id]
     ? `\n\nOur own interpretation, inspired by [${original[id].name}](${original[id].url}) from [${external.by}](/sources#open-pattern). ${external.by} did the hard part, so please [support them](${original[id].url}) and use their design from them first. Feel free to use ours if it offers something you need.`
     : methodSource
-      ? `\n\nOur own interpretation, inspired by [${methodSource.name}](/sources#${methodSource.anchor}).`
+      ? about.taken
+        ? `\n\nOur own design: its ${about.taken} follow [${methodSource.name}](/sources#${methodSource.anchor}), and the rest is drafted from your measurements.`
+        : `\n\nOur own interpretation, inspired by [${methodSource.name}](/sources#${methodSource.anchor}).`
       : ''
   writeFileSync(
     out('docs', folder, about.category, `${id}.mdx`),

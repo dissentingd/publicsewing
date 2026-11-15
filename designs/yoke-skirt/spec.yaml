@@ -14,7 +14,8 @@ about:
   tags: [bottoms]
   techniques: [zip, waistband, hem]
   version: 0.1.0
-  source: Aldrich, Metric Pattern Cutting for Women's Wear (2015), yoked skirt with gores, book p. 41 (aldrichwomenswear2015)
+  source: Winifred Aldrich, Metric Pattern Cutting for Women's Wear, 6th ed. (Wiley, 2015), yoked skirt with gores, p. 41
+  taken: dart-closing yoke and flared gores # the design page: "its ... follow" the book
   preview: cisFemaleAdult36
 
 options:

@@ -1,4 +1,4 @@
-// Tiered skirt: built from ../spec.yaml (Armstrong, attached tiers).
+// Tiered skirt: built from ../spec.yaml (Joseph-Armstrong, attached tiers).
 import { loadSpec } from '../../lib/load-spec.mjs'
 
 const spec = loadSpec(new URL('../spec.yaml', import.meta.url))

@@ -1,4 +1,4 @@
-# Tiered skirt: Armstrong's attached tiers (Patternmaking for Fashion Design, 5th ed., 2010,
+# Tiered skirt: Helen Joseph-Armstrong's attached tiers (Patternmaking for Fashion Design, 5th ed., 2010,
 # "Tiers", Design 2), used for its proportions only: four straight gathered tiers, each wider and a
 # little deeper than the one above, the first gathered into a waistband with a placket at the left
 # side seam. FreeSewing's Sarah only supplies the measurements. See BRIEF.md.
@@ -13,7 +13,8 @@ about:
   tags: [bottoms]
   techniques: [gathering, placket, waistband, hem]
   version: 0.1.0
-  source: Armstrong, Patternmaking for Fashion Design (2010), Tiers, Design 2 (armstrongpatternmaking2014)
+  source: Helen Joseph-Armstrong, Patternmaking for Fashion Design, 5th ed. (Pearson, 2010), Tiers, Design 2
+  taken: tier proportions # the design page: "its tier proportions follow" the book
   preview: cisFemaleAdult36
 
 options:
