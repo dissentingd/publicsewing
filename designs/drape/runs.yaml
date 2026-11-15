@@ -122,6 +122,9 @@ pinafore:
   measurements: { chest: 900, waist: 800, seat: 1070 }
   pieces: [frontYoke, backYoke, frontBody, backBody]
   clip: { frontYoke: 0, backYoke: 0 }
+  # The pipeline reports these as "known", not REVIEW: the posed arms inside the full sleeveless
+  # body (2.7-3.0 cm at every size, 2026-11-10 to 15). Deeper, or anywhere else, is REVIEW again.
+  known: { why: arms inside the full sleeveless body (the pose), regions: [forearm/elbow, upper arm/shoulder], deepest: 3.3 }
 
 nightshirt:
   config: yoke-shirt.yaml

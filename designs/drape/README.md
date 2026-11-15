@@ -79,9 +79,12 @@ and a large size set on their matched bodies (men's 34 and 46, women's 30 and 42
   design's own files and its descendants'; all of them when drafting code, blocks, a drape step,
   the simulation script or the dependencies change, or a config the design uses. Each drape is
   compared with the last one of the same design and size: OK turned REVIEW, intersections up by
-  half and ten, or cloth half a centimetre deeper is flagged in the report.
+  half and ten, or cloth half a centimetre deeper is flagged in the report. A REVIEW that an
+  entry's `known: {why, regions, deepest}` explains (only those regions, no deeper than
+  `deepest` cm) is reported as `known` instead; the pinafore's posed arms are the first.
 - **new:** designs with a brief and no runs.yaml entry. Settings come from a draped design whose
-  config's pieces and points are all among its parts (its ancestor's first), through a quick
+  config's pieces and points are all among its parts (points on the part's seam outline, the
+  only ones a drape exports; its ancestor's first), through a quick
   check (export and specification, no GPU). With `--llm`, a local model (Ollama on the host, on
   the CPU) is asked when none fits; off by default, since in its first runs it solved none.
 - **nightly:** regress, then new.
