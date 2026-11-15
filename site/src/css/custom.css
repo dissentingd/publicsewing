@@ -445,7 +445,7 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
 .design-catalog-detail { margin: 0.45rem 0; font-size: 0.87rem; line-height: 1.45; }
 .design-catalog-credit { margin: 0.85rem 0; color: var(--ifm-color-emphasis-700); font-size: 0.74rem; }
 .design-catalog-action { margin-top: 0.5rem; }
-@media (max-width: 900px) { .design-catalog { grid-template-columns: 1fr; } .design-catalog-hero { grid-template-columns: minmax(7rem, 32%) 1fr; } }
+@media (max-width: 900px) { .design-catalog { grid-template-columns: 1fr; } .design-catalog-preview { grid-row: 1; } .design-catalog-list { grid-row: 2; } .design-catalog-hero { grid-template-columns: minmax(7rem, 32%) 1fr; } }
 @media (max-width: 500px) { .design-catalog-hero { grid-template-columns: 1fr; } .design-catalog-hero > img, .design-catalog-no-image { max-height: 18rem; aspect-ratio: 3 / 2; } }
 
 /* The Measure page: a list of measurements beside the figure for the one selected */
