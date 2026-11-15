@@ -1,0 +1,155 @@
+# Women's trousers: Simons' ladies' regular trousers (Drafting Trousers, 1945, Diagram 39, pp. 116-119),
+# with his ladies' pleated slacks (Diagram 40, pp. 119-120) as a variant, and Pivnick's tailored slacks
+# (1949, ch. XX, pp. 261-267) as a check, on the suit trousers' Titan legs: a plain front, one vee in
+# each back, a straight leg as wide at the bottom as at the knee, full over the hips, a zip in the left
+# side seam instead of a fly, and a 2 1/4 inch waistband. For any size. See BRIEF.md.
+extends: ../suit-trousers/spec.yaml
+
+about:
+  id: womens-trousers
+  name: Women's trousers
+  category: trousers
+  description: "Straight trousers full over the hips, with a plain front, a back dart, a zip in the side seam and a waistband"
+  difficulty: 2
+  tags: [bottoms]
+  techniques: [dart, zip, waistband, hem]
+  version: 0.1.0
+  source: "Simons, Drafting Trousers (1945), Ladies' Regular Trousers and Pleated Slacks, Diagrams 39-40, pp. 116-120 (simonsdraftingtrousers1945); Pivnick, How to Design Beautiful Clothes (1949), ch. XX (pivnickdesignclothes1949)"
+  preview: cisFemaleAdult34 # Simons drafts waist 28, seat 38
+
+options:
+  # Waist 28, seat 38, rise 13 including the band, inseam 28, knee 21, bottom 22 (Diagram 39)
+  # Fronts and backs at the seat line come to about 22 in on his 19 in half seat, less his seams:
+  # "large enough over the hips so that the garment does not bind"
+  seatEase: { pct: 12, max: 16 }
+  kneeEase: { pct: 40, max: 50 } # x knee: 21 in on about 15 in
+  hemWidth: { pct: 105 } # bottom 22 / knee 21
+  hemShaping: { pct: 0 } # "Draw a line 9-8": straight across
+  lengthBonus: { pct: -5 } # x waistToFloor: inseam 28 on a woman's about 30
+  frontDart: { pct: 0, min: 0, max: 60 } # "Shape the front, N-P-J": no dart or pleat
+  # "Take out a 1-inch vee at points 10-11. From 11 to 12 is 5 inches, the length of the vee":
+  # of about 6 1/2 in half waist shaping with this ease at 28/38; 5 in on about 10 in waist to seat
+  backDart: { pct: 16 }
+  backDartLength: { pct: 49 }
+  # Diagram 40: "From A to B and A to C is 1 inch each": a 2 in pleat at the crease, and a second
+  # 1 in fold; off for the regular trousers
+  pleats: { count: 0, min: 0, max: 3, menu: style }
+  pleatSpacing: { pct: 3, min: 1.5, max: 6, of: seat, menu: style } # "E is 1 1/2 inches from C"
+  # The waistband ("Facing the side of the waistband"): no fly in the draft, so the opening is at the side
+  opening: { dflt: side, list: [side, fly], menu: style }
+  zipLength: { pct: 75, min: 50, max: 110, menu: style, description: "Length of the zip in the left side seam, as a share of waist to seat." } # a 7 in zip below the band
+  sideUnderlap: { pct: 7, min: 0, max: 12, of: waist, menu: style } # "B to C is 2 inches" on waist 28
+  # "M is 2 1/4 inches from L, the allowance for the waistband": on his waist to floor of 38 3/4 in
+  # (rise 13 less the band, and inseam 28)
+  waistbandHeight: { pct: 5.8 }
+  sidePockets: { bool: false, menu: style }
+  backPocket: { bool: false, menu: style }
+  beltLoops: { count: 0, min: 0, max: 9, menu: style }
+
+pieces:
+  front:
+    prefix: trousers
+    from: titan.front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+    ops:
+      - trouserLeg:
+          which: front
+          dart: d * frontDart
+          dartAt: if(pleats > 0, 0.4, 0.55)
+          dartLength: if(pleats > 0, 0, waistToSeat * frontDartLength)
+          pleats: pleats
+          pleatSpacing: seat * pleatSpacing
+          hemWidth: hemWidth
+          hemSag: waistToFloor * hemShaping
+          turnUp: if(turnUps, waistToFloor * turnUpDepth, 0)
+          fly: if(opening == 'fly', waist * flyWidth, 0)
+          flyLength: waistToSeat * 1.05
+          sideZip: if(opening == 'side', waistToSeat * zipLength, 0)
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          pocketWidth: seat * 0.08
+          pocketDepth: waistToSeat * 0.45
+  back:
+    prefix: trousers
+    from: titan.back
+    after: front
+    hide: tree
+    options: all
+    measurements: [waistToSeat]
+    let:
+      d: (seat * (1 + seatEase) - waist * (1 + waistEase)) / 2
+    ops:
+      - trouserLeg:
+          which: back
+          matchOutseam: trousers.front.outseam
+          dart: d * backDart
+          dartAt: 0.4
+          dartFrom: centre
+          dartLength: waistToSeat * backDartLength
+          hemWidth: hemWidth
+          hemSag: waistToFloor * hemShaping
+          turnUp: if(turnUps, waistToFloor * turnUpDepth, 0)
+          sideZip: if(opening == 'side', waistToSeat * zipLength, 0)
+          pocketTop: if(sidePockets, waistToSeat * 0.18, 0)
+          pocketLength: if(sidePockets, waistToSeat * 0.85, 0)
+          backPocket: if(backPocket, seat * 0.13, 0)
+          backPocketBelow: waistToSeat * 0.4
+          backPocketWelt: seat * 0.006
+  # With a fly, the suit trousers' waistband: two halves joined at CB, the left running on over the fly
+  waistband:
+    prefix: trousers
+    part: strip
+    after: [back, front]
+    nr: 3
+    cut: 2
+    fold: true
+    options: [waistbandHeight, opening, flyWidth]
+    length: trousers.back.waist + trousers.front.waist + waist * flyWidth * 1.2
+    width: waistToFloor * waistbandHeight
+    if: opening == 'fly'
+  # With a side opening, one strip round the whole waist from the left side, running on past the
+  # opening's front edge to lap under it (Simons: "B to C is 2 inches, the allowance for facing the
+  # side of the waistband")
+  sideWaistband:
+    prefix: trousers
+    part: strip
+    after: [back, front]
+    nr: 3
+    fold: true
+    options: [waistbandHeight, opening, sideUnderlap]
+    length: 2 * (trousers.back.waist + trousers.front.waist) + waist * sideUnderlap
+    width: waistToFloor * waistbandHeight
+    if: opening == 'side'
+  flyShield:
+    prefix: trousers
+    part: strip
+    after: front
+    nr: 4
+    fold: true
+    length: trousers.front.fly + 20
+    width: trousers.front.flyWidth * 1.3
+    if: opening == 'fly'
+  flyFacing:
+    prefix: trousers
+    part: strip
+    after: front
+    nr: 5
+    length: trousers.front.fly + 20
+    width: trousers.front.flyWidth * 1.3
+    if: opening == 'fly'
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  pleated:
+    name: Pleated slacks
+    description: "Simons' ladies' pleated slacks (Diagram 40): two pleats at each front waist taking up 3 inches, a leg an inch wider at the knee and an inch narrower at the bottom."
+    # 3 in of about 6 1/2 in; knee 22 / about 15 in; bottom 21 / knee 22
+    options: { pleats: 2, frontDart: 0.46, kneeEase: 0.47, hemWidth: 0.95 }
+  fly:
+    name: Front fly
+    description: "A zip fly at the centre front instead of the side opening, as in the men's trousers."
+    options: { opening: fly }

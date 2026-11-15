@@ -44,6 +44,32 @@ viewer's right.
 >
 > Leave out: a separate waistband, pleats, cuffs, belt loops, an elastic waist, very short legs.
 
+### womens-trousers: Women's trousers
+> **Women's trousers** of the 1940s in heavy navy cotton twill, full length, on an invisible figure. **A plain,
+> flat front with no pleats or fly**, a **waistband about two inches deep** with no belt loops, **closing at the
+> left hip** with a button on the waistband above a side zip. **Full and easy over the hips, the legs straight
+> and wide**, as wide at the hem as at the knee, plain hems just above the ankle. Front three-quarter view
+> from the wearer's left, plain background, clean technical editorial illustration.
+>
+> Leave out: a front fly or zip at the centre front, pleats, cuffs, belt loops, tapered or flared legs, jeans
+> details, an elastic waist.
+
+### womens-trousers.pleated: Pleated slacks
+> **Women's pleated slacks** of the 1940s in camel wool gabardine, full length, on an invisible figure. **Two deep
+> pleats each side of the front**, the inner one on the crease, a **two-inch waistband** closing at the left hip
+> over a side zip. Full over the hips, **wide straight legs, slightly narrower at the hem than at the knee**,
+> plain hems. Front three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: a front fly, cuffs, belt loops, tapered or flared legs, an elastic waist.
+
+### womens-trousers.fly: Women's trousers with a front fly
+> **Women's straight trousers** of the 1940s in grey cotton twill, full length, on an invisible figure. **A plain,
+> flat front with a zip fly at the centre front**, a two-inch waistband with a button at the front, no belt
+> loops. Full over the hips, straight wide legs, plain hems. Front view, plain background, clean technical
+> editorial illustration.
+>
+> Leave out: pleats, cuffs, a side opening, tapered legs, jeans details.
+
 ### slacks: Slacks
 > **Men's two-pleat slacks** of the 1940s in mid-grey wool flannel, shown flat or on an invisible figure, full
 > length. **Two pleats each side of the front**, folded toward the side seam, the inner one on the crease.

@@ -171,7 +171,7 @@ elements:
   closure-wrap:
     { name: Wrap front, tied or belted, group: closure, status: covered, lib: [coatFront, belt, wrapFront], seen: [dressing-gown, kilt, wrap-dress] }
   closure-side-opening:
-    { name: Buttoned side or leg opening, group: closure, status: covered, lib: [trouserLeg.openingBelow], seen: [breeches] }
+    { name: Side or leg opening (buttoned, or a side zip), group: closure, status: covered, lib: [trouserLeg.openingBelow, trouserLeg.sideZip], seen: [breeches, womens-trousers] }
   closure-frogs:
     { name: Frogs or toggles, group: closure, status: partial, lib: [buttons], seen: [smoking-jacket], note: "Marked as buttons", queue: "M15" }
   closure-lacing:

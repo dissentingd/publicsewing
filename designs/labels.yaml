@@ -543,6 +543,9 @@ options:
   zipLength:
     title: Zip length
     description: Length of the zip in the centre back seam, as a share of waist to seat.
+  sideUnderlap:
+    title: Side underlap
+    description: How far the waistband runs on past a side opening to lap under it, as a share of the waist.
   continuousBand:
     title: Cut-on waistband
     description: The waistband cut in one with the legs, the pleats sewn down into it. Off, a separate waistband.
@@ -756,7 +759,7 @@ options:
   opening:
     title: Opening
     description: Where the garment opens.
-    choices: { front: Front, back: Back }
+    choices: { front: Front, back: Back, side: Left side seam, fly: Front fly }
   openingExt:
     title: Opening lap
     description: Width of the lap at the opening, as a share of the chest.
@@ -1232,6 +1235,7 @@ parts:
   gore6: Gore 6
   gore7: Gore 7
   waistband: Waistband
+  sideWaistband: Waistband
   sash: Sash
   sleevePlacket: Sleeve placket
   collarStand: Collar stand

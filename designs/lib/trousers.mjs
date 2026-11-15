@@ -121,6 +121,8 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  *   out by an eighth of the depth at the cuff's fold and at the raw edge, so it folds up to fit the
  *   leg. The hem is then straight (`hemSag` is ignored); its allowance is a single one.
  * - `fly`, `flyLength` (front): the fly's stitching line, `fly` in from CF, `flyLength` down.
+ * - `sideZip`: a side opening (Simons 1945, Diagram 39), the zip's end notched this far down the
+ *   outseam (on both pieces; sewn in the left leg only), for trousers with no fly.
  * - `pocketTop`, `pocketLength`, `pocketWidth`, `pocketDepth`: an on-seam side pocket in the
  *   outseam (`trousers.pockets.side`, for a `weltBag` part).
  * - `backPocket`, `backPocketBelow`, `backPocketWelt` (back): a jetted pocket this long, its
@@ -446,6 +448,15 @@ export function draftTrouserLeg(sh, args) {
       const pockets = store.get('trousers.pockets', null) ?? {}
       store.set('trousers.pockets', { ...pockets, side: { len: pocketWidth, bag: pocketTop + pocketLength + pocketDepth } })
     }
+  }
+
+  // Side opening (Simons 1945, Diagram 39): a zip in the left outseam, its end notched `sideZip`
+  // down the outseam from its top (the band's top when the band is cut on)
+  const { sideZip = 0 } = args
+  if (sideZip > 0 && !straight) {
+    points.sideZip = outseam.shiftAlong(Math.min(sideZip, outseam.length() * 0.6))
+    snippets.sideZip = new Snippet('notch', points.sideZip)
+    info.sideZip = outseam.split(points.sideZip)[0].length()
   }
 
   // Breeches opening: the outseam left open from the hem up to `openingBelow` under the knee;

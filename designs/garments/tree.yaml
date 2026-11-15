@@ -160,7 +160,7 @@ nodes:
   jeans-t: { name: Jeans, parent: trousers, traits: [leg-tailored, closure-fly, yoke-trouser-back, pocket-scoop, pocket-coin, pocket-trouser-back-patch, waistband, belt-loops], note: "Queue 46, inspired by Joseph-Armstrong and Aldrich" }
   cargo: { name: Cargo trousers, parent: trousers, traits: [leg-tailored, pleats-trouser, pocket-cargo, closure-fly, waistband], designs: [field-trousers] }
   sailor-trousers: { name: Sailor trousers, parent: trousers, traits: [leg-in-one, leg-flared, closure-fall-front], designs: [sailor-pants] }
-  womens-trousers-t: { name: Women's trousers, parent: trousers, traits: [leg-tailored, darts, closure-zip-back, waistband], note: "Queue 45" }
+  womens-trousers-t: { name: Women's trousers, parent: trousers, traits: [leg-tailored, darts, closure-side-opening, waistband], designs: [womens-trousers], variants: [womens-trousers.pleated] }
   wide-leg: { name: Wide-leg (palazzo) trousers, parent: trousers, traits: [leg-tailored, waist-faced, closure-zip-back], note: "Queue M12" }
   drawstring-trousers: { name: Drawstring trousers, parent: trousers, traits: [leg-gathered, waist-drawstring, pocket-on-seam], freesewing: [paco] }
   salwar-t: { name: Salwar, parent: trousers, traits: [leg-gathered, waist-drawstring], note: "Queue 53, inspired by CBSE" }

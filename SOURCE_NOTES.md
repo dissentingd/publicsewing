@@ -103,6 +103,10 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Diagram 9 states its seams (¼ in) are in the draft; 10A ½ in. It gives no seat ease as such.
 - Shorts: men's Diagram 21 (text p. 78, plate p. 79), boys' 35 (p. 104), ladies' 41 (pp. 121–123): the same
   construction at three sizes. The men's leg is lengthened ¼ in per inch of inseam over 32.
+- Ladies' trousers: proportions table p. 114 (OCR garbled), regular trousers Diagram 39 (text pp. 116–119,
+  plate p. 117 = PDF 125), pleated slacks Diagram 40 (text p. 119, plate p. 120 = PDF 128). No fly in the
+  draft: the waistband's 2 in "facing the side" means a side opening. The OCR gives the hip as "30"; the
+  draft's own arithmetic ("1/8 of 19") makes it a 38 seat.
 
 ## Simons 1916 (`designingovercoa00simo`)
 - The shoulder cape overcoat is on pp. 30-31, not p. 21. It is a full-length cape with a military collar and a whole back; the 7 in button stand is a cut-on front extension.
