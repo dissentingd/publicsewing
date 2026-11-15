@@ -33,7 +33,7 @@ nodes:
   western-shirt: { name: Western shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, yoke-front, closure-snaps, collar-shirt, cuff-barrel, pocket-patch-flap] }
   overshirt: { name: Overshirt (shirt jacket), parent: shirts, traits: [body-boxy, yoke-shirt-back, closure-buttons, collar-shirt, pocket-patch-flap, cuff-barrel] }
   tuxedo-shirt: { name: Formal (tuxedo) shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-stand, cuff-french, tucks], note: "Queue M6" }
-  football-shirt-t: { name: Woven sports pullover, parent: shirts, traits: [body-yoke, closure-placket, collar-turndown, cuff-band], note: "Queue 49" }
+  football-shirt-t: { name: Woven sports pullover, parent: shirts, traits: [body-yoke, closure-placket, collar-turndown, cuff-band], variants: [work-shirt.football] }
   grandad-shirt: { name: Band-collar (grandad) shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-placket, collar-stand, cuff-barrel, hem-curved-tail] }
   scrub-top: { name: Medical scrub top, parent: shirts, research: true }
   adaptive-upper: { name: Adaptive upper-body garments, parent: upper }
@@ -157,10 +157,10 @@ nodes:
   chinos: { name: Chinos (cotton slacks), parent: trousers, traits: [leg-tailored, closure-fly, pocket-trouser-slant, pocket-trouser-back-jetted, waistband, belt-loops], variants: [slacks.cotton], freesewing: [charlie] }
   work-trousers: { name: Work trousers, parent: trousers, traits: [leg-tailored, closure-fly, pocket-patch, waistband], designs: [work-pants] }
   overall-trousers: { name: Overall pants, parent: trousers, traits: [leg-in-one, closure-fly, waistband], designs: [overall-pants] }
-  jeans-t: { name: Jeans, parent: trousers, traits: [leg-tailored, closure-fly, yoke-trouser-back, pocket-scoop, pocket-coin, pocket-trouser-back-patch, waistband, belt-loops], note: "Queue 46, inspired by Joseph-Armstrong and Aldrich" }
+  jeans-t: { name: Jeans, parent: trousers, traits: [leg-tailored, closure-fly, yoke-trouser-back, pocket-scoop, pocket-coin, pocket-trouser-back-patch, waistband, belt-loops], designs: [jeans], variants: [jeans.tapered, jeans.bootcut] }
   cargo: { name: Cargo trousers, parent: trousers, traits: [leg-tailored, pleats-trouser, pocket-cargo, closure-fly, waistband], designs: [field-trousers] }
   sailor-trousers: { name: Sailor trousers, parent: trousers, traits: [leg-in-one, leg-flared, closure-fall-front], designs: [sailor-pants] }
-  womens-trousers-t: { name: Women's trousers, parent: trousers, traits: [leg-tailored, darts, closure-zip-back, waistband], note: "Queue 45" }
+  womens-trousers-t: { name: Women's trousers, parent: trousers, traits: [leg-tailored, darts, closure-side-opening, waistband], designs: [womens-trousers], variants: [womens-trousers.pleated] }
   wide-leg: { name: Wide-leg (palazzo) trousers, parent: trousers, traits: [leg-tailored, waist-faced, closure-zip-back], note: "Queue M12" }
   drawstring-trousers: { name: Drawstring trousers, parent: trousers, traits: [leg-gathered, waist-drawstring, pocket-on-seam], freesewing: [paco] }
   salwar-t: { name: Salwar, parent: trousers, traits: [leg-gathered, waist-drawstring], note: "Queue 53, inspired by CBSE" }
@@ -173,7 +173,7 @@ nodes:
   joggers: { name: Joggers, parent: trousers, traits: [leg-gathered, waist-elastic, leg-rib-cuff, pocket-on-seam], designs: [joggers], variants: [joggers.plain], knit: true }
   breeches-family: { name: Breeches and knee trousers, parent: lower }
   breeches-t: { name: Riding breeches, parent: breeches-family, traits: [leg-breeches, closure-side-opening, closure-fly, waistband], designs: [breeches] }
-  jodhpurs-t: { name: Jodhpurs, parent: breeches-family, traits: [leg-breeches, closure-fly, waistband], note: "Queue 48" }
+  jodhpurs-t: { name: Jodhpurs, parent: breeches-family, traits: [leg-breeches, turn-ups, closure-fly, waistband], designs: [jodhpurs], variants: [jodhpurs.ladies] }
   knickers-t: { name: Knickerbockers, parent: breeches-family, traits: [leg-gathered, leg-breeches, waistband], designs: [boys-knickers, golf-pants, cycling-breeches], freesewing: [cornelius] }
   knee-pants-t: { name: Knee pants, parent: breeches-family, traits: [leg-tailored, leg-shorts, closure-fly], designs: [knee-pants, scout-pants] }
   shorts-family: { name: Shorts, parent: lower }

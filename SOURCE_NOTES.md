@@ -32,6 +32,9 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - In copyright: methods and proportions only, in our own words. Imperial units. Its styles are worked
   on its own slopers and often size panels by fabric width (36–45 in); restate those against the body.
 - Tiers (ch. 13): text book p. 315, figures p. 316. The text layer garbles figure labels; check the page image.
+- Jeans (ch. "Pants"): the jean foundation draft, book pp. 673–675 (a contour fit on the women's pant
+  foundation); the jean with a V-yoke and its waistband variations, pp. 700–703, figures on every page;
+  children's jeans p. 888. Pocket depths are measured from the side waist *after* the band is cut off.
 
 ## Aldrich 2015 (women's wear)
 - In copyright: methods and proportions only, in our own words. Metric. Its styles start from a
@@ -103,6 +106,13 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Diagram 9 states its seams (¼ in) are in the draft; 10A ½ in. It gives no seat ease as such.
 - Shorts: men's Diagram 21 (text p. 78, plate p. 79), boys' 35 (p. 104), ladies' 41 (pp. 121–123): the same
   construction at three sizes. The men's leg is lengthened ¼ in per inch of inseam over 32.
+- Jodhpurs: men's Diagram 18 (text pp. 70–73, plate p. 71 = PDF 79), ladies' Diagram 45 (text pp. 133–136;
+  its plate follows the text). Both say the knee, below-knee and calf are the riding breeches'; the bottom
+  is a trouser bottom with a cuff.
+- Ladies' trousers: proportions table p. 114 (OCR garbled), regular trousers Diagram 39 (text pp. 116–119,
+  plate p. 117 = PDF 125), pleated slacks Diagram 40 (text p. 119, plate p. 120 = PDF 128). No fly in the
+  draft: the waistband's 2 in "facing the side" means a side opening. The OCR gives the hip as "30"; the
+  draft's own arithmetic ("1/8 of 19") makes it a 38 seat.
 
 ## Simons 1916 (`designingovercoa00simo`)
 - The shoulder cape overcoat is on pp. 30-31, not p. 21. It is a full-length cape with a military collar and a whole back; the 7 in button stand is a cut-on front extension.
@@ -119,6 +129,8 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 ## Vincent 1890 (`vincentmakingshirts18xx`)
 - "D.B." in the smoking jacket's text is one row of frogs on a wide overlap, on the plate.
 - Collars and cuffs for several shirts are shared on p. 23.
+- Football shirts, book p. 29 (PDF p. 33): one plate of twelve made-up shirts and a page of notes, no draft; the
+  "system" on p. 30 is the bath robe's.
 - Painter's jacket is book p. 35, PDF p. 39: 36 in breast, 34 in long from neck level, 17½ in to waist; the text supplies five buttons and the cook's jacket sleeve. Its three pocket sizes and collar height are marked on the plate.
 - Eight work aprons are together on book p. 39, PDF p. 43; the text continues on p. 40. The diagrams give fixed inch dimensions, not a graded draft. Diagram 8 is the painter's apron, distinct from the painter's jacket on p. 35.
 

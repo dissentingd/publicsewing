@@ -171,7 +171,7 @@ elements:
   closure-wrap:
     { name: Wrap front, tied or belted, group: closure, status: covered, lib: [coatFront, belt, wrapFront], seen: [dressing-gown, kilt, wrap-dress] }
   closure-side-opening:
-    { name: Buttoned side or leg opening, group: closure, status: covered, lib: [trouserLeg.openingBelow], seen: [breeches] }
+    { name: Side or leg opening (buttoned, or a side zip), group: closure, status: covered, lib: [trouserLeg.openingBelow, trouserLeg.sideZip], seen: [breeches, womens-trousers] }
   closure-frogs:
     { name: Frogs or toggles, group: closure, status: partial, lib: [buttons], seen: [smoking-jacket], note: "Marked as buttons", queue: "M15" }
   closure-lacing:
@@ -193,11 +193,11 @@ elements:
   pocket-trouser-back-jetted:
     { name: Jetted trouser back pocket, group: pocket, status: covered, lib: [trouserLeg.backPocket], seen: [suit-trousers] }
   pocket-trouser-back-patch:
-    { name: Patch back pocket on trousers, group: pocket, status: partial, seen: [field-trousers], note: "The field trousers have a flapped seat pocket; jeans need two shaped patches without flaps", queue: "46" }
+    { name: Patch back pocket on trousers, group: pocket, status: covered, lib: [jeanLeg.pocketW, polygon], seen: [jeans, field-trousers] }
   pocket-scoop:
-    { name: Scooped (jeans) front pocket with facing and bag, group: pocket, status: gap, queue: "46" }
+    { name: Scooped (jeans) front pocket with facing and bag, group: pocket, status: covered, lib: [jeanLeg.entryW, jeanPiece], seen: [jeans] }
   pocket-coin:
-    { name: Coin (watch) pocket, group: pocket, status: partial, lib: [polygon], note: "The piece is easy; its placement is not", queue: "46" }
+    { name: Coin (watch) pocket, group: pocket, status: covered, lib: [jeanLeg.coinW, polygon], seen: [jeans] }
   pocket-on-seam:
     { name: In-seam side pocket, group: pocket, status: covered, lib: [gatheredLeg, polygon], seen: [joggers], freesewing: [sasha] }
   pocket-cargo:
@@ -211,7 +211,7 @@ elements:
   yoke-front:
     { name: Front yoke, group: yoke, status: covered, lib: [frontYokeCut, frontPanel, yokePiece], seen: [hunting-coat, childrens-smock] }
   yoke-trouser-back:
-    { name: Trouser back yoke, group: yoke, status: gap, note: "Jeans", queue: "46" }
+    { name: Trouser back yoke, group: yoke, status: covered, lib: [jeanLeg.yokeIn, jeanPiece], seen: [jeans] }
   yoke-skirt-hip:
     { name: Skirt hip yoke, group: yoke, status: covered, lib: [yokeLayout, skirtYoke], seen: [yoke-skirt] }
 

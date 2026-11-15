@@ -119,8 +119,11 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  * - `turnUp`: a cuff bottom this deep (Simons 1916, Diagrams F and G): below the hem line the piece
  *   runs on for the cuff, as much again folded under it, and half that again to hem; its sides go
  *   out by an eighth of the depth at the cuff's fold and at the raw edge, so it folds up to fit the
- *   leg. The hem is then straight (`hemSag` is ignored); its allowance is a single one.
+ *   leg. The hem is then straight (`hemSag` is ignored); its allowance is a single one. Also on a
+ *   breeches leg carried to the ankle (jodhpurs).
  * - `fly`, `flyLength` (front): the fly's stitching line, `fly` in from CF, `flyLength` down.
+ * - `sideZip`: a side opening (Simons 1945, Diagram 39), the zip's end notched this far down the
+ *   outseam (on both pieces; sewn in the left leg only), for trousers with no fly.
  * - `pocketTop`, `pocketLength`, `pocketWidth`, `pocketDepth`: an on-seam side pocket in the
  *   outseam (`trousers.pockets.side`, for a `weltBag` part).
  * - `backPocket`, `backPocketBelow`, `backPocketWelt` (back): a jetted pocket this long, its
@@ -212,7 +215,7 @@ export function draftTrouserLeg(sh, args) {
     points.kneeOutCpU = points.kneeOut.shift(90, (points.knee.y - ty) / 3)
   }
   let hem = new Path().move(points.hemIn).curve(points.hemCp1, points.hemCp2, points.hemOut)
-  if (turnUp > 0 && !br) {
+  if (turnUp > 0) {
     const w = turnUp / 8
     const at = (p, sign, k, out) => new Point(p.x + (out ? sign * w : 0), p.y + k * turnUp)
     const sIn = Math.sign(points.hemIn.x - points.hemOut.x)
@@ -227,7 +230,7 @@ export function draftTrouserLeg(sh, args) {
     paths.cuffFold = new Path().move(points.cuffIn).line(points.cuffOut).addClass('help dashed')
     paths.underFold = new Path().move(points.underIn).line(points.underOut).addClass('help dashed')
   }
-  const hemAllowance = turnUp > 0 && !br ? 1 : hemSa
+  const hemAllowance = turnUp > 0 ? 1 : hemSa
 
   // Seams: outseam from the waist down (always through the seat line), inseam from the fork
   // down, crotch from the waist
@@ -373,6 +376,8 @@ export function draftTrouserLeg(sh, args) {
     }
     paths.sa = o.close().addClass('fabric sa')
   }
+  // `keepOutline`: the outline's seams for an operation that cuts the leg up after this one (jeans)
+  if (args.keepOutline) store.set(`trousers.outline.${which}`, { waist, crotch: crotchCut, inseam, hem, outseam: outseamCut, hemAllowance })
   paths.crease = new Path().move(cut ? new Point(points.floor.x, cutY) : points.floor).line(new Point(points.floor.x, points.fork.y)).addClass('help dashed')
   if (!straight && !cut) snippets.knee = new Snippet('notch', points.kneeOut)
   if (!cut) snippets.kneeIn = new Snippet('notch', points.kneeIn)
@@ -446,6 +451,15 @@ export function draftTrouserLeg(sh, args) {
       const pockets = store.get('trousers.pockets', null) ?? {}
       store.set('trousers.pockets', { ...pockets, side: { len: pocketWidth, bag: pocketTop + pocketLength + pocketDepth } })
     }
+  }
+
+  // Side opening (Simons 1945, Diagram 39): a zip in the left outseam, its end notched `sideZip`
+  // down the outseam from its top (the band's top when the band is cut on)
+  const { sideZip = 0 } = args
+  if (sideZip > 0 && !straight) {
+    points.sideZip = outseam.shiftAlong(Math.min(sideZip, outseam.length() * 0.6))
+    snippets.sideZip = new Snippet('notch', points.sideZip)
+    info.sideZip = outseam.split(points.sideZip)[0].length()
   }
 
   // Breeches opening: the outseam left open from the hem up to `openingBelow` under the knee;

@@ -543,6 +543,42 @@ options:
   zipLength:
     title: Zip length
     description: Length of the zip in the centre back seam, as a share of waist to seat.
+  yokeSide:
+    title: Yoke depth at the side
+    description: How far down the side seam the back yoke's seam meets it, from the waist, as a share of waist to seat.
+  pocketEntryWidth:
+    title: Pocket mouth width
+    description: How far in from the side seam the front pocket's scooped mouth starts, along the top, as a share of the seat.
+  pocketEntryDepth:
+    title: Pocket mouth depth
+    description: How far down the side seam the front pocket's mouth ends, below the waistband, as a share of waist to seat.
+  pocketBagWidth:
+    title: Pocket bag width
+    description: Width of the front pocket bag along the top, from the side seam, as a share of the seat.
+  pocketBagDepth:
+    title: Pocket bag depth
+    description: Depth of the front pocket bag below the waistband, as a share of waist to seat; the facing is five sevenths of it.
+  coinPocket:
+    title: Coin pocket
+    description: A small patch pocket on the right front pocket's facing.
+  coinPocketWidth:
+    title: Coin pocket width
+    description: Width of the coin pocket, as a share of the seat.
+  backPocketWidth:
+    title: Back pocket width
+    description: Width of each patch back pocket across its top, as a share of the seat.
+  backPocketDepth:
+    title: Back pocket depth
+    description: Depth of each patch back pocket to its point, as a share of the seat.
+  backPocketPoint:
+    title: Back pocket point
+    description: How far the back pocket's point drops below its lower corners, as a share of its depth; none makes a square bottom.
+  rivets:
+    title: Rivets
+    description: Rivet marks at the corners of the back and coin pockets.
+  sideUnderlap:
+    title: Side underlap
+    description: How far the waistband runs on past a side opening to lap under it, as a share of the waist.
   continuousBand:
     title: Cut-on waistband
     description: The waistband cut in one with the legs, the pleats sewn down into it. Off, a separate waistband.
@@ -756,7 +792,7 @@ options:
   opening:
     title: Opening
     description: Where the garment opens.
-    choices: { front: Front, back: Back }
+    choices: { front: Front, back: Back, side: Left side seam, fly: Front fly }
   openingExt:
     title: Opening lap
     description: Width of the lap at the opening, as a share of the chest.
@@ -1232,6 +1268,7 @@ parts:
   gore6: Gore 6
   gore7: Gore 7
   waistband: Waistband
+  sideWaistband: Waistband
   sash: Sash
   sleevePlacket: Sleeve placket
   collarStand: Collar stand

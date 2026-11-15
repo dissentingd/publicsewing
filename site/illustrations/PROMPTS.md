@@ -44,6 +44,58 @@ viewer's right.
 >
 > Leave out: a separate waistband, pleats, cuffs, belt loops, an elastic waist, very short legs.
 
+### jeans: Jeans
+> **Classic five-pocket jeans** in mid-blue rigid denim with gold-orange topstitching, full length, on an
+> invisible figure. **A shaped waistband about an inch and a half deep** with five belt loops and a metal
+> button, a zip fly with a curved topstitched J line, **scooped front pockets** with a small **coin pocket**
+> inside the right one, **copper rivets** at the pocket corners. Close-fitting through the hips, **straight
+> slim legs**, plain hems. Front three-quarter view, plain background, clean technical editorial
+> illustration.
+>
+> Leave out: pleats, cargo pockets, rips or distressing, a high-rise waist, flares, an elastic waist, logos
+> or brand labels.
+
+### jeans.tapered: Tapered jeans
+> **Five-pocket jeans** in dark indigo rigid denim, on an invisible figure, **the legs narrowing steadily from
+> the knee to a slim ankle**. Shaped waistband, belt loops, zip fly, scooped front pockets, copper rivets.
+> Front three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: flares, rips, cuffs rolled up, logos or brand labels.
+
+### jeans.bootcut: Bootcut jeans
+> **Five-pocket bootcut jeans** in mid-blue denim, on an invisible figure, **close at the knee and flaring
+> gently out to the hem** over the top of a boot. Shaped waistband, belt loops, zip fly, scooped front
+> pockets, copper rivets. Front three-quarter view, plain background, clean technical editorial
+> illustration.
+>
+> Leave out: wide bell-bottoms, rips, logos or brand labels.
+
+### womens-trousers: Women's trousers
+> **Women's trousers** of the 1940s in heavy navy cotton twill, full length, on an invisible figure. **A plain,
+> flat front with no pleats or fly**, a **waistband about two inches deep** with no belt loops, **closing at the
+> left hip** with a button on the waistband above a side zip. **Full and easy over the hips, the legs straight
+> and wide**, as wide at the hem as at the knee, plain hems just above the ankle. Front three-quarter view
+> from the wearer's left, plain background, clean technical editorial illustration.
+>
+> Leave out: a front fly or zip at the centre front, pleats, cuffs, belt loops, tapered or flared legs, jeans
+> details, an elastic waist.
+
+### womens-trousers.pleated: Pleated slacks
+> **Women's pleated slacks** of the 1940s in camel wool gabardine, full length, on an invisible figure. **Two deep
+> pleats each side of the front**, the inner one on the crease, a **two-inch waistband** closing at the left hip
+> over a side zip. Full over the hips, **wide straight legs, slightly narrower at the hem than at the knee**,
+> plain hems. Front three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: a front fly, cuffs, belt loops, tapered or flared legs, an elastic waist.
+
+### womens-trousers.fly: Women's trousers with a front fly
+> **Women's straight trousers** of the 1940s in grey cotton twill, full length, on an invisible figure. **A plain,
+> flat front with a zip fly at the centre front**, a two-inch waistband with a button at the front, no belt
+> loops. Full over the hips, straight wide legs, plain hems. Front view, plain background, clean technical
+> editorial illustration.
+>
+> Leave out: pleats, cuffs, a side opening, tapered legs, jeans details.
+
 ### slacks: Slacks
 > **Men's two-pleat slacks** of the 1940s in mid-grey wool flannel, shown flat or on an invisible figure, full
 > length. **Two pleats each side of the front**, folded toward the side seam, the inner one on the crease.
@@ -383,6 +435,24 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: turn-ups, cargo or patch pockets, slanted front pockets, elastic or cuffs at the
 > ankle, a belt, braces, a person, shoes.
 
+### jodhpurs: Jodhpurs
+> **Men's riding jodhpurs** of the 1940s in fawn cavalry twill, full length, on an invisible figure. **Full and
+> flared out at the side of the thigh** like riding breeches, then **close-fitting from the knee down**, the leg
+> running on **almost straight to the ankle**, finished with **narrow turn-up cuffs** resting on low ankle
+> boots. A two-inch waistband with belt loops, a fly, side-seam pockets. Front three-quarter view, plain
+> background, clean technical editorial illustration.
+>
+> Leave out: buttons or laces down the lower leg, tall riding boots, knee patches, stretch leggings, a
+> modern low-rise waist.
+
+### jodhpurs.ladies: Ladies' jodhpurs
+> **Women's riding jodhpurs** of the 1940s in cream gabardine, full length, on an invisible figure. **Very full
+> at the hips and thighs, especially at the back**, close from the knee to the ankle, with **turn-up cuffs** over
+> jodhpur boots. A waistband closing **at the left hip over a side zip**, no fly. Side three-quarter view to show
+> the flare, plain background, clean technical editorial illustration.
+>
+> Leave out: a front fly, buttons down the leg, tall boots, stretch riding tights, a modern low waist.
+
 ### breeches: Breeches
 > A pair of men's **riding breeches** in khaki cord, whipcord or tan twill. **Full over the seat
 > and flaring out wide at the sides of the thigh**, then **fitted closely from the knee to the
@@ -621,6 +691,16 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: long sleeves, cuffs, a neckerchief or tie, stripes or braid on the collar, a front
 > opening or buttons down the front, pockets, badges, a hat, a person.
+
+### work-shirt.football: Football shirt
+> A men's **1890s football shirt** in bright red wool flannel with a **white turn-down collar, white cuffs and a
+> white button placket**. A roomy **pullover**: the placket runs from the collar to **about the armpits, with three
+> buttons**, and doesn't open further. **One patch pocket on the wearer's left breast.** Long full sleeves into
+> **buttoned wristbands**. Long rounded shirttails, shown untucked. Flat, front view, plain background, clean
+> technical editorial illustration.
+>
+> Leave out: a knitted jersey look, ribbed cuffs or collar, a crest or numbers, a button-through front, a second
+> pocket, a person, shorts.
 
 ### work-shirt.collar: Work shirt, turn-down collar
 > A roomy men's **pullover work shirt** in sturdy cotton drill or chambray (blue, grey or natural).

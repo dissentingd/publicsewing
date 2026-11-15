@@ -104,6 +104,8 @@ a check that the pieces sew together into the garment, not a fit result.
 | `peg-pants` | Pleated trousers full over the hips, tapering to a narrow bottom | Simons 1916 |
 | `slacks` | Two-pleat slacks with a wide straight leg and the waistband cut in one with the legs | Simons 1945 |
 | `shorts` | Tailored shorts: a plain front, a back dart, a fly, pockets and a 2 in waistband, the leg cut well above the knee; men's, women's and children's | Simons 1945 |
+| `womens-trousers` | Straight women's trousers full over the hips: a plain front, a back dart, a zip in the side seam and a waistband; pleated slacks as a variant | Simons 1945 |
+| `jeans` | Five-pocket jeans: a contour waistband, a back yoke, scooped front pockets with a coin pocket, patch back pockets, a zip fly and rivets; tapered and bootcut variants; any size | Joseph-Armstrong 2010, Aldrich 2015 (inspired by) |
 | `overall-pants` | Full work overall trousers with no side seam, each leg cut in one piece | Simons 1916 |
 | `sailor-pants` | Bell-bottomed trousers with no side seam, each leg cut in one piece, with a buttoned drop front | Simons 1922 |
 | `two-piece-skirt` | Plain skirt fitted at hips and waist, shaped in its side seams | Mitchell 1921 |
@@ -120,6 +122,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `boys-knickers` | Full trousers to below the knee, gathered into a buckled strap | Simons 1922 |
 | `cycling-breeches` | Full cycling breeches gathered into a buttoned band below the knee | d'Alessio 1906 |
 | `breeches` | Riding breeches, full and flared at the thigh, fitted from the knee to a buttoned cuff | Simons 1916 |
+| `jodhpurs` | Riding trousers full and flared at the thigh, close from the knee down to the ankle, with turn-up cuffs; a ladies' variant with a side zip | Simons 1945 |
 | `jumpsuit` | One-piece suit cut almost entirely from rectangles: buttoned front, gussets, patch pockets | Thayaht 1920, via Open+Pattern |
 | `windbreaker` | Hooded zip-front light jacket with yokes and slanted welt pockets | ЕМКО 1988 |
 | `quilted-jacket` | Hooded quilt-lined jacket buttoned to the throat, sloped front yokes | ЕМКО 1988 |
