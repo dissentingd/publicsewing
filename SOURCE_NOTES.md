@@ -32,6 +32,9 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - In copyright: methods and proportions only, in our own words. Imperial units. Its styles are worked
   on its own slopers and often size panels by fabric width (36–45 in); restate those against the body.
 - Tiers (ch. 13): text book p. 315, figures p. 316. The text layer garbles figure labels; check the page image.
+- Jeans (ch. "Pants"): the jean foundation draft, book pp. 673–675 (a contour fit on the women's pant
+  foundation); the jean with a V-yoke and its waistband variations, pp. 700–703, figures on every page;
+  children's jeans p. 888. Pocket depths are measured from the side waist *after* the band is cut off.
 
 ## Aldrich 2015 (women's wear)
 - In copyright: methods and proportions only, in our own words. Metric. Its styles start from a

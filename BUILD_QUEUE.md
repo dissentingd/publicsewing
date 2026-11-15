@@ -83,12 +83,11 @@ neckwear, and garments from outside Western tailoring. Pages are **book pages fr
 contents list**: find the PDF page and the plate before starting, and add the offset to
 SOURCE_NOTES.md. Same-source alternatives (a second button count, a double-breasted front)
 are probably variants of the row above them, not designs: decide after reading the plate.
-Rows 38–45 are done, and 47, 50 and 51 were dropped for FreeSewing's Devon, Trayvon and Benjamin:
+Rows 38–46 are done, and 47, 50 and 51 were dropped for FreeSewing's Devon, Trayvon and Benjamin:
 [BUILT_QUEUE.md](BUILT_QUEUE.md).
 
 | # | Design id | Garment | Source and pages | Start from | Lane | Notes | Status |
 |---|---|---|---|---|---|---|---|
-| 46 | `jeans` | Five-pocket jeans, adults' and children's | **Inspired by** Joseph-Armstrong 2010, jean foundations (book pp. 573, 675–677; children's 888–890) and pockets (pp. 429–445); cross-check Aldrich 2015 women's jeans (book pp. 56–58) | `work-pants` | A | Back yoke, patch back pockets, scooped front pockets, coin pocket, fly, waistband; rivet marks. Unblocks jeans: four new elements (trouser back yoke, scooped pocket, coin pocket, patch back pockets). The most-wanted gap. Atacac is a reference only | open |
 | 48 | `jodhpurs` | Jodhpurs, men's and women's | Simons 1945, pp. 70 and 133 | `breeches` | A | Flared thigh, close leg to the ankle | open |
 | 49 | `football-shirt` | Woven pullover sports shirt | Vincent 1890 `vincentmakingshirts18xx` (tracked), pp. 29–31 | `work-shirt` | C | Casual: placket front, collar; the book separates it from a knitted jersey | open |
 | 52 | `childs-dress` | Child's dress | Pivnick 1949, Patterns 105 and 106, pp. 296–305 | `shift-dress` | C | Two patterns: variants if one base serves. Aldrich's children's book (M14) has more child dresses | open |

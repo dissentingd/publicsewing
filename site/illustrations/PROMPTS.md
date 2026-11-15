@@ -44,6 +44,32 @@ viewer's right.
 >
 > Leave out: a separate waistband, pleats, cuffs, belt loops, an elastic waist, very short legs.
 
+### jeans: Jeans
+> **Classic five-pocket jeans** in mid-blue rigid denim with gold-orange topstitching, full length, on an
+> invisible figure. **A shaped waistband about an inch and a half deep** with five belt loops and a metal
+> button, a zip fly with a curved topstitched J line, **scooped front pockets** with a small **coin pocket**
+> inside the right one, **copper rivets** at the pocket corners. Close-fitting through the hips, **straight
+> slim legs**, plain hems. Front three-quarter view, plain background, clean technical editorial
+> illustration.
+>
+> Leave out: pleats, cargo pockets, rips or distressing, a high-rise waist, flares, an elastic waist, logos
+> or brand labels.
+
+### jeans.tapered: Tapered jeans
+> **Five-pocket jeans** in dark indigo rigid denim, on an invisible figure, **the legs narrowing steadily from
+> the knee to a slim ankle**. Shaped waistband, belt loops, zip fly, scooped front pockets, copper rivets.
+> Front three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: flares, rips, cuffs rolled up, logos or brand labels.
+
+### jeans.bootcut: Bootcut jeans
+> **Five-pocket bootcut jeans** in mid-blue denim, on an invisible figure, **close at the knee and flaring
+> gently out to the hem** over the top of a boot. Shaped waistband, belt loops, zip fly, scooped front
+> pockets, copper rivets. Front three-quarter view, plain background, clean technical editorial
+> illustration.
+>
+> Leave out: wide bell-bottoms, rips, logos or brand labels.
+
 ### womens-trousers: Women's trousers
 > **Women's trousers** of the 1940s in heavy navy cotton twill, full length, on an invisible figure. **A plain,
 > flat front with no pleats or fly**, a **waistband about two inches deep** with no belt loops, **closing at the

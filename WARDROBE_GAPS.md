@@ -16,7 +16,7 @@ build, with sources, pages, the design each starts from, and how agents claim th
 research candidates. Its "What to build next" table names the queue item for each missing element.
 - **The modern books** (SOURCING.md: Joseph-Armstrong 2010 and Aldrich 2015 in use; Aldrich's
   children's wear and menswear and Cole's knits next) cover most of what's left that a Western
-  drafting book can: jeans, empire and dropped waists, bias cutting, tucks and French cuffs, cowls,
+  drafting book can: jeans (built 2026-11-15, `designs/jeans`), empire and dropped waists, bias cutting, tucks and French cuffs, cowls,
   knits (leggings, T-shirt dress, swimwear), lingerie tops, babywear, and sources for buildable
   types that had none (boxer shorts, dungarees, coverall, shirt and smock dresses, wide-leg
   trousers). BUILD_QUEUE.md "Modern books", M3–M18.

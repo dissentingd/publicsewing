@@ -375,6 +375,8 @@ export function draftTrouserLeg(sh, args) {
     }
     paths.sa = o.close().addClass('fabric sa')
   }
+  // `keepOutline`: the outline's seams for an operation that cuts the leg up after this one (jeans)
+  if (args.keepOutline) store.set(`trousers.outline.${which}`, { waist, crotch: crotchCut, inseam, hem, outseam: outseamCut, hemAllowance })
   paths.crease = new Path().move(cut ? new Point(points.floor.x, cutY) : points.floor).line(new Point(points.floor.x, points.fork.y)).addClass('help dashed')
   if (!straight && !cut) snippets.knee = new Snippet('notch', points.kneeOut)
   if (!cut) snippets.kneeIn = new Snippet('notch', points.kneeIn)

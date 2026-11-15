@@ -157,7 +157,7 @@ nodes:
   chinos: { name: Chinos (cotton slacks), parent: trousers, traits: [leg-tailored, closure-fly, pocket-trouser-slant, pocket-trouser-back-jetted, waistband, belt-loops], variants: [slacks.cotton], freesewing: [charlie] }
   work-trousers: { name: Work trousers, parent: trousers, traits: [leg-tailored, closure-fly, pocket-patch, waistband], designs: [work-pants] }
   overall-trousers: { name: Overall pants, parent: trousers, traits: [leg-in-one, closure-fly, waistband], designs: [overall-pants] }
-  jeans-t: { name: Jeans, parent: trousers, traits: [leg-tailored, closure-fly, yoke-trouser-back, pocket-scoop, pocket-coin, pocket-trouser-back-patch, waistband, belt-loops], note: "Queue 46, inspired by Joseph-Armstrong and Aldrich" }
+  jeans-t: { name: Jeans, parent: trousers, traits: [leg-tailored, closure-fly, yoke-trouser-back, pocket-scoop, pocket-coin, pocket-trouser-back-patch, waistband, belt-loops], designs: [jeans], variants: [jeans.tapered, jeans.bootcut] }
   cargo: { name: Cargo trousers, parent: trousers, traits: [leg-tailored, pleats-trouser, pocket-cargo, closure-fly, waistband], designs: [field-trousers] }
   sailor-trousers: { name: Sailor trousers, parent: trousers, traits: [leg-in-one, leg-flared, closure-fall-front], designs: [sailor-pants] }
   womens-trousers-t: { name: Women's trousers, parent: trousers, traits: [leg-tailored, darts, closure-side-opening, waistband], designs: [womens-trousers], variants: [womens-trousers.pleated] }

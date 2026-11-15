@@ -71,6 +71,7 @@ import { draftYokeLayout, yokePart, yokeGorePart } from './skirt-yoke.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
+import { draftJeanLeg, jeanPiecePart, jeanBandPart } from './jeans.mjs'
 import { draftCapeBase, draftJacketCapeBase, draftCapeLayout, draftDolmanLayout, capePart } from './cape.mjs'
 import { draftKiltLayout, kiltApronPart, kiltPleatsPart } from './kilt.mjs'
 
@@ -124,6 +125,8 @@ export const operations = {
   gatheredLeg: { run: draftGatheredLeg, literal: ['which'] },
   // A tailored leg on Titan's back or front: waist dart, tapered and curved hem, fly, pockets
   trouserLeg: { run: draftTrouserLeg, literal: ['which', 'dartFrom'] },
+  // Jeans (lib/jeans.mjs), after trouserLeg with keepOutline: band cut off, back yoke, scooped pocket
+  jeanLeg: { run: draftJeanLeg, literal: ['which'] },
   // Princess-seamed jackets on Breanna (lib/jacket.mjs): each base read in, then cut into panels
   jacketBase: { run: draftJacketBase, literal: ['side', 'style'] },
   boxLayout: { run: draftBoxLayout, literal: ['sleeveStore'] },
@@ -294,6 +297,20 @@ const factories = {
       nr: p.nr,
       // A drop front: { below, centre, buttons, inset }, expressions
       ...(p.fall === undefined ? {} : { fall: (sh) => evalMap(p.fall, lookupIn(sh, ctx.block, {}), {}) }),
+    }),
+  // Jeans pieces cut from the legs by jeanLeg (`key`: yoke, facing, bag, bagEntry)
+  jeanPiece: (p, ctx) =>
+    jeanPiecePart({ name: p.name, after: ctx.after(p), nr: p.nr, key: p.key, label: p.label, cut: p.cut ?? 2, material: p.material ?? 'fabric', enabled: enabledBy(p.if) }),
+  // The jeans' contour waistband: `width`, `ext` (the left side's lap past CF)
+  jeanBand: (p, ctx) =>
+    jeanBandPart({
+      name: p.name,
+      after: ctx.after(p),
+      nr: p.nr,
+      label: p.label,
+      cut: p.cut ?? 4,
+      enabled: enabledBy(p.if),
+      size: (sh) => evalMap({ width: p.width, ext: p.ext }, lookupIn(sh, ctx.block, {}), {}),
     }),
   // A plain rectangle (waistband, fly shield, belt loops): `length`, `width`, `fold`, `cut`
   strip: (p, ctx) =>
@@ -539,7 +556,7 @@ function lookupIn(sh, block, local) {
       // `in` first: reading a missing name logs a FreeSewing warning
       if (head in measurements && measurements[head] !== undefined) return measurements[head]
       if (head in options && options[head] !== undefined) return options[head]
-    } else if (head === 'coat' || head === 'trousers' || head === 'knickers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke' || head === 'rib' || head === 'knit' || head === 'bodice') return store.get(name)
+    } else if (head === 'coat' || head === 'trousers' || head === 'knickers' || head === 'skirt' || head === 'kilt' || head === 'suit' || head === 'polygon' || head === 'yoke' || head === 'rib' || head === 'knit' || head === 'bodice' || head === 'jeans') return store.get(name)
     // A value the block stores under its own name (Bibi's `neckSizeBack`): `block.<key>`
     else if (head === 'block') return store.get(rest.join('.'))
     else {
