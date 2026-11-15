@@ -105,6 +105,16 @@
   },
   "overrides": {
     "tinypool": "2.1.2",
-    "joi": "17.13.9"
+    "joi": "17.13.9",
+    "lodash.unset": "4.18.0",
+    "serialize-javascript": "7.1.4",
+    "echarts": "6.1.0",
+    "uuid": "11.1.1",
+    "@freesewing/react": {
+      "diff": "8.0.3",
+      "react-diff-viewer-continued": {
+        "diff": "9.0.0"
+      }
+    }
   }
 }
