@@ -25,6 +25,55 @@ chore-coat:
   clip: { front: 0 }
   split: { sleeve: 0 }
 
+windbreaker:
+  config: coat-yoke.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [backYoke, back, frontYoke, front, sleeve]
+  clip: { frontYoke: 0, front: 0 }
+  split: { sleeve: 0 }
+
+winter-coat:
+  config: coat-yoke.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [backYoke, back, frontYoke, front, sleeve]
+  clip: { frontYoke: 0, front: 0 }
+  split: { sleeve: 0 }
+
+quilted-jacket:
+  config: coat-yoke.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [backYoke, back, frontYoke, front, sleeve]
+  clip: { frontYoke: 0, front: 0 }
+  split: { sleeve: 0 }
+
+balmacaan:
+  config: raglan.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  prefix: mackinaw
+  options: { vent: false } # the vent's corner takes back.cbHem off the outline
+  pieces: [back, front, frontSleeve, backSleeve]
+  clip: { front: 0 }
+
+mantle:
+  config: raglan.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  prefix: mackinaw
+  pieces: [back, front, frontSleeve, backSleeve]
+  clip: { front: 0 }
+
+harrington-jacket:
+  config: raglan-one.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, front, sleeve]
+  clip: { front: 0 }
+  split: { sleeve: dartTip }
+
 mackinaw:
   config: coat-shell.yaml
   size: cisMaleAdult38
