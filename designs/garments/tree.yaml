@@ -163,7 +163,7 @@ nodes:
   womens-trousers-t: { name: Women's trousers, parent: trousers, traits: [leg-tailored, darts, closure-side-opening, waistband], designs: [womens-trousers], variants: [womens-trousers.pleated] }
   wide-leg: { name: Wide-leg (palazzo) trousers, parent: trousers, traits: [leg-tailored, waist-faced, closure-zip-back], note: "Queue M12" }
   drawstring-trousers: { name: Drawstring trousers, parent: trousers, traits: [leg-gathered, waist-drawstring, pocket-on-seam], freesewing: [paco] }
-  salwar-t: { name: Salwar, parent: trousers, traits: [leg-gathered, waist-drawstring], note: "Queue 53, inspired by CBSE" }
+  salwar-t: { name: Salwar, parent: trousers, traits: [leg-gathered, waist-drawstring], designs: [salwar], variants: [salwar.patiala] }
   churidar-t: { name: Churidar, parent: trousers, traits: [body-bias, waist-drawstring, leg-gathered], note: "Queue 55, inspired by CBSE" }
   adaptive-trousers: { name: Adaptive trousers, parent: trousers }
   scrub-trousers: { name: Medical scrub trousers, parent: trousers, research: true }

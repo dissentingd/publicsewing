@@ -32,6 +32,8 @@ export const adaptedCredit = (source) => {
   // Both books (the jeans): Armstrong's draft, checked against Aldrich's
   if (/Armstrong/.test(source ?? '') && /Aldrich/.test(source ?? ''))
     return ["Our own interpretation, inspired by Armstrong, Patternmaking for Fashion Design (2010), and Aldrich (2015).", 'More: publicsewing.org/sources#armstrong']
+  if (/Central Board of Secondary Education/.test(source ?? ''))
+    return ['Our own design, inspired by CBSE and NIFT, Basic Pattern Development, Class XII (2014).', 'More: publicsewing.org/sources#cbse']
   if (/Aldrich/.test(source ?? ''))
     return ["Our own design, inspired by Winifred Aldrich, Metric Pattern Cutting for Women's Wear, 6th ed. (2015).", 'More: publicsewing.org/sources#aldrich']
   if (/Armstrong/.test(source ?? ''))

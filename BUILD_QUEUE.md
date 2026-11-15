@@ -83,12 +83,11 @@ neckwear, and garments from outside Western tailoring. Pages are **book pages fr
 contents list**: find the PDF page and the plate before starting, and add the offset to
 SOURCE_NOTES.md. Same-source alternatives (a second button count, a double-breasted front)
 are probably variants of the row above them, not designs: decide after reading the plate.
-Rows 38–46, 48, 49 and 52 are done, and 47, 50 and 51 were dropped for FreeSewing's Devon, Trayvon and Benjamin:
+Rows 38–46, 48, 49, 52 and 53 are done, and 47, 50 and 51 were dropped for FreeSewing's Devon, Trayvon and Benjamin:
 [BUILT_QUEUE.md](BUILT_QUEUE.md).
 
 | # | Design id | Garment | Source and pages | Start from | Lane | Notes | Status |
 |---|---|---|---|---|---|---|---|
-| 53 | `salwar` | Salwar trousers | **Inspired by** CBSE, *Basic Pattern Development*, practicals | `pyjama-trousers` | A | Methods and proportions only (SOURCING.md, Decisions). Not held: fetch first | open |
 | 54 | `kameez` | Kameez (long tunic), with kurta variants | **Inspired by** CBSE practicals; Bharat Skills, *Dress Making* vol. I | `shift-dress` | C | Methods only. Side slits, A-line and kalidar variants | open |
 | 55 | `churidar` | Churidar pyjama | **Inspired by** CBSE practicals | `salwar` | A | Methods only; bias-cut, gathered at the ankle | open |
 | 56 | `choli` | Choli (saree blouse) | **Inspired by** CBSE practicals | Bella block (B1) | I | Methods only; darted, short. After B1 | open |

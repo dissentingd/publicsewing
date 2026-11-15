@@ -23,6 +23,7 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 | Sheifer, *System of Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | not established | no |
 | Helen Joseph-Armstrong, *Patternmaking for Fashion Design* (5th ed., 2010; in copyright, the maintainer's own copy) | 7 | no |
 | Winifred Aldrich, *Metric Pattern Cutting for Women's Wear* (6th ed., 2015; in copyright, the maintainer's own copy) | 4 | no |
+| CBSE with NIFT, *Basic Pattern Development, Class XII* (2014; in copyright, published free by CBSE) | 12 | no |
 
 ## All scans
 - The OCR drops or confuses fractions ("\ l/2" for 1½, a blank for ¼). Read numbers from the image.
@@ -41,6 +42,15 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
   named block (natural-waist basic or low-waist production skirt, book pp. 24–25): note which.
   FreeSewing's Sarah follows its skirt block.
 - Style pages often give construction steps and a figure but not the opening or waist finish.
+
+## CBSE 2014, *Basic Pattern Development*
+- In copyright ("may not be reproduced"): methods and proportions only, in our own words. Imperial,
+  with sample sizes. Chapter 5 describes the garments; the drafts are the Practicals (book pp. 63–110):
+  salwar 73–75, churidar 76–78, saree blouse 79–83, choli 84, necklines 86–89, kameez 90–92, A-line
+  kameez 93–94, kalidar kurta 95–97, two-kali kurta 98–100, sleeve 101, collar 104.
+- Its drafts include their own seam allowances (the salwar's ¾ in): drop them, the pattern adds its own.
+- The salwar's belt width isn't in the text (a line seems lost at the page break); the cutting
+  layout's 10 in on a 36 in hip gives a quarter of the hip and an inch.
 
 ## Sheifer 1908 (`nssheiferssystem00shei`)
 - Skirt coat: text PDF p. 80, plate PDF p. 81. The text starts the skirt about 2 in below the waist (at the cutter's choice), places the front seam about 1 in lower than the back, leaves ¾ in between front and side gore 1½ in below the waist, and shapes a hip dart at B. The plate shows a curved, dropped skirt seam.

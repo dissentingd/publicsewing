@@ -435,6 +435,21 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: turn-ups, cargo or patch pockets, slanted front pockets, elastic or cuffs at the
 > ankle, a belt, braces, a person, shoes.
 
+### salwar: Salwar
+> **A woman's salwar** in plain cotton lawn (soft green), shown flat, front view. **Very full trousers gathered at
+> the waist into a narrow belt with a drawstring**, falling in soft vertical folds, **narrowing sharply to a
+> close, plain hem at the ankle**. The fullness comes from **long tapering side panels** either side of a straight
+> centre panel in each leg. Plain background, clean technical editorial illustration.
+>
+> Leave out: a kameez or tunic over it, pockets, a fly, cuffs or ankle buttons, embroidery, a person.
+
+### salwar.patiala: Patiala salwar
+> **A Patiala salwar** in plain cotton (deep blue), shown flat, front view. **Very full, with many deep folds
+> hanging from the waist**, the fabric pooling into **heavy pleated drapes below the knee**, gathered at the waist
+> on a drawstring and **narrow at the ankle**. Plain background, clean technical editorial illustration.
+>
+> Leave out: a kameez, pockets, a fly, embroidery, a person.
+
 ### jodhpurs: Jodhpurs
 > **Men's riding jodhpurs** of the 1940s in fawn cavalry twill, full length, on an invisible figure. **Full and
 > flared out at the side of the thigh** like riding breeches, then **close-fitting from the knee down**, the leg

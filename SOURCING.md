@@ -111,10 +111,11 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Schorr, *The Expert Designer* (1917) `expertdesignerpr00scho` | A | tunic skirt (Diagram 7), four-gore panel skirt (Diagram 65) |
 | d'Alessio, *The Art of Designing, Cutting and Grading Gentlemen and Boys Clothes* (1906) `artofdesigningcu00ales` | A | cycling breeches (Fig. 30) |
 | ЕМКО СЭВ т.3 (1988) `emko` | A (tables) | windbreaker, quilted jacket, winter coat, topcoat, jacket, waistcoat, trousers |
-| Helen Joseph-Armstrong, *Patternmaking for Fashion Design*, 5th ed. (2010; in copyright, the maintainer's own copy, methods only) | A | tiered skirt (Tiers, Design 2) |
-| Winifred Aldrich, *Metric Pattern Cutting for Women's Wear*, 6th ed. (2015; in copyright, the maintainer's own copy, methods only) | A | yoke skirt (yoked skirt with gores, p. 41) |
+| Helen Joseph-Armstrong, *Patternmaking for Fashion Design*, 5th ed. (2010; in copyright, the maintainer's own copy, methods only) | A | tiered skirt (Tiers, Design 2), jeans (jean foundation, jean with V-yoke) |
+| Winifred Aldrich, *Metric Pattern Cutting for Women's Wear*, 6th ed. (2015; in copyright, the maintainer's own copy, methods only) | A | yoke skirt (yoked skirt with gores, p. 41), jeans (checked against basic jeans) |
+| CBSE with NIFT, *Basic Pattern Development, Class XII* (2014; in copyright, methods only) | A | salwar (Practical 3) |
 | Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants, breeches, bib overall, overall pants, peg-top pants, turn-ups |
-| Simons, *Drafting Trousers for Men, Boys, Women* (1945, not renewed) `simonsdraftingtrousers1945` | A | slacks, shorts |
+| Simons, *Drafting Trousers for Men, Boys, Women* (1945, not renewed) `simonsdraftingtrousers1945` | A | slacks, shorts, women's trousers, jodhpurs |
 | Simons, *Designing Sack Coats and Vests* (1918) `designingsackcoa00simo` | A | sack coat, dinner jacket, tailcoat, frock coat |
 | Open+Pattern, Thayaht's TuTa (1920), DXF, CC BY 4.0 `openpattern/tuta-jumpsuit` | better than A | jumpsuit |
 | Open+Pattern, British CS95 field trouser, DXF, CC BY 4.0 `openpattern/cs95-trouser` | better than A | field trousers |

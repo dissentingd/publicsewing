@@ -1279,6 +1279,8 @@ parts:
   waistband: Waistband
   sideWaistband: Waistband
   sash: Sash
+  centrePanel: Centre panel
+  kali: Side panel (kali)
   sashPiece: Sash
   openingFacing: Opening facing
   sleevePlacket: Sleeve placket
