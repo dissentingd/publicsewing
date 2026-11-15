@@ -1,0 +1,83 @@
+# Infant and toddler wear: the safety checklist (BUILD_QUEUE S1).
+#
+# Every design or FreeSewing listing offered at the baby sets (sizes/babies.mjs: `sizes: babies` or
+# `all`), or in the `babies` category, needs a review against this checklist in
+# safety/infant-reviews.yaml. test/infant-safety.test.mjs enforces it (S2). Raising `version`
+# makes every older review stale until it's redone.
+#
+# These are design and sewing rules for people making clothes at home, drawn from published
+# requirements. They are not a compliance test: anyone selling children's clothing must meet
+# their own market's rules (in the US, CPSIA testing and certification, tracking labels, and the
+# standards below). Requirements were read from the regulators' own summaries on 2026-11-15; the
+# standards' full texts (ASTM F1816, EN 14682) are paywalled and weren't read.
+#
+# Each rule: what it asks, `kind` (design: checked against the pattern and its options;
+# instruct: the sewer must be told, on the design's page), and its sources.
+
+version: 1
+date: 2026-11-15
+
+# Option names that suggest a cord, drawstring or tie. At baby sizes the test fails unless a
+# review restricts such an option to values without one.
+cordOptions: 'drawstring|cord|ties?\b|toggle|string'
+
+rules:
+  cords:
+    kind: design
+    ask: >-
+      No drawstrings, functional or decorative cords, or ties in the hood or neck area. At baby
+      sizes, no cords or drawstrings with free ends anywhere; a waist or hem drawstring on older
+      children's sizes stays within the channel limits below, bar-tacked, with no toggles or knots
+      on its ends.
+    sources:
+      - 'US 16 CFR 1120 and ASTM F1816: no hood or neck drawstrings on children''s upper outerwear, sizes 2T–12; waist and bottom drawstrings in sizes 2T–16 at most 3 in (75 mm) outside the channel, no toggles or knots, bar-tacked (https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Drawstrings-in-Childrens-Upper-Outerwear)'
+      - 'EN 14682 (UK/EU): no cords or drawstrings in the hood and neck area for children under 7 years (134 cm); free ends at chest and waist at most 140 mm for older children (https://ccpc.ie/consumers/?p=3479)'
+  neck-and-head:
+    kind: design
+    ask: >-
+      A pullover neck opening goes over the child's head without forcing, or the garment has
+      another opening (zip, snaps, lapped shoulders). Hoods have no cords and are for daywear:
+      never for sleep.
+    sources:
+      - 'AAP safe sleep: don''t cover an infant''s face or head during sleep; avoid overheating (https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/A-Parents-Guide-to-Safe-Sleep.aspx)'
+  fasteners:
+    kind: instruct
+    ask: >-
+      Snaps, buttons and zips come from children's-wear suppliers. Snaps are set with the proper
+      tool through at least two layers of fabric plus interfacing, and each one is pull-tested
+      after setting. No glued or loosely sewn decorations, beads or sequins at baby sizes. A zip's
+      pull is covered at the chin by a guard or garage.
+    sources:
+      - 'CPSIA: accessible components of children''s products, including snaps, buttons and zips, at most 100 ppm lead; dyed and undyed textiles are exempt from testing (https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Clothing-OLD)'
+      - 'US small parts: buttons on children''s clothing are exempt from the small-parts ban, but use-and-abuse tests for 0–18 and 18–36 months (16 CFR 1500.51, 1500.52) show the forces a fastener must withstand (https://www.cpsc.gov/FAQ/Small-Parts)'
+  threads-and-openings:
+    kind: instruct
+    ask: >-
+      No loose threads or long thread loops inside the garment, where they can wind round a
+      finger or toe: trim and secure every end, and check the inside (feet especially) before
+      wearing. Wrist, ankle and leg openings and elastic don't constrict.
+    sources:
+      - 'Hair and thread tourniquets on infants'' fingers and toes are a recognised injury; general sewing practice'
+  sleep:
+    kind: instruct
+    ask: >-
+      For sleep: no more than one layer more than an adult would wear, nothing over the head.
+      Garments worn for sleep in sizes above 9 months are close-fitting or made from
+      flame-resistant fabric; avoid loose-fitting brushed or fleecy fabrics for sleep.
+    sources:
+      - 'US 16 CFR 1615 and 1616 (children''s sleepwear, sizes 0–14): infant garments (9 months and under) and tight-fitting garments are excepted from the flammability tests; others must be flame-resistant (https://www.cpsc.gov/FAQ/Childrens-Sleepwear)'
+      - 'AAP safe sleep, as above'
+  bibs:
+    kind: instruct
+    ask: >-
+      Bibs and other neck accessories fasten with a snap or hook-and-loop that comes apart under
+      a pull, never with ties. Take them off before sleep and whenever the child is unsupervised.
+    sources:
+      - 'AAP: nothing that could catch round the neck in the sleep area; pacifiers not tied round the neck or to clothing (https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/A-Parents-Guide-to-Safe-Sleep.aspx)'
+  changing:
+    kind: design
+    ask: >-
+      A one-piece for babies opens at the crotch or inner legs (snaps or a zip) for nappy
+      changes, or comes off easily. Usability more than safety, but asked for every one-piece.
+    sources:
+      - 'General practice for infant one-pieces'

@@ -94,7 +94,7 @@
     "react-dom": "19.3.1",
     "react-markdown": "10.1.0",
     "use-local-storage-state": "19.5.0",
-    "yaml": "2.8.1"
+    "yaml": "^2.8.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.3",
@@ -102,5 +102,9 @@
     "patch-package": "8.0.1",
     "prism-react-renderer": "2.4.1",
     "tailwindcss": "4.3.3"
+  },
+  "overrides": {
+    "tinypool": "2.1.2",
+    "joi": "17.13.9"
   }
 }

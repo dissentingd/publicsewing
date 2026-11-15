@@ -1,0 +1,70 @@
+# Safety reviews of everything offered at baby sizes, against safety/infant-checklist.yaml
+# (BUILD_QUEUE S1). test/infant-safety.test.mjs requires one here, current, for every design or
+# FreeSewing listing offered at the baby sets or in the `babies` category.
+#
+# Each entry, keyed by design id:
+#   checklist: the checklist version reviewed against; freesewing: the FreeSewing version, for a
+#     listing (an upgrade makes the review stale); date; by; method
+#   result: pass, or conditions (usable, with the restrictions and instructions below)
+#   options: every option the design had when reviewed. A new or removed option fails the test
+#     until someone looks at it and updates this list
+#   restrict: at baby sizes, an option's allowed values, and why. Shown on the design's page;
+#     not yet enforced in the editor (BUILD_QUEUE S3)
+#   findings: per checklist rule, what the review found
+#   instructions: what the design's page tells the sewer (shown there), by rule
+# A desk review of the pattern's code and its drafts at the six baby sets, not a sewn test.
+
+otis:
+  checklist: 1
+  freesewing: 4.10.2
+  date: 2026-11-15
+  by: Claude (desk review)
+  method: Read the design's code; drafted at every baby set; measured the neck opening against head circumference
+  result: pass
+  options: [binding, ease, hem, sleeveType, snapPlacket]
+  findings:
+    cords: No cords, drawstrings or ties.
+    neck-and-head: Pullover neck, bound. Before binding, the opening is 1.23–1.29 × head circumference at the six baby sets (505 mm at a 391 mm head, 3 months; 623 mm at 499 mm, 3 years).
+    changing: A snap placket at the crotch.
+  instructions:
+    fasteners: Set the crotch snaps with the proper tool through the doubled placket, with interfacing, and pull-test each one. Buy snaps sold for children's wear.
+    threads-and-openings: Trim and secure every thread end, and check the inside before each wear. The leg and neck bindings shouldn't grip.
+    sleep: For sleep above 9 months, cut it close-fitting in a cotton knit, or use flame-resistant fabric. No more than one layer more than an adult would wear.
+
+onyx:
+  checklist: 1
+  freesewing: 4.10.2
+  date: 2026-11-15
+  by: Claude (desk review)
+  method: Read the design's code; drafted at every baby set with each neck style and zip position; measured the neck hole and neckband against head circumference
+  result: conditions
+  options: [armholeTweakFactor, armpitEase, backOnFold, bicepsPosition, centerSeamEase, chestEase, crotchGussetWidth, frontOnFold, hipsEase, hoodDepth, hoodFrontBonus, hoodFrontDip, hoodFrontPieceSize, hoodHeight, hoodHem, legHem, legHemEase, legLength, legRibbing, legRibbingLength, legRibbingWidth, legTaperPosition, neckBalance, neckEase, neckGuardLength, neckStyle, neckbandLength, neckbandWidth, outseamEase, raglanScoopLength, raglanScoopMagnitude, seatEase, skirt, skirtHem, skirtLength, skirtWaistband, skirtWidth, sleeveEase, sleeveHem, sleeveLength, sleeveRibbing, sleeveRibbingLength, sleeveRibbingWidth, upperLegEase, waistEase, wristEase, zipperGuardTapeCoverMaterial, zipperGuardWidth, zipperLength, zipperPosition]
+  restrict:
+    zipperPosition:
+      allow: [front, back]
+      why: Without a zip the neck hole is about 0.70 × head circumference at every baby set (273 mm at a 391 mm head, 3 months), and the neckband 0.56 ×, so it has to be forced over the head.
+  findings:
+    cords: No cords, drawstrings or ties; the hood has none.
+    neck-and-head: With a front or back zip it opens enough; without one, see the restriction. A hood is an option.
+    fasteners: A zip guard covers the zip, and a neck guard sits behind the pull at the chin.
+    changing: No crotch opening; it comes off through the zip. Fine for daywear, slow for nappy changes.
+  instructions:
+    neck-and-head: The hood is for daywear outdoors only, never for sleep.
+    fasteners: Use a zip sold for children's wear and sew the guard so it covers the pull at the chin.
+    threads-and-openings: Trim and secure every thread end, and check the inside, the feet especially, before each wear. Ribbing at the wrists and ankles shouldn't leave marks.
+    sleep: For sleep above 9 months, keep it close-fitting in a cotton knit, or use flame-resistant fabric, and leave the hood off.
+
+bob:
+  checklist: 1
+  freesewing: 4.10.2
+  date: 2026-11-15
+  by: Claude (desk review)
+  method: Read the design's code; drafted at every baby set
+  result: pass
+  options: [headSize, lengthRatio, neckRatio, widthRatio]
+  findings:
+    cords: No ties; the straps close with a snap at the back of the neck.
+    bibs: A snap closure, as asked.
+  instructions:
+    fasteners: Set the snap with the proper tool through both strap layers, with interfacing, and pull-test it. Buy snaps sold for children's wear.
+    bibs: Take the bib off before sleep and whenever the child is unsupervised. Don't replace the snap with ties.

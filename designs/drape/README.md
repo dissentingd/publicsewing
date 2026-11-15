@@ -30,6 +30,9 @@ specification, simulates it on the GPU host, fetches the front and back renders 
   |---|---|---|
   | `coat-shell.yaml` | male | a Brian coat's shell: back, fronts closed at CF, one-piece sleeve split in halves |
   | `coat-vest.yaml` | male | the same, sleeveless (the bar vest) |
+  | `coat-yoke.yaml` | male | the same, back and front each cut at a yoke (the windbreaker) |
+  | `raglan.yaml` | male | a Brian coat with two-piece raglan sleeves (the balmacaan) |
+  | `raglan-one.yaml` | male | the same with the one-piece raglan sleeve, split at its dart tip (the harrington) |
   | `blouse.yaml` | male | a three-piece body on Bent (back, side body, front) with the two-part sleeve |
   | `jacket.yaml` | female | a princess-seamed jacket on Breanna |
   | `box.yaml` | female | a box body on Breanna |
@@ -79,9 +82,12 @@ and a large size set on their matched bodies (men's 34 and 46, women's 30 and 42
   design's own files and its descendants'; all of them when drafting code, blocks, a drape step,
   the simulation script or the dependencies change, or a config the design uses. Each drape is
   compared with the last one of the same design and size: OK turned REVIEW, intersections up by
-  half and ten, or cloth half a centimetre deeper is flagged in the report.
+  half and ten, or cloth half a centimetre deeper is flagged in the report. A REVIEW that an
+  entry's `known: {why, regions, deepest}` explains (only those regions, no deeper than
+  `deepest` cm) is reported as `known` instead; the pinafore's posed arms are the first.
 - **new:** designs with a brief and no runs.yaml entry. Settings come from a draped design whose
-  config's pieces and points are all among its parts (its ancestor's first), through a quick
+  config's pieces and points are all among its parts (points on the part's seam outline, the
+  only ones a drape exports; its ancestor's first), through a quick
   check (export and specification, no GPU). With `--llm`, a local model (Ollama on the host, on
   the CPU) is asked when none fits; off by default, since in its first runs it solved none.
 - **nightly:** regress, then new.

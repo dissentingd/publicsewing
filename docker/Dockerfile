@@ -1,5 +1,5 @@
-# GarmentCode + its NVIDIA Warp fork (CUDA), pinned to the versions verified
-# on a CUDA machine 2026-10-16.
+# GarmentCode + its NVIDIA Warp fork (CUDA). The security-updated image built
+# and its NiceGUI service started on a CUDA machine 2026-11-14.
 #
 # Note: the Warp fork is under the NVIDIA Source Code License
 # (non-commercial). Fine for personal testing; not for public hosting.
@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         git ca-certificates curl build-essential \
     && rm -rf /var/lib/apt/lists/*
 COPY --from=ghcr.io/astral-sh/uv:0.12.7 /uv /usr/local/bin/uv
-RUN uv python install 3.9.25 && uv venv --python 3.9.25 /opt/venv
+RUN uv python install 3.11.14 && uv venv --python 3.11.14 /opt/venv
 ENV VIRTUAL_ENV=/opt/venv PATH=/opt/venv/bin:$PATH
 
 RUN git clone https://github.com/maria-korosteleva/NvidiaWarp-GarmentCode.git /opt/warp \

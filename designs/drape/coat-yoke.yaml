@@ -1,0 +1,47 @@
+# Drape a Brian coat cut at yokes (back and front each a yoke over a body, as the windbreaker),
+# with a one-piece set-in sleeve split into halves, on GarmentCode's male average body. As
+# coat-shell.yaml, with the yoke seams sewn: the yokes and bodies are cut from one base, so each
+# body takes its yoke's origin and sits where it was drafted. Hood, collar, facings, pockets and
+# zip are left off. Export the outlines with:
+#   node tools/drape-export.mjs <design> <set> out.json --pieces backYoke,back,frontYoke,front,sleeve \
+#     --clip frontYoke=0,front=0 --split sleeve=0
+#
+# Placement as coat-shell.yaml: cm, y up, the body facing +z, right-hand copies (left mirrored).
+body: m_smpl_average_A40
+pieces:
+  backYoke: {origin: [backYoke.cbNeck, backYoke.s3CollarSplit], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 153, -17]}
+  back: {origin: [back.cbYoke, backYoke.s3CollarSplit], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 153, -17]}
+  frontYoke: {origin: [frontYoke.clipTop, frontYoke.s3CollarSplit], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 153, 21]}
+  front: {origin: [front.clipTop, frontYoke.s3CollarSplit], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 153, 21]}
+  sleevePlus: {origin: sleevePlus.clipTop, map: [[0, 1], [1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-21, 148, 10]}
+  sleeveMinus: {origin: sleeveMinus.clipTop, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-21, 148, -12]}
+seams:
+  centre_back_yoke: {a: [{piece: backYoke, along: [backYoke.cbNeck, backYoke.cbYoke]}], mirror: true}
+  centre_back: {a: [{piece: back, along: [back.cbYoke, back.cbHem]}], mirror: true}
+  centre_front_yoke: {a: [{piece: frontYoke, along: [frontYoke.clipTop, frontYoke.clipBottom]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.clipTop, front.clipBottom]}], mirror: true}
+  shoulder:
+    a: [{piece: backYoke, along: [backYoke.s3CollarSplit, backYoke.s3ArmholeSplit]}]
+    b: [{piece: frontYoke, along: [frontYoke.s3CollarSplit, frontYoke.s3ArmholeSplit]}]
+  back_yoke:
+    a: [{piece: backYoke, along: [backYoke.cbYoke, backYoke.armYoke]}]
+    b: [{piece: back, along: [back.cbYoke, back.armYoke]}]
+  front_yoke:
+    a: [{piece: frontYoke, along: [frontYoke.clipBottom, frontYoke.armYoke]}]
+    b: [{piece: front, along: [front.clipTop, front.armYoke]}]
+  side:
+    a: [{piece: back, along: [back.armhole, back.sideWaist, back.hem]}]
+    b: [{piece: front, along: [front.armhole, front.sideWaist, front.hem]}]
+  # Back armhole up through the yoke to the shoulder, then the front's down
+  armhole:
+    a: [{piece: back, along: [back.armhole, back.armYoke]}, {piece: backYoke, along: [backYoke.armYoke, backYoke.s3ArmholeSplit]},
+        {piece: frontYoke, along: [frontYoke.s3ArmholeSplit, frontYoke.armYoke]}, {piece: front, along: [front.armYoke, front.armhole]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.capQ4, sleeveMinus.capQ3, sleeveMinus.clipTop]},
+        {piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.capQ2, sleevePlus.capQ1, sleevePlus.bicepsRight]}]
+    anchors: [[backYoke.s3ArmholeSplit, sleeveMinus.clipTop]]
+  overarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.clipBottom]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.clipTop, sleeveMinus.clipBottom]}]
+  underarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.bicepsRight, sleevePlus.wristRight]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.wristLeft]}]
