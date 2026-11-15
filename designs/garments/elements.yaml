@@ -51,7 +51,7 @@ elements:
   body-knit:
     { name: Knit body with negative or zero ease, group: body, status: covered, lib: [brand], seen: [turtleneck], note: "The Bibi block (blocks/bibi.mjs, 2026-11-10) as drafted, its pieces retitled by `brand`; stretch-aware checks in test/knit-checks.mjs", freesewing: [bibi, teagan, aaron] }
   body-bias:
-    { name: Bias-cut body, group: body, status: gap, queue: "M5" }
+    { name: Bias-cut body, group: body, status: partial, lib: [polygon.grain], seen: [churidar], note: "The churidar is cut on the bias; a rule for bias stretch is still to come", queue: "M5" }
   waist-seam:
     { name: Waist seam joining bodice and skirt, group: body, status: covered, lib: [yokePiece, jacketLayout.waistSeam, bodiceWaist, dressSkirt], seen: [shirtwaist-dress, prince-albert-jacket, riding-frock-coat, fitted-dress] }
   waist-raised:

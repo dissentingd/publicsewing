@@ -312,6 +312,8 @@ export const suitPiecePart = ({ name, after, piece, nr, label, enabled = () => t
  * - `fold`: the index of the edge cut on the fold (no allowance, a fold line);
  * - `notches`, `buttons`, `buttonholes`: [[x, y], ...]; `lines`: [[[x, y], [x, y]], ...] marks
  *   (a pocket's place, a fold).
+ * - `grain`: [[x, y], [x, y]], the grainline's ends, for a piece not cut on the straight (a bias-cut
+ *   churidar); by default it runs up the middle.
  * Its edges' lengths go to `polygon.<piece>` (`edges`, `width`, `height`).
  */
 export const polygonPart = ({ name, after, nr, label, cut = 1, material = 'fabric', enabled = () => true, shape }) => ({
@@ -320,7 +322,7 @@ export const polygonPart = ({ name, after, nr, label, cut = 1, material = 'fabri
   draft: (sh) => {
     const { paths, Path, Point, snippets, Snippet, store, sa, macro, options, part } = sh
     if (!enabled(options)) return part.hide()
-    const { points: pts, allowance = [], fold = -1, notches = [], buttons = [], buttonholes = [], lines = [] } = shape(sh)
+    const { points: pts, allowance = [], fold = -1, notches = [], buttons = [], buttonholes = [], lines = [], grain } = shape(sh)
     const n = pts.length
     const dist = pts.map((_, i) => (i === fold ? 0 : (allowance[i] ?? 1) * sa))
     drawPolygon(sh, pts, sa ? dist : undefined)
@@ -341,7 +343,8 @@ export const polygonPart = ({ name, after, nr, label, cut = 1, material = 'fabri
       width: x1 - x0,
       height: y1 - y0,
     })
-    macro('grainline', { from: new Point((x0 + x1) / 2, y1 - 15), to: new Point((x0 + x1) / 2, y0 + 15) })
+    if (grain) macro('grainline', { from: new Point(...grain[0]), to: new Point(...grain[1]) })
+    else macro('grainline', { from: new Point((x0 + x1) / 2, y1 - 15), to: new Point((x0 + x1) / 2, y0 + 15) })
     store.cutlist.setCut({ cut, from: material, onFold: fold >= 0 })
     title(macro, { at: new Point(x0 + (x1 - x0) * 0.15, y0 + (y1 - y0) * 0.3), nr, title: label ?? name.split('.').pop(), scale: Math.min(0.4, (x1 - x0) / 300) })
     return part

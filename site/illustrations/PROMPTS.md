@@ -458,6 +458,14 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: cuffs, gathers at the wrist, embroidery, a collar, trousers, a person.
 
+### churidar: Churidar
+> **A woman's churidar** in plain cotton jersey-like woven fabric (plum), shown flat, front view. **Close-fitting
+> trousers, full and softly gathered at the waist on a drawstring belt**, narrowing to **fit closely from the knee
+> down**, and **much longer than the leg so the extra length rucks into many soft horizontal folds round the
+> ankle**, like stacked bangles. Plain background, clean technical editorial illustration.
+>
+> Leave out: a kameez, pockets, a fly, cuffs, ankle zips or buttons, stretch leggings sheen, a person.
+
 ### salwar: Salwar
 > **A woman's salwar** in plain cotton lawn (soft green), shown flat, front view. **Very full trousers gathered at
 > the waist into a narrow belt with a drawstring**, falling in soft vertical folds, **narrowing sharply to a

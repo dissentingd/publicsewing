@@ -164,7 +164,7 @@ nodes:
   wide-leg: { name: Wide-leg (palazzo) trousers, parent: trousers, traits: [leg-tailored, waist-faced, closure-zip-back], note: "Queue M12" }
   drawstring-trousers: { name: Drawstring trousers, parent: trousers, traits: [leg-gathered, waist-drawstring, pocket-on-seam], freesewing: [paco] }
   salwar-t: { name: Salwar, parent: trousers, traits: [leg-gathered, waist-drawstring], designs: [salwar], variants: [salwar.patiala] }
-  churidar-t: { name: Churidar, parent: trousers, traits: [body-bias, waist-drawstring, leg-gathered], note: "Queue 55, inspired by CBSE" }
+  churidar-t: { name: Churidar, parent: trousers, traits: [body-bias, waist-drawstring, leg-gathered], designs: [churidar] }
   adaptive-trousers: { name: Adaptive trousers, parent: trousers }
   scrub-trousers: { name: Medical scrub trousers, parent: trousers, research: true }
   waterproof-overtrousers: { name: Waterproof over-trousers, parent: trousers, research: true, note: "Specify waterproof fabric, seam treatment and over-layer ease" }
