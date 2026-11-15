@@ -171,7 +171,8 @@ options. To turn another drafting book into designs, yourself or with a coding a
 - `corpus/`: scans (PDF) of the books the designs draw on and of others kept for research,
   with [MANIFEST.yaml](corpus/MANIFEST.yaml) recording each one's origin and rights basis.
   Sources are cited by folder id, e.g. `draftingcottonga00simo`.
-- `BUILD_QUEUE.md`: the ordered queue of garments still to build, and how to take one.
+- `BUILD_QUEUE.md`: the ordered queue of garments still to build, and how to take one;
+  `BUILT_QUEUE.md`: the finished items, with what each became.
 - `SOURCING.md`: where the designs' sources come from, what makes one worth using, and what's held but not built; `SOURCING-ARCHIVE.md` and `RESEARCH.md`: the full research logs.
 - `scripts/`: the corpus manifest and fetch scripts. `docker/`: the GarmentCode image the 3D
   drapes run in.

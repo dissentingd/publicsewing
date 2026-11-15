@@ -529,7 +529,7 @@ from the page.
    block's date changed: restore that file with `git checkout` rather than committing it.
 3. **Docs:**
    - BUILD_QUEUE.md: the item's status, `done (<design>)`, and an "As built" note on anything that
-     differed from the item, in the design's own commit.
+     differed from the item; then move the row to BUILT_QUEUE.md. Both in the design's own commit.
    - README.md: the Status table row; it sets the site's order.
    - designs/README.md: the Contents row, and the `lib/` row if you extended a library.
    - designs/SPEC.md: any new operation or piece type.

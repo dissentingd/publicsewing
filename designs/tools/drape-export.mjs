@@ -19,7 +19,7 @@ import { loadDesign, measurementSet } from './render.mjs'
 const CURVE_STEP = 5 // mm between samples along a curve
 
 /** A Path as a polyline (mm): line ends kept, curves sampled */
-function polyline(path) {
+export function polyline(path) {
   const out = []
   let at
   for (const op of path.ops) {
