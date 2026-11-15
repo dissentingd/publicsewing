@@ -328,7 +328,8 @@ export const polygonPart = ({ name, after, nr, label, cut = 1, material = 'fabri
       const [a, b] = [pts[fold], pts[(fold + 1) % n]]
       paths.fold = new Path().move(new Point(...a)).line(new Point(...b)).addClass('help dashed')
     }
-    notches.forEach((p, i) => (snippets[`notch${i}`] = new Snippet('notch', new Point(...p))))
+    // A notch with a null coordinate (an `if` that fails; a spec list drops the null) is left out
+    notches.forEach((p, i) => p.length === 2 && p.every(Number.isFinite) && (snippets[`notch${i}`] = new Snippet('notch', new Point(...p))))
     buttons.forEach((p, i) => (snippets[`button${i}`] = new Snippet('button', new Point(...p))))
     buttonholes.forEach((p, i) => (snippets[`buttonhole${i}`] = new Snippet('buttonhole', new Point(...p))))
     lines.forEach(([a, b], i) => (paths[`mark${i}`] = new Path().move(new Point(...a)).line(new Point(...b)).addClass('mark dashed')))

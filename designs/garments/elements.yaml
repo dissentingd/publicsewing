@@ -51,13 +51,13 @@ elements:
   body-knit:
     { name: Knit body with negative or zero ease, group: body, status: covered, lib: [brand], seen: [turtleneck], note: "The Bibi block (blocks/bibi.mjs, 2026-11-10) as drafted, its pieces retitled by `brand`; stretch-aware checks in test/knit-checks.mjs", freesewing: [bibi, teagan, aaron] }
   body-bias:
-    { name: Bias-cut body, group: body, status: gap }
+    { name: Bias-cut body, group: body, status: gap, queue: "M5" }
   waist-seam:
     { name: Waist seam joining bodice and skirt, group: body, status: covered, lib: [yokePiece, jacketLayout.waistSeam, bodiceWaist, dressSkirt], seen: [shirtwaist-dress, prince-albert-jacket, riding-frock-coat, fitted-dress] }
   waist-raised:
-    { name: Raised (empire) waist seam, group: body, status: gap }
+    { name: Raised (empire) waist seam, group: body, status: gap, queue: "M3" }
   waist-dropped:
-    { name: Dropped waist seam, group: body, status: partial, lib: [yokeSide], note: "A deep yoke reaches it; no hip-level bodice" }
+    { name: Dropped waist seam, group: body, status: partial, lib: [yokeSide], note: "A deep yoke reaches it; no hip-level bodice", queue: "M3" }
 
   # --- Sleeves ---
   sleeve-set-in:
@@ -91,7 +91,7 @@ elements:
   cuff-turnback:
     { name: Turned-back or gauntlet cuff, group: cuff, status: partial, lib: [polygon], seen: [smoking-jacket], note: "A flat piece; no shaped cuff" }
   cuff-french:
-    { name: French (double) cuff, group: cuff, status: gap, note: "The barrel cuff doubled, with link holes" }
+    { name: French (double) cuff, group: cuff, status: gap, note: "The barrel cuff doubled, with link holes", queue: "M6" }
   cuff-rib:
     { name: Knit rib cuff, group: cuff, status: covered, lib: [rib], seen: [turtleneck], note: "The rib piece type (lib/rib.mjs), or Bibi's own cuffs (useCuffRibbing)", freesewing: [sven, hugo, huey, jett] }
   cuff-tab:
@@ -111,17 +111,17 @@ elements:
   neck-keyhole:
     { name: Keyhole neck, group: neckline, status: gap }
   neck-split:
-    { name: Split neck (a slit at CF), group: neckline, status: partial, lib: [placket], note: "A placket slit; no faced slit without buttons" }
+    { name: Split neck (a slit at CF), group: neckline, status: partial, lib: [placket], note: "A placket slit; no faced slit without buttons", queue: "54" }
   neck-sweetheart:
     { name: Sweetheart neck, group: neckline, status: gap }
   neck-halter:
-    { name: Halter neck, group: neckline, status: gap }
+    { name: Halter neck, group: neckline, status: gap, queue: "M17" }
   neck-off-shoulder:
     { name: Off-the-shoulder or one-shoulder neck, group: neckline, status: gap }
   neck-surplice:
     { name: Surplice (crossed wrap) neck, group: neckline, status: covered, lib: [wrapFront], seen: [wrap-dress], freesewing: [tina] }
   neck-cowl:
-    { name: Cowl neck, group: neckline, status: gap, note: "Pivnick 1949 ch. XVI, p. 236", freesewing: [diana] }
+    { name: Cowl neck, group: neckline, status: gap, note: "Pivnick 1949 ch. XVI, p. 236", freesewing: [diana], queue: "M14" }
   neck-raised:
     { name: Raised or turtle neck, cut on, group: neckline, status: partial, lib: [rib], seen: [turtleneck], note: "As a separate folded rib collar (turtleneck); cut on, as Pivnick 1949 ch. XVI, p. 235, isn't modelled" }
 
@@ -173,7 +173,7 @@ elements:
   closure-side-opening:
     { name: Buttoned side or leg opening, group: closure, status: covered, lib: [trouserLeg.openingBelow], seen: [breeches] }
   closure-frogs:
-    { name: Frogs or toggles, group: closure, status: partial, lib: [buttons], seen: [smoking-jacket], note: "Marked as buttons" }
+    { name: Frogs or toggles, group: closure, status: partial, lib: [buttons], seen: [smoking-jacket], note: "Marked as buttons", queue: "M15" }
   closure-lacing:
     { name: Lacing, group: closure, status: gap, freesewing: [cathrin] }
   closure-snaps:
@@ -193,11 +193,11 @@ elements:
   pocket-trouser-back-jetted:
     { name: Jetted trouser back pocket, group: pocket, status: covered, lib: [trouserLeg.backPocket], seen: [suit-trousers] }
   pocket-trouser-back-patch:
-    { name: Patch back pocket on trousers, group: pocket, status: partial, seen: [field-trousers], note: "The field trousers have a flapped seat pocket; jeans need two shaped patches without flaps" }
+    { name: Patch back pocket on trousers, group: pocket, status: partial, seen: [field-trousers], note: "The field trousers have a flapped seat pocket; jeans need two shaped patches without flaps", queue: "46" }
   pocket-scoop:
-    { name: Scooped (jeans) front pocket with facing and bag, group: pocket, status: gap }
+    { name: Scooped (jeans) front pocket with facing and bag, group: pocket, status: gap, queue: "46" }
   pocket-coin:
-    { name: Coin (watch) pocket, group: pocket, status: partial, lib: [polygon], note: "The piece is easy; its placement is not" }
+    { name: Coin (watch) pocket, group: pocket, status: partial, lib: [polygon], note: "The piece is easy; its placement is not", queue: "46" }
   pocket-on-seam:
     { name: In-seam side pocket, group: pocket, status: covered, lib: [gatheredLeg, polygon], seen: [joggers], freesewing: [sasha] }
   pocket-cargo:
@@ -211,9 +211,9 @@ elements:
   yoke-front:
     { name: Front yoke, group: yoke, status: covered, lib: [frontYokeCut, frontPanel, yokePiece], seen: [hunting-coat, childrens-smock] }
   yoke-trouser-back:
-    { name: Trouser back yoke, group: yoke, status: gap, note: "Jeans" }
+    { name: Trouser back yoke, group: yoke, status: gap, note: "Jeans", queue: "46" }
   yoke-skirt-hip:
-    { name: Skirt hip yoke, group: yoke, status: gap }
+    { name: Skirt hip yoke, group: yoke, status: covered, lib: [yokeLayout, skirtYoke], seen: [yoke-skirt] }
 
   # --- Shaping ---
   darts:
@@ -229,7 +229,7 @@ elements:
   pleats-box-body:
     { name: Box pleats down a body (Norfolk), group: shaping, status: covered, lib: [backPanel, frontPanel], seen: [norfolk-jacket] }
   tucks:
-    { name: Tucks or front pleats on a shirt or jacket, group: shaping, status: gap, note: "Trucker jacket, tucked blouse" }
+    { name: Tucks or front pleats on a shirt or jacket, group: shaping, status: gap, note: "Trucker jacket, tucked blouse", queue: "M6" }
   shirring:
     { name: Shirring or smocking, group: shaping, status: gap }
 
@@ -251,7 +251,7 @@ elements:
   skirt-pencil:
     { name: Straight pencil skirt with a vent, group: skirt, status: partial, lib: [skirtLayout], note: "No back vent on skirts", freesewing: [penelope] }
   skirt-tiered:
-    { name: Tiered skirt, group: skirt, status: gap }
+    { name: Tiered skirt, group: skirt, status: covered, lib: [polygon], seen: [tiered-skirt] }
 
   # --- Legs ---
   leg-tailored:
@@ -281,7 +281,7 @@ elements:
   waist-elastic:
     { name: Elastic waist, group: waist, status: covered, lib: [gatheredLeg], seen: [pyjama-trousers] }
   waist-drawstring:
-    { name: Drawstring waist, group: waist, status: partial, lib: [gatheredLeg], note: "Elastic channel only" }
+    { name: Drawstring waist, group: waist, status: partial, lib: [gatheredLeg], note: "Elastic channel only", queue: "53" }
   waist-faced:
     { name: Faced waist (no band), group: waist, status: covered, lib: [goreFacing], seen: [two-piece-skirt] }
   waist-high:
@@ -331,15 +331,15 @@ elements:
 
   # --- Knit and stretch (2026-11-09) ---
   leg-knit:
-    { name: Knit leg with negative ease (leggings), group: knit, status: gap, freesewing: [lily, lumina, lumira] }
+    { name: Knit leg with negative ease (leggings), group: knit, status: gap, freesewing: [lily, lumina, lumira], queue: "M9" }
   underwear-knit:
     { name: Knit underwear (briefs, pouch, elastic edges), group: knit, status: gap, freesewing: [bruce, uma, umbra] }
   swimwear-knit:
-    { name: Swim and sports knit (lining, elastic edges, cups), group: knit, status: gap, freesewing: [bee, sabrina] }
+    { name: Swim and sports knit (lining, elastic edges, cups), group: knit, status: gap, freesewing: [bee, sabrina], queue: "M18" }
 
   # --- Special construction ---
   corsetry:
-    { name: Boned corset panels, group: special, status: gap, freesewing: [cathrin] }
+    { name: Boned corset panels, group: special, status: gap, freesewing: [cathrin], queue: "M16" }
   crotch-gusset:
     { name: Crotch gusset, group: special, status: gap, freesewing: [crux] }
   headwear-panels:

@@ -60,6 +60,7 @@
   "sailor-pants": {"default": {}, "shallow": {"fallDepth": 0.3, "fallCentre": 0.15, "fallButtons": 1, "hemWidth": 1}, "bell": {"hemWidth": 1.6, "fallButtons": 5, "fallDepth": 0.7}},
   "overall-pants": {"default": {}, "plain": {"beltLoops": 0, "hemWidth": 1, "seatEase": 0.1}},
   "gathered-skirt": {"default": {}, "short": {"gathers": 1.3, "skirtLength": 0.35, "placketLength": 0.6}},
+  "tiered-skirt": {"default": {}, "plain": {"tierFullness": 1.5, "tierGrowth": 1, "backWaistDrop": 0, "placketLength": 0.5}, "apart": {"skirtLength": 0.9, "firstTier": 2.2, "tierFullness": 1.3, "tierGrowth": 1.4, "placketLength": 1.2, "waistbandHeight": 0.06}},
   "kimono-dress": {"default": {}, "long": {"kimonoLength": 0.6, "kimonoAngle": 45, "buttons": 7, "skirtLength": 0.85}, "back": {"opening": "back", "neckFinish": "binding", "kimonoLength": 0.15}},
   "tunic-skirt": {"default": {}, "plain": {"tunicHipEase": 0}, "longer": {"tunicLength": 0.6, "tunicDartTip": 0.2}},
   "four-gore-skirt": {"default": {}, "straighter": {"goreFlare": 0.4}, "plain": {"goreFlare": 0.2, "frontWaistDrop": 0, "panelShare": 0.2}},
@@ -106,5 +107,6 @@
   "balmacaan": {"default": {}, "setInSleeves": {"sleeveStyle": "setIn"}, "setIn": {"sleeveStyle": "setIn", "buttons": 5}, "ulster": {"collarStyle": "ulster", "buttonTop": 1.6, "lining": true, "hemFlare": 0}, "plain": {"handPockets": false, "lengthBelowWaist": 1.8, "vent": false}, "oneSleeve": {"raglanPieces": "one"}},
   "ulster": {"default": {}, "military": {"collarStyle": "military", "buttons": 4}, "raglan": {"sleeveStyle": "raglan", "collarStyle": "convertible"}, "plain": {"handPockets": false, "lengthBelowWaist": 2.4, "vent": false, "lining": false}, "shawl": {"collarStyle": "shawl", "vent": false}},
   "jumpsuit": {"default": {}, "plain": {"breastPockets": false, "lowerPockets": false, "legTaper": 0, "neckWidth": 0.22, "frontNeckDepth": 0.18, "buttons": 4}},
+  "yoke-skirt": {"default": {}, "plain": {"goreEdgeFlare": 0, "hipYokeDepth": 0.5}, "apart": {"hipYokeDepth": 0.9, "goreEdgeFlare": 0.2, "flareFrom": 0.25, "zipLength": 1.2, "length": 0.5}},
   "gored-skirt": {"default": {}, "fifteenGores": {"gores": 15}, "nine": {"gores": 9}, "seven": {"gores": 7, "goreFlare": 0.3}, "fifteen": {"gores": 15, "frontWaistDrop": 0, "zipLength": 0.6}}
 }

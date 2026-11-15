@@ -10,6 +10,21 @@ the research section adds candidates that those tables did not cover.
 **What to build next:** [BUILD_QUEUE.md](BUILD_QUEUE.md), the ordered queue of garments still to
 build, with sources, pages, the design each starts from, and how agents claim them in parallel.
 
+## Where expansion stands (2026-11-15)
+[designs/garments/COVERAGE.md](designs/garments/COVERAGE.md) counts 225 garment types: 102 built,
+35 listed from FreeSewing, 32 buildable from our library, 9 partly buildable, 12 blocked and 35
+research candidates. Its "What to build next" table names the queue item for each missing element.
+- **The modern books** (SOURCING.md: Joseph-Armstrong 2010 and Aldrich 2015 in use; Aldrich's
+  children's wear and menswear and Cole's knits next) cover most of what's left that a Western
+  drafting book can: jeans, empire and dropped waists, bias cutting, tucks and French cuffs, cowls,
+  knits (leggings, T-shirt dress, swimwear), lingerie tops, babywear, and sources for buildable
+  types that had none (boxer shorts, dungarees, coverall, shirt and smock dresses, wide-leg
+  trousers). BUILD_QUEUE.md "Modern books", M3–M18.
+- **Still needing a source:** the non-Western traditions below; adaptive, nursing and maternity
+  wear; scrubs and over-trousers; the tie-neck collar, wrist tab and snap closures.
+- **Cheapest wins:** variants of built designs (the empire and drop waists on the fitted dress)
+  and buildable types that now have a source.
+
 The wardrobe list is the style table in [SOURCING.md](SOURCING.md) (styles 1–5 plus knits).
 The FreeSewing list is `@freesewing/collection` 4.10.2 (npm, 2026-09-13, MIT): 73 designs.
 Status codes:
@@ -49,9 +64,10 @@ leads, not a market-size ranking. No comparable demand dataset was provided.
 | Jeogori, chima, baji; qipao | Find garment-specific Korean- or Chinese-language drafts with measurements and documented period or regional form. | No equivalent traditional construction is recorded in the current tree. |
 | Boubou/mbubb, agbádá, djellaba, chapan/chopon | Identify a named maker or technical source, place and garment-specific draft; verify rights and attribution. | Generic robes and kaftans do not establish these forms. |
 | Huipil, unku, Andean poncho, lliclla; Pacific wraps | Name the community or island and record fabric width, weaving, finishing, assembly and wrapping where relevant. A sewing pattern may cover only part of the method. | Generic poncho and flat-cut traits do not establish these traditions. |
-| Adaptive tops and trousers, nursing and maternity garments, infant sleepsuits | Define the wearer need, measurements, openings and testing requirements before choosing a base. | Some ordinary blocks may help, but fit and use cannot be inferred from them. |
+| Infant sleepsuits and snowsuits | Lead: Aldrich 2009's flat jersey body and sleepsuit blocks (queue M10). Read the pages, then the infant safety review (`designs/safety`) before offering baby sizes. | Romper and baby one-piece listed from FreeSewing (Otis, Onyx). |
+| Adaptive tops and trousers, nursing and maternity garments | Define the wearer need, measurements, openings and testing requirements before choosing a base. None of the modern books covers them. | Some ordinary blocks may help, but fit and use cannot be inferred from them. |
 | Medical scrubs and waterproof over-trousers | Find construction and sizing requirements for the intended use, including pocket placement, layering and fabric or seam treatment. | Existing shirts and trousers may supply bases, but do not establish functional performance. |
-| Chemise, petticoat and bra | Seek a dimensioned source and distinguish these from the existing slip, corset and FreeSewing underwear listings. | The tree already lists the latter types. |
+| Chemise, petticoat and bra | Lead: Aldrich 2015's lingerie block and camisole, Joseph-Armstrong 2010's bra-top torso (queue M8); these are bra tops, not an underwired bra. Distinguish them from the slip, corset and FreeSewing underwear listings. | The tree already lists the latter types. |
 
 Source leads in the supplied research notes include tutorials, commercial patterns, museum
 projects and catalogues. A lead is not permission to reproduce a pattern. For each candidate,
@@ -171,6 +187,8 @@ new tradition flags without source review.
 | Circular skirt (fitted to the hip, very wide hem) | 5 | Sarah | Variant; **drafted 2026-11-02** (`designs/circular-skirt`: a fan slashed and spread from above the hip; not sewn) | Mitchell 1921 pp. 110-113 |
 | Tunic skirt (short radial overskirt) | 5 | Sarah | **Drafted 2026-11-05** (`designs/tunic-skirt`; not sewn) | Schorr 1917, Diagram 7 |
 | Four-gore panel skirt | 5 | Sarah | **Drafted 2026-11-06** (`designs/four-gore-skirt`; not sewn) | Schorr 1917, Diagram 65 |
+| Yoke skirt (hip yoke, flared gores) | 5 | Sarah | **Drafted 2026-11-15** (`designs/yoke-skirt`; not sewn) | Inspired by Aldrich 2015, yoked skirt with gores |
+| Tiered skirt | 5 | — | **Drafted 2026-11-15** (`designs/tiered-skirt`, four gathered tiers; not sewn) | Inspired by Joseph-Armstrong 2010, Tiers, Design 2 |
 | **Culottes (divided skirt)** | 4, 5 | — | **Drafted 2026-10-29** (`designs/culottes`; not sewn) | Pivnick 1949 `pivnickdesignclothes1949` |
 | Divided riding skirt | 5 | — | **Drafted 2026-11-04** (`designs/riding-skirt`, five gores and a front overlap; not sewn) | Mitchell 1921 pp. 116-117 |
 | Apron riding skirt | 5 | — | **Drafted 2026-11-04** (`designs/apron-riding-skirt`, asymmetric two-part apron and leg strap; not sewn) | Mitchell 1921 pp. 118-121 |

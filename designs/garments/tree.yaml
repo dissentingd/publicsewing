@@ -32,7 +32,7 @@ nodes:
   oxford-button-down: { name: Button-down collar shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, hem-curved-tail], note: "A dress shirt variant: buttons at the collar points" }
   western-shirt: { name: Western shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, yoke-front, closure-snaps, collar-shirt, cuff-barrel, pocket-patch-flap] }
   overshirt: { name: Overshirt (shirt jacket), parent: shirts, traits: [body-boxy, yoke-shirt-back, closure-buttons, collar-shirt, pocket-patch-flap, cuff-barrel] }
-  tuxedo-shirt: { name: Formal (tuxedo) shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-stand, cuff-french, tucks] }
+  tuxedo-shirt: { name: Formal (tuxedo) shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-stand, cuff-french, tucks], note: "Queue M6" }
   football-shirt-t: { name: Woven sports pullover, parent: shirts, traits: [body-yoke, closure-placket, collar-turndown, cuff-band], note: "Queue 49" }
   grandad-shirt: { name: Band-collar (grandad) shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-placket, collar-stand, cuff-barrel, hem-curved-tail] }
   scrub-top: { name: Medical scrub top, parent: shirts, research: true }
@@ -128,7 +128,7 @@ nodes:
   duster: { name: Duster and shop coat, parent: overcoats, traits: [body-boxy, closure-buttons, collar-notched, pocket-patch], designs: [shop-coat] }
   winter: { name: Winter coat, parent: overcoats, traits: [body-boxy, yoke-front, yoke-shirt-back, pocket-welt, collar-turndown], designs: [winter-coat] }
   trench: { name: Trench coat, parent: overcoats, traits: [body-boxy, sleeve-raglan, closure-double-breasted, collar-notched, belt, yoke-shirt-back, cuff-tab, pocket-welt] }
-  duffle: { name: Duffle coat, parent: overcoats, traits: [body-boxy, hood, closure-frogs, pocket-patch, yoke-front] }
+  duffle: { name: Duffle coat, parent: overcoats, traits: [body-boxy, hood, closure-frogs, pocket-patch, yoke-front], note: "Queue M15" }
   chapan: { name: Chapan / chopon, parent: overcoats, research: true }
   womens-coats: { name: Women's coats, parent: coats }
   box-coat-t: { name: Box coat, parent: womens-coats, traits: [body-box-darted, collar-peak, pocket-flap-set-in], designs: [womens-box-coat, girls-coat] }
@@ -157,11 +157,11 @@ nodes:
   chinos: { name: Chinos (cotton slacks), parent: trousers, traits: [leg-tailored, closure-fly, pocket-trouser-slant, pocket-trouser-back-jetted, waistband, belt-loops], variants: [slacks.cotton], freesewing: [charlie] }
   work-trousers: { name: Work trousers, parent: trousers, traits: [leg-tailored, closure-fly, pocket-patch, waistband], designs: [work-pants] }
   overall-trousers: { name: Overall pants, parent: trousers, traits: [leg-in-one, closure-fly, waistband], designs: [overall-pants] }
-  jeans-t: { name: Jeans, parent: trousers, traits: [leg-tailored, closure-fly, yoke-trouser-back, pocket-scoop, pocket-coin, pocket-trouser-back-patch, waistband, belt-loops], note: "Queue 46, our design" }
+  jeans-t: { name: Jeans, parent: trousers, traits: [leg-tailored, closure-fly, yoke-trouser-back, pocket-scoop, pocket-coin, pocket-trouser-back-patch, waistband, belt-loops], note: "Queue 46, inspired by Joseph-Armstrong and Aldrich" }
   cargo: { name: Cargo trousers, parent: trousers, traits: [leg-tailored, pleats-trouser, pocket-cargo, closure-fly, waistband], designs: [field-trousers] }
   sailor-trousers: { name: Sailor trousers, parent: trousers, traits: [leg-in-one, leg-flared, closure-fall-front], designs: [sailor-pants] }
   womens-trousers-t: { name: Women's trousers, parent: trousers, traits: [leg-tailored, darts, closure-zip-back, waistband], note: "Queue 45" }
-  wide-leg: { name: Wide-leg (palazzo) trousers, parent: trousers, traits: [leg-tailored, waist-faced, closure-zip-back] }
+  wide-leg: { name: Wide-leg (palazzo) trousers, parent: trousers, traits: [leg-tailored, waist-faced, closure-zip-back], note: "Queue M12" }
   drawstring-trousers: { name: Drawstring trousers, parent: trousers, traits: [leg-gathered, waist-drawstring, pocket-on-seam], freesewing: [paco] }
   salwar-t: { name: Salwar, parent: trousers, traits: [leg-gathered, waist-drawstring], note: "Queue 53, inspired by CBSE" }
   churidar-t: { name: Churidar, parent: trousers, traits: [body-bias, waist-drawstring, leg-gathered], note: "Queue 55, inspired by CBSE" }
@@ -191,8 +191,8 @@ nodes:
   tunic-overskirt: { name: Tunic (overskirt), parent: skirts, traits: [skirt-radial-tunic, darts], designs: [tunic-skirt] }
   divided: { name: Divided skirt and culottes, parent: skirts, traits: [skirt-divided, waistband, closure-zip-back], designs: [culottes, riding-skirt, apron-riding-skirt] }
   pencil: { name: Pencil skirt, parent: skirts, traits: [skirt-pencil, darts, waist-faced, closure-zip-back], freesewing: [penelope] }
-  yoke-skirt: { name: Yoke skirt, parent: skirts, traits: [skirt-two-piece, yoke-skirt-hip, closure-zip-back] }
-  tiered: { name: Tiered skirt, parent: skirts, traits: [skirt-tiered, gathers, waist-elastic] }
+  yoke-skirt: { name: Yoke skirt, parent: skirts, traits: [skirt-gored, yoke-skirt-hip, waistband], designs: [yoke-skirt] }
+  tiered: { name: Tiered skirt, parent: skirts, traits: [skirt-tiered, gathers, waistband], designs: [tiered-skirt] }
   knit-skirt: { name: Knit skirt, parent: skirts, traits: [skirt-pencil, waist-elastic], knit: true, note: "No knit lower-body element yet" }
 
   hakama: { name: Hakama, parent: trousers, research: true }
@@ -214,15 +214,15 @@ nodes:
   fit-and-flare: { name: Fit-and-flare dress, parent: dresses, traits: [body-darted-bodice, waist-seam, skirt-circular, closure-zip-back], freesewing: [sasha] }
   fitted-dress-t: { name: Fitted dress with a waist seam, parent: dresses, traits: [body-darted-bodice, waist-seam, neck-round, closure-zip-back], designs: [fitted-dress] }
   wrap-dress: { name: Wrap dress, parent: dresses, traits: [body-darted-bodice, neck-surplice, closure-wrap, waist-seam], designs: [wrap-dress], variants: [wrap-dress.sleeveless] }
-  empire-dress: { name: Empire-waist dress, parent: dresses, traits: [body-yoke, waist-raised, skirt-gathered] }
-  drop-waist: { name: Drop-waist dress, parent: dresses, traits: [body-yoke, waist-dropped, pleats-skirt] }
+  empire-dress: { name: Empire-waist dress, parent: dresses, traits: [body-yoke, waist-raised, skirt-gathered], note: "Queue M3, a fitted-dress variant" }
+  drop-waist: { name: Drop-waist dress, parent: dresses, traits: [body-yoke, waist-dropped, pleats-skirt], note: "Queue M3, a fitted-dress variant" }
   sundress: { name: Sundress, parent: dresses, traits: [body-darted-bodice, sleeveless, neck-square, skirt-gathered], variants: [fitted-dress.sundress] }
-  shirt-dress: { name: Shirt dress, parent: dresses, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, belt] }
+  shirt-dress: { name: Shirt dress, parent: dresses, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-shirt, cuff-barrel, belt], note: "Queue M11" }
   princess-dress: { name: Princess-line dress, parent: dresses, traits: [body-princess, neck-round, closure-zip-back], designs: [princess-dress], variants: [princess-dress.armhole] }
-  smock-dress: { name: Smock dress, parent: dresses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered] }
+  smock-dress: { name: Smock dress, parent: dresses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered], note: "Queue M11" }
   maternity-dress: { name: Maternity dress, parent: dresses, research: true, note: "Specify stage and fit requirements" }
   qipao: { name: Qipao / cheongsam, parent: dresses, research: true }
-  t-shirt-dress: { name: T-shirt dress, parent: dresses, traits: [body-knit, neck-round, sleeve-set-in], knit: true }
+  t-shirt-dress: { name: T-shirt dress, parent: dresses, traits: [body-knit, neck-round, sleeve-set-in], knit: true, note: "Queue M7" }
   halter-dress: { name: Halter dress, parent: dresses, traits: [body-darted-bodice, neck-halter, waist-seam, closure-zip-back] }
   strapless-dress: { name: Strapless dress, parent: dresses, traits: [corsetry, waist-seam, closure-zip-back] }
   blouson-dress: { name: Blouson dress, parent: dresses, traits: [body-darted-bodice, waist-seam, waist-elastic, gathers] }
@@ -232,11 +232,11 @@ nodes:
   one-pieces: { name: Jumpsuits, overalls and rompers, parent: whole }
   jumpsuit-t: { name: Jumpsuit, parent: one-pieces, traits: [body-flat, closure-buttons, belt], designs: [jumpsuit] }
   bib-overall-t: { name: Bib overall, parent: one-pieces, traits: [leg-in-one, bib, closure-side-opening], designs: [bib-overall], freesewing: [opal] }
-  coverall: { name: Coverall (boiler suit), parent: one-pieces, traits: [body-boxy, leg-tailored, closure-zip-front, collar-turndown, pocket-patch] }
+  coverall: { name: Coverall (boiler suit), parent: one-pieces, traits: [body-boxy, leg-tailored, closure-zip-front, collar-turndown, pocket-patch], note: "Queue M13" }
   romper: { name: Romper, parent: one-pieces, traits: [body-yoke, leg-gathered, leg-shorts, closure-buttons], freesewing: [otis], note: "Listed at baby sizes; safety reviewed (designs/safety)" }
-  infant-sleepsuit: { name: Infant sleepsuit, parent: one-pieces, research: true, note: "Needs a source; add its infant safety review (designs/safety) before offering it" }
-  snowsuit: { name: Snowsuit, parent: one-pieces, research: true, note: "Babies and children; needs a source and, at baby sizes, an infant safety review (designs/safety)" }
-  dungarees: { name: Dungarees, parent: one-pieces, traits: [leg-tailored, bib, pocket-patch, closure-side-opening] }
+  infant-sleepsuit: { name: Infant sleepsuit, parent: one-pieces, research: true, note: "Queue M10 (Aldrich 2009 sleepsuit block); its infant safety review before it's offered at baby sizes" }
+  snowsuit: { name: Snowsuit, parent: one-pieces, research: true, note: "Lead: Aldrich 2009 snowsuits, after queue M10; at baby sizes, an infant safety review" }
+  dungarees: { name: Dungarees, parent: one-pieces, traits: [leg-tailored, bib, pocket-patch, closure-side-opening], note: "Queue M13" }
   robes: { name: Robes and gowns, parent: whole }
   dressing-gown-t: { name: Dressing gown, parent: robes, traits: [body-boxy, collar-shawl, closure-wrap, belt, pocket-patch], designs: [dressing-gown] }
   kimono-robe: { name: Kimono robe, parent: robes, traits: [body-flat, sleeve-kimono, closure-wrap, belt] }
@@ -261,14 +261,14 @@ nodes:
   underwear: { name: Underwear, parent: sleep }
   drawers-t: { name: Drawers, parent: underwear, traits: [leg-in-one, closure-fly, waistband], designs: [drawers] }
   bloomers-t: { name: Bloomers, parent: underwear, traits: [leg-gathered, waist-elastic], designs: [bloomers] }
-  boxer-shorts: { name: Boxer shorts, parent: underwear, traits: [leg-gathered, leg-shorts, waist-elastic, closure-fly] }
-  slip: { name: Slip, parent: underwear, traits: [body-bias, sleeveless] }
-  camisole: { name: Camisole, parent: underwear, traits: [body-darted-bodice, sleeveless, neck-v] }
-  undershirt: { name: Undershirt, parent: underwear, traits: [body-knit, sleeveless, neck-scoop], knit: true }
+  boxer-shorts: { name: Boxer shorts, parent: underwear, traits: [leg-gathered, leg-shorts, waist-elastic, closure-fly], note: "Queue M4" }
+  slip: { name: Slip, parent: underwear, traits: [body-bias, sleeveless], note: "Queue M5" }
+  camisole: { name: Camisole, parent: underwear, traits: [body-darted-bodice, sleeveless, neck-v], note: "Queue M8" }
+  undershirt: { name: Undershirt, parent: underwear, traits: [body-knit, sleeveless, neck-scoop], knit: true, note: "Queue M7" }
   sari-petticoat: { name: Sari petticoat, parent: underwear, research: true }
-  chemise: { name: Chemise / shift, parent: underwear, research: true }
-  petticoat: { name: Petticoat, parent: underwear, research: true }
-  bra: { name: Bra / brassiere, parent: underwear, research: true }
+  chemise: { name: Chemise / shift, parent: underwear, research: true, note: "Lead: Aldrich 2015 lingerie block, queue M8" }
+  petticoat: { name: Petticoat, parent: underwear, research: true, note: "Lead: Aldrich 2015 lingerie block, queue M8" }
+  bra: { name: Bra / brassiere, parent: underwear, research: true, note: "The held books draft bra tops, not an underwired bra (queue M8)" }
 
   # ======================= Neckwear and accessories =======================
   neckwear: { name: Neckwear, parent: accessory }

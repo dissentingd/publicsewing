@@ -67,6 +67,7 @@ import { brandPart, draftPlacketBox, draftOpenFront } from './knit.mjs'
 import { knitPlacketPart, frontBandPart } from './placket.mjs'
 import { draftBodiceNeck, draftBodiceWaist, draftBodiceHip, draftWrapFront, draftPrincessDress, dressSkirtPart } from './bodice.mjs'
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
+import { draftYokeLayout, yokePart, yokeGorePart } from './skirt-yoke.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
@@ -148,6 +149,8 @@ export const operations = {
   },
   // Gored skirt (lib/skirt.mjs): the gores laid out on Sarah's base, into `skirt.*`
   skirtLayout: { run: draftSkirtLayout },
+  // Yoked skirt (lib/skirt-yoke.mjs): darts closed in a yoke, gores below, into `skirt.yoke`
+  yokeLayout: { run: draftYokeLayout },
   // A wrap kilt (lib/kilt.mjs): aprons and pleated lengths, into `kilt`
   kiltLayout: { run: draftKiltLayout },
   // Circular skirt (lib/skirt.mjs): a fan slashed and spread from above the seat line, into `skirt.circular`
@@ -327,6 +330,17 @@ const factories = {
           }),
     }),
   // The facing for a gore's rise above the waist (`index`), from skirtLayout's `riseHeight`
+  // A yoked skirt's yoke (`which`: front or back) and gores (`which`: back, sideBack, sideFront, front), from yokeLayout
+  skirtYoke: (p, ctx) => yokePart({ name: p.name, after: ctx.after(p), which: p.which, nr: p.nr, label: p.label ?? p.name.split('.').pop() }),
+  yokeGore: (p, ctx) =>
+    yokeGorePart({
+      name: p.name,
+      after: ctx.after(p),
+      which: p.which,
+      nr: p.nr,
+      label: p.label ?? p.name.split('.').pop(),
+      zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
+    }),
   goreFacing: (p, ctx) => goreFacingPart({ name: p.name, after: ctx.after(p), index: p.index, nr: p.nr, label: p.label ?? p.name.split('.').pop() }),
   kiltApron: (p, ctx) => kiltApronPart({ name: p.name, after: ctx.after(p), nr: p.nr, label: p.label }),
   kiltPleats: (p, ctx) => kiltPleatsPart({ name: p.name, after: ctx.after(p), nr: p.nr, label: p.label }),
