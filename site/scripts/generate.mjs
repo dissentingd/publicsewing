@@ -176,6 +176,13 @@ export const i18n = { ${fsIds.map((id) => `${JSON.stringify(id)}: i_${id}`).join
 writeFileSync(out('src', 'generated', 'measurements.json'), JSON.stringify(measurements))
 const labelData = parse(readFileSync(join(designsDir, 'labels.yaml'), 'utf8'))
 
+// Books still in copyright that designs take only methods and proportions from: credited once on the
+// Sources page (its anchor), and "inspired by" everywhere else. A spec's about.source names the book
+const methodSources = [
+  { test: /ЕМКО/, tag: 'ЕМКО 1988', name: 'ЕМКО СЭВ', anchor: 'emko' },
+  { test: /Armstrong/, tag: 'Armstrong 2010', name: 'Armstrong, *Patternmaking for Fashion Design*', anchor: 'armstrong' },
+]
+
 // Infant safety (designs/safety, BUILD_QUEUE S1): a design reviewed for baby sizes shows its
 // restrictions and the sewer's instructions on its page. test/infant-safety.test.mjs requires the review
 const infantChecklist = parse(readFileSync(join(designsDir, 'safety', 'infant-checklist.yaml'), 'utf8'))
@@ -551,10 +558,11 @@ ${variants.join('\n')}
   // Our version of a pattern people can pay for on its maker's site asks them to, by name of garment
   if (/Open\+Pattern/.test(about.source ?? '') && !original[id]) throw new Error(`${id}: from Open+Pattern, but no entry in external.yaml has ours: ${id}, so it has no donation link`)
   // Tags: the source (to the brief, which names it in full), or the original another project made
+  const methodSource = methodSources.find((m) => m.test.test(about.source ?? ''))
   const ourTags = original[id]
     ? tagLine(srcTag(external.by, original[id].url, 'external'), srcTag('CC BY 4.0', CC_BY, 'licence'))
-    : /ЕМКО/.test(about.source ?? '')
-      ? srcTag('ЕМКО 1988', '/sources#emko')
+    : methodSource
+      ? srcTag(methodSource.tag, `/sources#${methodSource.anchor}`)
       : srcTag(info.source.replace(/[*_]/g, ''), `/designs/${id}#the-brief`)
   rows[folder][about.category].push({
     name: about.name,
@@ -565,8 +573,8 @@ ${variants.join('\n')}
       description: info.garment, difficulty: about.difficulty ?? null, status: 'Draft · not yet sewn',
       source: original[id]
         ? { text: `Inspired by ${original[id].name}`, href: original[id].url }
-        : /ЕМКО/.test(about.source ?? '')
-          ? { text: 'Inspired by ЕМКО 1988', href: '/sources#emko' }
+        : methodSource
+          ? { text: `Inspired by ${methodSource.tag}`, href: `/sources#${methodSource.anchor}` }
           : { text: info.source.replace(/[*_]/g, ''), href: `/designs/${id}#the-brief` },
       licence: original[id] ? { text: 'Source: CC BY 4.0', href: CC_BY } : null,
       traditions: traditionKeys(id, about).map((key) => ({ key, ...traditions[key] })),
@@ -580,8 +588,8 @@ ${variants.join('\n')}
   })
   const originalLine = original[id]
     ? `\n\nOur own interpretation, inspired by [${original[id].name}](${original[id].url}) from [${external.by}](/sources#open-pattern). ${external.by} did the hard part, so please [support them](${original[id].url}) and use their design from them first. Feel free to use ours if it offers something you need.`
-    : /ЕМКО/.test(about.source ?? '')
-      ? `\n\nOur own interpretation, inspired by [ЕМКО СЭВ](/sources#emko).`
+    : methodSource
+      ? `\n\nOur own interpretation, inspired by [${methodSource.name}](/sources#${methodSource.anchor}).`
       : ''
   writeFileSync(
     out('docs', folder, about.category, `${id}.mdx`),

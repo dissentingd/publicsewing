@@ -192,7 +192,7 @@ nodes:
   divided: { name: Divided skirt and culottes, parent: skirts, traits: [skirt-divided, waistband, closure-zip-back], designs: [culottes, riding-skirt, apron-riding-skirt] }
   pencil: { name: Pencil skirt, parent: skirts, traits: [skirt-pencil, darts, waist-faced, closure-zip-back], freesewing: [penelope] }
   yoke-skirt: { name: Yoke skirt, parent: skirts, traits: [skirt-two-piece, yoke-skirt-hip, closure-zip-back] }
-  tiered: { name: Tiered skirt, parent: skirts, traits: [skirt-tiered, gathers, waist-elastic] }
+  tiered: { name: Tiered skirt, parent: skirts, traits: [skirt-tiered, gathers, waistband], designs: [tiered-skirt] }
   knit-skirt: { name: Knit skirt, parent: skirts, traits: [skirt-pencil, waist-elastic], knit: true, note: "No knit lower-body element yet" }
 
   hakama: { name: Hakama, parent: trousers, research: true }

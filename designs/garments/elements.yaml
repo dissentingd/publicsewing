@@ -251,7 +251,7 @@ elements:
   skirt-pencil:
     { name: Straight pencil skirt with a vent, group: skirt, status: partial, lib: [skirtLayout], note: "No back vent on skirts", freesewing: [penelope] }
   skirt-tiered:
-    { name: Tiered skirt, group: skirt, status: gap }
+    { name: Tiered skirt, group: skirt, status: covered, lib: [polygon], seen: [tiered-skirt] }
 
   # --- Legs ---
   leg-tailored:

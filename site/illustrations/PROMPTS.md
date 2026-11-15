@@ -1583,6 +1583,11 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 >
 > Leave out: pleats, visible waist darts, gathers, pockets, tiers or a train.
 
+### tiered-skirt: Tiered skirt
+> A cotton skirt of four horizontal gathered tiers to just below the knee, each tier a little deeper and much fuller than the one above, the top tier gathered into a narrow waistband. Soft, full volume at the hem. Front three-quarter full-length view, plain background, clean technical editorial illustration.
+>
+> Leave out: ruffled edges, lace, pockets, a drawstring, an underskirt showing, or a train.
+
 ### three-piece-long-coat: Three-piece long coat
 > An early twentieth-century women's semi-fitted long wool coat. Show long shaped seams from the upper body through the waist to a moderately flared calf-length hem, with a narrow back, side panels and smooth front. The adapted pattern closes high at the neck under a small storm collar and has three front buttons. Front three-quarter full-length view on a plain background, clean technical editorial illustration.
 >

@@ -53,7 +53,8 @@ Children's is a category within each style. WARDROBE_GAPS.md tracks each garment
   other pre-1931 British books: PD in the US).
 - **In copyright, used for method only** (the maintainer, 2026-10-27): methods, formulas and
   proportions as design references, never text, figures or scans in the repo. ЕМКО СЭВ
-  т.3 (1988, folder id `emko`, private copy, untracked).
+  т.3 (1988, folder id `emko`, private copy, untracked), and Armstrong, *Patternmaking for Fashion
+  Design* (2010, folder id `armstrongpatternmaking2014`, private copy, untracked).
 - **Renewed, so trace-only** (NYPL renewals data): Pepin *Modern Pattern Design* (1942,
   renewed 1969), Hillhouse & Mansfield *Dress Design* (1948), Erwin *Practical Dress
   Design*, Picken *Modern Dressmaking Made Easy*, Poulin, Mauck, Vogue dressmaking books.
@@ -108,6 +109,7 @@ grain. CLO puts the net outline on layer 1 and the cut line (with allowance) on 
 | Schorr, *The Expert Designer* (1917) `expertdesignerpr00scho` | A | tunic skirt (Diagram 7), four-gore panel skirt (Diagram 65) |
 | d'Alessio, *The Art of Designing, Cutting and Grading Gentlemen and Boys Clothes* (1906) `artofdesigningcu00ales` | A | cycling breeches (Fig. 30) |
 | ЕМКО СЭВ т.3 (1988) `emko` | A (tables) | windbreaker, quilted jacket, winter coat, topcoat, jacket, waistcoat, trousers |
+| Armstrong, *Patternmaking for Fashion Design* (2010; in copyright, methods only) `armstrongpatternmaking2014` | A | tiered skirt (Tiers, Design 2) |
 | Simons, *Drafting Pants and Overalls* (1916) `draftingpantsove00simo` | A | work pants, breeches, bib overall, overall pants, peg-top pants, turn-ups |
 | Simons, *Drafting Trousers for Men, Boys, Women* (1945, not renewed) `simonsdraftingtrousers1945` | A | slacks, shorts |
 | Simons, *Designing Sack Coats and Vests* (1918) `designingsackcoa00simo` | A | sack coat, dinner jacket, tailcoat, frock coat |

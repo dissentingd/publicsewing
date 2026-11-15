@@ -139,6 +139,18 @@ options:
   sideSlit:
     title: Side slits
     description: Slits up the side seams from the hem, as a share of waist to hem. 0% is none.
+  firstTier:
+    title: First tier
+    description: Width of the top tier before it's gathered into the waistband, against the waist.
+  tierFullness:
+    title: Tier fullness
+    description: Each tier's width against the tier above it, which it's gathered onto.
+  tierGrowth:
+    title: Tier depth
+    description: Each tier's depth against the tier above it. At 100% the tiers are equal.
+  backWaistDrop:
+    title: Back waist drop
+    description: How far the back waist is lowered at centre back, against waist to seat.
   gathers:
     title: Gathers
     description: Width of the gathered edge before gathering, against the edge it's sewn to.

@@ -21,10 +21,16 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 | Weiler, *Ladies' Tailor* (1915) `weilerladiestail00weil` | 4 | no |
 | Schorr, *The Expert Designer* (1917) `expertdesignerpr00scho` | not established | no |
 | Sheifer, *System of Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | not established | no |
+| Armstrong, *Patternmaking for Fashion Design* (5th ed., 2010; in copyright, a private copy) `armstrongpatternmaking2014` | 7 | no |
 
 ## All scans
 - The OCR drops or confuses fractions ("\ l/2" for 1½, a blank for ¼). Read numbers from the image.
 - A contents page can be wrong. Search the text for the garment's name.
+
+## Armstrong 2010 (`armstrongpatternmaking2014`)
+- In copyright: methods and proportions only, in our own words. Imperial units. Its styles are worked
+  on its own slopers and often size panels by fabric width (36–45 in); restate those against the body.
+- Tiers (ch. 13): text book p. 315, figures p. 316. The text layer garbles figure labels; check the page image.
 
 ## Sheifer 1908 (`nssheiferssystem00shei`)
 - Skirt coat: text PDF p. 80, plate PDF p. 81. The text starts the skirt about 2 in below the waist (at the cutter's choice), places the front seam about 1 in lower than the back, leaves ¾ in between front and side gore 1½ in below the waist, and shapes a hip dart at B. The plate shows a curved, dropped skirt seam.
