@@ -42,6 +42,8 @@ export function applyRaglan(sh, which, { neckShare = 0.3, hemSa = 3 } = {}) {
     section,
     A,
     shoulder: points.s3ArmholeSplit,
+    neckPoint: points.s3CollarSplit,
+    raglanNeck: N,
     raglan: paths.raglan.length(),
     neck: toN.length(),
     shoulderSeam: points.s3CollarSplit.dist(points.s3ArmholeSplit),
@@ -94,7 +96,8 @@ const mapPath = (path, Path, f) => {
  * Place `which` side's shoulder section (store `raglan.<which>`) on the sleeve: matched at that
  * side's notch with its shoulder point on the sleeve's centre line, above the cap, outside the
  * sleeve. Returns { s (shoulder point), afterArm (shoulder point -> neck point -> raglan neck
- * -> notch), cap (this side's half of the cap, from the biceps to the notch) }.
+ * -> notch), cap (this side's half of the cap, from the biceps to the notch), hps and
+ * raglanNeck (the neck point and the raglan line's top, placed on the sleeve) }.
  */
 function placeSection({ points, paths, Path, Point, store }, which) {
   const r = store.get(`raglan.${which}`)
@@ -117,7 +120,7 @@ function placeSection({ points, paths, Path, Point, store }, which) {
       if (!best || top < best.top) best = { f, section, top, s }
     }
   }
-  return { s: best.s, afterArm: best.section.split(best.s)[1], cap: front ? capFront : capBack }
+  return { s: best.s, afterArm: best.section.split(best.s)[1], cap: front ? capFront : capBack, hps: best.f(r.neckPoint), raglanNeck: best.f(r.raglanNeck) }
 }
 
 /**
@@ -144,8 +147,11 @@ export function raglanSleevePart({ name, after, which, nr, options = {}, hemSa =
       if (!enabled(o)) return part.hide()
       if (which === 'one') return oneSleeve(sh, nr, hemSa)
       const front = which === 'front'
-      const { s: shoulderSeamStart, afterArm, cap } = placeSection(sh, which)
+      const { s: shoulderSeamStart, afterArm, cap, hps, raglanNeck } = placeSection(sh, which)
       points.shoulder = shoulderSeamStart
+      // Named for the 3D drape (drape/raglan.yaml): the neck edge runs between them
+      points.hps = hps
+      points.raglanNeck = raglanNeck
       points.overarmBottom = points.centerWrist
       if (front) {
         // Counter-clockwise: wrist (front side) up the underarm, cap to the notch, raglan up to
@@ -197,6 +203,8 @@ function oneSleeve(sh, nr, hemSa = 3) {
   const hpsOf = (afterArm) => afterArm.ops.map((op) => op.to).find((q) => q && q.dist(afterArm.start()) > 1)
   points.hpsFront = hpsOf(fr.afterArm)
   points.hpsBack = hpsOf(bk.afterArm)
+  points.raglanNeckFront = fr.raglanNeck // for the 3D drape: each raglan line's top
+  points.raglanNeckBack = bk.raglanNeck
   const toNeck = fr.afterArm.reverse().split(points.hpsFront)[0] // front notch -> front neck point
   const fromNeck = bk.afterArm.split(points.hpsBack)[1] // back neck point -> back notch
   // The dart point: between the two shoulder points, moved square to the over-arm line onto
