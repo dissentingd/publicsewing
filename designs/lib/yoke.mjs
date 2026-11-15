@@ -216,6 +216,36 @@ export function draftYokeSide(sh, side) {
   else body = body.line(sh2(armYoke)).line(new Point(0, yokeY))
   if (whole) yoke = null
 
+  // Front pleats (`frontPleats`, a design option: how many each side of CF; `pleatDepth` x chest,
+  // each pleat's fold, so it takes up twice that; `pleatSpacing` x chest, between them on the
+  // finished front), on a front in one piece: the width they take is added at the fold, the neck
+  // carried across to it, and each pleat's two lines marked from the neck to the hem
+  const pleatN = side === 'front' && whole ? optional('frontPleats') : 0
+  const pd = measurements.chest * optional('pleatDepth')
+  const pleatW = pleatN > 0 && pd > 0 ? pleatN * 2 * pd : 0
+  const pleatLines = []
+  if (pleatW > 0) {
+    const t = body.translate(pleatW, 0)
+    let pb = new Path().move(new Point(0, hemY))
+    for (const op of t.ops.slice(1)) pb = op.type === 'curve' ? pb.curve(op.cp1, op.cp2, op.to) : op.type === 'line' ? pb.line(op.to) : pb
+    body = pb.line(neckAtFold.clone())
+    const sp = measurements.chest * optional('pleatSpacing')
+    for (let i = 0; i < pleatN; i++) {
+      const at = sp * (i + 0.5) + 2 * pd * i
+      pleatLines.push([at, at + 2 * pd])
+    }
+  }
+  // A buttoned opening from the neck to the hem (`openFull`, a design option) on the opening side:
+  // the body runs on past the centre line by the button stand, and is cut in two, not on the fold
+  const full = open && optional('openFull') > 0
+  if (full) {
+    const startY = hemY
+    const endY = whole ? neckAtFold.y : yokeY
+    let fb = new Path().move(new Point(-ext, startY)).line(new Point(0, startY))
+    for (const op of body.ops.slice(1)) fb = op.type === 'curve' ? fb.curve(op.cp1, op.cp2, op.to) : op.type === 'line' ? fb.line(op.to) : fb
+    body = fb.line(new Point(-ext, endY))
+  }
+
   // Named corners of each piece (for the 3D drape configs): the fold (or opening) ends, the
   // yoke seam's ends, the underarm, shoulder, neck point and hem corners
   const marks = {
@@ -237,10 +267,12 @@ export function draftYokeSide(sh, side) {
     },
   }
 
+  if (pleatW > 0) for (const k of ['hemSide', 'sideTop', 'shoulder', 'hps']) if (marks.body[k]) marks.body[k] = marks.body[k].translate(pleatW, 0)
+
   // Placket slit below the yoke (or from the neck, with no yoke) on the opening side
   const slitEnd = neckAtFold.y + measurements.hpsToWaistBack * options.placketDepth
   const slitTop = whole ? neckAtFold.y : yokeY
-  const slit = open && slitEnd > slitTop + 5 ? slitEnd - slitTop : 0
+  const slit = open && !full && slitEnd > slitTop + 5 ? slitEnd - slitTop : 0
 
   store.set(`yoke.${side}`, {
     yoke,
@@ -250,6 +282,8 @@ export function draftYokeSide(sh, side) {
     ext,
     slit,
     whole,
+    ...(full ? { openFull: { top: whole ? neckAtFold.y : yokeY, bottom: hemY } } : {}),
+    ...(pleatW > 0 ? { pleats: { lines: pleatLines, width: pleatW } } : {}),
     slitTop,
     sideSlit: slitLen,
     yokeSeam: top,
@@ -266,6 +300,8 @@ export function draftYokeSide(sh, side) {
     hemY,
     waistY,
   })
+  // A full opening's length, neck to hem, for its facing strip (`yoke.openFull`)
+  if (full) store.set('yoke.openFull', { length: hemY - neckAtFold.y, ext })
   // The sleeve's title (FreeSewing's sleeve part reads it from here)
   store.set('library.sleeve.title', { nr: 5, brand: BRAND })
 }
@@ -283,7 +319,7 @@ export function yokePiecePart({ name, after, side, piece, nr, label, cut }) {
       }
       const outline = mapPath(y[piece], Path)
       for (const [k, q] of Object.entries(y.marks?.[piece] ?? {})) points[k] = q.clone()
-      const onFold = !(piece === 'yoke' && y.open)
+      const onFold = !(piece === 'yoke' && y.open) && !(piece === 'body' && y.openFull)
       paths.seam = outline.clone().close().addClass('fabric')
       if (sa) {
         if (onFold) {
@@ -330,6 +366,30 @@ export function yokePiecePart({ name, after, side, piece, nr, label, cut }) {
           if (hit) snippets.sideSlit = new Snippet('notch', hit)
         }
       }
+      if (piece === 'body' && y.pleats) {
+        // Each pleat's two lines, neck to hem: fold the outer onto the inner
+        y.pleats.lines.forEach(([a, b], i) => {
+          paths[`pleatIn${i}`] = new Path().move(new Point(a, y.neckY)).line(new Point(a, y.hemY)).addClass('mark dashed')
+          paths[`pleatOut${i}`] = new Path().move(new Point(b, y.neckY)).line(new Point(b, y.hemY)).addClass('mark')
+          snippets[`pleatTop${i}`] = new Snippet('notch', new Point(b, y.neckY))
+        })
+        paths.pleatNote = new Path().move(new Point(y.pleats.lines[0][0], y.neckY + 40)).line(new Point(y.pleats.lines.at(-1)[1], y.neckY + 40)).addClass('hidden').addText('pleats: fold each solid line onto its dashed line', 'center text-sm')
+      }
+      // A full opening's buttons, spaced from the neck to near the hem across yoke and body
+      const fullButtons = () => {
+        const n = options.buttons
+        const t0 = y.neckY + 15
+        const t1 = y.hemY - (y.hemY - y.neckY) * 0.15
+        return Array.from({ length: n }, (_, i) => (n > 1 ? t0 + ((t1 - t0) * i) / (n - 1) : t0))
+      }
+      if (piece === 'body' && y.openFull) {
+        // The centre line (the button stand runs past it) and the buttons on it below the yoke
+        const { top, bottom } = y.openFull
+        paths.centre = new Path().move(new Point(0, top)).line(new Point(0, bottom)).addClass('help dashed').addText('centre', 'center text-sm')
+        fullButtons()
+          .filter((by) => y.whole || by > top + 10)
+          .forEach((by, i) => (snippets[`b${i}`] = new Snippet('button', new Point(0, by))))
+      }
       if (piece === 'body' && y.whole && y.open && y.slit) {
         // Buttons down the placket
         const n = options.buttons
@@ -338,7 +398,11 @@ export function yokePiecePart({ name, after, side, piece, nr, label, cut }) {
           snippets[`b${i}`] = new Snippet('button', new Point(0, by))
         }
       }
-      if (piece === 'yoke' && y.open) {
+      if (piece === 'yoke' && y.open && y.openFull) {
+        fullButtons()
+          .filter((by) => by < y.yokeY - 10)
+          .forEach((by, i) => (snippets[`b${i}`] = new Snippet('button', new Point(0, by))))
+      } else if (piece === 'yoke' && y.open) {
         // Buttons down the opening, on the centre line
         const n = options.buttons
         const bottom = y.yokeY - 15
@@ -428,6 +492,24 @@ export function yokeSleevePart({ name, after, nr }) {
         points.wristLeft = at(points.bicepsLeft, points.wristLeft)
         points.wristRight = at(points.bicepsRight, points.wristRight)
       }
+      // A puffed sleeve (`sleevePuff`, a design option): the sleeve spread wider by this share and its
+      // cap raised by half as much of the cap's height, so the cap gathers into the armhole and the
+      // hem into the band (Pivnick's slashed and spread sleeve)
+      const puff = 'sleevePuff' in options ? options.sleevePuff : 0
+      if (puff > 0) {
+        const cx = (points.bicepsLeft.x + points.bicepsRight.x) / 2
+        const by = points.bicepsLeft.y
+        const capH = by - points.sleeveTip.y
+        const tf = (q) => new Point(cx + (q.x - cx) * (1 + puff), q.y < by ? q.y - (capH * puff * 0.5 * (by - q.y)) / capH : q.y)
+        let cap = new Path().move(tf(paths.sleevecap.start()))
+        for (const op of paths.sleevecap.ops.slice(1)) cap = op.type === 'curve' ? cap.curve(tf(op.cp1), tf(op.cp2), tf(op.to)) : op.type === 'line' ? cap.line(tf(op.to)) : cap
+        if (paths.sleevecap.hidden) cap.hide()
+        paths.sleevecap = cap
+        for (const k of ['bicepsLeft', 'bicepsRight', 'wristLeft', 'wristRight']) points[k] = tf(points[k])
+        // The cap's notches move with it
+        for (const k in snippets) snippets[k] = new Snippet(snippets[k].def, tf(snippets[k].anchor))
+        paths.capGathers = new Path().move(paths.sleevecap.shiftFractionAlong(0.3)).line(paths.sleevecap.shiftFractionAlong(0.7)).addClass('hidden').addText('gather the cap', 'center text-sm')
+      }
       paths.hemBase = new Path().move(points.wristLeft).line(points.wristRight).hide()
       paths.saBase = new Path().move(points.wristRight).line(points.bicepsRight).join(paths.sleevecap).line(points.wristLeft).hide()
       paths.seam = paths.hemBase.join(paths.saBase).close().addClass('fabric')
@@ -456,6 +538,7 @@ export function yokeSleevePart({ name, after, nr }) {
         hem: points.wristLeft.dist(points.wristRight),
         band: Math.min(round * (1 + options.sleeveBandEase), points.wristLeft.dist(points.wristRight)),
         bandWidth: measurements.wrist * options.sleeveBand,
+        ...(puff > 0 ? { puff } : {}),
         ...(slit ? { slit } : {}),
       })
       store.cutlist.setCut({ cut: 2, from: 'fabric' })

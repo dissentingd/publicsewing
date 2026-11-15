@@ -209,7 +209,7 @@ nodes:
   shirtwaist: { name: Shirtwaist dress, parent: dresses, traits: [body-yoke, waist-seam, closure-buttons, collar-turndown, skirt-gathered, cuff-barrel], designs: [shirtwaist-dress] }
   kimono-dress-t: { name: Kimono-sleeve dress, parent: dresses, traits: [body-yoke, sleeve-kimono, waist-seam], designs: [kimono-dress] }
   frock-t: { name: Child's frock, parent: dresses, traits: [body-yoke, waist-seam, skirt-gathered, closure-buttons], designs: [frock] }
-  childs-dress-t: { name: Child's dress, parent: dresses, traits: [body-yoke, collar-flat], note: "Queue 52" }
+  childs-dress-t: { name: Child's dress, parent: dresses, traits: [body-yoke, collar-flat], designs: [childs-dress], variants: [childs-dress.yoked] }
   sheath: { name: Sheath dress, parent: dresses, traits: [body-darted-bodice, neck-round, sleeveless, closure-zip-back], variants: [fitted-dress.sheath], note: "Ours has a waist seam; a true sheath carries its darts through with none" }
   fit-and-flare: { name: Fit-and-flare dress, parent: dresses, traits: [body-darted-bodice, waist-seam, skirt-circular, closure-zip-back], freesewing: [sasha] }
   fitted-dress-t: { name: Fitted dress with a waist seam, parent: dresses, traits: [body-darted-bodice, waist-seam, neck-round, closure-zip-back], designs: [fitted-dress] }

@@ -135,5 +135,7 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Eight work aprons are together on book p. 39, PDF p. 43; the text continues on p. 40. The diagrams give fixed inch dimensions, not a graded draft. Diagram 8 is the painter's apron, distinct from the painter's jacket on p. 35.
 
 ## Pivnick 1949 (`pivnickdesignclothes1949`)
+- Child's dresses: Pattern 105 book pp. 296–299, Pattern 106 pp. 300–302 (PDF + 8), drafted on the children's
+  foundation (chapter XXI). The figures give pleats, extensions and slashes, never sizes.
 - Figures carry no numbers: read proportions, with the scale from a known length such as neck point
   to waist, and say so in the brief.

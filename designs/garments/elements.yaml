@@ -75,7 +75,7 @@ elements:
   sleeve-gathered:
     { name: Full sleeve gathered into a band (bishop, peasant), group: sleeve, status: covered, lib: [yokeSleeve, sleeveBand], seen: [frock, shirtwaist-dress] }
   sleeve-puff-cap:
-    { name: Puffed sleeve cap, group: sleeve, status: gap }
+    { name: Puffed sleeve cap, group: sleeve, status: covered, lib: [yokeSleeve.sleevePuff], seen: [childs-dress] }
   sleeve-cap:
     { name: Cap sleeve, group: sleeve, status: gap }
   sleeve-bell:

@@ -1515,6 +1515,23 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 
 *Current image has a bust dart and lines across the chest.*
 
+### childs-dress: Child's dress
+> A **little girl's dress** of the late 1940s in pale pink cotton lawn, shown flat, front view. **A simple
+> A-line dress in one piece from shoulder to hem, no waist seam**, to just above the knee. **Three narrow pressed
+> pleats each side of the centre front**, from the neck down. A **rounded flat (Peter Pan) collar** in white.
+> **Short puffed sleeves** gathered into narrow bands. A **sash** of the same fabric tied round the waist. Plain
+> background, clean technical editorial illustration.
+>
+> Leave out: a waist seam, smocking, ruffles, lace, a front opening, long sleeves, a person.
+
+### childs-dress.yoked: Child's dress, yoked
+> A **little girl's dress** of the late 1940s in pale blue cotton, shown flat, front view. **A yoke across the
+> chest**, the skirt below **gathered into it**, **buttoned down the centre front from the collar to the hem**.
+> A **rounded flat (Peter Pan) collar**, **short puffed sleeves** gathered into narrow bands, a **sash** at the
+> waist tied at the back. Plain background, clean technical editorial illustration.
+>
+> Leave out: a waist seam, smocking, ruffles, lace, long sleeves, a person.
+
 ### shift-dress: Shift dress
 > **No bust darts and no lines across the chest: the front is one plain panel.**
 > A women's **simple shift dress** in plain cotton or linen (navy, rust or sage), **to the

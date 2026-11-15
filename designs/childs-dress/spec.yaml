@@ -1,0 +1,77 @@
+# Child's dress: Pivnick's Pattern 105, "A Child's Dress" (How to Design Beautiful Clothes, 1949,
+# chapter XXII, pp. 296-299), with her Pattern 106 (pp. 300-302) as a variant, on her one-piece
+# dress foundation (the shift dress): front and back each in one piece, three pleats each side of the
+# centre front, buttoned down the back from the neck to the hem, a flat collar, short puffed sleeves
+# gathered into a binding, and a sash. Drafted from the wearer's measurements, so it fits any size,
+# though it is meant for little girls. See BRIEF.md.
+extends: ../shift-dress/spec.yaml
+
+about:
+  id: childs-dress
+  name: Child's dress
+  category: dresses
+  description: "A little girl's dress: pleated front, buttoned down the back, flat collar, puffed sleeves and a sash"
+  difficulty: 2
+  tags: [dresses, children]
+  techniques: [pleat, button, collar, gathering, facing, hem]
+  version: 0.1.0
+  source: "Pivnick, How to Design Beautiful Clothes (1949), Pattern 105, A Child's Dress, pp. 296-299, and Pattern 106, pp. 300-302 (pivnickdesignclothes1949)"
+  preview: usdaGirlC5
+
+options:
+  # Figures 30-32: "The position of the pleats is marked on the basic front foundation pattern":
+  # three each side of CF, read from Figure 31 against the front's width
+  frontPleats: { count: 3, min: 0, max: 5, menu: style }
+  pleatDepth: { pct: 1.2, min: 0.5, max: 3, of: chest, menu: style, description: "How far each front pleat folds under, as a share of the chest; each takes up twice this." } # each pleat's fold, about 1/4 in on a 24 in chest
+  pleatSpacing: { pct: 1.8, min: 1, max: 4, of: chest, menu: style, description: "Gap between the front pleats on the finished dress, as a share of the chest." } # between them, about 3/8 in
+  # Figure 33: "an extension added at the center back for buttons and facing", buttoned to near the
+  # hem (Figure 34 marks ten buttonholes)
+  opening: { dflt: back, list: [back, front], menu: style }
+  openFull: { bool: true, menu: style }
+  buttons: { count: 10, min: 3, max: 14, menu: style }
+  # Figures 38-39: the flat collar
+  neckFinish: { dflt: collar, list: [binding, band, collar], menu: style }
+  # Figures 35-37: "The pieces of the sleeve pattern spread to the desired width, and top curve
+  # rounded off"; "the lower edge is gathered in and finished with a binding"
+  sleeves: { dflt: short, list: [long, short, none], menu: style }
+  sleevePuff: { pct: 40, min: 0, max: 80, menu: style } # ours: "the desired width"
+  sleeveBand: { pct: 10, min: 6, max: 20, of: wrist, menu: style } # a narrow binding
+  # "The sash is simply a straight piece of fabric cut to the desired width"
+  sash: { bool: true, menu: style, description: "A straight sash round the waist, tied in a bow at the back." }
+  sashWidth: { pct: 15, min: 8, max: 30, of: hpsToWaistBack, menu: style, description: "Finished width of the sash, as a share of the back length to the waist." } # ours: about 1 1/2 in, read from Figure 29
+  sashLength: { pct: 250, min: 150, max: 350, of: waist, menu: style, description: "Length of the whole sash, as a share of the waist." } # ours: round the waist and tied in a bow
+  # Pattern 106's yokes and gathered skirt, in its variant
+  frontYoke: { bool: false, menu: style }
+  backYoke: { bool: false, menu: style }
+  yokeDepth: { pct: 90, min: 40, max: 100, menu: style } # x neck point to chest line: Figure 41's F-C, at the chest line
+  gathers: { pct: 140, min: 100, max: 200, menu: style } # "widened for gathers by drawing it as wide as may be desired"
+
+pieces:
+  sleeve: { part: yokeSleeve, after: [backBase, frontBase], nr: 5, options: [sleevePuff] }
+  # The opening's facing: a straight strip down the extension, neck to hem
+  openingFacing:
+    part: strip
+    after: [backBase, frontBase]
+    nr: 9
+    cut: 1
+    if: openFull
+    options: [openFull]
+    length: yoke.openFull.length
+    width: yoke.openFull.ext * 3
+  sashPiece:
+    part: strip
+    after: [backBase, frontBase]
+    nr: 10
+    label: sash
+    fold: true
+    if: sash
+    options: [sash, sashWidth, sashLength]
+    length: waist * sashLength
+    width: hpsToWaistBack * sashWidth
+
+# The same pattern with other options, shown on its page after the pattern tool
+variants:
+  yoked:
+    name: Yoked, buttoned in front
+    description: "Pivnick's Pattern 106: a yoke front and back to the chest line, the skirt below gathered into it, buttoned down the front from the neck to the hem, with the same flat collar, puffed sleeves and sash."
+    options: { frontYoke: true, backYoke: true, opening: front }
