@@ -50,7 +50,7 @@ nodes:
   shell-top: { name: Shell top, parent: blouses, traits: [body-darted-bodice, neck-round, sleeveless], designs: [shell-top], variants: [shell-top.square] }
   smock-top: { name: Smock, parent: blouses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered, cuff-band], designs: [childrens-smock] }
   choli-t: { name: Choli (saree blouse), parent: blouses, traits: [body-darted-bodice, sleeve-short, closure-buttons], note: "Queue 56, inspired by CBSE" }
-  kameez-t: { name: Kameez and kurta, parent: blouses, traits: [body-yoke, neck-split, hem-side-slits, sleeve-set-in], note: "Queue 54, inspired by CBSE" }
+  kameez-t: { name: Kameez and kurta, parent: blouses, traits: [body-yoke, neck-split, hem-side-slits, sleeve-set-in], designs: [kameez], variants: [kameez.straight, kameez.long-sleeves], note: "Fitted kameez and kalidar kurta: queue 54b, 54c" }
   jeogori: { name: Jeogori, parent: blouses, research: true }
   huipil: { name: Community-specific huipil, parent: blouses, research: true, note: "Identify community and region; document weaving and assembly separately" }
   unku: { name: Community-specific unku, parent: blouses, research: true }

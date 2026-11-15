@@ -229,6 +229,10 @@ options:
   skirtSpread:
     title: Extra skirt flare
     description: Extra width at the hem at each of the skirt's three laid-together seams, as a share of the chest. The waist doesn't change.
+  sleeveFinish:
+    title: Sleeve finish
+    description: Gather the sleeve's hem into a band, or turn it up as a plain hem.
+    choices: { band: Band, hem: Plain hem }
   frontPleats:
     title: Front pleats
     description: Pleats each side of the centre front, from the neck to the hem, on a front in one piece.

@@ -513,12 +513,14 @@ export function yokeSleevePart({ name, after, nr }) {
       paths.hemBase = new Path().move(points.wristLeft).line(points.wristRight).hide()
       paths.saBase = new Path().move(points.wristRight).line(points.bicepsRight).join(paths.sleevecap).line(points.wristLeft).hide()
       paths.seam = paths.hemBase.join(paths.saBase).close().addClass('fabric')
+      // `sleeveFinish: hem` (a design option): a plain sleeve turned up at the hem, not gathered into a band
+      const plainHem = 'sleeveFinish' in options && options.sleeveFinish === 'hem'
       if (sa) {
         const off = paths.saBase.offset(sa)
-        const hem = paths.hemBase.offset(sa)
+        const hem = paths.hemBase.offset(sa * (plainHem ? 2.5 : 1))
         paths.sa = hem.line(off.start()).join(off).line(hem.start()).addClass('fabric sa')
       }
-      paths.gathers = new Path().move(points.wristLeft.shift(90, 8)).line(points.wristRight.shift(90, 8)).addClass('mark dotted')
+      if (!plainHem) paths.gathers = new Path().move(points.wristLeft.shift(90, 8)).line(points.wristRight.shift(90, 8)).addClass('mark dotted')
       // A sleeve opening (`sleeveSlit`, a design option: x wrist), long sleeves only: a slit up
       // from the hem in the middle of the back half, bound by a continuous placket, so the cuff
       // can button round the wrist
@@ -536,7 +538,8 @@ export function yokeSleevePart({ name, after, nr }) {
         armhole: store.get('library.sleeve.frontArmholeLength') + store.get('library.sleeve.backArmholeLength'),
         underarm: [points.wristLeft.dist(points.bicepsLeft), points.wristRight.dist(points.bicepsRight)],
         hem: points.wristLeft.dist(points.wristRight),
-        band: Math.min(round * (1 + options.sleeveBandEase), points.wristLeft.dist(points.wristRight)),
+        band: plainHem ? points.wristLeft.dist(points.wristRight) : Math.min(round * (1 + options.sleeveBandEase), points.wristLeft.dist(points.wristRight)),
+        ...(plainHem ? { plainHem: true } : {}),
         bandWidth: measurements.wrist * options.sleeveBand,
         ...(puff > 0 ? { puff } : {}),
         ...(slit ? { slit } : {}),
@@ -556,7 +559,8 @@ export function sleeveBandPart({ name, after, nr }) {
     name,
     after,
     draft: ({ paths, Path, Point, store, sa, macro, options, measurements, snippets, Snippet, part }) => {
-      if (options.sleeves === 'none') {
+      // A plain hemmed sleeve (`sleeveFinish: hem`, a design option) has no band
+      if (options.sleeves === 'none' || ('sleeveFinish' in options && options.sleeveFinish === 'hem')) {
         macro('rmtitle')
         return part.hide()
       }

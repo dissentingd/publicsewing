@@ -435,6 +435,29 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: turn-ups, cargo or patch pockets, slanted front pockets, elastic or cuffs at the
 > ankle, a belt, braces, a person, shoes.
 
+### kameez: Kameez
+> **A woman's kameez** (long tunic) in printed cotton lawn (small floral, coral on cream), shown flat, front view.
+> **Long, to just below the knee**, cut in one piece front and back with **a gentle A-line flare from the
+> underarm to the hem**, **side slits from the hem up to the hip**. **A plain round neck with a short slit
+> opening at the front**, bound. **Short plain sleeves to just above the elbow**, hemmed. Plain background,
+> clean technical editorial illustration.
+>
+> Leave out: a waist seam, darts showing, embroidery, a collar, a dupatta, trousers, a person.
+
+### kameez.straight: Straight kameez
+> **A woman's straight kameez** in plain cotton (mustard), shown flat, front view. Below the knee, **almost
+> straight side seams** with only a slight flare, **side slits to the hip**, a round neck with a short front
+> slit, short plain sleeves. Plain background, clean technical editorial illustration.
+>
+> Leave out: a waist seam, embroidery, a collar, trousers, a person.
+
+### kameez.long-sleeves: Kameez, long sleeves
+> **A woman's A-line kameez** in plain cotton voile (indigo), shown flat, front view, below the knee with side
+> slits and a round neck, with **long, narrow plain sleeves to the wrist**, hemmed. Plain background, clean
+> technical editorial illustration.
+>
+> Leave out: cuffs, gathers at the wrist, embroidery, a collar, trousers, a person.
+
 ### salwar: Salwar
 > **A woman's salwar** in plain cotton lawn (soft green), shown flat, front view. **Very full trousers gathered at
 > the waist into a narrow belt with a drawstring**, falling in soft vertical folds, **narrowing sharply to a
