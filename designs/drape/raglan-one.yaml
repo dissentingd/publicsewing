@@ -1,0 +1,34 @@
+# Drape a Brian coat with a one-piece raglan sleeve (lib/raglan.mjs `which: one`: both shoulder
+# sections on one sleeve, the shoulder seams become a dart from the neck to dartTip) on
+# GarmentCode's male average body, as the harrington jacket. The sleeve is split at the dart tip,
+# so the dart's legs and the split line below them make the over-arm seam: the same pieces as
+# raglan.yaml's two-piece sleeve. Collar, facing, cuffs and waistband are left off. Export with:
+#   node tools/drape-export.mjs <design> <set> out.json --pieces back,front,sleeve \
+#     --clip front=0 --split sleeve=dartTip
+#
+# Placement as raglan.yaml; each sleeve half hangs from the dart tip (its clipTop).
+body: m_smpl_average_A40
+pieces:
+  back: {origin: [back.cbNeck, back.raglanNeck], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 151.7, -17]}
+  front: {origin: [front.clipTop, front.raglanNeck], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 150, 21]}
+  sleevePlus: {origin: sleevePlus.clipTop, map: [[0, 1], [1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-21, 148, 10]}
+  sleeveMinus: {origin: sleeveMinus.clipTop, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-21, 148, -12]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.cbNeck, back.cbHem]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.clipTop, front.clipBottom]}], mirror: true}
+  side:
+    a: [{piece: back, along: [back.armhole, back.sideWaist, back.hem]}]
+    b: [{piece: front, along: [front.armhole, front.sideWaist, front.hem]}]
+  front_raglan:
+    a: [{piece: front, along: [front.armhole, front.armholePitch, front.raglanNeck]}]
+    b: [{piece: sleevePlus, along: [sleevePlus.bicepsRight, sleevePlus.frontNotch, sleevePlus.raglanNeckFront]}]
+  back_raglan:
+    a: [{piece: back, along: [back.armhole, back.armholePitch, back.raglanNeck]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.backNotch, sleeveMinus.raglanNeckBack]}]
+  # The dart's legs from the neck, then the split line down the arm
+  overarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.hpsFront, sleevePlus.clipTop, sleevePlus.clipBottom]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.hpsBack, sleeveMinus.clipTop, sleeveMinus.clipBottom]}]
+  underarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.bicepsRight, sleevePlus.wristRight]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.wristLeft]}]

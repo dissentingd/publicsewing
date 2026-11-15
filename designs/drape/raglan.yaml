@@ -1,0 +1,36 @@
+# Drape a Brian coat with two-piece raglan sleeves (lib/raglan.mjs: a front and a back sleeve,
+# each carrying its shoulder section up to the neck, joined by an over-arm seam) on GarmentCode's
+# male average body. Collar, facings and pockets are left off. Export the outlines with:
+#   node tools/drape-export.mjs <design> <set> out.json --pieces back,front,frontSleeve,backSleeve \
+#     --clip front=0
+#
+# Placement as coat-shell.yaml (cm, y up, the body facing +z, right-hand copies). The body
+# pieces have no neck point on their outline, so they hang from the raglan line's top, which
+# drafts 1.3 cm (back) and 3 cm (front) below it. The sleeves sit as coat-shell's halves, their
+# shoulder point where that sleeve's cap top was; the shoulder sections run on towards the neck.
+body: m_smpl_average_A40
+pieces:
+  back: {origin: [back.cbNeck, back.raglanNeck], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 151.7, -17]}
+  front: {origin: [front.clipTop, front.raglanNeck], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 150, 21]}
+  frontSleeve: {origin: frontSleeve.shoulder, map: [[0, 1], [1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-21, 148, 10]}
+  backSleeve: {origin: backSleeve.shoulder, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-21, 148, -12]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.cbNeck, back.cbHem]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.clipTop, front.clipBottom]}], mirror: true}
+  side:
+    a: [{piece: back, along: [back.armhole, back.sideWaist, back.hem]}]
+    b: [{piece: front, along: [front.armhole, front.sideWaist, front.hem]}]
+  # Each side's lower armhole and raglan line, to its sleeve's cap and raglan line
+  front_raglan:
+    a: [{piece: front, along: [front.armhole, front.armholePitch, front.raglanNeck]}]
+    b: [{piece: frontSleeve, along: [frontSleeve.bicepsRight, frontSleeve.frontNotch, frontSleeve.raglanNeck]}]
+  back_raglan:
+    a: [{piece: back, along: [back.armhole, back.armholePitch, back.raglanNeck]}]
+    b: [{piece: backSleeve, along: [backSleeve.bicepsLeft, backSleeve.backNotch, backSleeve.raglanNeck]}]
+  # From the neck down over the shoulder and the arm
+  overarm:
+    a: [{piece: frontSleeve, along: [frontSleeve.hps, frontSleeve.shoulder, frontSleeve.overarmBottom]}]
+    b: [{piece: backSleeve, along: [backSleeve.hps, backSleeve.shoulder, backSleeve.overarmBottom]}]
+  underarm:
+    a: [{piece: frontSleeve, along: [frontSleeve.bicepsRight, frontSleeve.wristRight]}]
+    b: [{piece: backSleeve, along: [backSleeve.bicepsLeft, backSleeve.wristLeft]}]
