@@ -52,6 +52,7 @@ import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parse, stringify } from 'yaml'
 import { drape, DrapeError } from './drape.mjs'
+import { polyline } from './drape-export.mjs'
 import { loadDesign, measurementSet } from './render.mjs'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
@@ -157,28 +158,43 @@ function ancestor(d) {
   return null
 }
 
-/** The design's own drafted parts: "prefix.part" -> its point names */
-async function partsOf(d, size = 'cisMaleAdult38') {
+/**
+ * The design's own drafted parts: "prefix.part" -> the names of its points on the seam outline.
+ * Only those reach a drape (drape-export.mjs exports outline vertices), so only those count
+ * when checking that settings fit. Hidden parts too: settings can drape one by name (the
+ * hunting coat's backBase).
+ */
+async function partsOf(d, options = {}, size = 'cisMaleAdult38') {
   const Design = await loadDesign(d)
-  const pattern = new Design({ measurements: measurementSet(size), sa: 0 }).draft()
+  const pattern = new Design({ measurements: measurementSet(size), options, sa: 0 }).draft()
   const parts = {}
-  for (const [full, part] of Object.entries(pattern.parts[0])) if (part.paths.seam && !part.hidden) parts[full] = Object.keys(part.points)
+  for (const [full, part] of Object.entries(pattern.parts[0])) {
+    if (!part.paths.seam) continue
+    const outline = polyline(part.paths.seam)
+    parts[full] = Object.entries(part.points).filter(([, p]) => outline.some((q) => Math.hypot(q.x - p.x, q.y - p.y) < 1e-6)).map(([id]) => id)
+  }
   return parts
 }
 
 /**
  * Settings that drape another design and fit this one: every piece its config sews is one of
  * this design's parts, with every point the config uses there (clipTop and clipBottom come from
- * the clip or split). The nearest ancestor's first, then the rest in runs.yaml's order.
+ * the clip or split). The parts are drafted with the settings' options, since an option can
+ * change the outline (the peacoat's vent: false puts back.cbHem on it). The nearest ancestor's
+ * first, then the rest in runs.yaml's order.
  */
-function borrowed(d, parts) {
+async function borrowed(d, parts) {
   const a = ancestor(d)
-  const prefixes = [...new Set(Object.keys(parts).map((k) => k.split('.')[0]))]
+  const drafted = { '{}': parts }
   const out = []
   const seen = new Set()
   for (const id of [...(a ? [a] : []), ...Object.keys(runs).filter((x) => x !== a)]) {
     const e = runs[id]
     const cfg = configSummary(e.config)
+    const k = JSON.stringify(e.options ?? {})
+    if (!(k in drafted)) drafted[k] = await partsOf(d, e.options).catch(() => ({}))
+    parts = drafted[k]
+    const prefixes = [...new Set(Object.keys(parts).map((x) => x.split('.')[0]))]
     for (const prefix of prefixes) {
       const fits = Object.entries(cfg.pieces).every(([role, points]) => {
         const base = role.replace(/(Plus|Minus)$/, '')
@@ -187,7 +203,8 @@ function borrowed(d, parts) {
         return have && points.every((p) => ['clipTop', 'clipBottom'].includes(p) || have.includes(p))
       })
       if (!fits) continue
-      const entry = { ...structuredClone(e), prefix }
+      const { known: _, ...rest } = structuredClone(e) // a known REVIEW is the lender's, not the borrower's
+      const entry = { ...rest, prefix }
       const key = JSON.stringify([entry.config, entry.pieces, entry.clip, entry.split, entry.back, entry.prefix, entry.options])
       if (!seen.has(key)) out.push({ from: id, ancestor: id === a, entry })
       seen.add(key)
@@ -304,7 +321,7 @@ async function settle(design) {
       return e.message
     }
   }
-  const b = borrowed(design, parts)
+  const b = await borrowed(design, parts)
   if (!b.list.length) log('info', `${design}: nothing to borrow (${b.why})`, { design })
   for (const { from, ancestor: anc, entry: raw } of b.list.slice(0, BORROW_TRIES)) {
     const entry = complete(raw)
@@ -415,6 +432,16 @@ function setsFor(entry) {
   return ['avg', ...wanted.filter((s) => matched[s]?.body)]
 }
 
+/**
+ * A REVIEW that runs.yaml already explains (`known: {why, regions, deepest}`): every flagged
+ * region is one it names, and none is deeper than its `deepest` (cm). Anything more stays REVIEW.
+ */
+function isKnown(entry, result) {
+  const k = entry.known
+  if (!k || result.verdict !== 'REVIEW') return false
+  return Object.entries(result.flagged ?? {}).every(([region, s]) => k.regions.includes(region) && s.deepest <= k.deepest)
+}
+
 /** What changed since the last drape of the same design and size, worth a look */
 function compare(prev, result) {
   if (!prev?.result) return null
@@ -478,9 +505,9 @@ function report(rows, stopped) {
   const lines = [
     `# Drape pipeline, ${runId}`,
     '',
-    `Commit ${commit()}, ${opts.mode}${opts.dry ? ', dry run (quick check only)' : ''}, ${opts.llm ? `model ${MODEL}` : 'no model'}. ${rows.length} drapes: ${n('OK')} OK, ${n('REVIEW')} to review, ${n('checked')} checked, ${n('skipped')} skipped${changed.length ? `, **${changed.length} changed since their last drape**` : ''}.${stopped ? `\n\n**Stopped early:** ${stopped}` : ''}`,
+    `Commit ${commit()}, ${opts.mode}${opts.dry ? ', dry run (quick check only)' : ''}, ${opts.llm ? `model ${MODEL}` : 'no model'}. ${rows.length} drapes: ${n('OK')} OK, ${n('REVIEW')} to review, ${n('known')} known, ${n('checked')} checked, ${n('skipped')} skipped${changed.length ? `, **${changed.length} changed since their last drape**` : ''}.${stopped ? `\n\n**Stopped early:** ${stopped}` : ''}`,
     '',
-    "Verdicts are drape.mjs's: REVIEW when cloth is more than 1 cm inside the body outside the wrists. Look at every render anyway: a drape can pass and still be wrong (a piece flipped, a seam sewn to the wrong edge). Size `avg` is the config's average body; the others are our size sets on their nearest dataset body (drape/bodies.yaml). Settings that draped, for designs not yet in runs.yaml, are in proposals.yaml.",
+    "Verdicts are drape.mjs's: REVIEW when cloth is more than 1 cm inside the body outside the wrists. Look at every render anyway: a drape can pass and still be wrong (a piece flipped, a seam sewn to the wrong edge). `known` is a REVIEW that runs.yaml explains (its `known` field), in the regions it names and no deeper than it says. Size `avg` is the config's average body; the others are our size sets on their nearest dataset body (drape/bodies.yaml). Settings that draped, for designs not yet in runs.yaml, are in proposals.yaml.",
     '',
     '| Design | Size | Outcome | Settings from | GarmentCode (limit 35) | Deepest inside, outside the wrists | Renders | Notes |',
     '|---|---|---|---|---|---|---|---|',
@@ -607,7 +634,8 @@ async function main() {
       const sim = await simulate(design, entry, set === 'avg' ? undefined : set)
       const row = { design, set, entry, source, seconds: Math.round((Date.now() - t0) / 1000) }
       if (sim.result) {
-        Object.assign(row, { status: sim.result.verdict, result: sim.result, change: compare(state.drapes[key], sim.result) })
+        const known = isKnown(entry, sim.result)
+        Object.assign(row, { status: known ? 'known' : sim.result.verdict, result: sim.result, change: compare(state.drapes[key], sim.result), reason: known ? entry.known.why : undefined })
         state.drapes[key] = { commit: at, run: runId, result: sim.result, at: new Date().toISOString() }
         verdicts.push(sim.result.verdict)
       } else Object.assign(row, { status: 'skipped', reason: `drape failed${sim.stage ? ` at ${sim.stage}` : ''}: ${sim.error}`, kind: sim.kind })
