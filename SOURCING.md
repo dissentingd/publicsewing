@@ -53,9 +53,10 @@ Children's is a category within each style. WARDROBE_GAPS.md tracks each garment
   other pre-1931 British books: PD in the US).
 - **In copyright, used for method only** (the maintainer, 2026-10-27): methods, formulas and
   proportions as design references, never text, figures or scans in the repo. ЕМКО СЭВ
-  т.3 (1988, folder id `emko`, private copy, untracked), and, from the maintainer's own copies,
-  untracked: Helen Joseph-Armstrong, *Patternmaking for Fashion Design* (2010), and Winifred Aldrich,
-  *Metric Pattern Cutting for Women's Wear* (2015).
+  т.3 (1988, folder id `emko`, private copy, untracked); from the maintainer's own copies, untracked:
+  Helen Joseph-Armstrong, *Patternmaking for Fashion Design* (2010), and Winifred Aldrich, *Metric
+  Pattern Cutting for Women's Wear* (2015); and four more modern pattern-cutting
+  textbooks being built from next (see "Next modern sources, in copyright" below).
 - **Renewed, so trace-only** (NYPL renewals data): Pepin *Modern Pattern Design* (1942,
   renewed 1969), Hillhouse & Mansfield *Dress Design* (1948), Erwin *Practical Dress
   Design*, Picken *Modern Dressmaking Made Easy*, Poulin, Mauck, Vogue dressmaking books.
@@ -163,6 +164,25 @@ skirts and dresses are under-represented.
 Downloaded 2026-10-27 and not yet in MANIFEST.yaml or on Cloudbox: the round-11 books
 above (Sheifer, d'Alessio, Vincent jacket and military, Merz, Schorr, Ratner, Weiler) and
 the government documents below.
+
+## Next modern sources, in copyright (2026-11-15)
+
+Modern pattern-cutting textbooks with dimensioned drafts, the maintainer's own copies, to be built
+from next, as Joseph-Armstrong and Aldrich's women's wear were (both now in "Sources in use"). Each
+moves to "Sources in use" when its first design is built. They're used as those two are: methods,
+formulas and proportions only, never text, figures or scans in the repo; each design credited
+"inspired by" with a full citation and what it takes from the book, and one entry on the Sources
+page.
+
+| Source | Folder id | Potential use |
+|---|---|---|
+| Aldrich, *Metric Pattern Cutting for Children's Wear and Babywear* (2009) | `aldrichchildren2009` | Babywear and toddler drafts (sleepsuits, all-in-ones) for the baby sets in `designs/sizes/babies.mjs` |
+| Aldrich, *Metric Pattern Cutting for Menswear* (2006) | `aldrichmenswear2006` | Modern men's fits, unisex garments |
+| Kim and Kim, *Patternmaking for Menswear* (2014) | `kimmen2014` | **On hold** (2026-11-15): don't use until the maintainer's print copy arrives. Then: modern men's fits |
+| Cole, *Professional Patternmaking for Stretch and Knits* (2016) | `colestretchknits2016` | Knit garments on Bibi; rib bands |
+
+They serve the research candidates in WARDROBE_GAPS.md (knits, babywear,
+chemise/petticoat/bra, maternity), not the non-Western traditions.
 
 ## Government and military sources
 Below the drafting books in quality: none gives piece shapes. Only the B sources are
