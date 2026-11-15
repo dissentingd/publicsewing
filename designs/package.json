@@ -10,6 +10,9 @@
     "sizes": "node sizes/usda1939/parse.mjs && node sizes/usda1939/check.mjs",
     "render": "node tools/render.mjs"
   },
+  "overrides": {
+    "lodash.unset": "4.18.0"
+  },
   "dependencies": {
     "@freesewing/aaron": "4.10.2",
     "@freesewing/albert": "4.10.2",
