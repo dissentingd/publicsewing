@@ -175,6 +175,31 @@ export const i18n = { ${fsIds.map((id) => `${JSON.stringify(id)}: i_${id}`).join
 )
 writeFileSync(out('src', 'generated', 'measurements.json'), JSON.stringify(measurements))
 const labelData = parse(readFileSync(join(designsDir, 'labels.yaml'), 'utf8'))
+
+// Infant safety (designs/safety, BUILD_QUEUE S1): a design reviewed for baby sizes shows its
+// restrictions and the sewer's instructions on its page. test/infant-safety.test.mjs requires the review
+const infantChecklist = parse(readFileSync(join(designsDir, 'safety', 'infant-checklist.yaml'), 'utf8'))
+const infantReviews = parse(readFileSync(join(designsDir, 'safety', 'infant-reviews.yaml'), 'utf8'))
+const CHECKLIST_URL = 'https://github.com/dissentingd/publicsewing/blob/main/designs/safety/infant-checklist.yaml'
+function safetySection(id) {
+  const r = infantReviews[id]
+  if (!r) return ''
+  const lines = [
+    ...Object.entries(r.restrict ?? {}).map(([o, x]) => `- **At baby sizes, set \`${o}\` to ${x.allow.map((v) => `\`${v}\``).join(' or ')}.** ${x.why}`),
+    ...Object.values(r.instructions ?? {}).map((t) => `- ${t}`),
+  ]
+  return `## Safety at baby sizes
+
+:::warning[Read before sewing for a baby or toddler]
+${lines.join('\n')}
+
+Reviewed ${r.date} against our [infant safety checklist](${CHECKLIST_URL}) (version ${infantChecklist.version}): a
+desk review of the pattern, not a sewn or lab test. If you sell what you make, your market's rules
+for children's clothing apply.
+:::
+
+`
+}
 writeFileSync(out('src', 'generated', 'labels.json'), JSON.stringify(labelData))
 writeFileSync(out('src', 'generated', 'specs.json'), JSON.stringify(specs))
 writeFileSync(out('src', 'generated', 'sizes.json'), JSON.stringify(sizes))
@@ -413,7 +438,7 @@ FreeSewing's name.
 
 ${d.about}.${ours.length ? ` We also draft our own: ${ours.join(', ')}.` : ''}
 
-## Make the pattern
+${safetySection(id)}## Make the pattern
 
 Pick a size set or enter your own measurements, change options, then **Export** a tiled PDF
 (A4 or Letter). Your measurements stay in this browser. See [Measure yourself](/measure?for=${id}).
@@ -584,7 +609,7 @@ ${traditionTags(id, about) ? `${traditionTags(id, about)}\n` : ''}
 
 ${practical}
 
-## Make the pattern
+${safetySection(id)}## Make the pattern
 
 Pick a size set or enter your own measurements, change options, then **Export** a tiled PDF
 (A4 or Letter). Your measurements stay in this browser. See [Measure yourself](/measure?for=${id}) and

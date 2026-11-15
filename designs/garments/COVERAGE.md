@@ -231,11 +231,11 @@ Each gap or partial element, with the unbuilt garment types that need it. A type
     - ● Jumpsuit [jumpsuit]
     - ● Bib overall [bib-overall] {FreeSewing: opal}
     - ◐ Coverall (boiler suit)
-    - ◆ Romper {FreeSewing: otis} _(Listed at baby sizes: in the infant safety review (BUILD_QUEUE S1))_
-    - ◇ Infant sleepsuit _(Waits for the infant safety review (BUILD_QUEUE S1))_
-    - ◇ Snowsuit _(Babies and children; infant sizes wait for the safety review (BUILD_QUEUE S1))_
+    - ◆ Romper {FreeSewing: otis} _(Listed at baby sizes; safety reviewed (designs/safety))_
+    - ◇ Infant sleepsuit _(Needs a source; add its infant safety review (designs/safety) before offering it)_
+    - ◇ Snowsuit _(Babies and children; needs a source and, at baby sizes, an infant safety review (designs/safety))_
     - ◐ Dungarees
-    - ◆ Baby one-piece {FreeSewing: onyx} _(Listed at baby sizes: in the infant safety review (BUILD_QUEUE S1))_
+    - ◆ Baby one-piece {FreeSewing: onyx} _(Listed at baby sizes; safety reviewed (designs/safety))_
   - **Robes and gowns**
     - ● Dressing gown [dressing-gown]
     - ◐ Kimono robe

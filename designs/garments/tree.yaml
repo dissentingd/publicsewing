@@ -233,9 +233,9 @@ nodes:
   jumpsuit-t: { name: Jumpsuit, parent: one-pieces, traits: [body-flat, closure-buttons, belt], designs: [jumpsuit] }
   bib-overall-t: { name: Bib overall, parent: one-pieces, traits: [leg-in-one, bib, closure-side-opening], designs: [bib-overall], freesewing: [opal] }
   coverall: { name: Coverall (boiler suit), parent: one-pieces, traits: [body-boxy, leg-tailored, closure-zip-front, collar-turndown, pocket-patch] }
-  romper: { name: Romper, parent: one-pieces, traits: [body-yoke, leg-gathered, leg-shorts, closure-buttons], freesewing: [otis], note: "Listed at baby sizes: in the infant safety review (BUILD_QUEUE S1)" }
-  infant-sleepsuit: { name: Infant sleepsuit, parent: one-pieces, research: true, note: "Waits for the infant safety review (BUILD_QUEUE S1)" }
-  snowsuit: { name: Snowsuit, parent: one-pieces, research: true, note: "Babies and children; infant sizes wait for the safety review (BUILD_QUEUE S1)" }
+  romper: { name: Romper, parent: one-pieces, traits: [body-yoke, leg-gathered, leg-shorts, closure-buttons], freesewing: [otis], note: "Listed at baby sizes; safety reviewed (designs/safety)" }
+  infant-sleepsuit: { name: Infant sleepsuit, parent: one-pieces, research: true, note: "Needs a source; add its infant safety review (designs/safety) before offering it" }
+  snowsuit: { name: Snowsuit, parent: one-pieces, research: true, note: "Babies and children; needs a source and, at baby sizes, an infant safety review (designs/safety)" }
   dungarees: { name: Dungarees, parent: one-pieces, traits: [leg-tailored, bib, pocket-patch, closure-side-opening] }
   robes: { name: Robes and gowns, parent: whole }
   dressing-gown-t: { name: Dressing gown, parent: robes, traits: [body-boxy, collar-shawl, closure-wrap, belt, pocket-patch], designs: [dressing-gown] }
@@ -292,7 +292,7 @@ nodes:
   a-line-shorts: { name: A-line shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts], freesewing: [ashley] }
   casual-shorts: { name: Casual shorts, parent: shorts-family, traits: [leg-tailored, leg-shorts, waistband], freesewing: [shale] }
   fall-front-shorts: { name: Fall-front shorts, parent: shorts-family, traits: [leg-gathered, leg-shorts, closure-fall-front], freesewing: [percy] }
-  baby-one-piece: { name: Baby one-piece, parent: one-pieces, traits: [body-knit, leg-knit, closure-snaps], knit: true, freesewing: [onyx], note: "Listed at baby sizes: in the infant safety review (BUILD_QUEUE S1)" }
+  baby-one-piece: { name: Baby one-piece, parent: one-pieces, traits: [body-knit, leg-knit, closure-snaps], knit: true, freesewing: [onyx], note: "Listed at baby sizes; safety reviewed (designs/safety)" }
   boxer-briefs: { name: Boxer briefs, parent: underwear, traits: [underwear-knit], knit: true, freesewing: [bruce] }
   briefs: { name: Briefs, parent: underwear, traits: [underwear-knit], knit: true, freesewing: [uma, umbra] }
   corset: { name: Corset, parent: underwear, traits: [corsetry, closure-lacing], freesewing: [cathrin] }

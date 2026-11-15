@@ -242,13 +242,17 @@ neckerchief.
 
 ### Infant wear safety (2026-11-15)
 
-Nothing new is offered at the baby sets (`sizes/babies.mjs`) until S1 is done. S2 makes the review
-a test so it can't be skipped later.
+Done 2026-11-15: the checklist is `designs/safety/infant-checklist.yaml` (version 1), the reviews
+`designs/safety/infant-reviews.yaml`, and `test/infant-safety.test.mjs` requires a current review for
+anything offered at baby sizes. A design page shows its review's restrictions and instructions
+(`site/scripts/generate.mjs`). New infant wear (sleepsuit, snowsuit) can go ahead: add its review
+before it's offered at the baby sets.
 
 | # | Item | Scope | Status |
 |---|---|---|---|
-| S1 | Infant safety review | Review every design or listing offered at baby sizes: FreeSewing's Otis, Onyx and Bob (F10; Onyx and Bob at `all` sizes), and any future sleepsuit, snowsuit or romper. Against published infant-clothing safety requirements (e.g. US CPSC rules and ASTM F1816 on drawstrings, small parts and snap/button attachment, children's sleepwear flammability; UK/EU BS EN 14682 on cords and drawstrings): no drawstrings or long ties at the neck or hood, fasteners that can be pulled off or swallowed (snaps, buttons, decorations), openings and nappy access, neck and leg openings that don't trap, fabric and flammability notes. Record the requirements found, each design's result, and what its instructions must tell the sewer. A design that fails gets fixed or unlisted at baby sizes | open |
-| S2 | Automatic infant safety check | A test that fails when any spec or `freesewing.yaml` entry offered at baby sizes lacks a current safety review record (e.g. a `safety:` block in the spec or registry: review date, checklist version, result, notes), and when a reviewed design's options allow what the checklist forbids (a drawstring or tie at the neck, a hood cord, small decorative parts). The checklist from S1 becomes a versioned file the test reads; a new checklist version marks older reviews stale. Run in `npm test` | open, after S1 |
+| S1 | Infant safety review | Review every design or listing offered at baby sizes: FreeSewing's Otis, Onyx and Bob (F10; Onyx and Bob at `all` sizes), and any future sleepsuit, snowsuit or romper. Against published infant-clothing safety requirements (e.g. US CPSC rules and ASTM F1816 on drawstrings, small parts and snap/button attachment, children's sleepwear flammability; UK/EU BS EN 14682 on cords and drawstrings): no drawstrings or long ties at the neck or hood, fasteners that can be pulled off or swallowed (snaps, buttons, decorations), openings and nappy access, neck and leg openings that don't trap, fabric and flammability notes. Record the requirements found, each design's result, and what its instructions must tell the sewer. A design that fails gets fixed or unlisted at baby sizes | done (2026-11-15): Otis and Bob pass; Onyx passes with a condition (a front or back zip at baby sizes: without one its neck hole is 0.70 × head circumference) |
+| S2 | Automatic infant safety check | A test that fails when any spec or `freesewing.yaml` entry offered at baby sizes lacks a current safety review record (e.g. a `safety:` block in the spec or registry: review date, checklist version, result, notes), and when a reviewed design's options allow what the checklist forbids (a drawstring or tie at the neck, a hood cord, small decorative parts). The checklist from S1 becomes a versioned file the test reads; a new checklist version marks older reviews stale. Run in `npm test` | done (2026-11-15): also fails on a new checklist or FreeSewing version, a changed option list, or an option whose name suggests a cord or tie that isn't restricted |
+| S3 | Enforce restrictions in the editor | The site's pattern editor applies a review's `restrict` at baby sizes (Onyx: hide `zipperPosition: none`), instead of only stating it on the page | open |
 
 ### Blocked
 | Item | Needs |
