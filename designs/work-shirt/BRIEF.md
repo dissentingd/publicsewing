@@ -45,6 +45,18 @@ collar, sleeves into bands. Added for this shirt: a breast pocket's place on the
 - **The back fullness is gathered**, spread along the yoke seam, rather than laid as a pleat at CB.
 - **No shoulder lining.**
 
+## Variant: football shirt
+Vincent's "Football shirts", book p. 29 (PDF p. 33), twelve made-up shirts on one plate, text pp.
+29–30, no draft of their own: "the plainest style" (Diagram 1) is "finished with patch pockets on the
+left breast, and cuffs finished with wrist-band to button", "cut fairly full", in flannel or
+flannelette. The plate shows the work shirt's pullover with a turn-down collar and a short buttoned
+placket, three buttons, ending about level with the armpit. So it is this shirt with three options
+changed (`football` variant): `neckFinish` collar, `placketDepth` 45% (about 9 in on an 18½ in back
+length), `buttons` 3. The other eleven diagrams differ in colour, not cut: a contrasting collar, cuffs
+and button band (2), stripes and crosses stitched on top (4–6, 10–12), striped cloth (7, 8), harlequin
+halves seamed together (9, 11). Not modelled: the laced front of Diagram 3 (eyelets instead of
+buttons). Vincent separates these woven shirts from the knitted jerseys worn for rugby.
+
 ## Pieces
 Front (on the fold), back (on the fold), back yoke (cut 2), sleeves, wristbands, placket, neck band
 (or collar), breast pocket.

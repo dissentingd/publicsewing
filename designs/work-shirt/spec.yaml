@@ -63,3 +63,9 @@ variants:
     name: Turn-down collar
     description: "Vincent's alternative to the narrow neck band: a collar that turns down."
     options: { neckFinish: collar }
+  football:
+    name: Football shirt
+    description: "Vincent's football shirt (p. 29, Diagram 1): the same roomy pullover with a turn-down collar and a short buttoned placket, three buttons to about the chest line. Club colours go on the collar, cuffs and placket, or as stripes and panels stitched on."
+    # Read from the plate (book p. 29): the placket ends level with the armpit, about 9 in down on
+    # an 18 1/2 in back length; three buttons
+    options: { neckFinish: collar, placketDepth: 0.45, buttons: 3 }

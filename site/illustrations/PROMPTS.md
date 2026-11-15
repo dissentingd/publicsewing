@@ -692,6 +692,16 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: long sleeves, cuffs, a neckerchief or tie, stripes or braid on the collar, a front
 > opening or buttons down the front, pockets, badges, a hat, a person.
 
+### work-shirt.football: Football shirt
+> A men's **1890s football shirt** in bright red wool flannel with a **white turn-down collar, white cuffs and a
+> white button placket**. A roomy **pullover**: the placket runs from the collar to **about the armpits, with three
+> buttons**, and doesn't open further. **One patch pocket on the wearer's left breast.** Long full sleeves into
+> **buttoned wristbands**. Long rounded shirttails, shown untucked. Flat, front view, plain background, clean
+> technical editorial illustration.
+>
+> Leave out: a knitted jersey look, ribbed cuffs or collar, a crest or numbers, a button-through front, a second
+> pocket, a person, shorts.
+
 ### work-shirt.collar: Work shirt, turn-down collar
 > A roomy men's **pullover work shirt** in sturdy cotton drill or chambray (blue, grey or natural).
 > A **yoke across the back shoulders** (from the front, only the yoke seam over the shoulders shows).

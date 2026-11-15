@@ -52,7 +52,7 @@
   "dress-shirt": {"default": {}, "plain": {"breastPocket": false, "buttons": 6, "hemCurve": 0.4, "lengthBelowWaist": 1.1}},
   "service-shirt": {"default": {}, "plain": {"pocketFlaps": false, "shoulderStraps": false, "pocketShape": "square", "buttons": 5}},
   "anorak": {"default": {}, "variant": {"chestPocket": false, "kangarooPocket": false, "hoodDrawstring": false, "buttons": 1}},
-  "work-shirt": {"default": {}, "withCollar": {"neckFinish": "collar"}, "variant": {"neckFinish": "collar", "breastPocket": false, "sideSlit": 0, "opening": "back"}},
+  "work-shirt": {"default": {}, "withCollar": {"neckFinish": "collar"}, "variant": {"neckFinish": "collar", "breastPocket": false, "sideSlit": 0, "opening": "back"}, "football": {"neckFinish": "collar", "placketDepth": 0.45, "buttons": 3}},
   "field-trousers": {"default": {}, "plain": {"sidePockets": false, "cargoPockets": false, "seatPocket": false, "beltLoops": 0, "pleats": 1}},
   "peg-pants": {"default": {}, "turnUps": {"turnUps": true}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "pleats": 1, "frontDart": 0.6}},
   "slacks": {"default": {}, "separate": {"continuousBand": false, "pleats": 1, "frontDart": 0.45}, "plain": {"sidePockets": false, "backPocket": false, "beltLoops": 0, "turnUps": true, "waistbandHeight": 0.06}},

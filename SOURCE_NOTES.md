@@ -129,6 +129,8 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 ## Vincent 1890 (`vincentmakingshirts18xx`)
 - "D.B." in the smoking jacket's text is one row of frogs on a wide overlap, on the plate.
 - Collars and cuffs for several shirts are shared on p. 23.
+- Football shirts, book p. 29 (PDF p. 33): one plate of twelve made-up shirts and a page of notes, no draft; the
+  "system" on p. 30 is the bath robe's.
 - Painter's jacket is book p. 35, PDF p. 39: 36 in breast, 34 in long from neck level, 17½ in to waist; the text supplies five buttons and the cook's jacket sleeve. Its three pocket sizes and collar height are marked on the plate.
 - Eight work aprons are together on book p. 39, PDF p. 43; the text continues on p. 40. The diagrams give fixed inch dimensions, not a graded draft. Diagram 8 is the painter's apron, distinct from the painter's jacket on p. 35.
 

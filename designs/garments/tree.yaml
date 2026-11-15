@@ -33,7 +33,7 @@ nodes:
   western-shirt: { name: Western shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, yoke-front, closure-snaps, collar-shirt, cuff-barrel, pocket-patch-flap] }
   overshirt: { name: Overshirt (shirt jacket), parent: shirts, traits: [body-boxy, yoke-shirt-back, closure-buttons, collar-shirt, pocket-patch-flap, cuff-barrel] }
   tuxedo-shirt: { name: Formal (tuxedo) shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-buttons, collar-stand, cuff-french, tucks], note: "Queue M6" }
-  football-shirt-t: { name: Woven sports pullover, parent: shirts, traits: [body-yoke, closure-placket, collar-turndown, cuff-band], note: "Queue 49" }
+  football-shirt-t: { name: Woven sports pullover, parent: shirts, traits: [body-yoke, closure-placket, collar-turndown, cuff-band], variants: [work-shirt.football] }
   grandad-shirt: { name: Band-collar (grandad) shirt, parent: shirts, traits: [body-yoke, yoke-shirt-back, closure-placket, collar-stand, cuff-barrel, hem-curved-tail] }
   scrub-top: { name: Medical scrub top, parent: shirts, research: true }
   adaptive-upper: { name: Adaptive upper-body garments, parent: upper }
