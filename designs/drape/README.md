@@ -30,6 +30,9 @@ specification, simulates it on the GPU host, fetches the front and back renders 
   |---|---|---|
   | `coat-shell.yaml` | male | a Brian coat's shell: back, fronts closed at CF, one-piece sleeve split in halves |
   | `coat-vest.yaml` | male | the same, sleeveless (the bar vest) |
+  | `coat-yoke.yaml` | male | the same, back and front each cut at a yoke (the windbreaker) |
+  | `raglan.yaml` | male | a Brian coat with two-piece raglan sleeves (the balmacaan) |
+  | `raglan-one.yaml` | male | the same with the one-piece raglan sleeve, split at its dart tip (the harrington) |
   | `blouse.yaml` | male | a three-piece body on Bent (back, side body, front) with the two-part sleeve |
   | `jacket.yaml` | female | a princess-seamed jacket on Breanna |
   | `box.yaml` | female | a box body on Breanna |
