@@ -119,7 +119,8 @@ export const legBandPart = ({ name, after, nr = 3, size, enabled = () => true })
  * - `turnUp`: a cuff bottom this deep (Simons 1916, Diagrams F and G): below the hem line the piece
  *   runs on for the cuff, as much again folded under it, and half that again to hem; its sides go
  *   out by an eighth of the depth at the cuff's fold and at the raw edge, so it folds up to fit the
- *   leg. The hem is then straight (`hemSag` is ignored); its allowance is a single one.
+ *   leg. The hem is then straight (`hemSag` is ignored); its allowance is a single one. Also on a
+ *   breeches leg carried to the ankle (jodhpurs).
  * - `fly`, `flyLength` (front): the fly's stitching line, `fly` in from CF, `flyLength` down.
  * - `sideZip`: a side opening (Simons 1945, Diagram 39), the zip's end notched this far down the
  *   outseam (on both pieces; sewn in the left leg only), for trousers with no fly.
@@ -214,7 +215,7 @@ export function draftTrouserLeg(sh, args) {
     points.kneeOutCpU = points.kneeOut.shift(90, (points.knee.y - ty) / 3)
   }
   let hem = new Path().move(points.hemIn).curve(points.hemCp1, points.hemCp2, points.hemOut)
-  if (turnUp > 0 && !br) {
+  if (turnUp > 0) {
     const w = turnUp / 8
     const at = (p, sign, k, out) => new Point(p.x + (out ? sign * w : 0), p.y + k * turnUp)
     const sIn = Math.sign(points.hemIn.x - points.hemOut.x)
@@ -229,7 +230,7 @@ export function draftTrouserLeg(sh, args) {
     paths.cuffFold = new Path().move(points.cuffIn).line(points.cuffOut).addClass('help dashed')
     paths.underFold = new Path().move(points.underIn).line(points.underOut).addClass('help dashed')
   }
-  const hemAllowance = turnUp > 0 && !br ? 1 : hemSa
+  const hemAllowance = turnUp > 0 ? 1 : hemSa
 
   // Seams: outseam from the waist down (always through the seat line), inseam from the fork
   // down, crotch from the waist

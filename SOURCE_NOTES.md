@@ -106,6 +106,9 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 - Diagram 9 states its seams (¼ in) are in the draft; 10A ½ in. It gives no seat ease as such.
 - Shorts: men's Diagram 21 (text p. 78, plate p. 79), boys' 35 (p. 104), ladies' 41 (pp. 121–123): the same
   construction at three sizes. The men's leg is lengthened ¼ in per inch of inseam over 32.
+- Jodhpurs: men's Diagram 18 (text pp. 70–73, plate p. 71 = PDF 79), ladies' Diagram 45 (text pp. 133–136;
+  its plate follows the text). Both say the knee, below-knee and calf are the riding breeches'; the bottom
+  is a trouser bottom with a cuff.
 - Ladies' trousers: proportions table p. 114 (OCR garbled), regular trousers Diagram 39 (text pp. 116–119,
   plate p. 117 = PDF 125), pleated slacks Diagram 40 (text p. 119, plate p. 120 = PDF 128). No fly in the
   draft: the waistband's 2 in "facing the side" means a side opening. The OCR gives the hip as "30"; the

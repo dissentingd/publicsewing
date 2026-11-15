@@ -435,6 +435,24 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: turn-ups, cargo or patch pockets, slanted front pockets, elastic or cuffs at the
 > ankle, a belt, braces, a person, shoes.
 
+### jodhpurs: Jodhpurs
+> **Men's riding jodhpurs** of the 1940s in fawn cavalry twill, full length, on an invisible figure. **Full and
+> flared out at the side of the thigh** like riding breeches, then **close-fitting from the knee down**, the leg
+> running on **almost straight to the ankle**, finished with **narrow turn-up cuffs** resting on low ankle
+> boots. A two-inch waistband with belt loops, a fly, side-seam pockets. Front three-quarter view, plain
+> background, clean technical editorial illustration.
+>
+> Leave out: buttons or laces down the lower leg, tall riding boots, knee patches, stretch leggings, a
+> modern low-rise waist.
+
+### jodhpurs.ladies: Ladies' jodhpurs
+> **Women's riding jodhpurs** of the 1940s in cream gabardine, full length, on an invisible figure. **Very full
+> at the hips and thighs, especially at the back**, close from the knee to the ankle, with **turn-up cuffs** over
+> jodhpur boots. A waistband closing **at the left hip over a side zip**, no fly. Side three-quarter view to show
+> the flare, plain background, clean technical editorial illustration.
+>
+> Leave out: a front fly, buttons down the leg, tall boots, stretch riding tights, a modern low waist.
+
 ### breeches: Breeches
 > A pair of men's **riding breeches** in khaki cord, whipcord or tan twill. **Full over the seat
 > and flaring out wide at the sides of the thigh**, then **fitted closely from the knee to the
