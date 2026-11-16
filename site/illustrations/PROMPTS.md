@@ -458,6 +458,30 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: cuffs, gathers at the wrist, embroidery, a collar, trousers, a person.
 
+### fitted-kameez: Fitted kameez
+> **A woman's fitted kameez** (long tunic) in printed cotton (small block print, indigo on white), shown flat,
+> front view. **Long, to just below the knee**, cut in one piece front and back with **no waist seam**, **shaped
+> close to the bust and waist by darts** and **easing out over the hip**, then falling **straight to the hem**,
+> with **side slits from the hem up to about the hip**. **A plain round neck with a short slit at the front**,
+> bound. **Short plain set-in sleeves to just above the elbow**, hemmed. Plain background, clean technical
+> editorial illustration.
+>
+> Leave out: a waist seam, a flared skirt, embroidery, a collar, buttons, a dupatta, trousers, a person.
+
+### fitted-kameez.kurti: Kurti
+> **A woman's fitted kurti** (short kameez) in plain cotton (terracotta), shown flat, front view. **To mid-thigh**,
+> fitted at the bust and waist by darts, easing over the hip, with **short side slits**, a round neck with a short
+> front slit, short plain sleeves above the elbow. Plain background, clean technical editorial illustration.
+>
+> Leave out: a waist seam, embroidery, a collar, buttons, jeans or trousers, a person.
+
+### fitted-kameez.long-sleeves: Fitted kameez, long sleeves
+> **A woman's fitted kameez** in plain silk-cotton (emerald), shown flat, front view, below the knee, fitted at the
+> bust and waist, straight below the hip, side slits, a round neck with a short front slit, with **long, narrow
+> plain sleeves to the wrist**, hemmed. Plain background, clean technical editorial illustration.
+>
+> Leave out: cuffs, gathers at the wrist, embroidery, a collar, trousers, a person.
+
 ### churidar: Churidar
 > **A woman's churidar** in plain cotton jersey-like woven fabric (plum), shown flat, front view. **Close-fitting
 > trousers, full and softly gathered at the waist on a drawstring belt**, narrowing to **fit closely from the knee

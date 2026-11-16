@@ -829,6 +829,12 @@ options:
   placketWidth:
     title: Placket width
     description: Finished width of the placket down the front, as a share of the neck.
+  lowerDart:
+    title: Waist dart below the waist
+    description: How far the waist darts run on below the waist before they close, as a share of waist to seat.
+  neckSlit:
+    title: Neck slit
+    description: Length of the slit down centre front from the neck, as a share of the neck point to the front waist. 0% is none.
   placketDepth:
     title: Placket length
     description: Length of the placket opening from the neck, as a share of the back neck to waist.

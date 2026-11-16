@@ -65,7 +65,7 @@ import { noble } from '../blocks/noble.mjs'
 import { ribPart } from './rib.mjs'
 import { brandPart, draftPlacketBox, draftOpenFront } from './knit.mjs'
 import { knitPlacketPart, frontBandPart } from './placket.mjs'
-import { draftBodiceNeck, draftBodiceWaist, draftBodiceHip, draftWrapFront, draftPrincessDress, dressSkirtPart } from './bodice.mjs'
+import { draftBodiceNeck, draftBodiceWaist, draftBodiceHip, draftBodiceSleeve, draftBodiceSlit, draftWrapFront, draftPrincessDress, dressSkirtPart } from './bodice.mjs'
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftYokeLayout, yokePart, yokeGorePart } from './skirt-yoke.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
@@ -104,6 +104,8 @@ export const operations = {
   bodiceNeck: { run: draftBodiceNeck, literal: ['which'] },
   bodiceWaist: { run: draftBodiceWaist, literal: ['which'] },
   bodiceHip: { run: draftBodiceHip, literal: ['which'] },
+  bodiceSleeve: { run: draftBodiceSleeve },
+  bodiceSlit: { run: draftBodiceSlit },
   wrapFront: { run: draftWrapFront },
   princessDress: { run: draftPrincessDress, literal: ['panel'] },
   // Cut the back or front along its raglan line (after coatBack / coatFront)
