@@ -18,7 +18,9 @@ export function checkYoke(pattern) {
   near(b.yokeY, f.yokeY, 0.01, 'yoke seam at the same level')
   const sl = store.get('yoke.sleeve', null)
   if (sl) {
-    near(sl.cap, sl.armhole, 3, 'sleeve cap vs armhole')
+    // A puffed sleeve's cap is gathered into the armhole: longer than it, by up to its spread
+    if (sl.puff) assert.ok(sl.cap > sl.armhole * 1.05 && sl.cap < sl.armhole * (1.2 + sl.puff), `puffed cap ${sl.cap.toFixed(0)} on armhole ${sl.armhole.toFixed(0)}`)
+    else near(sl.cap, sl.armhole, 3, 'sleeve cap vs armhole')
     near(sl.underarm[0], sl.underarm[1], 0.5, 'sleeve underarm seam')
     assert.ok(sl.hem >= sl.band * 0.95, 'sleeve hem gathers into its band')
   }

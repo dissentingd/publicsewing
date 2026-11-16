@@ -229,6 +229,19 @@ options:
   skirtSpread:
     title: Extra skirt flare
     description: Extra width at the hem at each of the skirt's three laid-together seams, as a share of the chest. The waist doesn't change.
+  sleeveFinish:
+    title: Sleeve finish
+    description: Gather the sleeve's hem into a band, or turn it up as a plain hem.
+    choices: { band: Band, hem: Plain hem }
+  frontPleats:
+    title: Front pleats
+    description: Pleats each side of the centre front, from the neck to the hem, on a front in one piece.
+  openFull:
+    title: Opening to the hem
+    description: Button the opening all the way from the neck to the hem, instead of a short placket.
+  sleevePuff:
+    title: Sleeve puff
+    description: How much fuller the sleeve is spread, gathered into the armhole at the top and the binding at the hem; none for a plain sleeve.
   backFlare:
     title: Back's share of the thigh
     description: How far the back flares at the thigh, as a multiple of the front's.
@@ -1270,6 +1283,11 @@ parts:
   waistband: Waistband
   sideWaistband: Waistband
   sash: Sash
+  centrePanel: Centre panel
+  leg: Leg
+  kali: Side panel (kali)
+  sashPiece: Sash
+  openingFacing: Opening facing
   sleevePlacket: Sleeve placket
   collarStand: Collar stand
   collarFall: Collar

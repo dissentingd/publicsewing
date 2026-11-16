@@ -183,6 +183,7 @@ const methodSources = [
   { test: /ЕМКО/, tag: 'ЕМКО 1988', name: 'ЕМКО СЭВ', anchor: 'emko' },
   { test: /Armstrong/, tag: 'Joseph-Armstrong 2010', name: "Helen Joseph-Armstrong's *Patternmaking for Fashion Design*", anchor: 'armstrong' },
   { test: /Aldrich/, tag: 'Aldrich 2015', name: "Winifred Aldrich's *Metric Pattern Cutting for Women's Wear*", anchor: 'aldrich' },
+  { test: /Central Board of Secondary Education/, tag: 'CBSE 2014', name: "CBSE's *Basic Pattern Development*", anchor: 'cbse' },
 ]
 
 // Infant safety (designs/safety, BUILD_QUEUE S1): a design reviewed for baby sizes shows its

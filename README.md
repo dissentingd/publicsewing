@@ -112,6 +112,8 @@ a check that the pieces sew together into the garment, not a fit result.
 | `middy-blouse` | Loose pullover with a deep V neck, square sailor collar and shield | Simons 1922 |
 | `button-middy` | Loose blouse buttoned to the neck under a deep pointed collar, its fullness taken into a snug belt | Simons 1922 |
 | `shift-dress` | Simple unfitted dress, front and back each in one piece, a little flared | Pivnick 1949 |
+| `childs-dress` | Little girl's dress: pleated front, buttoned down the back, flat collar, puffed sleeves and a sash; a yoked variant buttoned in front | Pivnick 1949 |
+| `kameez` | Long A-line tunic slit up the sides, round neck, short plain sleeves; straight and long-sleeved variants | CBSE 2014 (inspired by) |
 | `kimono-dress` | Dress with short sleeves cut in one with the bodice, a turn-down collar and a slightly gathered skirt | Pivnick 1949 |
 | `kilt` | Knee-length wrap kilt: flat front aprons, knife pleats round the sides and back, buckled straps | Simons 1922 (hem and length) |
 | `culottes` | Divided skirt that looks like a skirt until the wearer moves | Pivnick 1949 |
@@ -123,6 +125,8 @@ a check that the pieces sew together into the garment, not a fit result.
 | `cycling-breeches` | Full cycling breeches gathered into a buttoned band below the knee | d'Alessio 1906 |
 | `breeches` | Riding breeches, full and flared at the thigh, fitted from the knee to a buttoned cuff | Simons 1916 |
 | `jodhpurs` | Riding trousers full and flared at the thigh, close from the knee down to the ankle, with turn-up cuffs; a ladies' variant with a side zip | Simons 1945 |
+| `salwar` | Full gathered trousers cut from straight panels, with tapering side panels (kalis), a belt with a drawstring and a narrow bottom; a Patiala variant | CBSE 2014 (inspired by) |
+| `churidar` | Close-fitting bias-cut trousers, full at the top and gathered into a belt, extra long so they ruck into folds at the ankle | CBSE 2014 (inspired by) |
 | `jumpsuit` | One-piece suit cut almost entirely from rectangles: buttoned front, gussets, patch pockets | Thayaht 1920, via Open+Pattern |
 | `windbreaker` | Hooded zip-front light jacket with yokes and slanted welt pockets | ЕМКО 1988 |
 | `quilted-jacket` | Hooded quilt-lined jacket buttoned to the throat, sloped front yokes | ЕМКО 1988 |

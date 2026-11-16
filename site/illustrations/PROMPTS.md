@@ -435,6 +435,52 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > Leave out: turn-ups, cargo or patch pockets, slanted front pockets, elastic or cuffs at the
 > ankle, a belt, braces, a person, shoes.
 
+### kameez: Kameez
+> **A woman's kameez** (long tunic) in printed cotton lawn (small floral, coral on cream), shown flat, front view.
+> **Long, to just below the knee**, cut in one piece front and back with **a gentle A-line flare from the
+> underarm to the hem**, **side slits from the hem up to the hip**. **A plain round neck with a short slit
+> opening at the front**, bound. **Short plain sleeves to just above the elbow**, hemmed. Plain background,
+> clean technical editorial illustration.
+>
+> Leave out: a waist seam, darts showing, embroidery, a collar, a dupatta, trousers, a person.
+
+### kameez.straight: Straight kameez
+> **A woman's straight kameez** in plain cotton (mustard), shown flat, front view. Below the knee, **almost
+> straight side seams** with only a slight flare, **side slits to the hip**, a round neck with a short front
+> slit, short plain sleeves. Plain background, clean technical editorial illustration.
+>
+> Leave out: a waist seam, embroidery, a collar, trousers, a person.
+
+### kameez.long-sleeves: Kameez, long sleeves
+> **A woman's A-line kameez** in plain cotton voile (indigo), shown flat, front view, below the knee with side
+> slits and a round neck, with **long, narrow plain sleeves to the wrist**, hemmed. Plain background, clean
+> technical editorial illustration.
+>
+> Leave out: cuffs, gathers at the wrist, embroidery, a collar, trousers, a person.
+
+### churidar: Churidar
+> **A woman's churidar** in plain cotton jersey-like woven fabric (plum), shown flat, front view. **Close-fitting
+> trousers, full and softly gathered at the waist on a drawstring belt**, narrowing to **fit closely from the knee
+> down**, and **much longer than the leg so the extra length rucks into many soft horizontal folds round the
+> ankle**, like stacked bangles. Plain background, clean technical editorial illustration.
+>
+> Leave out: a kameez, pockets, a fly, cuffs, ankle zips or buttons, stretch leggings sheen, a person.
+
+### salwar: Salwar
+> **A woman's salwar** in plain cotton lawn (soft green), shown flat, front view. **Very full trousers gathered at
+> the waist into a narrow belt with a drawstring**, falling in soft vertical folds, **narrowing sharply to a
+> close, plain hem at the ankle**. The fullness comes from **long tapering side panels** either side of a straight
+> centre panel in each leg. Plain background, clean technical editorial illustration.
+>
+> Leave out: a kameez or tunic over it, pockets, a fly, cuffs or ankle buttons, embroidery, a person.
+
+### salwar.patiala: Patiala salwar
+> **A Patiala salwar** in plain cotton (deep blue), shown flat, front view. **Very full, with many deep folds
+> hanging from the waist**, the fabric pooling into **heavy pleated drapes below the knee**, gathered at the waist
+> on a drawstring and **narrow at the ankle**. Plain background, clean technical editorial illustration.
+>
+> Leave out: a kameez, pockets, a fly, embroidery, a person.
+
 ### jodhpurs: Jodhpurs
 > **Men's riding jodhpurs** of the 1940s in fawn cavalry twill, full length, on an invisible figure. **Full and
 > flared out at the side of the thigh** like riding breeches, then **close-fitting from the knee down**, the leg
@@ -1514,6 +1560,23 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > a shirt, a person.
 
 *Current image has a bust dart and lines across the chest.*
+
+### childs-dress: Child's dress
+> A **little girl's dress** of the late 1940s in pale pink cotton lawn, shown flat, front view. **A simple
+> A-line dress in one piece from shoulder to hem, no waist seam**, to just above the knee. **Three narrow pressed
+> pleats each side of the centre front**, from the neck down. A **rounded flat (Peter Pan) collar** in white.
+> **Short puffed sleeves** gathered into narrow bands. A **sash** of the same fabric tied round the waist. Plain
+> background, clean technical editorial illustration.
+>
+> Leave out: a waist seam, smocking, ruffles, lace, a front opening, long sleeves, a person.
+
+### childs-dress.yoked: Child's dress, yoked
+> A **little girl's dress** of the late 1940s in pale blue cotton, shown flat, front view. **A yoke across the
+> chest**, the skirt below **gathered into it**, **buttoned down the centre front from the collar to the hem**.
+> A **rounded flat (Peter Pan) collar**, **short puffed sleeves** gathered into narrow bands, a **sash** at the
+> waist tied at the back. Plain background, clean technical editorial illustration.
+>
+> Leave out: a waist seam, smocking, ruffles, lace, long sleeves, a person.
 
 ### shift-dress: Shift dress
 > **No bust darts and no lines across the chest: the front is one plain panel.**

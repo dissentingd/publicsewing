@@ -481,7 +481,7 @@ const factories = {
       enabled: enabledBy(p.if),
       shape: (sh) =>
         evalMap(
-          { ...p.let, points: p.points, allowance: p.allowance, fold: p.fold, notches: p.notches, buttons: p.buttons, buttonholes: p.buttonholes, lines: p.lines },
+          { ...p.let, points: p.points, allowance: p.allowance, fold: p.fold, notches: p.notches, buttons: p.buttons, buttonholes: p.buttonholes, lines: p.lines, grain: p.grain },
           lookupIn(sh, ctx.block, {}),
           {},
         ),
