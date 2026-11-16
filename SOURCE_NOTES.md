@@ -23,6 +23,8 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 | Sheifer, *System of Designing and Grading Ladies', Misses' & Children's Garments* (1908) `nssheiferssystem00shei` | not established | no |
 | Helen Joseph-Armstrong, *Patternmaking for Fashion Design* (5th ed., 2010; in copyright, the maintainer's own copy) | 7 | no |
 | Winifred Aldrich, *Metric Pattern Cutting for Women's Wear* (6th ed., 2015; in copyright, the maintainer's own copy) | 4 | no |
+| Winifred Aldrich, *Metric Pattern Cutting for Children's Wear and Babywear* (2009; in copyright, the maintainer's own copy) | 6 | no |
+| Winifred Aldrich, *Metric Pattern Cutting for Menswear* (2006; in copyright, the maintainer's own copy) | 4 | no |
 | CBSE with NIFT, *Basic Pattern Development, Class XII* (2014; in copyright, published free by CBSE) | 12 | no |
 
 ## All scans
@@ -42,6 +44,22 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
   named block (natural-waist basic or low-waist production skirt, book pp. 24–25): note which.
   FreeSewing's Sarah follows its skirt block.
 - Style pages often give construction steps and a figure but not the opening or waist finish.
+- Sizing and the size charts: book pp. 7–12. The list of every block with its page: p. 13.
+- Naming traps (all three Aldrich books): his women's "chest" is a width across the front between the
+  armholes, not a girth (his girth is "bust", FreeSewing's `chest`); his "hips" is the fullest girth,
+  FreeSewing's `seat` (FreeSewing's `hips` is higher, at the hip bone); his back length is from the nape,
+  FreeSewing's from the high point of the shoulder.
+
+## Aldrich 2009 (children's wear and babywear)
+- In copyright: methods and proportions only, in our own words. Metric. Blocks are drafted by height
+  (babies 56–92 cm, children 80–170 cm); each block's text names the example height it is worked at.
+- Measuring diagram: book p. 15. Size charts: pp. 16–20, scanned sideways (the PDF's text layer is
+  unreadable there: read the page image). The list of every block with its page: p. 21.
+- Misprints in the charts, as printed: p. 16, jeans bottom width "2.5" at 80 cm; p. 19, scye depth 15.2
+  at 116 cm; p. 20, across back 33 at 146 cm.
+
+## Aldrich 2006 (menswear)
+- In copyright: methods and proportions only, in our own words. Metric.
 
 ## CBSE 2014, *Basic Pattern Development*
 - In copyright ("may not be reproduced"): methods and proportions only, in our own words. Imperial,
