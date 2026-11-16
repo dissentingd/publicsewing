@@ -36,8 +36,8 @@ export const designGroups = [
     section('active-bottoms', 'Stretch & active bottoms', `crux joggers lily lumina lumira`),
   ] },
   { id: 'one-piece', label: 'One-piece garments', image: 'shirtwaist-dress.short-sleeves', sections: [
-    section('shaped-dresses', 'Shaped dresses & tunics', `fitted-dress princess-dress sasha sophie wrap-dress`),
-    section('relaxed-dresses', 'Relaxed dresses & tunics', `childs-dress frock kimono-dress pinafore shift-dress shirtwaist-dress kameez`),
+    section('shaped-dresses', 'Shaped dresses & tunics', `fitted-dress fitted-kameez princess-dress sasha sophie wrap-dress`),
+    section('relaxed-dresses', 'Relaxed dresses & tunics', `childs-dress frock kimono-dress pinafore shift-dress shirtwaist-dress kameez kalidar-kurta`),
     section('overalls-jumpsuits', 'Overalls & jumpsuits', `bib-overall jumpsuit opal overall-pants openpattern-tuta-jumpsuit-thayaht-1920`),
     section('baby-one-pieces', 'Baby one-pieces', `onyx otis`),
   ] },
