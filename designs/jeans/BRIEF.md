@@ -8,8 +8,10 @@ Wear*, 6th ed. (Wiley, 2015), the maintainer's own copy: basic jeans, book pp. 5
 jeans, p. 58 (PDF = book + 4). Armstrong's children's jeans (book p. 888) were looked at for their
 proportions. Both books are in copyright: only their construction and proportions are used here, as
 design references, in our own words; no text or figure is reproduced. Inches below are Armstrong's,
-for her size 10 (about our `cisFemaleAdult30`: waist 26.6, seat 37, waist to seat 9.1); Aldrich's are
-centimetres.
+for her size 10; Aldrich's are centimetres. Her size 10, from her standard measurement chart (book p. 40):
+waist 27½, hip 37½, side hip depth (our waist to seat) 8⅛, waist to floor 40. Shares of waist to seat are
+worked out on her 8⅛ (2026-11-16): FreeSewing's sets measure waist to seat longer than her side hip depth
+(cisFemaleAdult30's is 9.1), and shares taken on 9.1 came out about 12% short at her size.
 
 **Threadloop (2026-11-15):** "jeans" finds 167 free patterns, about ten of them jeans (Mood Sewciety's
 Calamint, Nolana, Honey, Ren, Forsythia and Obsidian; 1083's straight and bootcut; Initiative
@@ -58,9 +60,9 @@ men's and children's sizes, as Armstrong's jean foundation does for her women's 
 | Knee | Knee + 2 in, on about 13.8 | `kneeEase` 15% |
 | Hem | Ankle + 3 in over the knee's 15.8 | `hemWidth` 73% |
 | Band | 1½ in, on her waist to floor of about 39.4 | `waistbandHeight` 3.8%; the left side's lap 1¼ in on a 26½ waist |
-| Yoke | 3 in at CB, 2½ in at the side, from the waist | `yokeDepth` 33%, `yokeSide` 27.5% of waist to seat |
-| Pocket mouth | 4 in along the top, 2¾ in down the side | `pocketEntryWidth` 10.8% of the seat, `pocketEntryDepth` 30% of waist to seat |
-| Pocket bag | 5 in across, 7 in deep | `pocketBagWidth` 13.5% of the seat, `pocketBagDepth` 77% of waist to seat; the facing 5/7 of it |
+| Yoke | 3 in at CB, 2½ in at the side, from the waist | `yokeDepth` 37%, `yokeSide` 31% of waist to seat |
+| Pocket mouth | 4 in along the top, 2¾ in down the side | `pocketEntryWidth` 10.8% of the seat, `pocketEntryDepth` 34% of waist to seat |
+| Pocket bag | 5 in across, 7 in deep | `pocketBagWidth` 13.5% of the seat, `pocketBagDepth` 86% of waist to seat; the facing 5/7 of it |
 | Coin pocket | 2¾ in wide, about 3¼ in deep (read from the figure), an inch in and down | `coinPocketWidth` 7.4% of the seat, its depth 1.18 × its width |
 | Back pocket | 6 × 6 in, 5 in across the lower corners, point ¾ in, about 1⅛ in under the yoke | `backPocketWidth`, `backPocketDepth` 16.2% of the seat, `backPocketPoint` 12.5% |
 | Fly | 1½ in on a 26½ waist | `flyWidth` 5.6% |

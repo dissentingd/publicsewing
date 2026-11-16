@@ -43,14 +43,14 @@ options:
   flyWidth: { pct: 5.6 } # "the front fly 1 1/2 inches wide" on a 26 1/2 waist
   beltLoops: { count: 5 } # ours: the book doesn't say
   # Yoke seam, from the waist: "3" at CB, the band's 1 1/2 and "1" more at the side (Aldrich: 7 and 3 cm below the band)
-  yokeDepth: { pct: 33, min: 20, max: 50, of: waistToSeat, menu: style, description: "How far down the centre back seam the back yoke's seam meets it, from the waist, as a share of waist to seat." } # 3 / 9.1, at CB
-  yokeSide: { pct: 27.5, min: 18, max: 45, of: waistToSeat, menu: style } # 2 1/2 / 9.1
+  yokeDepth: { pct: 37, min: 20, max: 50, of: waistToSeat, menu: style, description: "How far down the centre back seam the back yoke's seam meets it, from the waist, as a share of waist to seat." } # 3 / 8 1/8 (her size 10's side hip depth), at CB
+  yokeSide: { pct: 31, min: 18, max: 45, of: waistToSeat, menu: style } # 2 1/2 / 8 1/8
   # Front pocket: "X 4"" along the waist and "2 3/4"" down the side
   pocketEntryWidth: { pct: 10.8, min: 7, max: 16, of: seat, menu: style } # 4 / 37
-  pocketEntryDepth: { pct: 30, min: 22, max: 45, of: waistToSeat, menu: style } # 2 3/4 / 9.1
+  pocketEntryDepth: { pct: 34, min: 22, max: 45, of: waistToSeat, menu: style } # 2 3/4 / 8 1/8
   # Pocket bag "X 5"" along the waist, "7"" down; the facing "2 inches shorter"
   pocketBagWidth: { pct: 13.5, min: 10, max: 20, of: seat, menu: advanced } # 5 / 37
-  pocketBagDepth: { pct: 77, min: 55, max: 100, of: waistToSeat, menu: advanced } # 7 / 9.1
+  pocketBagDepth: { pct: 86, min: 55, max: 100, of: waistToSeat, menu: advanced } # 7 / 8 1/8
   # Coin ("item") pocket on the facing: 2 3/4 in wide, about 3 1/4 deep (read from Figure 9a), 1 in
   # from the side and down
   coinPocket: { bool: true, menu: style }

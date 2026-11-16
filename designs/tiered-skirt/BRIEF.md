@@ -33,7 +33,7 @@ fabric and its standard figure; the tier depths as a growth rate; the opening.
 ## How it maps onto the block
 | Feature | Joseph-Armstrong | Here (option default) |
 |---|---|---|
-| Length | 29 in | `skirtLength` 70% of waist to floor (29 in at a 41.3 in waist to floor) |
+| Length | 29 in | `skirtLength` 72.5% of waist to floor (29 in on her size 10's 40 in waist to floor, book p. 40) |
 | Tier depths | 6¼, 6¾, 7¼, 8¾ in | `tierGrowth` 112%: each tier 12% deeper than the one above, the four adding up to the length (6.1, 6.8, 7.6, 8.5 in at 29 in) |
 | First tier | One 36–45 in width | `firstTier` 150% of the waist, never less than 105% of the seat |
 | Later tiers | 2, 4, 8 widths | `tierFullness` 200% of the tier above (book range 150–200%) |
