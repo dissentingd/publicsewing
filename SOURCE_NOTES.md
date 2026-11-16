@@ -34,6 +34,11 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
 ## Joseph-Armstrong 2010
 - In copyright: methods and proportions only, in our own words. Imperial units. Its styles are worked
   on its own slopers and often size panels by fabric width (36–45 in); restate those against the body.
+- Standard measurement chart: book p. 40 (missy 6–18, ease not included), based on ASTM's misses'
+  standard and the [TC]2 US size survey (p. 29). Drafts cite measurements by their chart number, not one
+  worked size; the book's example sample is size 10 (pp. 15, 46). Its "arcs" and bust span are halves or
+  front/back parts of a girth, not whole girths. Sleeve measurement chart: p. 62; its biceps already
+  includes 2 in of ease. No sized chart gives neck, wrist or elbow (p. 23 is a blank personal form).
 - Tiers (ch. 13): text book p. 315, figures p. 316. The text layer garbles figure labels; check the page image.
 - Jeans (ch. "Pants"): the jean foundation draft, book pp. 673–675 (a contour fit on the women's pant
   foundation); the jean with a V-yoke and its waistband variations, pp. 700–703, figures on every page;
@@ -55,6 +60,8 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
   (babies 56–92 cm, children 80–170 cm); each block's text names the example height it is worked at.
 - Measuring diagram: book p. 15. Size charts: pp. 16–20, scanned sideways (the PDF's text layer is
   unreadable there: read the page image). The list of every block with its page: p. 21.
+- Girls with developing figures (146–164 cm, bust shapes A and B; mature figures use the women's
+  blocks) have their own chart, p. 177 (upright, but its text layer has no numbers), and blocks pp. 178–186.
 - Misprints in the charts, as printed: p. 16, jeans bottom width "2.5" at 80 cm; p. 19, scye depth 15.2
   at 116 cm; p. 20, across back 33 at 146 cm.
 
