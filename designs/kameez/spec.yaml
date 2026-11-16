@@ -15,6 +15,7 @@ about:
   techniques: [placket, facing, hem]
   version: 0.1.0
   source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014), Practical 10, A-line Kameez, and Practical 9, Kameez, pp. 90-94"
+  garmentTraditions: [punjab-patternmaking]
   taken: A-line shape, slits and sleeve proportions # the design page: "its ... follow" the book
   preview: cisFemaleAdult32 # CBSE's sample: bust 34 3/4, waist 27 3/4, hip 36
 

@@ -15,6 +15,7 @@ about:
   techniques: [gathering, casing, hem]
   version: 0.1.0
   source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014), Practical 4, Churidar Payjama, pp. 76-78"
+  garmentTraditions: [punjab-patternmaking]
   taken: bias-cut leg and proportions # the design page: "its ... follow" the book
   preview: cisFemaleAdult30 # CBSE's sample: hip 36, knee 15, ankle over the heel 12
 
