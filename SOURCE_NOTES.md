@@ -49,6 +49,8 @@ page + offset.** Confirm the offset once by looking at a printed page number: so
   salwar 73–75, churidar 76–78, saree blouse 79–83, choli 84, necklines 86–89, kameez 90–92, A-line
   kameez 93–94, kalidar kurta 95–97, two-kali kurta 98–100, sleeve 101, collar 104.
 - Its drafts include their own seam allowances (the salwar's ¾ in): drop them, the pattern adds its own.
+- Kalidar kurta (Practical 11): its square gusset (a twelfth of the bust + 1 in) is ½ in bigger than the
+  kali top it sews to, and the kali's length (the length less the sleeve's width) ignores the ¾ in shoulder drop.
 - The salwar's belt width isn't in the text (a line seems lost at the page break); the cutting
   layout's 10 in on a 36 in hip gives a quarter of the hip and an inch.
 

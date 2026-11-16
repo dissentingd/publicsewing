@@ -83,12 +83,11 @@ neckwear, and garments from outside Western tailoring. Pages are **book pages fr
 contents list**: find the PDF page and the plate before starting, and add the offset to
 SOURCE_NOTES.md. Same-source alternatives (a second button count, a double-breasted front)
 are probably variants of the row above them, not designs: decide after reading the plate.
-Rows 38–46, 48, 49, 52–55 and 54b are done, and 47, 50 and 51 were dropped for FreeSewing's Devon, Trayvon and Benjamin:
+Rows 38–46, 48, 49, 52–55, 54b and 54c are done, and 47, 50 and 51 were dropped for FreeSewing's Devon, Trayvon and Benjamin:
 [BUILT_QUEUE.md](BUILT_QUEUE.md).
 
 | # | Design id | Garment | Source and pages | Start from | Lane | Notes | Status |
 |---|---|---|---|---|---|---|---|
-| 54c | `kalidar-kurta` | Kalidar kurta | **Inspired by** CBSE 2014, Practicals 11–12, Kalidar and Two-kali Kurta, book pp. 95–100 | — (cut flat, as the salwar) | G | Geometric panels: a centre panel on the fold, kalis like the salwar's, a straight armhole, a square underarm gusset | open |
 | 56 | `choli` | Choli (saree blouse) | **Inspired by** CBSE practicals | Bella block (B1) | I | Methods only; darted, short. After B1 | open |
 | 57 | `brimmed-hat` | Brimmed hat (sailor or boater shape), with a soft bucket-hat variant | Ben-Yûsuf, *The Art of Millinery* (1909), Lesson I "Drafting Buckram Frames", book pp. 7–24 (supplied as `The_Art_of_Millinery.pdf`, not in the corpus) | — (no block: drafted from `head`) | G | The book drafts a buckram frame: an oval or round brim set out from the head's length and width with its own front, back and side depths; a crown tip (head size, smaller for a conical crown, larger for a bell crown); and the crown's side band, a straight strip or a curved band from the head size, tip size and crown height. Make it in fabric with interfacing, not wire and buckram. Head length and width aren't measurements we have: take them as options proportional to `head`. Opens a Hats section of our own beside FreeSewing's Florent; `garments/tree.yaml` needs a brimmed-hat type (`bucket-hat` exists) | open |
 

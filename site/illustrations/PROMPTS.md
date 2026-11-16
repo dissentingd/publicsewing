@@ -482,6 +482,31 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 >
 > Leave out: cuffs, gathers at the wrist, embroidery, a collar, trousers, a person.
 
+### kalidar-kurta: Kalidar kurta
+> **A kalidar kurta** in plain handloom cotton (off-white), shown flat, front view. **Long, to just below the
+> knee**, a straight centre panel front and back with **long tapering side panels (kalis) flaring from the
+> underarm to a wide hem**, the seams between them visible. **A round neck with a short buttoned placket
+> (three small buttons)**. **Straight, slightly tapering sleeves to below the elbow**, set into a **straight
+> armhole**, with a small square gusset at the underarm. Plain background, clean technical editorial
+> illustration.
+>
+> Leave out: a collar, embroidery, side slits, darts, a waist seam, pyjamas or trousers, a person.
+
+### kalidar-kurta.short: Short kurta
+> **A short kalidar kurta** in plain cotton (sky blue), shown flat, front view. **To the hip**, a straight
+> centre panel with tapering side panels flaring gently to the hem, a round neck with a short three-button
+> placket, straight sleeves to below the elbow, square underarm gussets. Plain background, clean technical
+> editorial illustration.
+>
+> Leave out: a collar, embroidery, side slits, jeans, a person.
+
+### kalidar-kurta.long-sleeves: Kalidar kurta, long sleeves
+> **A kalidar kurta** in plain khadi cotton (sand), shown flat, front view, below the knee, flared by tapering
+> side panels, a round neck with a short buttoned placket, with **straight sleeves to the wrist**, slightly
+> narrower at the hem. Plain background, clean technical editorial illustration.
+>
+> Leave out: cuffs, a collar, embroidery, side slits, a person.
+
 ### churidar: Churidar
 > **A woman's churidar** in plain cotton jersey-like woven fabric (plum), shown flat, front view. **Close-fitting
 > trousers, full and softly gathered at the waist on a drawstring belt**, narrowing to **fit closely from the knee

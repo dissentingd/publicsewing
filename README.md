@@ -114,6 +114,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `shift-dress` | Simple unfitted dress, front and back each in one piece, a little flared | Pivnick 1949 |
 | `childs-dress` | Little girl's dress: pleated front, buttoned down the back, flat collar, puffed sleeves and a sash; a yoked variant buttoned in front | Pivnick 1949 |
 | `kameez` | Long A-line tunic slit up the sides, round neck, short plain sleeves; straight and long-sleeved variants | CBSE 2014 (inspired by) |
+| `kalidar-kurta` | Long loose kurta cut from straight panels, flared by tapering side panels (kalis), straight sleeves, underarm gussets, a buttoned neck placket; short and long-sleeved variants | CBSE 2014 (inspired by) |
 | `fitted-kameez` | Long kameez fitted with bust and waist darts, out over the hip and slit up the sides, side zip, short plain sleeves; kurti and long-sleeved variants | CBSE 2014 (inspired by) |
 | `kimono-dress` | Dress with short sleeves cut in one with the bodice, a turn-down collar and a slightly gathered skirt | Pivnick 1949 |
 | `kilt` | Knee-length wrap kilt: flat front aprons, knife pleats round the sides and back, buckled straps | Simons 1922 (hem and length) |
