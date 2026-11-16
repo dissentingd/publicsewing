@@ -5,7 +5,9 @@ import catalog from '@site/src/generated/catalog.json'
 const isExternal = (href) => /^https?:\/\//.test(href)
 
 export default function DesignCatalog({ folder, category }) {
-  const items = catalog[folder]?.[category] ?? []
+  const items = folder === 'section' ? catalog.sections?.[category] ?? [] : folder === 'all'
+    ? [...(catalog.designs?.[category] ?? []), ...(catalog.inspired?.[category] ?? [])].sort((a, b) => a.name.localeCompare(b.name))
+    : catalog[folder]?.[category] ?? []
   const [selectedId, setSelectedId] = useState(items[0]?.id)
   const selected = items.find((item) => item.id === selectedId) ?? items[0]
   const base = useBaseUrl('/')
@@ -15,14 +17,21 @@ export default function DesignCatalog({ folder, category }) {
   return <div className="design-catalog">
     <div className="design-catalog-list" role="group" aria-label={`${category} designs`}>
       <div className="design-catalog-list-head"><span>Design</span><span>Difficulty</span></div>
-      {items.map((item) => <button key={item.id} type="button"
+      {items.map((item) => <div key={item.id} role="button" tabIndex={0}
         className={`design-catalog-row${selected.id === item.id ? ' is-selected' : ''}`}
-        aria-pressed={selected.id === item.id} onClick={() => setSelectedId(item.id)}>
-        <span className="design-catalog-row-name">{item.name}</span>
+        aria-pressed={selected.id === item.id} onClick={() => setSelectedId(item.id)}
+        onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedId(item.id) } }}>
+        {item.thumbnail && <img className="design-catalog-thumb" src={localUrl(item.thumbnail)} alt="" loading="lazy" />}
+        <a className="design-catalog-row-name" href={localUrl(item.href)} onClick={(event) => event.stopPropagation()}>{item.name}</a>
+        <span className="design-catalog-row-rating">
+        {item.traditions?.map((tradition) => <span className="design-catalog-row-flags" key={tradition.key} title={tradition.label} aria-label={tradition.label}>
+          {(tradition.flags ?? (tradition.flag ? [tradition.flag] : [])).map((flag) => <img key={flag} src={localUrl(`/img/flags/${flag}.svg`)} alt="" />)}
+        </span>)}
         {item.difficulty ? <span className="design-catalog-dots" aria-label={`Difficulty ${item.difficulty} of 5`}>
           {'●'.repeat(item.difficulty)}<span>{'●'.repeat(5 - item.difficulty)}</span>
         </span> : <span className="design-catalog-row-kind">External</span>}
-      </button>)}
+        </span>
+      </div>)}
     </div>
     <section className="design-catalog-preview" aria-live="polite" aria-label={`${selected.name} preview`}>
       <div className="design-catalog-hero">

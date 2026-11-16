@@ -58,6 +58,8 @@ archive/data/emko/ocr/p-*.txt
 
 # your own notes file (BUILD_NOTES.example.md) and scratch scripts
 BUILD_NOTES.md
+site/dev-server.*.log
+site/build-catalog/
 designs/tools/_*
 
 # internal working notes: kept locally, not published

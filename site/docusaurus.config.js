@@ -41,6 +41,7 @@ export default {
     ['@docusaurus/plugin-client-redirects', {
       redirects: [
         { from: '/muslin', to: '/sew-and-test' },
+        { from: '/inspired', to: '/designs' },
         { from: '/report', to: '/sew-and-test' },
         { from: '/designs/trousers', to: '/designs/suit-trousers' },
         { from: '/designs/shirt', to: '/designs/dress-shirt' },
@@ -93,8 +94,7 @@ export default {
     navbar: {
       title: 'PublicSewing',
       items: [
-        { to: '/designs', label: 'Historical Designs', position: 'left' },
-        { to: '/inspired', label: 'Inspired Designs', position: 'left' },
+        { to: '/designs', label: 'Designs', position: 'left' },
         { to: '/wardrobe', label: 'Wardrobe', position: 'left' },
         { to: '/measure', label: 'Measure', position: 'left' },
         { to: '/sew-and-test', label: 'Sew & Test', position: 'left' },
