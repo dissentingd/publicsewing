@@ -348,7 +348,6 @@ const factories = {
             },
           }),
     }),
-  // The facing for a gore's rise above the waist (`index`), from skirtLayout's `riseHeight`
   // A yoked skirt's yoke (`which`: front or back) and gores (`which`: back, sideBack, sideFront, front), from yokeLayout
   skirtYoke: (p, ctx) => yokePart({ name: p.name, after: ctx.after(p), which: p.which, nr: p.nr, label: p.label ?? p.name.split('.').pop() }),
   yokeGore: (p, ctx) =>
@@ -360,6 +359,7 @@ const factories = {
       label: p.label ?? p.name.split('.').pop(),
       zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
     }),
+  // The facing for a gore's rise above the waist (`index`), from skirtLayout's `riseHeight`
   goreFacing: (p, ctx) => goreFacingPart({ name: p.name, after: ctx.after(p), index: p.index, nr: p.nr, label: p.label ?? p.name.split('.').pop() }),
   kiltApron: (p, ctx) => kiltApronPart({ name: p.name, after: ctx.after(p), nr: p.nr, label: p.label }),
   kiltPleats: (p, ctx) => kiltPleatsPart({ name: p.name, after: ctx.after(p), nr: p.nr, label: p.label }),
