@@ -1,6 +1,9 @@
 // One command for a 3D drape: export a design's outlines, build the GarmentCode specification,
 // simulate it on the GPU host, fetch the renders, and say where the cloth goes inside the body.
-// Usage: node tools/drape.mjs <design> [--set <size set>] [--name <run name>] [--options '<json>']
+// Usage: node tools/drape.mjs <design> [--set <size set>] [--name <run name>] [--options '<json>'] [--blender]
+//   --blender: also render the drape lit in Blender (tools/drape_render.py; front, three-quarter,
+//   back), a few minutes more. Needs Blender on the GPU host: DRAPE_BLENDER or `blender` in
+//   drape/local.json. runs.yaml's `renderColor: r,g,b` (linear, 0-1) sets the cloth's colour
 //   --set: draft at that size set and drape on its nearest dataset body (drape/bodies.yaml)
 //   instead of the runs.yaml size on the config's average body
 //   The design's drape settings are in drape/runs.yaml. Results go to out/drape/<name>/
@@ -37,7 +40,7 @@ const REFERENCE = {
 
 const run = (cmd, args, opts = {}) => execFileSync(cmd, args, { cwd: DESIGNS, encoding: 'utf8', maxBuffer: 1 << 28, ...opts })
 
-/** A failed step, naming which: export, spec, upload, sim, inside or fetch */
+/** A failed step, naming which: export, spec, upload, sim, inside, fetch or blender */
 export class DrapeError extends Error {
   constructor(stage, message) {
     super(`${stage}: ${message}`)
@@ -64,6 +67,15 @@ function hostSettings() {
   const container = process.env.DRAPE_CONTAINER ?? local.container ?? 'garmentcode'
   if (!host || !data) throw new Error('set DRAPE_HOST and DRAPE_DATA (or drape/local.json): see the top of tools/drape.mjs')
   return { host, data, container }
+}
+
+/** Blender on the GPU host, for --blender: DRAPE_BLENDER, or `blender` in drape/local.json */
+function blenderPath() {
+  const file = join(DESIGNS, 'drape', 'local.json')
+  const local = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : {}
+  const exe = process.env.DRAPE_BLENDER ?? local.blender
+  if (!exe) throw new DrapeError('blender', 'set DRAPE_BLENDER (or "blender" in drape/local.json) to Blender on the GPU host')
+  return exe
 }
 
 /** Shell, copy up and copy down on the GPU host: over ssh, or here for DRAPE_HOST=local */
@@ -95,7 +107,7 @@ function hostOps({ host, data }) {
  * pipeline's proposals). `upTo: 'spec'` stops once the specification is built: a quick check
  * that needs no GPU.
  */
-export function drape(design, { name, options: extra = {}, entry, upTo, set } = {}) {
+export function drape(design, { name, options: extra = {}, entry, upTo, set, blender } = {}) {
   const runs = parse(readFileSync(join(DESIGNS, 'drape', 'runs.yaml'), 'utf8'))
   let r = entry ?? runs[design]
   if (!r) throw new Error(`no drape settings for ${design} in drape/runs.yaml (has: ${Object.keys(runs).join(', ')})`)
@@ -121,6 +133,7 @@ export function drape(design, { name, options: extra = {}, entry, upTo, set } = 
   const exportArgs = ['tools/drape-export.mjs', design, r.size, outlines, '--pieces', r.pieces.join(','), '--options', JSON.stringify({ ...r.options, ...extra })]
   if (r.clip) exportArgs.push('--clip', pairs(r.clip))
   if (r.split) exportArgs.push('--split', pairs(r.split))
+  if (r.clipY) exportArgs.push('--clipy', pairs(r.clipY))
   if (r.measurements) exportArgs.push('--m', pairs(r.measurements))
   if (r.prefix) exportArgs.push('--prefix', r.prefix)
   console.log(stage('export', () => run(process.execPath, exportArgs, { timeout: TIMEOUT.step })).trim())
@@ -155,6 +168,7 @@ export function drape(design, { name, options: extra = {}, entry, upTo, set } = 
     const turn = armT.angle - armRef.angle
     const scaled = structuredClone(config)
     for (const p of Object.values(scaled.pieces)) {
+      if (p.follow) continue // placed from the piece it sews to (tools/drape_spec.py)
       const [x, y, z] = p.translation
       if (p.rotation?.[2]) {
         // A sleeve: keep its offset from the arm's line as on the config's body, spaced by the
@@ -220,6 +234,28 @@ export function drape(design, { name, options: extra = {}, entry, upTo, set } = 
   })
   result.renders = ['front', 'back'].map((v) => join('out', 'drape', name, `${name}_render_${v}.png`).replace(/\\/g, '/'))
 
+  // 6. Optional: a lit render in Blender (tools/drape_render.py), a few minutes on the GPU
+  // A render that fails doesn't fail the drape: the check above stands, the error is in result.json
+  if (blender) {
+    const dir = logDir.replace(/^\/data/, h.dir)
+    const views = ['front', 'three-quarter', 'back']
+    try {
+      const exe = blenderPath()
+      stage('blender', () => {
+        h.put(join(HERE, 'drape_render.py'))
+        h.sh(`docker exec ${container} cat /opt/garmentcode/assets/bodies/${body}.obj > ${dir}/body.obj`)
+        const color = r.renderColor ? ` --color ${r.renderColor}` : ''
+        // Buttons and overlap edges from the drafting (tools/drape_spec.py), on the drape
+        const trims = ` --rest ${dir}/${name}_boxmesh.obj --decals ${h.dir}/ps/${name}/${name}_decals.json`
+        h.sh(`${exe} -b -P ${h.dir}/drape_render.py -- ${dir}/${name}_sim.obj ${dir}/body.obj ${dir}/${name}_blender${color}${trims} > ${dir}/blender.log 2>&1 || (tail -20 ${dir}/blender.log; exit 1)`, TIMEOUT.sim)
+        for (const v of views) h.get(`${logDir}/${name}_blender_${v}.png`, out)
+      })
+      result.blender = views.map((v) => join('out', 'drape', name, `${name}_blender_${v}.png`).replace(/\\/g, '/'))
+    } catch (e) {
+      result.blenderError = e.message
+    }
+  }
+
   const flagged = Object.entries(result.inside.regions).filter(([region, s]) => region !== 'wrist/hand' && s.deepest > DEPTH_LIMIT)
   result.verdict = flagged.length ? 'REVIEW' : 'OK'
   result.flagged = Object.fromEntries(flagged)
@@ -231,7 +267,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2)
   const flag = (f) => (args.includes(f) ? args[args.indexOf(f) + 1] : undefined)
   try {
-    const r = drape(args[0], { name: flag('--name'), set: flag('--set'), options: JSON.parse(flag('--options') ?? '{}') })
+    const r = drape(args[0], { name: flag('--name'), set: flag('--set'), options: JSON.parse(flag('--options') ?? '{}'), blender: args.includes('--blender') })
     const g = r.garmentcode
     console.log(`\n${r.design} on ${r.body} (drafted at ${r.size}): ${r.verdict}`)
     console.log(`  GarmentCode: ${g.intersections} body-cloth intersections (its limit 35), ${g.selfIntersections} self-intersections, ${g.frames} frames`)
@@ -240,6 +276,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       console.log(`  inside the body: ${String(s.count).padStart(4)} at ${region}, deepest ${s.deepest} cm${mark}`)
     }
     console.log(`  renders: ${r.renders.join(', ')}`)
+    if (r.blender) console.log(`  Blender: ${r.blender.join(', ')}`)
+    if (r.blenderError) console.log(`  Blender failed: ${r.blenderError}`)
     process.exit(r.verdict === 'OK' ? 0 : 2)
   } catch (e) {
     console.error(e.message)

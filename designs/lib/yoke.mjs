@@ -461,10 +461,11 @@ export function neckBandPart({ name, after, nr }) {
       const target = b.neck + f.neck + (b.ext + f.ext) / 2
       // With the opening at the back, the ends meet there and the fold is at the front
       const fold = options.opening === 'back' ? 'front' : 'cb'
+      const shoulder = b.neck + b.ext / 2
       if (options.neckFinish === 'collar') {
-        return draftCollar(sh, { target, spring: target * options.collarSpring, width: measurements.neck * options.collarWidth, point: 0, nr, fold })
+        return draftCollar(sh, { target, spring: target * options.collarSpring, width: measurements.neck * options.collarWidth, point: 0, nr, fold, shoulder })
       }
-      return draftCollar(sh, { target, spring: target * 0.05, width: measurements.neck * options.bandHeight, point: 0, nr, fold })
+      return draftCollar(sh, { target, spring: target * 0.05, width: measurements.neck * options.bandHeight, point: 0, nr, fold, shoulder })
     },
   }
 }
@@ -558,7 +559,7 @@ export function sleeveBandPart({ name, after, nr }) {
   return {
     name,
     after,
-    draft: ({ paths, Path, Point, store, sa, macro, options, measurements, snippets, Snippet, part }) => {
+    draft: ({ points, paths, Path, Point, store, sa, macro, options, measurements, snippets, Snippet, part }) => {
       // A plain hemmed sleeve (`sleeveFinish: hem`, a design option) has no band
       if (options.sleeves === 'none' || ('sleeveFinish' in options && options.sleeveFinish === 'hem')) {
         macro('rmtitle')
@@ -574,6 +575,19 @@ export function sleeveBandPart({ name, after, nr }) {
       }
       paths.seam = new Path().move(new Point(L, 0)).line(new Point(0, 0)).line(new Point(0, W)).line(new Point(L, W)).close().addClass('fabric')
       paths.fold = new Path().move(new Point(0, W / 2)).line(new Point(L, W / 2)).addClass('help dashed')
+      // Where the band meets the sleeve, along its sewn edge (y 0) and on the fold (y W/2): the
+      // lap's end and the band's far end meet at the opening; from the opening (a quarter of the
+      // hem from the underarm seam) the band reaches the underarm seam after a quarter of its
+      // length and the middle of the sleeve, over the arm, after three quarters. With no opening
+      // it starts and ends at the underarm seam
+      const at = (id, x) => {
+        points[id] = new Point(x, 0)
+        points[`${id}Fold`] = new Point(x, W / 2)
+      }
+      at('lapEnd', lap)
+      at('bandEnd', L)
+      at('underarm', lap ? lap + s.band * 0.25 : 0)
+      at('overarm', lap ? lap + s.band * 0.75 : s.band / 2)
       if (sa) paths.sa = paths.seam.offset(sa).addClass('fabric sa')
       store.cutlist.setCut({ cut: 2, from: 'fabric' })
       title(macro, { at: new Point(L * 0.3, W * 0.3), nr, title: 'sleeveBand', scale: 0.25 })

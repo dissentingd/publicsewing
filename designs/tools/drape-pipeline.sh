@@ -21,6 +21,8 @@ export PATH="$BASE/node/bin:$PATH"
 export DRAPE_HOST=local
 export DRAPE_DATA="${DRAPE_DATA:-$HOME/custom-clothing/docker/data}"
 export PYTHON="${PYTHON:-python3}"
+# Blender for --blender (the site renders; ~/blender, unpacked from an official mirror)
+export DRAPE_BLENDER="${DRAPE_BLENDER:-$HOME/blender/blender-4.2.23-linux-x64/blender}"
 mkdir -p "$BASE"
 
 setup() {

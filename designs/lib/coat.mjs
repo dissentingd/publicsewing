@@ -776,9 +776,10 @@ export function backLiningPart({ name, from, after, nr, pleat, width, enabled = 
  * fall are two collars); under any other key than `coat.collar` its outer edge's length is
  * stored too, as `outer`, for the collar sewn to it. `title`: the part's title. `fold: 'front'`
  * (a garment opening at the back; `point` 0): cut on the fold at the front end instead, the CB
- * end open with an allowance, so that the collar opens with the garment.
+ * end open with an allowance, so that the collar opens with the garment. `shoulder`: the back
+ * neck's length; names `shoulderNeck`, where the neck edge meets the shoulder seam.
  */
-export function draftCollar(sh, { target, spring, width, point, nr = 4, key = 'coat.collar', title: label = 'collar', fold = 'cb' }) {
+export function draftCollar(sh, { target, spring, width, point, nr = 4, key = 'coat.collar', title: label = 'collar', fold = 'cb', shoulder }) {
   const { points, paths, Path, Point, store, sa, macro, part } = sh
   const atFront = fold === 'front'
   // Square to a fold at the front, or the cut piece would come to a shallow V there
@@ -794,6 +795,8 @@ export function draftCollar(sh, { target, spring, width, point, nr = 4, key = 'c
     if (Math.abs(delta) < 0.2) break
     span -= delta
   }
+  // `shoulder`: the back neck's length, so the neck edge names where it meets the shoulder seam
+  if (shoulder) points.shoulderNeck = paths.neck.shiftAlong(Math.min(shoulder, paths.neck.length() - 1))
   points.cbOuter = new Point(0, spring + width)
   points.tip = new Point(span + point, width)
   points.cbOuterCp = points.cbOuter.shift(0, span * 0.5)
