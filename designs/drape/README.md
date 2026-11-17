@@ -51,6 +51,29 @@ specification, simulates it on the GPU host, fetches the front and back renders 
   run (GarmentCode releases it after 400 frames by default). A labelled run is written as one
   edge: GarmentCode labels only the vertices it meshes inside an edge.
 
+## Rendered in Blender, for the site (2026-11-17)
+`node tools/drape.mjs <design> --blender` (or the pipeline's `--blender`, on each design's
+average body) also renders the drape lit in Blender with [`tools/drape_render.py`](../tools/drape_render.py):
+front, three-quarter and back, as `out/drape/<name>/<name>_blender_*.png`. It's artwork for the
+site, not part of the check: a render that fails leaves the verdict as it is and its error in
+`result.json`.
+- **Blender** (4.2 LTS, about 2.5 minutes for the three views on a GTX 1650) on the GPU host:
+  `DRAPE_BLENDER`, or `blender` in `drape/local.json`. Blender runs as a separate program.
+- **The cloth's colour:** `renderColor: r,g,b` (linear, 0 to 1) in the design's runs.yaml entry.
+- **Buttons and a front's overlap edge** come from the drafting: tools/drape-export.mjs exports
+  the pattern's button marks and what a clip cuts off at CF; tools/drape_spec.py turns them into
+  `<name>_decals.json` on the flat starting pattern, and the render carries each point to the
+  drape through its triangle (the starting and draped meshes have the same vertices). A button
+  cut off with a cuff's lap is drawn at its buttonhole, where it sits once buttoned.
+- **Trims** (collars, cuffs) sew on as pieces. They're cut at the drafting's own points (a
+  collar's `shoulderNeck`, a cuff's `lapEnd`, `underarm`, `overarm` and their `…Fold`;
+  `--clipy` and a split at several points, `cuff=underarm/overarm`) and placed from the piece
+  they sew to (`follow: {piece, at: [own point, its point], offset, clear}` in a config, where
+  `offset` and `clear` only space them for the simulation's start). The trial is
+  [`bodice-trims.yaml`](bodice-trims.yaml) (the shirtwaist dress), not yet in runs.yaml: its
+  front collar, cuffs and buttons drape well, but its back collar bunches against the neck
+  instead of lying turned down.
+
 ## At a size set, on a matched body (2026-11-10)
 `node tools/drape.mjs <design> --set <size set>` drafts the design at that set's own
 measurements and drapes it on the nearest of GarmentCodeData v2's 5000 body shapes (ETH Zurich,

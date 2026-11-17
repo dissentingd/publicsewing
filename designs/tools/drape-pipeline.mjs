@@ -4,7 +4,7 @@
 // Runs on the GPU host (Cloudbox) through tools/drape-pipeline.sh, or anywhere drape.mjs runs.
 //
 // Usage: node tools/drape-pipeline.mjs [design ...] [--mode new|regress|nightly] [--sets a,b|none]
-//          [--all] [--max N] [--hours H] [--llm] [--dry-run] [--redo] [--retry-skipped]
+//          [--all] [--max N] [--hours H] [--llm] [--dry-run] [--redo] [--retry-skipped] [--blender]
 //   design ...       only these (a draped design is draped again, a new one gets settings first)
 //   --mode           new (default): designs with a brief and no runs.yaml entry. regress: draped
 //                    designs a change since the last regression run may affect (a design's own
@@ -18,6 +18,9 @@
 //   --dry-run        settings and the quick check only (export + spec), no simulation
 //   --redo           new: try again designs the state file says are done
 //   --retry-skipped  new: try again designs skipped at this commit (by default they wait)
+//   --blender        also render each design lit in Blender on its average body (drape.mjs
+//                    --blender; about 2.5 minutes more each), for the site's artwork. Blender:
+//                    DRAPE_BLENDER (tools/drape-pipeline.sh sets Cloudbox's ~/blender)
 //
 // For each new design:
 //   1. Settings: a draped design's runs.yaml entry whose config's pieces and points are all
@@ -98,6 +101,7 @@ const opts = {
   dry: flag('--dry-run'),
   redo: flag('--redo'),
   retrySkipped: flag('--retry-skipped'),
+  blender: flag('--blender'),
 }
 if (!['new', 'regress', 'nightly'].includes(opts.mode)) throw new Error(`--mode is new, regress or nightly, not ${opts.mode}`)
 const drapeName = (design, set) => (set ? `${design}-${set}-pipeline` : `${design}-pipeline`)
@@ -359,7 +363,8 @@ async function simulate(design, entry, set) {
   let last
   for (let n = 1; n <= SIM_TRIES; n++) {
     try {
-      return { result: drape(design, { name: drapeName(design, set), entry, set }) }
+      // --blender: the lit render for the site, on the average body only
+      return { result: drape(design, { name: drapeName(design, set), entry, set, blender: opts.blender && !set }) }
     } catch (e) {
       last = e
       const host = e instanceof DrapeError ? ['upload', 'sim', 'inside', 'fetch'].includes(e.stage) : true
@@ -514,7 +519,9 @@ function report(rows, stopped) {
     ...rows.map((r) => {
       const g = r.result?.garmentcode
       const deep = r.result ? Object.entries(r.result.inside.regions).filter(([k]) => k !== 'wrist/hand').sort((a, b) => b[1].deepest - a[1].deepest)[0] : null
-      const renders = r.result ? r.result.renders.map((p, i) => `[${i ? 'back' : 'front'}](${rel(p)})`).join(' ') : ''
+      let renders = r.result ? r.result.renders.map((p, i) => `[${i ? 'back' : 'front'}](${rel(p)})`).join(' ') : ''
+      if (r.result?.blender) renders += `; Blender ${r.result.blender.map((p, i) => `[${['front', '¾', 'back'][i]}](${rel(p)})`).join(' ')}`
+      if (r.result?.blenderError) renders += `; Blender failed: ${firstLine(r.result.blenderError)}`
       const notes = [r.change ? `**${r.change}**` : '', r.reason ?? ''].filter(Boolean).join('. ')
       return `| ${r.design} | ${r.set ?? ''} | ${r.status} | ${r.source ?? ''} | ${g ? `${g.intersections} (self ${g.selfIntersections}, ${g.frames} frames)` : ''} | ${deep ? `${deep[1].deepest} cm (${deep[0]})` : ''} | ${renders} | ${notes.replace(/\|/g, '\\|').replace(/\n/g, ' ').slice(0, 300)} |`
     }),
