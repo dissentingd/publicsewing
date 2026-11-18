@@ -1,8 +1,6 @@
-# Salwar: inspired by the salwar with a belt in CBSE's Basic Pattern Development (2014), Practical 3
-# (methods and proportions only). Cut flat from straight lines, no block: each leg a straight centre
-# panel with a long tapering side panel (kali) on each side, the kalis' sloping edges forming the
-# inseam and their top inner edges the crotch seam, the whole top gathered into a belt with a
-# drawstring casing, the hem the narrow bottom of the centre panel. For any size. See BRIEF.md.
+# Salwar, inspired by CBSE's Basic Pattern Development (2014); methods and proportions only. Cut flat
+# from straight lines, no block: each leg a straight centre panel with a tapering side panel (kali) on
+# each side, the top gathered into a belt with a drawstring casing. For any size. See BRIEF.md.
 block: titan
 
 about:
@@ -14,33 +12,26 @@ about:
   tags: [bottoms]
   techniques: [gathering, casing, hem]
   version: 0.1.0
-  source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014), Practical 3, Salwar, pp. 73-75"
-  taken: panel layout and proportions # the design page: "its ... follow" the book
-  preview: cisFemaleAdult30 # CBSE's sample: hip 36, length 40, bottom 12
+  source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014)"
+  garmentTraditions: [punjab-patternmaking]
+  taken: panel layout and proportions
+  preview: cisFemaleAdult30
 
 options:
-  # Sample: length 40, round hip 36, round bottom 12 (CBSE's table), on cisFemaleAdult30 (seat 37,
-  # waist to floor 39.4, ankle 8.5)
   salwarLength: { pct: 96, min: 70, max: 100, of: waistToFloor, menu: style, title: Salwar length, description: "Length from the waist to the hem, as a share of the waist to the floor." } # ours: to the ankle
-  bottomWidth: { pct: 140, min: 115, max: 250, of: ankle, menu: style, title: Bottom width, description: "Round the hem, as a share of the ankle; wide enough for the foot to pass." } # 12 on 8 1/2
-  # The belt: "AB is 2"", "BC is 1/6th of round hip +1"" (7 on 36); its width from the layout's 10 in
-  # on 36 (a quarter of the hip and an inch, each half on the fold)
-  beltDepth: { pct: 19.4, min: 10, max: 30, of: seat, menu: style, title: Belt depth, description: "Depth of the belt below its casing, as a share of the seat." } # 7 / 36
-  casingDepth: { pct: 5.6, min: 3, max: 8, of: seat, menu: style, title: Casing depth, description: "Depth of the drawstring casing folded over at the top of the belt, as a share of the seat." } # 2 / 36
-  beltWidth: { pct: 27.8, min: 26, max: 40, of: seat, menu: fit, title: Belt width, description: "Half the width of each belt piece (front and back), as a share of the seat; the belt must go on over the hips." } # 10 / 36
-  # The side panel: "KM = 1/2 round hip or 1/2 fabric width"; "MN on fold, 1/3rd of length - BC";
-  # "NO = 3/4"", "LP = 3/4""
+  bottomWidth: { pct: 140, min: 115, max: 250, of: ankle, menu: style, title: Bottom width, description: "Round the hem, as a share of the ankle; wide enough for the foot to pass." }
+  beltDepth: { pct: 19.4, min: 10, max: 30, of: seat, menu: style, title: Belt depth, description: "Depth of the belt below its casing, as a share of the seat." }
+  casingDepth: { pct: 5.6, min: 3, max: 8, of: seat, menu: style, title: Casing depth, description: "Depth of the drawstring casing folded over at the top of the belt, as a share of the seat." }
+  beltWidth: { pct: 27.8, min: 26, max: 40, of: seat, menu: fit, title: Belt width, description: "Half the width of each belt piece (front and back), as a share of the seat; the belt must go on over the hips." }
   kaliWidth: { pct: 50, min: 30, max: 130, of: seat, menu: style, title: Side panel width, description: "Width of each side panel (kali) at the waist, as a share of the seat; more makes a fuller salwar." }
   crotchShare: { pct: 33.3, min: 25, max: 45, menu: advanced, title: Crotch depth, description: "How far down the side panels' inner edges the crotch seam runs, as a share of the length below the belt." }
-  kaliPoint: { pct: 2.1, min: 1, max: 5, of: seat, menu: advanced, title: Side panel point, description: "Width of each side panel at its narrow end, as a share of the seat." } # 3/4 / 36
+  kaliPoint: { pct: 2.1, min: 1, max: 5, of: seat, menu: advanced, title: Side panel point, description: "Width of each side panel at its narrow end, as a share of the seat." }
 
 pieces:
   layout:
     from: titan.back
     hide: { self: true, from: true, inherited: true }
     options: all
-  # GHIJ: "GH = Full length - BC", "GI = 1/2 of the bottom hem" (less CBSE's 3/4 in seams: the pattern
-  # adds its own), on the fold; cut 2
   centrePanel:
     part: polygon
     after: layout
@@ -55,8 +46,6 @@ pieces:
     allowance: [1, 1, 3, 0]
     fold: 3
     lines: [[[w * 0.1, 15], [w * 0.9, 15]]] # gather the top
-  # MKLPON: KM the width, KL the centre panel's length, MN the crotch seam, NO and LP the points; the
-  # rectangle KMRQ cut on the diagonal O-P gives two such panels, so a doubled cut gives four
   kali:
     part: polygon
     after: layout
@@ -73,7 +62,6 @@ pieces:
     allowance: [1, 1, 1, 3, 1, 1]
     notches: [[0, m]]
     lines: [[[k * 0.1, 15], [k * 0.9, 15]]] # gather the top
-  # ACDF: "AC on fold", AB the casing, BC the belt; cut 2 (front and back)
   belt:
     part: polygon
     after: layout
@@ -94,6 +82,5 @@ pieces:
 variants:
   patiala:
     name: Patiala salwar
-    description: "CBSE's Patiala variation: the side panels cut from the full width of a 45 inch fabric instead of half the hip, for a much fuller salwar falling in deep folds."
-    # "the side panel or kali is cut on fabric i.e. 45" in width": KM = 22 1/2 on a 36 hip
+    description: "Much wider side panels, for a fuller salwar falling in deep folds."
     options: { kaliWidth: 0.625 }

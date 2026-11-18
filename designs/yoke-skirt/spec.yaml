@@ -1,6 +1,5 @@
-# Yoke skirt: Aldrich's yoked skirt with gores (Metric Pattern Cutting for Women's Wear, 6th ed.,
-# 2015, "Waistline adaptations: yokes", 5), used for its construction and proportions only. On
-# FreeSewing's Sarah, itself drafted after Aldrich's skirt block: the waist darts carried to a yoke
+# Yoke skirt, inspired by Aldrich (Metric Pattern Cutting for Women's Wear, 6th ed., 2015); methods
+# and proportions only. On FreeSewing's Sarah: the waist darts carried to a yoke
 # line and closed in the front and back yokes, four gores a side below, each edge flared from
 # halfway down, a left side zip and a waistband. See BRIEF.md.
 block: sarah
@@ -14,19 +13,19 @@ about:
   tags: [bottoms]
   techniques: [zip, waistband, hem]
   version: 0.1.0
-  source: Winifred Aldrich, Metric Pattern Cutting for Women's Wear, 6th ed. (Wiley, 2015), yoked skirt with gores, p. 41
+  source: Winifred Aldrich, Metric Pattern Cutting for Women's Wear, 6th ed. (Wiley, 2015)
   taken: dart-closing yoke and flared gores # the design page: "its ... follow" the book
   preview: cisFemaleAdult36
 
 options:
-  hipYokeDepth: { pct: 65, min: 35, max: 90, menu: style } # x waist to seat: the yoke line, at the shaped yoke's middle depth
-  goreEdgeFlare: { pct: 7.5, min: 0, max: 20, of: seat, menu: style } # each gore edge at the hem: 7 cm on a 94 cm hip
-  flareFrom: { pct: 50, min: 25, max: 80, menu: style } # x the length: the balance points halfway down
+  hipYokeDepth: { pct: 65, min: 35, max: 90, menu: style } # x waist to seat: the yoke line
+  goreEdgeFlare: { pct: 7.5, min: 0, max: 20, of: seat, menu: style } # each gore edge at the hem
+  flareFrom: { pct: 50, min: 25, max: 80, menu: style } # x the length: where the flare starts
   zipLength: { pct: 90, min: 60, max: 120, menu: style } # x waist to seat, down the left side seam
   waistbandHeight: { pct: 3, min: 2, max: 6, of: waistToFloor, menu: style } # finished
   # Sarah's own: the length, and her straight skirt's darts and side seams, which the yoke and gores
   # replace (no menu: not shown)
-  length: { pct: 90, min: 40, max: 100, menu: style } # x waist to floor: long, as Aldrich's figure
+  length: { pct: 90, min: 40, max: 100, menu: style } # x waist to floor: long
   centerFrontSeam: { bool: false }
   centerBackSeam: { bool: false }
   waistEaseFront: { pct: 10, min: 0, max: 20 }

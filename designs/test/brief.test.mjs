@@ -33,6 +33,19 @@ for (const d of designs) {
   })
 }
 
+// Armstrong's, Aldrich's and CBSE's books are in copyright: their designs' public text is our own (CONTRIBUTING.md, Step 9)
+for (const d of designs) {
+  const spec = readFileSync(new URL(`${d}/spec.yaml`, root), 'utf8')
+  const source = spec.match(/^  source:.*$/m)?.[0] ?? ''
+  if (!/Joseph-Armstrong|Winifred Aldrich|Central Board of Secondary Education/.test(source)) continue
+  test(`${d}: public text from an in-copyright source is our own`, () => {
+    const brief = readFileSync(new URL(`${d}/BRIEF.md`, root), 'utf8')
+    assert.match(brief, /^## What we took/m)
+    assert.doesNotMatch(brief, /^## What the source/m)
+    assert.doesNotMatch(brief + source, /\bPDF pp?\b|\bpp?\. ?\d/, 'no page references')
+  })
+}
+
 test('brief exemptions name real designs', () => {
   assert.deepEqual(Object.keys(exempt).filter((d) => !designs.includes(d)), [])
 })

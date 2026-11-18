@@ -57,10 +57,13 @@ for (const id of ids) {
   for (const key of keys) if (!traditions[key]) throw new Error(`${id}: no garment tradition ${key}`)
 }
 for (const id of Object.keys(designTraditions)) if (!specs[id]) throw new Error(`no built design ${id} in design-traditions.yaml`)
+// A tradition shows one flag (`flag`) or several side by side (`flags`, for one shared across borders)
+const flagsOf = (t) => t.flags ?? (t.flag ? [t.flag] : [])
 for (const [key, tradition] of Object.entries(traditions)) {
-  if (!tradition.flag) throw new Error(`${key}: tradition needs an icon before appearing on the site`)
-  if (tradition.flag && !existsSync(out('static', 'img', 'flags', `${tradition.flag}.svg`)))
-    throw new Error(`${key}: no flag icon ${tradition.flag}.svg`)
+  tradition.flags = flagsOf(tradition)
+  if (!tradition.flags.length) throw new Error(`${key}: tradition needs an icon before appearing on the site`)
+  for (const flag of tradition.flags)
+    if (!existsSync(out('static', 'img', 'flags', `${flag}.svg`))) throw new Error(`${key}: no flag icon ${flag}.svg`)
 }
 for (const [source, keys] of Object.entries(sourceTraditions))
   for (const key of keys) if (!traditions[key]) throw new Error(`${source}: no tradition ${key}`)
@@ -321,8 +324,8 @@ const srcTag = (text, href, kind = 'source') => `<a className="src-tag src-tag--
 const tagLine = (...tags) => tags.filter(Boolean).join(' ')
 const traditionTag = (key) => {
   if (!key) return ''
-  const { flag, label } = traditions[key]
-  return `<span className="tradition-tag" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}">${flag ? `<img src={useBaseUrl('/img/flags/${flag}.svg')} alt="" />` : ''}</span>`
+  const { flags, label } = traditions[key]
+  return `<span className="tradition-tag" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}">${flags.map((flag) => `<img src={useBaseUrl('/img/flags/${flag}.svg')} alt="" />`).join('')}</span>`
 }
 const traditionKeys = (id, about) => {
   const keys = new Set([...(designTraditions[id] ?? []), ...(about.garmentTraditions ?? (about.garmentTradition ? [about.garmentTradition] : []))])

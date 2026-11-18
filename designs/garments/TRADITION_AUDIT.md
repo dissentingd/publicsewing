@@ -24,6 +24,12 @@ Three designs have a specific source tradition in their briefs:
 | `anorak` | US tactical smock | Its cited Open+Pattern source uses that name; official issue is not established. |
 | `jumpsuit` | Thayaht's TuTa, Florence 1920 | The brief and Uffizi Galleries identify the specific design. |
 
+Three South Asian designs built 2026-11-15, the `salwar`, `kameez` and `churidar`, carry the
+**Punjab patternmaking tradition** (maintainer's decision, 2026-11-16), shown with both the India
+and Pakistan flags: the salwar kameez came from the Punjab, which is split between the two
+countries, and no single flag stands for the region. Their cited source, CBSE's *Basic Pattern
+Development* (Delhi, 2014), is credited on the Sources page.
+
 Six named styles have an initial garment-tradition association. Their briefs establish the
 garment name and construction; the national association is a first-pass classification to
 check against garment-history sources before adding more detailed period or community claims.

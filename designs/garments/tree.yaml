@@ -50,7 +50,7 @@ nodes:
   shell-top: { name: Shell top, parent: blouses, traits: [body-darted-bodice, neck-round, sleeveless], designs: [shell-top], variants: [shell-top.square] }
   smock-top: { name: Smock, parent: blouses, traits: [body-yoke, yoke-front, gathers, sleeve-gathered, cuff-band], designs: [childrens-smock] }
   choli-t: { name: Choli (saree blouse), parent: blouses, traits: [body-darted-bodice, sleeve-short, closure-buttons], note: "Queue 56, inspired by CBSE" }
-  kameez-t: { name: Kameez and kurta, parent: blouses, traits: [body-yoke, neck-split, hem-side-slits, sleeve-set-in], designs: [kameez], variants: [kameez.straight, kameez.long-sleeves], note: "Fitted kameez and kalidar kurta: queue 54b, 54c" }
+  kameez-t: { name: Kameez and kurta, parent: blouses, traits: [body-yoke, neck-split, hem-side-slits, sleeve-set-in], designs: [kameez, fitted-kameez, kalidar-kurta], variants: [kameez.straight, kameez.long-sleeves, fitted-kameez.kurti, fitted-kameez.long-sleeves, kalidar-kurta.short, kalidar-kurta.long-sleeves] }
   jeogori: { name: Jeogori, parent: blouses, research: true }
   huipil: { name: Community-specific huipil, parent: blouses, research: true, note: "Identify community and region; document weaving and assembly separately" }
   unku: { name: Community-specific unku, parent: blouses, research: true }
@@ -161,7 +161,7 @@ nodes:
   cargo: { name: Cargo trousers, parent: trousers, traits: [leg-tailored, pleats-trouser, pocket-cargo, closure-fly, waistband], designs: [field-trousers] }
   sailor-trousers: { name: Sailor trousers, parent: trousers, traits: [leg-in-one, leg-flared, closure-fall-front], designs: [sailor-pants] }
   womens-trousers-t: { name: Women's trousers, parent: trousers, traits: [leg-tailored, darts, closure-side-opening, waistband], designs: [womens-trousers], variants: [womens-trousers.pleated] }
-  wide-leg: { name: Wide-leg (palazzo) trousers, parent: trousers, traits: [leg-tailored, waist-faced, closure-zip-back], note: "Queue M12" }
+  wide-leg: { name: Wide-leg (palazzo) trousers, parent: trousers, traits: [leg-tailored, waist-faced, closure-zip-back], note: "The wide-leg variant of womens-trousers" }
   drawstring-trousers: { name: Drawstring trousers, parent: trousers, traits: [leg-gathered, waist-drawstring, pocket-on-seam], freesewing: [paco] }
   salwar-t: { name: Salwar, parent: trousers, traits: [leg-gathered, waist-drawstring], designs: [salwar], variants: [salwar.patiala] }
   churidar-t: { name: Churidar, parent: trousers, traits: [body-bias, waist-drawstring, leg-gathered], designs: [churidar] }
