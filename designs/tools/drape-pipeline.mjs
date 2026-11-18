@@ -55,7 +55,7 @@ import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parse, stringify } from 'yaml'
 import { drape, DrapeError } from './drape.mjs'
-import { polyline } from './drape-export.mjs'
+import { latestParts, polyline } from './drape-export.mjs'
 import { loadDesign, measurementSet } from './render.mjs'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
@@ -177,6 +177,8 @@ async function partsOf(d, options = {}, size = 'cisMaleAdult38') {
     const outline = polyline(part.paths.seam)
     parts[full] = Object.entries(part.points).filter(([, p]) => outline.some((q) => Math.hypot(q.x - p.x, q.y - p.y) < 1e-6)).map(([id]) => id)
   }
+  // Prefix *: each piece's current part, for designs whose pieces come from several ancestors
+  for (const [name, full] of Object.entries(latestParts(pattern))) parts[`*.${name}`] = parts[full]
   return parts
 }
 

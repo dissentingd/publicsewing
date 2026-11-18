@@ -1,0 +1,32 @@
+# Drape a dress with kimono sleeves cut in one with the bodice, over a skirt, on GarmentCode's female
+# average body: bodices cut at CF and CB, sewn over the shoulder and arm and under the arm, the
+# skirts sewn to them at the waist. The collar is left off. c0, c1, ... are a bodice's seam
+# vertices in drawing order: c1 waist at the side, c2 and c3 up the side to the underarm, c4 the
+# sleeve's lower hem, c5 its upper hem, c6 and c7 back along the top of the arm. Placement as
+# bodice.yaml.
+body: f_smpl_average_A40
+pieces:
+  backBodice: {origin: [backBodice.clipTop, backBodice.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -15]}
+  backSkirt: {origin: [backSkirt.topFold, backBodice.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -17]}
+  frontBodice: {origin: [frontBodice.clipTop, frontBodice.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 19]}
+  frontSkirt: {origin: [frontSkirt.topFold, frontBodice.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 21]}
+seams:
+  centre_back_bodice: {a: [{piece: backBodice, along: [backBodice.clipTop, backBodice.clipBottom]}], mirror: true}
+  centre_back: {a: [{piece: backSkirt, along: [backSkirt.topFold, backSkirt.hemFold]}], mirror: true}
+  centre_front_bodice: {a: [{piece: frontBodice, along: [frontBodice.clipTop, frontBodice.clipBottom]}], mirror: true}
+  centre_front: {a: [{piece: frontSkirt, along: [frontSkirt.topFold, frontSkirt.hemFold]}], mirror: true}
+  over_arm:
+    a: [{piece: backBodice, along: [backBodice.hps, backBodice.c7, backBodice.c6, backBodice.c5]}]
+    b: [{piece: frontBodice, along: [frontBodice.hps, frontBodice.c7, frontBodice.c6, frontBodice.c5]}]
+  under_arm:
+    a: [{piece: backBodice, along: [backBodice.seamArm, backBodice.c2, backBodice.c3, backBodice.c4]}]
+    b: [{piece: frontBodice, along: [frontBodice.seamArm, frontBodice.c2, frontBodice.c3, frontBodice.c4]}]
+  back_waist:
+    a: [{piece: backBodice, along: [backBodice.clipBottom, backBodice.seamArm]}]
+    b: [{piece: backSkirt, along: [backSkirt.topFold, backSkirt.yokeSide]}]
+  front_waist:
+    a: [{piece: frontBodice, along: [frontBodice.clipBottom, frontBodice.seamArm]}]
+    b: [{piece: frontSkirt, along: [frontSkirt.topFold, frontSkirt.yokeSide]}]
+  side:
+    a: [{piece: backSkirt, along: [backSkirt.sideTop, backSkirt.hemSide]}]
+    b: [{piece: frontSkirt, along: [frontSkirt.sideTop, frontSkirt.hemSide]}]

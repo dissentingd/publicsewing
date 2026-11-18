@@ -1,0 +1,18 @@
+# Drape a skirt of straight breadths (the gathered skirt) on GarmentCode's female average body:
+# front and back, each a quarter of the skirt on the fold at CF or CB (x 0), sewn at the side. The
+# waistband and placket are left off: the top edge is labelled `lower_interface`, which the
+# simulator pins at the body's waist level and so gathers (holdWaist in runs.yaml). c0 ... c3 are
+# the breadth's corners in drawing order: top at the fold, top at the side, hem at the side, hem
+# at the fold.
+body: f_smpl_average_A40
+pieces:
+  front: {origin: front.c0, map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 102, 22]}
+  back: {origin: back.c0, map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 102, -22]}
+seams:
+  centre_front: {a: [{piece: front, along: [front.c0, front.c3]}], mirror: true}
+  centre_back: {a: [{piece: back, along: [back.c0, back.c3]}], mirror: true}
+  side:
+    a: [{piece: front, along: [front.c1, front.c2]}]
+    b: [{piece: back, along: [back.c1, back.c2]}]
+labels:
+  lower_interface: [{piece: front, along: [front.c0, front.c1]}, {piece: back, along: [back.c0, back.c1]}]

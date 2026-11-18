@@ -123,6 +123,17 @@ export function draftSuitBody(sh, args) {
     armBackR: P(xR - SLASH, 0), slashR: P(xR, D), armFrontR: P(xR + SLASH, 0), neckFrontR: P(W - nh, 0),
   })
 
+  // Where the right half's seams start and end, for what sews to them (the drapes)
+  const gusset = args.sleeve.gusset
+  const slitLen = Math.hypot(SLASH, D)
+  Object.assign(points, {
+    cbTop: P(xC, 0), crotchPoint: P(xC, crotch), slitHem: P(xC + taper, T), sideHem: P(xR, T), hemCf: P(W, T),
+    frontCrotch: P(W, frontCrotch), cfNeck: P(W, nd), neckFront: P(W - nh, 0), neckBack: P(xC + nh, 0),
+    shoulderFront: P(xR + SLASH, 0), shoulderBack: P(xR - SLASH, 0), armTip: P(xR, D),
+    slitFront: P(xR + (SLASH * gusset) / slitLen, D - (D * gusset) / slitLen),
+    slitBack: P(xR - (SLASH * gusset) / slitLen, D - (D * gusset) / slitLen),
+  })
+
   if (sa) {
     // The allowance round the outline without the slits (hems take `hem`), then each armhole
     // slashed down its centre to the point

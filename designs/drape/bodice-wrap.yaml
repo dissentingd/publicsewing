@@ -1,0 +1,53 @@
+# Drape a wrap dress with set-in sleeves, its fronts cut at CF so they sew closed, on GarmentCode's female average body (Bella's bodice). Facings, ties and zips are left off;
+# c0, c1, ... are a skirt panel's seam vertices in drawing order: CF or CB waist, the dart's left
+# top, tip and right top, side waist, side at the hip, side hem, centre hem.
+body: f_smpl_average_A40
+pieces:
+  back: {origin: [back.neckCb, back.neckPoint], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -15]}
+  front: {origin: [front.clipTop, front.neckPoint], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 19]}
+  skirtBack: {map: [[-1, 0], [0, -1]], ccw: false, follow: {piece: back, at: [skirtBack.c0, back.waistCenter], clear: 1.5}}
+  skirtFront: {map: [[-1, 0], [0, -1]], ccw: true, follow: {piece: front, at: [skirtFront.clipTop, front.clipBottom], clear: 1.5}}
+  sleevePlus: {origin: sleevePlus.clipTop, map: [[0, 1], [1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-21, 137, 10]}
+  sleeveMinus: {origin: sleeveMinus.clipTop, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-21, 137, -12]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.neckCb, back.waistCenter]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.clipTop, front.clipBottom]}], mirror: true}
+  skirt_cb: {a: [{piece: skirtBack, along: [skirtBack.c0, skirtBack.c7]}], mirror: true}
+  skirt_cf: {a: [{piece: skirtFront, along: [skirtFront.clipTop, skirtFront.clipBottom]}], mirror: true}
+  shoulder:
+    a: [{piece: back, along: [back.neckPoint, back.shoulder]}]
+    b: [{piece: front, along: [front.neckPoint, front.shoulder]}]
+  bust_dart:
+    a: [{piece: front, along: [front.bustDartTop, front.bustDartTip]}]
+    b: [{piece: front, along: [front.bustDartBottom, front.bustDartTip]}]
+  back_dart:
+    a: [{piece: back, along: [back.dartBottomLeft, back.dartTip]}]
+    b: [{piece: back, along: [back.dartBottomRight, back.dartTip]}]
+  front_dart:
+    a: [{piece: front, along: [front.waistDartLeft, front.waistDartTip]}]
+    b: [{piece: front, along: [front.waistDartRight, front.waistDartTip]}]
+  skirt_back_dart:
+    a: [{piece: skirtBack, along: [skirtBack.c1, skirtBack.c2]}]
+    b: [{piece: skirtBack, along: [skirtBack.c3, skirtBack.c2]}]
+  skirt_front_dart:
+    a: [{piece: skirtFront, along: [skirtFront.c1, skirtFront.c2]}]
+    b: [{piece: skirtFront, along: [skirtFront.c3, skirtFront.c2]}]
+  back_waist:
+    a: [{piece: back, along: [back.waistCenter, back.dartBottomLeft]}, {piece: back, along: [back.dartBottomRight, back.waistSide]}]
+    b: [{piece: skirtBack, along: [skirtBack.c0, skirtBack.c1]}, {piece: skirtBack, along: [skirtBack.c3, skirtBack.c4]}]
+  front_waist:
+    a: [{piece: front, along: [front.clipBottom, front.waistDartLeft]}, {piece: front, along: [front.waistDartRight, front.sideHem]}]
+    b: [{piece: skirtFront, along: [skirtFront.clipTop, skirtFront.c1]}, {piece: skirtFront, along: [skirtFront.c3, skirtFront.c4]}]
+  side:
+    a: [{piece: back, along: [back.armhole, back.waistSide]}, {piece: skirtBack, along: [skirtBack.c4, skirtBack.c5, skirtBack.c6]}]
+    b: [{piece: front, along: [front.armhole, front.bustDartTop]}, {piece: front, along: [front.bustDartBottom, front.sideHem]}, {piece: skirtFront, along: [skirtFront.c4, skirtFront.c5, skirtFront.c6]}]
+  armhole:
+    a: [{piece: back, along: [back.armhole, back.shoulder]}, {piece: front, along: [front.shoulder, front.armhole]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.capQ4, sleeveMinus.capQ3, sleeveMinus.clipTop]}, {piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.capQ2, sleevePlus.capQ1, sleevePlus.bicepsRight]}]
+    anchors: [[back.shoulder, sleeveMinus.clipTop]]
+  overarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.clipBottom]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.clipTop, sleeveMinus.clipBottom]}]
+  underarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.bicepsRight, sleevePlus.wristRight]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.wristLeft]}]

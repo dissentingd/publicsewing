@@ -1,0 +1,27 @@
+# Drape a princess-seamed jacket whose sleeves are cut in one with the side panels (the kimono
+# jacket) on GarmentCode's female average body. Collar and facings are left off. Placement as
+# jacket.yaml.
+body: f_smpl_average_A40
+pieces:
+  back: {origin: [back.cbNeck, back.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -15]}
+  sideBack: {origin: [back.cbNeck, back.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -17]}
+  front: {origin: [front.clipBottom, front.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 19]}
+  sideFront: {origin: [front.clipBottom, front.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 21]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.cbNeck, back.cbHem]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.clipTop, front.clipBottom]}], mirror: true}
+  back_princess:
+    a: [{piece: back, along: [back.seamTop, back.seamBust, back.seamWaist, back.hemSeam]}]
+    b: [{piece: sideBack, along: [sideBack.seamTop, sideBack.seamBust, sideBack.seamWaist, sideBack.hemSeam]}]
+  front_princess:
+    a: [{piece: front, along: [front.seamTop, front.seamBust, front.seamWaist, front.hemSeam]}]
+    b: [{piece: sideFront, along: [sideFront.seamTop, sideFront.seamBust, sideFront.seamWaist, sideFront.hemSeam]}]
+  side:
+    a: [{piece: sideBack, along: [sideBack.underarm, sideBack.waist, sideBack.hemSide]}]
+    b: [{piece: sideFront, along: [sideFront.underarm, sideFront.waist, sideFront.hemSide]}]
+  over_arm:
+    a: [{piece: back, along: [back.hps, back.seamTop]}, {piece: sideBack, along: [sideBack.seamTop, sideBack.wristOver]}]
+    b: [{piece: front, along: [front.hps, front.seamTop]}, {piece: sideFront, along: [sideFront.seamTop, sideFront.wristOver]}]
+  under_arm:
+    a: [{piece: sideBack, along: [sideBack.underarm, sideBack.wristUnder]}]
+    b: [{piece: sideFront, along: [sideFront.underarm, sideFront.wristUnder]}]

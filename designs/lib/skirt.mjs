@@ -171,6 +171,11 @@ export function gorePart({ name, after, index, nr, label, zip = () => 0, pleat =
       // Counter-clockwise on the page: the waist right to left, down the left edge, the hem,
       // up the right edge; so offsets go outward
       paths.seam = waist.join(L).join(hemP).join(R.reverse()).close().addClass('fabric')
+      // The gore's corners, for what sews to them (the drapes)
+      points.topLeft = L.start()
+      points.topRight = R.start()
+      points.hemLeft = L.end()
+      points.hemRight = R.end()
       if (sa) {
         const parts = [waist.offset(sa), L.offset(sa), hemP.offset(hem), right.fold ? R.reverse() : R.reverse().offset(sa)]
         let out = null

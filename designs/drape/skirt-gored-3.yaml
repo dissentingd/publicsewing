@@ -1,0 +1,17 @@
+# skirt-gored.yaml with 3 gores (the front panel on the fold and 1 pair), for two-piece-skirt: the same
+# seams and placement; see that file. Export:
+#   node tools/drape-export.mjs two-piece-skirt cisFemaleAdult34 out.json --prefix '*' --pieces frontPanel,gore1
+body: f_smpl_average_A40
+pieces:
+  frontPanel: {origin: frontPanel.topRight, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.topRight, cb: gore1.topLeft, y: 102, rx: 26, rz: 22}}
+  gore1: {origin: gore1.topRight, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.topRight, cb: gore1.topLeft, y: 102, rx: 26, rz: 22}}
+seams:
+  centre_front: {a: [{piece: frontPanel, along: [frontPanel.topRight, frontPanel.hemRight]}], mirror: true}
+  seam1:
+    a: [{piece: frontPanel, along: [frontPanel.topLeft, frontPanel.hemLeft]}]
+    b: [{piece: gore1, along: [gore1.topRight, gore1.hemRight]}]
+  centre_back: {a: [{piece: gore1, along: [gore1.topLeft, gore1.hemLeft]}], mirror: true}
+labels:
+  lower_interface:
+    - {piece: frontPanel, along: [frontPanel.topRight, frontPanel.topLeft]}
+    - {piece: gore1, along: [gore1.topRight, gore1.topLeft]}

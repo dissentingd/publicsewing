@@ -1,0 +1,37 @@
+# skirt-gored.yaml with 11 gores (the front panel on the fold and 5 pairs), for pleated-skirt: the same
+# seams and placement; see that file. Export:
+#   node tools/drape-export.mjs pleated-skirt cisFemaleAdult34 out.json --prefix '*' --pieces frontPanel,gore1,gore2,gore3,gore4,gore5
+body: f_smpl_average_A40
+pieces:
+  frontPanel: {origin: frontPanel.topRight, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.topRight, cb: gore5.topLeft, y: 102, rx: 26, rz: 22}}
+  gore1: {origin: gore1.topRight, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.topRight, cb: gore5.topLeft, y: 102, rx: 26, rz: 22}}
+  gore2: {origin: gore2.topRight, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.topRight, cb: gore5.topLeft, y: 102, rx: 26, rz: 22}}
+  gore3: {origin: gore3.topRight, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.topRight, cb: gore5.topLeft, y: 102, rx: 26, rz: 22}}
+  gore4: {origin: gore4.topRight, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.topRight, cb: gore5.topLeft, y: 102, rx: 26, rz: 22}}
+  gore5: {origin: gore5.topRight, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.topRight, cb: gore5.topLeft, y: 102, rx: 26, rz: 22}}
+seams:
+  centre_front: {a: [{piece: frontPanel, along: [frontPanel.topRight, frontPanel.hemRight]}], mirror: true}
+  seam1:
+    a: [{piece: frontPanel, along: [frontPanel.topLeft, frontPanel.hemLeft]}]
+    b: [{piece: gore1, along: [gore1.topRight, gore1.hemRight]}]
+  seam2:
+    a: [{piece: gore1, along: [gore1.topLeft, gore1.hemLeft]}]
+    b: [{piece: gore2, along: [gore2.topRight, gore2.hemRight]}]
+  seam3:
+    a: [{piece: gore2, along: [gore2.topLeft, gore2.hemLeft]}]
+    b: [{piece: gore3, along: [gore3.topRight, gore3.hemRight]}]
+  seam4:
+    a: [{piece: gore3, along: [gore3.topLeft, gore3.hemLeft]}]
+    b: [{piece: gore4, along: [gore4.topRight, gore4.hemRight]}]
+  seam5:
+    a: [{piece: gore4, along: [gore4.topLeft, gore4.hemLeft]}]
+    b: [{piece: gore5, along: [gore5.topRight, gore5.hemRight]}]
+  centre_back: {a: [{piece: gore5, along: [gore5.topLeft, gore5.hemLeft]}], mirror: true}
+labels:
+  lower_interface:
+    - {piece: frontPanel, along: [frontPanel.topRight, frontPanel.topLeft]}
+    - {piece: gore1, along: [gore1.topRight, gore1.topLeft]}
+    - {piece: gore2, along: [gore2.topRight, gore2.topLeft]}
+    - {piece: gore3, along: [gore3.topRight, gore3.topLeft]}
+    - {piece: gore4, along: [gore4.topRight, gore4.topLeft]}
+    - {piece: gore5, along: [gore5.topRight, gore5.topLeft]}

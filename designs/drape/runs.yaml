@@ -221,3 +221,289 @@ pantry-jacket:
   pieces: [back, sideBody, front, topsleeve, undersleeve]
   sources: { back: topcoat.back, sideBody: militaryblouse.sideBody, front: jacket.front, topsleeve: militaryblouse.topsleeve, undersleeve: militaryblouse.undersleeve }
   clip: { front: 0 }
+
+suit-trousers:
+  config: trousers-tailored.yaml
+  holdWaist: true # the waistband isn't draped: the waist stays pinned for the whole run
+  size: cisMaleAdult38
+  measurements: { waist: 800, seat: 1000 }
+  pieces: [front, back]
+
+# A three-piece jacket's pieces come from several ancestors (prefix *); its vent stays closed
+topcoat:
+  config: blouse.yaml
+  prefix: '*'
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, sideBody, front, topsleeve, undersleeve]
+  clip: { front: 0 }
+  options: { vent: false }
+
+gored-skirt:
+  config: skirt-gored.yaml
+  holdWaist: true # the waistband isn't draped: the waist stays pinned for the whole run
+  size: cisFemaleAdult34
+  measurements: { waist: 800, seat: 1070 }
+  pieces: [frontPanel, gore1, gore2]
+  options: { gores: 5 }
+
+# A dress body with set-in sleeves, no yoke; its designs' pieces come from several ancestors
+shift-dress:
+  config: dress-shell.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [frontBody, backBody, sleeve]
+  clip: { frontBody: 0, backBody: 0 }
+  split: { sleeve: 0 }
+
+double-dart-jacket:
+  config: jacket-double.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, sideBack, underArm, sideFront, middleFront, front, topsleeve, undersleeve]
+  clip: { front: cfLine }
+
+cape:
+  config: cape.yaml
+  prefix: '*'
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, front]
+  clip: { front: cfNeck }
+
+two-piece-skirt:
+  config: skirt-gored-3.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisFemaleAdult34
+  measurements: { waist: 800, seat: 1070 }
+  pieces: [frontPanel, gore1]
+
+four-gore-skirt:
+  config: skirt-gored-7.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisFemaleAdult34
+  measurements: { waist: 800, seat: 1070 }
+  pieces: [frontPanel, gore1, gore2, gore3]
+
+pleated-skirt:
+  config: skirt-gored-11.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisFemaleAdult34
+  measurements: { waist: 800, seat: 1070 }
+  pieces: [frontPanel, gore1, gore2, gore3, gore4, gore5]
+
+# not gathered yet: needs its waistband sewn on, see README
+gathered-skirt:
+  config: skirt-rect.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisFemaleAdult34
+  measurements: { waist: 800, seat: 1070 }
+  pieces: [front, back]
+
+circular-skirt:
+  config: skirt-circular.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisFemaleAdult34
+  measurements: { waist: 800, seat: 1070 }
+  pieces: [frontPanel, gore1]
+
+culottes:
+  config: culottes.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisFemaleAdult34
+  measurements: { waist: 800, seat: 1070 }
+  pieces: [frontPanel, gore1]
+
+slacks:
+  config: trousers-slacks.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisMaleAdult38
+  measurements: { waist: 800, seat: 1000 }
+  pieces: [front, back]
+
+jeans:
+  config: trousers-jeans.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisMaleAdult38
+  measurements: { waist: 800, seat: 1000 }
+  pieces: [front, back]
+
+# the simulation stops at once; not yet a working drape
+tiered-skirt:
+  config: skirt-tiers.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [front, back, tier2, tier3, tier4]
+  copy: { tier2: tier2Back, tier3: tier3Back, tier4: tier4Back }
+
+yoke-skirt:
+  config: skirt-yoke.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [frontYoke, backYoke, frontGore, sideFront, sideBack, backGore]
+
+# fails to mesh (degenerate triangles in the front); not yet a working drape
+fitted-dress:
+  config: bodice-dress.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, front, skirtBack, skirtFront]
+  clip: { front: 0, skirtFront: 0 }
+
+wrap-dress:
+  config: bodice-wrap.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, front, skirtBack, skirtFront, sleeve]
+  clip: { front: 0, skirtFront: 0 }
+  split: { sleeve: 0 }
+
+shell-top:
+  config: bodice-top.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, front]
+
+henley:
+  config: knit-shell.yaml
+  prefix: '*'
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, front, sleeve]
+  split: { sleeve: 0 }
+
+turtleneck:
+  config: knit-shell.yaml
+  prefix: '*'
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, front, sleeve]
+  split: { sleeve: 0 }
+
+cardigan:
+  config: knit-shell.yaml
+  prefix: '*'
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, front, sleeve]
+  split: { sleeve: 0 }
+
+kimono-dress:
+  config: kimono-dress.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [frontBodice, backBodice, frontSkirt, backSkirt]
+  clip: { frontBodice: 0, backBodice: 0 }
+
+
+prince-albert-jacket:
+  config: jacket-skirted-albert.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, sideBack, underArm, front, sideFront, skirt, topsleeve, undersleeve]
+
+riding-frock-coat:
+  config: jacket-skirted-frock.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, sideBack, underArm, front, sideFront, skirt, topsleeve, undersleeve]
+
+kimono-jacket:
+  config: jacket-kimono.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, front, sideBack, sideFront]
+  clip: { front: cfLine }
+
+inverness-coat:
+  config: coat-body-only.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, front]
+  clip: { front: cfLine }
+
+# REVIEW: cloth inside the forearm
+dolman-cape:
+  config: cape-dolman.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, front]
+  clip: { front: cfNeck }
+
+# not gathered yet: needs its belt sewn on, see README
+churidar:
+  config: churidar.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [leg]
+  copy: { leg: legBack }
+
+# not gathered yet: needs its belt sewn on, see README
+salwar:
+  config: salwar.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [centrePanel, kali]
+  copy: { centrePanel: centrePanelBack, kali: kaliBack }
+
+tunic-skirt:
+  config: skirt-tunic.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [panel]
+  split: { panel: 0 }
+  copy: { panelPlus: panelBack }
+
+riding-skirt:
+  config: skirt-riding.yaml
+  prefix: '*'
+  holdWaist: true
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [frontPanel, gore1, gore2]
+
+princess-dress:
+  config: princess-dress.yaml
+  prefix: '*'
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [backInside, backOutside, frontInside, frontOutside]
+
+# REVIEW: the back inseam starts across the leg
+jumpsuit:
+  config: jumpsuit.yaml
+  prefix: '*'
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [body, sleeve]
+  split: { body: crotchPoint/armTip/hemCf, sleeve: mid }
+  onEdge: { body: neckBack/frontCrotch/slitFront/slitBack }

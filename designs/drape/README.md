@@ -74,6 +74,29 @@ site, not part of the check: a render that fails leaves the verdict as it is and
   front collar, cuffs and buttons drape well, but its back collar bunches against the neck
   instead of lying turned down.
 
+## Configs for the other garment families (2026-11-18)
+Drapes check that the pieces sew together and hang on the body; trims stay off, as above. Configs
+now cover tailored trousers (`trousers-tailored`, `-slacks`, `-jeans`), gored and other skirts
+(`skirt-gored`, `-gored-3/-7/-11`, `-rect`, `-circular`, `-tiers`, `-yoke`, `-tunic`, `-riding`,
+`culottes`), one-piece dresses (`dress-shell`), Bella's bodices (`bodice-dress`, `-wrap`, `-top`),
+`princess-dress`, `kimono-dress`, knits (`knit-shell`), capes (`cape`, `cape-dolman`), fitted jackets
+(`jacket-double`, `jacket-kimono`, `jacket-skirted-*`), `churidar`, `salwar` and `jumpsuit`.
+- **Placement from the pattern** (`tools/drape_spec.py`): `follow` starts a piece at the piece it sews
+  to; `around` sets skirt panels round the body from their place in the drafting; `hang` turns a
+  trouser leg so its inseam starts straight down between the legs (slanted, it starts inside the
+  body's leg and its stitches pull the cloth through); `dart: true` on a seam skips a dart a design
+  has closed.
+- **Points** (`tools/drape-export.mjs`): besides named points, `c0`, `c1`, ... are a piece's seam
+  vertices in drawing order. A wrong number can sew the wrong edge and still build, so look at the
+  render. `prefix: '*'` takes each piece's current part when a design's pieces come from several
+  ancestors; `copy`, `onEdge`, `clipY` and splits at several points or at `mid` are in the file's header.
+- **What the waist pin doesn't do:** `lower_interface` holds an edge at waist height but doesn't
+  gather it. Gathered skirts and trousers (`skirt-rect`, `skirt-tiers`, `churidar`, `salwar`) stand out
+  as barrels until they're sewn to their waistbands, so their OK says nothing yet.
+- **Look at the images:** `node tools/drape-review.mjs` builds a page of every design's renders and
+  verdict (`--local out/drape` for this machine's). A run that stops at once now fails. OK only means
+  no cloth went deep into the body.
+
 ## At a size set, on a matched body (2026-11-10)
 `node tools/drape.mjs <design> --set <size set>` drafts the design at that set's own
 measurements and drapes it on the nearest of GarmentCodeData v2's 5000 body shapes (ETH Zurich,

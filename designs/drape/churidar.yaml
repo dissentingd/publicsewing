@@ -1,0 +1,19 @@
+# Drape churidar on GarmentCode's male average body: each leg a single bias piece folded at the
+# outer side, so draped as a front and a back half (--copy leg=legBack). c1 is the top at the
+# crotch seam, c2 to c6 run down that seam to the fork, c7 is the inseam's hem, c8 the fold's hem,
+# c0 the fold's top. The belt is left off; the top is pinned (holdWaist) and so gathers.
+body: m_smpl_average_A40
+pieces:
+  leg: {origin: [leg.c6, leg.c1], map: [[1, 0], [0, -1]], ccw: true, translation: [0, 108, 22], hang: {from: leg.c6, to: leg.c7, x: -0.7}}
+  legBack: {origin: [legBack.c6, legBack.c1], map: [[1, 0], [0, -1]], ccw: false, translation: [0, 108, -22], hang: {from: legBack.c6, to: legBack.c7, x: -0.7}}
+seams:
+  centre_front: {a: [{piece: leg, along: [leg.c1, leg.c2, leg.c3, leg.c4, leg.c5, leg.c6]}], mirror: true}
+  centre_back: {a: [{piece: legBack, along: [legBack.c1, legBack.c2, legBack.c3, legBack.c4, legBack.c5, legBack.c6]}], mirror: true}
+  outer_fold:
+    a: [{piece: leg, along: [leg.c0, leg.c8]}]
+    b: [{piece: legBack, along: [legBack.c0, legBack.c8]}]
+  inseam:
+    a: [{piece: leg, along: [leg.c6, leg.c7]}]
+    b: [{piece: legBack, along: [legBack.c6, legBack.c7]}]
+labels:
+  lower_interface: [{piece: leg, along: [leg.c0, leg.c1]}, {piece: legBack, along: [legBack.c0, legBack.c1]}]

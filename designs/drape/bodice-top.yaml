@@ -1,0 +1,18 @@
+# Drape a sleeveless top to the hip (Bella's bodice, the shell top) on GarmentCode's female average
+# body: back and front on the fold, the bust dart sewn. Facings are left off.
+body: f_smpl_average_A40
+pieces:
+  back: {origin: [back.neckCb, back.neckPoint], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -15]}
+  front: {origin: [front.neckCf, front.neckPoint], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 19]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.neckCb, back.hipCenter]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.neckCf, front.hipCenter]}], mirror: true}
+  shoulder:
+    a: [{piece: back, along: [back.neckPoint, back.shoulder]}]
+    b: [{piece: front, along: [front.neckPoint, front.shoulder]}]
+  bust_dart:
+    a: [{piece: front, along: [front.bustDartTop, front.bustDartTip]}]
+    b: [{piece: front, along: [front.bustDartBottom, front.bustDartTip]}]
+  side:
+    a: [{piece: back, along: [back.armhole, back.waistSide, back.hipSide]}]
+    b: [{piece: front, along: [front.armhole, front.bustDartTop]}, {piece: front, along: [front.bustDartBottom, front.sideHem, front.hipSide]}]

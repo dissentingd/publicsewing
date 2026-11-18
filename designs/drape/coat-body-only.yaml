@@ -1,0 +1,18 @@
+# Drape only the coat under the Inverness cape, on GarmentCode's female average body: back and front,
+# sleeveless. The cape, which hangs from the neck over it, is NOT draped. Placement as box.yaml.
+body: f_smpl_average_A40
+pieces:
+  back: {origin: [back.cbNeck, back.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -15]}
+  front: {origin: [front.clipBottom, front.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 20]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.cbNeck, back.cbHem]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.clipTop, front.clipBottom]}], mirror: true}
+  neck_dart:
+    a: [{piece: front, along: [front.dartSide, front.dartTip]}]
+    b: [{piece: front, along: [front.gorge, front.dartTip]}]
+  shoulder:
+    a: [{piece: back, along: [back.hps, back.shoulder]}]
+    b: [{piece: front, along: [front.hps, front.shoulder]}]
+  side:
+    a: [{piece: back, along: [back.armhole, back.hemSide]}]
+    b: [{piece: front, along: [front.armhole, front.hemSide]}]

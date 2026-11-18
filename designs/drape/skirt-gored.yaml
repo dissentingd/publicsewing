@@ -1,0 +1,28 @@
+# Drape a five-gored skirt (lib/skirt.mjs: the gored skirt and the designs that extend it) on
+# GarmentCode's female average body: the front panel on the fold, two gores to CB, the CB seam
+# closed. The waistband and zip are left off, so the waist edge is labelled `lower_interface`,
+# which the simulator pins at the body's waist level (holdWaist in runs.yaml). Export:
+#   node tools/drape-export.mjs gored-skirt cisFemaleAdult34 out.json --pieces frontPanel,gore1,gore2
+#
+# Placement: each panel goes round the body from its place in the drafting (`around`,
+# tools/drape_spec.py); y, rx and rz only set where the simulation starts (cm, y up, the body
+# facing +z, its right side at -x; right-hand copies).
+body: f_smpl_average_A40
+pieces:
+  frontPanel: {origin: frontPanel.topRight, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.topRight, cb: gore2.topLeft, y: 102, rx: 26, rz: 22}}
+  gore1: {origin: gore1.topRight, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.topRight, cb: gore2.topLeft, y: 102, rx: 26, rz: 22}}
+  gore2: {origin: gore2.topRight, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.topRight, cb: gore2.topLeft, y: 102, rx: 26, rz: 22}}
+seams:
+  centre_front: {a: [{piece: frontPanel, along: [frontPanel.topRight, frontPanel.hemRight]}], mirror: true}
+  panel_seam:
+    a: [{piece: frontPanel, along: [frontPanel.topLeft, frontPanel.hemLeft]}]
+    b: [{piece: gore1, along: [gore1.topRight, gore1.hemRight]}]
+  gore_seam:
+    a: [{piece: gore1, along: [gore1.topLeft, gore1.hemLeft]}]
+    b: [{piece: gore2, along: [gore2.topRight, gore2.hemRight]}]
+  centre_back: {a: [{piece: gore2, along: [gore2.topLeft, gore2.hemLeft]}], mirror: true}
+labels:
+  lower_interface:
+    - {piece: frontPanel, along: [frontPanel.topRight, frontPanel.topLeft]}
+    - {piece: gore1, along: [gore1.topRight, gore1.topLeft]}
+    - {piece: gore2, along: [gore2.topRight, gore2.topLeft]}

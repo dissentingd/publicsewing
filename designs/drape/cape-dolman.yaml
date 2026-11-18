@@ -1,0 +1,21 @@
+# Drape a dolman cape on GarmentCode's female average body: the back with its four shoulder darts,
+# the front with its bust dart, sewn over the shoulder and arm and down the side. The collar and
+# facings are left off. c-numbers are seam vertices in drawing order.
+body: f_smpl_average_A40
+pieces:
+  back: {origin: back.cbNeck, map: [[1, 0], [0, -1]], ccw: false, translation: [0, 139, -17]}
+  front: {origin: [front.clipTop, front.c11], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 21]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.c0, back.c18]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.clipTop, front.clipBottom]}], mirror: true}
+  dart1: {a: [{piece: back, along: [back.c2, back.c3]}], b: [{piece: back, along: [back.c4, back.c3]}]}
+  dart2: {a: [{piece: back, along: [back.c6, back.c7]}], b: [{piece: back, along: [back.c8, back.c7]}]}
+  dart3: {a: [{piece: back, along: [back.c9, back.c10]}], b: [{piece: back, along: [back.c11, back.c10]}]}
+  dart4: {a: [{piece: back, along: [back.c12, back.c13]}], b: [{piece: back, along: [back.c14, back.c13]}]}
+  bust: {a: [{piece: front, along: [front.c8, front.c9]}], b: [{piece: front, along: [front.c10, front.c9]}]}
+  shoulder:
+    a: [{piece: back, along: [back.c1, back.c2]}, {piece: back, along: [back.c4, back.c5, back.c6]}, {piece: back, along: [back.c8, back.c9]}, {piece: back, along: [back.c11, back.c12]}, {piece: back, along: [back.c14, back.c15]}]
+    b: [{piece: front, along: [front.c11, front.c10]}, {piece: front, along: [front.c8, front.c7]}]
+  side:
+    a: [{piece: back, along: [back.c15, back.c16, back.c17]}]
+    b: [{piece: front, along: [front.c7, front.c6, front.c5, front.c4]}]
