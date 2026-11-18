@@ -141,8 +141,15 @@ export function draftPrincessDress(sh, { panel, length, princessFlare = 0, sideF
 }
 
 /** Extend Bella's darted waist to a hip hem in the same piece. The waist dart continues below
- * the waist and closes at the hip; there is no seam across the waist. */
-export function draftBodiceHip(sh, { which, length, flare = 0 }) {
+ * the waist and closes at the hip; there is no seam across the waist.
+ * With `seat` (mm, the whole hip round with its ease) the side seam is shaped as a long tunic's:
+ * in at the waist, out to a quarter of `seat` at `hipDepth` below it, then straight (plus `flare`)
+ * to the hem; `dartLength` (mm below the waist) sets where the waist dart closes, `slit` (mm up from
+ * the hem) and `zip` (mm down from the waist) notch the side seam. Back and front are drafted in
+ * either order: the second matches its side seam's length below the hip to the first's. */
+export function draftBodiceHip(sh, args) {
+  if (args.seat > 0) return draftBodiceTunic(sh, args)
+  const { which, length, flare = 0 } = args
   const { points, paths, Path, Point, sa, store } = sh
   const front = which === 'front'
   const center = front ? points.cfHem : points.waistCenter
@@ -173,6 +180,86 @@ export function draftBodiceHip(sh, { which, length, flare = 0 }) {
 }
 
 const baseHasPoint = (path, point) => path.divide().some((segment) => segment.end().sitsRoughlyOn(point))
+
+function draftBodiceTunic(sh, { which, length, flare = 0, seat, hipDepth, dartLength, slit = 0, zip = 0 }) {
+  const { points, paths, Path, Point, sa, store, Snippet, snippets } = sh
+  const front = which === 'front'
+  const other = front ? 'back' : 'front'
+  const center = front ? points.cfHem : points.waistCenter
+  const side = front ? points.sideHem : points.waistSide
+  const left = front ? points.waistDartLeft : points.dartBottomLeft
+  const right = front ? points.waistDartRight : points.dartBottomRight
+  const hasDart = left && right && left.dist(right) > 0.5 &&
+    baseHasPoint(paths.seam, left) && baseHasPoint(paths.seam, right)
+  if (!(hipDepth > 20 && hipDepth < length - 50)) throw new Error(`hip line ${hipDepth.toFixed(0)} mm below the waist misses a ${length.toFixed(0)} mm body`)
+  // Out to the seat's quarter at the hip line (never in: a waist bigger than the seat runs straight)
+  const out = Math.max(0, seat / 4 - (side.x - center.x))
+  const hipSide = new Point(side.x + out, side.y + hipDepth)
+  const upperSide = side.dist(hipSide)
+  // Below the hip: down to the hem, parallel to the waist line (Bella's waists slope: the back's rises
+  // to the side, the front's dips), or to the other piece's side seam length where it's drafted
+  const first = store.get(`bodice.tunic.${other}`, null)
+  const lower = first ? first.side - upperSide : Math.hypot(flare, side.y + length - hipSide.y)
+  if (!(lower > Math.abs(flare) + 10)) throw new Error(`side seam below the hip is ${lower.toFixed(0)} mm`)
+  const hemSide = new Point(hipSide.x + flare, hipSide.y + Math.sqrt(lower ** 2 - flare ** 2))
+  const hemCenter = new Point(center.x, center.y + length)
+  Object.assign(points, { hipSide, hipCenter: hemCenter, hemSide })
+  const upper = paths.seam.split(side)[1]
+  if (hasDart) {
+    const mid = new Point((left.x + right.x) / 2, (left.y + right.y) / 2)
+    const tip = new Point(mid.x, mid.y + Math.min(dartLength ?? hipDepth * 0.6, hipDepth - 10))
+    points.hipDartTip = tip
+    const dart = paths.seam.split(left)[1].split(right)[0]
+    paths.waistDart = new Path().move(tip).line(left).join(dart).line(tip).close().addClass('mark dashed')
+  }
+  const outline = new Path().move(hemCenter).line(hemSide).line(hipSide).line(side).join(upper).line(hemCenter).close().attr('class', 'fabric')
+  paths.seam = outline
+  paths.saBase = outline.clone().hide()
+  if (sa) paths.sa = paths.saBase.offset(sa).attr('class', 'fabric sa')
+  else delete paths.sa
+  // Notches on the side seam: the slit's top, the zip's end (a waist to hem path either way)
+  const down = new Path().move(side).line(hipSide).line(hemSide)
+  const sideLength = down.length()
+  if (slit > 0) {
+    if (!(slit < sideLength - 20)) throw new Error(`side slit ${slit.toFixed(0)} mm reaches the waist`)
+    snippets.slitTop = new Snippet('notch', down.shiftAlong(sideLength - slit))
+  }
+  if (zip > 0) {
+    if (!(zip < sideLength - slit - 20)) throw new Error(`zip ${zip.toFixed(0)} mm below the waist meets the slit`)
+    snippets.zipEnd = new Snippet('notch', down.shiftAlong(zip))
+  }
+  store.set(`bodice.tunic.${which}`, { side: sideLength, upper: upperSide, out, hem: hemCenter.dist(hemSide), slit, zip })
+  store.set(`bodice.hip.${which}`, { side: sideLength, hem: hemCenter.dist(hemSide), dart: hasDart ? left.dist(points.hipDartTip) - right.dist(points.hipDartTip) : 0 })
+}
+
+/**
+ * Bella's sleeve cut across `length` (mm) below the cap's top, never into the cap; a long sleeve
+ * (`length` 0) keeps its wrist. The hem's allowance is `hem` times the seam's, for turning up.
+ * Stores `bodice.sleeve` { cap, underarm: [back, front], hem }
+ */
+export function draftBodiceSleeve(sh, { length = 0, hem = 2.5 }) {
+  const { points, paths, Path, Point, sa, store } = sh
+  if (length > 0) {
+    const y = Math.min(points.wristLeft.y, Math.max(points.sleeveTip.y + length, points.bicepsLeft.y + 30))
+    const at = (a, b) => new Point(a.x + ((b.x - a.x) * (y - a.y)) / (b.y - a.y), y)
+    points.wristLeft = at(points.bicepsLeft, points.wristLeft)
+    points.wristRight = at(points.bicepsRight, points.wristRight)
+  }
+  const cap = paths.sleevecap
+  const hemBase = new Path().move(points.wristLeft).line(points.wristRight)
+  const saBase = new Path().move(points.wristRight).line(points.bicepsRight).join(cap).line(points.wristLeft)
+  paths.seam = hemBase.join(saBase).close().attr('class', 'fabric')
+  if (sa) {
+    const off = saBase.offset(sa)
+    const h = hemBase.offset(sa * hem)
+    paths.sa = h.line(off.start()).join(off).line(h.start()).attr('class', 'fabric sa')
+  } else delete paths.sa
+  store.set('bodice.sleeve', {
+    cap: cap.length(),
+    underarm: [points.wristLeft.dist(points.bicepsLeft), points.wristRight.dist(points.bicepsRight)],
+    hem: points.wristLeft.dist(points.wristRight),
+  })
+}
 
 /**
  * A dress skirt, front or back (`which`), sewn to the bodice's waist (`bodice.waist.<which>`):
@@ -239,4 +326,17 @@ export function dressSkirtPart({ name, after, nr, label, which, enabled, shape, 
       }
     },
   })
+}
+
+/** A slit down centre front from the reshaped neck (after bodiceNeck), `length` mm, faced or bound
+ * when sewn: marked on the piece, its end notched. Stores `bodice.neckSlit` { length } */
+export function draftBodiceSlit(sh, { length }) {
+  const { points, paths, Path, Snippet, snippets, store } = sh
+  if (!(length > 0)) return
+  const top = points.neckCf
+  if (!(top.y + length < points.cfHem.y - 30)) throw new Error(`neck slit ${length.toFixed(0)} mm reaches the waist`)
+  points.neckSlitEnd = top.shift(-90, length)
+  paths.neckSlit = new Path().move(top).line(points.neckSlitEnd).addClass('mark')
+  snippets.neckSlitEnd = new Snippet('notch', points.neckSlitEnd)
+  store.set('bodice.neckSlit', { length })
 }

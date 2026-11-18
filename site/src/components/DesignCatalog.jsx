@@ -49,7 +49,7 @@ export default function DesignCatalog({ folder, category }) {
           <span>Built on</span><strong>{selected.source.text.replace(/^(Built on|Inspired by)\s+/i, '')}</strong>
         </a>}
         {selected.traditions?.map((tradition) => <span className="design-catalog-tradition" key={tradition.key} title={tradition.label}>
-          {tradition.flag && <img src={localUrl(`/img/flags/${tradition.flag}.svg`)} alt="" />}
+          {(tradition.flags ?? (tradition.flag ? [tradition.flag] : [])).map((flag) => <img key={flag} src={localUrl(`/img/flags/${flag}.svg`)} alt="" />)}
           {tradition.label}
         </span>)}
       </div>

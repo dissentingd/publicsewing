@@ -1,8 +1,7 @@
 // Jeans on the tailored trouser leg (lib/trousers.mjs, with `keepOutline`): a contour waistband cut
 // off the top of the legs, a back yoke with the dart closed in it, a scooped front pocket with its
-// facing, coin pocket and bag, and patch back pockets marked on the leg. After Joseph-Armstrong
-// (2010), the jean foundation's design pages, and Aldrich (2015), basic jeans: methods and
-// proportions only. Store `jeans.*`.
+// facing, coin pocket and bag, and patch back pockets marked on the leg. Inspired by Joseph-Armstrong
+// (2010) and Aldrich (2015): methods and proportions only. Store `jeans.*`.
 import { title } from './coat.mjs'
 
 // A path as plain data, and back, so another part can draw it (`jeans.pieces.<key>`)
@@ -54,7 +53,7 @@ function allowance(segs, sa) {
  *   A patch pocket `pocketW` wide at the top, `pocketBottom` across its lower corners, `pocketD`
  *   deep to its point, `pocketPoint` below the corners, `pocketBelow` under the yoke seam, centred
  *   on the dart, marked with rivets at its top corners.
- * - Front (each depth measured down the outseam from the leg's top, the band line, as Armstrong's X):
+ * - Front (each depth measured down the outseam from the leg's top, the band line):
  *   the pocket mouth scooped from `entryW` along the top in from the side to `entryD` down the outseam; the bag `bagW` wide and `bagD` deep (`jeans.pieces.bag`, and `bagEntry` cut to the
  *   mouth), the facing `facingD` deep (`jeans.pieces.facing`) with a coin pocket `coinW` by `coinH`
  *   marked `coinInset` in from the side and `coinTop` down (`coin` false for none).
@@ -246,8 +245,7 @@ export const jeanPiecePart = ({ name, after, nr, key, label, cut = 2, material =
 })
 
 /**
- * The contour waistband (Armstrong's, cut from the pant tops with the darts closed; Aldrich's shaped
- * band): one side, CB to CF, as a ring segment whose top and bottom edges are the legs' band top and
+ * The contour waistband, shaped to the tops of the legs with the darts closed: one side, CB to CF, as a ring segment whose top and bottom edges are the legs' band top and
  * bottom (`jeans.back`, `jeans.front`), `ext` running on past CF for the left side's lap.
  */
 export const jeanBandPart = ({ name, after, nr, label = 'waistband', cut = 4, enabled = () => true, size }) => ({

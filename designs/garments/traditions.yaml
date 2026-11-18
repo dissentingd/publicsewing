@@ -78,3 +78,7 @@ traditions:
     label: British workwear reference
     country: United Kingdom
     flag: gb
+  punjab-patternmaking:
+    label: Punjab patternmaking tradition
+    country: India and Pakistan
+    flags: [in, pk] # the Punjab is split between the two; no flag stands for the whole region

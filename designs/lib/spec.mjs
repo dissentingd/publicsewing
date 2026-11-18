@@ -65,7 +65,7 @@ import { noble } from '../blocks/noble.mjs'
 import { ribPart } from './rib.mjs'
 import { brandPart, draftPlacketBox, draftOpenFront } from './knit.mjs'
 import { knitPlacketPart, frontBandPart } from './placket.mjs'
-import { draftBodiceNeck, draftBodiceWaist, draftBodiceHip, draftWrapFront, draftPrincessDress, dressSkirtPart } from './bodice.mjs'
+import { draftBodiceNeck, draftBodiceWaist, draftBodiceHip, draftBodiceSleeve, draftBodiceSlit, draftWrapFront, draftPrincessDress, dressSkirtPart } from './bodice.mjs'
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftYokeLayout, yokePart, yokeGorePart } from './skirt-yoke.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
@@ -104,6 +104,8 @@ export const operations = {
   bodiceNeck: { run: draftBodiceNeck, literal: ['which'] },
   bodiceWaist: { run: draftBodiceWaist, literal: ['which'] },
   bodiceHip: { run: draftBodiceHip, literal: ['which'] },
+  bodiceSleeve: { run: draftBodiceSleeve },
+  bodiceSlit: { run: draftBodiceSlit },
   wrapFront: { run: draftWrapFront },
   princessDress: { run: draftPrincessDress, literal: ['panel'] },
   // Cut the back or front along its raglan line (after coatBack / coatFront)
@@ -346,7 +348,6 @@ const factories = {
             },
           }),
     }),
-  // The facing for a gore's rise above the waist (`index`), from skirtLayout's `riseHeight`
   // A yoked skirt's yoke (`which`: front or back) and gores (`which`: back, sideBack, sideFront, front), from yokeLayout
   skirtYoke: (p, ctx) => yokePart({ name: p.name, after: ctx.after(p), which: p.which, nr: p.nr, label: p.label ?? p.name.split('.').pop() }),
   yokeGore: (p, ctx) =>
@@ -358,6 +359,7 @@ const factories = {
       label: p.label ?? p.name.split('.').pop(),
       zip: (sh) => (p.zip === undefined ? 0 : evaluate(p.zip, lookupIn(sh, ctx.block, {}))),
     }),
+  // The facing for a gore's rise above the waist (`index`), from skirtLayout's `riseHeight`
   goreFacing: (p, ctx) => goreFacingPart({ name: p.name, after: ctx.after(p), index: p.index, nr: p.nr, label: p.label ?? p.name.split('.').pop() }),
   kiltApron: (p, ctx) => kiltApronPart({ name: p.name, after: ctx.after(p), nr: p.nr, label: p.label }),
   kiltPleats: (p, ctx) => kiltPleatsPart({ name: p.name, after: ctx.after(p), nr: p.nr, label: p.label }),

@@ -74,7 +74,7 @@ Each gap or partial element, with the unbuilt garment types that need it and the
     - ● Shell top [shell-top, shell-top.square]
     - ● Smock [childrens-smock]
     - ◐ Choli (saree blouse) _(Queue 56, inspired by CBSE)_
-    - ● Kameez and kurta [kameez, kameez.straight, kameez.long-sleeves] _(Fitted kameez and kalidar kurta: queue 54b, 54c)_
+    - ● Kameez and kurta [kameez, fitted-kameez, kalidar-kurta, kameez.straight, kameez.long-sleeves, fitted-kameez.kurti, fitted-kameez.long-sleeves, kalidar-kurta.short, kalidar-kurta.long-sleeves]
     - ◇ Jeogori
     - ◇ Community-specific huipil _(Identify community and region; document weaving and assembly separately)_
     - ◇ Community-specific unku
@@ -148,7 +148,7 @@ Each gap or partial element, with the unbuilt garment types that need it and the
     - ● Cargo trousers [field-trousers]
     - ● Sailor trousers [sailor-pants]
     - ● Women's trousers [womens-trousers, womens-trousers.pleated]
-    - ◐ Wide-leg (palazzo) trousers _(Queue M12)_
+    - ◐ Wide-leg (palazzo) trousers _(The wide-leg variant of womens-trousers)_
     - ◆ Drawstring trousers {FreeSewing: paco}
     - ● Salwar [salwar, salwar.patiala]
     - ● Churidar [churidar]

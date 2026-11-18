@@ -1,0 +1,77 @@
+# Fitted kameez, inspired by CBSE's Basic Pattern Development (2014); methods and proportions only. On
+# Bella's darted bodice, carried down in one piece to below the knee, slit up the sides, with a round
+# neck, a short front slit, a side zip and plain hemmed sleeves. For any size. See BRIEF.md.
+about:
+  id: fitted-kameez
+  name: Fitted kameez
+  category: dresses
+  description: "A long kameez fitted with darts at the bust and waist, out over the hip and slit up the sides, with a round neck, a side zip and short plain sleeves"
+  difficulty: 3
+  tags: [dresses, tops]
+  techniques: [darts, zip, facing, hem]
+  version: 0.1.0
+  source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014)"
+  garmentTraditions: [punjab-patternmaking]
+  taken: dart placement, waist and hip ease, hip line, slits and sleeve proportions
+  preview: cisFemaleAdult32
+
+block: bella
+
+options:
+  waistEase: { pct: 20 }
+  seatEase: { pct: 11, min: 0, max: 30, of: seat, menu: fit }
+  skirtLength: { pct: 50, min: 25, max: 85, of: waistToFloor, menu: style, description: 'Waist to hem, as a share of waist to floor. About 45% reaches the knee.' }
+  hemFlare: { pct: 0, min: 0, max: 15, of: seat, menu: style }
+  sideSlit: { pct: 50, min: 0, max: 75, menu: style }
+  lowerDart: { pct: 57, min: 30, max: 90, menu: darts }
+  neckShape: { dflt: round, list: [round, square, v], menu: style }
+  neckWiden: { pct: 5, min: 0, max: 15, of: neck, menu: style }
+  neckDepth: { pct: 19, min: 12, max: 60, of: hpsToWaistFront, menu: style, description: 'How far the front neck runs below the neck point, as a share of the neck point to the front waist.' }
+  backNeckDepth: { pct: 0, min: 0, max: 30, of: hpsToWaistBack, menu: style }
+  # Openings (ours): a slit at the front neck, a zip in the left side seam
+  neckSlit: { pct: 30, min: 0, max: 60, of: hpsToWaistFront, menu: style }
+  zipLength: { pct: 100, min: 0, max: 150, of: waistToSeat, menu: style, description: 'How far the zip in the left side seam runs below the waist, as a share of waist to seat. It starts just below the armhole.' }
+  sleeves: { dflt: short, list: [long, short, none], menu: style }
+  shortSleeve: { pct: 46, min: 15, max: 70, menu: style }
+
+pieces:
+  back:
+    from: bella.back
+    hide: tree
+    options: [neckWiden, backNeckDepth, skirtLength, hemFlare, seatEase, sideSlit, lowerDart, zipLength]
+    measurements: [neck, hpsToWaistBack, waistToSeat, waistToFloor, seat]
+    ops:
+      - brand: { nr: 2, title: back }
+      - bodiceNeck: { which: back, widen: neck * neckWiden, depth: hpsToWaistBack * backNeckDepth }
+      - bodiceHip: { which: back, length: waistToFloor * skirtLength, flare: seat * hemFlare, seat: seat * (1 + seatEase), hipDepth: waistToSeat, dartLength: waistToSeat * lowerDart, slit: waistToFloor * skirtLength * sideSlit, zip: "min(waistToSeat * zipLength, waistToFloor * skirtLength * (1 - sideSlit) - 40)" }
+      - cutlist: { cut: 1, from: fabric, onFold: true }
+  front:
+    from: bella.front
+    hide: tree
+    after: [back]
+    options: [neckShape, neckWiden, neckDepth, neckSlit, skirtLength, hemFlare, seatEase, sideSlit, lowerDart, zipLength]
+    measurements: [neck, hpsToWaistFront, waistToSeat, waistToFloor, seat]
+    ops:
+      - brand: { nr: 1, title: front }
+      - bodiceNeck: { which: front, widen: neck * neckWiden, style: neckShape, depth: hpsToWaistFront * neckDepth }
+      - bodiceSlit: { length: hpsToWaistFront * neckSlit }
+      - bodiceHip: { which: front, length: waistToFloor * skirtLength, flare: seat * hemFlare, seat: seat * (1 + seatEase), hipDepth: waistToSeat, dartLength: waistToSeat * lowerDart, slit: waistToFloor * skirtLength * sideSlit, zip: "min(waistToSeat * zipLength, waistToFloor * skirtLength * (1 - sideSlit) - 40)" }
+  sleeve:
+    from: bella.sleeve
+    hide: tree
+    if: sleeves != 'none'
+    options: [sleeves, shortSleeve]
+    measurements: [shoulderToWrist]
+    ops:
+      - brand: { nr: 3, title: sleeve }
+      - bodiceSleeve: { length: "if(sleeves == 'short', shoulderToWrist * shortSleeve, 0)" }
+
+variants:
+  kurti:
+    name: Kurti
+    description: "A short kameez to mid-thigh, with shorter slits, to wear with jeans or trousers."
+    options: { skirtLength: 0.32, sideSlit: 0.3 }
+  long-sleeves:
+    name: Long sleeves
+    description: "Plain fitted sleeves to the wrist, hemmed."
+    options: { sleeves: long }

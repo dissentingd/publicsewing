@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" role="img" aria-label="Pakistan flag">
+  <rect width="60" height="40" fill="#01411c"/>
+  <rect width="15" height="40" fill="#fff"/>
+  <circle cx="37.5" cy="20" r="10.5" fill="#fff"/>
+  <circle cx="40.3" cy="17.2" r="9.3" fill="#01411c"/>
+  <path d="M41.05 11.05L43.38 12.24L45.23 10.39L44.83 12.98L47.16 14.16L44.57 14.57L44.16 17.16L42.98 14.83L40.39 15.23L42.24 13.38Z" fill="#fff"/>
+</svg>

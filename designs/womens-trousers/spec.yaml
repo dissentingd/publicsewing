@@ -22,8 +22,8 @@ options:
   # Fronts and backs at the seat line come to about 22 in on his 19 in half seat, less his seams:
   # "large enough over the hips so that the garment does not bind"
   seatEase: { pct: 12, max: 16 }
-  kneeEase: { pct: 40, max: 50 } # x knee: 21 in on about 15 in
-  hemWidth: { pct: 105 } # bottom 22 / knee 21
+  kneeEase: { pct: 40, max: 160 } # x knee: 21 in on about 15 in
+  hemWidth: { pct: 105, max: 145 } # bottom 22 / knee 21
   hemShaping: { pct: 0 } # "Draw a line 9-8": straight across
   lengthBonus: { pct: -5 } # x waistToFloor: inseam 28 on a woman's about 30
   frontDart: { pct: 0, min: 0, max: 60 } # "Shape the front, N-P-J": no dart or pleat
@@ -153,3 +153,7 @@ variants:
     name: Front fly
     description: "A zip fly at the centre front instead of the side opening, as in the men's trousers."
     options: { opening: fly }
+  wide-leg:
+    name: Wide leg
+    description: "Very full legs that widen from the hip to a sweeping hem, reaching to the floor."
+    options: { kneeEase: 1.46, hemWidth: 1.33, lengthBonus: 0 }

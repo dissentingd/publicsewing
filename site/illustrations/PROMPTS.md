@@ -96,6 +96,14 @@ viewer's right.
 >
 > Leave out: pleats, cuffs, a side opening, tapered legs, jeans details.
 
+### womens-trousers.wide-leg: Wide-leg trousers
+> **Women's wide-leg trousers** in fluid charcoal wool crepe, full length to the floor, on an invisible figure.
+> **A plain, flat front**, a **two-inch waistband** closing at the left hip over a side zip. Fitted at the waist,
+> then **very full legs widening from the hip to a sweeping hem**, falling in soft folds, plain hems. Front
+> three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: a front fly, pleats, gathers, a yoke, cuffs, belt loops, a person.
+
 ### slacks: Slacks
 > **Men's two-pleat slacks** of the 1940s in mid-grey wool flannel, shown flat or on an invisible figure, full
 > length. **Two pleats each side of the front**, folded toward the side seam, the inner one on the crease.
@@ -457,6 +465,55 @@ Written from each design's `spec.yaml` and `BRIEF.md` at its defaults, like the 
 > technical editorial illustration.
 >
 > Leave out: cuffs, gathers at the wrist, embroidery, a collar, trousers, a person.
+
+### fitted-kameez: Fitted kameez
+> **A woman's fitted kameez** (long tunic) in printed cotton (small block print, indigo on white), shown flat,
+> front view. **Long, to just below the knee**, cut in one piece front and back with **no waist seam**, **shaped
+> close to the bust and waist by darts** and **easing out over the hip**, then falling **straight to the hem**,
+> with **side slits from the hem up to about the hip**. **A plain round neck with a short slit at the front**,
+> bound. **Short plain set-in sleeves to just above the elbow**, hemmed. Plain background, clean technical
+> editorial illustration.
+>
+> Leave out: a waist seam, a flared skirt, embroidery, a collar, buttons, a dupatta, trousers, a person.
+
+### fitted-kameez.kurti: Kurti
+> **A woman's fitted kurti** (short kameez) in plain cotton (terracotta), shown flat, front view. **To mid-thigh**,
+> fitted at the bust and waist by darts, easing over the hip, with **short side slits**, a round neck with a short
+> front slit, short plain sleeves above the elbow. Plain background, clean technical editorial illustration.
+>
+> Leave out: a waist seam, embroidery, a collar, buttons, jeans or trousers, a person.
+
+### fitted-kameez.long-sleeves: Fitted kameez, long sleeves
+> **A woman's fitted kameez** in plain silk-cotton (emerald), shown flat, front view, below the knee, fitted at the
+> bust and waist, straight below the hip, side slits, a round neck with a short front slit, with **long, narrow
+> plain sleeves to the wrist**, hemmed. Plain background, clean technical editorial illustration.
+>
+> Leave out: cuffs, gathers at the wrist, embroidery, a collar, trousers, a person.
+
+### kalidar-kurta: Kalidar kurta
+> **A kalidar kurta** in plain handloom cotton (off-white), shown flat, front view. **Long, to just below the
+> knee**, a straight centre panel front and back with **long tapering side panels (kalis) flaring from the
+> underarm to a wide hem**, the seams between them visible. **A round neck with a short buttoned placket
+> (three small buttons)**. **Straight, slightly tapering sleeves to below the elbow**, set into a **straight
+> armhole**, with a small square gusset at the underarm. Plain background, clean technical editorial
+> illustration.
+>
+> Leave out: a collar, embroidery, side slits, darts, a waist seam, pyjamas or trousers, a person.
+
+### kalidar-kurta.short: Short kurta
+> **A short kalidar kurta** in plain cotton (sky blue), shown flat, front view. **To the hip**, a straight
+> centre panel with tapering side panels flaring gently to the hem, a round neck with a short three-button
+> placket, straight sleeves to below the elbow, square underarm gussets. Plain background, clean technical
+> editorial illustration.
+>
+> Leave out: a collar, embroidery, side slits, jeans, a person.
+
+### kalidar-kurta.long-sleeves: Kalidar kurta, long sleeves
+> **A kalidar kurta** in plain khadi cotton (sand), shown flat, front view, below the knee, flared by tapering
+> side panels, a round neck with a short buttoned placket, with **straight sleeves to the wrist**, slightly
+> narrower at the hem. Plain background, clean technical editorial illustration.
+>
+> Leave out: cuffs, a collar, embroidery, side slits, a person.
 
 ### churidar: Churidar
 > **A woman's churidar** in plain cotton jersey-like woven fabric (plum), shown flat, front view. **Close-fitting

@@ -8,7 +8,7 @@ const variants = {
   plain: { tierFullness: 1.5, tierGrowth: 1, backWaistDrop: 0, placketLength: 0.5 },
   apart: { skirtLength: 0.9, firstTier: 2.2, tierFullness: 1.3, tierGrowth: 1.4, placketLength: 1.2, waistbandHeight: 0.06 },
 }
-const d = { skirtLength: 0.7, firstTier: 1.5, tierFullness: 2, tierGrowth: 1.12, placketLength: 0.9 }
+const d = { skirtLength: 0.725, firstTier: 1.5, tierFullness: 2, tierGrowth: 1.12, placketLength: 0.9 }
 
 for (const [v, options] of Object.entries(variants)) {
   const o = { ...d, ...options }
