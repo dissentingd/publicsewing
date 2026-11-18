@@ -1,17 +1,22 @@
 // Export a design's drafted pieces as outlines for a 3D drape (tools/drape_spec.py turns them
 // into a GarmentCode pattern specification).
 // Usage: node tools/drape-export.mjs <design> <set> <out.json> [--options '<json>'] [--pieces a,b]
-//          [--clip piece=x,...] [--split piece=x,...] [--m name=mm,...] [--prefix id]
+//          [--clip piece=x,...] [--split piece=x,...] [--clipy piece=y,...] [--m name=mm,...]
+//          [--prefix id]
 //   prefix: the parts' name prefix, for a design that extends another (the peacoat's parts
 //   are mackinaw.*); the design's own id by default.
 //   pieces: part names without the design prefix (default: every piece with a seam path);
-//   clip: cut a piece at x >= value (mm, or a point name: its x), e.g. front=0 to cut the
-//   button stand off at CF so
-//   the two fronts can be sewn closed edge to edge; split: cut a piece in two at x (mm) into
-//   <piece>Plus (x >= value) and <piece>Minus, e.g. a one-piece sleeve into front and back
-//   halves to drape either side of the arm.
+//   every cut value is mm or a point name of the piece (its x, or its y for clipy).
+//   clip: cut a piece at x >= value, e.g. front=0 to cut the button stand off at CF so the two
+//   fronts can be sewn closed edge to edge; split: cut a piece in two at x into <piece>Plus
+//   (x >= value) and <piece>Minus, e.g. a one-piece sleeve into front and back halves to drape
+//   either side of the arm, or at several (a/b/...) into <piece>1, 2, ... from the left (a
+//   cuff at the underarm and over the arm); clipy: keep a piece at y <= value, e.g. a folded
+//   cuff to its fold (cuff=underarmFold).
 // Output (cm, drafting coordinates, y down): { pieces: { name: [[x, y], ...] },
-//   points: { "<piece>.<point>": [x, y] } } — every named point that is an outline vertex.
+//   points: { "<piece>.<point>": [x, y] } (every named point that is an outline vertex),
+//   snippets: { part: { pieces, marks: [{ def: button|buttonhole, at }] } },
+//   removed: { part: { at, outline } } (what a clip cut off, past x = at) }.
 import { writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { loadDesign, measurementSet } from './render.mjs'
@@ -91,6 +96,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     )
   const clip = byPiece('--clip')
   const split = byPiece('--split')
+  const clipY = byPiece('--clipy')
   const measurements = { ...measurementSet(set) }
   // --m waist=800,seat=1000: change measurements, to match the drape body
   for (const [k, v] of Object.entries(byPiece('--m'))) measurements[k] = v
@@ -100,7 +106,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const store = pattern.setStores[0]
   if (store.logs.error.length) throw new Error(store.logs.error.join('\n'))
   const wanted = flag('--pieces', null)?.split(',')
-  const out = { design, set, options, measurements, pieces: {}, points: {} }
+  const out = { design, set, options, measurements, pieces: {}, points: {}, snippets: {}, removed: {} }
   // Only the design's own parts (not the blocks' or FreeSewing's library parts of the same name)
   const own = `${flag('--prefix', Design.designConfig.data.id)}.`
   for (const [full, part] of Object.entries(pattern.parts[0])) {
@@ -112,15 +118,41 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const first = poly[0]
     const last = poly[poly.length - 1]
     if (Math.hypot(first.x - last.x, first.y - last.y) < 1e-6) poly.pop()
-    // A clip or split at a named point of the piece cuts at that point's x
+    // A clip or split at a named point of the piece cuts at that point's x (clipy: its y)
     const xOf = (v) => (typeof v === 'number' ? v : part.points[v].x)
+    const yOf = (v) => (typeof v === 'number' ? v : part.points[v].y)
+    // A band cut to the depth it shows (a folded cuff drapes as one layer): keep y <= y0
+    if (name in clipY) poly = clipX(poly.map((p) => ({ x: p.y, y: p.x })), yOf(clipY[name]), true).map((p) => ({ x: p.y, y: p.x }))
+    let removed
     if (name in clip) {
       const x0 = xOf(clip[name])
+      // What the clip cuts off (a front's overlap past CF), for drawing its edge on the drape
+      removed = { at: x0 / 10, outline: poly.filter((p) => p.x < x0 - 1e-6).map((p) => [p.x / 10, p.y / 10]) }
       poly = clipX(poly, x0)
       // A piece already ending at the line (on the fold there): its ends there are the cut's
       if (poly.filter((p) => p.cut).length < 2) poly = poly.map((p) => (Math.abs(p.x - x0) < 1e-6 ? { x: p.x, y: p.y, cut: true } : p))
     }
-    const outlines = name in split ? { [`${name}Plus`]: clipX(poly, xOf(split[name])), [`${name}Minus`]: clipX(poly, xOf(split[name]), true) } : { [name]: poly }
+    // One split: <piece>Plus (x >= value) and <piece>Minus. Several (a/b/...): <piece>1, 2, ...
+    // from the left, each between two cuts
+    let outlines = { [name]: poly }
+    if (name in split) {
+      const xs = String(split[name]).split('/').map((v) => xOf(/^-?[\d.]+$/.test(v) ? Number(v) : v)).sort((a, b) => a - b)
+      if (xs.length === 1) outlines = { [`${name}Plus`]: clipX(poly, xs[0]), [`${name}Minus`]: clipX(poly, xs[0], true) }
+      else {
+        outlines = {}
+        ;[-Infinity, ...xs].forEach((lo, i) => {
+          const hi = xs[i] ?? Infinity
+          let piece = poly
+          if (lo > -Infinity) piece = clipX(piece, lo)
+          if (hi < Infinity) piece = clipX(piece, hi, true)
+          outlines[`${name}${i + 1}`] = piece
+        })
+      }
+    }
+    if (removed?.outline.length) out.removed[name] = removed
+    // Buttons and buttonholes (drawn on the drape), in the drafting's cm
+    const marks = Object.values(part.snippets).filter((s) => ['button', 'buttonhole'].includes(s.def))
+    if (marks.length) out.snippets[name] = { pieces: Object.keys(outlines), marks: marks.map((s) => ({ def: s.def, at: [s.anchor.x / 10, s.anchor.y / 10] })) }
     const cm = (p) => [p.x / 10, p.y / 10]
     for (const [piece, outline] of Object.entries(outlines)) {
       out.pieces[piece] = outline.map(cm)
