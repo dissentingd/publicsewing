@@ -96,6 +96,14 @@ viewer's right.
 >
 > Leave out: pleats, cuffs, a side opening, tapered legs, jeans details.
 
+### womens-trousers.wide-leg: Wide-leg trousers
+> **Women's wide-leg trousers** in fluid charcoal wool crepe, full length to the floor, on an invisible figure.
+> **A plain, flat front**, a **two-inch waistband** closing at the left hip over a side zip. Fitted at the waist,
+> then **very full legs widening from the hip to a sweeping hem**, falling in soft folds, plain hems. Front
+> three-quarter view, plain background, clean technical editorial illustration.
+>
+> Leave out: a front fly, pleats, gathers, a yoke, cuffs, belt loops, a person.
+
 ### slacks: Slacks
 > **Men's two-pleat slacks** of the 1940s in mid-grey wool flannel, shown flat or on an invisible figure, full
 > length. **Two pleats each side of the front**, folded toward the side seam, the inner one on the crease.

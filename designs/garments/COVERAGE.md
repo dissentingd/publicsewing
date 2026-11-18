@@ -148,7 +148,7 @@ Each gap or partial element, with the unbuilt garment types that need it and the
     - ● Cargo trousers [field-trousers]
     - ● Sailor trousers [sailor-pants]
     - ● Women's trousers [womens-trousers, womens-trousers.pleated]
-    - ◐ Wide-leg (palazzo) trousers _(Queue M12)_
+    - ◐ Wide-leg (palazzo) trousers _(The wide-leg variant of womens-trousers)_
     - ◆ Drawstring trousers {FreeSewing: paco}
     - ● Salwar [salwar, salwar.patiala]
     - ● Churidar [churidar]

@@ -93,32 +93,31 @@ Rows 38–46, 48, 49, 52–55, 54b and 54c are done, and 47, 50 and 51 were drop
 
 ### Modern books (2026-11-15)
 
-The books in SOURCING.md "Sources in use" (Joseph-Armstrong 2010, Aldrich 2015 women's wear) and
-"Next modern sources", used for methods and proportions only and credited "inspired by" with a
-full citation and the spec's `about.taken` (M1–M2, done: [BUILT_QUEUE.md](BUILT_QUEUE.md)). Before
-building, follow the item's pages back to the block they start from and read them as images. Pages
-are **book pages**; PDF = book + 7 for Joseph-Armstrong, + 4 for Aldrich's women's wear and
-menswear, + 6 for Aldrich's children's. Ordered by what each unblocks for the least new code. A
-row in a book not yet in use also confirms that book.
+The books in SOURCING.md "Sources in use" and "Next modern sources", used for methods and proportions
+only and credited "inspired by" with a full citation and the spec's `about.taken` (M1–M2, done:
+[BUILT_QUEUE.md](BUILT_QUEUE.md)). They're in copyright, so this list names the book, not its pages,
+and each design's public text is written from our own design, never from the book's text. Items are
+chosen by what the wardrobe lacks and what each unblocks for the least new code, in our own garment
+categories: never by working through a book's chapters or list of blocks. A row in a book not yet in
+use also confirms that book.
 
-| # | Design id | Garment | Source and pages | Start from | Lane | Unblocks / notes | Status |
+| # | Design id | Garment | Source | Start from | Lane | Unblocks / notes | Status |
 |---|---|---|---|---|---|---|---|
-| M3 | (variants) | Empire-waist and drop-waist dresses | Joseph-Armstrong 2010, empire (book pp. 186, 198, 448–462), low waist (pp. 278–281); Aldrich 2015 women's wear, high-waisted dress (pp. 103–104) | `fitted-dress` | I | Raised and dropped waist seams: one waist-height option on the Bella bodice; empire-waist and drop-waist dresses | open |
-| M4 | `boxer-shorts` | Boxer shorts | Aldrich, *Metric Pattern Cutting for Menswear* (2006), leisurewear: boxer shorts (ch. 9), on the trouser block (book pp. 78–80) | `pyjama-trousers` | A | A buildable type with no source yet; confirms the menswear book | open |
-| M5 | `slip` | Bias slip and slip dress | Joseph-Armstrong 2010, bias-cut dresses (book pp. 498–505: reducing bias stretch, slip dress) | Bella block | I | Bias-cut body (also the churidar's missing element); a rule for bias stretch | open |
-| M6 | `formal-shirt` | Formal (tuxedo) shirt | Joseph-Armstrong 2010, pin and pleat tucks (book pp. 168–169), French cuffs (pp. 349–353); Aldrich 2015, double shirt cuff (p. 144) | `dress-shirt` | C | Tucks and French cuffs: unblocks the formal shirt | open |
-| M7 | `t-shirt-dress`, `undershirt` | T-shirt dress, undershirt | Cole 2016, tops and dresses (chs. 6–7); Aldrich 2009 children's tee dresses | `t-shirt`, Bibi | I | Buildable on Bibi now; Cole's stretch categories as an option on the knit designs; confirms Cole | open |
-| M8 | `camisole` | Camisole, chemise, petticoat | Aldrich 2015, lingerie block (p. 81), camisole (p. 107); Joseph-Armstrong 2010, bra-top torso (pp. 473–478) | Bella block | I | Camisole buildable now; chemise and petticoat leave research once read | open |
-| M9 | `leggings` | Leggings | Cole 2016, pant slopers, four-way stretch (ch. 10) | new knit leg | I | Knit leg with negative ease, and its checks | open |
-| M10 | `sleepsuit` | Infant sleepsuit | Aldrich, *Metric Pattern Cutting for Children's Wear and Babywear* (2009), flat jersey body block (book pp. 24–25), one-piece sleepsuit block (p. 30); snowsuits (p. 36) after | `lib/flat.mjs` | G | Leaves research once read; infant safety review in `designs/safety` before it's offered at baby sizes; confirms the children's book | open |
-| M11 | `smock-dress`, `shirt-dress` | Smock dress, shirt dress (children's first) | Aldrich 2009, smocked dress (p. 62), shirt-style dresses (p. 68) | `childs-dress` or `shift-dress` | C | Buildable types with no source yet | open |
-| M12 | `wide-leg-trousers` | Wide-leg trousers | Aldrich 2015, flared trousers (p. 50) | `womens-trousers` | A | After 45 | open |
-| M13 | `dungarees`, `coverall` | Dungarees, coverall | Aldrich 2006 menswear, overalls and dungarees (ch. 10); Aldrich 2009 children's dungarees | `bib-overall`, `jumpsuit` | A | Buildable types with no source yet | open |
-| M14 | `cowl-top` | Cowl-neck top | Joseph-Armstrong 2010, cowls (ch. 12, book pp. 240–265) | Bella block | I | Cowl neck | open |
-| M15 | `duffle-coat` | Duffle coat, children's and adults' | Aldrich 2009, duffle coat (p. 72) | `mackinaw` or `box-overcoat` | D | Frog closures still ours to model | open |
-| M16 | `strapless-dress` | Strapless dress | Joseph-Armstrong 2010, strapless foundation, bra-top and princess torsos (ch. 19, from book p. 473) | `princess-dress` | I | Boned panels (corsetry) | open |
-| M17 | `halter-dress` | Halter dress | Cole 2016, dresses: halter (ch. 7, book p. 154) | `fitted-dress` or Bibi | I | Halter neck | open |
-| M18 | `swimsuit` | Swimsuit and leotard | Cole 2016, swimwear slopers (ch. 12); Joseph-Armstrong 2010, swimwear (ch. 30, from book p. 767) | new knit body | I | Swim and sports knit: lining, elastic edges | open |
+| M3 | (variants) | Empire-waist and drop-waist dresses | Joseph-Armstrong 2010; Aldrich 2015 women's wear | `fitted-dress` | I | Raised and dropped waist seams: one waist-height option on the Bella bodice; empire-waist and drop-waist dresses | open |
+| M4 | `boxer-shorts` | Boxer shorts | Aldrich 2006 menswear | `pyjama-trousers` | A | A buildable type with no source yet; confirms the menswear book | open |
+| M5 | `slip` | Bias slip and slip dress | Joseph-Armstrong 2010 | Bella block | I | Bias-cut body (also the churidar's missing element); a rule for bias stretch | open |
+| M6 | `formal-shirt` | Formal (tuxedo) shirt | Joseph-Armstrong 2010; Aldrich 2015 women's wear | `dress-shirt` | C | Tucks and French cuffs: unblocks the formal shirt | open |
+| M7 | `t-shirt-dress`, `undershirt` | T-shirt dress, undershirt | Cole 2016; Aldrich 2009 children's wear | `t-shirt`, Bibi | I | Buildable on Bibi now; Cole's stretch categories as an option on the knit designs; confirms Cole | open |
+| M8 | `camisole` | Camisole, chemise, petticoat | Aldrich 2015 women's wear; Joseph-Armstrong 2010 | Bella block | I | Camisole buildable now; chemise and petticoat leave research once read | open |
+| M9 | `leggings` | Leggings | Cole 2016 | new knit leg | I | Knit leg with negative ease, and its checks | open |
+| M10 | `sleepsuit` | Infant sleepsuit | Aldrich 2009 children's wear | `lib/flat.mjs` | G | Leaves research once read; infant safety review in `designs/safety` before it's offered at baby sizes; confirms the children's book | open |
+| M11 | `smock-dress`, `shirt-dress` | Smock dress, shirt dress (children's first) | Aldrich 2009 children's wear | `childs-dress` or `shift-dress` | C | Buildable types with no source yet | open |
+| M13 | `dungarees`, `coverall` | Dungarees, coverall | Aldrich 2006 menswear; Aldrich 2009 children's wear | `bib-overall`, `jumpsuit` | A | Buildable types with no source yet | open |
+| M14 | `cowl-top` | Cowl-neck top | Joseph-Armstrong 2010 | Bella block | I | Cowl neck | open |
+| M15 | `duffle-coat` | Duffle coat, children's and adults' | Aldrich 2009 children's wear | `mackinaw` or `box-overcoat` | D | Frog closures still ours to model | open |
+| M16 | `strapless-dress` | Strapless dress | Joseph-Armstrong 2010 | `princess-dress` | I | Boned panels (corsetry) | open |
+| M17 | `halter-dress` | Halter dress | Cole 2016 | `fitted-dress` or Bibi | I | Halter neck | open |
+| M18 | `swimsuit` | Swimsuit and leotard | Cole 2016; Joseph-Armstrong 2010 | new knit body | I | Swim and sports knit: lining, elastic edges | open |
 | M19 | — | Kim and Kim, *Patternmaking for Menswear* | On hold until the maintainer's print copy arrives | — | — | — | held |
 
 ### FreeSewing designs

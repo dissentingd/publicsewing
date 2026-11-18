@@ -1,9 +1,6 @@
-# Kalidar kurta: inspired by the kalidar kurta in CBSE's Basic Pattern Development (2014),
-# Practical 11 (methods and proportions only). Cut flat from straight lines, no block: a straight
-# centre panel front and back on the fold, four long tapering side panels (kalis) cut interlocking
-# from one rectangle, straight-armholed sleeves sewn to the panels' sides, and a square gusset at
-# each underarm between the sleeve and the kalis. A round neck with a buttoned placket. For any size.
-# See BRIEF.md.
+# Kalidar kurta, inspired by CBSE's Basic Pattern Development (2014); methods and proportions only. Cut
+# flat from straight lines, no block: centre panels, tapering side panels (kalis), straight sleeves and
+# a square gusset at each underarm, with a buttoned neck placket. For any size. See BRIEF.md.
 block: brian
 
 about:
@@ -15,45 +12,32 @@ about:
   tags: [shirts, tops]
   techniques: [placket, gusset, hem]
   version: 0.1.0
-  source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014), Practical 11, Kalidar Kurta, pp. 95-97"
+  source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014)"
   garmentTraditions: [punjab-patternmaking]
   taken: panel layout and proportions, the gusset and the sleeve
-  preview: cisFemaleAdult32 # CBSE's sample: bust 34 3/4, sleeve 18
+  preview: cisFemaleAdult32
 
 options:
-  # Sample: bust 34 3/4, shoulder 14, cross back 14 1/2, sleeve 18 (CBSE's table, p. 95), on
-  # cisFemaleAdult32 (chest 34.3, shoulder to wrist 22.8)
-  # Length "as measured" (the table's 14 3/4 is a misprint): below the knee, as drawn (p. 97)
   skirtLength: { pct: 50, min: 15, max: 85, of: waistToFloor, menu: style, description: "The kurta's length below the waist, as a share of waist to floor. About 45% reaches the knee." }
-  # "AC = 1/2 cross back": 7 1/4 on a 34 3/4 bust (we have no cross back measurement)
   panelWidth: { pct: 20.9, min: 16, max: 26, of: chest, menu: fit, title: Centre panel width, description: "Half the width of the centre panel, front and back, as a share of the chest." }
-  # "HJ = 1/4 bust - 1"": the sleeve's width and the armhole's depth, 7 11/16 on 34 3/4
   armholeDepth: { pct: 22.1, min: 17, max: 30, of: chest, menu: fit, title: Armhole depth, description: "How far the sleeve runs down the centre panel's side from the shoulder, and so half the sleeve's width at the top, as a share of the chest." }
-  # "CC' = 3/4"" on 34 3/4
   shoulderDrop: { pct: 2.2, min: 0, max: 5, of: chest, menu: advanced, title: Shoulder slope, description: "How far the shoulder drops from the neck to the sleeve, as a share of the chest." }
-  # "IL = HJ minus 2"": 2 on 34 3/4
   sleeveTaper: { pct: 5.8, min: 0, max: 10, of: chest, menu: style, title: Sleeve taper, description: "How much narrower each half of the sleeve is at the hem than at the top, as a share of the chest." }
-  # Sleeve 18 (as measured) on CBSE's 22.8 shoulder to wrist, from the shoulder point
   sleeveLength: { pct: 79, min: 25, max: 105, of: shoulderToWrist, menu: style, title: Sleeve length, description: "From the shoulder point to the sleeve's hem, as a share of shoulder to wrist." }
-  # Kalis: "OP = 1/12 bust + 1/2"" at the top, "MO = 1/6 bust + 1"" at the hem: 3.4 and 6.8 on 34 3/4
   kaliTop: { pct: 9.8, min: 4, max: 20, of: chest, menu: style, title: Side panel top, description: "Width of each side panel (kali) at the underarm, as a share of the chest." }
   kaliHem: { pct: 19.5, min: 8, max: 40, of: chest, menu: style, title: Side panel hem, description: "Width of each side panel (kali) at the hem, as a share of the chest; more makes a fuller kurta." }
-  # "Go down and up by 1/2" on OR": the kali's top dropped and its hem raised at the side, 1/2 on 34 3/4
   kaliCurve: { pct: 1.4, min: 0, max: 3, of: chest, menu: advanced, title: Side panel corners, description: "How far each side panel's top drops, and its hem rises, at the side seam, as a share of the chest." }
-  # Neck: "AE = 1/12 chest" wide, front "1/12 chest + 1"" deep, back "1"": on 34 3/4
   neckWidth: { pct: 8.3, min: 6, max: 14, of: chest, menu: style, title: Neck width, description: "Half the neck's width, as a share of the chest." }
   neckDepth: { pct: 11.2, min: 5, max: 25, of: chest, menu: style, description: "How far the front neck runs down at centre front, as a share of the chest." }
   backNeckDepth: { pct: 2.9, min: 0, max: 15, of: chest, menu: style, description: "How far the back neck runs down at centre back, as a share of the chest." }
-  # "FF' is the front placket opening that is 1/6th of the total length"
   placketDepth: { pct: 16.7, min: 8, max: 30, menu: style, description: "Length of the placket opening below the front neck, as a share of the kurta's length." }
-  placketWidth: { pct: 8, min: 5, max: 12, of: neck, menu: style } # ours: about 1 in
+  placketWidth: { pct: 8, min: 5, max: 12, of: neck, menu: style }
 
 pieces:
   layout:
     from: brian.back
     hide: { self: true, from: true, inherited: true }
     options: all
-  # ACDB on the fold, AB the length; the neck EF (front) or EG (back), the shoulder EC'
   frontPanel:
     part: polygon
     after: layout
@@ -93,8 +77,6 @@ pieces:
     allowance: [1, 1, 1, 1, 1, 1, 1, 1, 3, 0]
     fold: 9
     notches: [[w, drop + a]]
-  # HIJL: HI on the fold (the top of the arm), HJ the armhole, IL the hem; the gusset sewn into the
-  # underarm seam's top, notched
   sleeve:
     part: polygon
     after: layout
@@ -117,8 +99,6 @@ pieces:
     allowance: [0, 3, 1, 1]
     fold: 0
     notches: [[l * g / u, a + (h - a) * g / u]]
-  # MNQP on the fold, cut on the diagonal O'R': four kalis from a doubled cut. Its straight edge sews
-  # to the centre panel below the sleeve, its sloping edge to the next kali at the side seam
   kali:
     part: polygon
     after: layout
@@ -134,7 +114,6 @@ pieces:
       c: chest * kaliCurve
     points: [[0, 0], [t, c], [b, k - c], [0, k]]
     allowance: [1, 1, 3, 1]
-  # STUV: a square, its sides the kalis' tops
   gusset:
     part: polygon
     after: layout

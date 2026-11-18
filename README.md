@@ -104,7 +104,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `peg-pants` | Pleated trousers full over the hips, tapering to a narrow bottom | Simons 1916 |
 | `slacks` | Two-pleat slacks with a wide straight leg and the waistband cut in one with the legs | Simons 1945 |
 | `shorts` | Tailored shorts: a plain front, a back dart, a fly, pockets and a 2 in waistband, the leg cut well above the knee; men's, women's and children's | Simons 1945 |
-| `womens-trousers` | Straight women's trousers full over the hips: a plain front, a back dart, a zip in the side seam and a waistband; pleated slacks as a variant | Simons 1945 |
+| `womens-trousers` | Straight women's trousers full over the hips: a plain front, a back dart, a zip in the side seam and a waistband; pleated slacks and wide-leg variants | Simons 1945; wide leg inspired by Aldrich 2015 |
 | `jeans` | Five-pocket jeans: a contour waistband, a back yoke, scooped front pockets with a coin pocket, patch back pockets, a zip fly and rivets; tapered and bootcut variants; any size | Joseph-Armstrong 2010, Aldrich 2015 (inspired by) |
 | `overall-pants` | Full work overall trousers with no side seam, each leg cut in one piece | Simons 1916 |
 | `sailor-pants` | Bell-bottomed trousers with no side seam, each leg cut in one piece, with a buttoned drop front | Simons 1922 |

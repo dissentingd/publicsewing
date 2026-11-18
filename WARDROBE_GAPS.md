@@ -187,8 +187,8 @@ new tradition flags without source review.
 | Circular skirt (fitted to the hip, very wide hem) | 5 | Sarah | Variant; **drafted 2026-11-02** (`designs/circular-skirt`: a fan slashed and spread from above the hip; not sewn) | Mitchell 1921 pp. 110-113 |
 | Tunic skirt (short radial overskirt) | 5 | Sarah | **Drafted 2026-11-05** (`designs/tunic-skirt`; not sewn) | Schorr 1917, Diagram 7 |
 | Four-gore panel skirt | 5 | Sarah | **Drafted 2026-11-06** (`designs/four-gore-skirt`; not sewn) | Schorr 1917, Diagram 65 |
-| Yoke skirt (hip yoke, flared gores) | 5 | Sarah | **Drafted 2026-11-15** (`designs/yoke-skirt`; not sewn) | Inspired by Aldrich 2015, yoked skirt with gores |
-| Tiered skirt | 5 | — | **Drafted 2026-11-15** (`designs/tiered-skirt`, four gathered tiers; not sewn) | Inspired by Joseph-Armstrong 2010, Tiers, Design 2 |
+| Yoke skirt (hip yoke, flared gores) | 5 | Sarah | **Drafted 2026-11-15** (`designs/yoke-skirt`; not sewn) | Inspired by Aldrich 2015 |
+| Tiered skirt | 5 | — | **Drafted 2026-11-15** (`designs/tiered-skirt`, four gathered tiers; not sewn) | Inspired by Joseph-Armstrong 2010 |
 | **Culottes (divided skirt)** | 4, 5 | — | **Drafted 2026-10-29** (`designs/culottes`; not sewn) | Pivnick 1949 `pivnickdesignclothes1949` |
 | Divided riding skirt | 5 | — | **Drafted 2026-11-04** (`designs/riding-skirt`, five gores and a front overlap; not sewn) | Mitchell 1921 pp. 116-117 |
 | Apron riding skirt | 5 | — | **Drafted 2026-11-04** (`designs/apron-riding-skirt`, asymmetric two-part apron and leg strap; not sewn) | Mitchell 1921 pp. 118-121 |

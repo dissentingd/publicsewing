@@ -1,8 +1,6 @@
-# Churidar: inspired by the churidar payjama in CBSE's Basic Pattern Development (2014), Practical 4
-# (methods and proportions only). Cut flat on the bias, each leg one piece on the fold: full at the
-# top, gathered into a belt with a drawstring casing, close from the knee down and much longer than
-# the leg, so the extra length rucks up into folds at the ankle (the "churi", bangles). For any size.
-# See BRIEF.md.
+# Churidar, inspired by CBSE's Basic Pattern Development (2014); methods and proportions only. Cut flat
+# on the bias, each leg one piece on the fold: full at the top, gathered into a belt, close from the
+# knee down and longer than the leg, so it falls in folds at the ankle. For any size. See BRIEF.md.
 block: titan
 
 about:
@@ -14,34 +12,27 @@ about:
   tags: [bottoms]
   techniques: [gathering, casing, hem]
   version: 0.1.0
-  source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014), Practical 4, Churidar Payjama, pp. 76-78"
+  source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014)"
   garmentTraditions: [punjab-patternmaking]
-  taken: bias-cut leg and proportions # the design page: "its ... follow" the book
-  preview: cisFemaleAdult30 # CBSE's sample: hip 36, knee 15, ankle over the heel 12
+  taken: bias-cut leg and proportions
+  preview: cisFemaleAdult30
 
 options:
-  # Sample: length 50 3/4 ("waist downwards till the ankle and add 7"-10""), round hip 36, round ankle
-  # over the heel 12, round knee 15 (CBSE's table), on cisFemaleAdult30 (seat 37, waist to floor 39.4,
-  # knee 13.8, heel 12)
-  churidarLength: { pct: 120, min: 100, max: 140, of: waistToFloor, menu: style, title: Churidar length, description: "Length from the waist to the hem, as a share of the waist to the floor: longer than the leg, so it rucks up at the ankle." } # ankle + about 9 in
-  topWidth: { pct: 33.3, min: 28, max: 45, of: seat, menu: fit, title: Leg top width, description: "Half the width of each leg at the top, as a share of the seat; the tops gather into the belt." } # "GI = 1/3 of round hip"
-  crotchShare: { pct: 33.3, min: 25, max: 45, menu: advanced, title: Crotch depth, description: "How far down each leg's top edge the crotch seam runs, as a share of the length below the belt." } # "IJ = 1/3rd of length - BC"
-  thighCurve: { pct: 4, min: 0, max: 8, of: seat, menu: advanced, title: Thigh curve, description: "How far the inseam bows out between the crotch and the knee, as a share of the seat." } # 1 1/2 / 37
-  kneeWidth: { pct: 111, min: 100, max: 140, of: knee, menu: fit, title: Knee width, description: "Round the leg at the knee, as a share of the knee." } # "LM = 1/2 knee + 3/4"": 15 on 13.8... the sample's 15 + 1 1/2 on 15
-  ankleWidth: { pct: 108, min: 100, max: 130, of: heel, menu: fit, title: Ankle width, description: "Round the hem, as a share of the round over the heel, so the foot can pass." } # "HN = 1/2 round ankle measured over the heel + 1/2"": 13 on 12
-  # The belt: "AB is 2"", "BC = 1/6th of round hip + 1", "AD = 1/2 round hip + 2 1/2"" on the fold
-  beltDepth: { pct: 19.4, min: 10, max: 30, of: seat, menu: style, title: Belt depth, description: "Depth of the belt below its casing, as a share of the seat." } # 7 / 36
-  casingDepth: { pct: 5.6, min: 3, max: 8, of: seat, menu: style, title: Casing depth, description: "Depth of the drawstring casing folded over at the top of the belt, as a share of the seat." } # 2 / 36
-  beltWidth: { pct: 56.9, min: 52, max: 70, of: seat, menu: fit, title: Belt width, description: "Half the belt's width (it is cut on the fold), as a share of the seat; the belt must go on over the hips." } # 20 1/2 / 36
+  churidarLength: { pct: 120, min: 100, max: 140, of: waistToFloor, menu: style, title: Churidar length, description: "Length from the waist to the hem, as a share of the waist to the floor: longer than the leg, so it rucks up at the ankle." }
+  topWidth: { pct: 33.3, min: 28, max: 45, of: seat, menu: fit, title: Leg top width, description: "Half the width of each leg at the top, as a share of the seat; the tops gather into the belt." }
+  crotchShare: { pct: 33.3, min: 25, max: 45, menu: advanced, title: Crotch depth, description: "How far down each leg's top edge the crotch seam runs, as a share of the length below the belt." }
+  thighCurve: { pct: 4, min: 0, max: 8, of: seat, menu: advanced, title: Thigh curve, description: "How far the inseam bows out between the crotch and the knee, as a share of the seat." }
+  kneeWidth: { pct: 111, min: 100, max: 140, of: knee, menu: fit, title: Knee width, description: "Round the leg at the knee, as a share of the knee." }
+  ankleWidth: { pct: 108, min: 100, max: 130, of: heel, menu: fit, title: Ankle width, description: "Round the hem, as a share of the round over the heel, so the foot can pass." }
+  beltDepth: { pct: 19.4, min: 10, max: 30, of: seat, menu: style, title: Belt depth, description: "Depth of the belt below its casing, as a share of the seat." }
+  casingDepth: { pct: 5.6, min: 3, max: 8, of: seat, menu: style, title: Casing depth, description: "Depth of the drawstring casing folded over at the top of the belt, as a share of the seat." }
+  beltWidth: { pct: 56.9, min: 52, max: 70, of: seat, menu: fit, title: Belt width, description: "Half the belt's width (it is cut on the fold), as a share of the seat; the belt must go on over the hips." }
 
 pieces:
   layout:
     from: titan.back
     hide: { self: true, from: true, inherited: true }
     options: all
-  # GHIJ...: "GH = length of the Churidar minus BC, on fold", GI the top, IJ the crotch, "GL = 1/2 length
-  # of the Churidar - 1"" the knee, LM, HN; "Join JM with a straight line and curve it", "Join MN";
-  # cut 2, on the bias
   leg:
     part: polygon
     after: layout
@@ -59,28 +50,26 @@ pieces:
       m: knee * kneeWidth / 2
       n: heel * ankleWidth / 2
       b: seat * thighCurve
-      # The inseam's bow between J (w, c) and M (m, ky): out from the fold, square to J-M
       dx: m - w
       dy: ky - c
       jl: sqrt(dx * dx + dy * dy)
       ux: dy / jl
       uy: -dx / jl
     points:
-      - [0, 0] # G
-      - [w, 0] # I
-      - [w, c] # J
+      - [0, 0]
+      - [w, 0]
+      - [w, c]
       - [w + dx * 0.25 + ux * b * 0.71, c + dy * 0.25 + uy * b * 0.71]
       - [w + dx * 0.5 + ux * b, c + dy * 0.5 + uy * b]
       - [w + dx * 0.75 + ux * b * 0.71, c + dy * 0.75 + uy * b * 0.71]
-      - [m, ky] # M
-      - [n, g] # N
-      - [0, g] # H
+      - [m, ky]
+      - [n, g]
+      - [0, g]
     allowance: [1, 1, 1, 1, 1, 1, 1, 2, 0]
     fold: 8
     notches: [[w, c], [m, ky]]
     lines: [[[w * 0.1, 15], [w * 0.9, 15]]] # gather the top
     grain: [[w * 0.2, c * 0.8], [w * 0.2 + c * 0.6, c * 0.2]] # on the bias: 45 degrees to the fold
-  # ACDF: on the fold, AB the casing, BC the belt; cut 1
   belt:
     part: polygon
     after: layout

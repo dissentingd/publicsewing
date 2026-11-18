@@ -501,12 +501,20 @@ The sewing order, in our own words.
 If the source covers only part of the garment (a kilt's hem and length, say), say so at the top.
 Keep three things distinct: what the text states, what you read from the plate, and what's ours.
 
+**A source still in copyright gets a different brief.** Reproduce the functional information needed to
+make the garment; create the pattern, explanations and presentation independently; copy nothing
+expressive from the book. Replace "What the source shows" with `## What we took`, one or two sentences
+of your own on the idea and proportions used. Give the citation without pages or chapter titles. The
+mapping table shows our option defaults only, not the book's numbers. Write the pieces and sewing order
+from the finished design, not by rewording the book's steps. Spec comments follow the same rule: no
+quotations, no book measurements.
+
 `test/brief.test.mjs` fails if a brief lacks any of these sections, or the Threadloop line. Briefs older
 than the test are listed with what they lack in `test/brief-exemptions.json`. Never add a new design to
 that list; remove an entry once its brief is complete.
 
-Before you commit, re-read the brief against the page images. Delete any claim you can't back
-from the page.
+Before you commit, re-read the brief against the page images, or for an in-copyright source against
+the design you built. Delete any claim you can't back.
 
 ## Step 10: Finish and commit
 

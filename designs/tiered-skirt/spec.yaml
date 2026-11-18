@@ -1,5 +1,5 @@
-# Tiered skirt: Helen Joseph-Armstrong's attached tiers (Patternmaking for Fashion Design, 5th ed., 2010,
-# "Tiers", Design 2), used for its proportions only: four straight gathered tiers, each wider and a
+# Tiered skirt, inspired by Joseph-Armstrong (Patternmaking for Fashion Design, 5th ed., 2010); methods
+# and proportions only: four straight gathered tiers, each wider and a
 # little deeper than the one above, the first gathered into a waistband with a placket at the left
 # side seam. FreeSewing's Sarah only supplies the measurements. See BRIEF.md.
 block: sarah
@@ -13,16 +13,16 @@ about:
   tags: [bottoms]
   techniques: [gathering, placket, waistband, hem]
   version: 0.1.0
-  source: Helen Joseph-Armstrong, Patternmaking for Fashion Design, 5th ed. (Pearson, 2010), Tiers, Design 2
+  source: Helen Joseph-Armstrong, Patternmaking for Fashion Design, 5th ed. (Pearson, 2010)
   taken: tier proportions # the design page: "its tier proportions follow" the book
   preview: cisFemaleAdult36
 
 options:
-  skirtLength: { pct: 72.5, min: 40, max: 95, of: waistToFloor, menu: style } # 29 in on her size 10's 40 in waist to floor, a little below the knee
-  firstTier: { pct: 150, min: 110, max: 220, menu: style } # x waist: one 36-45 in fabric width gathered into the waist
-  tierFullness: { pct: 200, min: 130, max: 250, menu: style } # each tier's width x the one above (1.5 to 2)
-  tierGrowth: { pct: 112, min: 100, max: 140, menu: style } # each tier's depth x the one above (6 1/4, 6 3/4, 7 1/4, 8 3/4 in)
-  backWaistDrop: { pct: 5, min: 0, max: 10, menu: fit } # x waist to seat: the back waist lowered 3/8 in at CB
+  skirtLength: { pct: 72.5, min: 40, max: 95, of: waistToFloor, menu: style } # a little below the knee
+  firstTier: { pct: 150, min: 110, max: 220, menu: style } # x waist, gathered in
+  tierFullness: { pct: 200, min: 130, max: 250, menu: style } # each tier's width x the one above
+  tierGrowth: { pct: 112, min: 100, max: 140, menu: style } # each tier's depth x the one above
+  backWaistDrop: { pct: 5, min: 0, max: 10, menu: fit } # x waist to seat: the back waist lowered at CB
   placketLength: { pct: 90, min: 50, max: 120, menu: style } # x waist to seat, down the left side seam, into the second tier if it's deeper than the first (never past it)
   waistbandHeight: { pct: 3, min: 2, max: 6, of: waistToFloor, menu: style } # finished
 

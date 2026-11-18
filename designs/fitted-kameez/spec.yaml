@@ -1,9 +1,6 @@
-# Fitted kameez: inspired by the kameez in CBSE's Basic Pattern Development (2014), Practical 9
-# (methods and proportions only). On Bella's darted bodice, carried down in one piece from the
-# shoulder to below the knee: in at the waist with a diamond dart front and back, a side bust dart,
-# out to the hip and straight below it, slit up the sides. A jewel neck with a short slit at centre
-# front, a zip in the left side seam, and plain hemmed sleeves to above the elbow. For any size. See
-# BRIEF.md.
+# Fitted kameez, inspired by CBSE's Basic Pattern Development (2014); methods and proportions only. On
+# Bella's darted bodice, carried down in one piece to below the knee, slit up the sides, with a round
+# neck, a short front slit, a side zip and plain hemmed sleeves. For any size. See BRIEF.md.
 about:
   id: fitted-kameez
   name: Fitted kameez
@@ -13,37 +10,27 @@ about:
   tags: [dresses, tops]
   techniques: [darts, zip, facing, hem]
   version: 0.1.0
-  source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014), Practical 9, Kameez, pp. 90-92"
+  source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014)"
   garmentTraditions: [punjab-patternmaking]
   taken: dart placement, waist and hip ease, hip line, slits and sleeve proportions
-  preview: cisFemaleAdult32 # CBSE's sample: bust 34 3/4, waist 27 3/4, hip 36
+  preview: cisFemaleAdult32
 
 block: bella
 
 options:
-  # Sample: bust 34 3/4, waist 27 3/4, hip 36, shoulder to waist 16, sleeve 10 1/2 (CBSE's table, p. 90)
-  # Waist "1/4 waist + 2 1/2" less the 1" dart: 1 1/2" a quarter, 6" on 27 3/4 = 21.6%; Bella's most
   waistEase: { pct: 20 }
-  # Hip "1/4 hip + 1"": 4" on 36 = 11%
   seatEase: { pct: 11, min: 0, max: 30, of: seat, menu: fit }
-  # "Length of the kameez, as measured" (the table's 14 3/4 is a misprint): below the knee, as drawn
   skirtLength: { pct: 50, min: 25, max: 85, of: waistToFloor, menu: style, description: 'Waist to hem, as a share of waist to floor. About 45% reaches the knee.' }
-  # Below the hip "BJ = EI": straight; flare is ours
   hemFlare: { pct: 0, min: 0, max: 15, of: seat, menu: style }
-  # Slits: not in Practical 9's text; Practical 10 (p. 94) goes up "10" or as desired" on about 20"
   sideSlit: { pct: 50, min: 0, max: 75, menu: style }
-  # "PQ is 4"" below the waist, on CBSE's 7" waist to hip (DE): 57%
   lowerDart: { pct: 57, min: 30, max: 90, menu: darts }
-  # Jewel neck: front "AK = 1/12 bust", 2.9" on 34 3/4 = 74 mm on the sample's 385 mm neck to waist: 19%
   neckShape: { dflt: round, list: [round, square, v], menu: style }
   neckWiden: { pct: 5, min: 0, max: 15, of: neck, menu: style }
   neckDepth: { pct: 19, min: 12, max: 60, of: hpsToWaistFront, menu: style, description: 'How far the front neck runs below the neck point, as a share of the neck point to the front waist.' }
-  # Back neck "K'K'' = 7/8"": Bella's own back neck is about that deep
   backNeckDepth: { pct: 0, min: 0, max: 30, of: hpsToWaistBack, menu: style }
-  # Openings (ours: the practical gives none): a slit at the front neck, a zip in the left side seam
+  # Openings (ours): a slit at the front neck, a zip in the left side seam
   neckSlit: { pct: 30, min: 0, max: 60, of: hpsToWaistFront, menu: style }
   zipLength: { pct: 100, min: 0, max: 150, of: waistToSeat, menu: style, description: 'How far the zip in the left side seam runs below the waist, as a share of waist to seat. It starts just below the armhole.' }
-  # "Sleeve length 10 1/2"": above the elbow, 10 1/2 / 22.8 shoulder to wrist; plain, hemmed
   sleeves: { dflt: short, list: [long, short, none], menu: style }
   shortSleeve: { pct: 46, min: 15, max: 70, menu: style }
 

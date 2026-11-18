@@ -1,6 +1,5 @@
-# Jeans: five-pocket jeans, inspired by Joseph-Armstrong's jean foundation and her jean with a V-yoke
-# (Patternmaking for Fashion Design, 2010, pp. 673-675 and 700-703), cross-checked with Aldrich's basic
-# jeans (Metric Pattern Cutting for Women's Wear, 2015, pp. 56-57); methods and proportions only. On the
+# Jeans: five-pocket jeans, inspired by Joseph-Armstrong (Patternmaking for Fashion Design, 2010) and
+# Aldrich (Metric Pattern Cutting for Women's Wear, 2015); methods and proportions only. On the
 # suit trousers' Titan legs, fitted close: a contour waistband cut off the top of the legs, a back yoke
 # with the dart closed in it, scooped front pockets with a facing, bag and coin pocket, patch back
 # pockets, a zip fly, belt loops and rivets. For any size, children's included. See BRIEF.md.
@@ -15,51 +14,45 @@ about:
   tags: [bottoms, workwear]
   techniques: [zip, patch-pocket, waistband, topstitch, hem]
   version: 0.1.0
-  source: "Helen Joseph-Armstrong, Patternmaking for Fashion Design, 5th ed. (Pearson, 2010), jean foundation and jean with V-yoke, pp. 673-675 and 700-703; checked against Winifred Aldrich, Metric Pattern Cutting for Women's Wear, 6th ed. (Wiley, 2015), basic and hipster jeans, pp. 56-58"
+  source: "Helen Joseph-Armstrong, Patternmaking for Fashion Design, 5th ed. (Pearson, 2010); Winifred Aldrich, Metric Pattern Cutting for Women's Wear, 6th ed. (Wiley, 2015)"
   taken: close fit, contour waistband, yoke and pocket proportions # the design page: "its ... follow" the book
-  preview: cisFemaleAdult30 # Armstrong's size 10: waist 26 1/2, hip 37, hip depth 9
+  preview: cisFemaleAdult30
 
 options:
-  # Inches are Armstrong's, at her size 10 (about cisFemaleAdult30: waist 26.6, seat 37, waist to seat 9.1)
-  # The contour fit: front and back hip each "plus 1/8 inch (ease)": 1/2 in round on 37
+  # The contour fit: very little ease at the seat
   seatEase: { pct: 1.5 }
-  # Waist arcs "plus 1 inch" (back) and "plus 3/4 inch" (front), "dart and ease included", less the
-  # 3/4 and 1/2 in darts: 1 in round on 26 1/2
   waistEase: { pct: 4 }
-  kneeEase: { pct: 15 } # "Knee measurement, plus 2 inches" on about 13.8
-  hemWidth: { pct: 73, min: 50, max: 130 } # "Ankle, plus 3 inches" over the knee's 15.8: 11.5 / 15.8
+  kneeEase: { pct: 15 }
+  hemWidth: { pct: 73, min: 50, max: 130 } # x the knee
   hemShaping: { pct: 0 } # straight across
   frontDart: { pct: 0, menu: false } # the dartless jean front
   frontDartLength: { menu: false }
-  # The back dart, 3/4 in, of about 5 in half waist shaping at this size; its point moves to the yoke seam
+  # The back dart: its point moves to the yoke seam
   backDart: { pct: 15 }
-  backDartLength: { pct: 38, menu: false } # 3 1/2 in on 9.1
+  backDartLength: { pct: 38, menu: false }
   turnUps: { bool: false, menu: false }
   turnUpDepth: { menu: false }
   sidePockets: { bool: false, menu: false } # the jean pocket instead
   backPocket: { bool: false, menu: false } # patch pockets instead
-  # "Waist band pattern starts at waist level and 1 1/2 inches down": on her waist to floor of about 39.4
   waistbandHeight: { pct: 3.8, min: 2.5, max: 6 }
-  flyWidth: { pct: 5.6 } # "the front fly 1 1/2 inches wide" on a 26 1/2 waist
-  beltLoops: { count: 5 } # ours: the book doesn't say
-  # Yoke seam, from the waist: "3" at CB, the band's 1 1/2 and "1" more at the side (Aldrich: 7 and 3 cm below the band)
-  yokeDepth: { pct: 37, min: 20, max: 50, of: waistToSeat, menu: style, description: "How far down the centre back seam the back yoke's seam meets it, from the waist, as a share of waist to seat." } # 3 / 8 1/8 (her size 10's side hip depth), at CB
-  yokeSide: { pct: 31, min: 18, max: 45, of: waistToSeat, menu: style } # 2 1/2 / 8 1/8
-  # Front pocket: "X 4"" along the waist and "2 3/4"" down the side
-  pocketEntryWidth: { pct: 10.8, min: 7, max: 16, of: seat, menu: style } # 4 / 37
-  pocketEntryDepth: { pct: 34, min: 22, max: 45, of: waistToSeat, menu: style } # 2 3/4 / 8 1/8
-  # Pocket bag "X 5"" along the waist, "7"" down; the facing "2 inches shorter"
-  pocketBagWidth: { pct: 13.5, min: 10, max: 20, of: seat, menu: advanced } # 5 / 37
-  pocketBagDepth: { pct: 86, min: 55, max: 100, of: waistToSeat, menu: advanced } # 7 / 8 1/8
-  # Coin ("item") pocket on the facing: 2 3/4 in wide, about 3 1/4 deep (read from Figure 9a), 1 in
-  # from the side and down
+  flyWidth: { pct: 5.6 }
+  beltLoops: { count: 5 } # ours
+  # Yoke seam, measured from the waist
+  yokeDepth: { pct: 37, min: 20, max: 50, of: waistToSeat, menu: style, description: "How far down the centre back seam the back yoke's seam meets it, from the waist, as a share of waist to seat." } # at CB
+  yokeSide: { pct: 31, min: 18, max: 45, of: waistToSeat, menu: style }
+  # Front pocket opening: along the top, and down the side
+  pocketEntryWidth: { pct: 10.8, min: 7, max: 16, of: seat, menu: style }
+  pocketEntryDepth: { pct: 34, min: 22, max: 45, of: waistToSeat, menu: style }
+  # Pocket bag; its facing is shorter
+  pocketBagWidth: { pct: 13.5, min: 10, max: 20, of: seat, menu: advanced }
+  pocketBagDepth: { pct: 86, min: 55, max: 100, of: waistToSeat, menu: advanced }
+  # Coin pocket on the facing
   coinPocket: { bool: true, menu: style }
-  coinPocketWidth: { pct: 7.4, min: 5, max: 10, of: seat, menu: advanced } # 2 3/4 / 37
-  # Back pocket ("Western pocket"): 6 in across the top, 6 in deep to the point, 5 in across the lower
-  # corners, the point 3/4 in below them; 1 to 1 1/4 in below the yoke seam
-  backPocketWidth: { pct: 16.2, min: 11, max: 20, of: seat, menu: style } # 6 / 37
-  backPocketDepth: { pct: 16.2, min: 11, max: 22, of: seat, menu: style } # 6 / 37
-  backPocketPoint: { pct: 12.5, min: 0, max: 25, menu: style } # x the depth: 3/4 / 6
+  coinPocketWidth: { pct: 7.4, min: 5, max: 10, of: seat, menu: advanced }
+  # Pointed back patch pocket, below the yoke seam
+  backPocketWidth: { pct: 16.2, min: 11, max: 20, of: seat, menu: style }
+  backPocketDepth: { pct: 16.2, min: 11, max: 22, of: seat, menu: style }
+  backPocketPoint: { pct: 12.5, min: 0, max: 25, menu: style } # x the depth
   rivets: { bool: true, menu: style }
 
 pieces:
@@ -89,11 +82,11 @@ pieces:
           entryD: waistToSeat * pocketEntryDepth
           bagW: seat * pocketBagWidth
           bagD: waistToSeat * pocketBagDepth
-          facingD: waistToSeat * pocketBagDepth * 0.71 # "2 inches shorter than the lining": 5 / 7
+          facingD: waistToSeat * pocketBagDepth * 0.71
           coin: coinPocket
           coinW: seat * coinPocketWidth
-          coinH: seat * coinPocketWidth * 1.18 # 3 1/4 / 2 3/4
-          coinInset: seat * 0.027 # 1 / 37
+          coinH: seat * coinPocketWidth * 1.18
+          coinInset: seat * 0.027
           coinTop: seat * 0.027
           rivets: rivets
   back:
@@ -122,20 +115,20 @@ pieces:
           yokeIn: waistToSeat * yokeDepth
           yokeOut: waistToSeat * yokeSide
           pocketW: seat * backPocketWidth
-          pocketBottom: seat * backPocketWidth * 0.833 # 5 / 6
+          pocketBottom: seat * backPocketWidth * 0.833
           pocketD: seat * backPocketDepth
           pocketPoint: seat * backPocketDepth * backPocketPoint
-          pocketBelow: waistToSeat * 0.124 # 1 1/8 / 9.1
+          pocketBelow: waistToSeat * 0.124
           rivets: rivets
-  # The contour waistband, CB to CF; the left side's runs on 1 1/4 in past CF over the fly shield
-  # ("The second copy extends 1 1/4 inches"): cut two of each side (band and facing)
+  # The contour waistband, CB to CF; the left side's runs on past CF over the fly shield: cut two of
+  # each side (band and facing)
   waistband:
     prefix: trousers
     part: jeanBand
     after: [back, front]
     nr: 3
     width: waistToFloor * waistbandHeight
-    ext: waist * 0.047 # 1 1/4 / 26 1/2
+    ext: waist * 0.047
   yoke:
     prefix: trousers
     part: jeanPiece
@@ -195,11 +188,9 @@ pieces:
 variants:
   tapered:
     name: Tapered leg
-    description: "Armstrong's tapered legline: the leg narrowed about an inch each side at the hem."
-    # (11 1/2 - 2) / 15.8
+    description: "A tapered legline, narrower at the hem."
     options: { hemWidth: 0.6 }
   bootcut:
     name: Bootcut
-    description: "A flared legline, as Armstrong's and Aldrich's flared jeans: the leg a little closer at the knee and flaring out to the hem."
-    # Aldrich's hipster jeans: about 1 cm in at the knee, about 4 cm out each side at the hem
+    description: "A flared legline: the leg a little closer at the knee and flaring out to the hem."
     options: { kneeEase: 0.1, hemWidth: 1.15 }

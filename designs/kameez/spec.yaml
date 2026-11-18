@@ -1,8 +1,6 @@
-# Kameez: inspired by the A-line kameez in CBSE's Basic Pattern Development (2014), Practical 10,
-# traced from its basic kameez (Practical 9) without darts (methods and proportions only). On the
-# shift dress: front and back each in one piece from the shoulder to below the knee, flared from the
-# armhole to the hem, slit up the side seams, a round (jewel) neck with a short opening, and plain
-# hemmed sleeves to above the elbow. For any size. See BRIEF.md.
+# Kameez, inspired by CBSE's Basic Pattern Development (2014); methods and proportions only. On the
+# shift dress: front and back each in one piece, flared from the armhole to the hem, slit up the sides,
+# a round neck with a short opening and plain hemmed sleeves. For any size. See BRIEF.md.
 extends: ../shift-dress/spec.yaml
 
 about:
@@ -14,31 +12,24 @@ about:
   tags: [dresses, tops]
   techniques: [placket, facing, hem]
   version: 0.1.0
-  source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014), Practical 10, A-line Kameez, and Practical 9, Kameez, pp. 90-94"
+  source: "Central Board of Secondary Education with the National Institute of Fashion Technology, Basic Pattern Development: Students Handbook + Practical Manual, Class XII (CBSE, 2014)"
   garmentTraditions: [punjab-patternmaking]
-  taken: A-line shape, slits and sleeve proportions # the design page: "its ... follow" the book
-  preview: cisFemaleAdult32 # CBSE's sample: bust 34 3/4, waist 27 3/4, hip 36
+  taken: A-line shape, slits and sleeve proportions
+  preview: cisFemaleAdult32
 
 options:
-  # Sample: bust 34 3/4, waist 27 3/4, hip 36, shoulder to waist 16, sleeve 10 1/2, sleeve round 9 1/4
-  # (CBSE's table), on cisFemaleAdult32 (chest 34.3, waist to floor 40.4, shoulder to wrist 22.8)
-  # Bust "1/4 bust + 1"" each quarter: 4 in on 34 3/4, the shift dress's ease
   chestEase: { pct: 12 }
-  # "Extend 3" from the hemline", "join straight with the armhole level": on a 36 hip
   hemFlare: { pct: 8.3 }
-  # "Length of the kameez, as measured" (the table's 14 3/4 is a misprint): to below the knee, as drawn
   skirtLength: { pct: 50 }
-  # "Go up for side slit 10" or as desired": on about 20 in from the waist to the hem
   sideSlit: { pct: 50, min: 0, max: 80 }
   hemCorner: { pct: 0 }
-  # A short opening at the front neck, under a binding (ours: the practical gives none)
+  # A short opening at the front neck, under a binding (ours)
   opening: { dflt: front, list: [back, front], menu: style }
-  placketDepth: { pct: 45 } # about 7 in on a 15 in back length
+  placketDepth: { pct: 45 }
   buttons: { count: 1, min: 1, max: 6, menu: style }
   neckFinish: { dflt: binding, list: [binding, band, collar], menu: style } # the jewel neck
-  # "Sleeve length 10 1/2"": to above the elbow; plain, hemmed
   sleeves: { dflt: short, list: [long, short, none], menu: style }
-  shortSleeve: { pct: 46, min: 15, max: 70, menu: style } # 10 1/2 / 22.8
+  shortSleeve: { pct: 46, min: 15, max: 70, menu: style }
   sleeveFinish: { dflt: hem, list: [band, hem], menu: style }
 
 pieces:
@@ -49,9 +40,9 @@ pieces:
 variants:
   straight:
     name: Straight kameez
-    description: "The basic kameez's straight side seams, falling from the hip with only the foundation's slight flare, slit up the sides."
+    description: "Straighter side seams with only a slight flare, slit up the sides."
     options: { hemFlare: 0.04 }
   long-sleeves:
     name: Long sleeves
-    description: "Plain narrow sleeves to the wrist, hemmed, as in CBSE's drawings."
+    description: "Plain narrow sleeves to the wrist, hemmed."
     options: { sleeves: long }

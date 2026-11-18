@@ -58,6 +58,7 @@ measurements wasn't checked.
 | Opening | At the side, the band's 2 in "facing the side" | `opening: side`, `zipLength` 75% of waist to seat (ours), `sideUnderlap` 7% of the waist (2 / 28) |
 | Pockets | Optional, at the vee's end | `sidePockets`, `backPocket` off; no belt loops |
 | Pleated slacks | Knee 22, bottom 21, 3 in in two front folds | the `pleated` variant: `pleats` 2, `frontDart` 46% (3 of about 6½ in), `kneeEase` 47%, `hemWidth` 95% |
+| Wide leg | Not in Simons or Pivnick: its fullness is inspired by Winifred Aldrich, *Metric Pattern Cutting for Women's Wear*, 6th ed. (Wiley, 2015), the maintainer's own copy, in copyright, methods and proportions only | the `wide-leg` variant: `kneeEase` 146% (max raised to 160%), `hemWidth` 133% (max raised to 145%), `lengthBonus` 0 |
 
 ## Changes and what isn't modelled
 - **The sewn waist is Titan's**, with the suit trousers' waist ease. Simons' front and back waists add
@@ -69,6 +70,8 @@ measurements wasn't checked.
   added here. With a fly it's the suit trousers' band, in halves joined at CB.
 - **The pleated slacks' second fold** is a dart on Simons' plate (E–F to H); here both are pleats,
   spaced by `pleatSpacing` (his 1½ in, as on the slacks).
+- **The wide leg** puts all its fullness in the leg, from the hip down. The waist stays fitted, with no
+  yoke or gathers, and the hem is straight.
 - **A fly** is offered as the `fly` variant, for those who want one; it's not in either source.
 - **Pocket at the vee's end:** not drawn. The side and back pockets of the suit trousers can be
   switched on; with a side opening, sew the side pocket on the right leg only.
