@@ -14,15 +14,15 @@ The draft is for breast 36, height 5 ft 8 in, and its divisions use half the bre
 includes allowances "for double needle machine work", i.e. flat-felled seams.
 
 ## Pieces (the source's and ours)
-| Source | Ours | Cut |
-|---|---|---|
-| Back, one piece, CB on the fold | `back` | 1 on fold |
-| Forepart, button stand, 4 buttons | `front` | 2 |
-| (none drawn; needed to finish the stand and rounded corner) | `facing` | 2 |
-| Collar, one piece | `collar` | 2 on fold + interfacing |
-| Sleeve, one piece | `sleeve` | 2 |
-| Breast patch pocket (left only) | `breastPocket` | 1 |
-| Lower patch pockets | `lowerPocket` | 2 |
+| Pattern no. | Source | Ours | Cut |
+|---|---|---|---|
+| 1 | Forepart, button stand, 4 buttons | `front` | 2 |
+| 2 | Back, one piece, CB on the fold | `back` | 1 on fold |
+| 3 | Sleeve, one piece | `sleeve` | 2 |
+| 4 | Collar, one piece | `collar` | 2 on fold + interfacing |
+| 5 | (none drawn; needed to finish the stand and rounded corner) | `facing` | 2 |
+| 6 | Breast patch pocket (left only) | `breastPocket` | 1 |
+| 7 | Lower patch pockets | `lowerPocket` | 2 |
 
 ## Style lines and proportions → option defaults
 Inches below are the source's at breast 36. Everything becomes a proportion, so it grades.
@@ -71,17 +71,16 @@ The tests include three stout figures, and check that the coat clears the waist.
 - **Neck and shoulders from the Brian block**, not Simons' neck points.
 
 ## Construction (our words)
-1. Interface the facings and one collar piece.
-2. Hem the pocket tops: fold on the marked line, stitch. Press the seam allowances under and
-   topstitch the pockets to the fronts at the marks (breast pocket on the left front only).
-3. Sew the shoulders and the side seams, flat-felled.
-4. Sew the collar pieces together along the outer edge and ends, turn and press. Sew the under
-   collar to the neckline, CB to CB, ending halfway across each button stand.
-5. Sew the facings to the fronts along the front edge and corner, sandwiching the collar ends;
-   turn, and finish the facing's inner edge.
-6. Set the sleeves flat, then sew the underarm and side seam in one, flat-felled.
-7. Turn up the hems (3 × seam allowance) and topstitch.
-8. Buttonholes on the right front for men's wear (left for women's), buttons on CF.
+The letters below identify matching seam lines in the pattern map. Numbers are printed on the pattern pieces.
+
+1. Interface the two facings **5** and one collar layer **4**.
+2. Hem the top edges of breast pocket **6** and lower pockets **7**. Press their other allowances under and topstitch them to the marks **P6** and **P7** on fronts **1** (pocket **6** goes on the left front only).
+3. Join front **1** to back **2** at shoulders **A** and flat-fell those seams. Leave side seams **B** open for setting the sleeves flat.
+4. Sew the two collar layers **4** together along their outer edges and ends; turn and press. Sew the under collar to the neckline **D** of fronts **1** and back **2**, matching centre back and ending halfway across each button stand.
+5. Sew facings **5** to the front edges **E** of fronts **1**, enclosing the collar ends at the top and the rounded corners below. Turn, press, and finish the facings' inner edges.
+6. Set sleeves **3** into the armholes **C** while the underarm is open, matching the cap notches. Then close the sleeve underarm **F** and body side seam **B** in one run; flat-fell the seam.
+7. Turn up the coat and sleeve hems (3 × seam allowance) and topstitch.
+8. Work buttonholes on the right front **1** for men's wear (left for women's); sew buttons at the marked centre-front line. Fit a muslin before cutting final cloth.
 
 ## Checks the tests run (`npm test`)
 At every FreeSewing adult set and all 75 USDA children's sets:

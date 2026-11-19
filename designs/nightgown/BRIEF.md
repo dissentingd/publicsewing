@@ -28,3 +28,10 @@ The body pieces are 51" × 40": long, gathered into a yoke. There is a front pla
 
 ## Checks
 As the smock (test/nightgown.test.mjs, test/yoke-checks.mjs), default and a back-opening variant.
+
+## Construction
+
+1. Sew the front placket to the marked opening. Gather the upper edges of the front and back bodies to fit their yokes.
+2. Sew the bodies to the front and back yokes, then join the yokes at the shoulders. Finish the neckline with the drafted band.
+3. Sew the sleeves into the armholes. Close the sleeve underarm and gown side seams; gather each sleeve end into its wristband.
+4. Hem the gown and finish the placket fastening. For a back-opening variant, make the placket at the back instead.

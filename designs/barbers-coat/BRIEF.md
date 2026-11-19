@@ -46,3 +46,10 @@ The body and sleeve are the work coat's (the chore coat's rules).
 `test/barbers-coat.test.mjs` runs both necks at every adult, stout and children's set:
 - the shared coat checks;
 - for the open neck, the front facing meets the back neck facing at the shoulder.
+
+## Construction
+
+1. Interface the front facings and, for the high-neck version, one standing-collar layer. Finish the patch-pocket tops, press the other edges under, and topstitch the pockets to the fronts.
+2. Sew the shoulder and side seams. Make the collar and attach it to the neckline for Diagram X; for the open-neck version, join the back-neck facing to the front facings at the shoulders.
+3. Sew the facings to the front and neck edges, turn and press. Set in the sleeves and close their underarm seams.
+4. Hem the coat and sleeves, then work the four buttonholes and attach the buttons at the marked centres. The concealed fly suggested by the source is not made here.

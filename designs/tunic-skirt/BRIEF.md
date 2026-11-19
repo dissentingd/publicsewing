@@ -28,3 +28,10 @@ The plate's lower figure confirms a central dart and a curved hem after the wedg
 **Threadloop:** A [free circle-skirt calculator](https://threadloop.app/patterns/circle-skirt-calculator-by-anicka-design) drafts from measurements, but its listing describes a circle skirt rather than this hip-controlled panel with a central dart. A targeted search did not establish an exact free equivalent (2026-11-05).
 
 **Checks:** `test/tunic-skirt.test.mjs` drafts the default, plain and longer versions over the size sets, checking the waist, hip room, matched front and back seams, hem expansion, and dart mark. The comparison sheet was inspected beside Schorr's plate.
+
+## Construction
+
+1. Sew each marked waist dart, then join the front seam. Leave the marked zipper opening in the back seam and sew the rest of that seam.
+2. Insert the back zipper. Cut a waist facing from the drafted waist edge, interface it as needed, and sew it to the waist; turn, understitch, and secure its ends at the zipper.
+3. Let the skirt hang before levelling the curved, partly bias hem. Turn and stitch the hem without stretching its edge.
+4. Fit the waist, hip, and hem in a muslin before final cloth. Schorr does not specify a closure or waist finish; the zipper and facing are this draft's choices.

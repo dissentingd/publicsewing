@@ -52,3 +52,10 @@ At all 75 children's sets:
 - the shared coat checks (`test/coat-checks.mjs`);
 - five buttons, no breast pocket, a dropped front hem;
 - the comparison above.
+
+## Construction
+
+1. Finish and attach the lower patch pockets to the fronts. The default has no breast pocket; add it at this stage if selected.
+2. Interface the facings and one collar piece. Sew the shoulder and side seams, then assemble and attach the collar.
+3. Sew the facings around the front edges and dropped front hem, turn and press. Set in the sleeves and close their underarm seams.
+4. Hem the coat and sleeves, then work the five front buttonholes and sew on the buttons. This is the chore-coat method applied to the boys' proportions and defaults.

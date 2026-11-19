@@ -41,3 +41,10 @@ Named for that wider use: a long work overcoat (shop coat, lab coat, duster).
 `test/shop-coat.test.mjs` runs two option sets at every adult, stout and children's set:
 - the shared coat checks;
 - the hem flares.
+
+## Construction
+
+1. Finish the breast, lower, and pencil-pocket tops. Sew the pencil pocket to its lower pocket before topstitching the assembled lower pocket and the breast pocket onto the fronts.
+2. Interface one collar layer and the front facings. Sew the shoulder and flared side seams, preserving the back-on-fold shape.
+3. Assemble and attach the swinging collar, then sew on the front facings and turn them. Set in the sleeves and close their underarm seams.
+4. Hem the long coat and sleeves. Work the four front buttonholes and sew on the buttons. This follows the shared work-coat construction with the shop coat's additional pocket and length.

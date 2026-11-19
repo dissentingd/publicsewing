@@ -292,11 +292,14 @@ function mdx(md, id) {
 function briefSections(brief, id) {
   const converted = mdx(brief, id)
   const sections = converted.split(/(?=^## )/m)
-  const practical = []
+  const pieces = []
+  const construction = []
   const background = []
   for (const section of sections) {
     const heading = section.match(/^## (.+)$/m)?.[1] ?? ''
-    if (/^(Pieces|Construction)\b/i.test(heading)) practical.push(section)
+    if (/^Pieces.*construction/i.test(heading)) construction.push(section)
+    else if (/^Pieces\b/i.test(heading)) pieces.push(section)
+    else if (/^Construction\b/i.test(heading)) construction.push(section)
     else {
       const label = /^What (?:the source|the sources|Mitchell)\b/i.test(heading) ? 'What Source Shows'
         : /^How (?:it|the source) maps\b|^Mapping\b/i.test(heading) ? 'How It Maps'
@@ -306,7 +309,7 @@ function briefSections(brief, id) {
         : section)
     }
   }
-  return { practical: practical.join('\n'), background: background.join('\n') }
+  return { pieces: pieces.join('\n'), construction: construction.join('\n'), background: background.join('\n') }
 }
 
 const newRows = () => Object.fromEntries(categories.map((c) => [c.id, []]))
@@ -469,7 +472,7 @@ ids.forEach((id, i) => {
   const about = spec.about
   const info = order.find((o) => o.id === id) ?? { garment: about.description, source: about.source }
   const brief = readFileSync(join(designsDir, id, 'BRIEF.md'), 'utf8')
-  const { practical, background } = briefSections(brief, id)
+  const { pieces, construction, background } = briefSections(brief, id)
   const drapeSrc = join(designsDir, 'drape', id)
   const renders = existsSync(drapeSrc) ? readdirSync(drapeSrc).filter((f) => /\.png$/.test(f)).sort() : []
   if (renders.length) {
@@ -503,7 +506,7 @@ ids.forEach((id, i) => {
   ${img('illustration-img')}
   <figcaption>An <a href="/sources#illustrations">AI-generated illustration</a> of the design at its default options, not drawn from the pattern.</figcaption>
 </figure>`,
-    preview &&
+    preview && id !== 'chore-coat' &&
       `<figure className="illustration">
   <a href={useBaseUrl('/img/previews/${id}.png')}><img className="illustration-img preview-img" src={useBaseUrl('/img/previews/${id}.png')} alt="${about.name}: the pattern pieces" /></a>
   <figcaption>The pattern pieces at the default options, size ${label(previewSet)}, with seam allowance. Click to enlarge.</figcaption>
@@ -615,8 +618,15 @@ hide_table_of_contents: true
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import PatternEditor from '@site/src/components/PatternEditor'
 import VariantButton from '@site/src/components/VariantButton'
+import AnnotatedPatternPreview from '@site/src/components/AnnotatedPatternPreview'
 
+<div className="design-page">
+<div className="design-hero">
+<div className="design-hero-art">
 ${illustration}
+</div>
+<div className="design-hero-copy">
+<p className="design-eyebrow">Made-to-measure sewing pattern</p>
 :::warning[Draft, untested]
 No one has sewn this design yet. It drafts cleanly at every size in the test suite and its seams
 match, but that doesn't prove it fits. Sew a muslin before good fabric, and please
@@ -626,8 +636,22 @@ match, but that doesn't prove it fits. Sew a muslin before good fabric, and plea
 ${info.garment}. ${sourceLabel}: ${info.source}.${originalLine}${alsoFs[id] ? `\n\nAlso as FreeSewing's ${alsoFs[id].join(', ')}, on the Designs page.` : ''}${variantsLine}
 
 ${traditionTags(id, about) ? `${traditionTags(id, about)}\n` : ''}
+</div>
+</div>
 
-${practical}
+<nav className="design-jump" aria-label="On this design page">
+<a href="#make-the-pattern">Make the pattern</a>
+<a href="#construction">Construction</a>
+<a href="#the-brief">Source notes</a>
+</nav>
+
+${id === 'chore-coat' && preview ? `<AnnotatedPatternPreview src={useBaseUrl('/img/previews/${id}.png')} />` : ''}
+
+${pieces ? `<section className="design-pieces">\n${pieces}\n</section>` : ''}
+
+<section className="design-construction">
+${construction || '## Construction\n\nStep-by-step sewing instructions are being prepared for this draft. Check the source notes below before sewing a test garment.'}
+</section>
 
 ${safetySection(id)}## Make the pattern
 
@@ -646,6 +670,7 @@ How the source became this design. The full file is [BRIEF.md on GitHub](${repo}
 
 ${background}
 </details>
+</div>
 `
   )
 })

@@ -43,3 +43,10 @@ sleeves, neck band, shallow yoke, double fullness):
 - the body is at least as wide as the yoke seam;
 - the sleeve cap fits the armhole, and the sleeve hem gathers into its band;
 - the neck band fits the neckline.
+
+## Construction
+
+1. Make the back placket to the marked depth. Gather the upper body edges to fit the front and back yokes.
+2. Sew the gathered bodies to their yokes; assemble the double yokes if using them, then join the shoulders. Bind the neckline or attach the optional neck band.
+3. Sew in the sleeves and close the sleeve underarm and body side seams. Gather each long sleeve into its wristband, leaving the planned frill beneath if chosen.
+4. Work the back buttonholes and attach the buttons. Sew the deep hem; add tucks above it only if desired. Walker describes these finishes, while the order here is proposed.
