@@ -167,3 +167,9 @@ credit on the Sources page). A book counts as a source in use once a design is b
 | M1 | `tiered-skirt` | Tiered skirt | Helen Joseph-Armstrong, *Patternmaking for Fashion Design*, 5th ed. (2010) | `gathered-skirt` | G | Four polygon tiers, widths from the waist (`firstTier` 150%, each tier `tierFullness` 200% of the one above), depths growing 12%; a left side placket that may run into the second tier | done (2026-11-15) |
 | M2 | `yoke-skirt` | Yoke skirt | Winifred Aldrich, *Metric Pattern Cutting for Women's Wear*, 6th ed. (2015) | Sarah (new `lib/skirt-yoke.mjs`) | G | Sarah's darts carried to a straight yoke line (the book's is scalloped) and closed in the yokes; four gores a half cut halfway across, each edge flared 7.5% of the seat from halfway down; a left side zip | done (2026-11-15) |
 | M12 | `womens-trousers` (`wide-leg` variant) | Wide-leg trousers | Winifred Aldrich, *Metric Pattern Cutting for Women's Wear*, 6th ed. (2015) | `womens-trousers` | A | Options only: `kneeEase` 146%, `hemWidth` 133%, `lengthBonus` 0 | draft |
+
+## Source follow-ups
+
+| Design | Source and pages | Base | As built | Status |
+|---|---|---|---|---|
+| `skirt-coat` | Sheifer 1908 `nssheiferssystem00shei`, text PDF p. 80, plate p. 81 | `girls-coat` | Curved join split into separate front and back bodice and skirt pieces; front join lower than back. A working hip dart is pivoted into the front skirt; the one-piece skirt layout is adapted. | draft (not sewn) |

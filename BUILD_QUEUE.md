@@ -148,7 +148,7 @@ queued above, from the modern books.)
 
 | Source | What is known | Next check |
 |---|---|---|
-| Sheifer 1908 `nssheiferssystem00shei` | Its girl's coat is built. The skirt coat (text PDF p. 80, plate p. 81) has a dropped curved skirt seam that the current waist-seam draft cannot express. Multi-panel corset coats remain. | Inspect a corset coat's text and plate, or plan a shared construction change for the dropped skirt seam. |
+| Sheifer 1908 `nssheiferssystem00shei` | The skirt coat is built from text PDF p. 80 and plate p. 81 with a curved dropped-skirt cut and a working hip dart on the box-coat body. The 17-piece corset coat has text/plate PDF pp. 48–49 and the 22-piece pp. 52–53. | Queue a corset coat when ready for a multi-panel coat construction; the 18-piece is a center-back variation of the 17-piece. |
 | Vincent, *Jacket Cutting* (1897) `cutters-prac-guide-jacket-cutting` | The supplied PDF has no searchable text layer. | Inspect its plates and missing-page coverage before citing a new garment. |
 | Vincent, *British Military Uniforms* `militaryuniformsbritish-images` | Service frock and khaki knickerbockers have substantial instructions (PDF pp. 9–12), but overlap existing tunic and breeches designs. | Compare their plates and specific seams with the built designs. |
 | Ratner 1908 `ratnersuptodatem00ratn` | OCR exposes headings but too few reliable dimensions to select an item. | Read a candidate text/plate pair at higher resolution. |

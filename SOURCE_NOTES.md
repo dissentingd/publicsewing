@@ -32,6 +32,7 @@ credited on the Sources page.
 
 ## Sheifer 1908 (`nssheiferssystem00shei`)
 - Skirt coat: text PDF p. 80, plate PDF p. 81. The text starts the skirt about 2 in below the waist (at the cutter's choice), places the front seam about 1 in lower than the back, leaves ¾ in between front and side gore 1½ in below the waist, and shapes a hip dart at B. The plate shows a curved, dropped skirt seam.
+- The skirt-coat plate lays existing body gores together to draw the skirt; it does not give a separate dimensioned cutting diagram for every skirt piece. The new `skirt-coat` splits the built box-coat body on matching curves. Its front skirt pivots to form the B hip dart; the one-piece skirt layout is adapted.
 
 ## Merz 1911 (`merzspracticalcu00merz`)
 - Diagram XXIV, Inverness: text book p. 58/PDF p. 60, plate book p. 59/PDF p. 61. Its body references Diagrams XVIII, XXII and XXIII. OCR drops the cape's 3/4-inch darts and reads the collar's 1/4-inch spring unreliably; verify the page image.

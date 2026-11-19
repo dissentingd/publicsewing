@@ -5,7 +5,7 @@ const section = (id, label, ids) => ({ id, label, ids: ids.trim().split(/\s+/) }
 
 export const designGroups = [
   { id: 'outer-layers', label: 'Outer layers', image: 'balmacaan', sections: [
-    section('everyday-coats', 'Everyday & winter coats', `balmacaan reefer carlita carlton girls-coat peacoat winter-coat womens-box-coat womens-peacoat`),
+    section('everyday-coats', 'Everyday & winter coats', `balmacaan reefer carlita carlton girls-coat peacoat skirt-coat winter-coat womens-box-coat womens-peacoat`),
     section('tailored-coats', 'Tailored & dress coats', `box-overcoat fitted-overcoat overcoat princess-coat riding-frock-coat riding-habit-coat surtout three-piece-long-coat topcoat ulster`),
     section('protective-coats', 'Rain, work coats & parkas', `raincoat shop-coat openpattern-us-m1951-fishtail-parka-pattern`),
     section('capes-wraps', 'Capes & wraps', `cape cape-overcoat dolman-cape mantle inverness-coat`),

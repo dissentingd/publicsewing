@@ -1,0 +1,86 @@
+extends: ../girls-coat/spec.yaml
+
+about:
+  id: skirt-coat
+  name: Skirt coat
+  category: coats
+  description: "A long box coat cut into a shaped bodice and a flared skirt below the waist"
+  difficulty: 4
+  tags: [coats, children]
+  techniques: [dart, lapel, collar, facing, button, flap-pocket, two-piece-sleeve, waist-seam]
+  version: 0.1.0
+  source: "Sheifer, System of Designing and Grading Ladies', Misses' & Children's Garments (1908), Drafting a Skirt Coat, PDF pp. 80-81 (nssheiferssystem00shei)"
+  preview: usdaGirlC8
+
+options:
+  # Sheifer begins the skirt about 2 inches below the waist; its front is 1 inch lower.
+  skirtDrop: { pct: 5.6, of: chest, menu: style }
+  frontSkirtDrop: { pct: 2.8, of: chest, menu: style }
+  skirtSideDrop: { pct: 1.4, of: chest, menu: style }
+  skirtCurve: { pct: 0.7, of: chest, menu: style }
+  skirtButtonClear: { pct: 2.8, of: chest, menu: false }
+  # The 3/4 in separation at B becomes a hip dart, scaled from a 36 in chest.
+  hipDartIntake: { pct: 2.1, of: chest, menu: style }
+  hipDartDepth: { pct: 6, of: chest, menu: style }
+  hipDartAt: { pct: 55, menu: false }
+  buttons: { count: 3 }
+  pockets: { bool: false }
+
+pieces:
+  frontBase:
+    from: breanna.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, seat, waistToSeat, waistToFloor, neck, hpsToWaistFront]
+    ops:
+      - jacketBase: { side: front, style: box }
+      - boxLayout:
+          seat: seat * (1 + seatEase)
+          hipDepth: waistToSeat
+          length: waistToFloor * lengthBelowWaist
+          flare: seat * flare
+          cbOut: seat * cbFlare
+          lap: chest * if(doubleBreasted, doubleExtension, buttonExtension)
+          rows: if(doubleBreasted, chest * doubleExtension * buttonRow, null)
+          buttonInset: buttonInset
+          pockets:
+            hip:
+              if: pockets
+              below: waistToSeat * pocketBelow
+              from: chest * pocketFromCF
+              w: chest * pocketWidth
+              flap: w * flapDepth
+              bag: w * bagDepth
+              clear: chest * 0.02
+            ticket:
+              if: pockets and ticketPocket
+              below: waistToSeat * (pocketBelow - ticketAbove)
+              from: chest * pocketFromCF
+              w: chest * pocketWidth * ticketWidth
+              flap: w * flapDepth
+              bag: w * bagDepth
+              clear: chest * 0.02
+          breakBelow: hpsToWaistFront * breakBelowBust
+          rollOut: neck * rollOut
+          lapelWidth: neck * lapelWidth
+          peak: lapelStyle == 'peak'
+          facing: chest * if(doubleBreasted, max(facingWidth, doubleExtension * 1.5), facingWidth)
+          dartWidth: chest * neckDartWidth
+          dartAt: neckDartAt
+          dartLength: neckDartLength
+          sleeveStore: [library.twoPartSleeve, library.topsleeve, library.undersleeve, boxcoat.topsleeve, boxcoat.undersleeve]
+      - boxSkirtLayout:
+          drop: chest * skirtDrop
+          frontDrop: chest * frontSkirtDrop
+          sideDrop: chest * skirtSideDrop
+          curve: chest * skirtCurve
+          buttonClear: chest * skirtButtonClear
+          dartIntake: chest * hipDartIntake
+          dartDepth: chest * hipDartDepth
+          dartAt: hipDartAt
+      - store: { key: library.topsleeve.title, value: { nr: 7, brand: "'PublicSewing'" } }
+      - store: { key: library.undersleeve.title, value: { nr: 8, brand: "'PublicSewing'" } }
+
+  frontSkirt: { part: jacketPanel, after: [backBase, frontBase], panel: frontSkirt, nr: 13, label: frontSkirt, cut: 2 }
+  backSkirt: { part: jacketPanel, after: [backBase, frontBase], panel: backSkirt, nr: 14, label: backSkirt, cut: 2 }

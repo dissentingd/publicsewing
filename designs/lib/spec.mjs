@@ -69,7 +69,7 @@ import { draftBodiceNeck, draftBodiceWaist, draftBodiceHip, draftBodiceSleeve, d
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftYokeLayout, yokePart, yokeGorePart } from './skirt-yoke.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
-import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
+import { draftJacketBase, draftJacketLayout, draftBoxLayout, draftBoxSkirtLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
 import { draftJeanLeg, jeanPiecePart, jeanBandPart } from './jeans.mjs'
 import { draftCapeBase, draftJacketCapeBase, draftCapeLayout, draftDolmanLayout, capePart } from './cape.mjs'
@@ -132,6 +132,7 @@ export const operations = {
   // Princess-seamed jackets on Breanna (lib/jacket.mjs): each base read in, then cut into panels
   jacketBase: { run: draftJacketBase, literal: ['side', 'style'] },
   boxLayout: { run: draftBoxLayout, literal: ['sleeveStore'] },
+  boxSkirtLayout: { run: draftBoxSkirtLayout },
   jacketLayout: { run: draftJacketLayout, literal: ['sleeveStore'] },
   // A three-piece body (lib/body3.mjs): back panel, then the forepart
   body3Back: { run: draftBody3Back },

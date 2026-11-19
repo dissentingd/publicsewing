@@ -2000,3 +2000,8 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > technical editorial illustration.
 >
 > Leave out: pockets, fly, zipper, belt loops, drawstring, cargo flaps, a person.
+
+### skirt-coat: Skirt coat
+> A long wool box coat with a notched lapel and collar, three front buttons, and a visibly curved seam running below the waist into a broad flared skirt. The seam dips lower at the front than the back, with a small shaped hip dart; the front is free of pockets. Front three-quarter view on an invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: belt, waist gathers, peplum, hood, cuffs, extra pockets, a person.

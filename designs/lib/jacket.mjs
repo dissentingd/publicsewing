@@ -937,6 +937,91 @@ export function draftBoxLayout(sh, a) {
   return sh.part
 }
 
+/** Cut a box coat into a bodice and a separate, curved dropped skirt.
+ * The same cut curve closes each pair, so the sewing edges have identical lengths.
+ * The side cuts are the same distance from their armholes on both halves.
+ */
+export function draftBoxSkirtLayout(sh, a) {
+  const { Path, Point, store } = sh
+  const panels = store.get('jacket.panels')
+  const back = panels.back
+  const front = panels.front
+  const backSide = back.marks.armhole.dist(back.marks.hemSide)
+  const frontSide = front.marks.armhole.dist(front.marks.hemSide)
+  const backY = store.get('jacket.front').waistY + a.drop
+  const backCutY = backY + a.sideDrop
+  const backQ = back.outline.intersectsY(backCutY).sort((p, q) => q.x - p.x)[0]
+  if (!backQ) throw new Error('jacket: skirt cut misses the back side')
+  const sideLength = back.marks.armhole.dist(backQ)
+  if (sideLength >= Math.min(backSide, frontSide)) throw new Error('jacket: skirt cut reaches the hem')
+
+  const split = (which, edgeY, sideAt) => {
+    const panel = panels[which]
+    const edge = panel.outline.intersectsY(edgeY).sort((p, q) => p.x - q.x)[0]
+    const side = panel.marks.armhole.shiftFractionTowards(panel.marks.hemSide, sideAt / panel.marks.armhole.dist(panel.marks.hemSide))
+    if (!edge || !side) throw new Error(`jacket: skirt cut misses the ${which}`)
+    const w = side.x - edge.x
+    const curve = new Path().move(edge.clone()).curve(
+      new Point(edge.x + w / 3, edge.y + a.curve),
+      new Point(side.x - w / 3, side.y + a.curve),
+      side.clone(),
+    )
+    const [topEdge, rest] = panel.outline.split(edge)
+    const [lower, topSide] = rest.split(side)
+    panel.outline = topEdge.join(curve.clone()).join(topSide)
+    panels[`${which}Skirt`] = {
+      outline: lower.join(curve.clone().reverse()),
+      fold: panel.fold,
+      marks: { topEdge: edge, topSide: side, hemEdge: panel.marks.cbHem ?? panel.marks.hemEdge, hemSide: panel.marks.hemSide },
+    }
+    const seams = store.get('jacket.seams')
+    seams[`${which}SkirtJoin`] = [curve.length(), curve.length()]
+    seams[`side${which[0].toUpperCase()}${which.slice(1)}`] = sideAt
+    return { edge, side, lower, curve }
+  }
+  split('back', backY, sideLength)
+  const frontCut = split('front', backY + a.frontDrop, sideLength)
+  if (a.dartIntake > 0) {
+    const B = frontCut.curve.shiftAlong(frontCut.curve.length() * a.dartAt)
+    const tip = new Point(B.x, B.y + a.dartDepth)
+    const hemEdge = front.marks.hemEdge
+    const hemSide = front.marks.hemSide
+    const H = hemEdge.shiftFractionTowards(hemSide, (B.x - hemEdge.x) / (hemSide.x - hemEdge.x))
+    if (tip.y >= H.y) throw new Error('jacket: skirt dart reaches the hem')
+    const theta = (2 * Math.asin(Math.min(0.99, a.dartIntake / (2 * a.dartDepth))) * 180) / Math.PI
+    const angle = B.rotate(theta, tip).x > B.x ? theta : -theta
+    const rotate = (p) => p.rotate(angle, tip)
+    const [leftHem, rightHem] = frontCut.lower.split(H)
+    const [leftJoin, rightJoin] = frontCut.curve.split(B)
+    panels.frontSkirt.outline = leftHem.clone()
+      .line(rotate(H))
+      .join(mapPath(rightHem, Path, rotate))
+      .join(mapPath(rightJoin.clone().reverse(), Path, rotate))
+      .line(tip.clone()).line(B.clone())
+      .join(leftJoin.clone().reverse())
+    panels.frontSkirt.marks = {
+      ...panels.frontSkirt.marks,
+      topSide: rotate(frontCut.side),
+      hemSide: rotate(hemSide),
+      dartLeft: B,
+      dartRight: rotate(B),
+      dartTip: tip,
+    }
+    const seams = store.get('jacket.seams')
+    seams.frontSkirtJoin = [frontCut.curve.length(), leftJoin.length() + rightJoin.length()]
+    seams.frontSkirtDart = [B.dist(tip), rotate(B).dist(tip)]
+    seams.frontSkirtDartIntake = B.dist(rotate(B))
+  }
+  panels.frontSkirt.pockets = panels.front.pockets
+  delete panels.front.pockets
+  const f = store.get('jacket.front')
+  f.buttonBottom = Math.min(f.buttonBottom ?? Infinity, frontCut.edge.y - a.buttonClear)
+  f.cfEnd = frontCut.edge.y
+  store.set('jacket.front', f)
+  store.set('jacket.panels', panels)
+  return sh.part
+}
+
 /**
  * Set-in flap pockets. Each p: { below (the mouth's front end below baseY), from (behind
  * startAt(y), the panel edge it's measured from), w (mouth; or share, of the panel's width
