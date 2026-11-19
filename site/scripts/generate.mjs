@@ -5,18 +5,18 @@
 // - src/generated/labels.json: ../designs/labels.yaml (option and part labels)
 // - src/generated/sizes.json: the measurement sets the tests use (FreeSewing's adult sets, the
 //   stout figures, the 75 USDA children's sets), grouped for the size picker
-// - src/generated/catalog.json: structured entries for the two React design indexes
+// - src/generated/catalog.json: source entries plus browsing sections for the React Designs index
 // - docs/designs/<category>/<id>.mdx: a page per design from its BRIEF.md, with its drape renders
 //   and the editor, at /designs/<id> (its slug); static/img/drape/<id>/: those renders. A folder
 //   is a sidebar group, from the design's about.category (lib/categories.mjs)
-// - docs/designs/index.mdx: the Historical Designs page, a table per category, by name within each
-// - docs/inspired/: the same for the designs in inspired.yaml, at /inspired, with others' patterns
-//   from external.yaml among ours: a link out, with no page here. Design pages keep /designs/<id>
-// - FreeSewing's own designs (../designs/freesewing.yaml): a page each under Inspired Designs, with
+// - docs/designs/index.mdx: one Designs page, browsed by the sections in catalog-sections.mjs
+// - inspired.yaml still identifies the designs based on recent sources; external.yaml's linked
+//   patterns appear alongside ours in the index. Design pages keep /designs/<id>.
+// - FreeSewing's own designs (../designs/freesewing.yaml): a page each under Designs, with
 //   the pattern tool and a credit box but no brief, and src/generated/freesewing.mjs, which imports
 //   them from npm for the editor (src/lib/collection.mjs)
 // - static/img/illustrations/<id>.jpg: the finished-garment illustration from illustrations/,
-//   where there is one, at the top of the design's page and in the Designs table
+//   where there is one, at the top of the design's page and in the Designs index
 // - static/img/previews/<id>.png: the design's preview-<set>.png (its pattern pieces, from
 //   designs/tools/preview.mjs; <set> is the spec's about.preview, else cisMaleAdult38), beside
 //   the illustration
@@ -29,6 +29,7 @@ import { join } from 'node:path'
 import { parse } from 'yaml'
 import { readSpec } from '../../designs/lib/load-spec.mjs'
 import { categories } from '../../designs/lib/categories.mjs'
+import { designGroups } from '../catalog-sections.mjs'
 import { designFromSpec } from '../../designs/lib/spec.mjs'
 import { sets, stoutSets } from '../../designs/test/coat-checks.mjs'
 import { all as children } from '../../designs/sizes/children.mjs'
@@ -37,6 +38,8 @@ import { babies } from '../../designs/sizes/babies.mjs'
 const site = fileURLToPath(new URL('..', import.meta.url))
 const designsDir = join(site, '..', 'designs')
 const out = (...p) => join(site, ...p)
+const thumbnail = (name) => existsSync(out('static', 'img', 'catalog-thumbs', `${name}.webp`))
+  ? `/img/catalog-thumbs/${name}.webp` : null
 
 // The designs: every folder with a spec.yaml and a BRIEF.md
 // A design in progress (a spec but no brief yet) isn't listed until its brief is written
@@ -235,19 +238,17 @@ mkdirSync(out('static', 'img', 'previews'), { recursive: true })
 const inspiredIds = parse(readFileSync(out('inspired.yaml'), 'utf8')).designs
 for (const id of inspiredIds) if (!ids.includes(id)) throw new Error(`inspired.yaml: no design ${id}`)
 const collections = [
-  { folder: 'designs', label: 'Historical Designs', position: 2, has: (id) => !inspiredIds.includes(id) },
-  { folder: 'inspired', label: 'Inspired Designs', position: 2.5, has: (id) => inspiredIds.includes(id) },
+  { folder: 'designs', label: 'Designs', position: 2, has: () => true },
 ]
-const collectionOf = (id) => collections.find((c) => c.has(id))
 for (const { folder, label: name, position, has } of collections) {
   mkdirSync(out('docs', folder), { recursive: true })
   writeFileSync(
     out('docs', folder, '_category_.json'),
     JSON.stringify({ label: name, position, link: { type: 'doc', id: `${folder}/index` } }, null, 2)
   )
-  // A section with no page of its own here (only others' patterns, or nothing) isn't a sidebar group
+  // A section links to the matching heading on the combined index.
   categories.forEach((c, i) => {
-    const fsHere = folder === 'inspired' && fsIds.some((id) => fs[id].category === c.id)
+    const fsHere = fsIds.some((id) => fs[id].category === c.id)
     if (!fsHere && !ids.some((id) => has(id) && specs[id].about.category === c.id)) return
     mkdirSync(out('docs', folder, c.id), { recursive: true })
     writeFileSync(out('docs', folder, c.id, '_category_.json'), JSON.stringify({ label: c.label, position: i + 1 }, null, 2))
@@ -378,6 +379,7 @@ for (const p of external.patterns) {
     entry: {
       id: `openpattern-${p.path}`, name: p.name, href: url,
       image: existsSync(pic) ? `/img/illustrations/external/${p.path}.jpg` : useAi ? `/img/illustrations/openpattern/${p.path}.jpg` : null,
+      thumbnail: thumbnail(`openpattern-${p.path}`),
       imageCredit: existsSync(pic) ? "Open+Pattern's render, CC BY 4.0, resized" : useAi ? 'AI-generated illustration, not drawn from the pattern' : null,
       description: p.about, difficulty: null, status: 'External pattern',
       source: { text: external.by, href: url },
@@ -413,6 +415,7 @@ fsIds.forEach((id, i) => {
     entry: {
       id, name, href: `/designs/${id}`,
       image: fsIllustrated ? `/img/illustrations/freesewing/${id}.jpg` : null,
+      thumbnail: thumbnail(id),
       imageCredit: fsIllustrated ? 'AI-generated illustration, not drawn from the pattern or by FreeSewing' : null,
       description: d.about, difficulty: d.data.difficulty ?? null, status: 'FreeSewing design',
       source: { text: 'FreeSewing', href: d.url },
@@ -424,7 +427,7 @@ fsIds.forEach((id, i) => {
     row: `| ${fsIllustrated ? `<a href="/designs/${id}">${fsImg('thumb', true)}</a>` : ''} | ${designCell(`[${name}](/designs/${id})`, d.data.difficulty, tagLine(srcTag('FreeSewing', d.url, 'external'), srcTag('MIT', '/sources#freesewing', 'licence')))} | ${garmentCell(`${d.about}.`, ours.length ? `<small>We also draft our own: ${ours.join(', ')}.</small>` : '', supportNote('FreeSewing', d.url))} |`,
   })
   writeFileSync(
-    out('docs', 'inspired', d.category, `${id}.mdx`),
+    out('docs', 'designs', d.category, `${id}.mdx`),
     `---
 title: ${JSON.stringify(name)}
 description: ${JSON.stringify(d.about)}
@@ -559,8 +562,8 @@ ${variants.join('\n')}
 `
     : ''
   const variantLinks = Object.entries(spec.variants ?? {}).map(([key, v]) => `[${v.name}](/designs/${id}#${key})`)
-  const { folder } = collectionOf(id)
-  const sourceLabel = folder === 'inspired' ? 'Inspired by' : 'Source'
+  const folder = 'designs'
+  const sourceLabel = inspiredIds.includes(id) ? 'Inspired by' : 'Source'
   // Our version of a pattern people can pay for on its maker's site asks them to, by name of garment
   if (/Open\+Pattern/.test(about.source ?? '') && !original[id]) throw new Error(`${id}: from Open+Pattern, but no entry in external.yaml has ours: ${id}, so it has no donation link`)
   // Tags: the source (to the brief, which names it in full), or the original another project made
@@ -575,6 +578,7 @@ ${variants.join('\n')}
     entry: {
       id, name: about.name, href: `/designs/${id}`,
       image: illustrated ? `/img/illustrations/${id}.jpg` : null,
+      thumbnail: thumbnail(id),
       imageCredit: illustrated ? 'AI-generated illustration, not drawn from the pattern' : null,
       description: info.garment, difficulty: about.difficulty ?? null, status: 'Draft · not yet sewn',
       source: original[id]
@@ -619,7 +623,7 @@ match, but that doesn't prove it fits. Sew a muslin before good fabric, and plea
 [report what happened](/sew-and-test#report).
 :::
 
-${info.garment}. ${sourceLabel}: ${info.source}.${originalLine}${alsoFs[id] ? `\n\nAlso as FreeSewing's ${alsoFs[id].join(', ')}, under Inspired Designs.` : ''}${variantsLine}
+${info.garment}. ${sourceLabel}: ${info.source}.${originalLine}${alsoFs[id] ? `\n\nAlso as FreeSewing's ${alsoFs[id].join(', ')}, on the Designs page.` : ''}${variantsLine}
 
 ${traditionTags(id, about) ? `${traditionTags(id, about)}\n` : ''}
 
@@ -653,28 +657,27 @@ const catalog = Object.fromEntries(Object.entries(rows).map(([folder, sections])
     entries.sort((a, b) => a.name.localeCompare(b.name)).map(({ entry }) => entry),
   ])),
 ]))
+const entriesById = new Map()
+for (const [folder, sections] of Object.entries(catalog))
+  for (const [category, entries] of Object.entries(sections))
+    for (const entry of entries) {
+      if (entriesById.has(entry.id)) throw new Error(`Duplicate catalog id: ${entry.id}`)
+      entriesById.set(entry.id, { ...entry, folder, category })
+    }
+const sectionIds = designGroups.flatMap((group) => group.sections.flatMap((section) => section.ids))
+if (new Set(sectionIds).size !== sectionIds.length) throw new Error('A design appears in more than one catalog section')
+const expectedIds = [...entriesById.values()].filter((entry) => entry.category !== 'blocks').map((entry) => entry.id)
+const missing = expectedIds.filter((id) => !sectionIds.includes(id))
+const unknown = sectionIds.filter((id) => !entriesById.has(id))
+if (missing.length || unknown.length) throw new Error(`Catalog placement mismatch: missing ${missing.join(', ') || 'none'}; unknown ${unknown.join(', ') || 'none'}`)
+catalog.sections = Object.fromEntries(designGroups.flatMap((group) => group.sections.map((section) => {
+  if (section.ids.length > 10) throw new Error(`${section.id} has ${section.ids.length} designs; split the section`)
+  return [section.id, section.ids.map((id) => entriesById.get(id)).sort((a, b) => a.name.localeCompare(b.name))]
+})))
 writeFileSync(out('src', 'generated', 'catalog.json'), JSON.stringify(catalog))
 
-// A page of designs: its introduction, then a catalog per section that has anything in it
-// The wardrobe's broad areas, adapted for the catalog's existing categories. Empty areas are
-// omitted on each index, while category ids and links stay stable.
-const designGroups = [
-  { id: 'upper-body', label: 'Upper body', categories: ['tops', 'vests', 'jackets'] },
-  { id: 'lower-body', label: 'Lower body', categories: ['skirts', 'trousers'] },
-  { id: 'whole-body', label: 'Whole body', categories: ['dresses'] },
-  { id: 'outerwear', label: 'Outerwear', categories: ['coats'] },
-  { id: 'sleep-active', label: 'Sleepwear & activewear', categories: ['sleepwear', 'swim'] },
-  { id: 'children', label: 'Babies & toddlers', categories: ['babies'] },
-  { id: 'accessories', label: 'Accessories', categories: ['hats', 'accessories'] },
-  { id: 'blocks', label: 'Blocks', categories: ['blocks'] },
-]
-if (new Set(designGroups.flatMap((g) => g.categories)).size !== categories.length)
-  throw new Error('designGroups must place each catalog category once')
 const designsPage = (folder, title, slug, position, intro) => {
-  const groups = designGroups.map((g) => ({
-    ...g,
-    sections: g.categories.map((id) => categories.find((c) => c.id === id)).filter((c) => rows[folder][c.id].length),
-  })).filter((g) => g.sections.length)
+  const groups = [...designGroups, { id: 'blocks', label: 'Blocks', image: 'blocks', sections: [] }]
   writeFileSync(
     out('docs', folder, 'index.mdx'),
     `---
@@ -688,19 +691,19 @@ import DesignCatalog from '@site/src/components/DesignCatalog'
 ${intro}
 
 <nav className="design-sections" aria-label="Sections">
-${groups.flatMap((g) => g.sections)
-  .map((c) => existsSync(join(site, 'illustrations', `${c.image}.jpg`))
-    ? `  <a href="#${c.id}"><img src={useBaseUrl('/img/illustrations/${c.image}.jpg')} alt="" /><span>${escapeHtml(c.label)}</span></a>`
-    : `  <a href="#${c.id}" className="no-image"><span>${escapeHtml(c.label)}</span></a>`)
+${groups
+  .map((g) => existsSync(join(site, 'illustrations', `${g.image}.jpg`))
+    ? `  <a href="#${g.id}"><img src={useBaseUrl('/img/illustrations/${g.image}.jpg')} alt="" /><span>${escapeHtml(g.label)}</span></a>`
+    : `  <a href="#${g.id}" className="no-image"><span>${escapeHtml(g.label)}</span></a>`)
   .join('\n')}
 </nav>
 
 ${groups
   .map((g) => `## ${g.label} {#${g.id}}
 
-${g.sections.map((c) => `### ${c.label} {#${c.id}}
+${g.id === 'blocks' ? '<DesignCatalog folder="all" category="blocks" />' : g.sections.map((c) => `### ${c.label} {#${c.id}}
 
-<DesignCatalog folder="${folder}" category="${c.id}" />
+<DesignCatalog folder="section" category="${c.id}" />
 `).join('\n')}
 `)
   .join('\n')}`
@@ -709,33 +712,18 @@ ${g.sections.map((c) => `### ${c.label} {#${c.id}}
 
 designsPage(
   'designs',
-  'Historical Designs',
+  'Designs',
   '/designs',
   0,
-  `Designs from old drafting books and other public-domain sources, redrafted from the wearer's
-measurements. Every design is a **draft**: none has been sewn yet. Each page has the pattern tool
-for that design, its 3D drape, and its brief.
+  `All designs here draw on earlier garments or drafting methods and have been adapted to our
+parametric pattern system. Our patterns are **drafts**: none has been sewn yet. Each design page
+has its pattern tool, a 3D drape where available, and its brief.
 
 Entries with a coloured tag aren't ours: <span className="src-tag src-tag--external">Open+Pattern</span> ones are
 [${external.by}](/sources#open-pattern)'s patterns of real garments, in fixed sizes, on their site.
 
-See also [Inspired Designs](/inspired), from copied garments and sources still in copyright.`
-)
-
-designsPage(
-  'inspired',
-  'Inspired Designs',
-  '/inspired',
-  0,
-  `Garments that start from a rub-off, a deconstructed tracing, or an original still in copyright.
-Our own designs here take the original's pieces, proportions and construction, and draft them from
-the wearer's measurements, so none is an exact copy. They are all **drafts**: none has been sewn yet.
-You can [copy a garment and submit it](/contribute) too.
-
-Entries tagged <span className="src-tag src-tag--external">FreeSewing</span> aren't ours: they're [FreeSewing](/sources#freesewing)'s
-own designs, drafted to measure here with their credit.
-
-See also [Historical Designs](/designs), from old drafting books.`
+Entries tagged <span className="src-tag src-tag--external">FreeSewing</span> are
+[FreeSewing](/sources#freesewing)'s designs, drafted to measure here with their credit.`
 )
 
 console.log(`generated: ${ids.length} designs, ${fsIds.length} from FreeSewing, ${external.patterns.length} external, ${Object.values(sizes).flat().length} size sets`)
