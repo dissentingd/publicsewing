@@ -32,7 +32,18 @@ credited on the Sources page.
 
 ## Sheifer 1908 (`nssheiferssystem00shei`)
 - Skirt coat: text PDF p. 80, plate PDF p. 81. The text starts the skirt about 2 in below the waist (at the cutter's choice), places the front seam about 1 in lower than the back, leaves ¾ in between front and side gore 1½ in below the waist, and shapes a hip dart at B. The plate shows a curved, dropped skirt seam.
-- The skirt-coat plate lays existing body gores together to draw the skirt; it does not give a separate dimensioned cutting diagram for every skirt piece. The new `skirt-coat` splits the built box-coat body on matching curves. Its front skirt pivots to form the B hip dart; the one-piece skirt layout is adapted.
+- The skirt-coat plate lays existing body gores together to draw the skirt; it does not give a separate dimensioned cutting diagram for every skirt piece. The new `skirt-coat` splits the built box-coat body on matching curves and pivots the front skirt to open the B hip dart. Its brief records the separate-piece adaptation.
+
+## Vincent, Jacket Cutting (1897) (`cutters-prac-guide-jacket-cutting`)
+- This supplied scan has no searchable text. Footman's Pantry Jacket: printed p. 54/PDF p. 53 text; Plate 24 Diagram 2 is PDF p. 52. The plate marks waist 17 and hem 22 (5 in below waist) and shows four buttons and two forepart welts. The text specifies an Eton-style front, narrow whole back, cotton lining and no underarm fish.
+- Scan gap: PDF p. 55 is printed p. 56; PDF p. 56 jumps to printed p. 61, so printed pp. 57–60 are absent. Seamless lounge is printed pp. 63–64/PDF pp. 58–59, Plate 29/PDF p. 60.
+
+## Vincent, British Military Uniforms (`militaryuniformsbritish-images`)
+- Officer's khaki knickerbockers: text PDF p. 9, plate p. 10. Full thigh and knee, side seam shifted forward into a lapped button opening, separate 4 in lower band with a calf vee and two buttons. Distinct from built `breeches` and `cycling-breeches`.
+- Universal service frock: text PDF p. 11, plate p. 12. Waist seam, box-pleated breast patches with pointed flaps, bellows pockets on the skirt, back vent, turned lapels, sleeve slash and shoulder straps. Distinct from built `military-tunic`'s continuous standing-collar body.
+
+## Ratner 1908 (`ratnersuptodatem00ratn`)
+- Alternating blank pages and mostly diagram plates. Diagram 24, "Improportion Coat" (PDF p. 84), appears to be a fit correction, without an adjacent reliable instruction page. No distinct garment was selected from this copy.
 
 ## Merz 1911 (`merzspracticalcu00merz`)
 - Diagram XXIV, Inverness: text book p. 58/PDF p. 60, plate book p. 59/PDF p. 61. Its body references Diagrams XVIII, XXII and XXIII. OCR drops the cape's 3/4-inch darts and reads the collar's 1/4-inch spring unreliably; verify the page image.

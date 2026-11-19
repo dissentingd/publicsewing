@@ -83,6 +83,7 @@ nodes:
   dinner-jacket-t: { name: Dinner jacket (tuxedo), parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-peak, closure-buttons, pocket-welt, lining], designs: [dinner-jacket] }
   norfolk: { name: Norfolk jacket, parent: suit-jackets, traits: [body-boxy, pleats-box-body, belt, pocket-patch, sleeve-set-in], designs: [norfolk-jacket] }
   eton: { name: Eton jacket, parent: suit-jackets, traits: [body-three-piece, collar-notched, sleeve-two-piece], designs: [eton-jacket] }
+  pantry-jacket-t: { name: Pantry jacket, parent: suit-jackets, traits: [body-three-piece, collar-notched, sleeve-two-piece, closure-buttons, pocket-welt, lining], designs: [pantry-jacket] }
   smoking: { name: Smoking jacket, parent: suit-jackets, traits: [body-boxy, collar-shawl, closure-frogs, cuff-turnback, pocket-welt], designs: [smoking-jacket] }
   blazer: { name: Blazer, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-notched, closure-buttons, pocket-patch, lining], note: "A sack-coat variant with patch pockets" }
   womens-tailored: { name: Women's tailored jackets, parent: jackets }

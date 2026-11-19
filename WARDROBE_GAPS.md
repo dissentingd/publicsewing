@@ -240,7 +240,8 @@ research candidates):
 - **12 rows already covered** by FreeSewing (the apron row counted here).
 
 ## Progress
-- 2026-11-19: Sheifer's skirt coat drafted on the box-coat body with a curved dropped join and separate flared skirt pieces (`designs/skirt-coat`); not sewn. The front skirt has a working hip dart.
+- 2026-11-19: Sheifer's skirt coat drafted on the box-coat body with a curved dropped join, a working hip dart and separate flared skirt pieces (`designs/skirt-coat`); not sewn.
+- 2026-11-19: Vincent's footman's pantry jacket drafted on the existing three-piece Eton jacket (`designs/pantry-jacket`); four buttons and two welts, not sewn.
 - 2026-10-23: children's measurement sets (USDA 1939 Tables 8–9, heights 40–69 in, roughly
   ages 4–14) and the chore coat (Simons 1918), both in `designs/`. The survey has no
   sizes under 40 in (about age 4), so toddlers and babies are still a gap.

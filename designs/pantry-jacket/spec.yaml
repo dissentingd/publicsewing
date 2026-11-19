@@ -1,0 +1,34 @@
+# Vincent's footman's pantry jacket: a three-seamer with an Eton-style front.
+extends: ../eton-jacket/spec.yaml
+
+about:
+  id: pantry-jacket
+  name: Pantry jacket
+  category: jackets
+  description: "A short work jacket with Eton-style lapels, four buttons and two welt pockets"
+  difficulty: 4
+  tags: [jackets, workwear]
+  techniques: [button, collar, lapel, facing, welt-pocket, two-piece-sleeve]
+  version: 0.1.0
+  source: "Vincent, The Cutter's Practical Guide to Jacket Cutting (1897), Footman's Pantry Jacket, printed p. 54 and Plate 24 (PDF pp. 53 and 52; cutters-prac-guide-jacket-cutting)"
+  preview: cisMaleAdult36
+
+options:
+  # Plate 24 places the hem 5 in below its 17 in waist line: on the adult 36's
+  # waist-to-seat depth, about half that distance. The source shows four buttons.
+  lengthBelowWaist: { pct: 50, min: 35, max: 85 }
+  buttons: { count: 4, min: 2, max: 6 }
+  # The top button is above the waist; the last one is close to the short hem.
+  breakAt: { pct: 65 }
+  buttonBottom: { pct: 40 }
+  lowerPockets: { bool: true }
+  pocketFlaps: { bool: false }
+  breastPockets: { bool: false }
+  frontDrop: { pct: 0 }
+  hemCurve: { pct: 0 }
+
+variants:
+  plain:
+    name: Without welt pockets
+    description: The same pantry jacket with a plain front.
+    options: { lowerPockets: false }

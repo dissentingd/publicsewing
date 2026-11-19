@@ -172,4 +172,5 @@ credit on the Sources page). A book counts as a source in use once a design is b
 
 | Design | Source and pages | Base | As built | Status |
 |---|---|---|---|---|
-| `skirt-coat` | Sheifer 1908 `nssheiferssystem00shei`, text PDF p. 80, plate p. 81 | `girls-coat` | Curved join split into separate front and back bodice and skirt pieces; front join lower than back. A working hip dart is pivoted into the front skirt; the one-piece skirt layout is adapted. | draft (not sewn) |
+| `skirt-coat` | Sheifer 1908 `nssheiferssystem00shei`, text PDF p. 80, plate p. 81 | `girls-coat` | Curved join split into separate front and back bodice and skirt pieces; front join lower than back, with a pivoted working hip dart. The one-piece skirt layout is adapted; see the brief. | draft (not sewn) |
+| `pantry-jacket` | Vincent 1897 `cutters-prac-guide-jacket-cutting`, printed p. 54/PDF p. 53, Plate 24/PDF p. 52 | `eton-jacket` | Three-piece Eton-style body, four buttons, two forepart welts and a straight short hem. Narrow back, removable button rings and omitted underarm fish are source differences. | draft (not sewn) |

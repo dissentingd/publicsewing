@@ -12,7 +12,7 @@ export const designGroups = [
     section('rain-wind-jackets', 'Rain & wind jackets', `anorak openpattern-british-army-combat-rain-jacket-pattern harrington-jacket openpattern-us-pt-windbreaker-jacket windbreaker`),
     section('cold-weather-jackets', 'Cold-weather jackets', `openpattern-bundeswehr-reversible-jacket-snow openpattern-finnish-m62-reversible-jacket openpattern-ma-1-bomber-jacket-1971 mackinaw quilted-jacket openpattern-swedish-army-motorcycle-jacket-ordonnansjacka-m-1954 openpattern-swedish-army-m90-air-combat-jacket`),
     section('utility-jackets', 'Utility jackets', `openpattern-british-army-cs95-field-combat-smock field-jacket hunting-coat openpattern-swiss-m70-field-jacket openpattern-us-army-acu-jacket-2014 openpattern-us-army-bdu-jacket-1981 openpattern-us-army-m65-jacket openpattern-us-army-tropical-combat-jacket openpattern-us-tactical-smock`),
-    section('everyday-jackets', 'Work & everyday jackets', `barbers-coat boys-work-coat chore-coat devon jett kimono-jacket military-tunic painters-jacket scout-coat`),
+    section('everyday-jackets', 'Work & everyday jackets', `barbers-coat boys-work-coat chore-coat devon jett kimono-jacket military-tunic painters-jacket pantry-jacket scout-coat`),
     section('suit-jackets', 'Suit jackets', `boys-suit-jacket dinner-jacket jaeger sack-coat smoking-jacket suit-jacket tailored-jacket`),
     section('dress-jackets', 'Shaped & dress jackets', `double-dart-jacket eton-jacket fitted-jacket frock-coat norfolk-jacket prince-albert-jacket tailcoat`),
   ] },
