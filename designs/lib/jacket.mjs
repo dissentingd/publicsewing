@@ -969,6 +969,7 @@ export function draftBoxSkirtLayout(sh, a) {
     const [topEdge, rest] = panel.outline.split(edge)
     const [lower, topSide] = rest.split(side)
     panel.outline = topEdge.join(curve.clone()).join(topSide)
+    panel.marks = { ...panel.marks, skirtEdge: edge, skirtSide: side }
     panels[`${which}Skirt`] = {
       outline: lower.join(curve.clone().reverse()),
       fold: panel.fold,
@@ -1015,6 +1016,7 @@ export function draftBoxSkirtLayout(sh, a) {
   panels.frontSkirt.pockets = panels.front.pockets
   delete panels.front.pockets
   const f = store.get('jacket.front')
+  panels.frontSkirt.marks.cfLine = new Point(f.cfx, frontCut.edge.y)
   f.buttonBottom = Math.min(f.buttonBottom ?? Infinity, frontCut.edge.y - a.buttonClear)
   f.cfEnd = frontCut.edge.y
   store.set('jacket.front', f)

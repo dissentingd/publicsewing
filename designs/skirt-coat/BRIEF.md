@@ -31,4 +31,10 @@ The plate lays several existing gores together to draw one skirt. This draft use
 
 ## Pieces and construction
 
-Upper front and back, front and back skirt, facing, collar, top and under sleeves. Sew the front skirt's hip dart first, then the box coat's neck darts and shoulder seams. Join each skirt to its bodice along the matching curved edge, then sew side seams, facing, collar, sleeves, hems and buttons.
+Upper front and back, front and back skirt, facing, collar, top and under sleeves. Use the matching curved cut edges when joining the skirts; the front skirt's dart intake is taken out before that seam is sewn.
+
+1. Mark the front skirt dart legs and tip and the curved bodice/skirt joins. Sew the hip darts from the upper edge toward their tips and press them.
+2. Sew the inherited upper-front neck darts. Join the upper fronts and back at shoulders, then press the seams.
+3. Join each skirt to its matching upper piece along the curved edge, matching centre and side ends. Press the joins; check that the front hem falls below the back as drafted.
+4. Sew the continuous bodice and skirt side seams. Assemble each two-piece sleeve and set it into the matching armhole.
+5. Apply the inherited facing and collar. Finish sleeve and skirt hems, then work the buttonholes and attach the buttons above the skirt join.

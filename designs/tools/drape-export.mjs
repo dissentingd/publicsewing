@@ -2,10 +2,11 @@
 // into a GarmentCode pattern specification).
 // Usage: node tools/drape-export.mjs <design> <set> <out.json> [--options '<json>'] [--pieces a,b]
 //          [--clip piece=x,...] [--split piece=x,...] [--clipy piece=y,...] [--m name=mm,...]
-//          [--prefix id]
+//          [--prefix id] [--sources role=prefix.part,...]
 //   prefix: the parts' name prefix, for a design that extends another (the peacoat's parts
 //   are mackinaw.*); the design's own id by default.
 //   pieces: part names without the design prefix (default: every piece with a seam path);
+//   sources: explicit source part for each exported role when inherited pieces have mixed prefixes;
 //   every cut value is mm or a point name of the piece (its x, or its y for clipy).
 //   clip: cut a piece at x >= value, e.g. front=0 to cut the button stand off at CF so the two
 //   fronts can be sewn closed edge to edge; split: cut a piece in two at x into <piece>Plus
@@ -106,12 +107,14 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const store = pattern.setStores[0]
   if (store.logs.error.length) throw new Error(store.logs.error.join('\n'))
   const wanted = flag('--pieces', null)?.split(',')
+  const sources = byPiece('--sources')
+  const sourceNames = new Map(Object.entries(sources).map(([role, full]) => [full, role]))
   const out = { design, set, options, measurements, pieces: {}, points: {}, snippets: {}, removed: {} }
   // Only the design's own parts (not the blocks' or FreeSewing's library parts of the same name)
   const own = `${flag('--prefix', Design.designConfig.data.id)}.`
   for (const [full, part] of Object.entries(pattern.parts[0])) {
-    if (!full.startsWith(own)) continue
-    const name = full.slice(own.length)
+    if (sourceNames.size ? !sourceNames.has(full) : !full.startsWith(own)) continue
+    const name = sourceNames.size ? sourceNames.get(full) : full.slice(own.length)
     if (wanted ? !wanted.includes(name) : !part.paths.seam || part.hidden) continue
     if (!part.paths.seam) throw new Error(`${name} has no seam path`)
     let poly = polyline(part.paths.seam)
@@ -167,6 +170,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       }
     }
   }
+  if (wanted) for (const name of wanted) if (!(name in out.pieces)) throw new Error(`missing drape piece ${name} (source ${sources[name] ?? own + name})`)
   writeFileSync(file, JSON.stringify(out, null, 1))
   console.log(`${file}: ${Object.entries(out.pieces).map(([k, v]) => `${k} (${v.length})`).join(', ')}`)
 }

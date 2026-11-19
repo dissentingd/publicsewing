@@ -32,4 +32,8 @@ Front, whole back, side body, facing, collar, top and under sleeves, lower welt 
 
 ## Construction
 
-Sew and press the two forepart welts and bags, then join the foreparts, side bodies and back at their long seams. Sew shoulders, facing and collar, then the two-piece sleeves and lining. Finish the straight hem and front closure. For a washable cotton version, use the source's lightweight lining and sew the buttons for replacement.
+1. Mark the two forepart welt mouths and four button stations. Make the welts and pocket bags while the fronts are flat; press and check both mouths align.
+2. Join each forepart to its side body, then the side bodies to the whole back. Sew the shoulders and press the long seams.
+3. Assemble and apply the facing and collar. Sew each two-piece sleeve, check its pitch against the armhole marks, and set it in.
+4. Assemble and attach the inherited lining, leaving an opening to turn the jacket; close that opening after turning and pressing.
+5. Finish the straight hem, work the four buttonholes and attach the buttons. For a washable cotton version, use the source's lightweight lining and sew buttons so they can be replaced.

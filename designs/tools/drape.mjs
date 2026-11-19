@@ -136,6 +136,7 @@ export function drape(design, { name, options: extra = {}, entry, upTo, set, ble
   if (r.clipY) exportArgs.push('--clipy', pairs(r.clipY))
   if (r.measurements) exportArgs.push('--m', pairs(r.measurements))
   if (r.prefix) exportArgs.push('--prefix', r.prefix)
+  if (r.sources) exportArgs.push('--sources', pairs(r.sources))
   console.log(stage('export', () => run(process.execPath, exportArgs, { timeout: TIMEOUT.step })).trim())
   const specs = join(out, 'specs')
   let configPath = join('drape', r.config)

@@ -205,3 +205,19 @@ bloomers:
   size: cisMaleAdult38
   measurements: { waist: 800, seat: 1000 }
   pieces: [front, back]
+
+skirt-coat:
+  config: box-skirt.yaml
+  size: cisFemaleAdult34
+  measurements: { chest: 900, waist: 800, seat: 1070 }
+  pieces: [back, backSkirt, front, frontSkirt, topsleeve, undersleeve]
+  sources: { back: boxcoat.back, backSkirt: skirt-coat.backSkirt, front: boxcoat.front, frontSkirt: skirt-coat.frontSkirt, topsleeve: boxcoat.topsleeve, undersleeve: boxcoat.undersleeve }
+  clip: { front: cfLine, frontSkirt: cfLine }
+
+pantry-jacket:
+  config: blouse.yaml
+  size: cisMaleAdult38
+  measurements: { chest: 1000, waist: 800, seat: 1000 }
+  pieces: [back, sideBody, front, topsleeve, undersleeve]
+  sources: { back: topcoat.back, sideBody: militaryblouse.sideBody, front: jacket.front, topsleeve: militaryblouse.topsleeve, undersleeve: militaryblouse.undersleeve }
+  clip: { front: 0 }
