@@ -211,8 +211,17 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
 .annotated-pattern-key-row { display: grid; grid-template-columns: 2rem 1fr; gap: 0.6rem; padding: 0.55rem 0; border-bottom: 1px solid var(--ifm-color-emphasis-200); }
 .annotated-pattern-code { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: #173e5a; color: white; font-weight: 700; font-size: 0.8rem; }
 .annotated-pattern-key-row small { display: block; color: var(--ifm-color-emphasis-700); font-size: 0.82rem; }
+.annotated-pattern-stitch { color: var(--ifm-color-primary) !important; font-weight: 700; }
+.stitch-legend { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--ifm-color-emphasis-300); }
+.stitch-legend h3 { margin: 0 0 0.8rem; font-size: 1.1rem; }
+.stitch-legend-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.stitch-legend-item { display: grid; grid-template-columns: 3rem 1fr; gap: 0.5rem; align-items: start; }
+.stitch-legend-item small { display: block; margin-top: 0.25rem; color: var(--ifm-color-emphasis-700); font-size: 0.83rem; }
+.stitch-symbol { width: 2.9rem; height: 1.25rem; margin-top: 0.15rem; fill: none; stroke: var(--ifm-color-primary); stroke-width: 2; }
+.stitch-symbol .stitch-edge { stroke: var(--ifm-color-emphasis-600); stroke-width: 1; }
+.stitch-legend > p { margin: 1rem 0 0; font-size: 0.88rem; }
 .annotated-pattern-note { margin: 1rem 0 0; color: var(--ifm-color-emphasis-700); font-size: 0.88rem; }
-@media (max-width: 800px) { .annotated-pattern-heading { display: block; } .annotated-pattern-heading > p { margin-top: 0.75rem; } .annotated-pattern-key { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 800px) { .annotated-pattern-heading { display: block; } .annotated-pattern-heading > p { margin-top: 0.75rem; } .annotated-pattern-key { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stitch-legend-items { grid-template-columns: 1fr; gap: 0.75rem; } }
 @media (max-width: 480px) { .annotated-pattern-key { grid-template-columns: 1fr; } }
 /* Finished-garment illustration at the top of a design page, and its thumbnail in the table */
 .design-page { max-width: 1060px; margin-inline: auto; }

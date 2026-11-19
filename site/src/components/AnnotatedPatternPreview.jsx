@@ -19,18 +19,43 @@ const marks = [
   { code: 'F', x: 669, y: 315, note: 'underarm seam: sleeve 3' },
   { code: 'P6', x: 127, y: 245, note: 'breast-pocket placement on front 1' },
   { code: 'P7', x: 183, y: 558, note: 'lower-pocket placement on front 1' },
+  { code: 'G', x: 610, y: 606, note: 'collar outer edge: collar 4' },
+  { code: 'H', x: 145, y: 745, note: 'hem: front 1' },
+  { code: 'H', x: 490, y: 517, note: 'hem: sleeve 3' },
+  { code: 'H', x: 790, y: 745, note: 'hem: back 2' },
+  { code: 'BH', x: 40, y: 386, note: 'buttonhole position: front 1' },
 ]
 
 const key = [
-  ['A', 'Shoulder', '1 front + 2 back'],
-  ['B', 'Side seam', '1 front + 2 back'],
-  ['C', 'Armhole and sleeve cap', '1 front + 2 back + 3 sleeve'],
-  ['D', 'Neckline and collar', '1 front + 2 back + 4 collar'],
-  ['E', 'Front edge and facing', '1 front + 5 facing'],
-  ['F', 'Sleeve underarm', '3 sleeve, sewn to itself'],
-  ['P6', 'Breast-pocket mark', '6 pocket on 1 front'],
-  ['P7', 'Lower-pocket marks', '7 pockets on both 1 fronts'],
+  ['A', 'Shoulder', '1 front + 2 back', 'FF'],
+  ['B', 'Side seam', '1 front + 2 back', 'FF'],
+  ['C', 'Armhole and sleeve cap', '1 front + 2 back + 3 sleeve', 'SS'],
+  ['D', 'Neckline and collar', '1 front + 2 back + 4 collar', 'SS'],
+  ['E', 'Front edge and facing', '1 front + 5 facing', 'SS'],
+  ['F', 'Sleeve underarm', '3 sleeve, sewn to itself', 'FF'],
+  ['G', 'Collar outer edge', 'two layers of 4 collar', 'SS'],
+  ['H', 'Coat and sleeve hems', '1 front + 2 back + 3 sleeve', 'TS'],
+  ['P6', 'Breast-pocket mark', 'piece 6 on left front 1', 'TS'],
+  ['P7', 'Lower-pocket marks', 'piece 7 on both fronts 1', 'TS'],
+  ['BH', 'Buttonhole marks', 'front 1', 'BH'],
 ]
+
+const stitchKey = [
+  ['FF', 'Flat-felled', 'Straight-stitch the join, fold one allowance over the other, then topstitch it down.'],
+  ['SS', 'Straight seam', 'One straight-stitch join; finish the raw allowances as the step directs.'],
+  ['TS', 'Topstitch', 'Visible straight stitching close to a folded edge or pocket edge.'],
+  ['BH', 'Buttonhole', 'Use the machine buttonhole stitch at the marked opening positions.'],
+]
+
+function StitchSymbol({ type }) {
+  return <svg className={`stitch-symbol stitch-symbol-${type.toLowerCase()}`} viewBox="0 0 46 18" aria-hidden="true">
+    {type === 'BH' ? <><rect x="14" y="2" width="18" height="14" rx="7" /><path d="M23 4 V14" /></> : <>
+      <path d="M2 5 H44" />
+      {type === 'FF' && <path d="M2 13 H44" />}
+      {type === 'TS' && <path className="stitch-edge" d="M2 13 H44" />}
+    </>}
+  </svg>
+}
 
 export default function AnnotatedPatternPreview({ src }) {
   return <section className="annotated-pattern" aria-labelledby="pattern-map-title">
@@ -39,12 +64,12 @@ export default function AnnotatedPatternPreview({ src }) {
         <p className="design-eyebrow">Chore coat · default pattern</p>
         <h2 id="pattern-map-title">Pattern map</h2>
       </div>
-      <p>Numbers identify cut pieces. Letters match seam lines; P6 and P7 mark pocket positions. Follow the same codes in Construction below.</p>
+      <p>Numbers identify cut pieces. Letters match seam lines; P6 and P7 mark pocket positions. The key pairs each line with its stitch type.</p>
     </div>
     <div className="annotated-pattern-layout">
       <div className="annotated-pattern-image">
         <img src={src} alt="Chore coat pattern pieces 1 to 7, with seam lines and pocket placement marks" />
-        <svg viewBox="0 0 1000 938" role="img" aria-label="Seam codes A to F and pocket marks P6 and P7 over the numbered pattern layout">
+        <svg viewBox="0 0 1000 938" role="img" aria-label="Seam codes A to H, pocket marks P6 and P7, and buttonhole marks over the numbered pattern layout">
           {marks.map((mark, i) => <g key={`${mark.code}-${i}`} transform={`translate(${mark.x} ${mark.y})`}>
             <title>{mark.code}: {mark.note}</title>
             <circle r={mark.code.length > 1 ? 14 : 12} />
@@ -53,12 +78,19 @@ export default function AnnotatedPatternPreview({ src }) {
         </svg>
       </div>
       <div className="annotated-pattern-key" aria-label="Pattern map key">
-        {key.map(([code, seam, pieces]) => <div key={code} className="annotated-pattern-key-row">
+        {key.map(([code, seam, pieces, stitch]) => <div key={code} className="annotated-pattern-key-row">
           <span className="annotated-pattern-code">{code}</span>
-          <span><strong>{seam}</strong><small>{pieces}</small></span>
+          <span><strong>{seam}</strong><small>{pieces}</small><small className="annotated-pattern-stitch">{stitch} · {stitchKey.find(([id]) => id === stitch)[1]}</small></span>
         </div>)}
       </div>
     </div>
-    <p className="annotated-pattern-note">Preview at the default options, size 38, with seam allowance. Use the exported PDF or SVG for cutting; this map is for finding pieces and matching seams.</p>
+    <div className="stitch-legend" aria-label="Stitch type legend">
+      <h3>Stitch legend</h3>
+      <div className="stitch-legend-items">{stitchKey.map(([code, name, detail]) => <div className="stitch-legend-item" key={code}>
+        <StitchSymbol type={code} />
+        <span><strong>{code} · {name}</strong><small>{detail}</small></span>
+      </div>)}</div>
+    </div>
+    <p className="annotated-pattern-note">Preview at the default options, size 38, with seam allowance. Stitch types describe this proposed construction. Use the exported PDF or SVG for cutting; these stitch codes are currently shown on the page map only.</p>
   </section>
 }

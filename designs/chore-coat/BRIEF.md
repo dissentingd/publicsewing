@@ -71,16 +71,16 @@ The tests include three stout figures, and check that the coat clears the waist.
 - **Neck and shoulders from the Brian block**, not Simons' neck points.
 
 ## Construction (our words)
-The letters below identify matching seam lines in the pattern map. Numbers are printed on the pattern pieces.
+The letters below identify matching seam lines in the pattern map. Numbers are printed on the pattern pieces. Stitch codes in the map and steps mean: **FF** flat-felled seam (join with a straight stitch, fold one allowance over the other, then topstitch it down); **SS** straight-stitch seam (finish the raw allowances as directed); **TS** visible topstitching close to a folded edge; **BH** machine buttonhole stitch. These are proposed sewing methods for this unsewn draft.
 
 1. Interface the two facings **5** and one collar layer **4**.
-2. Hem the top edges of breast pocket **6** and lower pockets **7**. Press their other allowances under and topstitch them to the marks **P6** and **P7** on fronts **1** (pocket **6** goes on the left front only).
-3. Join front **1** to back **2** at shoulders **A** and flat-fell those seams. Leave side seams **B** open for setting the sleeves flat.
-4. Sew the two collar layers **4** together along their outer edges and ends; turn and press. Sew the under collar to the neckline **D** of fronts **1** and back **2**, matching centre back and ending halfway across each button stand.
-5. Sew facings **5** to the front edges **E** of fronts **1**, enclosing the collar ends at the top and the rounded corners below. Turn, press, and finish the facings' inner edges.
-6. Set sleeves **3** into the armholes **C** while the underarm is open, matching the cap notches. Then close the sleeve underarm **F** and body side seam **B** in one run; flat-fell the seam.
-7. Turn up the coat and sleeve hems (3 × seam allowance) and topstitch.
-8. Work buttonholes on the right front **1** for men's wear (left for women's); sew buttons at the marked centre-front line. Fit a muslin before cutting final cloth.
+2. Hem the top edges of breast pocket **6** and lower pockets **7**. Press their other allowances under and use **TS** to attach them at marks **P6** and **P7** on fronts **1** (pocket **6** goes on the left front only).
+3. Join front **1** to back **2** at shoulders **A** with **FF**. Leave side seams **B** open for setting the sleeves flat.
+4. Join the two collar layers **4** along outer edge **G** with **SS**; trim, turn and press. Attach the under collar to neckline **D** of fronts **1** and back **2** with **SS**, matching centre back and ending halfway across each button stand. Clip the curved allowances before turning where needed.
+5. Join facings **5** to front edges **E** of fronts **1** with **SS**, enclosing the collar ends at the top and rounded corners below. Trim the corners, turn, press, and finish the facings' inner raw edges.
+6. Set sleeves **3** into armholes **C** with **SS** while the underarm is open, matching the cap notches; finish those raw allowances together. Close sleeve underarm **F** and body side seam **B** in one run with **FF**.
+7. Turn up the coat and sleeve hems (3 × seam allowance) and use **TS** along hem edges **H**.
+8. Work **BH** at the marked positions on the right front **1** for men's wear (left for women's); sew buttons at the marked centre-front line. Fit a muslin before cutting final cloth.
 
 ## Checks the tests run (`npm test`)
 At every FreeSewing adult set and all 75 USDA children's sets:
