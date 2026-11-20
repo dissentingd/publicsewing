@@ -519,7 +519,7 @@ ids.forEach((id, i) => {
   const illustration = figures.length ? `<div className="design-figures">\n${figures.join('\n')}\n</div>\n` : ''
   const patternMap = mapped.has(id) && preview ? `<section className="pattern-map-section" aria-labelledby="pattern-map-title">
   <h2 id="pattern-map-title">Pattern map</h2>
-  <p>Numbers identify cut pieces. Letters match seam edges; P6 and P7 mark pocket placement. The stitch and finish key is inside the image.</p>
+  <p>Numbers identify cut pieces. Letters and short codes match the seam edges sewn together and mark placements such as pockets and buttonholes. The stitch and finish key is inside the image; the construction steps use the same codes.</p>
   <figure className="pattern-map-figure">
     <div className="pattern-map-scroll" tabIndex={0} aria-label="Scrollable pattern map"><a href={useBaseUrl('/img/previews/${id}.png')}><img className="preview-img" src={useBaseUrl('/img/previews/${id}.png')} alt="${about.name}: numbered pieces, seam and pocket codes, with embedded stitch and finish key" /></a></div>
     <figcaption>Default options, size ${label(previewSet)}, with seam allowance. Scroll sideways on a narrow screen or click to enlarge.</figcaption>
