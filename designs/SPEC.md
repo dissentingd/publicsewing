@@ -14,7 +14,7 @@ by named operations. [chore-coat/spec.yaml](chore-coat/spec.yaml) is the plaines
 | `pieces` | The pattern pieces, in order (below). |
 | `variants` | The same pattern with other options, shown on the design's page: `<key>: { name, description, options: { <option>: <value> } }`. Each option must be shown in the pattern tool (have a `menu`); the page's instructions come from `labels.yaml`. `tools/preview.mjs` renders each one, `site/illustrations/<design>.<key>.jpg` is its illustration, and `test/variants.test.mjs` drafts each at every size. Not inherited through `extends`. |
 | `extends` | Start from another spec file: its pieces, block and options. This spec's `options` entries are merged into the parent's (`buttons: { count: 5 }` changes only the default); its `pieces` are added, or replace the parent's by key. A parent with no `about` is a template (`templates/`): its pieces take this design's name. |
-| `patternMap` | Printed piece numbers, seam and placement codes and a stitch key, drawn on the page preview, the SVG and PDF downloads and the drape input (below). Inherited through `extends`; a spec's own map replaces it, `patternMap: false` drops it, and `patternMap: { merge: true, pieces, codes }` adds to it. |
+| `patternMap` | Printed piece numbers, seam and placement codes and a stitch key, drawn on the page preview, the SVG and PDF downloads and the drape input (below). Inherited through `extends`; a spec's own map replaces it, `patternMap: false` drops it, and `patternMap: { merge: true, pieces, codes }` adds to it (a `null` piece number or code drops the inherited one). |
 
 ## Pieces
 

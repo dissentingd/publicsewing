@@ -27,6 +27,8 @@ export function prepareMap(spec) {
   }
   const codes = {}
   for (const [code, c] of Object.entries(map.codes ?? {})) {
+    // null drops an inherited code (a merged map whose design has no such seam)
+    if (c === null) continue
     if (!map.stitches?.[c.stitch]) throw new Error(`patternMap ${code}: unknown stitch "${c.stitch}"`)
     if (c.kind && !['seam', 'dart', 'placement', 'closure'].includes(c.kind)) throw new Error(`patternMap ${code}: unknown kind "${c.kind}"`)
     const at = (c.at ?? []).map((a) => {

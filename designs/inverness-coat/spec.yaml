@@ -80,5 +80,34 @@ variants:
     description: A shorter cape ending around the waist.
     options: { capeLength: 0.42 }
 
-# No pattern map yet: the women's box coat's would label pieces this design changes.
-patternMap: false
+# The women's box coat's pattern map, for a sleeveless body under a cape (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces:
+    { cape: 5, topsleeve: null, undersleeve: null, hipFlap: null, hipJet: null, hipBag: null, ticketFlap: null,
+      ticketJet: null, ticketBag: null }
+  codes:
+    C:
+      name: armhole, finished
+      stitch: SS
+      at: [{ part: front, between: [shoulder, armhole] }, { part: back, between: [shoulder, armhole] }]
+    D:
+      name: neckline, cape and collar
+      stitch: SS
+      at:
+        - { part: front, between: [hps, dartSide] }
+        - { part: back, between: [hps, cbNeck] }
+        - { part: collar, path: neck, along: 0.5 }
+    F: null
+    G: null
+    P7: null
+    P10: null
+    H:
+      name: hems
+      stitch: HS
+      at: [{ part: front, between: [hemEdge, hemSide] }, { part: back, between: [cbHem, hemSide] }]
+    K:
+      name: cape shoulder darts
+      stitch: SS
+      kind: dart
+      at: [{ part: cape, path: shoulderDart1, along: 0.5 }, { part: cape, path: shoulderDart2, along: 0.5 }]
