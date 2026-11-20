@@ -41,6 +41,20 @@ export function prepareMap(spec) {
 /** The design's prepared map, or null */
 export const mapFor = (Design) => Design.designConfig.data?.patternMap ?? null
 
+/** The point of a path nearest `m`, from samples along each of its segments */
+function onSeam(path, m) {
+  let best = m
+  let d = Infinity
+  for (const piece of path.divide()) {
+    for (let k = 0; k <= 16; k++) {
+      const p = piece.shiftFractionAlong(k / 16)
+      const dk = Math.hypot(p.x - m.x, p.y - m.y)
+      if (dk < d) [best, d] = [p, dk]
+    }
+  }
+  return best
+}
+
 const drafted = (part) => part && !part.hidden && part.paths.seam && !part.paths.seam.hidden
 
 /** Every code's position in its piece's own frame: [{ code, part, x, y }], for this draft */
@@ -65,7 +79,8 @@ export function resolve(pattern, map) {
       } else if (a.between) {
         const [p, q] = a.between.map((k) => part.points[k])
         if (!p || !q) throw new Error(`pattern map: missing ${a.part} points ${a.between}`)
-        point = { x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 }
+        // Midway between them on the piece's seam line: the chord's middle, moved onto a curve
+        point = onSeam(part.paths.seam, { x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 })
       } else point = part.points[a.point]
       if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new Error(`pattern map: invalid ${code} on ${a.part}`)
       out.push({ code, part: a.part, x: point.x, y: point.y })

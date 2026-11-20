@@ -181,7 +181,7 @@ patternMap:
       name: sleeve underarm
       stitch: FF
       drape: underarm
-      at: [{ part: sleeve, between: [capLeft, wristLeft] }, { part: sleeve, between: [capRight, wristRight] }]
+      at: [{ part: sleeve, between: [bicepsLeft, wristLeft] }, { part: sleeve, between: [bicepsRight, wristRight] }]
     G:
       name: collar outer edge
       stitch: SS
