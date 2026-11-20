@@ -56,5 +56,11 @@ front, facing, collar, top and under sleeves, back-neck facing, front and back l
 hip pocket's flap, jet and bag.
 
 ## Construction
-As the tailored jacket's brief. Buttonholes on the outer row of the front that laps over (the
-right, for women); buttons on its inner row, and on the other front under the holes.
+Proposed making-up order for this unsewn draft:
+
+1. Join each back to its side back and each front to its side front along the princess seams.
+2. Make the hip pockets on the side fronts: prepare each flap and folded jet, stitch them at the marked mouth, cut and turn the opening, then attach and close the bag. There is no breast or ticket pocket.
+3. Join the shoulder and side seams. Make the storm collar and sew it to the neckline; join the front and back-neck facings and turn the front edges, lapels and collar.
+4. Join each top sleeve to its under sleeve, then set the sleeve into the armhole, easing the cap.
+5. Assemble the body and sleeve linings, leaving a back ease pleat. Attach the lining to the facings and finish the body and sleeve hems with lining ease at the hem.
+6. Work buttonholes on the outer row of the overlapping right front. Sew buttons on its inner row and on the left front beneath the holes; secure the inner row through the front and its interfacing where it falls beyond the facing.

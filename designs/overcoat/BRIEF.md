@@ -33,7 +33,14 @@ front (one row of buttons on CF) and the side seams let out at the hem.
 | Pockets, lining | Not drafted | As the peacoat: slanted welt pockets, a lining |
 
 ## Construction
-As the peacoat's brief, with one row of buttons and buttonholes on CF.
+Proposed making-up order for this unsewn draft; the source does not draft pockets or lining:
+
+1. Make the slanted welt pockets on the fronts: interface and fold each welt, stitch it and a bag piece at the marked mouth, cut and turn the opening, then close the bag and secure the welt ends.
+2. Sew the centre-back seam, leaving the vent open. Fold and finish the vent lap, then join the shoulder and side seams.
+3. Sew the collar to the neckline and join the front facings to the front edges and lapels. Join the back-neck facing to the front facings at the shoulders and finish the collar gorge.
+4. Sew each sleeve seam and set the sleeves into the armholes, easing the caps.
+5. Assemble the body and sleeve linings with a centre-back ease pleat. Finish the lining around the vent and attach it to the facings.
+6. Finish coat and sleeve hems, allowing an ease fold in the lining. Work one row of buttonholes on the overlapping front at centre front and sew the corresponding buttons to the underlap.
 
 ## Changes and what isn't modelled
 - **No CB shaping:** Simons' CB comes in ¾ in at the waist and the hem; here it's straight, as

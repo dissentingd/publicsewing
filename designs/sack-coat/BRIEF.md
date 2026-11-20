@@ -99,4 +99,11 @@ lower pockets' flaps and bags, and the lining (back-neck facing, front and back 
 pocket; `lining` and `insidePockets`, on by default).
 
 ## Construction
-As the suit jacket's brief, with no vent or sleeve vent. Simons gives no making-up order.
+Proposed making-up order; Simons gives no making-up sequence:
+
+1. Make the breast welt and lower pockets selected for the variant, including their flaps, welts and bags.
+2. Sew the centre-back seam. Join the backs to the side panels and the side panels to the fronts, then close the shoulders. Keep the back hem continuous, without a vent.
+3. Sew the collar to the neckline and gorge. Attach the facings, turn the lapels and front edges, and press.
+4. Join each top and under sleeve without a sleeve vent, then set the sleeves into the armholes.
+5. Assemble the body and sleeve linings, with the inside pocket if selected. Attach the lining to the facings and finish body and sleeve hems.
+6. Work the front buttonholes and sew on the buttons for the chosen single- or double-breasted variant.

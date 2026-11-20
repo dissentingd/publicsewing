@@ -38,7 +38,13 @@ style and numbers are Simons', and no ЕМКО text or figure is used. No librar
 Front, back, facing, front lining, and a welt and bag for each pocket.
 
 ## Construction
-As the waistcoat. Buttonholes in the row on the over-lapping front's outer side, buttons in its inner row, and buttons on the underlap under the holes.
+Proposed making-up order for this unsewn draft:
+
+1. Sew the shaping darts in the fronts and backs. Make the upper and lower welt pockets in each front, closing the lower dart before placing its welt over it.
+2. Join the front facings to the front linings and prepare the back lining. Sew the outer fronts to the backs at the shoulders; join the lining shoulders in the same way.
+3. With shell and lining right sides together, sew the front edges, V neck, back neck and armholes. Turn through the open side seams and press the double-breasted overlap.
+4. Close the shell side seams, then the lining side seams and turning opening by hand.
+5. Work buttonholes in the outer row of the overlapping front. Sew buttons to its inner row and to the underlap beneath the holes.
 
 ## Changes and what isn't modelled
 - **The waistcoat's darts stay,** a back dart and a small front one, where Simons takes the waist in by the side seam's lens. The waist comes out similar.

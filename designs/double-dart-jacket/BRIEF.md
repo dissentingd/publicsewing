@@ -43,5 +43,10 @@ As the fitted jacket without its pockets, plus the middle front: front, middle f
 under-arm, side back, back (all cut 2), facing, back-neck facing, top and under sleeves, lining.
 
 ## Construction
-As the fitted jacket: the front, middle front and side front joined first (match the bust
-notches), then the under-arm panel, side back and back.
+Proposed making-up order for this unsewn draft:
+
+1. Join each front, middle front and side front in that order, matching the bust notches. Join the side backs to the backs and the under-arm panels between the front and back assemblies. Sew the centre-back seam.
+2. Close the shoulder seams. Join the shawl collar at centre back and sew its neck edge to the back neckline.
+3. Join the facings and their shawl collar at centre back. Sew them to the front edges and outer collar, turn and press.
+4. Sew each top and under sleeve together, then set the sleeves into the armholes, including the under-arm panels at their lower edges.
+5. Assemble and attach the lining to the facings. Finish the jacket and sleeve hems, then work the front buttonholes and sew on the buttons. This draft has no pockets.
