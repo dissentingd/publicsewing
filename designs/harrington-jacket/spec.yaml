@@ -65,13 +65,13 @@ pieces:
     part: raglanSleeve
     after: [back, front]
     which: one
-    nr: 4
+    nr: 3
     options: [sleeveLengthBonus]
     hemSa: 1
   cuff:
     part: rib
     after: [sleeve]
-    nr: 5
+    nr: 6
     label: cuff
     cut: 2
     options: [ribStretch, cuffHeight]
@@ -83,7 +83,7 @@ pieces:
   waistband:
     part: rib
     after: [back, front]
-    nr: 6
+    nr: 7
     label: waistband
     options: [ribStretch, bandHeight]
     measurements: [chest]
@@ -97,3 +97,56 @@ variants:
     name: Relaxed Harrington
     description: More room in the body and a deeper rib waistband.
     options: { chestEase: 0.24, bandHeight: 0.06 }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order. The rib
+# cuffs and waistband carry numbers only.
+patternMap:
+  pieces: { front: 1, back: 2, sleeve: 3, collar: 4, facing: 5, cuff: 6, waistband: 7 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open or toward the back" }
+    RB: { name: rib seam, key: stretch the rib to fit while stitching; stretch or zigzag stitch }
+  codes:
+    B:
+      name: side seam
+      stitch: SS
+      at: [{ part: front, between: [armhole, hem] }, { part: back, between: [armhole, hem] }]
+    C:
+      name: raglan seams
+      stitch: SS
+      at:
+        - { part: front, path: raglan, along: 0.5 }
+        - { part: back, path: raglan, along: 0.5 }
+        - { part: sleeve, point: frontNotch }
+        - { part: sleeve, point: backNotch }
+    D:
+      name: neckline and collar
+      stitch: SS
+      at:
+        - { part: front, path: frontCollar, along: 0.5 }
+        - { part: back, path: backCollar, along: 0.5 }
+        - { part: sleeve, between: [raglanNeckFront, raglanNeckBack] }
+        - { part: collar, path: neck, along: 0.5 }
+    E:
+      name: front edge, facing and zip
+      stitch: SS
+      at: [{ part: front, path: edge, along: 0.5 }, { part: facing, path: edge, along: 0.5 }]
+    F:
+      name: sleeve underarm
+      stitch: SS
+      at: [{ part: sleeve, between: [bicepsLeft, wristLeft] }, { part: sleeve, between: [bicepsRight, wristRight] }]
+    H:
+      name: hems joined to the rib cuffs and waistband
+      stitch: RB
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: back, path: hemBase, along: 0.5 }
+        - { part: sleeve, path: hemBase, along: 0.5 }
+    V:
+      name: sleeve shoulder dart
+      stitch: SS
+      at: [{ part: sleeve, point: dartTip }]
+    Z:
+      name: zip placement
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: zip, along: 0.25 }]
