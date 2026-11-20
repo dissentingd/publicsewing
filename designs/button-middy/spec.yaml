@@ -120,5 +120,14 @@ pieces:
     buttons: [[x, w / 2]]
     buttonholes: [[l - x, w / 2]]
 
-# No pattern map yet: the inherited one would label pieces this design changes.
-patternMap: false
+# The barber's coat's pattern map (through the pyjama jacket), with this design's pieces
+# numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { cuff: 9, sleevePlacket: 10, belt: 11 }
+  codes:
+    BH:
+      name: buttons and buttonholes
+      stitch: BH
+      kind: closure
+      at: [{ part: front, snippet: buttonhole0_0, optional: true }, { part: front, snippet: button0_0, optional: true }]
