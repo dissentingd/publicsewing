@@ -88,3 +88,8 @@ pieces:
 
   # One pocket, on the left front
   breastPocket: { part: pocket, after: front, key: breast, nr: 7, label: breastPocket, cut: 1, if: breastPocket }
+
+# The service shirt's pattern map, with this design's pieces numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { collar: 12, collarFall: 6, cuff: 13, sleevePlacket: 14, breastFlap: null, shoulderStrap: null }
