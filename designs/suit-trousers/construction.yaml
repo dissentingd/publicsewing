@@ -1,0 +1,11 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: suit-trousers
+steps:
+  - { order: 1, action: darts, pieces: [2, 1], seams: [M], stitches: [SS] }
+  - { order: 2, action: back pockets, pieces: [8, 9, 2], placements: [BP], stitches: [SS], whenAny: [backPocket] }
+  - { order: 3, action: side pockets and side seams, pieces: [7, 1, 2], seams: [O], placements: [SP], stitches: [SS], whenAny: [sidePockets] }
+  - { order: 4, action: inseams, pieces: [1, 2], seams: [I], stitches: [SS] }
+  - { order: 5, action: fly and crotch seam, pieces: [5, 4, 1, 2], seams: [X], placements: [Z], stitches: [SS, TS] }
+  - { order: 6, action: belt loops and waistband, pieces: [6, 3, 1, 2], seams: [W], stitches: [SS] }
+  - { order: 7, action: hems, pieces: [1, 2], seams: [H], stitches: [HS] }

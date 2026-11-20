@@ -65,3 +65,6 @@ variants:
     name: Turn-ups
     description: "Simons' cuff bottoms: the leg runs on below the hem and folds up into a 2 in cuff (on a man's size). Cut them to the finished length: the hem line is marked."
     options: { turnUps: true }
+
+# No pattern map yet: the suit trousers' would label pieces this design changes.
+patternMap: false

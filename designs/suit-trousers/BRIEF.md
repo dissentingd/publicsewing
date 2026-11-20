@@ -58,16 +58,15 @@ The tables give no pockets, fly or waistband sizes: those are this design's, bel
   over the fly shield; **belt loops** (`beltLoops`, 7) cut from one strip.
 
 ## Construction order
-1. Darts in the backs and fronts; press the back darts toward CB, the front darts toward CF.
-2. Back pockets: jets and bags, as a welt pocket with two jets.
-3. Side pockets: bag pieces to the front and back side seams; sew the side seams above and below
-   the mouth, then round the bags.
-4. Inseams.
-5. Fly: the facing to the left front, the shield to the right; zip between them; topstitch the
-   fly line; then the crotch seam from the fly's end to CB.
-6. Belt loops; waistband halves to the waist, the CB seam through the band; fold, and finish the
-   ends over the fly.
-7. Hems, turned up on the curved line.
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed open, **TS** topstitch, **HS** hem stitch.
+
+1. Sew the darts **M** in the backs **2** and fronts **1**; press the back darts toward CB, the front darts toward CF.
+2. Back pockets at the mouth **BP** on the backs **2**: welt **8** and bags **9**, made as a welt pocket with two jets.
+3. Side pockets: sew the bag pieces **7** to the front **1** and back **2** side seams at the mouth **SP**; sew the side seams **O** above and below the mouth, then round the bags. Without side pockets, sew **O** straight through.
+4. Sew the inseams **I** of the fronts **1** and backs **2**.
+5. Fly: the facing **5** to the left front **1**, the shield **4** to the right; the zip between them; topstitch the fly line **Z** with **TS**; then sew the crotch seam **X** from the fly's end to CB through the fronts **1** and backs **2**.
+6. Sew the belt loops **6**; the waistband **3** halves to the waist **W** of the fronts **1** and backs **2**, the CB seam through the band; fold, and finish the ends over the fly.
+7. Turn up the hems **H** of the fronts **1** and backs **2** on the curved line with **HS**.
 
 ## Changes and what isn't modelled
 - **Turn-ups** (off; `turnUps`, and the variant): Simons, *Drafting Pants and Overalls* (1916), `draftingpantsove00simo`,

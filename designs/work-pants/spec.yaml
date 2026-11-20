@@ -76,3 +76,6 @@ pieces:
           backPocket: if(backPocket, seat * 0.14, 0) # 5 1/2 in of a 40 in seat
           backPocketBelow: waistToSeat * 0.18 # 2 in
           backPocketWelt: seat * 0.006
+
+# No pattern map yet: the suit trousers' would label pieces this design changes.
+patternMap: false

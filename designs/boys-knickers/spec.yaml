@@ -98,3 +98,6 @@ pieces:
     fold: true
     length: knee * 0.87 + knee * 0.26
     width: knee * 0.065
+
+# No pattern map yet: the suit trousers' would label pieces this design changes.
+patternMap: false

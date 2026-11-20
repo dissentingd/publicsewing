@@ -100,3 +100,6 @@ variants:
     name: Narrow leg
     description: A closer lower leg, using the same knee shaping and back pleat.
     options: { scoutCalfWidth: 0.93, scoutHemWidth: 0.90 }
+
+# No pattern map yet: the suit trousers' would label pieces this design changes.
+patternMap: false

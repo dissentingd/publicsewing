@@ -141,3 +141,6 @@ pieces:
       h: seat * 0.06
     points: [[0, 0], [w, 0], [w, h], [0, h]]
     buttonholes: [[w / 2, h - 12]]
+
+# No pattern map yet: the suit trousers' would label pieces this design changes.
+patternMap: false

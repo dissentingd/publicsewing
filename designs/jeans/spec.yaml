@@ -194,3 +194,6 @@ variants:
     name: Bootcut
     description: "A flared legline: the leg a little closer at the knee and flaring out to the hem."
     options: { kneeEase: 0.1, hemWidth: 1.15 }
+
+# No pattern map yet: the suit trousers' would label pieces this design changes.
+patternMap: false
