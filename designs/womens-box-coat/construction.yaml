@@ -1,0 +1,10 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: womens-box-coat
+steps:
+  - { order: 1, action: neck darts, pieces: [1], seams: [N], stitches: [SS] }
+  - { order: 2, action: flap pockets, pieces: [7, 8, 9, 10, 11, 12, 1], placements: [P7, P10], stitches: [SS], whenAny: [pockets, ticketPocket] }
+  - { order: 3, action: back, shoulders and sides, pieces: [2, 1], seams: [CB, A, B], stitches: [SS] }
+  - { order: 4, action: collar and facings, pieces: [4, 1, 2, 3], seams: [D, E], stitches: [SS] }
+  - { order: 5, action: sleeves, pieces: [5, 6, 1, 2], seams: [F, G, C], stitches: [SS] }
+  - { order: 6, action: hems and buttonholes, pieces: [1, 2, 5, 6], seams: [H], placements: [BH], stitches: [HS, BH] }
