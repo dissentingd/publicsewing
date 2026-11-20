@@ -101,3 +101,6 @@ pieces:
       - store: { key: library.undersleeve.title, value: { nr: 8, brand: "'PublicSewing'" } }
 
   middleFront: { part: jacketPanel, after: [backBase, frontBase], panel: middleFront, nr: 21, label: middleFront, cut: 2, lining: lining }
+
+# No pattern map yet: the fitted jacket's would label pieces this design changes.
+patternMap: false

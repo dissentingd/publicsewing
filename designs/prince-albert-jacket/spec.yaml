@@ -124,3 +124,6 @@ variants:
     name: Flared skirt
     description: "The skirt's parts spread at the bottom for more flare, as the book allows. The waist stays the same; only the hem grows."
     options: { skirtSpread: 0.04 }
+
+# No pattern map yet: the fitted jacket's would label pieces this design changes.
+patternMap: false
