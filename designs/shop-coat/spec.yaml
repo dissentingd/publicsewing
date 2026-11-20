@@ -63,6 +63,7 @@ pieces:
       # Four buttons, neck to the seat line (XIII)
       - buttons:
           count: buttons
+          buttonholes: true
           top: cfNeck.y + ext * 0.8
           bottom: cfWaist.y + waistToSeat * 1.2
           rows: [0]
@@ -147,3 +148,81 @@ pieces:
     label: pencilPocket
     cut: 1
     if: lowerPockets and pencilPocket
+
+# The pattern map (SPEC.md, "Pattern map"), as the chore coat's, with the pencil pocket;
+# construction.yaml gives the sewing order. drape: seam ids in drape/coat-shell.yaml.
+patternMap:
+  pieces: { front: 1, back: 2, sleeve: 3, collar: 4, facing: 5, breastPocket: 6, lowerPocket: 7, pencilPocket: 8 }
+  stitches:
+    FF: { name: flat-felled seam, key: flat-fell the allowances }
+    SS: { name: straight seam, key: "straight-join; finish raw edges" }
+    TS: { name: topstitch, key: turn edge and topstitch }
+    BH: { name: buttonhole, key: reinforced machine buttonhole }
+  # drape: the seam's id in drape/coat-shell.yaml (only the shell joins; its split-sleeve overarm
+  # join is a simulation artefact, and the collar, facing and hems are outside that drape)
+  codes:
+    A:
+      name: shoulder
+      stitch: FF
+      drape: shoulder
+      at: [{ part: front, between: [neck, shoulder] }, { part: back, between: [neck, shoulder] }]
+    B:
+      name: side seam
+      stitch: FF
+      drape: side
+      at: [{ part: front, between: [armhole, hem] }, { part: back, between: [armhole, hem] }]
+    C:
+      name: armhole and sleeve cap
+      stitch: SS
+      drape: armhole
+      at:
+        - { part: front, path: frontArmhole, along: 0.5 }
+        - { part: back, path: backArmhole, along: 0.5 }
+        - { part: sleeve, path: sleevecap, along: 0.5 }
+    D:
+      name: neckline and collar
+      stitch: SS
+      at:
+        - { part: front, path: frontCollar, along: 0.5 }
+        - { part: back, path: backCollar, along: 0.5 }
+        - { part: collar, path: neck, along: 0.5 }
+    E:
+      name: front edge and facing
+      stitch: SS
+      at: [{ part: front, path: edge, along: 0.5 }, { part: facing, path: edge, along: 0.5 }]
+    F:
+      name: sleeve underarm
+      stitch: FF
+      drape: underarm
+      at: [{ part: sleeve, between: [bicepsLeft, wristLeft] }, { part: sleeve, between: [bicepsRight, wristRight] }]
+    G:
+      name: collar outer edge
+      stitch: SS
+      at: [{ part: collar, between: [cbOuter, tip] }]
+    H:
+      name: coat and sleeve hems
+      stitch: TS
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: back, path: hemBase, along: 0.5 }
+        - { part: sleeve, path: hemBase, along: 0.5 }
+    P6:
+      name: breast-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: breastPocket, along: 0.5, optional: true }]
+    P7:
+      name: lower-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: lowerPocket, along: 0.5, optional: true }]
+    P8:
+      name: pencil-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: pencilPocket, along: 0.5, optional: true }]
+    BH:
+      name: buttonhole marks
+      stitch: BH
+      kind: closure
+      at: [{ part: front, point: buttonhole0_0 }]
