@@ -22,8 +22,14 @@ export function readSpec(file) {
   const pieces = {}
   // A parent with no `about` is a template: its pieces take this spec's name
   for (const [k, p] of Object.entries(parent.pieces)) pieces[k] = parent.about ? { prefix: parent.about.id, ...p } : p
-  // A pattern map is inherited whole unless this spec gives its own
-  return { ...parent, about: spec.about ?? parent.about, options, pieces: { ...pieces, ...spec.pieces }, variants: spec.variants, patternMap: spec.patternMap ?? parent.patternMap }
+  // A pattern map is inherited whole unless this spec gives its own; `merge: true` adds this spec's
+  // pieces, stitches and codes to the parent's instead (a code of the same name replaces it)
+  let patternMap = spec.patternMap ?? parent.patternMap
+  if (spec.patternMap?.merge && parent.patternMap) {
+    const { merge, ...own } = spec.patternMap
+    patternMap = Object.fromEntries(['pieces', 'stitches', 'codes'].map((k) => [k, { ...parent.patternMap[k], ...own[k] }]))
+  }
+  return { ...parent, about: spec.about ?? parent.about, options, pieces: { ...pieces, ...spec.pieces }, variants: spec.variants, patternMap }
 }
 
 /** Read a spec file and build its design */

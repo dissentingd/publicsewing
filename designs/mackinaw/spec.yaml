@@ -280,7 +280,8 @@ variants:
 patternMap:
   pieces:
     { front: 1, back: 2, sleeve: 3, collar: 4, facing: 5, breastPocket: 6, breastFlap: 7, lowerPocket: 8,
-      lowerFlap: 9, backBelt: 10, frontBelt: 11 }
+      lowerFlap: 9, backBelt: 10, frontBelt: 11, frontSleeve: 12, backSleeve: 13, handWelt: 14, handBag: 15, backNeckFacing: 16, frontLining: 17,
+      backLining: 18, lowerWeltPiece: 19, lowerWeltBag: 20 }
   stitches:
     SS: { name: straight seam, key: "straight seam, pressed open" }
     TS: { name: topstitch, key: turn edge and topstitch }

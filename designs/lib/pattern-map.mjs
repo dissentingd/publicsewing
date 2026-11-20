@@ -20,6 +20,8 @@ export function prepareMap(spec) {
   }
   const numbers = {}
   for (const [key, n] of Object.entries(map.pieces ?? {})) {
+    // null drops an inherited piece's number (a merged map whose design reuses that number)
+    if (n === null) continue
     if (Object.values(numbers).includes(n)) throw new Error(`patternMap: piece number ${n} is used twice`)
     numbers[partOf(key)] = n
   }

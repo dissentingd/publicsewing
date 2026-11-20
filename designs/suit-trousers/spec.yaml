@@ -175,5 +175,5 @@ patternMap:
     Z:
       name: fly line
       stitch: TS
-      kind: placement
-      at: [{ part: front, path: fly, along: 0.5 }]
+      kind: closure
+      at: [{ part: front, path: fly, along: 0.5, optional: true }]
