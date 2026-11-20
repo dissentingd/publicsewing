@@ -42,13 +42,13 @@ Decided: **map records live in `spec.yaml` (`patternMap:`)**, not in `constructi
 
 Refactor, in order (snapshot `chore-coat` and `boys-work-coat` first; `compare` must pass with the map moved and nothing else changed):
 1. **Done (2026-11-20).** The map is the chore coat's `patternMap:` (SPEC.md, "Pattern map"); `lib/pattern-map.mjs` prepares it in `designFromSpec`, resolves it, and builds the key and drape map, keyed by full part name. No shared file tests a design id any more. Proof: `snapshot.mjs chore-coat compare` matches every case, with the preview and every download byte-identical (the only difference is the map in the design data); the drape map is identical at three sizes, with and without pockets. The boys' work coat inherits the map: its draft is unchanged, and its preview and SVG/PDF downloads now carry the codes. Its page keeps the plain preview until it has its own `construction.yaml`, and its committed preview PNG is not regenerated yet.
-2. One key-layout function returning lines and positions in mm, drawn by the preview, SVG and PDF renderers; height computed from the number of entries (the current fixed 180/200 mm and six-row columns overflow past 12 seam codes; the skirt coat has 14 seams).
-3. Anchors between two points follow the seam path between them, not the chord.
-4. Then fix what `map-check` finds on the chore coat (below), regenerate its preview, and only then start the skirt coat.
+2. **Done.** `keyLayout()` in `lib/pattern-map.mjs` places the key for all three renderers and sizes it from its entries.
+3. **Done.** An anchor `between` two points sits on the piece's seam line nearest their midpoint; anchors can also sit on a `snippet` (a buttonhole).
+4. **Done.** The chore coat's sleeve F labels moved to the biceps points; previews regenerated.
 
-Found by `map-check` on the chore coat at `cisMaleAdult38`: the sleeve's F labels sit 12.8 mm off the underarm seam, because `capLeft`/`capRight` are 154–160 mm off the drafted sleeve seam (Brian's points, not this sleeve's); the collar's G label is 4.7 mm off its outer edge (chord of a curve) and overlaps the collar's title notes.
+Mapped so far (2026-11-20): chore coat, boys' work coat (inherited), **skirt coat** and **pantry jacket**, each with a `patternMap`, a steps-only `construction.yaml` and numbered brief steps that validate at site build. The boys' suit jacket family (boys' suit, Eton, pantry) now drafts buttonhole marks. `page-check.mjs` checks any mapped design's downloads and editor; the chore, skirt and boys' work coats pass in the browser (pantry: not yet run against a fresh build). Minor label overlaps are logged privately, not fixed (progress first).
 
-Next garment: **the skirt coat** (Sheifer 1908, public domain). It has a construction record, drafted buttonhole marks and a drape, and it tests a different block (Breanna, via the box coat), darts, a two-piece sleeve, 14 seams and crowded labels on the front. The boys' work coat comes for free with step 1 and only proves inheritance. The pantry jacket waits until its buttonholes are drafted.
+Next: the chore coat's family on `lib/coat.mjs` (shop coat, barber's coat, whose painter's and pyjama jackets inherit), reusing the chore coat's anchors; then conditional step presentation for option-dependent pieces.
 
 ## 1. Define the shared data
 
