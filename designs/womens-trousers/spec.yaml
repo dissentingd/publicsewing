@@ -158,5 +158,7 @@ variants:
     description: "Very full legs that widen from the hip to a sweeping hem, reaching to the floor."
     options: { kneeEase: 1.46, hemWidth: 1.33, lengthBonus: 0 }
 
-# No pattern map yet: the suit trousers' would label pieces this design changes.
-patternMap: false
+# The parent's pattern map, adapted to this design (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { waistband: null, sideWaistband: 3 }

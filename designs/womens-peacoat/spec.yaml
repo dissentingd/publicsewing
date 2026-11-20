@@ -133,5 +133,13 @@ variants:
     description: One row of four buttons on a narrower lap, with peaked lapels.
     options: { doubleBreasted: false, buttonExtension: 0.04, buttons: 4, lapelStyle: peak }
 
-# No pattern map yet: the tailored jacket's would label pieces this design changes.
-patternMap: false
+# The parent's pattern map, adapted to this design (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { hipFlap: 14, hipJet: 15, hipBag: 16, breastWelt: null, breastBag: null, ticketFlap: null, ticketJet: null, ticketBag: null }
+  codes:
+    BH:
+      name: buttonhole marks
+      stitch: BH
+      kind: closure
+      at: [{ part: front, snippet: buttonhole0, optional: true }]

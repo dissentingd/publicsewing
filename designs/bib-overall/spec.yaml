@@ -175,5 +175,7 @@ pieces:
     points: [[0, 0], [w, 0], [w, h], [0, h]]
     allowance: [3, 1, 1, 1]
 
-# No pattern map yet: the inherited one would label pieces this design changes.
-patternMap: false
+# The parent's pattern map, adapted to this design (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { bib: 10, backRise: 11, strap: 12, sideStand: 13, sideFacing: 14, bibPocketPiece: 15, hipPocket: 16, seatPocket: 17 }
