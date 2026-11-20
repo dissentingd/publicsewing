@@ -54,9 +54,10 @@ Front (cut 2), back yoke and back body (on the fold), collar, facing (cut 2), sl
 pockets and flaps (cut 2 each; flaps also as facings), shoulder straps (cut 4).
 
 ## Construction
-1. Pockets: hem, press and topstitch on their marks; make the flaps, sew each above its pocket.
-2. Back to the yoke; fronts to the yoke at the shoulders.
-3. Shoulder straps: sew each pair round, turn; buttonhole at the point; tack the square end into
-   the armhole seam, button at the neck end.
-4. Facings to the fronts; collar to the neckline, between the facings.
-5. Sleeves set in; underarm and side seams; hems; buttonholes on the right front (men's).
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam, felled or finished, **TS** topstitch, **BH** machine buttonhole.
+
+1. Pockets **7**: hem, press and topstitch them with **TS** on their marks **P7** on the fronts **1**; make the flaps **8** and sew each above its pocket.
+2. Sew the back body **11** to the yoke **2** at **Y** and topstitch; sew the fronts **1** to the yoke at the shoulders **A**.
+3. Shoulder straps **10**: sew each pair round and turn; work a buttonhole at the point; tack the square end into the armhole seam and button it at the neck end.
+4. Sew the facings **5** to the front edges **E** of the fronts **1**; sew the collar **4** to the neckline **D**, between the facings.
+5. Set the sleeves **3** into the armholes **C**; sew the underarm **F** and side seams **B** of the fronts **1** and back **11**; turn the hems **H**; work the buttonholes **BH** on the right front **1** (men's).

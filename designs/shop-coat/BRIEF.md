@@ -41,3 +41,15 @@ Named for that wider use: a long work overcoat (shop coat, lab coat, duster).
 `test/shop-coat.test.mjs` runs two option sets at every adult, stout and children's set:
 - the shared coat checks;
 - the hem flares.
+
+## Construction (our words)
+The letters below identify matching seam lines in the pattern map. Numbers are printed on the pattern pieces. Stitch codes in the map and steps mean: **FF** flat-felled seam (join with a straight stitch, fold one allowance over the other, then topstitch it down); **SS** straight-stitch seam (finish the raw allowances as directed); **TS** visible topstitching close to a folded edge; **BH** machine buttonhole stitch. These are proposed sewing methods for this unsewn draft, the shared work-coat construction with the shop coat's extra pocket and length.
+
+1. Interface the two facings **5** and one collar layer **4**.
+2. Hem the top edges of breast pocket **6**, lower pockets **7** and pencil pocket **8**. Sew the pencil pocket **8** to its lower pocket where mark **P8** shows on the front, then press the remaining allowances under and use **TS** to attach the pockets at marks **P6** and **P7** on fronts **1**.
+3. Join front **1** to back **2** at shoulders **A** with **FF**. Leave side seams **B** open for setting the sleeves flat.
+4. Join the two collar layers **4** along outer edge **G** with **SS**; trim, turn and press. Attach the under collar to neckline **D** of fronts **1** and back **2** with **SS**, matching centre back.
+5. Join facings **5** to front edges **E** of fronts **1** with **SS**, enclosing the collar ends at the top. Trim, turn, press, and finish the facings' inner raw edges.
+6. Set sleeves **3** into armholes **C** of fronts **1** and back **2** with **SS** while the underarm is open, matching the cap notches. Close sleeve underarm **F** and the flared side seam **B** in one run with **FF**, keeping the back on its fold.
+7. Turn up the hems of the long fronts **1**, back **2** and sleeves **3** and use **TS** along hem edges **H**.
+8. Work the four **BH** at the marked positions on the right front **1**; sew buttons at the marked centre-front line.

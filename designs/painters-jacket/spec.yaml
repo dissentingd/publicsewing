@@ -39,3 +39,8 @@ variants:
     name: Plain
     description: "Without patch pockets."
     options: { breastPocket: false, lowerPockets: false }
+
+# The parent's pattern map, with this design's own pieces numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { cuff: 9, sleevePlacket: 10 }

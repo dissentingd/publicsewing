@@ -122,3 +122,13 @@ variants:
     name: Long
     description: "The skirt to below the knee, in place of Simons' 40 in from the neck."
     options: { skirtSeam: 3 }
+
+# The suit jacket's pattern map, with the skirt pieces numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces:
+    skirt: 22
+    skirtLining: 18
+    skirtFlap: 19
+    skirtWelt: 20
+    skirtBag: 21

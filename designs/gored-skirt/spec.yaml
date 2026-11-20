@@ -77,3 +77,41 @@ variants:
     name: 15 gores
     description: "Mitchell's most gores: a front panel and seven gores either side, each a slim panel, so the seams themselves become the look."
     options: { gores: 15 }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order. Gore seams
+# are labelled at their seat notches, on whichever gores the `gores` option drafts.
+patternMap:
+  pieces: { frontPanel: 1, gore1: 2, gore2: 3, gore3: 4, gore4: 5, gore5: 6, gore6: 7, gore7: 8, waistband: 9 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+  codes:
+    S:
+      name: gore seams, matched at the seat notches
+      stitch: SS
+      at:
+        - { part: frontPanel, point: leftSeat }
+        - { part: gore1, point: leftSeat, optional: true }
+        - { part: gore1, point: rightSeat, optional: true }
+        - { part: gore2, point: leftSeat, optional: true }
+        - { part: gore2, point: rightSeat, optional: true }
+        - { part: gore3, point: leftSeat, optional: true }
+        - { part: gore3, point: rightSeat, optional: true }
+        - { part: gore4, point: leftSeat, optional: true }
+        - { part: gore4, point: rightSeat, optional: true }
+        - { part: gore5, point: leftSeat, optional: true }
+        - { part: gore5, point: rightSeat, optional: true }
+        - { part: gore6, point: leftSeat, optional: true }
+        - { part: gore6, point: rightSeat, optional: true }
+        - { part: gore7, point: leftSeat, optional: true }
+        - { part: gore7, point: rightSeat, optional: true }
+    CB:
+      name: centre back seam, below the zip notch
+      stitch: SS
+      at:
+        - { part: gore1, point: zip, optional: true }
+        - { part: gore2, point: zip, optional: true }
+        - { part: gore3, point: zip, optional: true }
+        - { part: gore4, point: zip, optional: true }
+        - { part: gore5, point: zip, optional: true }
+        - { part: gore6, point: zip, optional: true }
+        - { part: gore7, point: zip, optional: true }

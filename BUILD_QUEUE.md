@@ -144,14 +144,25 @@ kimono robe, wrap coat, poncho, neckerchief, track jacket, blouson dress. (Wide-
 and smock dresses, coverall, dungarees, boxer shorts, camisole, T-shirt dress and undershirt are
 queued above, from the modern books.)
 
-### Sources to inspect before queueing a garment
+### Source-backed follow-ups
 
-| Source | What is known | Next check |
-|---|---|---|
-| Sheifer 1908 `nssheiferssystem00shei` | Its girl's coat is built. The skirt coat (text PDF p. 80, plate p. 81) has a dropped curved skirt seam that the current waist-seam draft cannot express. Multi-panel corset coats remain. | Inspect a corset coat's text and plate, or plan a shared construction change for the dropped skirt seam. |
-| Vincent, *Jacket Cutting* (1897) `cutters-prac-guide-jacket-cutting` | The supplied PDF has no searchable text layer. | Inspect its plates and missing-page coverage before citing a new garment. |
-| Vincent, *British Military Uniforms* `militaryuniformsbritish-images` | Service frock and khaki knickerbockers have substantial instructions (PDF pp. 9–12), but overlap existing tunic and breeches designs. | Compare their plates and specific seams with the built designs. |
-| Ratner 1908 `ratnersuptodatem00ratn` | OCR exposes headings but too few reliable dimensions to select an item. | Read a candidate text/plate pair at higher resolution. |
+The four scans have been inspected. Sheifer's skirt coat and Vincent's pantry jacket are drafted:
+[BUILT_QUEUE.md](BUILT_QUEUE.md). The remaining distinct garments need construction beyond an
+option change; take them after the open catalog and modern-book rows above.
+
+| # | Design id | Garment | Source and pages | Start from | Lane | Needed construction | Status |
+|---|---|---|---|---|---|---|---|
+| X1 | `corset-coat-17` | Seventeen-piece corset coat | Sheifer 1908 `nssheiferssystem00shei`, text PDF p. 48, plate p. 49 | `princess-coat` | E | Curved full-length gores from shoulder/bust to hem; the 18-piece is a center-back-seam variant | open |
+| X2 | `corset-coat-22` | Twenty-two-piece corset coat | Sheifer 1908, text PDF p. 52, plate p. 53 | X1 | E | Additional shaped gores; compare against X1 before making a separate design | open |
+| X3 | `khaki-knickerbockers` | Officer's khaki knickerbockers | Vincent, *British Military Uniforms* `militaryuniformsbritish-images`, text PDF p. 9, plate p. 10 | `cycling-breeches` | A | Forward-shifted lapped side opening, calf vee and two-button 4 in lower bands | open |
+| X4 | `service-frock` | Universal service frock | Vincent, *British Military Uniforms*, text PDF p. 11, plate p. 12 | `military-tunic` or `prince-albert-jacket` | D | Waist seam, box-pleated breast patches, bellows skirt pockets, back vent, turned lapels, sleeve slash and shoulder straps | open |
+
+Vincent's *Jacket Cutting* scan is image-only and skips printed pp. 57–60. Its seamless lounge
+(printed pp. 63–64/PDF pp. 58–59, Plate 29/PDF p. 60) is a seam-construction experiment rather
+than another garment type; don't queue it without a separate construction decision. Ratner 1908
+`ratnersuptodatem00ratn` exposes Diagram 24, "Improportion Coat" (PDF p. 84), as a fit correction,
+but no reliable instruction-and-plate pair for a distinct garment in this copy. A better scan
+would be needed to cite one.
 
 ### Infant wear safety
 

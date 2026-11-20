@@ -62,6 +62,7 @@ pieces:
       # Six buttons, from the neck to just below the waist
       - buttons:
           count: buttons
+          buttonholes: true
           top: cfNeck.y + ext * 1.1
           bottom: cfWaist.y + waistToSeat * 0.3
           rows: [0]
@@ -129,3 +130,69 @@ pieces:
     label: lowerPocket
     cut: 2
     if: pockets
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order. The sleeve
+# and collar anchors are optional: both are options.
+patternMap:
+  pieces: { front: 1, back: 2, sleeve: 3, collar: 4, facing: 5, upperPocket: 6, lowerPocket: 7 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam; finish raw edges" }
+    TS: { name: topstitch, key: turn edge and topstitch }
+    BH: { name: buttonhole, key: reinforced machine buttonhole }
+  codes:
+    A:
+      name: shoulder
+      stitch: SS
+      at: [{ part: front, between: [neck, shoulder] }, { part: back, between: [neck, shoulder] }]
+    B:
+      name: side seam
+      stitch: SS
+      at: [{ part: front, between: [armhole, hem] }, { part: back, between: [armhole, hem] }]
+    C:
+      name: armhole, bound or with sleeve
+      stitch: SS
+      at:
+        - { part: front, path: frontArmhole, along: 0.5 }
+        - { part: back, path: backArmhole, along: 0.5 }
+        - { part: sleeve, path: sleevecap, along: 0.5, optional: true }
+    D:
+      name: neckline and collar
+      stitch: SS
+      at:
+        - { part: front, path: frontCollar, along: 0.5 }
+        - { part: back, path: backCollar, along: 0.5 }
+        - { part: collar, path: neck, along: 0.5, optional: true }
+    E:
+      name: front edge and facing
+      stitch: SS
+      at: [{ part: front, path: edge, along: 0.5 }, { part: facing, path: edge, along: 0.5 }]
+    F:
+      name: sleeve underarm
+      stitch: SS
+      at: [{ part: sleeve, between: [bicepsLeft, wristLeft], optional: true }, { part: sleeve, between: [bicepsRight, wristRight], optional: true }]
+    G:
+      name: collar outer edge
+      stitch: SS
+      at: [{ part: collar, between: [cbOuter, tip], optional: true }]
+    H:
+      name: hems
+      stitch: TS
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: back, path: hemBase, along: 0.5 }
+        - { part: sleeve, path: hemBase, along: 0.5, optional: true }
+    P6:
+      name: upper-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: upperPocket, along: 0.5, optional: true }]
+    P7:
+      name: lower-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: lowerPocket, along: 0.5, optional: true }]
+    BH:
+      name: buttonhole marks
+      stitch: BH
+      kind: closure
+      at: [{ part: front, snippet: buttonhole0_0 }]

@@ -66,6 +66,7 @@ pieces:
       # Five buttons on CF, from just below the neck to below the belt
       - buttons:
           count: buttons
+          buttonholes: true
           top: cfNeck.y + ext * 0.8
           bottom: cfWaist.y + waistToSeat * 0.75
           rows: [0]
@@ -152,3 +153,97 @@ pieces:
   lowerFlap: { part: flap, after: front, key: lower, nr: 11, label: lowerFlap, cut: 2, if: lowerPockets }
   backBelt: { part: belt, after: [backBase, front], piece: back, nr: 12, if: belt }
   frontBelt: { part: belt, after: [backBase, front], piece: front, nr: 13, if: belt }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order. drape: seam
+# ids in drape/coat-shell.yaml. The back is a yoke, a pleated middle and a lower panel.
+patternMap:
+  pieces:
+    { front: 1, backYoke: 2, sleeve: 3, backMiddle: 4, backLower: 5, collar: 6, facing: 7, breastPocket: 8,
+      breastFlap: 9, lowerPocket: 10, lowerFlap: 11, backBelt: 12, frontBelt: 13 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+    TS: { name: topstitch, key: turn edge and topstitch }
+    BH: { name: buttonhole, key: reinforced machine buttonhole }
+  codes:
+    A:
+      name: shoulder
+      stitch: SS
+      drape: shoulder
+      at: [{ part: front, between: [neck, shoulder] }, { part: backYoke, between: [neck, shoulder] }]
+    B:
+      name: side seam
+      stitch: SS
+      drape: side
+      at:
+        - { part: front, between: [armhole, hem] }
+        - { part: backMiddle, between: [armhole, sideWaist] }
+        - { part: backLower, between: [sideWaist, hem] }
+    C:
+      name: armhole and sleeve cap
+      stitch: SS
+      drape: armhole
+      at:
+        - { part: front, path: frontArmhole, along: 0.5 }
+        - { part: backYoke, between: [shoulder, armYoke] }
+        - { part: backMiddle, between: [armYoke, armhole] }
+        - { part: sleeve, path: sleevecap, along: 0.5 }
+    D:
+      name: neckline and collar
+      stitch: SS
+      at:
+        - { part: front, path: frontCollar, along: 0.5 }
+        - { part: backYoke, path: backCollar, along: 0.5 }
+        - { part: collar, path: neck, along: 0.5 }
+    E:
+      name: front edge and facing
+      stitch: SS
+      at: [{ part: front, path: edge, along: 0.5 }, { part: facing, path: edge, along: 0.5 }]
+    F:
+      name: sleeve underarm
+      stitch: SS
+      drape: underarm
+      at: [{ part: sleeve, between: [bicepsLeft, wristLeft] }, { part: sleeve, between: [bicepsRight, wristRight] }]
+    G:
+      name: collar outer edge
+      stitch: SS
+      at: [{ part: collar, between: [cbOuter, tip] }]
+    H:
+      name: coat and sleeve hems
+      stitch: TS
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: backLower, between: [cbHem, hem] }
+        - { part: sleeve, path: hemBase, along: 0.5 }
+    Y:
+      name: back yoke seam
+      stitch: TS
+      at: [{ part: backYoke, between: [cbYoke, armYoke] }, { part: backMiddle, between: [cbYoke, armYoke] }]
+    W:
+      name: back waist seam
+      stitch: TS
+      at: [{ part: backMiddle, between: [cbWaist, sideWaist] }, { part: backLower, between: [cbWaist, sideWaist] }]
+    K:
+      name: back pleat fold lines
+      stitch: TS
+      kind: placement
+      at: [{ part: backMiddle, path: pleat1, along: 0.5, optional: true }]
+    P8:
+      name: breast pocket and flap placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: breastPocket, along: 0.5, optional: true }]
+    P10:
+      name: lower pocket and flap placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: lowerPocket, along: 0.5, optional: true }]
+    BT:
+      name: belt placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: beltTop, along: 0.5, optional: true }]
+    BH:
+      name: buttonhole marks
+      stitch: BH
+      kind: closure
+      at: [{ part: front, snippet: buttonhole0_0 }]

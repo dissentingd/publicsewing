@@ -115,6 +115,30 @@ options:
   lengthBelowWaist:
     title: Length below the waist
     description: Hem length below the waist, as a share of waist to seat.
+  skirtDrop:
+    title: Skirt seam below waist
+    description: How far below the waist the coat's skirt seam begins at the back, as a share of chest.
+  frontSkirtDrop:
+    title: Front seam drop
+    description: How much lower the skirt seam lies at the front than at the back, as a share of chest.
+  skirtSideDrop:
+    title: Side seam drop
+    description: How far the skirt join descends at the side, as a share of chest.
+  skirtCurve:
+    title: Skirt seam curve
+    description: Curvature of the dropped skirt seam, as a share of chest.
+  skirtButtonClear:
+    title: Button clearance
+    description: Minimum space between the lowest button and skirt seam, as a share of chest.
+  hipDartIntake:
+    title: Hip dart intake
+    description: Width taken in by the skirt's hip dart, as a share of chest.
+  hipDartDepth:
+    title: Hip dart depth
+    description: Distance from the skirt join to the dart tip, as a share of chest.
+  hipDartAt:
+    title: Hip dart position
+    description: Position along the front skirt join from the front edge.
   skirtLength:
     title: Skirt length
     description: Waist to hem, as a share of waist to floor. About 45% reaches the knee.

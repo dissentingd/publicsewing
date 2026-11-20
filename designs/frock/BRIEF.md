@@ -28,3 +28,10 @@ buttons.
 
 ## Checks
 As the smock (test/frock.test.mjs).
+
+## Construction
+
+1. Make the back opening and fastenings in the bodice. Sew the bodice shoulder and side seams.
+2. Sew the short sleeves into the armholes and finish their lower edges or bands. Finish the neckline.
+3. Join the skirt sections and gather their upper edge evenly to the bodice waist. Sew the skirt to the bodice, matching centre front, centre back, and side seams.
+4. Hem the skirt and complete the back buttons and buttonholes. This draft uses one-piece sleeves and no tucks.

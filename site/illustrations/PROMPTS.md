@@ -2000,3 +2000,18 @@ wide ones get cropped. No mannequin, hand, head or handwriting showing. A second
 > technical editorial illustration.
 >
 > Leave out: pockets, fly, zipper, belt loops, drawstring, cargo flaps, a person.
+
+### skirt-coat: Skirt coat
+> A long wool box coat with a notched lapel and collar, three front buttons, and a visibly curved seam running below the waist into a broad flared skirt. The seam dips lower at the front than the back, with a small shaped hip dart; the front is free of pockets. Front three-quarter view on an invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: belt, waist gathers, peplum, hood, cuffs, extra pockets, a person.
+
+### pantry-jacket: Footman's pantry jacket
+> A short striped cotton work jacket with a narrow whole back, shaped side bodies, a folded Eton-style notched lapel, four small covered buttons and two narrow welt pockets on the foreparts. Straight hem, front three-quarter view on an invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: pocket flaps, breast pocket, belt, vent, epaulettes, extra buttons, a person.
+
+### pantry-jacket.plain: Plain pantry jacket
+> The same short striped cotton Eton-style work jacket with four front buttons and a straight hem, with an uninterrupted plain front. Front three-quarter view on an invisible form, plain background, clean technical editorial illustration.
+>
+> Leave out: pockets, pocket flaps, belt, vent, epaulettes, extra buttons, a person.

@@ -98,3 +98,8 @@ pieces:
     fold: true
     length: knee * 0.87 + knee * 0.26
     width: knee * 0.065
+
+# The parent's pattern map, with this design's own pieces numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { strap: 10 }

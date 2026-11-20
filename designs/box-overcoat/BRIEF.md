@@ -30,3 +30,10 @@ front, notched lapel and collar, vent, pockets and lining, cut looser and flared
 - **Shoulder and neck:** Simons' narrower shoulder and wider back neck aren't modelled.
 - **The extreme box** is this design with more ease (`chestEase` about 30%), shorter
   (`lengthBelowWaist` about 230%); not a separate design.
+
+## Construction
+
+1. Make the slanted welt pockets and their bags before closing the coat body. Interface the facings, collar pieces, and pocket welts as needed.
+2. Sew the centre-back seam and vent, then the shoulder and side seams. The box shape comes from the side flare; do not add waist shaping.
+3. Attach the front facings and collar to the lapel and neckline. Assemble and set in the sleeves, easing their caps.
+4. Make the lining, attach it to the facings, and finish the vent and hems with room for the lining to move. Work the front buttonholes and sew on the buttons. This follows the overcoat and peacoat construction in this collection.

@@ -126,3 +126,54 @@ variants:
     name: Turn-ups
     description: "Simons' cuff bottoms: the leg runs on below the hem and folds up into a 2 in cuff (on a man's size). Cut them to the finished length: the hem line is marked."
     options: { turnUps: true }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order.
+patternMap:
+  pieces:
+    { front: 1, back: 2, waistband: 3, flyShield: 4, flyFacing: 5, beltLoop: 6, sidePocketBag: 7, backWelt: 8,
+      backPocketBag: 9 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+    TS: { name: topstitch, key: topstitch the fly line }
+    HS: { name: hem stitch, key: turn the hem on the curved line and stitch it by hand or blind-hem }
+  codes:
+    M:
+      name: darts
+      stitch: SS
+      kind: dart
+      at: [{ part: front, point: dartTip, optional: true }, { part: back, point: dartTip, optional: true }]
+    O:
+      name: side seam, open at the pocket mouth
+      stitch: SS
+      at: [{ part: front, between: [seatOut, kneeOut] }, { part: back, between: [seatOut, kneeOut] }]
+    I:
+      name: inseam
+      stitch: SS
+      at: [{ part: front, between: [fork, kneeIn] }, { part: back, between: [fork, kneeIn] }]
+    X:
+      name: crotch seam, fly to centre back
+      stitch: SS
+      at: [{ part: front, between: [cfSeat, fork] }, { part: back, between: [cbSeat, fork] }]
+    W:
+      name: waist and waistband
+      stitch: SS
+      at: [{ part: front, between: [styleWaistOut, styleWaistIn] }, { part: back, between: [styleWaistOut, styleWaistIn] }]
+    H:
+      name: hems
+      stitch: HS
+      at: [{ part: front, between: [hemOut, hemIn] }, { part: back, between: [hemOut, hemIn] }]
+    SP:
+      name: side pocket mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: front, point: pocketTop, optional: true }, { part: back, point: pocketTop, optional: true }]
+    BP:
+      name: back pocket mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: back, path: backPocket, along: 0.5, optional: true }]
+    Z:
+      name: fly line
+      stitch: TS
+      kind: closure
+      at: [{ part: front, path: fly, along: 0.5, optional: true }]

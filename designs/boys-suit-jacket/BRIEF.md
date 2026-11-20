@@ -51,4 +51,14 @@ lower pockets' flaps and bags, and the jacket's lining (back-neck facing, front 
 linings, inside pocket; `lining` and `insidePockets`, on by default as on the jacket).
 
 ## Construction
-As the jacket's brief, with no vent.
+
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed as the step says, **HS** hem stitch, **BH** machine buttonhole. The order follows the jacket's, with no vent.
+
+1. Lower pockets at the mouths **P** on the fronts **1**: make up each flap **12**, then the welt **10** and bag **11** below it; stitch, cut the mouth, turn the welt through and the flap down, and close the bag.
+2. Join each front **1** to its side body **3** at **B**, then the side bodies to the back **2** at **C**. Press the seams open.
+3. Sew the shoulders **A** of the fronts **1** and back **2**, and press them open.
+4. Sew the collar **6** to the neckline **E** of the fronts **1** and back **2**, with the back-neck facing **13** behind it, then the facings **7** to the front edges **F**. Turn and press.
+5. Assemble each sleeve: join the top sleeve **4** to the under sleeve **5** at **G** and **H**, and press open.
+6. Set each sleeve (**4**, **5**) into its armhole **D** across the front **1**, side body **3** and back **2**; press toward the sleeve.
+7. Make the lining from the front and back linings **14**, **15**, with the inside welt **16** and bag **17** if fitted, and attach it, leaving an opening to turn; close it after turning and pressing.
+8. Turn and stitch the hems **J** of the body (**1**, **2**, **3**) and sleeves (**4**, **5**). Work the buttonholes **BH** on the fronts **1** and sew on the buttons.

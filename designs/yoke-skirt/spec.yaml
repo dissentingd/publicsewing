@@ -59,3 +59,58 @@ pieces:
     fold: true
     length: skirt.waist + waistToFloor * waistbandHeight
     width: waistToFloor * waistbandHeight
+
+# The pattern map (SPEC.md, "Pattern map"): gore seams at their balance notches, the zip at its notch.
+patternMap:
+  pieces:
+    frontYoke: 1
+    backYoke: 2
+    frontGore: 3
+    sideFront: 4
+    sideBack: 5
+    backGore: 6
+    waistband: 7
+  stitches:
+    SS:
+      name: straight seam
+      key: straight seam, pressed open
+  codes:
+    G:
+      name: gore seams, matched at the balance notches
+      stitch: SS
+      at:
+        - part: frontGore
+          point: leftBalance
+          optional: true
+        - part: frontGore
+          point: rightBalance
+          optional: true
+        - part: sideFront
+          point: leftBalance
+          optional: true
+        - part: sideFront
+          point: rightBalance
+          optional: true
+        - part: sideBack
+          point: leftBalance
+          optional: true
+        - part: sideBack
+          point: rightBalance
+          optional: true
+        - part: backGore
+          point: leftBalance
+          optional: true
+        - part: backGore
+          point: rightBalance
+          optional: true
+    Z:
+      name: zip, left side seam
+      stitch: SS
+      kind: closure
+      at:
+        - part: sideFront
+          point: zip
+          optional: true
+        - part: sideBack
+          point: zip
+          optional: true

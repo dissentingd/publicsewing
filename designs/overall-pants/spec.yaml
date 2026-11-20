@@ -62,3 +62,22 @@ pieces:
       - hidePiece: {}
   # Each leg in one piece: back and front joined along the outseam line (A-D)
   leg: { part: legInOne, after: [back, front], nr: 1 }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order. Each leg is
+# cut in one, so only the fly and the outseam line are drawn to label.
+patternMap:
+  pieces: { leg: 1, waistband: 3, flyShield: 4, flyFacing: 5, beltLoop: 6 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+    TS: { name: topstitch, key: topstitch the fly line }
+  codes:
+    O:
+      name: outseam line (no seam; for pressing and placing pockets)
+      stitch: SS
+      kind: placement
+      at: [{ part: leg, path: outseamLine, along: 0.5 }]
+    Z:
+      name: fly line
+      stitch: TS
+      kind: closure
+      at: [{ part: leg, path: fly, along: 0.5, optional: true }]

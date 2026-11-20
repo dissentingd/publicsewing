@@ -1,0 +1,175 @@
+extends: ../girls-coat/spec.yaml
+
+about:
+  id: skirt-coat
+  name: Skirt coat
+  category: coats
+  description: "A long box coat cut into a shaped bodice and a flared skirt below the waist"
+  difficulty: 4
+  tags: [coats, children]
+  techniques: [dart, lapel, collar, facing, button, flap-pocket, two-piece-sleeve, waist-seam]
+  version: 0.1.0
+  source: "Sheifer, System of Designing and Grading Ladies', Misses' & Children's Garments (1908), Drafting a Skirt Coat, PDF pp. 80-81 (nssheiferssystem00shei)"
+  preview: usdaGirlC8
+
+options:
+  # Sheifer begins the skirt about 2 inches below the waist; its front is 1 inch lower.
+  skirtDrop: { pct: 5.6, of: chest, menu: style }
+  frontSkirtDrop: { pct: 2.8, of: chest, menu: style }
+  skirtSideDrop: { pct: 1.4, of: chest, menu: style }
+  skirtCurve: { pct: 0.7, of: chest, menu: style }
+  skirtButtonClear: { pct: 2.8, of: chest, menu: false }
+  # The 3/4 in separation at B becomes a hip dart, scaled from a 36 in chest.
+  hipDartIntake: { pct: 2.1, of: chest, menu: style }
+  hipDartDepth: { pct: 6, of: chest, menu: style }
+  hipDartAt: { pct: 55, menu: false }
+  buttons: { count: 3 }
+  pockets: { bool: false }
+
+pieces:
+  frontBase:
+    from: breanna.front
+    after: [backBase]
+    hide: { self: true, from: true, inherited: true }
+    options: all
+    measurements: [chest, seat, waistToSeat, waistToFloor, neck, hpsToWaistFront]
+    ops:
+      - jacketBase: { side: front, style: box }
+      - boxLayout:
+          seat: seat * (1 + seatEase)
+          hipDepth: waistToSeat
+          length: waistToFloor * lengthBelowWaist
+          flare: seat * flare
+          cbOut: seat * cbFlare
+          lap: chest * if(doubleBreasted, doubleExtension, buttonExtension)
+          rows: if(doubleBreasted, chest * doubleExtension * buttonRow, null)
+          buttonInset: buttonInset
+          pockets:
+            hip:
+              if: pockets
+              below: waistToSeat * pocketBelow
+              from: chest * pocketFromCF
+              w: chest * pocketWidth
+              flap: w * flapDepth
+              bag: w * bagDepth
+              clear: chest * 0.02
+            ticket:
+              if: pockets and ticketPocket
+              below: waistToSeat * (pocketBelow - ticketAbove)
+              from: chest * pocketFromCF
+              w: chest * pocketWidth * ticketWidth
+              flap: w * flapDepth
+              bag: w * bagDepth
+              clear: chest * 0.02
+          breakBelow: hpsToWaistFront * breakBelowBust
+          rollOut: neck * rollOut
+          lapelWidth: neck * lapelWidth
+          peak: lapelStyle == 'peak'
+          facing: chest * if(doubleBreasted, max(facingWidth, doubleExtension * 1.5), facingWidth)
+          dartWidth: chest * neckDartWidth
+          dartAt: neckDartAt
+          dartLength: neckDartLength
+          sleeveStore: [library.twoPartSleeve, library.topsleeve, library.undersleeve, boxcoat.topsleeve, boxcoat.undersleeve]
+      - boxSkirtLayout:
+          drop: chest * skirtDrop
+          frontDrop: chest * frontSkirtDrop
+          sideDrop: chest * skirtSideDrop
+          curve: chest * skirtCurve
+          buttonClear: chest * skirtButtonClear
+          dartIntake: chest * hipDartIntake
+          dartDepth: chest * hipDartDepth
+          dartAt: hipDartAt
+      - store: { key: library.topsleeve.title, value: { nr: 7, brand: "'PublicSewing'" } }
+      - store: { key: library.undersleeve.title, value: { nr: 8, brand: "'PublicSewing'" } }
+
+  frontSkirt: { part: jacketPanel, after: [backBase, frontBase], panel: frontSkirt, nr: 13, label: frontSkirt, cut: 2 }
+  backSkirt: { part: jacketPanel, after: [backBase, frontBase], panel: backSkirt, nr: 14, label: backSkirt, cut: 2 }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order. Anchors
+# follow the seams of drape/box-skirt.yaml, whose ids are each code's `drape`. Sheifer names no
+# stitches: plain seams pressed as each step says, a turned hem, machine buttonholes.
+patternMap:
+  pieces: { front: 1, back: 2, facing: 3, collar: 4, topsleeve: 7, undersleeve: 8, frontSkirt: 13, backSkirt: 14 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed as the step says" }
+    HS: { name: hem stitch, key: turn the hem and stitch it }
+    BH: { name: buttonhole, key: reinforced machine buttonhole }
+  codes:
+    A:
+      name: shoulder
+      stitch: SS
+      drape: shoulder
+      at: [{ part: front, between: [hps, shoulder] }, { part: back, between: [hps, shoulder] }]
+    B:
+      name: bodice side seam
+      stitch: SS
+      drape: body_side
+      at: [{ part: front, between: [armhole, skirtSide] }, { part: back, between: [armhole, skirtSide] }]
+    C:
+      name: armhole and sleeve cap
+      stitch: SS
+      drape: armhole
+      at:
+        - { part: front, between: [shoulder, armhole] }
+        - { part: back, between: [shoulder, armhole] }
+        - { part: topsleeve, between: [frontPitchPoint, backPitchPoint] }
+        - { part: undersleeve, between: [usLeftEdge, usTip] }
+    D:
+      name: neckline and collar
+      stitch: SS
+      at:
+        - { part: front, between: [hps, dartSide] }
+        - { part: back, between: [hps, cbNeck] }
+        - { part: collar, path: neck, along: 0.5 }
+    E:
+      name: front edge and facing
+      stitch: SS
+      at: [{ part: front, between: [break, skirtEdge] }, { part: frontSkirt, between: [topEdge, hemEdge], optional: true }]
+    F:
+      name: sleeve front seam
+      stitch: SS
+      drape: sleeve_front
+      at: [{ part: topsleeve, between: [tsLeftEdge, tsWristLeft] }, { part: undersleeve, between: [usLeftEdge, usWristLeft] }]
+    G:
+      name: sleeve back seam
+      stitch: SS
+      drape: sleeve_back
+      at: [{ part: topsleeve, between: [backPitchPoint, tsWristRight] }, { part: undersleeve, between: [usTip, usWristRight] }]
+    H:
+      name: skirt and sleeve hems
+      stitch: HS
+      at:
+        - { part: frontSkirt, between: [hemEdge, hemSide], optional: true }
+        - { part: backSkirt, between: [hemEdge, hemSide] }
+        - { part: topsleeve, between: [tsWristLeft, tsWristRight] }
+        - { part: undersleeve, between: [usWristLeft, usWristRight] }
+    J:
+      name: front skirt join
+      stitch: SS
+      drape: front_join
+      at: [{ part: front, between: [skirtEdge, skirtSide] }, { part: frontSkirt, between: [dartRight, topSide], optional: true }]
+    K:
+      name: back skirt join
+      stitch: SS
+      drape: back_join
+      at: [{ part: back, between: [skirtEdge, skirtSide] }, { part: backSkirt, between: [topEdge, topSide] }]
+    L:
+      name: skirt side seam
+      stitch: SS
+      drape: skirt_side
+      at: [{ part: frontSkirt, between: [topSide, hemSide], optional: true }, { part: backSkirt, between: [topSide, hemSide] }]
+    M:
+      name: hip dart
+      stitch: SS
+      drape: hip_dart
+      at: [{ part: frontSkirt, point: dartTip, optional: true }]
+    N:
+      name: neck dart
+      stitch: SS
+      drape: neck_dart
+      at: [{ part: front, point: dartTip }]
+    BH:
+      name: buttonhole marks
+      stitch: BH
+      kind: closure
+      at: [{ part: front, snippet: buttonhole0, optional: true }]

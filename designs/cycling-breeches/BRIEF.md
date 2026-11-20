@@ -32,3 +32,10 @@ The English text incorrectly pairs 27 in with 62½ cm (27 in is 68.58 cm). The G
 **Sewing order:** sew the fly and pockets, close the inseams and outseams above the short side opening, sew the crotch and waistband, gather each lower leg into its band, then finish the opening and button the band. Check band circumference around the bent knee before fastening.
 
 **Checks:** `test/cycling-breeches.test.mjs` drafts the default, plain and long versions across the size sets, matching the leg seams and waistband and checking the gathering marks, band size and source-size thigh width. The pattern was rendered beside Fig. 30 and at child and stout sizes.
+
+## Construction
+
+1. Sew the fly and any pockets, then make the waist darts. Join the leg inseams and outseams above the short side openings.
+2. Sew the crotch seam and attach the waistband. Finish the side-opening edges at the lower legs.
+3. Gather each lower leg to its knee band and attach the band, leaving the overlap free.
+4. Fit the band around the wearer’s bent knee, then place and sew its button and buttonhole. The source shows the band buttons but does not mark their final positions.

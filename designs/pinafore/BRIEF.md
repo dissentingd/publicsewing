@@ -33,3 +33,10 @@ A sleeveless over-dress, its body gathered into narrow yokes or bands, open at t
 
 ## Checks
 As the smock (test/pinafore.test.mjs), with a `sash` variant.
+
+## Construction
+
+1. Make the back opening and placket. Gather the upper front and back body edges to their yoke seams.
+2. Attach the gathered bodies to the shallow front and back yokes. Sew the shoulder and side seams, then bind the armholes and finish the neckline.
+3. If using the sash, make the front band and ties, and sew the band over the front gathers at the waist; fit and secure the ties at the sides.
+4. Hem the pinafore and finish the back buttons and buttonholes.

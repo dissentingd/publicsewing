@@ -77,6 +77,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `inverness-coat` | Women's three-quarter coat with a separate shoulder cape and closed turn collar | Merz 1911 |
 | `womens-box-coat` | Women's loose box coat with a notched lapel and set-in flap pockets | Mitchell 1921 |
 | `girls-coat` | Girl's loose coat to below the knee, notched collar, flap pockets | Sheifer 1908 |
+| `skirt-coat` | Long coat with a curved, dropped seam joining its bodice and flared skirt | Sheifer 1908 |
 | `gored-skirt` | Flared skirt of five to fifteen gores, shaped in its seams, with a CB zip and waistband | Mitchell 1921 |
 | `pleated-skirt` | Skirt fitted to the hips and pleated below them, side or box pleats, CB zip and waistband | Mitchell 1921 |
 | `circular-skirt` | Skirt close at the waist and hips and very wide at the hem, in two pieces, CB zip and waistband | Mitchell 1921 |
@@ -137,6 +138,7 @@ a check that the pieces sew together into the garment, not a fit result.
 | `suit-jacket` | Single-breasted two-button jacket: side panels, notched lapel, flap pockets, back vent | ЕМКО 1988 |
 | `smoking-jacket` | Short lounging jacket: wide roll collar, a wide overlap with frogs, gauntlet cuffs, slanted hip pockets, lined | Vincent 1890 |
 | `eton-jacket` | Short jacket ending just below the waist, a wide lapel rolling to the waist, no pockets | Simons 1922 |
+| `pantry-jacket` | Short Eton-style work jacket with four buttons and two welt pockets | Vincent 1897 |
 | `golf-pants` | Short trousers fitted through the knee to just below it, full at the thigh, a buttoned side vent | Simons 1922 |
 | `scout-pants` | Full-length tapered trousers with a shaped back knee and back hem pleat | Simons 1922 |
 | `boys-suit-jacket` | Boy's three-button suit jacket, notched lapel, flap pockets | Simons 1922 |

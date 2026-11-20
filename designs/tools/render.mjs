@@ -8,6 +8,7 @@ import { dirname, join } from 'node:path'
 import * as models from '@freesewing/models'
 import { themePlugin } from '@freesewing/plugin-theme'
 import { all as children } from '../sizes/children.mjs'
+import { keyLayout, mapData } from '../lib/pattern-map.mjs'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const out = join(here, '..', 'out')
@@ -27,9 +28,30 @@ export function measurementSet(name) {
 }
 
 export function render(Design, set, settings = {}) {
-  const pattern = new Design({ measurements: measurementSet(set), sa: 10, complete: true, ...settings })
+  const pattern = new Design({ measurements: settings.measurements ?? measurementSet(set), sa: 10, complete: true, ...settings })
   pattern.use(themePlugin)
-  const svg = pattern.draft().render()
+  pattern.draft()
+  const map = mapData(Design, pattern)
+  const mapped = Boolean(map)
+  const marks = map?.marks ?? []
+  if (mapped) marks.forEach((mark, i) => {
+    const part = pattern.parts[0][mark.part]
+    // Native FreeSewing point text follows the part through its own layout.
+    const Point = part.paths.seam.start().constructor
+    part.points[`patternMap${i}`] = new Point(mark.x, mark.y).addText(mark.code, 'pattern-map-code')
+  })
+  let svg = pattern.render()
+  if (mapped) {
+    const box = svg.match(/width="([\d.]+)mm" height="([\d.]+)mm" viewBox="0 0 ([\d.]+) ([\d.]+)"/)
+    if (!box) throw new Error('pattern map: preview SVG has no millimetre viewBox')
+    const width = +box[3], height = +box[4]
+    const layout = keyLayout(map, { left: 20, right: width / 2, top: height + 22, base: height, entries: height + 43, line: 16, gap: 11, stitchLine: 18, pad: 32 })
+    const extra = layout.height
+    svg = svg.replace(box[0], `width="${box[1]}mm" height="${height + extra}mm" viewBox="0 0 ${width} ${height + extra}"`)
+    const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    const key = `<style>svg.freesewing text.pattern-map-code{font-family:sans-serif;font-size:16px;font-weight:700;fill:#111;stroke:#fff;stroke-width:4px;paint-order:stroke}svg.freesewing #pattern-map-key text{font-family:sans-serif;font-size:13px;font-weight:500;fill:#111}svg.freesewing #pattern-map-key .heading{font-size:16px;font-weight:700}</style><g id="pattern-map-key"><rect x="0" y="${height}" width="${width}" height="${extra}" fill="white"/><text class="heading" x="${layout.heading.x}" y="${layout.heading.y}">${layout.heading.text}</text>${layout.lines.map((l) => `<text x="${l.x}" y="${l.y}">${esc(l.text)}</text>`).join('')}</g>`
+    svg = svg.replace('</svg>', `${key}</svg>`)
+  }
   return { svg, store: pattern.setStores[0] }
 }
 

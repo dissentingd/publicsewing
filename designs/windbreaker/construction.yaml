@@ -1,0 +1,11 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: windbreaker
+steps:
+  - { order: 1, action: welt hand pockets, pieces: [9, 10, 1], placements: [P], stitches: [SS], whenAny: [handPockets] }
+  - { order: 2, action: yokes, pieces: [2, 1, 4, 5], seams: [Y, X], stitches: [TS] }
+  - { order: 3, action: shoulders and sides, pieces: [2, 4, 1, 5], seams: [A, B], stitches: [SS] }
+  - { order: 4, action: hood, pieces: [7, 2, 4], seams: [R, D], placements: [K], stitches: [SS, CS], whenAny: [hood] }
+  - { order: 5, action: zip and facings, pieces: [6, 1, 2, 7], seams: [E], placements: [Z], stitches: [SS] }
+  - { order: 6, action: sleeves, pieces: [3, 1, 2, 4, 5], seams: [F, C], stitches: [SS] }
+  - { order: 7, action: hem and cuff casings, pieces: [1, 5, 3], seams: [H], stitches: [CS] }

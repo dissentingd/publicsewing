@@ -1,0 +1,9 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: service-shirt
+steps:
+  - { order: 1, action: pockets and flaps, pieces: [7, 1, 8], placements: [P7], stitches: [TS] }
+  - { order: 2, action: yoke and shoulders, pieces: [11, 2, 1], seams: [Y, A], stitches: [TS, SS] }
+  - { order: 3, action: shoulder straps, pieces: [10], whenAny: [shoulderStraps] }
+  - { order: 4, action: facings and collar, pieces: [5, 1, 4], seams: [E, D], stitches: [SS] }
+  - { order: 5, action: sleeves, sides, hems and buttonholes, pieces: [3, 1, 11], seams: [C, F, B, H], placements: [BH], stitches: [SS, TS, BH] }

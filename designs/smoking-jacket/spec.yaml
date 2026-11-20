@@ -57,7 +57,7 @@ pieces:
     part: strip
     after: front
     options: [girdle, girdleLength, girdleWidth]
-    nr: 14
+    nr: 21
     fold: true
     if: girdle
     length: waist * girdleLength
@@ -67,7 +67,7 @@ pieces:
     part: strip
     after: front
     options: [girdle, girdleWidth]
-    nr: 15
+    nr: 22
     cut: 2
     fold: true
     label: girdleLoop
@@ -78,7 +78,7 @@ pieces:
   gauntlet:
     part: polygon
     after: front
-    nr: 16
+    nr: 23
     cut: 4
     label: gauntletCuff
     if: gauntletCuff
@@ -90,3 +90,8 @@ pieces:
       f: a * gauntletFlare / 2
     points: [[0, 0], [f, d], [a + f, d], [a + 2 * f, 0]]
     allowance: [1, 1, 1, 1]
+
+# The parent's pattern map, with this design's own pieces numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { girdle: 21, girdleLoop: 22, gauntlet: 23, handWelt: 14, handBag: 15 }

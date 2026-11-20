@@ -1,0 +1,8 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: bar-vest
+steps:
+  - { order: 1, action: interfacing and pockets, pieces: [5, 4, 6, 7, 1], placements: [P6, P7], stitches: [TS], whenAny: [pockets] }
+  - { order: 2, action: shoulders, sides and armholes, pieces: [1, 2, 3], seams: [A, B, C, F], stitches: [SS] }
+  - { order: 3, action: collar and facings, pieces: [4, 1, 2, 5], seams: [G, D, E], stitches: [SS] }
+  - { order: 4, action: hems and buttonholes, pieces: [1, 2, 3], seams: [H], placements: [BH], stitches: [TS, BH] }

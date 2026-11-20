@@ -141,3 +141,81 @@ variants:
     name: No hood
     description: "A plain stand collar around the neck in place of the hood."
     options: { hood: false }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order.
+patternMap:
+  pieces: { front: 1, frontYoke: 2, sleeve: 3, backYoke: 4, back: 5, facing: 6, hood: 7, handWelt: 9, handBag: 10 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed toward the back or open" }
+    TS: { name: topstitch, key: topstitch beside the seam or turned edge }
+    CS: { name: casing, key: turn up as a casing and thread elastic or drawstring }
+  codes:
+    A:
+      name: shoulder
+      stitch: SS
+      at: [{ part: frontYoke, between: [hps, shoulder] }, { part: backYoke, between: [hps, shoulder] }]
+    B:
+      name: side seam
+      stitch: SS
+      at: [{ part: front, between: [armhole, hem] }, { part: back, between: [armhole, hem] }]
+    C:
+      name: armhole and sleeve cap
+      stitch: SS
+      at:
+        - { part: frontYoke, between: [shoulder, armYoke] }
+        - { part: front, between: [armYoke, armhole] }
+        - { part: backYoke, between: [shoulder, armYoke] }
+        - { part: back, between: [armYoke, armhole] }
+        - { part: sleeve, path: sleevecap, along: 0.5 }
+    D:
+      name: neckline and hood
+      stitch: SS
+      at:
+        - { part: frontYoke, between: [hps, edgeNeck] }
+        - { part: backYoke, path: backCollar, along: 0.5 }
+        - { part: hood, path: neck, along: 0.5, optional: true }
+    E:
+      name: front edge and facing
+      stitch: SS
+      at:
+        - { part: frontYoke, between: [edgeNeck, edgeYoke] }
+        - { part: front, between: [edgeYoke, edgeHem] }
+        - { part: facing, path: edge, along: 0.5 }
+    F:
+      name: sleeve underarm
+      stitch: SS
+      at: [{ part: sleeve, between: [bicepsLeft, wristLeft] }, { part: sleeve, between: [bicepsRight, wristRight] }]
+    H:
+      name: hem and cuff casings
+      stitch: CS
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: back, between: [cbHem, hem] }
+        - { part: sleeve, path: hemBase, along: 0.5 }
+    R:
+      name: hood crown seam
+      stitch: SS
+      at: [{ part: hood, path: crown, along: 0.5, optional: true }]
+    X:
+      name: back yoke seam
+      stitch: TS
+      at: [{ part: backYoke, between: [cbYoke, armYoke] }, { part: back, between: [cbYoke, armYoke] }]
+    Y:
+      name: front yoke seam
+      stitch: TS
+      at: [{ part: frontYoke, between: [edgeYoke, armYoke] }, { part: front, between: [edgeYoke, armYoke] }]
+    K:
+      name: hood casing fold
+      stitch: CS
+      kind: placement
+      at: [{ part: hood, path: casing, along: 0.5, optional: true }]
+    P:
+      name: hand-pocket welt mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: handPocket, along: 0.5, optional: true }]
+    Z:
+      name: zip placement
+      stitch: SS
+      kind: closure
+      at: [{ part: front, path: zip, along: 0.7, optional: true }]

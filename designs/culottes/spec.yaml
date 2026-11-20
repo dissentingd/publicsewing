@@ -35,3 +35,22 @@ options:
 pieces:
   frontPanel: { part: culotte, which: front, after: layout, nr: 1, measurements: [crotchDepth], crotch: crotchDepth * (1 + crotchEase), ext: hips * frontExtension }
   gore1: { part: culotte, which: back, after: layout, nr: 2, measurements: [crotchDepth], crotch: crotchDepth * (1 + crotchEase), ext: hips * backExtension, zip: waistToSeat * zipLength }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order.
+patternMap:
+  pieces: { frontPanel: 1, gore1: 2, waistband: 9 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+  codes:
+    S:
+      name: side seams, matched at the notches
+      stitch: SS
+      at: [{ part: frontPanel, point: seat }, { part: gore1, point: seat }]
+    CB:
+      name: centre back seam, below the zip notch
+      stitch: SS
+      at: [{ part: gore1, point: zip }]
+    I:
+      name: inseams, crotch to hem
+      stitch: SS
+      at: [{ part: frontPanel, between: [fork, inseamHem] }, { part: gore1, between: [fork, inseamHem] }]

@@ -14,6 +14,7 @@ by named operations. [chore-coat/spec.yaml](chore-coat/spec.yaml) is the plaines
 | `pieces` | The pattern pieces, in order (below). |
 | `variants` | The same pattern with other options, shown on the design's page: `<key>: { name, description, options: { <option>: <value> } }`. Each option must be shown in the pattern tool (have a `menu`); the page's instructions come from `labels.yaml`. `tools/preview.mjs` renders each one, `site/illustrations/<design>.<key>.jpg` is its illustration, and `test/variants.test.mjs` drafts each at every size. Not inherited through `extends`. |
 | `extends` | Start from another spec file: its pieces, block and options. This spec's `options` entries are merged into the parent's (`buttons: { count: 5 }` changes only the default); its `pieces` are added, or replace the parent's by key. A parent with no `about` is a template (`templates/`): its pieces take this design's name. |
+| `patternMap` | Printed piece numbers, seam and placement codes and a stitch key, drawn on the page preview, the SVG and PDF downloads and the drape input (below). Inherited through `extends`; a spec's own map replaces it, `patternMap: false` drops it, and `patternMap: { merge: true, pieces, codes }` adds to it (a `null` piece number or code drops the inherited one). |
 
 ## Pieces
 
@@ -90,6 +91,7 @@ type's `if:` is an expression over options; when it is false the piece is left o
 | `coatHem` | Record a Brian body's lower edge after `coatBack` or `coatFront` (and optional raglan cut), under `coat.hem.back` or `.front` for a rib waistband. `raglanSleeve` with `which: one` also stores `coat.raglanSleeveHem`; both raglan operations take `hemSa` (1 for rib trim, 3 for a turned hem). | `lib/coat.mjs`, `lib/raglan.mjs` |
 | `jacketBase` / `jacketLayout` | A princess-seamed jacket on Breanna: each side read in, then cut along its darts into panels, flared below the waist, with a lap, lapel and gorge. Optional: `underarm: { back, front, backSuppression, frontSuppression }` (an under-arm panel in place of the side seam, its seams leaving the armholes `back`/`front` (0-1) of the way in, taken in at the waist), `cb: { waist, hip }` (a shaped CB seam, in at the waist and at the seat line), `shawl: { width, lapel }` (a shawl collar cut in one with the front, in place of the lapel and collar), `rows` (double-breasted: two rows of buttons this far either side of CF, holes on the outer row; `boxLayout` takes it too). `closed` (no lapel: the front buttoned to the neck, the collar sewn round to the front edge; Merz's storm collar). `second: { at, suppression }` (with `underarm`): a second front seam from the side front's shoulder to the hem, splitting it into `middleFront` and `sideFront`. `backArmhole: { rise, chest }` (with `underarm`): the back seam leaves the armhole, not the shoulder, `rise` (0-1) of the way up to the shoulder point, `chest` x the back's waist width from the CB on the chest line. `waistSeam: { lapWaist, lapHip, pleatWaist, pleatHem, ventWaist, ventHem, spread }` (with `underarm`): every panel but the back stops at the waist, and their skirts are laid together as one `skirt` (and `skirtLining`); the lap narrows to `lapWaist` and widens to `lapHip`, with a pleat at the back seam, a CB vent, and `spread` more at the hem per skirt seam. `hemFlare`: each seam edge's width past its waist point at the hem, if more than the seat needs, every edge then `length` long so the hem rises at the seams. `cb: { waist: 0, hip: 0, flare: true }`: a CB seam flaring the same way, cut in pairs, the back lining too. `buttonBottom`: the last button this far below the waist. `frontSeamMin`: the front seam at least this far from CF at the waist, moved toward the side with the dart's width unchanged. `jacketBase` also accepts `backWaistWidth` (the narrow back panel's waist width from CB); `jacketLayout` accepts `backHemFlare` (that panel's separate hem flare). | `lib/jacket.mjs` |
 | `boxLayout` | A box body on the same bases (`jacketBase` with `style: box`): back and front, side seams flared from the armholes, the bust dart pivoted into the front neck, lap, lapel, gorge. Optional: `patch: { <id>: { x, y, w, h, shape, topHem, flap } }`, patch pockets from CF and the waist (to `coat.pockets`, for the `pocket` and `flap` pieces), kept clear of the armhole, side seam and hem; `rows`, as `jacketLayout`'s. When the design's `lapelStyle` is `closed`, the front runs straight to the edge at the neck without a lapel. `armholeDrop` lowers both armhole bottoms, retaining the shoulder points. | `lib/jacket.mjs` |
+| `boxSkirtLayout` | After `boxLayout`, split its front and back on a curved dropped skirt join. `drop` places the back cut below the waist, `frontDrop` lowers the front, `sideDrop` lowers the side, `curve` bows each join, and `buttonClear` keeps buttons above it. `dartIntake`, `dartDepth` and `dartAt` pivot the front skirt about a hip point to open a working dart while preserving the sewn join length. Adds `frontSkirt` and `backSkirt` panels. | `lib/jacket.mjs` |
 | `jacketLayout`'s `kimono` | `{ length, hem, depth, angleBack, angleFront }`: the sleeve cut in one with the side back and side front, no armhole; the hem shared so the underarm seams match. Store: `jacket.kimono`. Drop the two-part sleeve pieces. | `lib/jacket.mjs` |
 | `capeBase`, `capeLayout` | A cape (`which`; `length`, `drop`, `gap`, `pivotLess`, `seamDrop`, `flare`, `lap`, `facing`): the block's neck and shoulder laid out as a quarter circle. Optional `dartWidth`, `dartGap`, `dartLength` mark two shoulder darts on a `whole` cape. Store: `cape.layout`, `cape.seams`, `coat.back.neck`, `coat.front.neck`. With the `cape` piece type (`which: front`, `back` or `whole`; `count`, `spacing` its buttons). | `lib/cape.mjs` |
 | `jacketCapeBase` | Copies `jacketBase`'s neck and shoulder to `cape.raw.*` (`which: front` or `back`) so `capeLayout` can add a separate shoulder cape above a jacket body. The optional `capeShoulderExtension` moves the cape tip beyond the coat shoulder. | `lib/cape.mjs` |
@@ -128,6 +130,36 @@ A value that comes out `null` is left out (so an operation sees it as not given)
 item with a comma in it). A map with
 `if:` false is left out. A `_name` entry is a working value: later entries can use it, but it
 isn't stored.
+
+## Pattern map
+
+`patternMap:` labels the drafted pieces for sewing. `lib/pattern-map.mjs` places every label on the
+draft at the chosen size and options, so nothing stores a coordinate; a piece or path the options
+leave out drops its labels and key lines. The chore coat is the example.
+
+```yaml
+patternMap:
+  pieces: { front: 1, back: 2 }            # spec piece key: printed number (unique)
+  stitches:
+    FF: { name: flat-felled seam, key: flat-fell the allowances }   # key: the line in the printed key
+  codes:
+    A:
+      name: shoulder
+      stitch: FF                          # a stitches code
+      kind: seam                          # seam (default), dart, placement (pocket lines) or closure (buttonholes)
+      drape: shoulder                     # optional: the seam's id in the design's drape config
+      at:                                 # where the code is printed, one entry per piece
+        - { part: front, path: frontArmhole, along: 0.5 }   # a fraction along a drafted path
+        - { part: back, between: [neck, shoulder] }         # midway between two points, on the seam line
+        - { part: front, point: buttonhole0_0 }             # at a point (a dart tip)
+        - { part: front, snippet: buttonhole0 }             # at a snippet (a buttonhole)
+        # optional: true: skip it when the options don't draft that path (a pocket turned off)
+```
+
+`construction.yaml` beside the spec holds the sewing steps that use these codes;
+`tools/validate-construction.mjs` checks them against the map and the brief's numbered steps, and
+the site shows a design's map section only once they pass. `node tools/map-check.mjs <design>`
+reports labels off their seam or overlapping (`--names` lists the paths and points to anchor on).
 
 ## Checking a change
 

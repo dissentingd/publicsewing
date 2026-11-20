@@ -79,3 +79,8 @@ pieces:
           width: neck * collarWidth
           point: neck * collarPoint
           nr: 20
+
+# The parent's pattern map, with this design's own pieces numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { collarFall: 20, lowerWeltPiece: null, lowerWeltBag: null }

@@ -126,3 +126,8 @@ variants:
     name: Front buttoning
     description: "Simons' alternative: the seam below the knee moved forward, so that the buttons run down the front of the shin rather than the outside of the leg."
     options: { breechesOpening: front }
+
+# The parent's pattern map, with this design's own pieces numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { buttonStand: 10, openingFacing: 11 }

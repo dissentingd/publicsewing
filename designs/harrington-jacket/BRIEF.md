@@ -41,7 +41,9 @@
 
 ## Construction
 
-1. Sew the sleeve shoulder darts, then the raglan seams and side and sleeve underarm seams.
-2. Join the collar to the neck, then attach the front facings and separating zip.
-3. Join the rib cuffs into rings, fold and stretch them onto the sleeve hems.
-4. Fold the waistband and sew it across the body hem, stretching between quarter marks. Finish its two ends at the zip.
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam, **RB** rib stretched to fit as it is sewn.
+
+1. Sew the shoulder darts **V** on each sleeve **3**, then join the sleeves to the front **1** and back **2** at the raglan seams **C**, and close the side seams **B** and sleeve underarms **F** with **SS**.
+2. Join the collar **4** to the neckline **D** of the front **1**, back **2** and sleeves **3**, then attach the front facings **5** and the separating zip along the front edges **E**, at the zip marks **Z**.
+3. Join the rib cuffs **6** into rings, fold them and stretch them onto the sleeve hems **H** of the sleeves **3** with **RB**.
+4. Fold the waistband **7** and sew it across the body hem **H** of the front **1** and back **2**, stretching it between quarter marks with **RB**. Finish its two ends at the zip.

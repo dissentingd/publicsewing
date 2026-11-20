@@ -198,6 +198,26 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
 }
 
 /* Finished-garment illustration at the top of a design page, and its thumbnail in the table */
+.design-page { max-width: 1060px; margin-inline: auto; }
+.design-hero { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin: 1.25rem 0 2rem; }
+.design-hero-art .design-figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 1rem; margin: 0; }
+.design-hero-art .illustration { max-width: none; margin: 0; }
+.design-hero-art .illustration-img { border-radius: 3px; }
+.design-hero-copy { padding-top: 0.5rem; font-size: 1.05rem; line-height: 1.7; }
+.design-hero-copy .alert { margin: 0 0 1.5rem; }
+.design-eyebrow { color: var(--ifm-color-emphasis-700); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 1rem; }
+.design-jump { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0 0 1.5rem; border-bottom: 1px solid var(--ifm-color-emphasis-300); margin-bottom: 2.5rem; }
+.design-jump a { display: inline-block; padding: 0.55rem 0.85rem; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 4px; font-weight: 600; text-decoration: none; }
+.design-jump a:hover, .design-jump a:focus-visible { border-color: var(--ifm-color-primary); background: var(--ifm-color-emphasis-100); }
+.design-pieces, .design-construction { margin: 2rem 0; padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--ifm-color-emphasis-300); border-radius: 5px; }
+.design-pieces { background: var(--ifm-color-emphasis-100); }
+.design-construction { background: var(--ifm-background-surface-color); }
+.design-pieces h2, .design-construction h2 { margin-top: 0; }
+.design-construction ol { counter-reset: construction; list-style: none; margin: 1.5rem 0 0; padding: 0; }
+.design-construction ol > li { counter-increment: construction; position: relative; padding: 0 0 1.5rem 3.5rem; margin: 0 0 1.5rem; border-bottom: 1px solid var(--ifm-color-emphasis-200); min-height: 2.5rem; }
+.design-construction ol > li:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+.design-construction ol > li::before { content: counter(construction, decimal-leading-zero); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--ifm-color-primary); color: var(--ifm-color-primary-contrast-background); font-weight: 700; font-size: 0.85rem; }
+@media (max-width: 760px) { .design-hero { grid-template-columns: 1fr; } .design-hero-art .design-figures { grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); } }
 .illustration {
   margin: 0 0 1.5rem;
   max-width: 420px;
@@ -494,3 +514,9 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
   .measure-side { position: sticky; top: calc(var(--ifm-navbar-height) + 1rem); display: flex; flex-direction: column; align-items: flex-start; gap: 0.55rem; }
   .measure-side h3 { margin: 0; }
 }
+.pattern-map-section { margin: 2rem 0; }
+.pattern-map-section h2 { margin-bottom: 0.5rem; }
+.pattern-map-figure { margin: 1rem 0 0; }
+.pattern-map-figure figcaption { margin-top: 0.4rem; font-size: 0.8rem; color: var(--ifm-color-emphasis-700); }
+.pattern-map-scroll { overflow-x: auto; max-width: 100%; }
+.pattern-map-scroll .preview-img { display: block; width: 1000px; min-width: 1000px; height: auto; }

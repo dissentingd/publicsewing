@@ -1,0 +1,13 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: hunting-coat
+steps:
+  - { order: 1, action: pleat pockets and make flaps, pieces: [8, 10, 9, 11] }
+  - { order: 2, action: attach pockets and flaps, pieces: [8, 10, 9, 11, 1], placements: [P8, P10], stitches: [TS], whenAny: [breastPockets, lowerPockets] }
+  - { order: 3, action: pleat and join back panels, pieces: [4, 2, 5], placements: [K], seams: [Y, W], stitches: [TS], whenAny: [actionPleat] }
+  - { order: 4, action: shoulders and sides, pieces: [1, 2, 4, 5], seams: [A, B], stitches: [SS] }
+  - { order: 5, action: belt, pieces: [12, 13, 1], placements: [BT], stitches: [TS], whenAny: [belt] }
+  - { order: 6, action: collar and facings, pieces: [6, 1, 2, 7], seams: [G, D, E], stitches: [SS] }
+  - { order: 7, action: sleeves, pieces: [3, 1, 2, 4], seams: [F, C], stitches: [SS] }
+  - { order: 8, action: hems, pieces: [1, 5, 3], seams: [H], stitches: [TS] }
+  - { order: 9, action: buttonholes and buttons, pieces: [1], placements: [BH], stitches: [BH] }

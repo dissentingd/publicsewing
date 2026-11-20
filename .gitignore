@@ -60,6 +60,7 @@ archive/data/emko/ocr/p-*.txt
 BUILD_NOTES.md
 site/dev-server.*.log
 site/build-catalog/
+site/build-*/
 designs/tools/_*
 
 # internal working notes: kept locally, not published

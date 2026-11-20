@@ -44,6 +44,8 @@ based on a skirt foundation pattern."
 Front (cut 2), back (cut 2), waistband.
 
 ## Construction
-1. CB seam from the zip's notch to the crotch; zip; CF seam to the crotch.
-2. Side seams; inseams in one, crotch to hem on each leg.
-3. Waistband; hem.
+Letters are the seam codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed open.
+
+1. Sew the centre back seam **CB** of the back **2** from the zip's notch to the crotch; set the zip; sew the centre front seam of the front **1** to the crotch.
+2. Sew the side seams **S** of the front **1** and back **2**, then the inseams **I** in one, crotch to hem on each leg.
+3. Sew the waistband **9**; hem the front **1** and back **2**.

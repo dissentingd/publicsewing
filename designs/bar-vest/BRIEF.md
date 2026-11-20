@@ -44,3 +44,12 @@ collar) at every adult, stout and children's set:
 - the shared coat checks;
 - the side seam is taken in at the waist;
 - the fronts drop to points.
+
+## Construction
+
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam with finished edges, **TS** topstitch, **BH** machine buttonhole.
+
+1. Interface the front facings **5** and one collar layer **4** if using the standing collar. Finish the patch-pocket tops of pockets **6** and **7**, press their remaining edges under, and topstitch them with **TS** to the fronts **1** at **P6** and **P7**.
+2. Sew the shoulder seams **A** and side seams **B** of the fronts **1** and back **2**. If adding sleeves **3**, set them into the armholes **C** and close their underarm seams **F**; otherwise bind the armhole edges **C**.
+3. Join the collar layers **4** along **G**, turn and press, then attach the collar to the neckline **D** of the fronts **1** and back **2**. Sew the facings **5** to the front edges **E**, including the pointed lower corners, and turn and press.
+4. Hem the back **2**, fronts **1** and any sleeves **3** along **H** with **TS**. Work the six front buttonholes **BH** and sew on the buttons at the marked centres.

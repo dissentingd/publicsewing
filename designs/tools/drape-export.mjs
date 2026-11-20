@@ -2,10 +2,11 @@
 // into a GarmentCode pattern specification).
 // Usage: node tools/drape-export.mjs <design> <set> <out.json> [--options '<json>'] [--pieces a,b]
 //          [--clip piece=x,...] [--split piece=x,...] [--clipy piece=y,...] [--m name=mm,...]
-//          [--prefix id]
+//          [--prefix id] [--sources role=prefix.part,...]
 //   prefix: the parts' name prefix, for a design that extends another (the peacoat's parts
 //   are mackinaw.*); the design's own id by default.
 //   pieces: part names without the design prefix (default: every piece with a seam path);
+//   sources: explicit source part for each exported role when inherited pieces have mixed prefixes;
 //   every cut value is mm or a point name of the piece (its x, or its y for clipy).
 //   clip: cut a piece at x >= value, e.g. front=0 to cut the button stand off at CF so the two
 //   fronts can be sewn closed edge to edge; split: cut a piece in two at x into <piece>Plus
@@ -20,6 +21,7 @@
 import { writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { loadDesign, measurementSet } from './render.mjs'
+import { mapFor, resolve } from '../lib/pattern-map.mjs'
 
 const CURVE_STEP = 5 // mm between samples along a curve
 
@@ -42,6 +44,41 @@ export function polyline(path) {
   }
   return out
 }
+
+// Additional sewing information for a drape consumer. Coordinates remain in the drafted
+// part's frame, converted to cm like `pieces`, and retain their source part when clipping or
+// splitting has changed the simulation outline.
+export function drapeMap(pattern, map, exported) {
+  const cm = (p) => [p.x / 10, p.y / 10]
+  const parts = pattern.parts[0]
+  const marks = resolve(pattern, map)
+  const byCode = (code) => marks.filter((m) => m.code === code)
+    .map(({ part, x, y }) => ({ sourcePart: part, at: cm({ x, y }) }))
+  const of = (kind) => Object.entries(map.codes).filter(([, c]) => c.kind === kind)
+  const seams = Object.fromEntries(of('seam')
+    .map(([code, c]) => [code, { name: c.name, stitch: c.stitch, drapeSeam: c.drape ?? null, anchors: byCode(code) }]))
+  // A placement's outline is the drafted path its code sits on, when the options drew it
+  const placements = Object.fromEntries(of('placement').flatMap(([code, c]) => {
+    const a = c.at.find((x) => x.path && parts[x.part]?.paths[x.path])
+    return a ? [[code, { sourcePart: a.part, stitch: c.stitch, outline: polyline(parts[a.part].paths[a.path]).map(cm), anchors: byCode(code) }]] : []
+  }))
+  // Buttons and buttonholes on the pieces that carry a closure code
+  const closureCode = of('closure').find(() => true)
+  const closures = [...new Set(of('closure').flatMap(([, c]) => c.at.map((a) => a.part)))].flatMap((name) =>
+    Object.entries(parts[name]?.snippets ?? {})
+      .filter(([, s]) => ['button', 'buttonhole'].includes(s.def))
+      .map(([id, s]) => ({ id, kind: s.def, sourcePart: name, at: cm(s.anchor), stitch: s.def === 'buttonhole' ? closureCode[1].stitch : 'attach-button' })))
+  const cutPieces = Object.fromEntries(Object.entries(map.numbers)
+    .filter(([name]) => drafted(parts[name]))
+    .map(([full, number]) => {
+      const name = full.split('.').at(-1)
+      return [name, { number, sourcePart: full, draped: Object.keys(exported.pieces).some((role) => role === name || role.startsWith(`${name}Plus`) || role.startsWith(`${name}Minus`)) }]
+    }))
+  const stitches = Object.fromEntries(Object.entries(map.stitches).map(([code, s]) => [code, s.name]))
+  return { units: 'cm', cutPieces, seams, placements, closures, stitches }
+}
+
+const drafted = (part) => part && !part.hidden && part.paths.seam && !part.paths.seam.hidden
 
 function bezier(a, b, c, d, t, end) {
   if (end) return d
@@ -106,14 +143,18 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const store = pattern.setStores[0]
   if (store.logs.error.length) throw new Error(store.logs.error.join('\n'))
   const wanted = flag('--pieces', null)?.split(',')
+  const sources = byPiece('--sources')
+  const sourceNames = new Map(Object.entries(sources).map(([role, full]) => [full, role]))
   const out = { design, set, options, measurements, pieces: {}, points: {}, snippets: {}, removed: {} }
+  const processed = new Set()
   // Only the design's own parts (not the blocks' or FreeSewing's library parts of the same name)
   const own = `${flag('--prefix', Design.designConfig.data.id)}.`
   for (const [full, part] of Object.entries(pattern.parts[0])) {
-    if (!full.startsWith(own)) continue
-    const name = full.slice(own.length)
+    if (sourceNames.size ? !sourceNames.has(full) : !full.startsWith(own)) continue
+    const name = sourceNames.size ? sourceNames.get(full) : full.slice(own.length)
     if (wanted ? !wanted.includes(name) : !part.paths.seam || part.hidden) continue
     if (!part.paths.seam) throw new Error(`${name} has no seam path`)
+    processed.add(name)
     let poly = polyline(part.paths.seam)
     const first = poly[0]
     const last = poly[poly.length - 1]
@@ -167,6 +208,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       }
     }
   }
+  if (wanted) for (const name of wanted) if (!processed.has(name)) throw new Error(`missing drape piece ${name} (source ${sources[name] ?? own + name})`)
+  if (mapFor(Design)) out.patternMap = drapeMap(pattern, mapFor(Design), out)
   writeFileSync(file, JSON.stringify(out, null, 1))
   console.log(`${file}: ${Object.entries(out.pieces).map(([k, v]) => `${k} (${v.length})`).join(', ')}`)
 }

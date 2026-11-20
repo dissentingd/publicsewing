@@ -126,3 +126,8 @@ pieces:
 
   # The fly: a strip behind the right front, cut 2, its buttonholes on CF
   fly: { part: fly, after: [backBase, frontBase], nr: 17, label: fly, width: flyLap, if: flyFront }
+
+# The parent's pattern map, adapted to this design (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { breastPocket: 13, breastFlap: 14, lowerPocket: 15, lowerFlap: 16, fly: 17 }

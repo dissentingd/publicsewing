@@ -141,3 +141,8 @@ pieces:
       h: seat * 0.06
     points: [[0, 0], [w, 0], [w, h], [0, h]]
     buttonholes: [[w / 2, h - 12]]
+
+# The parent's pattern map, with this design's own pieces numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { cargoPocket: 10, cargoFlap: 11, seatPocketPiece: 12, seatFlap: 13 }

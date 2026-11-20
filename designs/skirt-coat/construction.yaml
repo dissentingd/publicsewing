@@ -1,0 +1,14 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing
+# order. Sheifer gives no sewing order or stitches: this sequence is ours, from the drafted pieces.
+design: skirt-coat
+steps:
+  - { order: 1, action: sew hip darts, pieces: [13], seams: [M], stitches: [SS] }
+  - { order: 2, action: sew neck darts, pieces: [1], seams: [N], stitches: [SS] }
+  - { order: 3, action: join shoulders, pieces: [1, 2], seams: [A], stitches: [SS] }
+  - { order: 4, action: join curved skirt edges, pieces: [1, 13, 2, 14], seams: [J, K], stitches: [SS] }
+  - { order: 5, action: sew sides, pieces: [1, 2, 13, 14], seams: [B, L], stitches: [SS] }
+  - { order: 6, action: assemble sleeves, pieces: [7, 8], seams: [F, G], stitches: [SS] }
+  - { order: 7, action: set sleeves, pieces: [1, 2, 7, 8], seams: [C], stitches: [SS] }
+  - { order: 8, action: apply collar and facing, pieces: [4, 1, 2, 3, 13], seams: [D, E], stitches: [SS] }
+  - { order: 9, action: finish hems and closure, pieces: [13, 14, 7, 8, 1], seams: [H], placements: [BH], stitches: [HS, BH] }

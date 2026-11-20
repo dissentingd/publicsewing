@@ -83,6 +83,7 @@ nodes:
   dinner-jacket-t: { name: Dinner jacket (tuxedo), parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-peak, closure-buttons, pocket-welt, lining], designs: [dinner-jacket] }
   norfolk: { name: Norfolk jacket, parent: suit-jackets, traits: [body-boxy, pleats-box-body, belt, pocket-patch, sleeve-set-in], designs: [norfolk-jacket] }
   eton: { name: Eton jacket, parent: suit-jackets, traits: [body-three-piece, collar-notched, sleeve-two-piece], designs: [eton-jacket] }
+  pantry-jacket-t: { name: Pantry jacket, parent: suit-jackets, traits: [body-three-piece, collar-notched, sleeve-two-piece, closure-buttons, pocket-welt, lining], designs: [pantry-jacket] }
   smoking: { name: Smoking jacket, parent: suit-jackets, traits: [body-boxy, collar-shawl, closure-frogs, cuff-turnback, pocket-welt], designs: [smoking-jacket] }
   blazer: { name: Blazer, parent: suit-jackets, traits: [body-three-piece, sleeve-two-piece, collar-notched, closure-buttons, pocket-patch, lining], note: "A sack-coat variant with patch pockets" }
   womens-tailored: { name: Women's tailored jackets, parent: jackets }
@@ -132,6 +133,7 @@ nodes:
   chapan: { name: Chapan / chopon, parent: overcoats, research: true }
   womens-coats: { name: Women's coats, parent: coats }
   box-coat-t: { name: Box coat, parent: womens-coats, traits: [body-box-darted, collar-peak, pocket-flap-set-in], designs: [womens-box-coat, girls-coat] }
+  skirt-coat-t: { name: Skirt coat, parent: womens-coats, traits: [body-box-darted, waist-seam, collar-notched, pocket-flap-set-in], designs: [skirt-coat] }
   princess-coat-t: { name: Princess coat, parent: womens-coats, traits: [body-princess, collar-storm, closure-double-breasted], designs: [princess-coat] }
   long-coat-t: { name: Semi-fitted long coat, parent: womens-coats, traits: [body-princess, collar-storm, lining], designs: [three-piece-long-coat] }
   wrap-coat: { name: Wrap coat, parent: womens-coats, traits: [body-box-darted, closure-wrap, collar-shawl, belt] }

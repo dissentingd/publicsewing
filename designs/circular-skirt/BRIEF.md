@@ -72,11 +72,13 @@ against the 47 measured off p. 113, the waists 6.2 and 7.1 in against his 6¼ an
 Front (on the fold), back (cut 2, CB seam), waistband.
 
 ## Construction
-1. Let the pieces hang for a day: much of the seams and hem lies on the bias.
-2. CB seam below the zip, then the zip.
-3. Side seams, matching the notches.
-4. Waistband.
-5. Level the hem on the wearer if the bias has dropped, then hem, easing the fullness in.
+Letters are the seam codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed open.
+
+1. Let the front **1** and back **2** hang for a day: much of the seams and hem lies on the bias.
+2. Sew the centre back seam **CB** of the back **2** below the zip, then the zip.
+3. Sew the side seams **S** of the front **1** and back **2**, matching the notches.
+4. Sew the waistband **9**.
+5. Level the hem of the front **1** and back **2** on the wearer if the bias has dropped, then hem, easing the fullness in.
 
 ## Checks
 `test/circular-skirt.test.mjs`: every size; the default, the wide variant, no spread at a short length, and

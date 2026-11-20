@@ -62,10 +62,12 @@ waist, waist-to-seat depth and length. Sarah's darts and side seams are replaced
 Each gore's edges are notched at the seat line.
 
 ## Construction order
-1. Seam the gores to each other and to the front panel, matching the seat notches.
-2. Seam the centre back below the zip notch; set the zip.
-3. Waistband to the waist, the underlap at the zip; close its ends.
-4. Hem.
+Letters are the seam codes on the pattern map; numbers are printed on the pieces (the front panel **1**, then the gores from **2**, as many as the `gores` option drafts, and the waistband **9**). **SS** straight seam pressed open.
+
+1. Seam the gores (**2**, **3** and on) to each other and to the front panel **1** at **S**, matching the seat notches.
+2. Seam the centre back **CB** of the last gores (with five gores, **3**) below the zip notch; set the zip.
+3. Sew the waistband **9** to the waist, the underlap at the zip; close its ends.
+4. Hem the front panel **1** and gores **2**, **3** and on.
 
 ## Changes and what isn't modelled
 - **Geometry from Sarah, not the sweeps.** The gores are laid on Sarah's seat line and waist, so

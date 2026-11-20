@@ -1,0 +1,13 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing
+# order. Vincent describes the garment but not its sewing: this sequence is ours.
+design: pantry-jacket
+steps:
+  - { order: 1, action: make lower welt pockets, pieces: [1, 10, 11], placements: [P], stitches: [SS], whenAny: [lowerPockets] }
+  - { order: 2, action: join three-piece body, pieces: [1, 3, 2], seams: [B, C], stitches: [SS] }
+  - { order: 3, action: join shoulders, pieces: [1, 2], seams: [A], stitches: [SS] }
+  - { order: 4, action: apply collar and facings, pieces: [6, 1, 2, 13, 7], seams: [E, F], stitches: [SS] }
+  - { order: 5, action: assemble sleeves, pieces: [4, 5], seams: [G, H], stitches: [SS] }
+  - { order: 6, action: set sleeves, pieces: [4, 5, 1, 3, 2], seams: [D], stitches: [SS] }
+  - { order: 7, action: make and attach lining, pieces: [14, 15, 16, 17] }
+  - { order: 8, action: finish hems and closure, pieces: [1, 2, 3, 4, 5], seams: [J], placements: [BH], stitches: [HS, BH] }

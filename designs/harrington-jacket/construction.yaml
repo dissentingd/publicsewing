@@ -1,0 +1,8 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: harrington-jacket
+steps:
+  - { order: 1, action: darts, raglans, sides and underarms, pieces: [3, 1, 2], seams: [V, C, B, F], stitches: [SS] }
+  - { order: 2, action: collar, facings and zip, pieces: [4, 1, 2, 3, 5], seams: [D, E], placements: [Z], stitches: [SS] }
+  - { order: 3, action: rib cuffs, pieces: [6, 3], seams: [H], stitches: [RB] }
+  - { order: 4, action: rib waistband, pieces: [7, 1, 2], seams: [H], stitches: [RB] }

@@ -99,3 +99,8 @@ variants:
     name: No hood
     description: "A plain stand collar around the neck in place of the hood, still buttoned to the throat."
     options: { hood: false }
+
+# The windbreaker's pattern map, with the collar numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { collar: 8 }

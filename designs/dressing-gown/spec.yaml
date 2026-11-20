@@ -75,3 +75,8 @@ variants:
     name: Bath robe
     description: "Vincent's bath robe: a little shorter, an ordinary button stand, buttoned to the neck under a standing collar. In towelling or blanket cloth."
     options: { collarStyle: military, buttonExtension: 0.04, buttons: 7, buttonTop: -4, buttonBottom: 0.6, lengthBelowWaist: 2.55 }
+
+# The parent's pattern map, with this design's own pieces numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { girdle: 14, girdleLoop: 15, handWelt: null, handBag: null }

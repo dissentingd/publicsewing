@@ -117,3 +117,8 @@ variants:
     name: Hooded
     description: "A two-piece hood sewn around the neckline in place of the turn-down collar, with a drawstring in its face edge."
     options: { hood: true }
+
+# The windbreaker's pattern map, with the collar numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { collar: 8 }

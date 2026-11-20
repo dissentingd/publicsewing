@@ -104,3 +104,8 @@ pieces:
     length: waistToSeat * fallDepth + 20
     width: waist * fallStand
   flyFacing: { part: strip, after: front, nr: 6, length: 1, width: 1, if: "false" }
+
+# The overall pants' pattern map, with this design's pieces numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { flyShield: 5, frontBand: 4, flyFacing: null, beltLoop: null }

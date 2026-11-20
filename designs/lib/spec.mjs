@@ -69,11 +69,12 @@ import { draftBodiceNeck, draftBodiceWaist, draftBodiceHip, draftBodiceSleeve, d
 import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularLayout, circularPart, draftTunicLayout, tunicPart } from './skirt.mjs'
 import { draftYokeLayout, yokePart, yokeGorePart } from './skirt-yoke.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
-import { draftJacketBase, draftJacketLayout, draftBoxLayout, jacketPanelPart, flyPart } from './jacket.mjs'
+import { draftJacketBase, draftJacketLayout, draftBoxLayout, draftBoxSkirtLayout, jacketPanelPart, flyPart } from './jacket.mjs'
 import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
 import { draftJeanLeg, jeanPiecePart, jeanBandPart } from './jeans.mjs'
 import { draftCapeBase, draftJacketCapeBase, draftCapeLayout, draftDolmanLayout, capePart } from './cape.mjs'
 import { draftKiltLayout, kiltApronPart, kiltPleatsPart } from './kilt.mjs'
+import { prepareMap } from './pattern-map.mjs'
 
 const blocks = { brian, bent, titan, breanna, sarah, bella, bibi, noble }
 /** FreeSewing library parts a piece can use as is (`part: library`) */
@@ -132,6 +133,7 @@ export const operations = {
   // Princess-seamed jackets on Breanna (lib/jacket.mjs): each base read in, then cut into panels
   jacketBase: { run: draftJacketBase, literal: ['side', 'style'] },
   boxLayout: { run: draftBoxLayout, literal: ['sleeveStore'] },
+  boxSkirtLayout: { run: draftBoxSkirtLayout },
   jacketLayout: { run: draftJacketLayout, literal: ['sleeveStore'] },
   // A three-piece body (lib/body3.mjs): back panel, then the forepart
   body3Back: { run: draftBody3Back },
@@ -702,5 +704,8 @@ export function designFromSpec(spec) {
     },
   }
 
-  return { Design: new Design({ data: spec.about, parts: Object.values(parts) }), parts, about: spec.about }
+  // A pattern map rides in the design's data, so the exporters find it in the browser too
+  const patternMap = prepareMap(spec)
+  const data = patternMap ? { ...spec.about, patternMap } : spec.about
+  return { Design: new Design({ data, parts: Object.values(parts) }), parts, about: spec.about }
 }

@@ -100,3 +100,39 @@ variants:
     name: Notched lapels
     description: "The more everyday lapel, its top edge meeting the collar in a notch, in place of the peaks."
     options: { lapelStyle: notch }
+
+# The tailored jacket's pattern map, with kimono sleeves cut on the side panels (SPEC.md,
+# "Pattern map").
+patternMap:
+  merge: true
+  pieces: { topsleeve: null, undersleeve: null }
+  codes:
+    A:
+      name: shoulder and overarm seam, neck to wrist
+      stitch: SS
+      at:
+        - { part: front, between: [hps, seamTop] }
+        - { part: back, between: [hps, seamTop] }
+        - { part: sideFront, between: [seamTop, wristOver] }
+        - { part: sideBack, between: [seamTop, wristOver] }
+    B:
+      name: side and underarm seam in one, clipped at the corner
+      stitch: SS
+      at:
+        - { part: sideFront, between: [underarm, hemSide] }
+        - { part: sideBack, between: [underarm, hemSide] }
+        - { part: sideFront, between: [underarm, wristUnder] }
+        - { part: sideBack, between: [underarm, wristUnder] }
+    C: null
+    F: null
+    G: null
+    H:
+      name: jacket and sleeve hems
+      stitch: HS
+      at:
+        - { part: front, between: [hemEdge, hemSeam] }
+        - { part: sideFront, between: [hemSeam, hemSide] }
+        - { part: sideBack, between: [hemSeam, hemSide] }
+        - { part: back, between: [cbHem, hemSeam] }
+        - { part: sideFront, between: [wristUnder, wristOver] }
+        - { part: sideBack, between: [wristUnder, wristOver] }

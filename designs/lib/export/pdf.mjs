@@ -3,6 +3,7 @@
 // on black, which many projector users prefer. A tiny PDF writer, no dependencies; runs in Node
 // and the browser.
 import { shelves, notchTick } from './layout.mjs'
+import { keyLayout } from '../pattern-map.mjs'
 
 const PT = 72 / 25.4 // points per mm
 const n = (v) => (Math.round(v * 100) / 100).toString()
@@ -14,10 +15,11 @@ const txt = (s) => String(s).replace(/[^\x20-\x7e]/g, '?').replace(/([\\()])/g, 
  * @param opts { title, size, notes: credit lines, sa: mm, dark: light lines on black }
  * @returns the PDF as a string of single-byte characters (write it as 'latin1')
  */
-export function toProjectorPdf(pieces, { title = 'pattern', size = '', notes = [], sa = 10, dark = false } = {}) {
+export function toProjectorPdf(pieces, { title = 'pattern', size = '', notes = [], sa = 10, dark = false, map = null } = {}) {
   const { placed, width, height } = shelves(pieces, { gap: 40, margin: 30 })
   const square = 100
-  const Hmm = height + square + 40
+  const layout = map && keyLayout(map, { left: 30, right: width / 2, top: height + square + 35, base: height + square + 40, entries: height + square + 52, line: 13, gap: 7, stitchLine: 13, pad: 70 })
+  const Hmm = height + square + 40 + (layout ? layout.height : 0)
   // Pages are limited to 14400 units a side; past that, a UserUnit scales the units up
   const unit = Math.max(1, Math.ceil((Math.max(width, Hmm) * PT) / 14400))
   const k = PT / unit
@@ -65,8 +67,16 @@ export function toProjectorPdf(pieces, { title = 'pattern', size = '', notes = [
     }
     const cx = box.x + dx + 10
     const cy = box.y + dy + box.h / 2
-    text(cx + 10, cy, p.name, 12)
+    text(cx + 10, cy, map?.numbers[p.id] ? `${map.numbers[p.id]} ${p.name}` : p.name, 12)
     text(cx + 10, cy + 10, `cut ${p.quantity}${p.onFold ? ' on the fold' : ''}`, 7)
+    for (const mark of map?.marks ?? []) if (mark.part === p.id) {
+      const x = mark.x + dx
+      const y = mark.y + dy
+      // Knock out the geometry behind the code in both light and dark projector modes.
+      const bg = dark ? '0 0 0' : '1 1 1'
+      ops.push(`${bg} rg ${X(x - 6)} ${Y(y + 4)} ${X(14)} ${X(10)} re f ${fg} rg`)
+      text(x - 3, y + 2, mark.code, 7)
+    }
   }
   // The test square
   const ty = height + 10
@@ -75,6 +85,10 @@ export function toProjectorPdf(pieces, { title = 'pattern', size = '', notes = [
   path([[30, ty], [30 + square, ty], [30 + square, ty + square], [30, ty + square]], true)
   text(55, ty + 55, '10 cm', 10)
   ;[`${title}, ${size}`, 'PublicSewing (publicsewing.org). Project or print at 100%: the square measures 10 cm.', ...notes].forEach((s, i) => text(square + 50, ty + 12 + i * 9, s, 6))
+  if (map) {
+    text(layout.heading.x, layout.heading.y, layout.heading.text, 9)
+    layout.lines.forEach((l) => text(l.x, l.y, l.text, 7))
+  }
 
   const content = ops.join('\n')
   const objs = [

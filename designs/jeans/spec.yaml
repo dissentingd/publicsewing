@@ -194,3 +194,8 @@ variants:
     name: Bootcut
     description: "A flared legline: the leg a little closer at the knee and flaring out to the hem."
     options: { kneeEase: 0.1, hemWidth: 1.15 }
+
+# The parent's pattern map, with this design's own pieces numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces: { yoke: 10, pocketFacing: 11, pocketBag: 12, pocketLining: 13, coinPocket: 14, backPatchPocket: 15 }

@@ -1,0 +1,12 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: mackinaw
+steps:
+  - { order: 1, action: make flaps and pocket tops, pieces: [7, 9, 6, 8] }
+  - { order: 2, action: attach pockets and flaps, pieces: [6, 8, 7, 9, 1], placements: [P6, P8], stitches: [TS], whenAny: [breastPockets, lowerPockets] }
+  - { order: 3, action: join shoulders and sides, pieces: [1, 2], seams: [A, B], stitches: [SS] }
+  - { order: 4, action: make and attach belts, pieces: [10, 11, 1, 2], placements: [BT], stitches: [TS], whenAny: [belt] }
+  - { order: 5, action: collar and facings, pieces: [4, 1, 2, 5], seams: [G, D, E], stitches: [SS] }
+  - { order: 6, action: make and set sleeves, pieces: [3, 1, 2], seams: [F, C], stitches: [SS] }
+  - { order: 7, action: hems, pieces: [1, 2, 3], seams: [H], stitches: [TS] }
+  - { order: 8, action: buttonholes and buttons, pieces: [1], placements: [BH], stitches: [BH] }

@@ -51,19 +51,14 @@ hips).
 Inches above are read off p. 19 at its scale (the 3" lap measures 3"), to about ⅛".
 
 ## Construction order
-1. Neck darts. Pockets, on each front (marked: the mouth line, the flap below it):
-   - make up each flap (fabric and lining, right sides together, round three sides; turn, press);
-   - lay the flap upside down above the mouth, its raw edge on the line; fold the jet in half
-     lengthwise and lay it below the line, raw edges meeting; stitch both to the mouth's length;
-   - cut along the mouth between the stitch lines, snipping into the corners; turn the jet
-     through to make a single piping and the flap down over it;
-   - sew one bag piece to the flap's seam allowance and one to the jet's, then the bags
-     together round their edges; secure the ends of the mouth.
-2. CB seam; shoulders; side seams.
-3. Collar to the neckline up to the gorge; facings to the fronts and lapels.
-4. Sleeves: the two pieces together, then set in, easing the cap.
-5. Hem; buttonholes near the front edge (on the right front over the left), buttons behind CF
-   on the other front.
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed open, **HS** hem stitch, **BH** machine buttonhole.
+
+1. Sew the neck darts **N** in the fronts **1**.
+2. Pockets on each front **1**, at the mouth lines **P7** (hip) and **P10** (ticket): make up each flap **7**, **10** (fabric and lining, right sides together round three sides; turn, press); lay it upside down above the mouth, raw edge on the line; fold the jet **8**, **11** in half lengthwise and lay it below the line, raw edges meeting; stitch both to the mouth's length; cut the mouth between the stitch lines, snipping into the corners; turn the jet through as a single piping and the flap down over it; sew one bag **9**, **12** to the flap's allowance and one to the jet's, then the bags together; secure the ends of the mouth.
+3. Sew the centre back seam **CB** of the backs **2**, then the shoulders **A** and side seams **B** to the fronts **1**.
+4. Sew the collar **4** to the neckline **D** of the fronts **1** and backs **2** up to the gorge; sew the facings **3** to the fronts and lapels along **E**.
+5. Sleeves: join the top sleeve **5** and under sleeve **6** at **F** and **G**, then set them into the armholes **C** of the fronts **1** and backs **2**, easing the cap.
+6. Turn up the hems **H** of the fronts **1**, backs **2** and sleeves **5**, **6** with **HS**. Work the buttonholes **BH** near the front edge (on the right front over the left) and sew the buttons behind CF on the other front.
 
 ## Changes and what isn't modelled
 - **The neck dart is pivoted from Breanna's waist dart**, not drafted as Mitchell's 22: it

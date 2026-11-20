@@ -31,6 +31,7 @@ import { readSpec } from '../../designs/lib/load-spec.mjs'
 import { categories } from '../../designs/lib/categories.mjs'
 import { designGroups } from '../catalog-sections.mjs'
 import { designFromSpec } from '../../designs/lib/spec.mjs'
+import { mappedDesigns, validateConstruction } from '../../designs/tools/validate-construction.mjs'
 import { sets, stoutSets } from '../../designs/test/coat-checks.mjs'
 import { all as children } from '../../designs/sizes/children.mjs'
 import { babies } from '../../designs/sizes/babies.mjs'
@@ -44,6 +45,9 @@ const thumbnail = (name) => existsSync(out('static', 'img', 'catalog-thumbs', `$
 // The designs: every folder with a spec.yaml and a BRIEF.md
 // A design in progress (a spec but no brief yet) isn't listed until its brief is written
 const ids = readdirSync(designsDir).filter((d) => existsSync(join(designsDir, d, 'spec.yaml')) && existsSync(join(designsDir, d, 'BRIEF.md')))
+// A design page shows its pattern map once its own construction steps check out against it
+const mapped = new Set(mappedDesigns().filter((d) => ids.includes(d)))
+for (const d of mapped) validateConstruction(d)
 const readme = readFileSync(join(site, '..', 'README.md'), 'utf8')
 const order = [...readme.matchAll(/^\| `([a-z-]+)` \| (.+?) \| (.+?) \|$/gm)].map((m) => ({ id: m[1], garment: m[2], source: m[3] }))
 
@@ -289,14 +293,32 @@ function mdx(md, id) {
 }
 
 // Keep the source brief intact while moving practical making information ahead of the editor.
+// A mapped design's step that only applies with some option on (a pocket) says so on the page,
+// from construction.yaml's `whenAny` and the pattern tool's own option titles.
+function conditionalSteps(construction, id) {
+  if (!mapped.has(id)) return construction
+  const { steps } = parse(readFileSync(join(designsDir, id, 'construction.yaml'), 'utf8'))
+  let out = construction
+  for (const step of steps) {
+    if (!step.whenAny?.length) continue
+    const titles = step.whenAny.map((o) => labelData.options[o]?.title ?? o)
+    const note = ` *Only with ${titles.join(' or ')} on in the pattern tool.*`
+    out = out.replace(new RegExp(`^(${step.order}\\. .*)$`, 'm'), `$1${note}`)
+  }
+  return out
+}
+
 function briefSections(brief, id) {
   const converted = mdx(brief, id)
   const sections = converted.split(/(?=^## )/m)
-  const practical = []
+  const pieces = []
+  const construction = []
   const background = []
   for (const section of sections) {
     const heading = section.match(/^## (.+)$/m)?.[1] ?? ''
-    if (/^(Pieces|Construction)\b/i.test(heading)) practical.push(section)
+    if (/^Pieces.*construction/i.test(heading)) construction.push(section)
+    else if (/^Pieces\b/i.test(heading)) pieces.push(section)
+    else if (/^Construction\b/i.test(heading)) construction.push(section)
     else {
       const label = /^What (?:the source|the sources|Mitchell)\b/i.test(heading) ? 'What Source Shows'
         : /^How (?:it|the source) maps\b|^Mapping\b/i.test(heading) ? 'How It Maps'
@@ -306,7 +328,7 @@ function briefSections(brief, id) {
         : section)
     }
   }
-  return { practical: practical.join('\n'), background: background.join('\n') }
+  return { pieces: pieces.join('\n'), construction: construction.join('\n'), background: background.join('\n') }
 }
 
 const newRows = () => Object.fromEntries(categories.map((c) => [c.id, []]))
@@ -469,7 +491,9 @@ ids.forEach((id, i) => {
   const about = spec.about
   const info = order.find((o) => o.id === id) ?? { garment: about.description, source: about.source }
   const brief = readFileSync(join(designsDir, id, 'BRIEF.md'), 'utf8')
-  const { practical, background } = briefSections(brief, id)
+  const sections = briefSections(brief, id)
+  const { pieces, background } = sections
+  const construction = conditionalSteps(sections.construction, id)
   const drapeSrc = join(designsDir, 'drape', id)
   const renders = existsSync(drapeSrc) ? readdirSync(drapeSrc).filter((f) => /\.png$/.test(f)).sort() : []
   if (renders.length) {
@@ -503,13 +527,21 @@ ids.forEach((id, i) => {
   ${img('illustration-img')}
   <figcaption>An <a href="/sources#illustrations">AI-generated illustration</a> of the design at its default options, not drawn from the pattern.</figcaption>
 </figure>`,
-    preview &&
+    preview && !mapped.has(id) &&
       `<figure className="illustration">
   <a href={useBaseUrl('/img/previews/${id}.png')}><img className="illustration-img preview-img" src={useBaseUrl('/img/previews/${id}.png')} alt="${about.name}: the pattern pieces" /></a>
   <figcaption>The pattern pieces at the default options, size ${label(previewSet)}, with seam allowance. Click to enlarge.</figcaption>
 </figure>`,
   ].filter(Boolean)
   const illustration = figures.length ? `<div className="design-figures">\n${figures.join('\n')}\n</div>\n` : ''
+  const patternMap = mapped.has(id) && preview ? `<section className="pattern-map-section" aria-labelledby="pattern-map-title">
+  <h2 id="pattern-map-title">Pattern map</h2>
+  <p>Numbers identify cut pieces. Letters and short codes match the seam edges sewn together and mark placements such as pockets and buttonholes. The stitch and finish key is inside the image; the construction steps use the same codes.</p>
+  <figure className="pattern-map-figure">
+    <div className="pattern-map-scroll" tabIndex={0} aria-label="Scrollable pattern map"><a href={useBaseUrl('/img/previews/${id}.png')}><img className="preview-img" src={useBaseUrl('/img/previews/${id}.png')} alt="${about.name}: numbered pieces, seam and pocket codes, with embedded stitch and finish key" /></a></div>
+    <figcaption>Default options, size ${label(previewSet)}, with seam allowance. Scroll sideways on a narrow screen or click to enlarge.</figcaption>
+  </figure>
+</section>` : ''
   // The variants: this design with other options, each with how to set them. The buttons need
   // every option any variant touches, and those options' defaults
   const variantKeys = [...new Set(Object.values(spec.variants ?? {}).flatMap((v) => Object.keys(v.options)))]
@@ -616,7 +648,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 import PatternEditor from '@site/src/components/PatternEditor'
 import VariantButton from '@site/src/components/VariantButton'
 
+<div className="design-page">
+<div className="design-hero">
+<div className="design-hero-art">
 ${illustration}
+</div>
+<div className="design-hero-copy">
+<p className="design-eyebrow">Made-to-measure sewing pattern</p>
 :::warning[Draft, untested]
 No one has sewn this design yet. It drafts cleanly at every size in the test suite and its seams
 match, but that doesn't prove it fits. Sew a muslin before good fabric, and please
@@ -626,8 +664,22 @@ match, but that doesn't prove it fits. Sew a muslin before good fabric, and plea
 ${info.garment}. ${sourceLabel}: ${info.source}.${originalLine}${alsoFs[id] ? `\n\nAlso as FreeSewing's ${alsoFs[id].join(', ')}, on the Designs page.` : ''}${variantsLine}
 
 ${traditionTags(id, about) ? `${traditionTags(id, about)}\n` : ''}
+</div>
+</div>
 
-${practical}
+${patternMap}
+
+<nav className="design-jump" aria-label="On this design page">
+<a href="#make-the-pattern">Make the pattern</a>
+<a href="#construction">Construction</a>
+<a href="#the-brief">Source notes</a>
+</nav>
+
+${pieces ? `<section className="design-pieces">\n${pieces}\n</section>` : ''}
+
+<section className="design-construction">
+${construction || '## Construction\n\nStep-by-step sewing instructions are being prepared for this draft. Check the source notes below before sewing a test garment.'}
+</section>
 
 ${safetySection(id)}## Make the pattern
 
@@ -646,6 +698,7 @@ How the source became this design. The full file is [BRIEF.md on GitHub](${repo}
 
 ${background}
 </details>
+</div>
 `
   )
 })

@@ -67,6 +67,7 @@ pieces:
       # X: four buttons from the neck to below the waist; XI: from the top of the opening
       - buttons:
           count: buttons
+          buttonholes: true
           top: if(open, neckY + ext * 0.6, cfNeck.y + ext * 0.9)
           bottom: cfWaist.y + waistToSeat * 0.6
           rows: [0]
@@ -147,3 +148,78 @@ variants:
     name: Open neck
     description: "Simons' no-collar barber's coat: open in a V to the top button, a little above the chest line, finished with a facing."
     options: { neckStyle: open }
+
+# The pattern map (SPEC.md, "Pattern map"), as the chore coat's, for a stand collar or the open
+# neck's back-neck facing; construction.yaml gives the sewing order. drape: seam ids in
+# drape/coat-shell.yaml.
+patternMap:
+  pieces: { front: 1, back: 2, sleeve: 3, collar: 4, facing: 5, backNeckFacing: 6, breastPocket: 7, lowerPocket: 8 }
+  stitches:
+    FF: { name: flat-felled seam, key: flat-fell the allowances }
+    SS: { name: straight seam, key: "straight-join; finish raw edges" }
+    TS: { name: topstitch, key: turn edge and topstitch }
+    BH: { name: buttonhole, key: reinforced machine buttonhole }
+  # drape: the seam's id in drape/coat-shell.yaml (only the shell joins; its split-sleeve overarm
+  # join is a simulation artefact, and the collar, facing and hems are outside that drape)
+  codes:
+    A:
+      name: shoulder
+      stitch: FF
+      drape: shoulder
+      at: [{ part: front, between: [neck, shoulder] }, { part: back, between: [neck, shoulder] }]
+    B:
+      name: side seam
+      stitch: FF
+      drape: side
+      at: [{ part: front, between: [armhole, hem] }, { part: back, between: [armhole, hem] }]
+    C:
+      name: armhole and sleeve cap
+      stitch: SS
+      drape: armhole
+      at:
+        - { part: front, path: frontArmhole, along: 0.5 }
+        - { part: back, path: backArmhole, along: 0.5 }
+        - { part: sleeve, path: sleevecap, along: 0.5 }
+    D:
+      name: neckline, and collar or back-neck facing
+      stitch: SS
+      at:
+        - { part: front, between: [hps, cfNeck] }
+        - { part: back, path: backCollar, along: 0.5 }
+        - { part: collar, path: neck, along: 0.5, optional: true }
+        - { part: backNeckFacing, path: backCollar, along: 0.5, optional: true }
+    E:
+      name: front edge and facing
+      stitch: SS
+      at: [{ part: front, path: edge, along: 0.5 }, { part: facing, path: edge, along: 0.5 }]
+    F:
+      name: sleeve underarm
+      stitch: FF
+      drape: underarm
+      at: [{ part: sleeve, between: [bicepsLeft, wristLeft] }, { part: sleeve, between: [bicepsRight, wristRight] }]
+    G:
+      name: stand collar outer edge
+      stitch: SS
+      at: [{ part: collar, between: [cbOuter, tip], optional: true }]
+    H:
+      name: coat and sleeve hems
+      stitch: TS
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: back, path: hemBase, along: 0.5 }
+        - { part: sleeve, path: hemBase, along: 0.5 }
+    P7:
+      name: breast-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: breastPocket, along: 0.5, optional: true }]
+    P8:
+      name: lower-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: lowerPocket, along: 0.5, optional: true }]
+    BH:
+      name: buttonhole marks
+      stitch: BH
+      kind: closure
+      at: [{ part: front, point: buttonhole0_0 }]

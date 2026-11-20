@@ -36,3 +36,10 @@ blouse, no flare):
 - drafts cleanly;
 - outseam and inseam front and back match within 1%;
 - the waist passes over the seat, and the legs gather into the band.
+
+## Construction
+
+1. Sew the front and back leg pieces together at the inseams. Join the crotch seam, then sew the outseams only to the marked vent openings.
+2. Finish the short openings at the lower outseams. Gather each leg hem evenly to fit its separate band, keeping the band's button overlap free.
+3. Attach and finish the bands. Fit each one around a bent knee before placing its button and buttonhole.
+4. Turn the widened waist edge into an elastic casing, leaving an opening to insert elastic. Fit the elastic, join its ends securely, and close the casing.

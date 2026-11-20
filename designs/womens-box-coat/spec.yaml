@@ -150,3 +150,81 @@ variants:
     name: Peaked lapels
     description: "Lapels with their points turned up past the collar, in place of the notch."
     options: { lapelStyle: peak }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order.
+patternMap:
+  pieces:
+    { front: 1, back: 2, facing: 3, collar: 4, topsleeve: 5, undersleeve: 6, hipFlap: 7, hipJet: 8, hipBag: 9,
+      ticketFlap: 10, ticketJet: 11, ticketBag: 12 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+    HS: { name: hem stitch, key: turn the hem and stitch it by hand or blind-hem }
+    BH: { name: buttonhole, key: reinforced machine buttonhole }
+  codes:
+    A:
+      name: shoulder
+      stitch: SS
+      at: [{ part: front, between: [hps, shoulder] }, { part: back, between: [hps, shoulder] }]
+    B:
+      name: side seam
+      stitch: SS
+      at: [{ part: front, between: [armhole, hemSide] }, { part: back, between: [armhole, hemSide] }]
+    CB:
+      name: centre back seam
+      stitch: SS
+      at: [{ part: back, between: [cbNeck, cbHem] }]
+    C:
+      name: armhole and sleeve cap
+      stitch: SS
+      at:
+        - { part: front, between: [shoulder, armhole] }
+        - { part: back, between: [shoulder, armhole] }
+        - { part: topsleeve, between: [frontPitchPoint, backPitchPoint] }
+        - { part: undersleeve, between: [usLeftEdge, usTip] }
+    D:
+      name: neckline and collar, to the gorge
+      stitch: SS
+      at:
+        - { part: front, between: [hps, dartSide] }
+        - { part: back, between: [hps, cbNeck] }
+        - { part: collar, path: neck, along: 0.5 }
+    E:
+      name: front edge, lapel and facing
+      stitch: SS
+      at: [{ part: front, between: [break, hemEdge] }]
+    F:
+      name: sleeve front seam
+      stitch: SS
+      at: [{ part: topsleeve, between: [tsLeftEdge, tsWristLeft] }, { part: undersleeve, between: [usLeftEdge, usWristLeft] }]
+    G:
+      name: sleeve back seam
+      stitch: SS
+      at: [{ part: topsleeve, between: [backPitchPoint, tsWristRight] }, { part: undersleeve, between: [usTip, usWristRight] }]
+    H:
+      name: coat and sleeve hems
+      stitch: HS
+      at:
+        - { part: front, between: [hemEdge, hemSide] }
+        - { part: back, between: [cbHem, hemSide] }
+        - { part: topsleeve, between: [tsWristLeft, tsWristRight] }
+        - { part: undersleeve, between: [usWristLeft, usWristRight] }
+    N:
+      name: neck dart
+      stitch: SS
+      kind: dart
+      at: [{ part: front, point: dartTip }]
+    P7:
+      name: hip pocket mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: hipMouth, along: 0.5, optional: true }]
+    P10:
+      name: ticket pocket mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: ticketMouth, along: 0.5, optional: true }]
+    BH:
+      name: buttonhole marks
+      stitch: BH
+      kind: closure
+      at: [{ part: front, snippet: buttonhole0, optional: true }]

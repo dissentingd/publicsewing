@@ -79,15 +79,16 @@ waist and flapped patch pockets.
 - **Pocket tops level**; the source's flaps slope.
 
 ## Construction (our words)
-1. Make the flaps: sew outer to lining, turn, topstitch, buttonhole. Hem the pocket tops.
-2. Sew the pockets on at the marks; sew each flap upside down just above its pocket mouth,
-   then press it down and topstitch. Sew a button under each flap.
-3. Shoulders and side seams; then the belts, self-faced, topstitched round the body at the
-   marks.
-4. Collar, facings, sleeves and hems as for the chore coat (see its BRIEF). Turn the lapels
-   back above the top button when open.
-5. Buttonholes on the overlapping front (right for men's wear, left for women's) on the outer
-   row; one inside button on the inner row to anchor the underlap.
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed open, **TS** topstitch close to a turned edge, **BH** keyhole or reinforced machine buttonhole.
+
+1. Make the flaps **7** and **9**: sew outer to lining, turn, topstitch and work their buttonholes. Hem the tops of pockets **6** and **8**.
+2. Use **TS** to sew the pockets **6** and **8** to the fronts **1** at marks **P6** and **P8**; sew each flap **7**, **9** upside down just above its pocket mouth, press it down and topstitch. Sew a button under each flap.
+3. Join fronts **1** and back **2** at the shoulders **A** and side seams **B** with **SS**.
+4. Make the belts **10** and **11**, self-faced, and use **TS** to topstitch them round the body at the marks **BT** on the fronts **1** and back **2**.
+5. Join the collar **4** along its outer edge **G**, turn it and set it to the neckline **D** of fronts **1** and back **2**, then sew the facings **5** to the front edges **E** with **SS**. Turn the lapels back above the top button when open.
+6. Close each sleeve **3** at the underarm **F** and set it into the armhole **C** of the fronts **1** and back **2** with **SS**.
+7. Turn up the hems of fronts **1**, back **2** and sleeves **3** and topstitch them along **H** with **TS**.
+8. Work the **BH** buttonholes on the overlapping front **1** (right for men's wear, left for women's) on the outer row; sew buttons at every station, one inside button on the inner row to anchor the underlap.
 
 ## Checks the tests run
 `test/mackinaw.test.mjs` runs five option sets (default; shawl collar; raglan sleeves with

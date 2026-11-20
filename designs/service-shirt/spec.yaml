@@ -64,6 +64,7 @@ pieces:
       # From the neck to just above the hem
       - buttons:
           count: buttons
+          buttonholes: true
           top: cfNeck.y + ext * 0.9
           bottom: cfWaist.y + waistToSeat * 0.6
           rows: [0]
@@ -110,3 +111,65 @@ pieces:
       w: neck * 0.1
     points: [[0, 0], [l, 0], [l, w], [0, w], [-w * 0.5, w / 2]]
     buttonholes: [[w * 0.05, w / 2]]
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order. The dress
+# shirt inherits it.
+patternMap:
+  pieces: { front: 1, backYoke: 2, sleeve: 3, collar: 4, facing: 5, breastPocket: 7, breastFlap: 8, shoulderStrap: 10, backBody: 11 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam; fell or finish the allowances" }
+    TS: { name: topstitch, key: topstitch beside the seam or turned edge }
+    BH: { name: buttonhole, key: machine buttonhole }
+  codes:
+    A:
+      name: shoulder, front to yoke
+      stitch: SS
+      at: [{ part: front, between: [neck, shoulder] }, { part: backYoke, between: [hps, shoulder] }]
+    Y:
+      name: back yoke seam
+      stitch: TS
+      at: [{ part: backYoke, between: [cbYoke, armYoke] }, { part: backBody, between: [cbYoke, armYoke] }]
+    B:
+      name: side seam
+      stitch: SS
+      at: [{ part: front, between: [armhole, hem] }, { part: backBody, between: [armhole, hem] }]
+    C:
+      name: armhole and sleeve cap
+      stitch: SS
+      at:
+        - { part: front, path: frontArmhole, along: 0.5 }
+        - { part: backYoke, between: [shoulder, armYoke] }
+        - { part: backBody, between: [armYoke, armhole] }
+        - { part: sleeve, path: sleevecap, along: 0.5 }
+    D:
+      name: neckline and collar
+      stitch: SS
+      at:
+        - { part: front, path: frontCollar, along: 0.5 }
+        - { part: backYoke, path: backCollar, along: 0.5 }
+        - { part: collar, path: neck, along: 0.5 }
+    E:
+      name: front edge and facing
+      stitch: SS
+      at: [{ part: front, path: edge, along: 0.5 }, { part: facing, path: edge, along: 0.5 }]
+    F:
+      name: sleeve underarm
+      stitch: SS
+      at: [{ part: sleeve, between: [bicepsLeft, wristLeft] }, { part: sleeve, between: [bicepsRight, wristRight] }]
+    H:
+      name: shirt and sleeve hems
+      stitch: TS
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: backBody, between: [cbHem, hem] }
+        - { part: sleeve, path: hemBase, along: 0.5 }
+    P7:
+      name: breast pocket and flap placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: breastPocket, along: 0.5 }]
+    BH:
+      name: buttonhole marks
+      stitch: BH
+      kind: closure
+      at: [{ part: front, snippet: buttonhole0_0, optional: true }]
