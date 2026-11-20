@@ -46,9 +46,9 @@ Refactor, in order (snapshot `chore-coat` and `boys-work-coat` first; `compare` 
 3. **Done.** An anchor `between` two points sits on the piece's seam line nearest their midpoint; anchors can also sit on a `snippet` (a buttonhole).
 4. **Done.** The chore coat's sleeve F labels moved to the biceps points; previews regenerated.
 
-Mapped so far (2026-11-20): chore coat, boys' work coat (inherited), **skirt coat** and **pantry jacket**, each with a `patternMap`, a steps-only `construction.yaml` and numbered brief steps that validate at site build. The boys' suit jacket family (boys' suit, Eton, pantry) now drafts buttonhole marks. `page-check.mjs` checks any mapped design's downloads and editor; the chore, skirt and boys' work coats pass in the browser (pantry: not yet run against a fresh build). Minor label overlaps are logged privately, not fixed (progress first).
+Mapped so far (2026-11-20): chore coat, boys' work coat (inherited), skirt coat, pantry jacket, shop coat and barber's coat, each with a `patternMap`, a steps-only `construction.yaml` and numbered brief steps that validate at site build. Buttonhole marks are now drafted on the boys' suit jacket family (boys' suit, Eton, pantry) and the shop and barber's coats. The painter's and pyjama jackets opt out of the barber's coat's map (`patternMap: false`) until mapped themselves. `page-check.mjs` checks any mapped design's downloads and editor. A step with `whenAny` now says on the page which option it needs. Minor label overlaps are logged privately, not fixed (progress first).
 
-Next: the chore coat's family on `lib/coat.mjs` (shop coat, barber's coat, whose painter's and pyjama jackets inherit), reusing the chore coat's anchors; then conditional step presentation for option-dependent pieces.
+Next: the rest of the `lib/coat.mjs` family (mackinaw, hunting coat, windbreaker, harrington, the painter's and pyjama jackets, which change pieces), then the box-coat and tailored-jacket families on Breanna, then skirts and trousers.
 
 ## 1. Define the shared data
 

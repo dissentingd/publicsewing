@@ -48,3 +48,6 @@ variants:
     name: Military collar
     description: "A deep square-ended collar that stands high, in place of the lapels, with four rows of buttons, the top pair just under the neck, so the coat closes to the throat."
     options: { collarStyle: military, buttons: 4, buttonTop: -4 }
+
+# No pattern map yet: the mackinaw's would label pieces this design and its descendants change.
+patternMap: false

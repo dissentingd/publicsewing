@@ -293,6 +293,21 @@ function mdx(md, id) {
 }
 
 // Keep the source brief intact while moving practical making information ahead of the editor.
+// A mapped design's step that only applies with some option on (a pocket) says so on the page,
+// from construction.yaml's `whenAny` and the pattern tool's own option titles.
+function conditionalSteps(construction, id) {
+  if (!mapped.has(id)) return construction
+  const { steps } = parse(readFileSync(join(designsDir, id, 'construction.yaml'), 'utf8'))
+  let out = construction
+  for (const step of steps) {
+    if (!step.whenAny?.length) continue
+    const titles = step.whenAny.map((o) => labelData.options[o]?.title ?? o)
+    const note = ` *Only with ${titles.join(' or ')} on in the pattern tool.*`
+    out = out.replace(new RegExp(`^(${step.order}\\. .*)$`, 'm'), `$1${note}`)
+  }
+  return out
+}
+
 function briefSections(brief, id) {
   const converted = mdx(brief, id)
   const sections = converted.split(/(?=^## )/m)
@@ -476,7 +491,9 @@ ids.forEach((id, i) => {
   const about = spec.about
   const info = order.find((o) => o.id === id) ?? { garment: about.description, source: about.source }
   const brief = readFileSync(join(designsDir, id, 'BRIEF.md'), 'utf8')
-  const { pieces, construction, background } = briefSections(brief, id)
+  const sections = briefSections(brief, id)
+  const { pieces, background } = sections
+  const construction = conditionalSteps(sections.construction, id)
   const drapeSrc = join(designsDir, 'drape', id)
   const renders = existsSync(drapeSrc) ? readdirSync(drapeSrc).filter((f) => /\.png$/.test(f)).sort() : []
   if (renders.length) {
