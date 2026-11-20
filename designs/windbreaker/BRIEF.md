@@ -49,19 +49,15 @@ A straight, hip-length jacket for summer:
 | Facing | (not tabulated) | `facingWidth` 5% of chest, behind the zip |
 
 ## Construction order
-1. Welt pockets in the lower fronts: interface the welts, fold each lengthwise, lay it on the
-   mouth line with a bag piece over it, stitch, cut the mouth, turn the bag through, press the
-   welt over the mouth and sew its ends down; the second bag piece on, then the bags together.
-2. Front yokes to the lower fronts (ease the lower front onto the yoke); back yoke to the back.
-   Topstitch the yoke seams.
-3. Shoulders; side seams.
-4. Hood: sew the crown seam; with a drawstring, work two eyelets near the front ends of the face
-   edge, then fold the casing back and stitch it. Sew the hood to the neckline, its notch to the
-   shoulder seam, front edge to front edge.
-5. Zip between the fronts and the facings, the facings turned to the inside, catching the hood's
-   front ends.
-6. Sleeves: underarm seam, then set in.
-7. Hem and cuffs turned up as casings, elastic in the cuffs and the sides of the hem.
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam, **TS** topstitch, **CS** a casing turned up for elastic or a drawstring.
+
+1. Welt pockets in the lower fronts **1**: interface the welts **9**, fold each lengthwise, lay it on the mouth line **P** with a bag piece **10** over it, stitch, cut the mouth, turn the bag through, press the welt over the mouth and sew its ends down; then the second bag piece, and the bags together.
+2. Sew the front yokes **2** to the lower fronts **1** at **Y**, and the back yoke **4** to the back **5** at **X**. Topstitch the yoke seams with **TS**.
+3. Sew the shoulders **A** of the front and back yokes **2**, **4**, then the side seams **B** of the fronts **1** and back **5**.
+4. Hood **7**: sew the crown seam **R**; with a drawstring, work two eyelets near the front ends of the face edge, then fold the casing back along **K** and stitch it with **CS**. Sew the hood to the neckline **D** of the yokes **2** and **4**, its notch to the shoulder seam.
+5. Sew the zip between the fronts **1** and **2** and the facings **6** along **Z** and the front edges **E**, the facings turned to the inside, catching the hood's **7** front ends.
+6. Sleeves **3**: sew the underarm seam **F**, then set each into the armhole **C** of the yokes **2**, **4**, front **1** and back **5**.
+7. Turn up the hem of the fronts **1** and back **5** and the sleeve cuffs **3** as casings **H** (**CS**), with elastic in the cuffs and the sides of the hem.
 
 ## Changes and what isn't modelled
 - **Geometry from Brian, not ЕМКО's tables.** ЕМКО drafts its own base construction from its

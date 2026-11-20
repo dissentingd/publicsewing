@@ -99,3 +99,6 @@ variants:
     name: No hood
     description: "A plain stand collar around the neck in place of the hood, still buttoned to the throat."
     options: { hood: false }
+
+# No pattern map yet: the windbreaker's would label pieces this design changes.
+patternMap: false
