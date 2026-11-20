@@ -1,0 +1,7 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: overall-pants
+steps:
+  - { order: 1, action: fly, pieces: [5, 4, 1], placements: [Z], stitches: [TS] }
+  - { order: 2, action: inseams and crotch, pieces: [1], placements: [O], stitches: [SS] }
+  - { order: 3, action: waistband, loops and hems, pieces: [6, 3, 1] }

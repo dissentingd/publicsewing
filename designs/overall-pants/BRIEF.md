@@ -45,6 +45,8 @@ made 2 sizes larger than the regular pants measurements across the seat and wais
 Leg (cut 2, mirrored), waistband (cut 2), fly shield and facing, belt loops.
 
 ## Construction
-1. Fly as the trousers.
-2. Inseams; crotch seam from the back waist round to the fly.
-3. Waistband and loops; hems.
+Letters are the codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed open, **TS** topstitch.
+
+1. Fly as the trousers: the facing **5** to the left leg **1**, the shield **4** to the right, the closure between them; topstitch the fly line **Z** with **TS**.
+2. Sew the inseams of each leg **1**, then the crotch seam from the back waist round to the fly. The outseam line **O** is pressed, not sewn: the leg is cut in one.
+3. Sew the belt loops **6** and the waistband **3** to the waist of the legs **1**; turn up the hems.
