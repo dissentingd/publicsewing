@@ -62,3 +62,6 @@ pieces:
       - hidePiece: {}
   # Each leg in one piece: back and front joined along the outseam line (A-D)
   leg: { part: legInOne, after: [back, front], nr: 1 }
+
+# No pattern map yet: the inherited one would label pieces this design changes.
+patternMap: false

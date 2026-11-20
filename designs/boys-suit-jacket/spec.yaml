@@ -112,7 +112,7 @@ patternMap:
         - { part: front, path: frontCollar, along: 0.5 }
         - { part: back, path: backCollar, along: 0.5 }
         - { part: collar, path: neck, along: 0.5 }
-        - { part: backNeckFacing, path: backCollar, along: 0.5 }
+        - { part: backNeckFacing, path: backCollar, along: 0.5, optional: true }
     F:
       name: front edge and facing
       stitch: SS

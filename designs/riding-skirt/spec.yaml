@@ -38,6 +38,3 @@ variants:
     name: Deep seat
     description: A longer back crotch extension and lower fork for riding ease.
     options: { crotchDepthShare: 1.32, backExtension: 0.30 }
-
-# No pattern map yet: the gored skirt's would label pieces this design changes.
-patternMap: false

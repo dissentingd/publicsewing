@@ -110,3 +110,6 @@ pieces:
       w: neck * 0.1
     points: [[0, 0], [l, 0], [l, w], [0, w], [-w * 0.5, w / 2]]
     buttonholes: [[w * 0.05, w / 2]]
+
+# No pattern map yet: the inherited one would label pieces this design changes.
+patternMap: false

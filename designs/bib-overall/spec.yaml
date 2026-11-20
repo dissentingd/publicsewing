@@ -174,3 +174,6 @@ pieces:
       h: seat * 0.175
     points: [[0, 0], [w, 0], [w, h], [0, h]]
     allowance: [3, 1, 1, 1]
+
+# No pattern map yet: the inherited one would label pieces this design changes.
+patternMap: false

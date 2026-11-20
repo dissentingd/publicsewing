@@ -149,7 +149,7 @@ patternMap:
       name: waist darts
       stitch: SS
       kind: dart
-      at: [{ part: front, path: dart, along: 0.5 }, { part: back, path: dart, along: 0.5 }]
+      at: [{ part: front, path: dart, along: 0.5, optional: true }, { part: back, path: dart, along: 0.5, optional: true }]
     P5:
       name: breast welt mouth
       stitch: SS

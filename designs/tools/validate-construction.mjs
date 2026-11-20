@@ -45,7 +45,7 @@ export function validateConstruction(design) {
     for (const code of step.stitches ?? []) if (!map.stitches[code]) throw new Error(`step ${step.order}: unknown stitch ${code}`)
     for (const option of step.whenAny ?? []) if (!spec.options[option]) throw new Error(`step ${step.order}: unknown option ${option}`)
     // A code whose marks an option can leave out belongs to a step that says which options
-    const optional = (step.placements ?? []).filter((code) => codes[code].at.some((a) => a.optional))
+    const optional = (step.placements ?? []).filter((code) => codes[code].kind === 'placement' && codes[code].at.some((a) => a.optional))
     if (optional.length && !step.whenAny?.length) throw new Error(`step ${step.order}: ${optional.join(', ')} need an option condition`)
   })
   if (prose.length !== data.steps.length) throw new Error(`construction step count: ${data.steps.length} records, ${prose.length} prose steps`)

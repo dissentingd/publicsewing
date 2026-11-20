@@ -66,6 +66,3 @@ variants:
     name: High-waisted
     description: "Mitchell's two-piece high-waisted skirt: the skirt runs on about 2 in above the waist and is finished with a facing, in place of the band."
     options: { highWaist: true }
-
-# No pattern map yet: the gored skirt's would label pieces this design changes.
-patternMap: false

@@ -78,7 +78,10 @@ export function resolve(pattern, map) {
         point = path.shiftFractionAlong(a.along)
       } else if (a.between) {
         const [p, q] = a.between.map((k) => part.points[k])
-        if (!p || !q) throw new Error(`pattern map: missing ${a.part} points ${a.between}`)
+        if (!p || !q) {
+          if (a.optional) continue
+          throw new Error(`pattern map: missing ${a.part} points ${a.between}`)
+        }
         // Midway between them on the piece's seam line: the chord's middle, moved onto a curve
         point = onSeam(part.paths.seam, { x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 })
       } else if (a.snippet) point = part.snippets[a.snippet]?.anchor

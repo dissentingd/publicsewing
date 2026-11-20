@@ -53,6 +53,3 @@ variants:
     name: Straighter hem
     description: Less flare below the hip, with the same four panel shapes and fitted waist.
     options: { goreFlare: 0.4 }
-
-# No pattern map yet: the gored skirt's would label pieces this design changes.
-patternMap: false

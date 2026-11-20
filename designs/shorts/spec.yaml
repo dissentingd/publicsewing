@@ -106,6 +106,3 @@ variants:
     description: "Simons' ladies' shorts (Diagram 41): a shorter leg, 3 inches above the knee, the waistband cut in one with the legs, a 1 1/2 inch dart in each front and a 1 inch dart in each back."
     # Waist 28, seat 38, inseam 9 ("3 inches less than the knee length"); "Make the vee 5 inches down"
     options: { continuousBand: true, shortsInseam: 0.3, frontDart: 0.44, frontDartLength: 0.49, backDart: 0.3 }
-
-# No pattern map yet: the suit trousers' would label pieces this design changes.
-patternMap: false

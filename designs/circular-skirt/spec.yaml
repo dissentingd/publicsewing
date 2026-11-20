@@ -72,3 +72,6 @@ variants:
     name: Extra wide
     description: "Twice Mitchell's spread at every slash: still least at the front and most at the back, as the rule asks, for a hem that falls in deep folds."
     options: { spreadFront: 0.1, spreadSide: 0.15, spreadBack: 0.2 }
+
+# No pattern map yet: the inherited one would label pieces this design changes.
+patternMap: false

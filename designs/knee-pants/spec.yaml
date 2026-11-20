@@ -84,6 +84,3 @@ pieces:
           calfW: knee * legBottom
           cuffBelow: bottom
           cuffW: knee * legBottom
-
-# No pattern map yet: the suit trousers' would label pieces this design changes.
-patternMap: false

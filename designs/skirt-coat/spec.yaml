@@ -124,7 +124,7 @@ patternMap:
     E:
       name: front edge and facing
       stitch: SS
-      at: [{ part: front, between: [break, skirtEdge] }, { part: frontSkirt, between: [topEdge, hemEdge] }]
+      at: [{ part: front, between: [break, skirtEdge] }, { part: frontSkirt, between: [topEdge, hemEdge], optional: true }]
     F:
       name: sleeve front seam
       stitch: SS
@@ -139,7 +139,7 @@ patternMap:
       name: skirt and sleeve hems
       stitch: HS
       at:
-        - { part: frontSkirt, between: [hemEdge, hemSide] }
+        - { part: frontSkirt, between: [hemEdge, hemSide], optional: true }
         - { part: backSkirt, between: [hemEdge, hemSide] }
         - { part: topsleeve, between: [tsWristLeft, tsWristRight] }
         - { part: undersleeve, between: [usWristLeft, usWristRight] }
@@ -147,7 +147,7 @@ patternMap:
       name: front skirt join
       stitch: SS
       drape: front_join
-      at: [{ part: front, between: [skirtEdge, skirtSide] }, { part: frontSkirt, between: [dartRight, topSide] }]
+      at: [{ part: front, between: [skirtEdge, skirtSide] }, { part: frontSkirt, between: [dartRight, topSide], optional: true }]
     K:
       name: back skirt join
       stitch: SS
@@ -157,12 +157,12 @@ patternMap:
       name: skirt side seam
       stitch: SS
       drape: skirt_side
-      at: [{ part: frontSkirt, between: [topSide, hemSide] }, { part: backSkirt, between: [topSide, hemSide] }]
+      at: [{ part: frontSkirt, between: [topSide, hemSide], optional: true }, { part: backSkirt, between: [topSide, hemSide] }]
     M:
       name: hip dart
       stitch: SS
       drape: hip_dart
-      at: [{ part: frontSkirt, point: dartTip }]
+      at: [{ part: frontSkirt, point: dartTip, optional: true }]
     N:
       name: neck dart
       stitch: SS
@@ -172,4 +172,4 @@ patternMap:
       name: buttonhole marks
       stitch: BH
       kind: closure
-      at: [{ part: front, snippet: buttonhole0 }]
+      at: [{ part: front, snippet: buttonhole0, optional: true }]
