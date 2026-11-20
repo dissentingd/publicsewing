@@ -217,5 +217,5 @@ patternMap:
     Z:
       name: zip placement
       stitch: SS
-      kind: placement
-      at: [{ part: front, path: zip, along: 0.7 }]
+      kind: closure
+      at: [{ part: front, path: zip, along: 0.7, optional: true }]
