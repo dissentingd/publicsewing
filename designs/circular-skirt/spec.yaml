@@ -73,5 +73,17 @@ variants:
     description: "Twice Mitchell's spread at every slash: still least at the front and most at the back, as the rule asks, for a hem that falls in deep folds."
     options: { spreadFront: 0.1, spreadSide: 0.15, spreadBack: 0.2 }
 
-# No pattern map yet: the inherited one would label pieces this design changes.
-patternMap: false
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order.
+patternMap:
+  pieces: { frontPanel: 1, gore1: 2, waistband: 9 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+  codes:
+    S:
+      name: side seams, matched at the notches
+      stitch: SS
+      at: [{ part: frontPanel, point: seat }, { part: gore1, point: seat }]
+    CB:
+      name: centre back seam, below the zip notch
+      stitch: SS
+      at: [{ part: gore1, point: zip }]

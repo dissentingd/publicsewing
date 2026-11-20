@@ -1,0 +1,7 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: culottes
+steps:
+  - { order: 1, action: centre seams and zip, pieces: [2, 1], seams: [CB], stitches: [SS] }
+  - { order: 2, action: sides and inseams, pieces: [1, 2], seams: [S, I], stitches: [SS] }
+  - { order: 3, action: waistband and hem, pieces: [9, 1, 2] }
