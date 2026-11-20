@@ -16,7 +16,7 @@ The skirt coat and pantry jacket have committed `construction.yaml` records (`44
 ## 2. Generate the map from the draft
 
 - Extend the preview/export pipeline to place labels on the actual seam paths and placement marks after the pieces are laid out. Resolve collisions with cut lines, notches, grain arrows, and the existing title block.
-- Render the same labels in the page preview and in the exported SVG and PDF. Carry seam joins, pocket placements, buttonholes, and stitch/finish codes into the 3D render input. Include a text key and a compact stitch legend beside the preview and in print-friendly instructions. Keep the diagram readable when scaled to a phone.
+- Put the piece, seam, stitch, and finish codes directly on the page preview image and exported SVG/PDF, with a compact legend inside each image or document. Carry seam joins, pocket placements, buttonholes, and stitch/finish codes into the 3D render input. The design page's construction text explains the codes, so it does not need a separate stitch legend. Keep the diagram and its embedded legend readable when scaled to a phone or printed.
 - Rebuild maps for the default and each published variant. Do not reuse coordinates from another size or option set. Show only active pieces and marks.
 
 ## 3. Connect construction text
@@ -35,6 +35,12 @@ The skirt coat and pantry jacket have committed `construction.yaml` records (`44
 
 ## 5. Page cleanup and completion criteria
 
-- Keep the pattern map readable at full page width; let users enlarge it without losing the label key. Separate the finished-garment illustration, cut-piece map, construction, pattern editor, variants, and source notes with consistent headings and spacing.
+- Keep the pattern map readable at full page width; let users enlarge it without losing the legend embedded in the image. Separate the finished-garment illustration, cut-piece map, construction, pattern editor, variants, and source notes with consistent headings and spacing.
 - Test navigation anchors, keyboard access, screen-reader text for each code, light and dark themes, and print layout. Remove unrelated editor prompts from the map area only if they obscure the page in normal use.
 - A design is complete when its preview, cut exports, and 3D render input agree on piece, seam, placement, closure, and stitch codes; every construction reference resolves; applicable variants regenerate correctly; the site builds; and a reviewer can follow the sequence on a test garment.
+
+## 6. Review copyrighted source use before publication
+
+Follow the project's guiding principle for any source still in copyright: reproduce the functional information needed to make the garment; create the digital pattern, explanations, and presentation independently; do not copy expressive material from the book. Use methods, formulas, and proportions as design references. Write construction steps from the finished draft, in our own words, rather than rephrasing the book's instructions. Keep source text, figures, scans, and page images out of the repository and published site.
+
+After a design and its page are complete, **audit every in-copyright work consulted or processed before publishing**. Compare the draft, brief, construction steps, diagrams, labels, illustrations, and exports with those works. Check that each borrowed element is functional information and that the wording, artwork, layout, and other presentation are independently created. Record each work, what functional information was used, the audit result, and any changes made. Resolve any expressive copying or uncertain rights before the design is eligible for publication. Apply the repository's source-specific rules in `CONTRIBUTING.md` and `SOURCING.md` throughout this review.
