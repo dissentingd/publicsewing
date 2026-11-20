@@ -111,3 +111,9 @@ pieces:
     vent: { if: sleeveVent, length: wrist * sleeveVentLength, width: wrist * sleeveVentWidth }
 
   lowerFlap: { part: flap, after: front, key: lower, nr: 12, label: lowerFlap, cut: 2, if: lowerPockets and pocketFlaps }
+
+# The topcoat's pattern map, with the pocket flap numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces:
+    lowerFlap: 12

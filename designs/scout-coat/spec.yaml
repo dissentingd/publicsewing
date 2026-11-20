@@ -105,3 +105,12 @@ pieces:
   topFlap: { part: flap, after: front, key: breast, nr: 13, label: topFlap, cut: 2, if: breastPockets }
   bottomPocket: { part: pocket, after: front, key: lower, nr: 14, label: bottomPocket, cut: 2, if: lowerPockets }
   bottomFlap: { part: flap, after: front, key: lower, nr: 15, label: bottomFlap, cut: 2, if: lowerPockets }
+
+# The military tunic's pattern map, with the patch pockets numbered (SPEC.md, "Pattern map").
+patternMap:
+  merge: true
+  pieces:
+    topPocket: 12
+    topFlap: 13
+    bottomPocket: 14
+    bottomFlap: 15
