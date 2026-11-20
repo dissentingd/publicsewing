@@ -28,8 +28,8 @@ export function prepareMap(spec) {
     if (!map.stitches?.[c.stitch]) throw new Error(`patternMap ${code}: unknown stitch "${c.stitch}"`)
     if (c.kind && !['seam', 'placement', 'closure'].includes(c.kind)) throw new Error(`patternMap ${code}: unknown kind "${c.kind}"`)
     const at = (c.at ?? []).map((a) => {
-      const ways = ['path', 'between', 'point'].filter((k) => a[k] !== undefined)
-      if (ways.length !== 1) throw new Error(`patternMap ${code}: each anchor needs one of path, between, point`)
+      const ways = ['path', 'between', 'point', 'snippet'].filter((k) => a[k] !== undefined)
+      if (ways.length !== 1) throw new Error(`patternMap ${code}: each anchor needs one of path, between, point, snippet`)
       if (a.path && !(a.along >= 0 && a.along <= 1)) throw new Error(`patternMap ${code}: a path anchor needs along: 0..1`)
       return { ...a, piece: a.part, part: partOf(a.part) }
     })
@@ -81,7 +81,8 @@ export function resolve(pattern, map) {
         if (!p || !q) throw new Error(`pattern map: missing ${a.part} points ${a.between}`)
         // Midway between them on the piece's seam line: the chord's middle, moved onto a curve
         point = onSeam(part.paths.seam, { x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 })
-      } else point = part.points[a.point]
+      } else if (a.snippet) point = part.snippets[a.snippet]?.anchor
+      else point = part.points[a.point]
       if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new Error(`pattern map: invalid ${code} on ${a.part}`)
       out.push({ code, part: a.part, x: point.x, y: point.y })
     }

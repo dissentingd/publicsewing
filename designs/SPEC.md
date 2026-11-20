@@ -151,7 +151,8 @@ patternMap:
       at:                                 # where the code is printed, one entry per piece
         - { part: front, path: frontArmhole, along: 0.5 }   # a fraction along a drafted path
         - { part: back, between: [neck, shoulder] }         # midway between two points, on the seam line
-        - { part: front, point: buttonhole0_0 }             # at a point
+        - { part: front, point: buttonhole0_0 }             # at a point (a dart tip)
+        - { part: front, snippet: buttonhole0 }             # at a snippet (a buttonhole)
         # optional: true: skip it when the options don't draft that path (a pocket turned off)
 ```
 

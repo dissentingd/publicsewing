@@ -76,7 +76,7 @@ for (const [name, part] of active) {
   const grain = Object.entries(part.paths).filter(([k]) => k.includes('grainline')).flatMap(([, p]) => polyline(p))
   labels.forEach((l, i) => {
     // Placement and closure codes sit inside the piece, on their own marks
-    if (map.codes[l.code].kind === 'seam') {
+    if (map.codes[l.code].kind === 'seam' && map.codes[l.code].at.every((a) => a.path || a.between)) {
       const d = near(seam, l)
       if (d > 2) problems.push(`${name} ${l.code}: ${d.toFixed(1)} mm off the seam line`)
     }

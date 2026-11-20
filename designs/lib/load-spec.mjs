@@ -22,7 +22,8 @@ export function readSpec(file) {
   const pieces = {}
   // A parent with no `about` is a template: its pieces take this spec's name
   for (const [k, p] of Object.entries(parent.pieces)) pieces[k] = parent.about ? { prefix: parent.about.id, ...p } : p
-  return { ...parent, about: spec.about ?? parent.about, options, pieces: { ...pieces, ...spec.pieces }, variants: spec.variants }
+  // A pattern map is inherited whole unless this spec gives its own
+  return { ...parent, about: spec.about ?? parent.about, options, pieces: { ...pieces, ...spec.pieces }, variants: spec.variants, patternMap: spec.patternMap ?? parent.patternMap }
 }
 
 /** Read a spec file and build its design */

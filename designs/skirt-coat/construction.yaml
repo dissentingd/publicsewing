@@ -1,70 +1,14 @@
-# Design-local input for the planned geometry-based pattern map and future 3D details.
-# Draft coordinates must be resolved at the chosen size/options; these are not pixel positions.
-# Shell stitching below is proposed construction where Sheifer does not specify a stitch.
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing
+# order. Sheifer gives no sewing order or stitches: this sequence is ours, from the drafted pieces.
 design: skirt-coat
-shellDrape: ../drape/box-skirt.yaml
-pieces:
-  back: boxcoat.back
-  backSkirt: skirt-coat.backSkirt
-  front: boxcoat.front
-  frontSkirt: skirt-coat.frontSkirt
-  topsleeve: boxcoat.topsleeve
-  undersleeve: boxcoat.undersleeve
-cutPieces:
-  front: { number: 1, source: boxcoat.front, cut: 2, material: shell }
-  back: { number: 2, source: boxcoat.back, cut: 2, material: shell }
-  facing: { number: 3, source: boxcoat.facing, cut: 2, material: shell }
-  collar: { number: 4, source: boxcoat.collar, material: shell }
-  topsleeve: { number: 7, source: boxcoat.topsleeve, cut: 2, material: shell }
-  undersleeve: { number: 8, source: boxcoat.undersleeve, cut: 2, material: shell }
-  frontSkirt: { number: 13, source: skirt-coat.frontSkirt, cut: 2, material: shell }
-  backSkirt: { number: 14, source: skirt-coat.backSkirt, cut: 2, material: shell }
-seams:
-  hipDart: { drape: hip_dart, stitch: straight, finish: press-toward-side, order: 1 }
-  neckDart: { drape: neck_dart, stitch: straight, finish: press-toward-centre, order: 2 }
-  shoulder: { drape: shoulder, stitch: straight, finish: press-open, order: 3 }
-  backJoin: { drape: back_join, stitch: straight, finish: press-toward-bodice, order: 4 }
-  frontJoin: { drape: front_join, stitch: straight, finish: press-toward-bodice, order: 4 }
-  bodySide: { drape: body_side, stitch: straight, finish: press-open, order: 5 }
-  skirtSide: { drape: skirt_side, stitch: straight, finish: press-open, order: 5 }
-  sleeveFront: { drape: sleeve_front, stitch: straight, finish: press-open, order: 6 }
-  sleeveBack: { drape: sleeve_back, stitch: straight, finish: press-open, order: 6 }
-  armhole: { drape: armhole, stitch: straight, finish: press-toward-sleeve, order: 7 }
-  centreBackBody: { drape: centre_back_body, kind: fold, stitch: none }
-  centreBackSkirt: { drape: centre_back_skirt, kind: fold, stitch: none }
-  centreFrontBody: { drape: centre_front_body, kind: closure, stitch: none }
-  centreFrontSkirt: { drape: centre_front_skirt, kind: opening, stitch: none }
-placements:
-  pockets: { enabled: false, reason: "No pocket is shown or described for Sheifer's skirt-coat treatment." }
-  buttons:
-    piece: front
-    source: button snippets on boxcoat.front
-    countOption: buttons
-    defaultCount: 3
-    limit: above frontJoin
-    stitch: attach-button
-  buttonholes:
-    piece: front
-    source: buttonhole snippets on boxcoat.front
-    countOption: buttons
-    stitch: machine-buttonhole
-    draftMarksPresent: true
-finishing:
-  facingAndCollar: { source: inherited box-coat pieces, stitch: straight, method: turn-and-press }
-  sleeveAndSkirtHems: { stitch: hem-stitch, method: turn-and-press }
-  lining: { source: inherited lining pieces, status: outside-shell-drape }
-stitches:
-  straight: Sew a straight seam and press as specified.
-  machine-buttonhole: Work a reinforced buttonhole at each drafted mark.
-  attach-button: Secure each button at its drafted mark.
-  hem-stitch: Turn and secure the hem after pressing.
 steps:
-  - { order: 1, action: sew hip darts, seams: [hipDart], pieces: [frontSkirt] }
-  - { order: 2, action: sew neck darts, seams: [neckDart], pieces: [front] }
-  - { order: 3, action: join shoulders, seams: [shoulder], pieces: [front, back] }
-  - { order: 4, action: join curved skirt edges, seams: [frontJoin, backJoin], pieces: [front, frontSkirt, back, backSkirt] }
-  - { order: 5, action: sew sides, seams: [bodySide, skirtSide], pieces: [front, frontSkirt, back, backSkirt] }
-  - { order: 6, action: assemble sleeves, seams: [sleeveFront, sleeveBack], pieces: [topsleeve, undersleeve] }
-  - { order: 7, action: set sleeves, seams: [armhole], pieces: [front, back, topsleeve, undersleeve] }
-  - { order: 8, action: apply facing and collar, stitch: straight }
-  - { order: 9, action: finish hems and closure, stitch: hem-stitch, placements: [buttons, buttonholes] }
+  - { order: 1, action: sew hip darts, pieces: [13], seams: [M], stitches: [SS] }
+  - { order: 2, action: sew neck darts, pieces: [1], seams: [N], stitches: [SS] }
+  - { order: 3, action: join shoulders, pieces: [1, 2], seams: [A], stitches: [SS] }
+  - { order: 4, action: join curved skirt edges, pieces: [1, 13, 2, 14], seams: [J, K], stitches: [SS] }
+  - { order: 5, action: sew sides, pieces: [1, 2, 13, 14], seams: [B, L], stitches: [SS] }
+  - { order: 6, action: assemble sleeves, pieces: [7, 8], seams: [F, G], stitches: [SS] }
+  - { order: 7, action: set sleeves, pieces: [1, 2, 7, 8], seams: [C], stitches: [SS] }
+  - { order: 8, action: apply collar and facing, pieces: [4, 1, 2, 3, 13], seams: [D, E], stitches: [SS] }
+  - { order: 9, action: finish hems and closure, pieces: [13, 14, 7, 8, 1], seams: [H], placements: [BH], stitches: [HS, BH] }

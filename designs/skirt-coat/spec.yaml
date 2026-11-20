@@ -84,3 +84,92 @@ pieces:
 
   frontSkirt: { part: jacketPanel, after: [backBase, frontBase], panel: frontSkirt, nr: 13, label: frontSkirt, cut: 2 }
   backSkirt: { part: jacketPanel, after: [backBase, frontBase], panel: backSkirt, nr: 14, label: backSkirt, cut: 2 }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order. Anchors
+# follow the seams of drape/box-skirt.yaml, whose ids are each code's `drape`. Sheifer names no
+# stitches: plain seams pressed as each step says, a turned hem, machine buttonholes.
+patternMap:
+  pieces: { front: 1, back: 2, facing: 3, collar: 4, topsleeve: 7, undersleeve: 8, frontSkirt: 13, backSkirt: 14 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed as the step says" }
+    HS: { name: hem stitch, key: turn the hem and stitch it }
+    BH: { name: buttonhole, key: reinforced machine buttonhole }
+  codes:
+    A:
+      name: shoulder
+      stitch: SS
+      drape: shoulder
+      at: [{ part: front, between: [hps, shoulder] }, { part: back, between: [hps, shoulder] }]
+    B:
+      name: bodice side seam
+      stitch: SS
+      drape: body_side
+      at: [{ part: front, between: [armhole, skirtSide] }, { part: back, between: [armhole, skirtSide] }]
+    C:
+      name: armhole and sleeve cap
+      stitch: SS
+      drape: armhole
+      at:
+        - { part: front, between: [shoulder, armhole] }
+        - { part: back, between: [shoulder, armhole] }
+        - { part: topsleeve, between: [frontPitchPoint, backPitchPoint] }
+        - { part: undersleeve, between: [usLeftEdge, usTip] }
+    D:
+      name: neckline and collar
+      stitch: SS
+      at:
+        - { part: front, between: [hps, dartSide] }
+        - { part: back, between: [hps, cbNeck] }
+        - { part: collar, path: neck, along: 0.5 }
+    E:
+      name: front edge and facing
+      stitch: SS
+      at: [{ part: front, between: [break, skirtEdge] }, { part: frontSkirt, between: [topEdge, hemEdge] }]
+    F:
+      name: sleeve front seam
+      stitch: SS
+      drape: sleeve_front
+      at: [{ part: topsleeve, between: [tsLeftEdge, tsWristLeft] }, { part: undersleeve, between: [usLeftEdge, usWristLeft] }]
+    G:
+      name: sleeve back seam
+      stitch: SS
+      drape: sleeve_back
+      at: [{ part: topsleeve, between: [backPitchPoint, tsWristRight] }, { part: undersleeve, between: [usTip, usWristRight] }]
+    H:
+      name: skirt and sleeve hems
+      stitch: HS
+      at:
+        - { part: frontSkirt, between: [hemEdge, hemSide] }
+        - { part: backSkirt, between: [hemEdge, hemSide] }
+        - { part: topsleeve, between: [tsWristLeft, tsWristRight] }
+        - { part: undersleeve, between: [usWristLeft, usWristRight] }
+    J:
+      name: front skirt join
+      stitch: SS
+      drape: front_join
+      at: [{ part: front, between: [skirtEdge, skirtSide] }, { part: frontSkirt, between: [dartRight, topSide] }]
+    K:
+      name: back skirt join
+      stitch: SS
+      drape: back_join
+      at: [{ part: back, between: [skirtEdge, skirtSide] }, { part: backSkirt, between: [topEdge, topSide] }]
+    L:
+      name: skirt side seam
+      stitch: SS
+      drape: skirt_side
+      at: [{ part: frontSkirt, between: [topSide, hemSide] }, { part: backSkirt, between: [topSide, hemSide] }]
+    M:
+      name: hip dart
+      stitch: SS
+      drape: hip_dart
+      at: [{ part: frontSkirt, point: dartTip }]
+    N:
+      name: neck dart
+      stitch: SS
+      drape: neck_dart
+      at: [{ part: front, point: dartTip }]
+    BH:
+      name: buttonhole marks
+      stitch: BH
+      kind: closure
+      at: [{ part: front, snippet: buttonhole0 }]

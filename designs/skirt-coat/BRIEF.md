@@ -29,12 +29,21 @@ The original box coat is divided into upper front/back and lower front/back piec
 
 The plate lays several existing gores together to draw one skirt. This draft uses separate front and back skirts sewn at the side for the inherited box body. The dart opens a small wedge in the front skirt, with equal-length dart legs; its depth is a plate estimate. The source's overlapping gore layout is represented by the curved join and dart, not reproduced as a one-piece skirt. The inherited lapel is a design choice from the built base; Sheifer gives no new lapel for this skirt treatment.
 
-## Pieces and construction
+## Pieces
 
-Upper front and back, front and back skirt, facing, collar, top and under sleeves. Use the matching curved cut edges when joining the skirts; the front skirt's dart intake is taken out before that seam is sewn.
+Upper front (1) and back (2), facing (3), collar (4), top and under sleeves (7, 8), front skirt
+(13) and back skirt (14). Use the matching curved cut edges when joining the skirts; the front
+skirt's dart intake is taken out before that seam is sewn. The letters are the codes on the
+pattern map; Sheifer gives no sewing order, so this one is ours.
 
-1. Mark the front skirt dart legs and tip and the curved bodice/skirt joins. Sew the hip darts from the upper edge toward their tips and press them.
-2. Sew the inherited upper-front neck darts. Join the upper fronts and back at shoulders, then press the seams.
-3. Join each skirt to its matching upper piece along the curved edge, matching centre and side ends. Press the joins; check that the front hem falls below the back as drafted.
-4. Sew the continuous bodice and skirt side seams. Assemble each two-piece sleeve and set it into the matching armhole.
-5. Apply the inherited facing and collar. Finish sleeve and skirt hems, then work the buttonholes and attach the buttons above the skirt join.
+## Construction
+
+1. Mark the dart legs, tips and curved joins. Sew the hip darts M on each front skirt (13) from the upper edge toward the tip, and press them toward the side.
+2. Sew the neck darts N on the upper fronts (1) and press them toward the centre.
+3. Join the upper fronts (1) and back (2) at the shoulders, A, and press the seams open.
+4. Join the front skirts (13) to the upper fronts (1) along the curved edge J, and the back skirt (14) to the back (2) along K, matching centre and side ends. Press toward the bodice; the front hem should fall below the back as drafted.
+5. Sew each side as one seam, B above the join and L below it, through upper front (1), back (2), front skirt (13) and back skirt (14). Press open.
+6. Assemble each sleeve: join the top sleeve (7) to the under sleeve (8) at the front seam F and the back seam G, and press open.
+7. Set each sleeve (7, 8) into its armhole C on the front (1) and back (2), matching the shoulder and pitch marks; press toward the sleeve.
+8. Sew the collar (4) to the neckline D of the fronts (1) and back (2), then the facing (3) to the front edges E of the upper front and front skirt (13). Turn and press.
+9. Turn and stitch the hems H of the skirts (13, 14) and sleeves (7, 8). Work the buttonholes BH at the marks on the upper fronts (1), above the skirt join, and sew on the buttons.
