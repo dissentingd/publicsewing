@@ -1,0 +1,11 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: norfolk-jacket
+steps:
+  - { order: 1, action: fold and baste pleats, pieces: [2, 5], placements: [K], stitches: [TS], whenAny: [pleats] }
+  - { order: 2, action: join panels, pieces: [1, 2, 9, 4, 5, 8], seams: [Y, W], stitches: [TS] }
+  - { order: 3, action: vent, pockets and flaps, pieces: [8, 10, 11, 9], placements: [V, P10], stitches: [TS], whenAny: [backVent, lowerPockets] }
+  - { order: 4, action: shoulders, sides and sleeves, pieces: [1, 4, 2, 5, 9, 8, 3], seams: [A, B, F, C], stitches: [SS] }
+  - { order: 5, action: facing and collar, pieces: [7, 6, 1, 4], seams: [E, D, G], stitches: [SS] }
+  - { order: 6, action: belt, pieces: [12, 13] }
+  - { order: 7, action: hem, buttons and buttonholes, pieces: [9, 8, 3, 2], seams: [H], placements: [BH], stitches: [TS, BH] }

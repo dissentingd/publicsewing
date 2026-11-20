@@ -63,13 +63,15 @@ Front yoke, front middle, front lower (cut 2 each); back yoke (fold), back middl
 or on the fold with the vent off); collar, facing, sleeve, pockets and flaps, back belt, front belt.
 
 ## Construction
-1. Fold each pleat on its dashed lines and baste it at the top and bottom.
-2. Sew each front yoke, middle and lower together; the same for the back. The pleats close to the yoke's width.
-3. Sew the vent's lap at the waist, under the belt's place. Patch pockets and flaps on the front lower.
-4. Shoulders, side seams, sleeves.
-5. Facing and collar, turning the lapel at the break.
-6. Belt pieces, faced, centred on the waist seams and stitched at the back and sides, buttoned at the front.
-7. Hem, buttons and buttonholes.
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed open, **TS** topstitch, **BH** machine buttonhole.
+
+1. Fold each pleat on its dashed lines **K** in the front and back middles **2** and **5**, and baste it at the top and bottom.
+2. Sew each front yoke **1**, middle **2** and lower **9** together at the yoke seam **Y** and waist seam **W**; the same for the back yoke **4**, middle **5** and lower **8**. The pleats close to the yoke's width. Topstitch with **TS**.
+3. Sew the vent's lap **V** on the back lower **8** at the waist, under the belt's place. Sew the patch pockets **10** and flaps **11** to the front lower **9** at **P10**.
+4. Sew the shoulders **A** of the yokes **1** and **4**, the side seams **B** through the middles **2**, **5** and lowers **9**, **8**, then close each sleeve **3** at **F** and set it into the armhole **C**.
+5. Sew the facing **7** to the front edge **E**, and the collar **6**, made up along **G**, to the neckline **D** of the yokes **1** and **4**, turning the lapel at the break.
+6. Make the belt pieces **12** and **13**, faced, centre them on the waist seams and stitch them at the back and sides, buttoned at the front.
+7. Hem the lowers **9**, **8** and sleeves **3** along **H**; work the buttonholes **BH** on the front middle **2** and lower and sew on the buttons.
 
 ## Checks
 `test/norfolk-jacket.test.mjs`: every size, with lapels, buttoned to the neck, no pleats or vent, and four
