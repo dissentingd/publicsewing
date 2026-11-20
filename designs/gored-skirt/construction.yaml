@@ -1,0 +1,8 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: gored-skirt
+steps:
+  - { order: 1, action: gore seams, pieces: [1, 2, 3], seams: [S], stitches: [SS] }
+  - { order: 2, action: centre back and zip, pieces: [3], seams: [CB], stitches: [SS] }
+  - { order: 3, action: waistband, pieces: [9] }
+  - { order: 4, action: hem, pieces: [1, 2, 3] }

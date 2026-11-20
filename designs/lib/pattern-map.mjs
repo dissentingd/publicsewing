@@ -83,6 +83,8 @@ export function resolve(pattern, map) {
         point = onSeam(part.paths.seam, { x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 })
       } else if (a.snippet) point = part.snippets[a.snippet]?.anchor
       else point = part.points[a.point]
+      // An optional anchor's point or snippet may be left out by the options, like a part
+      if (!point && a.optional) continue
       if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new Error(`pattern map: invalid ${code} on ${a.part}`)
       out.push({ code, part: a.part, x: point.x, y: point.y })
     }
