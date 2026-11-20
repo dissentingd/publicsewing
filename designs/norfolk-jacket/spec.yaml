@@ -153,3 +153,6 @@ variants:
     name: Buttoned to the neck
     description: "Simons' button-to-the-neck version (Diagram 6): no lapels, the collar closing at the throat, five buttons down the front."
     options: { lapels: false, buttons: 5 }
+
+# No pattern map yet: the hunting coat's would label pieces this design changes.
+patternMap: false

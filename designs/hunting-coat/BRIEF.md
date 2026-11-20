@@ -51,15 +51,17 @@ The geometry is the work coat's, so this design shares its body and collar rules
 - **Pocket tops level.**
 
 ## Construction (our words)
-1. Pockets: fold and press the box pleat (outer lines to the centre line), baste across top
-   and bottom, hem the top. Make the flaps and buttonholes.
-2. Sew the pockets and flaps on the fronts.
-3. Back: fold the inverted pleat in the middle panel (outer lines to the centre), baste top
-   and bottom. Sew the yoke to the middle panel, then the middle panel to the lower back.
-   Topstitch.
-4. Shoulders and side seams. Sew the belt round the body at the marks, covering the back's
-   waist seam.
-5. Collar, facings, sleeves and hems as for the chore coat.
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed open, **TS** topstitch close to a turned edge or seam, **BH** reinforced machine buttonhole.
+
+1. Pockets **8** and **10**: fold and press the box pleat (outer lines to the centre line), baste across top and bottom and hem the top. Make the flaps **9** and **11** and their buttonholes.
+2. Use **TS** to sew the pockets **8**, **10** and their flaps **9**, **11** to the fronts **1** at marks **P8** and **P10**.
+3. Back: fold the inverted pleat **K** in the middle panel **4** (outer lines to the centre) and baste it top and bottom. Sew the yoke **2** to the middle panel at **Y**, then the middle panel to the lower back **5** at **W**, and topstitch both with **TS**.
+4. Join the fronts **1** to the back yoke **2** at the shoulders **A**, and to the middle **4** and lower back **5** at the side seams **B**, with **SS**.
+5. Make the belts **12** and **13** and use **TS** to sew the belt round the body at the marks **BT** on the fronts **1**, covering the back's waist seam.
+6. Join the collar **6** along its outer edge **G**, turn it and set it to the neckline **D** of the fronts **1** and yoke **2**; sew the facings **7** to the front edges **E**, all with **SS**.
+7. Close each sleeve **3** at the underarm **F** and set it into the armhole **C** of the front **1**, yoke **2** and middle back **4** with **SS**.
+8. Turn up the hems of the fronts **1**, lower back **5** and sleeves **3** and topstitch them along **H** with **TS**.
+9. Work the **BH** buttonholes on the right front **1** and sew the buttons at the marked centres.
 
 ## Checks the tests run
 `test/hunting-coat.test.mjs` runs two option sets (default; no belt, flaps or pleats, with
