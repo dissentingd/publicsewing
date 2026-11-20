@@ -53,6 +53,7 @@ pieces:
           r: chest * 0.1 * hemCurve
           buttons:
             count: buttons
+            buttonholes: true
             top: topButton
             bottom: cfWaist.y + waistToSeat * buttonBottom
           clear: q * 0.08
