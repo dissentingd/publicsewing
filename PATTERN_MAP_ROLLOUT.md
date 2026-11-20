@@ -4,7 +4,7 @@ The chore coat is the first annotated design page. Its seven existing piece numb
 
 ## Design-local pilot records
 
-The skirt coat and pantry jacket now have draft `construction.yaml` records. They currently use `design`, `shellDrape`, `pieceSources`, `seams`, `placements`, and `finishing`. Treat these as source data for the shared schema or migrate them explicitly; do not silently rename fields in one design. Their `seams` entries reference existing drape seam IDs and proposed stitch/finish methods. `placements` records pocket and closure sources. The pantry jacket identifies buttonholes whose draft marks are still missing. The 3D drape inputs currently cover shell joins, while pocket mark paths and stitch types still need an export path. Add structured `steps` and stable displayed piece numbers when the shared pipeline is implemented.
+The skirt coat and pantry jacket have committed `construction.yaml` records (`44a22cb`). Their top-level fields are `design`, `shellDrape`, `pieces`, `cutPieces`, `seams`, `placements`, `finishing`, `stitches`, and `steps`. `pieces` maps drape roles to drafted parts; `cutPieces` records stable printed numbers and source IDs. The seam entries reference existing drape seam IDs and proposed stitch/finish/order data, and the steps reference those seams and pieces. These files are inputs for the shared pipeline, not a connected renderer yet. Pantry-jacket buttonholes have `draftMarksPresent: false`; this must remain a validation gap until marks are drafted. The 3D exporter still drops pocket mark paths and stitch metadata.
 
 ## 1. Define the shared data
 
