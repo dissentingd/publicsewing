@@ -34,14 +34,14 @@ At a 390 px browser viewport, the page's map viewport is 358 px wide and scrolls
 ## Review and next steps (2026-11-20)
 
 Setup now in place:
-- `lib/pattern-map.mjs` (`mapFor(Design)`) is the one place that says which designs carry a map. The four shared files that still test `id === 'chorecoat'` (`lib/export/index.mjs`, `tools/render.mjs`, `tools/drape-export.mjs`, `tools/validate-construction.mjs`), plus `site/scripts/generate.mjs` and `PatternEditor.jsx`, move to it in the refactor.
+- `lib/pattern-map.mjs` (`mapFor(Design)`) is the one place that reads a design's map.
 - `tools/snapshot.mjs` now also compares the page preview, every download file (byte-identical unless `--draft-only`) and the map labels and key text in the layered SVG. `tools/variants.json` has a pocketless chore-coat variant.
 - `tools/map-check.mjs` lists anchorable paths and points (`--names`) and reports labels off their seam or overlapping other labels, the title block, snippets or the grainline (estimated boxes).
 
 Decided: **map records live in `spec.yaml` (`patternMap:`)**, not in `construction.yaml` or a design-local module. `exportFiles` runs in the visitor's browser, which only has the bundled specs (`site/src/generated/specs.json`), and `readSpec` passes a spec's fields on through `extends`, so the boys' work coat inherits the chore coat's map. `designFromSpec` will resolve each anchor's part to its full drafted name (inherited pieces keep their parent's prefix) and attach the map to the design's data. `construction.yaml` keeps the sewing steps only; the skirt-coat and pantry-jacket records move their pieces, seams and placements into their specs when wired.
 
 Refactor, in order (snapshot `chore-coat` and `boys-work-coat` first; `compare` must pass with the map moved and nothing else changed):
-1. Move `pattern-map.mjs` data into the chore coat's spec; generic resolver, legend and drape map in `lib/pattern-map.mjs`, keyed by full part name; replace every `chorecoat` test.
+1. **Done (2026-11-20).** The map is the chore coat's `patternMap:` (SPEC.md, "Pattern map"); `lib/pattern-map.mjs` prepares it in `designFromSpec`, resolves it, and builds the key and drape map, keyed by full part name. No shared file tests a design id any more. Proof: `snapshot.mjs chore-coat compare` matches every case, with the preview and every download byte-identical (the only difference is the map in the design data); the drape map is identical at three sizes, with and without pockets. The boys' work coat inherits the map: its draft is unchanged, and its preview and SVG/PDF downloads now carry the codes. Its page keeps the plain preview until it has its own `construction.yaml`, and its committed preview PNG is not regenerated yet.
 2. One key-layout function returning lines and positions in mm, drawn by the preview, SVG and PDF renderers; height computed from the number of entries (the current fixed 180/200 mm and six-row columns overflow past 12 seam codes; the skirt coat has 14 seams).
 3. Anchors between two points follow the seam path between them, not the chord.
 4. Then fix what `map-check` finds on the chore coat (below), regenerate its preview, and only then start the skirt coat.

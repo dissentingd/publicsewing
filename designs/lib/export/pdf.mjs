@@ -65,7 +65,7 @@ export function toProjectorPdf(pieces, { title = 'pattern', size = '', notes = [
     }
     const cx = box.x + dx + 10
     const cy = box.y + dy + box.h / 2
-    text(cx + 10, cy, map?.numbers[p.name] ? `${map.numbers[p.name]} ${p.name}` : p.name, 12)
+    text(cx + 10, cy, map?.numbers[p.id] ? `${map.numbers[p.id]} ${p.name}` : p.name, 12)
     text(cx + 10, cy + 10, `cut ${p.quantity}${p.onFold ? ' on the fold' : ''}`, 7)
     for (const mark of map?.marks ?? []) if (mark.part === p.id) {
       const x = mark.x + dx

@@ -7,7 +7,7 @@ import { toSeamly } from './seamly.mjs'
 import { toSmis } from './smis.mjs'
 import { toLayeredSvg } from './svg.mjs'
 import { toProjectorPdf } from './pdf.mjs'
-import { resolve as choreMap, legend as choreLegend, pieces as choreNumbers, stitchLegend } from '../../chore-coat/pattern-map.mjs'
+import { mapData } from '../pattern-map.mjs'
 
 export { fromSmis } from './smis.mjs'
 
@@ -31,8 +31,7 @@ export function exportFiles(Design, settings, { name, size = 'own measurements',
   const pattern = new Design({ ...settings, sa, complete: true }).draft()
   const notes = credits(source)
   const ps = pieces(pattern)
-  const marks = Design.designConfig.data?.id === 'chorecoat' ? choreMap(pattern) : null
-  const map = marks ? { marks, legend: choreLegend(marks), stitchLegend, numbers: choreNumbers } : null
+  const map = mapData(Design, pattern)
   return {
     dxf: toDxf(ps, { style: name, size, notes }),
     sm2d: toSeamly(pattern, { name, size, notes, sa }),

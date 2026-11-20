@@ -12,7 +12,7 @@ import { writeFileSync } from 'node:fs'
 import { resolve as resolvePath } from 'node:path'
 import { loadDesign, measurementSet, render, png } from './render.mjs'
 import { polyline } from './drape-export.mjs'
-import { mapFor } from '../lib/pattern-map.mjs'
+import { mapFor, resolve } from '../lib/pattern-map.mjs'
 
 const args = process.argv.slice(2)
 const flag = (f, d) => (args.includes(f) ? args[args.indexOf(f) + 1] : d)
@@ -56,8 +56,7 @@ const near = (pts, m) => Math.min(...pts.map((p, i) => {
   return Math.hypot(m.x - p.x - t * dx, m.y - p.y - t * dy)
 }))
 
-const marks = map.resolve(pattern)
-const kinds = new Map(map.anchors.map((a) => [`${a.code}/${a.part}`, a.path || a.between ? 'seam' : 'point']))
+const marks = resolve(pattern, map)
 const problems = []
 for (const [name, part] of active) {
   const own = marks.filter((m) => m.part === name)
@@ -75,17 +74,15 @@ for (const [name, part] of active) {
     })
   const snippets = Object.entries(part.snippets).map(([k, s]) => ({ id: `${s.def} ${k}`, box: box(s.anchor.x, s.anchor.y, 'xx', s.def.includes('button') ? 12 : 5) }))
   const grain = Object.entries(part.paths).filter(([k]) => k.includes('grainline')).flatMap(([, p]) => polyline(p))
-  const short = name.split('.').at(-1)
   labels.forEach((l, i) => {
-    const kind = kinds.get(`${l.code}/${short}`)
-    if (kind === 'seam') {
-      // Placement codes (P6) sit on their own placement path, inside the piece
+    // Placement and closure codes sit inside the piece, on their own marks
+    if (map.codes[l.code].kind === 'seam') {
       const d = near(seam, l)
-      if (d > 2 && !/^P\d/.test(l.code)) problems.push(`${name} ${l.code}: ${d.toFixed(1)} mm off the seam line`)
+      if (d > 2) problems.push(`${name} ${l.code}: ${d.toFixed(1)} mm off the seam line`)
     }
     for (const other of labels.slice(i + 1)) if (overlap(l.box, other.box)) problems.push(`${name} ${l.code}: overlaps label ${other.code}`)
     for (const t of printed) if (overlap(l.box, t.box)) problems.push(`${name} ${l.code}: overlaps printed text ${t.id}`)
-    for (const s of snippets) if (overlap(l.box, s.box) && !(l.code === 'BH' && /button/.test(s.id))) problems.push(`${name} ${l.code}: overlaps ${s.id}`)
+    for (const s of snippets) if (overlap(l.box, s.box) && !(map.codes[l.code].kind === 'closure' && /button/.test(s.id))) problems.push(`${name} ${l.code}: overlaps ${s.id}`)
     if (grain.length && hits(l.box, grain)) problems.push(`${name} ${l.code}: on the grainline`)
   })
 }

@@ -62,12 +62,12 @@ Work in `designs/`, with one commit per garment. Stage files by name.
 it. Run the full `npm test` (several minutes, in the background) only before a push.
 
 ## Pattern maps (piece numbers, seam codes, stitch key)
-Only the chore coat has one so far; [PATTERN_MAP_ROLLOUT.md](PATTERN_MAP_ROLLOUT.md) is the plan and
+The chore coat has one (the boys' work coat inherits it); [PATTERN_MAP_ROLLOUT.md](PATTERN_MAP_ROLLOUT.md) is the plan and
 its status. Before adding or changing one:
 - **Map records go where the browser can read them.** The site's download buttons build the SVG and
   PDFs in the visitor's browser, which has only the bundled specs. Pieces, codes, stitches and
-  anchors belong in the design's `spec.yaml` (`patternMap:`, once the refactor lands; the chore coat's
-  `pattern-map.mjs` until then). `construction.yaml` holds the sewing steps only. Never test a design
+  anchors belong in the design's `spec.yaml` (`patternMap:`, SPEC.md "Pattern map").
+  `construction.yaml` holds the sewing steps only. Never test a design
   id in a shared file: ask `mapFor(Design)` (`lib/pattern-map.mjs`).
 - **Anchor on drafted geometry**, a path and a fraction along it, never a coordinate.
   `node tools/map-check.mjs <design> [set] [options json] --names` lists each piece's paths and points;

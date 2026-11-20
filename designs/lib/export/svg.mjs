@@ -30,7 +30,7 @@ export function toLayeredSvg(pieces, { title = 'pattern', size = '', notes = [],
     ].join('')
     const cx = box.x + dx + box.w / 2
     const cy = box.y + dy + box.h / 2
-    const number = map?.numbers[p.name] ?? null
+    const number = map?.numbers[p.id] ?? null
     const text = [number ? `${number} ${p.name}` : p.name, `${size}`, `cut ${p.quantity}${p.onFold ? ' on the fold' : ''}`]
       .map((t, i) => `<text x="${f(cx)}" y="${f(cy + (i - 1) * 9)}" class="${i ? 'small' : 'label'}">${esc(t)}</text>`)
       .join('')

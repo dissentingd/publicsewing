@@ -14,14 +14,17 @@ const allGroups = { women: 'Women', men: 'Men', stout: 'Stout figures', girls: '
 const groupsFor = (which) =>
   which === 'babies' ? { babies: allGroups.babies } : which === 'all' ? allGroups : Object.fromEntries(Object.entries(allGroups).filter(([g]) => g !== 'babies'))
 
-export const editorConfig = (design) => ({
+// A design with a pattern map: its annotated downloads replace the stock export, which lacks the map
+const hasMap = (Design) => Boolean(Design?.designConfig?.data?.patternMap)
+
+export const editorConfig = (design, Design) => ({
   enableBackend: false,
   stateKey: `publicsewing-editor-${design}`,
   // No 'designs' (FreeSewing's collection picker), 'save' (its backend) or 'docs' (its site)
-  // The stock FreeSewing export view bypasses our geometry-linked map. The chore coat's
+  // The stock FreeSewing export view bypasses our geometry-linked map. A mapped design's
   // annotated SVG and PDFs are available through the download buttons below the editor.
-  mainViews: design === 'chorecoat' ? ['draft'] : ['draft', 'export'],
-  extraViews: design === 'chorecoat' ? ['measurements', 'undos'] : ['measurements', 'undos', 'layout'],
+  mainViews: hasMap(Design) ? ['draft'] : ['draft', 'export'],
+  extraViews: hasMap(Design) ? ['measurements', 'undos'] : ['measurements', 'undos', 'layout'],
   // editSettings (the settings as YAML) and timing are FreeSewing's own dev views; neither needs its backend
   devViews: ['inspect', 'logs', 'test', 'editSettings', 'timing'],
   hrefNewSet: false,
@@ -139,9 +142,9 @@ function OtherSoftware({ design, Design, useLocalStorageState }) {
   }
 
   return (
-    <details className="other-software" open={design === 'chorecoat'}>
+    <details className="other-software" open={hasMap(Design)}>
       <summary>
-        <strong>{design === 'chorecoat' ? 'Download annotated pattern' : 'For other pattern software and projectors'}</strong> (Seamly2D, CLO3D and other CAD, Inkscape)
+        <strong>{hasMap(Design) ? 'Download annotated pattern' : 'For other pattern software and projectors'}</strong> (Seamly2D, CLO3D and other CAD, Inkscape)
       </summary>
       <p>
         Drafted at the size and options above, with seam allowance. AAMA DXF opens in CLO3D, Marvelous Designer,
@@ -215,7 +218,7 @@ export default function PatternEditor({ design, sizes: which, skip }) {
             <style>{patternStyle}</style>
             <HashLanding />
             <SizePicker design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} which={which} skip={skip} />
-            <Editor design={design} localDesigns={designs} config={editorConfig(design)} />
+            <Editor design={design} localDesigns={designs} config={editorConfig(design, designs[design])} />
             <OtherSoftware design={design} Design={designs[design]} useLocalStorageState={useLocalStorageState} />
           </div>
         )

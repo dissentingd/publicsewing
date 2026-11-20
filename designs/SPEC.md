@@ -14,6 +14,7 @@ by named operations. [chore-coat/spec.yaml](chore-coat/spec.yaml) is the plaines
 | `pieces` | The pattern pieces, in order (below). |
 | `variants` | The same pattern with other options, shown on the design's page: `<key>: { name, description, options: { <option>: <value> } }`. Each option must be shown in the pattern tool (have a `menu`); the page's instructions come from `labels.yaml`. `tools/preview.mjs` renders each one, `site/illustrations/<design>.<key>.jpg` is its illustration, and `test/variants.test.mjs` drafts each at every size. Not inherited through `extends`. |
 | `extends` | Start from another spec file: its pieces, block and options. This spec's `options` entries are merged into the parent's (`buttons: { count: 5 }` changes only the default); its `pieces` are added, or replace the parent's by key. A parent with no `about` is a template (`templates/`): its pieces take this design's name. |
+| `patternMap` | Printed piece numbers, seam and placement codes and a stitch key, drawn on the page preview, the SVG and PDF downloads and the drape input (below). Inherited through `extends`. |
 
 ## Pieces
 
@@ -129,6 +130,35 @@ A value that comes out `null` is left out (so an operation sees it as not given)
 item with a comma in it). A map with
 `if:` false is left out. A `_name` entry is a working value: later entries can use it, but it
 isn't stored.
+
+## Pattern map
+
+`patternMap:` labels the drafted pieces for sewing. `lib/pattern-map.mjs` places every label on the
+draft at the chosen size and options, so nothing stores a coordinate; a piece or path the options
+leave out drops its labels and key lines. The chore coat is the example.
+
+```yaml
+patternMap:
+  pieces: { front: 1, back: 2 }            # spec piece key: printed number (unique)
+  stitches:
+    FF: { name: flat-felled seam, key: flat-fell the allowances }   # key: the line in the printed key
+  codes:
+    A:
+      name: shoulder
+      stitch: FF                          # a stitches code
+      kind: seam                          # seam (default), placement (pocket lines) or closure (buttonholes)
+      drape: shoulder                     # optional: the seam's id in the design's drape config
+      at:                                 # where the code is printed, one entry per piece
+        - { part: front, path: frontArmhole, along: 0.5 }   # a fraction along a drafted path
+        - { part: back, between: [neck, shoulder] }         # midway between two points (a chord: straight seams only)
+        - { part: front, point: buttonhole0_0 }             # at a point
+        # optional: true: skip it when the options don't draft that path (a pocket turned off)
+```
+
+`construction.yaml` beside the spec holds the sewing steps that use these codes;
+`tools/validate-construction.mjs` checks them against the map and the brief's numbered steps, and
+the site shows a design's map section only once they pass. `node tools/map-check.mjs <design>`
+reports labels off their seam or overlapping (`--names` lists the paths and points to anchor on).
 
 ## Checking a change
 

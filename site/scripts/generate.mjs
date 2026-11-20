@@ -31,7 +31,7 @@ import { readSpec } from '../../designs/lib/load-spec.mjs'
 import { categories } from '../../designs/lib/categories.mjs'
 import { designGroups } from '../catalog-sections.mjs'
 import { designFromSpec } from '../../designs/lib/spec.mjs'
-import { validateChoreConstruction } from '../../designs/tools/validate-construction.mjs'
+import { mappedDesigns, validateConstruction } from '../../designs/tools/validate-construction.mjs'
 import { sets, stoutSets } from '../../designs/test/coat-checks.mjs'
 import { all as children } from '../../designs/sizes/children.mjs'
 import { babies } from '../../designs/sizes/babies.mjs'
@@ -45,7 +45,9 @@ const thumbnail = (name) => existsSync(out('static', 'img', 'catalog-thumbs', `$
 // The designs: every folder with a spec.yaml and a BRIEF.md
 // A design in progress (a spec but no brief yet) isn't listed until its brief is written
 const ids = readdirSync(designsDir).filter((d) => existsSync(join(designsDir, d, 'spec.yaml')) && existsSync(join(designsDir, d, 'BRIEF.md')))
-if (ids.includes('chore-coat')) validateChoreConstruction()
+// A design page shows its pattern map once its own construction steps check out against it
+const mapped = new Set(mappedDesigns().filter((d) => ids.includes(d)))
+for (const d of mapped) validateConstruction(d)
 const readme = readFileSync(join(site, '..', 'README.md'), 'utf8')
 const order = [...readme.matchAll(/^\| `([a-z-]+)` \| (.+?) \| (.+?) \|$/gm)].map((m) => ({ id: m[1], garment: m[2], source: m[3] }))
 
@@ -508,14 +510,14 @@ ids.forEach((id, i) => {
   ${img('illustration-img')}
   <figcaption>An <a href="/sources#illustrations">AI-generated illustration</a> of the design at its default options, not drawn from the pattern.</figcaption>
 </figure>`,
-    preview && id !== 'chore-coat' &&
+    preview && !mapped.has(id) &&
       `<figure className="illustration">
   <a href={useBaseUrl('/img/previews/${id}.png')}><img className="illustration-img preview-img" src={useBaseUrl('/img/previews/${id}.png')} alt="${about.name}: the pattern pieces" /></a>
   <figcaption>The pattern pieces at the default options, size ${label(previewSet)}, with seam allowance. Click to enlarge.</figcaption>
 </figure>`,
   ].filter(Boolean)
   const illustration = figures.length ? `<div className="design-figures">\n${figures.join('\n')}\n</div>\n` : ''
-  const patternMap = id === 'chore-coat' && preview ? `<section className="pattern-map-section" aria-labelledby="pattern-map-title">
+  const patternMap = mapped.has(id) && preview ? `<section className="pattern-map-section" aria-labelledby="pattern-map-title">
   <h2 id="pattern-map-title">Pattern map</h2>
   <p>Numbers identify cut pieces. Letters match seam edges; P6 and P7 mark pocket placement. The stitch and finish key is inside the image.</p>
   <figure className="pattern-map-figure">

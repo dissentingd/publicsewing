@@ -74,6 +74,7 @@ import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
 import { draftJeanLeg, jeanPiecePart, jeanBandPart } from './jeans.mjs'
 import { draftCapeBase, draftJacketCapeBase, draftCapeLayout, draftDolmanLayout, capePart } from './cape.mjs'
 import { draftKiltLayout, kiltApronPart, kiltPleatsPart } from './kilt.mjs'
+import { prepareMap } from './pattern-map.mjs'
 
 const blocks = { brian, bent, titan, breanna, sarah, bella, bibi, noble }
 /** FreeSewing library parts a piece can use as is (`part: library`) */
@@ -703,5 +704,8 @@ export function designFromSpec(spec) {
     },
   }
 
-  return { Design: new Design({ data: spec.about, parts: Object.values(parts) }), parts, about: spec.about }
+  // A pattern map rides in the design's data, so the exporters find it in the browser too
+  const patternMap = prepareMap(spec)
+  const data = patternMap ? { ...spec.about, patternMap } : spec.about
+  return { Design: new Design({ data, parts: Object.values(parts) }), parts, about: spec.about }
 }

@@ -1,5 +1,5 @@
 # References for the independently written steps in BRIEF.md's Construction section.
-# Codes and piece numbers are defined once in pattern-map.mjs; this file names their sewing order.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
 design: chore-coat
 steps:
   - { order: 1, action: interface facings and collar, pieces: [5, 4] }

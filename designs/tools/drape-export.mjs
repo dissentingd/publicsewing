@@ -21,7 +21,7 @@
 import { writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { loadDesign, measurementSet } from './render.mjs'
-import { resolve as resolveChoreMap, seams as choreSeams, stitches as choreStitches, pieces as choreNumbers, drapeSeams } from '../chore-coat/pattern-map.mjs'
+import { mapFor, resolve } from '../lib/pattern-map.mjs'
 
 const CURVE_STEP = 5 // mm between samples along a curve
 
@@ -48,32 +48,37 @@ export function polyline(path) {
 // Additional sewing information for a drape consumer. Coordinates remain in the drafted
 // part's frame, converted to cm like `pieces`, and retain their source part when clipping or
 // splitting has changed the simulation outline.
-export function choreDrapeMap(pattern, exported) {
+export function drapeMap(pattern, map, exported) {
   const cm = (p) => [p.x / 10, p.y / 10]
-  const marks = resolveChoreMap(pattern)
+  const parts = pattern.parts[0]
+  const marks = resolve(pattern, map)
   const byCode = (code) => marks.filter((m) => m.code === code)
     .map(({ part, x, y }) => ({ sourcePart: part, at: cm({ x, y }) }))
-  const seams = Object.fromEntries(Object.entries(choreSeams)
-    .filter(([code]) => /^[A-H]$/.test(code))
-    .map(([code, [name, stitch]]) => [code, { name, stitch, drapeSeam: drapeSeams[code] ?? null, anchors: byCode(code) }]))
-  const front = pattern.parts[0]['chorecoat.front']
-  const placements = Object.fromEntries([['P6', 'breastPocket'], ['P7', 'lowerPocket']]
-    .filter(([, path]) => front.paths[path])
-    .map(([code, path]) => [code, {
-      sourcePart: 'chorecoat.front', stitch: choreSeams[code][1],
-      outline: polyline(front.paths[path]).map(cm), anchors: byCode(code),
-    }]))
-  const closures = Object.entries(front.snippets)
-    .filter(([, s]) => ['button', 'buttonhole'].includes(s.def))
-    .map(([id, s]) => ({ id, kind: s.def, sourcePart: 'chorecoat.front', at: cm(s.anchor), stitch: s.def === 'buttonhole' ? 'BH' : 'attach-button' }))
-  const cutPieces = Object.fromEntries(Object.entries(choreNumbers)
-    .filter(([name]) => {
-      const part = pattern.parts[0][`chorecoat.${name}`]
-      return part && !part.hidden && part.paths.seam && !part.paths.seam.hidden
-    })
-    .map(([name, number]) => [name, { number, sourcePart: `chorecoat.${name}`, draped: Object.keys(exported.pieces).some((role) => role === name || role.startsWith(`${name}Plus`) || role.startsWith(`${name}Minus`)) }]))
-  return { units: 'cm', cutPieces, seams, placements, closures, stitches: choreStitches }
+  const of = (kind) => Object.entries(map.codes).filter(([, c]) => c.kind === kind)
+  const seams = Object.fromEntries(of('seam')
+    .map(([code, c]) => [code, { name: c.name, stitch: c.stitch, drapeSeam: c.drape ?? null, anchors: byCode(code) }]))
+  // A placement's outline is the drafted path its code sits on, when the options drew it
+  const placements = Object.fromEntries(of('placement').flatMap(([code, c]) => {
+    const a = c.at.find((x) => x.path && parts[x.part]?.paths[x.path])
+    return a ? [[code, { sourcePart: a.part, stitch: c.stitch, outline: polyline(parts[a.part].paths[a.path]).map(cm), anchors: byCode(code) }]] : []
+  }))
+  // Buttons and buttonholes on the pieces that carry a closure code
+  const closureCode = of('closure').find(() => true)
+  const closures = [...new Set(of('closure').flatMap(([, c]) => c.at.map((a) => a.part)))].flatMap((name) =>
+    Object.entries(parts[name]?.snippets ?? {})
+      .filter(([, s]) => ['button', 'buttonhole'].includes(s.def))
+      .map(([id, s]) => ({ id, kind: s.def, sourcePart: name, at: cm(s.anchor), stitch: s.def === 'buttonhole' ? closureCode[1].stitch : 'attach-button' })))
+  const cutPieces = Object.fromEntries(Object.entries(map.numbers)
+    .filter(([name]) => drafted(parts[name]))
+    .map(([full, number]) => {
+      const name = full.split('.').at(-1)
+      return [name, { number, sourcePart: full, draped: Object.keys(exported.pieces).some((role) => role === name || role.startsWith(`${name}Plus`) || role.startsWith(`${name}Minus`)) }]
+    }))
+  const stitches = Object.fromEntries(Object.entries(map.stitches).map(([code, s]) => [code, s.name]))
+  return { units: 'cm', cutPieces, seams, placements, closures, stitches }
 }
+
+const drafted = (part) => part && !part.hidden && part.paths.seam && !part.paths.seam.hidden
 
 function bezier(a, b, c, d, t, end) {
   if (end) return d
@@ -204,7 +209,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     }
   }
   if (wanted) for (const name of wanted) if (!processed.has(name)) throw new Error(`missing drape piece ${name} (source ${sources[name] ?? own + name})`)
-  if (design === 'chore-coat') out.patternMap = choreDrapeMap(pattern, out)
+  if (mapFor(Design)) out.patternMap = drapeMap(pattern, mapFor(Design), out)
   writeFileSync(file, JSON.stringify(out, null, 1))
   console.log(`${file}: ${Object.entries(out.pieces).map(([k, v]) => `${k} (${v.length})`).join(', ')}`)
 }
