@@ -41,21 +41,20 @@ const key = [
 ]
 
 const stitchKey = [
-  ['A B F', 'FF', 'Flat-felled'],
-  ['C', 'SS', 'Straight; finish together'],
-  ['D', 'SS', 'Straight; clip and press'],
-  ['E G', 'SS', 'Straight; trim and turn'],
-  ['H P6 P7', 'TS', 'Topstitch'],
-  ['BH', 'BH', 'Buttonhole'],
+  ['FF', 'Flat-felled', 'Straight-stitch the join, fold one allowance over the other, then topstitch it down.'],
+  ['SS', 'Straight seam', 'One straight-stitch join; finish the raw allowances as the step directs.'],
+  ['TS', 'Topstitch', 'Visible straight stitching close to a folded edge or pocket edge.'],
+  ['BH', 'Buttonhole', 'Use the machine buttonhole stitch at the marked opening positions.'],
 ]
 
-function StitchSwatch({ type }) {
-  if (type === 'BH') return <><rect x="0" y="-7" width="17" height="14" rx="7" /><path d="M8.5 -5 V5" /></>
-  return <>
-    <path d="M0 -4 H32" />
-    {type === 'FF' && <path d="M0 4 H32" />}
-    {type === 'TS' && <path className="stitch-edge" d="M0 4 H32" />}
-  </>
+function StitchSymbol({ type }) {
+  return <svg className={`stitch-symbol stitch-symbol-${type.toLowerCase()}`} viewBox="0 0 46 18" aria-hidden="true">
+    {type === 'BH' ? <><rect x="14" y="2" width="18" height="14" rx="7" /><path d="M23 4 V14" /></> : <>
+      <path d="M2 5 H44" />
+      {type === 'FF' && <path d="M2 13 H44" />}
+      {type === 'TS' && <path className="stitch-edge" d="M2 13 H44" />}
+    </>}
+  </svg>
 }
 
 export default function AnnotatedPatternPreview({ src }) {
@@ -65,7 +64,7 @@ export default function AnnotatedPatternPreview({ src }) {
         <p className="design-eyebrow">Chore coat · default pattern</p>
         <h2 id="pattern-map-title">Pattern map</h2>
       </div>
-      <p>Numbers identify cut pieces. Letters match seam lines; P6 and P7 mark pocket positions. Stitch codes and their compact legend are part of the preview.</p>
+      <p>Numbers identify cut pieces. Letters match seam lines; P6 and P7 mark pocket positions. The key pairs each line with its stitch type.</p>
     </div>
     <div className="annotated-pattern-layout">
       <div className="annotated-pattern-image">
@@ -76,22 +75,21 @@ export default function AnnotatedPatternPreview({ src }) {
             <circle r={mark.code.length > 1 ? 14 : 12} />
             <text textAnchor="middle" dominantBaseline="central">{mark.code}</text>
           </g>)}
-          <g className="pattern-stitch-key" transform="translate(455 785)">
-            <rect className="pattern-stitch-key-bg" width="520" height="145" rx="5" />
-            <text className="pattern-stitch-key-title" x="16" y="23">Stitch / finish key</text>
-            {stitchKey.map(([refs, code, method], i) => <g key={refs} transform={`translate(${18 + (i % 2) * 252} ${52 + Math.floor(i / 2) * 36})`}>
-              <g className="pattern-stitch-swatch" transform="translate(0 -2)"><StitchSwatch type={code} /></g>
-              <text x="42" y="3">{refs} · {code} {method}</text>
-            </g>)}
-          </g>
         </svg>
       </div>
       <div className="annotated-pattern-key" aria-label="Pattern map key">
-        {key.map(([code, seam, pieces]) => <div key={code} className="annotated-pattern-key-row">
+        {key.map(([code, seam, pieces, stitch]) => <div key={code} className="annotated-pattern-key-row">
           <span className="annotated-pattern-code">{code}</span>
-          <span><strong>{seam}</strong><small>{pieces}</small></span>
+          <span><strong>{seam}</strong><small>{pieces}</small><small className="annotated-pattern-stitch">{stitch} · {stitchKey.find(([id]) => id === stitch)[1]}</small></span>
         </div>)}
       </div>
+    </div>
+    <div className="stitch-legend" aria-label="Stitch type legend">
+      <h3>Stitch legend</h3>
+      <div className="stitch-legend-items">{stitchKey.map(([code, name, detail]) => <div className="stitch-legend-item" key={code}>
+        <StitchSymbol type={code} />
+        <span><strong>{code} · {name}</strong><small>{detail}</small></span>
+      </div>)}</div>
     </div>
     <p className="annotated-pattern-note">Preview at the default options, size 38, with seam allowance. Stitch types describe this proposed construction. Use the exported PDF or SVG for cutting; these stitch codes are currently shown on the page map only.</p>
   </section>
