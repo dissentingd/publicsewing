@@ -62,6 +62,7 @@ for (const design of designs) {
     const Design = (await import(entry.package))[entry.export]
     spec = { about: { name: Design.designConfig.data.name }, variants: {} }
   }
+  const map = spec.patternMap ?? null
   const built = join(build, 'designs', `${design}.html`)
   if (!existsSync(built)) {
     check(false, 'no page in site/build (rebuild the site?)')
@@ -153,9 +154,10 @@ for (const design of designs) {
     const path = file && (await file.path())
     const text = path ? readFileSync(path, 'latin1') : ''
     check(text.length > 100 && valid(text), `${name} downloads (${text.length} bytes)`)
-    if (design === 'chore-coat' && ['Layered SVG', 'Projector PDF', 'Projector PDF, dark'].includes(name)) {
-      check(text.includes('Seam and stitch key') && text.includes('A shoulder'), `${name} contains the embedded map key`)
-      check(name === 'Layered SVG' ? text.includes('class="map-code"') : text.includes('(A) Tj'), `${name} draws seam codes on pieces`)
+    if (map && ['Layered SVG', 'Projector PDF', 'Projector PDF, dark'].includes(name)) {
+      const [code, { name: seam }] = Object.entries(map.codes)[0]
+      check(text.includes('Seam and stitch key') && text.includes(`${code} ${seam}`), `${name} contains the embedded map key`)
+      check(name === 'Layered SVG' ? text.includes('class="map-code"') : text.includes(`(${code}) Tj`), `${name} draws seam codes on pieces`)
     }
   }
   const note = await page.locator('details.other-software').innerText()
@@ -178,7 +180,8 @@ for (const design of designs) {
     }
     check(text.startsWith('%PDF'), `the tiled ${name} is made (${text.length} bytes)`)
   }
-  if (!stockExport) check(design === 'chore-coat', 'stock Export view is hidden for the annotated chore-coat pattern')
+  // A mapped design's annotated downloads replace the stock Export view; any other keeps it
+  check(stockExport === !map, map ? 'stock Export view is hidden for the annotated pattern' : 'stock Export view is offered')
 
   check(!errors.length, `no console or network errors${errors.length ? `:\n  ${[...new Set(errors)].slice(0, 5).join('\n  ').slice(0, 800)}` : ''}`)
   await context.close()
