@@ -46,14 +46,15 @@ words; no text or figure is reproduced. Lengths below are the book's centimetres
 | Facing, lining | (not tabulated) | `facingWidth` 6% of chest, up the V to the shoulder; front lining; `liningBack` cuts the back twice from lining |
 
 ## Construction order
-1. Darts in the fronts and backs, sewn to the hem.
-2. Welt pockets in the fronts (welt, bags; the lower welt is sewn over the closed dart).
-3. Facings to the front linings; back to back lining at the shoulders.
-4. Fronts to the backs at the shoulders, linings likewise.
-5. Outer shell and lining right sides together round the front edges, V neck, back neck and the
-   armholes; turn through the side seams.
-6. Side seams, the shell's and the lining's, closing the last opening by hand.
-7. Buttonholes and buttons.
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed open, **BH** keyhole or machine buttonhole.
+
+1. Sew the darts **M** in the fronts **1** and backs **2**, to the hem.
+2. Make the welt pockets in the fronts **1** at **P5** and **P7**: welts **5**, **7** and bags **6**, **8**; the lower welt is sewn over the closed dart.
+3. Sew the facings **3** to the front linings **4**; join the back **2** to the back lining at the shoulders.
+4. Join the fronts **1** to the backs **2** at the shoulders **A**, and the linings **4** likewise.
+5. Lay the outer shell and lining right sides together and sew round the front edges **E**, the V neck and back neck **D** and the armholes **C**, through fronts **1**, backs **2**, facings **3** and linings **4**; turn through the side seams.
+6. Sew the side seams **B** of the shell (fronts **1**, backs **2**) and the lining **4**, closing the last opening by hand.
+7. Work the buttonholes **BH** on the front **1** and sew on the buttons.
 
 ## Changes and what isn't modelled
 - **Geometry from Brian, not ЕМКО's tables**, so the waistcoat drafts at any size.

@@ -81,6 +81,7 @@ pieces:
       # From the bottom of the V to above the point
       - buttons:
           count: buttons
+          buttonholes: true
           top: cfNeck.y + chest * neckDepth + ext * 0.6
           bottom: cfWaist.y + waistToSeat * lengthBelowWaist
           rows: [0]
@@ -116,3 +117,51 @@ pieces:
   breastBag: { part: weltBag, after: front, key: breast, store: coat.welts, nr: 6, if: breastPocket }
   lowerWelt: { part: welt, after: front, key: lower, store: coat.welts, nr: 7, if: lowerPockets }
   lowerBag: { part: weltBag, after: front, key: lower, store: coat.welts, nr: 8, if: lowerPockets }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order.
+patternMap:
+  pieces: { front: 1, back: 2, facing: 3, frontLining: 4, breastWelt: 5, breastBag: 6, lowerWelt: 7, lowerBag: 8 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+    BH: { name: buttonhole, key: keyhole or reinforced machine buttonhole }
+  codes:
+    A:
+      name: shoulder
+      stitch: SS
+      at: [{ part: front, between: [neck, shoulder] }, { part: back, between: [neck, shoulder] }]
+    B:
+      name: side seam
+      stitch: SS
+      at: [{ part: front, between: [armhole, hem] }, { part: back, between: [armhole, hem] }]
+    C:
+      name: armhole, shell to lining
+      stitch: SS
+      at: [{ part: front, between: [shoulder, armhole] }, { part: back, between: [shoulder, armhole] }]
+    D:
+      name: V neck and back neck, shell to lining
+      stitch: SS
+      at: [{ part: front, path: neckline, along: 0.5 }, { part: back, path: backCollar, along: 0.5 }]
+    E:
+      name: front edge, shell to facing
+      stitch: SS
+      at: [{ part: front, path: edge, along: 0.7 }, { part: facing, path: edge, along: 0.7 }]
+    M:
+      name: waist darts
+      stitch: SS
+      kind: dart
+      at: [{ part: front, path: dart, along: 0.5 }, { part: back, path: dart, along: 0.5 }]
+    P5:
+      name: breast welt mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: breastPocket, along: 0.5, optional: true }]
+    P7:
+      name: lower welt mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: lowerPocket, along: 0.5, optional: true }]
+    BH:
+      name: buttonhole marks
+      stitch: BH
+      kind: closure
+      at: [{ part: front, snippet: buttonhole0_0 }]

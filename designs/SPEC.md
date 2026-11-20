@@ -146,7 +146,7 @@ patternMap:
     A:
       name: shoulder
       stitch: FF                          # a stitches code
-      kind: seam                          # seam (default), placement (pocket lines) or closure (buttonholes)
+      kind: seam                          # seam (default), dart, placement (pocket lines) or closure (buttonholes)
       drape: shoulder                     # optional: the seam's id in the design's drape config
       at:                                 # where the code is printed, one entry per piece
         - { part: front, path: frontArmhole, along: 0.5 }   # a fraction along a drafted path

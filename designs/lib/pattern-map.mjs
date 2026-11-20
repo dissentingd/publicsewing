@@ -26,7 +26,7 @@ export function prepareMap(spec) {
   const codes = {}
   for (const [code, c] of Object.entries(map.codes ?? {})) {
     if (!map.stitches?.[c.stitch]) throw new Error(`patternMap ${code}: unknown stitch "${c.stitch}"`)
-    if (c.kind && !['seam', 'placement', 'closure'].includes(c.kind)) throw new Error(`patternMap ${code}: unknown kind "${c.kind}"`)
+    if (c.kind && !['seam', 'dart', 'placement', 'closure'].includes(c.kind)) throw new Error(`patternMap ${code}: unknown kind "${c.kind}"`)
     const at = (c.at ?? []).map((a) => {
       const ways = ['path', 'between', 'point', 'snippet'].filter((k) => a[k] !== undefined)
       if (ways.length !== 1) throw new Error(`patternMap ${code}: each anchor needs one of path, between, point, snippet`)

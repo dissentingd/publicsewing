@@ -1,0 +1,11 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: waistcoat
+steps:
+  - { order: 1, action: darts, pieces: [1, 2], seams: [M], stitches: [SS] }
+  - { order: 2, action: welt pockets, pieces: [5, 6, 7, 8, 1], placements: [P5, P7], stitches: [SS], whenAny: [breastPocket, lowerPockets] }
+  - { order: 3, action: facings to linings, pieces: [3, 4, 2] }
+  - { order: 4, action: shoulders, pieces: [1, 2, 4], seams: [A], stitches: [SS] }
+  - { order: 5, action: bag out the edges, pieces: [1, 2, 3, 4], seams: [E, D, C], stitches: [SS] }
+  - { order: 6, action: side seams, pieces: [1, 2, 4], seams: [B], stitches: [SS] }
+  - { order: 7, action: buttonholes and buttons, pieces: [1], placements: [BH], stitches: [BH] }

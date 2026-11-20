@@ -90,3 +90,6 @@ pieces:
               bag: q * 0.5
       - markLine: { id: breastPocket, from: [coat.welts.breast.x0, coat.welts.breast.y0], to: [coat.welts.breast.x1, coat.welts.breast.y1], class: mark, if: breastPocket }
       - markLine: { id: lowerPocket, from: [coat.welts.lower.x0, coat.welts.lower.y0], to: [coat.welts.lower.x1, coat.welts.lower.y1], class: mark, if: lowerPockets }
+
+# No pattern map yet: the waistcoat's would label pieces this design changes.
+patternMap: false
