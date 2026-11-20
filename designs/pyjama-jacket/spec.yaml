@@ -35,3 +35,6 @@ variants:
     name: Open neck
     description: "No collar: the neck opens in a V to the top button, a little above the chest line, finished with a facing."
     options: { neckStyle: open }
+
+# No pattern map yet: the barber's coat's would label pieces this design changes.
+patternMap: false

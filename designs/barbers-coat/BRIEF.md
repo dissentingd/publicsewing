@@ -47,9 +47,14 @@ The body and sleeve are the work coat's (the chore coat's rules).
 - the shared coat checks;
 - for the open neck, the front facing meets the back neck facing at the shoulder.
 
-## Construction
+## Construction (our words)
+The letters below identify matching seam lines in the pattern map. Numbers are printed on the pattern pieces. Stitch codes in the map and steps mean: **FF** flat-felled seam (join with a straight stitch, fold one allowance over the other, then topstitch it down); **SS** straight-stitch seam (finish the raw allowances as directed); **TS** visible topstitching close to a folded edge; **BH** machine buttonhole stitch. These are proposed sewing methods for this unsewn draft.
 
-1. Interface the front facings and, for the high-neck version, one standing-collar layer. Finish the patch-pocket tops, press the other edges under, and topstitch the pockets to the fronts.
-2. Sew the shoulder and side seams. Make the collar and attach it to the neckline for Diagram X; for the open-neck version, join the back-neck facing to the front facings at the shoulders.
-3. Sew the facings to the front and neck edges, turn and press. Set in the sleeves and close their underarm seams.
-4. Hem the coat and sleeves, then work the four buttonholes and attach the buttons at the marked centres. The concealed fly suggested by the source is not made here.
+1. Interface the facings **5** and, for the stand collar, one collar layer **4**; for the open neck, the back-neck facing **6**.
+2. Hem the top edges of breast pocket **7** and lower pockets **8**. Press their other allowances under and use **TS** to attach them at marks **P7** and **P8** on fronts **1**.
+3. Join front **1** to back **2** at shoulders **A** with **FF**. Leave side seams **B** open for setting the sleeves flat.
+4. Stand collar: join the collar layers **4** along outer edge **G** with **SS**, turn and press, and attach it to neckline **D** of fronts **1** and back **2**. Open neck: join the back-neck facing **6** to the facings at the shoulders, to be sewn to neckline **D** with them.
+5. Join facings **5** to front edges **E** of fronts **1** with **SS**, and along the neck for the open style. Trim, turn and press, and finish the facings' inner edges.
+6. Set sleeves **3** into armholes **C** of fronts **1** and back **2** with **SS** while the underarm is open. Close sleeve underarm **F** and side seam **B** in one run with **FF**.
+7. Turn up the hems of fronts **1**, back **2** and sleeves **3** and use **TS** along hem edges **H**.
+8. Work the four **BH** at the marked positions on the right front **1** and sew buttons at the marked centres. The concealed fly suggested by the source is not made here.
