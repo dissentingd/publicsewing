@@ -28,12 +28,18 @@ The inherited jacket has a shaped side body and a cut-on-fold back, but its back
 
 ## Pieces
 
-Front, whole back, side body, facing, collar, top and under sleeves, lower welt and pocket bag, and the inherited lining pieces.
+Front (1), whole back (2), side body (3), top and under sleeves (4, 5), collar (6), facing (7),
+lower welt (10) and pocket bag (11), back-neck facing (13), and the inherited lining: front and
+back lining (14, 15) with an inside welt (16) and bag (17). The letters are the codes on the
+pattern map; Vincent gives no sewing order, so this one is ours.
 
 ## Construction
 
-1. Mark the two forepart welt mouths and four button stations. Make the welts and pocket bags while the fronts are flat; press and check both mouths align.
-2. Join each forepart to its side body, then the side bodies to the whole back. Sew the shoulders and press the long seams.
-3. Assemble and apply the facing and collar. Sew each two-piece sleeve, check its pitch against the armhole marks, and set it in.
-4. Assemble and attach the inherited lining, leaving an opening to turn the jacket; close that opening after turning and pressing.
-5. Finish the straight hem, work the four buttonholes and attach the buttons. For a washable cotton version, use the source's lightweight lining and sew buttons so they can be replaced.
+1. Mark the welt mouths P on the fronts (1). Make the lower welts (10) and pocket bags (11) while the fronts are flat; press and check that both mouths align.
+2. Join each front (1) to its side body (3) at B, then the side bodies to the whole back (2) at C. Press the seams open.
+3. Sew the shoulders A of the fronts (1) and back (2), and press them open.
+4. Sew the collar (6) to the neckline E of the fronts (1) and back (2), with the back-neck facing (13) behind it, then the facings (7) to the front edges F. Turn and press.
+5. Assemble each sleeve: join the top sleeve (4) to the under sleeve (5) at the front seam G and the back seam H, and press open.
+6. Set each sleeve (4, 5) into its armhole D across the front (1), side body (3) and back (2), checking its pitch against the armhole marks; press toward the sleeve.
+7. Make the lining from the front and back linings (14, 15), with the inside welt (16) and bag (17) if fitted. Attach it, leaving an opening to turn the jacket; close that opening after turning and pressing.
+8. Turn and stitch the hems J of the body (1, 2, 3) and sleeves (4, 5). Work the four buttonholes BH on the fronts (1) and sew on the buttons. For a washable cotton version, use the source's lightweight lining and sew the buttons so they can be removed.

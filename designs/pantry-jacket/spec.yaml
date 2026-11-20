@@ -32,3 +32,82 @@ variants:
     name: Without welt pockets
     description: The same pantry jacket with a plain front.
     options: { lowerPockets: false }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order. Anchors
+# follow the seams of drape/blouse.yaml, whose ids are each code's `drape`. Vincent names no
+# stitches: plain seams pressed as each step says, a turned hem, machine buttonholes.
+patternMap:
+  pieces:
+    { front: 1, back: 2, sideBody: 3, topsleeve: 4, undersleeve: 5, collar: 6, facing: 7, lowerWelt: 10,
+      lowerBag: 11, backNeckFacing: 13, frontLining: 14, backLining: 15, insideWelt: 16, insideBag: 17 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed as the step says" }
+    HS: { name: hem stitch, key: turn the hem and stitch it }
+    BH: { name: buttonhole, key: reinforced machine buttonhole }
+  codes:
+    A:
+      name: shoulder
+      stitch: SS
+      drape: shoulder
+      at: [{ part: front, between: [s3CollarSplit, s3ArmholeSplit] }, { part: back, between: [s3CollarSplit, s3ArmholeSplit] }]
+    B:
+      name: front body seam
+      stitch: SS
+      drape: front_seam
+      at: [{ part: front, between: [seamStart, seamHem] }, { part: sideBody, between: [frontTop, frontHem] }]
+    C:
+      name: back body seam
+      stitch: SS
+      drape: back_seam
+      at: [{ part: back, between: [seamStart, seamHem] }, { part: sideBody, between: [backTop, backHem] }]
+    D:
+      name: armhole and sleeve cap
+      stitch: SS
+      drape: armhole
+      at:
+        - { part: front, between: [s3ArmholeSplit, seamStart] }
+        - { part: sideBody, point: armBottom }
+        - { part: back, between: [seamStart, s3ArmholeSplit] }
+        - { part: topsleeve, between: [frontPitchPoint, backPitchPoint] }
+        - { part: undersleeve, between: [usLeftEdge, usTip] }
+    E:
+      name: neckline and collar
+      stitch: SS
+      at:
+        - { part: front, path: frontCollar, along: 0.5 }
+        - { part: back, path: backCollar, along: 0.5 }
+        - { part: collar, path: neck, along: 0.5 }
+        - { part: backNeckFacing, path: backCollar, along: 0.5 }
+    F:
+      name: front edge and facing
+      stitch: SS
+      at: [{ part: front, path: edge, along: 0.5 }, { part: facing, path: edge, along: 0.5 }]
+    G:
+      name: sleeve front seam
+      stitch: SS
+      drape: sleeve_front
+      at: [{ part: topsleeve, between: [tsLeftEdge, tsWristLeft] }, { part: undersleeve, between: [usLeftEdge, usWristLeft] }]
+    H:
+      name: sleeve back seam
+      stitch: SS
+      drape: sleeve_back
+      at: [{ part: topsleeve, between: [backPitchPoint, tsWristRight] }, { part: undersleeve, between: [usTip, usWristRight] }]
+    J:
+      name: body and sleeve hems
+      stitch: HS
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: back, between: [cbHem, seamHem] }
+        - { part: sideBody, between: [frontHem, backHem] }
+        - { part: topsleeve, between: [tsWristLeft, tsWristRight] }
+        - { part: undersleeve, between: [usWristLeft, usWristRight] }
+    P:
+      name: lower welt pocket mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: lowerWelt, along: 0.5, optional: true }]
+    BH:
+      name: buttonhole marks
+      stitch: BH
+      kind: closure
+      at: [{ part: front, snippet: buttonhole0_0 }]

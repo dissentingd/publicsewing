@@ -1,75 +1,13 @@
-# Design-local input for the planned geometry-based pattern map and future 3D details.
-# Draft coordinates must be resolved at the chosen size/options; these are not pixel positions.
-# Stitch/finish methods are proposed where Vincent describes the garment but not the stitch.
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing
+# order. Vincent describes the garment but not its sewing: this sequence is ours.
 design: pantry-jacket
-shellDrape: ../drape/blouse.yaml
-pieces:
-  back: topcoat.back
-  sideBody: militaryblouse.sideBody
-  front: jacket.front
-  topsleeve: militaryblouse.topsleeve
-  undersleeve: militaryblouse.undersleeve
-cutPieces:
-  front: { number: 1, source: jacket.front, cut: 2, material: shell }
-  back: { number: 2, source: topcoat.back, material: shell }
-  sideBody: { number: 3, source: militaryblouse.sideBody, cut: 2, material: shell }
-  topsleeve: { number: 4, source: militaryblouse.topsleeve, cut: 2, material: shell }
-  undersleeve: { number: 5, source: militaryblouse.undersleeve, cut: 2, material: shell }
-  collar: { number: 6, source: jacket.collar, material: shell }
-  facing: { number: 7, source: militaryblouse.facing, cut: 2, material: shell }
-  lowerWelt: { number: 10, source: militaryblouse.lowerWelt, if: lowerPockets, material: shell }
-  lowerBag: { number: 11, source: militaryblouse.lowerBag, if: lowerPockets, material: lining }
-  backNeckFacing: { number: 13, source: topcoat.backNeckFacing, material: shell }
-  frontLining: { number: 14, source: topcoat.frontLining, material: lining }
-  backLining: { number: 15, source: topcoat.backLining, material: lining }
-  insideWelt: { number: 16, source: topcoat.insideWelt, if: insidePockets, material: lining }
-  insideBag: { number: 17, source: topcoat.insideBag, if: insidePockets, material: lining }
-seams:
-  backSide: { drape: back_seam, stitch: straight, finish: press-open, order: 2 }
-  frontSide: { drape: front_seam, stitch: straight, finish: press-open, order: 2 }
-  shoulder: { drape: shoulder, stitch: straight, finish: press-open, order: 3 }
-  sleeveFront: { drape: sleeve_front, stitch: straight, finish: press-open, order: 4 }
-  sleeveBack: { drape: sleeve_back, stitch: straight, finish: press-open, order: 4 }
-  armhole: { drape: armhole, stitch: straight, finish: press-toward-sleeve, order: 5 }
-  centreBack: { drape: centre_back, kind: fold, stitch: none }
-  centreFront: { drape: centre_front, kind: closure, stitch: none }
-placements:
-  lowerWelt:
-    if: lowerPockets
-    piece: front
-    source: lowerWeltA and lowerWeltB points and lowerWelt path on jacket.front
-    pieces: [lowerWelt, lowerBag]
-    defaultCount: 2
-    stitch: straight-and-topstitch
-    order: 1
-  breastWelt: { if: breastPockets, default: false, source: breastWeltA and breastWeltB on jacket.front }
-  buttons:
-    piece: front
-    source: button0_0 through button0_3 points and button snippets on jacket.front
-    countOption: buttons
-    defaultCount: 4
-    stitch: attach-button
-  buttonholes:
-    piece: front
-    source: mirrored button stations at centre front
-    countOption: buttons
-    stitch: machine-buttonhole
-    draftMarksPresent: false
-finishing:
-  facingAndCollar: { source: inherited pieces, stitch: straight, method: turn-and-press }
-  lining: { source: inherited lining pieces, stitch: straight, method: turn-through-opening }
-  hem: { stitch: hem-stitch, method: turn-and-press }
-stitches:
-  straight: Sew a straight seam and press as specified.
-  straight-and-topstitch: Secure a welt opening, then topstitch its finished edge.
-  machine-buttonhole: Work a reinforced buttonhole at each button station on the opposing front.
-  attach-button: Secure each button at its drafted mark.
-  hem-stitch: Turn and secure the hem after pressing.
 steps:
-  - { order: 1, action: construct lower welt pockets, if: lowerPockets, placements: [lowerWelt], pieces: [front] }
-  - { order: 2, action: join three-piece body, seams: [frontSide, backSide], pieces: [front, sideBody, back] }
-  - { order: 3, action: join shoulders and apply facing and collar, seams: [shoulder], stitch: straight }
-  - { order: 4, action: assemble sleeves, seams: [sleeveFront, sleeveBack], pieces: [topsleeve, undersleeve] }
-  - { order: 5, action: set sleeves, seams: [armhole], pieces: [front, sideBody, back, topsleeve, undersleeve] }
-  - { order: 6, action: attach lining and finish hem, stitch: hem-stitch }
-  - { order: 7, action: finish closure, placements: [buttons, buttonholes] }
+  - { order: 1, action: make lower welt pockets, pieces: [1, 10, 11], placements: [P], stitches: [SS], whenAny: [lowerPockets] }
+  - { order: 2, action: join three-piece body, pieces: [1, 3, 2], seams: [B, C], stitches: [SS] }
+  - { order: 3, action: join shoulders, pieces: [1, 2], seams: [A], stitches: [SS] }
+  - { order: 4, action: apply collar and facings, pieces: [6, 1, 2, 13, 7], seams: [E, F], stitches: [SS] }
+  - { order: 5, action: assemble sleeves, pieces: [4, 5], seams: [G, H], stitches: [SS] }
+  - { order: 6, action: set sleeves, pieces: [4, 5, 1, 3, 2], seams: [D], stitches: [SS] }
+  - { order: 7, action: make and attach lining, pieces: [14, 15, 16, 17] }
+  - { order: 8, action: finish hems and closure, pieces: [1, 2, 3, 4, 5], seams: [J], placements: [BH], stitches: [HS, BH] }
