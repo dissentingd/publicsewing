@@ -28,3 +28,69 @@ pieces:
   sleeveBand: { part: sleeveBand, after: sleeve, nr: 6 }
   placket: { part: placket, after: [backBase, frontBase], nr: 7 }
   neckBand: { part: neckBand, after: [backBase, frontBase], nr: 8 }
+
+# The pattern map every yoke garment inherits (SPEC.md, "Pattern map"). Anchors are optional where
+# a garment cuts its body with or without a yoke, a placket or a band; a design may add to it.
+patternMap:
+  pieces: { frontBody: 1, backBody: 2, frontYoke: 3, backYoke: 4, sleeve: 5, sleeveBand: 6, placket: 7, neckBand: 8 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam; fell or finish the allowances" }
+    TS: { name: topstitch, key: topstitch beside the seam or turned edge }
+  codes:
+    A:
+      name: shoulder
+      stitch: SS
+      at:
+        - { part: frontBody, between: [hps, shoulder], optional: true }
+        - { part: backBody, between: [hps, shoulder], optional: true }
+        - { part: frontYoke, between: [hps, shoulder], optional: true }
+        - { part: backYoke, between: [hps, shoulder], optional: true }
+    Y:
+      name: yoke seam, body gathered or pleated to the yoke
+      stitch: TS
+      at:
+        - { part: frontBody, between: [topFold, yokeSide], optional: true }
+        - { part: backBody, between: [topFold, yokeSide], optional: true }
+        - { part: frontYoke, between: [seamFold, seamArm], optional: true }
+        - { part: backYoke, between: [seamFold, seamArm], optional: true }
+    B:
+      name: side seam
+      stitch: SS
+      at: [{ part: frontBody, between: [sideTop, hemSide] }, { part: backBody, between: [sideTop, hemSide] }]
+    C:
+      name: armhole and sleeve cap
+      stitch: SS
+      at:
+        - { part: frontBody, between: [shoulder, sideTop], optional: true }
+        - { part: frontBody, between: [yokeSide, sideTop], optional: true }
+        - { part: backBody, between: [shoulder, sideTop], optional: true }
+        - { part: backBody, between: [yokeSide, sideTop], optional: true }
+        - { part: frontYoke, between: [shoulder, seamArm], optional: true }
+        - { part: backYoke, between: [shoulder, seamArm], optional: true }
+        - { part: sleeve, path: sleevecap, along: 0.5, optional: true }
+    D:
+      name: neckline and band
+      stitch: SS
+      at:
+        - { part: frontBody, between: [hps, neckFold], optional: true }
+        - { part: backBody, between: [hps, neckFold], optional: true }
+        - { part: frontYoke, between: [hps, neckFold], optional: true }
+        - { part: backYoke, between: [hps, neckFold], optional: true }
+        - { part: neckBand, path: neck, along: 0.5, optional: true }
+    F:
+      name: sleeve underarm
+      stitch: SS
+      at: [{ part: sleeve, between: [bicepsLeft, wristLeft], optional: true }, { part: sleeve, between: [bicepsRight, wristRight], optional: true }]
+    H:
+      name: hem
+      stitch: TS
+      at: [{ part: frontBody, between: [hemFold, hemSide] }, { part: backBody, between: [hemFold, hemSide] }]
+    W:
+      name: sleeve hem or band
+      stitch: SS
+      at: [{ part: sleeve, path: hemBase, along: 0.5, optional: true }, { part: sleeveBand, between: [underarm, overarm], optional: true }]
+    Z:
+      name: front or back opening and placket
+      stitch: TS
+      kind: closure
+      at: [{ part: frontBody, path: slit, along: 0.5, optional: true }, { part: backBody, path: slit, along: 0.5, optional: true }]
