@@ -90,3 +90,20 @@ export function mapData(Design, pattern) {
   const marks = resolve(pattern, map)
   return { marks, legend: legend(map, marks), stitchLegend: stitchLegend(map), numbers: map.numbers }
 }
+
+/**
+ * Where the key's lines go, for any renderer: a heading, the code lines in two columns (down the
+ * left, then the right), then the stitch lines across both. Positions are in the renderer's own
+ * units from its `top` (the heading's baseline); `height` is how much room the key takes below
+ * `base`, so a key with more codes grows its page instead of running off it.
+ * @param map mapData() result; opts { left, right, top, base, entries: first code line's y,
+ *   line, gap: extra space before the stitch lines, stitchLine, pad: space under the last line }
+ */
+export function keyLayout(map, { left, right, top, base, entries, line, gap, stitchLine, pad }) {
+  const rows = Math.ceil(map.legend.length / 2)
+  const codes = map.legend.map((text, i) => ({ text, x: i < rows ? left : right, y: entries + (i % rows) * line }))
+  const stitchTop = entries + rows * line + gap
+  const stitches = map.stitchLegend.map((text, i) => ({ text, x: i % 2 ? right : left, y: stitchTop + Math.floor(i / 2) * stitchLine }))
+  const last = Math.max(entries, ...codes.map((l) => l.y), ...stitches.map((l) => l.y))
+  return { heading: { text: 'Seam and stitch key', x: left, y: top }, lines: [...codes, ...stitches], height: last + pad - base }
+}

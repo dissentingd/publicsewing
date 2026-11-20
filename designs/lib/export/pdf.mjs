@@ -3,6 +3,7 @@
 // on black, which many projector users prefer. A tiny PDF writer, no dependencies; runs in Node
 // and the browser.
 import { shelves, notchTick } from './layout.mjs'
+import { keyLayout } from '../pattern-map.mjs'
 
 const PT = 72 / 25.4 // points per mm
 const n = (v) => (Math.round(v * 100) / 100).toString()
@@ -17,7 +18,8 @@ const txt = (s) => String(s).replace(/[^\x20-\x7e]/g, '?').replace(/([\\()])/g, 
 export function toProjectorPdf(pieces, { title = 'pattern', size = '', notes = [], sa = 10, dark = false, map = null } = {}) {
   const { placed, width, height } = shelves(pieces, { gap: 40, margin: 30 })
   const square = 100
-  const Hmm = height + square + 40 + (map ? 180 : 0)
+  const layout = map && keyLayout(map, { left: 30, right: width / 2, top: height + square + 35, base: height + square + 40, entries: height + square + 52, line: 13, gap: 7, stitchLine: 13, pad: 70 })
+  const Hmm = height + square + 40 + (layout ? layout.height : 0)
   // Pages are limited to 14400 units a side; past that, a UserUnit scales the units up
   const unit = Math.max(1, Math.ceil((Math.max(width, Hmm) * PT) / 14400))
   const k = PT / unit
@@ -84,9 +86,8 @@ export function toProjectorPdf(pieces, { title = 'pattern', size = '', notes = [
   text(55, ty + 55, '10 cm', 10)
   ;[`${title}, ${size}`, 'PublicSewing (publicsewing.org). Project or print at 100%: the square measures 10 cm.', ...notes].forEach((s, i) => text(square + 50, ty + 12 + i * 9, s, 6))
   if (map) {
-    text(30, height + square + 35, 'Seam and stitch key', 9)
-    map.legend.forEach((entry, i) => text(i < 6 ? 30 : width / 2, height + square + 52 + (i % 6) * 13, entry, 7))
-    map.stitchLegend.forEach((entry, i) => text(i % 2 ? width / 2 : 30, height + square + 137 + Math.floor(i / 2) * 13, entry, 7))
+    text(layout.heading.x, layout.heading.y, layout.heading.text, 9)
+    layout.lines.forEach((l) => text(l.x, l.y, l.text, 7))
   }
 
   const content = ops.join('\n')

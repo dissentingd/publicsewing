@@ -3,6 +3,7 @@
 // on its own. Plain SVG elsewhere (Illustrator, Affinity, cutting-machine software). Runs in
 // Node and the browser.
 import { shelves, notchTick } from './layout.mjs'
+import { keyLayout } from '../pattern-map.mjs'
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;')
 const f = (n) => (Math.round(n * 100) / 100).toString()
@@ -16,7 +17,8 @@ const layer = (id, label, body, attrs = '') => `<g id="${esc(id)}" inkscape:grou
 export function toLayeredSvg(pieces, { title = 'pattern', size = '', notes = [], sa = 10, map = null } = {}) {
   const { placed, width, height } = shelves(pieces)
   const scale = 100 // the test square, mm
-  const mapHeight = map ? 180 : 0
+  const layout = map && keyLayout(map, { left: 20, right: width / 2, top: height + scale + 45, base: height + scale + 30, entries: height + scale + 60, line: 13, gap: 7, stitchLine: 13, pad: 52 })
+  const mapHeight = layout ? layout.height : 0
   const H = height + scale + 30 + mapHeight
   const layers = placed.map(({ piece: p, dx, dy, box }) => {
     const cut = p.cut ? `<polygon points="${pts(p.cut, dx, dy)}" class="cut"/>` : ''
@@ -48,9 +50,8 @@ export function toLayeredSvg(pieces, { title = 'pattern', size = '', notes = [],
         .join(''),
   )
   const key = map ? layer('pattern-map-key', 'pattern map key',
-    `<text x="20" y="${f(height + scale + 45)}" class="map-heading">Seam and stitch key</text>` +
-    map.legend.map((entry, i) => `<text x="${i < 6 ? 20 : f(width / 2)}" y="${f(height + scale + 60 + (i % 6) * 13)}" class="map-entry">${esc(entry)}</text>`).join('') +
-    map.stitchLegend.map((entry, i) => `<text x="${i % 2 ? f(width / 2) : 20}" y="${f(height + scale + 145 + Math.floor(i / 2) * 13)}" class="map-entry">${esc(entry)}</text>`).join('')) : ''
+    `<text x="${f(layout.heading.x)}" y="${f(layout.heading.y)}" class="map-heading">${layout.heading.text}</text>` +
+    layout.lines.map((l) => `<text x="${f(l.x)}" y="${f(l.y)}" class="map-entry">${esc(l.text)}</text>`).join('')) : ''
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="${f(width)}mm" height="${f(H)}mm" viewBox="0 0 ${f(width)} ${f(H)}">
 <title>${esc(`${title}, ${size}`)}</title>
