@@ -67,3 +67,6 @@ variants:
     name: Fuller coat
     description: "More room through the hip for layering."
     options: { seatEase: 0.12 }
+
+# No pattern map yet: the tailored jacket's would label pieces this design changes.
+patternMap: false

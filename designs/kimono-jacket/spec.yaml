@@ -100,3 +100,6 @@ variants:
     name: Notched lapels
     description: "The more everyday lapel, its top edge meeting the collar in a notch, in place of the peaks."
     options: { lapelStyle: notch }
+
+# No pattern map yet: the tailored jacket's would label pieces this design changes.
+patternMap: false

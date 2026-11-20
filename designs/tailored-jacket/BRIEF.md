@@ -57,24 +57,15 @@ shoulder and the waist, so the princess seams follow the darts.
 | Lining | (not drafted) | `lining` on: front lining from the facing's inner edge to the princess seam; back lining below the back-neck facing, on the fold with `liningPleat` 1.4% of chest extra at the CB (a pleat); side back, side front and both sleeve pieces cut again in lining |
 
 ## Construction order
-1. Back to side backs, front to side fronts (princess seams); CB.
-2. Pockets (marked on the panels):
-   - breast welt, across the front seam: interface the welt, fold it lengthwise, lay it below
-     the mouth line (raw edges up), a bag piece above; stitch both, cut between, turn the bag
-     through, press the welt up over the mouth, sew its ends down, then the bags together;
-   - hip and ticket pockets on the side fronts: make up each flap (fabric and lining, round
-     three sides; turn); flap above the mouth line, the folded jet below; stitch, cut, turn the
-     jet to a single piping and the flap down; a bag piece to each, then the bags together.
-3. Shoulders, side seams.
-4. Collar to the neckline up to the gorge; front facings and the back-neck facing joined at
-   the shoulders, then to the fronts, lapels and back neck, the collar's under side to the
-   facings' gorge.
-5. Sleeves: the two pieces together, then set into the armhole, easing the cap.
-6. Lining: front linings, side fronts, side backs and back lining together (the back's CB
-   pleat folded and tacked at the neck and waist); sleeve linings made up and set in; the
-   lining sewn to the facings' inner edges.
-7. Hem the jacket and sleeves; hem the lining to the jacket's hem allowance, leaving an ease
-   fold. Buttonholes on the right front, buttons on the left.
+Letters are the seam and placement codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed open, **HS** hem stitch, **BH** machine buttonhole.
+
+1. Sew the princess seams: the back **2** to the side backs **3** at **PB**, the fronts **1** to the side fronts **4** at **PF**. The back is cut on the fold.
+2. Pockets, at the marked mouths: the breast welt **P12** across the seam between front **1** and side front (welt **12**, bag **13**): interface the welt, fold it lengthwise, lay it below the mouth line with a bag piece above, stitch both, cut between, turn the bag through, press the welt up and sew its ends down, then the bags together. The hip and ticket pockets on the side fronts **4** at **P14** and **P17** (flaps **14**, **17**, jets **15**, **18**, bags **16**, **19**): make up each flap, lay it above the mouth line and the folded jet below; stitch, cut, turn the jet to a single piping and the flap down; a bag piece to each, then the bags together.
+3. Sew the shoulders **A** across the front **1**, side front **4**, back **2** and side back **3**, then the side seams **B**.
+4. Sew the collar **6** to the neckline **D** of the fronts **1** and back **2** up to the gorge. Join the front facings **5** and back-neck facing **9** at the shoulders, then sew them to the front edges and lapels **E** and the back neck, the collar's under side to the facings' gorge.
+5. Sleeves: join the top sleeve **7** and under sleeve **8** at **F** and **G**, then set them into the armhole at **C**, easing the cap.
+6. Lining: front linings **10** and back lining **11** together with the side panels cut from them (the back's CB pleat folded and tacked at the neck and waist); make up the sleeve linings and set them in; sew the lining to the facings' **5** inner edges.
+7. Turn up the hems **H** of the jacket (**1**, **2**, **3**, **4**) and sleeves **7**, **8** with **HS**; hem the lining to the jacket's hem allowance, leaving an ease fold. Work the buttonholes **BH** on the right front and sew the buttons on the left.
 
 ## Changes and what isn't modelled
 - **CB on the fold.** Mitchell's CB is a seam, shaped 1" at the waist. The waist shaping here

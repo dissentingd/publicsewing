@@ -179,3 +179,89 @@ variants:
     name: Notched lapels
     description: "The more everyday lapel, its top edge meeting the collar in a notch, in place of the peaks."
     options: { lapelStyle: notch }
+
+# The pattern map (SPEC.md, "Pattern map"); construction.yaml gives the sewing order. The back is
+# cut on the fold; the princess seams run from the shoulder. Linings carry numbers only.
+patternMap:
+  pieces:
+    { front: 1, back: 2, sideBack: 3, sideFront: 4, facing: 5, collar: 6, topsleeve: 7, undersleeve: 8,
+      backNeckFacing: 9, frontLining: 10, backLining: 11, breastWelt: 12, breastBag: 13, hipFlap: 14, hipJet: 15,
+      hipBag: 16, ticketFlap: 17, ticketJet: 18, ticketBag: 19 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+    HS: { name: hem stitch, key: turn the hem and stitch it by hand or blind-hem }
+    BH: { name: buttonhole, key: reinforced machine buttonhole }
+  codes:
+    PF:
+      name: front princess seam
+      stitch: SS
+      at: [{ part: front, between: [seamTop, hemSeam] }, { part: sideFront, between: [seamTop, hemSeam] }]
+    PB:
+      name: back princess seam
+      stitch: SS
+      at: [{ part: back, between: [seamTop, hemSeam] }, { part: sideBack, between: [seamTop, hemSeam] }]
+    A:
+      name: shoulder
+      stitch: SS
+      at:
+        - { part: front, between: [hps, seamTop] }
+        - { part: sideFront, between: [seamTop, shoulder] }
+        - { part: back, between: [hps, seamTop] }
+        - { part: sideBack, between: [seamTop, shoulder] }
+    B:
+      name: side seam
+      stitch: SS
+      at: [{ part: sideFront, between: [waist, hemSide] }, { part: sideBack, between: [waist, hemSide] }]
+    C:
+      name: sleeve cap, set into the armhole
+      stitch: SS
+      at: [{ part: topsleeve, between: [frontPitchPoint, backPitchPoint] }, { part: undersleeve, between: [usLeftEdge, usTip] }]
+    D:
+      name: neckline and collar, to the gorge
+      stitch: SS
+      at:
+        - { part: front, between: [hps, gorge] }
+        - { part: back, between: [hps, cbNeck] }
+        - { part: collar, path: neck, along: 0.5 }
+    E:
+      name: front edge, lapel and facing
+      stitch: SS
+      at: [{ part: front, between: [break, hemEdge] }]
+    F:
+      name: sleeve front seam
+      stitch: SS
+      at: [{ part: topsleeve, between: [tsLeftEdge, tsWristLeft] }, { part: undersleeve, between: [usLeftEdge, usWristLeft] }]
+    G:
+      name: sleeve back seam
+      stitch: SS
+      at: [{ part: topsleeve, between: [backPitchPoint, tsWristRight] }, { part: undersleeve, between: [usTip, usWristRight] }]
+    H:
+      name: jacket and sleeve hems
+      stitch: HS
+      at:
+        - { part: front, between: [hemEdge, hemSeam] }
+        - { part: sideFront, between: [hemSeam, hemSide] }
+        - { part: sideBack, between: [hemSeam, hemSide] }
+        - { part: back, between: [cbHem, hemSeam] }
+        - { part: topsleeve, between: [tsWristLeft, tsWristRight] }
+        - { part: undersleeve, between: [usWristLeft, usWristRight] }
+    P12:
+      name: breast welt mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: breastWelt, along: 0.5, optional: true }]
+    P14:
+      name: hip pocket mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: sideFront, path: hipMouth, along: 0.5, optional: true }]
+    P17:
+      name: ticket pocket mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: sideFront, path: ticketMouth, along: 0.5, optional: true }]
+    BH:
+      name: buttons; buttonholes on the right front
+      stitch: BH
+      kind: closure
+      at: [{ part: front, snippet: button0 }]

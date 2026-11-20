@@ -1,0 +1,11 @@
+# References for the independently written steps in BRIEF.md's Construction section.
+# Codes and piece numbers are defined once in spec.yaml (patternMap); this file names their sewing order.
+design: tailored-jacket
+steps:
+  - { order: 1, action: princess seams, pieces: [2, 3, 1, 4], seams: [PB, PF], stitches: [SS] }
+  - { order: 2, action: pockets, pieces: [12, 13, 14, 15, 16, 17, 18, 19, 1, 4], placements: [P12, P14, P17], stitches: [SS], whenAny: [breastPocket, pockets, ticketPocket] }
+  - { order: 3, action: shoulders and sides, pieces: [1, 4, 2, 3], seams: [A, B], stitches: [SS] }
+  - { order: 4, action: collar and facings, pieces: [6, 1, 2, 5, 9], seams: [D, E], stitches: [SS] }
+  - { order: 5, action: sleeves, pieces: [7, 8], seams: [F, G, C], stitches: [SS] }
+  - { order: 6, action: lining, pieces: [10, 11, 5], whenAny: [lining] }
+  - { order: 7, action: hems and buttonholes, pieces: [1, 2, 3, 4, 7, 8], seams: [H], placements: [BH], stitches: [HS, BH] }
