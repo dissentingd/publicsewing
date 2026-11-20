@@ -156,7 +156,9 @@ for (const design of designs) {
     check(text.length > 100 && valid(text), `${name} downloads (${text.length} bytes)`)
     if (map && ['Layered SVG', 'Projector PDF', 'Projector PDF, dark'].includes(name)) {
       const [code, { name: seam }] = Object.entries(map.codes)[0]
-      check(text.includes('Seam and stitch key') && text.includes(`${code} ${seam}`), `${name} contains the embedded map key`)
+      // A PDF string escapes backslashes and parentheses
+      const line = name === 'Layered SVG' ? `${code} ${seam}` : `${code} ${seam}`.replace(/[\\()]/g, '\\$&')
+      check(text.includes('Seam and stitch key') && text.includes(line), `${name} contains the embedded map key`)
       check(name === 'Layered SVG' ? text.includes('class="map-code"') : text.includes(`(${code}) Tj`), `${name} draws seam codes on pieces`)
     }
   }

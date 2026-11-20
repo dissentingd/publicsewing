@@ -62,3 +62,19 @@ pieces:
     length: knee
     width: knee * 0.1
     if: "false"
+
+patternMap:
+  merge: true
+  pieces: { band: null }
+  stitches:
+    HS: { name: hem stitch, key: turn the hem twice and stitch it }
+  codes:
+    O:
+      name: outseam
+      stitch: SS
+      at: [{ part: front, between: [wOut, hemOut] }, { part: back, between: [wOut, hemOut] }]
+    B: null
+    H:
+      name: hems
+      stitch: HS
+      at: [{ part: front, between: [hemOut, hemIn] }, { part: back, between: [hemOut, hemIn] }]

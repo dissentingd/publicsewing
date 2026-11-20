@@ -54,3 +54,31 @@ pieces:
     after: [back, front]
     length: knee * (1 + kneeBandEase)
     width: 2 * knee * bandWidth
+
+patternMap:
+  pieces: { front: 1, back: 2, band: 3 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, allowances neatened together" }
+    GS: { name: gathering, key: "two rows of long stitches, drawn up to fit" }
+    ES: { name: edge-stitch, key: "turn the casing and edge-stitch it, leaving a gap for the elastic" }
+  codes:
+    X:
+      name: crotch seam
+      stitch: SS
+      at: [{ part: front, between: [styleWaistIn, fork] }, { part: back, between: [styleWaistIn, fork] }]
+    I:
+      name: inseam
+      stitch: SS
+      at: [{ part: front, between: [fork, hemIn] }, { part: back, between: [fork, hemIn] }]
+    O:
+      name: outseam, open below the notch
+      stitch: SS
+      at: [{ part: front, between: [wOut, hemOut] }, { part: back, between: [wOut, hemOut] }]
+    C:
+      name: waist casing
+      stitch: ES
+      at: [{ part: front, between: [cIn, cOut] }, { part: back, between: [cIn, cOut] }]
+    B:
+      name: leg gathered into the band
+      stitch: GS
+      at: [{ part: front, between: [hemOut, hemIn] }, { part: back, between: [hemOut, hemIn] }, { part: band, path: seam, along: 0.375 }]
