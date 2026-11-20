@@ -58,5 +58,21 @@ Work in `designs/`, with one commit per garment. Stage files by name.
 12. **Report** what you changed from the source and anything you didn't run or verify. Add a line to
     your notes on what cost time.
 
-`$S` is any scratch directory outside the repo. Run the full `npm test` (several minutes, in the
-background) only before a push.
+`$S` is any scratch directory outside the repo, not `designs/tools/_*` or another folder inside
+it. Run the full `npm test` (several minutes, in the background) only before a push.
+
+## Pattern maps (piece numbers, seam codes, stitch key)
+Only the chore coat has one so far; [PATTERN_MAP_ROLLOUT.md](PATTERN_MAP_ROLLOUT.md) is the plan and
+its status. Before adding or changing one:
+- **Map records go where the browser can read them.** The site's download buttons build the SVG and
+  PDFs in the visitor's browser, which has only the bundled specs. Pieces, codes, stitches and
+  anchors belong in the design's `spec.yaml` (`patternMap:`, once the refactor lands; the chore coat's
+  `pattern-map.mjs` until then). `construction.yaml` holds the sewing steps only. Never test a design
+  id in a shared file: ask `mapFor(Design)` (`lib/pattern-map.mjs`).
+- **Anchor on drafted geometry**, a path and a fraction along it, never a coordinate.
+  `node tools/map-check.mjs <design> [set] [options json] --names` lists each piece's paths and points;
+  without `--names` it reports labels off their seam, overlapping each other, the title block,
+  snippets or the grainline. Run it at an adult, a child and `stoutMale48`, and with each variant
+  that turns pieces off, with `--size 16` (page preview) and `--size 8` (downloads).
+- **Prove a refactor changes nothing:** `node tools/snapshot.mjs <design> save` before,
+  `compare` after. It also compares the page preview, every download file and the map text.

@@ -14,7 +14,7 @@ The skirt coat and pantry jacket have committed `construction.yaml` records (`44
 
 ## Implementation sequence
 
-1. Move the chore-coat's existing codes, stitch definitions and construction references into a design-local `construction.yaml`. Identify every mark against the drafted part/path/edge, and flag anything the draft does not actually draw. Validate active piece references and unique codes. Keep the current page component only as a temporary comparison fixture.
+1. Move the chore-coat's existing codes and stitch definitions into its spec (`patternMap:`, see "Review and next steps" below; this first said `construction.yaml`, which the browser exporters can't read), and its construction references into `construction.yaml`. Identify every mark against the drafted part/path/edge, and flag anything the draft does not actually draw. Validate active piece references and unique codes. Keep the current page component only as a temporary comparison fixture.
 2. Preserve named paths and edge anchors during drafting/export. Resolve each active annotation against the current draft to a piece-local point and a short leader or segment. Use the same resolved semantic records for all outputs, then transform through each renderer's own placement geometry. Reject unresolved required anchors rather than guessing coordinates.
 3. Add an embedded key with piece/seam/placement and stitch/finish codes to the FreeSewing-rendered preview SVG before the PNG screenshot, to the layered SVG, and to the projector PDF. The key belongs in each actual document. Budget a dedicated panel in the page bounds and enforce minimum print text sizes; inspect the 1000 px PNG at full desktop and phone widths. Keep the page construction prose, remove its duplicate standalone legend once the embedded key is verified.
 4. Generate default and option-variant previews afresh, and verify downloaded SVG plus light/dark PDF from the same option sets. Extract PDF text and render PDF pages to images to confirm the codes are truly present and legible. Test changed size sets and option-disabled pieces. Only then update the page generator and expand to the skirt coat and pantry jacket.
@@ -30,6 +30,25 @@ Verified: default and pocket-disabled drafts at `cisMaleAdult38`, `usdaBoyC5` an
 The FreeSewing editor's stock Export view constructs its own SVG/PDF and bypasses `exportFiles`; it remains unannotated. For the chore coat the page now presents the annotated download controls below the live editor and hides that stock Export view and layout route. This temporarily removes its tiled PDF choices for that design; restoring them requires feeding the same resolved map into FreeSewing's export path or offering an annotated tiling route. The browser check confirms the stock Export link is absent after choosing a size.
 
 At a 390 px browser viewport, the page's map viewport is 358 px wide and scrolls horizontally across the 1000 px image; the desktop image is displayed at its full 1000 px width. Still needed before the rollout can expand: make conditional step presentation respond to published variants, review label collisions across more option combinations, restore annotated tiled PDFs, and complete the source audit before publication. The skirt-coat and pantry-jacket YAML records remain inputs to be wired into this rendering path; do not publish them as annotated maps yet.
+
+## Review and next steps (2026-11-20)
+
+Setup now in place:
+- `lib/pattern-map.mjs` (`mapFor(Design)`) is the one place that says which designs carry a map. The four shared files that still test `id === 'chorecoat'` (`lib/export/index.mjs`, `tools/render.mjs`, `tools/drape-export.mjs`, `tools/validate-construction.mjs`), plus `site/scripts/generate.mjs` and `PatternEditor.jsx`, move to it in the refactor.
+- `tools/snapshot.mjs` now also compares the page preview, every download file (byte-identical unless `--draft-only`) and the map labels and key text in the layered SVG. `tools/variants.json` has a pocketless chore-coat variant.
+- `tools/map-check.mjs` lists anchorable paths and points (`--names`) and reports labels off their seam or overlapping other labels, the title block, snippets or the grainline (estimated boxes).
+
+Decided: **map records live in `spec.yaml` (`patternMap:`)**, not in `construction.yaml` or a design-local module. `exportFiles` runs in the visitor's browser, which only has the bundled specs (`site/src/generated/specs.json`), and `readSpec` passes a spec's fields on through `extends`, so the boys' work coat inherits the chore coat's map. `designFromSpec` will resolve each anchor's part to its full drafted name (inherited pieces keep their parent's prefix) and attach the map to the design's data. `construction.yaml` keeps the sewing steps only; the skirt-coat and pantry-jacket records move their pieces, seams and placements into their specs when wired.
+
+Refactor, in order (snapshot `chore-coat` and `boys-work-coat` first; `compare` must pass with the map moved and nothing else changed):
+1. Move `pattern-map.mjs` data into the chore coat's spec; generic resolver, legend and drape map in `lib/pattern-map.mjs`, keyed by full part name; replace every `chorecoat` test.
+2. One key-layout function returning lines and positions in mm, drawn by the preview, SVG and PDF renderers; height computed from the number of entries (the current fixed 180/200 mm and six-row columns overflow past 12 seam codes; the skirt coat has 14 seams).
+3. Anchors between two points follow the seam path between them, not the chord.
+4. Then fix what `map-check` finds on the chore coat (below), regenerate its preview, and only then start the skirt coat.
+
+Found by `map-check` on the chore coat at `cisMaleAdult38`: the sleeve's F labels sit 12.8 mm off the underarm seam, because `capLeft`/`capRight` are 154–160 mm off the drafted sleeve seam (Brian's points, not this sleeve's); the collar's G label is 4.7 mm off its outer edge (chord of a curve) and overlaps the collar's title notes.
+
+Next garment: **the skirt coat** (Sheifer 1908, public domain). It has a construction record, drafted buttonhole marks and a drape, and it tests a different block (Breanna, via the box coat), darts, a two-piece sleeve, 14 seams and crowded labels on the front. The boys' work coat comes for free with step 1 and only proves inheritance. The pantry jacket waits until its buttonholes are drafted.
 
 ## 1. Define the shared data
 

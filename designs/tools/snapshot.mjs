@@ -1,16 +1,19 @@
 // Snapshot a design's drafted output at every test measurement set, or compare it with a saved
 // snapshot. Used to prove a conversion (e.g. code -> spec) leaves the pattern unchanged.
-// Usage: node tools/snapshot.mjs <design> save|compare [--variants '<json>'] [--tol 0.1]
+// Usage: node tools/snapshot.mjs <design> save|compare [--variants '<json>'] [--tol 0.1] [--draft-only]
 //   variants: { name: options }, default the design's entry in tools/variants.json (the option
 //   sets its tests use); snapshots go to out/snapshots/.
-// compare passes when every point, path, snippet and stored value matches within `tol` mm;
+// compare passes when every point, path, snippet and stored value matches within `tol` mm, the
+// pattern-map labels and key in the layered SVG match, and the preview and download files
+// (DXF, Seamly, SVG, PDFs) are byte-identical (`--draft-only` reports but allows those);
 // `--rename old.key=new.key` (repeatable) moves a store key in the saved snapshot first.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { themePlugin } from '@freesewing/plugin-theme'
-import { loadDesign } from './render.mjs'
+import { loadDesign, render } from './render.mjs'
+import { exportFiles } from '../lib/export/index.mjs'
 import { sets } from '../test/coat-checks.mjs'
 
 const here = dirname(fileURLToPath(import.meta.url))
@@ -36,6 +39,24 @@ function storeData(store) {
   return JSON.parse(JSON.stringify(data))
 }
 
+const hash = (s) => createHash('sha256').update(s).digest('hex')
+const dated = (s) => s.replace(/[A-Z][a-z]+day, [A-Z][a-z]{2} \d{1,2}, \d{4}/g, 'DATE')
+
+/**
+ * What a visitor gets: the page preview (render() with any pattern map and key) and the
+ * download files, as hashes, plus the pattern-map text drawn in the layered SVG, readable
+ * so a changed or moved code shows in the diff. The preview and exports each lay pieces out
+ * on their own, so their hashes are compared separately from the draft.
+ */
+function outputData(Design, measurements, options, set) {
+  const files = exportFiles(Design, { measurements, options, sa: 10 }, { name: Design.designConfig.data.id, size: set })
+  const outputs = { preview: hash(dated(render(Design, set, { measurements, options }).svg)) }
+  for (const [k, v] of Object.entries(files)) outputs[k] = hash(v)
+  const map = [...files.svg.matchAll(/<text x="([-\d.]+)" y="([-\d.]+)" class="map-(code|entry|heading)">([^<]*)<\/text>/g)]
+    .map(([, x, y, kind, text]) => [kind, text, Number(x), Number(y)])
+  return { outputs, map }
+}
+
 export function snapshot(Design, variants) {
   const out = {}
   for (const [v, options] of Object.entries(variants)) {
@@ -53,6 +74,7 @@ export function snapshot(Design, variants) {
         store: storeData(store),
         logs: { error: store.logs.error.length, warn: store.logs.warn.length },
         svg: createHash('sha256').update(svg).digest('hex'),
+        ...outputData(Design, measurements, options, name),
       }
     }
   }
@@ -110,12 +132,19 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     if (JSON.stringify(base.variants) !== JSON.stringify(variants)) throw new Error(`variants differ from the snapshot's: ${JSON.stringify(base.variants)}`)
     let failed = 0
     let sameSvg = 0
+    const changedOutputs = new Set()
     for (const [k, c] of Object.entries(base.cases)) {
       const found = []
-      const { svg: a, ...restA } = c
-      const { svg: b, ...restB } = now[k] || {}
+      const { svg: a, outputs: oa = {}, ...restA } = c
+      const { svg: b, outputs: ob = {}, ...restB } = now[k] || {}
       if (a === b) sameSvg++
       diff(restA, restB, tol, k, found)
+      // The preview and download files must be byte-identical, unless --draft-only
+      for (const f of new Set([...Object.keys(oa), ...Object.keys(ob)])) {
+        if (oa[f] === ob[f]) continue
+        changedOutputs.add(f)
+        if (!args.includes('--draft-only')) found.push(`${k}.outputs.${f}: changed`)
+      }
       if (found.length) {
         failed++
         // SNAP_ALL=1: every difference in every case
@@ -124,6 +153,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     }
     const n = Object.keys(base.cases).length
     console.log(`${n - failed}/${n} cases match within ${tol} mm; ${sameSvg}/${n} render identical SVG`)
+    console.log(changedOutputs.size ? `changed outputs: ${[...changedOutputs].join(', ')}` : 'preview and download files identical')
     process.exitCode = failed ? 1 : 0
   } else throw new Error('mode is save or compare')
 }

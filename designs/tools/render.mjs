@@ -28,7 +28,7 @@ export function measurementSet(name) {
 }
 
 export function render(Design, set, settings = {}) {
-  const pattern = new Design({ measurements: measurementSet(set), sa: 10, complete: true, ...settings })
+  const pattern = new Design({ measurements: settings.measurements ?? measurementSet(set), sa: 10, complete: true, ...settings })
   pattern.use(themePlugin)
   pattern.draft()
   const mapped = Design.designConfig.data?.id === 'chorecoat'

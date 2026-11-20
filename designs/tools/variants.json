@@ -10,7 +10,7 @@
   "painters-jacket": { "default": {}, "plain": {"breastPocket": false, "lowerPockets": false}, "variant": {"lengthBelowWaist": 1.8, "buttons": 6, "pocketShape": "square", "cuffDepth": 0.5} },
   "aprons": { "default": {}, "plain": {"apronType": "carpenter"}, "variant": {"apronType": "painter", "apronWidth": 1.1, "apronLength": 0.8, "tieLength": 0.9} },
   "boys-work-coat": { "default": {}, "square": { "pocketShape": "square", "buttons": 6, "hemCurve": 1 }, "plain": { "breastPocket": false, "lowerPockets": false, "frontDrop": 0.2, "waistShaping": true } },
-  "chore-coat": { "default": {}, "square": { "pocketShape": "square", "buttons": 6, "hemCurve": 1 }, "plain": { "breastPocket": false, "lowerPockets": false, "frontDrop": 0.2, "waistShaping": true } },
+  "chore-coat": { "default": {}, "square": { "pocketShape": "square", "buttons": 6, "hemCurve": 1 }, "plain": { "breastPocket": false, "lowerPockets": false }, "plain": { "breastPocket": false, "lowerPockets": false, "frontDrop": 0.2, "waistShaping": true } },
   "frock": { "default": {}, "longSleeves": {"sleeves": "long"}, "variant": { "opening": "back", "sleeves": "long", "neckFinish": "band", "gathers": 1.3 } },
   "norfolk-jacket": {"default": {}, "closed": {"lapels": false, "buttons": 5}, "plain": {"pleats": 0, "backVent": false, "pocketFlaps": false, "lowerPockets": false}, "deep": {"pleats": 4, "pleatDepth": 0.025, "hemCurve": 0.5}},
   "hunting-coat": { "default": {}, "plain": { "belt": false, "pocketFlaps": false, "pocketPleat": 0, "actionPleat": 0, "pocketShape": "pointed" } },
