@@ -83,3 +83,59 @@ variants:
     name: Above the knee
     description: "Simons' length for a boy's kilt: 10 1/2 in on a six-year-old, well above the knee."
     options: { kiltLength: 0.57 }
+
+# The pattern map (SPEC.md, "Pattern map").
+patternMap:
+  pieces:
+    apron: 1
+    pleats: 2
+    waistband: 3
+    strap: 4
+  stitches:
+    SS:
+      name: straight seam
+      key: straight seam, pressed open
+    TS:
+      name: edge stitch
+      key: stitch each pleat close to its fold
+  codes:
+    S:
+      name: side seam, apron to pleats
+      stitch: SS
+      at:
+        - part: apron
+          between:
+            - waistSide
+            - hemSide
+        - part: pleats
+          between:
+            - sideTop
+            - sideHip
+    H:
+      name: hem
+      stitch: SS
+      at:
+        - part: apron
+          between:
+            - hemSide
+            - hemEdge
+    K:
+      name: pleat fold and placement lines
+      stitch: TS
+      kind: placement
+      at:
+        - part: pleats
+          path: fold0
+          along: 0.3
+        - part: pleats
+          path: place0
+          along: 0.3
+    ST:
+      name: strap placement
+      stitch: SS
+      kind: placement
+      at:
+        - part: apron
+          path: strap1
+          along: 0.5
+          optional: true

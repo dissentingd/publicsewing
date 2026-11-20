@@ -130,3 +130,27 @@ variants:
     name: Shorter length
     description: The two-part apron shortened well above the ankle.
     options: { apronLength: 0.75, openingLength: 0.23 }
+
+# The pattern map (SPEC.md, "Pattern map").
+patternMap:
+  pieces:
+    partI: 1
+    partII: 2
+    longStrap: 3
+    shortTab: 4
+  stitches:
+    SS:
+      name: straight seam
+      key: straight seam, pressed open
+  codes:
+    GM:
+      name: matching marks
+      stitch: SS
+      kind: placement
+      at:
+        - part: partI
+          path: mark0
+          along: 0.5
+        - part: partII
+          path: mark0
+          along: 0.5
