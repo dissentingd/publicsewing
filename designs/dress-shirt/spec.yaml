@@ -93,3 +93,9 @@ pieces:
 patternMap:
   merge: true
   pieces: { collar: 12, collarFall: 6, cuff: 13, sleevePlacket: 14, breastFlap: null, shoulderStrap: null }
+  codes:
+    P7:
+      name: breast pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: breastPocket, along: 0.5, optional: true }]
