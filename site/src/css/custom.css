@@ -197,32 +197,6 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
   color: var(--ifm-color-emphasis-700);
 }
 
-.annotated-pattern { margin: 2.25rem 0; padding: clamp(1rem, 3vw, 2rem); border: 1px solid var(--ifm-color-emphasis-300); border-radius: 6px; background: var(--ifm-background-surface-color); }
-.annotated-pattern-heading { display: flex; justify-content: space-between; gap: 2rem; align-items: end; margin-bottom: 1.25rem; }
-.annotated-pattern-heading h2 { margin: 0; }
-.annotated-pattern-heading > p { max-width: 31rem; margin: 0; }
-.annotated-pattern-layout { display: block; }
-.annotated-pattern-image { position: relative; max-width: 1000px; margin-inline: auto; background: white; border: 1px solid var(--ifm-color-emphasis-300); }
-.annotated-pattern-image img, .annotated-pattern-image svg { display: block; width: 100%; height: auto; }
-.annotated-pattern-image svg { position: absolute; inset: 0; pointer-events: none; }
-.annotated-pattern-image svg circle { fill: #173e5a; stroke: white; stroke-width: 2; }
-.annotated-pattern-image svg text { fill: white; font: 700 13px system-ui, sans-serif; }
-.annotated-pattern-key { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 1rem; margin-top: 1rem; }
-.annotated-pattern-key-row { display: grid; grid-template-columns: 2rem 1fr; gap: 0.6rem; padding: 0.55rem 0; border-bottom: 1px solid var(--ifm-color-emphasis-200); }
-.annotated-pattern-code { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: #173e5a; color: white; font-weight: 700; font-size: 0.8rem; }
-.annotated-pattern-key-row small { display: block; color: var(--ifm-color-emphasis-700); font-size: 0.82rem; }
-.annotated-pattern-stitch { color: var(--ifm-color-primary) !important; font-weight: 700; }
-.stitch-legend { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--ifm-color-emphasis-300); }
-.stitch-legend h3 { margin: 0 0 0.8rem; font-size: 1.1rem; }
-.stitch-legend-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
-.stitch-legend-item { display: grid; grid-template-columns: 3rem 1fr; gap: 0.5rem; align-items: start; }
-.stitch-legend-item small { display: block; margin-top: 0.25rem; color: var(--ifm-color-emphasis-700); font-size: 0.83rem; }
-.stitch-symbol { width: 2.9rem; height: 1.25rem; margin-top: 0.15rem; fill: none; stroke: var(--ifm-color-primary); stroke-width: 2; }
-.stitch-symbol .stitch-edge { stroke: var(--ifm-color-emphasis-600); stroke-width: 1; }
-.stitch-legend > p { margin: 1rem 0 0; font-size: 0.88rem; }
-.annotated-pattern-note { margin: 1rem 0 0; color: var(--ifm-color-emphasis-700); font-size: 0.88rem; }
-@media (max-width: 800px) { .annotated-pattern-heading { display: block; } .annotated-pattern-heading > p { margin-top: 0.75rem; } .annotated-pattern-key { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stitch-legend-items { grid-template-columns: 1fr; gap: 0.75rem; } }
-@media (max-width: 480px) { .annotated-pattern-key { grid-template-columns: 1fr; } }
 /* Finished-garment illustration at the top of a design page, and its thumbnail in the table */
 .design-page { max-width: 1060px; margin-inline: auto; }
 .design-hero { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin: 1.25rem 0 2rem; }
@@ -540,3 +514,9 @@ html.docs-doc-id-index [class*='docMainContainer'] { max-width: 100%; }
   .measure-side { position: sticky; top: calc(var(--ifm-navbar-height) + 1rem); display: flex; flex-direction: column; align-items: flex-start; gap: 0.55rem; }
   .measure-side h3 { margin: 0; }
 }
+.pattern-map-section { margin: 2rem 0; }
+.pattern-map-section h2 { margin-bottom: 0.5rem; }
+.pattern-map-figure { margin: 1rem 0 0; }
+.pattern-map-figure figcaption { margin-top: 0.4rem; font-size: 0.8rem; color: var(--ifm-color-emphasis-700); }
+.pattern-map-scroll { overflow-x: auto; max-width: 100%; }
+.pattern-map-scroll .preview-img { display: block; width: 1000px; min-width: 1000px; height: auto; }

@@ -62,6 +62,7 @@ pieces:
       # Buttons on CF, from just below the neck to below the waist
       - buttons:
           count: buttons
+          buttonholes: true
           top: cfNeck.y + ext * 0.8
           bottom: min(cfWaist.y + waistToSeat * 0.8, cfHem.y - coat.frontEdge.r - ext)
           rows: [0]

@@ -21,6 +21,7 @@
 import { writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { loadDesign, measurementSet } from './render.mjs'
+import { resolve as resolveChoreMap, seams as choreSeams, stitches as choreStitches, pieces as choreNumbers, drapeSeams } from '../chore-coat/pattern-map.mjs'
 
 const CURVE_STEP = 5 // mm between samples along a curve
 
@@ -42,6 +43,36 @@ export function polyline(path) {
     }
   }
   return out
+}
+
+// Additional sewing information for a drape consumer. Coordinates remain in the drafted
+// part's frame, converted to cm like `pieces`, and retain their source part when clipping or
+// splitting has changed the simulation outline.
+export function choreDrapeMap(pattern, exported) {
+  const cm = (p) => [p.x / 10, p.y / 10]
+  const marks = resolveChoreMap(pattern)
+  const byCode = (code) => marks.filter((m) => m.code === code)
+    .map(({ part, x, y }) => ({ sourcePart: part, at: cm({ x, y }) }))
+  const seams = Object.fromEntries(Object.entries(choreSeams)
+    .filter(([code]) => /^[A-H]$/.test(code))
+    .map(([code, [name, stitch]]) => [code, { name, stitch, drapeSeam: drapeSeams[code] ?? null, anchors: byCode(code) }]))
+  const front = pattern.parts[0]['chorecoat.front']
+  const placements = Object.fromEntries([['P6', 'breastPocket'], ['P7', 'lowerPocket']]
+    .filter(([, path]) => front.paths[path])
+    .map(([code, path]) => [code, {
+      sourcePart: 'chorecoat.front', stitch: choreSeams[code][1],
+      outline: polyline(front.paths[path]).map(cm), anchors: byCode(code),
+    }]))
+  const closures = Object.entries(front.snippets)
+    .filter(([, s]) => ['button', 'buttonhole'].includes(s.def))
+    .map(([id, s]) => ({ id, kind: s.def, sourcePart: 'chorecoat.front', at: cm(s.anchor), stitch: s.def === 'buttonhole' ? 'BH' : 'attach-button' }))
+  const cutPieces = Object.fromEntries(Object.entries(choreNumbers)
+    .filter(([name]) => {
+      const part = pattern.parts[0][`chorecoat.${name}`]
+      return part && !part.hidden && part.paths.seam && !part.paths.seam.hidden
+    })
+    .map(([name, number]) => [name, { number, sourcePart: `chorecoat.${name}`, draped: Object.keys(exported.pieces).some((role) => role === name || role.startsWith(`${name}Plus`) || role.startsWith(`${name}Minus`)) }]))
+  return { units: 'cm', cutPieces, seams, placements, closures, stitches: choreStitches }
 }
 
 function bezier(a, b, c, d, t, end) {
@@ -110,6 +141,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const sources = byPiece('--sources')
   const sourceNames = new Map(Object.entries(sources).map(([role, full]) => [full, role]))
   const out = { design, set, options, measurements, pieces: {}, points: {}, snippets: {}, removed: {} }
+  const processed = new Set()
   // Only the design's own parts (not the blocks' or FreeSewing's library parts of the same name)
   const own = `${flag('--prefix', Design.designConfig.data.id)}.`
   for (const [full, part] of Object.entries(pattern.parts[0])) {
@@ -117,6 +149,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const name = sourceNames.size ? sourceNames.get(full) : full.slice(own.length)
     if (wanted ? !wanted.includes(name) : !part.paths.seam || part.hidden) continue
     if (!part.paths.seam) throw new Error(`${name} has no seam path`)
+    processed.add(name)
     let poly = polyline(part.paths.seam)
     const first = poly[0]
     const last = poly[poly.length - 1]
@@ -170,7 +203,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       }
     }
   }
-  if (wanted) for (const name of wanted) if (!(name in out.pieces)) throw new Error(`missing drape piece ${name} (source ${sources[name] ?? own + name})`)
+  if (wanted) for (const name of wanted) if (!processed.has(name)) throw new Error(`missing drape piece ${name} (source ${sources[name] ?? own + name})`)
+  if (design === 'chore-coat') out.patternMap = choreDrapeMap(pattern, out)
   writeFileSync(file, JSON.stringify(out, null, 1))
   console.log(`${file}: ${Object.entries(out.pieces).map(([k, v]) => `${k} (${v.length})`).join(', ')}`)
 }

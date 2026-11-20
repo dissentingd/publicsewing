@@ -137,12 +137,28 @@ def decals(data, pieces):
         dense.append(tuple(r['outline'][-1]))
         pts = [place(2 * r['at'] - x, y) for x, y in dense]
         lines.append({'kind': 'edge', 'pts': [[-p[0], p[1], p[2]] for p in pts]})
-    return {'buttons': buttons, 'lines': lines}
+    pattern_map = data.get('patternMap')
+    if pattern_map and 'front' in pieces:
+        # The drawn pocket outline includes the open mouth as its first segment. Stitch only
+        # the remaining sides and bottom; one breast pocket goes on the left, lower on both.
+        place = placer(data, pieces, 'front')
+        for code, placement in pattern_map['placements'].items():
+            outline = placement['outline'][1:]
+            if len(outline) < 2:
+                continue
+            pts = [place(x, y, 0.05) for x, y in outline]
+            copies = [[[-p[0], p[1], p[2]] for p in pts]] if code == 'P6' else [pts, [[-p[0], p[1], p[2]] for p in pts]]
+            lines.extend({'kind': 'stitch', 'code': code, 'stitch': placement['stitch'], 'pts': copy} for copy in copies)
+    return {'buttons': buttons, 'lines': lines, **({'patternMap': pattern_map} if pattern_map else {})}
 
 
 def main(outlines, config, out_dir, name, back='back'):
     data = json.loads(Path(outlines).read_text(encoding='utf-8'))
     cfg = yaml.safe_load(Path(config).read_text(encoding='utf-8'))
+    for code, seam in data.get('patternMap', {}).get('seams', {}).items():
+        drape_seam = seam.get('drapeSeam')
+        if drape_seam and drape_seam not in cfg['seams']:
+            raise ValueError(f'pattern map {code} references missing drape seam {drape_seam}')
     if back != 'back':
         cfg = rename(cfg, 'back', back)
     follow(data, cfg['pieces'])

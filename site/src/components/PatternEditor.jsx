@@ -18,8 +18,10 @@ export const editorConfig = (design) => ({
   enableBackend: false,
   stateKey: `publicsewing-editor-${design}`,
   // No 'designs' (FreeSewing's collection picker), 'save' (its backend) or 'docs' (its site)
-  mainViews: ['draft', 'export'],
-  extraViews: ['measurements', 'undos', 'layout'],
+  // The stock FreeSewing export view bypasses our geometry-linked map. The chore coat's
+  // annotated SVG and PDFs are available through the download buttons below the editor.
+  mainViews: design === 'chorecoat' ? ['draft'] : ['draft', 'export'],
+  extraViews: design === 'chorecoat' ? ['measurements', 'undos'] : ['measurements', 'undos', 'layout'],
   // editSettings (the settings as YAML) and timing are FreeSewing's own dev views; neither needs its backend
   devViews: ['inspect', 'logs', 'test', 'editSettings', 'timing'],
   hrefNewSet: false,
@@ -137,9 +139,9 @@ function OtherSoftware({ design, Design, useLocalStorageState }) {
   }
 
   return (
-    <details className="other-software">
+    <details className="other-software" open={design === 'chorecoat'}>
       <summary>
-        <strong>For other pattern software and projectors</strong> (Seamly2D, CLO3D and other CAD, Inkscape)
+        <strong>{design === 'chorecoat' ? 'Download annotated pattern' : 'For other pattern software and projectors'}</strong> (Seamly2D, CLO3D and other CAD, Inkscape)
       </summary>
       <p>
         Drafted at the size and options above, with seam allowance. AAMA DXF opens in CLO3D, Marvelous Designer,

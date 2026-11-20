@@ -14,10 +14,10 @@ const txt = (s) => String(s).replace(/[^\x20-\x7e]/g, '?').replace(/([\\()])/g, 
  * @param opts { title, size, notes: credit lines, sa: mm, dark: light lines on black }
  * @returns the PDF as a string of single-byte characters (write it as 'latin1')
  */
-export function toProjectorPdf(pieces, { title = 'pattern', size = '', notes = [], sa = 10, dark = false } = {}) {
+export function toProjectorPdf(pieces, { title = 'pattern', size = '', notes = [], sa = 10, dark = false, map = null } = {}) {
   const { placed, width, height } = shelves(pieces, { gap: 40, margin: 30 })
   const square = 100
-  const Hmm = height + square + 40
+  const Hmm = height + square + 40 + (map ? 180 : 0)
   // Pages are limited to 14400 units a side; past that, a UserUnit scales the units up
   const unit = Math.max(1, Math.ceil((Math.max(width, Hmm) * PT) / 14400))
   const k = PT / unit
@@ -65,8 +65,16 @@ export function toProjectorPdf(pieces, { title = 'pattern', size = '', notes = [
     }
     const cx = box.x + dx + 10
     const cy = box.y + dy + box.h / 2
-    text(cx + 10, cy, p.name, 12)
+    text(cx + 10, cy, map?.numbers[p.name] ? `${map.numbers[p.name]} ${p.name}` : p.name, 12)
     text(cx + 10, cy + 10, `cut ${p.quantity}${p.onFold ? ' on the fold' : ''}`, 7)
+    for (const mark of map?.marks ?? []) if (mark.part === p.id) {
+      const x = mark.x + dx
+      const y = mark.y + dy
+      // Knock out the geometry behind the code in both light and dark projector modes.
+      const bg = dark ? '0 0 0' : '1 1 1'
+      ops.push(`${bg} rg ${X(x - 6)} ${Y(y + 4)} ${X(14)} ${X(10)} re f ${fg} rg`)
+      text(x - 3, y + 2, mark.code, 7)
+    }
   }
   // The test square
   const ty = height + 10
@@ -75,6 +83,11 @@ export function toProjectorPdf(pieces, { title = 'pattern', size = '', notes = [
   path([[30, ty], [30 + square, ty], [30 + square, ty + square], [30, ty + square]], true)
   text(55, ty + 55, '10 cm', 10)
   ;[`${title}, ${size}`, 'PublicSewing (publicsewing.org). Project or print at 100%: the square measures 10 cm.', ...notes].forEach((s, i) => text(square + 50, ty + 12 + i * 9, s, 6))
+  if (map) {
+    text(30, height + square + 35, 'Seam and stitch key', 9)
+    map.legend.forEach((entry, i) => text(i < 6 ? 30 : width / 2, height + square + 52 + (i % 6) * 13, entry, 7))
+    map.stitchLegend.forEach((entry, i) => text(i % 2 ? width / 2 : 30, height + square + 137 + Math.floor(i / 2) * 13, entry, 7))
+  }
 
   const content = ops.join('\n')
   const objs = [

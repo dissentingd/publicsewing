@@ -8,6 +8,7 @@ import { dirname, join } from 'node:path'
 import * as models from '@freesewing/models'
 import { themePlugin } from '@freesewing/plugin-theme'
 import { all as children } from '../sizes/children.mjs'
+import { resolve as choreMap, legend as choreLegend, stitchLegend } from '../chore-coat/pattern-map.mjs'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const out = join(here, '..', 'out')
@@ -29,7 +30,25 @@ export function measurementSet(name) {
 export function render(Design, set, settings = {}) {
   const pattern = new Design({ measurements: measurementSet(set), sa: 10, complete: true, ...settings })
   pattern.use(themePlugin)
-  const svg = pattern.draft().render()
+  pattern.draft()
+  const mapped = Design.designConfig.data?.id === 'chorecoat'
+  const marks = mapped ? choreMap(pattern) : []
+  if (mapped) marks.forEach((mark, i) => {
+    const part = pattern.parts[0][mark.part]
+    // Native FreeSewing point text follows the part through its own layout.
+    const Point = part.paths.seam.start().constructor
+    part.points[`patternMap${i}`] = new Point(mark.x, mark.y).addText(mark.code, 'pattern-map-code')
+  })
+  let svg = pattern.render()
+  if (mapped) {
+    const box = svg.match(/width="([\d.]+)mm" height="([\d.]+)mm" viewBox="0 0 ([\d.]+) ([\d.]+)"/)
+    if (!box) throw new Error('pattern map: preview SVG has no millimetre viewBox')
+    const width = +box[3], height = +box[4], extra = 200
+    svg = svg.replace(box[0], `width="${box[1]}mm" height="${height + extra}mm" viewBox="0 0 ${width} ${height + extra}"`)
+    const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    const key = `<style>svg.freesewing text.pattern-map-code{font-family:sans-serif;font-size:16px;font-weight:700;fill:#111;stroke:#fff;stroke-width:4px;paint-order:stroke}svg.freesewing #pattern-map-key text{font-family:sans-serif;font-size:13px;font-weight:500;fill:#111}svg.freesewing #pattern-map-key .heading{font-size:16px;font-weight:700}</style><g id="pattern-map-key"><rect x="0" y="${height}" width="${width}" height="${extra}" fill="white"/><text class="heading" x="20" y="${height + 22}">Seam and stitch key</text>${choreLegend(marks).map((entry, i) => `<text x="${i < 6 ? 20 : width / 2}" y="${height + 43 + (i % 6) * 16}">${esc(entry)}</text>`).join('')}${stitchLegend.map((entry, i) => `<text x="${i % 2 ? width / 2 : 20}" y="${height + 150 + Math.floor(i / 2) * 18}">${esc(entry)}</text>`).join('')}</g>`
+    svg = svg.replace('</svg>', `${key}</svg>`)
+  }
   return { svg, store: pattern.setStores[0] }
 }
 

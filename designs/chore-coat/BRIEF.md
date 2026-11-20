@@ -78,8 +78,8 @@ The letters below identify matching seam lines in the pattern map. Numbers are p
 3. Join front **1** to back **2** at shoulders **A** with **FF**. Leave side seams **B** open for setting the sleeves flat.
 4. Join the two collar layers **4** along outer edge **G** with **SS**; trim, turn and press. Attach the under collar to neckline **D** of fronts **1** and back **2** with **SS**, matching centre back and ending halfway across each button stand. Clip the curved allowances before turning where needed.
 5. Join facings **5** to front edges **E** of fronts **1** with **SS**, enclosing the collar ends at the top and rounded corners below. Trim the corners, turn, press, and finish the facings' inner raw edges.
-6. Set sleeves **3** into armholes **C** with **SS** while the underarm is open, matching the cap notches; finish those raw allowances together. Close sleeve underarm **F** and body side seam **B** in one run with **FF**.
-7. Turn up the coat and sleeve hems (3 × seam allowance) and use **TS** along hem edges **H**.
+6. Set sleeves **3** into armholes **C** of fronts **1** and back **2** with **SS** while the underarm is open, matching the cap notches; finish those raw allowances together. Close sleeve underarm **F** and body side seam **B** in one run with **FF**.
+7. Turn up the hems of fronts **1**, back **2** and sleeves **3** (3 × seam allowance) and use **TS** along hem edges **H**.
 8. Work **BH** at the marked positions on the right front **1** for men's wear (left for women's); sew buttons at the marked centre-front line. Fit a muslin before cutting final cloth.
 
 ## Checks the tests run (`npm test`)

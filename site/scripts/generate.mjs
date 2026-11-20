@@ -31,6 +31,7 @@ import { readSpec } from '../../designs/lib/load-spec.mjs'
 import { categories } from '../../designs/lib/categories.mjs'
 import { designGroups } from '../catalog-sections.mjs'
 import { designFromSpec } from '../../designs/lib/spec.mjs'
+import { validateChoreConstruction } from '../../designs/tools/validate-construction.mjs'
 import { sets, stoutSets } from '../../designs/test/coat-checks.mjs'
 import { all as children } from '../../designs/sizes/children.mjs'
 import { babies } from '../../designs/sizes/babies.mjs'
@@ -44,6 +45,7 @@ const thumbnail = (name) => existsSync(out('static', 'img', 'catalog-thumbs', `$
 // The designs: every folder with a spec.yaml and a BRIEF.md
 // A design in progress (a spec but no brief yet) isn't listed until its brief is written
 const ids = readdirSync(designsDir).filter((d) => existsSync(join(designsDir, d, 'spec.yaml')) && existsSync(join(designsDir, d, 'BRIEF.md')))
+if (ids.includes('chore-coat')) validateChoreConstruction()
 const readme = readFileSync(join(site, '..', 'README.md'), 'utf8')
 const order = [...readme.matchAll(/^\| `([a-z-]+)` \| (.+?) \| (.+?) \|$/gm)].map((m) => ({ id: m[1], garment: m[2], source: m[3] }))
 
@@ -513,6 +515,14 @@ ids.forEach((id, i) => {
 </figure>`,
   ].filter(Boolean)
   const illustration = figures.length ? `<div className="design-figures">\n${figures.join('\n')}\n</div>\n` : ''
+  const patternMap = id === 'chore-coat' && preview ? `<section className="pattern-map-section" aria-labelledby="pattern-map-title">
+  <h2 id="pattern-map-title">Pattern map</h2>
+  <p>Numbers identify cut pieces. Letters match seam edges; P6 and P7 mark pocket placement. The stitch and finish key is inside the image.</p>
+  <figure className="pattern-map-figure">
+    <div className="pattern-map-scroll" tabIndex={0} aria-label="Scrollable pattern map"><a href={useBaseUrl('/img/previews/${id}.png')}><img className="preview-img" src={useBaseUrl('/img/previews/${id}.png')} alt="${about.name}: numbered pieces, seam and pocket codes, with embedded stitch and finish key" /></a></div>
+    <figcaption>Default options, size ${label(previewSet)}, with seam allowance. Scroll sideways on a narrow screen or click to enlarge.</figcaption>
+  </figure>
+</section>` : ''
   // The variants: this design with other options, each with how to set them. The buttons need
   // every option any variant touches, and those options' defaults
   const variantKeys = [...new Set(Object.values(spec.variants ?? {}).flatMap((v) => Object.keys(v.options)))]
@@ -618,7 +628,6 @@ hide_table_of_contents: true
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import PatternEditor from '@site/src/components/PatternEditor'
 import VariantButton from '@site/src/components/VariantButton'
-import AnnotatedPatternPreview from '@site/src/components/AnnotatedPatternPreview'
 
 <div className="design-page">
 <div className="design-hero">
@@ -639,13 +648,13 @@ ${traditionTags(id, about) ? `${traditionTags(id, about)}\n` : ''}
 </div>
 </div>
 
+${patternMap}
+
 <nav className="design-jump" aria-label="On this design page">
 <a href="#make-the-pattern">Make the pattern</a>
 <a href="#construction">Construction</a>
 <a href="#the-brief">Source notes</a>
 </nav>
-
-${id === 'chore-coat' && preview ? `<AnnotatedPatternPreview src={useBaseUrl('/img/previews/${id}.png')} />` : ''}
 
 ${pieces ? `<section className="design-pieces">\n${pieces}\n</section>` : ''}
 

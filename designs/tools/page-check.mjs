@@ -13,7 +13,7 @@ import { readSpec } from '../lib/load-spec.mjs'
 import { parse } from 'yaml'
 
 const here = dirname(fileURLToPath(import.meta.url))
-const build = join(here, '..', '..', 'site', 'build')
+const build = process.env.PUBLICSEWING_BUILD_DIR ?? join(here, '..', '..', 'site', 'build')
 const { values: args, positionals: designs } = parseArgs({ allowPositionals: true, options: { size: { type: 'string' } } })
 if (!designs.length) throw new Error('usage: node tools/page-check.mjs <design> [design ...] [--size "Women 36"]')
 if (!existsSync(build)) throw new Error('no site/build: run `npm run build` in site/ first')
@@ -144,7 +144,7 @@ for (const design of designs) {
   }
 
   // Every download
-  await page.locator('details.other-software summary').click()
+  if (!(await page.locator('details.other-software').evaluate((el) => el.open))) await page.locator('details.other-software summary').click()
   for (const [name, valid] of Object.entries(downloads)) {
     const [file] = await Promise.all([
       page.waitForEvent('download', { timeout: 30000 }).catch(() => null),
@@ -153,13 +153,18 @@ for (const design of designs) {
     const path = file && (await file.path())
     const text = path ? readFileSync(path, 'latin1') : ''
     check(text.length > 100 && valid(text), `${name} downloads (${text.length} bytes)`)
+    if (design === 'chore-coat' && ['Layered SVG', 'Projector PDF', 'Projector PDF, dark'].includes(name)) {
+      check(text.includes('Seam and stitch key') && text.includes('A shoulder'), `${name} contains the embedded map key`)
+      check(name === 'Layered SVG' ? text.includes('class="map-code"') : text.includes('(A) Tj'), `${name} draws seam codes on pieces`)
+    }
   }
   const note = await page.locator('details.other-software').innerText()
   check(!/Couldn't make the file/.test(note), 'no download reported a problem')
 
-  // The tool's own Export view: the tiled PDF, built in a worker, offered as a blob link
-  await page.evaluate(() => [...document.querySelectorAll('.pattern-editor a')].find((a) => /Export Pattern/.test(a.textContent))?.click())
-  for (const name of ['a4 PDF', 'letter PDF']) {
+  // The stock Export view is unavailable when a design's annotated downloads replace it.
+  const stockExport = await page.evaluate(() => [...document.querySelectorAll('.pattern-editor a')].some((a) => /Export Pattern/.test(a.textContent)))
+  if (stockExport) await page.evaluate(() => [...document.querySelectorAll('.pattern-editor a')].find((a) => /Export Pattern/.test(a.textContent))?.click())
+  for (const name of stockExport ? ['a4 PDF', 'letter PDF'] : []) {
     const button = page.getByRole('button', { name, exact: true })
     if (!(await button.count())) {
       check(false, `no ${name} button in the Export view`)
@@ -173,6 +178,7 @@ for (const design of designs) {
     }
     check(text.startsWith('%PDF'), `the tiled ${name} is made (${text.length} bytes)`)
   }
+  if (!stockExport) check(design === 'chore-coat', 'stock Export view is hidden for the annotated chore-coat pattern')
 
   check(!errors.length, `no console or network errors${errors.length ? `:\n  ${[...new Set(errors)].slice(0, 5).join('\n  ').slice(0, 800)}` : ''}`)
   await context.close()

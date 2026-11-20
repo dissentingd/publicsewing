@@ -42,7 +42,7 @@ index 967071e..b34b9c1 100644
        {ux >= levels.complete ? (
          <Button
            lgOnly
-@@ -476,40 +463,14 @@ export const HeaderMenuTestIcons = (props) => {
+@@ -476,40 +463,15 @@ export const HeaderMenuTestIcons = (props) => {
    )
  }
  
@@ -51,7 +51,7 @@ index 967071e..b34b9c1 100644
 -  const { update, state } = props
 -  const { settings = {} } = state // Guard against undefined settings
 -  const backend = useBackend()
-+  const { update } = props
++  const { update, config } = props
    const Button = HeaderMenuButton
    const size = 'tw:w-5 tw:h-5'
 -  const saveable = state._?.undos && state._.undos.length > 0
@@ -74,6 +74,7 @@ index 967071e..b34b9c1 100644
 -    } else update.view('save')
 -  }
  
++  if (!config.mainViews.includes('export')) return null
    return (
 -    <div className="tw:flex tw:flex-row tw:items-center tw:min-h-12 tw:flex-wrap tw:items-center tw:justify-center tw:px-2">
 -      <Button updateHandler={savePattern} tooltip="Save pattern" disabled={saveable ? false : true}>

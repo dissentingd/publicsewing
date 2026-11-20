@@ -474,13 +474,20 @@ export function draftBackVent(sh, { length, width }) {
 }
 
 /** Buttons in one or two rows (x offsets from CF), evenly spaced from `top` to `bottom` */
-export function placeButtons({ points, Point, snippets, Snippet, store }, { count, top, bottom, rows }) {
+export function placeButtons({ points, Point, snippets, Snippet, store }, { count, top, bottom, rows, buttonholes = false }) {
   for (let i = 0; i < count; i++) {
     const y = count > 1 ? top + ((bottom - top) * i) / (count - 1) : top
     rows.forEach((x, k) => {
       const id = `button${k}_${i}`
       points[id] = new Point(x - frontShift(store, y), y)
       snippets[id] = new Snippet('button', points[id])
+      // A front cut twice has its buttons and buttonholes on opposite garment sides.
+      // Both use the same drafted centre-front position on the single pattern piece.
+      if (buttonholes) {
+        const holeId = `buttonhole${k}_${i}`
+        points[holeId] = points[id].clone()
+        snippets[holeId] = new Snippet('buttonhole', points[holeId])
+      }
     })
   }
   store.set('coat.buttons', { top, bottom, count, rows })
