@@ -43,12 +43,12 @@ of the side seam, a shaped CB seam, and a shawl collar cut in one with the front
 ## Construction order
 1. Back to side backs, front to side fronts (princess seams); CB seam; the under-arm panel to
    the side backs and side fronts.
-2. Pockets, as the tailored jacket.
+2. If selected, make the breast welt and the hip and ticket pockets at their marked mouths before closing the shoulders: prepare each welt or flap and jet, stitch at the mouth, cut and turn the opening, then attach and close the bags.
 3. Shoulders; the two shawl collars' CB seam, then their neck edges to the back neck. The same
    for the facings, then the facings to the fronts and shawl.
 4. Sleeves: the two pieces together, then set into the armhole, the under-arm panel taking the
    bottom of it.
-5. Lining, hems and buttons as the tailored jacket.
+5. Join the body and sleeve linings, retaining a centre-back ease pleat, and attach them to the facings. Turn up the jacket and sleeve hems with an ease fold in the lining. Work the front buttonholes and sew on the buttons.
 
 ## Changes and what isn't modelled
 - **No neck dart in the shawl.** Mitchell's ½ in neck dart behind the neck point shapes the

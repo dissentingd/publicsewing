@@ -48,5 +48,9 @@ As the trousers: front, back (cut 2 each), waistband (2, folded), fly shield, fl
 loops, side pocket bags, back pocket jets and bags.
 
 ## Construction
-As the trousers' brief. Simons' khaki work pants were usually finished with a button fly and
-felled or double-stitched seams; either suits these pieces.
+Proposed making-up order for this unsewn draft:
+
+1. Sew the front and back darts and make any selected pockets, closing their bags.
+2. Sew the outseams and inseams, then attach the fly facing and shield. Fit the selected closure and sew the crotch seam to centre back.
+3. Attach the belt loops and waistband, finishing its ends over the fly.
+4. Turn and secure the leg hems. A button fly and felled or double-stitched seams suit the khaki work-pants version described by Simons.

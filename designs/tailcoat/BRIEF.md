@@ -69,7 +69,10 @@ Back, side body and front (to the waist seam), facing, collar, top and under sle
 lining, an inside breast pocket (`lining`, `insidePockets`, on by default).
 
 ## Construction
-As the surtout's brief, with tails in place of its skirt: join the body, then sew each tail to the
-waist seam from point 20 back to CB, and the two tails together at CB from the waist down as far as
-wanted (Simons' tails overlap a little there). Face the tail's front edge with its lining. Cut the
-lapels' facing in silk if wanted. Simons gives no making-up order.
+Proposed making-up order; Simons gives no making-up sequence:
+
+1. Make any breast welt and close its bag. Join the backs, side bodies and fronts, then the shoulders.
+2. Sew each tail to the waist seam from the front end of the tail back to centre back. Join the tails at centre back from the waist down to the chosen opening; the source shows a slight overlap there.
+3. Sew the collar to the neckline. Attach the front facings, turn and press the lapels and front edges, and face the leading edges of the tails with their lining. The lapel facings may be cut from silk.
+4. Assemble and set in the sleeves. Join the body, tail and sleeve linings and attach them to the facings and cuffs.
+5. Finish the body, tail and sleeve hems. Work the front buttonholes and sew on the buttons.

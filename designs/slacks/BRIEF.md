@@ -60,6 +60,10 @@ Front and back legs (the band cut on), fly shield and facing, belt loops, side p
 welt and bag. With `continuousBand` off, a separate waistband.
 
 ## Construction
-As the suit trousers, with the waistband cut on: fold and stitch the pleats from the waist line up
-to the band's top; sew the side and seat seams through the band; set the zip through the band; face
-the band's top with a waistband lining or a curtain (not drafted). Simons gives no making-up order.
+Proposed making-up order; Simons gives no making-up sequence:
+
+1. Fold and stitch the front pleats from the waist line to the top of the cut-on band. Sew the back darts and make any selected pockets, closing their bags.
+2. Sew the outseams and inseams, carrying the side seams through the band.
+3. Attach the fly facing and shield and set the zip through the band. Sew the crotch and seat seam through the back band.
+4. Face the top of the band with a waistband lining or curtain cut to its shape; that facing is not drafted here.
+5. Turn up and secure the leg hems.

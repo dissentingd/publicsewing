@@ -40,8 +40,13 @@ no strap.
 Front, back, waistband, fly pieces, side and back pocket pieces, belt loops, as the trousers; a button stand and a facing for the vent.
 
 ## Construction
-As the breeches: outseam from the pocket down to the top of the vent; stand on the back's edge and facing on the front's; inseam; crotch;
-waistband; hem; buttonholes on the front's edge, buttons on the stand.
+Proposed making-up order for this unsewn draft:
+
+1. Sew the front and back darts. Make any back welt and side pockets, closing their bags. Attach the fly facing and shield and fit the closure.
+2. Sew each outseam from the lower edge of the side pocket, if fitted, to the top of the leg vent. Attach the stand to the back vent edge and the facing to the front edge.
+3. Sew the inseams and the crotch seam from the fly to centre back.
+4. Add the belt loops and waistband, then turn and secure the leg hems.
+5. Work buttonholes on each front vent edge and sew the corresponding buttons to its stand.
 
 ## Changes and what isn't modelled
 - **The thigh's fullness is placed differently.** Simons puts it almost all on the back, widest at the fork line. Titan's back stays at the

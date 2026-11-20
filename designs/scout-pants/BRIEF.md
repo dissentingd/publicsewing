@@ -41,9 +41,14 @@ opening is shown.
 
 ## Pieces and construction
 
-Front and back legs, waistband, fly shield and facing, belt loops and pocket
-pieces. Sew the marked V tuck across each back knee and fold the pleat at each
-back hem, then sew the legs and finish as the suit trousers.
+Front and back legs, waistband, fly shield and facing, belt loops and pocket pieces.
+
+Proposed making-up order for this unsewn draft:
+
+1. Sew the marked V tuck across each back knee and fold the pleat at each back hem. Sew any front and back darts and make the selected pockets, closing their bags.
+2. Sew the outseams and inseams. Attach the fly shield and facing and fit the closure, then sew the crotch seam from the fly to centre back.
+3. Attach the belt loops and waistband and finish its ends over the fly.
+4. Turn and secure the leg hems, keeping the back hem pleats in place.
 
 ## Changes and limits
 

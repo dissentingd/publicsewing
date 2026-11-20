@@ -68,6 +68,10 @@ in pairs), and the lining: back-neck facing, front and back linings, the skirt a
 inside breast pocket (`lining`, `insidePockets`, on by default).
 
 ## Construction
-As the surtout's brief, with the cut-away skirt in place of its skirt: sew the skirts to the waist
-seam from the front edge back to CB, and to each other down the back seam. Face the skirt's sloping
-front edge with its lining, or with a facing cut to its shape. Simons gives no making-up order.
+Proposed making-up order; Simons gives no making-up sequence:
+
+1. Make the breast welts and any skirt pockets, attaching their bags and flaps before closing the body and skirt seams.
+2. Join the backs, side bodies and fronts, then close the shoulders. Sew the cut-away skirt panels to the body at the waist from the front edges to centre back; join the skirt panels down the centre-back seam.
+3. Sew the collar at the neckline. Attach the front facings, turn the lapels and front edges, and face each sloping skirt edge with its lining or a separate facing cut to shape.
+4. Join each sleeve and set it into the armhole. Assemble the body, skirt and sleeve linings and attach them along the facings and cuffs.
+5. Finish the body, skirt and sleeve hems. Work the front buttonholes and sew on the buttons.

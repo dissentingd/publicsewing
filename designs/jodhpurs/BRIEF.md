@@ -65,6 +65,10 @@ Front and back legs, waistband (with a fly: two halves; with a side opening: one
 and facing, belt loops, side pocket bags, back welt and bag.
 
 ## Construction
-As the trousers: darts, pockets, the fly (or the side zip in the left outseam), outseams, inseams,
-the seat seam, waistband and loops. Turn up the cuffs on the marked lines, as the trousers' turn-ups.
-Simons gives no making-up order.
+Proposed making-up order; Simons gives no making-up sequence:
+
+1. Sew the front and back darts and make any selected pockets, closing their bags.
+2. Install the fly facing, shield and closure, or prepare the side zip in the left outseam if that option is selected.
+3. Sew the outseams, leaving the side-zip opening if used, then the inseams and crotch seam through the seat.
+4. Attach the belt loops and waistband, finishing its ends around the closure.
+5. Turn up the cuffs along their marked lines and secure them.

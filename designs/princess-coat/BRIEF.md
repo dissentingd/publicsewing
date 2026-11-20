@@ -46,12 +46,11 @@ jet and bag for each pocket; half belt; lining for the front and back (the side 
 
 ## Construction
 1. Front to side front and back to side back; CB seam; side seams.
-2. Pockets: as the tailored jacket's set-in pocket, the band sewn in at the mouth.
+2. Make each set-in pocket on the front: prepare its band, stitch the band and bag at the marked mouth, cut and turn the opening, then sew the pocket bag closed.
 3. Shoulders; collar to the neck, round to the front edges; facings, back-neck facing and top collar.
 4. Sleeves: the two pieces together, then set in.
 5. Half belt: folded lengthwise, sewn, turned; stitched across the back at the waist, with a button at each end.
-6. Lining, with its CB pleat; hems; buttonholes in the outer row, buttons in the inner, matching ones inside the outer to hold the
-   underlap.
+6. Assemble the body and sleeve linings with a centre-back ease pleat and attach them to the facings. Finish coat and sleeve hems with lining ease. Work buttonholes in the outer row of the overlapping front; sew buttons to its inner row and inside the underlap beneath the holes.
 
 ## Changes and what isn't modelled
 - **The front seam moves the other way.** Pivnick shifts the princess line slightly toward CF from the book's own foundation. Breanna's waist

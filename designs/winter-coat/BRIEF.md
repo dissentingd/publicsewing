@@ -42,7 +42,7 @@ A straight-silhouette winter overcoat:
 | Hood | none | `hood` off; the windbreaker's hood can be turned on in place of the collar |
 
 ## Construction order
-1. Welt pockets in the lower fronts (the windbreaker's order).
+1. Interface and fold the welt pockets in the lower fronts. Stitch each welt and bag piece at its marked mouth, cut and turn the opening, secure the welt ends, then close the bag.
 2. Front yokes to the lower fronts; back yoke to the back. Topstitch the yoke seams.
 3. Shoulders; side seams.
 4. Collar: under collar to the neckline, top collar to the facings' neckline; facings to the
