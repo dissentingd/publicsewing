@@ -36,7 +36,8 @@ As the smock (test/pinafore.test.mjs), with a `sash` variant.
 
 ## Construction
 
-1. Make the back opening and placket. Gather the upper front and back body edges to their yoke seams.
-2. Attach the gathered bodies to the shallow front and back yokes. Sew the shoulder and side seams, then bind the armholes and finish the neckline.
-3. If using the sash, make the front band and ties, and sew the band over the front gathers at the waist; fit and secure the ties at the sides.
-4. Hem the pinafore and finish the back buttons and buttonholes.
+1. Make the Z back opening and placket. Gather the upper front and back body edges to their yoke seams.
+2. Attach the gathered bodies at Y to the shallow yokes. Sew the A shoulders and B sides, bind the C armholes and finish the D neckline.
+3. For a sleeved variant, set each sleeve at C, close its F underarm seam and finish its W lower edge or band. The default pinafore is sleeveless.
+4. If using the sash, make the front band and ties, sew the band over the front gathers at the waist, then fit and secure the ties at the sides.
+5. Finish the H pinafore hem and the back buttons and buttonholes.
