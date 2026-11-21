@@ -1,6 +1,6 @@
 design: balmacaan
 steps:
-  - { order: 1, action: join centre back and form vent, seams: [CB], stitches: [SS] }
+  - { order: 1, action: join centre back and form vent, seams: [CB], stitches: [SS], whenAny: [vent] }
   - { order: 2, action: make slanted hand welts, placements: [P8], stitches: [TS], whenAny: [handPockets] }
   - { order: 3, action: join split raglan sleeves and attach to body, seams: [A, C], stitches: [SS] }
   - { order: 4, action: close underarm and side seams, seams: [F, B], stitches: [SS] }
