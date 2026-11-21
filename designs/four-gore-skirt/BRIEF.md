@@ -49,6 +49,6 @@ Reference size `cisFemaleAdult36`.
 Front panel (on the fold), three side panels (each cut 2), waistband.
 
 ## Construction
-1. Sew the panel seams, leaving an opening at CB for the zip.
-2. Insert the zip; join the waistband.
+1. Sew the S panel seams, leaving an opening at CB for the zip.
+2. Sew the CB seam below the opening, insert the zip, and join the waistband.
 3. Try on, then level and finish the hem.

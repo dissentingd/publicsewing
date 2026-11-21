@@ -1,0 +1,7 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Seam codes are defined in the inherited patternMap in spec.yaml.
+design: four-gore-skirt
+steps:
+  - { order: 1, action: join panel seams, seams: [S], stitches: [SS] }
+  - { order: 2, action: close center back below zip and attach waistband, seams: [CB], stitches: [SS] }
+  - { order: 3, action: level and hem skirt }

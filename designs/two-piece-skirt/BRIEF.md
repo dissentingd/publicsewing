@@ -58,7 +58,7 @@ Front (on the fold), back (cut 2, CB seam), waistband; or, high-waisted, a front
 ## Construction
 Proposed making-up order for this unsewn draft:
 
-1. Join each back to the front along the side seams, matching the hip and waist marks. Press the seams.
-2. Sew the centre-back seam below the zip opening and insert the zip above it.
+1. Join each back to the front along the S side seams, matching the hip and waist marks. Press the seams.
+2. Sew the CB centre-back seam below the zip opening and insert the zip above it.
 3. For the regular waist, attach and finish the waistband, including its underlap at the zip. For the high-waist variant, join the front and back facings at the sides, interface them, and use them to finish the raised top edge in place of the band.
 4. Turn up and secure the front and back hems, checking that the side seams hang evenly.
