@@ -58,3 +58,45 @@ pieces:
       - markLine: { id: beltTop, from: [0, beltY], to: [sideHem.x, beltY], class: mark dashed, if: belt }
       - markLine: { id: beltBottom, from: [0, beltY + beltW], to: [sideHem.x, beltY + beltW], class: mark dashed, if: belt }
 
+# Adapt inherited coat codes to the default split raglan sleeve.
+patternMap:
+  merge: true
+  codes:
+    A:
+      name: over-arm sleeve seam
+      stitch: SS
+      at:
+        - { part: frontSleeve, between: [raglanNeck, overarmBottom], optional: true }
+        - { part: backSleeve, between: [raglanNeck, overarmBottom], optional: true }
+    C:
+      name: raglan body-to-sleeve join
+      stitch: SS
+      at:
+        - { part: front, path: raglan, along: 0.5, optional: true }
+        - { part: back, path: raglan, along: 0.5, optional: true }
+    F:
+      name: raglan underarm seam
+      stitch: SS
+      at:
+        - { part: frontSleeve, between: [bicepsLeft, wristLeft], optional: true }
+        - { part: backSleeve, between: [bicepsRight, wristRight], optional: true }
+    H:
+      name: coat and raglan sleeve hems
+      stitch: TS
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: back, path: hemBase, along: 0.5 }
+        - { part: frontSleeve, path: hemBase, along: 0.5, optional: true }
+        - { part: backSleeve, path: hemBase, along: 0.5, optional: true }
+    P6: null
+    BT: null
+    CB: null
+    G:
+      name: collar outer edge
+      stitch: SS
+      at: [{ part: collar, path: seam, along: 0.75, optional: true }]
+    P8:
+      name: lower patch-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: lowerPocket, along: 0.5, optional: true }]
