@@ -1,0 +1,8 @@
+design: field-trousers
+steps:
+  - { order: 1, action: prepare cargo pockets and flaps, placements: [CP], stitches: [TS], whenAny: [cargoPockets] }
+  - { order: 2, action: prepare seat pocket and flap, placements: [BP], stitches: [TS], whenAny: [seatPocket] }
+  - { order: 3, action: form waist pleats and back darts, seams: [M], stitches: [SS] }
+  - { order: 4, action: make fly and side pockets, placements: [Z, SP], stitches: [TS, SS] }
+  - { order: 5, action: join legs and crotch, seams: [O, I, X], stitches: [SS] }
+  - { order: 6, action: attach waistband and finish hems, seams: [W, H], stitches: [SS, HS] }
