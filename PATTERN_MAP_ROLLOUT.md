@@ -33,6 +33,14 @@ At a 390 px browser viewport, the page's map viewport is 358 px wide and scrolls
 
 ## Review and next steps (2026-11-20)
 
+Construction-record continuation: seven skirt designs now have validated records (gathered,
+tiered, kilt, yoke, four-gore, pleated, and two-piece). The current inventory is 99 mapped
+designs, 28 with `construction.yaml`, and 71 still requiring records. The construction validator
+now distinguishes an optional geometry anchor from an optional sewing operation; the former
+does not imply `whenAny`. All existing records have a shared regression test, and site generation
+passes after this stage. These new records and their page previews still need the broader
+render and publication review described below.
+
 Setup now in place:
 - `lib/pattern-map.mjs` (`mapFor(Design)`) is the one place that reads a design's map.
 - `tools/snapshot.mjs` now also compares the page preview, every download file (byte-identical unless `--draft-only`) and the map labels and key text in the layered SVG. `tools/variants.json` has a pocketless chore-coat variant.
