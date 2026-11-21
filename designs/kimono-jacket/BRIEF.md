@@ -47,11 +47,14 @@ tailored jacket with princess seams.
 Front, back (fold), side back and side front with their sleeves (cut 2 each), facing, back-neck facing, collar, pocket flap, jet and bag.
 
 ## Construction
-1. Princess seams, back and front. Pockets.
-2. Shoulder and overarm seams, from the neck to the sleeve's end.
-3. Side and underarm seams in one, clipped at the corner.
-4. Facings, collar.
-5. Sleeve hem, jacket hem, buttons and buttonholes.
+1. Join the PF front and PB back princess seams.
+2. If hip pockets are selected, make their welts and bags at P14 while the fronts are flat.
+3. If a breast pocket is selected, make its welt and bag at P12.
+4. If a ticket pocket is selected, make its welt and bag at P17.
+5. Sew the A shoulder and overarm seams from the neck to each sleeve end.
+6. Close the B side and underarm seams in one, clipping at the corner.
+7. Attach the collar at D, then sew the E front facings and turn the lapels.
+8. Finish the H cut-on sleeve and jacket hems; work the BH front buttonholes and attach buttons.
 
 ## Checks
 `test/kimono-jacket.test.mjs`: every size, with peak and notched lapels, a short wide sleeve, and steeper angles. The jacket checks,
