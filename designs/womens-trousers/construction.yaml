@@ -1,0 +1,11 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# The side zip is SZ; Z remains the optional front-fly mark in spec.yaml's map.
+design: womens-trousers
+steps:
+  - { order: 1, action: sew back darts and form variant front pleats, seams: [M], stitches: [SS] }
+  - { order: 2, action: make side pockets, placements: [SP], stitches: [SS], whenAny: [sidePockets] }
+  - { order: 3, action: make back welt pocket, placements: [BP], stitches: [SS], whenAny: [backPocket] }
+  - { order: 4, action: join outseams and prepare selected closure, seams: [O], placements: [SZ, Z], stitches: [SS, TS] }
+  - { order: 5, action: join inseams and crotch, seams: [I, X], stitches: [SS] }
+  - { order: 6, action: attach waistband, seams: [W], stitches: [SS] }
+  - { order: 7, action: hem legs, seams: [H], stitches: [HS] }
