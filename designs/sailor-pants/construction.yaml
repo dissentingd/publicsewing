@@ -1,0 +1,10 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# O is a placement line, not an outseam to sew; the drop front replaces the fly.
+design: sailor-pants
+steps:
+  - { order: 1, action: press outseam line and join inseams and crotch, placements: [O], stitches: [SS] }
+  - { order: 2, action: face side slits and stands }
+  - { order: 3, action: fold and face drop front }
+  - { order: 4, action: attach back and front bands }
+  - { order: 5, action: work drop-front buttonholes and buttons }
+  - { order: 6, action: hem legs }

@@ -4,6 +4,16 @@
 # measurements, so it fits any size. See BRIEF.md.
 extends: ../overall-pants/spec.yaml
 
+# Keep the unsewn outseam guide clear of the piece title at print sizes.
+patternMap:
+  merge: true
+  codes:
+    O:
+      name: outseam line (no seam; for pressing and placing pockets)
+      stitch: SS
+      kind: placement
+      at: [{ part: leg, path: outseamLine, along: 0.25 }]
+
 about:
   id: drawers
   name: Drawers
