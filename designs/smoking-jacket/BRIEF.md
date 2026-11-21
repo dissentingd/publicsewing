@@ -41,9 +41,16 @@ Jacket", p. 28 (PDF p. 32). Public domain. Inches below are Vincent's, for a 38 
 Front, whole back on the fold, facing, sleeve, gauntlet cuff (cut 4: two in the outer, two in the facing), back-neck facing, lining, and each pocket's welt and bag.
 
 ## Construction
-As a lined lounge jacket. Face the collar and cuffs in the contrast, quilted first. Make each cuff as a tube, join it to the sleeve's hem and turn it up, the
-quilted side out. Steady the fronts with canvas, stopping short of the shoulder. Sew frogs across the lap at the marks. Put the cord on the pocket mouths and
-fronts by hand.
+Proposed making-up order for this unsewn draft:
+
+1. Steady the fronts with canvas, stopping short of the shoulder. Quilt the contrast collar and cuff facings if chosen.
+2. If hand pockets are selected, make their corded P8 hip welt mouths and bags while the fronts are flat; put the cord on by hand.
+3. Sew the A shoulder and B side seams.
+4. Sew the G collar outer edge, turn it and attach it at D to the back neck; sew the E facings to the fronts and collar.
+5. Close the F sleeve underarm seams and set the sleeves at C. If gauntlet cuffs are selected, make each as a tube, attach it to the sleeve hem and turn it up, contrast side out.
+6. Make and attach the lining; finish the H jacket and sleeve hems with room for the lining to move.
+7. Sew frogs across the lap at the BH positions, or work buttonholes and buttons there. Apply the front cord by hand.
+8. If a girdle is selected, sew and turn it and attach its loops at the sides.
 
 ## Changes and what isn't modelled
 - **"D.B." here means a wide overlap, not two rows.** The diagram has one row of frogs across a 3¼ in lap. The marks are at CF, for the frogs' centres, and the

@@ -1,0 +1,12 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# P8 marks this design's corded hand welt, and BH the frog or button positions.
+design: smoking-jacket
+steps:
+  - { order: 1, action: interface fronts and prepare contrast facings }
+  - { order: 2, action: make corded hand welt pockets, placements: [P8], stitches: [SS], whenAny: [handPockets] }
+  - { order: 3, action: join shoulders and sides, seams: [A, B], stitches: [SS] }
+  - { order: 4, action: attach collar and facings, seams: [G, D, E], stitches: [SS] }
+  - { order: 5, action: close and set sleeves and attach gauntlet cuffs, seams: [F, C], stitches: [SS] }
+  - { order: 6, action: attach lining and finish hems, seams: [H], stitches: [TS] }
+  - { order: 7, action: attach frogs or work buttons and buttonholes, placements: [BH], stitches: [BH] }
+  - { order: 8, action: sew girdle and loops, whenAny: [girdle] }

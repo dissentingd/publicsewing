@@ -95,3 +95,14 @@ pieces:
 patternMap:
   merge: true
   pieces: { girdle: 21, girdleLoop: 22, gauntlet: 23, handWelt: 14, handBag: 15 }
+  codes:
+    P8:
+      name: corded hip welt mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: handPocket, along: 0.5, optional: true }]
+    BH:
+      name: frog or button positions
+      stitch: BH
+      kind: closure
+      at: [{ part: front, point: button0_0 }]
