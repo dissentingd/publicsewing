@@ -1,0 +1,10 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: eton-jacket
+steps:
+  - { order: 1, action: make variant lower pockets, placements: [P], stitches: [SS], whenAny: [lowerPockets] }
+  - { order: 2, action: join front back and shoulder seams, seams: [B, C, A], stitches: [SS] }
+  - { order: 3, action: attach collar and facings, seams: [E, F], stitches: [SS] }
+  - { order: 4, action: join and set sleeves, seams: [G, H, D], stitches: [SS] }
+  - { order: 5, action: attach lining and finish hems, seams: [J], stitches: [HS] }
+  - { order: 6, action: work optional buttonhole and attach button, placements: [BH], stitches: [BH], whenAny: [buttons] }

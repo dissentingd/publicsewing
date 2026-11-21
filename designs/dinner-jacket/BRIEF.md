@@ -63,9 +63,10 @@ pocket; `lining` and `insidePockets`, on by default).
 ## Construction
 Proposed making-up order; Simons gives no making-up sequence:
 
-1. Make the flapless jetted lower pockets in the fronts, attaching and closing their bags. There is no breast pocket in this draft.
-2. Sew the centre-back seam, then join the backs, side panels and fronts. Close the shoulders. Leave the back hem continuous: this jacket has no vent.
-3. Sew the collar to the neckline and gorge. Attach the front facings, turn the lapels and front edges, and press. The facing, and optionally the upper collar, may be cut from silk or satin facing cloth.
-4. Join each top and under sleeve at both seams, without a sleeve vent, and set the sleeves into the armholes.
-5. Assemble the body and sleeve linings, including the inside pocket if selected. Attach the lining to the facings and finish the body and sleeve hems.
-6. Work the front buttonholes and sew on the corresponding buttons.
+1. If lower pockets are selected, make the flapless P jetted pockets in the fronts, attaching and closing their bags.
+2. If a breast pocket is selected as a variant, make its P8 welt and bag; the source draft has no breast pocket.
+3. Close CB, join the C back-body and B front-body seams, then sew the A shoulders. Keep the back hem continuous without a vent.
+4. Attach the collar at E to the neckline and gorge. Sew the F facings, turn the lapels and front edges, and press. The facing and upper collar may use silk or satin facing cloth.
+5. Join each top and under sleeve at the G front and H back seams without a vent, then set it at D into the armhole.
+6. Make the body and sleeve linings, including the inside pocket if selected. Attach the lining to the facings and finish the J body and sleeve hems.
+7. Work the BH front buttonholes and sew on the corresponding buttons.
