@@ -1,0 +1,12 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: box-overcoat
+steps:
+  - { order: 1, action: make hand welt pockets and interface facings and collar }
+  - { order: 2, action: attach breast pockets and flaps, placements: [P6], stitches: [TS], whenAny: [breastPockets] }
+  - { order: 3, action: attach lower patch pockets and flaps, placements: [P8], stitches: [TS], whenAny: [lowerPockets] }
+  - { order: 4, action: join back shoulders and sides, seams: [A, B], stitches: [SS] }
+  - { order: 5, action: make and attach collar and facings, seams: [G, D, E], stitches: [SS] }
+  - { order: 6, action: close and set sleeves and attach lining, seams: [F, C], stitches: [SS] }
+  - { order: 7, action: prepare and attach belt, placements: [BT], stitches: [TS], whenAny: [belt] }
+  - { order: 8, action: finish hems and front fastening, seams: [H], placements: [BH], stitches: [TS, BH] }

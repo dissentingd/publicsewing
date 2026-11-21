@@ -33,7 +33,11 @@ front, notched lapel and collar, vent, pockets and lining, cut looser and flared
 
 ## Construction
 
-1. Make the slanted welt pockets and their bags before closing the coat body. Interface the facings, collar pieces, and pocket welts as needed.
-2. Sew the centre-back seam and vent, then the shoulder and side seams. The box shape comes from the side flare; do not add waist shaping.
-3. Attach the front facings and collar to the lapel and neckline. Assemble and set in the sleeves, easing their caps.
-4. Make the lining, attach it to the facings, and finish the vent and hems with room for the lining to move. Work the front buttonholes and sew on the buttons. This follows the overcoat and peacoat construction in this collection.
+1. Make the slanted hand welt pockets and their bags before closing the coat body. Interface the facings, collar pieces, and pocket welts as needed.
+2. If breast pockets are selected, prepare them and stitch them at P6 with their flaps.
+3. If lower patch pockets are selected, prepare them and stitch them at P8 with their flaps.
+4. Sew the centre-back seam and vent, then the A shoulder and B side seams. The box shape comes from the side flare; do not add waist shaping.
+5. Sew the G collar outer edge, turn it, and attach it at D to the neckline. Attach the E front facings to the lapel and front edge.
+6. Close the F sleeve underarm seams and set the sleeves at C, easing their caps. Make the lining and attach it to the facings.
+7. If a belt is selected, prepare it and attach it at BT before finishing the coat hem.
+8. Finish the vent and H coat and sleeve hems with room for the lining to move. Work the BH front buttonholes and sew on the buttons. This follows the overcoat and peacoat construction in this collection.
