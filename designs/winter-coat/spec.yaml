@@ -122,3 +122,38 @@ variants:
 patternMap:
   merge: true
   pieces: { collar: 8 }
+  stitches:
+    BH: { name: buttonhole, key: work buttonholes through the finished front }
+    HS: { name: hem stitch, key: turn and secure the coat and sleeve hems }
+  codes:
+    Z: null
+    B:
+      name: body side seam
+      stitch: SS
+      at:
+        - { part: front, between: [waist, hem] }
+        - { part: back, between: [waist, hem] }
+    X:
+      name: back yoke join
+      stitch: TS
+      at: [{ part: back, between: [cbYoke, armYoke] }]
+    C:
+      name: sleeve to armhole
+      stitch: SS
+      at:
+        - { part: front, between: [armYoke, armhole] }
+        - { part: backYoke, between: [shoulder, armYoke] }
+        - { part: back, between: [armYoke, armhole] }
+        - { part: sleeve, path: sleevecap, along: 0.5 }
+    H:
+      name: coat and sleeve hems
+      stitch: HS
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: back, between: [cbHem, hem] }
+        - { part: sleeve, path: hemBase, along: 0.5 }
+    BH:
+      name: front buttonholes
+      stitch: BH
+      kind: closure
+      at: [{ part: frontYoke, point: button0_0 }]

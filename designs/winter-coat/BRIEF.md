@@ -42,15 +42,15 @@ A straight-silhouette winter overcoat:
 | Hood | none | `hood` off; the windbreaker's hood can be turned on in place of the collar |
 
 ## Construction order
-1. Interface and fold the welt pockets in the lower fronts. Stitch each welt and bag piece at its marked mouth, cut and turn the opening, secure the welt ends, then close the bag.
-2. Front yokes to the lower fronts; back yoke to the back. Topstitch the yoke seams.
-3. Shoulders; side seams.
-4. Collar: under collar to the neckline, top collar to the facings' neckline; facings to the
-   front edges, turned and pressed.
-5. Sleeves made up and set in.
-6. Lining made up the same way, sewn to the facings and the back neck; hemmed to the coat's hem
-   allowance with an ease fold.
-7. Hems; buttonholes on the right front.
+The joining order below is a proposed method for this unsewn draft.
+1. P: with hand pockets on, make each lower-front welt and bag through the outer fabric, securing the welt ends before closing the bags.
+2. X and Y: join the back and front yokes to the lower panels and topstitch their seams.
+3. A and B: close shoulder and side seams.
+4. R and K: if the hood is selected, join its crown and make its casing before attaching it.
+5. D and E: attach the under collar to the neckline, the upper collar to the facings, then sew the facings to the front edges and turn. With the hood variant, attach the hood at the neck instead.
+6. F and C: make the sleeves and set them into the armholes.
+7. With the lining on, make it to match the shell and join it to the facings and back neck, allowing an ease fold at the hem.
+8. H and BH: turn and secure coat and sleeve hems; work front buttonholes and sew on buttons.
 
 ## Changes and what isn't modelled
 - **Geometry from Brian.** Only ЕМКО's proportions are kept.
