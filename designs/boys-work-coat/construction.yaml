@@ -1,0 +1,12 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited chore-coat patternMap in spec.yaml.
+design: boys-work-coat
+steps:
+  - { order: 1, action: interface facings and collar }
+  - { order: 2, action: prepare and attach lower pockets, placements: [P7], stitches: [TS], whenAny: [lowerPockets] }
+  - { order: 3, action: prepare and attach breast pocket, placements: [P6], stitches: [TS], whenAny: [breastPocket] }
+  - { order: 4, action: join shoulders, seams: [A], stitches: [FF] }
+  - { order: 5, action: make and attach collar, seams: [G, D], stitches: [SS] }
+  - { order: 6, action: apply facings, seams: [E], stitches: [SS] }
+  - { order: 7, action: set sleeves and close underarms and sides, seams: [C, F, B], stitches: [SS, FF] }
+  - { order: 8, action: hem coat and sleeves and finish buttonholes, seams: [H], placements: [BH], stitches: [TS, BH] }

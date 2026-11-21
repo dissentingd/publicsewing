@@ -55,7 +55,11 @@ At all 75 children's sets:
 
 ## Construction
 
-1. Finish and attach the lower patch pockets to the fronts. The default has no breast pocket; add it at this stage if selected.
-2. Interface the facings and one collar piece. Sew the shoulder and side seams, then assemble and attach the collar.
-3. Sew the facings around the front edges and dropped front hem, turn and press. Set in the sleeves and close their underarm seams.
-4. Hem the coat and sleeves, then work the five front buttonholes and sew on the buttons. This is the chore-coat method applied to the boys' proportions and defaults.
+1. Interface the facings and one collar piece.
+2. If lower pockets are selected, finish and attach them at P7 to the fronts.
+3. If a breast pocket is selected, finish and attach it at P6; the default has none.
+4. Sew the A shoulder seams.
+5. Sew the G collar outer edge, turn it and attach it at D to the neckline.
+6. Sew the E facings around the front edges and dropped front hem, turn and press.
+7. Set in the sleeves at C, then close the F underarm and B body side seams.
+8. Finish the H coat and sleeve hems, then work the BH front buttonholes and sew on the buttons. This is the chore-coat method applied to the boys' proportions and defaults.
