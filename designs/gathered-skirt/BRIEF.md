@@ -33,5 +33,5 @@ Front and back (on the fold), waistband (folded), placket strip.
 ## Construction
 1. Side seams, the left one to the placket's notch.
 2. Placket: the strip down both edges of the opening.
-3. Gather the top between the gathering marks; waistband on, its underlap at the placket.
+3. Gather the top between the GM gathering marks; waistband on, its underlap at the placket.
 4. Hem; button and hole (or hook) at the waistband.

@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Piece numbers and seam and placement codes are defined in spec.yaml's patternMap.
+design: kilt
+steps:
+  - { order: 1, action: join pleated lengths at center back }
+  - { order: 2, action: fold and edge stitch pleats, placements: [K], stitches: [TS] }
+  - { order: 3, action: join aprons and finish hems, seams: [S, H], stitches: [SS] }
+  - { order: 4, action: attach waistband }
+  - { order: 5, action: attach straps and buckles, placements: [ST], stitches: [SS] }

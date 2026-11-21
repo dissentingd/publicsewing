@@ -41,9 +41,9 @@ Front yoke and back yoke (on the fold), front gore and back gore (on the fold), 
 side back gores (cut twice each), waistband (folded).
 
 ## Construction
-1. Gore seams: front to side front, side back to back, matching the balance notches.
+1. Sew the G gore seams: front to side front, side back to back, matching the balance notches.
 2. Side seams of the gores, the left one from the zip's notch down.
 3. Yoke side seams, the left one open for the zip.
 4. Yokes to the gores, matching the side seams.
-5. Zip in the left side seam, through the yoke and into the gores.
+5. Insert the Z zip in the left side seam, through the yoke and into the gores.
 6. Waistband on, its underlap at the zip; hem.

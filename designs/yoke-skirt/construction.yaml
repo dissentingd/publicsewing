@@ -1,0 +1,10 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Piece numbers and seam and closure codes are defined in spec.yaml's patternMap.
+design: yoke-skirt
+steps:
+  - { order: 1, action: join gore seams at balance notches, seams: [G], stitches: [SS] }
+  - { order: 2, action: join gore sides below zip opening }
+  - { order: 3, action: join yoke sides below zip opening }
+  - { order: 4, action: join yoke to gores }
+  - { order: 5, action: insert side zip, seams: [Z], stitches: [SS] }
+  - { order: 6, action: attach waistband and hem }

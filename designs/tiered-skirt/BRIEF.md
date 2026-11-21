@@ -44,7 +44,7 @@ cut twice), waistband (folded), placket strip.
 ## Construction
 1. Each tier's side seams; the first tier's left one to the placket's notch (or the second
    tier's, where the notch is on it).
-2. Gather each tier's top between its marks and sew it to the tier above, quarter to quarter.
+2. Gather each tier's top between its GM marks and sew it to the tier above, quarter to quarter.
 3. Placket: the strip down both edges of the opening.
 4. Gather the first tier into the waistband, its underlap at the placket.
 5. Hem the fourth tier; button and hole (or hook) at the waistband.
