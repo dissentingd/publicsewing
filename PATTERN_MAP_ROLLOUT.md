@@ -63,7 +63,7 @@ Mapped so far (2026-11-20): 99 of 122 designs. Sixteen have their own map, `cons
 
 Not mapped (23): churidar, joggers, salwar; fitted dress, fitted kameez, shell top, wrap dress, princess dress; cardigan, henley, turtleneck; aprons, cape, cape overcoat, dolman cape, jumpsuit, kalidar kurta, t-shirt; tunic skirt (no darts at children's sizes, so no anchors); and the fitted jacket's descendants (double-dart jacket, riding habit, Prince Albert jacket, riding frock coat), which opt out.
 
-Next: those 23, then numbered steps (`construction.yaml`) for the mapped designs that lack them. Before publishing: one full `npm test`, a site build and `page-check.mjs` over every mapped design.
+The historical list above records the state before the construction-record rollout. As of 2026-11-21, all 99 designs with a nonempty pattern map have a validated `construction.yaml` and numbered construction prose. The last eight reviewed were balmacaan, bib overall, field jacket, field trousers, jeans, mantle, quilted jacket, and winter coat. Their inherited maps were adjusted for the drafted raglan sleeves, patch pockets, button fronts, and optional pieces. The record and brief suite, 99-design map regression suite, size and option checks, and production site build passed. All eight before-change snapshots retained identical rendered SVG geometry across 98 cases each, with map/export metadata changing as intended. Before publishing: one full `npm test`, `page-check.mjs` over every mapped design, visual review of exports, and the source-rights audit described below.
 
 ## 1. Define the shared data
 
