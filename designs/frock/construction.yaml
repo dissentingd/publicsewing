@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: frock
+steps:
+  - { order: 1, action: form back opening and join bodice shoulders and sides, seams: [A, B], placements: [Z], stitches: [SS, TS] }
+  - { order: 2, action: set and finish sleeves and neckline, seams: [C, F, W, D], stitches: [SS] }
+  - { order: 3, action: gather and join skirt to bodice, seams: [Y], stitches: [TS] }
+  - { order: 4, action: hem skirt and finish back fastening, seams: [H], stitches: [TS] }

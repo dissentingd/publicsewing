@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: shirtwaist-dress
+steps:
+  - { order: 1, action: join bodice and finish front opening and collar, seams: [A, B, D], placements: [Z], stitches: [SS, TS] }
+  - { order: 2, action: gather and join skirt to bodice, seams: [Y], stitches: [TS] }
+  - { order: 3, action: finish sleeves and set them, seams: [F, W, C], stitches: [SS] }
+  - { order: 4, action: hem skirt and finish buttons and buttonholes, seams: [H], stitches: [TS] }

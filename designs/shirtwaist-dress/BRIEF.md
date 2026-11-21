@@ -46,11 +46,10 @@ work dress (WARDROBE_GAPS.md, "Shirtwaist / work dress").
 | Closure | (a foundation draft has none) | front opening, `buttons` 6, stand `openingExt` 2.5% of chest |
 
 ## Construction order
-1. Shoulder and side seams of the bodice; collar to the neckline, faced by the front stand.
-2. Skirt side seams; gather the skirt top and sew it to the bodice at the waist.
-3. Sleeve openings bound with the placket strips; sleeve underarm seams; gather the sleeve hem
-   into the cuff, lapping it past the opening; set the sleeves, easing the cap.
-4. Hem; buttons and buttonholes down the front and on the cuffs.
+1. Join the A shoulder and B side seams of the bodice; finish the Z front opening and attach the collar at D to the neckline, faced by the front stand.
+2. Sew the skirt side seams; gather its top and attach it at Y to the bodice waist.
+3. Bind the sleeve openings with placket strips, close the F underarm seams, gather each W sleeve hem into its cuff, then set the sleeves at C, easing their caps.
+4. Finish the H skirt hem; work buttons and buttonholes down the front and on the cuffs.
 
 ## Source discrepancies and changes
 - **Date:** the lesson says 1915, the manifest 1920 (above).
