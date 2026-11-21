@@ -23,11 +23,11 @@ the bottom (S, T a quarter each side), the back ⅝ in wider each side, a 1¼ in
 ## Changes and what isn't modelled
 - The trousers' darts, fly and pockets; Simons' Vees and pocket details aren't read.
 
-## Pieces, construction
+## Construction
 Proposed making-up order for this unsewn draft:
 
-1. Sew the front and back darts. Make the back welt pockets and the side pockets if those options are selected, closing each pocket bag.
-2. Sew the side seams below and above any side-pocket openings, then the inseams.
-3. Attach the fly facing and shield, install the selected fly closure, and sew the crotch seam from the fly to centre back.
-4. Attach the belt loops and waistband; finish the waistband ends over the fly.
-5. Turn up and secure each leg hem at the drafted knee-pants length.
+1. Sew the M front and back darts. Make the BP back welt pockets and the SP side pockets if those options are selected, closing each pocket bag.
+2. Sew the O side seams below and above any side-pocket openings, then the I inseams.
+3. Attach the fly facing and shield at Z, install the selected fly closure, and sew the X crotch seam from the fly to centre back.
+4. Attach the belt loops and W waistband; finish the waistband ends over the fly.
+5. Turn up and secure each H leg hem at the drafted knee-pants length.

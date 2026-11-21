@@ -26,11 +26,11 @@ strap 10 in long, ¾ in wide, with a 3 in tongue to buckle or button.
 - The trousers' waist, fly and pockets.
 - The gathers are marked along the bottom; the slit is hemmed, not faced.
 
-## Pieces, construction
+## Construction
 Proposed making-up order for this unsewn draft:
 
-1. Sew the front and back darts, then make any back welt and side pockets, closing their bags.
-2. Sew the outseams and inseams, leaving the drafted opening at each leg bottom.
-3. Attach the fly facing and shield, fit the closure, then sew the crotch seam from the fly to centre back.
-4. Add the belt loops and waistband, finishing the ends over the fly.
-5. Finish each lower-leg opening. Gather the leg bottom into its folded strap, then fit the buckle or button closure at the slit.
+1. Sew the M front and back darts, then make any BP back welt and SP side pockets, closing their bags.
+2. Sew the O outseams and I inseams, leaving the drafted opening at each leg bottom.
+3. Attach the fly facing and shield at Z, fit the closure, then sew the X crotch seam from the fly to centre back.
+4. Add the belt loops and W waistband, finishing the ends over the fly.
+5. Finish each lower-leg opening. Gather the H leg bottom into its folded strap, then fit the buckle or button closure at the slit.
