@@ -41,11 +41,13 @@ French overcoat the queue asked for, if the book has one, under a plain name. Th
 Front, back (cut 2, CB seam and vent), side body (cut 2), facing, back-neck facing, collar, top and under sleeves, flap, welts and bags. In lining: front, back, side body, sleeves, inside pocket.
 
 ## Construction
-1. Pockets on the fronts. Back's CB seam and vent.
-2. Back, side bodies and fronts together.
-3. Facing, collar, lapels. Shoulders, sleeves.
-4. Lining made up the same way, set in round the facings and cuffs, free at the vent.
-5. Hem, buttons and buttonholes.
+1. If lower pockets are selected, make their P welts and bags on the flat fronts.
+2. If breast pockets are selected, make their P8 welts and bags before closing the coat body.
+3. Close the back CB seam and finish the vent; join the C back-body and B front-body seams.
+4. Sew the A shoulders; attach the collar at E and the F facings, then turn the lapels.
+5. Join each sleeve at its G front and H back seams and set it at D into the armhole.
+6. Make the lining in the same order, attach it around the facings and cuffs, and leave it free at the vent.
+7. Finish the J body and sleeve hems; work the BH front buttonholes and attach buttons.
 
 ## Checks
 `test/fitted-overcoat.test.mjs`: every size, the default, a plain unlined one with no flare or vent, and a short, flared one. Seams, shoulders, collar, sleeve cap, the vent below the waist, the welts clear of the seam, the buttons and the break.
