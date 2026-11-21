@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the merged patternMap in spec.yaml.
+design: shift-dress
+steps:
+  - { order: 1, action: finish back placket and join shoulders, seams: [A], placements: [Z], stitches: [SS, TS] }
+  - { order: 2, action: finish neckline, seams: [D], stitches: [SS] }
+  - { order: 3, action: set sleeves attach bands and close underarms and sides, seams: [C, W, F, B], stitches: [SS] }
+  - { order: 4, action: hem dress and finish back fastening, seams: [H], stitches: [TS] }
