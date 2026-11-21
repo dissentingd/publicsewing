@@ -178,4 +178,36 @@ pieces:
 # The parent's pattern map, adapted to this design (SPEC.md, "Pattern map").
 patternMap:
   merge: true
-  pieces: { bib: 10, backRise: 11, strap: 12, sideStand: 13, sideFacing: 14, bibPocketPiece: 15, hipPocket: 16, seatPocket: 17 }
+  pieces: { waistband: null, flyShield: null, flyFacing: null, beltLoop: null, sidePocketBag: null, backWelt: null, backPocketBag: null, bib: 10, backRise: 11, strap: 12, sideStand: 13, sideFacing: 14, bibPocketPiece: 15, hipPocket: 16, seatPocket: 17 }
+  stitches:
+    TS: { name: topstitch, key: secure patch pockets at their marks }
+    BH: { name: buttonhole, key: work strap and side-opening buttonholes }
+  codes:
+    M: null
+    W: null
+    SP: null
+    BP: null
+    Z: null
+    PB:
+      name: bib patch-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: bib, path: mark0, along: 0.2, optional: true }]
+    PH:
+      name: hip patch-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: hipPocket, along: 0.5, optional: true }]
+    PS:
+      name: seat patch-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: back, path: seatPocket, along: 0.5, optional: true }]
+    S:
+      name: side-opening facing and stand
+      stitch: SS
+      at: [{ part: front, between: [styleWaistOut, pocketBottom] }]
+    B:
+      name: bib and raised-back waist joins
+      stitch: SS
+      at: [{ part: back, between: [styleWaistOut, styleWaistIn] }]
