@@ -1,0 +1,12 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: princess-coat
+steps:
+  - { order: 1, action: make hip pockets, placements: [P14], stitches: [SS], whenAny: [pockets] }
+  - { order: 2, action: make breast welt pocket, placements: [P12], stitches: [SS], whenAny: [breastPocket] }
+  - { order: 3, action: make ticket welt pocket, placements: [P17], stitches: [SS], whenAny: [ticketPocket] }
+  - { order: 4, action: join princess and side seams, seams: [PF, PB, B], stitches: [SS] }
+  - { order: 5, action: join shoulders and attach collar and facings, seams: [A, D, E], stitches: [SS] }
+  - { order: 6, action: join and set sleeves, seams: [F, G, C], stitches: [SS] }
+  - { order: 7, action: make and attach half belt, whenAny: [halfBelt] }
+  - { order: 8, action: attach lining finish hems and front fastening, seams: [H], placements: [BH], stitches: [HS, BH] }

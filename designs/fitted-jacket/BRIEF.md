@@ -41,14 +41,14 @@ of the side seam, a shaped CB seam, and a shawl collar cut in one with the front
 | Length, lap, crease, buttons, pockets, sleeve, facing, lining | As the semi-fitted jacket | As the tailored jacket; the facing and the lining run up into the shawl |
 
 ## Construction order
-1. Back to side backs, front to side fronts (princess seams); CB seam; the under-arm panel to
-   the side backs and side fronts.
-2. If selected, make the breast welt and the hip and ticket pockets at their marked mouths before closing the shoulders: prepare each welt or flap and jet, stitch at the mouth, cut and turn the opening, then attach and close the bags.
-3. Shoulders; the two shawl collars' CB seam, then their neck edges to the back neck. The same
-   for the facings, then the facings to the fronts and shawl.
-4. Sleeves: the two pieces together, then set into the armhole, the under-arm panel taking the
-   bottom of it.
-5. Join the body and sleeve linings, retaining a centre-back ease pleat, and attach them to the facings. Turn up the jacket and sleeve hems with an ease fold in the lining. Work the front buttonholes and sew on the buttons.
+1. Join the PF front and PB back princess seams and the CB centre back, then sew the SF side-front and SB side-back seams to the under-arm panels.
+2. If hip pockets are selected, prepare their flaps, jets and bags at P14, turn the openings and close the bags before the shoulders.
+3. If a breast pocket is selected, make its P12 welt and bag before closing the front.
+4. If a ticket pocket is selected, make its P17 welt and bag while the front is flat.
+5. Sew the A shoulders and the shawl collars' CB join, attach them at D to the back neck, then sew the E facings to the fronts and shawl.
+6. Join each two-piece sleeve at its F front and G back seams, then set it at C into the armhole, including the under-arm panel.
+7. Make the body and sleeve linings with a centre-back ease pleat and attach them to the facings.
+8. Finish the H jacket and sleeve hems with lining ease; work the BH front buttonholes and attach buttons.
 
 ## Changes and what isn't modelled
 - **No neck dart in the shawl.** Mitchell's ½ in neck dart behind the neck point shapes the

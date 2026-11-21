@@ -58,9 +58,11 @@ hip pocket's flap, jet and bag.
 ## Construction
 Proposed making-up order for this unsewn draft:
 
-1. Join each back to its side back and each front to its side front along the princess seams.
-2. Make the hip pockets on the side fronts: prepare each flap and folded jet, stitch them at the marked mouth, cut and turn the opening, then attach and close the bag. There is no breast or ticket pocket.
-3. Join the shoulder and side seams. Make the storm collar and sew it to the neckline; join the front and back-neck facings and turn the front edges, lapels and collar.
-4. Join each top sleeve to its under sleeve, then set the sleeve into the armhole, easing the cap.
-5. Assemble the body and sleeve linings, leaving a back ease pleat. Attach the lining to the facings and finish the body and sleeve hems with lining ease at the hem.
-6. Work buttonholes on the outer row of the overlapping right front. Sew buttons on its inner row and on the left front beneath the holes; secure the inner row through the front and its interfacing where it falls beyond the facing.
+1. If hip pockets are selected, make each P14 pocket on the side fronts: prepare its flap and folded jet, stitch at the mouth, cut and turn, then close the bag.
+2. If a breast pocket is selected as a variant, make its P12 welt and bag; the source draft has none.
+3. If a ticket pocket is selected as a variant, make its P17 welt and bag; the source draft has none.
+4. Join the PF front and PB back princess seams, then sew the A shoulder and B side seams.
+5. Make the storm collar and attach it at D to the neckline; join the E front and back-neck facings and turn the front edges, lapels and collar.
+6. Join each sleeve at its F front and G back seams, then set it at C into the armhole, easing the cap.
+7. Make the body and sleeve linings with a back ease pleat. Attach them to the facings and finish the H body and sleeve hems with lining ease.
+8. Work BH buttonholes on the overlapping right front. Sew buttons on its inner row and on the left front beneath the holes, securing the inner row through interfacing where needed.

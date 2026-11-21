@@ -57,7 +57,10 @@ Front, side front, side back and back (each cut 2), facing, back neck facing, co
 sleeves, front and back lining.
 
 ## Construction
-1. Sew the long panel seams from shoulder or armhole to hem, matching the waist notches.
-2. Shoulders; collar and facings.
-3. Make and set the two-piece sleeves; line the coat.
-4. Hem, buttonholes and buttons. Check the long seams and the hem's balance in a muslin first.
+1. If hip pockets are selected as a variant, make their P14 welts and bags before joining the panels.
+2. If a breast pocket is selected, make its P12 welt and bag while the front is flat.
+3. If a ticket pocket is selected, make its P17 welt and bag before closing the front.
+4. Sew the long PF front and PB back panel seams from shoulder or armhole to hem, matching waist notches, then close the B sides.
+5. Join the A shoulders; attach the collar at D and the E front facings.
+6. Sew each two-piece sleeve's F front and G back seams, set it at C into the armhole, then line the coat.
+7. Finish the H coat and sleeve hems; work the BH buttonholes and attach buttons. Check the long seams and hem balance in a muslin first.
