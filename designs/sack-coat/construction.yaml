@@ -1,0 +1,11 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: sack-coat
+steps:
+  - { order: 1, action: make lower pockets, placements: [P], stitches: [SS], whenAny: [lowerPockets] }
+  - { order: 2, action: make breast welt pocket, placements: [P8], stitches: [SS], whenAny: [breastPockets] }
+  - { order: 3, action: join back front and shoulder seams, seams: [C, B, A], stitches: [SS] }
+  - { order: 4, action: attach collar and facings, seams: [E, F], stitches: [SS] }
+  - { order: 5, action: join and set sleeves, seams: [G, H, D], stitches: [SS] }
+  - { order: 6, action: attach lining and finish hems, seams: [J], stitches: [HS] }
+  - { order: 7, action: work buttonholes and attach buttons, placements: [BH], stitches: [BH] }

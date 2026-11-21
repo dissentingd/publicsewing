@@ -101,9 +101,10 @@ pocket; `lining` and `insidePockets`, on by default).
 ## Construction
 Proposed making-up order; Simons gives no making-up sequence:
 
-1. Make the breast welt and lower pockets selected for the variant, including their flaps, welts and bags.
-2. Sew the centre-back seam. Join the backs to the side panels and the side panels to the fronts, then close the shoulders. Keep the back hem continuous, without a vent.
-3. Sew the collar to the neckline and gorge. Attach the facings, turn the lapels and front edges, and press.
-4. Join each top and under sleeve without a sleeve vent, then set the sleeves into the armholes.
-5. Assemble the body and sleeve linings, with the inside pocket if selected. Attach the lining to the facings and finish body and sleeve hems.
-6. Work the front buttonholes and sew on the buttons for the chosen single- or double-breasted variant.
+1. If lower pockets are selected, make their welts, flaps and bags at the P mouths while the fronts are flat.
+2. If a breast pocket is selected, make its welt and bag at P8 before closing the coat body.
+3. Sew the centre back and C back-body seams, then join the B front-body seams and A shoulders. Keep the back hem continuous, without a vent.
+4. Sew the collar at E to the neckline and gorge. Attach the F facings, turn the lapels and front edges, and press.
+5. Join each top and under sleeve along the G front and H back seams without a sleeve vent, then set the sleeves at D into the armholes.
+6. Assemble the body and sleeve linings, with the inside pocket if selected. Attach the lining to the facings and finish the J body and sleeve hems.
+7. Work the BH front buttonholes and sew on the buttons for the chosen single- or double-breasted variant.

@@ -48,13 +48,12 @@ Harry Simons, *Drafting Cotton Garments and Mackinaws* (1918), corpus `draftingc
   ease, rather than Diagram V's rules.
 
 ## Construction (our words)
-1. Welt pockets: interface the welts. Sew each welt and bag to the opening, cut and turn,
-   stitch the welt ends and the bag.
-2. Sew the side bodies to the back, then to the fronts (both are curved seams; match the waist
-   notches). Shoulders.
-3. Collar: interface, sew the outer and ends, turn, sew to the neckline edge to edge.
-4. Facings, two-piece sleeves (back seam then front seam), set in. Hems.
-5. Buttonholes on the right front (men's) or left (women's).
+1. If lower pockets are selected, interface their welts and sew each welt and bag at the P opening; cut, turn and secure the welt ends and bag.
+2. If breast pockets are selected, make their welts and bags at P8 while the fronts are flat.
+3. Join the C back-body seams and B front-body seams, matching the curved waist notches, then sew the A shoulders.
+4. Interface the collar, sew its outer edge and ends, turn, then attach it at E to the neckline edge to edge.
+5. Sew the F front facings; join each two-piece sleeve at its H back and G front seams, set it at D, and finish the J body and sleeve hems.
+6. Work the BH buttonholes on the right front (men's) or left (women's), then attach buttons opposite.
 
 ## Checks the tests run
 `test/military-tunic.test.mjs` runs two option sets at every adult and children's measurement

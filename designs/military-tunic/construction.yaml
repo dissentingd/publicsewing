@@ -1,0 +1,10 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: military-tunic
+steps:
+  - { order: 1, action: make lower welt pockets, placements: [P], stitches: [SS], whenAny: [lowerPockets] }
+  - { order: 2, action: make breast welt pockets, placements: [P8], stitches: [SS], whenAny: [breastPockets] }
+  - { order: 3, action: join back front and shoulder seams, seams: [C, B, A], stitches: [SS] }
+  - { order: 4, action: make and attach collar, seams: [E], stitches: [SS] }
+  - { order: 5, action: attach facings join and set sleeves and finish hems, seams: [F, H, G, D, J], stitches: [SS, HS] }
+  - { order: 6, action: work buttonholes and attach buttons, placements: [BH], stitches: [BH] }
