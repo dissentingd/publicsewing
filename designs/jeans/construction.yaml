@@ -1,0 +1,9 @@
+design: jeans
+steps:
+  - { order: 1, action: attach optional coin pocket to its facing, placements: [CO], stitches: [TS], whenAny: [coinPocket] }
+  - { order: 2, action: make curved front pockets, placements: [SP], stitches: [TS] }
+  - { order: 3, action: join back yokes and patch pockets, seams: [Y], placements: [BP], stitches: [TS] }
+  - { order: 4, action: install fly zip and shield, placements: [Z], stitches: [TS] }
+  - { order: 5, action: close inseams outseams and seat, seams: [I, O, X], stitches: [SS] }
+  - { order: 6, action: attach contour waistband, seams: [W], stitches: [SS] }
+  - { order: 7, action: add belt loops and finish hems, seams: [H], stitches: [HS] }
