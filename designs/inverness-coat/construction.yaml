@@ -1,0 +1,10 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the merged patternMap in spec.yaml.
+design: inverness-coat
+steps:
+  - { order: 1, action: join neck dart centre back shoulders and sides, seams: [N, CB, A, B], stitches: [SS] }
+  - { order: 2, action: attach facings and finish armholes, seams: [E, C], stitches: [SS] }
+  - { order: 3, action: sew cape darts and finish cape hem, seams: [K, H], stitches: [SS, HS] }
+  - { order: 4, action: attach cape and collar at neckline, seams: [D], stitches: [SS] }
+  - { order: 5, action: finish body hem and front fastening, seams: [H], placements: [BH], stitches: [HS, BH] }
+  - { order: 6, action: fit cape clearance in muslin }

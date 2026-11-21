@@ -60,8 +60,9 @@ Fronts and backs (each cut 2), facings, collar, cape (on the fold). Add a cape f
 preferred.
 
 ## Construction
-1. Body shoulder and side seams; close the front neck dart; facings to the front edges.
-2. Sew the cape's two shoulder darts; finish its hem and front edges.
-3. Baste the cape to the neckline, and sew the collar over both.
-4. Hem the body; buttons on CF.
-5. In a muslin, check the cape's clearance over the arm, and adjust its length and shoulder extension.
+1. Sew the N front neck dart and CB centre-back seam, then the A body shoulders and B sides.
+2. Sew the E facings to the front edges and finish the C body armholes beneath the cape.
+3. Sew the cape's K shoulder darts; finish its H hem and front edges.
+4. Baste the cape to the neckline and attach the collar at D over both layers.
+5. Finish the H body hem; work the BH buttonholes at CF and attach buttons opposite.
+6. In a muslin, check the cape's clearance over the arm and adjust its length and shoulder extension.

@@ -54,8 +54,10 @@ and each hip pocket's flap, jet and bag.
 ## Construction
 Proposed making-up order for this unsewn draft:
 
-1. Sew the neck darts. Make the slanted welt pockets and close their bags before joining the coat body; this design has no ticket pocket.
-2. Sew the centre-back seam and vent, then the shoulder and side seams. Preserve the loose box shape at the side seams.
-3. Join the collar to the neckline. Attach the front and back-neck facings to the front edges, lapels and collar, then turn and press.
-4. Sew the sleeve seams and set the sleeves into the armholes, easing their caps.
-5. Assemble the body and sleeve linings. Attach them to the facings, finish the vent and hems with lining ease, then work the front buttonholes and sew on the buttons.
+1. Sew the N neck darts.
+2. If hip pockets are selected, make the slanted P7 welts and bags before joining the coat body.
+3. If a ticket pocket is selected as a variant, make its P10 welt and bag; the source draft has none.
+4. Sew the CB centre-back seam and vent, then the A shoulders and B sides. Preserve the loose box shape.
+5. Attach the collar at D to the neckline and the E front and back-neck facings to the front edges and lapels; turn and press.
+6. Close the F front and G back sleeve seams, then set the sleeves at C, easing their caps.
+7. Make the body and sleeve linings, attach them to the facings and finish the vent and H hems with lining ease. Work the BH front buttonholes and attach buttons.
