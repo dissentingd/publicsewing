@@ -1,0 +1,11 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: db-waistcoat
+steps:
+  - { order: 1, action: sew waist darts, seams: [M], stitches: [SS] }
+  - { order: 2, action: make breast welt pocket, placements: [P5], stitches: [SS], whenAny: [breastPocket] }
+  - { order: 3, action: make lower welt pockets, placements: [P7], stitches: [SS], whenAny: [lowerPockets] }
+  - { order: 4, action: join shell and lining shoulders, seams: [A], stitches: [SS] }
+  - { order: 5, action: join shell and lining at front neck and armholes, seams: [E, D, C], stitches: [SS] }
+  - { order: 6, action: close side seams, seams: [B], stitches: [SS] }
+  - { order: 7, action: work buttonholes and attach buttons, placements: [BH], stitches: [BH] }
