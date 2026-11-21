@@ -39,13 +39,14 @@ The summer jacket's winter sibling:
 
 ## Construction order
 The joining order below is a proposed method for this unsewn draft.
-1. P: quilt the lining and wadding if they are not ready-quilted. With hand pockets on, make each welt and bag through the outer lower front before joining the shell.
-2. X and Y: sew and topstitch the back and front yokes to the lower panels; close the A shoulders and B sides.
-3. F and C: close each sleeve seam, then set the sleeves into the armholes.
-4. R and K: with the hood on, sew its crown seam, make its casing, and leave the lower edge ready for the neckline.
-5. D and E: attach the hood, or the stand collar when the hood is off, at the neck; sew the facings to the front edges.
-6. Make the quilted lining without pockets and join it to the facings and hood or collar; turn and secure the opening.
-7. H and BH: turn the hem and cuffs into casings, insert the specified elastic, then work front buttonholes and attach buttons.
+1. Quilt the lining and wadding if they are not ready-quilted.
+2. P: with hand pockets on, make each welt and bag through the outer lower front before joining the shell.
+3. X and Y: sew and topstitch the back and front yokes to the lower panels; close the A shoulders and B sides.
+4. F and C: close each sleeve seam, then set the sleeves into the armholes.
+5. R and K: with the hood on, sew its crown seam, make its casing, and leave the lower edge ready for the neckline.
+6. D and E: attach the hood, or the stand collar when the hood is off, at the neck; sew the facings to the front edges.
+7. Make the quilted lining without pockets and join it to the facings and hood or collar; turn and secure the opening.
+8. H and BH: turn the hem and cuffs into casings, insert the specified elastic, then work front buttonholes and attach buttons.
 
 ## Changes and what isn't modelled
 - **The placket is cut in one with the front** (`buttonExtension`), not sewn on as ЕМКО's is.
