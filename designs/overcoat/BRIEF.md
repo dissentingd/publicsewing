@@ -35,12 +35,15 @@ front (one row of buttons on CF) and the side seams let out at the hem.
 ## Construction
 Proposed making-up order for this unsewn draft; the source does not draft pockets or lining:
 
-1. Make the slanted welt pockets on the fronts: interface and fold each welt, stitch it and a bag piece at the marked mouth, cut and turn the opening, then close the bag and secure the welt ends.
-2. Sew the centre-back seam, leaving the vent open. Fold and finish the vent lap, then join the shoulder and side seams.
-3. Sew the collar to the neckline and join the front facings to the front edges and lapels. Join the back-neck facing to the front facings at the shoulders and finish the collar gorge.
-4. Sew each sleeve seam and set the sleeves into the armholes, easing the caps.
-5. Assemble the body and sleeve linings with a centre-back ease pleat. Finish the lining around the vent and attach it to the facings.
-6. Finish coat and sleeve hems, allowing an ease fold in the lining. Work one row of buttonholes on the overlapping front at centre front and sew the corresponding buttons to the underlap.
+1. Make the slanted hand welt pockets on the fronts: interface and fold each welt, stitch it and a bag piece at the marked mouth, cut and turn the opening, then close the bag and secure the welt ends.
+2. If breast pockets are selected, prepare them and stitch them at P6 with their flaps.
+3. If lower patch pockets are selected, prepare them and stitch them at P8 with their flaps.
+4. Sew the centre-back seam, leaving the vent open. Fold and finish its lap, then join the A shoulders and B side seams.
+5. Sew the G collar outer edge, turn it, attach it at D to the neckline, and sew the E front facings to the front edges and lapels. Join the back-neck facing to the front facings and finish the gorge.
+6. Sew each F sleeve underarm seam and set the sleeves at C into the armholes, easing the caps.
+7. Assemble the body and sleeve linings with a centre-back ease pleat. Finish the lining around the vent and attach it to the facings.
+8. If a belt is selected, prepare it and attach it at BT before finishing the coat hem.
+9. Finish the H coat and sleeve hems, allowing an ease fold in the lining. Work the BH buttonholes in one row on the overlapping front and sew the corresponding buttons to the underlap.
 
 ## Changes and what isn't modelled
 - **No CB shaping:** Simons' CB comes in ¾ in at the waist and the hem; here it's straight, as
