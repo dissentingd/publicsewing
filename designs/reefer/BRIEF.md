@@ -30,6 +30,17 @@ Diagram 23 gives single-breasted and double-breasted outlines on the same back a
 - The lower mark has no drafting or construction instructions in Simons. Its welt and bag use the same construction as the chest welt, with position and angle read from the plate. The lower bag is raised as needed to clear the hem on short sizes.
 - The exact side-seam flare, centre-back shaping, and source collar construction are simplified to the Brian coat block. The source does not detail a lining or vent, so both are off.
 
-## Pieces and construction
+## Pieces
 
-Back, front, facing, collar, sleeves, and two pairs each of welt and pocket-bag pieces. Sew both welt pairs and their bags to the fronts; join back and shoulders and sides; add facings and collar; make and set sleeves; finish hem and buttonholes. The front is cut in mirrored pairs and closes right over left.
+Back, front, facing, collar, sleeves, and two pairs each of welt and pocket-bag pieces. The front is cut in mirrored pairs and closes right over left.
+
+## Construction
+
+Proposed making-up order for this unsewn draft; Simons gives no sewing sequence:
+
+1. If the upper chest welts are selected, make their pockets and bags at P6 while the fronts are flat.
+2. If the lower welts are selected, make their pockets and bags at P8 before closing the body.
+3. Join the back, then sew the A shoulders and B side seams.
+4. Sew the G collar outer edge, turn it and attach it at D to the neckline; apply the E front facings and turn the lapels.
+5. Close the F sleeve underarm seams and set the sleeves at C into the armholes.
+6. Finish the H coat and sleeve hems, then work the BH front buttonholes and attach buttons opposite.

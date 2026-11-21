@@ -1,0 +1,10 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Pocket codes mark this design's own welt paths in spec.yaml's patternMap.
+design: reefer
+steps:
+  - { order: 1, action: make upper chest welt pockets, placements: [P6], stitches: [SS], whenAny: [handPockets] }
+  - { order: 2, action: make lower welt pockets, placements: [P8], stitches: [SS], whenAny: [lowerWelt] }
+  - { order: 3, action: join back shoulders and sides, seams: [A, B], stitches: [SS] }
+  - { order: 4, action: make and attach collar and facings, seams: [G, D, E], stitches: [SS] }
+  - { order: 5, action: close and set sleeves, seams: [F, C], stitches: [SS] }
+  - { order: 6, action: finish hems and front fastening, seams: [H], placements: [BH], stitches: [TS, BH] }

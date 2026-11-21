@@ -40,3 +40,30 @@ options:
   lowerWeltRise: { pct: 8, menu: style, title: Lower welt rise, description: How much the welt rises toward the side relative to its horizontal length. } # shallow rise on the plate
   vent: { bool: false } # none drawn
   lining: { bool: false } # none specified
+
+# Map the two drafted welt marks, rather than the parent's patch-pocket options.
+patternMap:
+  merge: true
+  codes:
+    P6:
+      name: upper chest welt mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: handPocket, along: 0.5, optional: true }]
+    P8:
+      name: lower welt mouth
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: lowerWelt, along: 0.5, optional: true }]
+    BT: null
+    D:
+      name: neckline and collar
+      stitch: SS
+      at:
+        - { part: front, path: frontCollar, along: 0.25, optional: true }
+        - { part: back, path: backCollar, along: 0.5, optional: true }
+        - { part: collar, path: neck, along: 0.5, optional: true }
+    G:
+      name: collar outer edge
+      stitch: SS
+      at: [{ part: collar, point: cbOuter, optional: true }]
