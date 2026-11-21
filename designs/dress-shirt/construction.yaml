@@ -1,0 +1,10 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: dress-shirt
+steps:
+  - { order: 1, action: attach breast pocket, placements: [P7], stitches: [TS] }
+  - { order: 2, action: join yoke and shoulders and finish front edge, seams: [Y, A, E], stitches: [TS, SS] }
+  - { order: 3, action: make and attach collar, seams: [D], stitches: [SS] }
+  - { order: 4, action: set sleeves and join underarm and sides, seams: [C, F, B], stitches: [SS] }
+  - { order: 5, action: pleat sleeves into cuffs }
+  - { order: 6, action: finish hem and closures, seams: [H], placements: [BH], stitches: [TS, BH] }

@@ -63,8 +63,8 @@ Front (on the fold), back (on the fold), back yoke (cut 2), sleeves, wristbands,
 
 ## Construction
 1. Pocket: hem the top, press the edges under, topstitch to the left front on its mark.
-2. Placket at the front slit.
-3. Back gathered into the yoke, the yoke lining over; fronts to the yoke at the shoulders.
-4. Neck band (or collar).
-5. Sleeves set in; underarm and side seams to the slits.
-6. Wristbands; hem; buttonholes and buttons.
+2. Finish the Z front slit with its placket.
+3. Gather the back into the Y yoke seam, enclose it with the yoke lining, then join the A shoulders.
+4. Attach the neck band or collar at D.
+5. Set sleeves at C; close the F sleeve underarm and B body side seams to the slits.
+6. Attach wristbands at W; finish the H hems; work buttonholes and sew the buttons opposite.

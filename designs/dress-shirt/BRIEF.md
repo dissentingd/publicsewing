@@ -66,13 +66,13 @@ Front (cut 2), back yoke and back body (on the fold), facing (cut 2), collar sta
 placket (cut 2), breast pocket (cut 1).
 
 ## Construction
-1. Pocket on the left front.
-2. Back to the yoke; fronts to the yoke at the shoulders. Facings to the front edges.
-3. Collar: make the fall, sew it between the two stand pieces, then the stand to the neckline.
-4. Sleeves: bind each slit with the placket strip; set the sleeves; underarm and side seams in
+1. Attach the left breast pocket at P7.
+2. Sew the Y back yoke seam; join the A shoulders. Finish the E front edge with its facings.
+3. Collar: make the fall, sew it between the two stand pieces, then attach the stand at D to the neckline.
+4. Sleeves: bind each slit with the placket strip; set the sleeves at C; close the F underarm and B side seams in
    one, felled.
 5. Pleat each sleeve's hem into its cuff, the cuff lapping past the opening.
-6. Hem; buttonholes on the right front (men's) and the cuffs, buttons opposite.
+6. Finish the H shirt hem; work BH buttonholes on the right front (men's) and the cuffs, buttons opposite.
 
 ## Checks
 `test/dress-shirt.test.mjs`: the coat checks at every size, plus the stand against the neckline, the

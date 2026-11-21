@@ -23,6 +23,10 @@ the bottom (S, T a quarter each side), the back ⅝ in wider each side, a 1¼ in
 ## Changes and what isn't modelled
 - The trousers' darts, fly and pockets; Simons' Vees and pocket details aren't read.
 
+## Pieces
+
+Front and back legs, waistband, fly shield and facing, belt loops, and optional pocket pieces.
+
 ## Construction
 Proposed making-up order for this unsewn draft:
 

@@ -26,6 +26,10 @@ strap 10 in long, ¾ in wide, with a 3 in tongue to buckle or button.
 - The trousers' waist, fly and pockets.
 - The gathers are marked along the bottom; the slit is hemmed, not faced.
 
+## Pieces
+
+Front and back legs, waistband, fly shield and facing, belt loops, optional pocket pieces, and lower-leg straps.
+
 ## Construction
 Proposed making-up order for this unsewn draft:
 

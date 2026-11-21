@@ -26,8 +26,10 @@ export function validateConstruction(design) {
   const section = brief.split(/^## Construction[^\n]*\n/m)[1]?.split(/^## /m)[0]
   if (!section) throw new Error(`${design} brief has no Construction section`)
   const prose = [...section.matchAll(/^\d+\. (.+)$/gm)].map((m) => m[1])
-  const numbers = new Set(Object.values(map.pieces))
-  if (numbers.size !== Object.keys(map.pieces).length) throw new Error('duplicate map piece numbers')
+  // A merged map uses null to remove a parent's piece; it is not a printed number.
+  const printedNumbers = Object.values(map.pieces).filter((number) => number != null)
+  const numbers = new Set(printedNumbers)
+  if (numbers.size !== printedNumbers.length) throw new Error('duplicate map piece numbers')
   const codes = map.codes
   const used = new Set()
   data.steps.forEach((step, i) => {

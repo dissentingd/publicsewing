@@ -39,7 +39,7 @@ no slits, short sleeves, back opening).
 
 ## Construction
 
-1. Make the front placket and sew the back body to its yoke; then join the shoulder seams. Attach the neck band.
-2. Sew in the sleeves and close their underarm seams. Gather the sleeve ends into the wristbands.
-3. Sew the side seams from the armhole down to the marked slit starts. Finish the slit edges and round the lower corners as marked.
-4. Hem the shirt, then work the placket buttonholes and attach the buttons. This draft uses no underarm gusset or turn-down collar.
+1. Make the Z front placket and sew the Y back yoke seam; then join the A shoulders. Attach the neck band at D.
+2. Set in the sleeves at C and close their F underarm seams. Gather the sleeve ends into the W wristbands.
+3. Sew the B side seams from the armhole down to the marked slit starts. Finish the slit edges and round the lower corners as marked.
+4. Finish the H shirt hem, then work the placket buttonholes and attach the buttons. This draft uses no underarm gusset or turn-down collar.

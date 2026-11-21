@@ -39,9 +39,11 @@ opening is shown.
 | D at 12, F at 17½, G at 23 on a regular 28 inch inseam | `scoutCalfAt` 34%, `scoutLength` 69% | (17½ - 12) / (28 - 12) = 34%; (23 - 12) / 16 = 69% |
 | ½ inch V and hem pleat | `backKneeV`, `backHemPleat` 4.5% each | ½ / 11 = 4.5% |
 
-## Construction
+## Pieces
 
 Front and back legs, waistband, fly shield and facing, belt loops and pocket pieces.
+
+## Construction
 
 Proposed making-up order for this unsewn draft:
 
