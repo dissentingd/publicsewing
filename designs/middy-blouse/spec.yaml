@@ -5,6 +5,11 @@
 # any size, adults included. See BRIEF.md.
 extends: ../templates/yoke.yaml
 
+# The one-piece body has no yoke seam or placket; the V passes over the head.
+patternMap:
+  merge: true
+  codes: { Y: null, Z: null }
+
 about:
   id: middy-blouse
   name: Middy blouse
