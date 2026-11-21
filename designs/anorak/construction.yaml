@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: anorak
+steps:
+  - { order: 1, action: prepare and attach kangaroo pocket }
+  - { order: 2, action: attach chest pocket and join yokes and shoulders, seams: [Y, A], stitches: [TS, SS] }
+  - { order: 3, action: form front placket and fastening, placements: [Z], stitches: [TS] }
+  - { order: 4, action: make hood and attach it to neckline, seams: [D], stitches: [SS] }
+  - { order: 5, action: set sleeves join underarm and sides and finish bands and hem, seams: [C, F, B, W, H], stitches: [SS, TS] }

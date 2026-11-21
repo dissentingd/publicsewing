@@ -52,9 +52,8 @@ placket, hood (cut 2), chest pocket bag, chest flap (cut 2), kangaroo pocket.
 
 ## Construction
 1. Kangaroo pocket: hem the slanted openings, press the edges under, topstitch on its mark.
-2. Chest pocket: hem its top; baste it and the made-up flap into the front yoke seam; yokes to the
-   bodies; shoulder seams.
-3. Placket at the front slit; buttons and holes.
-4. Hood: CB seam, drawstring casing at the face; sew to the neckline between the placket's edges,
+2. Chest pocket: hem its top; baste it and the made-up flap into the front Y yoke seam; join yokes to the bodies and sew the A shoulder seams.
+3. Finish the Z front slit with its placket; work buttons and holes.
+4. Hood: CB seam, drawstring casing at the face; sew it at D to the neckline between the placket's edges,
    binding the seam inside.
-5. Sleeves set in; underarm and side seams; bands; hem.
+5. Set sleeves at C; close F underarm and B side seams; attach W sleeve bands and finish the H hem.
