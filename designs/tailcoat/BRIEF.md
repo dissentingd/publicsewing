@@ -71,8 +71,10 @@ lining, an inside breast pocket (`lining`, `insidePockets`, on by default).
 ## Construction
 Proposed making-up order; Simons gives no making-up sequence:
 
-1. Make any breast welt and close its bag. Join the backs, side bodies and fronts, then the shoulders.
-2. Sew each tail to the waist seam from the front end of the tail back to centre back. Join the tails at centre back from the waist down to the chosen opening; the source shows a slight overlap there.
-3. Sew the collar to the neckline. Attach the front facings, turn and press the lapels and front edges, and face the leading edges of the tails with their lining. The lapel facings may be cut from silk.
-4. Assemble and set in the sleeves. Join the body, tail and sleeve linings and attach them to the facings and cuffs.
-5. Finish the body, tail and sleeve hems. Work the front buttonholes and sew on the buttons.
+1. If lower body pockets are selected as a variant, make their P welts and bags before closing the fronts.
+2. If a breast pocket is selected, make its P8 welt and close its bag.
+3. Join the C back-body and B front-body seams, then sew the A shoulders.
+4. Sew each tail to the waist seam from its front end to centre back. Join the tails at centre back from the waist to the chosen opening; the source shows a slight overlap there.
+5. Sew the collar at E to the neckline. Attach the F front facings, turn and press the lapels and front edges, and face the leading tail edges with lining. The lapel facings may use silk.
+6. Join each sleeve at its G front and H back seams and set it at D. Make the body, tail and sleeve linings and attach them to the facings and cuffs.
+7. Finish the J body, tail and sleeve hems. Work the BH front buttonholes and sew on the buttons.
