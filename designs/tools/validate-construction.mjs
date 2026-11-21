@@ -50,7 +50,7 @@ export function validateConstruction(design) {
     // It does not by itself make the sewing operation conditional.
   })
   if (prose.length !== data.steps.length) throw new Error(`construction step count: ${data.steps.length} records, ${prose.length} prose steps`)
-  for (const code of Object.keys(codes)) if (!used.has(code)) throw new Error(`map code ${code} is not in construction steps`)
+  for (const code of Object.keys(codes)) if (codes[code] && !used.has(code)) throw new Error(`map code ${code} is not in construction steps`)
   return data
 }
 

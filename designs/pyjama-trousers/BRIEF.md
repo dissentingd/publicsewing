@@ -46,8 +46,8 @@ ankle with a plain hem instead of into a knee band. Worn with the pyjama jacket
 Front (cut 2), back (cut 2).
 
 ## Construction
-1. Outseams and inseams, felled or turned in and stitched.
-2. Crotch seam, from front waist to back waist.
-3. Waist casing: turn under, then over by the casing width, stitch, leaving a gap; thread the
+1. Join the O outseams and I inseams, felled or turned in and stitched.
+2. Sew the X crotch seam, from front waist to back waist.
+3. Make the C waist casing: turn under, then over by the casing width, stitch, leaving a gap; thread the
    elastic or drawstring.
-4. Hems: turn up on the fold line.
+4. Finish the H hems: turn up on the fold line.
