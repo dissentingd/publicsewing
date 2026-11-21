@@ -48,11 +48,11 @@ as a pattern, one a quilt and one a Sewing Bee gown; their listings don't say wh
 Front, back (fold), sleeve, facing, patch pocket, girdle, girdle loop (cut 2). The bath robe adds a collar.
 
 ## Construction
-1. Patch pockets on the fronts.
-2. Shoulders; the collar seam at CB, and the collar to the back neck.
-3. Facing round the fronts and collar, turned and stitched.
-4. Sleeves, side seams, girdle loops caught in at the waist.
-5. Hems, fastenings; sew and turn the girdle.
+1. If lower pockets are selected, finish and attach the P8 patch pockets to the fronts.
+2. Sew the A shoulders and G collar outer edge at CB, then attach the collar at D to the back neck.
+3. Sew the E facing around the fronts and collar, turn and topstitch it.
+4. Close the F sleeve underarms, set sleeves at C and sew the B sides, catching the girdle loops at the waist.
+5. Finish the H gown and sleeve hems and BH front fastenings; sew and turn the separate tie girdle.
 
 ## Checks
 `test/dressing-gown.test.mjs`: every size, the gown, the bath robe, and a plain version. The coat checks, and the girdle
