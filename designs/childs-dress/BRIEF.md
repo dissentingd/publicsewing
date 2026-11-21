@@ -59,6 +59,10 @@ Front and back (or, in the yoked variant, front and back yokes and skirts), slee
 collar, opening facing, sash.
 
 ## Construction
-Lay and press the front pleats and tack them at the neck. Sew the shoulders and side seams. Face the
-opening, make the buttonholes. Gather the sleeve caps into the armholes and the hems into the
-bindings. Make the collar and sew it on. Hem; make the sash. Pivnick gives no making-up order.
+Proposed making-up order for this unsewn draft; Pivnick gives none:
+
+1. Lay and press the front pleats and tack them at the neck. Face the Z back opening.
+2. Join the A shoulders; make the collar and attach it at D to the neckline.
+3. Gather the sleeve caps into the C armholes, then close the F sleeve underarm and B body side seams.
+4. Gather each sleeve's W lower edge into its binding.
+5. Finish the H dress hem and make the sash. Work the back buttonholes and attach buttons opposite.

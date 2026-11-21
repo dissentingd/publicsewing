@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: childs-dress
+steps:
+  - { order: 1, action: prepare pleats and face back opening, placements: [Z], stitches: [TS] }
+  - { order: 2, action: join shoulders and attach collar, seams: [A, D], stitches: [SS] }
+  - { order: 3, action: set sleeves and close underarms and sides, seams: [C, F, B], stitches: [SS] }
+  - { order: 4, action: bind gathered sleeve hems, seams: [W], stitches: [SS] }
+  - { order: 5, action: hem dress make sash and finish back fastening, seams: [H], stitches: [TS] }
