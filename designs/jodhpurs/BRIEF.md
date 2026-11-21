@@ -67,8 +67,8 @@ and facing, belt loops, side pocket bags, back welt and bag.
 ## Construction
 Proposed making-up order; Simons gives no making-up sequence:
 
-1. Sew the front and back darts and make any selected pockets, closing their bags.
-2. Install the fly facing, shield and closure, or prepare the side zip in the left outseam if that option is selected.
-3. Sew the outseams, leaving the side-zip opening if used, then the inseams and crotch seam through the seat.
-4. Attach the belt loops and waistband, finishing its ends around the closure.
-5. Turn up the cuffs along their marked lines and secure them.
+1. Sew the M front and back darts and make any selected SP side and BP back pockets, closing their bags.
+2. Install the fly facing, shield and closure at Z, or prepare the side zip in the left outseam if that option is selected.
+3. Sew the O outseams, leaving the side-zip opening if used, then the I inseams and X crotch seam through the seat.
+4. Attach the belt loops and W waistband, finishing its ends around the closure.
+5. Turn up the H cuffs along their marked lines and secure them.

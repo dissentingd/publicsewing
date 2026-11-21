@@ -42,10 +42,10 @@ Front, back, waistband, fly pieces, side and back pocket pieces, belt loops, as 
 ## Construction
 Proposed making-up order for this unsewn draft:
 
-1. Sew the front and back darts. Make any back welt and side pockets, closing their bags. Attach the fly facing and shield and fit the closure.
-2. Sew each outseam from the lower edge of the side pocket, if fitted, to the top of the leg vent. Attach the stand to the back vent edge and the facing to the front edge.
-3. Sew the inseams and the crotch seam from the fly to centre back.
-4. Add the belt loops and waistband, then turn and secure the leg hems.
+1. Sew the M front and back darts. Make any BP back welt and SP side pockets, closing their bags. Attach the fly facing and shield at Z and fit the closure.
+2. Sew each O outseam from the lower edge of the side pocket, if fitted, to the top of the leg vent. Attach the stand to the back vent edge and the facing to the front edge.
+3. Sew the I inseams and the X crotch seam from the fly to centre back.
+4. Add the belt loops and W waistband, then turn and secure the H leg hems.
 5. Work buttonholes on each front vent edge and sew the corresponding buttons to its stand.
 
 ## Changes and what isn't modelled

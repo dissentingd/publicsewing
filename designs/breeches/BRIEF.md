@@ -49,8 +49,8 @@ Front, back, waistband, fly shield and facing, belt loops, side and back pocket 
 trousers), button stand (back, cut 2, folded), opening facing (front, cut 2).
 
 ## Construction
-1. Sew the front and back darts. Make any back welt and side pockets, closing their bags. Attach the fly facing and shield and fit the fly closure.
-2. Opening: the facing to the front's lower outseam edge, turned in; the folded stand to the
+1. Sew the M front and back darts. Make any BP back welt and SP side pockets, closing their bags. Attach the fly facing and shield at Z and fit the fly closure.
+2. Opening: the facing to the front's lower O outseam edge, turned in; the folded stand to the
    back's.
-3. Outseams from the waist down to the opening's notch; inseams; crotch seam.
-4. Sew the crotch seam from the fly to centre back. Attach the belt loops and waistband; turn the cuff edges. Work buttonholes on the front edge of each lower-leg opening and sew buttons to its stand.
+3. Finish the O outseams from the waist down to the opening's notch and sew the I inseams.
+4. Sew the X crotch seam from the fly to centre back. Attach the belt loops and W waistband; turn the H cuff edges. Work buttonholes on the front edge of each lower-leg opening and sew buttons to its stand.
