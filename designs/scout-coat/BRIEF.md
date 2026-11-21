@@ -33,11 +33,12 @@ Front, back, side body, facing, collar, top and under sleeves, and a pocket and 
 ## Construction
 Proposed making-up order for this unsewn draft:
 
-1. Hem each patch pocket's top, press its other edges under and stitch it to the front at the marks. Sew its flap above the pocket, with a buttonhole at the centre and a button on the pocket.
-2. Sew the side bodies to the back and then to the fronts, matching waist notches. Close the shoulders.
-3. Interface and assemble the collar, turn it and sew it to the neckline. Attach the front facings and turn the front edges.
-4. Join the two pieces of each sleeve at both seams and set the sleeves into the armholes. Turn and secure the coat and sleeve hems.
-5. Work front buttonholes on the overlapping side and sew on the corresponding buttons, along with the pocket buttons.
+1. If upper pockets are selected, hem their tops, press the edges under and stitch them at P8. Attach each flap above its pocket and add its button and buttonhole.
+2. If lower pockets are selected, prepare and stitch them at P with their flaps and fastenings.
+3. Sew the C back-body seams and B front-body seams, matching waist notches, then close the A shoulders.
+4. Interface and assemble the collar, turn it and sew it at E to the neckline. Attach the F front facings and turn the front edges.
+5. Join the two pieces of each sleeve at the G front and H back seams, set them at D into the armholes, then finish the J coat and sleeve hems.
+6. Work the BH front buttonholes on the overlapping side and sew on corresponding buttons, along with the pocket buttons.
 
 ## Changes and what isn't modelled
 - **The forepart is narrower than Simons',** about a quarter of the chest at the waist, not a third, so the bottom pocket is usually narrower than 5½ in in proportion: about 6 in on a 39 in chest, where Simons' proportion is 7. Its width is limited to fit, and moved nearer CF.

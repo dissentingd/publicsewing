@@ -114,3 +114,23 @@ patternMap:
     topFlap: 13
     bottomPocket: 14
     bottomFlap: 15
+  stitches:
+    TS: { name: topstitch, key: turn pocket edges and topstitch }
+  codes:
+    P:
+      name: lower patch-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: lowerPocket, along: 0.5, optional: true }]
+    P8:
+      name: upper patch-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: breastPocket, along: 0.5, optional: true }]
+    B:
+      name: front body seam
+      stitch: SS
+      drape: front_seam
+      at:
+        - { part: front, between: [seamStart, seamHem] }
+        - { part: sideBody, between: [frontTop, mid] }
