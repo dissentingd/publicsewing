@@ -62,8 +62,8 @@ welt and bag. With `continuousBand` off, a separate waistband.
 ## Construction
 Proposed making-up order; Simons gives no making-up sequence:
 
-1. Fold and stitch the front pleats from the waist line to the top of the cut-on band. Sew the back darts and make any selected pockets, closing their bags.
-2. Sew the outseams and inseams, carrying the side seams through the band.
-3. Attach the fly facing and shield and set the zip through the band. Sew the crotch and seat seam through the back band.
-4. Face the top of the band with a waistband lining or curtain cut to its shape; that facing is not drafted here.
-5. Turn up and secure the leg hems.
+1. Fold and stitch the front pleats from the waist line to the top of the cut-on band. Sew the M back darts and make any selected SP side and BP back pockets, closing their bags.
+2. Sew the O outseams and I inseams, carrying the side seams through the band.
+3. Attach the fly facing and shield at Z and set the zip through the band. Sew the X crotch and seat seam through the back band.
+4. Face the top of the W band with a waistband lining or curtain cut to its shape; that facing is not drafted here.
+5. Turn up and secure the H leg hems.

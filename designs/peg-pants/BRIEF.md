@@ -48,7 +48,7 @@ As the trousers: front, back, waistband, fly shield and facing, belt loops, pock
 ## Construction
 Proposed making-up order for this unsewn draft:
 
-1. Fold and baste the front pleats at the waist; sew the back darts. Make any back welt and side pockets, closing their bags.
-2. Sew the outseams and inseams. Attach the fly facing and shield, fit the closure, then sew the crotch seam from the fly to centre back.
-3. Make the belt loops and attach the waistband over the basted pleats. Finish its ends over the fly.
-4. Turn up and secure the leg hems.
+1. Fold and baste the front pleats at the waist; sew the M back darts. Make any BP back welt and SP side pockets, closing their bags.
+2. Sew the O outseams and I inseams. Attach the fly facing and shield at Z, fit the closure, then sew the X crotch seam from the fly to centre back.
+3. Make the belt loops and attach the W waistband over the basted pleats. Finish its ends over the fly.
+4. Turn up and secure the H leg hems.

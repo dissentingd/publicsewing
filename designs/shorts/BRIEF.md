@@ -60,7 +60,7 @@ back welt and bag.
 ## Construction
 Proposed making-up order; Simons gives no making-up sequence:
 
-1. Sew the front and back darts, extending them to the top if the waistband is cut on. Make any selected back welt and side pockets and close their bags.
-2. Sew the outseams and inseams. Attach the fly facing and shield, install the closure, and sew the crotch seam to centre back.
-3. For a separate waistband, attach it with the belt loops and finish its ends over the fly. For a cut-on band, sew the side and seat seams through the band and face its upper edge.
-4. Turn and secure a plain hem on each short leg.
+1. Sew the M front and back darts, extending them to the top if the waistband is cut on. Make any selected BP back welt and SP side pockets and close their bags.
+2. Sew the O outseams and I inseams. Attach the fly facing and shield at Z, install the closure, and sew the X crotch seam to centre back.
+3. For a separate W waistband, attach it with the belt loops and finish its ends over the fly. For a cut-on band, sew the side and seat seams through the band and face its upper edge.
+4. Turn and secure a plain H hem on each short leg.

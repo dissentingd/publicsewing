@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: slacks
+steps:
+  - { order: 1, action: form pleats and darts and selected pockets, seams: [M], placements: [SP, BP], stitches: [SS] }
+  - { order: 2, action: join outseams and inseams, seams: [O, I], stitches: [SS] }
+  - { order: 3, action: close fly and crotch, seams: [X], placements: [Z], stitches: [SS, TS] }
+  - { order: 4, action: face cut-on waistband, seams: [W], stitches: [SS] }
+  - { order: 5, action: hem legs, seams: [H], stitches: [HS] }
