@@ -46,7 +46,7 @@ sleeves, neck band, shallow yoke, double fullness):
 
 ## Construction
 
-1. Make the back placket to the marked depth. Gather the upper body edges to fit the front and back yokes.
-2. Sew the gathered bodies to their yokes; assemble the double yokes if using them, then join the shoulders. Bind the neckline or attach the optional neck band.
-3. Sew in the sleeves and close the sleeve underarm and body side seams. Gather each long sleeve into its wristband, leaving the planned frill beneath if chosen.
-4. Work the back buttonholes and attach the buttons. Sew the deep hem; add tucks above it only if desired. Walker describes these finishes, while the order here is proposed.
+1. Make the Z back placket to the marked depth. Gather the upper body edges to fit the front and back yokes.
+2. Sew the Y yoke seams; assemble the double yokes if using them, then join the A shoulders. Bind the D neckline or attach the optional neck band.
+3. Set the sleeves at C and close the F sleeve underarm and B body side seams. Gather each long sleeve into its W wristband, leaving the planned frill beneath if chosen.
+4. Work the back buttonholes and attach the buttons. Sew the deep H hem; add tucks above it only if desired. Walker describes these finishes, while the order here is proposed.
