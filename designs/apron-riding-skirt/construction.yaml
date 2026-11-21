@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# The matching-mark code is defined in spec.yaml's patternMap.
+design: apron-riding-skirt
+steps:
+  - { order: 1, action: sew darts and join drapes at matching marks, placements: [GM], stitches: [SS] }
+  - { order: 2, action: finish cutaway and hem edges }
+  - { order: 3, action: attach leg strap and short tab }
+  - { order: 4, action: fit and fasten strap and tab }

@@ -27,6 +27,15 @@ Part II is separately drafted from the centre back. Its left hem extends 14¼ in
 
 The source's long curved edges are represented by short straight sections between measured points. The waist and back darts are marked for sewing but their intake is not folded in the preview. The source does not specify an exact side-seam assembly or a waist finish, so the brief's order below is a proposed construction sequence. The original 37/38-inch worn front and back lengths are not reproduced directly: the point drafts reach 39 inches from their construction origins, which is the length used here. The front and back side lengths may need easing and levelling in muslin. The button's final position is deliberately a fitting decision, as Mitchell directs.
 
-## Pieces and proposed construction
+## Pieces
 
-Cut one Part I, one Part II, one long leg strap and one short tab. Sew the marked darts, leave the marked back opening, join the drapes at their corresponding side edges, and finish the waist. Finish the cutaway and hem edges. Attach the long strap at Part I's point 17 and the short tab above point 15. Fit the long strap around the leg just above the knee, button it to the short tab, then fit the tab's button on Part II above point 36 while the wearer stands off the horse. Level the long hem in a muslin before cutting final cloth.
+Cut one Part I, one Part II, one long leg strap and one short tab.
+
+## Construction
+
+Proposed making-up order for this unsewn draft:
+
+1. Sew the marked darts and leave the marked back opening. Join the two drapes at their corresponding side edges, aligning the GM matching marks; finish the waist.
+2. Finish the cutaway and hem edges. Level the long hem in a muslin before cutting final cloth.
+3. Attach the long strap at Part I's point 17 and the short tab above point 15.
+4. Fit the long strap around the leg just above the knee, button it to the short tab, then fit the tab's button on Part II above point 36 while the wearer stands off the horse.
