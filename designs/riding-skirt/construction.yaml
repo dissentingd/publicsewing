@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Seam codes are defined in the inherited patternMap in spec.yaml.
+design: riding-skirt
+steps:
+  - { order: 1, action: join gore side seams inseams and crotch, seams: [S], stitches: [SS] }
+  - { order: 2, action: attach overlapping front panel }
+  - { order: 3, action: close center back below zip and finish waistband and hem, seams: [CB], stitches: [SS] }
+  - { order: 4, action: fit panel hang and riding clearance }

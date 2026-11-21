@@ -48,8 +48,9 @@ Reference size `cisMaleAdult38`; Vincent drafts a 36 breast.
 Back (on the fold), fronts, facing, collar, sleeves, cuffs, sleeve plackets, breast pocket, lower pockets.
 
 ## Construction
-1. Pockets onto the fronts.
-2. Shoulder and side seams; facings to the front edges.
-3. Collar to the neckline, its ends at the front edges.
-4. Bind the sleeve openings, set the sleeves, pleat the fullness into the cuffs.
-5. Hem, then five buttonholes on the right front and buttons on the left.
+1. If a breast pocket is selected, prepare and attach it at P7 to the front.
+2. If lower pockets are selected, prepare and attach them at P8 to the fronts.
+3. Join the A shoulders and B side seams; attach the E facings to the front edges.
+4. Sew the G collar outer edge, turn it, then attach it at D to the neckline with its ends at the front edges.
+5. Bind the sleeve openings, close the F underarm seams, set the sleeves at C and pleat their fullness into the cuffs.
+6. Finish the H hem, then work the BH front buttonholes on the right and attach buttons on the left.

@@ -66,10 +66,11 @@ facing, front and back raglan sleeves (cut 2 each), military collar, hand-pocket
 bags.
 
 ## Construction
-1. CB seam and vent; hand pockets on the fronts.
-2. Each front sleeve to its back sleeve down the over-arm seam, then the sleeves into the
-   raglan lines on the back and fronts, matching the armhole notches.
-3. Underarm and side seams in one, from the cuff to the hem.
-4. Facings to the fronts; the collar to the neck, its ends at the front edges, so it buttons to
-   the throat.
-5. Hems; buttonholes on the right front (men's), buttons on the left.
+The following order is a proposed method for this unsewn draft.
+1. CB: sew the centre-back seam and form the vent when selected.
+2. P8: with hand pockets on, make the slanted welt and bag at each front mark before closing the body.
+3. A and C: for the split raglan sleeve, join its front and back halves along the over-arm edge, then sew them to the front and back raglan lines. With the one-piece variant, close its shoulder dart before attaching it.
+4. F and B: close the sleeve underarms and body side seams from cuff to hem.
+5. G, D and E: make the collar, attach it around the neck, then join the facings to the fronts.
+6. H and BH: turn the coat and sleeve hems, work right-front buttonholes, and attach left-front buttons.
+

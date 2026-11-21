@@ -6,6 +6,11 @@
 # See BRIEF.md.
 extends: ../templates/yoke.yaml
 
+# The one-piece body has no yoke seam.
+patternMap:
+  merge: true
+  codes: { Y: null }
+
 about:
   id: shift-dress
   name: Shift dress

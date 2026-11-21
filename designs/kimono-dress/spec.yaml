@@ -4,6 +4,11 @@
 # gathered skirt, buttoned down the front bodice. See BRIEF.md.
 extends: ../templates/yoke.yaml
 
+# The sleeves are cut in one with the bodice, not separate sleeve pieces.
+patternMap:
+  merge: true
+  codes: { C: null, F: null, W: null }
+
 about:
   id: kimono-dress
   name: Kimono dress

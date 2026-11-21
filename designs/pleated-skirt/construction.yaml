@@ -1,0 +1,7 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Seam codes are defined in the inherited patternMap in spec.yaml.
+design: pleated-skirt
+steps:
+  - { order: 1, action: join gore seams above and below seat line, seams: [S], stitches: [SS] }
+  - { order: 2, action: fold press and secure pleats }
+  - { order: 3, action: close center back below zip and finish waist and hem, seams: [CB], stitches: [SS] }

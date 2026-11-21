@@ -162,3 +162,16 @@ variants:
 patternMap:
   merge: true
   pieces: { waistband: null, sideWaistband: 3 }
+  codes:
+    M:
+      name: back waist darts
+      stitch: SS
+      kind: dart
+      at: [{ part: back, point: dartTip, optional: true }]
+    SZ:
+      name: left side zip opening
+      stitch: SS
+      kind: closure
+      at:
+        - { part: front, between: [styleWaistOut, sideZip], optional: true }
+        - { part: back, between: [styleWaistOut, sideZip], optional: true }

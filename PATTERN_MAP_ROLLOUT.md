@@ -33,6 +33,17 @@ At a 390 px browser viewport, the page's map viewport is 358 px wide and scrolls
 
 ## Review and next steps (2026-11-20)
 
+Construction-record continuation: the current inventory is 99 mapped designs, 66 with
+`construction.yaml`, and 33 still requiring records. This stage covers skirt, trouser, shirt,
+nightwear, waistcoat, and outerwear families. Each new record follows numbered prose in its
+brief and resolves against its map. Optional pocket and belt operations have separate `whenAny`
+steps where the parent map carries codes for off-by-default variants. The validator now
+distinguishes optional geometry anchors from optional sewing operations and excludes `null`
+pieces and codes removed by map merges. All existing records have a shared regression test;
+224 focused tests, site generation, and a production build in a fresh output directory pass.
+The new records and their page previews still need the broader render and publication review
+described below.
+
 Setup now in place:
 - `lib/pattern-map.mjs` (`mapFor(Design)`) is the one place that reads a design's map.
 - `tools/snapshot.mjs` now also compares the page preview, every download file (byte-identical unless `--draft-only`) and the map labels and key text in the layered SVG. `tools/variants.json` has a pocketless chore-coat variant.
@@ -52,7 +63,7 @@ Mapped so far (2026-11-20): 99 of 122 designs. Sixteen have their own map, `cons
 
 Not mapped (23): churidar, joggers, salwar; fitted dress, fitted kameez, shell top, wrap dress, princess dress; cardigan, henley, turtleneck; aprons, cape, cape overcoat, dolman cape, jumpsuit, kalidar kurta, t-shirt; tunic skirt (no darts at children's sizes, so no anchors); and the fitted jacket's descendants (double-dart jacket, riding habit, Prince Albert jacket, riding frock coat), which opt out.
 
-Next: those 23, then numbered steps (`construction.yaml`) for the mapped designs that lack them. Before publishing: one full `npm test`, a site build and `page-check.mjs` over every mapped design.
+The historical list above records the state before the construction-record rollout. As of 2026-11-21, all 99 designs with a nonempty pattern map have a validated `construction.yaml` and numbered construction prose. The last eight reviewed were balmacaan, bib overall, field jacket, field trousers, jeans, mantle, quilted jacket, and winter coat. Their inherited maps were adjusted for the drafted raglan sleeves, patch pockets, button fronts, and optional pieces. The record and brief suite, 99-design map regression suite, size and option checks, and production site build passed. All eight before-change snapshots retained identical rendered SVG geometry across 98 cases each, with map/export metadata changing as intended. Before publishing: one full `npm test`, `page-check.mjs` over every mapped design, visual review of exports, and the source-rights audit described below.
 
 ## 1. Define the shared data
 

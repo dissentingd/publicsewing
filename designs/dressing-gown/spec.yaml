@@ -76,7 +76,18 @@ variants:
     description: "Vincent's bath robe: a little shorter, an ordinary button stand, buttoned to the neck under a standing collar. In towelling or blanket cloth."
     options: { collarStyle: military, buttonExtension: 0.04, buttons: 7, buttonTop: -4, buttonBottom: 0.6, lengthBelowWaist: 2.55 }
 
-# The parent's pattern map, with this design's own pieces numbered (SPEC.md, "Pattern map").
+# The parent's map, with this design's own pieces and no unused breast-pocket or sewn-belt codes.
+# The tie girdle is a separate piece.
 patternMap:
   merge: true
   pieces: { girdle: 14, girdleLoop: 15, handWelt: null, handBag: null }
+  codes:
+    P6: null
+    BT: null
+    D:
+      name: neckline and collar
+      stitch: SS
+      # The shawl collar is cut on the front, so its outer edge is not a neck join.
+      at:
+        - { part: back, path: backCollar, along: 0.5, optional: true }
+        - { part: collar, path: neck, along: 0.5, optional: true }

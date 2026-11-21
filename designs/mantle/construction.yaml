@@ -1,0 +1,7 @@
+design: mantle
+steps:
+  - { order: 1, action: make lower patch pockets and flaps, placements: [P8], stitches: [TS], whenAny: [lowerPockets] }
+  - { order: 2, action: join split raglan sleeves and attach to body, seams: [A, C], stitches: [SS] }
+  - { order: 3, action: close underarm and side seams, seams: [F, B], stitches: [SS] }
+  - { order: 4, action: attach collar and front facings, seams: [G, D, E], stitches: [SS] }
+  - { order: 5, action: finish hems and buttons, seams: [H], placements: [BH], stitches: [TS, BH] }

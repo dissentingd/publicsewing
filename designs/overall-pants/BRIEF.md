@@ -47,6 +47,6 @@ Leg (cut 2, mirrored), waistband (cut 2), fly shield and facing, belt loops.
 ## Construction
 Letters are the codes on the pattern map; numbers are printed on the pieces. **SS** straight seam pressed open, **TS** topstitch.
 
-1. Fly as the trousers: the facing **5** to the left leg **1**, the shield **4** to the right, the closure between them; topstitch the fly line **Z** with **TS**.
+1. Sew the facing **5** to the left leg **1** and the shield **4** to the right, install the selected closure between them, turn and press, then topstitch the fly line **Z** with **TS**.
 2. Sew the inseams of each leg **1**, then the crotch seam from the back waist round to the fly. The outseam line **O** is pressed, not sewn: the leg is cut in one.
-3. Sew the belt loops **6** and the waistband **3** to the waist of the legs **1**; turn up the hems.
+3. Sew the belt loops **6** and the waistband **3** to the waist of the legs **1**; fold and finish the band ends over the fly, then turn up and secure both leg hems.

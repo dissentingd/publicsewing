@@ -1,0 +1,10 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: pyjama-jacket
+steps:
+  - { order: 1, action: attach breast pocket, placements: [P7], stitches: [TS], whenAny: [breastPocket] }
+  - { order: 2, action: attach optional lower pockets, placements: [P8], stitches: [TS], whenAny: [lowerPockets] }
+  - { order: 3, action: join shoulders and sides, seams: [A, B], stitches: [FF] }
+  - { order: 4, action: make and attach collar and facings, seams: [G, D, E], stitches: [SS] }
+  - { order: 5, action: join and set sleeves, seams: [F, C], stitches: [FF, SS] }
+  - { order: 6, action: finish hems and front fastening, seams: [H], placements: [BH], stitches: [TS, BH] }

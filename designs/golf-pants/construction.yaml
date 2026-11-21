@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: golf-pants
+steps:
+  - { order: 1, action: sew darts pockets and fly, seams: [M], placements: [BP, SP, Z], stitches: [SS, TS] }
+  - { order: 2, action: sew outseams and face leg vents, seams: [O], stitches: [SS] }
+  - { order: 3, action: join inseams and crotch, seams: [I, X], stitches: [SS] }
+  - { order: 4, action: attach waistband and finish hems, seams: [W, H], stitches: [SS, HS] }
+  - { order: 5, action: button lower-leg vents }

@@ -109,3 +109,4 @@ pieces:
 patternMap:
   merge: true
   pieces: { flyShield: 5, frontBand: 4, flyFacing: null, beltLoop: null }
+  codes: { Z: null } # the drop front replaces the parent's fly

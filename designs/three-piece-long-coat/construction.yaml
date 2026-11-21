@@ -1,0 +1,11 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: three-piece-long-coat
+steps:
+  - { order: 1, action: make variant hip welt pockets, placements: [P14], stitches: [SS], whenAny: [pockets] }
+  - { order: 2, action: make variant breast welt pocket, placements: [P12], stitches: [SS], whenAny: [breastPocket] }
+  - { order: 3, action: make variant ticket welt pocket, placements: [P17], stitches: [SS], whenAny: [ticketPocket] }
+  - { order: 4, action: join front and back panels and sides, seams: [PF, PB, B], stitches: [SS] }
+  - { order: 5, action: join shoulders and attach collar and facings, seams: [A, D, E], stitches: [SS] }
+  - { order: 6, action: join and set sleeves and line coat, seams: [F, G, C], stitches: [SS] }
+  - { order: 7, action: finish hems and front fastening, seams: [H], placements: [BH], stitches: [HS, BH] }

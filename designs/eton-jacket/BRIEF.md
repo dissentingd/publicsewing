@@ -40,7 +40,14 @@ Front, back, side body, facing, collar, top and under sleeves; back-neck facing,
 as the boys' suit jacket.
 
 ## Construction
-As the boys' suit jacket, without the outer pockets. Press the lapel on its crease down to the waist, and don't press out the roll.
+Proposed making-up order for this unsewn draft:
+
+1. If lower pockets are selected as a variant, make their P welts and bags; the source draft has no outer pockets.
+2. Join the B front-body and C back-body seams, then sew and press the A shoulders.
+3. Sew the collar at E to the neckline and join the back-neck facing to the front facings. Sew the F facings to the front and lapel edges, turn and press the lapel crease down to the waist while preserving its roll.
+4. Join each top sleeve to its under sleeve at the G front and H back seams and set it at D into the armhole.
+5. Make the body and sleeve linings, including the inside pocket if selected, and attach them to the facings. Finish the J jacket and sleeve hems.
+6. If the button option is used, work the BH front buttonhole and sew on its button; the draft also allows no button.
 
 ## Changes and what isn't modelled
 - **The back is cut on the fold,** not with Simons' centre seam, as on the boys' suit jacket with no vent: `lib/body3.mjs` keeps the CB straight

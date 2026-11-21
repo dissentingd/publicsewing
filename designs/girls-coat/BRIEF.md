@@ -52,5 +52,12 @@ As the box coat, without the ticket pocket: back, front, facing, collar, top and
 and each hip pocket's flap, jet and bag.
 
 ## Construction
-As the box coat's brief: neck darts, pockets, side and shoulder seams, facings and collar, then
-the sleeves, hems and buttons.
+Proposed making-up order for this unsewn draft:
+
+1. Sew the N neck darts.
+2. If hip pockets are selected, make the slanted P7 welts and bags before joining the coat body.
+3. If a ticket pocket is selected as a variant, make its P10 welt and bag; the source draft has none.
+4. Sew the CB centre-back seam and vent, then the A shoulders and B sides. Preserve the loose box shape.
+5. Attach the collar at D to the neckline and the E front and back-neck facings to the front edges and lapels; turn and press.
+6. Close the F front and G back sleeve seams, then set the sleeves at C, easing their caps.
+7. Make the body and sleeve linings, attach them to the facings and finish the vent and H hems with lining ease. Work the BH front buttonholes and attach buttons.

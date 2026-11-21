@@ -31,7 +31,7 @@ As the smock (test/frock.test.mjs).
 
 ## Construction
 
-1. Make the back opening and fastenings in the bodice. Sew the bodice shoulder and side seams.
-2. Sew the short sleeves into the armholes and finish their lower edges or bands. Finish the neckline.
-3. Join the skirt sections and gather their upper edge evenly to the bodice waist. Sew the skirt to the bodice, matching centre front, centre back, and side seams.
-4. Hem the skirt and complete the back buttons and buttonholes. This draft uses one-piece sleeves and no tucks.
+1. Make the Z back opening in the bodice. Sew its A shoulder and B side seams.
+2. Where sleeves are fitted, set them at C, close their F underarm seams and finish their W lower edges or bands. Finish the D neckline.
+3. Join the skirt sections, gather their upper edge and sew them at Y to the bodice waist, matching centre front, centre back and side seams.
+4. Finish the H skirt hem and complete the back buttons and buttonholes. This draft uses one-piece sleeves and no tucks.

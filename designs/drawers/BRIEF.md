@@ -33,7 +33,13 @@ Inches below are Vincent's, on a 40 in seat for the worked numbers.
 Leg (cut 2, with no side seam), waistband, fly pieces.
 
 ## Construction
-Inseam, then crotch seam, felled "the same as shirts". Fly, buttons and holes. Waistband. Hem.
+Proposed making-up order for this unsewn draft:
+
+1. Use the O outseam line as a pressing reference; the one-piece leg has no outseam to sew. Join the inseams and fell their allowances.
+2. Sew and fell the crotch seam from front to back.
+3. Make the Z fly opening and work its buttons and buttonholes.
+4. Attach and finish the waistband.
+5. Turn and secure the leg hems.
 
 ## Changes and what isn't modelled
 - **The waist isn't drawn in.** Vincent's "extra size" is fitted away here: the waist is drafted to the waist plus 6.5%.

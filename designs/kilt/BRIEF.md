@@ -41,10 +41,10 @@ Apron (cut 2), pleated length (cut 2), waistband, straps (cut 4).
 
 ## Construction
 1. CB seam of the two pleated lengths, hidden in the last fold.
-2. Fold each pleat to its placement line and press. Stitch each down from the top to the hip line, close to its fold. Baste the top.
-3. Side seams, aprons to the pleated length. Hem. Turn back and stitch each apron's front edge.
+2. Fold each pleat to its K placement line and press. Stitch each down from the top to the hip line, close to its fold. Baste the top.
+3. Join the S side seams, aprons to the pleated length. Finish the H hem. Turn back and stitch each apron's front edge.
 4. Waistband on, round the waist and past each center front by the wrap.
-5. Straps at the marks on the front edges. Buckles at the side, through a slit in the under apron's seam for the one that crosses it.
+5. Straps at the ST marks on the front edges. Buckles at the side, through a slit in the under apron's seam for the one that crosses it.
 
 ## Changes and what isn't modelled
 - **Nearly everything is ours,** as above. It's a usable kilt, not a reconstruction of Simons' or of a traditional one.

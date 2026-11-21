@@ -52,7 +52,7 @@ Front (on the fold), back (on the fold, with the placket slit), sleeves and slee
 neck binding (or band or collar).
 
 ## Construction
-1. Placket at the CB slit; shoulder seams.
-2. Neck binding (or band or collar).
-3. Sleeves set in, bands on; underarm and side seams in one.
-4. Hem; buttons and holes on the placket.
+1. Finish the Z placket at the CB slit and join the A shoulder seams.
+2. Bind the D neckline or attach the selected band or collar.
+3. Set sleeves at C, attach the W sleeve bands, then close the F underarm and B body side seams in one.
+4. Finish the H hem; work the placket buttonholes and attach buttons opposite.

@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# O is an unsewn placement line; the codes are defined in the inherited patternMap.
+design: drawers
+steps:
+  - { order: 1, action: press outseam line and sew inseams, placements: [O], stitches: [SS] }
+  - { order: 2, action: join crotch seam }
+  - { order: 3, action: make fly and fastenings, placements: [Z], stitches: [TS] }
+  - { order: 4, action: attach waistband }
+  - { order: 5, action: hem legs }

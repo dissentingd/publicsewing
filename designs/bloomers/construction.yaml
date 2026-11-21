@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: bloomers
+steps:
+  - { order: 1, action: join inseams crotch and vented outseams, seams: [I, X, O], stitches: [SS] }
+  - { order: 2, action: gather lower legs into bands, seams: [B], stitches: [GS] }
+  - { order: 3, action: fit and close knee bands }
+  - { order: 4, action: form elastic waist casing, seams: [C], stitches: [ES] }

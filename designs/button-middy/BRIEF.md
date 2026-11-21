@@ -72,11 +72,11 @@ Front (cut 2), back (on the fold), facing, collar (on the fold, cut 2), sleeves,
 plackets, belt.
 
 ## Construction
-1. Shoulder seams. Sew the facing to the front edge, turn and press.
-2. Collar and its top: sew round the outer edge, turn, press; sew to the neckline, the ends just past
-   CF.
-3. Bind the sleeve openings. Set in the sleeves; underarm and side seams in one.
-4. Pleat the sleeve's fullness into the cuffs; buttons and buttonholes.
-5. Button the front. Tuck or gather the hem evenly into the belt, front and back alike, with the belt's
-   ends lapping by the stands. Sew the belt on, turn it over its fold and finish inside.
-6. Buttonholes down the right front and at the belt's end; buttons on the left.
+1. If a breast pocket is selected, prepare and attach it at P7 before joining the body.
+2. If lower pockets are selected, prepare and attach them at P8 while the fronts are flat.
+3. Sew the A shoulder seams. Attach the E facing to the front edge, turn and press.
+4. Sew the G collar outer edge, turn and press it, then attach it at D to the neckline with its ends just past CF.
+5. Bind the sleeve openings. Set sleeves at C, then close the F underarm and B side seams in one.
+6. Pleat the sleeve fullness into the cuffs and attach the cuff buttons and buttonholes.
+7. Button the front. Tuck or gather the H hem evenly into the belt, front and back alike; sew the belt on and finish it inside.
+8. Work the BH buttonholes down the right front and at the belt end; attach buttons on the left.

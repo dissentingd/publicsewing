@@ -81,8 +81,12 @@ Front and back legs, waistband; with a fly, the fly shield and facing; side pock
 and bag and belt loops when switched on.
 
 ## Construction
-Sew the back darts (or lay the front pleats and tack them at the waist). Sew the outseams, leaving the
-left one open from the waist to the zip notch, and put in the zip. Sew the inseams, then the crotch
-seam in one from CF round to CB. Sew on the waistband from the back edge of the opening round to the
-front edge, the underlap running on past it, fold it, and close it with a button or hook. Hem the legs.
-Simons gives no making-up order.
+Proposed making-up order for this unsewn draft; Simons gives none:
+
+1. Sew the M back darts. For the pleated variant, fold and tack the front pleats at the waist.
+2. If side pockets are selected, make their bags and finish the SP pocket mouths.
+3. If a back pocket is selected, make its welt and bag at BP before joining the back legs.
+4. Sew the O outseams, leaving the left one open above the SZ side-zip notch. Insert the side zip. For the fly variant, close both outseams and make the Z front fly instead.
+5. Sew the I inseams, then the X crotch seam in one pass from CF to CB.
+6. Attach the W waistband from the back edge of the side opening round to its front edge, leaving the underlap to close with a button or hook. Finish the fly-variant band over its front opening.
+7. Finish the H leg hems.

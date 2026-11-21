@@ -43,14 +43,14 @@ which this design extends), the notched lapel from `lib/coat.mjs` and Bent's two
 | Lining | Lined, inside breast pockets | The topcoat's: `lining` on (back-neck facing, front, side panel, back and sleeve linings), `insidePockets` on |
 
 ## Construction order
-1. Breast welt; lower pockets (flap, jets, bags).
-2. Back CB seam and vent; back to the side panels; side panels to the fronts.
-3. Shoulders.
-4. Collar to the gorges and back neck; facings and the under collar; turn the lapels and front
-   edges.
-5. Sleeves: seams and vents, then set in.
-6. Lining (cut from the body pieces), hems.
-7. Buttonholes and buttons, the sleeve buttons on the vents.
+1. If lower pockets are selected, make their P flaps, jets and bags while the fronts are flat.
+2. If a breast pocket is selected, make its P8 welt and bag before closing the coat body.
+3. Close CB and finish the vent, then join the C back-body and B front-body seams.
+4. Sew the A shoulder seams.
+5. Attach the collar at E to the gorges and back neck; sew the F facings and under collar, then turn the lapels and front edges.
+6. Sew the G front and H back sleeve seams and vents, then set the sleeves at D into the armholes.
+7. Make and attach the lining cut from the body pieces; finish the J body and sleeve hems.
+8. Work the BH front buttonholes and attach buttons, including the sleeve buttons on the vents.
 
 ## Changes and what isn't modelled
 - **Geometry from Bent, not ЕМКО's tables**, so the jacket drafts at any size.

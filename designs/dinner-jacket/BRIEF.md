@@ -61,6 +61,12 @@ lower pockets' welts and bags, and the lining (back-neck facing, front and back 
 pocket; `lining` and `insidePockets`, on by default).
 
 ## Construction
-As the suit jacket's brief, with no vent or sleeve vent and jetted (flapless) lower pockets. Cut
-the facing, and the collar's top layer if wanted, from silk or satin facing cloth. Simons gives no
-making-up order.
+Proposed making-up order; Simons gives no making-up sequence:
+
+1. If lower pockets are selected, make the flapless P jetted pockets in the fronts, attaching and closing their bags.
+2. If a breast pocket is selected as a variant, make its P8 welt and bag; the source draft has no breast pocket.
+3. Close CB, join the C back-body and B front-body seams, then sew the A shoulders. Keep the back hem continuous without a vent.
+4. Attach the collar at E to the neckline and gorge. Sew the F facings, turn the lapels and front edges, and press. The facing and upper collar may use silk or satin facing cloth.
+5. Join each top and under sleeve at the G front and H back seams without a vent, then set it at D into the armhole.
+6. Make the body and sleeve linings, including the inside pocket if selected. Attach the lining to the facings and finish the J body and sleeve hems.
+7. Work the BH front buttonholes and sew on the corresponding buttons.

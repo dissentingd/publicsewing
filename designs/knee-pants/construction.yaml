@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: knee-pants
+steps:
+  - { order: 1, action: sew darts and selected pockets, seams: [M], placements: [BP, SP], stitches: [SS] }
+  - { order: 2, action: join side and inseams, seams: [O, I], stitches: [SS] }
+  - { order: 3, action: prepare fly and join crotch, seams: [X], placements: [Z], stitches: [SS, TS] }
+  - { order: 4, action: attach belt loops and waistband, seams: [W], stitches: [SS] }
+  - { order: 5, action: hem legs, seams: [H], stitches: [HS] }

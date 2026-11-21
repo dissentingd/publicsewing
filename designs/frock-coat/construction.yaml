@@ -1,0 +1,11 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: frock-coat
+steps:
+  - { order: 1, action: make variant lower body pockets, placements: [P], stitches: [SS], whenAny: [lowerPockets] }
+  - { order: 2, action: make breast welt pocket, placements: [P8], stitches: [SS], whenAny: [breastPockets] }
+  - { order: 3, action: make skirt pockets, whenAny: [skirtPockets] }
+  - { order: 4, action: join body shoulders and skirt, seams: [C, B, A], stitches: [SS] }
+  - { order: 5, action: attach collar and facings, seams: [E, F], stitches: [SS] }
+  - { order: 6, action: join and set sleeves and attach lining, seams: [G, H, D], stitches: [SS] }
+  - { order: 7, action: finish hems and front fastening, seams: [J], placements: [BH], stitches: [HS, BH] }

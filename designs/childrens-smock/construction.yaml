@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: childrens-smock
+steps:
+  - { order: 1, action: form back placket and gather bodies, placements: [Z], stitches: [TS] }
+  - { order: 2, action: join yokes shoulders and neckline, seams: [Y, A, D], stitches: [TS, SS] }
+  - { order: 3, action: set sleeves join underarms and sides and attach wristbands, seams: [C, F, B, W], stitches: [SS] }
+  - { order: 4, action: hem smock and finish back fastening, seams: [H], stitches: [TS] }

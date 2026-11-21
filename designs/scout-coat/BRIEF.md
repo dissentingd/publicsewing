@@ -31,7 +31,14 @@ pp. 46-47 (PDF pp. 52-53). US 1922, public domain. Inches below are Simons': bre
 Front, back, side body, facing, collar, top and under sleeves, and a pocket and flap of each size.
 
 ## Construction
-As the military tunic, with patch pockets in place of its welts: hem each pocket's top, press its edges under, and sew it on at the marks; sew the flap on above it, with a buttonhole at its centre and a button on the pocket.
+Proposed making-up order for this unsewn draft:
+
+1. If upper pockets are selected, hem their tops, press the edges under and stitch them at P8. Attach each flap above its pocket and add its button and buttonhole.
+2. If lower pockets are selected, prepare and stitch them at P with their flaps and fastenings.
+3. Sew the C back-body seams and B front-body seams, matching waist notches, then close the A shoulders.
+4. Interface and assemble the collar, turn it and sew it at E to the neckline. Attach the F front facings and turn the front edges.
+5. Join the two pieces of each sleeve at the G front and H back seams, set them at D into the armholes, then finish the J coat and sleeve hems.
+6. Work the BH front buttonholes on the overlapping side and sew on corresponding buttons, along with the pocket buttons.
 
 ## Changes and what isn't modelled
 - **The forepart is narrower than Simons',** about a quarter of the chest at the waist, not a third, so the bottom pocket is usually narrower than 5½ in in proportion: about 6 in on a 39 in chest, where Simons' proportion is 7. Its width is limited to fit, and moved nearer CF.

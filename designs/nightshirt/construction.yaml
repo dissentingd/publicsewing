@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: nightshirt
+steps:
+  - { order: 1, action: finish front placket and join yoke shoulders and neck band, seams: [Y, A, D], placements: [Z], stitches: [TS, SS] }
+  - { order: 2, action: set sleeves close underarms and attach wristbands, seams: [C, F, W], stitches: [SS] }
+  - { order: 3, action: join sides and finish slits, seams: [B], stitches: [SS] }
+  - { order: 4, action: hem shirt and finish fastenings, seams: [H], stitches: [TS] }

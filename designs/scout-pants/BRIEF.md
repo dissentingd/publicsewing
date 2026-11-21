@@ -39,11 +39,18 @@ opening is shown.
 | D at 12, F at 17½, G at 23 on a regular 28 inch inseam | `scoutCalfAt` 34%, `scoutLength` 69% | (17½ - 12) / (28 - 12) = 34%; (23 - 12) / 16 = 69% |
 | ½ inch V and hem pleat | `backKneeV`, `backHemPleat` 4.5% each | ½ / 11 = 4.5% |
 
-## Pieces and construction
+## Pieces
 
-Front and back legs, waistband, fly shield and facing, belt loops and pocket
-pieces. Sew the marked V tuck across each back knee and fold the pleat at each
-back hem, then sew the legs and finish as the suit trousers.
+Front and back legs, waistband, fly shield and facing, belt loops and pocket pieces.
+
+## Construction
+
+Proposed making-up order for this unsewn draft:
+
+1. Sew the marked V tuck across each back knee and fold the pleat at each back hem. Sew any M front and back darts and make the selected SP side and BP back pockets, closing their bags.
+2. Sew the O outseams and I inseams. Attach the fly shield and facing at Z and fit the closure, then sew the X crotch seam from the fly to centre back.
+3. Attach the belt loops and W waistband and finish its ends over the fly.
+4. Turn and secure the H leg hems, keeping the back hem pleats in place.
 
 ## Changes and limits
 

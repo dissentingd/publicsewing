@@ -45,9 +45,9 @@ Front and back (on the fold), sleeves, cuffs, sailor collar (on the fold, cut 2:
 facing), shield (cut 2).
 
 ## Construction
-1. Shoulder seams; bind or face the V and back neck.
-2. Collar and its facing: sew round the outer edge, turn, press; sew to the neckline from the V
+1. Sew the A shoulder seams; bind or face the D V and back neckline.
+2. Collar and its facing: sew round the outer edge, turn, press; attach at D to the neckline from the V
    round the back.
-3. Sleeves set in; underarm and side seams; the sleeve's fullness pleated into the cuffs.
-4. Hem. Shield: sew the two pieces round, turn; buttonholes at the top corners, buttons inside
+3. Set sleeves at C; close the F underarm and B body side seams; pleat the sleeve fullness into the W cuffs.
+4. Finish the H hem. Shield: sew the two pieces round, turn; buttonholes at the top corners, buttons inside
    the front at the V.

@@ -131,3 +131,16 @@ pieces:
 patternMap:
   merge: true
   pieces: { breastPocket: 13, breastFlap: 14, lowerPocket: 15, lowerFlap: 16, fly: 17 }
+  stitches:
+    TS: { name: topstitch, key: stitch patch pockets and flaps to the fronts }
+  codes:
+    P7:
+      name: lower patch-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: lowerPocket, along: 0.5, optional: true }]
+    P10:
+      name: breast patch-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: breastPocket, along: 0.5, optional: true }]

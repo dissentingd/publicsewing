@@ -27,6 +27,15 @@ For the source's 40-inch hip, point 23 is ½ inch less than one quarter of the h
 
 The front panel is **attached at the waist and hangs free below**, overlapping the front split. Mitchell does not specify that attachment. This is a construction choice made for this draft. The divided gores are separate at the front below the waist; the panel is a modesty overlap, not a third leg seam. The modern Sarah block and proportional options replace Mitchell's point-by-point 1921 foundation. The rear fork uses the same depth as the front in this draft; the source lowers it by 1⅓ inches. The back's larger extension supplies seat room but does not reproduce that extra drop. The parent skirt's CB zip and waistband are ours; Mitchell does not give an opening or waistband in this section.
 
-## Pieces and construction
+## Pieces
 
-Cut one front panel on the fold, two front side gores, two back gores and one waistband on the fold. Join front and back side seams, then the inseams and crotch. Attach the front panel at the waist, hanging free over the front division, and finish its free edge and hem. Close the CB seam and zip, attach the waistband, and hem the divided skirt. Fit the panel's hang and riding clearance in muslin before cutting final cloth.
+Cut one front panel on the fold, two front side gores, two back gores and one waistband on the fold.
+
+## Construction
+
+Proposed making-up order for this unsewn draft:
+
+1. Join the S gore side seams, matching their seat notches, then sew the inseams and crotch.
+2. Attach the front panel at the waist, hanging free over the front division, and finish its free edge and hem.
+3. Close the CB centre-back seam below the zip opening and insert the zip. Attach the waistband and hem the divided skirt.
+4. Fit the panel's hang and riding clearance in muslin before cutting final cloth.

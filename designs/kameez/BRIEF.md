@@ -41,7 +41,7 @@ comparable proportions.
 Front and back (each on the fold), sleeves, neck placket.
 
 ## Construction
-1. Join the shoulders. Bind the neck and make the front opening.
-2. Set in the sleeves while the sides are open.
-3. Close the sleeve and side seams in one, from the sleeve hem down to the top of each slit.
-4. Hem the slits, the lower edge and the sleeves.
+1. Join the A shoulders. Bind the D neckline and make the Z front opening.
+2. Set in the sleeves at C while the sides are open.
+3. Close the F sleeve underarm and B body side seams in one, from the sleeve hem down to the top of each slit.
+4. Finish the slits and H lower edge, then the W sleeve hems.

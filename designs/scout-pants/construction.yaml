@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: scout-pants
+steps:
+  - { order: 1, action: sew back tucks darts and selected pockets, seams: [M], placements: [BP, SP], stitches: [SS] }
+  - { order: 2, action: join legs prepare fly and join crotch, seams: [O, I, X], placements: [Z], stitches: [SS, TS] }
+  - { order: 3, action: attach belt loops and waistband, seams: [W], stitches: [SS] }
+  - { order: 4, action: hem shaped legs, seams: [H], stitches: [HS] }

@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the merged patternMap in spec.yaml.
+design: middy-blouse
+steps:
+  - { order: 1, action: join shoulders and finish V neckline, seams: [A, D], stitches: [SS] }
+  - { order: 2, action: make and attach collar, seams: [D], stitches: [SS] }
+  - { order: 3, action: set sleeves join underarms and sides and attach cuffs, seams: [C, F, B, W], stitches: [SS] }
+  - { order: 4, action: hem blouse and make shield, seams: [H], stitches: [TS] }

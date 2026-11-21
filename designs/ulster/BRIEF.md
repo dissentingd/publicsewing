@@ -31,7 +31,12 @@ As the peacoat's brief. The higher nape isn't modelled.
 
 ## Construction
 
-1. Make the slanted welt pockets and pocket bags while the fronts are flat. Interface the welts, facings, and collar where needed.
-2. Sew the centre-back seam and vent, then the shoulder and side seams. Assemble and set in the sleeves.
-3. Attach the facings to the long fronts and lapels. Sew the deep ulster collar to the neckline and its underside to the facings at the gorge.
-4. Make and attach the lining, finish the vent and hems, then work the two rows of buttonholes and buttons. Follow the peacoat's detailed pocket and lining method; this proposed sequence changes its length and ease, not those operations.
+1. Make the slanted hand welt pockets and pocket bags while the fronts are flat. Interface the welts, facings, and collar where needed.
+2. If breast pockets are selected, prepare them and stitch them at P6 with their flaps.
+3. If lower patch pockets are selected, prepare them and stitch them at P8 with their flaps.
+4. Sew the centre-back seam and vent, then the A shoulder and B side seams.
+5. Close the F sleeve underarm seams and set the sleeves at C, easing their caps.
+6. Sew the G deep ulster collar outer edge, turn it, and attach it at D to the neckline. Sew the E facings to the long fronts and lapels and finish the gorge.
+7. Make and attach the lining around the vent.
+8. If a belt is selected, prepare it and attach it at BT before finishing the hem.
+9. Finish the H coat and sleeve hems, then work the two rows of BH buttonholes and attach buttons. Follow the peacoat's detailed pocket and lining method; this proposed sequence changes its length and ease, not those operations.

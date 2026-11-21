@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: pinafore
+steps:
+  - { order: 1, action: form back placket and gather bodies, placements: [Z], stitches: [TS] }
+  - { order: 2, action: join yokes shoulders and sides and finish armholes and neck, seams: [Y, A, B, C, D], stitches: [TS, SS] }
+  - { order: 3, action: set optional sleeves and finish their lower edges, seams: [C, F, W], stitches: [SS] }
+  - { order: 4, action: make and attach optional sash, whenAny: [sash] }
+  - { order: 5, action: hem pinafore and finish back fastenings, seams: [H], stitches: [TS] }

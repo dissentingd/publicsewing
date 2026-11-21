@@ -146,3 +146,30 @@ pieces:
 patternMap:
   merge: true
   pieces: { cargoPocket: 10, cargoFlap: 11, seatPocketPiece: 12, seatFlap: 13 }
+  stitches:
+    TS: { name: topstitch, key: secure patch pockets and flaps on the marked positions }
+  codes:
+    M:
+      name: back waist dart and front pleats
+      stitch: SS
+      kind: dart
+      at: [{ part: back, point: dartTip }]
+    W:
+      name: waistband join
+      stitch: SS
+      at: [{ part: back, between: [styleWaistOut, styleWaistIn] }]
+    SP:
+      name: side pocket opening
+      stitch: SS
+      kind: placement
+      at: [{ part: front, between: [styleWaistOut, seatOut] }]
+    BP:
+      name: seat patch-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: back, path: seatPocket, along: 0.5, optional: true }]
+    CP:
+      name: cargo patch-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: cargoOut, along: 0.5, optional: true }]

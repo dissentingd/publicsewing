@@ -55,9 +55,10 @@ Back (on the fold), front, facing, collar, front and back raglan sleeves (cut 2 
 pocket and flap (cut 2 each; flaps also in lining).
 
 ## Construction
-As the balmacaan, with patch pockets instead of hand welts and no vent:
-1. Pockets and flaps on the fronts.
-2. Each front sleeve to its back sleeve down the over-arm seam, then the sleeves into the
-   raglan lines on the back and fronts.
-3. Underarm and side seams in one, cuff to hem.
-4. Facings and collar; hems; buttonholes on the right front (men's), buttons on the left.
+The following order is a proposed method for this unsewn draft.
+1. P8: with lower pockets on, hem and turn each patch, topstitch it on its front mark, and add its flap.
+2. A and C: join each split raglan sleeve along the over-arm edge, then sew it into the front and back raglan lines.
+3. F and B: close the sleeve underarms and coat side seams from cuff to hem.
+4. G, D and E: make the collar, attach it to the neck and join the facings to the front edges.
+5. H and BH: turn the coat and sleeve hems, work right-front buttonholes, and attach left-front buttons.
+

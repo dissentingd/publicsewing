@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: nightgown
+steps:
+  - { order: 1, action: form placket and gather bodies, placements: [Z], stitches: [TS] }
+  - { order: 2, action: join yokes shoulders and neck band, seams: [Y, A, D], stitches: [TS, SS] }
+  - { order: 3, action: set sleeves join underarms and sides and attach wristbands, seams: [C, F, B, W], stitches: [SS] }
+  - { order: 4, action: hem gown and finish fastening, seams: [H], stitches: [TS] }

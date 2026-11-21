@@ -56,11 +56,10 @@ Front bodice with sleeve (cut 2), back bodice with sleeve (on the fold), front a
 the fold), collar.
 
 ## Construction
-1. Shoulder and overarm seams, in one; underarm and bodice side seams, in one, clipping the
-   rounded corner.
-2. Collar to the neckline, faced by the front stand.
-3. Skirt side seams; gather the top and sew it to the bodice at the waist.
-4. Sleeve hems; skirt hem; buttons and buttonholes down the front.
+1. Sew the A shoulder and overarm seams in one, then the B underarm and bodice side seams in one, clipping the rounded corner.
+2. Attach the collar at D to the neckline and face the Z front opening with its stand.
+3. Join the skirt side seams, gather its top and sew it at Y to the bodice waist.
+4. Finish the cut-on sleeve hems and the H skirt hem; work buttons and buttonholes down the front.
 
 ## Checks
 `test/kimono-dress.test.mjs`: the yoke checks at every size (shoulder, side and underarm seams,

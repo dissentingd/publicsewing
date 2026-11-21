@@ -49,8 +49,9 @@ Back (on the fold), front (cut 2), facing (cut 2), stand collar (cut 2 + interfa
 (cut 2), breast pocket (cut 1).
 
 ## Construction
-1. Breast pocket: turn the top hem, press the edges under, topstitch to the left front.
-2. Shoulders and side seams, felled or turned in and stitched.
-3. Facings to the fronts; the collar to the neck, its ends at the front edges.
-4. Sleeves: underarm seam, then set in.
-5. Hems; buttonholes on the right front (men's), buttons on the left.
+1. If a breast pocket is selected, turn its top hem, press its edges under and topstitch it at P7 to the left front.
+2. If lower pockets are selected as a variant, prepare and attach them at P8 to the fronts.
+3. Join the A shoulders and B side seams, felled or turned in and stitched.
+4. Sew the G collar outer edge, turn it, attach it at D to the neckline, then sew the E facings to the fronts.
+5. Sew the F sleeve underarm seams, then set the sleeves at C.
+6. Finish the H hems; work the BH buttonholes on the right front (men's) and attach buttons on the left.

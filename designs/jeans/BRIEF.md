@@ -34,7 +34,7 @@ pockets on the seat, at comparable proportions. The bootcut's flare was checked 
 | Yoke | `yokeDepth` 37% at centre back, `yokeSide` 31% at the side, of waist to seat |
 | Pocket opening | `pocketEntryWidth` 10.8% of the seat, `pocketEntryDepth` 34% of waist to seat |
 | Pocket bag | `pocketBagWidth` 13.5% of the seat, `pocketBagDepth` 86% of waist to seat; the facing 71% of the bag's depth |
-| Coin pocket | `coinPocketWidth` 7.4% of the seat, its depth 1.18 × its width |
+| Coin pocket | `coinPocketWidth` 7.4% of the seat, its depth 1.18 Ã— its width |
 | Back pocket | `backPocketWidth` and `backPocketDepth` 16.2% of the seat, `backPocketPoint` 12.5% of its depth |
 | Fly | `flyWidth` 5.6% of the waist |
 | Tapered leg | The `tapered` variant: `hemWidth` 60% |
@@ -56,12 +56,12 @@ yokes, pocket facings, pocket bags and pocket linings (lining fabric), coin pock
 fly shield and facing, belt loops.
 
 ## Construction
-1. Stitch the coin pocket to the right facing, then each facing to its bag.
-2. Join each pocket lining to the front along the curved opening. Turn it inside, topstitch the edge,
-   and stitch the bag closed.
-3. Attach the yokes to the back legs and topstitch. Position the back pockets below them and stitch.
-4. Put in the zip with the fly facing and shield.
-5. Close the inner leg seams, then the outer leg seams, then the seat seam in one pass.
-6. Join the waistband sections at centre back. Stitch the band to the jeans, enclose the seam with its
-   facing, and topstitch.
-7. Add the belt loops and hem the legs. Finish with rivets at the pocket corners.
+The following order is a proposed method for this unsewn draft.
+1. CO: when selected, stitch the coin pocket to the right pocket facing, then join each facing to its bag.
+2. SP: join each pocket lining along the front's curved opening, turn and topstitch the edge, then close the bag.
+3. Y and BP: attach and topstitch the back yokes, then place and topstitch the back patch pockets below them.
+4. Z: put in the zip with its fly facing and shield.
+5. I, O and X: close the inner and outer leg seams, then sew the seat seam.
+6. W: join the waistband sections at centre back, attach the band, enclose the seam with its facing and topstitch.
+7. H: add belt loops, turn up the leg hems, and finish the pocket corners with rivets when selected.
+

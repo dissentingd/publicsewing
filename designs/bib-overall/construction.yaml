@@ -1,0 +1,9 @@
+design: bib-overall
+steps:
+  - { order: 1, action: attach bib patch pocket, placements: [PB], stitches: [TS], whenAny: [bibPocket] }
+  - { order: 2, action: attach hip patch pockets, placements: [PH], stitches: [TS], whenAny: [hipPockets] }
+  - { order: 3, action: attach seat patch pockets, placements: [PS], stitches: [TS], whenAny: [seatPockets] }
+  - { order: 4, action: join inseams crotch and lower outseams, seams: [I, X, O], stitches: [SS] }
+  - { order: 5, action: finish side openings and join bib and raised back, seams: [S, B], stitches: [SS] }
+  - { order: 6, action: make straps and side buttonholes, stitches: [SS, BH] }
+  - { order: 7, action: turn leg hems, seams: [H], stitches: [HS] }

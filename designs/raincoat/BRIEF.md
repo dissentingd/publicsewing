@@ -36,7 +36,16 @@ the wearer's measurements, so it fits men too.
 Front, back on the fold, facing, sleeve, collar stand, collar leaf, and each pocket's welt and bag.
 
 ## Construction
-As the overcoat, unlined. Sew the leaf to the stand's top edge, then the stand round the neckline to the front edges. For a rainproof cloth, tape or fell the seams; Simons doesn't say.
+Proposed making-up order for this unsewn, unlined draft:
+
+1. Make the slanted hand welt pockets on the fronts and close their bags.
+2. If breast pockets are selected, prepare them and stitch them at P6 with their flaps.
+3. If lower patch pockets are selected, prepare them and stitch them at P8 with their flaps.
+4. Sew the centre-back seam and finish the vent, then join the A shoulders and B side seams. Finish exposed allowances for the chosen cloth; tape or fell them if a rainproof finish is required. Simons does not specify that finish.
+5. Join the G collar outer edge and leaf to the stand, then sew it at D around the neckline to the front edges. Attach the E front facings and finish the collar and front edges.
+6. Sew each F sleeve underarm seam, set the sleeves at C into the armholes, and finish the exposed armhole allowances.
+7. If a belt is selected, prepare it and attach it at BT before finishing the coat hem.
+8. Turn and secure the H coat and sleeve hems. Work a single row of BH front buttonholes and sew the buttons to the underlap.
 
 ## Changes and what isn't modelled
 - **The sweep starts lower.** Simons' seams run straight from the armhole, so the coat widens all the way down. The coat family flares from the seat line, so this one is straighter to the hips and then widens to about the same hem.

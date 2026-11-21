@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: breeches
+steps:
+  - { order: 1, action: sew darts pockets and fly, seams: [M], placements: [BP, SP, Z], stitches: [SS, TS] }
+  - { order: 2, action: face lower leg opening, seams: [O], stitches: [SS] }
+  - { order: 3, action: join outseams and inseams, seams: [O, I], stitches: [SS] }
+  - { order: 4, action: join crotch attach waistband and finish cuffs, seams: [X, W, H], stitches: [SS, HS] }

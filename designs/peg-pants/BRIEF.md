@@ -46,4 +46,9 @@ the seat line. This gives you the extra length on the outside seam that is requi
 As the trousers: front, back, waistband, fly shield and facing, belt loops, pocket pieces.
 
 ## Construction
-As the trousers, the pleats basted at the waist before the waistband goes on.
+Proposed making-up order for this unsewn draft:
+
+1. Fold and baste the front pleats at the waist; sew the M back darts. Make any BP back welt and SP side pockets, closing their bags.
+2. Sew the O outseams and I inseams. Attach the fly facing and shield at Z, fit the closure, then sew the X crotch seam from the fly to centre back.
+3. Make the belt loops and attach the W waistband over the basted pleats. Finish its ends over the fly.
+4. Turn up and secure the H leg hems.

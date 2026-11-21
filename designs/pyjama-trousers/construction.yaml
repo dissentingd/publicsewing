@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the merged patternMap in spec.yaml.
+design: pyjama-trousers
+steps:
+  - { order: 1, action: join outseams and inseams, seams: [O, I], stitches: [SS] }
+  - { order: 2, action: join crotch, seams: [X], stitches: [SS] }
+  - { order: 3, action: form elastic or drawstring waist casing, seams: [C], stitches: [ES] }
+  - { order: 4, action: hem legs, seams: [H], stitches: [HS] }

@@ -38,22 +38,16 @@ hip. Two of his drafts give its details:
 | Front hem | (overcoat) | `frontDrop` 10% of waist-to-seat |
 
 ## Construction order
-1. Hand pockets: interface the welts; fold each lengthwise and lay it on the front, raw edges
-   to the mouth line, a bag piece over it; stitch, cut the mouth, turn the bag through, press
-   the welt over the mouth and sew its ends down; the second bag piece on, then the bags
-   together.
-2. CB seam and vent (the vent's lap folded back on the left back as its facing); shoulders;
-   side seams.
-3. Facings to the fronts and lapels; collar to the neckline up to the gorge, its under side to
-   the facings' gorge.
-4. Sleeves: underarm seam, then set in, easing the cap.
-5. Lining: back-neck facing to the front facings at the shoulders; front linings to the back
-   lining (its CB pleat folded and tacked at the neck and waist; with a vent, the lining's CB
-   seam stops at the vent's top and its edges below are turned in and sewn to the vent), side
-   seams, shoulders; sleeve linings made up and set in; the lining sewn to the facings' inner
-   edges.
-6. Hems (the lining hemmed to the coat's hem allowance with an ease fold); two rows of
-   buttonholes and buttons (on the right front over the left).
+1. Make the hand pockets: interface and fold the welts, stitch each welt and bag to the mouth, cut and turn the opening, secure the welt ends, then close the bags.
+2. If breast pockets are selected, prepare them and stitch them at P6 with their flaps.
+3. If lower patch pockets are selected, prepare them and stitch them at P8 with their flaps.
+4. Sew the CB seam and vent, folding the left vent lap as its facing; join the A shoulders and B side seams.
+5. Sew the G collar outer edge, turn it, then attach it at D to the neckline and gorge. Sew the E front facings around the fronts and lapels.
+6. Sew the F sleeve underarm seams, then set the sleeves at C, easing the caps.
+7. Make the lining: join its back and fronts with an ease pleat at CB, make and set the sleeve linings, finish around the vent, and attach it to the facings.
+8. If a belt is selected, prepare it and attach it at BT before finishing the coat hem.
+9. Finish the H coat and sleeve hems, leaving ease in the lining hem.
+10. Work the BH buttonholes in two rows on the overlapping right front and sew buttons opposite.
 
 ## Changes and what isn't modelled
 - **Not one of Simons' garments.** The peacoat is his double-breasted overcoat at hip length,

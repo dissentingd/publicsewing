@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Piece numbers and the GM placement are defined in spec.yaml's patternMap.
+design: gathered-skirt
+steps:
+  - { order: 1, action: join side seams to placket notch }
+  - { order: 2, action: bind placket opening }
+  - { order: 3, action: gather into waistband, placements: [GM], stitches: [SS] }
+  - { order: 4, action: hem and fasten waistband }

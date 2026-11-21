@@ -1,0 +1,12 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: button-middy
+steps:
+  - { order: 1, action: attach optional breast pocket, placements: [P7], stitches: [TS], whenAny: [breastPocket] }
+  - { order: 2, action: attach optional lower pockets, placements: [P8], stitches: [TS], whenAny: [lowerPockets] }
+  - { order: 3, action: join shoulders and attach facings, seams: [A, E], stitches: [FF, SS] }
+  - { order: 4, action: make and attach collar, seams: [G, D], stitches: [SS] }
+  - { order: 5, action: set sleeves and close underarm and sides, seams: [C, F, B], stitches: [SS, FF] }
+  - { order: 6, action: finish cuffs and cuff fastenings }
+  - { order: 7, action: gather hem into belt, seams: [H], stitches: [TS] }
+  - { order: 8, action: work front buttonholes and attach buttons, placements: [BH], stitches: [BH] }

@@ -40,17 +40,14 @@ A semi-fitted overcoat in the cut of a suit jacket:
 | Lining | Lined (not tabulated) | `lining` on: the facing runs to the shoulder and meets a back-neck facing `neckFacingWidth` 14% of neck deep; a front lining from the facing to the front seam, the side panel and sleeves cut again from lining, a back lining below the neck facing with `liningPleat` 2.5% of chest extra at CB (cut in pairs above the vent); `insidePockets` on: a welt in the left front lining at the chest line, half the front's width long |
 
 ## Construction order
-1. Welt pockets in the foreparts (the military blouse's order).
-2. Side panels to the foreparts and the backs; CB seam to the top of the vent, the vent's lap
-   folded back on the left back as its facing.
-3. Shoulders.
-4. Collar: under collar to the neckline, top collar to the facings' neckline; facings to the
-   front edges, turned and pressed.
-5. Sleeves: the two seams, then set in, easing the cap.
-6. Lining: inside pocket in the front lining; front linings to the facings, side panel and
-   back linings, the CB pleat basted; sleeve linings; bagged to the coat at the hems and
-   sleeve ends, the back lining's edges sewn to the vent.
-7. Hems; buttonholes on the right front.
+1. If lower pockets are selected, make their P welts and bags in the foreparts while they are flat.
+2. If a breast pocket is selected, make its P8 welt and bag before closing the coat body.
+3. Join the B front-body and C back-body seams; close CB to the top of the vent and fold its left lap back as a facing.
+4. Sew the A shoulder seams.
+5. Attach the under collar at E to the neckline and the top collar to the facings; sew the F facings to the front edges, turn and press.
+6. Sew each sleeve's G front and H back seam, then set it at D into the armhole, easing the cap.
+7. Make the lining: add the inside pocket, join front, side and back linings with a CB ease pleat, make and set sleeve linings, then bag to the coat and finish around the vent.
+8. Finish the J body and sleeve hems; work BH buttonholes on the right front and attach buttons opposite.
 
 ## Changes and what isn't modelled
 - **Geometry from Bent**, through the military blouse's three-piece body; only ЕМКО's

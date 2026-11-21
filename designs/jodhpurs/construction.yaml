@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: jodhpurs
+steps:
+  - { order: 1, action: sew darts and selected pockets, seams: [M], placements: [SP, BP], stitches: [SS] }
+  - { order: 2, action: prepare fly or side closure, placements: [Z], stitches: [TS] }
+  - { order: 3, action: join outseams inseams and crotch, seams: [O, I, X], stitches: [SS] }
+  - { order: 4, action: attach belt loops and waistband, seams: [W], stitches: [SS] }
+  - { order: 5, action: secure cuffs, seams: [H], stitches: [HS] }

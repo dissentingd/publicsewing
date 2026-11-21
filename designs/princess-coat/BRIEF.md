@@ -45,13 +45,14 @@ Front, side front, side back and back, each to the hem and cut in pairs; facing;
 jet and bag for each pocket; half belt; lining for the front and back (the side panels and sleeves are cut in lining too).
 
 ## Construction
-1. Front to side front and back to side back; CB seam; side seams.
-2. Pockets: as the tailored jacket's set-in pocket, the band sewn in at the mouth.
-3. Shoulders; collar to the neck, round to the front edges; facings, back-neck facing and top collar.
-4. Sleeves: the two pieces together, then set in.
-5. Half belt: folded lengthwise, sewn, turned; stitched across the back at the waist, with a button at each end.
-6. Lining, with its CB pleat; hems; buttonholes in the outer row, buttons in the inner, matching ones inside the outer to hold the
-   underlap.
+1. If hip pockets are selected, make each set-in pocket at P14: stitch its band and bag at the mouth, cut and turn, then close the bag.
+2. If a breast pocket is selected, make its P12 welt and bag before joining the panels.
+3. If a ticket pocket is selected, make its P17 welt and bag while the front is flat.
+4. Join the PF front and PB back princess seams; close CB and the B side seams.
+5. Sew the A shoulders; attach the collar at D round the neckline, then sew the E front and back-neck facings and top collar.
+6. Join the two-piece sleeves at their F front and G back seams, then set them at C into the armholes.
+7. If the half belt is selected, fold and sew it, turn it, then stitch it across the back waist with a button at each end.
+8. Make the body and sleeve linings with a centre-back ease pleat and attach them to the facings. Finish the H coat and sleeve hems with lining ease; work BH buttonholes in the outer front row and sew buttons opposite.
 
 ## Changes and what isn't modelled
 - **The front seam moves the other way.** Pivnick shifts the princess line slightly toward CF from the book's own foundation. Breanna's waist

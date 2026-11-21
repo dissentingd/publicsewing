@@ -1,0 +1,14 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: peacoat
+steps:
+  - { order: 1, action: make hand welt pockets }
+  - { order: 2, action: attach breast pockets and flaps, placements: [P6], stitches: [TS], whenAny: [breastPockets] }
+  - { order: 3, action: attach lower patch pockets and flaps, placements: [P8], stitches: [TS], whenAny: [lowerPockets] }
+  - { order: 4, action: join back shoulders and sides, seams: [A, B], stitches: [SS] }
+  - { order: 5, action: make and attach collar and front facings, seams: [G, D, E], stitches: [SS] }
+  - { order: 6, action: close and set sleeves, seams: [F, C], stitches: [SS] }
+  - { order: 7, action: make and attach lining }
+  - { order: 8, action: prepare and attach belt, placements: [BT], stitches: [TS], whenAny: [belt] }
+  - { order: 9, action: finish coat and sleeve hems, seams: [H], stitches: [TS] }
+  - { order: 10, action: work buttonholes and attach buttons, placements: [BH], stitches: [BH] }

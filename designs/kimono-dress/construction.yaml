@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the merged patternMap in spec.yaml.
+design: kimono-dress
+steps:
+  - { order: 1, action: join bodice overarm and underarm seams, seams: [A, B], stitches: [SS] }
+  - { order: 2, action: attach collar and finish front opening, seams: [D], placements: [Z], stitches: [SS, TS] }
+  - { order: 3, action: gather and join skirt to bodice, seams: [Y], stitches: [TS] }
+  - { order: 4, action: finish cut-on sleeve and skirt hems and front fastening, seams: [H], stitches: [TS] }

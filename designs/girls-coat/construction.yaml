@@ -1,0 +1,11 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the inherited patternMap in spec.yaml.
+design: girls-coat
+steps:
+  - { order: 1, action: sew neck darts, seams: [N], stitches: [SS] }
+  - { order: 2, action: make hip welt pockets, placements: [P7], stitches: [SS], whenAny: [pockets] }
+  - { order: 3, action: make variant ticket welt pocket, placements: [P10], stitches: [SS], whenAny: [ticketPocket] }
+  - { order: 4, action: join centre back shoulders and sides, seams: [CB, A, B], stitches: [SS] }
+  - { order: 5, action: attach collar and facings, seams: [D, E], stitches: [SS] }
+  - { order: 6, action: join and set sleeves, seams: [F, G, C], stitches: [SS] }
+  - { order: 7, action: attach lining finish hems and front fastening, seams: [H], placements: [BH], stitches: [HS, BH] }

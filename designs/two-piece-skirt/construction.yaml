@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Seam codes are defined in the inherited patternMap in spec.yaml.
+design: two-piece-skirt
+steps:
+  - { order: 1, action: join side seams, seams: [S], stitches: [SS] }
+  - { order: 2, action: close center back below zip and insert zip, seams: [CB], stitches: [SS] }
+  - { order: 3, action: attach waistband or high-waist facings }
+  - { order: 4, action: level and hem skirt }

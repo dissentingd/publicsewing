@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the merged patternMap in spec.yaml.
+design: kameez
+steps:
+  - { order: 1, action: join shoulders and finish neck and front opening, seams: [A, D], placements: [Z], stitches: [SS, TS] }
+  - { order: 2, action: set sleeves, seams: [C], stitches: [SS] }
+  - { order: 3, action: close sleeve underarms and sides to slit tops, seams: [F, B], stitches: [SS] }
+  - { order: 4, action: finish slits body hem and sleeve hems, seams: [H, W], stitches: [TS, SS] }

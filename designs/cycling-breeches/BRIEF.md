@@ -35,7 +35,7 @@ The English text incorrectly pairs 27 in with 62½ cm (27 in is 68.58 cm). The G
 
 ## Construction
 
-1. Sew the fly and any pockets, then make the waist darts. Join the leg inseams and outseams above the short side openings.
-2. Sew the crotch seam and attach the waistband. Finish the side-opening edges at the lower legs.
+1. Sew the Z fly and any SP side or BP back pockets, then make the M waist darts. Join the leg I inseams and O outseams above the short side openings.
+2. Sew the X crotch seam and attach the W waistband. Finish the side-opening edges at the lower legs.
 3. Gather each lower leg to its knee band and attach the band, leaving the overlap free.
-4. Fit the band around the wearer’s bent knee, then place and sew its button and buttonhole. The source shows the band buttons but does not mark their final positions.
+4. Fit the band around the wearer’s bent knee, then place and sew its button and buttonhole. Finish the H lower edge. The source shows the band buttons but does not mark their final positions.

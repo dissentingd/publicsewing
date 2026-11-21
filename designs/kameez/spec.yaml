@@ -3,6 +3,11 @@
 # a round neck with a short opening and plain hemmed sleeves. For any size. See BRIEF.md.
 extends: ../shift-dress/spec.yaml
 
+# This tunic has no yoke seam; retain the other inherited body and opening marks.
+patternMap:
+  merge: true
+  codes: { Y: null }
+
 about:
   id: kameez
   name: Kameez

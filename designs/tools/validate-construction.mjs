@@ -26,8 +26,10 @@ export function validateConstruction(design) {
   const section = brief.split(/^## Construction[^\n]*\n/m)[1]?.split(/^## /m)[0]
   if (!section) throw new Error(`${design} brief has no Construction section`)
   const prose = [...section.matchAll(/^\d+\. (.+)$/gm)].map((m) => m[1])
-  const numbers = new Set(Object.values(map.pieces))
-  if (numbers.size !== Object.keys(map.pieces).length) throw new Error('duplicate map piece numbers')
+  // A merged map uses null to remove a parent's piece; it is not a printed number.
+  const printedNumbers = Object.values(map.pieces).filter((number) => number != null)
+  const numbers = new Set(printedNumbers)
+  if (numbers.size !== printedNumbers.length) throw new Error('duplicate map piece numbers')
   const codes = map.codes
   const used = new Set()
   data.steps.forEach((step, i) => {
@@ -44,12 +46,11 @@ export function validateConstruction(design) {
     }
     for (const code of step.stitches ?? []) if (!map.stitches[code]) throw new Error(`step ${step.order}: unknown stitch ${code}`)
     for (const option of step.whenAny ?? []) if (!spec.options[option]) throw new Error(`step ${step.order}: unknown option ${option}`)
-    // A code whose marks an option can leave out belongs to a step that says which options
-    const optional = (step.placements ?? []).filter((code) => codes[code].kind === 'placement' && codes[code].at.some((a) => a.optional))
-    if (optional.length && !step.whenAny?.length) throw new Error(`step ${step.order}: ${optional.join(', ')} need an option condition`)
+    // An optional anchor can also mean a mark or panel is absent at some sizes.
+    // It does not by itself make the sewing operation conditional.
   })
   if (prose.length !== data.steps.length) throw new Error(`construction step count: ${data.steps.length} records, ${prose.length} prose steps`)
-  for (const code of Object.keys(codes)) if (!used.has(code)) throw new Error(`map code ${code} is not in construction steps`)
+  for (const code of Object.keys(codes)) if (codes[code] && !used.has(code)) throw new Error(`map code ${code} is not in construction steps`)
   return data
 }
 

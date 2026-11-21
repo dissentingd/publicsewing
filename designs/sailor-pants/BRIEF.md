@@ -50,7 +50,7 @@ for these: `legInOne`'s `fall`, the slit and fold of a drop front.
 Leg (cut 2), back band, front band, slit stand (cut 4).
 
 ## Construction
-1. Sew the legs' centre fronts and crotch to the crotch point; the same for the centre backs. Sew the inseams.
+1. Use the O outseam line as a pressing guide; it is not sewn. Join the legs' centre fronts and backs to the crotch point, then sew the inseams.
 2. Sew a stand to each edge of the slits, folded: the back's stands out under the front's, the front's is a facing.
 3. Fold the drop front along the T-F line, inside, and stitch the fold's facing.
 4. Back band to the back waist, its ends past the slits. Front band to the front waist, lapping them.

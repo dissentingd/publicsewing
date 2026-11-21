@@ -39,7 +39,7 @@ blouse, no flare):
 
 ## Construction
 
-1. Sew the front and back leg pieces together at the inseams. Join the crotch seam, then sew the outseams only to the marked vent openings.
-2. Finish the short openings at the lower outseams. Gather each leg hem evenly to fit its separate band, keeping the band's button overlap free.
+1. Sew the front and back leg pieces together at the I inseams. Join the X crotch seam, then sew the O outseams only to the marked vent openings.
+2. Finish the short openings at the lower outseams. Gather each leg hem along B to fit its separate band, keeping the band's button overlap free.
 3. Attach and finish the bands. Fit each one around a bent knee before placing its button and buttonhole.
-4. Turn the widened waist edge into an elastic casing, leaving an opening to insert elastic. Fit the elastic, join its ends securely, and close the casing.
+4. Turn the widened waist edge into the C elastic casing, leaving an opening to insert elastic. Fit the elastic, join its ends securely, and close the casing.

@@ -49,12 +49,14 @@ sleeve. Added for this coat: a body cut off above the seat line, buttons in two 
 Front, back (fold), side body (cut 2 each but the back), skirt (cut 2), facing, back-neck facing, collar, top and under sleeves, breast welt and bag, skirt pocket flap, welt and bag. In lining: front, back, side body, sleeves, skirt, inside pocket.
 
 ## Construction
-1. Breast welts. Back, side bodies and fronts together. Skirt pockets, flaps hanging from the mouths.
-2. Skirt's CB seam, then the skirt to the body, matching CB, each panel's seams and the front edge. Fold the skirt's facing back.
-3. Facing, collar, lapels.
-4. Shoulders, sleeves.
-5. Make the lining up the same way, skirt to body at the waist; set it in round the facings and at the cuffs.
-6. Hem, buttons and buttonholes.
+1. If lower body pockets are selected as a variant, make their P welts and bags before closing the fronts.
+2. If breast pockets are selected, make their P8 welts and bags while the fronts are flat.
+3. If skirt pockets are selected, make their bags and flaps, hanging the flaps from the mouths.
+4. Join the C back-body and B front-body seams, then close the skirt's CB seam and attach the skirt at the waist, matching each panel seam and the front edge.
+5. Sew the A shoulders; attach the collar at E and the F front facings, turn the lapels and fold the skirt facing back.
+6. Join each sleeve at its G front and H back seams, then set it at D into the armhole.
+7. Make the lining the same way, skirt to body at the waist, and attach it around the facings and cuffs.
+8. Finish the J body, skirt and sleeve hems; work the BH buttonholes and attach buttons.
 
 ## Checks
 `test/surtout.test.mjs`: every size, the default, long, plain, and a wider stand and skirt. Seams between the panels, shoulders, collar, sleeve cap, the skirt's

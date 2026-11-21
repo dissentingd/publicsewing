@@ -1,0 +1,10 @@
+design: winter-coat
+steps:
+  - { order: 1, action: make lower-front welt pockets, placements: [P], stitches: [SS], whenAny: [handPockets] }
+  - { order: 2, action: join and topstitch front and back yokes, seams: [X, Y], stitches: [TS] }
+  - { order: 3, action: close shoulders and sides, seams: [A, B], stitches: [SS] }
+  - { order: 4, action: prepare optional hood and casing, seams: [R], placements: [K], stitches: [SS, CS], whenAny: [hood] }
+  - { order: 5, action: attach collar or hood and front facings, seams: [D, E], stitches: [SS] }
+  - { order: 6, action: make and set sleeves, seams: [F, C], stitches: [SS] }
+  - { order: 7, action: make and attach lining, stitches: [SS], whenAny: [lining] }
+  - { order: 8, action: finish hems and front buttons, seams: [H], placements: [BH], stitches: [HS, BH] }

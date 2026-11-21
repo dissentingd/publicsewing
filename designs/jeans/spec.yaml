@@ -199,3 +199,30 @@ variants:
 patternMap:
   merge: true
   pieces: { yoke: 10, pocketFacing: 11, pocketBag: 12, pocketLining: 13, coinPocket: 14, backPatchPocket: 15 }
+  stitches:
+    TS: { name: topstitch, key: topstitch jean seams and patch-pocket edges }
+  codes:
+    M: null
+    W:
+      name: contour waistband join
+      stitch: SS
+      at: [{ part: waistband, path: seam, along: 0.5 }]
+    BP:
+      name: back patch-pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: back, path: backPocket, along: 0.5 }]
+    SP:
+      name: curved front pocket opening
+      stitch: TS
+      kind: placement
+      at: [{ part: front, between: [entryTop, entryBottom] }]
+    Y:
+      name: back yoke join
+      stitch: TS
+      at: [{ part: back, between: [yokeIn, yokeOut] }]
+    CO:
+      name: coin pocket placement
+      stitch: TS
+      kind: placement
+      at: [{ part: pocketFacing, path: mark0, along: 0.75, optional: true }]

@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in the merged patternMap in spec.yaml.
+design: dressing-gown
+steps:
+  - { order: 1, action: attach lower patch pockets, placements: [P8], stitches: [TS], whenAny: [lowerPockets] }
+  - { order: 2, action: join shoulders and attach collar, seams: [A, G, D], stitches: [SS] }
+  - { order: 3, action: apply front facings, seams: [E], stitches: [SS] }
+  - { order: 4, action: set sleeves join underarms and sides and catch girdle loops, seams: [F, C, B], stitches: [SS] }
+  - { order: 5, action: finish hems fastenings and girdle, seams: [H], placements: [BH], stitches: [TS, BH] }

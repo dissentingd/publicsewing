@@ -53,11 +53,11 @@ are drafted from measurements and fitted at the hip as this one is.
 Front panel (on the fold), gores 1 to (gores − 1) / 2 (cut 2 each), waistband.
 
 ## Construction
-1. Each seam from the waist to the seat line; below it, sew each gore's edge to the next
+1. Sew each S seam from the waist to the seat line; below it, sew each gore's edge to the next
    gore's underlay (side) or the two underlays together (box).
 2. Fold the pleats on the dashed lines (the gores' own edges below the seat line), press, and
    stitch across the top of each underlay at the seat line.
-3. CB zip; waistband; hem, then re-press the pleats.
+3. Sew the CB seam below the zip opening, insert the zip, attach the waistband and hem, then re-press the pleats.
 
 ## Checks
 `test/pleated-skirt.test.mjs`: every size, side and box pleats and a long fifteen-gore variant:

@@ -1,0 +1,9 @@
+design: field-jacket
+steps:
+  - { order: 1, action: sew neck darts, seams: [N], stitches: [SS] }
+  - { order: 2, action: prepare breast patch pockets and flaps, placements: [P10], stitches: [TS], whenAny: [breastPockets] }
+  - { order: 3, action: prepare lower patch pockets and flaps, placements: [P7], stitches: [TS], whenAny: [lowerPockets] }
+  - { order: 4, action: join body and shoulders, seams: [CB, A, B], stitches: [SS] }
+  - { order: 5, action: attach fly, facings, and collar, seams: [E, D], placements: [BH], stitches: [SS, BH] }
+  - { order: 6, action: make and set two-piece sleeves, seams: [F, G, C], stitches: [SS] }
+  - { order: 7, action: finish hems and buttons, seams: [H], stitches: [HS] }
