@@ -104,3 +104,36 @@ variants:
 patternMap:
   merge: true
   pieces: { collar: 8 }
+  stitches:
+    BH: { name: buttonhole, key: work buttonholes through the finished front }
+  codes:
+    Z: null
+    B:
+      name: body side seam
+      stitch: SS
+      at:
+        - { part: front, between: [waist, hem] }
+        - { part: back, between: [waist, hem] }
+    X:
+      name: back yoke join
+      stitch: TS
+      at: [{ part: back, between: [cbYoke, armYoke] }]
+    Y:
+      name: front yoke join
+      stitch: TS
+      at: [{ part: front, between: [edgeYoke, armYoke] }]
+    K:
+      name: hood casing
+      stitch: CS
+      kind: placement
+      at: [{ part: hood, path: casing, along: 0.75, optional: true }]
+    P:
+      name: hand-welt placement
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: handPocket, along: 0.75, optional: true }]
+    BH:
+      name: front buttonholes
+      stitch: BH
+      kind: closure
+      at: [{ part: frontYoke, point: button0_0 }]

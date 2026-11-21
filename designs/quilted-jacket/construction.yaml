@@ -1,0 +1,9 @@
+design: quilted-jacket
+steps:
+  - { order: 1, action: prepare quilted lining and welt pockets, placements: [P], stitches: [SS], whenAny: [handPockets] }
+  - { order: 2, action: join outer yokes and body, seams: [X, Y, A, B], stitches: [TS, SS] }
+  - { order: 3, action: make and set sleeves, seams: [F, C], stitches: [SS] }
+  - { order: 4, action: make hood and its casing, seams: [R], placements: [K], stitches: [SS, CS], whenAny: [hood] }
+  - { order: 5, action: attach hood or collar and front facings, seams: [D, E], stitches: [SS] }
+  - { order: 6, action: assemble lining and join it to shell, stitches: [SS] }
+  - { order: 7, action: make hem and cuff casings and finish front buttons, seams: [H], placements: [BH], stitches: [CS, BH] }
