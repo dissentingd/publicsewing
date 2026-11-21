@@ -71,3 +71,52 @@ variants:
     name: Set-in sleeves
     description: "Ordinary sleeves sewn into an armhole, with a shoulder seam, on the same loose body and stand collar."
     options: { sleeveStyle: setIn }
+
+# Adapt inherited coat codes to the default split raglan sleeve.
+patternMap:
+  merge: true
+  codes:
+    A:
+      name: over-arm sleeve seam or one-piece dart
+      stitch: SS
+      kind: dart
+      at:
+        - { part: frontSleeve, between: [raglanNeck, overarmBottom], optional: true }
+        - { part: backSleeve, between: [raglanNeck, overarmBottom], optional: true }
+        - { part: oneSleeve, path: overarm, along: 0.5, optional: true }
+    C:
+      name: raglan body-to-sleeve join
+      stitch: SS
+      at:
+        - { part: front, path: raglan, along: 0.5, optional: true }
+        - { part: back, path: raglan, along: 0.5, optional: true }
+        - { part: sleeve, path: sleevecap, along: 0.5, optional: true }
+    F:
+      name: raglan underarm seam
+      stitch: SS
+      at:
+        - { part: frontSleeve, between: [bicepsLeft, wristLeft], optional: true }
+        - { part: backSleeve, between: [bicepsRight, wristRight], optional: true }
+        - { part: oneSleeve, between: [bicepsLeft, wristLeft], optional: true }
+        - { part: sleeve, between: [bicepsLeft, wristLeft], optional: true }
+    H:
+      name: coat and raglan sleeve hems
+      stitch: TS
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: back, path: hemBase, along: 0.5 }
+        - { part: frontSleeve, path: hemBase, along: 0.5, optional: true }
+        - { part: backSleeve, path: hemBase, along: 0.5, optional: true }
+        - { part: oneSleeve, path: hemBase, along: 0.5, optional: true }
+        - { part: sleeve, path: hemBase, along: 0.5, optional: true }
+    P6: null
+    BT: null
+    P8:
+      name: slanted hand-welt placement
+      stitch: TS
+      kind: placement
+      at: [{ part: front, path: handPocket, along: 0.75, optional: true }]
+    CB:
+      name: centre-back seam and vent
+      stitch: SS
+      at: [{ part: back, path: cbEdge, along: 0.5, optional: true }]
