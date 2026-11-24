@@ -1,0 +1,14 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: jumpsuit
+steps:
+  - { order: 1, action: pockets, placements: [P], stitches: [TS], whenAny: [breastPockets, lowerPockets] }
+  - { order: 2, action: facings, seams: [FA], stitches: [SS] }
+  - { order: 3, action: shoulders, seams: [A], stitches: [SS] }
+  - { order: 4, action: collar band, seams: [N], stitches: [SS] }
+  - { order: 5, action: sleeves and underarm gussets, seams: [F, G], stitches: [SS] }
+  - { order: 6, action: set the sleeves, seams: [AH], stitches: [SS] }
+  - { order: 7, action: inseams, seams: [I], stitches: [SS] }
+  - { order: 8, action: crotch gusset, seams: [CG], stitches: [SS] }
+  - { order: 9, action: front crotch seam, seams: [X], stitches: [SS] }
+  - { order: 10, action: buttonholes and hems, seams: [H], placements: [BH], stitches: [BH, HS] }

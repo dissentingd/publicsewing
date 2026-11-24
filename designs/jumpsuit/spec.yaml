@@ -80,3 +80,79 @@ pieces:
   band: { part: suitPiece, piece: band, after: body, nr: 6, label: collarBand }
   breastPocket: { part: suitPiece, piece: breastPocket, after: body, nr: 7, if: breastPockets }
   lowerPocket: { part: suitPiece, piece: lowerPocket, after: body, nr: 8, if: lowerPockets }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map"). The body's
+# named points are on its outline (lib/flat.mjs draftSuitBody, L the wearer's left end); the other
+# pieces' corners are v0, v1, ... in drafting order (sleeve: v0-v1 underarm, v1-v2 hem, v3-v0 top)
+patternMap:
+  pieces: { body: 1, sleeve: 2, armGusset: 3, crotchGusset: 4, facing: 5, band: 6, breastPocket: 7, lowerPocket: 8 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam; finish raw edges" }
+    TS: { name: topstitch, key: "turn the mouth and topstitch; press the edges under and topstitch the pocket on" }
+    HS: { name: hem stitch, key: turn the hem and stitch it }
+    BH: { name: buttonhole, key: machine buttonhole }
+  codes:
+    P:
+      name: pockets, on their marks
+      stitch: TS
+      kind: placement
+      at:
+        - { part: body, path: breastPocketL, along: 0.5, optional: true }
+        - { part: body, path: lowerPocketL, along: 0.5, optional: true }
+        - { part: breastPocket, between: [v0, v1], optional: true }
+        - { part: lowerPocket, between: [v0, v1], optional: true }
+    FA:
+      name: facing to the front edge, down the opening
+      stitch: SS
+      at: [{ part: facing, between: [v0, v1] }, { part: body, between: [standTopL, standL] }, { part: body, between: [standTopR, standR] }]
+    A:
+      name: shoulder, armhole slash to neck notch
+      stitch: SS
+      at:
+        - { part: body, between: [neckFrontL, armFrontL] }
+        - { part: body, between: [armBackL, neckBackL] }
+        - { part: body, between: [neckFrontR, armFrontR] }
+        - { part: body, between: [armBackR, neckBackR] }
+    N:
+      name: collar band to the neckline, stand edge to stand edge
+      stitch: SS
+      at: [{ part: band, between: [v3, v0] }, { part: body, between: [neckBackL, neckBackR] }]
+    F:
+      name: sleeve underarm seam, hem to the gusset notch
+      stitch: SS
+      at: [{ part: sleeve, between: [v0, v1] }]
+    G:
+      name: underarm gusset
+      stitch: SS
+      at: [{ part: armGusset, between: [v0, v1] }]
+    AH:
+      name: sleeve top and gusset to the armhole slash
+      stitch: SS
+      at:
+        - { part: sleeve, between: [v3, v0] }
+        - { part: body, between: [armFrontL, slashL] }
+        - { part: body, between: [slashR, armFrontR] }
+    I:
+      name: inseam, slit edge to CF edge
+      stitch: SS
+      at: [{ part: body, between: [hemSlitL, crotchPoint] }, { part: body, between: [crotchPoint, hemSlitR] }]
+    CG:
+      name: crotch gusset
+      stitch: SS
+      at: [{ part: crotchGusset, between: [v0, v1] }]
+    X:
+      name: front crotch seam, CF to CF, and the stands lapped
+      stitch: SS
+      at: [{ part: body, between: [openingL, hemCfL] }, { part: body, between: [openingR, hemCfR] }]
+    BH:
+      name: buttonholes on the left front and the band
+      stitch: BH
+      kind: closure
+      at: [{ part: body, snippet: buttonhole0 }]
+    H:
+      name: leg and sleeve hems
+      stitch: HS
+      at:
+        - { part: body, between: [hemCfL, hemSlitL] }
+        - { part: body, between: [hemSlitR, hemCfR] }
+        - { part: sleeve, between: [v1, v2] }

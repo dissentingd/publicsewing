@@ -42,8 +42,10 @@ const polyPath = (Path, Point, pts) => {
 
 /** A straight-edged piece: seam and allowance (`dist` per edge, else `sa` all round) */
 function drawPolygon(sh, pts, dist) {
-  const { paths, Path, Point, sa } = sh
+  const { paths, points, Path, Point, sa } = sh
   paths.seam = polyPath(Path, Point, pts).addClass('fabric')
+  // Every corner as point `v<i>`, for pattern-map anchors
+  pts.forEach((p, i) => (points[`v${i}`] = new Point(...p)))
   if (sa) paths.sa = polyPath(Path, Point, offsetPolygon(pts, dist ?? pts.map(() => sa))).addClass('fabric sa')
 }
 
@@ -111,6 +113,15 @@ export function draftSuitBody(sh, args) {
     .join(left)
     .close()
   paths.seam = seam.addClass('fabric')
+  // Named points on the outline, for pattern-map anchors: L the wearer's left end, R the right
+  Object.assign(points, {
+    standTopL: P(-ext, nd), standL: P(-ext, opening), openingL: P(0, opening), hemCfL: P(0, T),
+    hemSlitL: P(xC - taper, T), crotchPoint: P(xC, crotch), hemSlitR: P(xC + taper, T), hemCfR: P(W, T),
+    openingR: P(W, opening), standR: P(W + ext, opening), standTopR: P(W + ext, nd),
+    neckFrontL: P(nh, 0), armFrontL: P(xL - SLASH, 0), slashL: P(xL, D), armBackL: P(xL + SLASH, 0),
+    neckBackL: P(xC - nh, 0), neckBackR: P(xC + nh, 0),
+    armBackR: P(xR - SLASH, 0), slashR: P(xR, D), armFrontR: P(xR + SLASH, 0), neckFrontR: P(W - nh, 0),
+  })
 
   if (sa) {
     // The allowance round the outline without the slits (hems take `hem`), then each armhole
@@ -356,9 +367,9 @@ export const polygonPart = ({ name, after, nr, label, cut = 1, material = 'fabri
     const n = pts.length
     const dist = pts.map((_, i) => (i === fold ? 0 : (allowance[i] ?? 1) * sa))
     drawPolygon(sh, pts, sa ? dist : undefined)
-    // Named corners, for pattern-map anchors: `v<i>` for every corner, plus the shape's own `names`
-    // ({ name: index }; a negative index counts from the end, an index past the corners is left out)
-    pts.forEach((p, i) => (sh.points[`v${i}`] = new Point(...p)))
+    // Named corners, for pattern-map anchors: `v<i>` for every corner (drawPolygon), plus the
+    // shape's own `names` ({ name: index }; a negative index counts from the end, an index past
+    // the corners is left out)
     for (const [k, i] of Object.entries(names)) {
       const j = i < 0 ? n + i : i
       if (Number.isInteger(j) && j >= 0 && j < n) sh.points[k] = new Point(...pts[j])
