@@ -54,3 +54,46 @@ pieces:
     part: sleeve
     after: [front]
     options: [sleeveLengthBonus]
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map"), on the
+# chore coat's anchors (the same coat pieces)
+patternMap:
+  pieces: { front: 1, back: 2, sleeve: 3, collar: 4 }
+  stitches:
+    OS: { name: stretch seam, key: "stretch stitch or overlocker" }
+    RB: { name: band seam, key: "stretch the band to fit between the quarter marks; stretch stitch or overlocker" }
+    HS: { name: hem stitch, key: "turn the hem; twin needle or coverstitch" }
+  codes:
+    A:
+      name: shoulder
+      stitch: OS
+      at: [{ part: front, between: [neck, shoulder] }, { part: back, between: [neck, shoulder] }]
+    K:
+      name: collar band ends, joined into a ring
+      stitch: OS
+      at: [{ part: collar, between: [frontNeck, tip] }]
+    N:
+      name: collar band to the neckline, at the quarter marks
+      stitch: RB
+      at:
+        - { part: front, path: frontCollar, along: 0.5 }
+        - { part: back, path: backCollar, along: 0.5 }
+        - { part: collar, path: neck, along: 0.5 }
+    C:
+      name: sleeve cap, set in
+      stitch: OS
+      at:
+        - { part: front, path: frontArmhole, along: 0.5 }
+        - { part: back, path: backArmhole, along: 0.5 }
+        - { part: sleeve, path: sleevecap, along: 0.5 }
+    S:
+      name: underarm and side seam, in one
+      stitch: OS
+      at: [{ part: front, between: [armhole, hem] }, { part: back, between: [armhole, hem] }, { part: sleeve, between: [bicepsLeft, wristLeft] }]
+    H:
+      name: hems
+      stitch: HS
+      at:
+        - { part: front, path: hemBase, along: 0.5 }
+        - { part: back, path: hemBase, along: 0.5 }
+        - { part: sleeve, path: hemBase, along: 0.5 }

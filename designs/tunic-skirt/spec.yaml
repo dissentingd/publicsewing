@@ -47,3 +47,33 @@ variants:
     name: Longer tunic
     description: A longer version of Schorr's radial panel.
     options: { tunicLength: 0.6 }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map")
+patternMap:
+  pieces: { panel: 1 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+    FC: { name: facing, key: "sew on the facing; turn, understitch and secure its ends" }
+    HS: { name: hem stitch, key: turn the hem and stitch it without stretching the edge }
+  codes:
+    WD:
+      name: waist dart
+      stitch: SS
+      kind: dart
+      at: [{ part: panel, point: dartTip, optional: true }]
+    CF:
+      name: front seam
+      stitch: SS
+      at: [{ part: panel, between: [frontWaist, frontHem] }]
+    CB:
+      name: back seam, below the zip
+      stitch: SS
+      at: [{ part: panel, between: [backWaist, backHem] }]
+    W:
+      name: waist facing
+      stitch: FC
+      at: [{ part: panel, path: seam, along: 0.02 }]
+    H:
+      name: hem, levelled after hanging
+      stitch: HS
+      at: [{ part: panel, point: hemMid }]

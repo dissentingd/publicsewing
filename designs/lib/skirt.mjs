@@ -445,6 +445,9 @@ export function tunicPart({ name, after, nr }) {
       for (const pt of hemPts.slice(1)) hem.line(pt)
       const frontEdge = new Path().move(at(hemRadius, 0)).line(front)
       paths.seam = waist.join(backEdge).join(hem).join(frontEdge).close().addClass('fabric')
+      // Named corners, for pattern-map anchors (the hem's middle: it curves, so a chord's won't do)
+      Object.assign(sh.points, { frontWaist: front, backWaist: back, frontHem: at(hemRadius, 0), backHem: at(hemRadius, angle), hemMid: hemPts[12] })
+      if (dartAngle > 0.001) sh.points.dartTip = tip
       if (sa) paths.sa = paths.seam.offset(-sa).addClass('fabric sa')
       if (dartAngle > 0.001) {
         paths.dart = new Path().move(leg1).line(tip).line(leg2).addClass('mark')

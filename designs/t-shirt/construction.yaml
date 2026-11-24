@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: t-shirt
+steps:
+  - { order: 1, action: sew shoulders, seams: [A], stitches: [OS] }
+  - { order: 2, action: collar band, seams: [K, N], stitches: [OS, RB] }
+  - { order: 3, action: set sleeves and sew side seams, seams: [C, S], stitches: [OS] }
+  - { order: 4, action: hem, seams: [H], stitches: [HS] }
