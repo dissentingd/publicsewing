@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: joggers
+steps:
+  - { order: 1, action: make side pockets, placements: [P], stitches: [OS], whenAny: [pockets] }
+  - { order: 2, action: sew outseams, inseams and crotch, seams: [O, I, X], stitches: [OS] }
+  - { order: 3, action: waist casing, placements: [CS], stitches: [CS] }
+  - { order: 4, action: sew on the cuffs, seams: [K, R], stitches: [OS, RB] }

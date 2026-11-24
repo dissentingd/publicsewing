@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: salwar
+steps:
+  - { order: 1, action: join side panels to centre panels, seams: [K], stitches: [SS] }
+  - { order: 2, action: sew the crotch seam, seams: [X], stitches: [SS] }
+  - { order: 3, action: sew the inseams, seams: [I], stitches: [SS] }
+  - { order: 4, action: make the belt and gather the legs into it, seams: [B, W], stitches: [SS, GS] }
+  - { order: 5, action: casing and hems, seams: [H], placements: [CS], stitches: [CS, HS] }
