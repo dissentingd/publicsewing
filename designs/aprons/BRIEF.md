@@ -28,7 +28,7 @@ Draft all eight styles at adult, child and stout sizes; compare the default with
 
 ## Construction
 
-1. Cut the selected apron body and only the ties, pockets, or tab shown for that style. Finish the raw outer edges of the body, turning the hem and side edges neatly; finish a pointed top or buttonhole before fastening it.
-2. For the plasterer’s or painter’s style, finish the pocket top first, press the other edges under, and sew the pocket to the position shown on the plate.
-3. Make the neck and waist ties, then attach them to the matching body edges. For the barman’s style, make the separate elastic or tape tab and place its button to meet the body buttonhole.
-4. Add the grocer’s hook and fringe only for that style. Check tie or fastening length on the wearer before securing the ends. Vincent gives shapes and fastening types, but this order of assembly is proposed here.
+1. Cut the selected apron body and only the ties, pockets, or tab shown for that style. Finish the E raw outer edges of the body, turning the hem and side edges neatly; finish a pointed top or buttonhole before fastening it.
+2. For the plasterer's or painter's style, finish the P pocket top first, press the other edges under, and sew the pocket to the position shown on the plate.
+3. Make the T neck and waist ties, then attach them to the matching body edges. For the barman's style, make the separate elastic or tape tab and place its button to meet the body's BH buttonhole.
+4. Add the grocer's hook and fringe only for that style. Check tie or fastening length on the wearer before securing the ends. Vincent gives shapes and fastening types, but this order of assembly is proposed here.

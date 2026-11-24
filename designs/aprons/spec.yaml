@@ -197,3 +197,41 @@ variants:
   barman: { name: Barman's, description: "Diagram 6: short apron with buttonhole; use an elastic tab and button.", options: { apronType: barman } }
   grocer: { name: Grocer's, description: "Diagram 7: square apron, fringed at top and bottom, fastened with a hook.", options: { apronType: grocer } }
   painter: { name: Painter's, description: "Diagram 8: bib apron with a broad central tool pocket.", options: { apronType: painter } }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map"). Each style
+# drafts only its own pieces, and alternatives share a number (the bodies all print 1, the barman's
+# tab and the ties 2, the two pockets 4), so `pieces` lists one of each: a map number is unique.
+# Every anchor is optional, as no style drafts every piece.
+patternMap:
+  pieces: { bibBody: 1, waistTies: 2, neckTie: 3, sidePockets: 4 }
+  stitches:
+    HS: { name: hem stitch, key: turn the raw edge twice and stitch it }
+    TS: { name: topstitch, key: "finish the pocket top; press the edges under and topstitch it on" }
+    SS: { name: straight seam, key: "sew, turn and press the ties; stitch them firmly to the body" }
+    BH: { name: buttonhole, key: machine buttonhole }
+  codes:
+    E:
+      name: body edges and hem
+      stitch: HS
+      at:
+        - { part: bibBody, between: [v4, v5], optional: true }
+        - { part: squareBody, between: [v2, v3], optional: true }
+        - { part: pointedBody, between: [v2, v3], optional: true }
+        - { part: shortBody, between: [v2, v3], optional: true }
+    P:
+      name: pocket, on its marked position
+      stitch: TS
+      kind: placement
+      at: [{ part: sidePockets, between: [v0, v1], optional: true }, { part: toolPocket, between: [v0, v1], optional: true }]
+    T:
+      name: neck and waist ties, or the barman's tab
+      stitch: SS
+      at:
+        - { part: waistTies, path: seam, along: 0.25, optional: true }
+        - { part: neckTie, path: seam, along: 0.25, optional: true }
+        - { part: elasticTab, between: [v1, v2], optional: true }
+    BH:
+      name: buttonholes
+      stitch: BH
+      kind: closure
+      at: [{ part: pointedBody, snippet: buttonhole0, optional: true }, { part: shortBody, snippet: buttonhole0, optional: true }]
