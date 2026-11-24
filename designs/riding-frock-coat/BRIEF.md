@@ -56,8 +56,8 @@ Front, side front, under-arm, side back and back (each cut 2), skirt (cut 2), fa
 collar, top and under sleeves; front, back and skirt lining.
 
 ## Construction
-1. Sew the upper panels.
-2. Join the skirt to the upper coat at the waist, matching the division marks.
-3. Shoulders; collar and facings, the lapels turned back on the roll line.
-4. Make and set the two-piece sleeves; line the coat and skirt.
-5. Hem, buttonholes and buttons.
+1. Sew the upper panels: the front to the side front at PF, the side front and side back to the under-arm panel at SF and SB, the PB back seam and the CB seam.
+2. Join the skirt to the upper coat at the W waist seam, matching the division marks, and to the back below the waist at K.
+3. Close the A shoulders; sew the collar to the neckline at D and the facings to the fronts at E, the lapels turned back on the roll line.
+4. Make the two-piece sleeves at their F front and G back seams and set them at C; line the coat and skirt.
+5. Finish the H hems, work the BH buttonholes and sew on the buttons.

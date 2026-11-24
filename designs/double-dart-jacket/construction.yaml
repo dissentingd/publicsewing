@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap (merged onto the fitted jacket's).
+design: double-dart-jacket
+steps:
+  - { order: 1, action: join the fronts, back panels and under-arm panels, seams: [PF, PM, PB, SF, SB, CB], stitches: [SS] }
+  - { order: 2, action: close shoulders and attach shawl collar to back neck, seams: [A, D], stitches: [SS] }
+  - { order: 3, action: attach facings to front edges and collar, seams: [E], stitches: [SS] }
+  - { order: 4, action: join and set sleeves, seams: [F, G, C], stitches: [SS] }
+  - { order: 5, action: attach lining, finish hems and front fastening, seams: [H], placements: [BH], stitches: [HS, BH] }

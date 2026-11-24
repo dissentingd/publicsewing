@@ -58,8 +58,7 @@ Front, middle front, side front, under-arm, side back and back (each cut 2), fac
 top and under sleeves, front and back lining.
 
 ## Construction
-1. Sew the body panels, matching the waist notches; the seams below the waist are trued to equal length.
-2. Shoulders; collar and facings; lining.
-3. Make and set the two-piece sleeves.
-4. Hem, then buttonholes on the right front and buttons on the left. Try the length in the saddle, or
-   seated astride, before hemming.
+1. Sew the body panels at PF, PM, PB, SF, SB and the CB seam, matching the waist notches; the seams below the waist are trued to equal length.
+2. Close the A shoulders; attach the collar at D and the facings at E; then the lining.
+3. Make the two-piece sleeves at their F front and G back seams and set them at C.
+4. Finish the H hems, then work the BH buttonholes on the right front and sew buttons on the left. Try the length in the saddle, or seated astride, before hemming.

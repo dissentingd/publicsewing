@@ -45,8 +45,8 @@ under-arm, side back, back (all cut 2), facing, back-neck facing, top and under 
 ## Construction
 Proposed making-up order for this unsewn draft:
 
-1. Join each front, middle front and side front in that order, matching the bust notches. Join the side backs to the backs and the under-arm panels between the front and back assemblies. Sew the centre-back seam.
-2. Close the shoulder seams. Join the shawl collar at centre back and sew its neck edge to the back neckline.
-3. Join the facings and their shawl collar at centre back. Sew them to the front edges and outer collar, turn and press.
-4. Sew each top and under sleeve together, then set the sleeves into the armholes, including the under-arm panels at their lower edges.
-5. Assemble and attach the lining to the facings. Finish the jacket and sleeve hems, then work the front buttonholes and sew on the buttons. This draft has no pockets.
+1. Join each front to its middle front at the PF seam and the middle front to the side front at the PM seam, matching the bust notches. Join the side backs to the backs at PB, the under-arm panels between the front and back assemblies at SF and SB, and sew the CB centre-back seam.
+2. Close the A shoulder seams. Join the shawl collar at centre back and sew its neck edge to the back neckline at D.
+3. Join the facings and their shawl collar at centre back. Sew them to the front edges and outer collar at E, turn and press.
+4. Sew each top and under sleeve together at the F front and G back seams, then set the sleeves into the armholes at C, including the under-arm panels at their lower edges.
+5. Assemble and attach the lining to the facings. Finish the H jacket and sleeve hems, then work the BH front buttonholes and sew on the buttons. This draft has no pockets.
