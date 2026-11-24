@@ -311,6 +311,8 @@ export function capePart({ name, after, which, nr, buttons = () => ({ count: 0 }
         const up = copy(c.front.side).reverse()
         const neck = copy(c.front.neck)
         paths.seam = edge.join(h).join(up).join(neck).close().addClass('fabric')
+        // Its edges, hidden, for pattern-map anchors
+        Object.assign(paths, { frontEdge: copy(c.front.edge).hide(), hemEdge: copy(c.front.hem).hide(), sideEdge: copy(c.front.side).hide(), neckEdge: copy(c.front.neck).hide() })
         if (sa) {
           let o = null
           for (const [p, k] of [[copy(c.front.edge), 1], [copy(c.front.hem), hem], [copy(c.front.side).reverse(), 1], [copy(c.front.neck), 1]]) {
@@ -328,6 +330,9 @@ export function capePart({ name, after, which, nr, buttons = () => ({ count: 0 }
             : copy(c.whole.top).join(copy(c.whole.hem))
         fold = [outline.start(), outline.end()]
         paths.seam = outline.clone().close().addClass('fabric')
+        // Its edges, hidden, for pattern-map anchors
+        if (which === 'back') Object.assign(paths, { neckEdge: copy(c.back.neck).hide(), sideEdge: copy(c.back.side).hide(), hemEdge: copy(c.back.hem).hide() })
+        else Object.assign(paths, { topEdge: copy(c.whole.top).hide(), hemEdge: copy(c.whole.hem).hide() })
         if (sa) {
           const parts =
             which === 'back'

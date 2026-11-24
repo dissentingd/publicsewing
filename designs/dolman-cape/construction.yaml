@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: dolman-cape
+steps:
+  - { order: 1, action: darts }
+  - { order: 2, action: shoulder and side seams, seams: [SH], stitches: [SS] }
+  - { order: 3, action: facing and collar, seams: [D], placements: [F], stitches: [SS] }
+  - { order: 4, action: hem and buttons, seams: [H], placements: [BH], stitches: [HS, BH] }

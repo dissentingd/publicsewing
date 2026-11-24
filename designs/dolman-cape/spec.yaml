@@ -94,3 +94,35 @@ variants:
     name: Long
     description: "Near the floor: Pivnick drafts to the floor and measures the hem up from there."
     options: { dolmanLength: 0.9 }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map"); anchors on
+# the cape's edges (lib/cape.mjs). The darts are notched on the outline, not drawn, so carry no code
+patternMap:
+  pieces: { front: 1, back: 2, collar: 3 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+    HS: { name: hem stitch, key: "turn the hem and stitch it" }
+    BH: { name: buttonhole, key: machine buttonhole }
+  codes:
+    SH:
+      name: shoulder and side seam in one, neck to hem, matching the notches
+      stitch: SS
+      at: [{ part: front, path: sideEdge, along: 0.6 }, { part: back, path: sideEdge, along: 0.6 }]
+    F:
+      name: facing, folded back on the line
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: lapFold, along: 0.5 }]
+    D:
+      name: collar to the neck, with the facing's top
+      stitch: SS
+      at: [{ part: collar, path: neck, along: 0.5 }, { part: front, path: neckEdge, along: 0.5 }, { part: back, path: neckEdge, along: 0.5 }]
+    H:
+      name: hem
+      stitch: HS
+      at: [{ part: front, path: hemEdge, along: 0.5 }, { part: back, path: hemEdge, along: 0.5 }]
+    BH:
+      name: buttonholes on the right front
+      stitch: BH
+      kind: closure
+      at: [{ part: front, point: button0, optional: true }]
