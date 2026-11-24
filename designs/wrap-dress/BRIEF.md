@@ -40,8 +40,8 @@
 
 ## Construction
 
-1. Sew the bust, waist and skirt darts.
-2. Sew shoulder seams and finish the front diagonal and back neckline.
-3. Join each front skirt to its front bodice; join back skirt to back bodice.
-4. Sew one side seam with a reinforced opening at the waist for the inner tie, then the other side seam. Attach ties to the two front waist tips.
-5. Set sleeves if selected, otherwise bind armholes. Finish the overlapping skirt fronts and hem.
+1. Sew the BD bust, WD waist and SD skirt darts.
+2. Sew the A shoulder seams and the CB centre back seams, and finish the N front diagonal and back neckline.
+3. Join each front skirt to its front bodice and the back skirt to the back bodice at the W waist seam.
+4. Sew one S side seam with a reinforced opening at the waist for the inner tie, then the other side seam. Attach the T ties to the two front waist tips.
+5. Sew the F sleeve seams and set the sleeves in at C if selected; otherwise bind the armholes at C. Finish the H hems and the overlapping skirt fronts.

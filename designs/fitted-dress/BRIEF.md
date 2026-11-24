@@ -66,11 +66,9 @@ to measure or openly licensed. None was used.
 
 ## Construction
 
-1. Sew the bodice darts: the waist darts front and back, the bust dart at the side. Sew the skirt
-   darts.
-2. Sew the shoulder seams. Finish the neck (and armholes, if sleeveless) with bias binding or a
-   lining.
-3. Sew the bodice and skirt side seams. Gather a gathered skirt's waist to the bodice's.
-4. Sew the skirt to the bodice at the waist, matching side seams and darts.
-5. Sew the centre back seam below the zip's notch, and put in the zip from the neck to the notch.
-6. Set in the sleeves, if any. Hem.
+1. Sew the bodice darts: the WD waist darts front and back, the BD bust dart at the side. Sew the SD skirt darts.
+2. Sew the A shoulder seams. Finish the N neck (and the armholes, if sleeveless) with bias binding or a lining.
+3. Sew the bodice and skirt S side seams. Gather a gathered skirt's waist to the bodice's.
+4. Sew the skirt to the bodice at the W waist seam, matching side seams and darts.
+5. Sew the CB centre back seam below the zip's notch, and put in the zip from the neck to the notch.
+6. Sew the F sleeve seams and set the sleeves in at C, if any; otherwise bind the armholes at C. Finish the H hems.

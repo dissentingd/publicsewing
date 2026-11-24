@@ -33,6 +33,7 @@
 
 ## Construction
 
-1. Sew the front bust dart, then the front and back waist darts through their lower points.
-2. Sew shoulder and side seams. Finish neck and armholes with binding or a lining.
-3. Hem the top.
+1. Sew the BD front bust dart, then the WD front and back waist darts through their lower points.
+2. Sew the A shoulder and S side seams. Finish the N neck and AH armholes with binding or a lining.
+3. Finish the H hem.
+

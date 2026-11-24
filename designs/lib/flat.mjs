@@ -314,6 +314,8 @@ export const suitPiecePart = ({ name, after, piece, nr, label, enabled = () => t
  *   (a pocket's place, a fold).
  * - `grain`: [[x, y], [x, y]], the grainline's ends, for a piece not cut on the straight (a bias-cut
  *   churidar); by default it runs up the middle.
+ * - `names`: { name: index } names corners as points (pattern-map anchors); every corner is also
+ *   point `v<i>`.
  * Its edges' lengths go to `polygon.<piece>` (`edges`, `width`, `height`).
  */
 export const polygonPart = ({ name, after, nr, label, cut = 1, material = 'fabric', enabled = () => true, shape }) => ({
@@ -322,10 +324,17 @@ export const polygonPart = ({ name, after, nr, label, cut = 1, material = 'fabri
   draft: (sh) => {
     const { paths, Path, Point, snippets, Snippet, store, sa, macro, options, part } = sh
     if (!enabled(options)) return part.hide()
-    const { points: pts, allowance = [], fold = -1, notches = [], buttons = [], buttonholes = [], lines = [], grain } = shape(sh)
+    const { points: pts, allowance = [], fold = -1, notches = [], buttons = [], buttonholes = [], lines = [], grain, names = {} } = shape(sh)
     const n = pts.length
     const dist = pts.map((_, i) => (i === fold ? 0 : (allowance[i] ?? 1) * sa))
     drawPolygon(sh, pts, sa ? dist : undefined)
+    // Named corners, for pattern-map anchors: `v<i>` for every corner, plus the shape's own `names`
+    // ({ name: index }; a negative index counts from the end, an index past the corners is left out)
+    pts.forEach((p, i) => (sh.points[`v${i}`] = new Point(...p)))
+    for (const [k, i] of Object.entries(names)) {
+      const j = i < 0 ? n + i : i
+      if (Number.isInteger(j) && j >= 0 && j < n) sh.points[k] = new Point(...pts[j])
+    }
     if (fold >= 0) {
       const [a, b] = [pts[fold], pts[(fold + 1) % n]]
       paths.fold = new Path().move(new Point(...a)).line(new Point(...b)).addClass('help dashed')

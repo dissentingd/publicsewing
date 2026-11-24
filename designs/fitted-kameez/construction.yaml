@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: fitted-kameez
+steps:
+  - { order: 1, action: sew darts, seams: [WD, BD], stitches: [SS] }
+  - { order: 2, action: neck slit, shoulders and neckline, seams: [NS, A, N], stitches: [BN, SS] }
+  - { order: 3, action: set sleeves or bind armholes, seams: [C], stitches: [SS] }
+  - { order: 4, action: sew side and sleeve seams and set the zip, seams: [S], stitches: [SS] }
+  - { order: 5, action: finish slits and hems, seams: [H], stitches: [HS] }

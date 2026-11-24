@@ -75,3 +75,55 @@ variants:
     name: Long sleeves
     description: "Plain fitted sleeves to the wrist, hemmed."
     options: { sleeves: long }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map")
+patternMap:
+  pieces: { front: 1, back: 2, sleeve: 3 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam; finish raw edges" }
+    BN: { name: binding, key: bind or face the raw edge }
+    HS: { name: hem stitch, key: turn the hem and stitch it }
+  codes:
+    WD:
+      name: waist darts, front and back
+      stitch: SS
+      kind: dart
+      at: [{ part: front, path: waistDart, along: 0.25, optional: true }, { part: back, path: waistDart, along: 0.25, optional: true }]
+    BD:
+      name: bust dart
+      stitch: SS
+      kind: dart
+      at: [{ part: front, point: bustDartTip }]
+    NS:
+      name: neck slit
+      stitch: BN
+      at: [{ part: front, path: neckSlit, along: 0.5, optional: true }]
+    A:
+      name: shoulder
+      stitch: SS
+      at: [{ part: front, between: [hps, shoulder] }, { part: back, between: [hps, shoulder] }]
+    N:
+      name: neckline
+      stitch: BN
+      at: [{ part: front, between: [neckPoint, neckCf] }, { part: back, between: [neckPoint, neckCb] }]
+    C:
+      name: armhole; set in the sleeve flat, or bind it
+      stitch: SS
+      at:
+        - { part: front, path: armhole, along: 0.3 }
+        - { part: back, path: armhole, along: 0.3 }
+        - { part: sleeve, path: sleevecap, along: 0.5, optional: true }
+    S:
+      name: side and sleeve seams, to the slits; zip on the left
+      stitch: SS
+      at:
+        - { part: front, between: [sideHem, hipSide] }
+        - { part: back, between: [waistSide, hipSide] }
+        - { part: sleeve, between: [bicepsLeft, wristLeft], optional: true }
+    H:
+      name: hems and side slits
+      stitch: HS
+      at:
+        - { part: front, between: [hipCenter, hemSide] }
+        - { part: back, between: [hipCenter, hemSide] }
+        - { part: sleeve, between: [wristLeft, wristRight], optional: true }
