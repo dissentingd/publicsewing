@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: turtleneck
+steps:
+  - { order: 1, action: sew shoulders, seams: [A], stitches: [OS] }
+  - { order: 2, action: set sleeves and sew side seams, seams: [C, S], stitches: [OS] }
+  - { order: 3, action: make the collar ring, seams: [K], stitches: [OS] }
+  - { order: 4, action: sew on the collar, seams: [N], stitches: [RB] }
+  - { order: 5, action: hem or sew on cuffs and hem band, seams: [H, R], stitches: [HS, RB] }

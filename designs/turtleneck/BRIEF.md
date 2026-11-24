@@ -56,10 +56,8 @@ measure or openly licensed. None was used.
 
 ## Construction
 
-1. Sew the shoulder seams.
-2. Set in the sleeves flat, then sew each side seam and sleeve seam in one.
-3. Join the collar's short ends into a ring and fold it in half lengthwise, wrong sides together.
-4. Pin it to the neck edge at the quarter notches (centre back, the shoulders, centre front),
-   stretch the collar to fit between them, and sew with a stretch stitch or overlocker.
-5. Hem the sleeves and body with a twin needle or coverstitch, or sew on the cuffs and hem band
-   as the collar.
+1. Sew the A shoulder seams.
+2. Set in the sleeves flat at C, then sew each S side seam and sleeve seam in one.
+3. Join the collar's K short ends into a ring and fold it in half lengthwise, wrong sides together.
+4. Pin it to the neck edge at the quarter notches (centre back, the shoulders, centre front), stretch the collar to fit between them, and sew the N seam with a stretch stitch or overlocker.
+5. Finish the H hems of the sleeves and body with a twin needle or coverstitch, or join the R cuffs and hem band into rings and sew them on as the collar.

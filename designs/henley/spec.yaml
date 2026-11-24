@@ -33,6 +33,7 @@ pieces:
     hide: tree
     ops:
       - brand: { nr: 2, title: back }
+      - outline: {} # one seam outline from its edges, for exports and the pattern map
   front:
     from: bibi.front
     hide: tree
@@ -41,6 +42,7 @@ pieces:
     ops:
       - brand: { nr: 1, title: front }
       - placketBox: { length: hpsToWaistBack * placketDepth, width: neck * placketWidth }
+      - outline: {} # one seam outline from its edges, for exports and the pattern map
   sleeve:
     from: bibi.sleeve
     options: [sleeveLength, useCuffRibbing]
@@ -108,3 +110,64 @@ variants:
     name: Rugby shirt
     description: A deeper collar, a long, wide placket and rib cuffs, with long sleeves.
     options: { neckFinish: collar, collarHeight: 0.22, placketDepth: 0.4, placketWidth: 0.1, useCuffRibbing: true }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map")
+patternMap:
+  pieces: { front: 1, back: 2, sleeve: 3, placket: 4, neckBand: 5, collar: 6, cuff: 7, hemBand: 8 }
+  stitches:
+    BH: { name: buttonhole, key: machine buttonhole through the interfaced placket }
+    OS: { name: stretch seam, key: "stretch stitch or overlocker" }
+    RB: { name: rib seam, key: "stretch the band to fit between the notches; stretch stitch or overlocker" }
+    HS: { name: hem stitch, key: "turn the hem; twin needle or coverstitch" }
+  codes:
+    A:
+      name: shoulder
+      stitch: OS
+      at: [{ part: front, between: [hps, shoulder] }, { part: back, between: [hps, shoulder] }]
+    C:
+      name: sleeve cap, set in flat
+      stitch: OS
+      at:
+        - { part: front, path: armhole, along: 0.4 }
+        - { part: back, path: armhole, along: 0.4 }
+        - { part: sleeve, path: sleevecap, along: 0.5, optional: true }
+    S:
+      name: side and sleeve seam, in one
+      stitch: OS
+      at:
+        - { part: front, between: [armhole, hem] }
+        - { part: back, between: [armhole, hem] }
+        - { part: sleeve, between: [bicepsLeft, wristLeft], optional: true }
+    H:
+      name: hems, or where a cuff or hem band is sewn on
+      stitch: HS
+      at:
+        - { part: front, between: [cfHem, hem], optional: true }
+        - { part: back, between: [cbHem, hem], optional: true }
+        - { part: sleeve, between: [wristLeft, wristRight], optional: true }
+    R:
+      name: cuffs and hem band, joined into rings and sewn on
+      stitch: RB
+      at:
+        - { part: cuff, between: [topLeft, bottomLeft], optional: true }
+        - { part: hemBand, between: [topLeft, bottomLeft], optional: true }
+    P:
+      name: plackets to the cut opening, stitched across the foot
+      stitch: OS
+      kind: placement
+      at:
+        - { part: placket, between: [v1, v2] }
+        - { part: front, path: placket, along: 0.5 }
+    N:
+      name: neckband or collar to the neckline, at the notches
+      stitch: RB
+      at:
+        - { part: neckBand, between: [v2, v3], optional: true }
+        - { part: collar, between: [v2, v3], optional: true }
+        - { part: front, between: [hps, cfNeck] }
+        - { part: back, between: [hps, cbNeck] }
+    BH:
+      name: buttonholes on the top placket
+      stitch: BH
+      kind: closure
+      at: [{ part: placket, snippet: buttonhole0 }]

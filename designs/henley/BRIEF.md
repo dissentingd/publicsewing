@@ -66,13 +66,8 @@ graded and copyrighted; none made to measure or openly licensed. None was used.
 ## Construction
 
 1. Interface the plackets' buttonhole halves. Fold each placket in half lengthwise and press.
-2. Cut the front down the marked placket box (centre front) and across its foot, snipping into the
-   corners.
-3. Sew a placket to each side of the opening, right sides together, and turn them to the inside so
-   they meet at centre front, the buttonhole one on top. Stitch across the foot through both
-   plackets and the front's triangle.
-4. Sew the shoulder seams. Fold the band or collar in half lengthwise and sew it to the neck edge,
-   matching the quarter notches to the centre back and shoulders, stretching it to fit; turn in its
-   ends at the placket edges.
-5. Set in the sleeves flat, then sew each side seam and sleeve seam in one.
-6. Hem, or sew on the cuffs and hem band. Make the buttonholes and sew on the buttons.
+2. Cut the front down the marked placket box (centre front) and across its foot, snipping into the corners.
+3. Sew a placket to each side of the opening at P, right sides together, and turn them to the inside so they meet at centre front, the buttonhole one on top. Stitch across the foot through both plackets and the front's triangle.
+4. Sew the A shoulder seams. Fold the band or collar in half lengthwise and sew it to the neck edge at N, matching the quarter notches to the centre back and shoulders, stretching it to fit; turn in its ends at the placket edges.
+5. Set in the sleeves flat at C, then sew each S side seam and sleeve seam in one.
+6. Finish the H hems, or join the R cuffs and hem band into rings and sew them on. Make the BH buttonholes and sew on the buttons.

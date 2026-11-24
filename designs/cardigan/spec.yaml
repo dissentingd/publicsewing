@@ -32,6 +32,7 @@ pieces:
     options: [useWaistRibbing, chestEase]
     ops:
       - brand: { nr: 2, title: back }
+      - outline: {} # one seam outline from its edges, for exports and the pattern map
   front:
     from: bibi.front
     hide: tree
@@ -40,6 +41,7 @@ pieces:
     ops:
       - brand: { nr: 1, title: front }
       - openFront: { depth: hpsToWaistFront * vNeckDepth }
+      - outline: {} # one seam outline from its edges, for exports and the pattern map
   sleeve:
     from: bibi.sleeve
     hide: tree
@@ -83,3 +85,57 @@ variants:
     name: Plain hem
     description: No rib cuffs or hem band; the sleeves and body hemmed, the front band running to the hem.
     options: { useCuffRibbing: false, useWaistRibbing: false }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map")
+patternMap:
+  pieces: { front: 1, back: 2, sleeve: 3, frontBand: 4, cuff: 5, hemBand: 6 }
+  stitches:
+    BH: { name: buttonhole, key: machine buttonhole through the interfaced band }
+    OS: { name: stretch seam, key: "stretch stitch or overlocker" }
+    RB: { name: rib seam, key: "stretch the band to fit between the notches; stretch stitch or overlocker" }
+    HS: { name: hem stitch, key: "turn the hem; twin needle or coverstitch" }
+  codes:
+    A:
+      name: shoulder
+      stitch: OS
+      at: [{ part: front, between: [hps, shoulder] }, { part: back, between: [hps, shoulder] }]
+    C:
+      name: sleeve cap, set in flat
+      stitch: OS
+      at:
+        - { part: front, path: armhole, along: 0.4 }
+        - { part: back, path: armhole, along: 0.4 }
+        - { part: sleeve, path: sleevecap, along: 0.5, optional: true }
+    S:
+      name: side and sleeve seam, in one
+      stitch: OS
+      at:
+        - { part: front, between: [armhole, hem] }
+        - { part: back, between: [armhole, hem] }
+        - { part: sleeve, between: [bicepsLeft, wristLeft], optional: true }
+    H:
+      name: hems, or where a cuff or hem band is sewn on
+      stitch: HS
+      at:
+        - { part: front, between: [cfHem, hem], optional: true }
+        - { part: back, between: [cbHem, hem], optional: true }
+        - { part: sleeve, between: [wristLeft, wristRight], optional: true }
+    R:
+      name: cuffs and hem band, joined into rings and sewn on
+      stitch: RB
+      at:
+        - { part: cuff, between: [topLeft, bottomLeft], optional: true }
+        - { part: hemBand, between: [topLeft, bottomLeft], optional: true }
+    B:
+      name: front band, up one front, round the neck and down the other
+      stitch: RB
+      at:
+        - { part: frontBand, between: [v2, v3] }
+        - { part: front, between: [hps, cfNeck] }
+        - { part: front, between: [cfNeck, cfHem] }
+        - { part: back, between: [hps, cbNeck] }
+    BH:
+      name: buttonholes on the band
+      stitch: BH
+      kind: closure
+      at: [{ part: frontBand, snippet: buttonhole0 }]

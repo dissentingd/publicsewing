@@ -306,6 +306,34 @@ export const suitPiecePart = ({ name, after, piece, nr, label, enabled = () => t
 })
 
 /**
+ * Join a piece drawn as separate edges (Bibi's back and front: neck, shoulder, armhole, side seam,
+ * hem and centre line, each a path of class `fabric`) into one closed `seam` path, as other pieces
+ * have, so the exports and the pattern map find its outline. The edges stay, hidden. Run it after
+ * every operation that reshapes an edge. A piece that already has a visible `seam` is left alone.
+ */
+export function closeOutline(sh) {
+  const { paths } = sh
+  if (paths.seam && !paths.seam.hidden) return
+  const edges = Object.entries(paths).filter(([k, p]) => k !== 'seam' && !p.hidden && p.attributes.get('class') === 'fabric')
+  if (!edges.length) throw new Error('outline: no fabric edges')
+  const near = (a, b) => a.dist(b) < 0.5
+  const [first, ...rest] = edges
+  let out = first[1].clone()
+  const used = [first[0]]
+  while (rest.length) {
+    const end = out.end()
+    const i = rest.findIndex(([, p]) => near(p.start(), end) || near(p.end(), end))
+    if (i < 0) throw new Error(`outline: no edge continues from ${used.join(', ')}`)
+    const [k, p] = rest.splice(i, 1)[0]
+    out = out.join(near(p.start(), end) ? p : p.reverse())
+    used.push(k)
+  }
+  if (!near(out.end(), out.start())) throw new Error(`outline: ${used.join(', ')} don't close`)
+  paths.seam = out.close().attr('class', 'fabric', true)
+  for (const k of used) paths[k].hide()
+}
+
+/**
  * A straight-edged piece from its corners: `shape(sh)` gives
  * - `points`: [[x, y], ...] the seam line, in order;
  * - `allowance`: per edge (from points[i] to points[i + 1]), in seam allowances (default 1);

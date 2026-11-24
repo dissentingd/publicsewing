@@ -1,0 +1,10 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: henley
+steps:
+  - { order: 1, action: prepare plackets }
+  - { order: 2, action: cut the placket opening }
+  - { order: 3, action: sew on the plackets, placements: [P], stitches: [OS] }
+  - { order: 4, action: join shoulders and sew on the neckband, seams: [A, N], stitches: [OS, RB] }
+  - { order: 5, action: set sleeves and sew side seams, seams: [C, S], stitches: [OS] }
+  - { order: 6, action: hem, bands and buttons, seams: [H, R], placements: [BH], stitches: [HS, RB, BH] }

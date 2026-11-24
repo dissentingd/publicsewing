@@ -56,11 +56,8 @@ measure or openly licensed. None was used.
 
 ## Construction
 
-1. Sew the shoulder seams.
-2. Set in the sleeves flat, then sew each side seam and sleeve seam in one.
-3. Fold the hem band in half lengthwise and sew it to the hem, its ends at the front edges. Sew on
-   the cuffs as rings.
-4. Interface the buttonhole end of the front band. Fold it in half lengthwise and sew it on from the
-   foot of one front, up it, round the neck and down the other, matching the notches: flat along the
-   fronts, stretched between the V points.
-5. Make the buttonholes and sew on the buttons.
+1. Sew the A shoulder seams.
+2. Set in the sleeves flat at C, then sew each S side seam and sleeve seam in one.
+3. Fold the hem band in half lengthwise and sew it to the hem at R, its ends at the front edges. Join the cuffs into rings and sew them on at R. Without ribbing, finish the H hems.
+4. Interface the buttonhole end of the front band. Fold it in half lengthwise and sew it on at B from the foot of one front, up it, round the neck and down the other, matching the notches: flat along the fronts, stretched between the V points.
+5. Make the BH buttonholes and sew on the buttons.
