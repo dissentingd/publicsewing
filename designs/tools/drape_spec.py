@@ -86,6 +86,57 @@ def follow(data, pieces):
         s['origin'] = own
 
 
+def around(data, pieces):
+    """Skirt panels placed round the body: `around: {cf: point, cb: point, y: cm, rx: cm, rz: cm}`.
+    The drafting lays them side by side from CB (x of `cb`) to CF (x of `cf`); each panel goes to
+    the matching angle on an ellipse rx by rz at height y of its origin, turned to face out, so
+    only the ellipse's clearance is a number. The right-hand copy runs from CF round to CB."""
+    for name, s in pieces.items():
+        a = s.pop('around', None)
+        if not a:
+            continue
+        cf, cb = data['points'][a['cf']][0], data['points'][a['cb']][0]
+        xs = [p[0] for p in data['pieces'][name]]
+        ox, _ = origin_of(data, s)
+        mid = (min(xs) + max(xs)) / 2
+        phi = math.pi * (cf - mid) / (cf - cb)
+        d = mid - ox                               # the panel's middle from its origin, along it
+        cx, cz = -a['rx'] * math.sin(phi), a['rz'] * math.cos(phi)
+        s['rotation'] = [0, -math.degrees(phi), 0]
+        s['translation'] = [cx - d * math.cos(phi), a['y'], cz - d * math.sin(phi)]
+
+
+def hang(data, pieces):
+    """A trouser leg started with its inseam straight down between the body's legs: `hang: {from:
+    point, to: point, x: cm}` turns the piece about z so the line from -> to is vertical, at x.
+    Left as drafted the inseam slants across the body's leg, and its stitches pull the cloth
+    through it. The piece's origin keeps its height."""
+    for s in pieces.values():
+        h = s.pop('hang', None)
+        if not h:
+            continue
+        ox, oy = origin_of(data, s)
+        (a, b), (c, d) = s['map']
+        local = lambda n: (a * (data['points'][n][0] - ox) + b * (data['points'][n][1] - oy),
+                           c * (data['points'][n][0] - ox) + d * (data['points'][n][1] - oy))
+        fx, fy = local(h['from'])
+        tx, ty = local(h['to'])
+        th = -math.pi / 2 - math.atan2(ty - fy, tx - fx)
+        s['rotation'] = [0, 0, math.degrees(th)]
+        s['translation'] = [h['x'] - (fx * math.cos(th) - fy * math.sin(th)), s['translation'][1], s['translation'][2]]
+
+
+def open_darts(data, seams):
+    """Drop the seams marked `dart: true` whose dart is closed in this design (its two legs start
+    at one point: a design that extends another and sets the dart to nothing)"""
+    for name, s in list(seams.items()):
+        if not s.pop('dart', False):
+            continue
+        a, b = (data['points'][s[k][0]['along'][0]] for k in 'ab')
+        if math.hypot(a[0] - b[0], a[1] - b[1]) < 0.01:
+            del seams[name]
+
+
 def inside(poly, x, y, tol=0.05):
     """Point in polygon, or within tol of its outline"""
     n, hit = len(poly), False
@@ -161,7 +212,10 @@ def main(outlines, config, out_dir, name, back='back'):
             raise ValueError(f'pattern map {code} references missing drape seam {drape_seam}')
     if back != 'back':
         cfg = rename(cfg, 'back', back)
+    around(data, cfg['pieces'])
+    hang(data, cfg['pieces'])
     follow(data, cfg['pieces'])
+    open_darts(data, cfg['seams'])
     recipe = {'seams': cfg['seams'], 'drape': {'body': cfg['body'], 'pieces': cfg['pieces']}, 'labels': cfg.get('labels')}
     spec = GC.build_spec(Outlines(data, recipe))
     d = Path(out_dir) / name

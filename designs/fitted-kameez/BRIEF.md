@@ -62,9 +62,9 @@ proportions of a fitted kameez.
 3. Sleeve, cut two.
 
 ## Construction
-1. Sew the waist darts front and back through their lower points, and the front bust darts.
-2. Cut and face or bind the neck slit; sew the shoulders; bind the neck.
-3. Set in the sleeves flat.
-4. Sew the right side seam from the sleeve's hem to the slit's notch; sew the left from the zip's
-   notch to the slit's, and from the sleeve's hem to just below the armhole. Set the zip.
-5. Finish the slits; hem the kameez and the sleeves.
+
+1. Sew the WD waist darts front and back through their lower points, and the BD front bust darts.
+2. Cut and face or bind the NS neck slit; sew the A shoulders; bind the N neck.
+3. Set in the sleeves flat at C, or bind the armholes if sleeveless.
+4. Sew the right S side seam from the sleeve's hem to the slit's notch; sew the left from the zip's notch to the slit's, and from the sleeve's hem to just below the armhole. Set the zip.
+5. Finish the slits; turn the H hems of the kameez and the sleeves.

@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: churidar
+steps:
+  - { order: 1, action: sew the inseams, seams: [I], stitches: [SS] }
+  - { order: 2, action: sew the crotch seam, seams: [X], stitches: [SS] }
+  - { order: 3, action: make the belt and gather the legs into it, seams: [B, W], stitches: [SS, GS] }
+  - { order: 4, action: casing, placements: [CS], stitches: [CS] }
+  - { order: 5, action: hem the ankles, seams: [H], stitches: [HS] }

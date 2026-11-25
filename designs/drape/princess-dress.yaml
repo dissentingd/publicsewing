@@ -1,0 +1,28 @@
+# Drape a sleeveless princess-seamed dress (Noble's panels, lengthened) on GarmentCode's female
+# average body: inside and outside panels, back and front, on the fold at CB and CF. c-numbers are
+# each panel's seam vertices in drawing order. Inside back: c1 hem at the seam, c2 waist, c3 bust,
+# c4 shoulder, c5 neck point, c6 CB neck, c7 CB hem. Outside back: c1 side hem, c2 side waist, c3
+# underarm, c5 shoulder tip, c6 shoulder at the seam, c7 bust, c8 waist, c9 hem at the seam. Inside
+# front as the back (c7 the CF waist, c8 its hem). Outside front: c1 side hem, c2 side waist, c3
+# underarm, c5 shoulder tip, c6 shoulder at the seam, c9 bust, c11 waist, c12 hem at the seam.
+body: f_smpl_average_A40
+pieces:
+  backInside: {origin: [backInside.cbNeck, backInside.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -15]}
+  backOutside: {origin: [backInside.cbNeck, backInside.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -17]}
+  frontInside: {origin: [frontInside.cfNeck, frontInside.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 19]}
+  frontOutside: {origin: [frontInside.cfNeck, frontInside.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 21]}
+seams:
+  centre_back: {a: [{piece: backInside, along: [backInside.c6, backInside.c0]}], mirror: true}
+  centre_front: {a: [{piece: frontInside, along: [frontInside.c6, frontInside.c7, frontInside.c0]}], mirror: true}
+  back_princess:
+    a: [{piece: backInside, along: [backInside.c4, backInside.c3, backInside.c2, backInside.c1]}]
+    b: [{piece: backOutside, along: [backOutside.c6, backOutside.c7, backOutside.c8, backOutside.c0]}]
+  front_princess:
+    a: [{piece: frontInside, along: [frontInside.c4, frontInside.c3, frontInside.c2, frontInside.c1]}]
+    b: [{piece: frontOutside, along: [frontOutside.c6, frontOutside.c9, frontOutside.c11, frontOutside.c0]}]
+  shoulder:
+    a: [{piece: backInside, along: [backInside.c5, backInside.c4]}, {piece: backOutside, along: [backOutside.c6, backOutside.c5]}]
+    b: [{piece: frontInside, along: [frontInside.c5, frontInside.c4]}, {piece: frontOutside, along: [frontOutside.c6, frontOutside.c5]}]
+  side:
+    a: [{piece: backOutside, along: [backOutside.c3, backOutside.c2, backOutside.c1]}]
+    b: [{piece: frontOutside, along: [frontOutside.c3, frontOutside.c2, frontOutside.c1]}]

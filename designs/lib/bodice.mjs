@@ -120,6 +120,12 @@ export function draftPrincessDress(sh, { panel, length, princessFlare = 0, sideF
     outline = new Path().move(princessHip).line(outerHip).line(outer).join(upper).line(princessHip).close()
   }
   paths[pathName] = outline.attr('class', 'fabric')
+  // A back panel's outline is its `seam` too (Noble's back `seam` is Bella's whole back, hidden),
+  // so the exports and the pattern map find it; the named path stays, hidden, for the checks
+  if (back) {
+    paths.seam = outline
+    paths[pathName] = outline.clone().hide()
+  }
   paths.saBase = outline.clone().hide()
   if (sa) paths.sa = paths.saBase.offset(sa).attr('class', 'fabric sa')
   else delete paths.sa
@@ -318,8 +324,17 @@ export function dressSkirtPart({ name, after, nr, label, which, enabled, shape, 
         pts[n - 1][0] = -wrap
       }
       sh.store.set(`bodice.skirt.${which}`, { waist: waistEdge, side, top, dartLegs })
+      const gathered = style === 'gathered'
       return {
         points: pts,
+        names: {
+          cfWaist: 0,
+          sideWaist: gathered ? 1 : n - 4,
+          ...(gathered ? {} : { sideHip: n - 3 }),
+          ...(dartLegs ? { dartTip: 2 } : {}),
+          sideHem: n - 2,
+          cfHem: n - 1,
+        },
         allowance,
         fold: back || wrap ? -1 : n - 1,
         notches: back && zip > 0 ? [[0, zip]] : [],

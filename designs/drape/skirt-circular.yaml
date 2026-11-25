@@ -1,0 +1,18 @@
+# Drape a circular skirt (lib/skirt.mjs `circular`) on GarmentCode's female average body: the front
+# panel on the fold at CF and the back panel to the CB seam. The waistband is left off: the waist
+# is labelled `lower_interface` and pinned (holdWaist). c0, c1, ... are each panel's seam vertices
+# in drawing order. Front: c0 CF waist, c1 side waist, c2 side at the seat, c3 side hem, c5 CF hem.
+# Back: c0 side waist, c1 CB waist, c2 CB hem, c5 side hem, c6 side at the seat. Placement as
+# skirt-gored.yaml, further out for the flare.
+body: f_smpl_average_A40
+pieces:
+  frontPanel: {origin: frontPanel.c0, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.c0, cb: gore1.c1, y: 102, rx: 30, rz: 26}}
+  gore1: {origin: gore1.c0, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontPanel.c0, cb: gore1.c1, y: 102, rx: 30, rz: 26}}
+seams:
+  centre_front: {a: [{piece: frontPanel, along: [frontPanel.c0, frontPanel.c5]}], mirror: true}
+  side:
+    a: [{piece: frontPanel, along: [frontPanel.c1, frontPanel.c2, frontPanel.c3]}]
+    b: [{piece: gore1, along: [gore1.c0, gore1.c6, gore1.c5]}]
+  centre_back: {a: [{piece: gore1, along: [gore1.c1, gore1.c2]}], mirror: true}
+labels:
+  lower_interface: [{piece: frontPanel, along: [frontPanel.c0, frontPanel.c1]}, {piece: gore1, along: [gore1.c0, gore1.c1]}]

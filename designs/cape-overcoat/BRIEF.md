@@ -64,3 +64,10 @@ an arm opening, but the text does not explain it, so it is not copied.
 Cut two foreparts, one back on the fold, and the collar on the fold.
 Sew the shoulder and side seams, finish the front stand and facing, attach
 the collar, level and hem the swept edge, then work buttonholes and buttons.
+
+## Construction
+
+1. Sew the SH shoulder and side seams from the neck to the hem, easing at the tip; a one-piece cut sews its DT shoulder darts instead.
+2. Finish the front stand and fold the F facing back on its line. Sew the collar to the neck at D, with the facing's top.
+3. Let it hang, then level the swept H hem on the wearer and hem it, easing in the fullness.
+4. Work the BH buttonholes and sew on the buttons.

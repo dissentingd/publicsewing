@@ -1,0 +1,55 @@
+# Drape a tiered skirt on GarmentCode's female average body: four tiers, each a quarter of the skirt
+# on the fold at x 0, front and back (the lower tiers are cut twice: --copy), every tier's top
+# gathered onto the hem above as drafted. c0 ... c3: top at the fold, top at the side, hem at the
+# side, hem at the fold. The waistband is left off; the top is pinned (holdWaist).
+body: f_smpl_average_A40
+pieces:
+  front: {origin: front.c0, map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 102, 22]}
+  back: {origin: back.c0, map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 102, -22]}
+  tier2: {map: [[-1, 0], [0, -1]], ccw: true, follow: {piece: front, at: [tier2.c0, front.c3], offset: [0, -1], clear: 1}}
+  tier3: {map: [[-1, 0], [0, -1]], ccw: true, follow: {piece: tier2, at: [tier3.c0, tier2.c3], offset: [0, -1], clear: 1}}
+  tier4: {map: [[-1, 0], [0, -1]], ccw: true, follow: {piece: tier3, at: [tier4.c0, tier3.c3], offset: [0, -1], clear: 1}}
+  tier2Back: {map: [[-1, 0], [0, -1]], ccw: false, follow: {piece: back, at: [tier2Back.c0, back.c3], offset: [0, -1], clear: 1}}
+  tier3Back: {map: [[-1, 0], [0, -1]], ccw: false, follow: {piece: tier2Back, at: [tier3Back.c0, tier2Back.c3], offset: [0, -1], clear: 1}}
+  tier4Back: {map: [[-1, 0], [0, -1]], ccw: false, follow: {piece: tier3Back, at: [tier4Back.c0, tier3Back.c3], offset: [0, -1], clear: 1}}
+seams:
+  join_tier2:
+    a: [{piece: front, along: [front.c3, front.c2]}]
+    b: [{piece: tier2, along: [tier2.c0, tier2.c1]}]
+  join_tier3:
+    a: [{piece: tier2, along: [tier2.c3, tier2.c2]}]
+    b: [{piece: tier3, along: [tier3.c0, tier3.c1]}]
+  join_tier4:
+    a: [{piece: tier3, along: [tier3.c3, tier3.c2]}]
+    b: [{piece: tier4, along: [tier4.c0, tier4.c1]}]
+  join_tier2Back:
+    a: [{piece: back, along: [back.c3, back.c2]}]
+    b: [{piece: tier2Back, along: [tier2Back.c0, tier2Back.c1]}]
+  join_tier3Back:
+    a: [{piece: tier2Back, along: [tier2Back.c3, tier2Back.c2]}]
+    b: [{piece: tier3Back, along: [tier3Back.c0, tier3Back.c1]}]
+  join_tier4Back:
+    a: [{piece: tier3Back, along: [tier3Back.c3, tier3Back.c2]}]
+    b: [{piece: tier4Back, along: [tier4Back.c0, tier4Back.c1]}]
+  cf_front: {a: [{piece: front, along: [front.c0, front.c3]}], mirror: true}
+  cb_back: {a: [{piece: back, along: [back.c0, back.c3]}], mirror: true}
+  cf_tier2: {a: [{piece: tier2, along: [tier2.c0, tier2.c3]}], mirror: true}
+  cb_tier2Back: {a: [{piece: tier2Back, along: [tier2Back.c0, tier2Back.c3]}], mirror: true}
+  cf_tier3: {a: [{piece: tier3, along: [tier3.c0, tier3.c3]}], mirror: true}
+  cb_tier3Back: {a: [{piece: tier3Back, along: [tier3Back.c0, tier3Back.c3]}], mirror: true}
+  cf_tier4: {a: [{piece: tier4, along: [tier4.c0, tier4.c3]}], mirror: true}
+  cb_tier4Back: {a: [{piece: tier4Back, along: [tier4Back.c0, tier4Back.c3]}], mirror: true}
+  side_front:
+    a: [{piece: front, along: [front.c1, front.c2]}]
+    b: [{piece: back, along: [back.c1, back.c2]}]
+  side_tier2:
+    a: [{piece: tier2, along: [tier2.c1, tier2.c2]}]
+    b: [{piece: tier2Back, along: [tier2Back.c1, tier2Back.c2]}]
+  side_tier3:
+    a: [{piece: tier3, along: [tier3.c1, tier3.c2]}]
+    b: [{piece: tier3Back, along: [tier3Back.c1, tier3Back.c2]}]
+  side_tier4:
+    a: [{piece: tier4, along: [tier4.c1, tier4.c2]}]
+    b: [{piece: tier4Back, along: [tier4Back.c1, tier4Back.c2]}]
+labels:
+  lower_interface: [{piece: front, along: [front.c0, front.c1]}, {piece: back, along: [back.c0, back.c1]}]

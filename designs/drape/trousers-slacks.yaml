@@ -1,0 +1,24 @@
+# Drape trousers with the waistband cut in one with the legs (the slacks) on GarmentCode's male
+# average body: as trousers-tailored.yaml, up to the band's top edge. The front pleats aren't
+# folded; the back dart is sewn. The band's top is pinned at the body's waist level (holdWaist).
+body: m_smpl_average_A40
+pieces:
+  front: {origin: [front.fork, front.wIn], map: [[1, 0], [0, -1]], ccw: true, translation: [0, 108, 22], hang: {from: front.fork, to: front.hemIn, x: -0.7}}
+  back: {origin: [back.fork, back.wIn], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 108, -22], hang: {from: back.fork, to: back.hemIn, x: -0.7}}
+seams:
+  centre_front: {a: [{piece: front, along: [front.bandIn, front.wIn, front.crotchSeamCurveStart, front.fork]}], mirror: true}
+  centre_back: {a: [{piece: back, along: [back.bandIn, back.wIn, back.crossSeamCurveStart, back.fork]}], mirror: true}
+  outseam:
+    a: [{piece: front, along: [front.bandOut, front.wOut, front.hemOut]}]
+    b: [{piece: back, along: [back.bandOut, back.wOut, back.hemOut]}]
+  inseam:
+    a: [{piece: front, along: [front.fork, front.hemIn]}]
+    b: [{piece: back, along: [back.fork, back.hemIn]}]
+  back_dart:
+    a: [{piece: back, along: [back.bandDartIn, back.dartTip]}]
+    b: [{piece: back, along: [back.bandDartOut, back.dartTip]}]
+labels:
+  lower_interface:
+    - {piece: front, along: [front.bandIn, front.bandOut]}
+    - {piece: back, along: [back.bandOut, back.bandDartOut]}
+    - {piece: back, along: [back.bandDartIn, back.bandIn]}

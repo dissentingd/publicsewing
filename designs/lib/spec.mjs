@@ -70,7 +70,7 @@ import { draftSkirtLayout, gorePart, goreFacingPart, culottePart, draftCircularL
 import { draftYokeLayout, yokePart, yokeGorePart } from './skirt-yoke.mjs'
 import { draftGatheredLeg, legBandPart, draftTrouserLeg, stripPart, legInOnePart } from './trousers.mjs'
 import { draftJacketBase, draftJacketLayout, draftBoxLayout, draftBoxSkirtLayout, jacketPanelPart, flyPart } from './jacket.mjs'
-import { draftSuitBody, suitPiecePart, polygonPart } from './flat.mjs'
+import { draftSuitBody, suitPiecePart, polygonPart, closeOutline } from './flat.mjs'
 import { draftJeanLeg, jeanPiecePart, jeanBandPart } from './jeans.mjs'
 import { draftCapeBase, draftJacketCapeBase, draftCapeLayout, draftDolmanLayout, capePart } from './cape.mjs'
 import { draftKiltLayout, kiltApronPart, kiltPleatsPart } from './kilt.mjs'
@@ -100,6 +100,8 @@ export const operations = {
   placketBox: { run: draftPlacketBox },
   // A cardigan's open front with a V neck, on Bibi's front; `knit.front` in the store
   openFront: { run: draftOpenFront },
+  // Join a piece drawn as separate edges (Bibi's) into one `seam` outline; run it last
+  outline: { run: closeOutline },
   // Bella bodices (lib/bodice.mjs): reshape the neckline (`which`, `widen`, `style`, `depth`), and
   // record the waist seam for the skirt (`bodice.waist.<which>`)
   bodiceNeck: { run: draftBodiceNeck, literal: ['which'] },
@@ -483,12 +485,14 @@ const factories = {
       cut: p.cut ?? 1,
       material: p.material ?? 'fabric',
       enabled: enabledBy(p.if),
-      shape: (sh) =>
-        evalMap(
+      shape: (sh) => ({
+        ...evalMap(
           { ...p.let, points: p.points, allowance: p.allowance, fold: p.fold, notches: p.notches, buttons: p.buttons, buttonholes: p.buttonholes, lines: p.lines, grain: p.grain },
           lookupIn(sh, ctx.block, {}),
           {},
         ),
+        names: p.names, // { name: corner index }, constants
+      }),
     }),
   // A dress skirt sewn to a Bella bodice (after the bodice piece with bodiceWaist): `which`, and
   // `style` (gathered, straight, aline), `gathers`, `seatEase`, `flare`, `length`, `zip`, `dartDepth`

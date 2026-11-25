@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: riding-habit-coat
+steps:
+  - { order: 1, action: sew the body panels, seams: [PF, PM, PB, SF, SB, CB], stitches: [SS] }
+  - { order: 2, action: close shoulders, attach collar, facings and lining, seams: [A, D, E], stitches: [SS] }
+  - { order: 3, action: make and set sleeves, seams: [F, G, C], stitches: [SS] }
+  - { order: 4, action: hem and finish the fastening, seams: [H], placements: [BH], stitches: [HS, BH] }

@@ -1,0 +1,16 @@
+# Drape a tunic overskirt on GarmentCode's female average body: a radial panel for the front and one
+# for the back (--copy), each cut at its central dart (--split panel=0), so the seam at CF and CB
+# closes the dart. c14 is the dart's top, c26 the side of the waist, c27 the side at the hem. The
+# waist is pinned (holdWaist).
+body: f_smpl_average_A40
+pieces:
+  panelPlus: {origin: panelPlus.c14, map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 102, 22]}
+  panelBack: {origin: panelBack.c14, map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 102, -22]}
+seams:
+  centre_front: {a: [{piece: panelPlus, along: [panelPlus.c14, panelPlus.clipTop, panelPlus.clipBottom]}], mirror: true}
+  centre_back: {a: [{piece: panelBack, along: [panelBack.c14, panelBack.clipTop, panelBack.clipBottom]}], mirror: true}
+  side:
+    a: [{piece: panelPlus, along: [panelPlus.c26, panelPlus.c27]}]
+    b: [{piece: panelBack, along: [panelBack.c26, panelBack.c27]}]
+labels:
+  lower_interface: [{piece: panelPlus, along: [panelPlus.c14, panelPlus.c26]}, {piece: panelBack, along: [panelBack.c14, panelBack.c26]}]

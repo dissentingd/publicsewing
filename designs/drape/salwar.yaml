@@ -1,0 +1,32 @@
+# Drape a salwar on GarmentCode's female average body. Each leg: a centre panel folded at the outer
+# side and a kali either side, so front and back halves (--copy). A kali's c0 is the top at the
+# crotch seam, c1 the crotch, c2 and c3 the inseam, c4 and c5 the edge sewn to the centre panel.
+# A centre panel's c0 and c3 are the fold, c1 and c2 its sewn edge. The belt is left off; the top
+# is pinned (holdWaist) and so gathers.
+body: f_smpl_average_A40
+pieces:
+  kali: {origin: kali.c0, map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 102, 22], hang: {from: kali.c2, to: kali.c3, x: -0.7}}
+  kaliBack: {origin: kaliBack.c0, map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 102, -22], hang: {from: kaliBack.c2, to: kaliBack.c3, x: -0.7}}
+  centrePanel: {map: [[1, 0], [0, -1]], ccw: true, follow: {piece: kali, at: [centrePanel.c1, kali.c5], clear: 1}}
+  centrePanelBack: {map: [[1, 0], [0, -1]], ccw: false, follow: {piece: kaliBack, at: [centrePanelBack.c1, kaliBack.c5], clear: 1}}
+seams:
+  centre_front: {a: [{piece: kali, along: [kali.c0, kali.c1]}], mirror: true}
+  centre_back: {a: [{piece: kaliBack, along: [kaliBack.c0, kaliBack.c1]}], mirror: true}
+  inseam:
+    a: [{piece: kali, along: [kali.c2, kali.c3]}]
+    b: [{piece: kaliBack, along: [kaliBack.c2, kaliBack.c3]}]
+  panel_front:
+    a: [{piece: kali, along: [kali.c5, kali.c4]}]
+    b: [{piece: centrePanel, along: [centrePanel.c1, centrePanel.c2]}]
+  panel_back:
+    a: [{piece: kaliBack, along: [kaliBack.c5, kaliBack.c4]}]
+    b: [{piece: centrePanelBack, along: [centrePanelBack.c1, centrePanelBack.c2]}]
+  outer_fold:
+    a: [{piece: centrePanel, along: [centrePanel.c0, centrePanel.c3]}]
+    b: [{piece: centrePanelBack, along: [centrePanelBack.c0, centrePanelBack.c3]}]
+labels:
+  lower_interface:
+    - {piece: kali, along: [kali.c0, kali.c5]}
+    - {piece: kaliBack, along: [kaliBack.c0, kaliBack.c5]}
+    - {piece: centrePanel, along: [centrePanel.c0, centrePanel.c1]}
+    - {piece: centrePanelBack, along: [centrePanelBack.c0, centrePanelBack.c1]}

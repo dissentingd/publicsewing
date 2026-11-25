@@ -101,3 +101,73 @@ variants:
     name: Jumper dress
     description: A deep square neck to wear over a blouse, and a flared A-line skirt.
     options: { neckShape: square, neckWiden: 0.1, neckDepth: 0.5, backNeckDepth: 0.17, hemFlare: 0.1, skirtLength: 0.5 }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map")
+patternMap:
+  pieces: { front: 1, back: 2, skirtFront: 3, skirtBack: 4, sleeve: 5 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam; finish raw edges" }
+    BN: { name: binding, key: bind or face the raw edge }
+    HS: { name: hem stitch, key: turn the hem and stitch it }
+  codes:
+    BD:
+      name: bust dart
+      stitch: SS
+      kind: dart
+      at: [{ part: front, point: bustDartTip }]
+    WD:
+      name: bodice waist darts
+      stitch: SS
+      kind: dart
+      at: [{ part: front, point: waistDartLeftMid }, { part: back, point: dartTip }]
+    SD:
+      name: skirt darts
+      stitch: SS
+      kind: dart
+      at: [{ part: skirtFront, point: dartTip, optional: true }, { part: skirtBack, point: dartTip, optional: true }]
+    A:
+      name: shoulder
+      stitch: SS
+      at: [{ part: front, between: [hps, shoulder] }, { part: back, between: [hps, shoulder] }]
+    N:
+      name: neckline
+      stitch: BN
+      at: [{ part: front, between: [neckPoint, neckCf] }, { part: back, between: [neckPoint, neckCb] }]
+    S:
+      name: side seams, bodice and skirt
+      stitch: SS
+      at:
+        - { part: front, between: [armhole, sideHem] }
+        - { part: back, between: [armhole, waistSide] }
+        - { part: skirtFront, between: [sideWaist, sideHem] }
+        - { part: skirtBack, between: [sideWaist, sideHem] }
+    W:
+      name: waist seam, bodice to skirt
+      stitch: SS
+      at:
+        - { part: front, between: [cfHem, sideHem] }
+        - { part: back, between: [cbWaist, waistSide] }
+        - { part: skirtFront, between: [cfWaist, sideWaist] }
+        - { part: skirtBack, between: [cfWaist, sideWaist] }
+    CB:
+      name: centre back seam and zip
+      stitch: SS
+      at: [{ part: back, between: [cbNeck, cbWaist] }, { part: skirtBack, between: [cfWaist, cfHem] }]
+    C:
+      name: armhole; set in the sleeve, or bind it
+      stitch: SS
+      at:
+        - { part: front, path: armhole, along: 0.3 }
+        - { part: back, path: armhole, along: 0.3 }
+        - { part: sleeve, path: sleevecap, along: 0.5, optional: true }
+    F:
+      name: sleeve seam
+      stitch: SS
+      at: [{ part: sleeve, between: [bicepsLeft, wristLeft], optional: true }]
+    H:
+      name: hems
+      stitch: HS
+      at:
+        - { part: skirtFront, between: [sideHem, cfHem] }
+        - { part: skirtBack, between: [sideHem, cfHem] }
+        - { part: sleeve, between: [wristLeft, wristRight], optional: true }

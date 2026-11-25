@@ -134,6 +134,8 @@ export function drape(design, { name, options: extra = {}, entry, upTo, set, ble
   if (r.clip) exportArgs.push('--clip', pairs(r.clip))
   if (r.split) exportArgs.push('--split', pairs(r.split))
   if (r.clipY) exportArgs.push('--clipy', pairs(r.clipY))
+  if (r.copy) exportArgs.push('--copy', pairs(r.copy))
+  if (r.onEdge) exportArgs.push('--onedge', pairs(r.onEdge))
   if (r.measurements) exportArgs.push('--m', pairs(r.measurements))
   if (r.prefix) exportArgs.push('--prefix', r.prefix)
   if (r.sources) exportArgs.push('--sources', pairs(r.sources))
@@ -227,6 +229,10 @@ export function drape(design, { name, options: extra = {}, entry, upTo, set, ble
     },
   }
 
+  // A run that stopped at its first frames has no drape to check: it's a failure, not an OK
+  if (!Number.isFinite(result.garmentcode.intersections) || result.garmentcode.frames < 10) {
+    throw new DrapeError('sim', `the simulation stopped after ${result.garmentcode.frames} frames, with no result`)
+  }
   // 4. Where the cloth is inside the body, and 5. the renders
   const inside = stage('inside', () => h.sh(`docker exec ${container} python /data/drape_inside.py ${logDir}/${name}_sim.obj /opt/garmentcode/assets/bodies/${body}.obj --json --scale ${scale}`))
   result.inside = stage('inside', () => JSON.parse(inside.trim().split('\n').pop()))

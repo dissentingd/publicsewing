@@ -42,8 +42,10 @@ const polyPath = (Path, Point, pts) => {
 
 /** A straight-edged piece: seam and allowance (`dist` per edge, else `sa` all round) */
 function drawPolygon(sh, pts, dist) {
-  const { paths, Path, Point, sa } = sh
+  const { paths, points, Path, Point, sa } = sh
   paths.seam = polyPath(Path, Point, pts).addClass('fabric')
+  // Every corner as point `v<i>`, for pattern-map anchors
+  pts.forEach((p, i) => (points[`v${i}`] = new Point(...p)))
   if (sa) paths.sa = polyPath(Path, Point, offsetPolygon(pts, dist ?? pts.map(() => sa))).addClass('fabric sa')
 }
 
@@ -111,6 +113,26 @@ export function draftSuitBody(sh, args) {
     .join(left)
     .close()
   paths.seam = seam.addClass('fabric')
+  // Named points on the outline, for pattern-map anchors: L the wearer's left end, R the right
+  Object.assign(points, {
+    standTopL: P(-ext, nd), standL: P(-ext, opening), openingL: P(0, opening), hemCfL: P(0, T),
+    hemSlitL: P(xC - taper, T), crotchPoint: P(xC, crotch), hemSlitR: P(xC + taper, T), hemCfR: P(W, T),
+    openingR: P(W, opening), standR: P(W + ext, opening), standTopR: P(W + ext, nd),
+    neckFrontL: P(nh, 0), armFrontL: P(xL - SLASH, 0), slashL: P(xL, D), armBackL: P(xL + SLASH, 0),
+    neckBackL: P(xC - nh, 0), neckBackR: P(xC + nh, 0),
+    armBackR: P(xR - SLASH, 0), slashR: P(xR, D), armFrontR: P(xR + SLASH, 0), neckFrontR: P(W - nh, 0),
+  })
+
+  // Where the right half's seams start and end, for what sews to them (the drapes)
+  const gusset = args.sleeve.gusset
+  const slitLen = Math.hypot(SLASH, D)
+  Object.assign(points, {
+    cbTop: P(xC, 0), crotchPoint: P(xC, crotch), slitHem: P(xC + taper, T), sideHem: P(xR, T), hemCf: P(W, T),
+    frontCrotch: P(W, frontCrotch), cfNeck: P(W, nd), neckFront: P(W - nh, 0), neckBack: P(xC + nh, 0),
+    shoulderFront: P(xR + SLASH, 0), shoulderBack: P(xR - SLASH, 0), armTip: P(xR, D),
+    slitFront: P(xR + (SLASH * gusset) / slitLen, D - (D * gusset) / slitLen),
+    slitBack: P(xR - (SLASH * gusset) / slitLen, D - (D * gusset) / slitLen),
+  })
 
   if (sa) {
     // The allowance round the outline without the slits (hems take `hem`), then each armhole
@@ -306,6 +328,34 @@ export const suitPiecePart = ({ name, after, piece, nr, label, enabled = () => t
 })
 
 /**
+ * Join a piece drawn as separate edges (Bibi's back and front: neck, shoulder, armhole, side seam,
+ * hem and centre line, each a path of class `fabric`) into one closed `seam` path, as other pieces
+ * have, so the exports and the pattern map find its outline. The edges stay, hidden. Run it after
+ * every operation that reshapes an edge. A piece that already has a visible `seam` is left alone.
+ */
+export function closeOutline(sh) {
+  const { paths } = sh
+  if (paths.seam && !paths.seam.hidden) return
+  const edges = Object.entries(paths).filter(([k, p]) => k !== 'seam' && !p.hidden && p.attributes.get('class') === 'fabric')
+  if (!edges.length) throw new Error('outline: no fabric edges')
+  const near = (a, b) => a.dist(b) < 0.5
+  const [first, ...rest] = edges
+  let out = first[1].clone()
+  const used = [first[0]]
+  while (rest.length) {
+    const end = out.end()
+    const i = rest.findIndex(([, p]) => near(p.start(), end) || near(p.end(), end))
+    if (i < 0) throw new Error(`outline: no edge continues from ${used.join(', ')}`)
+    const [k, p] = rest.splice(i, 1)[0]
+    out = out.join(near(p.start(), end) ? p : p.reverse())
+    used.push(k)
+  }
+  if (!near(out.end(), out.start())) throw new Error(`outline: ${used.join(', ')} don't close`)
+  paths.seam = out.close().attr('class', 'fabric', true)
+  for (const k of used) paths[k].hide()
+}
+
+/**
  * A straight-edged piece from its corners: `shape(sh)` gives
  * - `points`: [[x, y], ...] the seam line, in order;
  * - `allowance`: per edge (from points[i] to points[i + 1]), in seam allowances (default 1);
@@ -314,6 +364,8 @@ export const suitPiecePart = ({ name, after, piece, nr, label, enabled = () => t
  *   (a pocket's place, a fold).
  * - `grain`: [[x, y], [x, y]], the grainline's ends, for a piece not cut on the straight (a bias-cut
  *   churidar); by default it runs up the middle.
+ * - `names`: { name: index } names corners as points (pattern-map anchors); every corner is also
+ *   point `v<i>`.
  * Its edges' lengths go to `polygon.<piece>` (`edges`, `width`, `height`).
  */
 export const polygonPart = ({ name, after, nr, label, cut = 1, material = 'fabric', enabled = () => true, shape }) => ({
@@ -322,10 +374,17 @@ export const polygonPart = ({ name, after, nr, label, cut = 1, material = 'fabri
   draft: (sh) => {
     const { paths, Path, Point, snippets, Snippet, store, sa, macro, options, part } = sh
     if (!enabled(options)) return part.hide()
-    const { points: pts, allowance = [], fold = -1, notches = [], buttons = [], buttonholes = [], lines = [], grain } = shape(sh)
+    const { points: pts, allowance = [], fold = -1, notches = [], buttons = [], buttonholes = [], lines = [], grain, names = {} } = shape(sh)
     const n = pts.length
     const dist = pts.map((_, i) => (i === fold ? 0 : (allowance[i] ?? 1) * sa))
     drawPolygon(sh, pts, sa ? dist : undefined)
+    // Named corners, for pattern-map anchors: `v<i>` for every corner (drawPolygon), plus the
+    // shape's own `names` ({ name: index }; a negative index counts from the end, an index past
+    // the corners is left out)
+    for (const [k, i] of Object.entries(names)) {
+      const j = i < 0 ? n + i : i
+      if (Number.isInteger(j) && j >= 0 && j < n) sh.points[k] = new Point(...pts[j])
+    }
     if (fold >= 0) {
       const [a, b] = [pts[fold], pts[(fold + 1) % n]]
       paths.fold = new Path().move(new Point(...a)).line(new Point(...b)).addClass('help dashed')

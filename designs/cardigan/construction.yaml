@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: cardigan
+steps:
+  - { order: 1, action: sew shoulders, seams: [A], stitches: [OS] }
+  - { order: 2, action: set sleeves and sew side seams, seams: [C, S], stitches: [OS] }
+  - { order: 3, action: sew on hem band and cuffs, or hem, seams: [R, H], stitches: [RB, HS] }
+  - { order: 4, action: sew on the front band, seams: [B], stitches: [RB] }
+  - { order: 5, action: buttonholes and buttons, placements: [BH], stitches: [BH] }

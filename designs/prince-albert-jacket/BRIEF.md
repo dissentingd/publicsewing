@@ -53,14 +53,13 @@ facing; collar; two-piece sleeve; lining for the front, back and skirt (side pan
 cut in lining too).
 
 ## Construction
-1. Front to side front, side back to under-arm panel, under-arm panel to side front.
-2. Bodice to skirt at the waist seam, matching the skirt's seam ends to the bodice's.
-3. The back seam, from the armhole down to the waist (back to side back); CB seam to the top of the vent.
-4. Pleat: the back's extension and the skirt's together, pressed under, the rest of that seam
-   closed to the waist. Vent extensions lapped.
-5. Shoulders, collar, facings, as the tailored jacket.
-6. Sleeves: the two pieces together, then set in.
-7. Lining, hems, buttons.
+1. Join the front to the side front at PF, the side back to the under-arm panel at SB, and the under-arm panel to the side front at SF.
+2. Sew the bodice to the skirt at the W waist seam, matching the skirt's seam ends to the bodice's.
+3. Sew the PB back seam from the armhole down to the waist, and the CB seam to the top of the vent.
+4. Join the skirt to the back below the waist at K: the back's pleat extension and the skirt's together, pressed under, the rest of the seam closed to the waist. Lap the vent extensions.
+5. Close the A shoulders, sew the collar to the neckline at D, then the facings to the fronts and lapels at E, as the tailored jacket.
+6. Join each two-piece sleeve at its F front and G back seams, then set it into the armhole at C.
+7. Line the jacket, finish the H skirt and sleeve hems, work the BH buttonholes and sew on the buttons.
 
 ## Changes and what isn't modelled
 - **The ¼ in at 28 and 29 is left out.** Back and side back share one point on the chest line and

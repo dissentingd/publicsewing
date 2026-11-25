@@ -152,3 +152,58 @@ variants:
     name: Long sleeves
     description: "Straight sleeves to the wrist."
     options: { sleeveLength: 1.0 }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map"). Corners:
+# front and back panels v0 centre neck, v0-v6 the neck curve, v6-v7 the shoulder, v7-v8 the side,
+# v8-v9 the hem, v9-v0 the fold; sleeve v0-v1 the fold, v1-v2 the wrist, v2-v3 the underarm, v3-v0
+# the edge sewn to the panels; kali v3-v0 the straight edge, v1-v2 the side seam, v2-v3 the hem
+patternMap:
+  pieces: { frontPanel: 1, backPanel: 2, sleeve: 3, kali: 4, gusset: 5, placket: 6 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam; finish raw edges" }
+    BN: { name: binding, key: bind or face the raw edge }
+    HS: { name: hem stitch, key: turn the hem and stitch it }
+    BH: { name: buttonhole, key: machine buttonhole }
+  codes:
+    PL:
+      name: plackets to the cut slit
+      stitch: SS
+      kind: placement
+      at: [{ part: placket, between: [v1, v2] }, { part: frontPanel, path: mark0, along: 0.5 }]
+    A:
+      name: shoulder
+      stitch: SS
+      at: [{ part: frontPanel, between: [v6, v7] }, { part: backPanel, between: [v6, v7] }]
+    N:
+      name: neckline
+      stitch: BN
+      at: [{ part: frontPanel, between: [v2, v4] }, { part: backPanel, between: [v2, v4] }]
+    SL:
+      name: sleeve top to the panels' sides, down to the notches
+      stitch: SS
+      at: [{ part: sleeve, between: [v3, v0] }]
+    K:
+      name: side panel to centre panel, notch to hem
+      stitch: SS
+      at: [{ part: kali, between: [v3, v0] }, { part: frontPanel, between: [v7, v8] }, { part: backPanel, between: [v7, v8] }]
+    G:
+      name: underarm gusset
+      stitch: SS
+      at: [{ part: gusset, between: [v0, v1] }]
+    U:
+      name: underarm and side seams, to the hem
+      stitch: SS
+      at: [{ part: sleeve, between: [v2, v3] }, { part: kali, between: [v1, v2] }]
+    H:
+      name: hems
+      stitch: HS
+      at:
+        - { part: frontPanel, between: [v8, v9] }
+        - { part: backPanel, between: [v8, v9] }
+        - { part: kali, between: [v2, v3] }
+        - { part: sleeve, between: [v1, v2] }
+    BH:
+      name: buttonholes on the top placket
+      stitch: BH
+      kind: closure
+      at: [{ part: placket, snippet: buttonhole0, optional: true }]

@@ -1,0 +1,11 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: prince-albert-jacket
+steps:
+  - { order: 1, action: join front and side panels above the waist, seams: [PF, SB, SF], stitches: [SS] }
+  - { order: 2, action: join bodice to skirt at the waist, seams: [W], stitches: [SS] }
+  - { order: 3, action: sew back seam and centre back, seams: [PB, CB], stitches: [SS] }
+  - { order: 4, action: join skirt to back with pleat and lap the vent, seams: [K], stitches: [SS] }
+  - { order: 5, action: close shoulders, attach collar and facings, seams: [A, D, E], stitches: [SS] }
+  - { order: 6, action: join and set sleeves, seams: [F, G, C], stitches: [SS] }
+  - { order: 7, action: line, hem and finish the fastening, seams: [H], placements: [BH], stitches: [HS, BH] }

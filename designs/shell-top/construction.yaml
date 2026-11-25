@@ -1,0 +1,7 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: shell-top
+steps:
+  - { order: 1, action: sew darts, seams: [BD, WD], stitches: [SS] }
+  - { order: 2, action: join shoulders and sides, finish neck and armholes, seams: [A, S, N, AH], stitches: [SS, BN] }
+  - { order: 3, action: hem, seams: [H], stitches: [HS] }

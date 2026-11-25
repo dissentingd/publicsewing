@@ -90,20 +90,14 @@ Thirteen pieces, all straight lines:
 8. Lower pocket: cut 2 (if `lowerPockets`).
 
 ## Construction
-1. Pockets: turn and stitch each mouth, press the other edges under, and topstitch the pockets
-   on their marks.
-2. Facings: sew one to each front edge down the opening, turn and press.
-3. Shoulders: sew each front's top edge to the back's, from the armhole slash to the neck notch.
-4. Collar band: sew to the neckline from stand edge to stand edge (notches at CF and CB), fold,
-   and close its ends.
-5. Sleeves: sew each underarm seam from the hem to the gusset notch, then set two adjacent sides
-   of an underarm gusset into its open end.
-6. Armholes: sew the sleeve's top to the slash edges above the gusset notches (its centre notch
-   at the shoulder seam), and the gusset's other two sides to the slash edges below, its corner
-   at the slash's point.
-7. Legs: sew each inseam, slit edge to CF edge, from the hem to the inseam notch.
-8. Crotch gusset: front corner at the CF crotch notches, back corner at the slit's point, its
-   four sides to the tops of the inseam edges.
-9. Front crotch seam: CF to CF from the crotch notch to the bottom of the opening; lap the left
-   stand over the right and stitch across.
-10. Buttonholes on the left front and the band, buttons on the right; hem the legs and sleeves.
+
+1. Pockets: turn and stitch each mouth, press the other edges under, and topstitch the P pockets on their marks.
+2. Facings: sew one to each front edge down the opening at FA, turn and press.
+3. Shoulders: sew each front's top edge to the back's at A, from the armhole slash to the neck notch.
+4. Collar band: sew it to the neckline at N from stand edge to stand edge (notches at CF and CB), fold, and close its ends.
+5. Sleeves: sew each F underarm seam from the hem to the gusset notch, then set two adjacent sides of a G underarm gusset into its open end.
+6. Armholes: sew the sleeve's top to the slash edges above the gusset notches at AH (its centre notch at the shoulder seam), and the gusset's other two sides to the slash edges below, its corner at the slash's point.
+7. Legs: sew each I inseam, slit edge to CF edge, from the hem to the inseam notch.
+8. Crotch gusset: set the CG gusset with its front corner at the CF crotch notches, its back corner at the slit's point, and its four sides to the tops of the inseam edges.
+9. Front crotch seam: sew X, CF to CF, from the crotch notch to the bottom of the opening; lap the left stand over the right and stitch across.
+10. Work the BH buttonholes on the left front and the band, sew the buttons on the right, and finish the H leg and sleeve hems.

@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: riding-frock-coat
+steps:
+  - { order: 1, action: sew the upper panels, seams: [PF, SF, SB, PB, CB], stitches: [SS] }
+  - { order: 2, action: join skirt at the waist and back seam, seams: [W, K], stitches: [SS] }
+  - { order: 3, action: close shoulders, attach collar and facings, seams: [A, D, E], stitches: [SS] }
+  - { order: 4, action: make and set sleeves and line the coat, seams: [F, G, C], stitches: [SS] }
+  - { order: 5, action: hem and finish the fastening, seams: [H], placements: [BH], stitches: [HS, BH] }

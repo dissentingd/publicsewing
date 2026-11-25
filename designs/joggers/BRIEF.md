@@ -38,7 +38,7 @@
 
 ## Construction
 
-1. If using pockets, sew a bag to each front and back pocket opening, matching the notches. Join each bag pair around its free edge.
-2. Sew front to back at the outseams above and below the pocket mouths. Sew inseams and crotch seam.
-3. Turn and stitch the elastic casing, leaving an opening to insert and adjust elastic.
-4. Join each rib cuff into a ring, fold it and stretch it evenly onto the corresponding leg hem.
+1. If using pockets, sew a P bag to each front and back pocket opening, matching the notches. Join each bag pair around its free edge.
+2. Sew front to back at the O outseams above and below the pocket mouths. Sew the I inseams and the X crotch seam.
+3. Turn and stitch the CS elastic casing, leaving an opening to insert and adjust elastic.
+4. Join each rib cuff's K ends into a ring, fold it and stretch it evenly onto the corresponding leg hem at R.

@@ -1,0 +1,21 @@
+# Drape jeans on GarmentCode's male average body: front and back legs, placed as
+# trousers-tailored.yaml. The back yoke and waistband are left off, so the back's top is its yoke
+# seam; the front's top runs from CF to the pocket scoop. Both are pinned at the body's waist
+# level (holdWaist). c-numbers are seam vertices in drawing order: on the front, c8 is the CF top.
+body: m_smpl_average_A40
+pieces:
+  front: {origin: [front.fork, front.c8], map: [[1, 0], [0, -1]], ccw: true, translation: [0, 108, 22], hang: {from: front.fork, to: front.hemIn, x: -0.7}}
+  back: {origin: [back.fork, back.yokeIn], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 104, -22], hang: {from: back.fork, to: back.hemIn, x: -0.7}}
+seams:
+  centre_front: {a: [{piece: front, along: [front.c8, front.crotchSeamCurveStart, front.fork]}], mirror: true}
+  centre_back: {a: [{piece: back, along: [back.yokeIn, back.crossSeamCurveStart, back.fork]}], mirror: true}
+  outseam:
+    a: [{piece: front, along: [front.entryBottom, front.seatOut, front.hemOut]}]
+    b: [{piece: back, along: [back.yokeOut, back.seatOut, back.hemOut]}]
+  inseam:
+    a: [{piece: front, along: [front.fork, front.hemIn]}]
+    b: [{piece: back, along: [back.fork, back.hemIn]}]
+labels:
+  lower_interface:
+    - {piece: front, along: [front.c8, front.entryTop]}
+    - {piece: back, along: [back.yokeOut, back.yokeIn]}

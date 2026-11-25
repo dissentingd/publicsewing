@@ -84,3 +84,44 @@ variants:
     name: Patiala salwar
     description: "Much wider side panels, for a fuller salwar falling in deep folds."
     options: { kaliWidth: 0.625 }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map"). Corners:
+# centre panel v0 top left, v1 top right, v2 hem right, v3 hem at the fold; kali (side panel) v0
+# top inner, v1 crotch notch, v2 inseam top, v3 and v4 the hem, v5 top outer
+patternMap:
+  pieces: { centrePanel: 1, kali: 2, belt: 3 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam; finish raw edges" }
+    GS: { name: gathering, key: "two rows of long stitches, drawn up to fit" }
+    CS: { name: casing, key: turn the casing and stitch it; thread a drawstring or elastic }
+    HS: { name: hem stitch, key: turn the hem and stitch it }
+  codes:
+    K:
+      name: side panel to centre panel, straight edge to straight edge
+      stitch: SS
+      at: [{ part: centrePanel, between: [v1, v2] }, { part: kali, between: [v4, v5] }]
+    X:
+      name: crotch seam, front panels then back
+      stitch: SS
+      at: [{ part: kali, between: [v0, v1] }]
+    I:
+      name: inseam
+      stitch: SS
+      at: [{ part: kali, between: [v2, v3] }]
+    B:
+      name: belt side seams
+      stitch: SS
+      at: [{ part: belt, between: [v1, v2] }]
+    W:
+      name: legs gathered into the belt
+      stitch: GS
+      at: [{ part: centrePanel, between: [v0, v1] }, { part: kali, between: [v5, v0] }, { part: belt, between: [v2, v3] }]
+    CS:
+      name: casing
+      stitch: CS
+      kind: placement
+      at: [{ part: belt, path: mark0, along: 0.5 }]
+    H:
+      name: hems
+      stitch: HS
+      at: [{ part: centrePanel, between: [v2, v3] }, { part: kali, between: [v3, v4] }]

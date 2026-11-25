@@ -63,7 +63,7 @@ pieces:
           facing: chest * facingWidth
   front: { part: cape, which: front, after: [backBase, frontBase], nr: 1, count: buttons, spacing: chest * capeButtonSpacing, if: capePieces == 'two' }
   back: { part: cape, which: back, after: [backBase, frontBase], nr: 2, if: capePieces == 'two' }
-  whole: { part: cape, which: whole, after: [backBase, frontBase], nr: 1, count: buttons, spacing: chest * capeButtonSpacing, if: capePieces == 'one' }
+  whole: { part: cape, which: whole, after: [backBase, frontBase], nr: 4, count: buttons, spacing: chest * capeButtonSpacing, if: capePieces == 'one' }
   collar:
     after: [backBase, frontBase]
     measurements: [neck]
@@ -86,3 +86,46 @@ variants:
     name: Long
     description: "To below the knee: the same cut made longer, so it falls in deeper folds."
     options: { capeLength: 0.78 }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map"): two
+# pieces (front, back) or one (whole); anchors on the cape's edges (lib/cape.mjs)
+patternMap:
+  pieces: { front: 1, back: 2, collar: 3, whole: 4 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam, pressed open" }
+    HS: { name: hem stitch, key: "turn a narrow hem, easing in the fullness" }
+    BH: { name: buttonhole, key: machine buttonhole }
+  codes:
+    SH:
+      name: shoulder seam, neck to hem, eased at the tip
+      stitch: SS
+      at: [{ part: front, path: sideEdge, along: 0.4, optional: true }, { part: back, path: sideEdge, along: 0.4, optional: true }]
+    DT:
+      name: shoulder darts
+      stitch: SS
+      kind: dart
+      at: [{ part: whole, path: shoulderDart1, along: 0.5, optional: true }, { part: whole, path: shoulderDart2, along: 0.5, optional: true }]
+    F:
+      name: facing, folded back on the line
+      stitch: SS
+      kind: placement
+      at: [{ part: front, path: lapFold, along: 0.5, optional: true }, { part: whole, path: lapFold, along: 0.5, optional: true }]
+    D:
+      name: collar to the neck, with the facing's top
+      stitch: SS
+      at:
+        - { part: collar, path: neck, along: 0.5 }
+        - { part: front, path: neckEdge, along: 0.5, optional: true }
+        - { part: back, path: neckEdge, along: 0.5, optional: true }
+    H:
+      name: hem, levelled after hanging
+      stitch: HS
+      at:
+        - { part: front, path: hemEdge, along: 0.5, optional: true }
+        - { part: back, path: hemEdge, along: 0.5, optional: true }
+        - { part: whole, path: hemEdge, along: 0.5, optional: true }
+    BH:
+      name: buttonholes on the right front
+      stitch: BH
+      kind: closure
+      at: [{ part: front, point: button0, optional: true }, { part: whole, point: button0, optional: true }]

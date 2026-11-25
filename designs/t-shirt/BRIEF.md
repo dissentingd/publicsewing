@@ -46,7 +46,7 @@ Back (on the fold), front (cut as a pair), two short sleeves and a crew-neck ban
 
 ## Construction
 
-1. Sew shoulder seams and join the front and back at the shoulders.
-2. Sew the collar band into a ring, quarter it, and attach it evenly to the neckline.
-3. Set in the sleeves, then sew each underarm and side seam in one pass.
-4. Hem sleeve ends and body.
+1. Sew the A shoulder seams, joining the front and back at the shoulders.
+2. Sew the collar band's K ends into a ring, quarter it, and attach it evenly to the neckline at N.
+3. Set in the sleeves at C, then sew each S underarm and side seam in one pass.
+4. Finish the H hems of the sleeve ends and body.

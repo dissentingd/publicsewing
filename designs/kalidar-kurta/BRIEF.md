@@ -55,13 +55,10 @@ sleeve and a square underarm gusset, at comparable proportions.
 6. Placket, cut two, each folded in half lengthways.
 
 ## Construction
-1. Cut the slit; sew a placket to each side of it, the buttonholed one on top; finish the slit's foot.
-2. Sew the shoulders; bind or face the neck.
-3. Sew each sleeve's top edge to the panels' sides, shoulder seam to the sleeve's fold, down to the
-   notches.
-4. Sew a side panel to each side of each centre panel, from the notch to the hem, its straight edge to
-   the panel.
-5. Set in the gusset: two sides to the front and back side panels' tops, two to the sleeve's underarm
-   edges up to the notches. Sew the underarm seams from the notch to the hem, and the side seams from
-   the gusset to the hem.
-6. Hem the kurta and the sleeves; sew on the buttons.
+
+1. Cut the slit; sew a PL placket to each side of it, the buttonholed one on top; finish the slit's foot.
+2. Sew the A shoulders; bind or face the N neck.
+3. Sew each sleeve's SL top edge to the panels' sides, shoulder seam to the sleeve's fold, down to the notches.
+4. Sew a side panel to each side of each centre panel at K, from the notch to the hem, its straight edge to the panel.
+5. Set in the G gusset: two sides to the front and back side panels' tops, two to the sleeve's underarm edges up to the notches. Sew the U underarm seams from the notch to the hem, and the side seams from the gusset to the hem.
+6. Finish the H hems of the kurta and the sleeves; work the BH buttonholes and sew on the buttons.

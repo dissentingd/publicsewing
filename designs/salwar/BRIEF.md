@@ -39,9 +39,9 @@ leg, all gathered into a belt with a casing, at comparable proportions.
 Centre panels (two, on the fold), side panels (four), belt (two, on the fold: front and back).
 
 ## Construction
-1. Join a side panel to each long edge of each centre panel, straight edge to straight edge.
-2. For the crotch seam, join the two legs' front panels along their top inner edges, then the back
-   panels the same way.
-3. On each leg, join the front side panel to the back one along the sloping edges for the inseam.
-4. Join the belt pieces at the sides. Gather the legs' tops into the belt's lower edge.
-5. Fold the casing over and thread a drawstring or elastic. Hem the bottoms.
+
+1. Join a side panel to each long edge of each centre panel at K, straight edge to straight edge.
+2. For the X crotch seam, join the two legs' front panels along their top inner edges, then the back panels the same way.
+3. On each leg, join the front side panel to the back one along the sloping edges for the I inseam.
+4. Join the belt pieces at the B sides. Gather the legs' tops into the belt's lower edge at W.
+5. Fold the CS casing over and thread a drawstring or elastic. Finish the H hems at the bottoms.

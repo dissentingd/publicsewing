@@ -36,7 +36,7 @@
 
 ## Construction
 
-1. Sew each front side panel to the centre front, matching the princess seam and waist points. Do the same for the back.
-2. Sew shoulders and side seams; finish neck and armholes with binding or a lining.
-3. Sew centre back below the zip notch and install the zip above it.
-4. Hem the dress.
+1. Sew each front side panel to the centre front at the PF princess seam, matching the waist points. Do the same for the back at PB.
+2. Sew the A shoulders and S side seams; finish the N neck and AH armholes with binding or a lining.
+3. Sew the CB centre back below the zip notch and put in the zip above it.
+4. Finish the H hem.

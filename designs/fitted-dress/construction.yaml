@@ -1,0 +1,10 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: fitted-dress
+steps:
+  - { order: 1, action: sew bodice and skirt darts, seams: [WD, BD, SD], stitches: [SS] }
+  - { order: 2, action: join shoulders and finish the neck, seams: [A, N], stitches: [SS, BN] }
+  - { order: 3, action: sew side seams, seams: [S], stitches: [SS] }
+  - { order: 4, action: join skirt to bodice, seams: [W], stitches: [SS] }
+  - { order: 5, action: sew centre back and set the zip, seams: [CB], stitches: [SS] }
+  - { order: 6, action: set sleeves or bind armholes and hem, seams: [F, C, H], stitches: [SS, HS] }

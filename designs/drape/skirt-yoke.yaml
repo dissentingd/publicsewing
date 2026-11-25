@@ -1,0 +1,38 @@
+# Drape a yoked skirt (lib/skirt-yoke.mjs) on GarmentCode's female average body: front and back hip
+# yokes, four gores below them. The waistband is left off; the waist is pinned (holdWaist). c0, c1,
+# ... are each piece's seam vertices in drawing order. Placement round the body as skirt-gored.yaml.
+body: f_smpl_average_A40
+pieces:
+  frontYoke: {origin: frontYoke.c0, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontYoke.c0, cb: backYoke.c3, rx: 26, rz: 22, y: 102}}
+  backYoke: {origin: backYoke.c0, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontYoke.c0, cb: backYoke.c3, rx: 26, rz: 22, y: 102}}
+  frontGore: {origin: frontGore.c0, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontYoke.c0, cb: backYoke.c3, rx: 26, rz: 22, y: 86}}
+  sideFront: {origin: sideFront.c0, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontYoke.c0, cb: backYoke.c3, rx: 26, rz: 22, y: 86}}
+  sideBack: {origin: sideBack.c0, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontYoke.c0, cb: backYoke.c3, rx: 26, rz: 22, y: 86}}
+  backGore: {origin: backGore.c0, map: [[1, 0], [0, -1]], ccw: true, around: {cf: frontYoke.c0, cb: backYoke.c3, rx: 26, rz: 22, y: 86}}
+seams:
+  yoke_cf: {a: [{piece: frontYoke, along: [frontYoke.c0, frontYoke.c6]}], mirror: true}
+  yoke_cb: {a: [{piece: backYoke, along: [backYoke.c3, backYoke.c4]}], mirror: true}
+  gore_cf: {a: [{piece: frontGore, along: [frontGore.c0, frontGore.c4]}], mirror: true}
+  gore_cb: {a: [{piece: backGore, along: [backGore.c1, backGore.c2]}], mirror: true}
+  yoke_side:
+    a: [{piece: frontYoke, along: [frontYoke.c2, frontYoke.c3, frontYoke.c4]}]
+    b: [{piece: backYoke, along: [backYoke.c0, backYoke.c8, backYoke.c7]}]
+  front_yoke:
+    a: [{piece: frontYoke, along: [frontYoke.c6, frontYoke.c5, frontYoke.c4]}]
+    b: [{piece: frontGore, along: [frontGore.c0, frontGore.c1]}, {piece: sideFront, along: [sideFront.c0, sideFront.c1]}]
+  back_yoke:
+    a: [{piece: backYoke, along: [backYoke.c4, backYoke.c5, backYoke.c6, backYoke.c7]}]
+    b: [{piece: backGore, along: [backGore.c1, backGore.c0]}, {piece: sideBack, along: [sideBack.c1, sideBack.c0]}]
+  gore1:
+    a: [{piece: frontGore, along: [frontGore.c1, frontGore.c2, frontGore.c3]}]
+    b: [{piece: sideFront, along: [sideFront.c0, sideFront.c6, sideFront.c5]}]
+  gore2:
+    a: [{piece: sideFront, along: [sideFront.c1, sideFront.c2, sideFront.c3, sideFront.c4]}]
+    b: [{piece: sideBack, along: [sideBack.c0, sideBack.c6, sideBack.c5, sideBack.c4]}]
+  gore3:
+    a: [{piece: sideBack, along: [sideBack.c1, sideBack.c2, sideBack.c3]}]
+    b: [{piece: backGore, along: [backGore.c0, backGore.c4, backGore.c3]}]
+labels:
+  lower_interface:
+    - {piece: frontYoke, along: [frontYoke.c0, frontYoke.c1, frontYoke.c2]}
+    - {piece: backYoke, along: [backYoke.c0, backYoke.c1, backYoke.c2, backYoke.c3]}

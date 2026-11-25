@@ -1,0 +1,29 @@
+# Drape a knit top on Bibi (the henley, turtleneck and cardigan) on GarmentCode's male average body:
+# back and front on the fold, a one-piece sleeve split into halves. Neck bands, plackets, cuffs and
+# hem bands are left off. The simulator's cloth doesn't stretch as a knit does, so a close fit
+# presses on the body more than the garment would. Placement as coat-shell.yaml.
+body: m_smpl_average_A40
+pieces:
+  back: {origin: [back.neckCentre, back.neckSide], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 153, -17]}
+  front: {origin: [front.neckCentre, front.neckSide], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 153, 21]}
+  sleevePlus: {origin: sleevePlus.clipTop, map: [[0, 1], [1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-21, 148, 10]}
+  sleeveMinus: {origin: sleeveMinus.clipTop, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-21, 148, -12]}
+seams:
+  centre_back: {a: [{piece: back, along: [back.neckCentre, back.hemCentre]}], mirror: true}
+  centre_front: {a: [{piece: front, along: [front.neckCentre, front.hemCentre]}], mirror: true}
+  shoulder:
+    a: [{piece: back, along: [back.neckSide, back.shoulderTip]}]
+    b: [{piece: front, along: [front.neckSide, front.shoulderTip]}]
+  side:
+    a: [{piece: back, along: [back.sideTop, back.hemSide]}]
+    b: [{piece: front, along: [front.sideTop, front.hemSide]}]
+  armhole:
+    a: [{piece: back, along: [back.sideTop, back.shoulderTip]}, {piece: front, along: [front.shoulderTip, front.sideTop]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.capQ4, sleeveMinus.capQ3, sleeveMinus.clipTop]}, {piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.capQ2, sleevePlus.capQ1, sleevePlus.bicepsRight]}]
+    anchors: [[back.shoulderTip, sleeveMinus.clipTop]]
+  overarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.clipBottom]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.clipTop, sleeveMinus.clipBottom]}]
+  underarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.bicepsRight, sleevePlus.cuffRight]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.cuffLeft]}]

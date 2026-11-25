@@ -43,10 +43,11 @@ are Pivnick's.
 Front (cut 2), back (fold), collar.
 
 ## Construction
-1. Bust darts; the back's shoulder and curve darts.
-2. Shoulder and side seams in one, from the neck to the hem, matching the notches.
-3. Fold the facing back. Collar to the neck, with the facing's top.
-4. Hem, buttonholes, buttons.
+
+1. Sew the bust darts, and the back's shoulder and curve darts.
+2. Sew the SH shoulder and side seams in one, from the neck to the hem, matching the notches.
+3. Fold the F facing back. Sew the collar to the neck at D, with the facing's top.
+4. Finish the H hem, work the BH buttonholes and sew on the buttons.
 
 ## Checks
 `test/dolman-cape.test.mjs`: every size, the default, long, short with no hip extension, and wide. Side seams above and below the

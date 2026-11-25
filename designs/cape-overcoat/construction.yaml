@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: cape-overcoat
+steps:
+  - { order: 1, action: shoulder seams or darts, seams: [SH, DT], stitches: [SS] }
+  - { order: 2, action: facing and collar, seams: [D], placements: [F], stitches: [SS] }
+  - { order: 3, action: level and hem, seams: [H], stitches: [HS] }
+  - { order: 4, action: buttonholes and buttons, placements: [BH], stitches: [BH] }

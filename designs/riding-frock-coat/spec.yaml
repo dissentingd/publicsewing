@@ -121,5 +121,78 @@ variants:
     description: "More sweep at the skirt hem while keeping the same waist and hip fit."
     options: { skirtSpread: 0.11 }
 
-# No pattern map yet: the fitted jacket's would label pieces this design changes.
-patternMap: false
+# The fitted jacket's map, cut at the waist: a one-piece skirt from the front edge to the back
+# seam, a separate collar and lapel, a pleat and vent on the back. No pockets.
+patternMap:
+  merge: true
+  pieces: { collar: 6, skirt: 21, skirtLining: 22, breastWelt: null, breastBag: null, hipFlap: null, hipJet: null, hipBag: null, ticketFlap: null, ticketJet: null, ticketBag: null }
+  codes:
+    PF:
+      name: front princess seam
+      stitch: SS
+      at:
+        - { part: front, between: [seamBust, seamWaist] }
+        - { part: sideFront, between: [seamBust, seamWaist] }
+    PB:
+      name: back seam, from the armhole
+      stitch: SS
+      at:
+        - { part: back, between: [seamBust, seamWaist] }
+        - { part: sideBack, between: [seamBust, seamWaist] }
+    SF:
+      name: side front to under-arm panel
+      stitch: SS
+      at:
+        - { part: sideFront, between: [armhole, waist] }
+        - { part: underArm, between: [frontTop, frontWaist] }
+    SB:
+      name: side back to under-arm panel
+      stitch: SS
+      at:
+        - { part: sideBack, between: [armhole, waist] }
+        - { part: underArm, between: [backTop, backWaist] }
+    W:
+      name: waist seam, bodice to skirt
+      stitch: SS
+      at:
+        - { part: front, between: [waistEdge, seamWaist] }
+        - { part: sideFront, between: [seamWaist, waist] }
+        - { part: underArm, between: [frontWaist, backWaist] }
+        - { part: sideBack, between: [seamWaist, waist] }
+        - { part: skirt, between: [seam1Waist, seam2Waist] }
+    K:
+      name: skirt to back, below the waist
+      stitch: SS
+      at:
+        - { part: back, between: [seamWaist, hemSeam] }
+        - { part: skirt, between: [backSeamWaist, backSeamHem] }
+    A:
+      name: shoulder
+      stitch: SS
+      at:
+        - { part: front, between: [hps, seamTop] }
+        - { part: sideFront, between: [seamTop, shoulder] }
+        - { part: back, between: [hps, seamTop] }
+    D:
+      name: collar to neckline
+      stitch: SS
+      at:
+        - { part: collar, between: [cbNeck, frontNeck] }
+        - { part: back, between: [hps, cbNeck] }
+        - { part: front, between: [hps, gorge] }
+    E:
+      name: front edge, lapel and facing
+      stitch: SS
+      at:
+        - { part: front, between: [break, waistEdge] }
+    H:
+      name: skirt and sleeve hems
+      stitch: HS
+      at:
+        - { part: skirt, between: [seam1Hem, seam2Hem] }
+        - { part: back, between: [cbHem, hemSeam] }
+        - { part: topsleeve, between: [tsWristLeft, tsWristRight] }
+        - { part: undersleeve, between: [usWristLeft, usWristRight] }
+    P12: null
+    P14: null
+    P17: null

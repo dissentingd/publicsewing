@@ -1,0 +1,33 @@
+# Drape a one-piece dress body with set-in sleeves (lib/yoke.mjs body pieces: the shift dress and
+# the designs that extend it) on GarmentCode's female average body: front and back cut at CF and
+# CB, sewn at the shoulders and sides, a one-piece sleeve split into halves. Bands, collars,
+# facings and plackets are left off. Export:
+#   node tools/drape-export.mjs shift-dress cisFemaleAdult34 out.json --prefix '*' \
+#     --pieces frontBody,backBody,sleeve --clip frontBody=0,backBody=0 --split sleeve=0
+#
+# Placement as bodice.yaml (cm, y up, the body facing +z, its right side at -x; right-hand copies).
+body: f_smpl_average_A40
+pieces:
+  backBody: {origin: [backBody.clipTop, backBody.hps], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 141, -15]}
+  frontBody: {origin: [frontBody.clipTop, frontBody.hps], map: [[-1, 0], [0, -1]], ccw: true, translation: [0, 141, 19]}
+  sleevePlus: {origin: sleevePlus.clipTop, map: [[0, 1], [1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-21, 137, 10]}
+  sleeveMinus: {origin: sleeveMinus.clipTop, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-21, 137, -12]}
+seams:
+  centre_back: {a: [{piece: backBody, along: [backBody.clipTop, backBody.clipBottom]}], mirror: true}
+  centre_front: {a: [{piece: frontBody, along: [frontBody.clipTop, frontBody.clipBottom]}], mirror: true}
+  shoulder:
+    a: [{piece: backBody, along: [backBody.hps, backBody.shoulder]}]
+    b: [{piece: frontBody, along: [frontBody.hps, frontBody.shoulder]}]
+  side:
+    a: [{piece: backBody, along: [backBody.sideTop, backBody.hemSide]}]
+    b: [{piece: frontBody, along: [frontBody.sideTop, frontBody.hemSide]}]
+  armhole:
+    a: [{piece: backBody, along: [backBody.sideTop, backBody.shoulder]}, {piece: frontBody, along: [frontBody.shoulder, frontBody.sideTop]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.clipTop]}, {piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.bicepsRight]}]
+    anchors: [[backBody.shoulder, sleeveMinus.clipTop]]
+  overarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.clipBottom]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.clipTop, sleeveMinus.clipBottom]}]
+  underarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.bicepsRight, sleevePlus.wristRight]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.bicepsLeft, sleeveMinus.wristLeft]}]

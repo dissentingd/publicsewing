@@ -1,0 +1,28 @@
+# Drape a divided riding skirt on GarmentCode's female average body: culotte legs (gore1 in front,
+# gore2 behind) with a front panel over them, sewn to the front leg from the waist to the seat and
+# free below. gore1: c0 side waist, c1 top at the panel, c2 foot of that seam, c5 side hem, c6 side
+# at the seat. gore2: c0 side waist, c1 side at the seat, c2 side hem, c5 and c6 up the CB seam.
+# The waistband is left off; the waist is pinned (holdWaist).
+body: f_smpl_average_A40
+pieces:
+  frontPanel: {origin: frontPanel.topRight, map: [[1, 0], [0, -1]], ccw: true, translation: [0, 102, 25]}
+  gore1: {origin: [gore1.fork, gore1.c1], map: [[1, 0], [0, -1]], ccw: true, translation: [0, 102, 22], hang: {from: gore1.fork, to: gore1.inseamHem, x: -0.7}}
+  gore2: {origin: [gore2.fork, gore2.c6], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 102, -22], hang: {from: gore2.fork, to: gore2.inseamHem, x: -0.7}}
+seams:
+  panel_cf: {a: [{piece: frontPanel, along: [frontPanel.topRight, frontPanel.hemRight]}], mirror: true}
+  panel_to_leg:
+    a: [{piece: frontPanel, along: [frontPanel.topLeft, frontPanel.leftSeat]}]
+    b: [{piece: gore1, along: [gore1.c1, gore1.c2]}]
+  centre_front: {a: [{piece: gore1, along: [gore1.c2, gore1.fork]}], mirror: true}
+  centre_back: {a: [{piece: gore2, along: [gore2.c6, gore2.c5, gore2.fork]}], mirror: true}
+  side:
+    a: [{piece: gore1, along: [gore1.c0, gore1.c6, gore1.c5]}]
+    b: [{piece: gore2, along: [gore2.c0, gore2.c1, gore2.c2]}]
+  inseam:
+    a: [{piece: gore1, along: [gore1.fork, gore1.inseamHem]}]
+    b: [{piece: gore2, along: [gore2.fork, gore2.inseamHem]}]
+labels:
+  lower_interface:
+    - {piece: frontPanel, along: [frontPanel.topRight, frontPanel.topLeft]}
+    - {piece: gore1, along: [gore1.c0, gore1.c1]}
+    - {piece: gore2, along: [gore2.c0, gore2.c6]}

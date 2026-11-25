@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: princess-dress
+steps:
+  - { order: 1, action: sew princess seams, seams: [PF, PB], stitches: [SS] }
+  - { order: 2, action: join shoulders and sides, finish neck and armholes, seams: [A, S, N, AH], stitches: [SS, BN] }
+  - { order: 3, action: sew centre back and set the zip, seams: [CB], stitches: [SS] }
+  - { order: 4, action: hem, seams: [H], stitches: [HS] }

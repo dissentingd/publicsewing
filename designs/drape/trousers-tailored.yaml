@@ -1,0 +1,39 @@
+# Drape tailored trousers on Titan (lib/trousers.mjs `trouserLeg`: the suit trousers and the
+# designs that extend them) on GarmentCode's male average body: front and back legs, sewn at
+# the outseam, inseam, crotch and the waist darts. The waistband, fly pieces, pockets and belt
+# loops are left off, so the waist's top edge is labelled `lower_interface`, which the simulator
+# pins at the body's waist level (holdWaist in runs.yaml keeps it pinned). Export:
+#   node tools/drape-export.mjs suit-trousers cisMaleAdult38 out.json --pieces front,back --m waist=800,seat=1000
+#
+# Placement as trousers.yaml: cm, y up, the body facing +z, its right side at -x; the right
+# leg's pieces (the left are mirrored). Each leg's fork starts on the centre line, in front of
+# and behind the body, turned so its inseam hangs straight down between the legs (`hang`,
+# tools/drape_spec.py): slanted, it would start inside the body's leg and pull the cloth through.
+body: m_smpl_average_A40
+pieces:
+  front: {origin: [front.fork, front.wIn], map: [[1, 0], [0, -1]], ccw: true, translation: [0, 108, 22], hang: {from: front.fork, to: front.hemIn, x: -0.7}}
+  back: {origin: [back.fork, back.wIn], map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 108, -22], hang: {from: back.fork, to: back.hemIn, x: -0.7}}
+seams:
+  centre_front: {a: [{piece: front, along: [front.wIn, front.crotchSeamCurveStart, front.fork]}], mirror: true}
+  centre_back: {a: [{piece: back, along: [back.wIn, back.crossSeamCurveStart, back.fork]}], mirror: true}
+  outseam:
+    a: [{piece: front, along: [front.wOut, front.hemOut]}]
+    b: [{piece: back, along: [back.wOut, back.hemOut]}]
+  inseam:
+    a: [{piece: front, along: [front.fork, front.hemIn]}]
+    b: [{piece: back, along: [back.fork, back.hemIn]}]
+  # Sewn only where the design has the dart (`dart: true`, tools/drape_spec.py)
+  front_dart:
+    dart: true
+    a: [{piece: front, along: [front.dartIn, front.dartTip]}]
+    b: [{piece: front, along: [front.dartOut, front.dartTip]}]
+  back_dart:
+    dart: true
+    a: [{piece: back, along: [back.dartIn, back.dartTip]}]
+    b: [{piece: back, along: [back.dartOut, back.dartTip]}]
+labels:
+  lower_interface:
+    - {piece: front, along: [front.wIn, front.dartIn]}
+    - {piece: front, along: [front.dartOut, front.wOut]}
+    - {piece: back, along: [back.wOut, back.dartOut]}
+    - {piece: back, along: [back.dartIn, back.wIn]}

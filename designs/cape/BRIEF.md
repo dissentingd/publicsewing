@@ -50,11 +50,12 @@ Her dolman cape is fitted on a French lining foundation we don't have, and isn't
 Two pieces: front (cut 2), back (fold), collar. One piece: the cape (fold), collar.
 
 ## Construction
-1. Two pieces: sew each side from the neck over the shoulder to the hem, easing at the tip. One piece: sew the shoulder darts.
+
+1. Two pieces: sew each SH side from the neck over the shoulder to the hem, easing at the tip. One piece: sew the DT shoulder darts.
 2. Let it hang for a day, as most of the hem is on the bias.
-3. Fold the facing back along the marked line. Collar to the neck, with the facing's top.
-4. Level the hem on the wearer if it has dropped, and hem it, easing the fullness in.
-5. Buttonholes and buttons.
+3. Fold the F facing back along the marked line. Sew the collar to the neck at D, with the facing's top.
+4. Level the H hem on the wearer if it has dropped, and hem it, easing the fullness in.
+5. Work the BH buttonholes and sew on the buttons.
 
 ## Checks
 `test/cape.test.mjs`: every size, two pieces and one, long, short and unflared, and fully flared. The side seams, the shoulders, the dart's

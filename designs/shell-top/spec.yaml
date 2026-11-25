@@ -46,3 +46,42 @@ variants:
     name: Square neck shell
     description: A square neckline on the same continuous darted body.
     options: { neckShape: square, neckWiden: 0.1, neckDepth: 0.32 }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map")
+patternMap:
+  pieces: { front: 1, back: 2 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam; finish raw edges" }
+    BN: { name: binding, key: bind or face the raw edge }
+    HS: { name: hem stitch, key: turn the hem and stitch it }
+  codes:
+    BD:
+      name: bust dart
+      stitch: SS
+      kind: dart
+      at: [{ part: front, point: bustDartTip }]
+    WD:
+      name: waist darts, front and back
+      stitch: SS
+      kind: dart
+      at: [{ part: front, path: waistDart, along: 0.25, optional: true }, { part: back, path: waistDart, along: 0.25, optional: true }]
+    A:
+      name: shoulder
+      stitch: SS
+      at: [{ part: front, between: [hps, shoulder] }, { part: back, between: [hps, shoulder] }]
+    S:
+      name: side seam
+      stitch: SS
+      at: [{ part: front, between: [sideHem, hipSide] }, { part: back, between: [waistSide, hipSide] }]
+    N:
+      name: neckline
+      stitch: BN
+      at: [{ part: front, between: [neckPoint, neckCf] }, { part: back, between: [neckPoint, neckCb] }]
+    AH:
+      name: armhole
+      stitch: BN
+      at: [{ part: front, path: armhole, along: 0.3 }, { part: back, path: armhole, along: 0.3 }]
+    H:
+      name: hem
+      stitch: HS
+      at: [{ part: front, between: [hipCenter, hipSide] }, { part: back, between: [hipCenter, hipSide] }]

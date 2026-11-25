@@ -132,10 +132,12 @@ export function draftCapeLayout(sh, { length, drop, gap, pivotLess, seamDrop, fl
     hem: new Path().move(new Point(edgeX, yCf)).line(hemCf.clone()).join(through(Path, Point, [hemCf, midF, eF], { x: 1, y: 0 }, square(dF, 1))),
     side: side(hf, tf, dF, eF),
     neck: frontNeck.clone(),
+    corners: { hps: hf, tip: tf, sideHem: eF, cfHem: hemCf },
   }
   const back = {
     neck: backNeck.clone(),
     side: side(hb, tb, dB, eB),
+    corners: { hps: hb, tip: tb, sideHem: eB, cbHem: hemCb },
     hem: through(Path, Point, [eB, midB, hemCb], square(dB, 1), { x: 0, y: -1 }),
     start: cb.clone(),
     end: hemCb.clone(),
@@ -305,12 +307,17 @@ export function capePart({ name, after, which, nr, buttons = () => ({ count: 0 }
       }
       const hem = 2 // the hem's allowance, in seam allowances: it's curved, so narrow
       let fold = null
+      // The piece's corners, for what sews to them (the drapes)
+      const named = which === 'front' ? { ...c.front.corners, cfNeck: c.cf } : which === 'back' ? { ...c.back.corners, cbNeck: c.cb } : {}
+      for (const [id, q] of Object.entries(named)) if (q) points[id] = new Point(q.x, q.y)
       if (which === 'front') {
         const edge = copy(c.front.edge)
         const h = copy(c.front.hem)
         const up = copy(c.front.side).reverse()
         const neck = copy(c.front.neck)
         paths.seam = edge.join(h).join(up).join(neck).close().addClass('fabric')
+        // Its edges, hidden, for pattern-map anchors
+        Object.assign(paths, { frontEdge: copy(c.front.edge).hide(), hemEdge: copy(c.front.hem).hide(), sideEdge: copy(c.front.side).hide(), neckEdge: copy(c.front.neck).hide() })
         if (sa) {
           let o = null
           for (const [p, k] of [[copy(c.front.edge), 1], [copy(c.front.hem), hem], [copy(c.front.side).reverse(), 1], [copy(c.front.neck), 1]]) {
@@ -328,6 +335,9 @@ export function capePart({ name, after, which, nr, buttons = () => ({ count: 0 }
             : copy(c.whole.top).join(copy(c.whole.hem))
         fold = [outline.start(), outline.end()]
         paths.seam = outline.clone().close().addClass('fabric')
+        // Its edges, hidden, for pattern-map anchors
+        if (which === 'back') Object.assign(paths, { neckEdge: copy(c.back.neck).hide(), sideEdge: copy(c.back.side).hide(), hemEdge: copy(c.back.hem).hide() })
+        else Object.assign(paths, { topEdge: copy(c.whole.top).hide(), hemEdge: copy(c.whole.hem).hide() })
         if (sa) {
           const parts =
             which === 'back'

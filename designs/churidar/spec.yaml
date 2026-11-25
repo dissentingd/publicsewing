@@ -85,3 +85,40 @@ pieces:
     allowance: [1, 1, 1, 0]
     fold: 3
     lines: [[[0, a], [w, a]]] # the casing's fold line
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map"). Leg
+# corners: v0 top at the fold, v1 top inner, v2 the crotch notch, v2-v6 the curved inseam to the
+# knee, v7 the ankle, v8 the hem at the fold
+patternMap:
+  pieces: { leg: 1, belt: 2 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam; finish raw edges" }
+    GS: { name: gathering, key: "two rows of long stitches, drawn up to fit" }
+    CS: { name: casing, key: turn the casing and stitch it; thread a drawstring or elastic }
+    HS: { name: hem stitch, key: turn the hem and stitch it }
+  codes:
+    I:
+      name: inseam, ankle to the crotch notch
+      stitch: SS
+      at: [{ part: leg, between: [v6, v7] }]
+    X:
+      name: crotch seam, front and back
+      stitch: SS
+      at: [{ part: leg, between: [v1, v2] }]
+    B:
+      name: belt ends
+      stitch: SS
+      at: [{ part: belt, between: [v1, v2] }]
+    W:
+      name: legs gathered into the belt
+      stitch: GS
+      at: [{ part: leg, between: [v0, v1] }, { part: belt, between: [v2, v3] }]
+    CS:
+      name: casing
+      stitch: CS
+      kind: placement
+      at: [{ part: belt, path: mark0, along: 0.5 }]
+    H:
+      name: ankle hem
+      stitch: HS
+      at: [{ part: leg, between: [v7, v8] }]

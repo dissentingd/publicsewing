@@ -31,7 +31,7 @@ The plate's lower figure confirms a central dart and a curved hem after the wedg
 
 ## Construction
 
-1. Sew each marked waist dart, then join the front seam. Leave the marked zipper opening in the back seam and sew the rest of that seam.
-2. Insert the back zipper. Cut a waist facing from the drafted waist edge, interface it as needed, and sew it to the waist; turn, understitch, and secure its ends at the zipper.
-3. Let the skirt hang before levelling the curved, partly bias hem. Turn and stitch the hem without stretching its edge.
+1. Sew each marked WD waist dart, then join the CF front seam. Leave the marked zipper opening in the CB back seam and sew the rest of that seam.
+2. Insert the back zipper. Cut a waist facing from the drafted waist edge, interface it as needed, and sew it to the waist at W; turn, understitch, and secure its ends at the zipper.
+3. Let the skirt hang before levelling the curved, partly bias H hem. Turn and stitch the hem without stretching its edge.
 4. Fit the waist, hip, and hem in a muslin before final cloth. Schorr does not specify a closure or waist finish; the zipper and facing are this draft's choices.

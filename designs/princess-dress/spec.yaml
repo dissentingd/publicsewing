@@ -58,3 +58,50 @@ variants:
     name: Armhole princess dress
     description: Princess seams rise from the armhole instead of the shoulder.
     options: { dartPosition: armhole }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map")
+patternMap:
+  pieces: { backInside: 1, backOutside: 2, frontInside: 3, frontOutside: 4 }
+  stitches:
+    SS: { name: straight seam, key: "straight seam; finish raw edges" }
+    BN: { name: binding, key: bind or face the raw edge }
+    HS: { name: hem stitch, key: turn the hem and stitch it }
+  codes:
+    PF:
+      name: front princess seam
+      stitch: SS
+      at: [{ part: frontInside, between: [waistDartLeft, princessHip] }, { part: frontOutside, between: [waistDartRight, princessHip] }]
+    PB:
+      name: back princess seam
+      stitch: SS
+      at: [{ part: backInside, between: [dartBottomLeft, princessHip] }, { part: backOutside, between: [dartBottomRight, princessHip] }]
+    A:
+      name: shoulder
+      stitch: SS
+      at:
+        - { part: frontInside, between: [hps, shoulderDartInside] }
+        - { part: backInside, between: [hps, shoulder] }
+    S:
+      name: side seam
+      stitch: SS
+      at: [{ part: frontOutside, between: [sideHem, outerHip] }, { part: backOutside, between: [waistSide, outerHip] }]
+    N:
+      name: neckline
+      stitch: BN
+      at: [{ part: frontInside, between: [hps, cfNeck] }, { part: backInside, between: [hps, cbNeck] }]
+    AH:
+      name: armhole
+      stitch: BN
+      at: [{ part: frontOutside, between: [armhole, armholePitch] }, { part: backOutside, between: [armhole, armholePitch] }]
+    CB:
+      name: centre back seam and zip
+      stitch: SS
+      at: [{ part: backInside, between: [waistCenter, outerHip] }]
+    H:
+      name: hem
+      stitch: HS
+      at:
+        - { part: frontInside, between: [princessHip, outerHip] }
+        - { part: frontOutside, between: [princessHip, outerHip] }
+        - { part: backInside, between: [princessHip, outerHip] }
+        - { part: backOutside, between: [princessHip, outerHip] }

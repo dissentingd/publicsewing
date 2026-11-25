@@ -41,8 +41,9 @@ ankle, with a gathered belt, at comparable proportions.
 Legs (two, each on the fold, on the bias), belt (one, on the fold).
 
 ## Construction
-1. Close each leg's inseam, from the ankle up to the crotch notch.
-2. Join the two legs along their crotch edges, front and back.
-3. Close the belt's ends. Gather the legs' tops into its lower edge.
-4. Fold the casing over and thread a drawstring or elastic.
-5. Hem the ankles. When worn, the extra length gathers in folds there.
+
+1. Close each leg's I inseam, from the ankle up to the crotch notch.
+2. Join the two legs along their X crotch edges, front and back.
+3. Close the belt's B ends. Gather the legs' tops into its lower edge at W.
+4. Fold the CS casing over and thread a drawstring or elastic.
+5. Finish the H ankle hems. When worn, the extra length gathers in folds there.

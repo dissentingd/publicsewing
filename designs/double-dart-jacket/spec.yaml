@@ -102,5 +102,44 @@ pieces:
 
   middleFront: { part: jacketPanel, after: [backBase, frontBase], panel: middleFront, nr: 21, label: middleFront, cut: 2, lining: lining }
 
-# No pattern map yet: the fitted jacket's would label pieces this design changes.
-patternMap: false
+# The fitted jacket's map, with the middle front between the two front seams; no pockets
+patternMap:
+  merge: true
+  pieces: { middleFront: 21, breastWelt: null, breastBag: null, hipFlap: null, hipJet: null, hipBag: null, ticketFlap: null, ticketJet: null, ticketBag: null }
+  codes:
+    PF:
+      name: front princess seam
+      stitch: SS
+      at:
+        - { part: front, between: [seamTop, hemSeam] }
+        - { part: middleFront, between: [seamWaist, hemSeam] }
+    PM:
+      name: second front seam, over the shoulder
+      stitch: SS
+      at:
+        - { part: middleFront, between: [secondWaist, hemSecond] }
+        - { part: sideFront, between: [secondWaist, hemSecond] }
+    A:
+      name: shoulder
+      stitch: SS
+      at:
+        - { part: front, between: [hps, seamTop] }
+        - { part: middleFront, between: [seamTop, secondTop] }
+        - { part: sideFront, between: [secondTop, shoulder] }
+        - { part: back, between: [hps, seamTop] }
+        - { part: sideBack, between: [seamTop, shoulder] }
+    H:
+      name: jacket and sleeve hems
+      stitch: HS
+      at:
+        - { part: front, between: [hemEdge, hemSeam] }
+        - { part: middleFront, between: [hemSeam, hemSecond] }
+        - { part: sideFront, between: [hemSecond, hemSide] }
+        - { part: sideBack, between: [hemSeam, hemSide] }
+        - { part: back, between: [cbHem, hemSeam] }
+        - { part: topsleeve, between: [tsWristLeft, tsWristRight] }
+        - { part: undersleeve, between: [usWristLeft, usWristRight] }
+        - { part: underArm, between: [frontHem, backHem] }
+    P12: null
+    P14: null
+    P17: null

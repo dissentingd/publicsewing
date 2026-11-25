@@ -171,6 +171,11 @@ export function gorePart({ name, after, index, nr, label, zip = () => 0, pleat =
       // Counter-clockwise on the page: the waist right to left, down the left edge, the hem,
       // up the right edge; so offsets go outward
       paths.seam = waist.join(L).join(hemP).join(R.reverse()).close().addClass('fabric')
+      // The gore's corners, for what sews to them (the drapes)
+      points.topLeft = L.start()
+      points.topRight = R.start()
+      points.hemLeft = L.end()
+      points.hemRight = R.end()
       if (sa) {
         const parts = [waist.offset(sa), L.offset(sa), hemP.offset(hem), right.fold ? R.reverse() : R.reverse().offset(sa)]
         let out = null
@@ -445,6 +450,9 @@ export function tunicPart({ name, after, nr }) {
       for (const pt of hemPts.slice(1)) hem.line(pt)
       const frontEdge = new Path().move(at(hemRadius, 0)).line(front)
       paths.seam = waist.join(backEdge).join(hem).join(frontEdge).close().addClass('fabric')
+      // Named corners, for pattern-map anchors (the hem's middle: it curves, so a chord's won't do)
+      Object.assign(sh.points, { frontWaist: front, backWaist: back, frontHem: at(hemRadius, 0), backHem: at(hemRadius, angle), hemMid: hemPts[12] })
+      if (dartAngle > 0.001) sh.points.dartTip = tip
       if (sa) paths.sa = paths.seam.offset(-sa).addClass('fabric sa')
       if (dartAngle > 0.001) {
         paths.dart = new Path().move(leg1).line(tip).line(leg2).addClass('mark')

@@ -1,0 +1,8 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: tunic-skirt
+steps:
+  - { order: 1, action: darts and seams, seams: [WD, CF, CB], stitches: [SS] }
+  - { order: 2, action: zip and waist facing, seams: [W], stitches: [FC] }
+  - { order: 3, action: hang, level and hem, seams: [H], stitches: [HS] }
+  - { order: 4, action: fit in muslin }

@@ -155,9 +155,13 @@ for (const design of designs) {
     const text = path ? readFileSync(path, 'latin1') : ''
     check(text.length > 100 && valid(text), `${name} downloads (${text.length} bytes)`)
     if (map && ['Layered SVG', 'Projector PDF', 'Projector PDF, dark'].includes(name)) {
-      const [code, { name: seam }] = Object.entries(map.codes)[0]
       // A PDF string escapes backslashes and parentheses
-      const line = name === 'Layered SVG' ? `${code} ${seam}` : `${code} ${seam}`.replace(/[\\()]/g, '\\$&')
+      const lineOf = (code, seam) => (name === 'Layered SVG' ? `${code} ${seam}` : `${code} ${seam}`.replace(/[\\()]/g, '\\$&'))
+      // The first code the key lists: a merged map drops inherited codes with null, and an optional
+      // code (a pocket the default options leave out) isn't drawn
+      const codes = Object.entries(map.codes).filter(([, c]) => c)
+      const [code, { name: seam }] = codes.find(([k, c]) => text.includes(lineOf(k, c.name))) ?? codes[0]
+      const line = lineOf(code, seam)
       check(text.includes('Seam and stitch key') && text.includes(line), `${name} contains the embedded map key`)
       check(name === 'Layered SVG' ? text.includes('class="map-code"') : text.includes(`(${code}) Tj`), `${name} draws seam codes on pieces`)
     }

@@ -86,3 +86,42 @@ variants:
     name: Plain joggers
     description: The same relaxed pull-on leg without in-seam pockets.
     options: { pockets: false }
+
+# Piece numbers, seam codes and stitches printed on the pattern (SPEC.md "Pattern map")
+patternMap:
+  pieces: { front: 1, back: 2, cuff: 3, pocketBag: 4 }
+  stitches:
+    OS: { name: stretch seam, key: "stretch stitch or overlocker" }
+    RB: { name: rib seam, key: "stretch the cuff to fit; stretch stitch or overlocker" }
+    CS: { name: casing, key: "turn the casing and stitch it, leaving a gap for the elastic" }
+  codes:
+    P:
+      name: pocket bags to the front and back pocket openings
+      stitch: OS
+      kind: placement
+      at: [{ part: pocketBag, between: [v0, v1], optional: true }]
+    O:
+      name: outseam, above and below the pocket mouth
+      stitch: OS
+      at: [{ part: front, between: [kneeOut, hemOut] }, { part: back, between: [kneeOut, hemOut] }]
+    I:
+      name: inseam
+      stitch: OS
+      at: [{ part: front, between: [kneeIn, hemIn] }, { part: back, between: [kneeIn, hemIn] }]
+    X:
+      name: crotch seam
+      stitch: OS
+      at: [{ part: front, between: [cfSeat, fork] }, { part: back, between: [cbSeat, fork] }]
+    CS:
+      name: waist casing
+      stitch: CS
+      kind: placement
+      at: [{ part: front, path: casingFold, along: 0.5 }, { part: back, path: casingFold, along: 0.5 }]
+    K:
+      name: cuff ends, joined into a ring
+      stitch: OS
+      at: [{ part: cuff, between: [v1, v2] }]
+    R:
+      name: cuff to the leg hem
+      stitch: RB
+      at: [{ part: cuff, between: [v2, v3] }, { part: front, between: [hemOut, hemIn] }, { part: back, between: [hemOut, hemIn] }]

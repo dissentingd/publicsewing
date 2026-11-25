@@ -1,0 +1,36 @@
+# Drape the one-piece jumpsuit on GarmentCode's male average body. Its body is one flat piece, CF to
+# CF, with armhole slits and a V slit up the centre back that makes the legs. Its right half drapes
+# as two panels, split at CB, at the side and at CF (--split): body2 the back, body3 the front.
+# Each leg's slit edge sews to its CF edge (the inseam). The two sleeves are split in halves. The
+# underarm and crotch gussets, band, facing and pockets are left off: the bottom of each armhole
+# slit, where the underarm gusset would go, is sewn shut instead.
+body: m_smpl_average_A40
+pieces:
+  body2: {origin: body2.cbTop, map: [[-1, 0], [0, -1]], ccw: false, translation: [0, 153, -17]}
+  body3: {origin: [body3.cfNeck, body3.shoulderFront], map: [[1, 0], [0, -1]], ccw: true, translation: [0, 153, 21]}
+  sleevePlus: {origin: sleevePlus.clipTop, map: [[0, 1], [1, 0]], ccw: true, rotation: [0, 0, 221], translation: [-24, 148, 10]}
+  sleeveMinus: {origin: sleeveMinus.clipTop, map: [[0, 1], [-1, 0]], ccw: false, rotation: [0, 0, 221], translation: [-24, 148, -12]}
+seams:
+  centre_back: {a: [{piece: body2, along: [body2.cbTop, body2.crotchPoint]}], mirror: true}
+  centre_front: {a: [{piece: body3, along: [body3.cfNeck, body3.frontCrotch]}], mirror: true}
+  inseam:
+    a: [{piece: body2, along: [body2.crotchPoint, body2.slitHem]}]
+    b: [{piece: body3, along: [body3.frontCrotch, body3.hemCf]}]
+  side:
+    a: [{piece: body2, along: [body2.armTip, body2.sideHem]}]
+    b: [{piece: body3, along: [body3.armTip, body3.sideHem]}]
+  shoulder:
+    a: [{piece: body2, along: [body2.neckBack, body2.shoulderBack]}]
+    b: [{piece: body3, along: [body3.neckFront, body3.shoulderFront]}]
+  slit_foot:
+    a: [{piece: body2, along: [body2.slitBack, body2.armTip]}]
+    b: [{piece: body3, along: [body3.slitFront, body3.armTip]}]
+  armhole:
+    a: [{piece: body3, along: [body3.shoulderFront, body3.slitFront]}, {piece: body2, along: [body2.slitBack, body2.shoulderBack]}]
+    b: [{piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.c3]}, {piece: sleeveMinus, along: [sleeveMinus.c0, sleeveMinus.clipTop]}]
+  overarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.clipTop, sleevePlus.clipBottom]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.clipTop, sleeveMinus.clipBottom]}]
+  underarm:
+    a: [{piece: sleevePlus, along: [sleevePlus.c3, sleevePlus.c2]}]
+    b: [{piece: sleeveMinus, along: [sleeveMinus.c0, sleeveMinus.c1]}]

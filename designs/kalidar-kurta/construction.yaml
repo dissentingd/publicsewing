@@ -1,0 +1,10 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: kalidar-kurta
+steps:
+  - { order: 1, action: plackets, placements: [PL], stitches: [SS] }
+  - { order: 2, action: shoulders and neckline, seams: [A, N], stitches: [SS, BN] }
+  - { order: 3, action: sew on the sleeves, seams: [SL], stitches: [SS] }
+  - { order: 4, action: sew in the side panels, seams: [K], stitches: [SS] }
+  - { order: 5, action: gusset, underarm and side seams, seams: [G, U], stitches: [SS] }
+  - { order: 6, action: hems and buttons, seams: [H], placements: [BH], stitches: [HS, BH] }

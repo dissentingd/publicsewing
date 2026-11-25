@@ -4,7 +4,8 @@
 //          [--clip piece=x,...] [--split piece=x,...] [--clipy piece=y,...] [--m name=mm,...]
 //          [--prefix id] [--sources role=prefix.part,...]
 //   prefix: the parts' name prefix, for a design that extends another (the peacoat's parts
-//   are mackinaw.*); the design's own id by default.
+//   are mackinaw.*); the design's own id by default; * takes each piece's current part, for a
+//   design whose pieces come from several ancestors.
 //   pieces: part names without the design prefix (default: every piece with a seam path);
 //   sources: explicit source part for each exported role when inherited pieces have mixed prefixes;
 //   every cut value is mm or a point name of the piece (its x, or its y for clipy).
@@ -13,7 +14,10 @@
 //   (x >= value) and <piece>Minus, e.g. a one-piece sleeve into front and back halves to drape
 //   either side of the arm, or at several (a/b/...) into <piece>1, 2, ... from the left (a
 //   cuff at the underarm and over the arm); clipy: keep a piece at y <= value, e.g. a folded
-//   cuff to its fold (cuff=underarmFold).
+//   cuff to its fold (cuff=underarmFold). copy: a piece again under another name, for one cut
+//   twice and sewn in two places. Besides its named points, each piece has c0, c1, ...: its seam
+//   path's vertices in drawing order. onedge: named points (a/b) on a straight edge of the
+//   piece, added to its outline. A cut value may be `mid`, halfway across the piece.
 // Output (cm, drafting coordinates, y down): { pieces: { name: [[x, y], ...] },
 //   points: { "<piece>.<point>": [x, y] } (every named point that is an outline vertex),
 //   snippets: { part: { pieces, marks: [{ def: button|buttonhole, at }] } },
@@ -119,6 +123,36 @@ function clipX(poly, x0, below = false) {
   return out
 }
 
+/**
+ * Each piece name's current part, whatever design it comes from (a design that extends another
+ * keeps the parts it doesn't change under the ancestor's prefix): the last drafted, a visible one
+ * over a hidden one. Returns { name: full part name }
+ */
+/**
+ * A knit block's body piece (Bibi) is drawn as edges: they run hem, side, armhole, shoulder, neck
+ * (the `outline` operation joins them into a seam and hides them; they're still there). Returns
+ * them, or null for any other piece.
+ */
+export function knitEdges(part) {
+  const p = part.paths
+  const neck = p.backNeck ?? p.frontNeck
+  return p.hem && p.sideSeam && p.armhole && p.shoulder && neck ? [p.hem, p.sideSeam, p.armhole, p.shoulder, neck] : null
+}
+
+/** A piece's outline: its seam path, or for a Noble princess panel (whose `seam` is hidden, the
+ * uncut block's) the panel's own */
+export const seamOf = (part) => (part.paths.seam?.hidden && (part.paths.insideSeam ?? part.paths.outsideSeam)) || part.paths.seam
+
+export function latestParts(pattern) {
+  const latest = {}
+  for (const [full, part] of Object.entries(pattern.parts[0])) {
+    if (!part.paths.seam && !knitEdges(part)) continue
+    const name = full.slice(full.indexOf('.') + 1)
+    if (!latest[name] || !part.hidden || pattern.parts[0][latest[name]].hidden) latest[name] = full
+  }
+  return latest
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2)
   const flag = (f, d) => (args.includes(f) ? args[args.indexOf(f) + 1] : d)
@@ -134,6 +168,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const clip = byPiece('--clip')
   const split = byPiece('--split')
   const clipY = byPiece('--clipy')
+  const copies = byPiece('--copy')
+  const onEdge = byPiece('--onedge')
   const measurements = { ...measurementSet(set) }
   // --m waist=800,seat=1000: change measurements, to match the drape body
   for (const [k, v] of Object.entries(byPiece('--m'))) measurements[k] = v
@@ -148,19 +184,37 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const out = { design, set, options, measurements, pieces: {}, points: {}, snippets: {}, removed: {} }
   const processed = new Set()
   // Only the design's own parts (not the blocks' or FreeSewing's library parts of the same name)
-  const own = `${flag('--prefix', Design.designConfig.data.id)}.`
+  const prefix = flag('--prefix', Design.designConfig.data.id)
+  const own = `${prefix}.`
+  const latest = latestParts(pattern)
   for (const [full, part] of Object.entries(pattern.parts[0])) {
-    if (sourceNames.size ? !sourceNames.has(full) : !full.startsWith(own)) continue
-    const name = sourceNames.size ? sourceNames.get(full) : full.slice(own.length)
+    const star = prefix === '*'
+    if (sourceNames.size ? !sourceNames.has(full) : star ? latest[full.slice(full.indexOf('.') + 1)] !== full : !full.startsWith(own)) continue
+    const name = sourceNames.size ? sourceNames.get(full) : star ? full.slice(full.indexOf('.') + 1) : full.slice(own.length)
     if (wanted ? !wanted.includes(name) : !part.paths.seam || part.hidden) continue
-    if (!part.paths.seam) throw new Error(`${name} has no seam path`)
+    const knit = knitEdges(part)
+    if (!part.paths.seam && !knit) throw new Error(`${name} has no seam path`)
     processed.add(name)
-    let poly = polyline(part.paths.seam)
+    let poly = knit
+      ? knit.flatMap((p) => polyline(p)).filter((q, i, all) => !i || Math.hypot(q.x - all[i - 1].x, q.y - all[i - 1].y) > 1)
+      : polyline(seamOf(part))
     const first = poly[0]
     const last = poly[poly.length - 1]
     if (Math.hypot(first.x - last.x, first.y - last.y) < 1e-6) poly.pop()
     // A clip or split at a named point of the piece cuts at that point's x (clipy: its y)
-    const xOf = (v) => (typeof v === 'number' ? v : part.points[v].x)
+    // Named points lying on a straight edge become vertices, so seams can start there (--onedge)
+    for (const id of String(onEdge[name] ?? '').split('/').filter(Boolean)) {
+      const p = part.points[id]
+      const i = poly.findIndex((a, k) => {
+        const b = poly[(k + 1) % poly.length]
+        const L = Math.hypot(b.x - a.x, b.y - a.y)
+        return Math.abs(Math.hypot(p.x - a.x, p.y - a.y) + Math.hypot(b.x - p.x, b.y - p.y) - L) < 1e-6
+      })
+      if (i < 0) throw new Error(`${name}.${id} isn't on the outline`)
+      poly.splice(i + 1, 0, { x: p.x, y: p.y })
+    }
+    // `mid`: halfway across the piece
+    const xOf = (v) => (typeof v === 'number' ? v : v === 'mid' ? (Math.min(...poly.map((p) => p.x)) + Math.max(...poly.map((p) => p.x))) / 2 : part.points[v].x)
     const yOf = (v) => (typeof v === 'number' ? v : part.points[v].y)
     // A band cut to the depth it shows (a folded cuff drapes as one layer): keep y <= y0
     if (name in clipY) poly = clipX(poly.map((p) => ({ x: p.y, y: p.x })), yOf(clipY[name]), true).map((p) => ({ x: p.y, y: p.x }))
@@ -201,12 +255,27 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       for (const [id, p] of Object.entries(part.points)) {
         if (outline.some((q) => Math.hypot(q.x - p.x, q.y - p.y) < 1e-6)) out.points[`${piece}.${id}`] = cm(p)
       }
+      // The seam's own vertices in drawing order, for pieces whose corners have no names
+      // A knit piece's corners, where its edges meet
+      if (knit) {
+        const ends = [...knit.map((p) => polyline(p)[0]), polyline(knit[4]).at(-1)]
+          .map((e) => outline.reduce((best, q) => (Math.hypot(q.x - e.x, q.y - e.y) < Math.hypot(best.x - e.x, best.y - e.y) ? q : best)))
+        ;['hemCentre', 'hemSide', 'sideTop', 'shoulderTip', 'neckSide', 'neckCentre'].forEach((id, i) => (out.points[`${piece}.${id}`] = cm(ends[i])))
+      }
+      seamOf(part)?.ops.filter((op) => op.to).forEach((op, i) => {
+        if (outline.some((q) => Math.hypot(q.x - op.to.x, q.y - op.to.y) < 1e-6)) out.points[`${piece}.c${i}`] = cm(op.to)
+      })
       const cuts = outline.filter((p) => p.cut).sort((a, b) => a.y - b.y)
       if (cuts.length >= 2) {
         out.points[`${piece}.clipTop`] = cm(cuts[0])
         out.points[`${piece}.clipBottom`] = cm(cuts.at(-1))
       }
     }
+  }
+  // A piece cut more than once and sewn in two places (a tier, front and back): --copy a=b
+  for (const [from, to] of Object.entries(copies)) {
+    out.pieces[to] = out.pieces[from]
+    for (const [k, v] of Object.entries(out.points)) if (k.startsWith(`${from}.`)) out.points[`${to}.${k.slice(from.length + 1)}`] = v
   }
   if (wanted) for (const name of wanted) if (!processed.has(name)) throw new Error(`missing drape piece ${name} (source ${sources[name] ?? own + name})`)
   if (mapFor(Design)) out.patternMap = drapeMap(pattern, mapFor(Design), out)

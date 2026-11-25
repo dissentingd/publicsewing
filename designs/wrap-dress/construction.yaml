@@ -1,0 +1,9 @@
+# Sewing order for the independently written numbered steps in BRIEF.md.
+# Codes are defined in spec.yaml's patternMap.
+design: wrap-dress
+steps:
+  - { order: 1, action: sew darts, seams: [BD, WD, SD], stitches: [SS] }
+  - { order: 2, action: join shoulders and centre back, finish the neckline, seams: [A, CB, N], stitches: [SS, BN] }
+  - { order: 3, action: join skirts to bodices, seams: [W], stitches: [SS] }
+  - { order: 4, action: sew side seams and attach ties, seams: [S, T], stitches: [SS] }
+  - { order: 5, action: set sleeves or bind armholes and hem, seams: [F, C, H], stitches: [SS, HS] }
