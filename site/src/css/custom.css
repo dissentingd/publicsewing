@@ -59,6 +59,15 @@ body { letter-spacing: 0.005em; }
   letter-spacing: -0.035em;
 }
 .navbar__link { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; }
+.site-search { max-width: 48rem; }
+.site-search label { display: block; margin-bottom: 0.4rem; font-weight: 700; }
+.site-search input { width: 100%; padding: 0.75rem; border: 1px solid var(--ifm-color-emphasis-400); border-radius: 4px; background: var(--ifm-background-color); color: var(--ifm-font-color-base); font: inherit; }
+.site-search input:focus-visible { outline: 2px solid var(--ifm-color-primary); outline-offset: 2px; }
+.site-search ul { padding: 0; list-style: none; }
+.site-search li { padding: 1rem 0; border-top: 1px solid var(--ifm-color-emphasis-300); }
+.site-search li a { font-weight: 700; }
+.site-search li p { margin: 0.25rem 0; }
+.site-search li small { color: var(--ifm-color-emphasis-700); }
 .footer { color: #e9e4d9; }
 .footer a { color: #f2b797; }
 .footer__copyright { color: #c5c1b8; font-size: 0.75rem; }
