@@ -18,7 +18,7 @@ const blockDocs = [...catalog.designs.blocks, ...catalog.inspired.blocks].map(lo
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 export default {
   docs: [
-    'index', 'designs/index', ...designItems,
+    'index', 'search', 'designs/index', ...designItems,
     { type: 'link', label: 'Blocks', href: '/designs#blocks', className: 'sidebar-section-link' },
     ...blockDocs,
     'wardrobe', 'measure', 'sew-and-test', 'learn', 'contribute', 'sources', 'credits',

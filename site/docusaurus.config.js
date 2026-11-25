@@ -95,6 +95,7 @@ export default {
       title: 'PublicSewing',
       items: [
         { to: '/designs', label: 'Designs', position: 'left' },
+        { to: '/search', label: 'Search', position: 'left' },
         { to: '/wardrobe', label: 'Wardrobe', position: 'left' },
         { to: '/measure', label: 'Measure', position: 'left' },
         { to: '/sew-and-test', label: 'Sew & Test', position: 'left' },

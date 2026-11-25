@@ -779,4 +779,30 @@ Entries tagged <span className="src-tag src-tag--external">FreeSewing</span> are
 [FreeSewing](/sources#freesewing)'s designs, drafted to measure here with their credit.`
 )
 
+// A small, static index of public pages. The browser searches this without sending queries away.
+const searchPages = []
+function addSearchPages(dir) {
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const file = join(dir, entry.name)
+    if (entry.isDirectory()) { addSearchPages(file); continue }
+    if (!/\.mdx?$/.test(entry.name) || entry.name === 'search.mdx') continue
+    const raw = readFileSync(file, 'utf8')
+    const front = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+    const meta = front ? parse(front[1]) : {}
+    const relative = file.slice(out('docs').length + 1).replaceAll('\\', '/')
+    const route = meta.slug ?? `/${relative.replace(/\.(md|mdx)$/, '').replace(/\/index$/, '')}`
+    const title = meta.title ?? relative.split('/').at(-1).replace(/\.(md|mdx)$/, '')
+    const body = raw.slice(front?.[0].length ?? 0)
+      .replace(/^import .*$/gm, '')
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+      .replace(/[\*_`#|{}]/g, ' ')
+      .replace(/\s+/g, ' ').trim()
+    searchPages.push({ title, href: route, description: meta.description ?? '', body })
+  }
+}
+addSearchPages(out('docs'))
+writeFileSync(out('src', 'generated', 'search.json'), JSON.stringify(searchPages))
+
 console.log(`generated: ${ids.length} designs, ${fsIds.length} from FreeSewing, ${external.patterns.length} external, ${Object.values(sizes).flat().length} size sets`)
